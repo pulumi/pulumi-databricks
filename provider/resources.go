@@ -12,27 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package xyz
+package databricks
 
 import (
 	"fmt"
 	"path/filepath"
 
+	databricksProv "github.com/databrickslabs/terraform-provider-databricks/provider"
+	"github.com/pulumi/pulumi-databricks/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi-xyz/provider/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/terraform-providers/terraform-provider-xyz/xyz"
 )
 
 // all of the token components used below.
 const (
 	// This variable controls the default name of the package in the package
 	// registries for nodejs and python:
-	mainPkg = "xyz"
+	mainPkg = "databricks"
 	// modules:
-	mainMod = "index" // the xyz module
+	mainMod = "index" // the databricks module
 )
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
@@ -46,15 +46,15 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(xyz.Provider())
+	p := shimv2.NewProvider(databricksProv.DatabricksProvider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "xyz",
+		P:    p,
+		Name: "databricks",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
-		DisplayName: "",
+		DisplayName: "Databricks",
 		// The default publisher for all packages is Pulumi.
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
@@ -65,53 +65,108 @@ func Provider() tfbridge.ProviderInfo {
 		//
 		// You may host a logo on a domain you control or add an SVG logo for your package
 		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL:     "",
-		// PluginDownloadURL is an optional URL used to download the Provider
-		// for use in Pulumi programs
-		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "",
-		Description: "A Pulumi package for creating and managing xyz cloud resources.",
+		LogoURL:     "https://databricks.com/wp-content/uploads/2021/10/db-nav-logo.svg",
+		Description: "A Pulumi package for creating and managing databricks cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "xyz", "category/cloud"},
-		License:    "Apache-2.0",
-		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/pulumi/pulumi-xyz",
-		// The GitHub Org for the provider - defaults to `terraform-providers`
-		GitHubOrg: "",
-		Config:     map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: tfbridge.MakeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
-		},
+		Keywords:             []string{"pulumi", "databricks", "category/Infrastructure"},
+		License:              "Apache-2.0",
+		Homepage:             "https://www.pulumi.com",
+		Repository:           "https://github.com/pulumi/pulumi-databricks",
+		GitHubOrg:            "databrickslabs",
+		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. Two examples
-			// are below - the single line form is the common case. The multi-line form is
-			// needed only if you wish to override types or other default options.
-			//
-			// "aws_iam_role": {Tok: tfbridge.MakeResource(mainMod, "IamRole")}
-			//
-			// "aws_acm_certificate": {
-			// 	Tok: tfbridge.MakeResource(mainMod, "Certificate"),
-			// 	Fields: map[string]*tfbridge.SchemaInfo{
-			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
-			// 	},
-			// },
+		Resources: map[string]*tfbridge.ResourceInfo{
+			"databricks_aws_s3_mount":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AwsS3Mount")},
+			"databricks_azure_adls_gen1_mount": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AzureAdlsGen1Mount")},
+			"databricks_azure_adls_gen2_mount": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AzureAdlsGen2Mount")},
+			"databricks_azure_blob_mount":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AzureBlobMount")},
+			"databricks_catalog":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Catalog")},
+			"databricks_cluster":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Cluster")},
+			"databricks_cluster_policy":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ClusterPolicy")},
+			"databricks_dbfs_file":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DbfsFile")},
+			"databricks_directory":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Directory")},
+			"databricks_external_location":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ExternalLocation")},
+			"databricks_git_credential":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GitCredential")},
+			"databricks_global_init_script":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GlobalInitScript")},
+			"databricks_grants": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Grants"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"grant": {
+						CSharpName: "GrantDetails",
+					},
+				},
+			},
+			"databricks_group":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
+			"databricks_group_instance_profile": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupInstanceProfile")},
+			//"databricks_group_member":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupMember")},
+			"databricks_instance_pool":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstancePool")},
+			"databricks_instance_profile":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstanceProfile")},
+			"databricks_ip_access_list":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IpAccessList")},
+			"databricks_job":                         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Job")},
+			"databricks_library":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Library")},
+			"databricks_metastore":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Metastore")},
+			"databricks_metastore_assignment":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MetastoreAssignment")},
+			"databricks_metastore_data_access":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MetastoreDataAccess")},
+			"databricks_mlflow_experiment":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MlflowExperiment")},
+			"databricks_mlflow_model":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MlflowModel")},
+			"databricks_mlflow_webhook":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MlflowWebhook")},
+			"databricks_mount":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Mount")},
+			"databricks_mws_credentials":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MwsCredentials")},
+			"databricks_mws_customer_managed_keys":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MwsCustomerManagedKeys")},
+			"databricks_mws_log_delivery":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MwsLogDelivery")},
+			"databricks_mws_networks":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MwsNetworks")},
+			"databricks_mws_private_access_settings": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MwsPrivateAccessSettings")},
+			"databricks_mws_storage_configurations":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MwsStorageConfigurations")},
+			"databricks_mws_vpc_endpoint":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MwsVpcEndpoint")},
+			"databricks_mws_workspaces":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MwsWorkspaces")},
+			"databricks_notebook":                    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Notebook")},
+			"databricks_obo_token":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "OboToken")},
+			"databricks_permissions":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Permissions")},
+			"databricks_pipeline":                    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Pipeline")},
+			"databricks_repo":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Repo")},
+			"databricks_schema":                      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Schema")},
+			"databricks_secret":                      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Secret")},
+			"databricks_secret_acl":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretAcl")},
+			"databricks_secret_scope":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretScope")},
+			"databricks_service_principal":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServicePrincipal")},
+			"databricks_sql_dashboard":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlDashboard")},
+			"databricks_sql_endpoint":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlEndpoint")},
+			"databricks_sql_global_config":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlGlobalConfig")},
+			"databricks_sql_permissions":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlPermissions")},
+			"databricks_sql_query":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlQuery")},
+			"databricks_sql_visualization":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlVisualization")},
+			"databricks_sql_widget":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlWidget")},
+			"databricks_storage_credential":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "StorageCredential")},
+			"databricks_table":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Table")},
+			"databricks_token":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Token")},
+			"databricks_user":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
+			"databricks_user_instance_profile":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "UserInstanceProfile")},
+			"databricks_user_role":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "UserRole")},
+			"databricks_workspace_conf":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkspaceConf")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
-			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainMod, "getAmi")},
+			"databricks_aws_assume_role_policy":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAwsAssumeRolePolicy")},
+			"databricks_aws_bucket_policy":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAwsBucketPolicy")},
+			"databricks_aws_crossaccount_policy": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAwsCrossAccountPolicy")},
+			"databricks_catalogs":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getCatalogs")},
+			"databricks_clusters":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getClusters")},
+			"databricks_current_user":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getCurrentUser")},
+			"databricks_dbfs_file":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDbfsFile")},
+			"databricks_dbfs_file_paths":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDbfsFilePaths")},
+			"databricks_group":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroup")},
+			"databricks_jobs":                    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getJobs")},
+			"databricks_node_type":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNodeType")},
+			"databricks_notebook":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNotebook")},
+			"databricks_notebook_paths":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNotebookPaths")},
+			"databricks_schemas":                 {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSchemas")},
+			"databricks_spark_version":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSparkVersion")},
+			"databricks_tables":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTables")},
+			"databricks_user":                    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
+			"databricks_zones":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZones")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
 			},
@@ -119,13 +174,8 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
-			// See the documentation for tfbridge.OverlayInfo for how to lay out this
-			// section, or refer to the AWS provider. Delete this section if there are
-			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
-			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
