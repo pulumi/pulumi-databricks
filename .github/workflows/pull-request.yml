@@ -1,4 +1,8 @@
 env:
+  DATABRICKS_ACCOUNT_ID: ${{ secrets.DATABRICKS_ACCOUNT_ID}}
+  DATABRICKS_HOST: https://accounts.cloud.databricks.com
+  DATABRICKS_PASSWORD: ${{ secrets.DATABRICKS_PASSWORD}}
+  DATABRICKS_USERNAME: ${{ secrets.DATABRICKS_USERNAME }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
