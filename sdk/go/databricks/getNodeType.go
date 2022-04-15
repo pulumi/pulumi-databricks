@@ -128,7 +128,11 @@ func GetNodeTypeOutput(ctx *pulumi.Context, args GetNodeTypeOutputArgs, opts ...
 		ApplyT(func(v interface{}) (GetNodeTypeResult, error) {
 			args := v.(GetNodeTypeArgs)
 			r, err := GetNodeType(ctx, &args, opts...)
-			return *r, err
+			var s GetNodeTypeResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetNodeTypeResultOutput)
 }
 

@@ -101,7 +101,6 @@ export class SqlEndpoint extends pulumi.CustomResource {
      * Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
      */
     public readonly enableServerlessCompute!: pulumi.Output<boolean | undefined>;
-    public readonly id!: pulumi.Output<string>;
     public readonly instanceProfileArn!: pulumi.Output<string | undefined>;
     /**
      * JDBC connection string.
@@ -153,7 +152,6 @@ export class SqlEndpoint extends pulumi.CustomResource {
             resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
             resourceInputs["enablePhoton"] = state ? state.enablePhoton : undefined;
             resourceInputs["enableServerlessCompute"] = state ? state.enableServerlessCompute : undefined;
-            resourceInputs["id"] = state ? state.id : undefined;
             resourceInputs["instanceProfileArn"] = state ? state.instanceProfileArn : undefined;
             resourceInputs["jdbcUrl"] = state ? state.jdbcUrl : undefined;
             resourceInputs["maxNumClusters"] = state ? state.maxNumClusters : undefined;
@@ -175,7 +173,6 @@ export class SqlEndpoint extends pulumi.CustomResource {
             resourceInputs["dataSourceId"] = args ? args.dataSourceId : undefined;
             resourceInputs["enablePhoton"] = args ? args.enablePhoton : undefined;
             resourceInputs["enableServerlessCompute"] = args ? args.enableServerlessCompute : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["instanceProfileArn"] = args ? args.instanceProfileArn : undefined;
             resourceInputs["jdbcUrl"] = args ? args.jdbcUrl : undefined;
             resourceInputs["maxNumClusters"] = args ? args.maxNumClusters : undefined;
@@ -220,7 +217,6 @@ export interface SqlEndpointState {
      * Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
      */
     enableServerlessCompute?: pulumi.Input<boolean>;
-    id?: pulumi.Input<string>;
     instanceProfileArn?: pulumi.Input<string>;
     /**
      * JDBC connection string.
@@ -282,7 +278,6 @@ export interface SqlEndpointArgs {
      * Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
      */
     enableServerlessCompute?: pulumi.Input<boolean>;
-    id?: pulumi.Input<string>;
     instanceProfileArn?: pulumi.Input<string>;
     /**
      * JDBC connection string.

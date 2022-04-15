@@ -65,7 +65,11 @@ func GetNotebookPathsOutput(ctx *pulumi.Context, args GetNotebookPathsOutputArgs
 		ApplyT(func(v interface{}) (GetNotebookPathsResult, error) {
 			args := v.(GetNotebookPathsArgs)
 			r, err := GetNotebookPaths(ctx, &args, opts...)
-			return *r, err
+			var s GetNotebookPathsResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetNotebookPathsResultOutput)
 }
 

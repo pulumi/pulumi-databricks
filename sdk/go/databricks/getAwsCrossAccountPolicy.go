@@ -73,7 +73,11 @@ func GetAwsCrossAccountPolicyOutput(ctx *pulumi.Context, args GetAwsCrossAccount
 		ApplyT(func(v interface{}) (GetAwsCrossAccountPolicyResult, error) {
 			args := v.(GetAwsCrossAccountPolicyArgs)
 			r, err := GetAwsCrossAccountPolicy(ctx, &args, opts...)
-			return *r, err
+			var s GetAwsCrossAccountPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetAwsCrossAccountPolicyResultOutput)
 }
 

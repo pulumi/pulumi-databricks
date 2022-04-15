@@ -102,7 +102,6 @@ type Pipeline struct {
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous pulumi.BoolPtrOutput  `pulumi:"continuous"`
 	Filters    PipelineFiltersOutput `pulumi:"filters"`
-	Id         pulumi.StringOutput   `pulumi:"id"`
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have `path` attribute.
 	Libraries PipelineLibraryArrayOutput `pulumi:"libraries"`
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
@@ -154,7 +153,6 @@ type pipelineState struct {
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous *bool            `pulumi:"continuous"`
 	Filters    *PipelineFilters `pulumi:"filters"`
-	Id         *string          `pulumi:"id"`
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have `path` attribute.
 	Libraries []PipelineLibrary `pulumi:"libraries"`
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
@@ -175,7 +173,6 @@ type PipelineState struct {
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous pulumi.BoolPtrInput
 	Filters    PipelineFiltersPtrInput
-	Id         pulumi.StringPtrInput
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have `path` attribute.
 	Libraries PipelineLibraryArrayInput
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
@@ -200,7 +197,6 @@ type pipelineArgs struct {
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous *bool           `pulumi:"continuous"`
 	Filters    PipelineFilters `pulumi:"filters"`
-	Id         *string         `pulumi:"id"`
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have `path` attribute.
 	Libraries []PipelineLibrary `pulumi:"libraries"`
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
@@ -221,7 +217,6 @@ type PipelineArgs struct {
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous pulumi.BoolPtrInput
 	Filters    PipelineFiltersInput
-	Id         pulumi.StringPtrInput
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have `path` attribute.
 	Libraries PipelineLibraryArrayInput
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.

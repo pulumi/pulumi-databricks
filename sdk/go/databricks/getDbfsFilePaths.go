@@ -75,7 +75,11 @@ func GetDbfsFilePathsOutput(ctx *pulumi.Context, args GetDbfsFilePathsOutputArgs
 		ApplyT(func(v interface{}) (GetDbfsFilePathsResult, error) {
 			args := v.(GetDbfsFilePathsArgs)
 			r, err := GetDbfsFilePaths(ctx, &args, opts...)
-			return *r, err
+			var s GetDbfsFilePathsResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetDbfsFilePathsResultOutput)
 }
 

@@ -24,7 +24,6 @@ type MetastoreDataAccess struct {
 	AwsIamRole            MetastoreDataAccessAwsIamRolePtrOutput            `pulumi:"awsIamRole"`
 	AzureServicePrincipal MetastoreDataAccessAzureServicePrincipalPtrOutput `pulumi:"azureServicePrincipal"`
 	ConfigurationType     pulumi.StringOutput                               `pulumi:"configurationType"`
-	Id                    pulumi.StringOutput                               `pulumi:"id"`
 	IsDefault             pulumi.BoolPtrOutput                              `pulumi:"isDefault"`
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
@@ -67,7 +66,6 @@ type metastoreDataAccessState struct {
 	AwsIamRole            *MetastoreDataAccessAwsIamRole            `pulumi:"awsIamRole"`
 	AzureServicePrincipal *MetastoreDataAccessAzureServicePrincipal `pulumi:"azureServicePrincipal"`
 	ConfigurationType     *string                                   `pulumi:"configurationType"`
-	Id                    *string                                   `pulumi:"id"`
 	IsDefault             *bool                                     `pulumi:"isDefault"`
 	// Unique identifier of the parent Metastore
 	MetastoreId *string `pulumi:"metastoreId"`
@@ -79,7 +77,6 @@ type MetastoreDataAccessState struct {
 	AwsIamRole            MetastoreDataAccessAwsIamRolePtrInput
 	AzureServicePrincipal MetastoreDataAccessAzureServicePrincipalPtrInput
 	ConfigurationType     pulumi.StringPtrInput
-	Id                    pulumi.StringPtrInput
 	IsDefault             pulumi.BoolPtrInput
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringPtrInput
@@ -95,7 +92,6 @@ type metastoreDataAccessArgs struct {
 	AwsIamRole            *MetastoreDataAccessAwsIamRole            `pulumi:"awsIamRole"`
 	AzureServicePrincipal *MetastoreDataAccessAzureServicePrincipal `pulumi:"azureServicePrincipal"`
 	ConfigurationType     *string                                   `pulumi:"configurationType"`
-	Id                    *string                                   `pulumi:"id"`
 	IsDefault             *bool                                     `pulumi:"isDefault"`
 	// Unique identifier of the parent Metastore
 	MetastoreId string `pulumi:"metastoreId"`
@@ -108,7 +104,6 @@ type MetastoreDataAccessArgs struct {
 	AwsIamRole            MetastoreDataAccessAwsIamRolePtrInput
 	AzureServicePrincipal MetastoreDataAccessAzureServicePrincipalPtrInput
 	ConfigurationType     pulumi.StringPtrInput
-	Id                    pulumi.StringPtrInput
 	IsDefault             pulumi.BoolPtrInput
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringInput

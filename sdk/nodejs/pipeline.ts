@@ -109,7 +109,6 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly continuous!: pulumi.Output<boolean | undefined>;
     public readonly filters!: pulumi.Output<outputs.PipelineFilters>;
-    public readonly id!: pulumi.Output<string>;
     /**
      * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have `path` attribute.
      */
@@ -146,7 +145,6 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["configuration"] = state ? state.configuration : undefined;
             resourceInputs["continuous"] = state ? state.continuous : undefined;
             resourceInputs["filters"] = state ? state.filters : undefined;
-            resourceInputs["id"] = state ? state.id : undefined;
             resourceInputs["libraries"] = state ? state.libraries : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["storage"] = state ? state.storage : undefined;
@@ -162,7 +160,6 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["configuration"] = args ? args.configuration : undefined;
             resourceInputs["continuous"] = args ? args.continuous : undefined;
             resourceInputs["filters"] = args ? args.filters : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["libraries"] = args ? args.libraries : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["storage"] = args ? args.storage : undefined;
@@ -192,7 +189,6 @@ export interface PipelineState {
      */
     continuous?: pulumi.Input<boolean>;
     filters?: pulumi.Input<inputs.PipelineFilters>;
-    id?: pulumi.Input<string>;
     /**
      * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have `path` attribute.
      */
@@ -230,7 +226,6 @@ export interface PipelineArgs {
      */
     continuous?: pulumi.Input<boolean>;
     filters: pulumi.Input<inputs.PipelineFilters>;
-    id?: pulumi.Input<string>;
     /**
      * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have `path` attribute.
      */

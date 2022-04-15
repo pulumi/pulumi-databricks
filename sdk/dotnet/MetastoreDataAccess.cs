@@ -30,9 +30,6 @@ namespace Pulumi.Databricks
         [Output("configurationType")]
         public Output<string> ConfigurationType { get; private set; } = null!;
 
-        [Output("id")]
-        public Output<string> Id { get; private set; } = null!;
-
         [Output("isDefault")]
         public Output<bool?> IsDefault { get; private set; } = null!;
 
@@ -103,9 +100,6 @@ namespace Pulumi.Databricks
         [Input("configurationType")]
         public Input<string>? ConfigurationType { get; set; }
 
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
@@ -136,9 +130,6 @@ namespace Pulumi.Databricks
 
         [Input("configurationType")]
         public Input<string>? ConfigurationType { get; set; }
-
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }

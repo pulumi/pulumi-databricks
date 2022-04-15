@@ -85,7 +85,6 @@ type SqlEndpoint struct {
 	EnablePhoton pulumi.BoolPtrOutput `pulumi:"enablePhoton"`
 	// Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
 	EnableServerlessCompute pulumi.BoolPtrOutput   `pulumi:"enableServerlessCompute"`
-	Id                      pulumi.StringOutput    `pulumi:"id"`
 	InstanceProfileArn      pulumi.StringPtrOutput `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl pulumi.StringOutput `pulumi:"jdbcUrl"`
@@ -149,7 +148,6 @@ type sqlEndpointState struct {
 	EnablePhoton *bool `pulumi:"enablePhoton"`
 	// Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
 	EnableServerlessCompute *bool   `pulumi:"enableServerlessCompute"`
-	Id                      *string `pulumi:"id"`
 	InstanceProfileArn      *string `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl *string `pulumi:"jdbcUrl"`
@@ -182,7 +180,6 @@ type SqlEndpointState struct {
 	EnablePhoton pulumi.BoolPtrInput
 	// Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
 	EnableServerlessCompute pulumi.BoolPtrInput
-	Id                      pulumi.StringPtrInput
 	InstanceProfileArn      pulumi.StringPtrInput
 	// JDBC connection string.
 	JdbcUrl pulumi.StringPtrInput
@@ -219,7 +216,6 @@ type sqlEndpointArgs struct {
 	EnablePhoton *bool `pulumi:"enablePhoton"`
 	// Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
 	EnableServerlessCompute *bool   `pulumi:"enableServerlessCompute"`
-	Id                      *string `pulumi:"id"`
 	InstanceProfileArn      *string `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl *string `pulumi:"jdbcUrl"`
@@ -253,7 +249,6 @@ type SqlEndpointArgs struct {
 	EnablePhoton pulumi.BoolPtrInput
 	// Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
 	EnableServerlessCompute pulumi.BoolPtrInput
-	Id                      pulumi.StringPtrInput
 	InstanceProfileArn      pulumi.StringPtrInput
 	// JDBC connection string.
 	JdbcUrl pulumi.StringPtrInput

@@ -95,7 +95,11 @@ func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...
 		ApplyT(func(v interface{}) (GetClustersResult, error) {
 			args := v.(GetClustersArgs)
 			r, err := GetClusters(ctx, &args, opts...)
-			return *r, err
+			var s GetClustersResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetClustersResultOutput)
 }
 

@@ -8859,9 +8859,6 @@
                 "configurationType": {
                     "type": "string"
                 },
-                "id": {
-                    "type": "string"
-                },
                 "isDefault": {
                     "type": "boolean"
                 },
@@ -8876,7 +8873,6 @@
             },
             "required": [
                 "configurationType",
-                "id",
                 "metastoreId",
                 "name"
             ],
@@ -8888,9 +8884,6 @@
                     "$ref": "#/types/databricks:index/MetastoreDataAccessAzureServicePrincipal:MetastoreDataAccessAzureServicePrincipal"
                 },
                 "configurationType": {
-                    "type": "string"
-                },
-                "id": {
                     "type": "string"
                 },
                 "isDefault": {
@@ -8918,9 +8911,6 @@
                         "$ref": "#/types/databricks:index/MetastoreDataAccessAzureServicePrincipal:MetastoreDataAccessAzureServicePrincipal"
                     },
                     "configurationType": {
-                        "type": "string"
-                    },
-                    "id": {
                         "type": "string"
                     },
                     "isDefault": {
@@ -10943,9 +10933,6 @@
                 "filters": {
                     "$ref": "#/types/databricks:index/PipelineFilters:PipelineFilters"
                 },
-                "id": {
-                    "type": "string"
-                },
                 "libraries": {
                     "type": "array",
                     "items": {
@@ -10971,7 +10958,6 @@
             },
             "required": [
                 "filters",
-                "id",
                 "name",
                 "url"
             ],
@@ -10999,9 +10985,6 @@
                 },
                 "filters": {
                     "$ref": "#/types/databricks:index/PipelineFilters:PipelineFilters"
-                },
-                "id": {
-                    "type": "string"
                 },
                 "libraries": {
                     "type": "array",
@@ -11052,9 +11035,6 @@
                     },
                     "filters": {
                         "$ref": "#/types/databricks:index/PipelineFilters:PipelineFilters"
-                    },
-                    "id": {
-                        "type": "string"
                     },
                     "libraries": {
                         "type": "array",
@@ -11637,9 +11617,6 @@
                     "type": "boolean",
                     "description": "Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.\n"
                 },
-                "id": {
-                    "type": "string"
-                },
                 "instanceProfileArn": {
                     "type": "string"
                 },
@@ -11681,7 +11658,6 @@
             "required": [
                 "clusterSize",
                 "dataSourceId",
-                "id",
                 "jdbcUrl",
                 "name",
                 "odbcParams",
@@ -11711,9 +11687,6 @@
                 "enableServerlessCompute": {
                     "type": "boolean",
                     "description": "Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.\n"
-                },
-                "id": {
-                    "type": "string"
                 },
                 "instanceProfileArn": {
                     "type": "string"
@@ -11782,9 +11755,6 @@
                     "enableServerlessCompute": {
                         "type": "boolean",
                         "description": "Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.\n"
-                    },
-                    "id": {
-                        "type": "string"
                     },
                     "instanceProfileArn": {
                         "type": "string"
