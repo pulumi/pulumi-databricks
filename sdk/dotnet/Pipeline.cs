@@ -126,9 +126,6 @@ namespace Pulumi.Databricks
         [Output("filters")]
         public Output<Outputs.PipelineFilters> Filters { get; private set; } = null!;
 
-        [Output("id")]
-        public Output<string> Id { get; private set; } = null!;
-
         /// <summary>
         /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have `path` attribute.
         /// </summary>
@@ -238,9 +235,6 @@ namespace Pulumi.Databricks
         [Input("filters", required: true)]
         public Input<Inputs.PipelineFiltersArgs> Filters { get; set; } = null!;
 
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("libraries")]
         private InputList<Inputs.PipelineLibraryArgs>? _libraries;
 
@@ -313,9 +307,6 @@ namespace Pulumi.Databricks
 
         [Input("filters")]
         public Input<Inputs.PipelineFiltersGetArgs>? Filters { get; set; }
-
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         [Input("libraries")]
         private InputList<Inputs.PipelineLibraryGetArgs>? _libraries;

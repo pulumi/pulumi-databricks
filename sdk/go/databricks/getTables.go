@@ -77,7 +77,11 @@ func GetTablesOutput(ctx *pulumi.Context, args GetTablesOutputArgs, opts ...pulu
 		ApplyT(func(v interface{}) (GetTablesResult, error) {
 			args := v.(GetTablesArgs)
 			r, err := GetTables(ctx, &args, opts...)
-			return *r, err
+			var s GetTablesResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetTablesResultOutput)
 }
 

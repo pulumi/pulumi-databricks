@@ -43,7 +43,11 @@ func GetJobsOutput(ctx *pulumi.Context, args GetJobsOutputArgs, opts ...pulumi.I
 		ApplyT(func(v interface{}) (GetJobsResult, error) {
 			args := v.(GetJobsArgs)
 			r, err := GetJobs(ctx, &args, opts...)
-			return *r, err
+			var s GetJobsResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetJobsResultOutput)
 }
 

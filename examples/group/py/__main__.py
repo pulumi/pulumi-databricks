@@ -1,6 +1,8 @@
 """A Python Pulumi program"""
 
-import pulumi
 import pulumi_databricks as databricks
+import pulumi_random as random
 
-group = databricks.Group("py-group", display_name="Python Group")
+random_name = random.RandomPet("py-pet")
+
+group = databricks.Group("py-group", display_name=random_name.id)

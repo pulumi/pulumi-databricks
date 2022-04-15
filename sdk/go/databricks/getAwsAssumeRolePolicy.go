@@ -44,7 +44,11 @@ func GetAwsAssumeRolePolicyOutput(ctx *pulumi.Context, args GetAwsAssumeRolePoli
 		ApplyT(func(v interface{}) (GetAwsAssumeRolePolicyResult, error) {
 			args := v.(GetAwsAssumeRolePolicyArgs)
 			r, err := GetAwsAssumeRolePolicy(ctx, &args, opts...)
-			return *r, err
+			var s GetAwsAssumeRolePolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetAwsAssumeRolePolicyResultOutput)
 }
 

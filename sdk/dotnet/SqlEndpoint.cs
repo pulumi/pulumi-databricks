@@ -105,9 +105,6 @@ namespace Pulumi.Databricks
         [Output("enableServerlessCompute")]
         public Output<bool?> EnableServerlessCompute { get; private set; } = null!;
 
-        [Output("id")]
-        public Output<string> Id { get; private set; } = null!;
-
         [Output("instanceProfileArn")]
         public Output<string?> InstanceProfileArn { get; private set; } = null!;
 
@@ -241,9 +238,6 @@ namespace Pulumi.Databricks
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
 
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("instanceProfileArn")]
         public Input<string>? InstanceProfileArn { get; set; }
 
@@ -337,9 +331,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
-
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         [Input("instanceProfileArn")]
         public Input<string>? InstanceProfileArn { get; set; }

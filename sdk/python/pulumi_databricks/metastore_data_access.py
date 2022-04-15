@@ -19,7 +19,6 @@ class MetastoreDataAccessArgs:
                  aws_iam_role: Optional[pulumi.Input['MetastoreDataAccessAwsIamRoleArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']] = None,
                  configuration_type: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
@@ -34,8 +33,6 @@ class MetastoreDataAccessArgs:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
         if configuration_type is not None:
             pulumi.set(__self__, "configuration_type", configuration_type)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
         if name is not None:
@@ -81,15 +78,6 @@ class MetastoreDataAccessArgs:
         pulumi.set(self, "configuration_type", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "is_default")
@@ -117,7 +105,6 @@ class _MetastoreDataAccessState:
                  aws_iam_role: Optional[pulumi.Input['MetastoreDataAccessAwsIamRoleArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']] = None,
                  configuration_type: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -132,8 +119,6 @@ class _MetastoreDataAccessState:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
         if configuration_type is not None:
             pulumi.set(__self__, "configuration_type", configuration_type)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
         if metastore_id is not None:
@@ -167,15 +152,6 @@ class _MetastoreDataAccessState:
     @configuration_type.setter
     def configuration_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "configuration_type", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="isDefault")
@@ -219,7 +195,6 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  aws_iam_role: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAwsIamRoleArgs']]] = None,
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureServicePrincipalArgs']]] = None,
                  configuration_type: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -271,7 +246,6 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  aws_iam_role: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAwsIamRoleArgs']]] = None,
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureServicePrincipalArgs']]] = None,
                  configuration_type: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -290,7 +264,6 @@ class MetastoreDataAccess(pulumi.CustomResource):
             __props__.__dict__["aws_iam_role"] = aws_iam_role
             __props__.__dict__["azure_service_principal"] = azure_service_principal
             __props__.__dict__["configuration_type"] = configuration_type
-            __props__.__dict__["id"] = id
             __props__.__dict__["is_default"] = is_default
             if metastore_id is None and not opts.urn:
                 raise TypeError("Missing required property 'metastore_id'")
@@ -309,7 +282,6 @@ class MetastoreDataAccess(pulumi.CustomResource):
             aws_iam_role: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAwsIamRoleArgs']]] = None,
             azure_service_principal: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureServicePrincipalArgs']]] = None,
             configuration_type: Optional[pulumi.Input[str]] = None,
-            id: Optional[pulumi.Input[str]] = None,
             is_default: Optional[pulumi.Input[bool]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'MetastoreDataAccess':
@@ -330,7 +302,6 @@ class MetastoreDataAccess(pulumi.CustomResource):
         __props__.__dict__["aws_iam_role"] = aws_iam_role
         __props__.__dict__["azure_service_principal"] = azure_service_principal
         __props__.__dict__["configuration_type"] = configuration_type
-        __props__.__dict__["id"] = id
         __props__.__dict__["is_default"] = is_default
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
@@ -350,11 +321,6 @@ class MetastoreDataAccess(pulumi.CustomResource):
     @pulumi.getter(name="configurationType")
     def configuration_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "configuration_type")
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="isDefault")

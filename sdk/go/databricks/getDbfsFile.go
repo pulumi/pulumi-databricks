@@ -75,7 +75,11 @@ func LookupDbfsFileOutput(ctx *pulumi.Context, args LookupDbfsFileOutputArgs, op
 		ApplyT(func(v interface{}) (LookupDbfsFileResult, error) {
 			args := v.(LookupDbfsFileArgs)
 			r, err := LookupDbfsFile(ctx, &args, opts...)
-			return *r, err
+			var s LookupDbfsFileResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupDbfsFileResultOutput)
 }
 

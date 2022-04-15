@@ -54,7 +54,11 @@ func GetAwsBucketPolicyOutput(ctx *pulumi.Context, args GetAwsBucketPolicyOutput
 		ApplyT(func(v interface{}) (GetAwsBucketPolicyResult, error) {
 			args := v.(GetAwsBucketPolicyArgs)
 			r, err := GetAwsBucketPolicy(ctx, &args, opts...)
-			return *r, err
+			var s GetAwsBucketPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetAwsBucketPolicyResultOutput)
 }
 

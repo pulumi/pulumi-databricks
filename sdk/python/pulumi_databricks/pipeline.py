@@ -20,7 +20,6 @@ class PipelineArgs:
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
@@ -44,8 +43,6 @@ class PipelineArgs:
             pulumi.set(__self__, "configuration", configuration)
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if libraries is not None:
             pulumi.set(__self__, "libraries", libraries)
         if name is not None:
@@ -111,15 +108,6 @@ class PipelineArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]]:
         """
         blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have `path` attribute.
@@ -175,7 +163,6 @@ class _PipelineState:
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input['PipelineFiltersArgs']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
@@ -201,8 +188,6 @@ class _PipelineState:
             pulumi.set(__self__, "continuous", continuous)
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if libraries is not None:
             pulumi.set(__self__, "libraries", libraries)
         if name is not None:
@@ -267,15 +252,6 @@ class _PipelineState:
     @filters.setter
     def filters(self, value: Optional[pulumi.Input['PipelineFiltersArgs']]):
         pulumi.set(self, "filters", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -345,7 +321,6 @@ class Pipeline(pulumi.CustomResource):
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
@@ -509,7 +484,6 @@ class Pipeline(pulumi.CustomResource):
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
@@ -533,7 +507,6 @@ class Pipeline(pulumi.CustomResource):
             if filters is None and not opts.urn:
                 raise TypeError("Missing required property 'filters'")
             __props__.__dict__["filters"] = filters
-            __props__.__dict__["id"] = id
             __props__.__dict__["libraries"] = libraries
             __props__.__dict__["name"] = name
             __props__.__dict__["storage"] = storage
@@ -554,7 +527,6 @@ class Pipeline(pulumi.CustomResource):
             configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             continuous: Optional[pulumi.Input[bool]] = None,
             filters: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersArgs']]] = None,
-            id: Optional[pulumi.Input[str]] = None,
             libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             storage: Optional[pulumi.Input[str]] = None,
@@ -584,7 +556,6 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["configuration"] = configuration
         __props__.__dict__["continuous"] = continuous
         __props__.__dict__["filters"] = filters
-        __props__.__dict__["id"] = id
         __props__.__dict__["libraries"] = libraries
         __props__.__dict__["name"] = name
         __props__.__dict__["storage"] = storage
@@ -625,11 +596,6 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter
     def filters(self) -> pulumi.Output['outputs.PipelineFilters']:
         return pulumi.get(self, "filters")
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter

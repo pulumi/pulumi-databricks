@@ -21,7 +21,6 @@ class SqlEndpointArgs:
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  enable_photon: Optional[pulumi.Input[bool]] = None,
                  enable_serverless_compute: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
                  jdbc_url: Optional[pulumi.Input[str]] = None,
                  max_num_clusters: Optional[pulumi.Input[int]] = None,
@@ -59,8 +58,6 @@ class SqlEndpointArgs:
             pulumi.set(__self__, "enable_photon", enable_photon)
         if enable_serverless_compute is not None:
             pulumi.set(__self__, "enable_serverless_compute", enable_serverless_compute)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if instance_profile_arn is not None:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
         if jdbc_url is not None:
@@ -153,15 +150,6 @@ class SqlEndpointArgs:
     @enable_serverless_compute.setter
     def enable_serverless_compute(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_serverless_compute", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="instanceProfileArn")
@@ -284,7 +272,6 @@ class _SqlEndpointState:
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  enable_photon: Optional[pulumi.Input[bool]] = None,
                  enable_serverless_compute: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
                  jdbc_url: Optional[pulumi.Input[str]] = None,
                  max_num_clusters: Optional[pulumi.Input[int]] = None,
@@ -323,8 +310,6 @@ class _SqlEndpointState:
             pulumi.set(__self__, "enable_photon", enable_photon)
         if enable_serverless_compute is not None:
             pulumi.set(__self__, "enable_serverless_compute", enable_serverless_compute)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if instance_profile_arn is not None:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
         if jdbc_url is not None:
@@ -417,15 +402,6 @@ class _SqlEndpointState:
     @enable_serverless_compute.setter
     def enable_serverless_compute(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_serverless_compute", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="instanceProfileArn")
@@ -550,7 +526,6 @@ class SqlEndpoint(pulumi.CustomResource):
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  enable_photon: Optional[pulumi.Input[bool]] = None,
                  enable_serverless_compute: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
                  jdbc_url: Optional[pulumi.Input[str]] = None,
                  max_num_clusters: Optional[pulumi.Input[int]] = None,
@@ -691,7 +666,6 @@ class SqlEndpoint(pulumi.CustomResource):
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  enable_photon: Optional[pulumi.Input[bool]] = None,
                  enable_serverless_compute: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
                  jdbc_url: Optional[pulumi.Input[str]] = None,
                  max_num_clusters: Optional[pulumi.Input[int]] = None,
@@ -722,7 +696,6 @@ class SqlEndpoint(pulumi.CustomResource):
             __props__.__dict__["data_source_id"] = data_source_id
             __props__.__dict__["enable_photon"] = enable_photon
             __props__.__dict__["enable_serverless_compute"] = enable_serverless_compute
-            __props__.__dict__["id"] = id
             __props__.__dict__["instance_profile_arn"] = instance_profile_arn
             __props__.__dict__["jdbc_url"] = jdbc_url
             __props__.__dict__["max_num_clusters"] = max_num_clusters
@@ -749,7 +722,6 @@ class SqlEndpoint(pulumi.CustomResource):
             data_source_id: Optional[pulumi.Input[str]] = None,
             enable_photon: Optional[pulumi.Input[bool]] = None,
             enable_serverless_compute: Optional[pulumi.Input[bool]] = None,
-            id: Optional[pulumi.Input[str]] = None,
             instance_profile_arn: Optional[pulumi.Input[str]] = None,
             jdbc_url: Optional[pulumi.Input[str]] = None,
             max_num_clusters: Optional[pulumi.Input[int]] = None,
@@ -791,7 +763,6 @@ class SqlEndpoint(pulumi.CustomResource):
         __props__.__dict__["data_source_id"] = data_source_id
         __props__.__dict__["enable_photon"] = enable_photon
         __props__.__dict__["enable_serverless_compute"] = enable_serverless_compute
-        __props__.__dict__["id"] = id
         __props__.__dict__["instance_profile_arn"] = instance_profile_arn
         __props__.__dict__["jdbc_url"] = jdbc_url
         __props__.__dict__["max_num_clusters"] = max_num_clusters
@@ -851,11 +822,6 @@ class SqlEndpoint(pulumi.CustomResource):
         Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
         """
         return pulumi.get(self, "enable_serverless_compute")
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="instanceProfileArn")

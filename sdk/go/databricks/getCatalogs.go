@@ -68,7 +68,11 @@ func GetCatalogsOutput(ctx *pulumi.Context, args GetCatalogsOutputArgs, opts ...
 		ApplyT(func(v interface{}) (GetCatalogsResult, error) {
 			args := v.(GetCatalogsArgs)
 			r, err := GetCatalogs(ctx, &args, opts...)
-			return *r, err
+			var s GetCatalogsResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetCatalogsResultOutput)
 }
 

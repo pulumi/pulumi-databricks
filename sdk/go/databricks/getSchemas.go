@@ -73,7 +73,11 @@ func GetSchemasOutput(ctx *pulumi.Context, args GetSchemasOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (GetSchemasResult, error) {
 			args := v.(GetSchemasArgs)
 			r, err := GetSchemas(ctx, &args, opts...)
-			return *r, err
+			var s GetSchemasResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetSchemasResultOutput)
 }
 

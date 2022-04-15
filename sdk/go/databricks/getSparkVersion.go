@@ -118,7 +118,11 @@ func GetSparkVersionOutput(ctx *pulumi.Context, args GetSparkVersionOutputArgs, 
 		ApplyT(func(v interface{}) (GetSparkVersionResult, error) {
 			args := v.(GetSparkVersionArgs)
 			r, err := GetSparkVersion(ctx, &args, opts...)
-			return *r, err
+			var s GetSparkVersionResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetSparkVersionResultOutput)
 }
 
