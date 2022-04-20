@@ -70,3 +70,7 @@ The following configuration points are available:
 ## Reference
 
 For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/databricks/api-docs/).
+
+## Contributors
+
+This package was originally built by the development team at [https://www.ingenii.io/](https://www.ingenii.io/). Pulumi thanks them for their continued contributions to the project.
