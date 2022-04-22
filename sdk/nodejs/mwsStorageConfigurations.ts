@@ -5,29 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as databricks from "@pulumi/databricks";
- *
- * const config = new pulumi.Config();
- * const databricksAccountId = config.requireObject("databricksAccountId");
- * const rootStorageBucket = new aws.s3.BucketV2("rootStorageBucket", {
- *     acl: "private",
- *     versionings: [{
- *         enabled: false,
- *     }],
- * });
- * const _this = new databricks.MwsStorageConfigurations("this", {
- *     accountId: databricksAccountId,
- *     storageConfigurationName: `${_var.prefix}-storage`,
- *     bucketName: rootStorageBucket.bucket,
- * }, {
- *     provider: databricks.mws,
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:
