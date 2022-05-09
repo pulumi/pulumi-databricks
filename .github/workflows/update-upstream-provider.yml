@@ -137,6 +137,8 @@ jobs:
         - "3.7"
 name: Update upstream provider
 on:
+  schedule:
+    - cron: '0 17 * * FRI'
   workflow_dispatch:
     inputs:
       linked_issue_number:
