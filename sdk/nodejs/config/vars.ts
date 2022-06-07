@@ -95,6 +95,14 @@ Object.defineProperty(exports, "debugTruncateBytes", {
     enumerable: true,
 });
 
+export declare const googleCredentials: string | undefined;
+Object.defineProperty(exports, "googleCredentials", {
+    get() {
+        return __config.get("googleCredentials");
+    },
+    enumerable: true,
+});
+
 export declare const googleServiceAccount: string | undefined;
 Object.defineProperty(exports, "googleServiceAccount", {
     get() {

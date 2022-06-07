@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Private Preview** This feature is in [Private Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
+    /// &gt; **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
     /// 
     /// To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
     /// - databricks.StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
@@ -53,6 +53,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
+
+        /// <summary>
+        /// Suppress validation errors if any &amp; force save the external location
+        /// </summary>
+        [Output("skipValidation")]
+        public Output<bool?> SkipValidation { get; private set; } = null!;
 
         /// <summary>
         /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
@@ -134,6 +140,12 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
+        /// Suppress validation errors if any &amp; force save the external location
+        /// </summary>
+        [Input("skipValidation")]
+        public Input<bool>? SkipValidation { get; set; }
+
+        /// <summary>
         /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
         /// </summary>
         [Input("url", required: true)]
@@ -172,6 +184,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        /// <summary>
+        /// Suppress validation errors if any &amp; force save the external location
+        /// </summary>
+        [Input("skipValidation")]
+        public Input<bool>? SkipValidation { get; set; }
 
         /// <summary>
         /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).

@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.PipelineClusterInitScriptDbfs? Dbfs;
         public readonly Outputs.PipelineClusterInitScriptFile? File;
+        public readonly Outputs.PipelineClusterInitScriptGcs? Gcs;
         public readonly Outputs.PipelineClusterInitScriptS3? S3;
 
         [OutputConstructor]
@@ -23,10 +24,13 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.PipelineClusterInitScriptFile? file,
 
+            Outputs.PipelineClusterInitScriptGcs? gcs,
+
             Outputs.PipelineClusterInitScriptS3? s3)
         {
             Dbfs = dbfs;
             File = file;
+            Gcs = gcs;
             S3 = s3;
         }
     }

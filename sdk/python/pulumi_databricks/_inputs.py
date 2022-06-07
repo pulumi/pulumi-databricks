@@ -21,6 +21,7 @@ __all__ = [
     'ClusterInitScriptArgs',
     'ClusterInitScriptDbfsArgs',
     'ClusterInitScriptFileArgs',
+    'ClusterInitScriptGcsArgs',
     'ClusterInitScriptS3Args',
     'ClusterLibraryArgs',
     'ClusterLibraryCranArgs',
@@ -50,6 +51,7 @@ __all__ = [
     'JobJobClusterNewClusterInitScriptArgs',
     'JobJobClusterNewClusterInitScriptDbfsArgs',
     'JobJobClusterNewClusterInitScriptFileArgs',
+    'JobJobClusterNewClusterInitScriptGcsArgs',
     'JobJobClusterNewClusterInitScriptS3Args',
     'JobLibraryArgs',
     'JobLibraryCranArgs',
@@ -68,6 +70,7 @@ __all__ = [
     'JobNewClusterInitScriptArgs',
     'JobNewClusterInitScriptDbfsArgs',
     'JobNewClusterInitScriptFileArgs',
+    'JobNewClusterInitScriptGcsArgs',
     'JobNewClusterInitScriptS3Args',
     'JobNotebookTaskArgs',
     'JobPipelineTaskArgs',
@@ -96,6 +99,7 @@ __all__ = [
     'JobTaskNewClusterInitScriptArgs',
     'JobTaskNewClusterInitScriptDbfsArgs',
     'JobTaskNewClusterInitScriptFileArgs',
+    'JobTaskNewClusterInitScriptGcsArgs',
     'JobTaskNewClusterInitScriptS3Args',
     'JobTaskNotebookTaskArgs',
     'JobTaskPipelineTaskArgs',
@@ -136,6 +140,7 @@ __all__ = [
     'PipelineClusterInitScriptArgs',
     'PipelineClusterInitScriptDbfsArgs',
     'PipelineClusterInitScriptFileArgs',
+    'PipelineClusterInitScriptGcsArgs',
     'PipelineClusterInitScriptS3Args',
     'PipelineFiltersArgs',
     'PipelineLibraryArgs',
@@ -600,11 +605,14 @@ class ClusterInitScriptArgs:
     def __init__(__self__, *,
                  dbfs: Optional[pulumi.Input['ClusterInitScriptDbfsArgs']] = None,
                  file: Optional[pulumi.Input['ClusterInitScriptFileArgs']] = None,
+                 gcs: Optional[pulumi.Input['ClusterInitScriptGcsArgs']] = None,
                  s3: Optional[pulumi.Input['ClusterInitScriptS3Args']] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
             pulumi.set(__self__, "file", file)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
 
@@ -625,6 +633,15 @@ class ClusterInitScriptArgs:
     @file.setter
     def file(self, value: Optional[pulumi.Input['ClusterInitScriptFileArgs']]):
         pulumi.set(self, "file", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['ClusterInitScriptGcsArgs']]:
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['ClusterInitScriptGcsArgs']]):
+        pulumi.set(self, "gcs", value)
 
     @property
     @pulumi.getter
@@ -654,6 +671,23 @@ class ClusterInitScriptDbfsArgs:
 
 @pulumi.input_type
 class ClusterInitScriptFileArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class ClusterInitScriptGcsArgs:
     def __init__(__self__, *,
                  destination: Optional[pulumi.Input[str]] = None):
         if destination is not None:
@@ -1212,6 +1246,7 @@ class InstancePoolPreloadedDockerImageBasicAuthArgs:
 @pulumi.input_type
 class JobEmailNotificationsArgs:
     def __init__(__self__, *,
+                 alert_on_last_attempt: Optional[pulumi.Input[bool]] = None,
                  no_alert_for_skipped_runs: Optional[pulumi.Input[bool]] = None,
                  on_failures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_starts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1222,6 +1257,8 @@ class JobEmailNotificationsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_starts: (List) list of emails to notify on failure
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_successes: (List) list of emails to notify on failure
         """
+        if alert_on_last_attempt is not None:
+            pulumi.set(__self__, "alert_on_last_attempt", alert_on_last_attempt)
         if no_alert_for_skipped_runs is not None:
             pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_failures is not None:
@@ -1230,6 +1267,15 @@ class JobEmailNotificationsArgs:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
+
+    @property
+    @pulumi.getter(name="alertOnLastAttempt")
+    def alert_on_last_attempt(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "alert_on_last_attempt")
+
+    @alert_on_last_attempt.setter
+    def alert_on_last_attempt(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "alert_on_last_attempt", value)
 
     @property
     @pulumi.getter(name="noAlertForSkippedRuns")
@@ -1290,6 +1336,10 @@ class JobGitSourceArgs:
                  tag: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] url: URL of the job on the given workspace
+        :param pulumi.Input[str] branch: name of the Git branch to use. Conflicts with `tag` and `commit`.
+        :param pulumi.Input[str] commit: hash of Git commit to use. Conflicts with `branch` and `tag`.
+        :param pulumi.Input[str] provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
+        :param pulumi.Input[str] tag: name of the Git branch to use. Conflicts with `branch` and `commit`.
         """
         pulumi.set(__self__, "url", url)
         if branch is not None:
@@ -1316,6 +1366,9 @@ class JobGitSourceArgs:
     @property
     @pulumi.getter
     def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        name of the Git branch to use. Conflicts with `tag` and `commit`.
+        """
         return pulumi.get(self, "branch")
 
     @branch.setter
@@ -1325,6 +1378,9 @@ class JobGitSourceArgs:
     @property
     @pulumi.getter
     def commit(self) -> Optional[pulumi.Input[str]]:
+        """
+        hash of Git commit to use. Conflicts with `branch` and `tag`.
+        """
         return pulumi.get(self, "commit")
 
     @commit.setter
@@ -1334,6 +1390,9 @@ class JobGitSourceArgs:
     @property
     @pulumi.getter
     def provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
+        """
         return pulumi.get(self, "provider")
 
     @provider.setter
@@ -1343,6 +1402,9 @@ class JobGitSourceArgs:
     @property
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        name of the Git branch to use. Conflicts with `branch` and `commit`.
+        """
         return pulumi.get(self, "tag")
 
     @tag.setter
@@ -1392,7 +1454,6 @@ class JobJobClusterArgs:
 @pulumi.input_type
 class JobJobClusterNewClusterArgs:
     def __init__(__self__, *,
-                 num_workers: pulumi.Input[int],
                  spark_version: pulumi.Input[str],
                  autoscale: Optional[pulumi.Input['JobJobClusterNewClusterAutoscaleArgs']] = None,
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
@@ -1413,12 +1474,12 @@ class JobJobClusterNewClusterArgs:
                  init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterInitScriptArgs']]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
+                 num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  single_user_name: Optional[pulumi.Input[str]] = None,
                  spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        pulumi.set(__self__, "num_workers", num_workers)
         pulumi.set(__self__, "spark_version", spark_version)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
@@ -1458,6 +1519,8 @@ class JobJobClusterNewClusterArgs:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
         if node_type_id is not None:
             pulumi.set(__self__, "node_type_id", node_type_id)
+        if num_workers is not None:
+            pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
         if single_user_name is not None:
@@ -1468,15 +1531,6 @@ class JobJobClusterNewClusterArgs:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
-
-    @property
-    @pulumi.getter(name="numWorkers")
-    def num_workers(self) -> pulumi.Input[int]:
-        return pulumi.get(self, "num_workers")
-
-    @num_workers.setter
-    def num_workers(self, value: pulumi.Input[int]):
-        pulumi.set(self, "num_workers", value)
 
     @property
     @pulumi.getter(name="sparkVersion")
@@ -1657,6 +1711,15 @@ class JobJobClusterNewClusterArgs:
     @node_type_id.setter
     def node_type_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_type_id", value)
+
+    @property
+    @pulumi.getter(name="numWorkers")
+    def num_workers(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "num_workers")
+
+    @num_workers.setter
+    def num_workers(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "num_workers", value)
 
     @property
     @pulumi.getter(name="policyId")
@@ -2139,11 +2202,14 @@ class JobJobClusterNewClusterInitScriptArgs:
     def __init__(__self__, *,
                  dbfs: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptDbfsArgs']] = None,
                  file: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptFileArgs']] = None,
+                 gcs: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptGcsArgs']] = None,
                  s3: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptS3Args']] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
             pulumi.set(__self__, "file", file)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
 
@@ -2164,6 +2230,15 @@ class JobJobClusterNewClusterInitScriptArgs:
     @file.setter
     def file(self, value: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptFileArgs']]):
         pulumi.set(self, "file", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['JobJobClusterNewClusterInitScriptGcsArgs']]:
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptGcsArgs']]):
+        pulumi.set(self, "gcs", value)
 
     @property
     @pulumi.getter
@@ -2193,6 +2268,23 @@ class JobJobClusterNewClusterInitScriptDbfsArgs:
 
 @pulumi.input_type
 class JobJobClusterNewClusterInitScriptFileArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class JobJobClusterNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
                  destination: Optional[pulumi.Input[str]] = None):
         if destination is not None:
@@ -3220,11 +3312,14 @@ class JobNewClusterInitScriptArgs:
     def __init__(__self__, *,
                  dbfs: Optional[pulumi.Input['JobNewClusterInitScriptDbfsArgs']] = None,
                  file: Optional[pulumi.Input['JobNewClusterInitScriptFileArgs']] = None,
+                 gcs: Optional[pulumi.Input['JobNewClusterInitScriptGcsArgs']] = None,
                  s3: Optional[pulumi.Input['JobNewClusterInitScriptS3Args']] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
             pulumi.set(__self__, "file", file)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
 
@@ -3245,6 +3340,15 @@ class JobNewClusterInitScriptArgs:
     @file.setter
     def file(self, value: Optional[pulumi.Input['JobNewClusterInitScriptFileArgs']]):
         pulumi.set(self, "file", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['JobNewClusterInitScriptGcsArgs']]:
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['JobNewClusterInitScriptGcsArgs']]):
+        pulumi.set(self, "gcs", value)
 
     @property
     @pulumi.getter
@@ -3274,6 +3378,23 @@ class JobNewClusterInitScriptDbfsArgs:
 
 @pulumi.input_type
 class JobNewClusterInitScriptFileArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class JobNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
                  destination: Optional[pulumi.Input[str]] = None):
         if destination is not None:
@@ -3952,6 +4073,7 @@ class JobTaskDependsOnArgs:
 @pulumi.input_type
 class JobTaskEmailNotificationsArgs:
     def __init__(__self__, *,
+                 alert_on_last_attempt: Optional[pulumi.Input[bool]] = None,
                  no_alert_for_skipped_runs: Optional[pulumi.Input[bool]] = None,
                  on_failures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_starts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3962,6 +4084,8 @@ class JobTaskEmailNotificationsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_starts: (List) list of emails to notify on failure
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_successes: (List) list of emails to notify on failure
         """
+        if alert_on_last_attempt is not None:
+            pulumi.set(__self__, "alert_on_last_attempt", alert_on_last_attempt)
         if no_alert_for_skipped_runs is not None:
             pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_failures is not None:
@@ -3970,6 +4094,15 @@ class JobTaskEmailNotificationsArgs:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
+
+    @property
+    @pulumi.getter(name="alertOnLastAttempt")
+    def alert_on_last_attempt(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "alert_on_last_attempt")
+
+    @alert_on_last_attempt.setter
+    def alert_on_last_attempt(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "alert_on_last_attempt", value)
 
     @property
     @pulumi.getter(name="noAlertForSkippedRuns")
@@ -4944,11 +5077,14 @@ class JobTaskNewClusterInitScriptArgs:
     def __init__(__self__, *,
                  dbfs: Optional[pulumi.Input['JobTaskNewClusterInitScriptDbfsArgs']] = None,
                  file: Optional[pulumi.Input['JobTaskNewClusterInitScriptFileArgs']] = None,
+                 gcs: Optional[pulumi.Input['JobTaskNewClusterInitScriptGcsArgs']] = None,
                  s3: Optional[pulumi.Input['JobTaskNewClusterInitScriptS3Args']] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
             pulumi.set(__self__, "file", file)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
 
@@ -4969,6 +5105,15 @@ class JobTaskNewClusterInitScriptArgs:
     @file.setter
     def file(self, value: Optional[pulumi.Input['JobTaskNewClusterInitScriptFileArgs']]):
         pulumi.set(self, "file", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['JobTaskNewClusterInitScriptGcsArgs']]:
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['JobTaskNewClusterInitScriptGcsArgs']]):
+        pulumi.set(self, "gcs", value)
 
     @property
     @pulumi.getter
@@ -4998,6 +5143,23 @@ class JobTaskNewClusterInitScriptDbfsArgs:
 
 @pulumi.input_type
 class JobTaskNewClusterInitScriptFileArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class JobTaskNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
                  destination: Optional[pulumi.Input[str]] = None):
         if destination is not None:
@@ -6720,11 +6882,14 @@ class PipelineClusterInitScriptArgs:
     def __init__(__self__, *,
                  dbfs: Optional[pulumi.Input['PipelineClusterInitScriptDbfsArgs']] = None,
                  file: Optional[pulumi.Input['PipelineClusterInitScriptFileArgs']] = None,
+                 gcs: Optional[pulumi.Input['PipelineClusterInitScriptGcsArgs']] = None,
                  s3: Optional[pulumi.Input['PipelineClusterInitScriptS3Args']] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
             pulumi.set(__self__, "file", file)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
 
@@ -6745,6 +6910,15 @@ class PipelineClusterInitScriptArgs:
     @file.setter
     def file(self, value: Optional[pulumi.Input['PipelineClusterInitScriptFileArgs']]):
         pulumi.set(self, "file", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['PipelineClusterInitScriptGcsArgs']]:
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['PipelineClusterInitScriptGcsArgs']]):
+        pulumi.set(self, "gcs", value)
 
     @property
     @pulumi.getter
@@ -6774,6 +6948,23 @@ class PipelineClusterInitScriptDbfsArgs:
 
 @pulumi.input_type
 class PipelineClusterInitScriptFileArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class PipelineClusterInitScriptGcsArgs:
     def __init__(__self__, *,
                  destination: Optional[pulumi.Input[str]] = None):
         if destination is not None:
@@ -7176,7 +7367,7 @@ class SqlPermissionsPrivilegeAssignmentArgs:
                  principal: pulumi.Input[str],
                  privileges: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[str] principal: `display_name` of Group or databricks_user.
+        :param pulumi.Input[str] principal: `display_name` for a Group or databricks_user, `application_id` for a databricks_service_principal.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: set of available privilege names in upper case.
         """
         pulumi.set(__self__, "principal", principal)
@@ -7186,7 +7377,7 @@ class SqlPermissionsPrivilegeAssignmentArgs:
     @pulumi.getter
     def principal(self) -> pulumi.Input[str]:
         """
-        `display_name` of Group or databricks_user.
+        `display_name` for a Group or databricks_user, `application_id` for a databricks_service_principal.
         """
         return pulumi.get(self, "principal")
 
@@ -7899,35 +8090,19 @@ class SqlWidgetParameterArgs:
 @pulumi.input_type
 class SqlWidgetPositionArgs:
     def __init__(__self__, *,
-                 pos_x: pulumi.Input[int],
-                 pos_y: pulumi.Input[int],
                  size_x: pulumi.Input[int],
                  size_y: pulumi.Input[int],
-                 auto_height: Optional[pulumi.Input[bool]] = None):
-        pulumi.set(__self__, "pos_x", pos_x)
-        pulumi.set(__self__, "pos_y", pos_y)
+                 auto_height: Optional[pulumi.Input[bool]] = None,
+                 pos_x: Optional[pulumi.Input[int]] = None,
+                 pos_y: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "size_x", size_x)
         pulumi.set(__self__, "size_y", size_y)
         if auto_height is not None:
             pulumi.set(__self__, "auto_height", auto_height)
-
-    @property
-    @pulumi.getter(name="posX")
-    def pos_x(self) -> pulumi.Input[int]:
-        return pulumi.get(self, "pos_x")
-
-    @pos_x.setter
-    def pos_x(self, value: pulumi.Input[int]):
-        pulumi.set(self, "pos_x", value)
-
-    @property
-    @pulumi.getter(name="posY")
-    def pos_y(self) -> pulumi.Input[int]:
-        return pulumi.get(self, "pos_y")
-
-    @pos_y.setter
-    def pos_y(self, value: pulumi.Input[int]):
-        pulumi.set(self, "pos_y", value)
+        if pos_x is not None:
+            pulumi.set(__self__, "pos_x", pos_x)
+        if pos_y is not None:
+            pulumi.set(__self__, "pos_y", pos_y)
 
     @property
     @pulumi.getter(name="sizeX")
@@ -7955,6 +8130,24 @@ class SqlWidgetPositionArgs:
     @auto_height.setter
     def auto_height(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_height", value)
+
+    @property
+    @pulumi.getter(name="posX")
+    def pos_x(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "pos_x")
+
+    @pos_x.setter
+    def pos_x(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pos_x", value)
+
+    @property
+    @pulumi.getter(name="posY")
+    def pos_y(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "pos_y")
+
+    @pos_y.setter
+    def pos_y(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pos_y", value)
 
 
 @pulumi.input_type

@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
         public Output<string?> CustomerManagedKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// part of URL: `https://&lt;deployment-name&gt;.cloud.databricks.com`
+        /// part of URL as in `https://&lt;prefix&gt;-&lt;deployment-name&gt;.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         /// </summary>
         [Output("deploymentName")]
         public Output<string?> DeploymentName { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.Databricks
         public Input<string>? CustomerManagedKeyId { get; set; }
 
         /// <summary>
-        /// part of URL: `https://&lt;deployment-name&gt;.cloud.databricks.com`
+        /// part of URL as in `https://&lt;prefix&gt;-&lt;deployment-name&gt;.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         /// </summary>
         [Input("deploymentName")]
         public Input<string>? DeploymentName { get; set; }
@@ -311,7 +311,7 @@ namespace Pulumi.Databricks
         public Input<string>? CustomerManagedKeyId { get; set; }
 
         /// <summary>
-        /// part of URL: `https://&lt;deployment-name&gt;.cloud.databricks.com`
+        /// part of URL as in `https://&lt;prefix&gt;-&lt;deployment-name&gt;.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         /// </summary>
         [Input("deploymentName")]
         public Input<string>? DeploymentName { get; set; }

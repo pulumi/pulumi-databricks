@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments). You can also associate Databricks users to groups. This is useful if you are using an application to sync users & groups with SCIM API.
+ * This resource allows you to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users and service principals to groups. This is useful if you are using an application to sync users & groups with SCIM API.
+ *
+ * To create groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments
  *
  * Recommended to use along with Identity Provider SCIM provisioning to populate users into those groups:
  *

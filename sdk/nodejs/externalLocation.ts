@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Private Preview** This feature is in [Private Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
+ * > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
  *
  * To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
  * - databricks.StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
@@ -65,6 +65,10 @@ export class ExternalLocation extends pulumi.CustomResource {
      */
     public readonly owner!: pulumi.Output<string>;
     /**
+     * Suppress validation errors if any & force save the external location
+     */
+    public readonly skipValidation!: pulumi.Output<boolean | undefined>;
+    /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
      */
     public readonly url!: pulumi.Output<string>;
@@ -87,6 +91,7 @@ export class ExternalLocation extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
+            resourceInputs["skipValidation"] = state ? state.skipValidation : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as ExternalLocationArgs | undefined;
@@ -101,6 +106,7 @@ export class ExternalLocation extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
+            resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -130,6 +136,10 @@ export interface ExternalLocationState {
      */
     owner?: pulumi.Input<string>;
     /**
+     * Suppress validation errors if any & force save the external location
+     */
+    skipValidation?: pulumi.Input<boolean>;
+    /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
      */
     url?: pulumi.Input<string>;
@@ -156,6 +166,10 @@ export interface ExternalLocationArgs {
      * Username/groupname of External Location owner. Currently this field can only be changed after the resource is created.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Suppress validation errors if any & force save the external location
+     */
+    skipValidation?: pulumi.Input<boolean>;
     /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
      */

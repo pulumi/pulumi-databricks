@@ -35,6 +35,7 @@ class JobArgs:
                  spark_jar_task: Optional[pulumi.Input['JobSparkJarTaskArgs']] = None,
                  spark_python_task: Optional[pulumi.Input['JobSparkPythonTaskArgs']] = None,
                  spark_submit_task: Optional[pulumi.Input['JobSparkSubmitTaskArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None):
         """
@@ -50,6 +51,7 @@ class JobArgs:
         :param pulumi.Input['JobNewClusterArgs'] new_cluster: Same set of parameters as for Cluster resource.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input['JobScheduleArgs'] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        :param pulumi.Input[Mapping[str, Any]] tags: (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         """
         if always_running is not None:
@@ -92,6 +94,8 @@ class JobArgs:
             pulumi.set(__self__, "spark_python_task", spark_python_task)
         if spark_submit_task is not None:
             pulumi.set(__self__, "spark_submit_task", spark_submit_task)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tasks is not None:
             pulumi.set(__self__, "tasks", tasks)
         if timeout_seconds is not None:
@@ -312,6 +316,18 @@ class JobArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]]:
         return pulumi.get(self, "tasks")
 
@@ -355,6 +371,7 @@ class _JobState:
                  spark_jar_task: Optional[pulumi.Input['JobSparkJarTaskArgs']] = None,
                  spark_python_task: Optional[pulumi.Input['JobSparkPythonTaskArgs']] = None,
                  spark_submit_task: Optional[pulumi.Input['JobSparkSubmitTaskArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  url: Optional[pulumi.Input[str]] = None):
@@ -371,6 +388,7 @@ class _JobState:
         :param pulumi.Input['JobNewClusterArgs'] new_cluster: Same set of parameters as for Cluster resource.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input['JobScheduleArgs'] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        :param pulumi.Input[Mapping[str, Any]] tags: (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input[str] url: URL of the job on the given workspace
         """
@@ -414,6 +432,8 @@ class _JobState:
             pulumi.set(__self__, "spark_python_task", spark_python_task)
         if spark_submit_task is not None:
             pulumi.set(__self__, "spark_submit_task", spark_submit_task)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tasks is not None:
             pulumi.set(__self__, "tasks", tasks)
         if timeout_seconds is not None:
@@ -636,6 +656,18 @@ class _JobState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]]:
         return pulumi.get(self, "tasks")
 
@@ -693,6 +725,7 @@ class Job(pulumi.CustomResource):
                  spark_jar_task: Optional[pulumi.Input[pulumi.InputType['JobSparkJarTaskArgs']]] = None,
                  spark_python_task: Optional[pulumi.Input[pulumi.InputType['JobSparkPythonTaskArgs']]] = None,
                  spark_submit_task: Optional[pulumi.Input[pulumi.InputType['JobSparkSubmitTaskArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -718,6 +751,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobNewClusterArgs']] new_cluster: Same set of parameters as for Cluster resource.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        :param pulumi.Input[Mapping[str, Any]] tags: (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         """
         ...
@@ -770,6 +804,7 @@ class Job(pulumi.CustomResource):
                  spark_jar_task: Optional[pulumi.Input[pulumi.InputType['JobSparkJarTaskArgs']]] = None,
                  spark_python_task: Optional[pulumi.Input[pulumi.InputType['JobSparkPythonTaskArgs']]] = None,
                  spark_submit_task: Optional[pulumi.Input[pulumi.InputType['JobSparkSubmitTaskArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -804,6 +839,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["spark_jar_task"] = spark_jar_task
             __props__.__dict__["spark_python_task"] = spark_python_task
             __props__.__dict__["spark_submit_task"] = spark_submit_task
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["tasks"] = tasks
             __props__.__dict__["timeout_seconds"] = timeout_seconds
             __props__.__dict__["url"] = None
@@ -837,6 +873,7 @@ class Job(pulumi.CustomResource):
             spark_jar_task: Optional[pulumi.Input[pulumi.InputType['JobSparkJarTaskArgs']]] = None,
             spark_python_task: Optional[pulumi.Input[pulumi.InputType['JobSparkPythonTaskArgs']]] = None,
             spark_submit_task: Optional[pulumi.Input[pulumi.InputType['JobSparkSubmitTaskArgs']]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]]] = None,
             timeout_seconds: Optional[pulumi.Input[int]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'Job':
@@ -858,6 +895,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobNewClusterArgs']] new_cluster: Same set of parameters as for Cluster resource.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        :param pulumi.Input[Mapping[str, Any]] tags: (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input[str] url: URL of the job on the given workspace
         """
@@ -885,6 +923,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["spark_jar_task"] = spark_jar_task
         __props__.__dict__["spark_python_task"] = spark_python_task
         __props__.__dict__["spark_submit_task"] = spark_submit_task
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["tasks"] = tasks
         __props__.__dict__["timeout_seconds"] = timeout_seconds
         __props__.__dict__["url"] = url
@@ -1022,6 +1061,14 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="sparkSubmitTask")
     def spark_submit_task(self) -> pulumi.Output[Optional['outputs.JobSparkSubmitTask']]:
         return pulumi.get(self, "spark_submit_task")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

@@ -58,7 +58,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     public readonly customerManagedKeyId!: pulumi.Output<string | undefined>;
     /**
-     * part of URL: `https://<deployment-name>.cloud.databricks.com`
+     * part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
      */
     public readonly deploymentName!: pulumi.Output<string | undefined>;
     public readonly externalCustomerInfo!: pulumi.Output<outputs.MwsWorkspacesExternalCustomerInfo | undefined>;
@@ -198,7 +198,7 @@ export interface MwsWorkspacesState {
      */
     customerManagedKeyId?: pulumi.Input<string>;
     /**
-     * part of URL: `https://<deployment-name>.cloud.databricks.com`
+     * part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
      */
     deploymentName?: pulumi.Input<string>;
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
@@ -264,7 +264,7 @@ export interface MwsWorkspacesArgs {
      */
     customerManagedKeyId?: pulumi.Input<string>;
     /**
-     * part of URL: `https://<deployment-name>.cloud.databricks.com`
+     * part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
      */
     deploymentName?: pulumi.Input<string>;
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;

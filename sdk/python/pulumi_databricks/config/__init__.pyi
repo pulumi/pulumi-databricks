@@ -30,6 +30,8 @@ debugHeaders: Optional[bool]
 
 debugTruncateBytes: Optional[int]
 
+googleCredentials: Optional[str]
+
 googleServiceAccount: Optional[str]
 
 host: Optional[str]

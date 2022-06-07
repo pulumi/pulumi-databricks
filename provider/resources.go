@@ -21,9 +21,7 @@ import (
 	databricksProv "github.com/databrickslabs/terraform-provider-databricks/provider"
 	"github.com/pulumi/pulumi-databricks/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 )
 
 // all of the token components used below.
@@ -34,14 +32,6 @@ const (
 	// modules:
 	mainMod = "index" // the databricks module
 )
-
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
-}
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
@@ -70,26 +60,48 @@ func Provider() tfbridge.ProviderInfo {
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:             []string{"pulumi", "databricks", "category/Infrastructure"},
-		License:              "Apache-2.0",
-		Homepage:             "https://www.pulumi.com",
-		Repository:           "https://github.com/pulumi/pulumi-databricks",
-		GitHubOrg:            "databrickslabs",
-		Config:               map[string]*tfbridge.SchemaInfo{},
-		PreConfigureCallback: preConfigureCallback,
+		Keywords:   []string{"pulumi", "databricks", "category/Infrastructure"},
+		License:    "Apache-2.0",
+		Homepage:   "https://www.pulumi.com",
+		Repository: "https://github.com/pulumi/pulumi-databricks",
+		GitHubOrg:  "databrickslabs",
+		Config:     map[string]*tfbridge.SchemaInfo{},
+		IgnoreMappings: []string{
+			"databricks_group_member", // causes the schema to have no deterministic generation
+		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"databricks_aws_s3_mount":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AwsS3Mount")},
-			"databricks_azure_adls_gen1_mount": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AzureAdlsGen1Mount")},
-			"databricks_azure_adls_gen2_mount": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AzureAdlsGen2Mount")},
-			"databricks_azure_blob_mount":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AzureBlobMount")},
-			"databricks_catalog":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Catalog")},
-			"databricks_cluster":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Cluster")},
-			"databricks_cluster_policy":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ClusterPolicy")},
-			"databricks_dbfs_file":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DbfsFile")},
-			"databricks_directory":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Directory")},
-			"databricks_external_location":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ExternalLocation")},
-			"databricks_git_credential":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GitCredential")},
-			"databricks_global_init_script":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GlobalInitScript")},
+			"databricks_aws_s3_mount": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AwsS3Mount"),
+				Docs: &tfbridge.DocInfo{
+					Markdown: []byte(" "),
+				},
+			},
+			"databricks_azure_adls_gen1_mount": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AzureAdlsGen1Mount"),
+				Docs: &tfbridge.DocInfo{
+					Markdown: []byte(" "),
+				},
+			},
+			"databricks_azure_adls_gen2_mount": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AzureAdlsGen2Mount"),
+				Docs: &tfbridge.DocInfo{
+					Markdown: []byte(" "),
+				},
+			},
+			"databricks_azure_blob_mount": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AzureBlobMount"),
+				Docs: &tfbridge.DocInfo{
+					Markdown: []byte(" "),
+				},
+			},
+			"databricks_catalog":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Catalog")},
+			"databricks_cluster":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Cluster")},
+			"databricks_cluster_policy":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ClusterPolicy")},
+			"databricks_dbfs_file":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DbfsFile")},
+			"databricks_directory":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Directory")},
+			"databricks_external_location":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ExternalLocation")},
+			"databricks_git_credential":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GitCredential")},
+			"databricks_global_init_script": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GlobalInitScript")},
 			"databricks_grants": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Grants"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -131,6 +143,7 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_secret_acl":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretAcl")},
 			"databricks_secret_scope":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretScope")},
 			"databricks_service_principal":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServicePrincipal")},
+			"databricks_service_principal_role":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServicePrincipalRole")},
 			"databricks_sql_dashboard":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlDashboard")},
 			"databricks_sql_endpoint":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlEndpoint")},
 			"databricks_sql_global_config":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlGlobalConfig")},
@@ -164,6 +177,7 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_spark_version":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSparkVersion")},
 			"databricks_tables":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTables")},
 			"databricks_user":                    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
+			"databricks_views":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getViews")},
 			"databricks_zones":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZones")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{

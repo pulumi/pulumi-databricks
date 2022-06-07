@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to databricks.Group within workspace.
+ * Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to databricks.Group in Databricks workspace or account.
+ *
+ * To create service principals in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments
  *
  * ## Related Resources
  *
@@ -79,6 +81,11 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * ID of the service principal in an external identity provider.
+     */
+    public readonly externalId!: pulumi.Output<string | undefined>;
+    public readonly force!: pulumi.Output<boolean | undefined>;
+    /**
      * This is a field to allow the group to have access to Databricks Workspace.
      */
     public readonly workspaceAccess!: pulumi.Output<boolean | undefined>;
@@ -102,6 +109,8 @@ export class ServicePrincipal extends pulumi.CustomResource {
             resourceInputs["applicationId"] = state ? state.applicationId : undefined;
             resourceInputs["databricksSqlAccess"] = state ? state.databricksSqlAccess : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["externalId"] = state ? state.externalId : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["workspaceAccess"] = state ? state.workspaceAccess : undefined;
         } else {
             const args = argsOrState as ServicePrincipalArgs | undefined;
@@ -111,6 +120,8 @@ export class ServicePrincipal extends pulumi.CustomResource {
             resourceInputs["applicationId"] = args ? args.applicationId : undefined;
             resourceInputs["databricksSqlAccess"] = args ? args.databricksSqlAccess : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["externalId"] = args ? args.externalId : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["workspaceAccess"] = args ? args.workspaceAccess : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -147,6 +158,11 @@ export interface ServicePrincipalState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * ID of the service principal in an external identity provider.
+     */
+    externalId?: pulumi.Input<string>;
+    force?: pulumi.Input<boolean>;
+    /**
      * This is a field to allow the group to have access to Databricks Workspace.
      */
     workspaceAccess?: pulumi.Input<boolean>;
@@ -180,6 +196,11 @@ export interface ServicePrincipalArgs {
      * This is an alias for the service principal and can be the full name of the service principal.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * ID of the service principal in an external identity provider.
+     */
+    externalId?: pulumi.Input<string>;
+    force?: pulumi.Input<boolean>;
     /**
      * This is a field to allow the group to have access to Databricks Workspace.
      */

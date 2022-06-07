@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to databricks.Group within workspace.
+    /// Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to databricks.Group in Databricks workspace or account.
+    /// 
+    /// To create service principals in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments
     /// 
     /// ## Related Resources
     /// 
@@ -69,6 +71,15 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the service principal in an external identity provider.
+        /// </summary>
+        [Output("externalId")]
+        public Output<string?> ExternalId { get; private set; } = null!;
+
+        [Output("force")]
+        public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
         /// This is a field to allow the group to have access to Databricks Workspace.
@@ -159,6 +170,15 @@ namespace Pulumi.Databricks
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// ID of the service principal in an external identity provider.
+        /// </summary>
+        [Input("externalId")]
+        public Input<string>? ExternalId { get; set; }
+
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        /// <summary>
         /// This is a field to allow the group to have access to Databricks Workspace.
         /// </summary>
         [Input("workspaceAccess")]
@@ -206,6 +226,15 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// ID of the service principal in an external identity provider.
+        /// </summary>
+        [Input("externalId")]
+        public Input<string>? ExternalId { get; set; }
+
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
 
         /// <summary>
         /// This is a field to allow the group to have access to Databricks Workspace.

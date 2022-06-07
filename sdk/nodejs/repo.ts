@@ -50,19 +50,19 @@ export class Repo extends pulumi.CustomResource {
      */
     public readonly commitHash!: pulumi.Output<string>;
     /**
-     * case insensitive name of the Git provider.  Following values are supported right now (maybe a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`
+     * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
      */
     public readonly gitProvider!: pulumi.Output<string>;
     /**
-     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created
+     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
      */
     public readonly path!: pulumi.Output<string>;
     /**
-     * name of the tag for initial checkout.  Conflicts with `branch`
+     * name of the tag for initial checkout.  Conflicts with `branch`.
      */
     public readonly tag!: pulumi.Output<string | undefined>;
     /**
-     * The URL of the Git Repository to clone from. If value changes, repo is re-created
+     * The URL of the Git Repository to clone from. If value changes, repo is re-created.
      */
     public readonly url!: pulumi.Output<string>;
 
@@ -115,19 +115,19 @@ export interface RepoState {
      */
     commitHash?: pulumi.Input<string>;
     /**
-     * case insensitive name of the Git provider.  Following values are supported right now (maybe a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`
+     * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
      */
     gitProvider?: pulumi.Input<string>;
     /**
-     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created
+     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
      */
     path?: pulumi.Input<string>;
     /**
-     * name of the tag for initial checkout.  Conflicts with `branch`
+     * name of the tag for initial checkout.  Conflicts with `branch`.
      */
     tag?: pulumi.Input<string>;
     /**
-     * The URL of the Git Repository to clone from. If value changes, repo is re-created
+     * The URL of the Git Repository to clone from. If value changes, repo is re-created.
      */
     url?: pulumi.Input<string>;
 }
@@ -145,19 +145,19 @@ export interface RepoArgs {
      */
     commitHash?: pulumi.Input<string>;
     /**
-     * case insensitive name of the Git provider.  Following values are supported right now (maybe a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`
+     * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
      */
     gitProvider?: pulumi.Input<string>;
     /**
-     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created
+     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
      */
     path?: pulumi.Input<string>;
     /**
-     * name of the tag for initial checkout.  Conflicts with `branch`
+     * name of the tag for initial checkout.  Conflicts with `branch`.
      */
     tag?: pulumi.Input<string>;
     /**
-     * The URL of the Git Repository to clone from. If value changes, repo is re-created
+     * The URL of the Git Repository to clone from. If value changes, repo is re-created.
      */
     url: pulumi.Input<string>;
 }

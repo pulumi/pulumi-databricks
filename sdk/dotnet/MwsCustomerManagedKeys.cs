@@ -28,7 +28,8 @@ namespace Pulumi.Databricks
     ///     {
     ///         var config = new Config();
     ///         var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-    ///         var databricksManagedServicesCmk = Output.Create(Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
+    ///         var current = Output.Create(Aws.GetCallerIdentity.InvokeAsync());
+    ///         var databricksManagedServicesCmk = current.Apply(current =&gt; Output.Create(Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
     ///         {
     ///             Version = "2012-10-17",
     ///             Statements = 
@@ -44,7 +45,7 @@ namespace Pulumi.Databricks
     ///                             Type = "AWS",
     ///                             Identifiers = 
     ///                             {
-    ///                                 "*",
+    ///                                 current.AccountId,
     ///                             },
     ///                         },
     ///                     },
@@ -83,7 +84,7 @@ namespace Pulumi.Databricks
     ///                     },
     ///                 },
     ///             },
-    ///         }));
+    ///         })));
     ///         var managedServicesCustomerManagedKey = new Aws.Kms.Key("managedServicesCustomerManagedKey", new Aws.Kms.KeyArgs
     ///         {
     ///             Policy = databricksManagedServicesCmk.Apply(databricksManagedServicesCmk =&gt; databricksManagedServicesCmk.Json),
@@ -139,7 +140,7 @@ namespace Pulumi.Databricks
     ///                             Type = "AWS",
     ///                             Identifiers = 
     ///                             {
-    ///                                 "*",
+    ///                                 data.Aws_caller_identity.Current.Account_id,
     ///                             },
     ///                         },
     ///                     },

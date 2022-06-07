@@ -283,33 +283,6 @@ class SqlPermissions(pulumi.CustomResource):
                  view: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note** Please switch to Grants with Unity Catalog to manage data access, which provides better and faster way for managing data security. `Grants` resource *doesn't require a technical cluster to perform operations*. `SqlPermissions` will be removed, once Unity Catalog is Generally Available.
-
-        This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick `Access Control` tab, click on `Enable` button in `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all Cluster have approximately the following configuration:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        # ...
-        cluster_with_table_access_control = databricks.Cluster("clusterWithTableAccessControl", spark_conf={
-            "spark.databricks.acl.dfAclsEnabled": "true",
-            "spark.databricks.repl.allowedLanguages": "python,sql",
-        })
-        ```
-
-        It could be combined with creation of High-Concurrency and Single-Node clusters - in this case it should have corresponding `custom_tags` and `spark.databricks.cluster.profile` in Spark configuration as described in documentation for `Cluster` resource.
-
-        The created cluster could be referred to by providing its ID as `cluster_id` property.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        foo_table = databricks.SqlPermissions("fooTable", cluster_id=databricks_cluster["cluster_name"]["id"])
-        #...
-        ```
-
         ## Example Usage
 
         The following resource definition will enforce access control on a table by executing the following SQL queries on a special auto-terminating cluster it would create for this operation:
@@ -373,33 +346,6 @@ class SqlPermissions(pulumi.CustomResource):
                  args: Optional[SqlPermissionsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** Please switch to Grants with Unity Catalog to manage data access, which provides better and faster way for managing data security. `Grants` resource *doesn't require a technical cluster to perform operations*. `SqlPermissions` will be removed, once Unity Catalog is Generally Available.
-
-        This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick `Access Control` tab, click on `Enable` button in `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all Cluster have approximately the following configuration:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        # ...
-        cluster_with_table_access_control = databricks.Cluster("clusterWithTableAccessControl", spark_conf={
-            "spark.databricks.acl.dfAclsEnabled": "true",
-            "spark.databricks.repl.allowedLanguages": "python,sql",
-        })
-        ```
-
-        It could be combined with creation of High-Concurrency and Single-Node clusters - in this case it should have corresponding `custom_tags` and `spark.databricks.cluster.profile` in Spark configuration as described in documentation for `Cluster` resource.
-
-        The created cluster could be referred to by providing its ID as `cluster_id` property.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        foo_table = databricks.SqlPermissions("fooTable", cluster_id=databricks_cluster["cluster_name"]["id"])
-        #...
-        ```
-
         ## Example Usage
 
         The following resource definition will enforce access control on a table by executing the following SQL queries on a special auto-terminating cluster it would create for this operation:

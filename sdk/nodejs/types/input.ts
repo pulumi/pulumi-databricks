@@ -66,6 +66,7 @@ export interface ClusterGcpAttributes {
 export interface ClusterInitScript {
     dbfs?: pulumi.Input<inputs.ClusterInitScriptDbfs>;
     file?: pulumi.Input<inputs.ClusterInitScriptFile>;
+    gcs?: pulumi.Input<inputs.ClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.ClusterInitScriptS3>;
 }
 
@@ -74,6 +75,10 @@ export interface ClusterInitScriptDbfs {
 }
 
 export interface ClusterInitScriptFile {
+    destination?: pulumi.Input<string>;
+}
+
+export interface ClusterInitScriptGcs {
     destination?: pulumi.Input<string>;
 }
 
@@ -178,6 +183,7 @@ export interface InstancePoolPreloadedDockerImageBasicAuth {
 }
 
 export interface JobEmailNotifications {
+    alertOnLastAttempt?: pulumi.Input<boolean>;
     /**
      * (Bool) don't send alert for skipped runs
      */
@@ -197,9 +203,21 @@ export interface JobEmailNotifications {
 }
 
 export interface JobGitSource {
+    /**
+     * name of the Git branch to use. Conflicts with `tag` and `commit`.
+     */
     branch?: pulumi.Input<string>;
+    /**
+     * hash of Git commit to use. Conflicts with `branch` and `tag`.
+     */
     commit?: pulumi.Input<string>;
+    /**
+     * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
+     */
     provider?: pulumi.Input<string>;
+    /**
+     * name of the Git branch to use. Conflicts with `branch` and `commit`.
+     */
     tag?: pulumi.Input<string>;
     /**
      * URL of the job on the given workspace
@@ -238,7 +256,7 @@ export interface JobJobClusterNewCluster {
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
     nodeTypeId?: pulumi.Input<string>;
-    numWorkers: pulumi.Input<number>;
+    numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: any}>;
@@ -312,6 +330,7 @@ export interface JobJobClusterNewClusterGcpAttributes {
 export interface JobJobClusterNewClusterInitScript {
     dbfs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptDbfs>;
     file?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptFile>;
+    gcs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptS3>;
 }
 
@@ -320,6 +339,10 @@ export interface JobJobClusterNewClusterInitScriptDbfs {
 }
 
 export interface JobJobClusterNewClusterInitScriptFile {
+    destination?: pulumi.Input<string>;
+}
+
+export interface JobJobClusterNewClusterInitScriptGcs {
     destination?: pulumi.Input<string>;
 }
 
@@ -452,6 +475,7 @@ export interface JobNewClusterGcpAttributes {
 export interface JobNewClusterInitScript {
     dbfs?: pulumi.Input<inputs.JobNewClusterInitScriptDbfs>;
     file?: pulumi.Input<inputs.JobNewClusterInitScriptFile>;
+    gcs?: pulumi.Input<inputs.JobNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobNewClusterInitScriptS3>;
 }
 
@@ -460,6 +484,10 @@ export interface JobNewClusterInitScriptDbfs {
 }
 
 export interface JobNewClusterInitScriptFile {
+    destination?: pulumi.Input<string>;
+}
+
+export interface JobNewClusterInitScriptGcs {
     destination?: pulumi.Input<string>;
 }
 
@@ -608,6 +636,7 @@ export interface JobTaskDependsOn {
 }
 
 export interface JobTaskEmailNotifications {
+    alertOnLastAttempt?: pulumi.Input<boolean>;
     /**
      * (Bool) don't send alert for skipped runs
      */
@@ -745,6 +774,7 @@ export interface JobTaskNewClusterGcpAttributes {
 export interface JobTaskNewClusterInitScript {
     dbfs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptDbfs>;
     file?: pulumi.Input<inputs.JobTaskNewClusterInitScriptFile>;
+    gcs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobTaskNewClusterInitScriptS3>;
 }
 
@@ -753,6 +783,10 @@ export interface JobTaskNewClusterInitScriptDbfs {
 }
 
 export interface JobTaskNewClusterInitScriptFile {
+    destination?: pulumi.Input<string>;
+}
+
+export interface JobTaskNewClusterInitScriptGcs {
     destination?: pulumi.Input<string>;
 }
 
@@ -1073,6 +1107,7 @@ export interface PipelineClusterClusterLogConfS3 {
 export interface PipelineClusterInitScript {
     dbfs?: pulumi.Input<inputs.PipelineClusterInitScriptDbfs>;
     file?: pulumi.Input<inputs.PipelineClusterInitScriptFile>;
+    gcs?: pulumi.Input<inputs.PipelineClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.PipelineClusterInitScriptS3>;
 }
 
@@ -1081,6 +1116,10 @@ export interface PipelineClusterInitScriptDbfs {
 }
 
 export interface PipelineClusterInitScriptFile {
+    destination?: pulumi.Input<string>;
+}
+
+export interface PipelineClusterInitScriptGcs {
     destination?: pulumi.Input<string>;
 }
 
@@ -1147,7 +1186,7 @@ export interface SqlEndpointTagsCustomTag {
 
 export interface SqlPermissionsPrivilegeAssignment {
     /**
-     * `displayName` of databricks.Group or databricks_user.
+     * `displayName` for a databricks.Group or databricks_user, `applicationId` for a databricks_service_principal.
      */
     principal: pulumi.Input<string>;
     /**
@@ -1264,8 +1303,8 @@ export interface SqlWidgetParameter {
 
 export interface SqlWidgetPosition {
     autoHeight?: pulumi.Input<boolean>;
-    posX: pulumi.Input<number>;
-    posY: pulumi.Input<number>;
+    posX?: pulumi.Input<number>;
+    posY?: pulumi.Input<number>;
     sizeX: pulumi.Input<number>;
     sizeY: pulumi.Input<number>;
 }

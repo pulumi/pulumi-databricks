@@ -32,6 +32,7 @@ export * from "./getSchemas";
 export * from "./getSparkVersion";
 export * from "./getTables";
 export * from "./getUser";
+export * from "./getViews";
 export * from "./getZones";
 export * from "./gitCredential";
 export * from "./globalInitScript";
@@ -69,6 +70,7 @@ export * from "./secret";
 export * from "./secretAcl";
 export * from "./secretScope";
 export * from "./servicePrincipal";
+export * from "./servicePrincipalRole";
 export * from "./sqlDashboard";
 export * from "./sqlEndpoint";
 export * from "./sqlGlobalConfig";
@@ -139,6 +141,7 @@ import { Secret } from "./secret";
 import { SecretAcl } from "./secretAcl";
 import { SecretScope } from "./secretScope";
 import { ServicePrincipal } from "./servicePrincipal";
+import { ServicePrincipalRole } from "./servicePrincipalRole";
 import { SqlDashboard } from "./sqlDashboard";
 import { SqlEndpoint } from "./sqlEndpoint";
 import { SqlGlobalConfig } from "./sqlGlobalConfig";
@@ -248,6 +251,8 @@ const _module = {
                 return new SecretScope(name, <any>undefined, { urn })
             case "databricks:index/servicePrincipal:ServicePrincipal":
                 return new ServicePrincipal(name, <any>undefined, { urn })
+            case "databricks:index/servicePrincipalRole:ServicePrincipalRole":
+                return new ServicePrincipalRole(name, <any>undefined, { urn })
             case "databricks:index/sqlDashboard:SqlDashboard":
                 return new SqlDashboard(name, <any>undefined, { urn })
             case "databricks:index/sqlEndpoint:SqlEndpoint":
@@ -326,6 +331,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/secret", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secretAcl", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secretScope", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipal", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipalRole", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlDashboard", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlGlobalConfig", _module)

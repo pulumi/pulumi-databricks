@@ -12,34 +12,6 @@ namespace Pulumi.Databricks
     public static class GetTables
     {
         /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Listing all tables in a _things_ databricks.Schema from _sandbox_ databricks_catalog:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var things = Output.Create(Databricks.GetTables.InvokeAsync(new Databricks.GetTablesArgs
-        ///         {
-        ///             CatalogName = "sandbox",
-        ///             SchemaName = "things",
-        ///         }));
-        ///         this.AllThingsTables = things;
-        ///     }
-        /// 
-        ///     [Output("allThingsTables")]
-        ///     public Output&lt;string&gt; AllThingsTables { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:
@@ -52,34 +24,6 @@ namespace Pulumi.Databricks
             => Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("databricks:index/getTables:getTables", args ?? new GetTablesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Listing all tables in a _things_ databricks.Schema from _sandbox_ databricks_catalog:
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var things = Output.Create(Databricks.GetTables.InvokeAsync(new Databricks.GetTablesArgs
-        ///         {
-        ///             CatalogName = "sandbox",
-        ///             SchemaName = "things",
-        ///         }));
-        ///         this.AllThingsTables = things;
-        ///     }
-        /// 
-        ///     [Output("allThingsTables")]
-        ///     public Output&lt;string&gt; AllThingsTables { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:

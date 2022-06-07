@@ -211,6 +211,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
 
         config = pulumi.Config()
         databricks_account_id = config.require_object("databricksAccountId")
+        current = aws.get_caller_identity()
         databricks_managed_services_cmk = aws.iam.get_policy_document(version="2012-10-17",
             statements=[
                 aws.iam.GetPolicyDocumentStatementArgs(
@@ -218,7 +219,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                     effect="Allow",
                     principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
                         type="AWS",
-                        identifiers=["*"],
+                        identifiers=[current.account_id],
                     )],
                     actions=["kms:*"],
                     resources=["*"],
@@ -264,7 +265,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                     effect="Allow",
                     principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
                         type="AWS",
-                        identifiers=["*"],
+                        identifiers=[data["aws_caller_identity"]["current"]["account_id"]],
                     )],
                     actions=["kms:*"],
                     resources=["*"],
@@ -379,6 +380,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
 
         config = pulumi.Config()
         databricks_account_id = config.require_object("databricksAccountId")
+        current = aws.get_caller_identity()
         databricks_managed_services_cmk = aws.iam.get_policy_document(version="2012-10-17",
             statements=[
                 aws.iam.GetPolicyDocumentStatementArgs(
@@ -386,7 +388,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                     effect="Allow",
                     principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
                         type="AWS",
-                        identifiers=["*"],
+                        identifiers=[current.account_id],
                     )],
                     actions=["kms:*"],
                     resources=["*"],
@@ -432,7 +434,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                     effect="Allow",
                     principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
                         type="AWS",
-                        identifiers=["*"],
+                        identifiers=[data["aws_caller_identity"]["current"]["account_id"]],
                     )],
                     actions=["kms:*"],
                     resources=["*"],
