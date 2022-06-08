@@ -32,6 +32,7 @@ from .get_schemas import *
 from .get_spark_version import *
 from .get_tables import *
 from .get_user import *
+from .get_views import *
 from .get_zones import *
 from .git_credential import *
 from .global_init_script import *
@@ -69,6 +70,7 @@ from .secret import *
 from .secret_acl import *
 from .secret_scope import *
 from .service_principal import *
+from .service_principal_role import *
 from .sql_dashboard import *
 from .sql_endpoint import *
 from .sql_global_config import *
@@ -454,6 +456,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/servicePrincipal:ServicePrincipal": "ServicePrincipal"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/servicePrincipalRole",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/servicePrincipalRole:ServicePrincipalRole": "ServicePrincipalRole"
   }
  },
  {

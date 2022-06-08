@@ -14,8 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class SqlWidgetPosition
     {
         public readonly bool? AutoHeight;
-        public readonly int PosX;
-        public readonly int PosY;
+        public readonly int? PosX;
+        public readonly int? PosY;
         public readonly int SizeX;
         public readonly int SizeY;
 
@@ -23,9 +23,9 @@ namespace Pulumi.Databricks.Outputs
         private SqlWidgetPosition(
             bool? autoHeight,
 
-            int posX,
+            int? posX,
 
-            int posY,
+            int? posY,
 
             int sizeX,
 

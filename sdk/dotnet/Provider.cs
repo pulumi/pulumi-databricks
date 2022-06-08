@@ -42,6 +42,9 @@ namespace Pulumi.Databricks
         [Output("configFile")]
         public Output<string?> ConfigFile { get; private set; } = null!;
 
+        [Output("googleCredentials")]
+        public Output<string?> GoogleCredentials { get; private set; } = null!;
+
         [Output("googleServiceAccount")]
         public Output<string?> GoogleServiceAccount { get; private set; } = null!;
 
@@ -120,6 +123,9 @@ namespace Pulumi.Databricks
 
         [Input("debugTruncateBytes", json: true)]
         public Input<int>? DebugTruncateBytes { get; set; }
+
+        [Input("googleCredentials")]
+        public Input<string>? GoogleCredentials { get; set; }
 
         [Input("googleServiceAccount")]
         public Input<string>? GoogleServiceAccount { get; set; }

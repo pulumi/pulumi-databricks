@@ -5,20 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * Listing all tables in a _things_ databricks.Schema from _sandbox_ databricks_catalog:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const things = databricks.getTables({
- *     catalogName: "sandbox",
- *     schemaName: "things",
- * });
- * export const allThingsTables = things;
- * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:

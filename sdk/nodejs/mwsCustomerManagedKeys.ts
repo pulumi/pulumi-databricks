@@ -20,7 +20,8 @@ import * as utilities from "./utilities";
  *
  * const config = new pulumi.Config();
  * const databricksAccountId = config.requireObject("databricksAccountId");
- * const databricksManagedServicesCmk = aws.iam.getPolicyDocument({
+ * const current = aws.getCallerIdentity({});
+ * const databricksManagedServicesCmk = current.then(current => aws.iam.getPolicyDocument({
  *     version: "2012-10-17",
  *     statements: [
  *         {
@@ -28,7 +29,7 @@ import * as utilities from "./utilities";
  *             effect: "Allow",
  *             principals: [{
  *                 type: "AWS",
- *                 identifiers: ["*"],
+ *                 identifiers: [current.accountId],
  *             }],
  *             actions: ["kms:*"],
  *             resources: ["*"],
@@ -47,7 +48,7 @@ import * as utilities from "./utilities";
  *             resources: ["*"],
  *         },
  *     ],
- * });
+ * }));
  * const managedServicesCustomerManagedKey = new aws.kms.Key("managedServicesCustomerManagedKey", {policy: databricksManagedServicesCmk.then(databricksManagedServicesCmk => databricksManagedServicesCmk.json)});
  * const managedServicesCustomerManagedKeyAlias = new aws.kms.Alias("managedServicesCustomerManagedKeyAlias", {targetKeyId: managedServicesCustomerManagedKey.keyId});
  * const managedServices = new databricks.MwsCustomerManagedKeys("managedServices", {
@@ -77,7 +78,7 @@ import * as utilities from "./utilities";
  *             effect: "Allow",
  *             principals: [{
  *                 type: "AWS",
- *                 identifiers: ["*"],
+ *                 identifiers: [data.aws_caller_identity.current.account_id],
  *             }],
  *             actions: ["kms:*"],
  *             resources: ["*"],

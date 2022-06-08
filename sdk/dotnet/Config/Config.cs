@@ -109,6 +109,13 @@ namespace Pulumi.Databricks
             set => _debugTruncateBytes.Set(value);
         }
 
+        private static readonly __Value<string?> _googleCredentials = new __Value<string?>(() => __config.Get("googleCredentials"));
+        public static string? GoogleCredentials
+        {
+            get => _googleCredentials.Get();
+            set => _googleCredentials.Set(value);
+        }
+
         private static readonly __Value<string?> _googleServiceAccount = new __Value<string?>(() => __config.Get("googleServiceAccount"));
         public static string? GoogleServiceAccount
         {

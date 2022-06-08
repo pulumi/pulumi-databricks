@@ -66,6 +66,7 @@ export interface ClusterGcpAttributes {
 export interface ClusterInitScript {
     dbfs?: outputs.ClusterInitScriptDbfs;
     file?: outputs.ClusterInitScriptFile;
+    gcs?: outputs.ClusterInitScriptGcs;
     s3?: outputs.ClusterInitScriptS3;
 }
 
@@ -74,6 +75,10 @@ export interface ClusterInitScriptDbfs {
 }
 
 export interface ClusterInitScriptFile {
+    destination?: string;
+}
+
+export interface ClusterInitScriptGcs {
     destination?: string;
 }
 
@@ -194,6 +199,7 @@ export interface InstancePoolPreloadedDockerImageBasicAuth {
 }
 
 export interface JobEmailNotifications {
+    alertOnLastAttempt?: boolean;
     /**
      * (Bool) don't send alert for skipped runs
      */
@@ -213,9 +219,21 @@ export interface JobEmailNotifications {
 }
 
 export interface JobGitSource {
+    /**
+     * name of the Git branch to use. Conflicts with `tag` and `commit`.
+     */
     branch?: string;
+    /**
+     * hash of Git commit to use. Conflicts with `branch` and `tag`.
+     */
     commit?: string;
+    /**
+     * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
+     */
     provider?: string;
+    /**
+     * name of the Git branch to use. Conflicts with `branch` and `commit`.
+     */
     tag?: string;
     /**
      * URL of the job on the given workspace
@@ -254,7 +272,7 @@ export interface JobJobClusterNewCluster {
     initScripts?: outputs.JobJobClusterNewClusterInitScript[];
     instancePoolId?: string;
     nodeTypeId: string;
-    numWorkers: number;
+    numWorkers?: number;
     policyId?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: any};
@@ -328,6 +346,7 @@ export interface JobJobClusterNewClusterGcpAttributes {
 export interface JobJobClusterNewClusterInitScript {
     dbfs?: outputs.JobJobClusterNewClusterInitScriptDbfs;
     file?: outputs.JobJobClusterNewClusterInitScriptFile;
+    gcs?: outputs.JobJobClusterNewClusterInitScriptGcs;
     s3?: outputs.JobJobClusterNewClusterInitScriptS3;
 }
 
@@ -336,6 +355,10 @@ export interface JobJobClusterNewClusterInitScriptDbfs {
 }
 
 export interface JobJobClusterNewClusterInitScriptFile {
+    destination?: string;
+}
+
+export interface JobJobClusterNewClusterInitScriptGcs {
     destination?: string;
 }
 
@@ -468,6 +491,7 @@ export interface JobNewClusterGcpAttributes {
 export interface JobNewClusterInitScript {
     dbfs?: outputs.JobNewClusterInitScriptDbfs;
     file?: outputs.JobNewClusterInitScriptFile;
+    gcs?: outputs.JobNewClusterInitScriptGcs;
     s3?: outputs.JobNewClusterInitScriptS3;
 }
 
@@ -476,6 +500,10 @@ export interface JobNewClusterInitScriptDbfs {
 }
 
 export interface JobNewClusterInitScriptFile {
+    destination?: string;
+}
+
+export interface JobNewClusterInitScriptGcs {
     destination?: string;
 }
 
@@ -624,6 +652,7 @@ export interface JobTaskDependsOn {
 }
 
 export interface JobTaskEmailNotifications {
+    alertOnLastAttempt?: boolean;
     /**
      * (Bool) don't send alert for skipped runs
      */
@@ -761,6 +790,7 @@ export interface JobTaskNewClusterGcpAttributes {
 export interface JobTaskNewClusterInitScript {
     dbfs?: outputs.JobTaskNewClusterInitScriptDbfs;
     file?: outputs.JobTaskNewClusterInitScriptFile;
+    gcs?: outputs.JobTaskNewClusterInitScriptGcs;
     s3?: outputs.JobTaskNewClusterInitScriptS3;
 }
 
@@ -769,6 +799,10 @@ export interface JobTaskNewClusterInitScriptDbfs {
 }
 
 export interface JobTaskNewClusterInitScriptFile {
+    destination?: string;
+}
+
+export interface JobTaskNewClusterInitScriptGcs {
     destination?: string;
 }
 
@@ -1089,6 +1123,7 @@ export interface PipelineClusterClusterLogConfS3 {
 export interface PipelineClusterInitScript {
     dbfs?: outputs.PipelineClusterInitScriptDbfs;
     file?: outputs.PipelineClusterInitScriptFile;
+    gcs?: outputs.PipelineClusterInitScriptGcs;
     s3?: outputs.PipelineClusterInitScriptS3;
 }
 
@@ -1097,6 +1132,10 @@ export interface PipelineClusterInitScriptDbfs {
 }
 
 export interface PipelineClusterInitScriptFile {
+    destination?: string;
+}
+
+export interface PipelineClusterInitScriptGcs {
     destination?: string;
 }
 
@@ -1163,7 +1202,7 @@ export interface SqlEndpointTagsCustomTag {
 
 export interface SqlPermissionsPrivilegeAssignment {
     /**
-     * `displayName` of databricks.Group or databricks_user.
+     * `displayName` for a databricks.Group or databricks_user, `applicationId` for a databricks_service_principal.
      */
     principal: string;
     /**
@@ -1280,8 +1319,8 @@ export interface SqlWidgetParameter {
 
 export interface SqlWidgetPosition {
     autoHeight?: boolean;
-    posX: number;
-    posY: number;
+    posX?: number;
+    posY?: number;
     sizeX: number;
     sizeY: number;
 }
@@ -1354,3 +1393,4 @@ export interface TableColumn {
      */
     typeText: string;
 }
+

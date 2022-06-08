@@ -19,6 +19,8 @@ class ServicePrincipalArgs:
                  application_id: Optional[pulumi.Input[str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ServicePrincipal resource.
@@ -28,6 +30,7 @@ class ServicePrincipalArgs:
         :param pulumi.Input[str] application_id: This is the application id of the given service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
+        :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
         if active is not None:
@@ -42,6 +45,10 @@ class ServicePrincipalArgs:
             pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if workspace_access is not None:
             pulumi.set(__self__, "workspace_access", workspace_access)
 
@@ -116,6 +123,27 @@ class ServicePrincipalArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the service principal in an external identity provider.
+        """
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_id", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
 
     @property
     @pulumi.getter(name="workspaceAccess")
@@ -139,6 +167,8 @@ class _ServicePrincipalState:
                  application_id: Optional[pulumi.Input[str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipal resources.
@@ -148,6 +178,7 @@ class _ServicePrincipalState:
         :param pulumi.Input[str] application_id: This is the application id of the given service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
+        :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
         if active is not None:
@@ -162,6 +193,10 @@ class _ServicePrincipalState:
             pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if workspace_access is not None:
             pulumi.set(__self__, "workspace_access", workspace_access)
 
@@ -236,6 +271,27 @@ class _ServicePrincipalState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the service principal in an external identity provider.
+        """
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_id", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
 
     @property
     @pulumi.getter(name="workspaceAccess")
@@ -261,10 +317,14 @@ class ServicePrincipal(pulumi.CustomResource):
                  application_id: Optional[pulumi.Input[str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
                  workspace_access: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to Group within workspace.
+        Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to Group in Databricks workspace or account.
+
+        To create service principals in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments
 
         ## Related Resources
 
@@ -293,6 +353,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[str] application_id: This is the application id of the given service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
+        :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
         ...
@@ -302,7 +363,9 @@ class ServicePrincipal(pulumi.CustomResource):
                  args: Optional[ServicePrincipalArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to Group within workspace.
+        Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to Group in Databricks workspace or account.
+
+        To create service principals in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments
 
         ## Related Resources
 
@@ -344,6 +407,8 @@ class ServicePrincipal(pulumi.CustomResource):
                  application_id: Optional[pulumi.Input[str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
                  workspace_access: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
@@ -363,6 +428,8 @@ class ServicePrincipal(pulumi.CustomResource):
             __props__.__dict__["application_id"] = application_id
             __props__.__dict__["databricks_sql_access"] = databricks_sql_access
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["external_id"] = external_id
+            __props__.__dict__["force"] = force
             __props__.__dict__["workspace_access"] = workspace_access
         super(ServicePrincipal, __self__).__init__(
             'databricks:index/servicePrincipal:ServicePrincipal',
@@ -380,6 +447,8 @@ class ServicePrincipal(pulumi.CustomResource):
             application_id: Optional[pulumi.Input[str]] = None,
             databricks_sql_access: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            external_id: Optional[pulumi.Input[str]] = None,
+            force: Optional[pulumi.Input[bool]] = None,
             workspace_access: Optional[pulumi.Input[bool]] = None) -> 'ServicePrincipal':
         """
         Get an existing ServicePrincipal resource's state with the given name, id, and optional extra
@@ -394,6 +463,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[str] application_id: This is the application id of the given service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
+        :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -406,6 +476,8 @@ class ServicePrincipal(pulumi.CustomResource):
         __props__.__dict__["application_id"] = application_id
         __props__.__dict__["databricks_sql_access"] = databricks_sql_access
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["external_id"] = external_id
+        __props__.__dict__["force"] = force
         __props__.__dict__["workspace_access"] = workspace_access
         return ServicePrincipal(resource_name, opts=opts, __props__=__props__)
 
@@ -456,6 +528,19 @@ class ServicePrincipal(pulumi.CustomResource):
         This is an alias for the service principal and can be the full name of the service principal.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        ID of the service principal in an external identity provider.
+        """
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter
+    def force(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "force")
 
     @property
     @pulumi.getter(name="workspaceAccess")

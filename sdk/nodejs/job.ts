@@ -95,6 +95,10 @@ export class Job extends pulumi.CustomResource {
     public readonly sparkJarTask!: pulumi.Output<outputs.JobSparkJarTask | undefined>;
     public readonly sparkPythonTask!: pulumi.Output<outputs.JobSparkPythonTask | undefined>;
     public readonly sparkSubmitTask!: pulumi.Output<outputs.JobSparkSubmitTask | undefined>;
+    /**
+     * (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly tasks!: pulumi.Output<outputs.JobTask[] | undefined>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -138,6 +142,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["sparkJarTask"] = state ? state.sparkJarTask : undefined;
             resourceInputs["sparkPythonTask"] = state ? state.sparkPythonTask : undefined;
             resourceInputs["sparkSubmitTask"] = state ? state.sparkSubmitTask : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tasks"] = state ? state.tasks : undefined;
             resourceInputs["timeoutSeconds"] = state ? state.timeoutSeconds : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
@@ -163,6 +168,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["sparkJarTask"] = args ? args.sparkJarTask : undefined;
             resourceInputs["sparkPythonTask"] = args ? args.sparkPythonTask : undefined;
             resourceInputs["sparkSubmitTask"] = args ? args.sparkSubmitTask : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tasks"] = args ? args.tasks : undefined;
             resourceInputs["timeoutSeconds"] = args ? args.timeoutSeconds : undefined;
             resourceInputs["url"] = undefined /*out*/;
@@ -229,6 +235,10 @@ export interface JobState {
     sparkJarTask?: pulumi.Input<inputs.JobSparkJarTask>;
     sparkPythonTask?: pulumi.Input<inputs.JobSparkPythonTask>;
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
+    /**
+     * (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -297,6 +307,10 @@ export interface JobArgs {
     sparkJarTask?: pulumi.Input<inputs.JobSparkJarTask>;
     sparkPythonTask?: pulumi.Input<inputs.JobSparkPythonTask>;
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
+    /**
+     * (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.

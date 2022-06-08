@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("file")]
         public Input<Inputs.JobNewClusterInitScriptFileArgs>? File { get; set; }
 
+        [Input("gcs")]
+        public Input<Inputs.JobNewClusterInitScriptGcsArgs>? Gcs { get; set; }
+
         [Input("s3")]
         public Input<Inputs.JobNewClusterInitScriptS3Args>? S3 { get; set; }
 

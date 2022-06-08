@@ -15,11 +15,11 @@ namespace Pulumi.Databricks.Inputs
         [Input("autoHeight")]
         public Input<bool>? AutoHeight { get; set; }
 
-        [Input("posX", required: true)]
-        public Input<int> PosX { get; set; } = null!;
+        [Input("posX")]
+        public Input<int>? PosX { get; set; }
 
-        [Input("posY", required: true)]
-        public Input<int> PosY { get; set; } = null!;
+        [Input("posY")]
+        public Input<int>? PosY { get; set; }
 
         [Input("sizeX", required: true)]
         public Input<int> SizeX { get; set; } = null!;

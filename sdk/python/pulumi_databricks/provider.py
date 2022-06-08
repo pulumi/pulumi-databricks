@@ -24,6 +24,7 @@ class ProviderArgs:
                  config_file: Optional[pulumi.Input[str]] = None,
                  debug_headers: Optional[pulumi.Input[bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[int]] = None,
+                 google_credentials: Optional[pulumi.Input[str]] = None,
                  google_service_account: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  http_timeout_seconds: Optional[pulumi.Input[int]] = None,
@@ -58,6 +59,8 @@ class ProviderArgs:
             pulumi.set(__self__, "debug_headers", debug_headers)
         if debug_truncate_bytes is not None:
             pulumi.set(__self__, "debug_truncate_bytes", debug_truncate_bytes)
+        if google_credentials is not None:
+            pulumi.set(__self__, "google_credentials", google_credentials)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
         if host is not None:
@@ -177,6 +180,15 @@ class ProviderArgs:
         pulumi.set(self, "debug_truncate_bytes", value)
 
     @property
+    @pulumi.getter(name="googleCredentials")
+    def google_credentials(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "google_credentials")
+
+    @google_credentials.setter
+    def google_credentials(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "google_credentials", value)
+
+    @property
     @pulumi.getter(name="googleServiceAccount")
     def google_service_account(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "google_service_account")
@@ -274,6 +286,7 @@ class Provider(pulumi.ProviderResource):
                  config_file: Optional[pulumi.Input[str]] = None,
                  debug_headers: Optional[pulumi.Input[bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[int]] = None,
+                 google_credentials: Optional[pulumi.Input[str]] = None,
                  google_service_account: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  http_timeout_seconds: Optional[pulumi.Input[int]] = None,
@@ -331,6 +344,7 @@ class Provider(pulumi.ProviderResource):
                  config_file: Optional[pulumi.Input[str]] = None,
                  debug_headers: Optional[pulumi.Input[bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[int]] = None,
+                 google_credentials: Optional[pulumi.Input[str]] = None,
                  google_service_account: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  http_timeout_seconds: Optional[pulumi.Input[int]] = None,
@@ -363,6 +377,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["config_file"] = config_file
             __props__.__dict__["debug_headers"] = pulumi.Output.from_input(debug_headers).apply(pulumi.runtime.to_json) if debug_headers is not None else None
             __props__.__dict__["debug_truncate_bytes"] = pulumi.Output.from_input(debug_truncate_bytes).apply(pulumi.runtime.to_json) if debug_truncate_bytes is not None else None
+            __props__.__dict__["google_credentials"] = google_credentials
             __props__.__dict__["google_service_account"] = google_service_account
             __props__.__dict__["host"] = host
             __props__.__dict__["http_timeout_seconds"] = pulumi.Output.from_input(http_timeout_seconds).apply(pulumi.runtime.to_json) if http_timeout_seconds is not None else None
@@ -417,6 +432,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="configFile")
     def config_file(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "config_file")
+
+    @property
+    @pulumi.getter(name="googleCredentials")
+    def google_credentials(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "google_credentials")
 
     @property
     @pulumi.getter(name="googleServiceAccount")

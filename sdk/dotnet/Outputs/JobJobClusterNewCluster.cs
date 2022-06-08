@@ -32,7 +32,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<Outputs.JobJobClusterNewClusterInitScript> InitScripts;
         public readonly string? InstancePoolId;
         public readonly string? NodeTypeId;
-        public readonly int NumWorkers;
+        public readonly int? NumWorkers;
         public readonly string? PolicyId;
         public readonly string? SingleUserName;
         public readonly ImmutableDictionary<string, object>? SparkConf;
@@ -80,7 +80,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? nodeTypeId,
 
-            int numWorkers,
+            int? numWorkers,
 
             string? policyId,
 

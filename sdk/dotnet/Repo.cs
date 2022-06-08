@@ -34,25 +34,25 @@ namespace Pulumi.Databricks
         public Output<string> CommitHash { get; private set; } = null!;
 
         /// <summary>
-        /// case insensitive name of the Git provider.  Following values are supported right now (maybe a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`
+        /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
         /// </summary>
         [Output("gitProvider")]
         public Output<string> GitProvider { get; private set; } = null!;
 
         /// <summary>
-        /// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/&lt;username&gt;/...`).  If value changes, repo is re-created
+        /// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/&lt;username&gt;/...`).  If value changes, repo is re-created.
         /// </summary>
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
-        /// name of the tag for initial checkout.  Conflicts with `branch`
+        /// name of the tag for initial checkout.  Conflicts with `branch`.
         /// </summary>
         [Output("tag")]
         public Output<string?> Tag { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the Git Repository to clone from. If value changes, repo is re-created
+        /// The URL of the Git Repository to clone from. If value changes, repo is re-created.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -116,25 +116,25 @@ namespace Pulumi.Databricks
         public Input<string>? CommitHash { get; set; }
 
         /// <summary>
-        /// case insensitive name of the Git provider.  Following values are supported right now (maybe a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`
+        /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
         /// </summary>
         [Input("gitProvider")]
         public Input<string>? GitProvider { get; set; }
 
         /// <summary>
-        /// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/&lt;username&gt;/...`).  If value changes, repo is re-created
+        /// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/&lt;username&gt;/...`).  If value changes, repo is re-created.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// name of the tag for initial checkout.  Conflicts with `branch`
+        /// name of the tag for initial checkout.  Conflicts with `branch`.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// The URL of the Git Repository to clone from. If value changes, repo is re-created
+        /// The URL of the Git Repository to clone from. If value changes, repo is re-created.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -159,25 +159,25 @@ namespace Pulumi.Databricks
         public Input<string>? CommitHash { get; set; }
 
         /// <summary>
-        /// case insensitive name of the Git provider.  Following values are supported right now (maybe a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`
+        /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
         /// </summary>
         [Input("gitProvider")]
         public Input<string>? GitProvider { get; set; }
 
         /// <summary>
-        /// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/&lt;username&gt;/...`).  If value changes, repo is re-created
+        /// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/&lt;username&gt;/...`).  If value changes, repo is re-created.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// name of the tag for initial checkout.  Conflicts with `branch`
+        /// name of the tag for initial checkout.  Conflicts with `branch`.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// The URL of the Git Repository to clone from. If value changes, repo is re-created
+        /// The URL of the Git Repository to clone from. If value changes, repo is re-created.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

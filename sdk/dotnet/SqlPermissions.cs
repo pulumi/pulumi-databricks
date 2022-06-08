@@ -10,54 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Note** Please switch to databricks.Grants with Unity Catalog to manage data access, which provides better and faster way for managing data security. `databricks.Grants` resource *doesn't require a technical cluster to perform operations*. `databricks.SqlPermissions` will be removed, once Unity Catalog is Generally Available.
-    /// 
-    /// This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick `Access Control` tab, click on `Enable` button in `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all databricks.Cluster have approximately the following configuration:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         // ...
-    ///         var clusterWithTableAccessControl = new Databricks.Cluster("clusterWithTableAccessControl", new Databricks.ClusterArgs
-    ///         {
-    ///             SparkConf = 
-    ///             {
-    ///                 { "spark.databricks.acl.dfAclsEnabled", "true" },
-    ///                 { "spark.databricks.repl.allowedLanguages", "python,sql" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// It could be combined with creation of High-Concurrency and Single-Node clusters - in this case it should have corresponding `custom_tags` and `spark.databricks.cluster.profile` in Spark configuration as described in documentation for `databricks.Cluster` resource.
-    /// 
-    /// The created cluster could be referred to by providing its ID as `cluster_id` property.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var fooTable = new Databricks.SqlPermissions("fooTable", new Databricks.SqlPermissionsArgs
-    ///         {
-    ///             ClusterId = databricks_cluster.Cluster_name.Id,
-    ///         });
-    ///         //...
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Example Usage
     /// 
     /// The following resource definition will enforce access control on a table by executing the following SQL queries on a special auto-terminating cluster it would create for this operation:

@@ -12,15 +12,27 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobGitSourceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// name of the Git branch to use. Conflicts with `tag` and `commit`.
+        /// </summary>
         [Input("branch")]
         public Input<string>? Branch { get; set; }
 
+        /// <summary>
+        /// hash of Git commit to use. Conflicts with `branch` and `tag`.
+        /// </summary>
         [Input("commit")]
         public Input<string>? Commit { get; set; }
 
+        /// <summary>
+        /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
+        /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
 
+        /// <summary>
+        /// name of the Git branch to use. Conflicts with `branch` and `commit`.
+        /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 

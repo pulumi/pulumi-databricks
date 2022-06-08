@@ -59,6 +59,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_int('debugTruncateBytes')
 
     @property
+    def google_credentials(self) -> Optional[str]:
+        return __config__.get('googleCredentials')
+
+    @property
     def google_service_account(self) -> Optional[str]:
         return __config__.get('googleServiceAccount')
 

@@ -33,6 +33,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly azureTenantId!: pulumi.Output<string | undefined>;
     public readonly azureWorkspaceResourceId!: pulumi.Output<string | undefined>;
     public readonly configFile!: pulumi.Output<string | undefined>;
+    public readonly googleCredentials!: pulumi.Output<string | undefined>;
     public readonly googleServiceAccount!: pulumi.Output<string | undefined>;
     public readonly host!: pulumi.Output<string | undefined>;
     public readonly password!: pulumi.Output<string | undefined>;
@@ -62,6 +63,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["configFile"] = args ? args.configFile : undefined;
             resourceInputs["debugHeaders"] = pulumi.output(args ? args.debugHeaders : undefined).apply(JSON.stringify);
             resourceInputs["debugTruncateBytes"] = pulumi.output(args ? args.debugTruncateBytes : undefined).apply(JSON.stringify);
+            resourceInputs["googleCredentials"] = args ? args.googleCredentials : undefined;
             resourceInputs["googleServiceAccount"] = args ? args.googleServiceAccount : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["httpTimeoutSeconds"] = pulumi.output(args ? args.httpTimeoutSeconds : undefined).apply(JSON.stringify);
@@ -92,6 +94,7 @@ export interface ProviderArgs {
     configFile?: pulumi.Input<string>;
     debugHeaders?: pulumi.Input<boolean>;
     debugTruncateBytes?: pulumi.Input<number>;
+    googleCredentials?: pulumi.Input<string>;
     googleServiceAccount?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     httpTimeoutSeconds?: pulumi.Input<number>;
