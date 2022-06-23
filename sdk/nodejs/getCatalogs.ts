@@ -5,17 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * Listing all catalogs:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const all = databricks.getCatalogs({});
- * export const allCatalogs = all;
- * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:

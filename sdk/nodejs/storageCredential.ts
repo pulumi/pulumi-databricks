@@ -12,52 +12,6 @@ import * as utilities from "./utilities";
  * - `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
  * - databricks.ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
  *
- * ## Example Usage
- *
- * For AWS
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const external = new databricks.StorageCredential("external", {
- *     awsIamRole: {
- *         roleArn: aws_iam_role.external_data_access.arn,
- *     },
- *     comment: "Managed by TF",
- * });
- * const externalCreds = new databricks.Grants("externalCreds", {
- *     storageCredential: external.id,
- *     grants: [{
- *         principal: "Data Engineers",
- *         privileges: ["CREATE_TABLE"],
- *     }],
- * });
- * ```
- *
- * For Azure
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const external = new databricks.StorageCredential("external", {
- *     azureServicePrincipal: {
- *         directoryId: _var.tenant_id,
- *         applicationId: azuread_application.ext_cred.application_id,
- *         clientSecret: azuread_application_password.ext_cred.value,
- *     },
- *     comment: "Managed by TF",
- * });
- * const externalCreds = new databricks.Grants("externalCreds", {
- *     storageCredential: external.id,
- *     grants: [{
- *         principal: "Data Engineers",
- *         privileges: ["CREATE_TABLE"],
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported by namebash

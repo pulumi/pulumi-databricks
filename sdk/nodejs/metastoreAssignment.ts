@@ -8,23 +8,6 @@ import * as utilities from "./utilities";
  * > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
  *
  * A single databricks.Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. It is only recommended to have multiple metastores when organizations wish to have hard isolation boundaries between data (note that data cannot be easily joined/queried across metastores).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const thisMetastore = new databricks.Metastore("thisMetastore", {
- *     storageRoot: `s3://${aws_s3_bucket.metastore.id}/metastore`,
- *     owner: "uc admins",
- *     forceDestroy: true,
- * });
- * const thisMetastoreAssignment = new databricks.MetastoreAssignment("thisMetastoreAssignment", {
- *     metastoreId: thisMetastore.id,
- *     workspaceId: local.workspace_id,
- * });
- * ```
  */
 export class MetastoreAssignment extends pulumi.CustomResource {
     /**

@@ -7,27 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Create or overwrite the ACL associated with the given principal (user or group) on the specified databricks_secret_scope. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
  *
- * ## Example Usage
- *
- * This way, data scientists can read the Publishing API key that is synchronized from example, Azure Key Vault.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const ds = new databricks.Group("ds", {displayName: "data-scientists"});
- * const app = new databricks.SecretScope("app", {});
- * const mySecretAcl = new databricks.SecretAcl("mySecretAcl", {
- *     principal: ds.displayName,
- *     permission: "READ",
- *     scope: app.name,
- * });
- * const publishingApi = new databricks.Secret("publishingApi", {
- *     key: "publishing_api",
- *     stringValue: data.azurerm_key_vault_secret.example.value,
- *     scope: app.name,
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:

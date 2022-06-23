@@ -57,7 +57,7 @@ import (
 // 		}
 // 		_, err = databricks.NewMwsCredentials(ctx, "thisMwsCredentials", &databricks.MwsCredentialsArgs{
 // 			AccountId:       pulumi.Any(databricksAccountId),
-// 			CredentialsName: pulumi.String(fmt.Sprintf("%v%v", local.Prefix, "-creds")),
+// 			CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", local.Prefix)),
 // 			RoleArn:         crossAccountRole.Arn,
 // 		}, pulumi.Provider(databricks.Mws))
 // 		if err != nil {

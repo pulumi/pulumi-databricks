@@ -11,34 +11,6 @@ import * as utilities from "./utilities";
  *
  * A dashboard may have one or more widgets.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const d1 = new databricks.SqlDashboard("d1", {
- *     tags: [
- *         "some-tag",
- *         "another-tag",
- *     ],
- * });
- * ```
- *
- * Example permission to share dashboard with all users:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const d1 = new databricks.Permissions("d1", {
- *     sqlDashboardId: databricks_sql_dashboard.d1.id,
- *     accessControls: [{
- *         groupName: data.databricks_group.users.display_name,
- *         permissionLevel: "CAN_RUN",
- *     }],
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:

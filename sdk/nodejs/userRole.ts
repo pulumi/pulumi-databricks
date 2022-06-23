@@ -7,34 +7,6 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to attach a role or databricks.InstanceProfile (AWS) to databricks_user.
  *
- * ## Example Usage
- *
- * Adding AWS instance profile to a user
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const instanceProfile = new databricks.InstanceProfile("instanceProfile", {instanceProfileArn: "my_instance_profile_arn"});
- * const myUser = new databricks.User("myUser", {userName: "me@example.com"});
- * const myUserRole = new databricks.UserRole("myUserRole", {
- *     userId: myUser.id,
- *     role: instanceProfile.id,
- * });
- * ```
- *
- * Adding user as administrator to Databricks Account
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const myUser = new databricks.User("myUser", {userName: "me@example.com"});
- * const myUserAccountAdmin = new databricks.UserRole("myUserAccountAdmin", {
- *     userId: myUser.id,
- *     role: "account_admin",
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:

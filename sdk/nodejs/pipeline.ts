@@ -8,48 +8,6 @@ import * as utilities from "./utilities";
 /**
  * Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const dltDemo = new databricks.Notebook("dltDemo", {});
- * //...
- * const _this = new databricks.Pipeline("this", {
- *     storage: "/test/first-pipeline",
- *     configuration: {
- *         key1: "value1",
- *         key2: "value2",
- *     },
- *     clusters: [
- *         {
- *             label: "default",
- *             numWorkers: 2,
- *             customTags: {
- *                 cluster_type: "default",
- *             },
- *         },
- *         {
- *             label: "maintenance",
- *             numWorkers: 1,
- *             customTags: {
- *                 cluster_type: "maintenance",
- *             },
- *         },
- *     ],
- *     libraries: [{
- *         notebook: {
- *             path: dltDemo.id,
- *         },
- *     }],
- *     filters: {
- *         includes: ["com.databricks.include"],
- *         excludes: ["com.databricks.exclude"],
- *     },
- *     continuous: false,
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:

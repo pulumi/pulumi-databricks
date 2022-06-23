@@ -9,19 +9,6 @@ import * as utilities from "./utilities";
  *
  * This resource allows you to attach databricks.InstanceProfile (AWS) to databricks_group.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const instanceProfile = new databricks.InstanceProfile("instanceProfile", {instanceProfileArn: "my_instance_profile_arn"});
- * const myGroup = new databricks.Group("myGroup", {displayName: "my_group_name"});
- * const myGroupInstanceProfile = new databricks.GroupInstanceProfile("myGroupInstanceProfile", {
- *     groupId: myGroup.id,
- *     instanceProfileId: instanceProfile.id,
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:
