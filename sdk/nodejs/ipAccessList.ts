@@ -9,26 +9,6 @@ import * as utilities from "./utilities";
  *
  * > **Note** The total number of IP addresses and CIDR scopes provided across all ACL Lists in a workspace can not exceed 1000.  Refer to the docs above for specifics.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const _this = new databricks.WorkspaceConf("this", {customConfig: {
- *     enableIpAccessLists: true,
- * }});
- * const allowed_list = new databricks.IpAccessList("allowed-list", {
- *     label: "allow_in",
- *     listType: "ALLOW",
- *     ipAddresses: [
- *         "1.2.3.0/24",
- *         "1.2.5.0/24",
- *     ],
- * }, {
- *     dependsOn: [_this],
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:

@@ -7,21 +7,6 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to attach a role or databricks.InstanceProfile (AWS) to a databricks_service_principal.
  *
- * ## Example Usage
- *
- * Granting a service principal access to an instance profile
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const instanceProfile = new databricks.InstanceProfile("instanceProfile", {instanceProfileArn: "my_instance_profile_arn"});
- * const _this = new databricks.ServicePrincipal("this", {displayName: "My Service Principal"});
- * const myServicePrincipalInstanceProfile = new databricks.ServicePrincipalRole("myServicePrincipalInstanceProfile", {
- *     servicePrincipalId: _this.id,
- *     role: instanceProfile.id,
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:

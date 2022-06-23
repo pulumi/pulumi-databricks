@@ -30,7 +30,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		appDbfsFile, err := databricks.NewDbfsFile(ctx, "appDbfsFile", &databricks.DbfsFileArgs{
-// 			Source: pulumi.String(fmt.Sprintf("%v%v", path.Module, "/app-0.0.1.jar")),
+// 			Source: pulumi.String(fmt.Sprintf("%v/app-0.0.1.jar", path.Module)),
 // 			Path:   pulumi.String("/FileStore/app-0.0.1.jar"),
 // 		})
 // 		if err != nil {
@@ -94,7 +94,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		appDbfsFile, err := databricks.NewDbfsFile(ctx, "appDbfsFile", &databricks.DbfsFileArgs{
-// 			Source: pulumi.String(fmt.Sprintf("%v%v", path.Module, "/baz.whl")),
+// 			Source: pulumi.String(fmt.Sprintf("%v/baz.whl", path.Module)),
 // 			Path:   pulumi.String("/FileStore/baz.whl"),
 // 		})
 // 		if err != nil {
@@ -157,7 +157,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		appDbfsFile, err := databricks.NewDbfsFile(ctx, "appDbfsFile", &databricks.DbfsFileArgs{
-// 			Source: pulumi.String(fmt.Sprintf("%v%v", path.Module, "/foo.egg")),
+// 			Source: pulumi.String(fmt.Sprintf("%v/foo.egg", path.Module)),
 // 			Path:   pulumi.String("/FileStore/foo.egg"),
 // 		})
 // 		if err != nil {

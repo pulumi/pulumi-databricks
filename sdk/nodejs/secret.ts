@@ -7,19 +7,6 @@ import * as utilities from "./utilities";
 /**
  * With this resource you can insert a secret under the provided scope with the given name. If a secret already exists with the same name, this command overwrites the existing secret’s value. The server encrypts the secret using the secret scope’s encryption settings before storing it. You must have WRITE or MANAGE permission on the secret scope. The secret key must consist of alphanumeric characters, dashes, underscores, and periods, and cannot exceed 128 characters. The maximum allowed secret value size is 128 KB. The maximum number of secrets in a given scope is 1000. You can read a secret value only from within a command on a cluster (for example, through a notebook); there is no API to read a secret value outside of a cluster. The permission applied is based on who is invoking the command and you must have at least READ permission. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const app = new databricks.SecretScope("app", {});
- * const publishingApi = new databricks.Secret("publishingApi", {
- *     key: "publishing_api",
- *     stringValue: data.azurerm_key_vault_secret.example.value,
- *     scope: app.id,
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:

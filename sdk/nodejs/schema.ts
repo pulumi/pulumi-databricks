@@ -11,27 +11,6 @@ import * as utilities from "./utilities";
  *
  * A `databricks.Schema` is contained within databricks.Catalog and can contain tables & views.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sandbox = new databricks.Catalog("sandbox", {
- *     metastoreId: databricks_metastore["this"].id,
- *     comment: "this catalog is managed by terraform",
- *     properties: {
- *         purpose: "testing",
- *     },
- * });
- * const things = new databricks.Schema("things", {
- *     catalogName: sandbox.id,
- *     comment: "this database is managed by terraform",
- *     properties: {
- *         kind: "various",
- *     },
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:

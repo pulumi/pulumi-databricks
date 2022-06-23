@@ -12,55 +12,6 @@ import * as utilities from "./utilities";
  *
  * A query may have one or more visualizations.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const q1 = new databricks.SqlQuery("q1", {
- *     dataSourceId: databricks_sql_endpoint.example.data_source_id,
- *     query: "SELECT {{ p1 }} AS p1, 2 as p2",
- *     runAsRole: "viewer",
- *     schedule: {
- *         continuous: {
- *             intervalSeconds: 5 * 60,
- *         },
- *     },
- *     parameters: [{
- *         name: "p1",
- *         title: "Title for p1",
- *         text: {
- *             value: "default",
- *         },
- *     }],
- *     tags: [
- *         "t1",
- *         "t2",
- *     ],
- * });
- * ```
- *
- * Example permission to share query with all users:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const q1 = new databricks.Permissions("q1", {
- *     sqlQueryId: databricks_sql_query.q1.id,
- *     accessControls: [
- *         {
- *             groupName: data.databricks_group.users.display_name,
- *             permissionLevel: "CAN_RUN",
- *         },
- *         {
- *             groupName: data.databricks_group.team.display_name,
- *             permissionLevel: "CAN_EDIT",
- *         },
- *     ],
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:

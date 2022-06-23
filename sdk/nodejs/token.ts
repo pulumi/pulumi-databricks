@@ -7,24 +7,6 @@ import * as utilities from "./utilities";
 /**
  * This resource creates [Personal Access Tokens](https://docs.databricks.com/sql/user/security/personal-access-tokens.html) for the same user, that is authenticated with the provider. Most likely you should use databricks.OboToken to create [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a databricks.ServicePrincipal in Databricks workspaces on AWS. Databricks workspaces on other clouds use their own native OAuth token flows.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * // initialize provider in normal mode
- * const createdWorkspace = new databricks.Provider("createdWorkspace", {host: databricks_mws_workspaces["this"].workspace_url});
- * // create PAT token to provision entities within workspace
- * const pat = new databricks.Token("pat", {
- *     comment: "Terraform Provisioning",
- *     lifetimeSeconds: 8640000,
- * }, {
- *     provider: databricks.created_workspace,
- * });
- * export const databricksToken = pat.tokenValue;
- * ```
- *
  * ## Import
  *
  * -> **Note** Importing this resource is not currently supported.

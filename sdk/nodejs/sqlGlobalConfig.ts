@@ -8,42 +8,6 @@ import * as utilities from "./utilities";
  * This resource configures the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace. *Please note that changing parameters of this resources will restart all running databricks_sql_endpoint.*  To use this resource you need to be an administrator.
  *
  * ## Example Usage
- * ### AWS example
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const _this = new databricks.SqlGlobalConfig("this", {
- *     securityPolicy: "DATA_ACCESS_CONTROL",
- *     instanceProfileArn: "arn:....",
- *     dataAccessConfig: {
- *         "spark.sql.session.timeZone": "UTC",
- *     },
- * });
- * ```
- * ### Azure example
- *
- * For Azure you should use the `dataAccessConfig` to provide the service principal configuration. You can use the Databricks SQL Admin Console UI to help you generate the right configuration values.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const _this = new databricks.SqlGlobalConfig("this", {
- *     securityPolicy: "DATA_ACCESS_CONTROL",
- *     dataAccessConfig: {
- *         "spark.hadoop.fs.azure.account.auth.type": "OAuth",
- *         "spark.hadoop.fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
- *         "spark.hadoop.fs.azure.account.oauth2.client.id": _var.tenant_id,
- *         "spark.hadoop.fs.azure.account.oauth2.client.secret": `{{secrets/${local.secret_scope}/${local.secret_key}}}`,
- *         "spark.hadoop.fs.azure.account.oauth2.client.endpoint": `https://login.microsoftonline.com/${_var.tenant_id}/oauth2/token`,
- *     },
- *     sqlConfigParams: {
- *         ANSI_MODE: "true",
- *     },
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:

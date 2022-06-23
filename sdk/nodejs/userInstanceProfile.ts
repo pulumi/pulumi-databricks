@@ -9,19 +9,6 @@ import * as utilities from "./utilities";
  *
  * This resource allows you to attach databricks.InstanceProfile (AWS) to databricks_user.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const instanceProfile = new databricks.InstanceProfile("instanceProfile", {instanceProfileArn: "my_instance_profile_arn"});
- * const myUser = new databricks.User("myUser", {userName: "me@example.com"});
- * const myUserInstanceProfile = new databricks.UserInstanceProfile("myUserInstanceProfile", {
- *     userId: myUser.id,
- *     instanceProfileId: instanceProfile.id,
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:

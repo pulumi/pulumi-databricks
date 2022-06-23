@@ -30,7 +30,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		thisMetastore, err := databricks.NewMetastore(ctx, "thisMetastore", &databricks.MetastoreArgs{
-// 			StorageRoot:  pulumi.String(fmt.Sprintf("%v%v%v", "s3://", aws_s3_bucket.Metastore.Id, "/metastore")),
+// 			StorageRoot:  pulumi.String(fmt.Sprintf("s3://%v/metastore", aws_s3_bucket.Metastore.Id)),
 // 			Owner:        pulumi.String("uc admins"),
 // 			ForceDestroy: pulumi.Bool(true),
 // 		})

@@ -5,27 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * Retrieve all clusters on this workspace on AWS or GCP:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const all = databricks.getClusters({});
- * ```
- *
- * Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const allShared = databricks.getClusters({
- *     clusterNameContains: "shared",
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:

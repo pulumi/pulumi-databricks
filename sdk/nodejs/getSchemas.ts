@@ -5,19 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * Listing all schemas in a _sandbox_ databricks_catalog:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sandbox = databricks.getSchemas({
- *     catalogName: "sandbox",
- * });
- * export const allSandboxSchemas = sandbox;
- * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:

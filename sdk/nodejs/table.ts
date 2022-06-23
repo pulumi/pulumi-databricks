@@ -14,52 +14,6 @@ import * as utilities from "./utilities";
  *
  * A `databricks.Table` is contained within databricks_schema.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sandbox = new databricks.Catalog("sandbox", {
- *     metastoreId: databricks_metastore["this"].id,
- *     comment: "this catalog is managed by terraform",
- *     properties: {
- *         purpose: "testing",
- *     },
- * });
- * const things = new databricks.Schema("things", {
- *     catalogName: sandbox.id,
- *     comment: "this database is managed by terraform",
- *     properties: {
- *         kind: "various",
- *     },
- * });
- * const thing = new databricks.Table("thing", {
- *     catalogName: sandbox.id,
- *     schemaName: things.name,
- *     tableType: "MANAGED",
- *     dataSourceFormat: "DELTA",
- *     columns: [
- *         {
- *             name: "id",
- *             position: 0,
- *             typeName: "INT",
- *             typeText: "int",
- *             typeJson: "{\"name\":\"id\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}",
- *         },
- *         {
- *             name: "name",
- *             position: 1,
- *             typeName: "STRING",
- *             typeText: "varchar(64)",
- *             typeJson: "{\"name\":\"name\",\"type\":\"varchar(64)\",\"nullable\":true,\"metadata\":{}}",
- *         },
- *     ],
- *     comment: "this table is managed by terraform",
- * }, {
- *     provider: databricks.workspace,
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:

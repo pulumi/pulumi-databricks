@@ -5,33 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const withGpu = databricks.getNodeType({
- *     localDisk: true,
- *     minCores: 16,
- *     gbPerCore: 1,
- *     minGpus: 1,
- * });
- * const gpuMl = databricks.getSparkVersion({
- *     gpu: true,
- *     ml: true,
- * });
- * const research = new databricks.Cluster("research", {
- *     clusterName: "Research Cluster",
- *     sparkVersion: gpuMl.then(gpuMl => gpuMl.id),
- *     nodeTypeId: withGpu.then(withGpu => withGpu.id),
- *     autoterminationMinutes: 20,
- *     autoscale: {
- *         minWorkers: 1,
- *         maxWorkers: 50,
- *     },
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:

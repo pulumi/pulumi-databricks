@@ -12,33 +12,6 @@ import * as utilities from "./utilities";
  *
  * A widget is always tied to a dashboard. Every dashboard may have one or more widgets.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const d1w1 = new databricks.SqlWidget("d1w1", {
- *     dashboardId: databricks_sql_dashboard.d1.id,
- *     text: "Hello! I'm a **text widget**!",
- *     position: {
- *         sizeX: 3,
- *         sizeY: 4,
- *         posX: 0,
- *         posY: 0,
- *     },
- * });
- * const d1w2 = new databricks.SqlWidget("d1w2", {
- *     dashboardId: databricks_sql_dashboard.d1.id,
- *     visualizationId: databricks_sql_visualization.q1v1.id,
- *     position: {
- *         sizeX: 3,
- *         sizeY: 4,
- *         posX: 3,
- *         posY: 0,
- *     },
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:

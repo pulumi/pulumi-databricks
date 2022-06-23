@@ -5,37 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * > **Note** This resource has an evolving API, which may change in future versions of the provider.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as databricks from "@pulumi/databricks";
- *
- * const config = new pulumi.Config();
- * const databricksAccountId = config.requireObject("databricksAccountId");
- * const thisAwsAssumeRolePolicy = databricks.getAwsAssumeRolePolicy({
- *     externalId: databricksAccountId,
- * });
- * const crossAccountRole = new aws.iam.Role("crossAccountRole", {
- *     assumeRolePolicy: thisAwsAssumeRolePolicy.then(thisAwsAssumeRolePolicy => thisAwsAssumeRolePolicy.json),
- *     tags: _var.tags,
- * });
- * const thisAwsCrossAccountPolicy = databricks.getAwsCrossAccountPolicy({});
- * const thisRolePolicy = new aws.iam.RolePolicy("thisRolePolicy", {
- *     role: crossAccountRole.id,
- *     policy: thisAwsCrossAccountPolicy.then(thisAwsCrossAccountPolicy => thisAwsCrossAccountPolicy.json),
- * });
- * const thisMwsCredentials = new databricks.MwsCredentials("thisMwsCredentials", {
- *     accountId: databricksAccountId,
- *     credentialsName: `${local.prefix}-creds`,
- *     roleArn: crossAccountRole.arn,
- * }, {
- *     provider: databricks.mws,
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:

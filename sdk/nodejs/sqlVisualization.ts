@@ -11,36 +11,6 @@ import * as utilities from "./utilities";
  *
  * A visualization is always tied to a query. Every query may have one or more visualizations.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const q1v1 = new databricks.SqlVisualization("q1v1", {
- *     queryId: databricks_sql_query.q1.id,
- *     type: "table",
- *     description: "Some Description",
- *     options: JSON.stringify({
- *         itemsPerPage: 25,
- *         columns: [
- *             {
- *                 name: "p1",
- *                 type: "string",
- *                 title: "Parameter 1",
- *                 displayAs: "string",
- *             },
- *             {
- *                 name: "p2",
- *                 type: "string",
- *                 title: "Parameter 2",
- *                 displayAs: "link",
- *                 highlightLinks: true,
- *             },
- *         ],
- *     }),
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:

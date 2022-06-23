@@ -9,46 +9,6 @@ import * as utilities from "./utilities";
  *
  * Make sure you have authenticated with username and password for Accounts Console. This resource configures the delivery of the two supported log types from Databricks workspaces: [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html). You cannot delete a log delivery configuration, but you can disable it when you no longer need it. This fact is important because there is a limit to the number of enabled log delivery configurations that you can create for an account. There is a limit on the number of log delivery configurations that you can create for an account. You can create a maximum of two enabled configurations that use the account level (no workspace filter) and two enabled configurations for every specific workspace (a workspaceId can occur in the workspace filter for two configurations). You cannot delete a log delivery configuration, but you can disable it. You can re-enable a disabled configuration, but the request fails if it violates the limits previously described.
  *
- * ## Billable Usage
- *
- * CSV files are delivered to `<delivery_path_prefix>/billable-usage/csv/` and are named `workspaceId=<workspace-id>-usageMonth=<month>.csv`, which are delivered daily by overwriting the month's CSV file for each workspace. Format of CSV file, as well as some usage examples, can be found [here](https://docs.databricks.com/administration-guide/account-settings/usage.html#download-usage-as-a-csv-file).
- *
- * Common processing scenario is to apply [cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html), that could be enforced by setting customTags on a cluster or through cluster policy. Report contains `clusterId` field, that could be joined with data from AWS [cost and usage reports](https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html), that can be joined with `user:ClusterId` tag from AWS usage report.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const usageLogs = new databricks.MwsLogDelivery("usageLogs", {
- *     accountId: _var.databricks_account_id,
- *     credentialsId: databricks_mws_credentials.log_writer.credentials_id,
- *     storageConfigurationId: databricks_mws_storage_configurations.log_bucket.storage_configuration_id,
- *     deliveryPathPrefix: "billable-usage",
- *     configName: "Usage Logs",
- *     logType: "BILLABLE_USAGE",
- *     outputFormat: "CSV",
- * });
- * ```
- *
- * ## Audit Logs
- *
- * JSON files with [static schema](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html#audit-log-schema) are delivered to `<delivery_path_prefix>/workspaceId=<workspaceId>/date=<yyyy-mm-dd>/auditlogs_<internal-id>.json`. Logs are available within 15 minutes of activation for audit logs. New JSON files are delivered every few minutes, potentially overwriting existing files for each workspace. Sometimes data may arrive later than 15 minutes. Databricks can overwrite the delivered log files in your bucket at any time. If a file is overwritten, the existing content remains, but there may be additional lines for more auditable events. Overwriting ensures exactly-once semantics without requiring read or delete access to your account.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const auditLogs = new databricks.MwsLogDelivery("auditLogs", {
- *     accountId: _var.databricks_account_id,
- *     credentialsId: databricks_mws_credentials.log_writer.credentials_id,
- *     storageConfigurationId: databricks_mws_storage_configurations.log_bucket.storage_configuration_id,
- *     deliveryPathPrefix: "audit-logs",
- *     configName: "Audit Logs",
- *     logType: "AUDIT_LOGS",
- *     outputFormat: "JSON",
- * });
- * ```
- *
  * ## Related Resources
  *
  * The following resources are used in the same context:
