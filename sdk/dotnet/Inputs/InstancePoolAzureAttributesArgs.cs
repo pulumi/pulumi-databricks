@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Availability { get; set; }
 
         /// <summary>
-        /// The max price for Azure spot instances.  Use `-1` to specify lowest price.
+        /// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
         /// </summary>
         [Input("spotBidMaxPrice")]
         public Input<double>? SpotBidMaxPrice { get; set; }

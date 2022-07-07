@@ -13,10 +13,6 @@
         "strict": true
     },
     "files": [
-        "awsS3Mount.ts",
-        "azureAdlsGen1Mount.ts",
-        "azureAdlsGen2Mount.ts",
-        "azureBlobMount.ts",
         "catalog.ts",
         "cluster.ts",
         "clusterPolicy.ts",
@@ -39,6 +35,8 @@
         "getNotebook.ts",
         "getNotebookPaths.ts",
         "getSchemas.ts",
+        "getServicePrincipal.ts",
+        "getServicePrincipals.ts",
         "getSparkVersion.ts",
         "getTables.ts",
         "getUser.ts",

@@ -31,7 +31,7 @@ namespace Pulumi.Databricks
     public partial class OboToken : Pulumi.CustomResource
     {
         /// <summary>
-        /// Application ID of databricks.ServicePrincipal to create PAT token for.
+        /// Application ID of databricks.ServicePrincipal to create a PAT token for.
         /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
     public sealed class OboTokenArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Application ID of databricks.ServicePrincipal to create PAT token for.
+        /// Application ID of databricks.ServicePrincipal to create a PAT token for.
         /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Databricks
     public sealed class OboTokenState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Application ID of databricks.ServicePrincipal to create PAT token for.
+        /// Application ID of databricks.ServicePrincipal to create a PAT token for.
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }

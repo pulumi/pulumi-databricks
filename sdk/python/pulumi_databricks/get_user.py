@@ -20,10 +20,13 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, alphanumeric=None, display_name=None, external_id=None, home=None, id=None, repos=None, user_id=None, user_name=None):
+    def __init__(__self__, alphanumeric=None, application_id=None, display_name=None, external_id=None, home=None, id=None, repos=None, user_id=None, user_name=None):
         if alphanumeric and not isinstance(alphanumeric, str):
             raise TypeError("Expected argument 'alphanumeric' to be a str")
         pulumi.set(__self__, "alphanumeric", alphanumeric)
+        if application_id and not isinstance(application_id, str):
+            raise TypeError("Expected argument 'application_id' to be a str")
+        pulumi.set(__self__, "application_id", application_id)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -53,6 +56,11 @@ class GetUserResult:
         Alphanumeric representation of user local name. e.g. `mr_foo`.
         """
         return pulumi.get(self, "alphanumeric")
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> str:
+        return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter(name="displayName")
@@ -115,6 +123,7 @@ class AwaitableGetUserResult(GetUserResult):
             yield self
         return GetUserResult(
             alphanumeric=self.alphanumeric,
+            application_id=self.application_id,
             display_name=self.display_name,
             external_id=self.external_id,
             home=self.home,
@@ -157,6 +166,7 @@ def get_user(user_id: Optional[str] = None,
 
     return AwaitableGetUserResult(
         alphanumeric=__ret__.alphanumeric,
+        application_id=__ret__.application_id,
         display_name=__ret__.display_name,
         external_id=__ret__.external_id,
         home=__ret__.home,

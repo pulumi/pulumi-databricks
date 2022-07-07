@@ -36,7 +36,7 @@ class SqlEndpointArgs:
         :param pulumi.Input[str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
         :param pulumi.Input[int] auto_stop_mins: Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         :param pulumi.Input['SqlEndpointChannelArgs'] channel: block, consisting of following fields:
-        :param pulumi.Input[str] data_source_id: ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+        :param pulumi.Input[str] data_source_id: ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         :param pulumi.Input[bool] enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
         :param pulumi.Input[bool] enable_serverless_compute: Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
         :param pulumi.Input[str] jdbc_url: JDBC connection string.
@@ -119,7 +119,7 @@ class SqlEndpointArgs:
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+        ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         """
         return pulumi.get(self, "data_source_id")
 
@@ -287,7 +287,7 @@ class _SqlEndpointState:
         :param pulumi.Input[int] auto_stop_mins: Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         :param pulumi.Input['SqlEndpointChannelArgs'] channel: block, consisting of following fields:
         :param pulumi.Input[str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
-        :param pulumi.Input[str] data_source_id: ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+        :param pulumi.Input[str] data_source_id: ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         :param pulumi.Input[bool] enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
         :param pulumi.Input[bool] enable_serverless_compute: Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
         :param pulumi.Input[str] jdbc_url: JDBC connection string.
@@ -371,7 +371,7 @@ class _SqlEndpointState:
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+        ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         """
         return pulumi.get(self, "data_source_id")
 
@@ -585,7 +585,7 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[int] auto_stop_mins: Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         :param pulumi.Input[pulumi.InputType['SqlEndpointChannelArgs']] channel: block, consisting of following fields:
         :param pulumi.Input[str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
-        :param pulumi.Input[str] data_source_id: ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+        :param pulumi.Input[str] data_source_id: ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         :param pulumi.Input[bool] enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
         :param pulumi.Input[bool] enable_serverless_compute: Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
         :param pulumi.Input[str] jdbc_url: JDBC connection string.
@@ -742,7 +742,7 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[int] auto_stop_mins: Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         :param pulumi.Input[pulumi.InputType['SqlEndpointChannelArgs']] channel: block, consisting of following fields:
         :param pulumi.Input[str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
-        :param pulumi.Input[str] data_source_id: ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+        :param pulumi.Input[str] data_source_id: ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         :param pulumi.Input[bool] enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
         :param pulumi.Input[bool] enable_serverless_compute: Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
         :param pulumi.Input[str] jdbc_url: JDBC connection string.
@@ -803,7 +803,7 @@ class SqlEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> pulumi.Output[str]:
         """
-        ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+        ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         """
         return pulumi.get(self, "data_source_id")
 

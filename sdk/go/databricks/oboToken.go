@@ -30,7 +30,7 @@ import (
 type OboToken struct {
 	pulumi.CustomResourceState
 
-	// Application ID of ServicePrincipal to create PAT token for.
+	// Application ID of ServicePrincipal to create a PAT token for.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// Comment that describes the purpose of the token.
 	Comment pulumi.StringOutput `pulumi:"comment"`
@@ -78,7 +78,7 @@ func GetOboToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OboToken resources.
 type oboTokenState struct {
-	// Application ID of ServicePrincipal to create PAT token for.
+	// Application ID of ServicePrincipal to create a PAT token for.
 	ApplicationId *string `pulumi:"applicationId"`
 	// Comment that describes the purpose of the token.
 	Comment *string `pulumi:"comment"`
@@ -89,7 +89,7 @@ type oboTokenState struct {
 }
 
 type OboTokenState struct {
-	// Application ID of ServicePrincipal to create PAT token for.
+	// Application ID of ServicePrincipal to create a PAT token for.
 	ApplicationId pulumi.StringPtrInput
 	// Comment that describes the purpose of the token.
 	Comment pulumi.StringPtrInput
@@ -104,7 +104,7 @@ func (OboTokenState) ElementType() reflect.Type {
 }
 
 type oboTokenArgs struct {
-	// Application ID of ServicePrincipal to create PAT token for.
+	// Application ID of ServicePrincipal to create a PAT token for.
 	ApplicationId string `pulumi:"applicationId"`
 	// Comment that describes the purpose of the token.
 	Comment string `pulumi:"comment"`
@@ -114,7 +114,7 @@ type oboTokenArgs struct {
 
 // The set of arguments for constructing a OboToken resource.
 type OboTokenArgs struct {
-	// Application ID of ServicePrincipal to create PAT token for.
+	// Application ID of ServicePrincipal to create a PAT token for.
 	ApplicationId pulumi.StringInput
 	// Comment that describes the purpose of the token.
 	Comment pulumi.StringInput
@@ -209,7 +209,7 @@ func (o OboTokenOutput) ToOboTokenOutputWithContext(ctx context.Context) OboToke
 	return o
 }
 
-// Application ID of ServicePrincipal to create PAT token for.
+// Application ID of ServicePrincipal to create a PAT token for.
 func (o OboTokenOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OboToken) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }

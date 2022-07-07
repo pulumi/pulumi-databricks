@@ -27,6 +27,7 @@ class PermissionsArgs:
                  notebook_id: Optional[pulumi.Input[str]] = None,
                  notebook_path: Optional[pulumi.Input[str]] = None,
                  object_type: Optional[pulumi.Input[str]] = None,
+                 pipeline_id: Optional[pulumi.Input[str]] = None,
                  registered_model_id: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
                  repo_path: Optional[pulumi.Input[str]] = None,
@@ -72,6 +73,8 @@ class PermissionsArgs:
             pulumi.set(__self__, "notebook_path", notebook_path)
         if object_type is not None:
             pulumi.set(__self__, "object_type", object_type)
+        if pipeline_id is not None:
+            pulumi.set(__self__, "pipeline_id", pipeline_id)
         if registered_model_id is not None:
             pulumi.set(__self__, "registered_model_id", registered_model_id)
         if repo_id is not None:
@@ -226,6 +229,15 @@ class PermissionsArgs:
         pulumi.set(self, "object_type", value)
 
     @property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pipeline_id")
+
+    @pipeline_id.setter
+    def pipeline_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pipeline_id", value)
+
+    @property
     @pulumi.getter(name="registeredModelId")
     def registered_model_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "registered_model_id")
@@ -310,6 +322,7 @@ class _PermissionsState:
                  notebook_id: Optional[pulumi.Input[str]] = None,
                  notebook_path: Optional[pulumi.Input[str]] = None,
                  object_type: Optional[pulumi.Input[str]] = None,
+                 pipeline_id: Optional[pulumi.Input[str]] = None,
                  registered_model_id: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
                  repo_path: Optional[pulumi.Input[str]] = None,
@@ -356,6 +369,8 @@ class _PermissionsState:
             pulumi.set(__self__, "notebook_path", notebook_path)
         if object_type is not None:
             pulumi.set(__self__, "object_type", object_type)
+        if pipeline_id is not None:
+            pulumi.set(__self__, "pipeline_id", pipeline_id)
         if registered_model_id is not None:
             pulumi.set(__self__, "registered_model_id", registered_model_id)
         if repo_id is not None:
@@ -510,6 +525,15 @@ class _PermissionsState:
         pulumi.set(self, "object_type", value)
 
     @property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pipeline_id")
+
+    @pipeline_id.setter
+    def pipeline_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pipeline_id", value)
+
+    @property
     @pulumi.getter(name="registeredModelId")
     def registered_model_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "registered_model_id")
@@ -596,6 +620,7 @@ class Permissions(pulumi.CustomResource):
                  notebook_id: Optional[pulumi.Input[str]] = None,
                  notebook_path: Optional[pulumi.Input[str]] = None,
                  object_type: Optional[pulumi.Input[str]] = None,
+                 pipeline_id: Optional[pulumi.Input[str]] = None,
                  registered_model_id: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
                  repo_path: Optional[pulumi.Input[str]] = None,
@@ -670,6 +695,7 @@ class Permissions(pulumi.CustomResource):
                  notebook_id: Optional[pulumi.Input[str]] = None,
                  notebook_path: Optional[pulumi.Input[str]] = None,
                  object_type: Optional[pulumi.Input[str]] = None,
+                 pipeline_id: Optional[pulumi.Input[str]] = None,
                  registered_model_id: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
                  repo_path: Optional[pulumi.Input[str]] = None,
@@ -703,6 +729,7 @@ class Permissions(pulumi.CustomResource):
             __props__.__dict__["notebook_id"] = notebook_id
             __props__.__dict__["notebook_path"] = notebook_path
             __props__.__dict__["object_type"] = object_type
+            __props__.__dict__["pipeline_id"] = pipeline_id
             __props__.__dict__["registered_model_id"] = registered_model_id
             __props__.__dict__["repo_id"] = repo_id
             __props__.__dict__["repo_path"] = repo_path
@@ -732,6 +759,7 @@ class Permissions(pulumi.CustomResource):
             notebook_id: Optional[pulumi.Input[str]] = None,
             notebook_path: Optional[pulumi.Input[str]] = None,
             object_type: Optional[pulumi.Input[str]] = None,
+            pipeline_id: Optional[pulumi.Input[str]] = None,
             registered_model_id: Optional[pulumi.Input[str]] = None,
             repo_id: Optional[pulumi.Input[str]] = None,
             repo_path: Optional[pulumi.Input[str]] = None,
@@ -775,6 +803,7 @@ class Permissions(pulumi.CustomResource):
         __props__.__dict__["notebook_id"] = notebook_id
         __props__.__dict__["notebook_path"] = notebook_path
         __props__.__dict__["object_type"] = object_type
+        __props__.__dict__["pipeline_id"] = pipeline_id
         __props__.__dict__["registered_model_id"] = registered_model_id
         __props__.__dict__["repo_id"] = repo_id
         __props__.__dict__["repo_path"] = repo_path
@@ -873,6 +902,11 @@ class Permissions(pulumi.CustomResource):
         type of permissions.
         """
         return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "pipeline_id")
 
     @property
     @pulumi.getter(name="registeredModelId")

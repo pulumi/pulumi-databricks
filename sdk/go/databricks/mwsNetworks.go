@@ -23,7 +23,7 @@ type MwsNetworks struct {
 	ErrorMessages MwsNetworksErrorMessageArrayOutput `pulumi:"errorMessages"`
 	// (String) id of network to be used for databricksMwsWorkspace resource.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
-	// name under which this network is regisstered
+	// name under which this network is registered
 	NetworkName      pulumi.StringOutput      `pulumi:"networkName"`
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	SubnetIds        pulumi.StringArrayOutput `pulumi:"subnetIds"`
@@ -86,7 +86,7 @@ type mwsNetworksState struct {
 	ErrorMessages []MwsNetworksErrorMessage `pulumi:"errorMessages"`
 	// (String) id of network to be used for databricksMwsWorkspace resource.
 	NetworkId *string `pulumi:"networkId"`
-	// name under which this network is regisstered
+	// name under which this network is registered
 	NetworkName      *string  `pulumi:"networkName"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	SubnetIds        []string `pulumi:"subnetIds"`
@@ -106,7 +106,7 @@ type MwsNetworksState struct {
 	ErrorMessages MwsNetworksErrorMessageArrayInput
 	// (String) id of network to be used for databricksMwsWorkspace resource.
 	NetworkId pulumi.StringPtrInput
-	// name under which this network is regisstered
+	// name under which this network is registered
 	NetworkName      pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
 	SubnetIds        pulumi.StringArrayInput
@@ -130,7 +130,7 @@ type mwsNetworksArgs struct {
 	ErrorMessages []MwsNetworksErrorMessage `pulumi:"errorMessages"`
 	// (String) id of network to be used for databricksMwsWorkspace resource.
 	NetworkId *string `pulumi:"networkId"`
-	// name under which this network is regisstered
+	// name under which this network is registered
 	NetworkName      string   `pulumi:"networkName"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	SubnetIds        []string `pulumi:"subnetIds"`
@@ -151,7 +151,7 @@ type MwsNetworksArgs struct {
 	ErrorMessages MwsNetworksErrorMessageArrayInput
 	// (String) id of network to be used for databricksMwsWorkspace resource.
 	NetworkId pulumi.StringPtrInput
-	// name under which this network is regisstered
+	// name under which this network is registered
 	NetworkName      pulumi.StringInput
 	SecurityGroupIds pulumi.StringArrayInput
 	SubnetIds        pulumi.StringArrayInput
@@ -269,7 +269,7 @@ func (o MwsNetworksOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNetworks) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// name under which this network is regisstered
+// name under which this network is registered
 func (o MwsNetworksOutput) NetworkName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNetworks) pulumi.StringOutput { return v.NetworkName }).(pulumi.StringOutput)
 }

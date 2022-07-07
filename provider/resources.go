@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	databricksProv "github.com/databrickslabs/terraform-provider-databricks/provider"
+	databricksProv "github.com/databricks/terraform-provider-databricks/provider"
 	"github.com/pulumi/pulumi-databricks/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -64,36 +64,16 @@ func Provider() tfbridge.ProviderInfo {
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
 		Repository: "https://github.com/pulumi/pulumi-databricks",
-		GitHubOrg:  "databrickslabs",
+		GitHubOrg:  "databricks",
 		Config:     map[string]*tfbridge.SchemaInfo{},
 		IgnoreMappings: []string{
 			"databricks_group_member", // causes the schema to have no deterministic generation
+			"databricks_aws_s3_mount",
+			"databricks_azure_adls_gen1_mount",
+			"databricks_azure_adls_gen2_mount",
+			"databricks_azure_blob_mount",
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"databricks_aws_s3_mount": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AwsS3Mount"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
-			},
-			"databricks_azure_adls_gen1_mount": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AzureAdlsGen1Mount"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
-			},
-			"databricks_azure_adls_gen2_mount": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AzureAdlsGen2Mount"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
-			},
-			"databricks_azure_blob_mount": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AzureBlobMount"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
-			},
 			"databricks_catalog":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Catalog")},
 			"databricks_cluster":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Cluster")},
 			"databricks_cluster_policy":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ClusterPolicy")},
@@ -110,9 +90,8 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"databricks_group":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
-			"databricks_group_instance_profile": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupInstanceProfile")},
-			//"databricks_group_member":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupMember")},
+			"databricks_group":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
+			"databricks_group_instance_profile":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupInstanceProfile")},
 			"databricks_instance_pool":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstancePool")},
 			"databricks_instance_profile":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstanceProfile")},
 			"databricks_ip_access_list":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IpAccessList")},
@@ -179,6 +158,8 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_user":                    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
 			"databricks_views":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getViews")},
 			"databricks_zones":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZones")},
+			"databricks_service_principal":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getServicePrincipal")},
+			"databricks_service_principals":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getServicePrincipals")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

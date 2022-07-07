@@ -59,7 +59,7 @@ type Catalog struct {
 	MetastoreId pulumi.StringOutput    `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Username/groupname of catalog owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId catalog owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Extensible Catalog properties.
 	Properties pulumi.MapOutput `pulumi:"properties"`
@@ -99,7 +99,7 @@ type catalogState struct {
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
-	// Username/groupname of catalog owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId catalog owner.
 	Owner *string `pulumi:"owner"`
 	// Extensible Catalog properties.
 	Properties map[string]interface{} `pulumi:"properties"`
@@ -111,7 +111,7 @@ type CatalogState struct {
 	MetastoreId pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
-	// Username/groupname of catalog owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId catalog owner.
 	Owner pulumi.StringPtrInput
 	// Extensible Catalog properties.
 	Properties pulumi.MapInput
@@ -127,7 +127,7 @@ type catalogArgs struct {
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
-	// Username/groupname of catalog owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId catalog owner.
 	Owner *string `pulumi:"owner"`
 	// Extensible Catalog properties.
 	Properties map[string]interface{} `pulumi:"properties"`
@@ -140,7 +140,7 @@ type CatalogArgs struct {
 	MetastoreId pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
-	// Username/groupname of catalog owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId catalog owner.
 	Owner pulumi.StringPtrInput
 	// Extensible Catalog properties.
 	Properties pulumi.MapInput
@@ -247,7 +247,7 @@ func (o CatalogOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Username/groupname of catalog owner. Currently this field can only be changed after the resource is created.
+// Username/groupname/sp applicationId catalog owner.
 func (o CatalogOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }

@@ -21,11 +21,11 @@ class RepoArgs:
                  tag: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Repo resource.
-        :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If value changes, repo is re-created.
+        :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If the value changes, repo is re-created.
         :param pulumi.Input[str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
         :param pulumi.Input[str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
         :param pulumi.Input[str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
-        :param pulumi.Input[str] path: path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+        :param pulumi.Input[str] path: path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
         :param pulumi.Input[str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
         """
         pulumi.set(__self__, "url", url)
@@ -44,7 +44,7 @@ class RepoArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        The URL of the Git Repository to clone from. If value changes, repo is re-created.
+        The URL of the Git Repository to clone from. If the value changes, repo is re-created.
         """
         return pulumi.get(self, "url")
 
@@ -92,7 +92,7 @@ class RepoArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+        path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
         """
         return pulumi.get(self, "path")
 
@@ -127,9 +127,9 @@ class _RepoState:
         :param pulumi.Input[str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
         :param pulumi.Input[str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
         :param pulumi.Input[str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
-        :param pulumi.Input[str] path: path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+        :param pulumi.Input[str] path: path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
         :param pulumi.Input[str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
-        :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If value changes, repo is re-created.
+        :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If the value changes, repo is re-created.
         """
         if branch is not None:
             pulumi.set(__self__, "branch", branch)
@@ -184,7 +184,7 @@ class _RepoState:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+        path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
         """
         return pulumi.get(self, "path")
 
@@ -208,7 +208,7 @@ class _RepoState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the Git Repository to clone from. If value changes, repo is re-created.
+        The URL of the Git Repository to clone from. If the value changes, repo is re-created.
         """
         return pulumi.get(self, "url")
 
@@ -243,9 +243,9 @@ class Repo(pulumi.CustomResource):
         :param pulumi.Input[str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
         :param pulumi.Input[str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
         :param pulumi.Input[str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
-        :param pulumi.Input[str] path: path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+        :param pulumi.Input[str] path: path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
         :param pulumi.Input[str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
-        :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If value changes, repo is re-created.
+        :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If the value changes, repo is re-created.
         """
         ...
     @overload
@@ -329,9 +329,9 @@ class Repo(pulumi.CustomResource):
         :param pulumi.Input[str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
         :param pulumi.Input[str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
         :param pulumi.Input[str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
-        :param pulumi.Input[str] path: path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+        :param pulumi.Input[str] path: path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
         :param pulumi.Input[str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
-        :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If value changes, repo is re-created.
+        :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If the value changes, repo is re-created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -373,7 +373,7 @@ class Repo(pulumi.CustomResource):
     @pulumi.getter
     def path(self) -> pulumi.Output[str]:
         """
-        path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+        path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
         """
         return pulumi.get(self, "path")
 
@@ -389,7 +389,7 @@ class Repo(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        The URL of the Git Repository to clone from. If value changes, repo is re-created.
+        The URL of the Git Repository to clone from. If the value changes, repo is re-created.
         """
         return pulumi.get(self, "url")
 

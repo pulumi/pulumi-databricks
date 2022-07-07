@@ -27,11 +27,11 @@ type Repo struct {
 	CommitHash pulumi.StringOutput `pulumi:"commitHash"`
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
 	GitProvider pulumi.StringOutput `pulumi:"gitProvider"`
-	// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+	// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
 	Path pulumi.StringOutput `pulumi:"path"`
 	// name of the tag for initial checkout.  Conflicts with `branch`.
 	Tag pulumi.StringPtrOutput `pulumi:"tag"`
-	// The URL of the Git Repository to clone from. If value changes, repo is re-created.
+	// The URL of the Git Repository to clone from. If the value changes, repo is re-created.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -73,11 +73,11 @@ type repoState struct {
 	CommitHash *string `pulumi:"commitHash"`
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
 	GitProvider *string `pulumi:"gitProvider"`
-	// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+	// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
 	Path *string `pulumi:"path"`
 	// name of the tag for initial checkout.  Conflicts with `branch`.
 	Tag *string `pulumi:"tag"`
-	// The URL of the Git Repository to clone from. If value changes, repo is re-created.
+	// The URL of the Git Repository to clone from. If the value changes, repo is re-created.
 	Url *string `pulumi:"url"`
 }
 
@@ -88,11 +88,11 @@ type RepoState struct {
 	CommitHash pulumi.StringPtrInput
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
 	GitProvider pulumi.StringPtrInput
-	// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+	// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
 	Path pulumi.StringPtrInput
 	// name of the tag for initial checkout.  Conflicts with `branch`.
 	Tag pulumi.StringPtrInput
-	// The URL of the Git Repository to clone from. If value changes, repo is re-created.
+	// The URL of the Git Repository to clone from. If the value changes, repo is re-created.
 	Url pulumi.StringPtrInput
 }
 
@@ -107,11 +107,11 @@ type repoArgs struct {
 	CommitHash *string `pulumi:"commitHash"`
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
 	GitProvider *string `pulumi:"gitProvider"`
-	// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+	// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
 	Path *string `pulumi:"path"`
 	// name of the tag for initial checkout.  Conflicts with `branch`.
 	Tag *string `pulumi:"tag"`
-	// The URL of the Git Repository to clone from. If value changes, repo is re-created.
+	// The URL of the Git Repository to clone from. If the value changes, repo is re-created.
 	Url string `pulumi:"url"`
 }
 
@@ -123,11 +123,11 @@ type RepoArgs struct {
 	CommitHash pulumi.StringPtrInput
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.
 	GitProvider pulumi.StringPtrInput
-	// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+	// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
 	Path pulumi.StringPtrInput
 	// name of the tag for initial checkout.  Conflicts with `branch`.
 	Tag pulumi.StringPtrInput
-	// The URL of the Git Repository to clone from. If value changes, repo is re-created.
+	// The URL of the Git Repository to clone from. If the value changes, repo is re-created.
 	Url pulumi.StringInput
 }
 
@@ -233,7 +233,7 @@ func (o RepoOutput) GitProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.GitProvider }).(pulumi.StringOutput)
 }
 
-// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+// path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
 func (o RepoOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
@@ -243,7 +243,7 @@ func (o RepoOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringPtrOutput { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
-// The URL of the Git Repository to clone from. If value changes, repo is re-created.
+// The URL of the Git Repository to clone from. If the value changes, repo is re-created.
 func (o RepoOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

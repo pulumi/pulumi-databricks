@@ -82,7 +82,7 @@ export class MlflowWebhook extends pulumi.CustomResource {
     public readonly httpUrlSpec!: pulumi.Output<outputs.MlflowWebhookHttpUrlSpec | undefined>;
     public readonly jobSpec!: pulumi.Output<outputs.MlflowWebhookJobSpec | undefined>;
     /**
-     * Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+     * Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
      */
     public readonly modelName!: pulumi.Output<string | undefined>;
     /**
@@ -141,7 +141,7 @@ export interface MlflowWebhookState {
     httpUrlSpec?: pulumi.Input<inputs.MlflowWebhookHttpUrlSpec>;
     jobSpec?: pulumi.Input<inputs.MlflowWebhookJobSpec>;
     /**
-     * Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+     * Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
      */
     modelName?: pulumi.Input<string>;
     /**
@@ -165,7 +165,7 @@ export interface MlflowWebhookArgs {
     httpUrlSpec?: pulumi.Input<inputs.MlflowWebhookHttpUrlSpec>;
     jobSpec?: pulumi.Input<inputs.MlflowWebhookJobSpec>;
     /**
-     * Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+     * Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
      */
     modelName?: pulumi.Input<string>;
     /**

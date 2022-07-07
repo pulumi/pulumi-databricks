@@ -18,7 +18,7 @@ class OboTokenArgs:
                  lifetime_seconds: pulumi.Input[int]):
         """
         The set of arguments for constructing a OboToken resource.
-        :param pulumi.Input[str] application_id: Application ID of ServicePrincipal to create PAT token for.
+        :param pulumi.Input[str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[str] comment: Comment that describes the purpose of the token.
         :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires.
         """
@@ -30,7 +30,7 @@ class OboTokenArgs:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Input[str]:
         """
-        Application ID of ServicePrincipal to create PAT token for.
+        Application ID of ServicePrincipal to create a PAT token for.
         """
         return pulumi.get(self, "application_id")
 
@@ -72,7 +72,7 @@ class _OboTokenState:
                  token_value: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OboToken resources.
-        :param pulumi.Input[str] application_id: Application ID of ServicePrincipal to create PAT token for.
+        :param pulumi.Input[str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[str] comment: Comment that describes the purpose of the token.
         :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires.
         :param pulumi.Input[str] token_value: **Sensitive** value of the newly-created token.
@@ -90,7 +90,7 @@ class _OboTokenState:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Application ID of ServicePrincipal to create PAT token for.
+        Application ID of ServicePrincipal to create a PAT token for.
         """
         return pulumi.get(self, "application_id")
 
@@ -164,7 +164,7 @@ class OboToken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: Application ID of ServicePrincipal to create PAT token for.
+        :param pulumi.Input[str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[str] comment: Comment that describes the purpose of the token.
         :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires.
         """
@@ -253,7 +253,7 @@ class OboToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: Application ID of ServicePrincipal to create PAT token for.
+        :param pulumi.Input[str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[str] comment: Comment that describes the purpose of the token.
         :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires.
         :param pulumi.Input[str] token_value: **Sensitive** value of the newly-created token.
@@ -272,7 +272,7 @@ class OboToken(pulumi.CustomResource):
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[str]:
         """
-        Application ID of ServicePrincipal to create PAT token for.
+        Application ID of ServicePrincipal to create a PAT token for.
         """
         return pulumi.get(self, "application_id")
 

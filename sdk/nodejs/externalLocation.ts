@@ -61,7 +61,7 @@ export class ExternalLocation extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Username/groupname of External Location owner. Currently this field can only be changed after the resource is created.
+     * Username/groupname/sp applicationId External Location owner.
      */
     public readonly owner!: pulumi.Output<string>;
     /**
@@ -132,7 +132,7 @@ export interface ExternalLocationState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname of External Location owner. Currently this field can only be changed after the resource is created.
+     * Username/groupname/sp applicationId External Location owner.
      */
     owner?: pulumi.Input<string>;
     /**
@@ -163,7 +163,7 @@ export interface ExternalLocationArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname of External Location owner. Currently this field can only be changed after the resource is created.
+     * Username/groupname/sp applicationId External Location owner.
      */
     owner?: pulumi.Input<string>;
     /**

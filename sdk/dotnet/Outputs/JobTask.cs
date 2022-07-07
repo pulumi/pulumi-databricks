@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTask
     {
+        public readonly Outputs.JobTaskDbtTask? DbtTask;
         public readonly ImmutableArray<Outputs.JobTaskDependsOn> DependsOns;
         public readonly string? Description;
         /// <summary>
@@ -53,6 +54,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.JobTaskSparkJarTask? SparkJarTask;
         public readonly Outputs.JobTaskSparkPythonTask? SparkPythonTask;
         public readonly Outputs.JobTaskSparkSubmitTask? SparkSubmitTask;
+        public readonly Outputs.JobTaskSqlTask? SqlTask;
         public readonly string? TaskKey;
         /// <summary>
         /// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -61,6 +63,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobTask(
+            Outputs.JobTaskDbtTask? dbtTask,
+
             ImmutableArray<Outputs.JobTaskDependsOn> dependsOns,
 
             string? description,
@@ -93,10 +97,13 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskSparkSubmitTask? sparkSubmitTask,
 
+            Outputs.JobTaskSqlTask? sqlTask,
+
             string? taskKey,
 
             int? timeoutSeconds)
         {
+            DbtTask = dbtTask;
             DependsOns = dependsOns;
             Description = description;
             EmailNotifications = emailNotifications;
@@ -113,6 +120,7 @@ namespace Pulumi.Databricks.Outputs
             SparkJarTask = sparkJarTask;
             SparkPythonTask = sparkPythonTask;
             SparkSubmitTask = sparkSubmitTask;
+            SqlTask = sqlTask;
             TaskKey = taskKey;
             TimeoutSeconds = timeoutSeconds;
         }

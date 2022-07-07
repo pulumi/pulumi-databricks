@@ -13,15 +13,19 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineClusterAwsAttributes
     {
+        public readonly int? FirstOnDemand;
         public readonly string? InstanceProfileArn;
         public readonly string? ZoneId;
 
         [OutputConstructor]
         private PipelineClusterAwsAttributes(
+            int? firstOnDemand,
+
             string? instanceProfileArn,
 
             string? zoneId)
         {
+            FirstOnDemand = firstOnDemand;
             InstanceProfileArn = instanceProfileArn;
             ZoneId = zoneId;
         }

@@ -200,6 +200,9 @@ namespace Pulumi.Databricks
         [Input("supportPortForwarding")]
         public bool? SupportPortForwarding { get; set; }
 
+        [Input("vcpu")]
+        public bool? Vcpu { get; set; }
+
         public GetNodeTypeArgs()
         {
         }
@@ -280,6 +283,9 @@ namespace Pulumi.Databricks
         [Input("supportPortForwarding")]
         public Input<bool>? SupportPortForwarding { get; set; }
 
+        [Input("vcpu")]
+        public Input<bool>? Vcpu { get; set; }
+
         public GetNodeTypeInvokeArgs()
         {
         }
@@ -304,6 +310,7 @@ namespace Pulumi.Databricks
         public readonly bool? PhotonDriverCapable;
         public readonly bool? PhotonWorkerCapable;
         public readonly bool? SupportPortForwarding;
+        public readonly bool? Vcpu;
 
         [OutputConstructor]
         private GetNodeTypeResult(
@@ -329,7 +336,9 @@ namespace Pulumi.Databricks
 
             bool? photonWorkerCapable,
 
-            bool? supportPortForwarding)
+            bool? supportPortForwarding,
+
+            bool? vcpu)
         {
             Category = category;
             GbPerCore = gbPerCore;
@@ -343,6 +352,7 @@ namespace Pulumi.Databricks
             PhotonDriverCapable = photonDriverCapable;
             PhotonWorkerCapable = photonWorkerCapable;
             SupportPortForwarding = supportPortForwarding;
+            Vcpu = vcpu;
         }
     }
 }

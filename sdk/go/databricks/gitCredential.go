@@ -26,8 +26,7 @@ type GitCredential struct {
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider pulumi.StringOutput `pulumi:"gitProvider"`
 	// user name at Git provider.
-	GitUsername pulumi.StringOutput `pulumi:"gitUsername"`
-	// The personal access token used to authenticate to the corresponding Git provider.
+	GitUsername         pulumi.StringOutput `pulumi:"gitUsername"`
 	PersonalAccessToken pulumi.StringOutput `pulumi:"personalAccessToken"`
 }
 
@@ -74,8 +73,7 @@ type gitCredentialState struct {
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider *string `pulumi:"gitProvider"`
 	// user name at Git provider.
-	GitUsername *string `pulumi:"gitUsername"`
-	// The personal access token used to authenticate to the corresponding Git provider.
+	GitUsername         *string `pulumi:"gitUsername"`
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
 }
 
@@ -85,8 +83,7 @@ type GitCredentialState struct {
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider pulumi.StringPtrInput
 	// user name at Git provider.
-	GitUsername pulumi.StringPtrInput
-	// The personal access token used to authenticate to the corresponding Git provider.
+	GitUsername         pulumi.StringPtrInput
 	PersonalAccessToken pulumi.StringPtrInput
 }
 
@@ -100,8 +97,7 @@ type gitCredentialArgs struct {
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider string `pulumi:"gitProvider"`
 	// user name at Git provider.
-	GitUsername string `pulumi:"gitUsername"`
-	// The personal access token used to authenticate to the corresponding Git provider.
+	GitUsername         string `pulumi:"gitUsername"`
 	PersonalAccessToken string `pulumi:"personalAccessToken"`
 }
 
@@ -112,8 +108,7 @@ type GitCredentialArgs struct {
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider pulumi.StringInput
 	// user name at Git provider.
-	GitUsername pulumi.StringInput
-	// The personal access token used to authenticate to the corresponding Git provider.
+	GitUsername         pulumi.StringInput
 	PersonalAccessToken pulumi.StringInput
 }
 
@@ -219,7 +214,6 @@ func (o GitCredentialOutput) GitUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringOutput { return v.GitUsername }).(pulumi.StringOutput)
 }
 
-// The personal access token used to authenticate to the corresponding Git provider.
 func (o GitCredentialOutput) PersonalAccessToken() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringOutput { return v.PersonalAccessToken }).(pulumi.StringOutput)
 }

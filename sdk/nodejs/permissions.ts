@@ -84,6 +84,7 @@ export class Permissions extends pulumi.CustomResource {
      * type of permissions.
      */
     public readonly objectType!: pulumi.Output<string>;
+    public readonly pipelineId!: pulumi.Output<string | undefined>;
     public readonly registeredModelId!: pulumi.Output<string | undefined>;
     /**
      * repo id
@@ -123,6 +124,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["notebookId"] = state ? state.notebookId : undefined;
             resourceInputs["notebookPath"] = state ? state.notebookPath : undefined;
             resourceInputs["objectType"] = state ? state.objectType : undefined;
+            resourceInputs["pipelineId"] = state ? state.pipelineId : undefined;
             resourceInputs["registeredModelId"] = state ? state.registeredModelId : undefined;
             resourceInputs["repoId"] = state ? state.repoId : undefined;
             resourceInputs["repoPath"] = state ? state.repoPath : undefined;
@@ -147,6 +149,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["notebookId"] = args ? args.notebookId : undefined;
             resourceInputs["notebookPath"] = args ? args.notebookPath : undefined;
             resourceInputs["objectType"] = args ? args.objectType : undefined;
+            resourceInputs["pipelineId"] = args ? args.pipelineId : undefined;
             resourceInputs["registeredModelId"] = args ? args.registeredModelId : undefined;
             resourceInputs["repoId"] = args ? args.repoId : undefined;
             resourceInputs["repoPath"] = args ? args.repoPath : undefined;
@@ -206,6 +209,7 @@ export interface PermissionsState {
      * type of permissions.
      */
     objectType?: pulumi.Input<string>;
+    pipelineId?: pulumi.Input<string>;
     registeredModelId?: pulumi.Input<string>;
     /**
      * repo id
@@ -267,6 +271,7 @@ export interface PermissionsArgs {
      * type of permissions.
      */
     objectType?: pulumi.Input<string>;
+    pipelineId?: pulumi.Input<string>;
     registeredModelId?: pulumi.Input<string>;
     /**
      * repo id

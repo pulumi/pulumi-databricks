@@ -104,6 +104,7 @@ type GetNodeTypeArgs struct {
 	PhotonWorkerCapable *bool `pulumi:"photonWorkerCapable"`
 	// Pick only nodes that support port forwarding. Defaults to *false*.
 	SupportPortForwarding *bool `pulumi:"supportPortForwarding"`
+	Vcpu                  *bool `pulumi:"vcpu"`
 }
 
 // A collection of values returned by getNodeType.
@@ -121,6 +122,7 @@ type GetNodeTypeResult struct {
 	PhotonDriverCapable   *bool  `pulumi:"photonDriverCapable"`
 	PhotonWorkerCapable   *bool  `pulumi:"photonWorkerCapable"`
 	SupportPortForwarding *bool  `pulumi:"supportPortForwarding"`
+	Vcpu                  *bool  `pulumi:"vcpu"`
 }
 
 func GetNodeTypeOutput(ctx *pulumi.Context, args GetNodeTypeOutputArgs, opts ...pulumi.InvokeOption) GetNodeTypeResultOutput {
@@ -167,6 +169,7 @@ type GetNodeTypeOutputArgs struct {
 	PhotonWorkerCapable pulumi.BoolPtrInput `pulumi:"photonWorkerCapable"`
 	// Pick only nodes that support port forwarding. Defaults to *false*.
 	SupportPortForwarding pulumi.BoolPtrInput `pulumi:"supportPortForwarding"`
+	Vcpu                  pulumi.BoolPtrInput `pulumi:"vcpu"`
 }
 
 func (GetNodeTypeOutputArgs) ElementType() reflect.Type {
@@ -235,6 +238,10 @@ func (o GetNodeTypeResultOutput) PhotonWorkerCapable() pulumi.BoolPtrOutput {
 
 func (o GetNodeTypeResultOutput) SupportPortForwarding() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetNodeTypeResult) *bool { return v.SupportPortForwarding }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetNodeTypeResultOutput) Vcpu() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetNodeTypeResult) *bool { return v.Vcpu }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

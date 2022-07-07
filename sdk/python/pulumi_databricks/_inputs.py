@@ -80,6 +80,7 @@ __all__ = [
     'JobSparkPythonTaskArgs',
     'JobSparkSubmitTaskArgs',
     'JobTaskArgs',
+    'JobTaskDbtTaskArgs',
     'JobTaskDependsOnArgs',
     'JobTaskEmailNotificationsArgs',
     'JobTaskLibraryArgs',
@@ -107,10 +108,15 @@ __all__ = [
     'JobTaskSparkJarTaskArgs',
     'JobTaskSparkPythonTaskArgs',
     'JobTaskSparkSubmitTaskArgs',
+    'JobTaskSqlTaskArgs',
+    'JobTaskSqlTaskAlertArgs',
+    'JobTaskSqlTaskDashboardArgs',
+    'JobTaskSqlTaskQueryArgs',
     'LibraryCranArgs',
     'LibraryMavenArgs',
     'LibraryPypiArgs',
     'MetastoreDataAccessAwsIamRoleArgs',
+    'MetastoreDataAccessAzureManagedIdentityArgs',
     'MetastoreDataAccessAzureServicePrincipalArgs',
     'MlflowModelTagArgs',
     'MlflowWebhookHttpUrlSpecArgs',
@@ -137,6 +143,7 @@ __all__ = [
     'PipelineClusterClusterLogConfArgs',
     'PipelineClusterClusterLogConfDbfsArgs',
     'PipelineClusterClusterLogConfS3Args',
+    'PipelineClusterGcpAttributesArgs',
     'PipelineClusterInitScriptArgs',
     'PipelineClusterInitScriptDbfsArgs',
     'PipelineClusterInitScriptFileArgs',
@@ -172,6 +179,7 @@ __all__ = [
     'SqlWidgetParameterArgs',
     'SqlWidgetPositionArgs',
     'StorageCredentialAwsIamRoleArgs',
+    'StorageCredentialAzureManagedIdentityArgs',
     'StorageCredentialAzureServicePrincipalArgs',
     'TableColumnArgs',
 ]
@@ -1000,7 +1008,7 @@ class InstancePoolAwsAttributesArgs:
         """
         :param pulumi.Input[str] availability: Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
         :param pulumi.Input[int] spot_bid_price_percent: (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
-        :param pulumi.Input[str] zone_id: (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of a form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+        :param pulumi.Input[str] zone_id: (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
         """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
@@ -1037,7 +1045,7 @@ class InstancePoolAwsAttributesArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of a form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+        (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
         """
         return pulumi.get(self, "zone_id")
 
@@ -1053,7 +1061,7 @@ class InstancePoolAzureAttributesArgs:
                  spot_bid_max_price: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[str] availability: Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-        :param pulumi.Input[float] spot_bid_max_price: The max price for Azure spot instances.  Use `-1` to specify lowest price.
+        :param pulumi.Input[float] spot_bid_max_price: The max price for Azure spot instances.  Use `-1` to specify the lowest price.
         """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
@@ -1076,7 +1084,7 @@ class InstancePoolAzureAttributesArgs:
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[pulumi.Input[float]]:
         """
-        The max price for Azure spot instances.  Use `-1` to specify lowest price.
+        The max price for Azure spot instances.  Use `-1` to specify the lowest price.
         """
         return pulumi.get(self, "spot_bid_max_price")
 
@@ -3797,6 +3805,7 @@ class JobSparkSubmitTaskArgs:
 @pulumi.input_type
 class JobTaskArgs:
     def __init__(__self__, *,
+                 dbt_task: Optional[pulumi.Input['JobTaskDbtTaskArgs']] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskDependsOnArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  email_notifications: Optional[pulumi.Input['JobTaskEmailNotificationsArgs']] = None,
@@ -3813,6 +3822,7 @@ class JobTaskArgs:
                  spark_jar_task: Optional[pulumi.Input['JobTaskSparkJarTaskArgs']] = None,
                  spark_python_task: Optional[pulumi.Input['JobTaskSparkPythonTaskArgs']] = None,
                  spark_submit_task: Optional[pulumi.Input['JobTaskSparkSubmitTaskArgs']] = None,
+                 sql_task: Optional[pulumi.Input['JobTaskSqlTaskArgs']] = None,
                  task_key: Optional[pulumi.Input[str]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None):
         """
@@ -3826,6 +3836,8 @@ class JobTaskArgs:
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         """
+        if dbt_task is not None:
+            pulumi.set(__self__, "dbt_task", dbt_task)
         if depends_ons is not None:
             pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
@@ -3858,10 +3870,21 @@ class JobTaskArgs:
             pulumi.set(__self__, "spark_python_task", spark_python_task)
         if spark_submit_task is not None:
             pulumi.set(__self__, "spark_submit_task", spark_submit_task)
+        if sql_task is not None:
+            pulumi.set(__self__, "sql_task", sql_task)
         if task_key is not None:
             pulumi.set(__self__, "task_key", task_key)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="dbtTask")
+    def dbt_task(self) -> Optional[pulumi.Input['JobTaskDbtTaskArgs']]:
+        return pulumi.get(self, "dbt_task")
+
+    @dbt_task.setter
+    def dbt_task(self, value: Optional[pulumi.Input['JobTaskDbtTaskArgs']]):
+        pulumi.set(self, "dbt_task", value)
 
     @property
     @pulumi.getter(name="dependsOns")
@@ -4032,6 +4055,15 @@ class JobTaskArgs:
         pulumi.set(self, "spark_submit_task", value)
 
     @property
+    @pulumi.getter(name="sqlTask")
+    def sql_task(self) -> Optional[pulumi.Input['JobTaskSqlTaskArgs']]:
+        return pulumi.get(self, "sql_task")
+
+    @sql_task.setter
+    def sql_task(self, value: Optional[pulumi.Input['JobTaskSqlTaskArgs']]):
+        pulumi.set(self, "sql_task", value)
+
+    @property
     @pulumi.getter(name="taskKey")
     def task_key(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "task_key")
@@ -4051,6 +4083,46 @@ class JobTaskArgs:
     @timeout_seconds.setter
     def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout_seconds", value)
+
+
+@pulumi.input_type
+class JobTaskDbtTaskArgs:
+    def __init__(__self__, *,
+                 commands: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 project_directory: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "commands", commands)
+        if project_directory is not None:
+            pulumi.set(__self__, "project_directory", project_directory)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "commands", value)
+
+    @property
+    @pulumi.getter(name="projectDirectory")
+    def project_directory(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project_directory")
+
+    @project_directory.setter
+    def project_directory(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_directory", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
 
 
 @pulumi.input_type
@@ -5507,6 +5579,125 @@ class JobTaskSparkSubmitTaskArgs:
 
 
 @pulumi.input_type
+class JobTaskSqlTaskArgs:
+    def __init__(__self__, *,
+                 alert: Optional[pulumi.Input['JobTaskSqlTaskAlertArgs']] = None,
+                 dashboard: Optional[pulumi.Input['JobTaskSqlTaskDashboardArgs']] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 query: Optional[pulumi.Input['JobTaskSqlTaskQueryArgs']] = None,
+                 warehouse_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, Any]] parameters: Parameters for the task
+        """
+        if alert is not None:
+            pulumi.set(__self__, "alert", alert)
+        if dashboard is not None:
+            pulumi.set(__self__, "dashboard", dashboard)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter
+    def alert(self) -> Optional[pulumi.Input['JobTaskSqlTaskAlertArgs']]:
+        return pulumi.get(self, "alert")
+
+    @alert.setter
+    def alert(self, value: Optional[pulumi.Input['JobTaskSqlTaskAlertArgs']]):
+        pulumi.set(self, "alert", value)
+
+    @property
+    @pulumi.getter
+    def dashboard(self) -> Optional[pulumi.Input['JobTaskSqlTaskDashboardArgs']]:
+        return pulumi.get(self, "dashboard")
+
+    @dashboard.setter
+    def dashboard(self, value: Optional[pulumi.Input['JobTaskSqlTaskDashboardArgs']]):
+        pulumi.set(self, "dashboard", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Parameters for the task
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def query(self) -> Optional[pulumi.Input['JobTaskSqlTaskQueryArgs']]:
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: Optional[pulumi.Input['JobTaskSqlTaskQueryArgs']]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "warehouse_id")
+
+    @warehouse_id.setter
+    def warehouse_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warehouse_id", value)
+
+
+@pulumi.input_type
+class JobTaskSqlTaskAlertArgs:
+    def __init__(__self__, *,
+                 alert_id: pulumi.Input[str]):
+        pulumi.set(__self__, "alert_id", alert_id)
+
+    @property
+    @pulumi.getter(name="alertId")
+    def alert_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "alert_id")
+
+    @alert_id.setter
+    def alert_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "alert_id", value)
+
+
+@pulumi.input_type
+class JobTaskSqlTaskDashboardArgs:
+    def __init__(__self__, *,
+                 dashboard_id: pulumi.Input[str]):
+        pulumi.set(__self__, "dashboard_id", dashboard_id)
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dashboard_id")
+
+    @dashboard_id.setter
+    def dashboard_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dashboard_id", value)
+
+
+@pulumi.input_type
+class JobTaskSqlTaskQueryArgs:
+    def __init__(__self__, *,
+                 query_id: pulumi.Input[str]):
+        pulumi.set(__self__, "query_id", query_id)
+
+    @property
+    @pulumi.getter(name="queryId")
+    def query_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "query_id")
+
+    @query_id.setter
+    def query_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query_id", value)
+
+
+@pulumi.input_type
 class LibraryCranArgs:
     def __init__(__self__, *,
                  package: pulumi.Input[str],
@@ -5622,6 +5813,28 @@ class MetastoreDataAccessAwsIamRoleArgs:
     @role_arn.setter
     def role_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "role_arn", value)
+
+
+@pulumi.input_type
+class MetastoreDataAccessAzureManagedIdentityArgs:
+    def __init__(__self__, *,
+                 access_connector_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] access_connector_id: The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+        """
+        pulumi.set(__self__, "access_connector_id", access_connector_id)
+
+    @property
+    @pulumi.getter(name="accessConnectorId")
+    def access_connector_id(self) -> pulumi.Input[str]:
+        """
+        The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+        """
+        return pulumi.get(self, "access_connector_id")
+
+    @access_connector_id.setter
+    def access_connector_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_connector_id", value)
 
 
 @pulumi.input_type
@@ -6318,9 +6531,13 @@ class MwsWorkspacesExternalCustomerInfoArgs:
 class MwsWorkspacesNetworkArgs:
     def __init__(__self__, *,
                  gcp_common_network_config: pulumi.Input['MwsWorkspacesNetworkGcpCommonNetworkConfigArgs'],
-                 gcp_managed_network_config: pulumi.Input['MwsWorkspacesNetworkGcpManagedNetworkConfigArgs']):
+                 gcp_managed_network_config: Optional[pulumi.Input['MwsWorkspacesNetworkGcpManagedNetworkConfigArgs']] = None,
+                 network_id: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "gcp_common_network_config", gcp_common_network_config)
-        pulumi.set(__self__, "gcp_managed_network_config", gcp_managed_network_config)
+        if gcp_managed_network_config is not None:
+            pulumi.set(__self__, "gcp_managed_network_config", gcp_managed_network_config)
+        if network_id is not None:
+            pulumi.set(__self__, "network_id", network_id)
 
     @property
     @pulumi.getter(name="gcpCommonNetworkConfig")
@@ -6333,12 +6550,21 @@ class MwsWorkspacesNetworkArgs:
 
     @property
     @pulumi.getter(name="gcpManagedNetworkConfig")
-    def gcp_managed_network_config(self) -> pulumi.Input['MwsWorkspacesNetworkGcpManagedNetworkConfigArgs']:
+    def gcp_managed_network_config(self) -> Optional[pulumi.Input['MwsWorkspacesNetworkGcpManagedNetworkConfigArgs']]:
         return pulumi.get(self, "gcp_managed_network_config")
 
     @gcp_managed_network_config.setter
-    def gcp_managed_network_config(self, value: pulumi.Input['MwsWorkspacesNetworkGcpManagedNetworkConfigArgs']):
+    def gcp_managed_network_config(self, value: Optional[pulumi.Input['MwsWorkspacesNetworkGcpManagedNetworkConfigArgs']]):
         pulumi.set(self, "gcp_managed_network_config", value)
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_id")
+
+    @network_id.setter
+    def network_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_id", value)
 
 
 @pulumi.input_type
@@ -6468,8 +6694,9 @@ class PermissionsAccessControlArgs:
                  user_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] permission_level: permission level according to specific resource. See examples above for the reference.
-        :param pulumi.Input[str] group_name: name of the group, which should be used if the user name is not used. We recommend setting permissions on groups.
-        :param pulumi.Input[str] user_name: name of the user, which should be used if group name is not used
+        :param pulumi.Input[str] group_name: name of the group. We recommend setting permissions on groups.
+        :param pulumi.Input[str] service_principal_name: Application ID of the service_principal.
+        :param pulumi.Input[str] user_name: name of the user.
         """
         pulumi.set(__self__, "permission_level", permission_level)
         if group_name is not None:
@@ -6495,7 +6722,7 @@ class PermissionsAccessControlArgs:
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the group, which should be used if the user name is not used. We recommend setting permissions on groups.
+        name of the group. We recommend setting permissions on groups.
         """
         return pulumi.get(self, "group_name")
 
@@ -6506,6 +6733,9 @@ class PermissionsAccessControlArgs:
     @property
     @pulumi.getter(name="servicePrincipalName")
     def service_principal_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Application ID of the service_principal.
+        """
         return pulumi.get(self, "service_principal_name")
 
     @service_principal_name.setter
@@ -6516,7 +6746,7 @@ class PermissionsAccessControlArgs:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the user, which should be used if group name is not used
+        name of the user.
         """
         return pulumi.get(self, "user_name")
 
@@ -6532,7 +6762,9 @@ class PipelineClusterArgs:
                  aws_attributes: Optional[pulumi.Input['PipelineClusterAwsAttributesArgs']] = None,
                  cluster_log_conf: Optional[pulumi.Input['PipelineClusterClusterLogConfArgs']] = None,
                  custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
                  driver_node_type_id: Optional[pulumi.Input[str]] = None,
+                 gcp_attributes: Optional[pulumi.Input['PipelineClusterGcpAttributesArgs']] = None,
                  init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterInitScriptArgs']]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
@@ -6549,8 +6781,12 @@ class PipelineClusterArgs:
             pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
         if custom_tags is not None:
             pulumi.set(__self__, "custom_tags", custom_tags)
+        if driver_instance_pool_id is not None:
+            pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
+        if gcp_attributes is not None:
+            pulumi.set(__self__, "gcp_attributes", gcp_attributes)
         if init_scripts is not None:
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
@@ -6605,6 +6841,15 @@ class PipelineClusterArgs:
         pulumi.set(self, "custom_tags", value)
 
     @property
+    @pulumi.getter(name="driverInstancePoolId")
+    def driver_instance_pool_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "driver_instance_pool_id")
+
+    @driver_instance_pool_id.setter
+    def driver_instance_pool_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "driver_instance_pool_id", value)
+
+    @property
     @pulumi.getter(name="driverNodeTypeId")
     def driver_node_type_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "driver_node_type_id")
@@ -6612,6 +6857,15 @@ class PipelineClusterArgs:
     @driver_node_type_id.setter
     def driver_node_type_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "driver_node_type_id", value)
+
+    @property
+    @pulumi.getter(name="gcpAttributes")
+    def gcp_attributes(self) -> Optional[pulumi.Input['PipelineClusterGcpAttributesArgs']]:
+        return pulumi.get(self, "gcp_attributes")
+
+    @gcp_attributes.setter
+    def gcp_attributes(self, value: Optional[pulumi.Input['PipelineClusterGcpAttributesArgs']]):
+        pulumi.set(self, "gcp_attributes", value)
 
     @property
     @pulumi.getter(name="initScripts")
@@ -6718,12 +6972,24 @@ class PipelineClusterAutoscaleArgs:
 @pulumi.input_type
 class PipelineClusterAwsAttributesArgs:
     def __init__(__self__, *,
+                 first_on_demand: Optional[pulumi.Input[int]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
+        if first_on_demand is not None:
+            pulumi.set(__self__, "first_on_demand", first_on_demand)
         if instance_profile_arn is not None:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="firstOnDemand")
+    def first_on_demand(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "first_on_demand")
+
+    @first_on_demand.setter
+    def first_on_demand(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "first_on_demand", value)
 
     @property
     @pulumi.getter(name="instanceProfileArn")
@@ -6875,6 +7141,23 @@ class PipelineClusterClusterLogConfS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class PipelineClusterGcpAttributesArgs:
+    def __init__(__self__, *,
+                 google_service_account: Optional[pulumi.Input[str]] = None):
+        if google_service_account is not None:
+            pulumi.set(__self__, "google_service_account", google_service_account)
+
+    @property
+    @pulumi.getter(name="googleServiceAccount")
+    def google_service_account(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "google_service_account")
+
+    @google_service_account.setter
+    def google_service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "google_service_account", value)
 
 
 @pulumi.input_type
@@ -8170,6 +8453,28 @@ class StorageCredentialAwsIamRoleArgs:
     @role_arn.setter
     def role_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "role_arn", value)
+
+
+@pulumi.input_type
+class StorageCredentialAzureManagedIdentityArgs:
+    def __init__(__self__, *,
+                 access_connector_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] access_connector_id: The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+        """
+        pulumi.set(__self__, "access_connector_id", access_connector_id)
+
+    @property
+    @pulumi.getter(name="accessConnectorId")
+    def access_connector_id(self) -> pulumi.Input[str]:
+        """
+        The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+        """
+        return pulumi.get(self, "access_connector_id")
+
+    @access_connector_id.setter
+    def access_connector_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_connector_id", value)
 
 
 @pulumi.input_type

@@ -2974,7 +2974,7 @@ type InstancePoolAwsAttributes struct {
 	Availability *string `pulumi:"availability"`
 	// (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
 	SpotBidPricePercent *int `pulumi:"spotBidPricePercent"`
-	// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of a form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+	// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -2994,7 +2994,7 @@ type InstancePoolAwsAttributesArgs struct {
 	Availability pulumi.StringPtrInput `pulumi:"availability"`
 	// (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
 	SpotBidPricePercent pulumi.IntPtrInput `pulumi:"spotBidPricePercent"`
-	// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of a form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+	// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -3085,7 +3085,7 @@ func (o InstancePoolAwsAttributesOutput) SpotBidPricePercent() pulumi.IntPtrOutp
 	return o.ApplyT(func(v InstancePoolAwsAttributes) *int { return v.SpotBidPricePercent }).(pulumi.IntPtrOutput)
 }
 
-// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of a form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
 func (o InstancePoolAwsAttributesOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePoolAwsAttributes) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
@@ -3134,7 +3134,7 @@ func (o InstancePoolAwsAttributesPtrOutput) SpotBidPricePercent() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of a form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
 func (o InstancePoolAwsAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePoolAwsAttributes) *string {
 		if v == nil {
@@ -3147,7 +3147,7 @@ func (o InstancePoolAwsAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 type InstancePoolAzureAttributes struct {
 	// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
 	Availability *string `pulumi:"availability"`
-	// The max price for Azure spot instances.  Use `-1` to specify lowest price.
+	// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 	SpotBidMaxPrice *float64 `pulumi:"spotBidMaxPrice"`
 }
 
@@ -3165,7 +3165,7 @@ type InstancePoolAzureAttributesInput interface {
 type InstancePoolAzureAttributesArgs struct {
 	// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
 	Availability pulumi.StringPtrInput `pulumi:"availability"`
-	// The max price for Azure spot instances.  Use `-1` to specify lowest price.
+	// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 	SpotBidMaxPrice pulumi.Float64PtrInput `pulumi:"spotBidMaxPrice"`
 }
 
@@ -3251,7 +3251,7 @@ func (o InstancePoolAzureAttributesOutput) Availability() pulumi.StringPtrOutput
 	return o.ApplyT(func(v InstancePoolAzureAttributes) *string { return v.Availability }).(pulumi.StringPtrOutput)
 }
 
-// The max price for Azure spot instances.  Use `-1` to specify lowest price.
+// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 func (o InstancePoolAzureAttributesOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v InstancePoolAzureAttributes) *float64 { return v.SpotBidMaxPrice }).(pulumi.Float64PtrOutput)
 }
@@ -3290,7 +3290,7 @@ func (o InstancePoolAzureAttributesPtrOutput) Availability() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The max price for Azure spot instances.  Use `-1` to specify lowest price.
+// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 func (o InstancePoolAzureAttributesPtrOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *InstancePoolAzureAttributes) *float64 {
 		if v == nil {
@@ -11824,6 +11824,7 @@ func (o JobSparkSubmitTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 }
 
 type JobTask struct {
+	DbtTask     *JobTaskDbtTask    `pulumi:"dbtTask"`
 	DependsOns  []JobTaskDependsOn `pulumi:"dependsOns"`
 	Description *string            `pulumi:"description"`
 	// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -11848,6 +11849,7 @@ type JobTask struct {
 	SparkJarTask    *JobTaskSparkJarTask    `pulumi:"sparkJarTask"`
 	SparkPythonTask *JobTaskSparkPythonTask `pulumi:"sparkPythonTask"`
 	SparkSubmitTask *JobTaskSparkSubmitTask `pulumi:"sparkSubmitTask"`
+	SqlTask         *JobTaskSqlTask         `pulumi:"sqlTask"`
 	TaskKey         *string                 `pulumi:"taskKey"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
@@ -11865,6 +11867,7 @@ type JobTaskInput interface {
 }
 
 type JobTaskArgs struct {
+	DbtTask     JobTaskDbtTaskPtrInput     `pulumi:"dbtTask"`
 	DependsOns  JobTaskDependsOnArrayInput `pulumi:"dependsOns"`
 	Description pulumi.StringPtrInput      `pulumi:"description"`
 	// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -11889,6 +11892,7 @@ type JobTaskArgs struct {
 	SparkJarTask    JobTaskSparkJarTaskPtrInput    `pulumi:"sparkJarTask"`
 	SparkPythonTask JobTaskSparkPythonTaskPtrInput `pulumi:"sparkPythonTask"`
 	SparkSubmitTask JobTaskSparkSubmitTaskPtrInput `pulumi:"sparkSubmitTask"`
+	SqlTask         JobTaskSqlTaskPtrInput         `pulumi:"sqlTask"`
 	TaskKey         pulumi.StringPtrInput          `pulumi:"taskKey"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
@@ -11943,6 +11947,10 @@ func (o JobTaskOutput) ToJobTaskOutput() JobTaskOutput {
 
 func (o JobTaskOutput) ToJobTaskOutputWithContext(ctx context.Context) JobTaskOutput {
 	return o
+}
+
+func (o JobTaskOutput) DbtTask() JobTaskDbtTaskPtrOutput {
+	return o.ApplyT(func(v JobTask) *JobTaskDbtTask { return v.DbtTask }).(JobTaskDbtTaskPtrOutput)
 }
 
 func (o JobTaskOutput) DependsOns() JobTaskDependsOnArrayOutput {
@@ -12017,6 +12025,10 @@ func (o JobTaskOutput) SparkSubmitTask() JobTaskSparkSubmitTaskPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskSparkSubmitTask { return v.SparkSubmitTask }).(JobTaskSparkSubmitTaskPtrOutput)
 }
 
+func (o JobTaskOutput) SqlTask() JobTaskSqlTaskPtrOutput {
+	return o.ApplyT(func(v JobTask) *JobTaskSqlTask { return v.SqlTask }).(JobTaskSqlTaskPtrOutput)
+}
+
 func (o JobTaskOutput) TaskKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTask) *string { return v.TaskKey }).(pulumi.StringPtrOutput)
 }
@@ -12044,6 +12056,169 @@ func (o JobTaskArrayOutput) Index(i pulumi.IntInput) JobTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTask {
 		return vs[0].([]JobTask)[vs[1].(int)]
 	}).(JobTaskOutput)
+}
+
+type JobTaskDbtTask struct {
+	Commands         []string `pulumi:"commands"`
+	ProjectDirectory *string  `pulumi:"projectDirectory"`
+	Schema           *string  `pulumi:"schema"`
+}
+
+// JobTaskDbtTaskInput is an input type that accepts JobTaskDbtTaskArgs and JobTaskDbtTaskOutput values.
+// You can construct a concrete instance of `JobTaskDbtTaskInput` via:
+//
+//          JobTaskDbtTaskArgs{...}
+type JobTaskDbtTaskInput interface {
+	pulumi.Input
+
+	ToJobTaskDbtTaskOutput() JobTaskDbtTaskOutput
+	ToJobTaskDbtTaskOutputWithContext(context.Context) JobTaskDbtTaskOutput
+}
+
+type JobTaskDbtTaskArgs struct {
+	Commands         pulumi.StringArrayInput `pulumi:"commands"`
+	ProjectDirectory pulumi.StringPtrInput   `pulumi:"projectDirectory"`
+	Schema           pulumi.StringPtrInput   `pulumi:"schema"`
+}
+
+func (JobTaskDbtTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDbtTask)(nil)).Elem()
+}
+
+func (i JobTaskDbtTaskArgs) ToJobTaskDbtTaskOutput() JobTaskDbtTaskOutput {
+	return i.ToJobTaskDbtTaskOutputWithContext(context.Background())
+}
+
+func (i JobTaskDbtTaskArgs) ToJobTaskDbtTaskOutputWithContext(ctx context.Context) JobTaskDbtTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDbtTaskOutput)
+}
+
+func (i JobTaskDbtTaskArgs) ToJobTaskDbtTaskPtrOutput() JobTaskDbtTaskPtrOutput {
+	return i.ToJobTaskDbtTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskDbtTaskArgs) ToJobTaskDbtTaskPtrOutputWithContext(ctx context.Context) JobTaskDbtTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDbtTaskOutput).ToJobTaskDbtTaskPtrOutputWithContext(ctx)
+}
+
+// JobTaskDbtTaskPtrInput is an input type that accepts JobTaskDbtTaskArgs, JobTaskDbtTaskPtr and JobTaskDbtTaskPtrOutput values.
+// You can construct a concrete instance of `JobTaskDbtTaskPtrInput` via:
+//
+//          JobTaskDbtTaskArgs{...}
+//
+//  or:
+//
+//          nil
+type JobTaskDbtTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskDbtTaskPtrOutput() JobTaskDbtTaskPtrOutput
+	ToJobTaskDbtTaskPtrOutputWithContext(context.Context) JobTaskDbtTaskPtrOutput
+}
+
+type jobTaskDbtTaskPtrType JobTaskDbtTaskArgs
+
+func JobTaskDbtTaskPtr(v *JobTaskDbtTaskArgs) JobTaskDbtTaskPtrInput {
+	return (*jobTaskDbtTaskPtrType)(v)
+}
+
+func (*jobTaskDbtTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskDbtTask)(nil)).Elem()
+}
+
+func (i *jobTaskDbtTaskPtrType) ToJobTaskDbtTaskPtrOutput() JobTaskDbtTaskPtrOutput {
+	return i.ToJobTaskDbtTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskDbtTaskPtrType) ToJobTaskDbtTaskPtrOutputWithContext(ctx context.Context) JobTaskDbtTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDbtTaskPtrOutput)
+}
+
+type JobTaskDbtTaskOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDbtTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDbtTask)(nil)).Elem()
+}
+
+func (o JobTaskDbtTaskOutput) ToJobTaskDbtTaskOutput() JobTaskDbtTaskOutput {
+	return o
+}
+
+func (o JobTaskDbtTaskOutput) ToJobTaskDbtTaskOutputWithContext(ctx context.Context) JobTaskDbtTaskOutput {
+	return o
+}
+
+func (o JobTaskDbtTaskOutput) ToJobTaskDbtTaskPtrOutput() JobTaskDbtTaskPtrOutput {
+	return o.ToJobTaskDbtTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskDbtTaskOutput) ToJobTaskDbtTaskPtrOutputWithContext(ctx context.Context) JobTaskDbtTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskDbtTask) *JobTaskDbtTask {
+		return &v
+	}).(JobTaskDbtTaskPtrOutput)
+}
+
+func (o JobTaskDbtTaskOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskDbtTask) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskDbtTaskOutput) ProjectDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskDbtTask) *string { return v.ProjectDirectory }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskDbtTaskOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskDbtTask) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskDbtTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDbtTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskDbtTask)(nil)).Elem()
+}
+
+func (o JobTaskDbtTaskPtrOutput) ToJobTaskDbtTaskPtrOutput() JobTaskDbtTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskDbtTaskPtrOutput) ToJobTaskDbtTaskPtrOutputWithContext(ctx context.Context) JobTaskDbtTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskDbtTaskPtrOutput) Elem() JobTaskDbtTaskOutput {
+	return o.ApplyT(func(v *JobTaskDbtTask) JobTaskDbtTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskDbtTask
+		return ret
+	}).(JobTaskDbtTaskOutput)
+}
+
+func (o JobTaskDbtTaskPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskDbtTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskDbtTaskPtrOutput) ProjectDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectDirectory
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskDbtTaskPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobTaskDependsOn struct {
@@ -16671,6 +16846,602 @@ func (o JobTaskSparkSubmitTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+type JobTaskSqlTask struct {
+	Alert     *JobTaskSqlTaskAlert     `pulumi:"alert"`
+	Dashboard *JobTaskSqlTaskDashboard `pulumi:"dashboard"`
+	// Parameters for the task
+	Parameters  map[string]interface{} `pulumi:"parameters"`
+	Query       *JobTaskSqlTaskQuery   `pulumi:"query"`
+	WarehouseId *string                `pulumi:"warehouseId"`
+}
+
+// JobTaskSqlTaskInput is an input type that accepts JobTaskSqlTaskArgs and JobTaskSqlTaskOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskInput` via:
+//
+//          JobTaskSqlTaskArgs{...}
+type JobTaskSqlTaskInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskOutput() JobTaskSqlTaskOutput
+	ToJobTaskSqlTaskOutputWithContext(context.Context) JobTaskSqlTaskOutput
+}
+
+type JobTaskSqlTaskArgs struct {
+	Alert     JobTaskSqlTaskAlertPtrInput     `pulumi:"alert"`
+	Dashboard JobTaskSqlTaskDashboardPtrInput `pulumi:"dashboard"`
+	// Parameters for the task
+	Parameters  pulumi.MapInput             `pulumi:"parameters"`
+	Query       JobTaskSqlTaskQueryPtrInput `pulumi:"query"`
+	WarehouseId pulumi.StringPtrInput       `pulumi:"warehouseId"`
+}
+
+func (JobTaskSqlTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTask)(nil)).Elem()
+}
+
+func (i JobTaskSqlTaskArgs) ToJobTaskSqlTaskOutput() JobTaskSqlTaskOutput {
+	return i.ToJobTaskSqlTaskOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskArgs) ToJobTaskSqlTaskOutputWithContext(ctx context.Context) JobTaskSqlTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskOutput)
+}
+
+func (i JobTaskSqlTaskArgs) ToJobTaskSqlTaskPtrOutput() JobTaskSqlTaskPtrOutput {
+	return i.ToJobTaskSqlTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskArgs) ToJobTaskSqlTaskPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskOutput).ToJobTaskSqlTaskPtrOutputWithContext(ctx)
+}
+
+// JobTaskSqlTaskPtrInput is an input type that accepts JobTaskSqlTaskArgs, JobTaskSqlTaskPtr and JobTaskSqlTaskPtrOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskPtrInput` via:
+//
+//          JobTaskSqlTaskArgs{...}
+//
+//  or:
+//
+//          nil
+type JobTaskSqlTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskPtrOutput() JobTaskSqlTaskPtrOutput
+	ToJobTaskSqlTaskPtrOutputWithContext(context.Context) JobTaskSqlTaskPtrOutput
+}
+
+type jobTaskSqlTaskPtrType JobTaskSqlTaskArgs
+
+func JobTaskSqlTaskPtr(v *JobTaskSqlTaskArgs) JobTaskSqlTaskPtrInput {
+	return (*jobTaskSqlTaskPtrType)(v)
+}
+
+func (*jobTaskSqlTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskSqlTask)(nil)).Elem()
+}
+
+func (i *jobTaskSqlTaskPtrType) ToJobTaskSqlTaskPtrOutput() JobTaskSqlTaskPtrOutput {
+	return i.ToJobTaskSqlTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskSqlTaskPtrType) ToJobTaskSqlTaskPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskPtrOutput)
+}
+
+type JobTaskSqlTaskOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTask)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskOutput) ToJobTaskSqlTaskOutput() JobTaskSqlTaskOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskOutput) ToJobTaskSqlTaskOutputWithContext(ctx context.Context) JobTaskSqlTaskOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskOutput) ToJobTaskSqlTaskPtrOutput() JobTaskSqlTaskPtrOutput {
+	return o.ToJobTaskSqlTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskSqlTaskOutput) ToJobTaskSqlTaskPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskSqlTask) *JobTaskSqlTask {
+		return &v
+	}).(JobTaskSqlTaskPtrOutput)
+}
+
+func (o JobTaskSqlTaskOutput) Alert() JobTaskSqlTaskAlertPtrOutput {
+	return o.ApplyT(func(v JobTaskSqlTask) *JobTaskSqlTaskAlert { return v.Alert }).(JobTaskSqlTaskAlertPtrOutput)
+}
+
+func (o JobTaskSqlTaskOutput) Dashboard() JobTaskSqlTaskDashboardPtrOutput {
+	return o.ApplyT(func(v JobTaskSqlTask) *JobTaskSqlTaskDashboard { return v.Dashboard }).(JobTaskSqlTaskDashboardPtrOutput)
+}
+
+// Parameters for the task
+func (o JobTaskSqlTaskOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v JobTaskSqlTask) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+}
+
+func (o JobTaskSqlTaskOutput) Query() JobTaskSqlTaskQueryPtrOutput {
+	return o.ApplyT(func(v JobTaskSqlTask) *JobTaskSqlTaskQuery { return v.Query }).(JobTaskSqlTaskQueryPtrOutput)
+}
+
+func (o JobTaskSqlTaskOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskSqlTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskSqlTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskSqlTask)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskPtrOutput) ToJobTaskSqlTaskPtrOutput() JobTaskSqlTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskPtrOutput) ToJobTaskSqlTaskPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskPtrOutput) Elem() JobTaskSqlTaskOutput {
+	return o.ApplyT(func(v *JobTaskSqlTask) JobTaskSqlTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskSqlTask
+		return ret
+	}).(JobTaskSqlTaskOutput)
+}
+
+func (o JobTaskSqlTaskPtrOutput) Alert() JobTaskSqlTaskAlertPtrOutput {
+	return o.ApplyT(func(v *JobTaskSqlTask) *JobTaskSqlTaskAlert {
+		if v == nil {
+			return nil
+		}
+		return v.Alert
+	}).(JobTaskSqlTaskAlertPtrOutput)
+}
+
+func (o JobTaskSqlTaskPtrOutput) Dashboard() JobTaskSqlTaskDashboardPtrOutput {
+	return o.ApplyT(func(v *JobTaskSqlTask) *JobTaskSqlTaskDashboard {
+		if v == nil {
+			return nil
+		}
+		return v.Dashboard
+	}).(JobTaskSqlTaskDashboardPtrOutput)
+}
+
+// Parameters for the task
+func (o JobTaskSqlTaskPtrOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *JobTaskSqlTask) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.MapOutput)
+}
+
+func (o JobTaskSqlTaskPtrOutput) Query() JobTaskSqlTaskQueryPtrOutput {
+	return o.ApplyT(func(v *JobTaskSqlTask) *JobTaskSqlTaskQuery {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(JobTaskSqlTaskQueryPtrOutput)
+}
+
+func (o JobTaskSqlTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskSqlTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarehouseId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskSqlTaskAlert struct {
+	AlertId string `pulumi:"alertId"`
+}
+
+// JobTaskSqlTaskAlertInput is an input type that accepts JobTaskSqlTaskAlertArgs and JobTaskSqlTaskAlertOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskAlertInput` via:
+//
+//          JobTaskSqlTaskAlertArgs{...}
+type JobTaskSqlTaskAlertInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskAlertOutput() JobTaskSqlTaskAlertOutput
+	ToJobTaskSqlTaskAlertOutputWithContext(context.Context) JobTaskSqlTaskAlertOutput
+}
+
+type JobTaskSqlTaskAlertArgs struct {
+	AlertId pulumi.StringInput `pulumi:"alertId"`
+}
+
+func (JobTaskSqlTaskAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTaskAlert)(nil)).Elem()
+}
+
+func (i JobTaskSqlTaskAlertArgs) ToJobTaskSqlTaskAlertOutput() JobTaskSqlTaskAlertOutput {
+	return i.ToJobTaskSqlTaskAlertOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskAlertArgs) ToJobTaskSqlTaskAlertOutputWithContext(ctx context.Context) JobTaskSqlTaskAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskAlertOutput)
+}
+
+func (i JobTaskSqlTaskAlertArgs) ToJobTaskSqlTaskAlertPtrOutput() JobTaskSqlTaskAlertPtrOutput {
+	return i.ToJobTaskSqlTaskAlertPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskAlertArgs) ToJobTaskSqlTaskAlertPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskAlertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskAlertOutput).ToJobTaskSqlTaskAlertPtrOutputWithContext(ctx)
+}
+
+// JobTaskSqlTaskAlertPtrInput is an input type that accepts JobTaskSqlTaskAlertArgs, JobTaskSqlTaskAlertPtr and JobTaskSqlTaskAlertPtrOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskAlertPtrInput` via:
+//
+//          JobTaskSqlTaskAlertArgs{...}
+//
+//  or:
+//
+//          nil
+type JobTaskSqlTaskAlertPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskAlertPtrOutput() JobTaskSqlTaskAlertPtrOutput
+	ToJobTaskSqlTaskAlertPtrOutputWithContext(context.Context) JobTaskSqlTaskAlertPtrOutput
+}
+
+type jobTaskSqlTaskAlertPtrType JobTaskSqlTaskAlertArgs
+
+func JobTaskSqlTaskAlertPtr(v *JobTaskSqlTaskAlertArgs) JobTaskSqlTaskAlertPtrInput {
+	return (*jobTaskSqlTaskAlertPtrType)(v)
+}
+
+func (*jobTaskSqlTaskAlertPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskSqlTaskAlert)(nil)).Elem()
+}
+
+func (i *jobTaskSqlTaskAlertPtrType) ToJobTaskSqlTaskAlertPtrOutput() JobTaskSqlTaskAlertPtrOutput {
+	return i.ToJobTaskSqlTaskAlertPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskSqlTaskAlertPtrType) ToJobTaskSqlTaskAlertPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskAlertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskAlertPtrOutput)
+}
+
+type JobTaskSqlTaskAlertOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTaskAlert)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskAlertOutput) ToJobTaskSqlTaskAlertOutput() JobTaskSqlTaskAlertOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskAlertOutput) ToJobTaskSqlTaskAlertOutputWithContext(ctx context.Context) JobTaskSqlTaskAlertOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskAlertOutput) ToJobTaskSqlTaskAlertPtrOutput() JobTaskSqlTaskAlertPtrOutput {
+	return o.ToJobTaskSqlTaskAlertPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskSqlTaskAlertOutput) ToJobTaskSqlTaskAlertPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskAlertPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskSqlTaskAlert) *JobTaskSqlTaskAlert {
+		return &v
+	}).(JobTaskSqlTaskAlertPtrOutput)
+}
+
+func (o JobTaskSqlTaskAlertOutput) AlertId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskSqlTaskAlert) string { return v.AlertId }).(pulumi.StringOutput)
+}
+
+type JobTaskSqlTaskAlertPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskAlertPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskSqlTaskAlert)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskAlertPtrOutput) ToJobTaskSqlTaskAlertPtrOutput() JobTaskSqlTaskAlertPtrOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskAlertPtrOutput) ToJobTaskSqlTaskAlertPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskAlertPtrOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskAlertPtrOutput) Elem() JobTaskSqlTaskAlertOutput {
+	return o.ApplyT(func(v *JobTaskSqlTaskAlert) JobTaskSqlTaskAlert {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskSqlTaskAlert
+		return ret
+	}).(JobTaskSqlTaskAlertOutput)
+}
+
+func (o JobTaskSqlTaskAlertPtrOutput) AlertId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskSqlTaskAlert) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AlertId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskSqlTaskDashboard struct {
+	DashboardId string `pulumi:"dashboardId"`
+}
+
+// JobTaskSqlTaskDashboardInput is an input type that accepts JobTaskSqlTaskDashboardArgs and JobTaskSqlTaskDashboardOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskDashboardInput` via:
+//
+//          JobTaskSqlTaskDashboardArgs{...}
+type JobTaskSqlTaskDashboardInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskDashboardOutput() JobTaskSqlTaskDashboardOutput
+	ToJobTaskSqlTaskDashboardOutputWithContext(context.Context) JobTaskSqlTaskDashboardOutput
+}
+
+type JobTaskSqlTaskDashboardArgs struct {
+	DashboardId pulumi.StringInput `pulumi:"dashboardId"`
+}
+
+func (JobTaskSqlTaskDashboardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTaskDashboard)(nil)).Elem()
+}
+
+func (i JobTaskSqlTaskDashboardArgs) ToJobTaskSqlTaskDashboardOutput() JobTaskSqlTaskDashboardOutput {
+	return i.ToJobTaskSqlTaskDashboardOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskDashboardArgs) ToJobTaskSqlTaskDashboardOutputWithContext(ctx context.Context) JobTaskSqlTaskDashboardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskDashboardOutput)
+}
+
+func (i JobTaskSqlTaskDashboardArgs) ToJobTaskSqlTaskDashboardPtrOutput() JobTaskSqlTaskDashboardPtrOutput {
+	return i.ToJobTaskSqlTaskDashboardPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskDashboardArgs) ToJobTaskSqlTaskDashboardPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskDashboardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskDashboardOutput).ToJobTaskSqlTaskDashboardPtrOutputWithContext(ctx)
+}
+
+// JobTaskSqlTaskDashboardPtrInput is an input type that accepts JobTaskSqlTaskDashboardArgs, JobTaskSqlTaskDashboardPtr and JobTaskSqlTaskDashboardPtrOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskDashboardPtrInput` via:
+//
+//          JobTaskSqlTaskDashboardArgs{...}
+//
+//  or:
+//
+//          nil
+type JobTaskSqlTaskDashboardPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskDashboardPtrOutput() JobTaskSqlTaskDashboardPtrOutput
+	ToJobTaskSqlTaskDashboardPtrOutputWithContext(context.Context) JobTaskSqlTaskDashboardPtrOutput
+}
+
+type jobTaskSqlTaskDashboardPtrType JobTaskSqlTaskDashboardArgs
+
+func JobTaskSqlTaskDashboardPtr(v *JobTaskSqlTaskDashboardArgs) JobTaskSqlTaskDashboardPtrInput {
+	return (*jobTaskSqlTaskDashboardPtrType)(v)
+}
+
+func (*jobTaskSqlTaskDashboardPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskSqlTaskDashboard)(nil)).Elem()
+}
+
+func (i *jobTaskSqlTaskDashboardPtrType) ToJobTaskSqlTaskDashboardPtrOutput() JobTaskSqlTaskDashboardPtrOutput {
+	return i.ToJobTaskSqlTaskDashboardPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskSqlTaskDashboardPtrType) ToJobTaskSqlTaskDashboardPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskDashboardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskDashboardPtrOutput)
+}
+
+type JobTaskSqlTaskDashboardOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskDashboardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTaskDashboard)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskDashboardOutput) ToJobTaskSqlTaskDashboardOutput() JobTaskSqlTaskDashboardOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskDashboardOutput) ToJobTaskSqlTaskDashboardOutputWithContext(ctx context.Context) JobTaskSqlTaskDashboardOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskDashboardOutput) ToJobTaskSqlTaskDashboardPtrOutput() JobTaskSqlTaskDashboardPtrOutput {
+	return o.ToJobTaskSqlTaskDashboardPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskSqlTaskDashboardOutput) ToJobTaskSqlTaskDashboardPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskDashboardPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskSqlTaskDashboard) *JobTaskSqlTaskDashboard {
+		return &v
+	}).(JobTaskSqlTaskDashboardPtrOutput)
+}
+
+func (o JobTaskSqlTaskDashboardOutput) DashboardId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskSqlTaskDashboard) string { return v.DashboardId }).(pulumi.StringOutput)
+}
+
+type JobTaskSqlTaskDashboardPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskDashboardPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskSqlTaskDashboard)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskDashboardPtrOutput) ToJobTaskSqlTaskDashboardPtrOutput() JobTaskSqlTaskDashboardPtrOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskDashboardPtrOutput) ToJobTaskSqlTaskDashboardPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskDashboardPtrOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskDashboardPtrOutput) Elem() JobTaskSqlTaskDashboardOutput {
+	return o.ApplyT(func(v *JobTaskSqlTaskDashboard) JobTaskSqlTaskDashboard {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskSqlTaskDashboard
+		return ret
+	}).(JobTaskSqlTaskDashboardOutput)
+}
+
+func (o JobTaskSqlTaskDashboardPtrOutput) DashboardId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskSqlTaskDashboard) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DashboardId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskSqlTaskQuery struct {
+	QueryId string `pulumi:"queryId"`
+}
+
+// JobTaskSqlTaskQueryInput is an input type that accepts JobTaskSqlTaskQueryArgs and JobTaskSqlTaskQueryOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskQueryInput` via:
+//
+//          JobTaskSqlTaskQueryArgs{...}
+type JobTaskSqlTaskQueryInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskQueryOutput() JobTaskSqlTaskQueryOutput
+	ToJobTaskSqlTaskQueryOutputWithContext(context.Context) JobTaskSqlTaskQueryOutput
+}
+
+type JobTaskSqlTaskQueryArgs struct {
+	QueryId pulumi.StringInput `pulumi:"queryId"`
+}
+
+func (JobTaskSqlTaskQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTaskQuery)(nil)).Elem()
+}
+
+func (i JobTaskSqlTaskQueryArgs) ToJobTaskSqlTaskQueryOutput() JobTaskSqlTaskQueryOutput {
+	return i.ToJobTaskSqlTaskQueryOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskQueryArgs) ToJobTaskSqlTaskQueryOutputWithContext(ctx context.Context) JobTaskSqlTaskQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskQueryOutput)
+}
+
+func (i JobTaskSqlTaskQueryArgs) ToJobTaskSqlTaskQueryPtrOutput() JobTaskSqlTaskQueryPtrOutput {
+	return i.ToJobTaskSqlTaskQueryPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskQueryArgs) ToJobTaskSqlTaskQueryPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskQueryOutput).ToJobTaskSqlTaskQueryPtrOutputWithContext(ctx)
+}
+
+// JobTaskSqlTaskQueryPtrInput is an input type that accepts JobTaskSqlTaskQueryArgs, JobTaskSqlTaskQueryPtr and JobTaskSqlTaskQueryPtrOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskQueryPtrInput` via:
+//
+//          JobTaskSqlTaskQueryArgs{...}
+//
+//  or:
+//
+//          nil
+type JobTaskSqlTaskQueryPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskQueryPtrOutput() JobTaskSqlTaskQueryPtrOutput
+	ToJobTaskSqlTaskQueryPtrOutputWithContext(context.Context) JobTaskSqlTaskQueryPtrOutput
+}
+
+type jobTaskSqlTaskQueryPtrType JobTaskSqlTaskQueryArgs
+
+func JobTaskSqlTaskQueryPtr(v *JobTaskSqlTaskQueryArgs) JobTaskSqlTaskQueryPtrInput {
+	return (*jobTaskSqlTaskQueryPtrType)(v)
+}
+
+func (*jobTaskSqlTaskQueryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskSqlTaskQuery)(nil)).Elem()
+}
+
+func (i *jobTaskSqlTaskQueryPtrType) ToJobTaskSqlTaskQueryPtrOutput() JobTaskSqlTaskQueryPtrOutput {
+	return i.ToJobTaskSqlTaskQueryPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskSqlTaskQueryPtrType) ToJobTaskSqlTaskQueryPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskQueryPtrOutput)
+}
+
+type JobTaskSqlTaskQueryOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTaskQuery)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskQueryOutput) ToJobTaskSqlTaskQueryOutput() JobTaskSqlTaskQueryOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskQueryOutput) ToJobTaskSqlTaskQueryOutputWithContext(ctx context.Context) JobTaskSqlTaskQueryOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskQueryOutput) ToJobTaskSqlTaskQueryPtrOutput() JobTaskSqlTaskQueryPtrOutput {
+	return o.ToJobTaskSqlTaskQueryPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskSqlTaskQueryOutput) ToJobTaskSqlTaskQueryPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskQueryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskSqlTaskQuery) *JobTaskSqlTaskQuery {
+		return &v
+	}).(JobTaskSqlTaskQueryPtrOutput)
+}
+
+func (o JobTaskSqlTaskQueryOutput) QueryId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskSqlTaskQuery) string { return v.QueryId }).(pulumi.StringOutput)
+}
+
+type JobTaskSqlTaskQueryPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskSqlTaskQuery)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskQueryPtrOutput) ToJobTaskSqlTaskQueryPtrOutput() JobTaskSqlTaskQueryPtrOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskQueryPtrOutput) ToJobTaskSqlTaskQueryPtrOutputWithContext(ctx context.Context) JobTaskSqlTaskQueryPtrOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskQueryPtrOutput) Elem() JobTaskSqlTaskQueryOutput {
+	return o.ApplyT(func(v *JobTaskSqlTaskQuery) JobTaskSqlTaskQuery {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskSqlTaskQuery
+		return ret
+	}).(JobTaskSqlTaskQueryOutput)
+}
+
+func (o JobTaskSqlTaskQueryPtrOutput) QueryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskSqlTaskQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryId
+	}).(pulumi.StringPtrOutput)
+}
+
 type LibraryCran struct {
 	Package string  `pulumi:"package"`
 	Repo    *string `pulumi:"repo"`
@@ -17264,6 +18035,143 @@ func (o MetastoreDataAccessAwsIamRolePtrOutput) RoleArn() pulumi.StringPtrOutput
 			return nil
 		}
 		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetastoreDataAccessAzureManagedIdentity struct {
+	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+	AccessConnectorId string `pulumi:"accessConnectorId"`
+}
+
+// MetastoreDataAccessAzureManagedIdentityInput is an input type that accepts MetastoreDataAccessAzureManagedIdentityArgs and MetastoreDataAccessAzureManagedIdentityOutput values.
+// You can construct a concrete instance of `MetastoreDataAccessAzureManagedIdentityInput` via:
+//
+//          MetastoreDataAccessAzureManagedIdentityArgs{...}
+type MetastoreDataAccessAzureManagedIdentityInput interface {
+	pulumi.Input
+
+	ToMetastoreDataAccessAzureManagedIdentityOutput() MetastoreDataAccessAzureManagedIdentityOutput
+	ToMetastoreDataAccessAzureManagedIdentityOutputWithContext(context.Context) MetastoreDataAccessAzureManagedIdentityOutput
+}
+
+type MetastoreDataAccessAzureManagedIdentityArgs struct {
+	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+	AccessConnectorId pulumi.StringInput `pulumi:"accessConnectorId"`
+}
+
+func (MetastoreDataAccessAzureManagedIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreDataAccessAzureManagedIdentity)(nil)).Elem()
+}
+
+func (i MetastoreDataAccessAzureManagedIdentityArgs) ToMetastoreDataAccessAzureManagedIdentityOutput() MetastoreDataAccessAzureManagedIdentityOutput {
+	return i.ToMetastoreDataAccessAzureManagedIdentityOutputWithContext(context.Background())
+}
+
+func (i MetastoreDataAccessAzureManagedIdentityArgs) ToMetastoreDataAccessAzureManagedIdentityOutputWithContext(ctx context.Context) MetastoreDataAccessAzureManagedIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDataAccessAzureManagedIdentityOutput)
+}
+
+func (i MetastoreDataAccessAzureManagedIdentityArgs) ToMetastoreDataAccessAzureManagedIdentityPtrOutput() MetastoreDataAccessAzureManagedIdentityPtrOutput {
+	return i.ToMetastoreDataAccessAzureManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreDataAccessAzureManagedIdentityArgs) ToMetastoreDataAccessAzureManagedIdentityPtrOutputWithContext(ctx context.Context) MetastoreDataAccessAzureManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDataAccessAzureManagedIdentityOutput).ToMetastoreDataAccessAzureManagedIdentityPtrOutputWithContext(ctx)
+}
+
+// MetastoreDataAccessAzureManagedIdentityPtrInput is an input type that accepts MetastoreDataAccessAzureManagedIdentityArgs, MetastoreDataAccessAzureManagedIdentityPtr and MetastoreDataAccessAzureManagedIdentityPtrOutput values.
+// You can construct a concrete instance of `MetastoreDataAccessAzureManagedIdentityPtrInput` via:
+//
+//          MetastoreDataAccessAzureManagedIdentityArgs{...}
+//
+//  or:
+//
+//          nil
+type MetastoreDataAccessAzureManagedIdentityPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreDataAccessAzureManagedIdentityPtrOutput() MetastoreDataAccessAzureManagedIdentityPtrOutput
+	ToMetastoreDataAccessAzureManagedIdentityPtrOutputWithContext(context.Context) MetastoreDataAccessAzureManagedIdentityPtrOutput
+}
+
+type metastoreDataAccessAzureManagedIdentityPtrType MetastoreDataAccessAzureManagedIdentityArgs
+
+func MetastoreDataAccessAzureManagedIdentityPtr(v *MetastoreDataAccessAzureManagedIdentityArgs) MetastoreDataAccessAzureManagedIdentityPtrInput {
+	return (*metastoreDataAccessAzureManagedIdentityPtrType)(v)
+}
+
+func (*metastoreDataAccessAzureManagedIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreDataAccessAzureManagedIdentity)(nil)).Elem()
+}
+
+func (i *metastoreDataAccessAzureManagedIdentityPtrType) ToMetastoreDataAccessAzureManagedIdentityPtrOutput() MetastoreDataAccessAzureManagedIdentityPtrOutput {
+	return i.ToMetastoreDataAccessAzureManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreDataAccessAzureManagedIdentityPtrType) ToMetastoreDataAccessAzureManagedIdentityPtrOutputWithContext(ctx context.Context) MetastoreDataAccessAzureManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDataAccessAzureManagedIdentityPtrOutput)
+}
+
+type MetastoreDataAccessAzureManagedIdentityOutput struct{ *pulumi.OutputState }
+
+func (MetastoreDataAccessAzureManagedIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreDataAccessAzureManagedIdentity)(nil)).Elem()
+}
+
+func (o MetastoreDataAccessAzureManagedIdentityOutput) ToMetastoreDataAccessAzureManagedIdentityOutput() MetastoreDataAccessAzureManagedIdentityOutput {
+	return o
+}
+
+func (o MetastoreDataAccessAzureManagedIdentityOutput) ToMetastoreDataAccessAzureManagedIdentityOutputWithContext(ctx context.Context) MetastoreDataAccessAzureManagedIdentityOutput {
+	return o
+}
+
+func (o MetastoreDataAccessAzureManagedIdentityOutput) ToMetastoreDataAccessAzureManagedIdentityPtrOutput() MetastoreDataAccessAzureManagedIdentityPtrOutput {
+	return o.ToMetastoreDataAccessAzureManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreDataAccessAzureManagedIdentityOutput) ToMetastoreDataAccessAzureManagedIdentityPtrOutputWithContext(ctx context.Context) MetastoreDataAccessAzureManagedIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreDataAccessAzureManagedIdentity) *MetastoreDataAccessAzureManagedIdentity {
+		return &v
+	}).(MetastoreDataAccessAzureManagedIdentityPtrOutput)
+}
+
+// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+func (o MetastoreDataAccessAzureManagedIdentityOutput) AccessConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreDataAccessAzureManagedIdentity) string { return v.AccessConnectorId }).(pulumi.StringOutput)
+}
+
+type MetastoreDataAccessAzureManagedIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreDataAccessAzureManagedIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreDataAccessAzureManagedIdentity)(nil)).Elem()
+}
+
+func (o MetastoreDataAccessAzureManagedIdentityPtrOutput) ToMetastoreDataAccessAzureManagedIdentityPtrOutput() MetastoreDataAccessAzureManagedIdentityPtrOutput {
+	return o
+}
+
+func (o MetastoreDataAccessAzureManagedIdentityPtrOutput) ToMetastoreDataAccessAzureManagedIdentityPtrOutputWithContext(ctx context.Context) MetastoreDataAccessAzureManagedIdentityPtrOutput {
+	return o
+}
+
+func (o MetastoreDataAccessAzureManagedIdentityPtrOutput) Elem() MetastoreDataAccessAzureManagedIdentityOutput {
+	return o.ApplyT(func(v *MetastoreDataAccessAzureManagedIdentity) MetastoreDataAccessAzureManagedIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreDataAccessAzureManagedIdentity
+		return ret
+	}).(MetastoreDataAccessAzureManagedIdentityOutput)
+}
+
+// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+func (o MetastoreDataAccessAzureManagedIdentityPtrOutput) AccessConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccessAzureManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessConnectorId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19725,8 +20633,9 @@ func (o MwsWorkspacesExternalCustomerInfoPtrOutput) CustomerName() pulumi.String
 }
 
 type MwsWorkspacesNetwork struct {
-	GcpCommonNetworkConfig  MwsWorkspacesNetworkGcpCommonNetworkConfig  `pulumi:"gcpCommonNetworkConfig"`
-	GcpManagedNetworkConfig MwsWorkspacesNetworkGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
+	GcpCommonNetworkConfig  MwsWorkspacesNetworkGcpCommonNetworkConfig   `pulumi:"gcpCommonNetworkConfig"`
+	GcpManagedNetworkConfig *MwsWorkspacesNetworkGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
+	NetworkId               *string                                      `pulumi:"networkId"`
 }
 
 // MwsWorkspacesNetworkInput is an input type that accepts MwsWorkspacesNetworkArgs and MwsWorkspacesNetworkOutput values.
@@ -19741,8 +20650,9 @@ type MwsWorkspacesNetworkInput interface {
 }
 
 type MwsWorkspacesNetworkArgs struct {
-	GcpCommonNetworkConfig  MwsWorkspacesNetworkGcpCommonNetworkConfigInput  `pulumi:"gcpCommonNetworkConfig"`
-	GcpManagedNetworkConfig MwsWorkspacesNetworkGcpManagedNetworkConfigInput `pulumi:"gcpManagedNetworkConfig"`
+	GcpCommonNetworkConfig  MwsWorkspacesNetworkGcpCommonNetworkConfigInput     `pulumi:"gcpCommonNetworkConfig"`
+	GcpManagedNetworkConfig MwsWorkspacesNetworkGcpManagedNetworkConfigPtrInput `pulumi:"gcpManagedNetworkConfig"`
+	NetworkId               pulumi.StringPtrInput                               `pulumi:"networkId"`
 }
 
 func (MwsWorkspacesNetworkArgs) ElementType() reflect.Type {
@@ -19828,10 +20738,14 @@ func (o MwsWorkspacesNetworkOutput) GcpCommonNetworkConfig() MwsWorkspacesNetwor
 	}).(MwsWorkspacesNetworkGcpCommonNetworkConfigOutput)
 }
 
-func (o MwsWorkspacesNetworkOutput) GcpManagedNetworkConfig() MwsWorkspacesNetworkGcpManagedNetworkConfigOutput {
-	return o.ApplyT(func(v MwsWorkspacesNetwork) MwsWorkspacesNetworkGcpManagedNetworkConfig {
+func (o MwsWorkspacesNetworkOutput) GcpManagedNetworkConfig() MwsWorkspacesNetworkGcpManagedNetworkConfigPtrOutput {
+	return o.ApplyT(func(v MwsWorkspacesNetwork) *MwsWorkspacesNetworkGcpManagedNetworkConfig {
 		return v.GcpManagedNetworkConfig
-	}).(MwsWorkspacesNetworkGcpManagedNetworkConfigOutput)
+	}).(MwsWorkspacesNetworkGcpManagedNetworkConfigPtrOutput)
+}
+
+func (o MwsWorkspacesNetworkOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsWorkspacesNetwork) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
 
 type MwsWorkspacesNetworkPtrOutput struct{ *pulumi.OutputState }
@@ -19872,8 +20786,17 @@ func (o MwsWorkspacesNetworkPtrOutput) GcpManagedNetworkConfig() MwsWorkspacesNe
 		if v == nil {
 			return nil
 		}
-		return &v.GcpManagedNetworkConfig
+		return v.GcpManagedNetworkConfig
 	}).(MwsWorkspacesNetworkGcpManagedNetworkConfigPtrOutput)
+}
+
+func (o MwsWorkspacesNetworkPtrOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsWorkspacesNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkId
+	}).(pulumi.StringPtrOutput)
 }
 
 type MwsWorkspacesNetworkGcpCommonNetworkConfig struct {
@@ -20366,12 +21289,13 @@ func (o MwsWorkspacesTokenPtrOutput) TokenValue() pulumi.StringPtrOutput {
 }
 
 type PermissionsAccessControl struct {
-	// name of the group, which should be used if the user name is not used. We recommend setting permissions on groups.
+	// name of the group. We recommend setting permissions on groups.
 	GroupName *string `pulumi:"groupName"`
 	// permission level according to specific resource. See examples above for the reference.
-	PermissionLevel      string  `pulumi:"permissionLevel"`
+	PermissionLevel string `pulumi:"permissionLevel"`
+	// Application ID of the service_principal.
 	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
-	// name of the user, which should be used if group name is not used
+	// name of the user.
 	UserName *string `pulumi:"userName"`
 }
 
@@ -20387,12 +21311,13 @@ type PermissionsAccessControlInput interface {
 }
 
 type PermissionsAccessControlArgs struct {
-	// name of the group, which should be used if the user name is not used. We recommend setting permissions on groups.
+	// name of the group. We recommend setting permissions on groups.
 	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
 	// permission level according to specific resource. See examples above for the reference.
-	PermissionLevel      pulumi.StringInput    `pulumi:"permissionLevel"`
+	PermissionLevel pulumi.StringInput `pulumi:"permissionLevel"`
+	// Application ID of the service_principal.
 	ServicePrincipalName pulumi.StringPtrInput `pulumi:"servicePrincipalName"`
-	// name of the user, which should be used if group name is not used
+	// name of the user.
 	UserName pulumi.StringPtrInput `pulumi:"userName"`
 }
 
@@ -20447,7 +21372,7 @@ func (o PermissionsAccessControlOutput) ToPermissionsAccessControlOutputWithCont
 	return o
 }
 
-// name of the group, which should be used if the user name is not used. We recommend setting permissions on groups.
+// name of the group. We recommend setting permissions on groups.
 func (o PermissionsAccessControlOutput) GroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PermissionsAccessControl) *string { return v.GroupName }).(pulumi.StringPtrOutput)
 }
@@ -20457,11 +21382,12 @@ func (o PermissionsAccessControlOutput) PermissionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v PermissionsAccessControl) string { return v.PermissionLevel }).(pulumi.StringOutput)
 }
 
+// Application ID of the service_principal.
 func (o PermissionsAccessControlOutput) ServicePrincipalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PermissionsAccessControl) *string { return v.ServicePrincipalName }).(pulumi.StringPtrOutput)
 }
 
-// name of the user, which should be used if group name is not used
+// name of the user.
 func (o PermissionsAccessControlOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PermissionsAccessControl) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -20487,19 +21413,21 @@ func (o PermissionsAccessControlArrayOutput) Index(i pulumi.IntInput) Permission
 }
 
 type PipelineCluster struct {
-	Autoscale        *PipelineClusterAutoscale      `pulumi:"autoscale"`
-	AwsAttributes    *PipelineClusterAwsAttributes  `pulumi:"awsAttributes"`
-	ClusterLogConf   *PipelineClusterClusterLogConf `pulumi:"clusterLogConf"`
-	CustomTags       map[string]interface{}         `pulumi:"customTags"`
-	DriverNodeTypeId *string                        `pulumi:"driverNodeTypeId"`
-	InitScripts      []PipelineClusterInitScript    `pulumi:"initScripts"`
-	InstancePoolId   *string                        `pulumi:"instancePoolId"`
-	Label            *string                        `pulumi:"label"`
-	NodeTypeId       *string                        `pulumi:"nodeTypeId"`
-	NumWorkers       *int                           `pulumi:"numWorkers"`
-	SparkConf        map[string]interface{}         `pulumi:"sparkConf"`
-	SparkEnvVars     map[string]interface{}         `pulumi:"sparkEnvVars"`
-	SshPublicKeys    []string                       `pulumi:"sshPublicKeys"`
+	Autoscale            *PipelineClusterAutoscale      `pulumi:"autoscale"`
+	AwsAttributes        *PipelineClusterAwsAttributes  `pulumi:"awsAttributes"`
+	ClusterLogConf       *PipelineClusterClusterLogConf `pulumi:"clusterLogConf"`
+	CustomTags           map[string]interface{}         `pulumi:"customTags"`
+	DriverInstancePoolId *string                        `pulumi:"driverInstancePoolId"`
+	DriverNodeTypeId     *string                        `pulumi:"driverNodeTypeId"`
+	GcpAttributes        *PipelineClusterGcpAttributes  `pulumi:"gcpAttributes"`
+	InitScripts          []PipelineClusterInitScript    `pulumi:"initScripts"`
+	InstancePoolId       *string                        `pulumi:"instancePoolId"`
+	Label                *string                        `pulumi:"label"`
+	NodeTypeId           *string                        `pulumi:"nodeTypeId"`
+	NumWorkers           *int                           `pulumi:"numWorkers"`
+	SparkConf            map[string]interface{}         `pulumi:"sparkConf"`
+	SparkEnvVars         map[string]interface{}         `pulumi:"sparkEnvVars"`
+	SshPublicKeys        []string                       `pulumi:"sshPublicKeys"`
 }
 
 // PipelineClusterInput is an input type that accepts PipelineClusterArgs and PipelineClusterOutput values.
@@ -20514,19 +21442,21 @@ type PipelineClusterInput interface {
 }
 
 type PipelineClusterArgs struct {
-	Autoscale        PipelineClusterAutoscalePtrInput      `pulumi:"autoscale"`
-	AwsAttributes    PipelineClusterAwsAttributesPtrInput  `pulumi:"awsAttributes"`
-	ClusterLogConf   PipelineClusterClusterLogConfPtrInput `pulumi:"clusterLogConf"`
-	CustomTags       pulumi.MapInput                       `pulumi:"customTags"`
-	DriverNodeTypeId pulumi.StringPtrInput                 `pulumi:"driverNodeTypeId"`
-	InitScripts      PipelineClusterInitScriptArrayInput   `pulumi:"initScripts"`
-	InstancePoolId   pulumi.StringPtrInput                 `pulumi:"instancePoolId"`
-	Label            pulumi.StringPtrInput                 `pulumi:"label"`
-	NodeTypeId       pulumi.StringPtrInput                 `pulumi:"nodeTypeId"`
-	NumWorkers       pulumi.IntPtrInput                    `pulumi:"numWorkers"`
-	SparkConf        pulumi.MapInput                       `pulumi:"sparkConf"`
-	SparkEnvVars     pulumi.MapInput                       `pulumi:"sparkEnvVars"`
-	SshPublicKeys    pulumi.StringArrayInput               `pulumi:"sshPublicKeys"`
+	Autoscale            PipelineClusterAutoscalePtrInput      `pulumi:"autoscale"`
+	AwsAttributes        PipelineClusterAwsAttributesPtrInput  `pulumi:"awsAttributes"`
+	ClusterLogConf       PipelineClusterClusterLogConfPtrInput `pulumi:"clusterLogConf"`
+	CustomTags           pulumi.MapInput                       `pulumi:"customTags"`
+	DriverInstancePoolId pulumi.StringPtrInput                 `pulumi:"driverInstancePoolId"`
+	DriverNodeTypeId     pulumi.StringPtrInput                 `pulumi:"driverNodeTypeId"`
+	GcpAttributes        PipelineClusterGcpAttributesPtrInput  `pulumi:"gcpAttributes"`
+	InitScripts          PipelineClusterInitScriptArrayInput   `pulumi:"initScripts"`
+	InstancePoolId       pulumi.StringPtrInput                 `pulumi:"instancePoolId"`
+	Label                pulumi.StringPtrInput                 `pulumi:"label"`
+	NodeTypeId           pulumi.StringPtrInput                 `pulumi:"nodeTypeId"`
+	NumWorkers           pulumi.IntPtrInput                    `pulumi:"numWorkers"`
+	SparkConf            pulumi.MapInput                       `pulumi:"sparkConf"`
+	SparkEnvVars         pulumi.MapInput                       `pulumi:"sparkEnvVars"`
+	SshPublicKeys        pulumi.StringArrayInput               `pulumi:"sshPublicKeys"`
 }
 
 func (PipelineClusterArgs) ElementType() reflect.Type {
@@ -20596,8 +21526,16 @@ func (o PipelineClusterOutput) CustomTags() pulumi.MapOutput {
 	return o.ApplyT(func(v PipelineCluster) map[string]interface{} { return v.CustomTags }).(pulumi.MapOutput)
 }
 
+func (o PipelineClusterOutput) DriverInstancePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineCluster) *string { return v.DriverInstancePoolId }).(pulumi.StringPtrOutput)
+}
+
 func (o PipelineClusterOutput) DriverNodeTypeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineCluster) *string { return v.DriverNodeTypeId }).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineClusterOutput) GcpAttributes() PipelineClusterGcpAttributesPtrOutput {
+	return o.ApplyT(func(v PipelineCluster) *PipelineClusterGcpAttributes { return v.GcpAttributes }).(PipelineClusterGcpAttributesPtrOutput)
 }
 
 func (o PipelineClusterOutput) InitScripts() PipelineClusterInitScriptArrayOutput {
@@ -20801,6 +21739,7 @@ func (o PipelineClusterAutoscalePtrOutput) MinWorkers() pulumi.IntPtrOutput {
 }
 
 type PipelineClusterAwsAttributes struct {
+	FirstOnDemand      *int    `pulumi:"firstOnDemand"`
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
 	ZoneId             *string `pulumi:"zoneId"`
 }
@@ -20817,6 +21756,7 @@ type PipelineClusterAwsAttributesInput interface {
 }
 
 type PipelineClusterAwsAttributesArgs struct {
+	FirstOnDemand      pulumi.IntPtrInput    `pulumi:"firstOnDemand"`
 	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
 	ZoneId             pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -20898,6 +21838,10 @@ func (o PipelineClusterAwsAttributesOutput) ToPipelineClusterAwsAttributesPtrOut
 	}).(PipelineClusterAwsAttributesPtrOutput)
 }
 
+func (o PipelineClusterAwsAttributesOutput) FirstOnDemand() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineClusterAwsAttributes) *int { return v.FirstOnDemand }).(pulumi.IntPtrOutput)
+}
+
 func (o PipelineClusterAwsAttributesOutput) InstanceProfileArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineClusterAwsAttributes) *string { return v.InstanceProfileArn }).(pulumi.StringPtrOutput)
 }
@@ -20928,6 +21872,15 @@ func (o PipelineClusterAwsAttributesPtrOutput) Elem() PipelineClusterAwsAttribut
 		var ret PipelineClusterAwsAttributes
 		return ret
 	}).(PipelineClusterAwsAttributesOutput)
+}
+
+func (o PipelineClusterAwsAttributesPtrOutput) FirstOnDemand() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PipelineClusterAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FirstOnDemand
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o PipelineClusterAwsAttributesPtrOutput) InstanceProfileArn() pulumi.StringPtrOutput {
@@ -21449,6 +22402,139 @@ func (o PipelineClusterClusterLogConfS3PtrOutput) Region() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineClusterGcpAttributes struct {
+	GoogleServiceAccount *string `pulumi:"googleServiceAccount"`
+}
+
+// PipelineClusterGcpAttributesInput is an input type that accepts PipelineClusterGcpAttributesArgs and PipelineClusterGcpAttributesOutput values.
+// You can construct a concrete instance of `PipelineClusterGcpAttributesInput` via:
+//
+//          PipelineClusterGcpAttributesArgs{...}
+type PipelineClusterGcpAttributesInput interface {
+	pulumi.Input
+
+	ToPipelineClusterGcpAttributesOutput() PipelineClusterGcpAttributesOutput
+	ToPipelineClusterGcpAttributesOutputWithContext(context.Context) PipelineClusterGcpAttributesOutput
+}
+
+type PipelineClusterGcpAttributesArgs struct {
+	GoogleServiceAccount pulumi.StringPtrInput `pulumi:"googleServiceAccount"`
+}
+
+func (PipelineClusterGcpAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineClusterGcpAttributes)(nil)).Elem()
+}
+
+func (i PipelineClusterGcpAttributesArgs) ToPipelineClusterGcpAttributesOutput() PipelineClusterGcpAttributesOutput {
+	return i.ToPipelineClusterGcpAttributesOutputWithContext(context.Background())
+}
+
+func (i PipelineClusterGcpAttributesArgs) ToPipelineClusterGcpAttributesOutputWithContext(ctx context.Context) PipelineClusterGcpAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineClusterGcpAttributesOutput)
+}
+
+func (i PipelineClusterGcpAttributesArgs) ToPipelineClusterGcpAttributesPtrOutput() PipelineClusterGcpAttributesPtrOutput {
+	return i.ToPipelineClusterGcpAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineClusterGcpAttributesArgs) ToPipelineClusterGcpAttributesPtrOutputWithContext(ctx context.Context) PipelineClusterGcpAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineClusterGcpAttributesOutput).ToPipelineClusterGcpAttributesPtrOutputWithContext(ctx)
+}
+
+// PipelineClusterGcpAttributesPtrInput is an input type that accepts PipelineClusterGcpAttributesArgs, PipelineClusterGcpAttributesPtr and PipelineClusterGcpAttributesPtrOutput values.
+// You can construct a concrete instance of `PipelineClusterGcpAttributesPtrInput` via:
+//
+//          PipelineClusterGcpAttributesArgs{...}
+//
+//  or:
+//
+//          nil
+type PipelineClusterGcpAttributesPtrInput interface {
+	pulumi.Input
+
+	ToPipelineClusterGcpAttributesPtrOutput() PipelineClusterGcpAttributesPtrOutput
+	ToPipelineClusterGcpAttributesPtrOutputWithContext(context.Context) PipelineClusterGcpAttributesPtrOutput
+}
+
+type pipelineClusterGcpAttributesPtrType PipelineClusterGcpAttributesArgs
+
+func PipelineClusterGcpAttributesPtr(v *PipelineClusterGcpAttributesArgs) PipelineClusterGcpAttributesPtrInput {
+	return (*pipelineClusterGcpAttributesPtrType)(v)
+}
+
+func (*pipelineClusterGcpAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineClusterGcpAttributes)(nil)).Elem()
+}
+
+func (i *pipelineClusterGcpAttributesPtrType) ToPipelineClusterGcpAttributesPtrOutput() PipelineClusterGcpAttributesPtrOutput {
+	return i.ToPipelineClusterGcpAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineClusterGcpAttributesPtrType) ToPipelineClusterGcpAttributesPtrOutputWithContext(ctx context.Context) PipelineClusterGcpAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineClusterGcpAttributesPtrOutput)
+}
+
+type PipelineClusterGcpAttributesOutput struct{ *pulumi.OutputState }
+
+func (PipelineClusterGcpAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineClusterGcpAttributes)(nil)).Elem()
+}
+
+func (o PipelineClusterGcpAttributesOutput) ToPipelineClusterGcpAttributesOutput() PipelineClusterGcpAttributesOutput {
+	return o
+}
+
+func (o PipelineClusterGcpAttributesOutput) ToPipelineClusterGcpAttributesOutputWithContext(ctx context.Context) PipelineClusterGcpAttributesOutput {
+	return o
+}
+
+func (o PipelineClusterGcpAttributesOutput) ToPipelineClusterGcpAttributesPtrOutput() PipelineClusterGcpAttributesPtrOutput {
+	return o.ToPipelineClusterGcpAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineClusterGcpAttributesOutput) ToPipelineClusterGcpAttributesPtrOutputWithContext(ctx context.Context) PipelineClusterGcpAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineClusterGcpAttributes) *PipelineClusterGcpAttributes {
+		return &v
+	}).(PipelineClusterGcpAttributesPtrOutput)
+}
+
+func (o PipelineClusterGcpAttributesOutput) GoogleServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineClusterGcpAttributes) *string { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+type PipelineClusterGcpAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineClusterGcpAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineClusterGcpAttributes)(nil)).Elem()
+}
+
+func (o PipelineClusterGcpAttributesPtrOutput) ToPipelineClusterGcpAttributesPtrOutput() PipelineClusterGcpAttributesPtrOutput {
+	return o
+}
+
+func (o PipelineClusterGcpAttributesPtrOutput) ToPipelineClusterGcpAttributesPtrOutputWithContext(ctx context.Context) PipelineClusterGcpAttributesPtrOutput {
+	return o
+}
+
+func (o PipelineClusterGcpAttributesPtrOutput) Elem() PipelineClusterGcpAttributesOutput {
+	return o.ApplyT(func(v *PipelineClusterGcpAttributes) PipelineClusterGcpAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineClusterGcpAttributes
+		return ret
+	}).(PipelineClusterGcpAttributesOutput)
+}
+
+func (o PipelineClusterGcpAttributesPtrOutput) GoogleServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineClusterGcpAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleServiceAccount
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26571,6 +27657,143 @@ func (o StorageCredentialAwsIamRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type StorageCredentialAzureManagedIdentity struct {
+	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+	AccessConnectorId string `pulumi:"accessConnectorId"`
+}
+
+// StorageCredentialAzureManagedIdentityInput is an input type that accepts StorageCredentialAzureManagedIdentityArgs and StorageCredentialAzureManagedIdentityOutput values.
+// You can construct a concrete instance of `StorageCredentialAzureManagedIdentityInput` via:
+//
+//          StorageCredentialAzureManagedIdentityArgs{...}
+type StorageCredentialAzureManagedIdentityInput interface {
+	pulumi.Input
+
+	ToStorageCredentialAzureManagedIdentityOutput() StorageCredentialAzureManagedIdentityOutput
+	ToStorageCredentialAzureManagedIdentityOutputWithContext(context.Context) StorageCredentialAzureManagedIdentityOutput
+}
+
+type StorageCredentialAzureManagedIdentityArgs struct {
+	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+	AccessConnectorId pulumi.StringInput `pulumi:"accessConnectorId"`
+}
+
+func (StorageCredentialAzureManagedIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialAzureManagedIdentity)(nil)).Elem()
+}
+
+func (i StorageCredentialAzureManagedIdentityArgs) ToStorageCredentialAzureManagedIdentityOutput() StorageCredentialAzureManagedIdentityOutput {
+	return i.ToStorageCredentialAzureManagedIdentityOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialAzureManagedIdentityArgs) ToStorageCredentialAzureManagedIdentityOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureManagedIdentityOutput)
+}
+
+func (i StorageCredentialAzureManagedIdentityArgs) ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput {
+	return i.ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialAzureManagedIdentityArgs) ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureManagedIdentityOutput).ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx)
+}
+
+// StorageCredentialAzureManagedIdentityPtrInput is an input type that accepts StorageCredentialAzureManagedIdentityArgs, StorageCredentialAzureManagedIdentityPtr and StorageCredentialAzureManagedIdentityPtrOutput values.
+// You can construct a concrete instance of `StorageCredentialAzureManagedIdentityPtrInput` via:
+//
+//          StorageCredentialAzureManagedIdentityArgs{...}
+//
+//  or:
+//
+//          nil
+type StorageCredentialAzureManagedIdentityPtrInput interface {
+	pulumi.Input
+
+	ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput
+	ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(context.Context) StorageCredentialAzureManagedIdentityPtrOutput
+}
+
+type storageCredentialAzureManagedIdentityPtrType StorageCredentialAzureManagedIdentityArgs
+
+func StorageCredentialAzureManagedIdentityPtr(v *StorageCredentialAzureManagedIdentityArgs) StorageCredentialAzureManagedIdentityPtrInput {
+	return (*storageCredentialAzureManagedIdentityPtrType)(v)
+}
+
+func (*storageCredentialAzureManagedIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialAzureManagedIdentity)(nil)).Elem()
+}
+
+func (i *storageCredentialAzureManagedIdentityPtrType) ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput {
+	return i.ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *storageCredentialAzureManagedIdentityPtrType) ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureManagedIdentityPtrOutput)
+}
+
+type StorageCredentialAzureManagedIdentityOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialAzureManagedIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialAzureManagedIdentity)(nil)).Elem()
+}
+
+func (o StorageCredentialAzureManagedIdentityOutput) ToStorageCredentialAzureManagedIdentityOutput() StorageCredentialAzureManagedIdentityOutput {
+	return o
+}
+
+func (o StorageCredentialAzureManagedIdentityOutput) ToStorageCredentialAzureManagedIdentityOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityOutput {
+	return o
+}
+
+func (o StorageCredentialAzureManagedIdentityOutput) ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput {
+	return o.ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o StorageCredentialAzureManagedIdentityOutput) ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialAzureManagedIdentity) *StorageCredentialAzureManagedIdentity {
+		return &v
+	}).(StorageCredentialAzureManagedIdentityPtrOutput)
+}
+
+// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+func (o StorageCredentialAzureManagedIdentityOutput) AccessConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialAzureManagedIdentity) string { return v.AccessConnectorId }).(pulumi.StringOutput)
+}
+
+type StorageCredentialAzureManagedIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialAzureManagedIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialAzureManagedIdentity)(nil)).Elem()
+}
+
+func (o StorageCredentialAzureManagedIdentityPtrOutput) ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput {
+	return o
+}
+
+func (o StorageCredentialAzureManagedIdentityPtrOutput) ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityPtrOutput {
+	return o
+}
+
+func (o StorageCredentialAzureManagedIdentityPtrOutput) Elem() StorageCredentialAzureManagedIdentityOutput {
+	return o.ApplyT(func(v *StorageCredentialAzureManagedIdentity) StorageCredentialAzureManagedIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret StorageCredentialAzureManagedIdentity
+		return ret
+	}).(StorageCredentialAzureManagedIdentityOutput)
+}
+
+// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+func (o StorageCredentialAzureManagedIdentityPtrOutput) AccessConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialAzureManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessConnectorId
+	}).(pulumi.StringPtrOutput)
+}
+
 type StorageCredentialAzureServicePrincipal struct {
 	// The application ID of the application registration within the referenced AAD tenant
 	ApplicationId string `pulumi:"applicationId"`
@@ -27282,6 +28505,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSparkSubmitTaskPtrInput)(nil)).Elem(), JobSparkSubmitTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskInput)(nil)).Elem(), JobTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskArrayInput)(nil)).Elem(), JobTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDbtTaskInput)(nil)).Elem(), JobTaskDbtTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDbtTaskPtrInput)(nil)).Elem(), JobTaskDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDependsOnInput)(nil)).Elem(), JobTaskDependsOnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDependsOnArrayInput)(nil)).Elem(), JobTaskDependsOnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskEmailNotificationsInput)(nil)).Elem(), JobTaskEmailNotificationsArgs{})
@@ -27336,6 +28561,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSparkPythonTaskPtrInput)(nil)).Elem(), JobTaskSparkPythonTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSparkSubmitTaskInput)(nil)).Elem(), JobTaskSparkSubmitTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSparkSubmitTaskPtrInput)(nil)).Elem(), JobTaskSparkSubmitTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskInput)(nil)).Elem(), JobTaskSqlTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskPtrInput)(nil)).Elem(), JobTaskSqlTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskAlertInput)(nil)).Elem(), JobTaskSqlTaskAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskAlertPtrInput)(nil)).Elem(), JobTaskSqlTaskAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskDashboardInput)(nil)).Elem(), JobTaskSqlTaskDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskDashboardPtrInput)(nil)).Elem(), JobTaskSqlTaskDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskQueryInput)(nil)).Elem(), JobTaskSqlTaskQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskQueryPtrInput)(nil)).Elem(), JobTaskSqlTaskQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LibraryCranInput)(nil)).Elem(), LibraryCranArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LibraryCranPtrInput)(nil)).Elem(), LibraryCranArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LibraryMavenInput)(nil)).Elem(), LibraryMavenArgs{})
@@ -27344,6 +28577,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LibraryPypiPtrInput)(nil)).Elem(), LibraryPypiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessAwsIamRoleInput)(nil)).Elem(), MetastoreDataAccessAwsIamRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessAwsIamRolePtrInput)(nil)).Elem(), MetastoreDataAccessAwsIamRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessAzureManagedIdentityInput)(nil)).Elem(), MetastoreDataAccessAzureManagedIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessAzureManagedIdentityPtrInput)(nil)).Elem(), MetastoreDataAccessAzureManagedIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessAzureServicePrincipalInput)(nil)).Elem(), MetastoreDataAccessAzureServicePrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessAzureServicePrincipalPtrInput)(nil)).Elem(), MetastoreDataAccessAzureServicePrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MlflowModelTagInput)(nil)).Elem(), MlflowModelTagArgs{})
@@ -27396,6 +28631,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterClusterLogConfDbfsPtrInput)(nil)).Elem(), PipelineClusterClusterLogConfDbfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterClusterLogConfS3Input)(nil)).Elem(), PipelineClusterClusterLogConfS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterClusterLogConfS3PtrInput)(nil)).Elem(), PipelineClusterClusterLogConfS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterGcpAttributesInput)(nil)).Elem(), PipelineClusterGcpAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterGcpAttributesPtrInput)(nil)).Elem(), PipelineClusterGcpAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterInitScriptInput)(nil)).Elem(), PipelineClusterInitScriptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterInitScriptArrayInput)(nil)).Elem(), PipelineClusterInitScriptArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterInitScriptDbfsInput)(nil)).Elem(), PipelineClusterInitScriptDbfsArgs{})
@@ -27466,6 +28703,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlWidgetPositionPtrInput)(nil)).Elem(), SqlWidgetPositionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAwsIamRoleInput)(nil)).Elem(), StorageCredentialAwsIamRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAwsIamRolePtrInput)(nil)).Elem(), StorageCredentialAwsIamRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureManagedIdentityInput)(nil)).Elem(), StorageCredentialAzureManagedIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureManagedIdentityPtrInput)(nil)).Elem(), StorageCredentialAzureManagedIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureServicePrincipalInput)(nil)).Elem(), StorageCredentialAzureServicePrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureServicePrincipalPtrInput)(nil)).Elem(), StorageCredentialAzureServicePrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableColumnInput)(nil)).Elem(), TableColumnArgs{})
@@ -27616,6 +28855,8 @@ func init() {
 	pulumi.RegisterOutputType(JobSparkSubmitTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskArrayOutput{})
+	pulumi.RegisterOutputType(JobTaskDbtTaskOutput{})
+	pulumi.RegisterOutputType(JobTaskDbtTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskDependsOnOutput{})
 	pulumi.RegisterOutputType(JobTaskDependsOnArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskEmailNotificationsOutput{})
@@ -27670,6 +28911,14 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskSparkPythonTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskSparkSubmitTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskSparkSubmitTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskAlertOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskAlertPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskDashboardOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskDashboardPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskQueryOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskQueryPtrOutput{})
 	pulumi.RegisterOutputType(LibraryCranOutput{})
 	pulumi.RegisterOutputType(LibraryCranPtrOutput{})
 	pulumi.RegisterOutputType(LibraryMavenOutput{})
@@ -27678,6 +28927,8 @@ func init() {
 	pulumi.RegisterOutputType(LibraryPypiPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreDataAccessAwsIamRoleOutput{})
 	pulumi.RegisterOutputType(MetastoreDataAccessAwsIamRolePtrOutput{})
+	pulumi.RegisterOutputType(MetastoreDataAccessAzureManagedIdentityOutput{})
+	pulumi.RegisterOutputType(MetastoreDataAccessAzureManagedIdentityPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreDataAccessAzureServicePrincipalOutput{})
 	pulumi.RegisterOutputType(MetastoreDataAccessAzureServicePrincipalPtrOutput{})
 	pulumi.RegisterOutputType(MlflowModelTagOutput{})
@@ -27730,6 +28981,8 @@ func init() {
 	pulumi.RegisterOutputType(PipelineClusterClusterLogConfDbfsPtrOutput{})
 	pulumi.RegisterOutputType(PipelineClusterClusterLogConfS3Output{})
 	pulumi.RegisterOutputType(PipelineClusterClusterLogConfS3PtrOutput{})
+	pulumi.RegisterOutputType(PipelineClusterGcpAttributesOutput{})
+	pulumi.RegisterOutputType(PipelineClusterGcpAttributesPtrOutput{})
 	pulumi.RegisterOutputType(PipelineClusterInitScriptOutput{})
 	pulumi.RegisterOutputType(PipelineClusterInitScriptArrayOutput{})
 	pulumi.RegisterOutputType(PipelineClusterInitScriptDbfsOutput{})
@@ -27800,6 +29053,8 @@ func init() {
 	pulumi.RegisterOutputType(SqlWidgetPositionPtrOutput{})
 	pulumi.RegisterOutputType(StorageCredentialAwsIamRoleOutput{})
 	pulumi.RegisterOutputType(StorageCredentialAwsIamRolePtrOutput{})
+	pulumi.RegisterOutputType(StorageCredentialAzureManagedIdentityOutput{})
+	pulumi.RegisterOutputType(StorageCredentialAzureManagedIdentityPtrOutput{})
 	pulumi.RegisterOutputType(StorageCredentialAzureServicePrincipalOutput{})
 	pulumi.RegisterOutputType(StorageCredentialAzureServicePrincipalPtrOutput{})
 	pulumi.RegisterOutputType(TableColumnOutput{})

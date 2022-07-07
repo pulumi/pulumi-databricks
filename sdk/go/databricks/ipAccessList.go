@@ -75,7 +75,7 @@ type IpAccessList struct {
 
 	// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// This is a field to allow the group to have instance pool create priviliges.
+	// This is a field to allow the group to have instance pool create privileges.
 	IpAddresses pulumi.StringArrayOutput `pulumi:"ipAddresses"`
 	// This is the display name for the given IP ACL List.
 	Label pulumi.StringOutput `pulumi:"label"`
@@ -123,7 +123,7 @@ func GetIpAccessList(ctx *pulumi.Context,
 type ipAccessListState struct {
 	// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
 	Enabled *bool `pulumi:"enabled"`
-	// This is a field to allow the group to have instance pool create priviliges.
+	// This is a field to allow the group to have instance pool create privileges.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// This is the display name for the given IP ACL List.
 	Label *string `pulumi:"label"`
@@ -134,7 +134,7 @@ type ipAccessListState struct {
 type IpAccessListState struct {
 	// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
 	Enabled pulumi.BoolPtrInput
-	// This is a field to allow the group to have instance pool create priviliges.
+	// This is a field to allow the group to have instance pool create privileges.
 	IpAddresses pulumi.StringArrayInput
 	// This is the display name for the given IP ACL List.
 	Label pulumi.StringPtrInput
@@ -149,7 +149,7 @@ func (IpAccessListState) ElementType() reflect.Type {
 type ipAccessListArgs struct {
 	// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
 	Enabled *bool `pulumi:"enabled"`
-	// This is a field to allow the group to have instance pool create priviliges.
+	// This is a field to allow the group to have instance pool create privileges.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// This is the display name for the given IP ACL List.
 	Label string `pulumi:"label"`
@@ -161,7 +161,7 @@ type ipAccessListArgs struct {
 type IpAccessListArgs struct {
 	// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
 	Enabled pulumi.BoolPtrInput
-	// This is a field to allow the group to have instance pool create priviliges.
+	// This is a field to allow the group to have instance pool create privileges.
 	IpAddresses pulumi.StringArrayInput
 	// This is the display name for the given IP ACL List.
 	Label pulumi.StringInput
@@ -261,7 +261,7 @@ func (o IpAccessListOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IpAccessList) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// This is a field to allow the group to have instance pool create priviliges.
+// This is a field to allow the group to have instance pool create privileges.
 func (o IpAccessListOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IpAccessList) pulumi.StringArrayOutput { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }

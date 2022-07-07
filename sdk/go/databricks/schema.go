@@ -78,7 +78,7 @@ type Schema struct {
 	MetastoreId pulumi.StringOutput    `pulumi:"metastoreId"`
 	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId schema owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties pulumi.MapOutput `pulumi:"properties"`
@@ -123,7 +123,7 @@ type schemaState struct {
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
-	// Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId schema owner.
 	Owner *string `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties map[string]interface{} `pulumi:"properties"`
@@ -137,7 +137,7 @@ type SchemaState struct {
 	MetastoreId pulumi.StringPtrInput
 	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
-	// Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId schema owner.
 	Owner pulumi.StringPtrInput
 	// Extensible Schema properties.
 	Properties pulumi.MapInput
@@ -155,7 +155,7 @@ type schemaArgs struct {
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
-	// Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId schema owner.
 	Owner *string `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties map[string]interface{} `pulumi:"properties"`
@@ -170,7 +170,7 @@ type SchemaArgs struct {
 	MetastoreId pulumi.StringPtrInput
 	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
-	// Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId schema owner.
 	Owner pulumi.StringPtrInput
 	// Extensible Schema properties.
 	Properties pulumi.MapInput
@@ -282,7 +282,7 @@ func (o SchemaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+// Username/groupname/sp applicationId schema owner.
 func (o SchemaOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }

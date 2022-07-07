@@ -79,7 +79,7 @@ type SqlEndpoint struct {
 	Channel SqlEndpointChannelPtrOutput `pulumi:"channel"`
 	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize pulumi.StringOutput `pulumi:"clusterSize"`
-	// ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+	// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId pulumi.StringOutput `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
 	EnablePhoton pulumi.BoolPtrOutput `pulumi:"enablePhoton"`
@@ -142,7 +142,7 @@ type sqlEndpointState struct {
 	Channel *SqlEndpointChannel `pulumi:"channel"`
 	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize *string `pulumi:"clusterSize"`
-	// ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+	// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
 	EnablePhoton *bool `pulumi:"enablePhoton"`
@@ -174,7 +174,7 @@ type SqlEndpointState struct {
 	Channel SqlEndpointChannelPtrInput
 	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize pulumi.StringPtrInput
-	// ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+	// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId pulumi.StringPtrInput
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
 	EnablePhoton pulumi.BoolPtrInput
@@ -210,7 +210,7 @@ type sqlEndpointArgs struct {
 	Channel *SqlEndpointChannel `pulumi:"channel"`
 	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize string `pulumi:"clusterSize"`
-	// ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+	// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
 	EnablePhoton *bool `pulumi:"enablePhoton"`
@@ -243,7 +243,7 @@ type SqlEndpointArgs struct {
 	Channel SqlEndpointChannelPtrInput
 	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize pulumi.StringInput
-	// ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+	// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId pulumi.StringPtrInput
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
 	EnablePhoton pulumi.BoolPtrInput
@@ -370,7 +370,7 @@ func (o SqlEndpointOutput) ClusterSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.ClusterSize }).(pulumi.StringOutput)
 }
 
-// ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 func (o SqlEndpointOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.DataSourceId }).(pulumi.StringOutput)
 }

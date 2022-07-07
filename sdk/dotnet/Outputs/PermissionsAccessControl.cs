@@ -14,16 +14,19 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PermissionsAccessControl
     {
         /// <summary>
-        /// name of the group, which should be used if the user name is not used. We recommend setting permissions on groups.
+        /// name of the group. We recommend setting permissions on groups.
         /// </summary>
         public readonly string? GroupName;
         /// <summary>
         /// permission level according to specific resource. See examples above for the reference.
         /// </summary>
         public readonly string PermissionLevel;
+        /// <summary>
+        /// Application ID of the service_principal.
+        /// </summary>
         public readonly string? ServicePrincipalName;
         /// <summary>
-        /// name of the user, which should be used if group name is not used
+        /// name of the user.
         /// </summary>
         public readonly string? UserName;
 

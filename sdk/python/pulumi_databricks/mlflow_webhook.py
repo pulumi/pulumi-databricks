@@ -25,7 +25,7 @@ class MlflowWebhookArgs:
         The set of arguments for constructing a MlflowWebhook resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
         :param pulumi.Input[str] description: Optional description of the MLflow webhook.
-        :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+        :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         :param pulumi.Input[str] status: Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
         """
         pulumi.set(__self__, "events", events)
@@ -86,7 +86,7 @@ class MlflowWebhookArgs:
     @pulumi.getter(name="modelName")
     def model_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+        Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         """
         return pulumi.get(self, "model_name")
 
@@ -120,7 +120,7 @@ class _MlflowWebhookState:
         Input properties used for looking up and filtering MlflowWebhook resources.
         :param pulumi.Input[str] description: Optional description of the MLflow webhook.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
-        :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+        :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         :param pulumi.Input[str] status: Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
         """
         if description is not None:
@@ -182,7 +182,7 @@ class _MlflowWebhookState:
     @pulumi.getter(name="modelName")
     def model_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+        Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         """
         return pulumi.get(self, "model_name")
 
@@ -256,7 +256,7 @@ class MlflowWebhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional description of the MLflow webhook.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
-        :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+        :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         :param pulumi.Input[str] status: Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
         """
         ...
@@ -368,7 +368,7 @@ class MlflowWebhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional description of the MLflow webhook.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
-        :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+        :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         :param pulumi.Input[str] status: Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -413,7 +413,7 @@ class MlflowWebhook(pulumi.CustomResource):
     @pulumi.getter(name="modelName")
     def model_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+        Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         """
         return pulumi.get(self, "model_name")
 

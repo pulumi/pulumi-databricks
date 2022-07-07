@@ -61,6 +61,7 @@ export function getNodeType(args?: GetNodeTypeArgs, opts?: pulumi.InvokeOptions)
         "photonDriverCapable": args.photonDriverCapable,
         "photonWorkerCapable": args.photonWorkerCapable,
         "supportPortForwarding": args.supportPortForwarding,
+        "vcpu": args.vcpu,
     }, opts);
 }
 
@@ -119,6 +120,7 @@ export interface GetNodeTypeArgs {
      * Pick only nodes that support port forwarding. Defaults to *false*.
      */
     supportPortForwarding?: boolean;
+    vcpu?: boolean;
 }
 
 /**
@@ -140,6 +142,7 @@ export interface GetNodeTypeResult {
     readonly photonDriverCapable?: boolean;
     readonly photonWorkerCapable?: boolean;
     readonly supportPortForwarding?: boolean;
+    readonly vcpu?: boolean;
 }
 
 export function getNodeTypeOutput(args?: GetNodeTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTypeResult> {
@@ -201,4 +204,5 @@ export interface GetNodeTypeOutputArgs {
      * Pick only nodes that support port forwarding. Defaults to *false*.
      */
     supportPortForwarding?: pulumi.Input<boolean>;
+    vcpu?: pulumi.Input<boolean>;
 }

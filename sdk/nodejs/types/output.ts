@@ -148,7 +148,7 @@ export interface InstancePoolAwsAttributes {
      */
     spotBidPricePercent?: number;
     /**
-     * (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of a form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+     * (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
      */
     zoneId: string;
 }
@@ -159,7 +159,7 @@ export interface InstancePoolAzureAttributes {
      */
     availability?: string;
     /**
-     * The max price for Azure spot instances.  Use `-1` to specify lowest price.
+     * The max price for Azure spot instances.  Use `-1` to specify the lowest price.
      */
     spotBidMaxPrice?: number;
 }
@@ -600,6 +600,7 @@ export interface JobSparkSubmitTask {
 }
 
 export interface JobTask {
+    dbtTask?: outputs.JobTaskDbtTask;
     dependsOns?: outputs.JobTaskDependsOn[];
     description?: string;
     /**
@@ -640,11 +641,18 @@ export interface JobTask {
     sparkJarTask?: outputs.JobTaskSparkJarTask;
     sparkPythonTask?: outputs.JobTaskSparkPythonTask;
     sparkSubmitTask?: outputs.JobTaskSparkSubmitTask;
+    sqlTask?: outputs.JobTaskSqlTask;
     taskKey?: string;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
     timeoutSeconds?: number;
+}
+
+export interface JobTaskDbtTask {
+    commands: string[];
+    projectDirectory?: string;
+    schema?: string;
 }
 
 export interface JobTaskDependsOn {
@@ -883,6 +891,29 @@ export interface JobTaskSparkSubmitTask {
     parameters?: string[];
 }
 
+export interface JobTaskSqlTask {
+    alert?: outputs.JobTaskSqlTaskAlert;
+    dashboard?: outputs.JobTaskSqlTaskDashboard;
+    /**
+     * Parameters for the task
+     */
+    parameters?: {[key: string]: any};
+    query?: outputs.JobTaskSqlTaskQuery;
+    warehouseId?: string;
+}
+
+export interface JobTaskSqlTaskAlert {
+    alertId: string;
+}
+
+export interface JobTaskSqlTaskDashboard {
+    dashboardId: string;
+}
+
+export interface JobTaskSqlTaskQuery {
+    queryId: string;
+}
+
 export interface LibraryCran {
     package: string;
     repo?: string;
@@ -904,6 +935,13 @@ export interface MetastoreDataAccessAwsIamRole {
      * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      */
     roleArn: string;
+}
+
+export interface MetastoreDataAccessAzureManagedIdentity {
+    /**
+     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+     */
+    accessConnectorId: string;
 }
 
 export interface MetastoreDataAccessAzureServicePrincipal {
@@ -1038,7 +1076,8 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesNetwork {
     gcpCommonNetworkConfig: outputs.MwsWorkspacesNetworkGcpCommonNetworkConfig;
-    gcpManagedNetworkConfig: outputs.MwsWorkspacesNetworkGcpManagedNetworkConfig;
+    gcpManagedNetworkConfig?: outputs.MwsWorkspacesNetworkGcpManagedNetworkConfig;
+    networkId?: string;
 }
 
 export interface MwsWorkspacesNetworkGcpCommonNetworkConfig {
@@ -1061,16 +1100,19 @@ export interface MwsWorkspacesToken {
 
 export interface PermissionsAccessControl {
     /**
-     * name of the group, which should be used if the user name is not used. We recommend setting permissions on groups.
+     * name of the group. We recommend setting permissions on groups.
      */
     groupName?: string;
     /**
      * permission level according to specific resource. See examples above for the reference.
      */
     permissionLevel: string;
+    /**
+     * Application ID of the service_principal.
+     */
     servicePrincipalName?: string;
     /**
-     * name of the user, which should be used if group name is not used
+     * name of the user.
      */
     userName?: string;
 }
@@ -1080,7 +1122,9 @@ export interface PipelineCluster {
     awsAttributes?: outputs.PipelineClusterAwsAttributes;
     clusterLogConf?: outputs.PipelineClusterClusterLogConf;
     customTags?: {[key: string]: any};
+    driverInstancePoolId?: string;
     driverNodeTypeId: string;
+    gcpAttributes?: outputs.PipelineClusterGcpAttributes;
     initScripts?: outputs.PipelineClusterInitScript[];
     instancePoolId?: string;
     label?: string;
@@ -1097,6 +1141,7 @@ export interface PipelineClusterAutoscale {
 }
 
 export interface PipelineClusterAwsAttributes {
+    firstOnDemand?: number;
     instanceProfileArn?: string;
     zoneId?: string;
 }
@@ -1118,6 +1163,10 @@ export interface PipelineClusterClusterLogConfS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface PipelineClusterGcpAttributes {
+    googleServiceAccount?: string;
 }
 
 export interface PipelineClusterInitScript {
@@ -1330,6 +1379,13 @@ export interface StorageCredentialAwsIamRole {
      * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      */
     roleArn: string;
+}
+
+export interface StorageCredentialAzureManagedIdentity {
+    /**
+     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+     */
+    accessConnectorId: string;
 }
 
 export interface StorageCredentialAzureServicePrincipal {

@@ -17,6 +17,7 @@ class MetastoreDataAccessArgs:
     def __init__(__self__, *,
                  metastore_id: pulumi.Input[str],
                  aws_iam_role: Optional[pulumi.Input['MetastoreDataAccessAwsIamRoleArgs']] = None,
+                 azure_managed_identity: Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']] = None,
                  configuration_type: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
@@ -29,6 +30,8 @@ class MetastoreDataAccessArgs:
         pulumi.set(__self__, "metastore_id", metastore_id)
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
+        if azure_managed_identity is not None:
+            pulumi.set(__self__, "azure_managed_identity", azure_managed_identity)
         if azure_service_principal is not None:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
         if configuration_type is not None:
@@ -58,6 +61,15 @@ class MetastoreDataAccessArgs:
     @aws_iam_role.setter
     def aws_iam_role(self, value: Optional[pulumi.Input['MetastoreDataAccessAwsIamRoleArgs']]):
         pulumi.set(self, "aws_iam_role", value)
+
+    @property
+    @pulumi.getter(name="azureManagedIdentity")
+    def azure_managed_identity(self) -> Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']]:
+        return pulumi.get(self, "azure_managed_identity")
+
+    @azure_managed_identity.setter
+    def azure_managed_identity(self, value: Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']]):
+        pulumi.set(self, "azure_managed_identity", value)
 
     @property
     @pulumi.getter(name="azureServicePrincipal")
@@ -103,6 +115,7 @@ class MetastoreDataAccessArgs:
 class _MetastoreDataAccessState:
     def __init__(__self__, *,
                  aws_iam_role: Optional[pulumi.Input['MetastoreDataAccessAwsIamRoleArgs']] = None,
+                 azure_managed_identity: Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']] = None,
                  configuration_type: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
@@ -115,6 +128,8 @@ class _MetastoreDataAccessState:
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
+        if azure_managed_identity is not None:
+            pulumi.set(__self__, "azure_managed_identity", azure_managed_identity)
         if azure_service_principal is not None:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
         if configuration_type is not None:
@@ -134,6 +149,15 @@ class _MetastoreDataAccessState:
     @aws_iam_role.setter
     def aws_iam_role(self, value: Optional[pulumi.Input['MetastoreDataAccessAwsIamRoleArgs']]):
         pulumi.set(self, "aws_iam_role", value)
+
+    @property
+    @pulumi.getter(name="azureManagedIdentity")
+    def azure_managed_identity(self) -> Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']]:
+        return pulumi.get(self, "azure_managed_identity")
+
+    @azure_managed_identity.setter
+    def azure_managed_identity(self, value: Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']]):
+        pulumi.set(self, "azure_managed_identity", value)
 
     @property
     @pulumi.getter(name="azureServicePrincipal")
@@ -193,6 +217,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aws_iam_role: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAwsIamRoleArgs']]] = None,
+                 azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureManagedIdentityArgs']]] = None,
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureServicePrincipalArgs']]] = None,
                  configuration_type: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
@@ -244,6 +269,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aws_iam_role: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAwsIamRoleArgs']]] = None,
+                 azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureManagedIdentityArgs']]] = None,
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureServicePrincipalArgs']]] = None,
                  configuration_type: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
@@ -262,6 +288,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             __props__ = MetastoreDataAccessArgs.__new__(MetastoreDataAccessArgs)
 
             __props__.__dict__["aws_iam_role"] = aws_iam_role
+            __props__.__dict__["azure_managed_identity"] = azure_managed_identity
             __props__.__dict__["azure_service_principal"] = azure_service_principal
             __props__.__dict__["configuration_type"] = configuration_type
             __props__.__dict__["is_default"] = is_default
@@ -280,6 +307,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             aws_iam_role: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAwsIamRoleArgs']]] = None,
+            azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureManagedIdentityArgs']]] = None,
             azure_service_principal: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureServicePrincipalArgs']]] = None,
             configuration_type: Optional[pulumi.Input[str]] = None,
             is_default: Optional[pulumi.Input[bool]] = None,
@@ -300,6 +328,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
         __props__ = _MetastoreDataAccessState.__new__(_MetastoreDataAccessState)
 
         __props__.__dict__["aws_iam_role"] = aws_iam_role
+        __props__.__dict__["azure_managed_identity"] = azure_managed_identity
         __props__.__dict__["azure_service_principal"] = azure_service_principal
         __props__.__dict__["configuration_type"] = configuration_type
         __props__.__dict__["is_default"] = is_default
@@ -311,6 +340,11 @@ class MetastoreDataAccess(pulumi.CustomResource):
     @pulumi.getter(name="awsIamRole")
     def aws_iam_role(self) -> pulumi.Output[Optional['outputs.MetastoreDataAccessAwsIamRole']]:
         return pulumi.get(self, "aws_iam_role")
+
+    @property
+    @pulumi.getter(name="azureManagedIdentity")
+    def azure_managed_identity(self) -> pulumi.Output[Optional['outputs.MetastoreDataAccessAzureManagedIdentity']]:
+        return pulumi.get(self, "azure_managed_identity")
 
     @property
     @pulumi.getter(name="azureServicePrincipal")

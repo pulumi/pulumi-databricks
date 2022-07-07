@@ -54,6 +54,7 @@ export interface GetUserResult {
      * Alphanumeric representation of user local name. e.g. `mrFoo`.
      */
     readonly alphanumeric: string;
+    readonly applicationId: string;
     /**
      * Display name of the user, e.g. `Mr Foo`.
      */

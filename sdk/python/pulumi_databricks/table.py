@@ -35,7 +35,7 @@ class TableArgs:
         :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] name: User-visible name of column
-        :param pulumi.Input[str] owner: Username/groupname of Table owner. Currently this field can only be changed after the resource is created.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id Table owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Table properties.
         :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
@@ -146,7 +146,7 @@ class TableArgs:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
-        Username/groupname of Table owner. Currently this field can only be changed after the resource is created.
+        Username/groupname/sp application_id Table owner.
         """
         return pulumi.get(self, "owner")
 
@@ -224,7 +224,7 @@ class _TableState:
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
         :param pulumi.Input[str] name: User-visible name of column
-        :param pulumi.Input[str] owner: Username/groupname of Table owner. Currently this field can only be changed after the resource is created.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id Table owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Table properties.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
         :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
@@ -318,7 +318,7 @@ class _TableState:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
-        Username/groupname of Table owner. Currently this field can only be changed after the resource is created.
+        Username/groupname/sp application_id Table owner.
         """
         return pulumi.get(self, "owner")
 
@@ -490,7 +490,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
         :param pulumi.Input[str] name: User-visible name of column
-        :param pulumi.Input[str] owner: Username/groupname of Table owner. Currently this field can only be changed after the resource is created.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id Table owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Table properties.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
         :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
@@ -665,7 +665,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
         :param pulumi.Input[str] name: User-visible name of column
-        :param pulumi.Input[str] owner: Username/groupname of Table owner. Currently this field can only be changed after the resource is created.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id Table owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Table properties.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
         :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
@@ -732,7 +732,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
         """
-        Username/groupname of Table owner. Currently this field can only be changed after the resource is created.
+        Username/groupname/sp application_id Table owner.
         """
         return pulumi.get(self, "owner")
 

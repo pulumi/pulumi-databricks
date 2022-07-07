@@ -19,7 +19,7 @@ class IpAccessListArgs:
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a IpAccessList resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: This is a field to allow the group to have instance pool create priviliges.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: This is a field to allow the group to have instance pool create privileges.
         :param pulumi.Input[str] label: This is the display name for the given IP ACL List.
         :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK"
         :param pulumi.Input[bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
@@ -34,7 +34,7 @@ class IpAccessListArgs:
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        This is a field to allow the group to have instance pool create priviliges.
+        This is a field to allow the group to have instance pool create privileges.
         """
         return pulumi.get(self, "ip_addresses")
 
@@ -89,7 +89,7 @@ class _IpAccessListState:
         """
         Input properties used for looking up and filtering IpAccessList resources.
         :param pulumi.Input[bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: This is a field to allow the group to have instance pool create priviliges.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: This is a field to allow the group to have instance pool create privileges.
         :param pulumi.Input[str] label: This is the display name for the given IP ACL List.
         :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK"
         """
@@ -118,7 +118,7 @@ class _IpAccessListState:
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        This is a field to allow the group to have instance pool create priviliges.
+        This is a field to allow the group to have instance pool create privileges.
         """
         return pulumi.get(self, "ip_addresses")
 
@@ -206,7 +206,7 @@ class IpAccessList(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: This is a field to allow the group to have instance pool create priviliges.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: This is a field to allow the group to have instance pool create privileges.
         :param pulumi.Input[str] label: This is the display name for the given IP ACL List.
         :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK"
         """
@@ -321,7 +321,7 @@ class IpAccessList(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: This is a field to allow the group to have instance pool create priviliges.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: This is a field to allow the group to have instance pool create privileges.
         :param pulumi.Input[str] label: This is the display name for the given IP ACL List.
         :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK"
         """
@@ -347,7 +347,7 @@ class IpAccessList(pulumi.CustomResource):
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> pulumi.Output[Sequence[str]]:
         """
-        This is a field to allow the group to have instance pool create priviliges.
+        This is a field to allow the group to have instance pool create privileges.
         """
         return pulumi.get(self, "ip_addresses")
 

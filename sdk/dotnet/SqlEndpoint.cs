@@ -88,7 +88,7 @@ namespace Pulumi.Databricks
         public Output<string> ClusterSize { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+        /// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         /// </summary>
         [Output("dataSourceId")]
         public Output<string> DataSourceId { get; private set; } = null!;
@@ -221,7 +221,7 @@ namespace Pulumi.Databricks
         public Input<string> ClusterSize { get; set; } = null!;
 
         /// <summary>
-        /// ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+        /// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         /// </summary>
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }
@@ -315,7 +315,7 @@ namespace Pulumi.Databricks
         public Input<string>? ClusterSize { get; set; }
 
         /// <summary>
-        /// ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+        /// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         /// </summary>
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }

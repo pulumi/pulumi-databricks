@@ -14,16 +14,20 @@ namespace Pulumi.Databricks.Outputs
     public sealed class MwsWorkspacesNetwork
     {
         public readonly Outputs.MwsWorkspacesNetworkGcpCommonNetworkConfig GcpCommonNetworkConfig;
-        public readonly Outputs.MwsWorkspacesNetworkGcpManagedNetworkConfig GcpManagedNetworkConfig;
+        public readonly Outputs.MwsWorkspacesNetworkGcpManagedNetworkConfig? GcpManagedNetworkConfig;
+        public readonly string? NetworkId;
 
         [OutputConstructor]
         private MwsWorkspacesNetwork(
             Outputs.MwsWorkspacesNetworkGcpCommonNetworkConfig gcpCommonNetworkConfig,
 
-            Outputs.MwsWorkspacesNetworkGcpManagedNetworkConfig gcpManagedNetworkConfig)
+            Outputs.MwsWorkspacesNetworkGcpManagedNetworkConfig? gcpManagedNetworkConfig,
+
+            string? networkId)
         {
             GcpCommonNetworkConfig = gcpCommonNetworkConfig;
             GcpManagedNetworkConfig = gcpManagedNetworkConfig;
+            NetworkId = networkId;
         }
     }
 }

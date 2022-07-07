@@ -66,7 +66,7 @@ namespace Pulumi.Databricks
     /// {
     ///     public MyStack()
     ///     {
-    ///         var external = new Databricks.StorageCredential("external", new Databricks.StorageCredentialArgs
+    ///         var externalSp = new Databricks.StorageCredential("externalSp", new Databricks.StorageCredentialArgs
     ///         {
     ///             AzureServicePrincipal = new Databricks.Inputs.StorageCredentialAzureServicePrincipalArgs
     ///             {
@@ -74,11 +74,19 @@ namespace Pulumi.Databricks
     ///                 ApplicationId = azuread_application.Ext_cred.Application_id,
     ///                 ClientSecret = azuread_application_password.Ext_cred.Value,
     ///             },
-    ///             Comment = "Managed by TF",
+    ///             Comment = "SP credential managed by TF",
+    ///         });
+    ///         var externalMi = new Databricks.StorageCredential("externalMi", new Databricks.StorageCredentialArgs
+    ///         {
+    ///             AzureManagedIdentity = new Databricks.Inputs.StorageCredentialAzureManagedIdentityArgs
+    ///             {
+    ///                 AccessConnectorId = @var.Access_connector_id,
+    ///             },
+    ///             Comment = "Managed identity credential managed by TF",
     ///         });
     ///         var externalCreds = new Databricks.Grants("externalCreds", new Databricks.GrantsArgs
     ///         {
-    ///             StorageCredential = external.Id,
+    ///             StorageCredential = databricks_storage_credential.External.Id,
     ///             Grants = 
     ///             {
     ///                 new Databricks.Inputs.GrantsGrantArgs
@@ -110,6 +118,9 @@ namespace Pulumi.Databricks
         [Output("awsIamRole")]
         public Output<Outputs.StorageCredentialAwsIamRole?> AwsIamRole { get; private set; } = null!;
 
+        [Output("azureManagedIdentity")]
+        public Output<Outputs.StorageCredentialAzureManagedIdentity?> AzureManagedIdentity { get; private set; } = null!;
+
         [Output("azureServicePrincipal")]
         public Output<Outputs.StorageCredentialAzureServicePrincipal?> AzureServicePrincipal { get; private set; } = null!;
 
@@ -124,6 +135,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("owner")]
+        public Output<string> Owner { get; private set; } = null!;
 
 
         /// <summary>
@@ -174,6 +188,9 @@ namespace Pulumi.Databricks
         [Input("awsIamRole")]
         public Input<Inputs.StorageCredentialAwsIamRoleArgs>? AwsIamRole { get; set; }
 
+        [Input("azureManagedIdentity")]
+        public Input<Inputs.StorageCredentialAzureManagedIdentityArgs>? AzureManagedIdentity { get; set; }
+
         [Input("azureServicePrincipal")]
         public Input<Inputs.StorageCredentialAzureServicePrincipalArgs>? AzureServicePrincipal { get; set; }
 
@@ -189,6 +206,9 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
+
         public StorageCredentialArgs()
         {
         }
@@ -198,6 +218,9 @@ namespace Pulumi.Databricks
     {
         [Input("awsIamRole")]
         public Input<Inputs.StorageCredentialAwsIamRoleGetArgs>? AwsIamRole { get; set; }
+
+        [Input("azureManagedIdentity")]
+        public Input<Inputs.StorageCredentialAzureManagedIdentityGetArgs>? AzureManagedIdentity { get; set; }
 
         [Input("azureServicePrincipal")]
         public Input<Inputs.StorageCredentialAzureServicePrincipalGetArgs>? AzureServicePrincipal { get; set; }
@@ -213,6 +236,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
 
         public StorageCredentialState()
         {

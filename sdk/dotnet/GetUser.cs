@@ -95,6 +95,7 @@ namespace Pulumi.Databricks
         /// Alphanumeric representation of user local name. e.g. `mr_foo`.
         /// </summary>
         public readonly string Alphanumeric;
+        public readonly string ApplicationId;
         /// <summary>
         /// Display name of the user, e.g. `Mr Foo`.
         /// </summary>
@@ -125,6 +126,8 @@ namespace Pulumi.Databricks
         private GetUserResult(
             string alphanumeric,
 
+            string applicationId,
+
             string displayName,
 
             string externalId,
@@ -140,6 +143,7 @@ namespace Pulumi.Databricks
             string? userName)
         {
             Alphanumeric = alphanumeric;
+            ApplicationId = applicationId;
             DisplayName = displayName;
             ExternalId = externalId;
             Home = home;

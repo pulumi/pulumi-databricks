@@ -22,6 +22,7 @@ type MetastoreDataAccess struct {
 	pulumi.CustomResourceState
 
 	AwsIamRole            MetastoreDataAccessAwsIamRolePtrOutput            `pulumi:"awsIamRole"`
+	AzureManagedIdentity  MetastoreDataAccessAzureManagedIdentityPtrOutput  `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal MetastoreDataAccessAzureServicePrincipalPtrOutput `pulumi:"azureServicePrincipal"`
 	ConfigurationType     pulumi.StringOutput                               `pulumi:"configurationType"`
 	IsDefault             pulumi.BoolPtrOutput                              `pulumi:"isDefault"`
@@ -64,6 +65,7 @@ func GetMetastoreDataAccess(ctx *pulumi.Context,
 // Input properties used for looking up and filtering MetastoreDataAccess resources.
 type metastoreDataAccessState struct {
 	AwsIamRole            *MetastoreDataAccessAwsIamRole            `pulumi:"awsIamRole"`
+	AzureManagedIdentity  *MetastoreDataAccessAzureManagedIdentity  `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal *MetastoreDataAccessAzureServicePrincipal `pulumi:"azureServicePrincipal"`
 	ConfigurationType     *string                                   `pulumi:"configurationType"`
 	IsDefault             *bool                                     `pulumi:"isDefault"`
@@ -75,6 +77,7 @@ type metastoreDataAccessState struct {
 
 type MetastoreDataAccessState struct {
 	AwsIamRole            MetastoreDataAccessAwsIamRolePtrInput
+	AzureManagedIdentity  MetastoreDataAccessAzureManagedIdentityPtrInput
 	AzureServicePrincipal MetastoreDataAccessAzureServicePrincipalPtrInput
 	ConfigurationType     pulumi.StringPtrInput
 	IsDefault             pulumi.BoolPtrInput
@@ -90,6 +93,7 @@ func (MetastoreDataAccessState) ElementType() reflect.Type {
 
 type metastoreDataAccessArgs struct {
 	AwsIamRole            *MetastoreDataAccessAwsIamRole            `pulumi:"awsIamRole"`
+	AzureManagedIdentity  *MetastoreDataAccessAzureManagedIdentity  `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal *MetastoreDataAccessAzureServicePrincipal `pulumi:"azureServicePrincipal"`
 	ConfigurationType     *string                                   `pulumi:"configurationType"`
 	IsDefault             *bool                                     `pulumi:"isDefault"`
@@ -102,6 +106,7 @@ type metastoreDataAccessArgs struct {
 // The set of arguments for constructing a MetastoreDataAccess resource.
 type MetastoreDataAccessArgs struct {
 	AwsIamRole            MetastoreDataAccessAwsIamRolePtrInput
+	AzureManagedIdentity  MetastoreDataAccessAzureManagedIdentityPtrInput
 	AzureServicePrincipal MetastoreDataAccessAzureServicePrincipalPtrInput
 	ConfigurationType     pulumi.StringPtrInput
 	IsDefault             pulumi.BoolPtrInput
@@ -200,6 +205,12 @@ func (o MetastoreDataAccessOutput) ToMetastoreDataAccessOutputWithContext(ctx co
 
 func (o MetastoreDataAccessOutput) AwsIamRole() MetastoreDataAccessAwsIamRolePtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccess) MetastoreDataAccessAwsIamRolePtrOutput { return v.AwsIamRole }).(MetastoreDataAccessAwsIamRolePtrOutput)
+}
+
+func (o MetastoreDataAccessOutput) AzureManagedIdentity() MetastoreDataAccessAzureManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) MetastoreDataAccessAzureManagedIdentityPtrOutput {
+		return v.AzureManagedIdentity
+	}).(MetastoreDataAccessAzureManagedIdentityPtrOutput)
 }
 
 func (o MetastoreDataAccessOutput) AzureServicePrincipal() MetastoreDataAccessAzureServicePrincipalPtrOutput {

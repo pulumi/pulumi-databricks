@@ -73,7 +73,11 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * -> **Note** Importing this resource is not currently supported.
+ * You can import a `databricks_sql_query` resource with ID like the followingbash
+ *
+ * ```sh
+ *  $ pulumi import databricks:index/sqlQuery:SqlQuery this <query-id>
+ * ```
  */
 export class SqlQuery extends pulumi.CustomResource {
     /**
