@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskGetArgs : Pulumi.ResourceArgs
     {
+        [Input("dbtTask")]
+        public Input<Inputs.JobTaskDbtTaskGetArgs>? DbtTask { get; set; }
+
         [Input("dependsOns")]
         private InputList<Inputs.JobTaskDependsOnGetArgs>? _dependsOns;
         public InputList<Inputs.JobTaskDependsOnGetArgs> DependsOns
@@ -94,6 +97,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("sparkSubmitTask")]
         public Input<Inputs.JobTaskSparkSubmitTaskGetArgs>? SparkSubmitTask { get; set; }
+
+        [Input("sqlTask")]
+        public Input<Inputs.JobTaskSqlTaskGetArgs>? SqlTask { get; set; }
 
         [Input("taskKey")]
         public Input<string>? TaskKey { get; set; }

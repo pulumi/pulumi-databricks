@@ -90,7 +90,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
      */
     public readonly clusterSize!: pulumi.Output<string>;
     /**
-     * ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+     * ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      */
     public readonly dataSourceId!: pulumi.Output<string>;
     /**
@@ -206,7 +206,7 @@ export interface SqlEndpointState {
      */
     clusterSize?: pulumi.Input<string>;
     /**
-     * ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+     * ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      */
     dataSourceId?: pulumi.Input<string>;
     /**
@@ -267,7 +267,7 @@ export interface SqlEndpointArgs {
      */
     clusterSize: pulumi.Input<string>;
     /**
-     * ID of the data source for this endpoint. This is used to bind an SQLA query to an endpoint.
+     * ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      */
     dataSourceId?: pulumi.Input<string>;
     /**

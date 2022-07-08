@@ -122,7 +122,7 @@ class UserInstanceProfile(pulumi.CustomResource):
         * databricks_group_member to attach users and groups as group members.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
-        * User data to retrieves information about databricks_user.
+        * User data to retrieve information about databricks_user.
 
         ## Import
 
@@ -165,7 +165,7 @@ class UserInstanceProfile(pulumi.CustomResource):
         * databricks_group_member to attach users and groups as group members.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
-        * User data to retrieves information about databricks_user.
+        * User data to retrieve information about databricks_user.
 
         ## Import
 

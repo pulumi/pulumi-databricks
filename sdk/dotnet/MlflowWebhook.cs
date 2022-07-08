@@ -81,7 +81,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.MlflowWebhookJobSpec?> JobSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+        /// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         /// </summary>
         [Output("modelName")]
         public Output<string?> ModelName { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.MlflowWebhookJobSpecArgs>? JobSpec { get; set; }
 
         /// <summary>
-        /// Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+        /// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         /// </summary>
         [Input("modelName")]
         public Input<string>? ModelName { get; set; }
@@ -206,7 +206,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.MlflowWebhookJobSpecGetArgs>? JobSpec { get; set; }
 
         /// <summary>
-        /// Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+        /// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         /// </summary>
         [Input("modelName")]
         public Input<string>? ModelName { get; set; }

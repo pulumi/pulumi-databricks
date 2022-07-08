@@ -87,6 +87,9 @@ namespace Pulumi.Databricks
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
 
+        [Output("pipelineId")]
+        public Output<string?> PipelineId { get; private set; } = null!;
+
         [Output("registeredModelId")]
         public Output<string?> RegisteredModelId { get; private set; } = null!;
 
@@ -231,6 +234,9 @@ namespace Pulumi.Databricks
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
 
+        [Input("pipelineId")]
+        public Input<string>? PipelineId { get; set; }
+
         [Input("registeredModelId")]
         public Input<string>? RegisteredModelId { get; set; }
 
@@ -335,6 +341,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
+
+        [Input("pipelineId")]
+        public Input<string>? PipelineId { get; set; }
 
         [Input("registeredModelId")]
         public Input<string>? RegisteredModelId { get; set; }

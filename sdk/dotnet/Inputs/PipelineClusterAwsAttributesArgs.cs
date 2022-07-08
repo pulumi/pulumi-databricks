@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineClusterAwsAttributesArgs : Pulumi.ResourceArgs
     {
+        [Input("firstOnDemand")]
+        public Input<int>? FirstOnDemand { get; set; }
+
         [Input("instanceProfileArn")]
         public Input<string>? InstanceProfileArn { get; set; }
 

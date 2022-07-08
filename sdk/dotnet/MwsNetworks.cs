@@ -36,7 +36,7 @@ namespace Pulumi.Databricks
         public Output<string> NetworkId { get; private set; } = null!;
 
         /// <summary>
-        /// name under which this network is regisstered
+        /// name under which this network is registered
         /// </summary>
         [Output("networkName")]
         public Output<string> NetworkName { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.Databricks
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// name under which this network is regisstered
+        /// name under which this network is registered
         /// </summary>
         [Input("networkName", required: true)]
         public Input<string> NetworkName { get; set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.Databricks
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// name under which this network is regisstered
+        /// name under which this network is registered
         /// </summary>
         [Input("networkName")]
         public Input<string>? NetworkName { get; set; }

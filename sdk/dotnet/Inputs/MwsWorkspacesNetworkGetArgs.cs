@@ -15,8 +15,11 @@ namespace Pulumi.Databricks.Inputs
         [Input("gcpCommonNetworkConfig", required: true)]
         public Input<Inputs.MwsWorkspacesNetworkGcpCommonNetworkConfigGetArgs> GcpCommonNetworkConfig { get; set; } = null!;
 
-        [Input("gcpManagedNetworkConfig", required: true)]
-        public Input<Inputs.MwsWorkspacesNetworkGcpManagedNetworkConfigGetArgs> GcpManagedNetworkConfig { get; set; } = null!;
+        [Input("gcpManagedNetworkConfig")]
+        public Input<Inputs.MwsWorkspacesNetworkGcpManagedNetworkConfigGetArgs>? GcpManagedNetworkConfig { get; set; }
+
+        [Input("networkId")]
+        public Input<string>? NetworkId { get; set; }
 
         public MwsWorkspacesNetworkGetArgs()
         {

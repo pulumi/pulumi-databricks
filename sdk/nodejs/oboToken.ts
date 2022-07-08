@@ -51,7 +51,7 @@ export class OboToken extends pulumi.CustomResource {
     }
 
     /**
-     * Application ID of databricks.ServicePrincipal to create PAT token for.
+     * Application ID of databricks.ServicePrincipal to create a PAT token for.
      */
     public readonly applicationId!: pulumi.Output<string>;
     /**
@@ -110,7 +110,7 @@ export class OboToken extends pulumi.CustomResource {
  */
 export interface OboTokenState {
     /**
-     * Application ID of databricks.ServicePrincipal to create PAT token for.
+     * Application ID of databricks.ServicePrincipal to create a PAT token for.
      */
     applicationId?: pulumi.Input<string>;
     /**
@@ -132,7 +132,7 @@ export interface OboTokenState {
  */
 export interface OboTokenArgs {
     /**
-     * Application ID of databricks.ServicePrincipal to create PAT token for.
+     * Application ID of databricks.ServicePrincipal to create a PAT token for.
      */
     applicationId: pulumi.Input<string>;
     /**

@@ -49,7 +49,7 @@ export class MwsNetworks extends pulumi.CustomResource {
      */
     public readonly networkId!: pulumi.Output<string>;
     /**
-     * name under which this network is regisstered
+     * name under which this network is registered
      */
     public readonly networkName!: pulumi.Output<string>;
     public readonly securityGroupIds!: pulumi.Output<string[]>;
@@ -141,7 +141,7 @@ export interface MwsNetworksState {
      */
     networkId?: pulumi.Input<string>;
     /**
-     * name under which this network is regisstered
+     * name under which this network is registered
      */
     networkName?: pulumi.Input<string>;
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -176,7 +176,7 @@ export interface MwsNetworksArgs {
      */
     networkId?: pulumi.Input<string>;
     /**
-     * name under which this network is regisstered
+     * name under which this network is registered
      */
     networkName: pulumi.Input<string>;
     securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;

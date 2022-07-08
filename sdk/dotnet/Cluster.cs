@@ -25,7 +25,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.ClusterAutoscale?> Autoscale { get; private set; } = null!;
 
         /// <summary>
-        /// Automatically terminate the cluster after being inactive for this time in minutes. If not set, Databricks won't automatically terminate an inactive cluster. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. _We highly recommend having this setting present for Interactive/BI clusters._
+        /// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
         /// </summary>
         [Output("autoterminationMinutes")]
         public Output<int?> AutoterminationMinutes { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.ClusterDockerImage?> DockerImage { get; private set; } = null!;
 
         /// <summary>
-        /// similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then driver will be allocated from that pool.
+        /// similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         /// </summary>
         [Output("driverInstancePoolId")]
         public Output<string> DriverInstancePoolId { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.Databricks
         public Output<bool> EnableElasticDisk { get; private set; } = null!;
 
         /// <summary>
-        /// Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and encrypting all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. _Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access._
+        /// Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. _Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access._
         /// </summary>
         [Output("enableLocalDiskEncryption")]
         public Output<bool> EnableLocalDiskEncryption { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.Databricks
         public Output<string?> InstancePoolId { get; private set; } = null!;
 
         /// <summary>
-        /// boolean value specifying if cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+        /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
         /// </summary>
         [Output("isPinned")]
         public Output<bool?> IsPinned { get; private set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.ClusterAutoscaleArgs>? Autoscale { get; set; }
 
         /// <summary>
-        /// Automatically terminate the cluster after being inactive for this time in minutes. If not set, Databricks won't automatically terminate an inactive cluster. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. _We highly recommend having this setting present for Interactive/BI clusters._
+        /// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
         /// </summary>
         [Input("autoterminationMinutes")]
         public Input<int>? AutoterminationMinutes { get; set; }
@@ -269,7 +269,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.ClusterDockerImageArgs>? DockerImage { get; set; }
 
         /// <summary>
-        /// similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then driver will be allocated from that pool.
+        /// similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         /// </summary>
         [Input("driverInstancePoolId")]
         public Input<string>? DriverInstancePoolId { get; set; }
@@ -287,7 +287,7 @@ namespace Pulumi.Databricks
         public Input<bool>? EnableElasticDisk { get; set; }
 
         /// <summary>
-        /// Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and encrypting all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. _Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access._
+        /// Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. _Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access._
         /// </summary>
         [Input("enableLocalDiskEncryption")]
         public Input<bool>? EnableLocalDiskEncryption { get; set; }
@@ -316,7 +316,7 @@ namespace Pulumi.Databricks
         public Input<string>? InstancePoolId { get; set; }
 
         /// <summary>
-        /// boolean value specifying if cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+        /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
         /// </summary>
         [Input("isPinned")]
         public Input<bool>? IsPinned { get; set; }
@@ -403,7 +403,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.ClusterAutoscaleGetArgs>? Autoscale { get; set; }
 
         /// <summary>
-        /// Automatically terminate the cluster after being inactive for this time in minutes. If not set, Databricks won't automatically terminate an inactive cluster. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. _We highly recommend having this setting present for Interactive/BI clusters._
+        /// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
         /// </summary>
         [Input("autoterminationMinutes")]
         public Input<int>? AutoterminationMinutes { get; set; }
@@ -460,7 +460,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.ClusterDockerImageGetArgs>? DockerImage { get; set; }
 
         /// <summary>
-        /// similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then driver will be allocated from that pool.
+        /// similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         /// </summary>
         [Input("driverInstancePoolId")]
         public Input<string>? DriverInstancePoolId { get; set; }
@@ -478,7 +478,7 @@ namespace Pulumi.Databricks
         public Input<bool>? EnableElasticDisk { get; set; }
 
         /// <summary>
-        /// Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and encrypting all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. _Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access._
+        /// Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. _Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access._
         /// </summary>
         [Input("enableLocalDiskEncryption")]
         public Input<bool>? EnableLocalDiskEncryption { get; set; }
@@ -507,7 +507,7 @@ namespace Pulumi.Databricks
         public Input<string>? InstancePoolId { get; set; }
 
         /// <summary>
-        /// boolean value specifying if cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+        /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
         /// </summary>
         [Input("isPinned")]
         public Input<bool>? IsPinned { get; set; }

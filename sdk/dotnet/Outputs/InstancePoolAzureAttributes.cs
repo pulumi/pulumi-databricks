@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Availability;
         /// <summary>
-        /// The max price for Azure spot instances.  Use `-1` to specify lowest price.
+        /// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
         /// </summary>
         public readonly double? SpotBidMaxPrice;
 

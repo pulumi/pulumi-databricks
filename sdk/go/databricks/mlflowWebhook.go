@@ -70,7 +70,7 @@ type MlflowWebhook struct {
 	Events      pulumi.StringArrayOutput          `pulumi:"events"`
 	HttpUrlSpec MlflowWebhookHttpUrlSpecPtrOutput `pulumi:"httpUrlSpec"`
 	JobSpec     MlflowWebhookJobSpecPtrOutput     `pulumi:"jobSpec"`
-	// Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+	// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
 	ModelName pulumi.StringPtrOutput `pulumi:"modelName"`
 	// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
@@ -114,7 +114,7 @@ type mlflowWebhookState struct {
 	Events      []string                  `pulumi:"events"`
 	HttpUrlSpec *MlflowWebhookHttpUrlSpec `pulumi:"httpUrlSpec"`
 	JobSpec     *MlflowWebhookJobSpec     `pulumi:"jobSpec"`
-	// Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+	// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
 	ModelName *string `pulumi:"modelName"`
 	// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
 	Status *string `pulumi:"status"`
@@ -127,7 +127,7 @@ type MlflowWebhookState struct {
 	Events      pulumi.StringArrayInput
 	HttpUrlSpec MlflowWebhookHttpUrlSpecPtrInput
 	JobSpec     MlflowWebhookJobSpecPtrInput
-	// Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+	// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
 	ModelName pulumi.StringPtrInput
 	// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
 	Status pulumi.StringPtrInput
@@ -144,7 +144,7 @@ type mlflowWebhookArgs struct {
 	Events      []string                  `pulumi:"events"`
 	HttpUrlSpec *MlflowWebhookHttpUrlSpec `pulumi:"httpUrlSpec"`
 	JobSpec     *MlflowWebhookJobSpec     `pulumi:"jobSpec"`
-	// Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+	// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
 	ModelName *string `pulumi:"modelName"`
 	// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
 	Status *string `pulumi:"status"`
@@ -158,7 +158,7 @@ type MlflowWebhookArgs struct {
 	Events      pulumi.StringArrayInput
 	HttpUrlSpec MlflowWebhookHttpUrlSpecPtrInput
 	JobSpec     MlflowWebhookJobSpecPtrInput
-	// Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+	// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
 	ModelName pulumi.StringPtrInput
 	// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
 	Status pulumi.StringPtrInput
@@ -269,7 +269,7 @@ func (o MlflowWebhookOutput) JobSpec() MlflowWebhookJobSpecPtrOutput {
 	return o.ApplyT(func(v *MlflowWebhook) MlflowWebhookJobSpecPtrOutput { return v.JobSpec }).(MlflowWebhookJobSpecPtrOutput)
 }
 
-// Name of MLflow model for which webhook will be created. If model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
+// Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
 func (o MlflowWebhookOutput) ModelName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MlflowWebhook) pulumi.StringPtrOutput { return v.ModelName }).(pulumi.StringPtrOutput)
 }

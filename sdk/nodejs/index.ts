@@ -5,10 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./awsS3Mount";
-export * from "./azureAdlsGen1Mount";
-export * from "./azureAdlsGen2Mount";
-export * from "./azureBlobMount";
 export * from "./catalog";
 export * from "./cluster";
 export * from "./clusterPolicy";
@@ -29,6 +25,8 @@ export * from "./getNodeType";
 export * from "./getNotebook";
 export * from "./getNotebookPaths";
 export * from "./getSchemas";
+export * from "./getServicePrincipal";
+export * from "./getServicePrincipals";
 export * from "./getSparkVersion";
 export * from "./getTables";
 export * from "./getUser";
@@ -96,10 +94,6 @@ export {
 };
 
 // Import resources to register:
-import { AwsS3Mount } from "./awsS3Mount";
-import { AzureAdlsGen1Mount } from "./azureAdlsGen1Mount";
-import { AzureAdlsGen2Mount } from "./azureAdlsGen2Mount";
-import { AzureBlobMount } from "./azureBlobMount";
 import { Catalog } from "./catalog";
 import { Cluster } from "./cluster";
 import { ClusterPolicy } from "./clusterPolicy";
@@ -161,14 +155,6 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "databricks:index/awsS3Mount:AwsS3Mount":
-                return new AwsS3Mount(name, <any>undefined, { urn })
-            case "databricks:index/azureAdlsGen1Mount:AzureAdlsGen1Mount":
-                return new AzureAdlsGen1Mount(name, <any>undefined, { urn })
-            case "databricks:index/azureAdlsGen2Mount:AzureAdlsGen2Mount":
-                return new AzureAdlsGen2Mount(name, <any>undefined, { urn })
-            case "databricks:index/azureBlobMount:AzureBlobMount":
-                return new AzureBlobMount(name, <any>undefined, { urn })
             case "databricks:index/catalog:Catalog":
                 return new Catalog(name, <any>undefined, { urn })
             case "databricks:index/cluster:Cluster":
@@ -286,10 +272,6 @@ const _module = {
         }
     },
 };
-pulumi.runtime.registerResourceModule("databricks", "index/awsS3Mount", _module)
-pulumi.runtime.registerResourceModule("databricks", "index/azureAdlsGen1Mount", _module)
-pulumi.runtime.registerResourceModule("databricks", "index/azureAdlsGen2Mount", _module)
-pulumi.runtime.registerResourceModule("databricks", "index/azureBlobMount", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalog", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/clusterPolicy", _module)

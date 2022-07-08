@@ -65,17 +65,6 @@ namespace Pulumi.Databricks
     ///                     },
     ///                 },
     ///             },
-    ///             Filters = new Databricks.Inputs.PipelineFiltersArgs
-    ///             {
-    ///                 Includes = 
-    ///                 {
-    ///                     "com.databricks.include",
-    ///                 },
-    ///                 Excludes = 
-    ///                 {
-    ///                     "com.databricks.exclude",
-    ///                 },
-    ///             },
     ///             Continuous = false,
     ///         });
     ///     }
@@ -106,7 +95,13 @@ namespace Pulumi.Databricks
         public Output<bool?> AllowDuplicateNames { get; private set; } = null!;
 
         /// <summary>
-        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline.
+        /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+        /// </summary>
+        [Output("channel")]
+        public Output<string?> Channel { get; private set; } = null!;
+
+        /// <summary>
+        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
         /// </summary>
         [Output("clusters")]
         public Output<ImmutableArray<Outputs.PipelineCluster>> Clusters { get; private set; } = null!;
@@ -123,11 +118,23 @@ namespace Pulumi.Databricks
         [Output("continuous")]
         public Output<bool?> Continuous { get; private set; } = null!;
 
-        [Output("filters")]
-        public Output<Outputs.PipelineFilters> Filters { get; private set; } = null!;
+        /// <summary>
+        /// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+        /// </summary>
+        [Output("development")]
+        public Output<bool?> Development { get; private set; } = null!;
 
         /// <summary>
-        /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have `path` attribute.
+        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+        /// </summary>
+        [Output("edition")]
+        public Output<string?> Edition { get; private set; } = null!;
+
+        [Output("filters")]
+        public Output<Outputs.PipelineFilters?> Filters { get; private set; } = null!;
+
+        /// <summary>
+        /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
         /// </summary>
         [Output("libraries")]
         public Output<ImmutableArray<Outputs.PipelineLibrary>> Libraries { get; private set; } = null!;
@@ -139,7 +146,13 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location.
+        /// A flag indicating whether to use Photon engine. The default value is `false`.
+        /// </summary>
+        [Output("photon")]
+        public Output<bool?> Photon { get; private set; } = null!;
+
+        /// <summary>
+        /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
         /// </summary>
         [Output("storage")]
         public Output<string?> Storage { get; private set; } = null!;
@@ -161,7 +174,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Pipeline(string name, PipelineArgs args, CustomResourceOptions? options = null)
+        public Pipeline(string name, PipelineArgs? args = null, CustomResourceOptions? options = null)
             : base("databricks:index/pipeline:Pipeline", name, args ?? new PipelineArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -202,11 +215,17 @@ namespace Pulumi.Databricks
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
 
+        /// <summary>
+        /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+        /// </summary>
+        [Input("channel")]
+        public Input<string>? Channel { get; set; }
+
         [Input("clusters")]
         private InputList<Inputs.PipelineClusterArgs>? _clusters;
 
         /// <summary>
-        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline.
+        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
         /// </summary>
         public InputList<Inputs.PipelineClusterArgs> Clusters
         {
@@ -232,14 +251,26 @@ namespace Pulumi.Databricks
         [Input("continuous")]
         public Input<bool>? Continuous { get; set; }
 
-        [Input("filters", required: true)]
-        public Input<Inputs.PipelineFiltersArgs> Filters { get; set; } = null!;
+        /// <summary>
+        /// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+        /// </summary>
+        [Input("development")]
+        public Input<bool>? Development { get; set; }
+
+        /// <summary>
+        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
+
+        [Input("filters")]
+        public Input<Inputs.PipelineFiltersArgs>? Filters { get; set; }
 
         [Input("libraries")]
         private InputList<Inputs.PipelineLibraryArgs>? _libraries;
 
         /// <summary>
-        /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have `path` attribute.
+        /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
         /// </summary>
         public InputList<Inputs.PipelineLibraryArgs> Libraries
         {
@@ -254,7 +285,13 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location.
+        /// A flag indicating whether to use Photon engine. The default value is `false`.
+        /// </summary>
+        [Input("photon")]
+        public Input<bool>? Photon { get; set; }
+
+        /// <summary>
+        /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
         /// </summary>
         [Input("storage")]
         public Input<string>? Storage { get; set; }
@@ -275,11 +312,17 @@ namespace Pulumi.Databricks
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
 
+        /// <summary>
+        /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+        /// </summary>
+        [Input("channel")]
+        public Input<string>? Channel { get; set; }
+
         [Input("clusters")]
         private InputList<Inputs.PipelineClusterGetArgs>? _clusters;
 
         /// <summary>
-        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline.
+        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
         /// </summary>
         public InputList<Inputs.PipelineClusterGetArgs> Clusters
         {
@@ -305,6 +348,18 @@ namespace Pulumi.Databricks
         [Input("continuous")]
         public Input<bool>? Continuous { get; set; }
 
+        /// <summary>
+        /// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+        /// </summary>
+        [Input("development")]
+        public Input<bool>? Development { get; set; }
+
+        /// <summary>
+        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
+
         [Input("filters")]
         public Input<Inputs.PipelineFiltersGetArgs>? Filters { get; set; }
 
@@ -312,7 +367,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.PipelineLibraryGetArgs>? _libraries;
 
         /// <summary>
-        /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have `path` attribute.
+        /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
         /// </summary>
         public InputList<Inputs.PipelineLibraryGetArgs> Libraries
         {
@@ -327,7 +382,13 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location.
+        /// A flag indicating whether to use Photon engine. The default value is `false`.
+        /// </summary>
+        [Input("photon")]
+        public Input<bool>? Photon { get; set; }
+
+        /// <summary>
+        /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
         /// </summary>
         [Input("storage")]
         public Input<string>? Storage { get; set; }

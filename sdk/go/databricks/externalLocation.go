@@ -34,7 +34,7 @@ type ExternalLocation struct {
 	MetastoreId    pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Username/groupname of External Location owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId External Location owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
@@ -84,7 +84,7 @@ type externalLocationState struct {
 	MetastoreId    *string `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
-	// Username/groupname of External Location owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId External Location owner.
 	Owner *string `pulumi:"owner"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation *bool `pulumi:"skipValidation"`
@@ -100,7 +100,7 @@ type ExternalLocationState struct {
 	MetastoreId    pulumi.StringPtrInput
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
-	// Username/groupname of External Location owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId External Location owner.
 	Owner pulumi.StringPtrInput
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrInput
@@ -120,7 +120,7 @@ type externalLocationArgs struct {
 	MetastoreId    *string `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
-	// Username/groupname of External Location owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId External Location owner.
 	Owner *string `pulumi:"owner"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation *bool `pulumi:"skipValidation"`
@@ -137,7 +137,7 @@ type ExternalLocationArgs struct {
 	MetastoreId    pulumi.StringPtrInput
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
-	// Username/groupname of External Location owner. Currently this field can only be changed after the resource is created.
+	// Username/groupname/sp applicationId External Location owner.
 	Owner pulumi.StringPtrInput
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrInput
@@ -251,7 +251,7 @@ func (o ExternalLocationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Username/groupname of External Location owner. Currently this field can only be changed after the resource is created.
+// Username/groupname/sp applicationId External Location owner.
 func (o ExternalLocationOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }

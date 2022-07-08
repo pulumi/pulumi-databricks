@@ -29,8 +29,14 @@ namespace Pulumi.Databricks.Inputs
             set => _customTags = value;
         }
 
+        [Input("driverInstancePoolId")]
+        public Input<string>? DriverInstancePoolId { get; set; }
+
         [Input("driverNodeTypeId")]
         public Input<string>? DriverNodeTypeId { get; set; }
+
+        [Input("gcpAttributes")]
+        public Input<Inputs.PipelineClusterGcpAttributesGetArgs>? GcpAttributes { get; set; }
 
         [Input("initScripts")]
         private InputList<Inputs.PipelineClusterInitScriptGetArgs>? _initScripts;

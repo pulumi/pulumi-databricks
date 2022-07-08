@@ -81,6 +81,7 @@ __all__ = [
     'JobSparkPythonTask',
     'JobSparkSubmitTask',
     'JobTask',
+    'JobTaskDbtTask',
     'JobTaskDependsOn',
     'JobTaskEmailNotifications',
     'JobTaskLibrary',
@@ -108,10 +109,15 @@ __all__ = [
     'JobTaskSparkJarTask',
     'JobTaskSparkPythonTask',
     'JobTaskSparkSubmitTask',
+    'JobTaskSqlTask',
+    'JobTaskSqlTaskAlert',
+    'JobTaskSqlTaskDashboard',
+    'JobTaskSqlTaskQuery',
     'LibraryCran',
     'LibraryMaven',
     'LibraryPypi',
     'MetastoreDataAccessAwsIamRole',
+    'MetastoreDataAccessAzureManagedIdentity',
     'MetastoreDataAccessAzureServicePrincipal',
     'MlflowModelTag',
     'MlflowWebhookHttpUrlSpec',
@@ -138,6 +144,7 @@ __all__ = [
     'PipelineClusterClusterLogConf',
     'PipelineClusterClusterLogConfDbfs',
     'PipelineClusterClusterLogConfS3',
+    'PipelineClusterGcpAttributes',
     'PipelineClusterInitScript',
     'PipelineClusterInitScriptDbfs',
     'PipelineClusterInitScriptFile',
@@ -173,6 +180,7 @@ __all__ = [
     'SqlWidgetParameter',
     'SqlWidgetPosition',
     'StorageCredentialAwsIamRole',
+    'StorageCredentialAzureManagedIdentity',
     'StorageCredentialAzureServicePrincipal',
     'TableColumn',
     'GetDbfsFilePathsPathListResult',
@@ -931,7 +939,7 @@ class InstancePoolAwsAttributes(dict):
         """
         :param str availability: Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
         :param int spot_bid_price_percent: (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
-        :param str zone_id: (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of a form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+        :param str zone_id: (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
         """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
@@ -960,7 +968,7 @@ class InstancePoolAwsAttributes(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[str]:
         """
-        (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of a form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+        (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
         """
         return pulumi.get(self, "zone_id")
 
@@ -989,7 +997,7 @@ class InstancePoolAzureAttributes(dict):
                  spot_bid_max_price: Optional[float] = None):
         """
         :param str availability: Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-        :param float spot_bid_max_price: The max price for Azure spot instances.  Use `-1` to specify lowest price.
+        :param float spot_bid_max_price: The max price for Azure spot instances.  Use `-1` to specify the lowest price.
         """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
@@ -1008,7 +1016,7 @@ class InstancePoolAzureAttributes(dict):
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[float]:
         """
-        The max price for Azure spot instances.  Use `-1` to specify lowest price.
+        The max price for Azure spot instances.  Use `-1` to specify the lowest price.
         """
         return pulumi.get(self, "spot_bid_max_price")
 
@@ -3598,7 +3606,9 @@ class JobTask(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dependsOns":
+        if key == "dbtTask":
+            suggest = "dbt_task"
+        elif key == "dependsOns":
             suggest = "depends_ons"
         elif key == "emailNotifications":
             suggest = "email_notifications"
@@ -3626,6 +3636,8 @@ class JobTask(dict):
             suggest = "spark_python_task"
         elif key == "sparkSubmitTask":
             suggest = "spark_submit_task"
+        elif key == "sqlTask":
+            suggest = "sql_task"
         elif key == "taskKey":
             suggest = "task_key"
         elif key == "timeoutSeconds":
@@ -3643,6 +3655,7 @@ class JobTask(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 dbt_task: Optional['outputs.JobTaskDbtTask'] = None,
                  depends_ons: Optional[Sequence['outputs.JobTaskDependsOn']] = None,
                  description: Optional[str] = None,
                  email_notifications: Optional['outputs.JobTaskEmailNotifications'] = None,
@@ -3659,6 +3672,7 @@ class JobTask(dict):
                  spark_jar_task: Optional['outputs.JobTaskSparkJarTask'] = None,
                  spark_python_task: Optional['outputs.JobTaskSparkPythonTask'] = None,
                  spark_submit_task: Optional['outputs.JobTaskSparkSubmitTask'] = None,
+                 sql_task: Optional['outputs.JobTaskSqlTask'] = None,
                  task_key: Optional[str] = None,
                  timeout_seconds: Optional[int] = None):
         """
@@ -3672,6 +3686,8 @@ class JobTask(dict):
         :param bool retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param int timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         """
+        if dbt_task is not None:
+            pulumi.set(__self__, "dbt_task", dbt_task)
         if depends_ons is not None:
             pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
@@ -3704,10 +3720,17 @@ class JobTask(dict):
             pulumi.set(__self__, "spark_python_task", spark_python_task)
         if spark_submit_task is not None:
             pulumi.set(__self__, "spark_submit_task", spark_submit_task)
+        if sql_task is not None:
+            pulumi.set(__self__, "sql_task", sql_task)
         if task_key is not None:
             pulumi.set(__self__, "task_key", task_key)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="dbtTask")
+    def dbt_task(self) -> Optional['outputs.JobTaskDbtTask']:
+        return pulumi.get(self, "dbt_task")
 
     @property
     @pulumi.getter(name="dependsOns")
@@ -3814,6 +3837,11 @@ class JobTask(dict):
         return pulumi.get(self, "spark_submit_task")
 
     @property
+    @pulumi.getter(name="sqlTask")
+    def sql_task(self) -> Optional['outputs.JobTaskSqlTask']:
+        return pulumi.get(self, "sql_task")
+
+    @property
     @pulumi.getter(name="taskKey")
     def task_key(self) -> Optional[str]:
         return pulumi.get(self, "task_key")
@@ -3825,6 +3853,51 @@ class JobTask(dict):
         (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         """
         return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class JobTaskDbtTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectDirectory":
+            suggest = "project_directory"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskDbtTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskDbtTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskDbtTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 commands: Sequence[str],
+                 project_directory: Optional[str] = None,
+                 schema: Optional[str] = None):
+        pulumi.set(__self__, "commands", commands)
+        if project_directory is not None:
+            pulumi.set(__self__, "project_directory", project_directory)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Sequence[str]:
+        return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter(name="projectDirectory")
+    def project_directory(self) -> Optional[str]:
+        return pulumi.get(self, "project_directory")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[str]:
+        return pulumi.get(self, "schema")
 
 
 @pulumi.output_type
@@ -5218,6 +5291,161 @@ class JobTaskSparkSubmitTask(dict):
 
 
 @pulumi.output_type
+class JobTaskSqlTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "warehouseId":
+            suggest = "warehouse_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskSqlTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskSqlTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskSqlTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alert: Optional['outputs.JobTaskSqlTaskAlert'] = None,
+                 dashboard: Optional['outputs.JobTaskSqlTaskDashboard'] = None,
+                 parameters: Optional[Mapping[str, Any]] = None,
+                 query: Optional['outputs.JobTaskSqlTaskQuery'] = None,
+                 warehouse_id: Optional[str] = None):
+        """
+        :param Mapping[str, Any] parameters: Parameters for the task
+        """
+        if alert is not None:
+            pulumi.set(__self__, "alert", alert)
+        if dashboard is not None:
+            pulumi.set(__self__, "dashboard", dashboard)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter
+    def alert(self) -> Optional['outputs.JobTaskSqlTaskAlert']:
+        return pulumi.get(self, "alert")
+
+    @property
+    @pulumi.getter
+    def dashboard(self) -> Optional['outputs.JobTaskSqlTaskDashboard']:
+        return pulumi.get(self, "dashboard")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Mapping[str, Any]]:
+        """
+        Parameters for the task
+        """
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter
+    def query(self) -> Optional['outputs.JobTaskSqlTaskQuery']:
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[str]:
+        return pulumi.get(self, "warehouse_id")
+
+
+@pulumi.output_type
+class JobTaskSqlTaskAlert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alertId":
+            suggest = "alert_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskSqlTaskAlert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskSqlTaskAlert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskSqlTaskAlert.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alert_id: str):
+        pulumi.set(__self__, "alert_id", alert_id)
+
+    @property
+    @pulumi.getter(name="alertId")
+    def alert_id(self) -> str:
+        return pulumi.get(self, "alert_id")
+
+
+@pulumi.output_type
+class JobTaskSqlTaskDashboard(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dashboardId":
+            suggest = "dashboard_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskSqlTaskDashboard. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskSqlTaskDashboard.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskSqlTaskDashboard.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dashboard_id: str):
+        pulumi.set(__self__, "dashboard_id", dashboard_id)
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> str:
+        return pulumi.get(self, "dashboard_id")
+
+
+@pulumi.output_type
+class JobTaskSqlTaskQuery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryId":
+            suggest = "query_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskSqlTaskQuery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskSqlTaskQuery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskSqlTaskQuery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query_id: str):
+        pulumi.set(__self__, "query_id", query_id)
+
+    @property
+    @pulumi.getter(name="queryId")
+    def query_id(self) -> str:
+        return pulumi.get(self, "query_id")
+
+
+@pulumi.output_type
 class LibraryCran(dict):
     def __init__(__self__, *,
                  package: str,
@@ -5318,6 +5546,41 @@ class MetastoreDataAccessAwsIamRole(dict):
         The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
         """
         return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class MetastoreDataAccessAzureManagedIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessConnectorId":
+            suggest = "access_connector_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetastoreDataAccessAzureManagedIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetastoreDataAccessAzureManagedIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetastoreDataAccessAzureManagedIdentity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_connector_id: str):
+        """
+        :param str access_connector_id: The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+        """
+        pulumi.set(__self__, "access_connector_id", access_connector_id)
+
+    @property
+    @pulumi.getter(name="accessConnectorId")
+    def access_connector_id(self) -> str:
+        """
+        The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+        """
+        return pulumi.get(self, "access_connector_id")
 
 
 @pulumi.output_type
@@ -6098,6 +6361,8 @@ class MwsWorkspacesNetwork(dict):
             suggest = "gcp_common_network_config"
         elif key == "gcpManagedNetworkConfig":
             suggest = "gcp_managed_network_config"
+        elif key == "networkId":
+            suggest = "network_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MwsWorkspacesNetwork. Access the value via the '{suggest}' property getter instead.")
@@ -6112,9 +6377,13 @@ class MwsWorkspacesNetwork(dict):
 
     def __init__(__self__, *,
                  gcp_common_network_config: 'outputs.MwsWorkspacesNetworkGcpCommonNetworkConfig',
-                 gcp_managed_network_config: 'outputs.MwsWorkspacesNetworkGcpManagedNetworkConfig'):
+                 gcp_managed_network_config: Optional['outputs.MwsWorkspacesNetworkGcpManagedNetworkConfig'] = None,
+                 network_id: Optional[str] = None):
         pulumi.set(__self__, "gcp_common_network_config", gcp_common_network_config)
-        pulumi.set(__self__, "gcp_managed_network_config", gcp_managed_network_config)
+        if gcp_managed_network_config is not None:
+            pulumi.set(__self__, "gcp_managed_network_config", gcp_managed_network_config)
+        if network_id is not None:
+            pulumi.set(__self__, "network_id", network_id)
 
     @property
     @pulumi.getter(name="gcpCommonNetworkConfig")
@@ -6123,8 +6392,13 @@ class MwsWorkspacesNetwork(dict):
 
     @property
     @pulumi.getter(name="gcpManagedNetworkConfig")
-    def gcp_managed_network_config(self) -> 'outputs.MwsWorkspacesNetworkGcpManagedNetworkConfig':
+    def gcp_managed_network_config(self) -> Optional['outputs.MwsWorkspacesNetworkGcpManagedNetworkConfig']:
         return pulumi.get(self, "gcp_managed_network_config")
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> Optional[str]:
+        return pulumi.get(self, "network_id")
 
 
 @pulumi.output_type
@@ -6302,8 +6576,9 @@ class PermissionsAccessControl(dict):
                  user_name: Optional[str] = None):
         """
         :param str permission_level: permission level according to specific resource. See examples above for the reference.
-        :param str group_name: name of the group, which should be used if the user name is not used. We recommend setting permissions on groups.
-        :param str user_name: name of the user, which should be used if group name is not used
+        :param str group_name: name of the group. We recommend setting permissions on groups.
+        :param str service_principal_name: Application ID of the service_principal.
+        :param str user_name: name of the user.
         """
         pulumi.set(__self__, "permission_level", permission_level)
         if group_name is not None:
@@ -6325,20 +6600,23 @@ class PermissionsAccessControl(dict):
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[str]:
         """
-        name of the group, which should be used if the user name is not used. We recommend setting permissions on groups.
+        name of the group. We recommend setting permissions on groups.
         """
         return pulumi.get(self, "group_name")
 
     @property
     @pulumi.getter(name="servicePrincipalName")
     def service_principal_name(self) -> Optional[str]:
+        """
+        Application ID of the service_principal.
+        """
         return pulumi.get(self, "service_principal_name")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
         """
-        name of the user, which should be used if group name is not used
+        name of the user.
         """
         return pulumi.get(self, "user_name")
 
@@ -6354,8 +6632,12 @@ class PipelineCluster(dict):
             suggest = "cluster_log_conf"
         elif key == "customTags":
             suggest = "custom_tags"
+        elif key == "driverInstancePoolId":
+            suggest = "driver_instance_pool_id"
         elif key == "driverNodeTypeId":
             suggest = "driver_node_type_id"
+        elif key == "gcpAttributes":
+            suggest = "gcp_attributes"
         elif key == "initScripts":
             suggest = "init_scripts"
         elif key == "instancePoolId":
@@ -6387,7 +6669,9 @@ class PipelineCluster(dict):
                  aws_attributes: Optional['outputs.PipelineClusterAwsAttributes'] = None,
                  cluster_log_conf: Optional['outputs.PipelineClusterClusterLogConf'] = None,
                  custom_tags: Optional[Mapping[str, Any]] = None,
+                 driver_instance_pool_id: Optional[str] = None,
                  driver_node_type_id: Optional[str] = None,
+                 gcp_attributes: Optional['outputs.PipelineClusterGcpAttributes'] = None,
                  init_scripts: Optional[Sequence['outputs.PipelineClusterInitScript']] = None,
                  instance_pool_id: Optional[str] = None,
                  label: Optional[str] = None,
@@ -6404,8 +6688,12 @@ class PipelineCluster(dict):
             pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
         if custom_tags is not None:
             pulumi.set(__self__, "custom_tags", custom_tags)
+        if driver_instance_pool_id is not None:
+            pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
+        if gcp_attributes is not None:
+            pulumi.set(__self__, "gcp_attributes", gcp_attributes)
         if init_scripts is not None:
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
@@ -6444,9 +6732,19 @@ class PipelineCluster(dict):
         return pulumi.get(self, "custom_tags")
 
     @property
+    @pulumi.getter(name="driverInstancePoolId")
+    def driver_instance_pool_id(self) -> Optional[str]:
+        return pulumi.get(self, "driver_instance_pool_id")
+
+    @property
     @pulumi.getter(name="driverNodeTypeId")
     def driver_node_type_id(self) -> Optional[str]:
         return pulumi.get(self, "driver_node_type_id")
+
+    @property
+    @pulumi.getter(name="gcpAttributes")
+    def gcp_attributes(self) -> Optional['outputs.PipelineClusterGcpAttributes']:
+        return pulumi.get(self, "gcp_attributes")
 
     @property
     @pulumi.getter(name="initScripts")
@@ -6534,7 +6832,9 @@ class PipelineClusterAwsAttributes(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "instanceProfileArn":
+        if key == "firstOnDemand":
+            suggest = "first_on_demand"
+        elif key == "instanceProfileArn":
             suggest = "instance_profile_arn"
         elif key == "zoneId":
             suggest = "zone_id"
@@ -6551,12 +6851,20 @@ class PipelineClusterAwsAttributes(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 first_on_demand: Optional[int] = None,
                  instance_profile_arn: Optional[str] = None,
                  zone_id: Optional[str] = None):
+        if first_on_demand is not None:
+            pulumi.set(__self__, "first_on_demand", first_on_demand)
         if instance_profile_arn is not None:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="firstOnDemand")
+    def first_on_demand(self) -> Optional[int]:
+        return pulumi.get(self, "first_on_demand")
 
     @property
     @pulumi.getter(name="instanceProfileArn")
@@ -6683,6 +6991,36 @@ class PipelineClusterClusterLogConfS3(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class PipelineClusterGcpAttributes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleServiceAccount":
+            suggest = "google_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineClusterGcpAttributes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineClusterGcpAttributes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineClusterGcpAttributes.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 google_service_account: Optional[str] = None):
+        if google_service_account is not None:
+            pulumi.set(__self__, "google_service_account", google_service_account)
+
+    @property
+    @pulumi.getter(name="googleServiceAccount")
+    def google_service_account(self) -> Optional[str]:
+        return pulumi.get(self, "google_service_account")
 
 
 @pulumi.output_type
@@ -7817,6 +8155,41 @@ class StorageCredentialAwsIamRole(dict):
         The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
         """
         return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class StorageCredentialAzureManagedIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessConnectorId":
+            suggest = "access_connector_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StorageCredentialAzureManagedIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StorageCredentialAzureManagedIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StorageCredentialAzureManagedIdentity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_connector_id: str):
+        """
+        :param str access_connector_id: The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+        """
+        pulumi.set(__self__, "access_connector_id", access_connector_id)
+
+    @property
+    @pulumi.getter(name="accessConnectorId")
+    def access_connector_id(self) -> str:
+        """
+        The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+        """
+        return pulumi.get(self, "access_connector_id")
 
 
 @pulumi.output_type

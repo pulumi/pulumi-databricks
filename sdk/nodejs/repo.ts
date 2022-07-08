@@ -54,7 +54,7 @@ export class Repo extends pulumi.CustomResource {
      */
     public readonly gitProvider!: pulumi.Output<string>;
     /**
-     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
      */
     public readonly path!: pulumi.Output<string>;
     /**
@@ -62,7 +62,7 @@ export class Repo extends pulumi.CustomResource {
      */
     public readonly tag!: pulumi.Output<string | undefined>;
     /**
-     * The URL of the Git Repository to clone from. If value changes, repo is re-created.
+     * The URL of the Git Repository to clone from. If the value changes, repo is re-created.
      */
     public readonly url!: pulumi.Output<string>;
 
@@ -119,7 +119,7 @@ export interface RepoState {
      */
     gitProvider?: pulumi.Input<string>;
     /**
-     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
      */
     path?: pulumi.Input<string>;
     /**
@@ -127,7 +127,7 @@ export interface RepoState {
      */
     tag?: pulumi.Input<string>;
     /**
-     * The URL of the Git Repository to clone from. If value changes, repo is re-created.
+     * The URL of the Git Repository to clone from. If the value changes, repo is re-created.
      */
     url?: pulumi.Input<string>;
 }
@@ -149,7 +149,7 @@ export interface RepoArgs {
      */
     gitProvider?: pulumi.Input<string>;
     /**
-     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If value changes, repo is re-created.
+     * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
      */
     path?: pulumi.Input<string>;
     /**
@@ -157,7 +157,7 @@ export interface RepoArgs {
      */
     tag?: pulumi.Input<string>;
     /**
-     * The URL of the Git Repository to clone from. If value changes, repo is re-created.
+     * The URL of the Git Repository to clone from. If the value changes, repo is re-created.
      */
     url: pulumi.Input<string>;
 }

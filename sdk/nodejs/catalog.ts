@@ -73,7 +73,7 @@ export class Catalog extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Username/groupname of catalog owner. Currently this field can only be changed after the resource is created.
+     * Username/groupname/sp applicationId catalog owner.
      */
     public readonly owner!: pulumi.Output<string>;
     /**
@@ -126,7 +126,7 @@ export interface CatalogState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname of catalog owner. Currently this field can only be changed after the resource is created.
+     * Username/groupname/sp applicationId catalog owner.
      */
     owner?: pulumi.Input<string>;
     /**
@@ -149,7 +149,7 @@ export interface CatalogArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname of catalog owner. Currently this field can only be changed after the resource is created.
+     * Username/groupname/sp applicationId catalog owner.
      */
     owner?: pulumi.Input<string>;
     /**

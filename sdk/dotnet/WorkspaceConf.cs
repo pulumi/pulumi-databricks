@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
     public partial class WorkspaceConf : Pulumi.CustomResource
     {
         /// <summary>
-        /// Key-value map of strings, that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
+        /// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         /// </summary>
         [Output("customConfig")]
         public Output<ImmutableDictionary<string, object>?> CustomConfig { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _customConfig;
 
         /// <summary>
-        /// Key-value map of strings, that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
+        /// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         /// </summary>
         public InputMap<object> CustomConfig
         {
@@ -120,7 +120,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _customConfig;
 
         /// <summary>
-        /// Key-value map of strings, that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
+        /// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         /// </summary>
         public InputMap<object> CustomConfig
         {

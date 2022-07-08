@@ -73,7 +73,11 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// -&gt; **Note** Importing this resource is not currently supported.
+    /// You can import a `databricks_sql_visualization` resource with ID like the followingbash
+    /// 
+    /// ```sh
+    ///  $ pulumi import databricks:index/sqlVisualization:SqlVisualization this &lt;query-id&gt;/&lt;visualization-id&gt;
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlVisualization:SqlVisualization")]
     public partial class SqlVisualization : Pulumi.CustomResource

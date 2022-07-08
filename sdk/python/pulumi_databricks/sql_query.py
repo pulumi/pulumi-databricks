@@ -298,7 +298,11 @@ class SqlQuery(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        You can import a `databricks_sql_query` resource with ID like the followingbash
+
+        ```sh
+         $ pulumi import databricks:index/sqlQuery:SqlQuery this <query-id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -375,7 +379,11 @@ class SqlQuery(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        You can import a `databricks_sql_query` resource with ID like the followingbash
+
+        ```sh
+         $ pulumi import databricks:index/sqlQuery:SqlQuery this <query-id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param SqlQueryArgs args: The arguments to use to populate this resource's properties.

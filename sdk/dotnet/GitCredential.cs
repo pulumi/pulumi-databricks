@@ -39,9 +39,6 @@ namespace Pulumi.Databricks
         [Output("gitUsername")]
         public Output<string> GitUsername { get; private set; } = null!;
 
-        /// <summary>
-        /// The personal access token used to authenticate to the corresponding Git provider.
-        /// </summary>
         [Output("personalAccessToken")]
         public Output<string> PersonalAccessToken { get; private set; } = null!;
 
@@ -109,9 +106,6 @@ namespace Pulumi.Databricks
         [Input("gitUsername", required: true)]
         public Input<string> GitUsername { get; set; } = null!;
 
-        /// <summary>
-        /// The personal access token used to authenticate to the corresponding Git provider.
-        /// </summary>
         [Input("personalAccessToken", required: true)]
         public Input<string> PersonalAccessToken { get; set; } = null!;
 
@@ -140,9 +134,6 @@ namespace Pulumi.Databricks
         [Input("gitUsername")]
         public Input<string>? GitUsername { get; set; }
 
-        /// <summary>
-        /// The personal access token used to authenticate to the corresponding Git provider.
-        /// </summary>
         [Input("personalAccessToken")]
         public Input<string>? PersonalAccessToken { get; set; }
 

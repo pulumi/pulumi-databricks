@@ -24,6 +24,9 @@ namespace Pulumi.Databricks
         [Output("awsIamRole")]
         public Output<Outputs.MetastoreDataAccessAwsIamRole?> AwsIamRole { get; private set; } = null!;
 
+        [Output("azureManagedIdentity")]
+        public Output<Outputs.MetastoreDataAccessAzureManagedIdentity?> AzureManagedIdentity { get; private set; } = null!;
+
         [Output("azureServicePrincipal")]
         public Output<Outputs.MetastoreDataAccessAzureServicePrincipal?> AzureServicePrincipal { get; private set; } = null!;
 
@@ -94,6 +97,9 @@ namespace Pulumi.Databricks
         [Input("awsIamRole")]
         public Input<Inputs.MetastoreDataAccessAwsIamRoleArgs>? AwsIamRole { get; set; }
 
+        [Input("azureManagedIdentity")]
+        public Input<Inputs.MetastoreDataAccessAzureManagedIdentityArgs>? AzureManagedIdentity { get; set; }
+
         [Input("azureServicePrincipal")]
         public Input<Inputs.MetastoreDataAccessAzureServicePrincipalArgs>? AzureServicePrincipal { get; set; }
 
@@ -124,6 +130,9 @@ namespace Pulumi.Databricks
     {
         [Input("awsIamRole")]
         public Input<Inputs.MetastoreDataAccessAwsIamRoleGetArgs>? AwsIamRole { get; set; }
+
+        [Input("azureManagedIdentity")]
+        public Input<Inputs.MetastoreDataAccessAzureManagedIdentityGetArgs>? AzureManagedIdentity { get; set; }
 
         [Input("azureServicePrincipal")]
         public Input<Inputs.MetastoreDataAccessAzureServicePrincipalGetArgs>? AzureServicePrincipal { get; set; }

@@ -17,7 +17,9 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.PipelineClusterAwsAttributes? AwsAttributes;
         public readonly Outputs.PipelineClusterClusterLogConf? ClusterLogConf;
         public readonly ImmutableDictionary<string, object>? CustomTags;
+        public readonly string? DriverInstancePoolId;
         public readonly string? DriverNodeTypeId;
+        public readonly Outputs.PipelineClusterGcpAttributes? GcpAttributes;
         public readonly ImmutableArray<Outputs.PipelineClusterInitScript> InitScripts;
         public readonly string? InstancePoolId;
         public readonly string? Label;
@@ -37,7 +39,11 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableDictionary<string, object>? customTags,
 
+            string? driverInstancePoolId,
+
             string? driverNodeTypeId,
+
+            Outputs.PipelineClusterGcpAttributes? gcpAttributes,
 
             ImmutableArray<Outputs.PipelineClusterInitScript> initScripts,
 
@@ -59,7 +65,9 @@ namespace Pulumi.Databricks.Outputs
             AwsAttributes = awsAttributes;
             ClusterLogConf = clusterLogConf;
             CustomTags = customTags;
+            DriverInstancePoolId = driverInstancePoolId;
             DriverNodeTypeId = driverNodeTypeId;
+            GcpAttributes = gcpAttributes;
             InitScripts = initScripts;
             InstancePoolId = instancePoolId;
             Label = label;

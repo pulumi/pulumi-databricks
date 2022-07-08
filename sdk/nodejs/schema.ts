@@ -90,7 +90,7 @@ export class Schema extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+     * Username/groupname/sp applicationId schema owner.
      */
     public readonly owner!: pulumi.Output<string>;
     /**
@@ -152,7 +152,7 @@ export interface SchemaState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+     * Username/groupname/sp applicationId schema owner.
      */
     owner?: pulumi.Input<string>;
     /**
@@ -179,7 +179,7 @@ export interface SchemaArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+     * Username/groupname/sp applicationId schema owner.
      */
     owner?: pulumi.Input<string>;
     /**

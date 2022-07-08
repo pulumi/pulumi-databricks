@@ -43,6 +43,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
     }
 
     public readonly awsIamRole!: pulumi.Output<outputs.MetastoreDataAccessAwsIamRole | undefined>;
+    public readonly azureManagedIdentity!: pulumi.Output<outputs.MetastoreDataAccessAzureManagedIdentity | undefined>;
     public readonly azureServicePrincipal!: pulumi.Output<outputs.MetastoreDataAccessAzureServicePrincipal | undefined>;
     public readonly configurationType!: pulumi.Output<string>;
     public readonly isDefault!: pulumi.Output<boolean | undefined>;
@@ -69,6 +70,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MetastoreDataAccessState | undefined;
             resourceInputs["awsIamRole"] = state ? state.awsIamRole : undefined;
+            resourceInputs["azureManagedIdentity"] = state ? state.azureManagedIdentity : undefined;
             resourceInputs["azureServicePrincipal"] = state ? state.azureServicePrincipal : undefined;
             resourceInputs["configurationType"] = state ? state.configurationType : undefined;
             resourceInputs["isDefault"] = state ? state.isDefault : undefined;
@@ -80,6 +82,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
                 throw new Error("Missing required property 'metastoreId'");
             }
             resourceInputs["awsIamRole"] = args ? args.awsIamRole : undefined;
+            resourceInputs["azureManagedIdentity"] = args ? args.azureManagedIdentity : undefined;
             resourceInputs["azureServicePrincipal"] = args ? args.azureServicePrincipal : undefined;
             resourceInputs["configurationType"] = args ? args.configurationType : undefined;
             resourceInputs["isDefault"] = args ? args.isDefault : undefined;
@@ -96,6 +99,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
  */
 export interface MetastoreDataAccessState {
     awsIamRole?: pulumi.Input<inputs.MetastoreDataAccessAwsIamRole>;
+    azureManagedIdentity?: pulumi.Input<inputs.MetastoreDataAccessAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal>;
     configurationType?: pulumi.Input<string>;
     isDefault?: pulumi.Input<boolean>;
@@ -114,6 +118,7 @@ export interface MetastoreDataAccessState {
  */
 export interface MetastoreDataAccessArgs {
     awsIamRole?: pulumi.Input<inputs.MetastoreDataAccessAwsIamRole>;
+    azureManagedIdentity?: pulumi.Input<inputs.MetastoreDataAccessAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal>;
     configurationType?: pulumi.Input<string>;
     isDefault?: pulumi.Input<boolean>;

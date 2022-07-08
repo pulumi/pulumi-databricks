@@ -122,7 +122,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Username/groupname of Table owner. Currently this field can only be changed after the resource is created.
+     * Username/groupname/sp applicationId Table owner.
      */
     public readonly owner!: pulumi.Output<string>;
     /**
@@ -232,7 +232,7 @@ export interface TableState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname of Table owner. Currently this field can only be changed after the resource is created.
+     * Username/groupname/sp applicationId Table owner.
      */
     owner?: pulumi.Input<string>;
     /**
@@ -283,7 +283,7 @@ export interface TableArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname of Table owner. Currently this field can only be changed after the resource is created.
+     * Username/groupname/sp applicationId Table owner.
      */
     owner?: pulumi.Input<string>;
     /**

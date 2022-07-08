@@ -81,7 +81,7 @@ export class IpAccessList extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * This is a field to allow the group to have instance pool create priviliges.
+     * This is a field to allow the group to have instance pool create privileges.
      */
     public readonly ipAddresses!: pulumi.Output<string[]>;
     /**
@@ -140,7 +140,7 @@ export interface IpAccessListState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the group to have instance pool create priviliges.
+     * This is a field to allow the group to have instance pool create privileges.
      */
     ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -162,7 +162,7 @@ export interface IpAccessListArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the group to have instance pool create priviliges.
+     * This is a field to allow the group to have instance pool create privileges.
      */
     ipAddresses: pulumi.Input<pulumi.Input<string>[]>;
     /**

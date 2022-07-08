@@ -43,7 +43,8 @@ type LookupUserArgs struct {
 // A collection of values returned by getUser.
 type LookupUserResult struct {
 	// Alphanumeric representation of user local name. e.g. `mrFoo`.
-	Alphanumeric string `pulumi:"alphanumeric"`
+	Alphanumeric  string `pulumi:"alphanumeric"`
+	ApplicationId string `pulumi:"applicationId"`
 	// Display name of the user, e.g. `Mr Foo`.
 	DisplayName string `pulumi:"displayName"`
 	// ID of the user in an external identity provider.
@@ -102,6 +103,10 @@ func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.
 // Alphanumeric representation of user local name. e.g. `mrFoo`.
 func (o LookupUserResultOutput) Alphanumeric() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Alphanumeric }).(pulumi.StringOutput)
+}
+
+func (o LookupUserResultOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
 // Display name of the user, e.g. `Mr Foo`.

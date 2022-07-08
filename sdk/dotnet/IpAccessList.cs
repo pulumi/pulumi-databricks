@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the group to have instance pool create priviliges.
+        /// This is a field to allow the group to have instance pool create privileges.
         /// </summary>
         [Output("ipAddresses")]
         public Output<ImmutableArray<string>> IpAddresses { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _ipAddresses;
 
         /// <summary>
-        /// This is a field to allow the group to have instance pool create priviliges.
+        /// This is a field to allow the group to have instance pool create privileges.
         /// </summary>
         public InputList<string> IpAddresses
         {
@@ -190,7 +190,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _ipAddresses;
 
         /// <summary>
-        /// This is a field to allow the group to have instance pool create priviliges.
+        /// This is a field to allow the group to have instance pool create privileges.
         /// </summary>
         public InputList<string> IpAddresses
         {

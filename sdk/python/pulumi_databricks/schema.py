@@ -24,7 +24,7 @@ class SchemaArgs:
         :param pulumi.Input[str] catalog_name: Name of parent catalog
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id schema owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
@@ -88,7 +88,7 @@ class SchemaArgs:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
-        Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+        Username/groupname/sp application_id schema owner.
         """
         return pulumi.get(self, "owner")
 
@@ -123,7 +123,7 @@ class _SchemaState:
         :param pulumi.Input[str] catalog_name: Name of parent catalog
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id schema owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
         """
         if catalog_name is not None:
@@ -188,7 +188,7 @@ class _SchemaState:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
-        Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+        Username/groupname/sp application_id schema owner.
         """
         return pulumi.get(self, "owner")
 
@@ -268,7 +268,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[str] catalog_name: Name of parent catalog
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id schema owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
         """
         ...
@@ -386,7 +386,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[str] catalog_name: Name of parent catalog
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id schema owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -434,7 +434,7 @@ class Schema(pulumi.CustomResource):
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
         """
-        Username/groupname of schema owner. Currently this field can only be changed after the resource is created.
+        Username/groupname/sp application_id schema owner.
         """
         return pulumi.get(self, "owner")
 

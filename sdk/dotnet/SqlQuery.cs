@@ -104,7 +104,11 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// -&gt; **Note** Importing this resource is not currently supported.
+    /// You can import a `databricks_sql_query` resource with ID like the followingbash
+    /// 
+    /// ```sh
+    ///  $ pulumi import databricks:index/sqlQuery:SqlQuery this &lt;query-id&gt;
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlQuery:SqlQuery")]
     public partial class SqlQuery : Pulumi.CustomResource

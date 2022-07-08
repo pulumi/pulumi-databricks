@@ -53,9 +53,6 @@ export class GitCredential extends pulumi.CustomResource {
      * user name at Git provider.
      */
     public readonly gitUsername!: pulumi.Output<string>;
-    /**
-     * The personal access token used to authenticate to the corresponding Git provider.
-     */
     public readonly personalAccessToken!: pulumi.Output<string>;
 
     /**
@@ -112,9 +109,6 @@ export interface GitCredentialState {
      * user name at Git provider.
      */
     gitUsername?: pulumi.Input<string>;
-    /**
-     * The personal access token used to authenticate to the corresponding Git provider.
-     */
     personalAccessToken?: pulumi.Input<string>;
 }
 
@@ -134,8 +128,5 @@ export interface GitCredentialArgs {
      * user name at Git provider.
      */
     gitUsername: pulumi.Input<string>;
-    /**
-     * The personal access token used to authenticate to the corresponding Git provider.
-     */
     personalAccessToken: pulumi.Input<string>;
 }

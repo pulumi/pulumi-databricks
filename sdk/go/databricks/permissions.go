@@ -43,6 +43,7 @@ type Permissions struct {
 	NotebookPath pulumi.StringPtrOutput `pulumi:"notebookPath"`
 	// type of permissions.
 	ObjectType        pulumi.StringOutput    `pulumi:"objectType"`
+	PipelineId        pulumi.StringPtrOutput `pulumi:"pipelineId"`
 	RegisteredModelId pulumi.StringPtrOutput `pulumi:"registeredModelId"`
 	// repo id
 	RepoId pulumi.StringPtrOutput `pulumi:"repoId"`
@@ -108,6 +109,7 @@ type permissionsState struct {
 	NotebookPath *string `pulumi:"notebookPath"`
 	// type of permissions.
 	ObjectType        *string `pulumi:"objectType"`
+	PipelineId        *string `pulumi:"pipelineId"`
 	RegisteredModelId *string `pulumi:"registeredModelId"`
 	// repo id
 	RepoId *string `pulumi:"repoId"`
@@ -142,6 +144,7 @@ type PermissionsState struct {
 	NotebookPath pulumi.StringPtrInput
 	// type of permissions.
 	ObjectType        pulumi.StringPtrInput
+	PipelineId        pulumi.StringPtrInput
 	RegisteredModelId pulumi.StringPtrInput
 	// repo id
 	RepoId pulumi.StringPtrInput
@@ -180,6 +183,7 @@ type permissionsArgs struct {
 	NotebookPath *string `pulumi:"notebookPath"`
 	// type of permissions.
 	ObjectType        *string `pulumi:"objectType"`
+	PipelineId        *string `pulumi:"pipelineId"`
 	RegisteredModelId *string `pulumi:"registeredModelId"`
 	// repo id
 	RepoId *string `pulumi:"repoId"`
@@ -215,6 +219,7 @@ type PermissionsArgs struct {
 	NotebookPath pulumi.StringPtrInput
 	// type of permissions.
 	ObjectType        pulumi.StringPtrInput
+	PipelineId        pulumi.StringPtrInput
 	RegisteredModelId pulumi.StringPtrInput
 	// repo id
 	RepoId pulumi.StringPtrInput
@@ -369,6 +374,10 @@ func (o PermissionsOutput) NotebookPath() pulumi.StringPtrOutput {
 // type of permissions.
 func (o PermissionsOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+func (o PermissionsOutput) PipelineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.PipelineId }).(pulumi.StringPtrOutput)
 }
 
 func (o PermissionsOutput) RegisteredModelId() pulumi.StringPtrOutput {
