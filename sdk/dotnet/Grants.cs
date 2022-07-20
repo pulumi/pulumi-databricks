@@ -21,6 +21,9 @@ namespace Pulumi.Databricks
         [Output("grants")]
         public Output<ImmutableArray<Outputs.GrantsGrant>> GrantDetails { get; private set; } = null!;
 
+        [Output("metastore")]
+        public Output<string?> Metastore { get; private set; } = null!;
+
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
 
@@ -93,6 +96,9 @@ namespace Pulumi.Databricks
             set => _grants = value;
         }
 
+        [Input("metastore")]
+        public Input<string>? Metastore { get; set; }
+
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
@@ -125,6 +131,9 @@ namespace Pulumi.Databricks
             get => _grants ?? (_grants = new InputList<Inputs.GrantsGrantGetArgs>());
             set => _grants = value;
         }
+
+        [Input("metastore")]
+        public Input<string>? Metastore { get; set; }
 
         [Input("schema")]
         public Input<string>? Schema { get; set; }

@@ -8,10 +8,28 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * The resource permissions can be imported using the object id bash
+ * ### Import Example Configuration filehcl resource "databricks_mlflow_model" "model" {
+ *
+ *  name
+ *
+ * = "example_model"
+ *
+ *  description = "MLflow registered model" } resource "databricks_permissions" "model_usage" {
+ *
+ *  registered_model_id = databricks_mlflow_model.model.registered_model_id
+ *
+ *  access_control {
+ *
+ *  group_name
+ *
+ *  = "users"
+ *
+ *  permission_level = "CAN_READ"
+ *
+ *  } } Import commandbash
  *
  * ```sh
- *  $ pulumi import databricks:index/permissions:Permissions this /<object type>/<object id>
+ *  $ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/<registered_model_id>
  * ```
  */
 export class Permissions extends pulumi.CustomResource {
@@ -63,6 +81,9 @@ export class Permissions extends pulumi.CustomResource {
      * path of directory
      */
     public readonly directoryPath!: pulumi.Output<string | undefined>;
+    /**
+     * MLflow experiment id
+     */
     public readonly experimentId!: pulumi.Output<string | undefined>;
     /**
      * instance pool id
@@ -84,7 +105,13 @@ export class Permissions extends pulumi.CustomResource {
      * type of permissions.
      */
     public readonly objectType!: pulumi.Output<string>;
+    /**
+     * pipeline id
+     */
     public readonly pipelineId!: pulumi.Output<string | undefined>;
+    /**
+     * MLflow registered model id
+     */
     public readonly registeredModelId!: pulumi.Output<string | undefined>;
     /**
      * repo id
@@ -94,9 +121,21 @@ export class Permissions extends pulumi.CustomResource {
      * path of databricks repo directory(`/Repos/<username>/...`)
      */
     public readonly repoPath!: pulumi.Output<string | undefined>;
+    /**
+     * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
+     */
     public readonly sqlAlertId!: pulumi.Output<string | undefined>;
+    /**
+     * SQL dashboard id
+     */
     public readonly sqlDashboardId!: pulumi.Output<string | undefined>;
+    /**
+     * SQL endpoint id
+     */
     public readonly sqlEndpointId!: pulumi.Output<string | undefined>;
+    /**
+     * SQL query id
+     */
     public readonly sqlQueryId!: pulumi.Output<string | undefined>;
 
     /**
@@ -188,6 +227,9 @@ export interface PermissionsState {
      * path of directory
      */
     directoryPath?: pulumi.Input<string>;
+    /**
+     * MLflow experiment id
+     */
     experimentId?: pulumi.Input<string>;
     /**
      * instance pool id
@@ -209,7 +251,13 @@ export interface PermissionsState {
      * type of permissions.
      */
     objectType?: pulumi.Input<string>;
+    /**
+     * pipeline id
+     */
     pipelineId?: pulumi.Input<string>;
+    /**
+     * MLflow registered model id
+     */
     registeredModelId?: pulumi.Input<string>;
     /**
      * repo id
@@ -219,9 +267,21 @@ export interface PermissionsState {
      * path of databricks repo directory(`/Repos/<username>/...`)
      */
     repoPath?: pulumi.Input<string>;
+    /**
+     * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
+     */
     sqlAlertId?: pulumi.Input<string>;
+    /**
+     * SQL dashboard id
+     */
     sqlDashboardId?: pulumi.Input<string>;
+    /**
+     * SQL endpoint id
+     */
     sqlEndpointId?: pulumi.Input<string>;
+    /**
+     * SQL query id
+     */
     sqlQueryId?: pulumi.Input<string>;
 }
 
@@ -250,6 +310,9 @@ export interface PermissionsArgs {
      * path of directory
      */
     directoryPath?: pulumi.Input<string>;
+    /**
+     * MLflow experiment id
+     */
     experimentId?: pulumi.Input<string>;
     /**
      * instance pool id
@@ -271,7 +334,13 @@ export interface PermissionsArgs {
      * type of permissions.
      */
     objectType?: pulumi.Input<string>;
+    /**
+     * pipeline id
+     */
     pipelineId?: pulumi.Input<string>;
+    /**
+     * MLflow registered model id
+     */
     registeredModelId?: pulumi.Input<string>;
     /**
      * repo id
@@ -281,8 +350,20 @@ export interface PermissionsArgs {
      * path of databricks repo directory(`/Repos/<username>/...`)
      */
     repoPath?: pulumi.Input<string>;
+    /**
+     * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
+     */
     sqlAlertId?: pulumi.Input<string>;
+    /**
+     * SQL dashboard id
+     */
     sqlDashboardId?: pulumi.Input<string>;
+    /**
+     * SQL endpoint id
+     */
     sqlEndpointId?: pulumi.Input<string>;
+    /**
+     * SQL query id
+     */
     sqlQueryId?: pulumi.Input<string>;
 }

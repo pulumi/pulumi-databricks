@@ -12,10 +12,28 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Import
     /// 
-    /// The resource permissions can be imported using the object id bash
+    /// ### Import Example Configuration filehcl resource "databricks_mlflow_model" "model" {
+    /// 
+    ///  name
+    /// 
+    /// = "example_model"
+    /// 
+    ///  description = "MLflow registered model" } resource "databricks_permissions" "model_usage" {
+    /// 
+    ///  registered_model_id = databricks_mlflow_model.model.registered_model_id
+    /// 
+    ///  access_control {
+    /// 
+    ///  group_name
+    /// 
+    ///  = "users"
+    /// 
+    ///  permission_level = "CAN_READ"
+    /// 
+    ///  } } Import commandbash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/permissions:Permissions this /&lt;object type&gt;/&lt;object id&gt;
+    ///  $ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/&lt;registered_model_id&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/permissions:Permissions")]
@@ -54,6 +72,9 @@ namespace Pulumi.Databricks
         [Output("directoryPath")]
         public Output<string?> DirectoryPath { get; private set; } = null!;
 
+        /// <summary>
+        /// MLflow experiment id
+        /// </summary>
         [Output("experimentId")]
         public Output<string?> ExperimentId { get; private set; } = null!;
 
@@ -87,9 +108,15 @@ namespace Pulumi.Databricks
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
 
+        /// <summary>
+        /// pipeline id
+        /// </summary>
         [Output("pipelineId")]
         public Output<string?> PipelineId { get; private set; } = null!;
 
+        /// <summary>
+        /// MLflow registered model id
+        /// </summary>
         [Output("registeredModelId")]
         public Output<string?> RegisteredModelId { get; private set; } = null!;
 
@@ -105,15 +132,27 @@ namespace Pulumi.Databricks
         [Output("repoPath")]
         public Output<string?> RepoPath { get; private set; } = null!;
 
+        /// <summary>
+        /// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
+        /// </summary>
         [Output("sqlAlertId")]
         public Output<string?> SqlAlertId { get; private set; } = null!;
 
+        /// <summary>
+        /// SQL dashboard id
+        /// </summary>
         [Output("sqlDashboardId")]
         public Output<string?> SqlDashboardId { get; private set; } = null!;
 
+        /// <summary>
+        /// SQL endpoint id
+        /// </summary>
         [Output("sqlEndpointId")]
         public Output<string?> SqlEndpointId { get; private set; } = null!;
 
+        /// <summary>
+        /// SQL query id
+        /// </summary>
         [Output("sqlQueryId")]
         public Output<string?> SqlQueryId { get; private set; } = null!;
 
@@ -201,6 +240,9 @@ namespace Pulumi.Databricks
         [Input("directoryPath")]
         public Input<string>? DirectoryPath { get; set; }
 
+        /// <summary>
+        /// MLflow experiment id
+        /// </summary>
         [Input("experimentId")]
         public Input<string>? ExperimentId { get; set; }
 
@@ -234,9 +276,15 @@ namespace Pulumi.Databricks
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
 
+        /// <summary>
+        /// pipeline id
+        /// </summary>
         [Input("pipelineId")]
         public Input<string>? PipelineId { get; set; }
 
+        /// <summary>
+        /// MLflow registered model id
+        /// </summary>
         [Input("registeredModelId")]
         public Input<string>? RegisteredModelId { get; set; }
 
@@ -252,15 +300,27 @@ namespace Pulumi.Databricks
         [Input("repoPath")]
         public Input<string>? RepoPath { get; set; }
 
+        /// <summary>
+        /// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
+        /// </summary>
         [Input("sqlAlertId")]
         public Input<string>? SqlAlertId { get; set; }
 
+        /// <summary>
+        /// SQL dashboard id
+        /// </summary>
         [Input("sqlDashboardId")]
         public Input<string>? SqlDashboardId { get; set; }
 
+        /// <summary>
+        /// SQL endpoint id
+        /// </summary>
         [Input("sqlEndpointId")]
         public Input<string>? SqlEndpointId { get; set; }
 
+        /// <summary>
+        /// SQL query id
+        /// </summary>
         [Input("sqlQueryId")]
         public Input<string>? SqlQueryId { get; set; }
 
@@ -309,6 +369,9 @@ namespace Pulumi.Databricks
         [Input("directoryPath")]
         public Input<string>? DirectoryPath { get; set; }
 
+        /// <summary>
+        /// MLflow experiment id
+        /// </summary>
         [Input("experimentId")]
         public Input<string>? ExperimentId { get; set; }
 
@@ -342,9 +405,15 @@ namespace Pulumi.Databricks
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
 
+        /// <summary>
+        /// pipeline id
+        /// </summary>
         [Input("pipelineId")]
         public Input<string>? PipelineId { get; set; }
 
+        /// <summary>
+        /// MLflow registered model id
+        /// </summary>
         [Input("registeredModelId")]
         public Input<string>? RegisteredModelId { get; set; }
 
@@ -360,15 +429,27 @@ namespace Pulumi.Databricks
         [Input("repoPath")]
         public Input<string>? RepoPath { get; set; }
 
+        /// <summary>
+        /// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
+        /// </summary>
         [Input("sqlAlertId")]
         public Input<string>? SqlAlertId { get; set; }
 
+        /// <summary>
+        /// SQL dashboard id
+        /// </summary>
         [Input("sqlDashboardId")]
         public Input<string>? SqlDashboardId { get; set; }
 
+        /// <summary>
+        /// SQL endpoint id
+        /// </summary>
         [Input("sqlEndpointId")]
         public Input<string>? SqlEndpointId { get; set; }
 
+        /// <summary>
+        /// SQL query id
+        /// </summary>
         [Input("sqlQueryId")]
         public Input<string>? SqlQueryId { get; set; }
 
