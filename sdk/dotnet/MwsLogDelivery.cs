@@ -12,7 +12,9 @@ namespace Pulumi.Databricks
     /// <summary>
     /// &gt; **Note** This resource has an evolving API, which will change in the upcoming versions of the provider in order to simplify user experience.
     /// 
-    /// Make sure you have authenticated with username and password for Accounts Console. This resource configures the delivery of the two supported log types from Databricks workspaces: [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html). You cannot delete a log delivery configuration, but you can disable it when you no longer need it. This fact is important because there is a limit to the number of enabled log delivery configurations that you can create for an account. There is a limit on the number of log delivery configurations that you can create for an account. You can create a maximum of two enabled configurations that use the account level (no workspace filter) and two enabled configurations for every specific workspace (a workspaceId can occur in the workspace filter for two configurations). You cannot delete a log delivery configuration, but you can disable it. You can re-enable a disabled configuration, but the request fails if it violates the limits previously described.
+    /// Make sure you have authenticated with username and password for Accounts Console. This resource configures the delivery of the two supported log types from Databricks workspaces: [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+    /// 
+    /// You cannot delete a log delivery configuration, but you can disable it when you no longer need it. This fact is important because there is a limit to the number of enabled log delivery configurations that you can create for an account. You can create a maximum of two enabled configurations that use the account level (no workspace filter) and two enabled configurations for every specific workspace (a workspaceId can occur in the workspace filter for two configurations). You can re-enable a disabled configuration, but the request fails if it violates the limits previously described.
     /// 
     /// ## Billable Usage
     /// 
@@ -136,6 +138,9 @@ namespace Pulumi.Databricks
         [Output("outputFormat")]
         public Output<string> OutputFormat { get; private set; } = null!;
 
+        /// <summary>
+        /// Status of log delivery configuration. Set to ENABLED or DISABLED. Defaults to ENABLED. This is the only field you can update.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -245,6 +250,9 @@ namespace Pulumi.Databricks
         [Input("outputFormat", required: true)]
         public Input<string> OutputFormat { get; set; } = null!;
 
+        /// <summary>
+        /// Status of log delivery configuration. Set to ENABLED or DISABLED. Defaults to ENABLED. This is the only field you can update.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -321,6 +329,9 @@ namespace Pulumi.Databricks
         [Input("outputFormat")]
         public Input<string>? OutputFormat { get; set; }
 
+        /// <summary>
+        /// Status of log delivery configuration. Set to ENABLED or DISABLED. Defaults to ENABLED. This is the only field you can update.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

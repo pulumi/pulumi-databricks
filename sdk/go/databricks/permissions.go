@@ -13,10 +13,28 @@ import (
 
 // ## Import
 //
-// The resource permissions can be imported using the object id bash
+// ### Import Example Configuration filehcl resource "databricks_mlflow_model" "model" {
+//
+//  name
+//
+// = "example_model"
+//
+//  description = "MLflow registered model" } resource "databricks_permissions" "model_usage" {
+//
+//  registered_model_id = databricks_mlflow_model.model.registered_model_id
+//
+//  access_control {
+//
+//  group_name
+//
+//  = "users"
+//
+//  permission_level = "CAN_READ"
+//
+//  } } Import commandbash
 //
 // ```sh
-//  $ pulumi import databricks:index/permissions:Permissions this /<object type>/<object id>
+//  $ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/<registered_model_id>
 // ```
 type Permissions struct {
 	pulumi.CustomResourceState
@@ -32,7 +50,8 @@ type Permissions struct {
 	DirectoryId pulumi.StringPtrOutput `pulumi:"directoryId"`
 	// path of directory
 	DirectoryPath pulumi.StringPtrOutput `pulumi:"directoryPath"`
-	ExperimentId  pulumi.StringPtrOutput `pulumi:"experimentId"`
+	// MLflow experiment id
+	ExperimentId pulumi.StringPtrOutput `pulumi:"experimentId"`
 	// instance pool id
 	InstancePoolId pulumi.StringPtrOutput `pulumi:"instancePoolId"`
 	// job id
@@ -42,17 +61,23 @@ type Permissions struct {
 	// path of notebook
 	NotebookPath pulumi.StringPtrOutput `pulumi:"notebookPath"`
 	// type of permissions.
-	ObjectType        pulumi.StringOutput    `pulumi:"objectType"`
-	PipelineId        pulumi.StringPtrOutput `pulumi:"pipelineId"`
+	ObjectType pulumi.StringOutput `pulumi:"objectType"`
+	// pipeline id
+	PipelineId pulumi.StringPtrOutput `pulumi:"pipelineId"`
+	// MLflow registered model id
 	RegisteredModelId pulumi.StringPtrOutput `pulumi:"registeredModelId"`
 	// repo id
 	RepoId pulumi.StringPtrOutput `pulumi:"repoId"`
 	// path of databricks repo directory(`/Repos/<username>/...`)
-	RepoPath       pulumi.StringPtrOutput `pulumi:"repoPath"`
-	SqlAlertId     pulumi.StringPtrOutput `pulumi:"sqlAlertId"`
+	RepoPath pulumi.StringPtrOutput `pulumi:"repoPath"`
+	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
+	SqlAlertId pulumi.StringPtrOutput `pulumi:"sqlAlertId"`
+	// SQL dashboard id
 	SqlDashboardId pulumi.StringPtrOutput `pulumi:"sqlDashboardId"`
-	SqlEndpointId  pulumi.StringPtrOutput `pulumi:"sqlEndpointId"`
-	SqlQueryId     pulumi.StringPtrOutput `pulumi:"sqlQueryId"`
+	// SQL endpoint id
+	SqlEndpointId pulumi.StringPtrOutput `pulumi:"sqlEndpointId"`
+	// SQL query id
+	SqlQueryId pulumi.StringPtrOutput `pulumi:"sqlQueryId"`
 }
 
 // NewPermissions registers a new resource with the given unique name, arguments, and options.
@@ -98,7 +123,8 @@ type permissionsState struct {
 	DirectoryId *string `pulumi:"directoryId"`
 	// path of directory
 	DirectoryPath *string `pulumi:"directoryPath"`
-	ExperimentId  *string `pulumi:"experimentId"`
+	// MLflow experiment id
+	ExperimentId *string `pulumi:"experimentId"`
 	// instance pool id
 	InstancePoolId *string `pulumi:"instancePoolId"`
 	// job id
@@ -108,17 +134,23 @@ type permissionsState struct {
 	// path of notebook
 	NotebookPath *string `pulumi:"notebookPath"`
 	// type of permissions.
-	ObjectType        *string `pulumi:"objectType"`
-	PipelineId        *string `pulumi:"pipelineId"`
+	ObjectType *string `pulumi:"objectType"`
+	// pipeline id
+	PipelineId *string `pulumi:"pipelineId"`
+	// MLflow registered model id
 	RegisteredModelId *string `pulumi:"registeredModelId"`
 	// repo id
 	RepoId *string `pulumi:"repoId"`
 	// path of databricks repo directory(`/Repos/<username>/...`)
-	RepoPath       *string `pulumi:"repoPath"`
-	SqlAlertId     *string `pulumi:"sqlAlertId"`
+	RepoPath *string `pulumi:"repoPath"`
+	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
+	SqlAlertId *string `pulumi:"sqlAlertId"`
+	// SQL dashboard id
 	SqlDashboardId *string `pulumi:"sqlDashboardId"`
-	SqlEndpointId  *string `pulumi:"sqlEndpointId"`
-	SqlQueryId     *string `pulumi:"sqlQueryId"`
+	// SQL endpoint id
+	SqlEndpointId *string `pulumi:"sqlEndpointId"`
+	// SQL query id
+	SqlQueryId *string `pulumi:"sqlQueryId"`
 }
 
 type PermissionsState struct {
@@ -133,7 +165,8 @@ type PermissionsState struct {
 	DirectoryId pulumi.StringPtrInput
 	// path of directory
 	DirectoryPath pulumi.StringPtrInput
-	ExperimentId  pulumi.StringPtrInput
+	// MLflow experiment id
+	ExperimentId pulumi.StringPtrInput
 	// instance pool id
 	InstancePoolId pulumi.StringPtrInput
 	// job id
@@ -143,17 +176,23 @@ type PermissionsState struct {
 	// path of notebook
 	NotebookPath pulumi.StringPtrInput
 	// type of permissions.
-	ObjectType        pulumi.StringPtrInput
-	PipelineId        pulumi.StringPtrInput
+	ObjectType pulumi.StringPtrInput
+	// pipeline id
+	PipelineId pulumi.StringPtrInput
+	// MLflow registered model id
 	RegisteredModelId pulumi.StringPtrInput
 	// repo id
 	RepoId pulumi.StringPtrInput
 	// path of databricks repo directory(`/Repos/<username>/...`)
-	RepoPath       pulumi.StringPtrInput
-	SqlAlertId     pulumi.StringPtrInput
+	RepoPath pulumi.StringPtrInput
+	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
+	SqlAlertId pulumi.StringPtrInput
+	// SQL dashboard id
 	SqlDashboardId pulumi.StringPtrInput
-	SqlEndpointId  pulumi.StringPtrInput
-	SqlQueryId     pulumi.StringPtrInput
+	// SQL endpoint id
+	SqlEndpointId pulumi.StringPtrInput
+	// SQL query id
+	SqlQueryId pulumi.StringPtrInput
 }
 
 func (PermissionsState) ElementType() reflect.Type {
@@ -172,7 +211,8 @@ type permissionsArgs struct {
 	DirectoryId *string `pulumi:"directoryId"`
 	// path of directory
 	DirectoryPath *string `pulumi:"directoryPath"`
-	ExperimentId  *string `pulumi:"experimentId"`
+	// MLflow experiment id
+	ExperimentId *string `pulumi:"experimentId"`
 	// instance pool id
 	InstancePoolId *string `pulumi:"instancePoolId"`
 	// job id
@@ -182,17 +222,23 @@ type permissionsArgs struct {
 	// path of notebook
 	NotebookPath *string `pulumi:"notebookPath"`
 	// type of permissions.
-	ObjectType        *string `pulumi:"objectType"`
-	PipelineId        *string `pulumi:"pipelineId"`
+	ObjectType *string `pulumi:"objectType"`
+	// pipeline id
+	PipelineId *string `pulumi:"pipelineId"`
+	// MLflow registered model id
 	RegisteredModelId *string `pulumi:"registeredModelId"`
 	// repo id
 	RepoId *string `pulumi:"repoId"`
 	// path of databricks repo directory(`/Repos/<username>/...`)
-	RepoPath       *string `pulumi:"repoPath"`
-	SqlAlertId     *string `pulumi:"sqlAlertId"`
+	RepoPath *string `pulumi:"repoPath"`
+	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
+	SqlAlertId *string `pulumi:"sqlAlertId"`
+	// SQL dashboard id
 	SqlDashboardId *string `pulumi:"sqlDashboardId"`
-	SqlEndpointId  *string `pulumi:"sqlEndpointId"`
-	SqlQueryId     *string `pulumi:"sqlQueryId"`
+	// SQL endpoint id
+	SqlEndpointId *string `pulumi:"sqlEndpointId"`
+	// SQL query id
+	SqlQueryId *string `pulumi:"sqlQueryId"`
 }
 
 // The set of arguments for constructing a Permissions resource.
@@ -208,7 +254,8 @@ type PermissionsArgs struct {
 	DirectoryId pulumi.StringPtrInput
 	// path of directory
 	DirectoryPath pulumi.StringPtrInput
-	ExperimentId  pulumi.StringPtrInput
+	// MLflow experiment id
+	ExperimentId pulumi.StringPtrInput
 	// instance pool id
 	InstancePoolId pulumi.StringPtrInput
 	// job id
@@ -218,17 +265,23 @@ type PermissionsArgs struct {
 	// path of notebook
 	NotebookPath pulumi.StringPtrInput
 	// type of permissions.
-	ObjectType        pulumi.StringPtrInput
-	PipelineId        pulumi.StringPtrInput
+	ObjectType pulumi.StringPtrInput
+	// pipeline id
+	PipelineId pulumi.StringPtrInput
+	// MLflow registered model id
 	RegisteredModelId pulumi.StringPtrInput
 	// repo id
 	RepoId pulumi.StringPtrInput
 	// path of databricks repo directory(`/Repos/<username>/...`)
-	RepoPath       pulumi.StringPtrInput
-	SqlAlertId     pulumi.StringPtrInput
+	RepoPath pulumi.StringPtrInput
+	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
+	SqlAlertId pulumi.StringPtrInput
+	// SQL dashboard id
 	SqlDashboardId pulumi.StringPtrInput
-	SqlEndpointId  pulumi.StringPtrInput
-	SqlQueryId     pulumi.StringPtrInput
+	// SQL endpoint id
+	SqlEndpointId pulumi.StringPtrInput
+	// SQL query id
+	SqlQueryId pulumi.StringPtrInput
 }
 
 func (PermissionsArgs) ElementType() reflect.Type {
@@ -347,6 +400,7 @@ func (o PermissionsOutput) DirectoryPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.DirectoryPath }).(pulumi.StringPtrOutput)
 }
 
+// MLflow experiment id
 func (o PermissionsOutput) ExperimentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.ExperimentId }).(pulumi.StringPtrOutput)
 }
@@ -376,10 +430,12 @@ func (o PermissionsOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
 }
 
+// pipeline id
 func (o PermissionsOutput) PipelineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.PipelineId }).(pulumi.StringPtrOutput)
 }
 
+// MLflow registered model id
 func (o PermissionsOutput) RegisteredModelId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.RegisteredModelId }).(pulumi.StringPtrOutput)
 }
@@ -394,18 +450,22 @@ func (o PermissionsOutput) RepoPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.RepoPath }).(pulumi.StringPtrOutput)
 }
 
+// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
 func (o PermissionsOutput) SqlAlertId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlAlertId }).(pulumi.StringPtrOutput)
 }
 
+// SQL dashboard id
 func (o PermissionsOutput) SqlDashboardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlDashboardId }).(pulumi.StringPtrOutput)
 }
 
+// SQL endpoint id
 func (o PermissionsOutput) SqlEndpointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlEndpointId }).(pulumi.StringPtrOutput)
 }
 
+// SQL query id
 func (o PermissionsOutput) SqlQueryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlQueryId }).(pulumi.StringPtrOutput)
 }

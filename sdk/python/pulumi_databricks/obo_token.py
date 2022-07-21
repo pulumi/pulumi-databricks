@@ -145,19 +145,6 @@ class OboToken(pulumi.CustomResource):
                  lifetime_seconds: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        This resource creates [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a ServicePrincipal in Databricks workspaces on AWS. It is very useful, when you want to provision resources within a workspace through narrowly-scoped service principal, that has no access to other workspaces within the same Databricks Account.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * Group data to retrieve information about Group members, entitlements and instance profiles.
-        * databricks_group_member to attach users and groups as group members.
-        * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        * ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to Group within workspace.
-        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
-
         ## Import
 
         -> **Note** Importing this resource is not currently supported.
@@ -175,19 +162,6 @@ class OboToken(pulumi.CustomResource):
                  args: OboTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource creates [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a ServicePrincipal in Databricks workspaces on AWS. It is very useful, when you want to provision resources within a workspace through narrowly-scoped service principal, that has no access to other workspaces within the same Databricks Account.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * Group data to retrieve information about Group members, entitlements and instance profiles.
-        * databricks_group_member to attach users and groups as group members.
-        * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        * ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to Group within workspace.
-        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
-
         ## Import
 
         -> **Note** Importing this resource is not currently supported.

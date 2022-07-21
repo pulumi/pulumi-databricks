@@ -17,6 +17,7 @@ type Grants struct {
 	Catalog           pulumi.StringPtrOutput `pulumi:"catalog"`
 	ExternalLocation  pulumi.StringPtrOutput `pulumi:"externalLocation"`
 	Grants            GrantsGrantArrayOutput `pulumi:"grants"`
+	Metastore         pulumi.StringPtrOutput `pulumi:"metastore"`
 	Schema            pulumi.StringPtrOutput `pulumi:"schema"`
 	StorageCredential pulumi.StringPtrOutput `pulumi:"storageCredential"`
 	Table             pulumi.StringPtrOutput `pulumi:"table"`
@@ -58,6 +59,7 @@ type grantsState struct {
 	Catalog           *string       `pulumi:"catalog"`
 	ExternalLocation  *string       `pulumi:"externalLocation"`
 	Grants            []GrantsGrant `pulumi:"grants"`
+	Metastore         *string       `pulumi:"metastore"`
 	Schema            *string       `pulumi:"schema"`
 	StorageCredential *string       `pulumi:"storageCredential"`
 	Table             *string       `pulumi:"table"`
@@ -68,6 +70,7 @@ type GrantsState struct {
 	Catalog           pulumi.StringPtrInput
 	ExternalLocation  pulumi.StringPtrInput
 	Grants            GrantsGrantArrayInput
+	Metastore         pulumi.StringPtrInput
 	Schema            pulumi.StringPtrInput
 	StorageCredential pulumi.StringPtrInput
 	Table             pulumi.StringPtrInput
@@ -82,6 +85,7 @@ type grantsArgs struct {
 	Catalog           *string       `pulumi:"catalog"`
 	ExternalLocation  *string       `pulumi:"externalLocation"`
 	Grants            []GrantsGrant `pulumi:"grants"`
+	Metastore         *string       `pulumi:"metastore"`
 	Schema            *string       `pulumi:"schema"`
 	StorageCredential *string       `pulumi:"storageCredential"`
 	Table             *string       `pulumi:"table"`
@@ -93,6 +97,7 @@ type GrantsArgs struct {
 	Catalog           pulumi.StringPtrInput
 	ExternalLocation  pulumi.StringPtrInput
 	Grants            GrantsGrantArrayInput
+	Metastore         pulumi.StringPtrInput
 	Schema            pulumi.StringPtrInput
 	StorageCredential pulumi.StringPtrInput
 	Table             pulumi.StringPtrInput
@@ -196,6 +201,10 @@ func (o GrantsOutput) ExternalLocation() pulumi.StringPtrOutput {
 
 func (o GrantsOutput) Grants() GrantsGrantArrayOutput {
 	return o.ApplyT(func(v *Grants) GrantsGrantArrayOutput { return v.Grants }).(GrantsGrantArrayOutput)
+}
+
+func (o GrantsOutput) Metastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Metastore }).(pulumi.StringPtrOutput)
 }
 
 func (o GrantsOutput) Schema() pulumi.StringPtrOutput {

@@ -312,8 +312,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 },
                 "url": {
                     "type": "string",
@@ -321,8 +320,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 }
             },
             "type": "object",
@@ -338,8 +336,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 },
                 "username": {
                     "type": "string",
@@ -347,8 +344,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 }
             },
             "type": "object",
@@ -1504,8 +1500,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 },
                 "url": {
                     "type": "string",
@@ -1514,8 +1509,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 }
             },
             "type": "object",
@@ -1531,8 +1525,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 },
                 "username": {
                     "type": "string",
@@ -1540,8 +1533,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 }
             },
             "type": "object",
@@ -2346,8 +2338,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 },
                 "url": {
                     "type": "string",
@@ -2356,8 +2347,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 }
             },
             "type": "object",
@@ -2373,8 +2363,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 },
                 "username": {
                     "type": "string",
@@ -2382,8 +2371,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 }
             },
             "type": "object",
@@ -3699,8 +3687,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 },
                 "url": {
                     "type": "string",
@@ -3709,8 +3696,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 }
             },
             "type": "object",
@@ -3726,8 +3712,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 },
                 "username": {
                     "type": "string",
@@ -3735,8 +3720,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 }
             },
             "type": "object",
@@ -7818,6 +7802,9 @@
                         }
                     }
                 },
+                "metastore": {
+                    "type": "string"
+                },
                 "schema": {
                     "type": "string"
                 },
@@ -7853,6 +7840,10 @@
                             "name": "GrantDetails"
                         }
                     }
+                },
+                "metastore": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
                 },
                 "schema": {
                     "type": "string",
@@ -7895,6 +7886,10 @@
                                 "name": "GrantDetails"
                             }
                         }
+                    },
+                    "metastore": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
                     },
                     "schema": {
                         "type": "string",
@@ -9825,7 +9820,7 @@
             }
         },
         "databricks:index/mwsLogDelivery:MwsLogDelivery": {
-            "description": "\u003e **Note** This resource has an evolving API, which will change in the upcoming versions of the provider in order to simplify user experience.\n\nMake sure you have authenticated with username and password for Accounts Console. This resource configures the delivery of the two supported log types from Databricks workspaces: [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html). You cannot delete a log delivery configuration, but you can disable it when you no longer need it. This fact is important because there is a limit to the number of enabled log delivery configurations that you can create for an account. There is a limit on the number of log delivery configurations that you can create for an account. You can create a maximum of two enabled configurations that use the account level (no workspace filter) and two enabled configurations for every specific workspace (a workspaceId can occur in the workspace filter for two configurations). You cannot delete a log delivery configuration, but you can disable it. You can re-enable a disabled configuration, but the request fails if it violates the limits previously described.\n\n## Billable Usage\n\nCSV files are delivered to `\u003cdelivery_path_prefix\u003e/billable-usage/csv/` and are named `workspaceId=\u003cworkspace-id\u003e-usageMonth=\u003cmonth\u003e.csv`, which are delivered daily by overwriting the month's CSV file for each workspace. Format of CSV file, as well as some usage examples, can be found [here](https://docs.databricks.com/administration-guide/account-settings/usage.html#download-usage-as-a-csv-file).\n\nCommon processing scenario is to apply [cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html), that could be enforced by setting custom_tags on a cluster or through cluster policy. Report contains `clusterId` field, that could be joined with data from AWS [cost and usage reports](https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html), that can be joined with `user:ClusterId` tag from AWS usage report.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst usageLogs = new databricks.MwsLogDelivery(\"usageLogs\", {\n    accountId: _var.databricks_account_id,\n    credentialsId: databricks_mws_credentials.log_writer.credentials_id,\n    storageConfigurationId: databricks_mws_storage_configurations.log_bucket.storage_configuration_id,\n    deliveryPathPrefix: \"billable-usage\",\n    configName: \"Usage Logs\",\n    logType: \"BILLABLE_USAGE\",\n    outputFormat: \"CSV\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nusage_logs = databricks.MwsLogDelivery(\"usageLogs\",\n    account_id=var[\"databricks_account_id\"],\n    credentials_id=databricks_mws_credentials[\"log_writer\"][\"credentials_id\"],\n    storage_configuration_id=databricks_mws_storage_configurations[\"log_bucket\"][\"storage_configuration_id\"],\n    delivery_path_prefix=\"billable-usage\",\n    config_name=\"Usage Logs\",\n    log_type=\"BILLABLE_USAGE\",\n    output_format=\"CSV\")\n```\n```csharp\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var usageLogs = new Databricks.MwsLogDelivery(\"usageLogs\", new Databricks.MwsLogDeliveryArgs\n        {\n            AccountId = @var.Databricks_account_id,\n            CredentialsId = databricks_mws_credentials.Log_writer.Credentials_id,\n            StorageConfigurationId = databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id,\n            DeliveryPathPrefix = \"billable-usage\",\n            ConfigName = \"Usage Logs\",\n            LogType = \"BILLABLE_USAGE\",\n            OutputFormat = \"CSV\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewMwsLogDelivery(ctx, \"usageLogs\", \u0026databricks.MwsLogDeliveryArgs{\n\t\t\tAccountId:              pulumi.Any(_var.Databricks_account_id),\n\t\t\tCredentialsId:          pulumi.Any(databricks_mws_credentials.Log_writer.Credentials_id),\n\t\t\tStorageConfigurationId: pulumi.Any(databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id),\n\t\t\tDeliveryPathPrefix:     pulumi.String(\"billable-usage\"),\n\t\t\tConfigName:             pulumi.String(\"Usage Logs\"),\n\t\t\tLogType:                pulumi.String(\"BILLABLE_USAGE\"),\n\t\t\tOutputFormat:           pulumi.String(\"CSV\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var usageLogs = new MwsLogDelivery(\"usageLogs\", MwsLogDeliveryArgs.builder()        \n            .accountId(var_.databricks_account_id())\n            .credentialsId(databricks_mws_credentials.log_writer().credentials_id())\n            .storageConfigurationId(databricks_mws_storage_configurations.log_bucket().storage_configuration_id())\n            .deliveryPathPrefix(\"billable-usage\")\n            .configName(\"Usage Logs\")\n            .logType(\"BILLABLE_USAGE\")\n            .outputFormat(\"CSV\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  usageLogs:\n    type: databricks:MwsLogDelivery\n    properties:\n      accountId: ${var.databricks_account_id}\n      credentialsId: ${databricks_mws_credentials.log_writer.credentials_id}\n      storageConfigurationId: ${databricks_mws_storage_configurations.log_bucket.storage_configuration_id}\n      deliveryPathPrefix: billable-usage\n      configName: Usage Logs\n      logType: BILLABLE_USAGE\n      outputFormat: CSV\n```\n\n## Audit Logs\n\nJSON files with [static schema](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html#audit-log-schema) are delivered to `\u003cdelivery_path_prefix\u003e/workspaceId=\u003cworkspaceId\u003e/date=\u003cyyyy-mm-dd\u003e/auditlogs_\u003cinternal-id\u003e.json`. Logs are available within 15 minutes of activation for audit logs. New JSON files are delivered every few minutes, potentially overwriting existing files for each workspace. Sometimes data may arrive later than 15 minutes. Databricks can overwrite the delivered log files in your bucket at any time. If a file is overwritten, the existing content remains, but there may be additional lines for more auditable events. Overwriting ensures exactly-once semantics without requiring read or delete access to your account.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst auditLogs = new databricks.MwsLogDelivery(\"auditLogs\", {\n    accountId: _var.databricks_account_id,\n    credentialsId: databricks_mws_credentials.log_writer.credentials_id,\n    storageConfigurationId: databricks_mws_storage_configurations.log_bucket.storage_configuration_id,\n    deliveryPathPrefix: \"audit-logs\",\n    configName: \"Audit Logs\",\n    logType: \"AUDIT_LOGS\",\n    outputFormat: \"JSON\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\naudit_logs = databricks.MwsLogDelivery(\"auditLogs\",\n    account_id=var[\"databricks_account_id\"],\n    credentials_id=databricks_mws_credentials[\"log_writer\"][\"credentials_id\"],\n    storage_configuration_id=databricks_mws_storage_configurations[\"log_bucket\"][\"storage_configuration_id\"],\n    delivery_path_prefix=\"audit-logs\",\n    config_name=\"Audit Logs\",\n    log_type=\"AUDIT_LOGS\",\n    output_format=\"JSON\")\n```\n```csharp\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var auditLogs = new Databricks.MwsLogDelivery(\"auditLogs\", new Databricks.MwsLogDeliveryArgs\n        {\n            AccountId = @var.Databricks_account_id,\n            CredentialsId = databricks_mws_credentials.Log_writer.Credentials_id,\n            StorageConfigurationId = databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id,\n            DeliveryPathPrefix = \"audit-logs\",\n            ConfigName = \"Audit Logs\",\n            LogType = \"AUDIT_LOGS\",\n            OutputFormat = \"JSON\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewMwsLogDelivery(ctx, \"auditLogs\", \u0026databricks.MwsLogDeliveryArgs{\n\t\t\tAccountId:              pulumi.Any(_var.Databricks_account_id),\n\t\t\tCredentialsId:          pulumi.Any(databricks_mws_credentials.Log_writer.Credentials_id),\n\t\t\tStorageConfigurationId: pulumi.Any(databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id),\n\t\t\tDeliveryPathPrefix:     pulumi.String(\"audit-logs\"),\n\t\t\tConfigName:             pulumi.String(\"Audit Logs\"),\n\t\t\tLogType:                pulumi.String(\"AUDIT_LOGS\"),\n\t\t\tOutputFormat:           pulumi.String(\"JSON\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var auditLogs = new MwsLogDelivery(\"auditLogs\", MwsLogDeliveryArgs.builder()        \n            .accountId(var_.databricks_account_id())\n            .credentialsId(databricks_mws_credentials.log_writer().credentials_id())\n            .storageConfigurationId(databricks_mws_storage_configurations.log_bucket().storage_configuration_id())\n            .deliveryPathPrefix(\"audit-logs\")\n            .configName(\"Audit Logs\")\n            .logType(\"AUDIT_LOGS\")\n            .outputFormat(\"JSON\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  auditLogs:\n    type: databricks:MwsLogDelivery\n    properties:\n      accountId: ${var.databricks_account_id}\n      credentialsId: ${databricks_mws_credentials.log_writer.credentials_id}\n      storageConfigurationId: ${databricks_mws_storage_configurations.log_bucket.storage_configuration_id}\n      deliveryPathPrefix: audit-logs\n      configName: Audit Logs\n      logType: AUDIT_LOGS\n      outputFormat: JSON\n```\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* Provisioning Databricks on AWS guide.\n* databricks.MwsCredentials to configure the cross-account role for creation of new workspaces within AWS.\n* databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.\n* databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) \u0026 subnets for new workspaces within AWS.\n* databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.\n* databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).\n\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported. ",
+            "description": "\u003e **Note** This resource has an evolving API, which will change in the upcoming versions of the provider in order to simplify user experience.\n\nMake sure you have authenticated with username and password for Accounts Console. This resource configures the delivery of the two supported log types from Databricks workspaces: [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html). \n\nYou cannot delete a log delivery configuration, but you can disable it when you no longer need it. This fact is important because there is a limit to the number of enabled log delivery configurations that you can create for an account. You can create a maximum of two enabled configurations that use the account level (no workspace filter) and two enabled configurations for every specific workspace (a workspaceId can occur in the workspace filter for two configurations). You can re-enable a disabled configuration, but the request fails if it violates the limits previously described.\n\n## Billable Usage\n\nCSV files are delivered to `\u003cdelivery_path_prefix\u003e/billable-usage/csv/` and are named `workspaceId=\u003cworkspace-id\u003e-usageMonth=\u003cmonth\u003e.csv`, which are delivered daily by overwriting the month's CSV file for each workspace. Format of CSV file, as well as some usage examples, can be found [here](https://docs.databricks.com/administration-guide/account-settings/usage.html#download-usage-as-a-csv-file).\n\nCommon processing scenario is to apply [cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html), that could be enforced by setting custom_tags on a cluster or through cluster policy. Report contains `clusterId` field, that could be joined with data from AWS [cost and usage reports](https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html), that can be joined with `user:ClusterId` tag from AWS usage report.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst usageLogs = new databricks.MwsLogDelivery(\"usageLogs\", {\n    accountId: _var.databricks_account_id,\n    credentialsId: databricks_mws_credentials.log_writer.credentials_id,\n    storageConfigurationId: databricks_mws_storage_configurations.log_bucket.storage_configuration_id,\n    deliveryPathPrefix: \"billable-usage\",\n    configName: \"Usage Logs\",\n    logType: \"BILLABLE_USAGE\",\n    outputFormat: \"CSV\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nusage_logs = databricks.MwsLogDelivery(\"usageLogs\",\n    account_id=var[\"databricks_account_id\"],\n    credentials_id=databricks_mws_credentials[\"log_writer\"][\"credentials_id\"],\n    storage_configuration_id=databricks_mws_storage_configurations[\"log_bucket\"][\"storage_configuration_id\"],\n    delivery_path_prefix=\"billable-usage\",\n    config_name=\"Usage Logs\",\n    log_type=\"BILLABLE_USAGE\",\n    output_format=\"CSV\")\n```\n```csharp\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var usageLogs = new Databricks.MwsLogDelivery(\"usageLogs\", new Databricks.MwsLogDeliveryArgs\n        {\n            AccountId = @var.Databricks_account_id,\n            CredentialsId = databricks_mws_credentials.Log_writer.Credentials_id,\n            StorageConfigurationId = databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id,\n            DeliveryPathPrefix = \"billable-usage\",\n            ConfigName = \"Usage Logs\",\n            LogType = \"BILLABLE_USAGE\",\n            OutputFormat = \"CSV\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewMwsLogDelivery(ctx, \"usageLogs\", \u0026databricks.MwsLogDeliveryArgs{\n\t\t\tAccountId:              pulumi.Any(_var.Databricks_account_id),\n\t\t\tCredentialsId:          pulumi.Any(databricks_mws_credentials.Log_writer.Credentials_id),\n\t\t\tStorageConfigurationId: pulumi.Any(databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id),\n\t\t\tDeliveryPathPrefix:     pulumi.String(\"billable-usage\"),\n\t\t\tConfigName:             pulumi.String(\"Usage Logs\"),\n\t\t\tLogType:                pulumi.String(\"BILLABLE_USAGE\"),\n\t\t\tOutputFormat:           pulumi.String(\"CSV\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var usageLogs = new MwsLogDelivery(\"usageLogs\", MwsLogDeliveryArgs.builder()        \n            .accountId(var_.databricks_account_id())\n            .credentialsId(databricks_mws_credentials.log_writer().credentials_id())\n            .storageConfigurationId(databricks_mws_storage_configurations.log_bucket().storage_configuration_id())\n            .deliveryPathPrefix(\"billable-usage\")\n            .configName(\"Usage Logs\")\n            .logType(\"BILLABLE_USAGE\")\n            .outputFormat(\"CSV\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  usageLogs:\n    type: databricks:MwsLogDelivery\n    properties:\n      accountId: ${var.databricks_account_id}\n      credentialsId: ${databricks_mws_credentials.log_writer.credentials_id}\n      storageConfigurationId: ${databricks_mws_storage_configurations.log_bucket.storage_configuration_id}\n      deliveryPathPrefix: billable-usage\n      configName: Usage Logs\n      logType: BILLABLE_USAGE\n      outputFormat: CSV\n```\n\n## Audit Logs\n\nJSON files with [static schema](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html#audit-log-schema) are delivered to `\u003cdelivery_path_prefix\u003e/workspaceId=\u003cworkspaceId\u003e/date=\u003cyyyy-mm-dd\u003e/auditlogs_\u003cinternal-id\u003e.json`. Logs are available within 15 minutes of activation for audit logs. New JSON files are delivered every few minutes, potentially overwriting existing files for each workspace. Sometimes data may arrive later than 15 minutes. Databricks can overwrite the delivered log files in your bucket at any time. If a file is overwritten, the existing content remains, but there may be additional lines for more auditable events. Overwriting ensures exactly-once semantics without requiring read or delete access to your account.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst auditLogs = new databricks.MwsLogDelivery(\"auditLogs\", {\n    accountId: _var.databricks_account_id,\n    credentialsId: databricks_mws_credentials.log_writer.credentials_id,\n    storageConfigurationId: databricks_mws_storage_configurations.log_bucket.storage_configuration_id,\n    deliveryPathPrefix: \"audit-logs\",\n    configName: \"Audit Logs\",\n    logType: \"AUDIT_LOGS\",\n    outputFormat: \"JSON\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\naudit_logs = databricks.MwsLogDelivery(\"auditLogs\",\n    account_id=var[\"databricks_account_id\"],\n    credentials_id=databricks_mws_credentials[\"log_writer\"][\"credentials_id\"],\n    storage_configuration_id=databricks_mws_storage_configurations[\"log_bucket\"][\"storage_configuration_id\"],\n    delivery_path_prefix=\"audit-logs\",\n    config_name=\"Audit Logs\",\n    log_type=\"AUDIT_LOGS\",\n    output_format=\"JSON\")\n```\n```csharp\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var auditLogs = new Databricks.MwsLogDelivery(\"auditLogs\", new Databricks.MwsLogDeliveryArgs\n        {\n            AccountId = @var.Databricks_account_id,\n            CredentialsId = databricks_mws_credentials.Log_writer.Credentials_id,\n            StorageConfigurationId = databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id,\n            DeliveryPathPrefix = \"audit-logs\",\n            ConfigName = \"Audit Logs\",\n            LogType = \"AUDIT_LOGS\",\n            OutputFormat = \"JSON\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewMwsLogDelivery(ctx, \"auditLogs\", \u0026databricks.MwsLogDeliveryArgs{\n\t\t\tAccountId:              pulumi.Any(_var.Databricks_account_id),\n\t\t\tCredentialsId:          pulumi.Any(databricks_mws_credentials.Log_writer.Credentials_id),\n\t\t\tStorageConfigurationId: pulumi.Any(databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id),\n\t\t\tDeliveryPathPrefix:     pulumi.String(\"audit-logs\"),\n\t\t\tConfigName:             pulumi.String(\"Audit Logs\"),\n\t\t\tLogType:                pulumi.String(\"AUDIT_LOGS\"),\n\t\t\tOutputFormat:           pulumi.String(\"JSON\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var auditLogs = new MwsLogDelivery(\"auditLogs\", MwsLogDeliveryArgs.builder()        \n            .accountId(var_.databricks_account_id())\n            .credentialsId(databricks_mws_credentials.log_writer().credentials_id())\n            .storageConfigurationId(databricks_mws_storage_configurations.log_bucket().storage_configuration_id())\n            .deliveryPathPrefix(\"audit-logs\")\n            .configName(\"Audit Logs\")\n            .logType(\"AUDIT_LOGS\")\n            .outputFormat(\"JSON\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  auditLogs:\n    type: databricks:MwsLogDelivery\n    properties:\n      accountId: ${var.databricks_account_id}\n      credentialsId: ${databricks_mws_credentials.log_writer.credentials_id}\n      storageConfigurationId: ${databricks_mws_storage_configurations.log_bucket.storage_configuration_id}\n      deliveryPathPrefix: audit-logs\n      configName: Audit Logs\n      logType: AUDIT_LOGS\n      outputFormat: JSON\n```\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* Provisioning Databricks on AWS guide.\n* databricks.MwsCredentials to configure the cross-account role for creation of new workspaces within AWS.\n* databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.\n* databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) \u0026 subnets for new workspaces within AWS.\n* databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.\n* databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).\n\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported. ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -9860,7 +9855,8 @@
                     "description": "The file type of log delivery. Currently `CSV` (for `BILLABLE_USAGE`) and `JSON` (for `AUDIT_LOGS`) are supported.\n"
                 },
                 "status": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Status of log delivery configuration. Set to ENABLED or DISABLED. Defaults to ENABLED. This is the only field you can update.\n"
                 },
                 "storageConfigurationId": {
                     "type": "string",
@@ -9892,7 +9888,8 @@
                 },
                 "configId": {
                     "type": "string",
-                    "description": "Databricks log delivery configuration ID.\n"
+                    "description": "Databricks log delivery configuration ID.\n",
+                    "willReplaceOnChanges": true
                 },
                 "configName": {
                     "type": "string",
@@ -9925,7 +9922,8 @@
                     "willReplaceOnChanges": true
                 },
                 "status": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Status of log delivery configuration. Set to ENABLED or DISABLED. Defaults to ENABLED. This is the only field you can update.\n"
                 },
                 "storageConfigurationId": {
                     "type": "string",
@@ -9958,7 +9956,8 @@
                     },
                     "configId": {
                         "type": "string",
-                        "description": "Databricks log delivery configuration ID.\n"
+                        "description": "Databricks log delivery configuration ID.\n",
+                        "willReplaceOnChanges": true
                     },
                     "configName": {
                         "type": "string",
@@ -9991,7 +9990,8 @@
                         "willReplaceOnChanges": true
                     },
                     "status": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Status of log delivery configuration. Set to ENABLED or DISABLED. Defaults to ENABLED. This is the only field you can update.\n"
                     },
                     "storageConfigurationId": {
                         "type": "string",
@@ -10115,7 +10115,8 @@
                 },
                 "vpcEndpoints": {
                     "$ref": "#/types/databricks:index/MwsNetworksVpcEndpoints:MwsNetworksVpcEndpoints",
-                    "description": "mapping of databricks.MwsVpcEndpoint for PrivateLink connections\n"
+                    "description": "mapping of databricks.MwsVpcEndpoint for PrivateLink connections\n",
+                    "willReplaceOnChanges": true
                 },
                 "vpcId": {
                     "type": "string",
@@ -10179,7 +10180,8 @@
                     },
                     "vpcEndpoints": {
                         "$ref": "#/types/databricks:index/MwsNetworksVpcEndpoints:MwsNetworksVpcEndpoints",
-                        "description": "mapping of databricks.MwsVpcEndpoint for PrivateLink connections\n"
+                        "description": "mapping of databricks.MwsVpcEndpoint for PrivateLink connections\n",
+                        "willReplaceOnChanges": true
                     },
                     "vpcId": {
                         "type": "string",
@@ -10970,7 +10972,7 @@
             }
         },
         "databricks:index/oboToken:OboToken": {
-            "description": "This resource creates [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a databricks.ServicePrincipal in Databricks workspaces on AWS. It is very useful, when you want to provision resources within a workspace through narrowly-scoped service principal, that has no access to other workspaces within the same Databricks Account.\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks_group_member to attach users and groups as group members.\n* databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.\n* databricks.ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to databricks.Group within workspace.\n* databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).\n\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported. ",
+            "description": "\n\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported. ",
             "properties": {
                 "applicationId": {
                     "type": "string",
@@ -11044,7 +11046,7 @@
             }
         },
         "databricks:index/permissions:Permissions": {
-            "description": "\n\n\n## Import\n\nThe resource permissions can be imported using the object id bash\n\n```sh\n $ pulumi import databricks:index/permissions:Permissions this /\u003cobject type\u003e/\u003cobject id\u003e\n```\n\n ",
+            "description": "\n\n\n## Import\n\n### Import Example Configuration filehcl resource \"databricks_mlflow_model\" \"model\" {\n\n name\n\n\n\n\n\n\n\n= \"example_model\"\n\n description = \"MLflow registered model\" } resource \"databricks_permissions\" \"model_usage\" {\n\n registered_model_id = databricks_mlflow_model.model.registered_model_id\n\n access_control {\n\n\n\n group_name\n\n\n\n\n\n = \"users\"\n\n\n\n permission_level = \"CAN_READ\"\n\n } } Import commandbash\n\n```sh\n $ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/\u003cregistered_model_id\u003e\n```\n\n ",
             "properties": {
                 "accessControls": {
                     "type": "array",
@@ -11073,7 +11075,8 @@
                     "description": "path of directory\n"
                 },
                 "experimentId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "MLflow experiment id\n"
                 },
                 "instancePoolId": {
                     "type": "string",
@@ -11096,10 +11099,12 @@
                     "description": "type of permissions.\n"
                 },
                 "pipelineId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "pipeline id\n"
                 },
                 "registeredModelId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "MLflow registered model id\n"
                 },
                 "repoId": {
                     "type": "string",
@@ -11110,16 +11115,20 @@
                     "description": "path of databricks repo directory(`/Repos/\u003cusername\u003e/...`)\n"
                 },
                 "sqlAlertId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "[SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id\n"
                 },
                 "sqlDashboardId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "SQL dashboard id\n"
                 },
                 "sqlEndpointId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "SQL endpoint id\n"
                 },
                 "sqlQueryId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "SQL query id\n"
                 }
             },
             "required": [
@@ -11160,6 +11169,7 @@
                 },
                 "experimentId": {
                     "type": "string",
+                    "description": "MLflow experiment id\n",
                     "willReplaceOnChanges": true
                 },
                 "instancePoolId": {
@@ -11188,10 +11198,12 @@
                 },
                 "pipelineId": {
                     "type": "string",
+                    "description": "pipeline id\n",
                     "willReplaceOnChanges": true
                 },
                 "registeredModelId": {
                     "type": "string",
+                    "description": "MLflow registered model id\n",
                     "willReplaceOnChanges": true
                 },
                 "repoId": {
@@ -11206,18 +11218,22 @@
                 },
                 "sqlAlertId": {
                     "type": "string",
+                    "description": "[SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id\n",
                     "willReplaceOnChanges": true
                 },
                 "sqlDashboardId": {
                     "type": "string",
+                    "description": "SQL dashboard id\n",
                     "willReplaceOnChanges": true
                 },
                 "sqlEndpointId": {
                     "type": "string",
+                    "description": "SQL endpoint id\n",
                     "willReplaceOnChanges": true
                 },
                 "sqlQueryId": {
                     "type": "string",
+                    "description": "SQL query id\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -11260,6 +11276,7 @@
                     },
                     "experimentId": {
                         "type": "string",
+                        "description": "MLflow experiment id\n",
                         "willReplaceOnChanges": true
                     },
                     "instancePoolId": {
@@ -11288,10 +11305,12 @@
                     },
                     "pipelineId": {
                         "type": "string",
+                        "description": "pipeline id\n",
                         "willReplaceOnChanges": true
                     },
                     "registeredModelId": {
                         "type": "string",
+                        "description": "MLflow registered model id\n",
                         "willReplaceOnChanges": true
                     },
                     "repoId": {
@@ -11306,18 +11325,22 @@
                     },
                     "sqlAlertId": {
                         "type": "string",
+                        "description": "[SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id\n",
                         "willReplaceOnChanges": true
                     },
                     "sqlDashboardId": {
                         "type": "string",
+                        "description": "SQL dashboard id\n",
                         "willReplaceOnChanges": true
                     },
                     "sqlEndpointId": {
                         "type": "string",
+                        "description": "SQL endpoint id\n",
                         "willReplaceOnChanges": true
                     },
                     "sqlQueryId": {
                         "type": "string",
+                        "description": "SQL query id\n",
                         "willReplaceOnChanges": true
                     }
                 },
