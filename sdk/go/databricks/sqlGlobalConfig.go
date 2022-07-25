@@ -61,8 +61,8 @@ import (
 // 				"spark.hadoop.fs.azure.account.auth.type":              pulumi.Any("OAuth"),
 // 				"spark.hadoop.fs.azure.account.oauth.provider.type":    pulumi.Any("org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
 // 				"spark.hadoop.fs.azure.account.oauth2.client.id":       pulumi.Any(_var.Tenant_id),
-// 				"spark.hadoop.fs.azure.account.oauth2.client.secret":   pulumi.Any(fmt.Sprintf("%v%v%v%v%v", "{{secrets/", local.Secret_scope, "/", local.Secret_key, "}}")),
-// 				"spark.hadoop.fs.azure.account.oauth2.client.endpoint": pulumi.Any(fmt.Sprintf("%v%v%v", "https://login.microsoftonline.com/", _var.Tenant_id, "/oauth2/token")),
+// 				"spark.hadoop.fs.azure.account.oauth2.client.secret":   pulumi.Any(fmt.Sprintf("{{secrets/%v/%v}}", local.Secret_scope, local.Secret_key)),
+// 				"spark.hadoop.fs.azure.account.oauth2.client.endpoint": pulumi.Any(fmt.Sprintf("https://login.microsoftonline.com/%v/oauth2/token", _var.Tenant_id)),
 // 			},
 // 			SqlConfigParams: pulumi.AnyMap{
 // 				"ANSI_MODE": pulumi.Any("true"),

@@ -160,6 +160,9 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_zones":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZones")},
 			"databricks_service_principal":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getServicePrincipal")},
 			"databricks_service_principals":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getServicePrincipals")},
+			"databricks_cluster":                 {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getCluster")},
+			"databricks_sql_warehouse":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSqlWarehouse")},
+			"databricks_sql_warehouses":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSqlWarehouses")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

@@ -117,6 +117,226 @@ export interface ClusterLibraryPypi {
     repo?: string;
 }
 
+export interface ClusterWorkloadType {
+    clients: outputs.ClusterWorkloadTypeClients;
+}
+
+export interface ClusterWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
+}
+
+export interface GetClusterClusterInfo {
+    autoscale?: outputs.GetClusterClusterInfoAutoscale;
+    /**
+     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
+     */
+    autoterminationMinutes?: number;
+    awsAttributes?: outputs.GetClusterClusterInfoAwsAttributes;
+    azureAttributes?: outputs.GetClusterClusterInfoAzureAttributes;
+    clusterCores?: number;
+    /**
+     * The id of the cluster
+     */
+    clusterId?: string;
+    clusterLogConf?: outputs.GetClusterClusterInfoClusterLogConf;
+    clusterLogStatus?: outputs.GetClusterClusterInfoClusterLogStatus;
+    clusterMemoryMb?: number;
+    /**
+     * Cluster name, which doesn’t have to be unique.
+     */
+    clusterName?: string;
+    clusterSource?: string;
+    creatorUserName?: string;
+    /**
+     * Additional tags for cluster resources.
+     */
+    customTags?: {[key: string]: any};
+    /**
+     * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+     */
+    dataSecurityMode?: string;
+    defaultTags: {[key: string]: any};
+    dockerImage?: outputs.GetClusterClusterInfoDockerImage;
+    driver?: outputs.GetClusterClusterInfoDriver;
+    /**
+     * similar to `instancePoolId`, but for driver node.
+     */
+    driverInstancePoolId: string;
+    /**
+     * The node type of the Spark driver.
+     */
+    driverNodeTypeId?: string;
+    /**
+     * Use autoscaling local storage.
+     */
+    enableElasticDisk?: boolean;
+    /**
+     * Enable local disk encryption.
+     */
+    enableLocalDiskEncryption?: boolean;
+    executors?: outputs.GetClusterClusterInfoExecutor[];
+    gcpAttributes?: outputs.GetClusterClusterInfoGcpAttributes;
+    initScripts?: outputs.GetClusterClusterInfoInitScript[];
+    instancePoolId?: string;
+    jdbcPort?: number;
+    lastActivityTime?: number;
+    lastStateLossTime?: number;
+    /**
+     * Any supported databricks.getNodeType id.
+     * * `instancePoolId` The pool of idle instances the cluster is attached to.
+     */
+    nodeTypeId?: string;
+    numWorkers?: number;
+    /**
+     * Identifier of Cluster Policy to validate cluster and preset certain defaults.
+     */
+    policyId?: string;
+    /**
+     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     */
+    singleUserName?: string;
+    /**
+     * Map with key-value pairs to fine-tune Spark clusters.
+     */
+    sparkConf?: {[key: string]: any};
+    sparkContextId?: number;
+    /**
+     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+     */
+    sparkEnvVars?: {[key: string]: any};
+    /**
+     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+     */
+    sparkVersion: string;
+    /**
+     * SSH public key contents that will be added to each Spark node in this cluster.
+     */
+    sshPublicKeys?: string[];
+    startTime?: number;
+    state: string;
+    stateMessage?: string;
+    terminateTime?: number;
+    terminationReason?: outputs.GetClusterClusterInfoTerminationReason;
+}
+
+export interface GetClusterClusterInfoAutoscale {
+    maxWorkers?: number;
+    minWorkers?: number;
+}
+
+export interface GetClusterClusterInfoAwsAttributes {
+    availability?: string;
+    ebsVolumeCount?: number;
+    ebsVolumeSize?: number;
+    ebsVolumeType?: string;
+    firstOnDemand?: number;
+    instanceProfileArn?: string;
+    spotBidPricePercent?: number;
+    zoneId?: string;
+}
+
+export interface GetClusterClusterInfoAzureAttributes {
+    availability?: string;
+    firstOnDemand?: number;
+    spotBidMaxPrice?: number;
+}
+
+export interface GetClusterClusterInfoClusterLogConf {
+    dbfs?: outputs.GetClusterClusterInfoClusterLogConfDbfs;
+    s3?: outputs.GetClusterClusterInfoClusterLogConfS3;
+}
+
+export interface GetClusterClusterInfoClusterLogConfDbfs {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoClusterLogConfS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetClusterClusterInfoClusterLogStatus {
+    lastAttempted?: number;
+    lastException?: string;
+}
+
+export interface GetClusterClusterInfoDockerImage {
+    basicAuth?: outputs.GetClusterClusterInfoDockerImageBasicAuth;
+    url: string;
+}
+
+export interface GetClusterClusterInfoDockerImageBasicAuth {
+    password: string;
+    username: string;
+}
+
+export interface GetClusterClusterInfoDriver {
+    hostPrivateIp?: string;
+    instanceId?: string;
+    nodeAwsAttributes?: outputs.GetClusterClusterInfoDriverNodeAwsAttributes;
+    nodeId?: string;
+    privateIp?: string;
+    publicDns?: string;
+    startTimestamp?: number;
+}
+
+export interface GetClusterClusterInfoDriverNodeAwsAttributes {
+    isSpot?: boolean;
+}
+
+export interface GetClusterClusterInfoExecutor {
+    hostPrivateIp?: string;
+    instanceId?: string;
+    nodeAwsAttributes?: outputs.GetClusterClusterInfoExecutorNodeAwsAttributes;
+    nodeId?: string;
+    privateIp?: string;
+    publicDns?: string;
+    startTimestamp?: number;
+}
+
+export interface GetClusterClusterInfoExecutorNodeAwsAttributes {
+    isSpot?: boolean;
+}
+
+export interface GetClusterClusterInfoGcpAttributes {
+    availability?: string;
+    bootDiskSize?: number;
+    googleServiceAccount?: string;
+    usePreemptibleExecutors?: boolean;
+    zoneId?: string;
+}
+
+export interface GetClusterClusterInfoInitScript {
+    dbfs?: outputs.GetClusterClusterInfoInitScriptDbfs;
+    s3?: outputs.GetClusterClusterInfoInitScriptS3;
+}
+
+export interface GetClusterClusterInfoInitScriptDbfs {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoInitScriptS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetClusterClusterInfoTerminationReason {
+    code?: string;
+    parameters?: {[key: string]: any};
+    type?: string;
+}
+
 export interface GetDbfsFilePathsPathList {
     fileSize?: number;
     /**
@@ -131,6 +351,30 @@ export interface GetNotebookPathsNotebookPathList {
      * Path to workspace directory
      */
     path?: string;
+}
+
+export interface GetSqlWarehouseChannel {
+    /**
+     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     */
+    name?: string;
+}
+
+export interface GetSqlWarehouseOdbcParams {
+    host?: string;
+    hostname?: string;
+    path: string;
+    port: number;
+    protocol: string;
+}
+
+export interface GetSqlWarehouseTags {
+    customTags: outputs.GetSqlWarehouseTagsCustomTag[];
+}
+
+export interface GetSqlWarehouseTagsCustomTag {
+    key: string;
+    value: string;
 }
 
 export interface GrantsGrant {
@@ -186,6 +430,27 @@ export interface InstancePoolGcpAttributes {
      * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
      */
     availability?: string;
+}
+
+export interface InstancePoolInstancePoolFleetAttributes {
+    fleetOnDemandOption?: outputs.InstancePoolInstancePoolFleetAttributesFleetOnDemandOption;
+    fleetSpotOption?: outputs.InstancePoolInstancePoolFleetAttributesFleetSpotOption;
+    launchTemplateOverrides: outputs.InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride[];
+}
+
+export interface InstancePoolInstancePoolFleetAttributesFleetOnDemandOption {
+    allocationStrategy: string;
+    instancePoolsToUseCount?: number;
+}
+
+export interface InstancePoolInstancePoolFleetAttributesFleetSpotOption {
+    allocationStrategy: string;
+    instancePoolsToUseCount?: number;
+}
+
+export interface InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride {
+    availabilityZone: string;
+    instanceType: string;
 }
 
 export interface InstancePoolPreloadedDockerImage {
@@ -279,6 +544,7 @@ export interface JobJobClusterNewCluster {
     sparkEnvVars?: {[key: string]: any};
     sparkVersion: string;
     sshPublicKeys?: string[];
+    workloadType?: outputs.JobJobClusterNewClusterWorkloadType;
 }
 
 export interface JobJobClusterNewClusterAutoscale {
@@ -372,6 +638,15 @@ export interface JobJobClusterNewClusterInitScriptS3 {
     region?: string;
 }
 
+export interface JobJobClusterNewClusterWorkloadType {
+    clients: outputs.JobJobClusterNewClusterWorkloadTypeClients;
+}
+
+export interface JobJobClusterNewClusterWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
+}
+
 export interface JobLibrary {
     cran?: outputs.JobLibraryCran;
     egg?: string;
@@ -424,6 +699,7 @@ export interface JobNewCluster {
     sparkEnvVars?: {[key: string]: any};
     sparkVersion: string;
     sshPublicKeys?: string[];
+    workloadType?: outputs.JobNewClusterWorkloadType;
 }
 
 export interface JobNewClusterAutoscale {
@@ -515,6 +791,15 @@ export interface JobNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface JobNewClusterWorkloadType {
+    clients: outputs.JobNewClusterWorkloadTypeClients;
+}
+
+export interface JobNewClusterWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
 }
 
 export interface JobNotebookTask {
@@ -731,6 +1016,7 @@ export interface JobTaskNewCluster {
     sparkEnvVars?: {[key: string]: any};
     sparkVersion: string;
     sshPublicKeys?: string[];
+    workloadType?: outputs.JobTaskNewClusterWorkloadType;
 }
 
 export interface JobTaskNewClusterAutoscale {
@@ -822,6 +1108,15 @@ export interface JobTaskNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface JobTaskNewClusterWorkloadType {
+    clients: outputs.JobTaskNewClusterWorkloadTypeClients;
+}
+
+export interface JobTaskNewClusterWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
 }
 
 export interface JobTaskNotebookTask {

@@ -53,7 +53,7 @@ import (
 // 			return err
 // 		}
 // 		json0 := string(tmpJSON0)
-// 		_, err := databricks.NewSqlVisualization(ctx, "q1v1", &databricks.SqlVisualizationArgs{
+// 		_, err = databricks.NewSqlVisualization(ctx, "q1v1", &databricks.SqlVisualizationArgs{
 // 			QueryId:     pulumi.Any(databricks_sql_query.Q1.Id),
 // 			Type:        pulumi.String("table"),
 // 			Description: pulumi.String("Some Description"),

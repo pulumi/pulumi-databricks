@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
     ///         var passRoleForS3AccessPolicy = new Aws.Iam.Policy("passRoleForS3AccessPolicy", new Aws.Iam.PolicyArgs
     ///         {
     ///             Path = "/",
-    ///             Policy = passRoleForS3AccessPolicyDocument.Apply(passRoleForS3AccessPolicyDocument =&gt; passRoleForS3AccessPolicyDocument.Json),
+    ///             PolicyDocument = passRoleForS3AccessPolicyDocument.Apply(passRoleForS3AccessPolicyDocument =&gt; passRoleForS3AccessPolicyDocument.Json),
     ///         });
     ///         var crossAccount = new Aws.Iam.RolePolicyAttachment("crossAccount", new Aws.Iam.RolePolicyAttachmentArgs
     ///         {
