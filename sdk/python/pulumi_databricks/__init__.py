@@ -15,6 +15,7 @@ from .get_aws_assume_role_policy import *
 from .get_aws_bucket_policy import *
 from .get_aws_cross_account_policy import *
 from .get_catalogs import *
+from .get_cluster import *
 from .get_clusters import *
 from .get_current_user import *
 from .get_dbfs_file import *
@@ -28,6 +29,8 @@ from .get_schemas import *
 from .get_service_principal import *
 from .get_service_principals import *
 from .get_spark_version import *
+from .get_sql_warehouse import *
+from .get_sql_warehouses import *
 from .get_tables import *
 from .get_user import *
 from .get_views import *

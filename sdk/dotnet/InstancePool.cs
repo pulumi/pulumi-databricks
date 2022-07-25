@@ -22,7 +22,7 @@ namespace Pulumi.Databricks
     public partial class InstancePool : Pulumi.CustomResource
     {
         [Output("awsAttributes")]
-        public Output<Outputs.InstancePoolAwsAttributes?> AwsAttributes { get; private set; } = null!;
+        public Output<Outputs.InstancePoolAwsAttributes> AwsAttributes { get; private set; } = null!;
 
         [Output("azureAttributes")]
         public Output<Outputs.InstancePoolAzureAttributes?> AzureAttributes { get; private set; } = null!;
@@ -51,6 +51,9 @@ namespace Pulumi.Databricks
         [Output("idleInstanceAutoterminationMinutes")]
         public Output<int> IdleInstanceAutoterminationMinutes { get; private set; } = null!;
 
+        [Output("instancePoolFleetAttributes")]
+        public Output<Outputs.InstancePoolInstancePoolFleetAttributes?> InstancePoolFleetAttributes { get; private set; } = null!;
+
         [Output("instancePoolId")]
         public Output<string> InstancePoolId { get; private set; } = null!;
 
@@ -76,7 +79,7 @@ namespace Pulumi.Databricks
         /// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
         /// </summary>
         [Output("nodeTypeId")]
-        public Output<string> NodeTypeId { get; private set; } = null!;
+        public Output<string?> NodeTypeId { get; private set; } = null!;
 
         [Output("preloadedDockerImages")]
         public Output<ImmutableArray<Outputs.InstancePoolPreloadedDockerImage>> PreloadedDockerImages { get; private set; } = null!;
@@ -169,6 +172,9 @@ namespace Pulumi.Databricks
         [Input("idleInstanceAutoterminationMinutes", required: true)]
         public Input<int> IdleInstanceAutoterminationMinutes { get; set; } = null!;
 
+        [Input("instancePoolFleetAttributes")]
+        public Input<Inputs.InstancePoolInstancePoolFleetAttributesArgs>? InstancePoolFleetAttributes { get; set; }
+
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }
 
@@ -193,8 +199,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
         /// </summary>
-        [Input("nodeTypeId", required: true)]
-        public Input<string> NodeTypeId { get; set; } = null!;
+        [Input("nodeTypeId")]
+        public Input<string>? NodeTypeId { get; set; }
 
         [Input("preloadedDockerImages")]
         private InputList<Inputs.InstancePoolPreloadedDockerImageArgs>? _preloadedDockerImages;
@@ -258,6 +264,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("idleInstanceAutoterminationMinutes")]
         public Input<int>? IdleInstanceAutoterminationMinutes { get; set; }
+
+        [Input("instancePoolFleetAttributes")]
+        public Input<Inputs.InstancePoolInstancePoolFleetAttributesGetArgs>? InstancePoolFleetAttributes { get; set; }
 
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }

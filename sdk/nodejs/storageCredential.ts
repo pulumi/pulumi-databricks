@@ -9,60 +9,9 @@ import * as utilities from "./utilities";
  * > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
  *
  * To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
- * - `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
+ *
+ * - `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
  * - databricks.ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
- *
- * ## Example Usage
- *
- * For AWS
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const external = new databricks.StorageCredential("external", {
- *     awsIamRole: {
- *         roleArn: aws_iam_role.external_data_access.arn,
- *     },
- *     comment: "Managed by TF",
- * });
- * const externalCreds = new databricks.Grants("externalCreds", {
- *     storageCredential: external.id,
- *     grants: [{
- *         principal: "Data Engineers",
- *         privileges: ["CREATE_TABLE"],
- *     }],
- * });
- * ```
- *
- * For Azure
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const externalSp = new databricks.StorageCredential("externalSp", {
- *     azureServicePrincipal: {
- *         directoryId: _var.tenant_id,
- *         applicationId: azuread_application.ext_cred.application_id,
- *         clientSecret: azuread_application_password.ext_cred.value,
- *     },
- *     comment: "SP credential managed by TF",
- * });
- * const externalMi = new databricks.StorageCredential("externalMi", {
- *     azureManagedIdentity: {
- *         accessConnectorId: _var.access_connector_id,
- *     },
- *     comment: "Managed identity credential managed by TF",
- * });
- * const externalCreds = new databricks.Grants("externalCreds", {
- *     storageCredential: databricks_storage_credential.external.id,
- *     grants: [{
- *         principal: "Data Engineers",
- *         privileges: ["CREATE_TABLE"],
- *     }],
- * });
- * ```
  *
  * ## Import
  *

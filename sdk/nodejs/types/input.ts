@@ -117,6 +117,485 @@ export interface ClusterLibraryPypi {
     repo?: pulumi.Input<string>;
 }
 
+export interface ClusterWorkloadType {
+    clients: pulumi.Input<inputs.ClusterWorkloadTypeClients>;
+}
+
+export interface ClusterWorkloadTypeClients {
+    jobs?: pulumi.Input<boolean>;
+    notebooks?: pulumi.Input<boolean>;
+}
+
+export interface GetClusterClusterInfo {
+    autoscale?: inputs.GetClusterClusterInfoAutoscale;
+    /**
+     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
+     */
+    autoterminationMinutes?: number;
+    awsAttributes?: inputs.GetClusterClusterInfoAwsAttributes;
+    azureAttributes?: inputs.GetClusterClusterInfoAzureAttributes;
+    clusterCores?: number;
+    /**
+     * The id of the cluster
+     */
+    clusterId?: string;
+    clusterLogConf?: inputs.GetClusterClusterInfoClusterLogConf;
+    clusterLogStatus?: inputs.GetClusterClusterInfoClusterLogStatus;
+    clusterMemoryMb?: number;
+    /**
+     * Cluster name, which doesn’t have to be unique.
+     */
+    clusterName?: string;
+    clusterSource?: string;
+    creatorUserName?: string;
+    /**
+     * Additional tags for cluster resources.
+     */
+    customTags?: {[key: string]: any};
+    /**
+     * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+     */
+    dataSecurityMode?: string;
+    defaultTags: {[key: string]: any};
+    dockerImage?: inputs.GetClusterClusterInfoDockerImage;
+    driver?: inputs.GetClusterClusterInfoDriver;
+    /**
+     * similar to `instancePoolId`, but for driver node.
+     */
+    driverInstancePoolId?: string;
+    /**
+     * The node type of the Spark driver.
+     */
+    driverNodeTypeId?: string;
+    /**
+     * Use autoscaling local storage.
+     */
+    enableElasticDisk?: boolean;
+    /**
+     * Enable local disk encryption.
+     */
+    enableLocalDiskEncryption?: boolean;
+    executors?: inputs.GetClusterClusterInfoExecutor[];
+    gcpAttributes?: inputs.GetClusterClusterInfoGcpAttributes;
+    initScripts?: inputs.GetClusterClusterInfoInitScript[];
+    instancePoolId?: string;
+    jdbcPort?: number;
+    lastActivityTime?: number;
+    lastStateLossTime?: number;
+    /**
+     * Any supported databricks.getNodeType id.
+     * * `instancePoolId` The pool of idle instances the cluster is attached to.
+     */
+    nodeTypeId?: string;
+    numWorkers?: number;
+    /**
+     * Identifier of Cluster Policy to validate cluster and preset certain defaults.
+     */
+    policyId?: string;
+    /**
+     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     */
+    singleUserName?: string;
+    /**
+     * Map with key-value pairs to fine-tune Spark clusters.
+     */
+    sparkConf?: {[key: string]: any};
+    sparkContextId?: number;
+    /**
+     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+     */
+    sparkEnvVars?: {[key: string]: any};
+    /**
+     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+     */
+    sparkVersion: string;
+    /**
+     * SSH public key contents that will be added to each Spark node in this cluster.
+     */
+    sshPublicKeys?: string[];
+    startTime?: number;
+    state: string;
+    stateMessage?: string;
+    terminateTime?: number;
+    terminationReason?: inputs.GetClusterClusterInfoTerminationReason;
+}
+
+export interface GetClusterClusterInfoArgs {
+    autoscale?: pulumi.Input<inputs.GetClusterClusterInfoAutoscaleArgs>;
+    /**
+     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
+     */
+    autoterminationMinutes?: pulumi.Input<number>;
+    awsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAwsAttributesArgs>;
+    azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAzureAttributesArgs>;
+    clusterCores?: pulumi.Input<number>;
+    /**
+     * The id of the cluster
+     */
+    clusterId?: pulumi.Input<string>;
+    clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfArgs>;
+    clusterLogStatus?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogStatusArgs>;
+    clusterMemoryMb?: pulumi.Input<number>;
+    /**
+     * Cluster name, which doesn’t have to be unique.
+     */
+    clusterName?: pulumi.Input<string>;
+    clusterSource?: pulumi.Input<string>;
+    creatorUserName?: pulumi.Input<string>;
+    /**
+     * Additional tags for cluster resources.
+     */
+    customTags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+     */
+    dataSecurityMode?: pulumi.Input<string>;
+    defaultTags: pulumi.Input<{[key: string]: any}>;
+    dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageArgs>;
+    driver?: pulumi.Input<inputs.GetClusterClusterInfoDriverArgs>;
+    /**
+     * similar to `instancePoolId`, but for driver node.
+     */
+    driverInstancePoolId?: pulumi.Input<string>;
+    /**
+     * The node type of the Spark driver.
+     */
+    driverNodeTypeId?: pulumi.Input<string>;
+    /**
+     * Use autoscaling local storage.
+     */
+    enableElasticDisk?: pulumi.Input<boolean>;
+    /**
+     * Enable local disk encryption.
+     */
+    enableLocalDiskEncryption?: pulumi.Input<boolean>;
+    executors?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoExecutorArgs>[]>;
+    gcpAttributes?: pulumi.Input<inputs.GetClusterClusterInfoGcpAttributesArgs>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoInitScriptArgs>[]>;
+    instancePoolId?: pulumi.Input<string>;
+    jdbcPort?: pulumi.Input<number>;
+    lastActivityTime?: pulumi.Input<number>;
+    lastStateLossTime?: pulumi.Input<number>;
+    /**
+     * Any supported databricks.getNodeType id.
+     * * `instancePoolId` The pool of idle instances the cluster is attached to.
+     */
+    nodeTypeId?: pulumi.Input<string>;
+    numWorkers?: pulumi.Input<number>;
+    /**
+     * Identifier of Cluster Policy to validate cluster and preset certain defaults.
+     */
+    policyId?: pulumi.Input<string>;
+    /**
+     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     */
+    singleUserName?: pulumi.Input<string>;
+    /**
+     * Map with key-value pairs to fine-tune Spark clusters.
+     */
+    sparkConf?: pulumi.Input<{[key: string]: any}>;
+    sparkContextId?: pulumi.Input<number>;
+    /**
+     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+     */
+    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+     */
+    sparkVersion: pulumi.Input<string>;
+    /**
+     * SSH public key contents that will be added to each Spark node in this cluster.
+     */
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    startTime?: pulumi.Input<number>;
+    state: pulumi.Input<string>;
+    stateMessage?: pulumi.Input<string>;
+    terminateTime?: pulumi.Input<number>;
+    terminationReason?: pulumi.Input<inputs.GetClusterClusterInfoTerminationReasonArgs>;
+}
+
+export interface GetClusterClusterInfoAutoscale {
+    maxWorkers?: number;
+    minWorkers?: number;
+}
+
+export interface GetClusterClusterInfoAutoscaleArgs {
+    maxWorkers?: pulumi.Input<number>;
+    minWorkers?: pulumi.Input<number>;
+}
+
+export interface GetClusterClusterInfoAwsAttributes {
+    availability?: string;
+    ebsVolumeCount?: number;
+    ebsVolumeSize?: number;
+    ebsVolumeType?: string;
+    firstOnDemand?: number;
+    instanceProfileArn?: string;
+    spotBidPricePercent?: number;
+    zoneId?: string;
+}
+
+export interface GetClusterClusterInfoAwsAttributesArgs {
+    availability?: pulumi.Input<string>;
+    ebsVolumeCount?: pulumi.Input<number>;
+    ebsVolumeSize?: pulumi.Input<number>;
+    ebsVolumeType?: pulumi.Input<string>;
+    firstOnDemand?: pulumi.Input<number>;
+    instanceProfileArn?: pulumi.Input<string>;
+    spotBidPricePercent?: pulumi.Input<number>;
+    zoneId?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoAzureAttributes {
+    availability?: string;
+    firstOnDemand?: number;
+    spotBidMaxPrice?: number;
+}
+
+export interface GetClusterClusterInfoAzureAttributesArgs {
+    availability?: pulumi.Input<string>;
+    firstOnDemand?: pulumi.Input<number>;
+    spotBidMaxPrice?: pulumi.Input<number>;
+}
+
+export interface GetClusterClusterInfoClusterLogConf {
+    dbfs?: inputs.GetClusterClusterInfoClusterLogConfDbfs;
+    s3?: inputs.GetClusterClusterInfoClusterLogConfS3;
+}
+
+export interface GetClusterClusterInfoClusterLogConfArgs {
+    dbfs?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfDbfsArgs>;
+    s3?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfS3Args>;
+}
+
+export interface GetClusterClusterInfoClusterLogConfDbfs {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoClusterLogConfDbfsArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoClusterLogConfS3Args {
+    cannedAcl?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean>;
+    encryptionType?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoClusterLogConfS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetClusterClusterInfoClusterLogStatus {
+    lastAttempted?: number;
+    lastException?: string;
+}
+
+export interface GetClusterClusterInfoClusterLogStatusArgs {
+    lastAttempted?: pulumi.Input<number>;
+    lastException?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoDockerImageArgs {
+    basicAuth?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageBasicAuthArgs>;
+    url: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoDockerImage {
+    basicAuth?: inputs.GetClusterClusterInfoDockerImageBasicAuth;
+    url: string;
+}
+
+export interface GetClusterClusterInfoDockerImageBasicAuth {
+    password: string;
+    username: string;
+}
+
+export interface GetClusterClusterInfoDockerImageBasicAuthArgs {
+    password: pulumi.Input<string>;
+    username: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoDriver {
+    hostPrivateIp?: string;
+    instanceId?: string;
+    nodeAwsAttributes?: inputs.GetClusterClusterInfoDriverNodeAwsAttributes;
+    nodeId?: string;
+    privateIp?: string;
+    publicDns?: string;
+    startTimestamp?: number;
+}
+
+export interface GetClusterClusterInfoDriverArgs {
+    hostPrivateIp?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
+    nodeAwsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoDriverNodeAwsAttributesArgs>;
+    nodeId?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string>;
+    publicDns?: pulumi.Input<string>;
+    startTimestamp?: pulumi.Input<number>;
+}
+
+export interface GetClusterClusterInfoDriverNodeAwsAttributes {
+    isSpot?: boolean;
+}
+
+export interface GetClusterClusterInfoDriverNodeAwsAttributesArgs {
+    isSpot?: pulumi.Input<boolean>;
+}
+
+export interface GetClusterClusterInfoExecutor {
+    hostPrivateIp?: string;
+    instanceId?: string;
+    nodeAwsAttributes?: inputs.GetClusterClusterInfoExecutorNodeAwsAttributes;
+    nodeId?: string;
+    privateIp?: string;
+    publicDns?: string;
+    startTimestamp?: number;
+}
+
+export interface GetClusterClusterInfoExecutorArgs {
+    hostPrivateIp?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string>;
+    nodeAwsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoExecutorNodeAwsAttributesArgs>;
+    nodeId?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string>;
+    publicDns?: pulumi.Input<string>;
+    startTimestamp?: pulumi.Input<number>;
+}
+
+export interface GetClusterClusterInfoExecutorNodeAwsAttributes {
+    isSpot?: boolean;
+}
+
+export interface GetClusterClusterInfoExecutorNodeAwsAttributesArgs {
+    isSpot?: pulumi.Input<boolean>;
+}
+
+export interface GetClusterClusterInfoGcpAttributesArgs {
+    availability?: pulumi.Input<string>;
+    bootDiskSize?: pulumi.Input<number>;
+    googleServiceAccount?: pulumi.Input<string>;
+    usePreemptibleExecutors?: pulumi.Input<boolean>;
+    zoneId?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoGcpAttributes {
+    availability?: string;
+    bootDiskSize?: number;
+    googleServiceAccount?: string;
+    usePreemptibleExecutors?: boolean;
+    zoneId?: string;
+}
+
+export interface GetClusterClusterInfoInitScript {
+    dbfs?: inputs.GetClusterClusterInfoInitScriptDbfs;
+    s3?: inputs.GetClusterClusterInfoInitScriptS3;
+}
+
+export interface GetClusterClusterInfoInitScriptArgs {
+    dbfs?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptDbfsArgs>;
+    s3?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptS3Args>;
+}
+
+export interface GetClusterClusterInfoInitScriptDbfsArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoInitScriptDbfs {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoInitScriptS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetClusterClusterInfoInitScriptS3Args {
+    cannedAcl?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean>;
+    encryptionType?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoTerminationReason {
+    code?: string;
+    parameters?: {[key: string]: any};
+    type?: string;
+}
+
+export interface GetClusterClusterInfoTerminationReasonArgs {
+    code?: pulumi.Input<string>;
+    parameters?: pulumi.Input<{[key: string]: any}>;
+    type?: pulumi.Input<string>;
+}
+
+export interface GetSqlWarehouseChannel {
+    /**
+     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     */
+    name?: string;
+}
+
+export interface GetSqlWarehouseChannelArgs {
+    /**
+     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface GetSqlWarehouseOdbcParams {
+    host?: string;
+    hostname?: string;
+    path: string;
+    port: number;
+    protocol: string;
+}
+
+export interface GetSqlWarehouseOdbcParamsArgs {
+    host?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
+    path: pulumi.Input<string>;
+    port: pulumi.Input<number>;
+    protocol: pulumi.Input<string>;
+}
+
+export interface GetSqlWarehouseTags {
+    customTags: inputs.GetSqlWarehouseTagsCustomTag[];
+}
+
+export interface GetSqlWarehouseTagsArgs {
+    customTags: pulumi.Input<pulumi.Input<inputs.GetSqlWarehouseTagsCustomTagArgs>[]>;
+}
+
+export interface GetSqlWarehouseTagsCustomTag {
+    key: string;
+    value: string;
+}
+
+export interface GetSqlWarehouseTagsCustomTagArgs {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
 export interface GrantsGrant {
     principal: pulumi.Input<string>;
     privileges: pulumi.Input<pulumi.Input<string>[]>;
@@ -170,6 +649,27 @@ export interface InstancePoolGcpAttributes {
      * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
      */
     availability?: pulumi.Input<string>;
+}
+
+export interface InstancePoolInstancePoolFleetAttributes {
+    fleetOnDemandOption?: pulumi.Input<inputs.InstancePoolInstancePoolFleetAttributesFleetOnDemandOption>;
+    fleetSpotOption?: pulumi.Input<inputs.InstancePoolInstancePoolFleetAttributesFleetSpotOption>;
+    launchTemplateOverrides: pulumi.Input<pulumi.Input<inputs.InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride>[]>;
+}
+
+export interface InstancePoolInstancePoolFleetAttributesFleetOnDemandOption {
+    allocationStrategy: pulumi.Input<string>;
+    instancePoolsToUseCount?: pulumi.Input<number>;
+}
+
+export interface InstancePoolInstancePoolFleetAttributesFleetSpotOption {
+    allocationStrategy: pulumi.Input<string>;
+    instancePoolsToUseCount?: pulumi.Input<number>;
+}
+
+export interface InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride {
+    availabilityZone: pulumi.Input<string>;
+    instanceType: pulumi.Input<string>;
 }
 
 export interface InstancePoolPreloadedDockerImage {
@@ -263,6 +763,7 @@ export interface JobJobClusterNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    workloadType?: pulumi.Input<inputs.JobJobClusterNewClusterWorkloadType>;
 }
 
 export interface JobJobClusterNewClusterAutoscale {
@@ -356,6 +857,15 @@ export interface JobJobClusterNewClusterInitScriptS3 {
     region?: pulumi.Input<string>;
 }
 
+export interface JobJobClusterNewClusterWorkloadType {
+    clients: pulumi.Input<inputs.JobJobClusterNewClusterWorkloadTypeClients>;
+}
+
+export interface JobJobClusterNewClusterWorkloadTypeClients {
+    jobs?: pulumi.Input<boolean>;
+    notebooks?: pulumi.Input<boolean>;
+}
+
 export interface JobLibrary {
     cran?: pulumi.Input<inputs.JobLibraryCran>;
     egg?: pulumi.Input<string>;
@@ -408,6 +918,7 @@ export interface JobNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    workloadType?: pulumi.Input<inputs.JobNewClusterWorkloadType>;
 }
 
 export interface JobNewClusterAutoscale {
@@ -499,6 +1010,15 @@ export interface JobNewClusterInitScriptS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface JobNewClusterWorkloadType {
+    clients: pulumi.Input<inputs.JobNewClusterWorkloadTypeClients>;
+}
+
+export interface JobNewClusterWorkloadTypeClients {
+    jobs?: pulumi.Input<boolean>;
+    notebooks?: pulumi.Input<boolean>;
 }
 
 export interface JobNotebookTask {
@@ -715,6 +1235,7 @@ export interface JobTaskNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    workloadType?: pulumi.Input<inputs.JobTaskNewClusterWorkloadType>;
 }
 
 export interface JobTaskNewClusterAutoscale {
@@ -806,6 +1327,15 @@ export interface JobTaskNewClusterInitScriptS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface JobTaskNewClusterWorkloadType {
+    clients: pulumi.Input<inputs.JobTaskNewClusterWorkloadTypeClients>;
+}
+
+export interface JobTaskNewClusterWorkloadTypeClients {
+    jobs?: pulumi.Input<boolean>;
+    notebooks?: pulumi.Input<boolean>;
 }
 
 export interface JobTaskNotebookTask {

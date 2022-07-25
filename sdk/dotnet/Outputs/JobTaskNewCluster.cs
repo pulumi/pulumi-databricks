@@ -39,6 +39,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableDictionary<string, object>? SparkEnvVars;
         public readonly string SparkVersion;
         public readonly ImmutableArray<string> SshPublicKeys;
+        public readonly Outputs.JobTaskNewClusterWorkloadType? WorkloadType;
 
         [OutputConstructor]
         private JobTaskNewCluster(
@@ -92,7 +93,9 @@ namespace Pulumi.Databricks.Outputs
 
             string sparkVersion,
 
-            ImmutableArray<string> sshPublicKeys)
+            ImmutableArray<string> sshPublicKeys,
+
+            Outputs.JobTaskNewClusterWorkloadType? workloadType)
         {
             Autoscale = autoscale;
             AutoterminationMinutes = autoterminationMinutes;
@@ -120,6 +123,7 @@ namespace Pulumi.Databricks.Outputs
             SparkEnvVars = sparkEnvVars;
             SparkVersion = sparkVersion;
             SshPublicKeys = sshPublicKeys;
+            WorkloadType = workloadType;
         }
     }
 }

@@ -115,6 +115,9 @@ namespace Pulumi.Databricks.Inputs
             set => _sshPublicKeys = value;
         }
 
+        [Input("workloadType")]
+        public Input<Inputs.JobNewClusterWorkloadTypeGetArgs>? WorkloadType { get; set; }
+
         public JobNewClusterGetArgs()
         {
         }

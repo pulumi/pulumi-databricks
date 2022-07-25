@@ -70,8 +70,9 @@ type Cluster struct {
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
 	SshPublicKeys pulumi.StringArrayOutput `pulumi:"sshPublicKeys"`
 	// (string) State of the cluster.
-	State pulumi.StringOutput `pulumi:"state"`
-	Url   pulumi.StringOutput `pulumi:"url"`
+	State        pulumi.StringOutput          `pulumi:"state"`
+	Url          pulumi.StringOutput          `pulumi:"url"`
+	WorkloadType ClusterWorkloadTypePtrOutput `pulumi:"workloadType"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -155,8 +156,9 @@ type clusterState struct {
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
 	SshPublicKeys []string `pulumi:"sshPublicKeys"`
 	// (string) State of the cluster.
-	State *string `pulumi:"state"`
-	Url   *string `pulumi:"url"`
+	State        *string              `pulumi:"state"`
+	Url          *string              `pulumi:"url"`
+	WorkloadType *ClusterWorkloadType `pulumi:"workloadType"`
 }
 
 type ClusterState struct {
@@ -209,8 +211,9 @@ type ClusterState struct {
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
 	SshPublicKeys pulumi.StringArrayInput
 	// (string) State of the cluster.
-	State pulumi.StringPtrInput
-	Url   pulumi.StringPtrInput
+	State        pulumi.StringPtrInput
+	Url          pulumi.StringPtrInput
+	WorkloadType ClusterWorkloadTypePtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -263,7 +266,8 @@ type clusterArgs struct {
 	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
 	SparkVersion string `pulumi:"sparkVersion"`
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
-	SshPublicKeys []string `pulumi:"sshPublicKeys"`
+	SshPublicKeys []string             `pulumi:"sshPublicKeys"`
+	WorkloadType  *ClusterWorkloadType `pulumi:"workloadType"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -314,6 +318,7 @@ type ClusterArgs struct {
 	SparkVersion pulumi.StringInput
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
 	SshPublicKeys pulumi.StringArrayInput
+	WorkloadType  ClusterWorkloadTypePtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -545,6 +550,10 @@ func (o ClusterOutput) State() pulumi.StringOutput {
 
 func (o ClusterOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) WorkloadType() ClusterWorkloadTypePtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterWorkloadTypePtrOutput { return v.WorkloadType }).(ClusterWorkloadTypePtrOutput)
 }
 
 type ClusterArrayOutput struct{ *pulumi.OutputState }

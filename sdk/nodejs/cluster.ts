@@ -133,6 +133,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     public /*out*/ readonly url!: pulumi.Output<string>;
+    public readonly workloadType!: pulumi.Output<outputs.ClusterWorkloadType | undefined>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -178,6 +179,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["sshPublicKeys"] = state ? state.sshPublicKeys : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["workloadType"] = state ? state.workloadType : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             if ((!args || args.sparkVersion === undefined) && !opts.urn) {
@@ -211,6 +213,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["sparkEnvVars"] = args ? args.sparkEnvVars : undefined;
             resourceInputs["sparkVersion"] = args ? args.sparkVersion : undefined;
             resourceInputs["sshPublicKeys"] = args ? args.sshPublicKeys : undefined;
+            resourceInputs["workloadType"] = args ? args.workloadType : undefined;
             resourceInputs["defaultTags"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
@@ -315,6 +318,7 @@ export interface ClusterState {
      */
     state?: pulumi.Input<string>;
     url?: pulumi.Input<string>;
+    workloadType?: pulumi.Input<inputs.ClusterWorkloadType>;
 }
 
 /**
@@ -403,4 +407,5 @@ export interface ClusterArgs {
      * SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
      */
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    workloadType?: pulumi.Input<inputs.ClusterWorkloadType>;
 }

@@ -159,7 +159,7 @@ import (
 // 			return err
 // 		}
 // 		json0 := string(tmpJSON0)
-// 		_, err := databricks.NewClusterPolicy(ctx, "this", &databricks.ClusterPolicyArgs{
+// 		_, err = databricks.NewClusterPolicy(ctx, "this", &databricks.ClusterPolicyArgs{
 // 			Definition: pulumi.String(json0),
 // 		})
 // 		if err != nil {

@@ -174,6 +174,9 @@ namespace Pulumi.Databricks
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
+        [Output("workloadType")]
+        public Output<Outputs.ClusterWorkloadType?> WorkloadType { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Cluster resource with the given unique name, arguments, and options.
@@ -392,6 +395,9 @@ namespace Pulumi.Databricks
             set => _sshPublicKeys = value;
         }
 
+        [Input("workloadType")]
+        public Input<Inputs.ClusterWorkloadTypeArgs>? WorkloadType { get; set; }
+
         public ClusterArgs()
         {
         }
@@ -591,6 +597,9 @@ namespace Pulumi.Databricks
 
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        [Input("workloadType")]
+        public Input<Inputs.ClusterWorkloadTypeGetArgs>? WorkloadType { get; set; }
 
         public ClusterState()
         {
