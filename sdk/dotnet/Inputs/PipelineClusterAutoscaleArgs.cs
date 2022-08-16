@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class PipelineClusterAutoscaleArgs : Pulumi.ResourceArgs
+    public sealed class PipelineClusterAutoscaleArgs : global::Pulumi.ResourceArgs
     {
         [Input("maxWorkers")]
         public Input<int>? MaxWorkers { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public PipelineClusterAutoscaleArgs()
         {
         }
+        public static new PipelineClusterAutoscaleArgs Empty => new PipelineClusterAutoscaleArgs();
     }
 }

@@ -13,10 +13,12 @@ import (
 
 // ## Import
 //
-// The resource Repo can be imported using the Repo ID (obtained via UI or using API) bash
+// # The resource Repo can be imported using the Repo ID (obtained via UI or using API) bash
 //
 // ```sh
-//  $ pulumi import databricks:index/repo:Repo this repo_id
+//
+//	$ pulumi import databricks:index/repo:Repo this repo_id
+//
 // ```
 type Repo struct {
 	pulumi.CustomResourceState
@@ -157,7 +159,7 @@ func (i *Repo) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 // RepoArrayInput is an input type that accepts RepoArray and RepoArrayOutput values.
 // You can construct a concrete instance of `RepoArrayInput` via:
 //
-//          RepoArray{ RepoArgs{...} }
+//	RepoArray{ RepoArgs{...} }
 type RepoArrayInput interface {
 	pulumi.Input
 
@@ -182,7 +184,7 @@ func (i RepoArray) ToRepoArrayOutputWithContext(ctx context.Context) RepoArrayOu
 // RepoMapInput is an input type that accepts RepoMap and RepoMapOutput values.
 // You can construct a concrete instance of `RepoMapInput` via:
 //
-//          RepoMap{ "key": RepoArgs{...} }
+//	RepoMap{ "key": RepoArgs{...} }
 type RepoMapInput interface {
 	pulumi.Input
 

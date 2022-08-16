@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MetastoreDataAccessAwsIamRoleArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreDataAccessAwsIamRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public MetastoreDataAccessAwsIamRoleArgs()
         {
         }
+        public static new MetastoreDataAccessAwsIamRoleArgs Empty => new MetastoreDataAccessAwsIamRoleArgs();
     }
 }

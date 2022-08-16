@@ -21,36 +21,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		this, err := databricks.NewWorkspaceConf(ctx, "this", &databricks.WorkspaceConfArgs{
-// 			CustomConfig: pulumi.AnyMap{
-// 				"enableIpAccessLists": pulumi.Any(true),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewIpAccessList(ctx, "allowed-list", &databricks.IpAccessListArgs{
-// 			Label:    pulumi.String("allow_in"),
-// 			ListType: pulumi.String("ALLOW"),
-// 			IpAddresses: pulumi.StringArray{
-// 				pulumi.String("1.2.3.0/24"),
-// 				pulumi.String("1.2.5.0/24"),
-// 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			this,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewWorkspaceConf(ctx, "this", &databricks.WorkspaceConfArgs{
+//				CustomConfig: pulumi.AnyMap{
+//					"enableIpAccessLists": pulumi.Any(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewIpAccessList(ctx, "allowed-list", &databricks.IpAccessListArgs{
+//				Label:    pulumi.String("allow_in"),
+//				ListType: pulumi.String("ALLOW"),
+//				IpAddresses: pulumi.StringArray{
+//					pulumi.String("1.2.3.0/24"),
+//					pulumi.String("1.2.5.0/24"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				this,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -68,7 +71,9 @@ import (
 // The databricks_ip_access_list can be imported using idbash
 //
 // ```sh
-//  $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
+//
+//	$ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
+//
 // ```
 type IpAccessList struct {
 	pulumi.CustomResourceState
@@ -195,7 +200,7 @@ func (i *IpAccessList) ToIpAccessListOutputWithContext(ctx context.Context) IpAc
 // IpAccessListArrayInput is an input type that accepts IpAccessListArray and IpAccessListArrayOutput values.
 // You can construct a concrete instance of `IpAccessListArrayInput` via:
 //
-//          IpAccessListArray{ IpAccessListArgs{...} }
+//	IpAccessListArray{ IpAccessListArgs{...} }
 type IpAccessListArrayInput interface {
 	pulumi.Input
 
@@ -220,7 +225,7 @@ func (i IpAccessListArray) ToIpAccessListArrayOutputWithContext(ctx context.Cont
 // IpAccessListMapInput is an input type that accepts IpAccessListMap and IpAccessListMapOutput values.
 // You can construct a concrete instance of `IpAccessListMapInput` via:
 //
-//          IpAccessListMap{ "key": IpAccessListArgs{...} }
+//	IpAccessListMap{ "key": IpAccessListArgs{...} }
 type IpAccessListMapInput interface {
 	pulumi.Input
 

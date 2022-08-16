@@ -19,7 +19,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/repo:Repo")]
-    public partial class Repo : Pulumi.CustomResource
+    public partial class Repo : global::Pulumi.CustomResource
     {
         /// <summary>
         /// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class RepoArgs : Pulumi.ResourceArgs
+    public sealed class RepoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
@@ -142,9 +142,10 @@ namespace Pulumi.Databricks
         public RepoArgs()
         {
         }
+        public static new RepoArgs Empty => new RepoArgs();
     }
 
-    public sealed class RepoState : Pulumi.ResourceArgs
+    public sealed class RepoState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
@@ -185,5 +186,6 @@ namespace Pulumi.Databricks
         public RepoState()
         {
         }
+        public static new RepoState Empty => new RepoState();
     }
 }

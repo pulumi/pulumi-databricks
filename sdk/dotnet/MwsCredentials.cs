@@ -15,43 +15,45 @@ namespace Pulumi.Databricks
     /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aws = Pulumi.Aws;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     var thisAwsAssumeRolePolicy = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
     ///     {
-    ///         var config = new Config();
-    ///         var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-    ///         var thisAwsAssumeRolePolicy = Output.Create(Databricks.GetAwsAssumeRolePolicy.InvokeAsync(new Databricks.GetAwsAssumeRolePolicyArgs
-    ///         {
-    ///             ExternalId = databricksAccountId,
-    ///         }));
-    ///         var crossAccountRole = new Aws.Iam.Role("crossAccountRole", new Aws.Iam.RoleArgs
-    ///         {
-    ///             AssumeRolePolicy = thisAwsAssumeRolePolicy.Apply(thisAwsAssumeRolePolicy =&gt; thisAwsAssumeRolePolicy.Json),
-    ///             Tags = @var.Tags,
-    ///         });
-    ///         var thisAwsCrossAccountPolicy = Output.Create(Databricks.GetAwsCrossAccountPolicy.InvokeAsync());
-    ///         var thisRolePolicy = new Aws.Iam.RolePolicy("thisRolePolicy", new Aws.Iam.RolePolicyArgs
-    ///         {
-    ///             Role = crossAccountRole.Id,
-    ///             Policy = thisAwsCrossAccountPolicy.Apply(thisAwsCrossAccountPolicy =&gt; thisAwsCrossAccountPolicy.Json),
-    ///         });
-    ///         var thisMwsCredentials = new Databricks.MwsCredentials("thisMwsCredentials", new Databricks.MwsCredentialsArgs
-    ///         {
-    ///             AccountId = databricksAccountId,
-    ///             CredentialsName = $"{local.Prefix}-creds",
-    ///             RoleArn = crossAccountRole.Arn,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = databricks.Mws,
-    ///         });
-    ///     }
+    ///         ExternalId = databricksAccountId,
+    ///     });
     /// 
-    /// }
+    ///     var crossAccountRole = new Aws.Iam.Role("crossAccountRole", new()
+    ///     {
+    ///         AssumeRolePolicy = thisAwsAssumeRolePolicy.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
+    ///         Tags = @var.Tags,
+    ///     });
+    /// 
+    ///     var thisAwsCrossAccountPolicy = Databricks.GetAwsCrossAccountPolicy.Invoke();
+    /// 
+    ///     var thisRolePolicy = new Aws.Iam.RolePolicy("thisRolePolicy", new()
+    ///     {
+    ///         Role = crossAccountRole.Id,
+    ///         Policy = thisAwsCrossAccountPolicy.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json),
+    ///     });
+    /// 
+    ///     var thisMwsCredentials = new Databricks.MwsCredentials("thisMwsCredentials", new()
+    ///     {
+    ///         AccountId = databricksAccountId,
+    ///         CredentialsName = $"{local.Prefix}-creds",
+    ///         RoleArn = crossAccountRole.Arn,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Mws,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -69,7 +71,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/mwsCredentials:MwsCredentials")]
-    public partial class MwsCredentials : Pulumi.CustomResource
+    public partial class MwsCredentials : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -148,7 +150,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class MwsCredentialsArgs : Pulumi.ResourceArgs
+    public sealed class MwsCredentialsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -171,9 +173,10 @@ namespace Pulumi.Databricks
         public MwsCredentialsArgs()
         {
         }
+        public static new MwsCredentialsArgs Empty => new MwsCredentialsArgs();
     }
 
-    public sealed class MwsCredentialsState : Pulumi.ResourceArgs
+    public sealed class MwsCredentialsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -211,5 +214,6 @@ namespace Pulumi.Databricks
         public MwsCredentialsState()
         {
         }
+        public static new MwsCredentialsState Empty => new MwsCredentialsState();
     }
 }

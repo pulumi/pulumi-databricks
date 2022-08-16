@@ -17,29 +17,29 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instanceProfile = new Databricks.InstanceProfile("instanceProfile", new()
     ///     {
-    ///         var instanceProfile = new Databricks.InstanceProfile("instanceProfile", new Databricks.InstanceProfileArgs
-    ///         {
-    ///             InstanceProfileArn = "my_instance_profile_arn",
-    ///         });
-    ///         var myGroup = new Databricks.Group("myGroup", new Databricks.GroupArgs
-    ///         {
-    ///             DisplayName = "my_group_name",
-    ///         });
-    ///         var myGroupInstanceProfile = new Databricks.GroupInstanceProfile("myGroupInstanceProfile", new Databricks.GroupInstanceProfileArgs
-    ///         {
-    ///             GroupId = myGroup.Id,
-    ///             InstanceProfileId = instanceProfile.Id,
-    ///         });
-    ///     }
+    ///         InstanceProfileArn = "my_instance_profile_arn",
+    ///     });
     /// 
-    /// }
+    ///     var myGroup = new Databricks.Group("myGroup", new()
+    ///     {
+    ///         DisplayName = "my_group_name",
+    ///     });
+    /// 
+    ///     var myGroupInstanceProfile = new Databricks.GroupInstanceProfile("myGroupInstanceProfile", new()
+    ///     {
+    ///         GroupId = myGroup.Id,
+    ///         InstanceProfileId = instanceProfile.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -60,7 +60,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/groupInstanceProfile:GroupInstanceProfile")]
-    public partial class GroupInstanceProfile : Pulumi.CustomResource
+    public partial class GroupInstanceProfile : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This is the id of the group resource.
@@ -118,7 +118,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class GroupInstanceProfileArgs : Pulumi.ResourceArgs
+    public sealed class GroupInstanceProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is the id of the group resource.
@@ -135,9 +135,10 @@ namespace Pulumi.Databricks
         public GroupInstanceProfileArgs()
         {
         }
+        public static new GroupInstanceProfileArgs Empty => new GroupInstanceProfileArgs();
     }
 
-    public sealed class GroupInstanceProfileState : Pulumi.ResourceArgs
+    public sealed class GroupInstanceProfileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is the id of the group resource.
@@ -154,5 +155,6 @@ namespace Pulumi.Databricks
         public GroupInstanceProfileState()
         {
         }
+        public static new GroupInstanceProfileState Empty => new GroupInstanceProfileState();
     }
 }

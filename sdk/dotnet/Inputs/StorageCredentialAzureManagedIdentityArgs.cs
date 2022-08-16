@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class StorageCredentialAzureManagedIdentityArgs : Pulumi.ResourceArgs
+    public sealed class StorageCredentialAzureManagedIdentityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public StorageCredentialAzureManagedIdentityArgs()
         {
         }
+        public static new StorageCredentialAzureManagedIdentityArgs Empty => new StorageCredentialAzureManagedIdentityArgs();
     }
 }

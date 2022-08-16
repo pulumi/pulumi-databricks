@@ -19,7 +19,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/gitCredential:GitCredential")]
-    public partial class GitCredential : Pulumi.CustomResource
+    public partial class GitCredential : global::Pulumi.CustomResource
     {
         /// <summary>
         /// specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class GitCredentialArgs : Pulumi.ResourceArgs
+    public sealed class GitCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
@@ -112,9 +112,10 @@ namespace Pulumi.Databricks
         public GitCredentialArgs()
         {
         }
+        public static new GitCredentialArgs Empty => new GitCredentialArgs();
     }
 
-    public sealed class GitCredentialState : Pulumi.ResourceArgs
+    public sealed class GitCredentialState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
@@ -140,5 +141,6 @@ namespace Pulumi.Databricks
         public GitCredentialState()
         {
         }
+        public static new GitCredentialState Empty => new GitCredentialState();
     }
 }

@@ -19,7 +19,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/secretScope:SecretScope")]
-    public partial class SecretScope : Pulumi.CustomResource
+    public partial class SecretScope : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Either `DATABRICKS` or `AZURE_KEYVAULT`
@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class SecretScopeArgs : Pulumi.ResourceArgs
+    public sealed class SecretScopeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Either `DATABRICKS` or `AZURE_KEYVAULT`
@@ -112,9 +112,10 @@ namespace Pulumi.Databricks
         public SecretScopeArgs()
         {
         }
+        public static new SecretScopeArgs Empty => new SecretScopeArgs();
     }
 
-    public sealed class SecretScopeState : Pulumi.ResourceArgs
+    public sealed class SecretScopeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Either `DATABRICKS` or `AZURE_KEYVAULT`
@@ -140,5 +141,6 @@ namespace Pulumi.Databricks
         public SecretScopeState()
         {
         }
+        public static new SecretScopeState Empty => new SecretScopeState();
     }
 }

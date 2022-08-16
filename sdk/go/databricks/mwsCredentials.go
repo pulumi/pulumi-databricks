@@ -19,53 +19,56 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		databricksAccountId := cfg.RequireObject("databricksAccountId")
-// 		thisAwsAssumeRolePolicy, err := databricks.GetAwsAssumeRolePolicy(ctx, &GetAwsAssumeRolePolicyArgs{
-// 			ExternalId: databricksAccountId,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		crossAccountRole, err := iam.NewRole(ctx, "crossAccountRole", &iam.RoleArgs{
-// 			AssumeRolePolicy: pulumi.String(thisAwsAssumeRolePolicy.Json),
-// 			Tags:             pulumi.Any(_var.Tags),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		thisAwsCrossAccountPolicy, err := databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRolePolicy(ctx, "thisRolePolicy", &iam.RolePolicyArgs{
-// 			Role:   crossAccountRole.ID(),
-// 			Policy: pulumi.String(thisAwsCrossAccountPolicy.Json),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewMwsCredentials(ctx, "thisMwsCredentials", &databricks.MwsCredentialsArgs{
-// 			AccountId:       pulumi.Any(databricksAccountId),
-// 			CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", local.Prefix)),
-// 			RoleArn:         crossAccountRole.Arn,
-// 		}, pulumi.Provider(databricks.Mws))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			thisAwsAssumeRolePolicy, err := databricks.GetAwsAssumeRolePolicy(ctx, &GetAwsAssumeRolePolicyArgs{
+//				ExternalId: databricksAccountId,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			crossAccountRole, err := iam.NewRole(ctx, "crossAccountRole", &iam.RoleArgs{
+//				AssumeRolePolicy: pulumi.String(thisAwsAssumeRolePolicy.Json),
+//				Tags:             pulumi.Any(_var.Tags),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisAwsCrossAccountPolicy, err := databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewRolePolicy(ctx, "thisRolePolicy", &iam.RolePolicyArgs{
+//				Role:   crossAccountRole.ID(),
+//				Policy: pulumi.String(thisAwsCrossAccountPolicy.Json),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMwsCredentials(ctx, "thisMwsCredentials", &databricks.MwsCredentialsArgs{
+//				AccountId:       pulumi.Any(databricksAccountId),
+//				CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", local.Prefix)),
+//				RoleArn:         crossAccountRole.Arn,
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -211,7 +214,7 @@ func (i *MwsCredentials) ToMwsCredentialsOutputWithContext(ctx context.Context) 
 // MwsCredentialsArrayInput is an input type that accepts MwsCredentialsArray and MwsCredentialsArrayOutput values.
 // You can construct a concrete instance of `MwsCredentialsArrayInput` via:
 //
-//          MwsCredentialsArray{ MwsCredentialsArgs{...} }
+//	MwsCredentialsArray{ MwsCredentialsArgs{...} }
 type MwsCredentialsArrayInput interface {
 	pulumi.Input
 
@@ -236,7 +239,7 @@ func (i MwsCredentialsArray) ToMwsCredentialsArrayOutputWithContext(ctx context.
 // MwsCredentialsMapInput is an input type that accepts MwsCredentialsMap and MwsCredentialsMapOutput values.
 // You can construct a concrete instance of `MwsCredentialsMapInput` via:
 //
-//          MwsCredentialsMap{ "key": MwsCredentialsArgs{...} }
+//	MwsCredentialsMap{ "key": MwsCredentialsArgs{...} }
 type MwsCredentialsMapInput interface {
 	pulumi.Input
 

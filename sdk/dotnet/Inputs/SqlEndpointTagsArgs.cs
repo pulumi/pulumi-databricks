@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class SqlEndpointTagsArgs : Pulumi.ResourceArgs
+    public sealed class SqlEndpointTagsArgs : global::Pulumi.ResourceArgs
     {
         [Input("customTags", required: true)]
         private InputList<Inputs.SqlEndpointTagsCustomTagArgs>? _customTags;
@@ -23,5 +23,6 @@ namespace Pulumi.Databricks.Inputs
         public SqlEndpointTagsArgs()
         {
         }
+        public static new SqlEndpointTagsArgs Empty => new SqlEndpointTagsArgs();
     }
 }

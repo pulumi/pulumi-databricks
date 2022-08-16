@@ -45,7 +45,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetClusterArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The id of the cluster
@@ -59,9 +59,10 @@ namespace Pulumi.Databricks
         public GetClusterArgs()
         {
         }
+        public static new GetClusterArgs Empty => new GetClusterArgs();
     }
 
-    public sealed class GetClusterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The id of the cluster
@@ -75,6 +76,7 @@ namespace Pulumi.Databricks
         public GetClusterInvokeArgs()
         {
         }
+        public static new GetClusterInvokeArgs Empty => new GetClusterInvokeArgs();
     }
 
 

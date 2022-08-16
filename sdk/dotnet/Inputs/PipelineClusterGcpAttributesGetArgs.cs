@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class PipelineClusterGcpAttributesGetArgs : Pulumi.ResourceArgs
+    public sealed class PipelineClusterGcpAttributesGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("googleServiceAccount")]
         public Input<string>? GoogleServiceAccount { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Databricks.Inputs
         public PipelineClusterGcpAttributesGetArgs()
         {
         }
+        public static new PipelineClusterGcpAttributesGetArgs Empty => new PipelineClusterGcpAttributesGetArgs();
     }
 }

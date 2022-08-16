@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobTaskNewClusterClusterLogConfS3GetArgs : Pulumi.ResourceArgs
+    public sealed class JobTaskNewClusterClusterLogConfS3GetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cannedAcl")]
         public Input<string>? CannedAcl { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Databricks.Inputs
         public JobTaskNewClusterClusterLogConfS3GetArgs()
         {
         }
+        public static new JobTaskNewClusterClusterLogConfS3GetArgs Empty => new JobTaskNewClusterClusterLogConfS3GetArgs();
     }
 }

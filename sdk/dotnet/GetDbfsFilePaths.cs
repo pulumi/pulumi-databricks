@@ -17,21 +17,19 @@ namespace Pulumi.Databricks
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var partitions = Databricks.GetDbfsFilePaths.Invoke(new()
         ///     {
-        ///         var partitions = Output.Create(Databricks.GetDbfsFilePaths.InvokeAsync(new Databricks.GetDbfsFilePathsArgs
-        ///         {
-        ///             Path = "dbfs:/user/hive/default.db/table",
-        ///             Recursive = false,
-        ///         }));
-        ///     }
+        ///         Path = "dbfs:/user/hive/default.db/table",
+        ///         Recursive = false,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -55,21 +53,19 @@ namespace Pulumi.Databricks
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var partitions = Databricks.GetDbfsFilePaths.Invoke(new()
         ///     {
-        ///         var partitions = Output.Create(Databricks.GetDbfsFilePaths.InvokeAsync(new Databricks.GetDbfsFilePathsArgs
-        ///         {
-        ///             Path = "dbfs:/user/hive/default.db/table",
-        ///             Recursive = false,
-        ///         }));
-        ///     }
+        ///         Path = "dbfs:/user/hive/default.db/table",
+        ///         Recursive = false,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -89,7 +85,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetDbfsFilePathsArgs : Pulumi.InvokeArgs
+    public sealed class GetDbfsFilePathsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Path on DBFS for the file to perform listing
@@ -106,9 +102,10 @@ namespace Pulumi.Databricks
         public GetDbfsFilePathsArgs()
         {
         }
+        public static new GetDbfsFilePathsArgs Empty => new GetDbfsFilePathsArgs();
     }
 
-    public sealed class GetDbfsFilePathsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDbfsFilePathsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Path on DBFS for the file to perform listing
@@ -125,6 +122,7 @@ namespace Pulumi.Databricks
         public GetDbfsFilePathsInvokeArgs()
         {
         }
+        public static new GetDbfsFilePathsInvokeArgs Empty => new GetDbfsFilePathsInvokeArgs();
     }
 
 

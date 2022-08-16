@@ -23,35 +23,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
-// 			MetastoreId: pulumi.Any(databricks_metastore.This.Id),
-// 			Comment:     pulumi.String("this catalog is managed by terraform"),
-// 			Properties: pulumi.AnyMap{
-// 				"purpose": pulumi.Any("testing"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
-// 			CatalogName: sandbox.ID(),
-// 			Comment:     pulumi.String("this database is managed by terraform"),
-// 			Properties: pulumi.AnyMap{
-// 				"kind": pulumi.Any("various"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				MetastoreId: pulumi.Any(databricks_metastore.This.Id),
+//				Comment:     pulumi.String("this catalog is managed by terraform"),
+//				Properties: pulumi.AnyMap{
+//					"purpose": pulumi.Any("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
+//				CatalogName: sandbox.ID(),
+//				Comment:     pulumi.String("this database is managed by terraform"),
+//				Properties: pulumi.AnyMap{
+//					"kind": pulumi.Any("various"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -63,10 +66,12 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by namebash
+// # This resource can be imported by namebash
 //
 // ```sh
-//  $ pulumi import databricks:index/schema:Schema this <name>
+//
+//	$ pulumi import databricks:index/schema:Schema this <name>
+//
 // ```
 type Schema struct {
 	pulumi.CustomResourceState
@@ -202,7 +207,7 @@ func (i *Schema) ToSchemaOutputWithContext(ctx context.Context) SchemaOutput {
 // SchemaArrayInput is an input type that accepts SchemaArray and SchemaArrayOutput values.
 // You can construct a concrete instance of `SchemaArrayInput` via:
 //
-//          SchemaArray{ SchemaArgs{...} }
+//	SchemaArray{ SchemaArgs{...} }
 type SchemaArrayInput interface {
 	pulumi.Input
 
@@ -227,7 +232,7 @@ func (i SchemaArray) ToSchemaArrayOutputWithContext(ctx context.Context) SchemaA
 // SchemaMapInput is an input type that accepts SchemaMap and SchemaMapOutput values.
 // You can construct a concrete instance of `SchemaMapInput` via:
 //
-//          SchemaMap{ "key": SchemaArgs{...} }
+//	SchemaMap{ "key": SchemaArgs{...} }
 type SchemaMapInput interface {
 	pulumi.Input
 

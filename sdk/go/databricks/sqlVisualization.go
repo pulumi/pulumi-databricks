@@ -23,48 +23,51 @@ import (
 // package main
 //
 // import (
-// 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"itemsPerPage": 25,
-// 			"columns": []map[string]interface{}{
-// 				map[string]interface{}{
-// 					"name":      "p1",
-// 					"type":      "string",
-// 					"title":     "Parameter 1",
-// 					"displayAs": "string",
-// 				},
-// 				map[string]interface{}{
-// 					"name":           "p2",
-// 					"type":           "string",
-// 					"title":          "Parameter 2",
-// 					"displayAs":      "link",
-// 					"highlightLinks": true,
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		_, err = databricks.NewSqlVisualization(ctx, "q1v1", &databricks.SqlVisualizationArgs{
-// 			QueryId:     pulumi.Any(databricks_sql_query.Q1.Id),
-// 			Type:        pulumi.String("table"),
-// 			Description: pulumi.String("Some Description"),
-// 			Options:     pulumi.String(json0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"itemsPerPage": 25,
+//				"columns": []map[string]interface{}{
+//					map[string]interface{}{
+//						"name":      "p1",
+//						"type":      "string",
+//						"title":     "Parameter 1",
+//						"displayAs": "string",
+//					},
+//					map[string]interface{}{
+//						"name":           "p2",
+//						"type":           "string",
+//						"title":          "Parameter 2",
+//						"displayAs":      "link",
+//						"highlightLinks": true,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = databricks.NewSqlVisualization(ctx, "q1v1", &databricks.SqlVisualizationArgs{
+//				QueryId:     pulumi.Any(databricks_sql_query.Q1.Id),
+//				Type:        pulumi.String("table"),
+//				Description: pulumi.String("Some Description"),
+//				Options:     pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -81,7 +84,9 @@ import (
 // You can import a `databricks_sql_visualization` resource with ID like the followingbash
 //
 // ```sh
-//  $ pulumi import databricks:index/sqlVisualization:SqlVisualization this <query-id>/<visualization-id>
+//
+//	$ pulumi import databricks:index/sqlVisualization:SqlVisualization this <query-id>/<visualization-id>
+//
 // ```
 type SqlVisualization struct {
 	pulumi.CustomResourceState
@@ -198,7 +203,7 @@ func (i *SqlVisualization) ToSqlVisualizationOutputWithContext(ctx context.Conte
 // SqlVisualizationArrayInput is an input type that accepts SqlVisualizationArray and SqlVisualizationArrayOutput values.
 // You can construct a concrete instance of `SqlVisualizationArrayInput` via:
 //
-//          SqlVisualizationArray{ SqlVisualizationArgs{...} }
+//	SqlVisualizationArray{ SqlVisualizationArgs{...} }
 type SqlVisualizationArrayInput interface {
 	pulumi.Input
 
@@ -223,7 +228,7 @@ func (i SqlVisualizationArray) ToSqlVisualizationArrayOutputWithContext(ctx cont
 // SqlVisualizationMapInput is an input type that accepts SqlVisualizationMap and SqlVisualizationMapOutput values.
 // You can construct a concrete instance of `SqlVisualizationMapInput` via:
 //
-//          SqlVisualizationMap{ "key": SqlVisualizationArgs{...} }
+//	SqlVisualizationMap{ "key": SqlVisualizationArgs{...} }
 type SqlVisualizationMapInput interface {
 	pulumi.Input
 

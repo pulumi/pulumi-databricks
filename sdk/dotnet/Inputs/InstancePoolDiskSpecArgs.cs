@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class InstancePoolDiskSpecArgs : Pulumi.ResourceArgs
+    public sealed class InstancePoolDiskSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
@@ -30,5 +30,6 @@ namespace Pulumi.Databricks.Inputs
         public InstancePoolDiskSpecArgs()
         {
         }
+        public static new InstancePoolDiskSpecArgs Empty => new InstancePoolDiskSpecArgs();
     }
 }

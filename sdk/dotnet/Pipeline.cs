@@ -15,61 +15,58 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var dltDemo = new Databricks.Notebook("dltDemo", new Databricks.NotebookArgs
-    ///         {
-    ///         });
-    ///         //...
-    ///         var @this = new Databricks.Pipeline("this", new Databricks.PipelineArgs
-    ///         {
-    ///             Storage = "/test/first-pipeline",
-    ///             Configuration = 
-    ///             {
-    ///                 { "key1", "value1" },
-    ///                 { "key2", "value2" },
-    ///             },
-    ///             Clusters = 
-    ///             {
-    ///                 new Databricks.Inputs.PipelineClusterArgs
-    ///                 {
-    ///                     Label = "default",
-    ///                     NumWorkers = 2,
-    ///                     CustomTags = 
-    ///                     {
-    ///                         { "cluster_type", "default" },
-    ///                     },
-    ///                 },
-    ///                 new Databricks.Inputs.PipelineClusterArgs
-    ///                 {
-    ///                     Label = "maintenance",
-    ///                     NumWorkers = 1,
-    ///                     CustomTags = 
-    ///                     {
-    ///                         { "cluster_type", "maintenance" },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Libraries = 
-    ///             {
-    ///                 new Databricks.Inputs.PipelineLibraryArgs
-    ///                 {
-    ///                     Notebook = new Databricks.Inputs.PipelineLibraryNotebookArgs
-    ///                     {
-    ///                         Path = dltDemo.Id,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Continuous = false,
-    ///         });
-    ///     }
+    ///     var dltDemo = new Databricks.Notebook("dltDemo");
     /// 
-    /// }
+    ///     //...
+    ///     var @this = new Databricks.Pipeline("this", new()
+    ///     {
+    ///         Storage = "/test/first-pipeline",
+    ///         Configuration = 
+    ///         {
+    ///             { "key1", "value1" },
+    ///             { "key2", "value2" },
+    ///         },
+    ///         Clusters = new[]
+    ///         {
+    ///             new Databricks.Inputs.PipelineClusterArgs
+    ///             {
+    ///                 Label = "default",
+    ///                 NumWorkers = 2,
+    ///                 CustomTags = 
+    ///                 {
+    ///                     { "cluster_type", "default" },
+    ///                 },
+    ///             },
+    ///             new Databricks.Inputs.PipelineClusterArgs
+    ///             {
+    ///                 Label = "maintenance",
+    ///                 NumWorkers = 1,
+    ///                 CustomTags = 
+    ///                 {
+    ///                     { "cluster_type", "maintenance" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Libraries = new[]
+    ///         {
+    ///             new Databricks.Inputs.PipelineLibraryArgs
+    ///             {
+    ///                 Notebook = new Databricks.Inputs.PipelineLibraryNotebookArgs
+    ///                 {
+    ///                     Path = dltDemo.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Continuous = false,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -89,7 +86,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/pipeline:Pipeline")]
-    public partial class Pipeline : Pulumi.CustomResource
+    public partial class Pipeline : global::Pulumi.CustomResource
     {
         [Output("allowDuplicateNames")]
         public Output<bool?> AllowDuplicateNames { get; private set; } = null!;
@@ -210,7 +207,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class PipelineArgs : Pulumi.ResourceArgs
+    public sealed class PipelineArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
@@ -305,9 +302,10 @@ namespace Pulumi.Databricks
         public PipelineArgs()
         {
         }
+        public static new PipelineArgs Empty => new PipelineArgs();
     }
 
-    public sealed class PipelineState : Pulumi.ResourceArgs
+    public sealed class PipelineState : global::Pulumi.ResourceArgs
     {
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
@@ -405,5 +403,6 @@ namespace Pulumi.Databricks
         public PipelineState()
         {
         }
+        public static new PipelineState Empty => new PipelineState();
     }
 }

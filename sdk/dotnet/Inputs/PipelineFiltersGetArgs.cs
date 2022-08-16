@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class PipelineFiltersGetArgs : Pulumi.ResourceArgs
+    public sealed class PipelineFiltersGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("excludes")]
         private InputList<string>? _excludes;
@@ -31,5 +31,6 @@ namespace Pulumi.Databricks.Inputs
         public PipelineFiltersGetArgs()
         {
         }
+        public static new PipelineFiltersGetArgs Empty => new PipelineFiltersGetArgs();
     }
 }

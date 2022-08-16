@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class GetClusterClusterInfoDriverInputArgs : Pulumi.ResourceArgs
+    public sealed class GetClusterClusterInfoDriverInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("hostPrivateIp")]
         public Input<string>? HostPrivateIp { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Databricks.Inputs
         public GetClusterClusterInfoDriverInputArgs()
         {
         }
+        public static new GetClusterClusterInfoDriverInputArgs Empty => new GetClusterClusterInfoDriverInputArgs();
     }
 }

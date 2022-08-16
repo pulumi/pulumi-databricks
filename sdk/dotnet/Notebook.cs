@@ -19,7 +19,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/notebook:Notebook")]
-    public partial class Notebook : Pulumi.CustomResource
+    public partial class Notebook : global::Pulumi.CustomResource
     {
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class NotebookArgs : Pulumi.ResourceArgs
+    public sealed class NotebookArgs : global::Pulumi.ResourceArgs
     {
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -148,9 +148,10 @@ namespace Pulumi.Databricks
         public NotebookArgs()
         {
         }
+        public static new NotebookArgs Empty => new NotebookArgs();
     }
 
-    public sealed class NotebookState : Pulumi.ResourceArgs
+    public sealed class NotebookState : global::Pulumi.ResourceArgs
     {
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -197,5 +198,6 @@ namespace Pulumi.Databricks
         public NotebookState()
         {
         }
+        public static new NotebookState Empty => new NotebookState();
     }
 }

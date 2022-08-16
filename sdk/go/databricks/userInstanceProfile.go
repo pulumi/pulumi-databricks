@@ -21,34 +21,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instanceProfile, err := databricks.NewInstanceProfile(ctx, "instanceProfile", &databricks.InstanceProfileArgs{
-// 			InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myUser, err := databricks.NewUser(ctx, "myUser", &databricks.UserArgs{
-// 			UserName: pulumi.String("me@example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewUserInstanceProfile(ctx, "myUserInstanceProfile", &databricks.UserInstanceProfileArgs{
-// 			UserId:            myUser.ID(),
-// 			InstanceProfileId: instanceProfile.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instanceProfile", &databricks.InstanceProfileArgs{
+//				InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myUser, err := databricks.NewUser(ctx, "myUser", &databricks.UserArgs{
+//				UserName: pulumi.String("me@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewUserInstanceProfile(ctx, "myUserInstanceProfile", &databricks.UserInstanceProfileArgs{
+//				UserId:            myUser.ID(),
+//				InstanceProfileId: instanceProfile.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -166,7 +169,7 @@ func (i *UserInstanceProfile) ToUserInstanceProfileOutputWithContext(ctx context
 // UserInstanceProfileArrayInput is an input type that accepts UserInstanceProfileArray and UserInstanceProfileArrayOutput values.
 // You can construct a concrete instance of `UserInstanceProfileArrayInput` via:
 //
-//          UserInstanceProfileArray{ UserInstanceProfileArgs{...} }
+//	UserInstanceProfileArray{ UserInstanceProfileArgs{...} }
 type UserInstanceProfileArrayInput interface {
 	pulumi.Input
 
@@ -191,7 +194,7 @@ func (i UserInstanceProfileArray) ToUserInstanceProfileArrayOutputWithContext(ct
 // UserInstanceProfileMapInput is an input type that accepts UserInstanceProfileMap and UserInstanceProfileMapOutput values.
 // You can construct a concrete instance of `UserInstanceProfileMapInput` via:
 //
-//          UserInstanceProfileMap{ "key": UserInstanceProfileArgs{...} }
+//	UserInstanceProfileMap{ "key": UserInstanceProfileArgs{...} }
 type UserInstanceProfileMapInput interface {
 	pulumi.Input
 

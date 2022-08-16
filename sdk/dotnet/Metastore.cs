@@ -25,7 +25,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/metastore:Metastore")]
-    public partial class Metastore : Pulumi.CustomResource
+    public partial class Metastore : global::Pulumi.CustomResource
     {
         [Output("cloud")]
         public Output<string> Cloud { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class MetastoreArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreArgs : global::Pulumi.ResourceArgs
     {
         [Input("cloud")]
         public Input<string>? Cloud { get; set; }
@@ -208,9 +208,10 @@ namespace Pulumi.Databricks
         public MetastoreArgs()
         {
         }
+        public static new MetastoreArgs Empty => new MetastoreArgs();
     }
 
-    public sealed class MetastoreState : Pulumi.ResourceArgs
+    public sealed class MetastoreState : global::Pulumi.ResourceArgs
     {
         [Input("cloud")]
         public Input<string>? Cloud { get; set; }
@@ -281,5 +282,6 @@ namespace Pulumi.Databricks
         public MetastoreState()
         {
         }
+        public static new MetastoreState Empty => new MetastoreState();
     }
 }

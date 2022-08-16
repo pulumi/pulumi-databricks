@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobNotebookTaskGetArgs : Pulumi.ResourceArgs
+    public sealed class JobNotebookTaskGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("baseParameters")]
         private InputMap<object>? _baseParameters;
@@ -33,5 +33,6 @@ namespace Pulumi.Databricks.Inputs
         public JobNotebookTaskGetArgs()
         {
         }
+        public static new JobNotebookTaskGetArgs Empty => new JobNotebookTaskGetArgs();
     }
 }

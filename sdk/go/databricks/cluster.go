@@ -16,7 +16,9 @@ import (
 // The resource cluster can be imported using cluster id. bash
 //
 // ```sh
-//  $ pulumi import databricks:index/cluster:Cluster this <cluster-id>
+//
+//	$ pulumi import databricks:index/cluster:Cluster this <cluster-id>
+//
 // ```
 type Cluster struct {
 	pulumi.CustomResourceState
@@ -347,7 +349,7 @@ func (i *Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput 
 // ClusterArrayInput is an input type that accepts ClusterArray and ClusterArrayOutput values.
 // You can construct a concrete instance of `ClusterArrayInput` via:
 //
-//          ClusterArray{ ClusterArgs{...} }
+//	ClusterArray{ ClusterArgs{...} }
 type ClusterArrayInput interface {
 	pulumi.Input
 
@@ -372,7 +374,7 @@ func (i ClusterArray) ToClusterArrayOutputWithContext(ctx context.Context) Clust
 // ClusterMapInput is an input type that accepts ClusterMap and ClusterMapOutput values.
 // You can construct a concrete instance of `ClusterMapInput` via:
 //
-//          ClusterMap{ "key": ClusterArgs{...} }
+//	ClusterMap{ "key": ClusterArgs{...} }
 type ClusterMapInput interface {
 	pulumi.Input
 

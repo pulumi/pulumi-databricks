@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class TableColumnArgs : Pulumi.ResourceArgs
+    public sealed class TableColumnArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-supplied free-form text.
@@ -81,5 +81,6 @@ namespace Pulumi.Databricks.Inputs
         public TableColumnArgs()
         {
         }
+        public static new TableColumnArgs Empty => new TableColumnArgs();
     }
 }

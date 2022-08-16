@@ -19,36 +19,32 @@ namespace Pulumi.Databricks
         /// Retrieve all clusters on this workspace on AWS or GCP:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Databricks.GetClusters.InvokeAsync());
-        ///     }
+        ///     var all = Databricks.GetClusters.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var allShared = Databricks.GetClusters.Invoke(new()
         ///     {
-        ///         var allShared = Output.Create(Databricks.GetClusters.InvokeAsync(new Databricks.GetClustersArgs
-        ///         {
-        ///             ClusterNameContains = "shared",
-        ///         }));
-        ///     }
+        ///         ClusterNameContains = "shared",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -75,36 +71,32 @@ namespace Pulumi.Databricks
         /// Retrieve all clusters on this workspace on AWS or GCP:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Databricks.GetClusters.InvokeAsync());
-        ///     }
+        ///     var all = Databricks.GetClusters.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var allShared = Databricks.GetClusters.Invoke(new()
         ///     {
-        ///         var allShared = Output.Create(Databricks.GetClusters.InvokeAsync(new Databricks.GetClustersArgs
-        ///         {
-        ///             ClusterNameContains = "shared",
-        ///         }));
-        ///     }
+        ///         ClusterNameContains = "shared",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -125,7 +117,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetClustersArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Only return databricks.Cluster ids that match the given name string.
@@ -136,9 +128,10 @@ namespace Pulumi.Databricks
         public GetClustersArgs()
         {
         }
+        public static new GetClustersArgs Empty => new GetClustersArgs();
     }
 
-    public sealed class GetClustersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Only return databricks.Cluster ids that match the given name string.
@@ -149,6 +142,7 @@ namespace Pulumi.Databricks
         public GetClustersInvokeArgs()
         {
         }
+        public static new GetClustersInvokeArgs Empty => new GetClustersInvokeArgs();
     }
 
 

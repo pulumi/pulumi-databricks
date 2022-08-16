@@ -21,31 +21,34 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		appDbfsFile, err := databricks.NewDbfsFile(ctx, "appDbfsFile", &databricks.DbfsFileArgs{
-// 			Source: pulumi.String(fmt.Sprintf("%v/app-0.0.1.jar", path.Module)),
-// 			Path:   pulumi.String("/FileStore/app-0.0.1.jar"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewLibrary(ctx, "appLibrary", &databricks.LibraryArgs{
-// 			ClusterId: pulumi.Any(databricks_cluster.This.Id),
-// 			Jar:       appDbfsFile.DbfsPath,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			appDbfsFile, err := databricks.NewDbfsFile(ctx, "appDbfsFile", &databricks.DbfsFileArgs{
+//				Source: pulumi.String(fmt.Sprintf("%v/app-0.0.1.jar", path.Module)),
+//				Path:   pulumi.String("/FileStore/app-0.0.1.jar"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewLibrary(ctx, "appLibrary", &databricks.LibraryArgs{
+//				ClusterId: pulumi.Any(databricks_cluster.This.Id),
+//				Jar:       appDbfsFile.DbfsPath,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Java/Scala Maven
@@ -56,27 +59,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewLibrary(ctx, "deequ", &databricks.LibraryArgs{
-// 			ClusterId: pulumi.Any(databricks_cluster.This.Id),
-// 			Maven: &LibraryMavenArgs{
-// 				Coordinates: pulumi.String("com.amazon.deequ:deequ:1.0.4"),
-// 				Exclusions: pulumi.StringArray{
-// 					pulumi.String("org.apache.avro:avro"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewLibrary(ctx, "deequ", &databricks.LibraryArgs{
+//				ClusterId: pulumi.Any(databricks_cluster.This.Id),
+//				Maven: &LibraryMavenArgs{
+//					Coordinates: pulumi.String("com.amazon.deequ:deequ:1.0.4"),
+//					Exclusions: pulumi.StringArray{
+//						pulumi.String("org.apache.avro:avro"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Python Wheel
@@ -85,31 +91,34 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		appDbfsFile, err := databricks.NewDbfsFile(ctx, "appDbfsFile", &databricks.DbfsFileArgs{
-// 			Source: pulumi.String(fmt.Sprintf("%v/baz.whl", path.Module)),
-// 			Path:   pulumi.String("/FileStore/baz.whl"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewLibrary(ctx, "appLibrary", &databricks.LibraryArgs{
-// 			ClusterId: pulumi.Any(databricks_cluster.This.Id),
-// 			Whl:       appDbfsFile.DbfsPath,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			appDbfsFile, err := databricks.NewDbfsFile(ctx, "appDbfsFile", &databricks.DbfsFileArgs{
+//				Source: pulumi.String(fmt.Sprintf("%v/baz.whl", path.Module)),
+//				Path:   pulumi.String("/FileStore/baz.whl"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewLibrary(ctx, "appLibrary", &databricks.LibraryArgs{
+//				ClusterId: pulumi.Any(databricks_cluster.This.Id),
+//				Whl:       appDbfsFile.DbfsPath,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Python PyPI
@@ -122,24 +131,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewLibrary(ctx, "fbprophet", &databricks.LibraryArgs{
-// 			ClusterId: pulumi.Any(databricks_cluster.This.Id),
-// 			Pypi: &LibraryPypiArgs{
-// 				Package: pulumi.String("fbprophet==0.6"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewLibrary(ctx, "fbprophet", &databricks.LibraryArgs{
+//				ClusterId: pulumi.Any(databricks_cluster.This.Id),
+//				Pypi: &LibraryPypiArgs{
+//					Package: pulumi.String("fbprophet==0.6"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Python EGG
@@ -148,31 +160,34 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		appDbfsFile, err := databricks.NewDbfsFile(ctx, "appDbfsFile", &databricks.DbfsFileArgs{
-// 			Source: pulumi.String(fmt.Sprintf("%v/foo.egg", path.Module)),
-// 			Path:   pulumi.String("/FileStore/foo.egg"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewLibrary(ctx, "appLibrary", &databricks.LibraryArgs{
-// 			ClusterId: pulumi.Any(databricks_cluster.This.Id),
-// 			Egg:       appDbfsFile.DbfsPath,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			appDbfsFile, err := databricks.NewDbfsFile(ctx, "appDbfsFile", &databricks.DbfsFileArgs{
+//				Source: pulumi.String(fmt.Sprintf("%v/foo.egg", path.Module)),
+//				Path:   pulumi.String("/FileStore/foo.egg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewLibrary(ctx, "appLibrary", &databricks.LibraryArgs{
+//				ClusterId: pulumi.Any(databricks_cluster.This.Id),
+//				Egg:       appDbfsFile.DbfsPath,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## R CRan
@@ -183,24 +198,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewLibrary(ctx, "rkeops", &databricks.LibraryArgs{
-// 			ClusterId: pulumi.Any(databricks_cluster.This.Id),
-// 			Cran: &LibraryCranArgs{
-// 				Package: pulumi.String("rkeops"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewLibrary(ctx, "rkeops", &databricks.LibraryArgs{
+//				ClusterId: pulumi.Any(databricks_cluster.This.Id),
+//				Cran: &LibraryCranArgs{
+//					Package: pulumi.String("rkeops"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Related Resources
@@ -337,7 +355,7 @@ func (i *Library) ToLibraryOutputWithContext(ctx context.Context) LibraryOutput 
 // LibraryArrayInput is an input type that accepts LibraryArray and LibraryArrayOutput values.
 // You can construct a concrete instance of `LibraryArrayInput` via:
 //
-//          LibraryArray{ LibraryArgs{...} }
+//	LibraryArray{ LibraryArgs{...} }
 type LibraryArrayInput interface {
 	pulumi.Input
 
@@ -362,7 +380,7 @@ func (i LibraryArray) ToLibraryArrayOutputWithContext(ctx context.Context) Libra
 // LibraryMapInput is an input type that accepts LibraryMap and LibraryMapOutput values.
 // You can construct a concrete instance of `LibraryMapInput` via:
 //
-//          LibraryMap{ "key": LibraryArgs{...} }
+//	LibraryMap{ "key": LibraryArgs{...} }
 type LibraryMapInput interface {
 	pulumi.Input
 

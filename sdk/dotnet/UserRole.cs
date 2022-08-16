@@ -17,53 +17,52 @@ namespace Pulumi.Databricks
     /// Adding AWS instance profile to a user
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instanceProfile = new Databricks.InstanceProfile("instanceProfile", new()
     ///     {
-    ///         var instanceProfile = new Databricks.InstanceProfile("instanceProfile", new Databricks.InstanceProfileArgs
-    ///         {
-    ///             InstanceProfileArn = "my_instance_profile_arn",
-    ///         });
-    ///         var myUser = new Databricks.User("myUser", new Databricks.UserArgs
-    ///         {
-    ///             UserName = "me@example.com",
-    ///         });
-    ///         var myUserRole = new Databricks.UserRole("myUserRole", new Databricks.UserRoleArgs
-    ///         {
-    ///             UserId = myUser.Id,
-    ///             Role = instanceProfile.Id,
-    ///         });
-    ///     }
+    ///         InstanceProfileArn = "my_instance_profile_arn",
+    ///     });
     /// 
-    /// }
+    ///     var myUser = new Databricks.User("myUser", new()
+    ///     {
+    ///         UserName = "me@example.com",
+    ///     });
+    /// 
+    ///     var myUserRole = new Databricks.UserRole("myUserRole", new()
+    ///     {
+    ///         UserId = myUser.Id,
+    ///         Role = instanceProfile.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// Adding user as administrator to Databricks Account
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myUser = new Databricks.User("myUser", new()
     ///     {
-    ///         var myUser = new Databricks.User("myUser", new Databricks.UserArgs
-    ///         {
-    ///             UserName = "me@example.com",
-    ///         });
-    ///         var myUserAccountAdmin = new Databricks.UserRole("myUserAccountAdmin", new Databricks.UserRoleArgs
-    ///         {
-    ///             UserId = myUser.Id,
-    ///             Role = "account_admin",
-    ///         });
-    ///     }
+    ///         UserName = "me@example.com",
+    ///     });
     /// 
-    /// }
+    ///     var myUserAccountAdmin = new Databricks.UserRole("myUserAccountAdmin", new()
+    ///     {
+    ///         UserId = myUser.Id,
+    ///         Role = "account_admin",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -81,7 +80,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/userRole:UserRole")]
-    public partial class UserRole : Pulumi.CustomResource
+    public partial class UserRole : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Either a role name or the id of the instance profile resource.
@@ -139,7 +138,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class UserRoleArgs : Pulumi.ResourceArgs
+    public sealed class UserRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Either a role name or the id of the instance profile resource.
@@ -156,9 +155,10 @@ namespace Pulumi.Databricks
         public UserRoleArgs()
         {
         }
+        public static new UserRoleArgs Empty => new UserRoleArgs();
     }
 
-    public sealed class UserRoleState : Pulumi.ResourceArgs
+    public sealed class UserRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Either a role name or the id of the instance profile resource.
@@ -175,5 +175,6 @@ namespace Pulumi.Databricks
         public UserRoleState()
         {
         }
+        public static new UserRoleState Empty => new UserRoleState();
     }
 }

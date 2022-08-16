@@ -13,10 +13,12 @@ import (
 
 // ## Import
 //
-// The resource cluster can be imported using ID of Git credential that could be obtained via REST APIbash
+// # The resource cluster can be imported using ID of Git credential that could be obtained via REST APIbash
 //
 // ```sh
-//  $ pulumi import databricks:index/gitCredential:GitCredential this <git-credential-id>
+//
+//	$ pulumi import databricks:index/gitCredential:GitCredential this <git-credential-id>
+//
 // ```
 type GitCredential struct {
 	pulumi.CustomResourceState
@@ -138,7 +140,7 @@ func (i *GitCredential) ToGitCredentialOutputWithContext(ctx context.Context) Gi
 // GitCredentialArrayInput is an input type that accepts GitCredentialArray and GitCredentialArrayOutput values.
 // You can construct a concrete instance of `GitCredentialArrayInput` via:
 //
-//          GitCredentialArray{ GitCredentialArgs{...} }
+//	GitCredentialArray{ GitCredentialArgs{...} }
 type GitCredentialArrayInput interface {
 	pulumi.Input
 
@@ -163,7 +165,7 @@ func (i GitCredentialArray) ToGitCredentialArrayOutputWithContext(ctx context.Co
 // GitCredentialMapInput is an input type that accepts GitCredentialMap and GitCredentialMapOutput values.
 // You can construct a concrete instance of `GitCredentialMapInput` via:
 //
-//          GitCredentialMap{ "key": GitCredentialArgs{...} }
+//	GitCredentialMap{ "key": GitCredentialArgs{...} }
 type GitCredentialMapInput interface {
 	pulumi.Input
 

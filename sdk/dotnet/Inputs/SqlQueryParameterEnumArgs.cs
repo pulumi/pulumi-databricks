@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class SqlQueryParameterEnumArgs : Pulumi.ResourceArgs
+    public sealed class SqlQueryParameterEnumArgs : global::Pulumi.ResourceArgs
     {
         [Input("multiple")]
         public Input<Inputs.SqlQueryParameterEnumMultipleArgs>? Multiple { get; set; }
@@ -37,5 +37,6 @@ namespace Pulumi.Databricks.Inputs
         public SqlQueryParameterEnumArgs()
         {
         }
+        public static new SqlQueryParameterEnumArgs Empty => new SqlQueryParameterEnumArgs();
     }
 }

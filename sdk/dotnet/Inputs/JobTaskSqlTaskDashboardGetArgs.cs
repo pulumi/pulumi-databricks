@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobTaskSqlTaskDashboardGetArgs : Pulumi.ResourceArgs
+    public sealed class JobTaskSqlTaskDashboardGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("dashboardId", required: true)]
         public Input<string> DashboardId { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Databricks.Inputs
         public JobTaskSqlTaskDashboardGetArgs()
         {
         }
+        public static new JobTaskSqlTaskDashboardGetArgs Empty => new JobTaskSqlTaskDashboardGetArgs();
     }
 }

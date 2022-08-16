@@ -15,33 +15,32 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var me = Databricks.GetCurrentUser.Invoke();
+    /// 
+    ///     var @this = new Databricks.SqlEndpoint("this", new()
     ///     {
-    ///         var me = Output.Create(Databricks.GetCurrentUser.InvokeAsync());
-    ///         var @this = new Databricks.SqlEndpoint("this", new Databricks.SqlEndpointArgs
+    ///         ClusterSize = "Small",
+    ///         MaxNumClusters = 1,
+    ///         Tags = new Databricks.Inputs.SqlEndpointTagsArgs
     ///         {
-    ///             ClusterSize = "Small",
-    ///             MaxNumClusters = 1,
-    ///             Tags = new Databricks.Inputs.SqlEndpointTagsArgs
+    ///             CustomTags = new[]
     ///             {
-    ///                 CustomTags = 
+    ///                 new Databricks.Inputs.SqlEndpointTagsCustomTagArgs
     ///                 {
-    ///                     new Databricks.Inputs.SqlEndpointTagsCustomTagArgs
-    ///                     {
-    ///                         Key = "City",
-    ///                         Value = "Amsterdam",
-    ///                     },
+    ///                     Key = "City",
+    ///                     Value = "Amsterdam",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Access Control
     /// 
@@ -67,7 +66,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlEndpoint:SqlEndpoint")]
-    public partial class SqlEndpoint : Pulumi.CustomResource
+    public partial class SqlEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
@@ -200,7 +199,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class SqlEndpointArgs : Pulumi.ResourceArgs
+    public sealed class SqlEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
@@ -292,9 +291,10 @@ namespace Pulumi.Databricks
         public SqlEndpointArgs()
         {
         }
+        public static new SqlEndpointArgs Empty => new SqlEndpointArgs();
     }
 
-    public sealed class SqlEndpointState : Pulumi.ResourceArgs
+    public sealed class SqlEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
@@ -386,5 +386,6 @@ namespace Pulumi.Databricks
         public SqlEndpointState()
         {
         }
+        public static new SqlEndpointState Empty => new SqlEndpointState();
     }
 }

@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/group:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
@@ -117,7 +117,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
@@ -164,9 +164,10 @@ namespace Pulumi.Databricks
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 
-    public sealed class GroupState : Pulumi.ResourceArgs
+    public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
@@ -213,5 +214,6 @@ namespace Pulumi.Databricks
         public GroupState()
         {
         }
+        public static new GroupState Empty => new GroupState();
     }
 }

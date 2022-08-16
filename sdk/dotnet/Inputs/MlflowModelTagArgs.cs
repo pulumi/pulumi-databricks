@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MlflowModelTagArgs : Pulumi.ResourceArgs
+    public sealed class MlflowModelTagArgs : global::Pulumi.ResourceArgs
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public MlflowModelTagArgs()
         {
         }
+        public static new MlflowModelTagArgs Empty => new MlflowModelTagArgs();
     }
 }

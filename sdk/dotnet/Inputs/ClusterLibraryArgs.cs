@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class ClusterLibraryArgs : Pulumi.ResourceArgs
+    public sealed class ClusterLibraryArgs : global::Pulumi.ResourceArgs
     {
         [Input("cran")]
         public Input<Inputs.ClusterLibraryCranArgs>? Cran { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Databricks.Inputs
         public ClusterLibraryArgs()
         {
         }
+        public static new ClusterLibraryArgs Empty => new ClusterLibraryArgs();
     }
 }

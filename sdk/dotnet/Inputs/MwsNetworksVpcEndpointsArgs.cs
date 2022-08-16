@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MwsNetworksVpcEndpointsArgs : Pulumi.ResourceArgs
+    public sealed class MwsNetworksVpcEndpointsArgs : global::Pulumi.ResourceArgs
     {
         [Input("dataplaneRelays", required: true)]
         private InputList<string>? _dataplaneRelays;
@@ -31,5 +31,6 @@ namespace Pulumi.Databricks.Inputs
         public MwsNetworksVpcEndpointsArgs()
         {
         }
+        public static new MwsNetworksVpcEndpointsArgs Empty => new MwsNetworksVpcEndpointsArgs();
     }
 }

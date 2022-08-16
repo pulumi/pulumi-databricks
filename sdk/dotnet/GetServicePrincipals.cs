@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetServicePrincipalsArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePrincipalsArgs : global::Pulumi.InvokeArgs
     {
         [Input("applicationIds")]
         private List<string>? _applicationIds;
@@ -70,9 +70,10 @@ namespace Pulumi.Databricks
         public GetServicePrincipalsArgs()
         {
         }
+        public static new GetServicePrincipalsArgs Empty => new GetServicePrincipalsArgs();
     }
 
-    public sealed class GetServicePrincipalsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePrincipalsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("applicationIds")]
         private InputList<string>? _applicationIds;
@@ -95,6 +96,7 @@ namespace Pulumi.Databricks
         public GetServicePrincipalsInvokeArgs()
         {
         }
+        public static new GetServicePrincipalsInvokeArgs Empty => new GetServicePrincipalsInvokeArgs();
     }
 
 

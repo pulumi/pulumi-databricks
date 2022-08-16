@@ -14,31 +14,34 @@ import (
 //
 // Allows specification of custom configuration properties for expert usage:
 //
-//  * `enableIpAccessLists` - enables the use of IpAccessList resources
-//  * `maxTokenLifetimeDays` - (string) Maximum token lifetime of new tokens in days, as an integer. If zero, new tokens are permitted to have no lifetime limit. Negative numbers are unsupported. **WARNING:** This limit only applies to new tokens, so there may be tokens with lifetimes longer than this value, including unlimited lifetime. Such tokens may have been created before the current maximum token lifetime was set.
-//  * `enableTokensConfig` - (boolean) Enable or disable personal access tokens for this workspace.
+//   - `enableIpAccessLists` - enables the use of IpAccessList resources
+//   - `maxTokenLifetimeDays` - (string) Maximum token lifetime of new tokens in days, as an integer. If zero, new tokens are permitted to have no lifetime limit. Negative numbers are unsupported. **WARNING:** This limit only applies to new tokens, so there may be tokens with lifetimes longer than this value, including unlimited lifetime. Such tokens may have been created before the current maximum token lifetime was set.
+//   - `enableTokensConfig` - (boolean) Enable or disable personal access tokens for this workspace.
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewWorkspaceConf(ctx, "this", &databricks.WorkspaceConfArgs{
-// 			CustomConfig: pulumi.AnyMap{
-// 				"enableIpAccessLists": pulumi.Any(true),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewWorkspaceConf(ctx, "this", &databricks.WorkspaceConfArgs{
+//				CustomConfig: pulumi.AnyMap{
+//					"enableIpAccessLists": pulumi.Any(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -130,7 +133,7 @@ func (i *WorkspaceConf) ToWorkspaceConfOutputWithContext(ctx context.Context) Wo
 // WorkspaceConfArrayInput is an input type that accepts WorkspaceConfArray and WorkspaceConfArrayOutput values.
 // You can construct a concrete instance of `WorkspaceConfArrayInput` via:
 //
-//          WorkspaceConfArray{ WorkspaceConfArgs{...} }
+//	WorkspaceConfArray{ WorkspaceConfArgs{...} }
 type WorkspaceConfArrayInput interface {
 	pulumi.Input
 
@@ -155,7 +158,7 @@ func (i WorkspaceConfArray) ToWorkspaceConfArrayOutputWithContext(ctx context.Co
 // WorkspaceConfMapInput is an input type that accepts WorkspaceConfMap and WorkspaceConfMapOutput values.
 // You can construct a concrete instance of `WorkspaceConfMapInput` via:
 //
-//          WorkspaceConfMap{ "key": WorkspaceConfArgs{...} }
+//	WorkspaceConfMap{ "key": WorkspaceConfArgs{...} }
 type WorkspaceConfMapInput interface {
 	pulumi.Input
 

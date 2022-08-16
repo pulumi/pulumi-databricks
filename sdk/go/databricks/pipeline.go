@@ -18,53 +18,56 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		dltDemo, err := databricks.NewNotebook(ctx, "dltDemo", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewPipeline(ctx, "this", &databricks.PipelineArgs{
-// 			Storage: pulumi.String("/test/first-pipeline"),
-// 			Configuration: pulumi.AnyMap{
-// 				"key1": pulumi.Any("value1"),
-// 				"key2": pulumi.Any("value2"),
-// 			},
-// 			Clusters: PipelineClusterArray{
-// 				&PipelineClusterArgs{
-// 					Label:      pulumi.String("default"),
-// 					NumWorkers: pulumi.Int(2),
-// 					CustomTags: pulumi.AnyMap{
-// 						"cluster_type": pulumi.Any("default"),
-// 					},
-// 				},
-// 				&PipelineClusterArgs{
-// 					Label:      pulumi.String("maintenance"),
-// 					NumWorkers: pulumi.Int(1),
-// 					CustomTags: pulumi.AnyMap{
-// 						"cluster_type": pulumi.Any("maintenance"),
-// 					},
-// 				},
-// 			},
-// 			Libraries: PipelineLibraryArray{
-// 				&PipelineLibraryArgs{
-// 					Notebook: &PipelineLibraryNotebookArgs{
-// 						Path: dltDemo.ID(),
-// 					},
-// 				},
-// 			},
-// 			Continuous: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dltDemo, err := databricks.NewNotebook(ctx, "dltDemo", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPipeline(ctx, "this", &databricks.PipelineArgs{
+//				Storage: pulumi.String("/test/first-pipeline"),
+//				Configuration: pulumi.AnyMap{
+//					"key1": pulumi.Any("value1"),
+//					"key2": pulumi.Any("value2"),
+//				},
+//				Clusters: PipelineClusterArray{
+//					&PipelineClusterArgs{
+//						Label:      pulumi.String("default"),
+//						NumWorkers: pulumi.Int(2),
+//						CustomTags: pulumi.AnyMap{
+//							"cluster_type": pulumi.Any("default"),
+//						},
+//					},
+//					&PipelineClusterArgs{
+//						Label:      pulumi.String("maintenance"),
+//						NumWorkers: pulumi.Int(1),
+//						CustomTags: pulumi.AnyMap{
+//							"cluster_type": pulumi.Any("maintenance"),
+//						},
+//					},
+//				},
+//				Libraries: PipelineLibraryArray{
+//					&PipelineLibraryArgs{
+//						Notebook: &PipelineLibraryNotebookArgs{
+//							Path: dltDemo.ID(),
+//						},
+//					},
+//				},
+//				Continuous: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -77,10 +80,12 @@ import (
 //
 // ## Import
 //
-// The resource job can be imported using the id of the pipeline bash
+// # The resource job can be imported using the id of the pipeline bash
 //
 // ```sh
-//  $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>
+//
+//	$ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>
+//
 // ```
 type Pipeline struct {
 	pulumi.CustomResourceState
@@ -281,7 +286,7 @@ func (i *Pipeline) ToPipelineOutputWithContext(ctx context.Context) PipelineOutp
 // PipelineArrayInput is an input type that accepts PipelineArray and PipelineArrayOutput values.
 // You can construct a concrete instance of `PipelineArrayInput` via:
 //
-//          PipelineArray{ PipelineArgs{...} }
+//	PipelineArray{ PipelineArgs{...} }
 type PipelineArrayInput interface {
 	pulumi.Input
 
@@ -306,7 +311,7 @@ func (i PipelineArray) ToPipelineArrayOutputWithContext(ctx context.Context) Pip
 // PipelineMapInput is an input type that accepts PipelineMap and PipelineMapOutput values.
 // You can construct a concrete instance of `PipelineMapInput` via:
 //
-//          PipelineMap{ "key": PipelineArgs{...} }
+//	PipelineMap{ "key": PipelineArgs{...} }
 type PipelineMapInput interface {
 	pulumi.Input
 

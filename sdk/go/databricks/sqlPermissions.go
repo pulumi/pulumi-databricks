@@ -23,36 +23,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewSqlPermissions(ctx, "fooTable", &databricks.SqlPermissionsArgs{
-// 			PrivilegeAssignments: SqlPermissionsPrivilegeAssignmentArray{
-// 				&SqlPermissionsPrivilegeAssignmentArgs{
-// 					Principal: pulumi.String("serge@example.com"),
-// 					Privileges: pulumi.StringArray{
-// 						pulumi.String("SELECT"),
-// 						pulumi.String("MODIFY"),
-// 					},
-// 				},
-// 				&SqlPermissionsPrivilegeAssignmentArgs{
-// 					Principal: pulumi.String("special group"),
-// 					Privileges: pulumi.StringArray{
-// 						pulumi.String("SELECT"),
-// 					},
-// 				},
-// 			},
-// 			Table: pulumi.String("foo"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewSqlPermissions(ctx, "fooTable", &databricks.SqlPermissionsArgs{
+//				PrivilegeAssignments: SqlPermissionsPrivilegeAssignmentArray{
+//					&SqlPermissionsPrivilegeAssignmentArgs{
+//						Principal: pulumi.String("serge@example.com"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("SELECT"),
+//							pulumi.String("MODIFY"),
+//						},
+//					},
+//					&SqlPermissionsPrivilegeAssignmentArgs{
+//						Principal: pulumi.String("special group"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("SELECT"),
+//						},
+//					},
+//				},
+//				Table: pulumi.String("foo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -69,7 +72,9 @@ import (
 // The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are* `table/default.foo` - table `foo` in a `default` database. Database is always mandatory. * `view/bar.foo` - view `foo` in `bar` database. * `database/bar` - `bar` database. * `catalog/` - entire catalog. `/` suffix is mandatory. * `any file/` - direct access to any file. `/` suffix is mandatory. * `anonymous function/` - anonymous function. `/` suffix is mandatory. bash
 //
 // ```sh
-//  $ pulumi import databricks:index/sqlPermissions:SqlPermissions foo /<object-type>/<object-name>
+//
+//	$ pulumi import databricks:index/sqlPermissions:SqlPermissions foo /<object-type>/<object-name>
+//
 // ```
 type SqlPermissions struct {
 	pulumi.CustomResourceState
@@ -217,7 +222,7 @@ func (i *SqlPermissions) ToSqlPermissionsOutputWithContext(ctx context.Context) 
 // SqlPermissionsArrayInput is an input type that accepts SqlPermissionsArray and SqlPermissionsArrayOutput values.
 // You can construct a concrete instance of `SqlPermissionsArrayInput` via:
 //
-//          SqlPermissionsArray{ SqlPermissionsArgs{...} }
+//	SqlPermissionsArray{ SqlPermissionsArgs{...} }
 type SqlPermissionsArrayInput interface {
 	pulumi.Input
 
@@ -242,7 +247,7 @@ func (i SqlPermissionsArray) ToSqlPermissionsArrayOutputWithContext(ctx context.
 // SqlPermissionsMapInput is an input type that accepts SqlPermissionsMap and SqlPermissionsMapOutput values.
 // You can construct a concrete instance of `SqlPermissionsMapInput` via:
 //
-//          SqlPermissionsMap{ "key": SqlPermissionsArgs{...} }
+//	SqlPermissionsMap{ "key": SqlPermissionsArgs{...} }
 type SqlPermissionsMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class SecretScopeKeyvaultMetadataArgs : Pulumi.ResourceArgs
+    public sealed class SecretScopeKeyvaultMetadataArgs : global::Pulumi.ResourceArgs
     {
         [Input("dnsName", required: true)]
         public Input<string> DnsName { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public SecretScopeKeyvaultMetadataArgs()
         {
         }
+        public static new SecretScopeKeyvaultMetadataArgs Empty => new SecretScopeKeyvaultMetadataArgs();
     }
 }

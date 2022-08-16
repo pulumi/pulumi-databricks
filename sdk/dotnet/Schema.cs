@@ -19,34 +19,33 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
     ///     {
-    ///         var sandbox = new Databricks.Catalog("sandbox", new Databricks.CatalogArgs
+    ///         MetastoreId = databricks_metastore.This.Id,
+    ///         Comment = "this catalog is managed by terraform",
+    ///         Properties = 
     ///         {
-    ///             MetastoreId = databricks_metastore.This.Id,
-    ///             Comment = "this catalog is managed by terraform",
-    ///             Properties = 
-    ///             {
-    ///                 { "purpose", "testing" },
-    ///             },
-    ///         });
-    ///         var things = new Databricks.Schema("things", new Databricks.SchemaArgs
-    ///         {
-    ///             CatalogName = sandbox.Id,
-    ///             Comment = "this database is managed by terraform",
-    ///             Properties = 
-    ///             {
-    ///                 { "kind", "various" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var things = new Databricks.Schema("things", new()
+    ///     {
+    ///         CatalogName = sandbox.Id,
+    ///         Comment = "this database is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "kind", "various" },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -65,7 +64,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/schema:Schema")]
-    public partial class Schema : Pulumi.CustomResource
+    public partial class Schema : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of parent catalog
@@ -144,7 +143,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class SchemaArgs : Pulumi.ResourceArgs
+    public sealed class SchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of parent catalog
@@ -188,9 +187,10 @@ namespace Pulumi.Databricks
         public SchemaArgs()
         {
         }
+        public static new SchemaArgs Empty => new SchemaArgs();
     }
 
-    public sealed class SchemaState : Pulumi.ResourceArgs
+    public sealed class SchemaState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of parent catalog
@@ -234,5 +234,6 @@ namespace Pulumi.Databricks
         public SchemaState()
         {
         }
+        public static new SchemaState Empty => new SchemaState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MwsWorkspacesCloudResourceBucketGcpArgs : Pulumi.ResourceArgs
+    public sealed class MwsWorkspacesCloudResourceBucketGcpArgs : global::Pulumi.ResourceArgs
     {
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Databricks.Inputs
         public MwsWorkspacesCloudResourceBucketGcpArgs()
         {
         }
+        public static new MwsWorkspacesCloudResourceBucketGcpArgs Empty => new MwsWorkspacesCloudResourceBucketGcpArgs();
     }
 }

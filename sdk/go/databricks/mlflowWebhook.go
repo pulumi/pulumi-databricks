@@ -20,27 +20,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewMlflowWebhook(ctx, "url", &databricks.MlflowWebhookArgs{
-// 			Description: pulumi.String("URL webhook trigger"),
-// 			Events: pulumi.StringArray{
-// 				pulumi.String("TRANSITION_REQUEST_CREATED"),
-// 			},
-// 			HttpUrlSpec: &MlflowWebhookHttpUrlSpecArgs{
-// 				Url: pulumi.String("https://my_cool_host/webhook"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMlflowWebhook(ctx, "url", &databricks.MlflowWebhookArgs{
+//				Description: pulumi.String("URL webhook trigger"),
+//				Events: pulumi.StringArray{
+//					pulumi.String("TRANSITION_REQUEST_CREATED"),
+//				},
+//				HttpUrlSpec: &MlflowWebhookHttpUrlSpecArgs{
+//					Url: pulumi.String("https://my_cool_host/webhook"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Access Control
 //
@@ -190,7 +193,7 @@ func (i *MlflowWebhook) ToMlflowWebhookOutputWithContext(ctx context.Context) Ml
 // MlflowWebhookArrayInput is an input type that accepts MlflowWebhookArray and MlflowWebhookArrayOutput values.
 // You can construct a concrete instance of `MlflowWebhookArrayInput` via:
 //
-//          MlflowWebhookArray{ MlflowWebhookArgs{...} }
+//	MlflowWebhookArray{ MlflowWebhookArgs{...} }
 type MlflowWebhookArrayInput interface {
 	pulumi.Input
 
@@ -215,7 +218,7 @@ func (i MlflowWebhookArray) ToMlflowWebhookArrayOutputWithContext(ctx context.Co
 // MlflowWebhookMapInput is an input type that accepts MlflowWebhookMap and MlflowWebhookMapOutput values.
 // You can construct a concrete instance of `MlflowWebhookMapInput` via:
 //
-//          MlflowWebhookMap{ "key": MlflowWebhookArgs{...} }
+//	MlflowWebhookMap{ "key": MlflowWebhookArgs{...} }
 type MlflowWebhookMapInput interface {
 	pulumi.Input
 

@@ -17,40 +17,40 @@ namespace Pulumi.Databricks
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var withGpu = Databricks.GetNodeType.Invoke(new()
         ///     {
-        ///         var withGpu = Output.Create(Databricks.GetNodeType.InvokeAsync(new Databricks.GetNodeTypeArgs
-        ///         {
-        ///             LocalDisk = true,
-        ///             MinCores = 16,
-        ///             GbPerCore = 1,
-        ///             MinGpus = 1,
-        ///         }));
-        ///         var gpuMl = Output.Create(Databricks.GetSparkVersion.InvokeAsync(new Databricks.GetSparkVersionArgs
-        ///         {
-        ///             Gpu = true,
-        ///             Ml = true,
-        ///         }));
-        ///         var research = new Databricks.Cluster("research", new Databricks.ClusterArgs
-        ///         {
-        ///             ClusterName = "Research Cluster",
-        ///             SparkVersion = gpuMl.Apply(gpuMl =&gt; gpuMl.Id),
-        ///             NodeTypeId = withGpu.Apply(withGpu =&gt; withGpu.Id),
-        ///             AutoterminationMinutes = 20,
-        ///             Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
-        ///             {
-        ///                 MinWorkers = 1,
-        ///                 MaxWorkers = 50,
-        ///             },
-        ///         });
-        ///     }
+        ///         LocalDisk = true,
+        ///         MinCores = 16,
+        ///         GbPerCore = 1,
+        ///         MinGpus = 1,
+        ///     });
         /// 
-        /// }
+        ///     var gpuMl = Databricks.GetSparkVersion.Invoke(new()
+        ///     {
+        ///         Gpu = true,
+        ///         Ml = true,
+        ///     });
+        /// 
+        ///     var research = new Databricks.Cluster("research", new()
+        ///     {
+        ///         ClusterName = "Research Cluster",
+        ///         SparkVersion = gpuMl.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
+        ///         NodeTypeId = withGpu.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
+        ///         AutoterminationMinutes = 20,
+        ///         Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
+        ///         {
+        ///             MinWorkers = 1,
+        ///             MaxWorkers = 50,
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -73,40 +73,40 @@ namespace Pulumi.Databricks
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var withGpu = Databricks.GetNodeType.Invoke(new()
         ///     {
-        ///         var withGpu = Output.Create(Databricks.GetNodeType.InvokeAsync(new Databricks.GetNodeTypeArgs
-        ///         {
-        ///             LocalDisk = true,
-        ///             MinCores = 16,
-        ///             GbPerCore = 1,
-        ///             MinGpus = 1,
-        ///         }));
-        ///         var gpuMl = Output.Create(Databricks.GetSparkVersion.InvokeAsync(new Databricks.GetSparkVersionArgs
-        ///         {
-        ///             Gpu = true,
-        ///             Ml = true,
-        ///         }));
-        ///         var research = new Databricks.Cluster("research", new Databricks.ClusterArgs
-        ///         {
-        ///             ClusterName = "Research Cluster",
-        ///             SparkVersion = gpuMl.Apply(gpuMl =&gt; gpuMl.Id),
-        ///             NodeTypeId = withGpu.Apply(withGpu =&gt; withGpu.Id),
-        ///             AutoterminationMinutes = 20,
-        ///             Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
-        ///             {
-        ///                 MinWorkers = 1,
-        ///                 MaxWorkers = 50,
-        ///             },
-        ///         });
-        ///     }
+        ///         LocalDisk = true,
+        ///         MinCores = 16,
+        ///         GbPerCore = 1,
+        ///         MinGpus = 1,
+        ///     });
         /// 
-        /// }
+        ///     var gpuMl = Databricks.GetSparkVersion.Invoke(new()
+        ///     {
+        ///         Gpu = true,
+        ///         Ml = true,
+        ///     });
+        /// 
+        ///     var research = new Databricks.Cluster("research", new()
+        ///     {
+        ///         ClusterName = "Research Cluster",
+        ///         SparkVersion = gpuMl.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
+        ///         NodeTypeId = withGpu.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
+        ///         AutoterminationMinutes = 20,
+        ///         Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
+        ///         {
+        ///             MinWorkers = 1,
+        ///             MaxWorkers = 50,
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -125,7 +125,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetNodeTypeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeTypeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
@@ -206,9 +206,10 @@ namespace Pulumi.Databricks
         public GetNodeTypeArgs()
         {
         }
+        public static new GetNodeTypeArgs Empty => new GetNodeTypeArgs();
     }
 
-    public sealed class GetNodeTypeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeTypeInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
@@ -289,6 +290,7 @@ namespace Pulumi.Databricks
         public GetNodeTypeInvokeArgs()
         {
         }
+        public static new GetNodeTypeInvokeArgs Empty => new GetNodeTypeInvokeArgs();
     }
 
 

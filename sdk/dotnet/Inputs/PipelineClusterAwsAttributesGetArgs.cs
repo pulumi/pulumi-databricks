@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class PipelineClusterAwsAttributesGetArgs : Pulumi.ResourceArgs
+    public sealed class PipelineClusterAwsAttributesGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("firstOnDemand")]
         public Input<int>? FirstOnDemand { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Databricks.Inputs
         public PipelineClusterAwsAttributesGetArgs()
         {
         }
+        public static new PipelineClusterAwsAttributesGetArgs Empty => new PipelineClusterAwsAttributesGetArgs();
     }
 }

@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetServicePrincipalArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePrincipalArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Whether service principal is active or not.
@@ -94,9 +94,10 @@ namespace Pulumi.Databricks
         public GetServicePrincipalArgs()
         {
         }
+        public static new GetServicePrincipalArgs Empty => new GetServicePrincipalArgs();
     }
 
-    public sealed class GetServicePrincipalInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePrincipalInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Whether service principal is active or not.
@@ -143,6 +144,7 @@ namespace Pulumi.Databricks
         public GetServicePrincipalInvokeArgs()
         {
         }
+        public static new GetServicePrincipalInvokeArgs Empty => new GetServicePrincipalInvokeArgs();
     }
 
 

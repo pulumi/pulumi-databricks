@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/storageCredential:StorageCredential")]
-    public partial class StorageCredential : Pulumi.CustomResource
+    public partial class StorageCredential : global::Pulumi.CustomResource
     {
         [Output("awsIamRole")]
         public Output<Outputs.StorageCredentialAwsIamRole?> AwsIamRole { get; private set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class StorageCredentialArgs : Pulumi.ResourceArgs
+    public sealed class StorageCredentialArgs : global::Pulumi.ResourceArgs
     {
         [Input("awsIamRole")]
         public Input<Inputs.StorageCredentialAwsIamRoleArgs>? AwsIamRole { get; set; }
@@ -125,9 +125,10 @@ namespace Pulumi.Databricks
         public StorageCredentialArgs()
         {
         }
+        public static new StorageCredentialArgs Empty => new StorageCredentialArgs();
     }
 
-    public sealed class StorageCredentialState : Pulumi.ResourceArgs
+    public sealed class StorageCredentialState : global::Pulumi.ResourceArgs
     {
         [Input("awsIamRole")]
         public Input<Inputs.StorageCredentialAwsIamRoleGetArgs>? AwsIamRole { get; set; }
@@ -156,5 +157,6 @@ namespace Pulumi.Databricks
         public StorageCredentialState()
         {
         }
+        public static new StorageCredentialState Empty => new StorageCredentialState();
     }
 }

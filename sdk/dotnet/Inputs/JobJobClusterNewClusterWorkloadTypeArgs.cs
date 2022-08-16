@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobJobClusterNewClusterWorkloadTypeArgs : Pulumi.ResourceArgs
+    public sealed class JobJobClusterNewClusterWorkloadTypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("clients", required: true)]
         public Input<Inputs.JobJobClusterNewClusterWorkloadTypeClientsArgs> Clients { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Databricks.Inputs
         public JobJobClusterNewClusterWorkloadTypeArgs()
         {
         }
+        public static new JobJobClusterNewClusterWorkloadTypeArgs Empty => new JobJobClusterNewClusterWorkloadTypeArgs();
     }
 }

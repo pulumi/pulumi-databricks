@@ -17,35 +17,34 @@ namespace Pulumi.Databricks
     /// This way, data scientists can read the Publishing API key that is synchronized from example, Azure Key Vault.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var ds = new Databricks.Group("ds", new()
     ///     {
-    ///         var ds = new Databricks.Group("ds", new Databricks.GroupArgs
-    ///         {
-    ///             DisplayName = "data-scientists",
-    ///         });
-    ///         var app = new Databricks.SecretScope("app", new Databricks.SecretScopeArgs
-    ///         {
-    ///         });
-    ///         var mySecretAcl = new Databricks.SecretAcl("mySecretAcl", new Databricks.SecretAclArgs
-    ///         {
-    ///             Principal = ds.DisplayName,
-    ///             Permission = "READ",
-    ///             Scope = app.Name,
-    ///         });
-    ///         var publishingApi = new Databricks.Secret("publishingApi", new Databricks.SecretArgs
-    ///         {
-    ///             Key = "publishing_api",
-    ///             StringValue = data.Azurerm_key_vault_secret.Example.Value,
-    ///             Scope = app.Name,
-    ///         });
-    ///     }
+    ///         DisplayName = "data-scientists",
+    ///     });
     /// 
-    /// }
+    ///     var app = new Databricks.SecretScope("app");
+    /// 
+    ///     var mySecretAcl = new Databricks.SecretAcl("mySecretAcl", new()
+    ///     {
+    ///         Principal = ds.DisplayName,
+    ///         Permission = "READ",
+    ///         Scope = app.Name,
+    ///     });
+    /// 
+    ///     var publishingApi = new Databricks.Secret("publishingApi", new()
+    ///     {
+    ///         Key = "publishing_api",
+    ///         StringValue = data.Azurerm_key_vault_secret.Example.Value,
+    ///         Scope = app.Name,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -67,7 +66,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/secretAcl:SecretAcl")]
-    public partial class SecretAcl : Pulumi.CustomResource
+    public partial class SecretAcl : global::Pulumi.CustomResource
     {
         /// <summary>
         /// `READ`, `WRITE` or `MANAGE`.
@@ -131,7 +130,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class SecretAclArgs : Pulumi.ResourceArgs
+    public sealed class SecretAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// `READ`, `WRITE` or `MANAGE`.
@@ -154,9 +153,10 @@ namespace Pulumi.Databricks
         public SecretAclArgs()
         {
         }
+        public static new SecretAclArgs Empty => new SecretAclArgs();
     }
 
-    public sealed class SecretAclState : Pulumi.ResourceArgs
+    public sealed class SecretAclState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// `READ`, `WRITE` or `MANAGE`.
@@ -179,5 +179,6 @@ namespace Pulumi.Databricks
         public SecretAclState()
         {
         }
+        public static new SecretAclState Empty => new SecretAclState();
     }
 }

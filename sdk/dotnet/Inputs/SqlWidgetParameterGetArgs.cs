@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class SqlWidgetParameterGetArgs : Pulumi.ResourceArgs
+    public sealed class SqlWidgetParameterGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("mapTo")]
         public Input<string>? MapTo { get; set; }
@@ -38,5 +38,6 @@ namespace Pulumi.Databricks.Inputs
         public SqlWidgetParameterGetArgs()
         {
         }
+        public static new SqlWidgetParameterGetArgs Empty => new SqlWidgetParameterGetArgs();
     }
 }

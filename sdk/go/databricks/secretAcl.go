@@ -21,41 +21,44 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ds, err := databricks.NewGroup(ctx, "ds", &databricks.GroupArgs{
-// 			DisplayName: pulumi.String("data-scientists"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		app, err := databricks.NewSecretScope(ctx, "app", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewSecretAcl(ctx, "mySecretAcl", &databricks.SecretAclArgs{
-// 			Principal:  ds.DisplayName,
-// 			Permission: pulumi.String("READ"),
-// 			Scope:      app.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewSecret(ctx, "publishingApi", &databricks.SecretArgs{
-// 			Key:         pulumi.String("publishing_api"),
-// 			StringValue: pulumi.Any(data.Azurerm_key_vault_secret.Example.Value),
-// 			Scope:       app.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ds, err := databricks.NewGroup(ctx, "ds", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("data-scientists"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			app, err := databricks.NewSecretScope(ctx, "app", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSecretAcl(ctx, "mySecretAcl", &databricks.SecretAclArgs{
+//				Principal:  ds.DisplayName,
+//				Permission: pulumi.String("READ"),
+//				Scope:      app.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSecret(ctx, "publishingApi", &databricks.SecretArgs{
+//				Key:         pulumi.String("publishing_api"),
+//				StringValue: pulumi.Any(data.Azurerm_key_vault_secret.Example.Value),
+//				Scope:       app.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -73,7 +76,9 @@ import (
 // The resource secret acl can be imported using `scopeName|||principalName` combination. bash
 //
 // ```sh
-//  $ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`
+//
+//	$ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`
+//
 // ```
 type SecretAcl struct {
 	pulumi.CustomResourceState
@@ -190,7 +195,7 @@ func (i *SecretAcl) ToSecretAclOutputWithContext(ctx context.Context) SecretAclO
 // SecretAclArrayInput is an input type that accepts SecretAclArray and SecretAclArrayOutput values.
 // You can construct a concrete instance of `SecretAclArrayInput` via:
 //
-//          SecretAclArray{ SecretAclArgs{...} }
+//	SecretAclArray{ SecretAclArgs{...} }
 type SecretAclArrayInput interface {
 	pulumi.Input
 
@@ -215,7 +220,7 @@ func (i SecretAclArray) ToSecretAclArrayOutputWithContext(ctx context.Context) S
 // SecretAclMapInput is an input type that accepts SecretAclMap and SecretAclMapOutput values.
 // You can construct a concrete instance of `SecretAclMapInput` via:
 //
-//          SecretAclMap{ "key": SecretAclArgs{...} }
+//	SecretAclMap{ "key": SecretAclArgs{...} }
 type SecretAclMapInput interface {
 	pulumi.Input
 

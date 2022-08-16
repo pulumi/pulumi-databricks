@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MlflowWebhookHttpUrlSpecGetArgs : Pulumi.ResourceArgs
+    public sealed class MlflowWebhookHttpUrlSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `&lt;auth type&gt; &lt;credentials&gt;`, e.g. `Bearer &lt;access_token&gt;`. If set to an empty string, no authorization header will be included in the request.
@@ -36,5 +36,6 @@ namespace Pulumi.Databricks.Inputs
         public MlflowWebhookHttpUrlSpecGetArgs()
         {
         }
+        public static new MlflowWebhookHttpUrlSpecGetArgs Empty => new MlflowWebhookHttpUrlSpecGetArgs();
     }
 }

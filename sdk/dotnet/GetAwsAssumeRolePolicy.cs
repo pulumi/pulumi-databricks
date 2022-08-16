@@ -19,7 +19,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetAwsAssumeRolePolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetAwsAssumeRolePolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("databricksAccountId")]
         public string? DatabricksAccountId { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.Databricks
         public GetAwsAssumeRolePolicyArgs()
         {
         }
+        public static new GetAwsAssumeRolePolicyArgs Empty => new GetAwsAssumeRolePolicyArgs();
     }
 
-    public sealed class GetAwsAssumeRolePolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAwsAssumeRolePolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("databricksAccountId")]
         public Input<string>? DatabricksAccountId { get; set; }
@@ -61,6 +62,7 @@ namespace Pulumi.Databricks
         public GetAwsAssumeRolePolicyInvokeArgs()
         {
         }
+        public static new GetAwsAssumeRolePolicyInvokeArgs Empty => new GetAwsAssumeRolePolicyInvokeArgs();
     }
 
 

@@ -18,31 +18,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewMlflowModel(ctx, "test", &databricks.MlflowModelArgs{
-// 			Description: pulumi.String("My MLflow model description"),
-// 			Tags: MlflowModelTagArray{
-// 				&MlflowModelTagArgs{
-// 					Key:   pulumi.String("key1"),
-// 					Value: pulumi.String("value1"),
-// 				},
-// 				&MlflowModelTagArgs{
-// 					Key:   pulumi.String("key2"),
-// 					Value: pulumi.String("value2"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMlflowModel(ctx, "test", &databricks.MlflowModelArgs{
+//				Description: pulumi.String("My MLflow model description"),
+//				Tags: MlflowModelTagArray{
+//					&MlflowModelTagArgs{
+//						Key:   pulumi.String("key1"),
+//						Value: pulumi.String("value1"),
+//					},
+//					&MlflowModelTagArgs{
+//						Key:   pulumi.String("key2"),
+//						Value: pulumi.String("value2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Access Control
 //
@@ -61,10 +64,12 @@ import (
 //
 // ## Import
 //
-// The model resource can be imported using the name bash
+// # The model resource can be imported using the name bash
 //
 // ```sh
-//  $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
+//
+//	$ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
+//
 // ```
 type MlflowModel struct {
 	pulumi.CustomResourceState
@@ -192,7 +197,7 @@ func (i *MlflowModel) ToMlflowModelOutputWithContext(ctx context.Context) Mlflow
 // MlflowModelArrayInput is an input type that accepts MlflowModelArray and MlflowModelArrayOutput values.
 // You can construct a concrete instance of `MlflowModelArrayInput` via:
 //
-//          MlflowModelArray{ MlflowModelArgs{...} }
+//	MlflowModelArray{ MlflowModelArgs{...} }
 type MlflowModelArrayInput interface {
 	pulumi.Input
 
@@ -217,7 +222,7 @@ func (i MlflowModelArray) ToMlflowModelArrayOutputWithContext(ctx context.Contex
 // MlflowModelMapInput is an input type that accepts MlflowModelMap and MlflowModelMapOutput values.
 // You can construct a concrete instance of `MlflowModelMapInput` via:
 //
-//          MlflowModelMap{ "key": MlflowModelArgs{...} }
+//	MlflowModelMap{ "key": MlflowModelArgs{...} }
 type MlflowModelMapInput interface {
 	pulumi.Input
 

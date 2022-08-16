@@ -150,7 +150,7 @@ func (i *MwsStorageConfigurations) ToMwsStorageConfigurationsOutputWithContext(c
 // MwsStorageConfigurationsArrayInput is an input type that accepts MwsStorageConfigurationsArray and MwsStorageConfigurationsArrayOutput values.
 // You can construct a concrete instance of `MwsStorageConfigurationsArrayInput` via:
 //
-//          MwsStorageConfigurationsArray{ MwsStorageConfigurationsArgs{...} }
+//	MwsStorageConfigurationsArray{ MwsStorageConfigurationsArgs{...} }
 type MwsStorageConfigurationsArrayInput interface {
 	pulumi.Input
 
@@ -175,7 +175,7 @@ func (i MwsStorageConfigurationsArray) ToMwsStorageConfigurationsArrayOutputWith
 // MwsStorageConfigurationsMapInput is an input type that accepts MwsStorageConfigurationsMap and MwsStorageConfigurationsMapOutput values.
 // You can construct a concrete instance of `MwsStorageConfigurationsMapInput` via:
 //
-//          MwsStorageConfigurationsMap{ "key": MwsStorageConfigurationsArgs{...} }
+//	MwsStorageConfigurationsMap{ "key": MwsStorageConfigurationsArgs{...} }
 type MwsStorageConfigurationsMapInput interface {
 	pulumi.Input
 

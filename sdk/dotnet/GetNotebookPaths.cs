@@ -17,21 +17,19 @@ namespace Pulumi.Databricks
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var prod = Databricks.GetNotebookPaths.Invoke(new()
         ///     {
-        ///         var prod = Output.Create(Databricks.GetNotebookPaths.InvokeAsync(new Databricks.GetNotebookPathsArgs
-        ///         {
-        ///             Path = "/Production",
-        ///             Recursive = true,
-        ///         }));
-        ///     }
+        ///         Path = "/Production",
+        ///         Recursive = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -45,21 +43,19 @@ namespace Pulumi.Databricks
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var prod = Databricks.GetNotebookPaths.Invoke(new()
         ///     {
-        ///         var prod = Output.Create(Databricks.GetNotebookPaths.InvokeAsync(new Databricks.GetNotebookPathsArgs
-        ///         {
-        ///             Path = "/Production",
-        ///             Recursive = true,
-        ///         }));
-        ///     }
+        ///         Path = "/Production",
+        ///         Recursive = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -69,7 +65,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetNotebookPathsArgs : Pulumi.InvokeArgs
+    public sealed class GetNotebookPathsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Path to workspace directory
@@ -86,9 +82,10 @@ namespace Pulumi.Databricks
         public GetNotebookPathsArgs()
         {
         }
+        public static new GetNotebookPathsArgs Empty => new GetNotebookPathsArgs();
     }
 
-    public sealed class GetNotebookPathsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNotebookPathsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Path to workspace directory
@@ -105,6 +102,7 @@ namespace Pulumi.Databricks
         public GetNotebookPathsInvokeArgs()
         {
         }
+        public static new GetNotebookPathsInvokeArgs Empty => new GetNotebookPathsInvokeArgs();
     }
 
 

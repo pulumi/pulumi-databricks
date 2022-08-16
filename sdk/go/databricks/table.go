@@ -25,61 +25,64 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
-// 			MetastoreId: pulumi.Any(databricks_metastore.This.Id),
-// 			Comment:     pulumi.String("this catalog is managed by terraform"),
-// 			Properties: pulumi.AnyMap{
-// 				"purpose": pulumi.Any("testing"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
-// 			CatalogName: sandbox.ID(),
-// 			Comment:     pulumi.String("this database is managed by terraform"),
-// 			Properties: pulumi.AnyMap{
-// 				"kind": pulumi.Any("various"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewTable(ctx, "thing", &databricks.TableArgs{
-// 			CatalogName:      sandbox.ID(),
-// 			SchemaName:       things.Name,
-// 			TableType:        pulumi.String("MANAGED"),
-// 			DataSourceFormat: pulumi.String("DELTA"),
-// 			Columns: TableColumnArray{
-// 				&TableColumnArgs{
-// 					Name:     pulumi.String("id"),
-// 					Position: pulumi.Int(0),
-// 					TypeName: pulumi.String("INT"),
-// 					TypeText: pulumi.String("int"),
-// 					TypeJson: pulumi.String("{\"name\":\"id\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}"),
-// 				},
-// 				&TableColumnArgs{
-// 					Name:     pulumi.String("name"),
-// 					Position: pulumi.Int(1),
-// 					TypeName: pulumi.String("STRING"),
-// 					TypeText: pulumi.String("varchar(64)"),
-// 					TypeJson: pulumi.String("{\"name\":\"name\",\"type\":\"varchar(64)\",\"nullable\":true,\"metadata\":{}}"),
-// 				},
-// 			},
-// 			Comment: pulumi.String("this table is managed by terraform"),
-// 		}, pulumi.Provider(databricks.Workspace))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				MetastoreId: pulumi.Any(databricks_metastore.This.Id),
+//				Comment:     pulumi.String("this catalog is managed by terraform"),
+//				Properties: pulumi.AnyMap{
+//					"purpose": pulumi.Any("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
+//				CatalogName: sandbox.ID(),
+//				Comment:     pulumi.String("this database is managed by terraform"),
+//				Properties: pulumi.AnyMap{
+//					"kind": pulumi.Any("various"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewTable(ctx, "thing", &databricks.TableArgs{
+//				CatalogName:      sandbox.ID(),
+//				SchemaName:       things.Name,
+//				TableType:        pulumi.String("MANAGED"),
+//				DataSourceFormat: pulumi.String("DELTA"),
+//				Columns: TableColumnArray{
+//					&TableColumnArgs{
+//						Name:     pulumi.String("id"),
+//						Position: pulumi.Int(0),
+//						TypeName: pulumi.String("INT"),
+//						TypeText: pulumi.String("int"),
+//						TypeJson: pulumi.String("{\"name\":\"id\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}"),
+//					},
+//					&TableColumnArgs{
+//						Name:     pulumi.String("name"),
+//						Position: pulumi.Int(1),
+//						TypeName: pulumi.String("STRING"),
+//						TypeText: pulumi.String("varchar(64)"),
+//						TypeJson: pulumi.String("{\"name\":\"name\",\"type\":\"varchar(64)\",\"nullable\":true,\"metadata\":{}}"),
+//					},
+//				},
+//				Comment: pulumi.String("this table is managed by terraform"),
+//			}, pulumi.Provider(databricks.Workspace))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -94,7 +97,9 @@ import (
 // This resource can be imported by full name*`catalog`.`schema`.`table`*bash
 //
 // ```sh
-//  $ pulumi import databricks:index/table:Table this <full-name>
+//
+//	$ pulumi import databricks:index/table:Table this <full-name>
+//
 // ```
 type Table struct {
 	pulumi.CustomResourceState
@@ -302,7 +307,7 @@ func (i *Table) ToTableOutputWithContext(ctx context.Context) TableOutput {
 // TableArrayInput is an input type that accepts TableArray and TableArrayOutput values.
 // You can construct a concrete instance of `TableArrayInput` via:
 //
-//          TableArray{ TableArgs{...} }
+//	TableArray{ TableArgs{...} }
 type TableArrayInput interface {
 	pulumi.Input
 
@@ -327,7 +332,7 @@ func (i TableArray) ToTableArrayOutputWithContext(ctx context.Context) TableArra
 // TableMapInput is an input type that accepts TableMap and TableMapOutput values.
 // You can construct a concrete instance of `TableMapInput` via:
 //
-//          TableMap{ "key": TableArgs{...} }
+//	TableMap{ "key": TableArgs{...} }
 type TableMapInput interface {
 	pulumi.Input
 

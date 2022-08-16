@@ -15,7 +15,9 @@ import (
 // The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response. bash
 //
 // ```sh
-//  $ pulumi import databricks:index/secretScope:SecretScope object <scopeName>
+//
+//	$ pulumi import databricks:index/secretScope:SecretScope object <scopeName>
+//
 // ```
 type SecretScope struct {
 	pulumi.CustomResourceState
@@ -128,7 +130,7 @@ func (i *SecretScope) ToSecretScopeOutputWithContext(ctx context.Context) Secret
 // SecretScopeArrayInput is an input type that accepts SecretScopeArray and SecretScopeArrayOutput values.
 // You can construct a concrete instance of `SecretScopeArrayInput` via:
 //
-//          SecretScopeArray{ SecretScopeArgs{...} }
+//	SecretScopeArray{ SecretScopeArgs{...} }
 type SecretScopeArrayInput interface {
 	pulumi.Input
 
@@ -153,7 +155,7 @@ func (i SecretScopeArray) ToSecretScopeArrayOutputWithContext(ctx context.Contex
 // SecretScopeMapInput is an input type that accepts SecretScopeMap and SecretScopeMapOutput values.
 // You can construct a concrete instance of `SecretScopeMapInput` via:
 //
-//          SecretScopeMap{ "key": SecretScopeArgs{...} }
+//	SecretScopeMap{ "key": SecretScopeArgs{...} }
 type SecretScopeMapInput interface {
 	pulumi.Input
 

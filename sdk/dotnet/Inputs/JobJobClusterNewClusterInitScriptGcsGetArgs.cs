@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobJobClusterNewClusterInitScriptGcsGetArgs : Pulumi.ResourceArgs
+    public sealed class JobJobClusterNewClusterInitScriptGcsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("destination")]
         public Input<string>? Destination { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Databricks.Inputs
         public JobJobClusterNewClusterInitScriptGcsGetArgs()
         {
         }
+        public static new JobJobClusterNewClusterInitScriptGcsGetArgs Empty => new JobJobClusterNewClusterInitScriptGcsGetArgs();
     }
 }

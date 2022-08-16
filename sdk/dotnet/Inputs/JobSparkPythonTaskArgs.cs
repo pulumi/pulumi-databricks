@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobSparkPythonTaskArgs : Pulumi.ResourceArgs
+    public sealed class JobSparkPythonTaskArgs : global::Pulumi.ResourceArgs
     {
         [Input("parameters")]
         private InputList<string>? _parameters;
@@ -33,5 +33,6 @@ namespace Pulumi.Databricks.Inputs
         public JobSparkPythonTaskArgs()
         {
         }
+        public static new JobSparkPythonTaskArgs Empty => new JobSparkPythonTaskArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class PipelineLibraryNotebookGetArgs : Pulumi.ResourceArgs
+    public sealed class PipelineLibraryNotebookGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Databricks.Inputs
         public PipelineLibraryNotebookGetArgs()
         {
         }
+        public static new PipelineLibraryNotebookGetArgs Empty => new PipelineLibraryNotebookGetArgs();
     }
 }

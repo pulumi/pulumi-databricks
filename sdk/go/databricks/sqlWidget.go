@@ -23,41 +23,44 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewSqlWidget(ctx, "d1w1", &databricks.SqlWidgetArgs{
-// 			DashboardId: pulumi.Any(databricks_sql_dashboard.D1.Id),
-// 			Text:        pulumi.String("Hello! I'm a **text widget**!"),
-// 			Position: &SqlWidgetPositionArgs{
-// 				SizeX: pulumi.Int(3),
-// 				SizeY: pulumi.Int(4),
-// 				PosX:  pulumi.Int(0),
-// 				PosY:  pulumi.Int(0),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewSqlWidget(ctx, "d1w2", &databricks.SqlWidgetArgs{
-// 			DashboardId:     pulumi.Any(databricks_sql_dashboard.D1.Id),
-// 			VisualizationId: pulumi.Any(databricks_sql_visualization.Q1v1.Id),
-// 			Position: &SqlWidgetPositionArgs{
-// 				SizeX: pulumi.Int(3),
-// 				SizeY: pulumi.Int(4),
-// 				PosX:  pulumi.Int(3),
-// 				PosY:  pulumi.Int(0),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewSqlWidget(ctx, "d1w1", &databricks.SqlWidgetArgs{
+//				DashboardId: pulumi.Any(databricks_sql_dashboard.D1.Id),
+//				Text:        pulumi.String("Hello! I'm a **text widget**!"),
+//				Position: &SqlWidgetPositionArgs{
+//					SizeX: pulumi.Int(3),
+//					SizeY: pulumi.Int(4),
+//					PosX:  pulumi.Int(0),
+//					PosY:  pulumi.Int(0),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSqlWidget(ctx, "d1w2", &databricks.SqlWidgetArgs{
+//				DashboardId:     pulumi.Any(databricks_sql_dashboard.D1.Id),
+//				VisualizationId: pulumi.Any(databricks_sql_visualization.Q1v1.Id),
+//				Position: &SqlWidgetPositionArgs{
+//					SizeX: pulumi.Int(3),
+//					SizeY: pulumi.Int(4),
+//					PosX:  pulumi.Int(3),
+//					PosY:  pulumi.Int(0),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -74,7 +77,9 @@ import (
 // You can import a `databricks_sql_widget` resource with ID like the followingbash
 //
 // ```sh
-//  $ pulumi import databricks:index/sqlWidget:SqlWidget this <dashboard-id>/<widget-id>
+//
+//	$ pulumi import databricks:index/sqlWidget:SqlWidget this <dashboard-id>/<widget-id>
+//
 // ```
 type SqlWidget struct {
 	pulumi.CustomResourceState
@@ -195,7 +200,7 @@ func (i *SqlWidget) ToSqlWidgetOutputWithContext(ctx context.Context) SqlWidgetO
 // SqlWidgetArrayInput is an input type that accepts SqlWidgetArray and SqlWidgetArrayOutput values.
 // You can construct a concrete instance of `SqlWidgetArrayInput` via:
 //
-//          SqlWidgetArray{ SqlWidgetArgs{...} }
+//	SqlWidgetArray{ SqlWidgetArgs{...} }
 type SqlWidgetArrayInput interface {
 	pulumi.Input
 
@@ -220,7 +225,7 @@ func (i SqlWidgetArray) ToSqlWidgetArrayOutputWithContext(ctx context.Context) S
 // SqlWidgetMapInput is an input type that accepts SqlWidgetMap and SqlWidgetMapOutput values.
 // You can construct a concrete instance of `SqlWidgetMapInput` via:
 //
-//          SqlWidgetMap{ "key": SqlWidgetArgs{...} }
+//	SqlWidgetMap{ "key": SqlWidgetArgs{...} }
 type SqlWidgetMapInput interface {
 	pulumi.Input
 

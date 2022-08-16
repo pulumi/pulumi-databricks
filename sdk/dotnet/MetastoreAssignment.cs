@@ -17,31 +17,30 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var thisMetastore = new Databricks.Metastore("thisMetastore", new()
     ///     {
-    ///         var thisMetastore = new Databricks.Metastore("thisMetastore", new Databricks.MetastoreArgs
-    ///         {
-    ///             StorageRoot = $"s3://{aws_s3_bucket.Metastore.Id}/metastore",
-    ///             Owner = "uc admins",
-    ///             ForceDestroy = true,
-    ///         });
-    ///         var thisMetastoreAssignment = new Databricks.MetastoreAssignment("thisMetastoreAssignment", new Databricks.MetastoreAssignmentArgs
-    ///         {
-    ///             MetastoreId = thisMetastore.Id,
-    ///             WorkspaceId = local.Workspace_id,
-    ///         });
-    ///     }
+    ///         StorageRoot = $"s3://{aws_s3_bucket.Metastore.Id}/metastore",
+    ///         Owner = "uc admins",
+    ///         ForceDestroy = true,
+    ///     });
     /// 
-    /// }
+    ///     var thisMetastoreAssignment = new Databricks.MetastoreAssignment("thisMetastoreAssignment", new()
+    ///     {
+    ///         MetastoreId = thisMetastore.Id,
+    ///         WorkspaceId = local.Workspace_id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/metastoreAssignment:MetastoreAssignment")]
-    public partial class MetastoreAssignment : Pulumi.CustomResource
+    public partial class MetastoreAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Default catalog used for this assignment, default to `hive_metastore`
@@ -105,7 +104,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class MetastoreAssignmentArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Default catalog used for this assignment, default to `hive_metastore`
@@ -128,9 +127,10 @@ namespace Pulumi.Databricks
         public MetastoreAssignmentArgs()
         {
         }
+        public static new MetastoreAssignmentArgs Empty => new MetastoreAssignmentArgs();
     }
 
-    public sealed class MetastoreAssignmentState : Pulumi.ResourceArgs
+    public sealed class MetastoreAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Default catalog used for this assignment, default to `hive_metastore`
@@ -153,5 +153,6 @@ namespace Pulumi.Databricks
         public MetastoreAssignmentState()
         {
         }
+        public static new MetastoreAssignmentState Empty => new MetastoreAssignmentState();
     }
 }

@@ -18,7 +18,7 @@ type ClusterAutoscale struct {
 // ClusterAutoscaleInput is an input type that accepts ClusterAutoscaleArgs and ClusterAutoscaleOutput values.
 // You can construct a concrete instance of `ClusterAutoscaleInput` via:
 //
-//          ClusterAutoscaleArgs{...}
+//	ClusterAutoscaleArgs{...}
 type ClusterAutoscaleInput interface {
 	pulumi.Input
 
@@ -54,11 +54,11 @@ func (i ClusterAutoscaleArgs) ToClusterAutoscalePtrOutputWithContext(ctx context
 // ClusterAutoscalePtrInput is an input type that accepts ClusterAutoscaleArgs, ClusterAutoscalePtr and ClusterAutoscalePtrOutput values.
 // You can construct a concrete instance of `ClusterAutoscalePtrInput` via:
 //
-//          ClusterAutoscaleArgs{...}
+//	        ClusterAutoscaleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterAutoscalePtrInput interface {
 	pulumi.Input
 
@@ -172,7 +172,7 @@ type ClusterAwsAttributes struct {
 // ClusterAwsAttributesInput is an input type that accepts ClusterAwsAttributesArgs and ClusterAwsAttributesOutput values.
 // You can construct a concrete instance of `ClusterAwsAttributesInput` via:
 //
-//          ClusterAwsAttributesArgs{...}
+//	ClusterAwsAttributesArgs{...}
 type ClusterAwsAttributesInput interface {
 	pulumi.Input
 
@@ -214,11 +214,11 @@ func (i ClusterAwsAttributesArgs) ToClusterAwsAttributesPtrOutputWithContext(ctx
 // ClusterAwsAttributesPtrInput is an input type that accepts ClusterAwsAttributesArgs, ClusterAwsAttributesPtr and ClusterAwsAttributesPtrOutput values.
 // You can construct a concrete instance of `ClusterAwsAttributesPtrInput` via:
 //
-//          ClusterAwsAttributesArgs{...}
+//	        ClusterAwsAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterAwsAttributesPtrInput interface {
 	pulumi.Input
 
@@ -405,7 +405,7 @@ type ClusterAzureAttributes struct {
 // ClusterAzureAttributesInput is an input type that accepts ClusterAzureAttributesArgs and ClusterAzureAttributesOutput values.
 // You can construct a concrete instance of `ClusterAzureAttributesInput` via:
 //
-//          ClusterAzureAttributesArgs{...}
+//	ClusterAzureAttributesArgs{...}
 type ClusterAzureAttributesInput interface {
 	pulumi.Input
 
@@ -442,11 +442,11 @@ func (i ClusterAzureAttributesArgs) ToClusterAzureAttributesPtrOutputWithContext
 // ClusterAzureAttributesPtrInput is an input type that accepts ClusterAzureAttributesArgs, ClusterAzureAttributesPtr and ClusterAzureAttributesPtrOutput values.
 // You can construct a concrete instance of `ClusterAzureAttributesPtrInput` via:
 //
-//          ClusterAzureAttributesArgs{...}
+//	        ClusterAzureAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterAzureAttributesPtrInput interface {
 	pulumi.Input
 
@@ -567,7 +567,7 @@ type ClusterClusterLogConf struct {
 // ClusterClusterLogConfInput is an input type that accepts ClusterClusterLogConfArgs and ClusterClusterLogConfOutput values.
 // You can construct a concrete instance of `ClusterClusterLogConfInput` via:
 //
-//          ClusterClusterLogConfArgs{...}
+//	ClusterClusterLogConfArgs{...}
 type ClusterClusterLogConfInput interface {
 	pulumi.Input
 
@@ -603,11 +603,11 @@ func (i ClusterClusterLogConfArgs) ToClusterClusterLogConfPtrOutputWithContext(c
 // ClusterClusterLogConfPtrInput is an input type that accepts ClusterClusterLogConfArgs, ClusterClusterLogConfPtr and ClusterClusterLogConfPtrOutput values.
 // You can construct a concrete instance of `ClusterClusterLogConfPtrInput` via:
 //
-//          ClusterClusterLogConfArgs{...}
+//	        ClusterClusterLogConfArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterClusterLogConfPtrInput interface {
 	pulumi.Input
 
@@ -714,7 +714,7 @@ type ClusterClusterLogConfDbfs struct {
 // ClusterClusterLogConfDbfsInput is an input type that accepts ClusterClusterLogConfDbfsArgs and ClusterClusterLogConfDbfsOutput values.
 // You can construct a concrete instance of `ClusterClusterLogConfDbfsInput` via:
 //
-//          ClusterClusterLogConfDbfsArgs{...}
+//	ClusterClusterLogConfDbfsArgs{...}
 type ClusterClusterLogConfDbfsInput interface {
 	pulumi.Input
 
@@ -749,11 +749,11 @@ func (i ClusterClusterLogConfDbfsArgs) ToClusterClusterLogConfDbfsPtrOutputWithC
 // ClusterClusterLogConfDbfsPtrInput is an input type that accepts ClusterClusterLogConfDbfsArgs, ClusterClusterLogConfDbfsPtr and ClusterClusterLogConfDbfsPtrOutput values.
 // You can construct a concrete instance of `ClusterClusterLogConfDbfsPtrInput` via:
 //
-//          ClusterClusterLogConfDbfsArgs{...}
+//	        ClusterClusterLogConfDbfsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterClusterLogConfDbfsPtrInput interface {
 	pulumi.Input
 
@@ -853,7 +853,7 @@ type ClusterClusterLogConfS3 struct {
 // ClusterClusterLogConfS3Input is an input type that accepts ClusterClusterLogConfS3Args and ClusterClusterLogConfS3Output values.
 // You can construct a concrete instance of `ClusterClusterLogConfS3Input` via:
 //
-//          ClusterClusterLogConfS3Args{...}
+//	ClusterClusterLogConfS3Args{...}
 type ClusterClusterLogConfS3Input interface {
 	pulumi.Input
 
@@ -894,11 +894,11 @@ func (i ClusterClusterLogConfS3Args) ToClusterClusterLogConfS3PtrOutputWithConte
 // ClusterClusterLogConfS3PtrInput is an input type that accepts ClusterClusterLogConfS3Args, ClusterClusterLogConfS3Ptr and ClusterClusterLogConfS3PtrOutput values.
 // You can construct a concrete instance of `ClusterClusterLogConfS3PtrInput` via:
 //
-//          ClusterClusterLogConfS3Args{...}
+//	        ClusterClusterLogConfS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterClusterLogConfS3PtrInput interface {
 	pulumi.Input
 
@@ -1071,7 +1071,7 @@ type ClusterDockerImage struct {
 // ClusterDockerImageInput is an input type that accepts ClusterDockerImageArgs and ClusterDockerImageOutput values.
 // You can construct a concrete instance of `ClusterDockerImageInput` via:
 //
-//          ClusterDockerImageArgs{...}
+//	ClusterDockerImageArgs{...}
 type ClusterDockerImageInput interface {
 	pulumi.Input
 
@@ -1107,11 +1107,11 @@ func (i ClusterDockerImageArgs) ToClusterDockerImagePtrOutputWithContext(ctx con
 // ClusterDockerImagePtrInput is an input type that accepts ClusterDockerImageArgs, ClusterDockerImagePtr and ClusterDockerImagePtrOutput values.
 // You can construct a concrete instance of `ClusterDockerImagePtrInput` via:
 //
-//          ClusterDockerImageArgs{...}
+//	        ClusterDockerImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterDockerImagePtrInput interface {
 	pulumi.Input
 
@@ -1219,7 +1219,7 @@ type ClusterDockerImageBasicAuth struct {
 // ClusterDockerImageBasicAuthInput is an input type that accepts ClusterDockerImageBasicAuthArgs and ClusterDockerImageBasicAuthOutput values.
 // You can construct a concrete instance of `ClusterDockerImageBasicAuthInput` via:
 //
-//          ClusterDockerImageBasicAuthArgs{...}
+//	ClusterDockerImageBasicAuthArgs{...}
 type ClusterDockerImageBasicAuthInput interface {
 	pulumi.Input
 
@@ -1255,11 +1255,11 @@ func (i ClusterDockerImageBasicAuthArgs) ToClusterDockerImageBasicAuthPtrOutputW
 // ClusterDockerImageBasicAuthPtrInput is an input type that accepts ClusterDockerImageBasicAuthArgs, ClusterDockerImageBasicAuthPtr and ClusterDockerImageBasicAuthPtrOutput values.
 // You can construct a concrete instance of `ClusterDockerImageBasicAuthPtrInput` via:
 //
-//          ClusterDockerImageBasicAuthArgs{...}
+//	        ClusterDockerImageBasicAuthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterDockerImageBasicAuthPtrInput interface {
 	pulumi.Input
 
@@ -1370,7 +1370,7 @@ type ClusterGcpAttributes struct {
 // ClusterGcpAttributesInput is an input type that accepts ClusterGcpAttributesArgs and ClusterGcpAttributesOutput values.
 // You can construct a concrete instance of `ClusterGcpAttributesInput` via:
 //
-//          ClusterGcpAttributesArgs{...}
+//	ClusterGcpAttributesArgs{...}
 type ClusterGcpAttributesInput interface {
 	pulumi.Input
 
@@ -1409,11 +1409,11 @@ func (i ClusterGcpAttributesArgs) ToClusterGcpAttributesPtrOutputWithContext(ctx
 // ClusterGcpAttributesPtrInput is an input type that accepts ClusterGcpAttributesArgs, ClusterGcpAttributesPtr and ClusterGcpAttributesPtrOutput values.
 // You can construct a concrete instance of `ClusterGcpAttributesPtrInput` via:
 //
-//          ClusterGcpAttributesArgs{...}
+//	        ClusterGcpAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterGcpAttributesPtrInput interface {
 	pulumi.Input
 
@@ -1562,7 +1562,7 @@ type ClusterInitScript struct {
 // ClusterInitScriptInput is an input type that accepts ClusterInitScriptArgs and ClusterInitScriptOutput values.
 // You can construct a concrete instance of `ClusterInitScriptInput` via:
 //
-//          ClusterInitScriptArgs{...}
+//	ClusterInitScriptArgs{...}
 type ClusterInitScriptInput interface {
 	pulumi.Input
 
@@ -1592,7 +1592,7 @@ func (i ClusterInitScriptArgs) ToClusterInitScriptOutputWithContext(ctx context.
 // ClusterInitScriptArrayInput is an input type that accepts ClusterInitScriptArray and ClusterInitScriptArrayOutput values.
 // You can construct a concrete instance of `ClusterInitScriptArrayInput` via:
 //
-//          ClusterInitScriptArray{ ClusterInitScriptArgs{...} }
+//	ClusterInitScriptArray{ ClusterInitScriptArgs{...} }
 type ClusterInitScriptArrayInput interface {
 	pulumi.Input
 
@@ -1671,7 +1671,7 @@ type ClusterInitScriptDbfs struct {
 // ClusterInitScriptDbfsInput is an input type that accepts ClusterInitScriptDbfsArgs and ClusterInitScriptDbfsOutput values.
 // You can construct a concrete instance of `ClusterInitScriptDbfsInput` via:
 //
-//          ClusterInitScriptDbfsArgs{...}
+//	ClusterInitScriptDbfsArgs{...}
 type ClusterInitScriptDbfsInput interface {
 	pulumi.Input
 
@@ -1706,11 +1706,11 @@ func (i ClusterInitScriptDbfsArgs) ToClusterInitScriptDbfsPtrOutputWithContext(c
 // ClusterInitScriptDbfsPtrInput is an input type that accepts ClusterInitScriptDbfsArgs, ClusterInitScriptDbfsPtr and ClusterInitScriptDbfsPtrOutput values.
 // You can construct a concrete instance of `ClusterInitScriptDbfsPtrInput` via:
 //
-//          ClusterInitScriptDbfsArgs{...}
+//	        ClusterInitScriptDbfsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterInitScriptDbfsPtrInput interface {
 	pulumi.Input
 
@@ -1804,7 +1804,7 @@ type ClusterInitScriptFile struct {
 // ClusterInitScriptFileInput is an input type that accepts ClusterInitScriptFileArgs and ClusterInitScriptFileOutput values.
 // You can construct a concrete instance of `ClusterInitScriptFileInput` via:
 //
-//          ClusterInitScriptFileArgs{...}
+//	ClusterInitScriptFileArgs{...}
 type ClusterInitScriptFileInput interface {
 	pulumi.Input
 
@@ -1839,11 +1839,11 @@ func (i ClusterInitScriptFileArgs) ToClusterInitScriptFilePtrOutputWithContext(c
 // ClusterInitScriptFilePtrInput is an input type that accepts ClusterInitScriptFileArgs, ClusterInitScriptFilePtr and ClusterInitScriptFilePtrOutput values.
 // You can construct a concrete instance of `ClusterInitScriptFilePtrInput` via:
 //
-//          ClusterInitScriptFileArgs{...}
+//	        ClusterInitScriptFileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterInitScriptFilePtrInput interface {
 	pulumi.Input
 
@@ -1937,7 +1937,7 @@ type ClusterInitScriptGcs struct {
 // ClusterInitScriptGcsInput is an input type that accepts ClusterInitScriptGcsArgs and ClusterInitScriptGcsOutput values.
 // You can construct a concrete instance of `ClusterInitScriptGcsInput` via:
 //
-//          ClusterInitScriptGcsArgs{...}
+//	ClusterInitScriptGcsArgs{...}
 type ClusterInitScriptGcsInput interface {
 	pulumi.Input
 
@@ -1972,11 +1972,11 @@ func (i ClusterInitScriptGcsArgs) ToClusterInitScriptGcsPtrOutputWithContext(ctx
 // ClusterInitScriptGcsPtrInput is an input type that accepts ClusterInitScriptGcsArgs, ClusterInitScriptGcsPtr and ClusterInitScriptGcsPtrOutput values.
 // You can construct a concrete instance of `ClusterInitScriptGcsPtrInput` via:
 //
-//          ClusterInitScriptGcsArgs{...}
+//	        ClusterInitScriptGcsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterInitScriptGcsPtrInput interface {
 	pulumi.Input
 
@@ -2076,7 +2076,7 @@ type ClusterInitScriptS3 struct {
 // ClusterInitScriptS3Input is an input type that accepts ClusterInitScriptS3Args and ClusterInitScriptS3Output values.
 // You can construct a concrete instance of `ClusterInitScriptS3Input` via:
 //
-//          ClusterInitScriptS3Args{...}
+//	ClusterInitScriptS3Args{...}
 type ClusterInitScriptS3Input interface {
 	pulumi.Input
 
@@ -2117,11 +2117,11 @@ func (i ClusterInitScriptS3Args) ToClusterInitScriptS3PtrOutputWithContext(ctx c
 // ClusterInitScriptS3PtrInput is an input type that accepts ClusterInitScriptS3Args, ClusterInitScriptS3Ptr and ClusterInitScriptS3PtrOutput values.
 // You can construct a concrete instance of `ClusterInitScriptS3PtrInput` via:
 //
-//          ClusterInitScriptS3Args{...}
+//	        ClusterInitScriptS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterInitScriptS3PtrInput interface {
 	pulumi.Input
 
@@ -2298,7 +2298,7 @@ type ClusterLibrary struct {
 // ClusterLibraryInput is an input type that accepts ClusterLibraryArgs and ClusterLibraryOutput values.
 // You can construct a concrete instance of `ClusterLibraryInput` via:
 //
-//          ClusterLibraryArgs{...}
+//	ClusterLibraryArgs{...}
 type ClusterLibraryInput interface {
 	pulumi.Input
 
@@ -2330,7 +2330,7 @@ func (i ClusterLibraryArgs) ToClusterLibraryOutputWithContext(ctx context.Contex
 // ClusterLibraryArrayInput is an input type that accepts ClusterLibraryArray and ClusterLibraryArrayOutput values.
 // You can construct a concrete instance of `ClusterLibraryArrayInput` via:
 //
-//          ClusterLibraryArray{ ClusterLibraryArgs{...} }
+//	ClusterLibraryArray{ ClusterLibraryArgs{...} }
 type ClusterLibraryArrayInput interface {
 	pulumi.Input
 
@@ -2418,7 +2418,7 @@ type ClusterLibraryCran struct {
 // ClusterLibraryCranInput is an input type that accepts ClusterLibraryCranArgs and ClusterLibraryCranOutput values.
 // You can construct a concrete instance of `ClusterLibraryCranInput` via:
 //
-//          ClusterLibraryCranArgs{...}
+//	ClusterLibraryCranArgs{...}
 type ClusterLibraryCranInput interface {
 	pulumi.Input
 
@@ -2454,11 +2454,11 @@ func (i ClusterLibraryCranArgs) ToClusterLibraryCranPtrOutputWithContext(ctx con
 // ClusterLibraryCranPtrInput is an input type that accepts ClusterLibraryCranArgs, ClusterLibraryCranPtr and ClusterLibraryCranPtrOutput values.
 // You can construct a concrete instance of `ClusterLibraryCranPtrInput` via:
 //
-//          ClusterLibraryCranArgs{...}
+//	        ClusterLibraryCranArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterLibraryCranPtrInput interface {
 	pulumi.Input
 
@@ -2567,7 +2567,7 @@ type ClusterLibraryMaven struct {
 // ClusterLibraryMavenInput is an input type that accepts ClusterLibraryMavenArgs and ClusterLibraryMavenOutput values.
 // You can construct a concrete instance of `ClusterLibraryMavenInput` via:
 //
-//          ClusterLibraryMavenArgs{...}
+//	ClusterLibraryMavenArgs{...}
 type ClusterLibraryMavenInput interface {
 	pulumi.Input
 
@@ -2604,11 +2604,11 @@ func (i ClusterLibraryMavenArgs) ToClusterLibraryMavenPtrOutputWithContext(ctx c
 // ClusterLibraryMavenPtrInput is an input type that accepts ClusterLibraryMavenArgs, ClusterLibraryMavenPtr and ClusterLibraryMavenPtrOutput values.
 // You can construct a concrete instance of `ClusterLibraryMavenPtrInput` via:
 //
-//          ClusterLibraryMavenArgs{...}
+//	        ClusterLibraryMavenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterLibraryMavenPtrInput interface {
 	pulumi.Input
 
@@ -2729,7 +2729,7 @@ type ClusterLibraryPypi struct {
 // ClusterLibraryPypiInput is an input type that accepts ClusterLibraryPypiArgs and ClusterLibraryPypiOutput values.
 // You can construct a concrete instance of `ClusterLibraryPypiInput` via:
 //
-//          ClusterLibraryPypiArgs{...}
+//	ClusterLibraryPypiArgs{...}
 type ClusterLibraryPypiInput interface {
 	pulumi.Input
 
@@ -2765,11 +2765,11 @@ func (i ClusterLibraryPypiArgs) ToClusterLibraryPypiPtrOutputWithContext(ctx con
 // ClusterLibraryPypiPtrInput is an input type that accepts ClusterLibraryPypiArgs, ClusterLibraryPypiPtr and ClusterLibraryPypiPtrOutput values.
 // You can construct a concrete instance of `ClusterLibraryPypiPtrInput` via:
 //
-//          ClusterLibraryPypiArgs{...}
+//	        ClusterLibraryPypiArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterLibraryPypiPtrInput interface {
 	pulumi.Input
 
@@ -2876,7 +2876,7 @@ type ClusterWorkloadType struct {
 // ClusterWorkloadTypeInput is an input type that accepts ClusterWorkloadTypeArgs and ClusterWorkloadTypeOutput values.
 // You can construct a concrete instance of `ClusterWorkloadTypeInput` via:
 //
-//          ClusterWorkloadTypeArgs{...}
+//	ClusterWorkloadTypeArgs{...}
 type ClusterWorkloadTypeInput interface {
 	pulumi.Input
 
@@ -2911,11 +2911,11 @@ func (i ClusterWorkloadTypeArgs) ToClusterWorkloadTypePtrOutputWithContext(ctx c
 // ClusterWorkloadTypePtrInput is an input type that accepts ClusterWorkloadTypeArgs, ClusterWorkloadTypePtr and ClusterWorkloadTypePtrOutput values.
 // You can construct a concrete instance of `ClusterWorkloadTypePtrInput` via:
 //
-//          ClusterWorkloadTypeArgs{...}
+//	        ClusterWorkloadTypeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterWorkloadTypePtrInput interface {
 	pulumi.Input
 
@@ -3010,7 +3010,7 @@ type ClusterWorkloadTypeClients struct {
 // ClusterWorkloadTypeClientsInput is an input type that accepts ClusterWorkloadTypeClientsArgs and ClusterWorkloadTypeClientsOutput values.
 // You can construct a concrete instance of `ClusterWorkloadTypeClientsInput` via:
 //
-//          ClusterWorkloadTypeClientsArgs{...}
+//	ClusterWorkloadTypeClientsArgs{...}
 type ClusterWorkloadTypeClientsInput interface {
 	pulumi.Input
 
@@ -3046,11 +3046,11 @@ func (i ClusterWorkloadTypeClientsArgs) ToClusterWorkloadTypeClientsPtrOutputWit
 // ClusterWorkloadTypeClientsPtrInput is an input type that accepts ClusterWorkloadTypeClientsArgs, ClusterWorkloadTypeClientsPtr and ClusterWorkloadTypeClientsPtrOutput values.
 // You can construct a concrete instance of `ClusterWorkloadTypeClientsPtrInput` via:
 //
-//          ClusterWorkloadTypeClientsArgs{...}
+//	        ClusterWorkloadTypeClientsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterWorkloadTypeClientsPtrInput interface {
 	pulumi.Input
 
@@ -3158,7 +3158,7 @@ type GrantsGrant struct {
 // GrantsGrantInput is an input type that accepts GrantsGrantArgs and GrantsGrantOutput values.
 // You can construct a concrete instance of `GrantsGrantInput` via:
 //
-//          GrantsGrantArgs{...}
+//	GrantsGrantArgs{...}
 type GrantsGrantInput interface {
 	pulumi.Input
 
@@ -3186,7 +3186,7 @@ func (i GrantsGrantArgs) ToGrantsGrantOutputWithContext(ctx context.Context) Gra
 // GrantsGrantArrayInput is an input type that accepts GrantsGrantArray and GrantsGrantArrayOutput values.
 // You can construct a concrete instance of `GrantsGrantArrayInput` via:
 //
-//          GrantsGrantArray{ GrantsGrantArgs{...} }
+//	GrantsGrantArray{ GrantsGrantArgs{...} }
 type GrantsGrantArrayInput interface {
 	pulumi.Input
 
@@ -3262,7 +3262,7 @@ type InstancePoolAwsAttributes struct {
 // InstancePoolAwsAttributesInput is an input type that accepts InstancePoolAwsAttributesArgs and InstancePoolAwsAttributesOutput values.
 // You can construct a concrete instance of `InstancePoolAwsAttributesInput` via:
 //
-//          InstancePoolAwsAttributesArgs{...}
+//	InstancePoolAwsAttributesArgs{...}
 type InstancePoolAwsAttributesInput interface {
 	pulumi.Input
 
@@ -3302,11 +3302,11 @@ func (i InstancePoolAwsAttributesArgs) ToInstancePoolAwsAttributesPtrOutputWithC
 // InstancePoolAwsAttributesPtrInput is an input type that accepts InstancePoolAwsAttributesArgs, InstancePoolAwsAttributesPtr and InstancePoolAwsAttributesPtrOutput values.
 // You can construct a concrete instance of `InstancePoolAwsAttributesPtrInput` via:
 //
-//          InstancePoolAwsAttributesArgs{...}
+//	        InstancePoolAwsAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstancePoolAwsAttributesPtrInput interface {
 	pulumi.Input
 
@@ -3435,7 +3435,7 @@ type InstancePoolAzureAttributes struct {
 // InstancePoolAzureAttributesInput is an input type that accepts InstancePoolAzureAttributesArgs and InstancePoolAzureAttributesOutput values.
 // You can construct a concrete instance of `InstancePoolAzureAttributesInput` via:
 //
-//          InstancePoolAzureAttributesArgs{...}
+//	InstancePoolAzureAttributesArgs{...}
 type InstancePoolAzureAttributesInput interface {
 	pulumi.Input
 
@@ -3473,11 +3473,11 @@ func (i InstancePoolAzureAttributesArgs) ToInstancePoolAzureAttributesPtrOutputW
 // InstancePoolAzureAttributesPtrInput is an input type that accepts InstancePoolAzureAttributesArgs, InstancePoolAzureAttributesPtr and InstancePoolAzureAttributesPtrOutput values.
 // You can construct a concrete instance of `InstancePoolAzureAttributesPtrInput` via:
 //
-//          InstancePoolAzureAttributesArgs{...}
+//	        InstancePoolAzureAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstancePoolAzureAttributesPtrInput interface {
 	pulumi.Input
 
@@ -3592,7 +3592,7 @@ type InstancePoolDiskSpec struct {
 // InstancePoolDiskSpecInput is an input type that accepts InstancePoolDiskSpecArgs and InstancePoolDiskSpecOutput values.
 // You can construct a concrete instance of `InstancePoolDiskSpecInput` via:
 //
-//          InstancePoolDiskSpecArgs{...}
+//	InstancePoolDiskSpecArgs{...}
 type InstancePoolDiskSpecInput interface {
 	pulumi.Input
 
@@ -3631,11 +3631,11 @@ func (i InstancePoolDiskSpecArgs) ToInstancePoolDiskSpecPtrOutputWithContext(ctx
 // InstancePoolDiskSpecPtrInput is an input type that accepts InstancePoolDiskSpecArgs, InstancePoolDiskSpecPtr and InstancePoolDiskSpecPtrOutput values.
 // You can construct a concrete instance of `InstancePoolDiskSpecPtrInput` via:
 //
-//          InstancePoolDiskSpecArgs{...}
+//	        InstancePoolDiskSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstancePoolDiskSpecPtrInput interface {
 	pulumi.Input
 
@@ -3760,7 +3760,7 @@ type InstancePoolDiskSpecDiskType struct {
 // InstancePoolDiskSpecDiskTypeInput is an input type that accepts InstancePoolDiskSpecDiskTypeArgs and InstancePoolDiskSpecDiskTypeOutput values.
 // You can construct a concrete instance of `InstancePoolDiskSpecDiskTypeInput` via:
 //
-//          InstancePoolDiskSpecDiskTypeArgs{...}
+//	InstancePoolDiskSpecDiskTypeArgs{...}
 type InstancePoolDiskSpecDiskTypeInput interface {
 	pulumi.Input
 
@@ -3796,11 +3796,11 @@ func (i InstancePoolDiskSpecDiskTypeArgs) ToInstancePoolDiskSpecDiskTypePtrOutpu
 // InstancePoolDiskSpecDiskTypePtrInput is an input type that accepts InstancePoolDiskSpecDiskTypeArgs, InstancePoolDiskSpecDiskTypePtr and InstancePoolDiskSpecDiskTypePtrOutput values.
 // You can construct a concrete instance of `InstancePoolDiskSpecDiskTypePtrInput` via:
 //
-//          InstancePoolDiskSpecDiskTypeArgs{...}
+//	        InstancePoolDiskSpecDiskTypeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstancePoolDiskSpecDiskTypePtrInput interface {
 	pulumi.Input
 
@@ -3908,7 +3908,7 @@ type InstancePoolGcpAttributes struct {
 // InstancePoolGcpAttributesInput is an input type that accepts InstancePoolGcpAttributesArgs and InstancePoolGcpAttributesOutput values.
 // You can construct a concrete instance of `InstancePoolGcpAttributesInput` via:
 //
-//          InstancePoolGcpAttributesArgs{...}
+//	InstancePoolGcpAttributesArgs{...}
 type InstancePoolGcpAttributesInput interface {
 	pulumi.Input
 
@@ -3944,11 +3944,11 @@ func (i InstancePoolGcpAttributesArgs) ToInstancePoolGcpAttributesPtrOutputWithC
 // InstancePoolGcpAttributesPtrInput is an input type that accepts InstancePoolGcpAttributesArgs, InstancePoolGcpAttributesPtr and InstancePoolGcpAttributesPtrOutput values.
 // You can construct a concrete instance of `InstancePoolGcpAttributesPtrInput` via:
 //
-//          InstancePoolGcpAttributesArgs{...}
+//	        InstancePoolGcpAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstancePoolGcpAttributesPtrInput interface {
 	pulumi.Input
 
@@ -4046,7 +4046,7 @@ type InstancePoolInstancePoolFleetAttributes struct {
 // InstancePoolInstancePoolFleetAttributesInput is an input type that accepts InstancePoolInstancePoolFleetAttributesArgs and InstancePoolInstancePoolFleetAttributesOutput values.
 // You can construct a concrete instance of `InstancePoolInstancePoolFleetAttributesInput` via:
 //
-//          InstancePoolInstancePoolFleetAttributesArgs{...}
+//	InstancePoolInstancePoolFleetAttributesArgs{...}
 type InstancePoolInstancePoolFleetAttributesInput interface {
 	pulumi.Input
 
@@ -4083,11 +4083,11 @@ func (i InstancePoolInstancePoolFleetAttributesArgs) ToInstancePoolInstancePoolF
 // InstancePoolInstancePoolFleetAttributesPtrInput is an input type that accepts InstancePoolInstancePoolFleetAttributesArgs, InstancePoolInstancePoolFleetAttributesPtr and InstancePoolInstancePoolFleetAttributesPtrOutput values.
 // You can construct a concrete instance of `InstancePoolInstancePoolFleetAttributesPtrInput` via:
 //
-//          InstancePoolInstancePoolFleetAttributesArgs{...}
+//	        InstancePoolInstancePoolFleetAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstancePoolInstancePoolFleetAttributesPtrInput interface {
 	pulumi.Input
 
@@ -4214,7 +4214,7 @@ type InstancePoolInstancePoolFleetAttributesFleetOnDemandOption struct {
 // InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionInput is an input type that accepts InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgs and InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionOutput values.
 // You can construct a concrete instance of `InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionInput` via:
 //
-//          InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgs{...}
+//	InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgs{...}
 type InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionInput interface {
 	pulumi.Input
 
@@ -4250,11 +4250,11 @@ func (i InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgs) ToInstan
 // InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionPtrInput is an input type that accepts InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgs, InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionPtr and InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionPtrOutput values.
 // You can construct a concrete instance of `InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionPtrInput` via:
 //
-//          InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgs{...}
+//	        InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionPtrInput interface {
 	pulumi.Input
 
@@ -4364,7 +4364,7 @@ type InstancePoolInstancePoolFleetAttributesFleetSpotOption struct {
 // InstancePoolInstancePoolFleetAttributesFleetSpotOptionInput is an input type that accepts InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgs and InstancePoolInstancePoolFleetAttributesFleetSpotOptionOutput values.
 // You can construct a concrete instance of `InstancePoolInstancePoolFleetAttributesFleetSpotOptionInput` via:
 //
-//          InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgs{...}
+//	InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgs{...}
 type InstancePoolInstancePoolFleetAttributesFleetSpotOptionInput interface {
 	pulumi.Input
 
@@ -4400,11 +4400,11 @@ func (i InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgs) ToInstancePo
 // InstancePoolInstancePoolFleetAttributesFleetSpotOptionPtrInput is an input type that accepts InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgs, InstancePoolInstancePoolFleetAttributesFleetSpotOptionPtr and InstancePoolInstancePoolFleetAttributesFleetSpotOptionPtrOutput values.
 // You can construct a concrete instance of `InstancePoolInstancePoolFleetAttributesFleetSpotOptionPtrInput` via:
 //
-//          InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgs{...}
+//	        InstancePoolInstancePoolFleetAttributesFleetSpotOptionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstancePoolInstancePoolFleetAttributesFleetSpotOptionPtrInput interface {
 	pulumi.Input
 
@@ -4512,7 +4512,7 @@ type InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride struct {
 // InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideInput is an input type that accepts InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs and InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideOutput values.
 // You can construct a concrete instance of `InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideInput` via:
 //
-//          InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs{...}
+//	InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs{...}
 type InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideInput interface {
 	pulumi.Input
 
@@ -4540,7 +4540,7 @@ func (i InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs) ToIns
 // InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArrayInput is an input type that accepts InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArray and InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArrayOutput values.
 // You can construct a concrete instance of `InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArrayInput` via:
 //
-//          InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArray{ InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs{...} }
+//	InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArray{ InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs{...} }
 type InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArrayInput interface {
 	pulumi.Input
 
@@ -4614,7 +4614,7 @@ type InstancePoolPreloadedDockerImage struct {
 // InstancePoolPreloadedDockerImageInput is an input type that accepts InstancePoolPreloadedDockerImageArgs and InstancePoolPreloadedDockerImageOutput values.
 // You can construct a concrete instance of `InstancePoolPreloadedDockerImageInput` via:
 //
-//          InstancePoolPreloadedDockerImageArgs{...}
+//	InstancePoolPreloadedDockerImageArgs{...}
 type InstancePoolPreloadedDockerImageInput interface {
 	pulumi.Input
 
@@ -4642,7 +4642,7 @@ func (i InstancePoolPreloadedDockerImageArgs) ToInstancePoolPreloadedDockerImage
 // InstancePoolPreloadedDockerImageArrayInput is an input type that accepts InstancePoolPreloadedDockerImageArray and InstancePoolPreloadedDockerImageArrayOutput values.
 // You can construct a concrete instance of `InstancePoolPreloadedDockerImageArrayInput` via:
 //
-//          InstancePoolPreloadedDockerImageArray{ InstancePoolPreloadedDockerImageArgs{...} }
+//	InstancePoolPreloadedDockerImageArray{ InstancePoolPreloadedDockerImageArgs{...} }
 type InstancePoolPreloadedDockerImageArrayInput interface {
 	pulumi.Input
 
@@ -4716,7 +4716,7 @@ type InstancePoolPreloadedDockerImageBasicAuth struct {
 // InstancePoolPreloadedDockerImageBasicAuthInput is an input type that accepts InstancePoolPreloadedDockerImageBasicAuthArgs and InstancePoolPreloadedDockerImageBasicAuthOutput values.
 // You can construct a concrete instance of `InstancePoolPreloadedDockerImageBasicAuthInput` via:
 //
-//          InstancePoolPreloadedDockerImageBasicAuthArgs{...}
+//	InstancePoolPreloadedDockerImageBasicAuthArgs{...}
 type InstancePoolPreloadedDockerImageBasicAuthInput interface {
 	pulumi.Input
 
@@ -4752,11 +4752,11 @@ func (i InstancePoolPreloadedDockerImageBasicAuthArgs) ToInstancePoolPreloadedDo
 // InstancePoolPreloadedDockerImageBasicAuthPtrInput is an input type that accepts InstancePoolPreloadedDockerImageBasicAuthArgs, InstancePoolPreloadedDockerImageBasicAuthPtr and InstancePoolPreloadedDockerImageBasicAuthPtrOutput values.
 // You can construct a concrete instance of `InstancePoolPreloadedDockerImageBasicAuthPtrInput` via:
 //
-//          InstancePoolPreloadedDockerImageBasicAuthArgs{...}
+//	        InstancePoolPreloadedDockerImageBasicAuthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstancePoolPreloadedDockerImageBasicAuthPtrInput interface {
 	pulumi.Input
 
@@ -4871,7 +4871,7 @@ type JobEmailNotifications struct {
 // JobEmailNotificationsInput is an input type that accepts JobEmailNotificationsArgs and JobEmailNotificationsOutput values.
 // You can construct a concrete instance of `JobEmailNotificationsInput` via:
 //
-//          JobEmailNotificationsArgs{...}
+//	JobEmailNotificationsArgs{...}
 type JobEmailNotificationsInput interface {
 	pulumi.Input
 
@@ -4914,11 +4914,11 @@ func (i JobEmailNotificationsArgs) ToJobEmailNotificationsPtrOutputWithContext(c
 // JobEmailNotificationsPtrInput is an input type that accepts JobEmailNotificationsArgs, JobEmailNotificationsPtr and JobEmailNotificationsPtrOutput values.
 // You can construct a concrete instance of `JobEmailNotificationsPtrInput` via:
 //
-//          JobEmailNotificationsArgs{...}
+//	        JobEmailNotificationsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobEmailNotificationsPtrInput interface {
 	pulumi.Input
 
@@ -5081,7 +5081,7 @@ type JobGitSource struct {
 // JobGitSourceInput is an input type that accepts JobGitSourceArgs and JobGitSourceOutput values.
 // You can construct a concrete instance of `JobGitSourceInput` via:
 //
-//          JobGitSourceArgs{...}
+//	JobGitSourceArgs{...}
 type JobGitSourceInput interface {
 	pulumi.Input
 
@@ -5125,11 +5125,11 @@ func (i JobGitSourceArgs) ToJobGitSourcePtrOutputWithContext(ctx context.Context
 // JobGitSourcePtrInput is an input type that accepts JobGitSourceArgs, JobGitSourcePtr and JobGitSourcePtrOutput values.
 // You can construct a concrete instance of `JobGitSourcePtrInput` via:
 //
-//          JobGitSourceArgs{...}
+//	        JobGitSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobGitSourcePtrInput interface {
 	pulumi.Input
 
@@ -5288,7 +5288,7 @@ type JobJobCluster struct {
 // JobJobClusterInput is an input type that accepts JobJobClusterArgs and JobJobClusterOutput values.
 // You can construct a concrete instance of `JobJobClusterInput` via:
 //
-//          JobJobClusterArgs{...}
+//	JobJobClusterArgs{...}
 type JobJobClusterInput interface {
 	pulumi.Input
 
@@ -5318,7 +5318,7 @@ func (i JobJobClusterArgs) ToJobJobClusterOutputWithContext(ctx context.Context)
 // JobJobClusterArrayInput is an input type that accepts JobJobClusterArray and JobJobClusterArrayOutput values.
 // You can construct a concrete instance of `JobJobClusterArrayInput` via:
 //
-//          JobJobClusterArray{ JobJobClusterArgs{...} }
+//	JobJobClusterArray{ JobJobClusterArgs{...} }
 type JobJobClusterArrayInput interface {
 	pulumi.Input
 
@@ -5417,7 +5417,7 @@ type JobJobClusterNewCluster struct {
 // JobJobClusterNewClusterInput is an input type that accepts JobJobClusterNewClusterArgs and JobJobClusterNewClusterOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterInput` via:
 //
-//          JobJobClusterNewClusterArgs{...}
+//	JobJobClusterNewClusterArgs{...}
 type JobJobClusterNewClusterInput interface {
 	pulumi.Input
 
@@ -5478,11 +5478,11 @@ func (i JobJobClusterNewClusterArgs) ToJobJobClusterNewClusterPtrOutputWithConte
 // JobJobClusterNewClusterPtrInput is an input type that accepts JobJobClusterNewClusterArgs, JobJobClusterNewClusterPtr and JobJobClusterNewClusterPtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterPtrInput` via:
 //
-//          JobJobClusterNewClusterArgs{...}
+//	        JobJobClusterNewClusterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterPtrInput interface {
 	pulumi.Input
 
@@ -5915,7 +5915,7 @@ type JobJobClusterNewClusterAutoscale struct {
 // JobJobClusterNewClusterAutoscaleInput is an input type that accepts JobJobClusterNewClusterAutoscaleArgs and JobJobClusterNewClusterAutoscaleOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterAutoscaleInput` via:
 //
-//          JobJobClusterNewClusterAutoscaleArgs{...}
+//	JobJobClusterNewClusterAutoscaleArgs{...}
 type JobJobClusterNewClusterAutoscaleInput interface {
 	pulumi.Input
 
@@ -5951,11 +5951,11 @@ func (i JobJobClusterNewClusterAutoscaleArgs) ToJobJobClusterNewClusterAutoscale
 // JobJobClusterNewClusterAutoscalePtrInput is an input type that accepts JobJobClusterNewClusterAutoscaleArgs, JobJobClusterNewClusterAutoscalePtr and JobJobClusterNewClusterAutoscalePtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterAutoscalePtrInput` via:
 //
-//          JobJobClusterNewClusterAutoscaleArgs{...}
+//	        JobJobClusterNewClusterAutoscaleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterAutoscalePtrInput interface {
 	pulumi.Input
 
@@ -6069,7 +6069,7 @@ type JobJobClusterNewClusterAwsAttributes struct {
 // JobJobClusterNewClusterAwsAttributesInput is an input type that accepts JobJobClusterNewClusterAwsAttributesArgs and JobJobClusterNewClusterAwsAttributesOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterAwsAttributesInput` via:
 //
-//          JobJobClusterNewClusterAwsAttributesArgs{...}
+//	JobJobClusterNewClusterAwsAttributesArgs{...}
 type JobJobClusterNewClusterAwsAttributesInput interface {
 	pulumi.Input
 
@@ -6111,11 +6111,11 @@ func (i JobJobClusterNewClusterAwsAttributesArgs) ToJobJobClusterNewClusterAwsAt
 // JobJobClusterNewClusterAwsAttributesPtrInput is an input type that accepts JobJobClusterNewClusterAwsAttributesArgs, JobJobClusterNewClusterAwsAttributesPtr and JobJobClusterNewClusterAwsAttributesPtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterAwsAttributesPtrInput` via:
 //
-//          JobJobClusterNewClusterAwsAttributesArgs{...}
+//	        JobJobClusterNewClusterAwsAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterAwsAttributesPtrInput interface {
 	pulumi.Input
 
@@ -6302,7 +6302,7 @@ type JobJobClusterNewClusterAzureAttributes struct {
 // JobJobClusterNewClusterAzureAttributesInput is an input type that accepts JobJobClusterNewClusterAzureAttributesArgs and JobJobClusterNewClusterAzureAttributesOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterAzureAttributesInput` via:
 //
-//          JobJobClusterNewClusterAzureAttributesArgs{...}
+//	JobJobClusterNewClusterAzureAttributesArgs{...}
 type JobJobClusterNewClusterAzureAttributesInput interface {
 	pulumi.Input
 
@@ -6339,11 +6339,11 @@ func (i JobJobClusterNewClusterAzureAttributesArgs) ToJobJobClusterNewClusterAzu
 // JobJobClusterNewClusterAzureAttributesPtrInput is an input type that accepts JobJobClusterNewClusterAzureAttributesArgs, JobJobClusterNewClusterAzureAttributesPtr and JobJobClusterNewClusterAzureAttributesPtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterAzureAttributesPtrInput` via:
 //
-//          JobJobClusterNewClusterAzureAttributesArgs{...}
+//	        JobJobClusterNewClusterAzureAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterAzureAttributesPtrInput interface {
 	pulumi.Input
 
@@ -6464,7 +6464,7 @@ type JobJobClusterNewClusterClusterLogConf struct {
 // JobJobClusterNewClusterClusterLogConfInput is an input type that accepts JobJobClusterNewClusterClusterLogConfArgs and JobJobClusterNewClusterClusterLogConfOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterClusterLogConfInput` via:
 //
-//          JobJobClusterNewClusterClusterLogConfArgs{...}
+//	JobJobClusterNewClusterClusterLogConfArgs{...}
 type JobJobClusterNewClusterClusterLogConfInput interface {
 	pulumi.Input
 
@@ -6500,11 +6500,11 @@ func (i JobJobClusterNewClusterClusterLogConfArgs) ToJobJobClusterNewClusterClus
 // JobJobClusterNewClusterClusterLogConfPtrInput is an input type that accepts JobJobClusterNewClusterClusterLogConfArgs, JobJobClusterNewClusterClusterLogConfPtr and JobJobClusterNewClusterClusterLogConfPtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterClusterLogConfPtrInput` via:
 //
-//          JobJobClusterNewClusterClusterLogConfArgs{...}
+//	        JobJobClusterNewClusterClusterLogConfArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterClusterLogConfPtrInput interface {
 	pulumi.Input
 
@@ -6613,7 +6613,7 @@ type JobJobClusterNewClusterClusterLogConfDbfs struct {
 // JobJobClusterNewClusterClusterLogConfDbfsInput is an input type that accepts JobJobClusterNewClusterClusterLogConfDbfsArgs and JobJobClusterNewClusterClusterLogConfDbfsOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterClusterLogConfDbfsInput` via:
 //
-//          JobJobClusterNewClusterClusterLogConfDbfsArgs{...}
+//	JobJobClusterNewClusterClusterLogConfDbfsArgs{...}
 type JobJobClusterNewClusterClusterLogConfDbfsInput interface {
 	pulumi.Input
 
@@ -6648,11 +6648,11 @@ func (i JobJobClusterNewClusterClusterLogConfDbfsArgs) ToJobJobClusterNewCluster
 // JobJobClusterNewClusterClusterLogConfDbfsPtrInput is an input type that accepts JobJobClusterNewClusterClusterLogConfDbfsArgs, JobJobClusterNewClusterClusterLogConfDbfsPtr and JobJobClusterNewClusterClusterLogConfDbfsPtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterClusterLogConfDbfsPtrInput` via:
 //
-//          JobJobClusterNewClusterClusterLogConfDbfsArgs{...}
+//	        JobJobClusterNewClusterClusterLogConfDbfsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterClusterLogConfDbfsPtrInput interface {
 	pulumi.Input
 
@@ -6752,7 +6752,7 @@ type JobJobClusterNewClusterClusterLogConfS3 struct {
 // JobJobClusterNewClusterClusterLogConfS3Input is an input type that accepts JobJobClusterNewClusterClusterLogConfS3Args and JobJobClusterNewClusterClusterLogConfS3Output values.
 // You can construct a concrete instance of `JobJobClusterNewClusterClusterLogConfS3Input` via:
 //
-//          JobJobClusterNewClusterClusterLogConfS3Args{...}
+//	JobJobClusterNewClusterClusterLogConfS3Args{...}
 type JobJobClusterNewClusterClusterLogConfS3Input interface {
 	pulumi.Input
 
@@ -6793,11 +6793,11 @@ func (i JobJobClusterNewClusterClusterLogConfS3Args) ToJobJobClusterNewClusterCl
 // JobJobClusterNewClusterClusterLogConfS3PtrInput is an input type that accepts JobJobClusterNewClusterClusterLogConfS3Args, JobJobClusterNewClusterClusterLogConfS3Ptr and JobJobClusterNewClusterClusterLogConfS3PtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterClusterLogConfS3PtrInput` via:
 //
-//          JobJobClusterNewClusterClusterLogConfS3Args{...}
+//	        JobJobClusterNewClusterClusterLogConfS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterClusterLogConfS3PtrInput interface {
 	pulumi.Input
 
@@ -6971,7 +6971,7 @@ type JobJobClusterNewClusterDockerImage struct {
 // JobJobClusterNewClusterDockerImageInput is an input type that accepts JobJobClusterNewClusterDockerImageArgs and JobJobClusterNewClusterDockerImageOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterDockerImageInput` via:
 //
-//          JobJobClusterNewClusterDockerImageArgs{...}
+//	JobJobClusterNewClusterDockerImageArgs{...}
 type JobJobClusterNewClusterDockerImageInput interface {
 	pulumi.Input
 
@@ -7008,11 +7008,11 @@ func (i JobJobClusterNewClusterDockerImageArgs) ToJobJobClusterNewClusterDockerI
 // JobJobClusterNewClusterDockerImagePtrInput is an input type that accepts JobJobClusterNewClusterDockerImageArgs, JobJobClusterNewClusterDockerImagePtr and JobJobClusterNewClusterDockerImagePtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterDockerImagePtrInput` via:
 //
-//          JobJobClusterNewClusterDockerImageArgs{...}
+//	        JobJobClusterNewClusterDockerImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterDockerImagePtrInput interface {
 	pulumi.Input
 
@@ -7124,7 +7124,7 @@ type JobJobClusterNewClusterDockerImageBasicAuth struct {
 // JobJobClusterNewClusterDockerImageBasicAuthInput is an input type that accepts JobJobClusterNewClusterDockerImageBasicAuthArgs and JobJobClusterNewClusterDockerImageBasicAuthOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterDockerImageBasicAuthInput` via:
 //
-//          JobJobClusterNewClusterDockerImageBasicAuthArgs{...}
+//	JobJobClusterNewClusterDockerImageBasicAuthArgs{...}
 type JobJobClusterNewClusterDockerImageBasicAuthInput interface {
 	pulumi.Input
 
@@ -7160,11 +7160,11 @@ func (i JobJobClusterNewClusterDockerImageBasicAuthArgs) ToJobJobClusterNewClust
 // JobJobClusterNewClusterDockerImageBasicAuthPtrInput is an input type that accepts JobJobClusterNewClusterDockerImageBasicAuthArgs, JobJobClusterNewClusterDockerImageBasicAuthPtr and JobJobClusterNewClusterDockerImageBasicAuthPtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterDockerImageBasicAuthPtrInput` via:
 //
-//          JobJobClusterNewClusterDockerImageBasicAuthArgs{...}
+//	        JobJobClusterNewClusterDockerImageBasicAuthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterDockerImageBasicAuthPtrInput interface {
 	pulumi.Input
 
@@ -7275,7 +7275,7 @@ type JobJobClusterNewClusterGcpAttributes struct {
 // JobJobClusterNewClusterGcpAttributesInput is an input type that accepts JobJobClusterNewClusterGcpAttributesArgs and JobJobClusterNewClusterGcpAttributesOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterGcpAttributesInput` via:
 //
-//          JobJobClusterNewClusterGcpAttributesArgs{...}
+//	JobJobClusterNewClusterGcpAttributesArgs{...}
 type JobJobClusterNewClusterGcpAttributesInput interface {
 	pulumi.Input
 
@@ -7314,11 +7314,11 @@ func (i JobJobClusterNewClusterGcpAttributesArgs) ToJobJobClusterNewClusterGcpAt
 // JobJobClusterNewClusterGcpAttributesPtrInput is an input type that accepts JobJobClusterNewClusterGcpAttributesArgs, JobJobClusterNewClusterGcpAttributesPtr and JobJobClusterNewClusterGcpAttributesPtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterGcpAttributesPtrInput` via:
 //
-//          JobJobClusterNewClusterGcpAttributesArgs{...}
+//	        JobJobClusterNewClusterGcpAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterGcpAttributesPtrInput interface {
 	pulumi.Input
 
@@ -7467,7 +7467,7 @@ type JobJobClusterNewClusterInitScript struct {
 // JobJobClusterNewClusterInitScriptInput is an input type that accepts JobJobClusterNewClusterInitScriptArgs and JobJobClusterNewClusterInitScriptOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterInitScriptInput` via:
 //
-//          JobJobClusterNewClusterInitScriptArgs{...}
+//	JobJobClusterNewClusterInitScriptArgs{...}
 type JobJobClusterNewClusterInitScriptInput interface {
 	pulumi.Input
 
@@ -7497,7 +7497,7 @@ func (i JobJobClusterNewClusterInitScriptArgs) ToJobJobClusterNewClusterInitScri
 // JobJobClusterNewClusterInitScriptArrayInput is an input type that accepts JobJobClusterNewClusterInitScriptArray and JobJobClusterNewClusterInitScriptArrayOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterInitScriptArrayInput` via:
 //
-//          JobJobClusterNewClusterInitScriptArray{ JobJobClusterNewClusterInitScriptArgs{...} }
+//	JobJobClusterNewClusterInitScriptArray{ JobJobClusterNewClusterInitScriptArgs{...} }
 type JobJobClusterNewClusterInitScriptArrayInput interface {
 	pulumi.Input
 
@@ -7576,7 +7576,7 @@ type JobJobClusterNewClusterInitScriptDbfs struct {
 // JobJobClusterNewClusterInitScriptDbfsInput is an input type that accepts JobJobClusterNewClusterInitScriptDbfsArgs and JobJobClusterNewClusterInitScriptDbfsOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterInitScriptDbfsInput` via:
 //
-//          JobJobClusterNewClusterInitScriptDbfsArgs{...}
+//	JobJobClusterNewClusterInitScriptDbfsArgs{...}
 type JobJobClusterNewClusterInitScriptDbfsInput interface {
 	pulumi.Input
 
@@ -7611,11 +7611,11 @@ func (i JobJobClusterNewClusterInitScriptDbfsArgs) ToJobJobClusterNewClusterInit
 // JobJobClusterNewClusterInitScriptDbfsPtrInput is an input type that accepts JobJobClusterNewClusterInitScriptDbfsArgs, JobJobClusterNewClusterInitScriptDbfsPtr and JobJobClusterNewClusterInitScriptDbfsPtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterInitScriptDbfsPtrInput` via:
 //
-//          JobJobClusterNewClusterInitScriptDbfsArgs{...}
+//	        JobJobClusterNewClusterInitScriptDbfsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterInitScriptDbfsPtrInput interface {
 	pulumi.Input
 
@@ -7709,7 +7709,7 @@ type JobJobClusterNewClusterInitScriptFile struct {
 // JobJobClusterNewClusterInitScriptFileInput is an input type that accepts JobJobClusterNewClusterInitScriptFileArgs and JobJobClusterNewClusterInitScriptFileOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterInitScriptFileInput` via:
 //
-//          JobJobClusterNewClusterInitScriptFileArgs{...}
+//	JobJobClusterNewClusterInitScriptFileArgs{...}
 type JobJobClusterNewClusterInitScriptFileInput interface {
 	pulumi.Input
 
@@ -7744,11 +7744,11 @@ func (i JobJobClusterNewClusterInitScriptFileArgs) ToJobJobClusterNewClusterInit
 // JobJobClusterNewClusterInitScriptFilePtrInput is an input type that accepts JobJobClusterNewClusterInitScriptFileArgs, JobJobClusterNewClusterInitScriptFilePtr and JobJobClusterNewClusterInitScriptFilePtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterInitScriptFilePtrInput` via:
 //
-//          JobJobClusterNewClusterInitScriptFileArgs{...}
+//	        JobJobClusterNewClusterInitScriptFileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterInitScriptFilePtrInput interface {
 	pulumi.Input
 
@@ -7842,7 +7842,7 @@ type JobJobClusterNewClusterInitScriptGcs struct {
 // JobJobClusterNewClusterInitScriptGcsInput is an input type that accepts JobJobClusterNewClusterInitScriptGcsArgs and JobJobClusterNewClusterInitScriptGcsOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterInitScriptGcsInput` via:
 //
-//          JobJobClusterNewClusterInitScriptGcsArgs{...}
+//	JobJobClusterNewClusterInitScriptGcsArgs{...}
 type JobJobClusterNewClusterInitScriptGcsInput interface {
 	pulumi.Input
 
@@ -7877,11 +7877,11 @@ func (i JobJobClusterNewClusterInitScriptGcsArgs) ToJobJobClusterNewClusterInitS
 // JobJobClusterNewClusterInitScriptGcsPtrInput is an input type that accepts JobJobClusterNewClusterInitScriptGcsArgs, JobJobClusterNewClusterInitScriptGcsPtr and JobJobClusterNewClusterInitScriptGcsPtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterInitScriptGcsPtrInput` via:
 //
-//          JobJobClusterNewClusterInitScriptGcsArgs{...}
+//	        JobJobClusterNewClusterInitScriptGcsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterInitScriptGcsPtrInput interface {
 	pulumi.Input
 
@@ -7981,7 +7981,7 @@ type JobJobClusterNewClusterInitScriptS3 struct {
 // JobJobClusterNewClusterInitScriptS3Input is an input type that accepts JobJobClusterNewClusterInitScriptS3Args and JobJobClusterNewClusterInitScriptS3Output values.
 // You can construct a concrete instance of `JobJobClusterNewClusterInitScriptS3Input` via:
 //
-//          JobJobClusterNewClusterInitScriptS3Args{...}
+//	JobJobClusterNewClusterInitScriptS3Args{...}
 type JobJobClusterNewClusterInitScriptS3Input interface {
 	pulumi.Input
 
@@ -8022,11 +8022,11 @@ func (i JobJobClusterNewClusterInitScriptS3Args) ToJobJobClusterNewClusterInitSc
 // JobJobClusterNewClusterInitScriptS3PtrInput is an input type that accepts JobJobClusterNewClusterInitScriptS3Args, JobJobClusterNewClusterInitScriptS3Ptr and JobJobClusterNewClusterInitScriptS3PtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterInitScriptS3PtrInput` via:
 //
-//          JobJobClusterNewClusterInitScriptS3Args{...}
+//	        JobJobClusterNewClusterInitScriptS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterInitScriptS3PtrInput interface {
 	pulumi.Input
 
@@ -8198,7 +8198,7 @@ type JobJobClusterNewClusterWorkloadType struct {
 // JobJobClusterNewClusterWorkloadTypeInput is an input type that accepts JobJobClusterNewClusterWorkloadTypeArgs and JobJobClusterNewClusterWorkloadTypeOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterWorkloadTypeInput` via:
 //
-//          JobJobClusterNewClusterWorkloadTypeArgs{...}
+//	JobJobClusterNewClusterWorkloadTypeArgs{...}
 type JobJobClusterNewClusterWorkloadTypeInput interface {
 	pulumi.Input
 
@@ -8233,11 +8233,11 @@ func (i JobJobClusterNewClusterWorkloadTypeArgs) ToJobJobClusterNewClusterWorklo
 // JobJobClusterNewClusterWorkloadTypePtrInput is an input type that accepts JobJobClusterNewClusterWorkloadTypeArgs, JobJobClusterNewClusterWorkloadTypePtr and JobJobClusterNewClusterWorkloadTypePtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterWorkloadTypePtrInput` via:
 //
-//          JobJobClusterNewClusterWorkloadTypeArgs{...}
+//	        JobJobClusterNewClusterWorkloadTypeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterWorkloadTypePtrInput interface {
 	pulumi.Input
 
@@ -8334,7 +8334,7 @@ type JobJobClusterNewClusterWorkloadTypeClients struct {
 // JobJobClusterNewClusterWorkloadTypeClientsInput is an input type that accepts JobJobClusterNewClusterWorkloadTypeClientsArgs and JobJobClusterNewClusterWorkloadTypeClientsOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterWorkloadTypeClientsInput` via:
 //
-//          JobJobClusterNewClusterWorkloadTypeClientsArgs{...}
+//	JobJobClusterNewClusterWorkloadTypeClientsArgs{...}
 type JobJobClusterNewClusterWorkloadTypeClientsInput interface {
 	pulumi.Input
 
@@ -8370,11 +8370,11 @@ func (i JobJobClusterNewClusterWorkloadTypeClientsArgs) ToJobJobClusterNewCluste
 // JobJobClusterNewClusterWorkloadTypeClientsPtrInput is an input type that accepts JobJobClusterNewClusterWorkloadTypeClientsArgs, JobJobClusterNewClusterWorkloadTypeClientsPtr and JobJobClusterNewClusterWorkloadTypeClientsPtrOutput values.
 // You can construct a concrete instance of `JobJobClusterNewClusterWorkloadTypeClientsPtrInput` via:
 //
-//          JobJobClusterNewClusterWorkloadTypeClientsArgs{...}
+//	        JobJobClusterNewClusterWorkloadTypeClientsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobJobClusterNewClusterWorkloadTypeClientsPtrInput interface {
 	pulumi.Input
 
@@ -8486,7 +8486,7 @@ type JobLibrary struct {
 // JobLibraryInput is an input type that accepts JobLibraryArgs and JobLibraryOutput values.
 // You can construct a concrete instance of `JobLibraryInput` via:
 //
-//          JobLibraryArgs{...}
+//	JobLibraryArgs{...}
 type JobLibraryInput interface {
 	pulumi.Input
 
@@ -8518,7 +8518,7 @@ func (i JobLibraryArgs) ToJobLibraryOutputWithContext(ctx context.Context) JobLi
 // JobLibraryArrayInput is an input type that accepts JobLibraryArray and JobLibraryArrayOutput values.
 // You can construct a concrete instance of `JobLibraryArrayInput` via:
 //
-//          JobLibraryArray{ JobLibraryArgs{...} }
+//	JobLibraryArray{ JobLibraryArgs{...} }
 type JobLibraryArrayInput interface {
 	pulumi.Input
 
@@ -8606,7 +8606,7 @@ type JobLibraryCran struct {
 // JobLibraryCranInput is an input type that accepts JobLibraryCranArgs and JobLibraryCranOutput values.
 // You can construct a concrete instance of `JobLibraryCranInput` via:
 //
-//          JobLibraryCranArgs{...}
+//	JobLibraryCranArgs{...}
 type JobLibraryCranInput interface {
 	pulumi.Input
 
@@ -8642,11 +8642,11 @@ func (i JobLibraryCranArgs) ToJobLibraryCranPtrOutputWithContext(ctx context.Con
 // JobLibraryCranPtrInput is an input type that accepts JobLibraryCranArgs, JobLibraryCranPtr and JobLibraryCranPtrOutput values.
 // You can construct a concrete instance of `JobLibraryCranPtrInput` via:
 //
-//          JobLibraryCranArgs{...}
+//	        JobLibraryCranArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobLibraryCranPtrInput interface {
 	pulumi.Input
 
@@ -8755,7 +8755,7 @@ type JobLibraryMaven struct {
 // JobLibraryMavenInput is an input type that accepts JobLibraryMavenArgs and JobLibraryMavenOutput values.
 // You can construct a concrete instance of `JobLibraryMavenInput` via:
 //
-//          JobLibraryMavenArgs{...}
+//	JobLibraryMavenArgs{...}
 type JobLibraryMavenInput interface {
 	pulumi.Input
 
@@ -8792,11 +8792,11 @@ func (i JobLibraryMavenArgs) ToJobLibraryMavenPtrOutputWithContext(ctx context.C
 // JobLibraryMavenPtrInput is an input type that accepts JobLibraryMavenArgs, JobLibraryMavenPtr and JobLibraryMavenPtrOutput values.
 // You can construct a concrete instance of `JobLibraryMavenPtrInput` via:
 //
-//          JobLibraryMavenArgs{...}
+//	        JobLibraryMavenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobLibraryMavenPtrInput interface {
 	pulumi.Input
 
@@ -8917,7 +8917,7 @@ type JobLibraryPypi struct {
 // JobLibraryPypiInput is an input type that accepts JobLibraryPypiArgs and JobLibraryPypiOutput values.
 // You can construct a concrete instance of `JobLibraryPypiInput` via:
 //
-//          JobLibraryPypiArgs{...}
+//	JobLibraryPypiArgs{...}
 type JobLibraryPypiInput interface {
 	pulumi.Input
 
@@ -8953,11 +8953,11 @@ func (i JobLibraryPypiArgs) ToJobLibraryPypiPtrOutputWithContext(ctx context.Con
 // JobLibraryPypiPtrInput is an input type that accepts JobLibraryPypiArgs, JobLibraryPypiPtr and JobLibraryPypiPtrOutput values.
 // You can construct a concrete instance of `JobLibraryPypiPtrInput` via:
 //
-//          JobLibraryPypiArgs{...}
+//	        JobLibraryPypiArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobLibraryPypiPtrInput interface {
 	pulumi.Input
 
@@ -9090,7 +9090,7 @@ type JobNewCluster struct {
 // JobNewClusterInput is an input type that accepts JobNewClusterArgs and JobNewClusterOutput values.
 // You can construct a concrete instance of `JobNewClusterInput` via:
 //
-//          JobNewClusterArgs{...}
+//	JobNewClusterArgs{...}
 type JobNewClusterInput interface {
 	pulumi.Input
 
@@ -9151,11 +9151,11 @@ func (i JobNewClusterArgs) ToJobNewClusterPtrOutputWithContext(ctx context.Conte
 // JobNewClusterPtrInput is an input type that accepts JobNewClusterArgs, JobNewClusterPtr and JobNewClusterPtrOutput values.
 // You can construct a concrete instance of `JobNewClusterPtrInput` via:
 //
-//          JobNewClusterArgs{...}
+//	        JobNewClusterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterPtrInput interface {
 	pulumi.Input
 
@@ -9588,7 +9588,7 @@ type JobNewClusterAutoscale struct {
 // JobNewClusterAutoscaleInput is an input type that accepts JobNewClusterAutoscaleArgs and JobNewClusterAutoscaleOutput values.
 // You can construct a concrete instance of `JobNewClusterAutoscaleInput` via:
 //
-//          JobNewClusterAutoscaleArgs{...}
+//	JobNewClusterAutoscaleArgs{...}
 type JobNewClusterAutoscaleInput interface {
 	pulumi.Input
 
@@ -9624,11 +9624,11 @@ func (i JobNewClusterAutoscaleArgs) ToJobNewClusterAutoscalePtrOutputWithContext
 // JobNewClusterAutoscalePtrInput is an input type that accepts JobNewClusterAutoscaleArgs, JobNewClusterAutoscalePtr and JobNewClusterAutoscalePtrOutput values.
 // You can construct a concrete instance of `JobNewClusterAutoscalePtrInput` via:
 //
-//          JobNewClusterAutoscaleArgs{...}
+//	        JobNewClusterAutoscaleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterAutoscalePtrInput interface {
 	pulumi.Input
 
@@ -9742,7 +9742,7 @@ type JobNewClusterAwsAttributes struct {
 // JobNewClusterAwsAttributesInput is an input type that accepts JobNewClusterAwsAttributesArgs and JobNewClusterAwsAttributesOutput values.
 // You can construct a concrete instance of `JobNewClusterAwsAttributesInput` via:
 //
-//          JobNewClusterAwsAttributesArgs{...}
+//	JobNewClusterAwsAttributesArgs{...}
 type JobNewClusterAwsAttributesInput interface {
 	pulumi.Input
 
@@ -9784,11 +9784,11 @@ func (i JobNewClusterAwsAttributesArgs) ToJobNewClusterAwsAttributesPtrOutputWit
 // JobNewClusterAwsAttributesPtrInput is an input type that accepts JobNewClusterAwsAttributesArgs, JobNewClusterAwsAttributesPtr and JobNewClusterAwsAttributesPtrOutput values.
 // You can construct a concrete instance of `JobNewClusterAwsAttributesPtrInput` via:
 //
-//          JobNewClusterAwsAttributesArgs{...}
+//	        JobNewClusterAwsAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterAwsAttributesPtrInput interface {
 	pulumi.Input
 
@@ -9975,7 +9975,7 @@ type JobNewClusterAzureAttributes struct {
 // JobNewClusterAzureAttributesInput is an input type that accepts JobNewClusterAzureAttributesArgs and JobNewClusterAzureAttributesOutput values.
 // You can construct a concrete instance of `JobNewClusterAzureAttributesInput` via:
 //
-//          JobNewClusterAzureAttributesArgs{...}
+//	JobNewClusterAzureAttributesArgs{...}
 type JobNewClusterAzureAttributesInput interface {
 	pulumi.Input
 
@@ -10012,11 +10012,11 @@ func (i JobNewClusterAzureAttributesArgs) ToJobNewClusterAzureAttributesPtrOutpu
 // JobNewClusterAzureAttributesPtrInput is an input type that accepts JobNewClusterAzureAttributesArgs, JobNewClusterAzureAttributesPtr and JobNewClusterAzureAttributesPtrOutput values.
 // You can construct a concrete instance of `JobNewClusterAzureAttributesPtrInput` via:
 //
-//          JobNewClusterAzureAttributesArgs{...}
+//	        JobNewClusterAzureAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterAzureAttributesPtrInput interface {
 	pulumi.Input
 
@@ -10137,7 +10137,7 @@ type JobNewClusterClusterLogConf struct {
 // JobNewClusterClusterLogConfInput is an input type that accepts JobNewClusterClusterLogConfArgs and JobNewClusterClusterLogConfOutput values.
 // You can construct a concrete instance of `JobNewClusterClusterLogConfInput` via:
 //
-//          JobNewClusterClusterLogConfArgs{...}
+//	JobNewClusterClusterLogConfArgs{...}
 type JobNewClusterClusterLogConfInput interface {
 	pulumi.Input
 
@@ -10173,11 +10173,11 @@ func (i JobNewClusterClusterLogConfArgs) ToJobNewClusterClusterLogConfPtrOutputW
 // JobNewClusterClusterLogConfPtrInput is an input type that accepts JobNewClusterClusterLogConfArgs, JobNewClusterClusterLogConfPtr and JobNewClusterClusterLogConfPtrOutput values.
 // You can construct a concrete instance of `JobNewClusterClusterLogConfPtrInput` via:
 //
-//          JobNewClusterClusterLogConfArgs{...}
+//	        JobNewClusterClusterLogConfArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterClusterLogConfPtrInput interface {
 	pulumi.Input
 
@@ -10284,7 +10284,7 @@ type JobNewClusterClusterLogConfDbfs struct {
 // JobNewClusterClusterLogConfDbfsInput is an input type that accepts JobNewClusterClusterLogConfDbfsArgs and JobNewClusterClusterLogConfDbfsOutput values.
 // You can construct a concrete instance of `JobNewClusterClusterLogConfDbfsInput` via:
 //
-//          JobNewClusterClusterLogConfDbfsArgs{...}
+//	JobNewClusterClusterLogConfDbfsArgs{...}
 type JobNewClusterClusterLogConfDbfsInput interface {
 	pulumi.Input
 
@@ -10319,11 +10319,11 @@ func (i JobNewClusterClusterLogConfDbfsArgs) ToJobNewClusterClusterLogConfDbfsPt
 // JobNewClusterClusterLogConfDbfsPtrInput is an input type that accepts JobNewClusterClusterLogConfDbfsArgs, JobNewClusterClusterLogConfDbfsPtr and JobNewClusterClusterLogConfDbfsPtrOutput values.
 // You can construct a concrete instance of `JobNewClusterClusterLogConfDbfsPtrInput` via:
 //
-//          JobNewClusterClusterLogConfDbfsArgs{...}
+//	        JobNewClusterClusterLogConfDbfsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterClusterLogConfDbfsPtrInput interface {
 	pulumi.Input
 
@@ -10423,7 +10423,7 @@ type JobNewClusterClusterLogConfS3 struct {
 // JobNewClusterClusterLogConfS3Input is an input type that accepts JobNewClusterClusterLogConfS3Args and JobNewClusterClusterLogConfS3Output values.
 // You can construct a concrete instance of `JobNewClusterClusterLogConfS3Input` via:
 //
-//          JobNewClusterClusterLogConfS3Args{...}
+//	JobNewClusterClusterLogConfS3Args{...}
 type JobNewClusterClusterLogConfS3Input interface {
 	pulumi.Input
 
@@ -10464,11 +10464,11 @@ func (i JobNewClusterClusterLogConfS3Args) ToJobNewClusterClusterLogConfS3PtrOut
 // JobNewClusterClusterLogConfS3PtrInput is an input type that accepts JobNewClusterClusterLogConfS3Args, JobNewClusterClusterLogConfS3Ptr and JobNewClusterClusterLogConfS3PtrOutput values.
 // You can construct a concrete instance of `JobNewClusterClusterLogConfS3PtrInput` via:
 //
-//          JobNewClusterClusterLogConfS3Args{...}
+//	        JobNewClusterClusterLogConfS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterClusterLogConfS3PtrInput interface {
 	pulumi.Input
 
@@ -10642,7 +10642,7 @@ type JobNewClusterDockerImage struct {
 // JobNewClusterDockerImageInput is an input type that accepts JobNewClusterDockerImageArgs and JobNewClusterDockerImageOutput values.
 // You can construct a concrete instance of `JobNewClusterDockerImageInput` via:
 //
-//          JobNewClusterDockerImageArgs{...}
+//	JobNewClusterDockerImageArgs{...}
 type JobNewClusterDockerImageInput interface {
 	pulumi.Input
 
@@ -10679,11 +10679,11 @@ func (i JobNewClusterDockerImageArgs) ToJobNewClusterDockerImagePtrOutputWithCon
 // JobNewClusterDockerImagePtrInput is an input type that accepts JobNewClusterDockerImageArgs, JobNewClusterDockerImagePtr and JobNewClusterDockerImagePtrOutput values.
 // You can construct a concrete instance of `JobNewClusterDockerImagePtrInput` via:
 //
-//          JobNewClusterDockerImageArgs{...}
+//	        JobNewClusterDockerImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterDockerImagePtrInput interface {
 	pulumi.Input
 
@@ -10793,7 +10793,7 @@ type JobNewClusterDockerImageBasicAuth struct {
 // JobNewClusterDockerImageBasicAuthInput is an input type that accepts JobNewClusterDockerImageBasicAuthArgs and JobNewClusterDockerImageBasicAuthOutput values.
 // You can construct a concrete instance of `JobNewClusterDockerImageBasicAuthInput` via:
 //
-//          JobNewClusterDockerImageBasicAuthArgs{...}
+//	JobNewClusterDockerImageBasicAuthArgs{...}
 type JobNewClusterDockerImageBasicAuthInput interface {
 	pulumi.Input
 
@@ -10829,11 +10829,11 @@ func (i JobNewClusterDockerImageBasicAuthArgs) ToJobNewClusterDockerImageBasicAu
 // JobNewClusterDockerImageBasicAuthPtrInput is an input type that accepts JobNewClusterDockerImageBasicAuthArgs, JobNewClusterDockerImageBasicAuthPtr and JobNewClusterDockerImageBasicAuthPtrOutput values.
 // You can construct a concrete instance of `JobNewClusterDockerImageBasicAuthPtrInput` via:
 //
-//          JobNewClusterDockerImageBasicAuthArgs{...}
+//	        JobNewClusterDockerImageBasicAuthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterDockerImageBasicAuthPtrInput interface {
 	pulumi.Input
 
@@ -10944,7 +10944,7 @@ type JobNewClusterGcpAttributes struct {
 // JobNewClusterGcpAttributesInput is an input type that accepts JobNewClusterGcpAttributesArgs and JobNewClusterGcpAttributesOutput values.
 // You can construct a concrete instance of `JobNewClusterGcpAttributesInput` via:
 //
-//          JobNewClusterGcpAttributesArgs{...}
+//	JobNewClusterGcpAttributesArgs{...}
 type JobNewClusterGcpAttributesInput interface {
 	pulumi.Input
 
@@ -10983,11 +10983,11 @@ func (i JobNewClusterGcpAttributesArgs) ToJobNewClusterGcpAttributesPtrOutputWit
 // JobNewClusterGcpAttributesPtrInput is an input type that accepts JobNewClusterGcpAttributesArgs, JobNewClusterGcpAttributesPtr and JobNewClusterGcpAttributesPtrOutput values.
 // You can construct a concrete instance of `JobNewClusterGcpAttributesPtrInput` via:
 //
-//          JobNewClusterGcpAttributesArgs{...}
+//	        JobNewClusterGcpAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterGcpAttributesPtrInput interface {
 	pulumi.Input
 
@@ -11136,7 +11136,7 @@ type JobNewClusterInitScript struct {
 // JobNewClusterInitScriptInput is an input type that accepts JobNewClusterInitScriptArgs and JobNewClusterInitScriptOutput values.
 // You can construct a concrete instance of `JobNewClusterInitScriptInput` via:
 //
-//          JobNewClusterInitScriptArgs{...}
+//	JobNewClusterInitScriptArgs{...}
 type JobNewClusterInitScriptInput interface {
 	pulumi.Input
 
@@ -11166,7 +11166,7 @@ func (i JobNewClusterInitScriptArgs) ToJobNewClusterInitScriptOutputWithContext(
 // JobNewClusterInitScriptArrayInput is an input type that accepts JobNewClusterInitScriptArray and JobNewClusterInitScriptArrayOutput values.
 // You can construct a concrete instance of `JobNewClusterInitScriptArrayInput` via:
 //
-//          JobNewClusterInitScriptArray{ JobNewClusterInitScriptArgs{...} }
+//	JobNewClusterInitScriptArray{ JobNewClusterInitScriptArgs{...} }
 type JobNewClusterInitScriptArrayInput interface {
 	pulumi.Input
 
@@ -11245,7 +11245,7 @@ type JobNewClusterInitScriptDbfs struct {
 // JobNewClusterInitScriptDbfsInput is an input type that accepts JobNewClusterInitScriptDbfsArgs and JobNewClusterInitScriptDbfsOutput values.
 // You can construct a concrete instance of `JobNewClusterInitScriptDbfsInput` via:
 //
-//          JobNewClusterInitScriptDbfsArgs{...}
+//	JobNewClusterInitScriptDbfsArgs{...}
 type JobNewClusterInitScriptDbfsInput interface {
 	pulumi.Input
 
@@ -11280,11 +11280,11 @@ func (i JobNewClusterInitScriptDbfsArgs) ToJobNewClusterInitScriptDbfsPtrOutputW
 // JobNewClusterInitScriptDbfsPtrInput is an input type that accepts JobNewClusterInitScriptDbfsArgs, JobNewClusterInitScriptDbfsPtr and JobNewClusterInitScriptDbfsPtrOutput values.
 // You can construct a concrete instance of `JobNewClusterInitScriptDbfsPtrInput` via:
 //
-//          JobNewClusterInitScriptDbfsArgs{...}
+//	        JobNewClusterInitScriptDbfsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterInitScriptDbfsPtrInput interface {
 	pulumi.Input
 
@@ -11378,7 +11378,7 @@ type JobNewClusterInitScriptFile struct {
 // JobNewClusterInitScriptFileInput is an input type that accepts JobNewClusterInitScriptFileArgs and JobNewClusterInitScriptFileOutput values.
 // You can construct a concrete instance of `JobNewClusterInitScriptFileInput` via:
 //
-//          JobNewClusterInitScriptFileArgs{...}
+//	JobNewClusterInitScriptFileArgs{...}
 type JobNewClusterInitScriptFileInput interface {
 	pulumi.Input
 
@@ -11413,11 +11413,11 @@ func (i JobNewClusterInitScriptFileArgs) ToJobNewClusterInitScriptFilePtrOutputW
 // JobNewClusterInitScriptFilePtrInput is an input type that accepts JobNewClusterInitScriptFileArgs, JobNewClusterInitScriptFilePtr and JobNewClusterInitScriptFilePtrOutput values.
 // You can construct a concrete instance of `JobNewClusterInitScriptFilePtrInput` via:
 //
-//          JobNewClusterInitScriptFileArgs{...}
+//	        JobNewClusterInitScriptFileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterInitScriptFilePtrInput interface {
 	pulumi.Input
 
@@ -11511,7 +11511,7 @@ type JobNewClusterInitScriptGcs struct {
 // JobNewClusterInitScriptGcsInput is an input type that accepts JobNewClusterInitScriptGcsArgs and JobNewClusterInitScriptGcsOutput values.
 // You can construct a concrete instance of `JobNewClusterInitScriptGcsInput` via:
 //
-//          JobNewClusterInitScriptGcsArgs{...}
+//	JobNewClusterInitScriptGcsArgs{...}
 type JobNewClusterInitScriptGcsInput interface {
 	pulumi.Input
 
@@ -11546,11 +11546,11 @@ func (i JobNewClusterInitScriptGcsArgs) ToJobNewClusterInitScriptGcsPtrOutputWit
 // JobNewClusterInitScriptGcsPtrInput is an input type that accepts JobNewClusterInitScriptGcsArgs, JobNewClusterInitScriptGcsPtr and JobNewClusterInitScriptGcsPtrOutput values.
 // You can construct a concrete instance of `JobNewClusterInitScriptGcsPtrInput` via:
 //
-//          JobNewClusterInitScriptGcsArgs{...}
+//	        JobNewClusterInitScriptGcsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterInitScriptGcsPtrInput interface {
 	pulumi.Input
 
@@ -11650,7 +11650,7 @@ type JobNewClusterInitScriptS3 struct {
 // JobNewClusterInitScriptS3Input is an input type that accepts JobNewClusterInitScriptS3Args and JobNewClusterInitScriptS3Output values.
 // You can construct a concrete instance of `JobNewClusterInitScriptS3Input` via:
 //
-//          JobNewClusterInitScriptS3Args{...}
+//	JobNewClusterInitScriptS3Args{...}
 type JobNewClusterInitScriptS3Input interface {
 	pulumi.Input
 
@@ -11691,11 +11691,11 @@ func (i JobNewClusterInitScriptS3Args) ToJobNewClusterInitScriptS3PtrOutputWithC
 // JobNewClusterInitScriptS3PtrInput is an input type that accepts JobNewClusterInitScriptS3Args, JobNewClusterInitScriptS3Ptr and JobNewClusterInitScriptS3PtrOutput values.
 // You can construct a concrete instance of `JobNewClusterInitScriptS3PtrInput` via:
 //
-//          JobNewClusterInitScriptS3Args{...}
+//	        JobNewClusterInitScriptS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterInitScriptS3PtrInput interface {
 	pulumi.Input
 
@@ -11867,7 +11867,7 @@ type JobNewClusterWorkloadType struct {
 // JobNewClusterWorkloadTypeInput is an input type that accepts JobNewClusterWorkloadTypeArgs and JobNewClusterWorkloadTypeOutput values.
 // You can construct a concrete instance of `JobNewClusterWorkloadTypeInput` via:
 //
-//          JobNewClusterWorkloadTypeArgs{...}
+//	JobNewClusterWorkloadTypeArgs{...}
 type JobNewClusterWorkloadTypeInput interface {
 	pulumi.Input
 
@@ -11902,11 +11902,11 @@ func (i JobNewClusterWorkloadTypeArgs) ToJobNewClusterWorkloadTypePtrOutputWithC
 // JobNewClusterWorkloadTypePtrInput is an input type that accepts JobNewClusterWorkloadTypeArgs, JobNewClusterWorkloadTypePtr and JobNewClusterWorkloadTypePtrOutput values.
 // You can construct a concrete instance of `JobNewClusterWorkloadTypePtrInput` via:
 //
-//          JobNewClusterWorkloadTypeArgs{...}
+//	        JobNewClusterWorkloadTypeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterWorkloadTypePtrInput interface {
 	pulumi.Input
 
@@ -12001,7 +12001,7 @@ type JobNewClusterWorkloadTypeClients struct {
 // JobNewClusterWorkloadTypeClientsInput is an input type that accepts JobNewClusterWorkloadTypeClientsArgs and JobNewClusterWorkloadTypeClientsOutput values.
 // You can construct a concrete instance of `JobNewClusterWorkloadTypeClientsInput` via:
 //
-//          JobNewClusterWorkloadTypeClientsArgs{...}
+//	JobNewClusterWorkloadTypeClientsArgs{...}
 type JobNewClusterWorkloadTypeClientsInput interface {
 	pulumi.Input
 
@@ -12037,11 +12037,11 @@ func (i JobNewClusterWorkloadTypeClientsArgs) ToJobNewClusterWorkloadTypeClients
 // JobNewClusterWorkloadTypeClientsPtrInput is an input type that accepts JobNewClusterWorkloadTypeClientsArgs, JobNewClusterWorkloadTypeClientsPtr and JobNewClusterWorkloadTypeClientsPtrOutput values.
 // You can construct a concrete instance of `JobNewClusterWorkloadTypeClientsPtrInput` via:
 //
-//          JobNewClusterWorkloadTypeClientsArgs{...}
+//	        JobNewClusterWorkloadTypeClientsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNewClusterWorkloadTypeClientsPtrInput interface {
 	pulumi.Input
 
@@ -12151,7 +12151,7 @@ type JobNotebookTask struct {
 // JobNotebookTaskInput is an input type that accepts JobNotebookTaskArgs and JobNotebookTaskOutput values.
 // You can construct a concrete instance of `JobNotebookTaskInput` via:
 //
-//          JobNotebookTaskArgs{...}
+//	JobNotebookTaskArgs{...}
 type JobNotebookTaskInput interface {
 	pulumi.Input
 
@@ -12189,11 +12189,11 @@ func (i JobNotebookTaskArgs) ToJobNotebookTaskPtrOutputWithContext(ctx context.C
 // JobNotebookTaskPtrInput is an input type that accepts JobNotebookTaskArgs, JobNotebookTaskPtr and JobNotebookTaskPtrOutput values.
 // You can construct a concrete instance of `JobNotebookTaskPtrInput` via:
 //
-//          JobNotebookTaskArgs{...}
+//	        JobNotebookTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobNotebookTaskPtrInput interface {
 	pulumi.Input
 
@@ -12305,7 +12305,7 @@ type JobPipelineTask struct {
 // JobPipelineTaskInput is an input type that accepts JobPipelineTaskArgs and JobPipelineTaskOutput values.
 // You can construct a concrete instance of `JobPipelineTaskInput` via:
 //
-//          JobPipelineTaskArgs{...}
+//	JobPipelineTaskArgs{...}
 type JobPipelineTaskInput interface {
 	pulumi.Input
 
@@ -12341,11 +12341,11 @@ func (i JobPipelineTaskArgs) ToJobPipelineTaskPtrOutputWithContext(ctx context.C
 // JobPipelineTaskPtrInput is an input type that accepts JobPipelineTaskArgs, JobPipelineTaskPtr and JobPipelineTaskPtrOutput values.
 // You can construct a concrete instance of `JobPipelineTaskPtrInput` via:
 //
-//          JobPipelineTaskArgs{...}
+//	        JobPipelineTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobPipelineTaskPtrInput interface {
 	pulumi.Input
 
@@ -12448,7 +12448,7 @@ type JobPythonWheelTask struct {
 // JobPythonWheelTaskInput is an input type that accepts JobPythonWheelTaskArgs and JobPythonWheelTaskOutput values.
 // You can construct a concrete instance of `JobPythonWheelTaskInput` via:
 //
-//          JobPythonWheelTaskArgs{...}
+//	JobPythonWheelTaskArgs{...}
 type JobPythonWheelTaskInput interface {
 	pulumi.Input
 
@@ -12490,11 +12490,11 @@ func (i JobPythonWheelTaskArgs) ToJobPythonWheelTaskPtrOutputWithContext(ctx con
 // JobPythonWheelTaskPtrInput is an input type that accepts JobPythonWheelTaskArgs, JobPythonWheelTaskPtr and JobPythonWheelTaskPtrOutput values.
 // You can construct a concrete instance of `JobPythonWheelTaskPtrInput` via:
 //
-//          JobPythonWheelTaskArgs{...}
+//	        JobPythonWheelTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobPythonWheelTaskPtrInput interface {
 	pulumi.Input
 
@@ -12640,7 +12640,7 @@ type JobSchedule struct {
 // JobScheduleInput is an input type that accepts JobScheduleArgs and JobScheduleOutput values.
 // You can construct a concrete instance of `JobScheduleInput` via:
 //
-//          JobScheduleArgs{...}
+//	JobScheduleArgs{...}
 type JobScheduleInput interface {
 	pulumi.Input
 
@@ -12680,11 +12680,11 @@ func (i JobScheduleArgs) ToJobSchedulePtrOutputWithContext(ctx context.Context) 
 // JobSchedulePtrInput is an input type that accepts JobScheduleArgs, JobSchedulePtr and JobSchedulePtrOutput values.
 // You can construct a concrete instance of `JobSchedulePtrInput` via:
 //
-//          JobScheduleArgs{...}
+//	        JobScheduleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobSchedulePtrInput interface {
 	pulumi.Input
 
@@ -12814,7 +12814,7 @@ type JobSparkJarTask struct {
 // JobSparkJarTaskInput is an input type that accepts JobSparkJarTaskArgs and JobSparkJarTaskOutput values.
 // You can construct a concrete instance of `JobSparkJarTaskInput` via:
 //
-//          JobSparkJarTaskArgs{...}
+//	JobSparkJarTaskArgs{...}
 type JobSparkJarTaskInput interface {
 	pulumi.Input
 
@@ -12853,11 +12853,11 @@ func (i JobSparkJarTaskArgs) ToJobSparkJarTaskPtrOutputWithContext(ctx context.C
 // JobSparkJarTaskPtrInput is an input type that accepts JobSparkJarTaskArgs, JobSparkJarTaskPtr and JobSparkJarTaskPtrOutput values.
 // You can construct a concrete instance of `JobSparkJarTaskPtrInput` via:
 //
-//          JobSparkJarTaskArgs{...}
+//	        JobSparkJarTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobSparkJarTaskPtrInput interface {
 	pulumi.Input
 
@@ -12984,7 +12984,7 @@ type JobSparkPythonTask struct {
 // JobSparkPythonTaskInput is an input type that accepts JobSparkPythonTaskArgs and JobSparkPythonTaskOutput values.
 // You can construct a concrete instance of `JobSparkPythonTaskInput` via:
 //
-//          JobSparkPythonTaskArgs{...}
+//	JobSparkPythonTaskArgs{...}
 type JobSparkPythonTaskInput interface {
 	pulumi.Input
 
@@ -13022,11 +13022,11 @@ func (i JobSparkPythonTaskArgs) ToJobSparkPythonTaskPtrOutputWithContext(ctx con
 // JobSparkPythonTaskPtrInput is an input type that accepts JobSparkPythonTaskArgs, JobSparkPythonTaskPtr and JobSparkPythonTaskPtrOutput values.
 // You can construct a concrete instance of `JobSparkPythonTaskPtrInput` via:
 //
-//          JobSparkPythonTaskArgs{...}
+//	        JobSparkPythonTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobSparkPythonTaskPtrInput interface {
 	pulumi.Input
 
@@ -13138,7 +13138,7 @@ type JobSparkSubmitTask struct {
 // JobSparkSubmitTaskInput is an input type that accepts JobSparkSubmitTaskArgs and JobSparkSubmitTaskOutput values.
 // You can construct a concrete instance of `JobSparkSubmitTaskInput` via:
 //
-//          JobSparkSubmitTaskArgs{...}
+//	JobSparkSubmitTaskArgs{...}
 type JobSparkSubmitTaskInput interface {
 	pulumi.Input
 
@@ -13174,11 +13174,11 @@ func (i JobSparkSubmitTaskArgs) ToJobSparkSubmitTaskPtrOutputWithContext(ctx con
 // JobSparkSubmitTaskPtrInput is an input type that accepts JobSparkSubmitTaskArgs, JobSparkSubmitTaskPtr and JobSparkSubmitTaskPtrOutput values.
 // You can construct a concrete instance of `JobSparkSubmitTaskPtrInput` via:
 //
-//          JobSparkSubmitTaskArgs{...}
+//	        JobSparkSubmitTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobSparkSubmitTaskPtrInput interface {
 	pulumi.Input
 
@@ -13302,7 +13302,7 @@ type JobTask struct {
 // JobTaskInput is an input type that accepts JobTaskArgs and JobTaskOutput values.
 // You can construct a concrete instance of `JobTaskInput` via:
 //
-//          JobTaskArgs{...}
+//	JobTaskArgs{...}
 type JobTaskInput interface {
 	pulumi.Input
 
@@ -13357,7 +13357,7 @@ func (i JobTaskArgs) ToJobTaskOutputWithContext(ctx context.Context) JobTaskOutp
 // JobTaskArrayInput is an input type that accepts JobTaskArray and JobTaskArrayOutput values.
 // You can construct a concrete instance of `JobTaskArrayInput` via:
 //
-//          JobTaskArray{ JobTaskArgs{...} }
+//	JobTaskArray{ JobTaskArgs{...} }
 type JobTaskArrayInput interface {
 	pulumi.Input
 
@@ -13511,7 +13511,7 @@ type JobTaskDbtTask struct {
 // JobTaskDbtTaskInput is an input type that accepts JobTaskDbtTaskArgs and JobTaskDbtTaskOutput values.
 // You can construct a concrete instance of `JobTaskDbtTaskInput` via:
 //
-//          JobTaskDbtTaskArgs{...}
+//	JobTaskDbtTaskArgs{...}
 type JobTaskDbtTaskInput interface {
 	pulumi.Input
 
@@ -13548,11 +13548,11 @@ func (i JobTaskDbtTaskArgs) ToJobTaskDbtTaskPtrOutputWithContext(ctx context.Con
 // JobTaskDbtTaskPtrInput is an input type that accepts JobTaskDbtTaskArgs, JobTaskDbtTaskPtr and JobTaskDbtTaskPtrOutput values.
 // You can construct a concrete instance of `JobTaskDbtTaskPtrInput` via:
 //
-//          JobTaskDbtTaskArgs{...}
+//	        JobTaskDbtTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskDbtTaskPtrInput interface {
 	pulumi.Input
 
@@ -13672,7 +13672,7 @@ type JobTaskDependsOn struct {
 // JobTaskDependsOnInput is an input type that accepts JobTaskDependsOnArgs and JobTaskDependsOnOutput values.
 // You can construct a concrete instance of `JobTaskDependsOnInput` via:
 //
-//          JobTaskDependsOnArgs{...}
+//	JobTaskDependsOnArgs{...}
 type JobTaskDependsOnInput interface {
 	pulumi.Input
 
@@ -13699,7 +13699,7 @@ func (i JobTaskDependsOnArgs) ToJobTaskDependsOnOutputWithContext(ctx context.Co
 // JobTaskDependsOnArrayInput is an input type that accepts JobTaskDependsOnArray and JobTaskDependsOnArrayOutput values.
 // You can construct a concrete instance of `JobTaskDependsOnArrayInput` via:
 //
-//          JobTaskDependsOnArray{ JobTaskDependsOnArgs{...} }
+//	JobTaskDependsOnArray{ JobTaskDependsOnArgs{...} }
 type JobTaskDependsOnArrayInput interface {
 	pulumi.Input
 
@@ -13774,7 +13774,7 @@ type JobTaskEmailNotifications struct {
 // JobTaskEmailNotificationsInput is an input type that accepts JobTaskEmailNotificationsArgs and JobTaskEmailNotificationsOutput values.
 // You can construct a concrete instance of `JobTaskEmailNotificationsInput` via:
 //
-//          JobTaskEmailNotificationsArgs{...}
+//	JobTaskEmailNotificationsArgs{...}
 type JobTaskEmailNotificationsInput interface {
 	pulumi.Input
 
@@ -13817,11 +13817,11 @@ func (i JobTaskEmailNotificationsArgs) ToJobTaskEmailNotificationsPtrOutputWithC
 // JobTaskEmailNotificationsPtrInput is an input type that accepts JobTaskEmailNotificationsArgs, JobTaskEmailNotificationsPtr and JobTaskEmailNotificationsPtrOutput values.
 // You can construct a concrete instance of `JobTaskEmailNotificationsPtrInput` via:
 //
-//          JobTaskEmailNotificationsArgs{...}
+//	        JobTaskEmailNotificationsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskEmailNotificationsPtrInput interface {
 	pulumi.Input
 
@@ -13980,7 +13980,7 @@ type JobTaskLibrary struct {
 // JobTaskLibraryInput is an input type that accepts JobTaskLibraryArgs and JobTaskLibraryOutput values.
 // You can construct a concrete instance of `JobTaskLibraryInput` via:
 //
-//          JobTaskLibraryArgs{...}
+//	JobTaskLibraryArgs{...}
 type JobTaskLibraryInput interface {
 	pulumi.Input
 
@@ -14012,7 +14012,7 @@ func (i JobTaskLibraryArgs) ToJobTaskLibraryOutputWithContext(ctx context.Contex
 // JobTaskLibraryArrayInput is an input type that accepts JobTaskLibraryArray and JobTaskLibraryArrayOutput values.
 // You can construct a concrete instance of `JobTaskLibraryArrayInput` via:
 //
-//          JobTaskLibraryArray{ JobTaskLibraryArgs{...} }
+//	JobTaskLibraryArray{ JobTaskLibraryArgs{...} }
 type JobTaskLibraryArrayInput interface {
 	pulumi.Input
 
@@ -14100,7 +14100,7 @@ type JobTaskLibraryCran struct {
 // JobTaskLibraryCranInput is an input type that accepts JobTaskLibraryCranArgs and JobTaskLibraryCranOutput values.
 // You can construct a concrete instance of `JobTaskLibraryCranInput` via:
 //
-//          JobTaskLibraryCranArgs{...}
+//	JobTaskLibraryCranArgs{...}
 type JobTaskLibraryCranInput interface {
 	pulumi.Input
 
@@ -14136,11 +14136,11 @@ func (i JobTaskLibraryCranArgs) ToJobTaskLibraryCranPtrOutputWithContext(ctx con
 // JobTaskLibraryCranPtrInput is an input type that accepts JobTaskLibraryCranArgs, JobTaskLibraryCranPtr and JobTaskLibraryCranPtrOutput values.
 // You can construct a concrete instance of `JobTaskLibraryCranPtrInput` via:
 //
-//          JobTaskLibraryCranArgs{...}
+//	        JobTaskLibraryCranArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskLibraryCranPtrInput interface {
 	pulumi.Input
 
@@ -14249,7 +14249,7 @@ type JobTaskLibraryMaven struct {
 // JobTaskLibraryMavenInput is an input type that accepts JobTaskLibraryMavenArgs and JobTaskLibraryMavenOutput values.
 // You can construct a concrete instance of `JobTaskLibraryMavenInput` via:
 //
-//          JobTaskLibraryMavenArgs{...}
+//	JobTaskLibraryMavenArgs{...}
 type JobTaskLibraryMavenInput interface {
 	pulumi.Input
 
@@ -14286,11 +14286,11 @@ func (i JobTaskLibraryMavenArgs) ToJobTaskLibraryMavenPtrOutputWithContext(ctx c
 // JobTaskLibraryMavenPtrInput is an input type that accepts JobTaskLibraryMavenArgs, JobTaskLibraryMavenPtr and JobTaskLibraryMavenPtrOutput values.
 // You can construct a concrete instance of `JobTaskLibraryMavenPtrInput` via:
 //
-//          JobTaskLibraryMavenArgs{...}
+//	        JobTaskLibraryMavenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskLibraryMavenPtrInput interface {
 	pulumi.Input
 
@@ -14411,7 +14411,7 @@ type JobTaskLibraryPypi struct {
 // JobTaskLibraryPypiInput is an input type that accepts JobTaskLibraryPypiArgs and JobTaskLibraryPypiOutput values.
 // You can construct a concrete instance of `JobTaskLibraryPypiInput` via:
 //
-//          JobTaskLibraryPypiArgs{...}
+//	JobTaskLibraryPypiArgs{...}
 type JobTaskLibraryPypiInput interface {
 	pulumi.Input
 
@@ -14447,11 +14447,11 @@ func (i JobTaskLibraryPypiArgs) ToJobTaskLibraryPypiPtrOutputWithContext(ctx con
 // JobTaskLibraryPypiPtrInput is an input type that accepts JobTaskLibraryPypiArgs, JobTaskLibraryPypiPtr and JobTaskLibraryPypiPtrOutput values.
 // You can construct a concrete instance of `JobTaskLibraryPypiPtrInput` via:
 //
-//          JobTaskLibraryPypiArgs{...}
+//	        JobTaskLibraryPypiArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskLibraryPypiPtrInput interface {
 	pulumi.Input
 
@@ -14584,7 +14584,7 @@ type JobTaskNewCluster struct {
 // JobTaskNewClusterInput is an input type that accepts JobTaskNewClusterArgs and JobTaskNewClusterOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterInput` via:
 //
-//          JobTaskNewClusterArgs{...}
+//	JobTaskNewClusterArgs{...}
 type JobTaskNewClusterInput interface {
 	pulumi.Input
 
@@ -14645,11 +14645,11 @@ func (i JobTaskNewClusterArgs) ToJobTaskNewClusterPtrOutputWithContext(ctx conte
 // JobTaskNewClusterPtrInput is an input type that accepts JobTaskNewClusterArgs, JobTaskNewClusterPtr and JobTaskNewClusterPtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterPtrInput` via:
 //
-//          JobTaskNewClusterArgs{...}
+//	        JobTaskNewClusterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterPtrInput interface {
 	pulumi.Input
 
@@ -15082,7 +15082,7 @@ type JobTaskNewClusterAutoscale struct {
 // JobTaskNewClusterAutoscaleInput is an input type that accepts JobTaskNewClusterAutoscaleArgs and JobTaskNewClusterAutoscaleOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterAutoscaleInput` via:
 //
-//          JobTaskNewClusterAutoscaleArgs{...}
+//	JobTaskNewClusterAutoscaleArgs{...}
 type JobTaskNewClusterAutoscaleInput interface {
 	pulumi.Input
 
@@ -15118,11 +15118,11 @@ func (i JobTaskNewClusterAutoscaleArgs) ToJobTaskNewClusterAutoscalePtrOutputWit
 // JobTaskNewClusterAutoscalePtrInput is an input type that accepts JobTaskNewClusterAutoscaleArgs, JobTaskNewClusterAutoscalePtr and JobTaskNewClusterAutoscalePtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterAutoscalePtrInput` via:
 //
-//          JobTaskNewClusterAutoscaleArgs{...}
+//	        JobTaskNewClusterAutoscaleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterAutoscalePtrInput interface {
 	pulumi.Input
 
@@ -15236,7 +15236,7 @@ type JobTaskNewClusterAwsAttributes struct {
 // JobTaskNewClusterAwsAttributesInput is an input type that accepts JobTaskNewClusterAwsAttributesArgs and JobTaskNewClusterAwsAttributesOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterAwsAttributesInput` via:
 //
-//          JobTaskNewClusterAwsAttributesArgs{...}
+//	JobTaskNewClusterAwsAttributesArgs{...}
 type JobTaskNewClusterAwsAttributesInput interface {
 	pulumi.Input
 
@@ -15278,11 +15278,11 @@ func (i JobTaskNewClusterAwsAttributesArgs) ToJobTaskNewClusterAwsAttributesPtrO
 // JobTaskNewClusterAwsAttributesPtrInput is an input type that accepts JobTaskNewClusterAwsAttributesArgs, JobTaskNewClusterAwsAttributesPtr and JobTaskNewClusterAwsAttributesPtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterAwsAttributesPtrInput` via:
 //
-//          JobTaskNewClusterAwsAttributesArgs{...}
+//	        JobTaskNewClusterAwsAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterAwsAttributesPtrInput interface {
 	pulumi.Input
 
@@ -15469,7 +15469,7 @@ type JobTaskNewClusterAzureAttributes struct {
 // JobTaskNewClusterAzureAttributesInput is an input type that accepts JobTaskNewClusterAzureAttributesArgs and JobTaskNewClusterAzureAttributesOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterAzureAttributesInput` via:
 //
-//          JobTaskNewClusterAzureAttributesArgs{...}
+//	JobTaskNewClusterAzureAttributesArgs{...}
 type JobTaskNewClusterAzureAttributesInput interface {
 	pulumi.Input
 
@@ -15506,11 +15506,11 @@ func (i JobTaskNewClusterAzureAttributesArgs) ToJobTaskNewClusterAzureAttributes
 // JobTaskNewClusterAzureAttributesPtrInput is an input type that accepts JobTaskNewClusterAzureAttributesArgs, JobTaskNewClusterAzureAttributesPtr and JobTaskNewClusterAzureAttributesPtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterAzureAttributesPtrInput` via:
 //
-//          JobTaskNewClusterAzureAttributesArgs{...}
+//	        JobTaskNewClusterAzureAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterAzureAttributesPtrInput interface {
 	pulumi.Input
 
@@ -15631,7 +15631,7 @@ type JobTaskNewClusterClusterLogConf struct {
 // JobTaskNewClusterClusterLogConfInput is an input type that accepts JobTaskNewClusterClusterLogConfArgs and JobTaskNewClusterClusterLogConfOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterClusterLogConfInput` via:
 //
-//          JobTaskNewClusterClusterLogConfArgs{...}
+//	JobTaskNewClusterClusterLogConfArgs{...}
 type JobTaskNewClusterClusterLogConfInput interface {
 	pulumi.Input
 
@@ -15667,11 +15667,11 @@ func (i JobTaskNewClusterClusterLogConfArgs) ToJobTaskNewClusterClusterLogConfPt
 // JobTaskNewClusterClusterLogConfPtrInput is an input type that accepts JobTaskNewClusterClusterLogConfArgs, JobTaskNewClusterClusterLogConfPtr and JobTaskNewClusterClusterLogConfPtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterClusterLogConfPtrInput` via:
 //
-//          JobTaskNewClusterClusterLogConfArgs{...}
+//	        JobTaskNewClusterClusterLogConfArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterClusterLogConfPtrInput interface {
 	pulumi.Input
 
@@ -15778,7 +15778,7 @@ type JobTaskNewClusterClusterLogConfDbfs struct {
 // JobTaskNewClusterClusterLogConfDbfsInput is an input type that accepts JobTaskNewClusterClusterLogConfDbfsArgs and JobTaskNewClusterClusterLogConfDbfsOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterClusterLogConfDbfsInput` via:
 //
-//          JobTaskNewClusterClusterLogConfDbfsArgs{...}
+//	JobTaskNewClusterClusterLogConfDbfsArgs{...}
 type JobTaskNewClusterClusterLogConfDbfsInput interface {
 	pulumi.Input
 
@@ -15813,11 +15813,11 @@ func (i JobTaskNewClusterClusterLogConfDbfsArgs) ToJobTaskNewClusterClusterLogCo
 // JobTaskNewClusterClusterLogConfDbfsPtrInput is an input type that accepts JobTaskNewClusterClusterLogConfDbfsArgs, JobTaskNewClusterClusterLogConfDbfsPtr and JobTaskNewClusterClusterLogConfDbfsPtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterClusterLogConfDbfsPtrInput` via:
 //
-//          JobTaskNewClusterClusterLogConfDbfsArgs{...}
+//	        JobTaskNewClusterClusterLogConfDbfsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterClusterLogConfDbfsPtrInput interface {
 	pulumi.Input
 
@@ -15917,7 +15917,7 @@ type JobTaskNewClusterClusterLogConfS3 struct {
 // JobTaskNewClusterClusterLogConfS3Input is an input type that accepts JobTaskNewClusterClusterLogConfS3Args and JobTaskNewClusterClusterLogConfS3Output values.
 // You can construct a concrete instance of `JobTaskNewClusterClusterLogConfS3Input` via:
 //
-//          JobTaskNewClusterClusterLogConfS3Args{...}
+//	JobTaskNewClusterClusterLogConfS3Args{...}
 type JobTaskNewClusterClusterLogConfS3Input interface {
 	pulumi.Input
 
@@ -15958,11 +15958,11 @@ func (i JobTaskNewClusterClusterLogConfS3Args) ToJobTaskNewClusterClusterLogConf
 // JobTaskNewClusterClusterLogConfS3PtrInput is an input type that accepts JobTaskNewClusterClusterLogConfS3Args, JobTaskNewClusterClusterLogConfS3Ptr and JobTaskNewClusterClusterLogConfS3PtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterClusterLogConfS3PtrInput` via:
 //
-//          JobTaskNewClusterClusterLogConfS3Args{...}
+//	        JobTaskNewClusterClusterLogConfS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterClusterLogConfS3PtrInput interface {
 	pulumi.Input
 
@@ -16136,7 +16136,7 @@ type JobTaskNewClusterDockerImage struct {
 // JobTaskNewClusterDockerImageInput is an input type that accepts JobTaskNewClusterDockerImageArgs and JobTaskNewClusterDockerImageOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterDockerImageInput` via:
 //
-//          JobTaskNewClusterDockerImageArgs{...}
+//	JobTaskNewClusterDockerImageArgs{...}
 type JobTaskNewClusterDockerImageInput interface {
 	pulumi.Input
 
@@ -16173,11 +16173,11 @@ func (i JobTaskNewClusterDockerImageArgs) ToJobTaskNewClusterDockerImagePtrOutpu
 // JobTaskNewClusterDockerImagePtrInput is an input type that accepts JobTaskNewClusterDockerImageArgs, JobTaskNewClusterDockerImagePtr and JobTaskNewClusterDockerImagePtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterDockerImagePtrInput` via:
 //
-//          JobTaskNewClusterDockerImageArgs{...}
+//	        JobTaskNewClusterDockerImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterDockerImagePtrInput interface {
 	pulumi.Input
 
@@ -16287,7 +16287,7 @@ type JobTaskNewClusterDockerImageBasicAuth struct {
 // JobTaskNewClusterDockerImageBasicAuthInput is an input type that accepts JobTaskNewClusterDockerImageBasicAuthArgs and JobTaskNewClusterDockerImageBasicAuthOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterDockerImageBasicAuthInput` via:
 //
-//          JobTaskNewClusterDockerImageBasicAuthArgs{...}
+//	JobTaskNewClusterDockerImageBasicAuthArgs{...}
 type JobTaskNewClusterDockerImageBasicAuthInput interface {
 	pulumi.Input
 
@@ -16323,11 +16323,11 @@ func (i JobTaskNewClusterDockerImageBasicAuthArgs) ToJobTaskNewClusterDockerImag
 // JobTaskNewClusterDockerImageBasicAuthPtrInput is an input type that accepts JobTaskNewClusterDockerImageBasicAuthArgs, JobTaskNewClusterDockerImageBasicAuthPtr and JobTaskNewClusterDockerImageBasicAuthPtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterDockerImageBasicAuthPtrInput` via:
 //
-//          JobTaskNewClusterDockerImageBasicAuthArgs{...}
+//	        JobTaskNewClusterDockerImageBasicAuthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterDockerImageBasicAuthPtrInput interface {
 	pulumi.Input
 
@@ -16438,7 +16438,7 @@ type JobTaskNewClusterGcpAttributes struct {
 // JobTaskNewClusterGcpAttributesInput is an input type that accepts JobTaskNewClusterGcpAttributesArgs and JobTaskNewClusterGcpAttributesOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterGcpAttributesInput` via:
 //
-//          JobTaskNewClusterGcpAttributesArgs{...}
+//	JobTaskNewClusterGcpAttributesArgs{...}
 type JobTaskNewClusterGcpAttributesInput interface {
 	pulumi.Input
 
@@ -16477,11 +16477,11 @@ func (i JobTaskNewClusterGcpAttributesArgs) ToJobTaskNewClusterGcpAttributesPtrO
 // JobTaskNewClusterGcpAttributesPtrInput is an input type that accepts JobTaskNewClusterGcpAttributesArgs, JobTaskNewClusterGcpAttributesPtr and JobTaskNewClusterGcpAttributesPtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterGcpAttributesPtrInput` via:
 //
-//          JobTaskNewClusterGcpAttributesArgs{...}
+//	        JobTaskNewClusterGcpAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterGcpAttributesPtrInput interface {
 	pulumi.Input
 
@@ -16630,7 +16630,7 @@ type JobTaskNewClusterInitScript struct {
 // JobTaskNewClusterInitScriptInput is an input type that accepts JobTaskNewClusterInitScriptArgs and JobTaskNewClusterInitScriptOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterInitScriptInput` via:
 //
-//          JobTaskNewClusterInitScriptArgs{...}
+//	JobTaskNewClusterInitScriptArgs{...}
 type JobTaskNewClusterInitScriptInput interface {
 	pulumi.Input
 
@@ -16660,7 +16660,7 @@ func (i JobTaskNewClusterInitScriptArgs) ToJobTaskNewClusterInitScriptOutputWith
 // JobTaskNewClusterInitScriptArrayInput is an input type that accepts JobTaskNewClusterInitScriptArray and JobTaskNewClusterInitScriptArrayOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterInitScriptArrayInput` via:
 //
-//          JobTaskNewClusterInitScriptArray{ JobTaskNewClusterInitScriptArgs{...} }
+//	JobTaskNewClusterInitScriptArray{ JobTaskNewClusterInitScriptArgs{...} }
 type JobTaskNewClusterInitScriptArrayInput interface {
 	pulumi.Input
 
@@ -16739,7 +16739,7 @@ type JobTaskNewClusterInitScriptDbfs struct {
 // JobTaskNewClusterInitScriptDbfsInput is an input type that accepts JobTaskNewClusterInitScriptDbfsArgs and JobTaskNewClusterInitScriptDbfsOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterInitScriptDbfsInput` via:
 //
-//          JobTaskNewClusterInitScriptDbfsArgs{...}
+//	JobTaskNewClusterInitScriptDbfsArgs{...}
 type JobTaskNewClusterInitScriptDbfsInput interface {
 	pulumi.Input
 
@@ -16774,11 +16774,11 @@ func (i JobTaskNewClusterInitScriptDbfsArgs) ToJobTaskNewClusterInitScriptDbfsPt
 // JobTaskNewClusterInitScriptDbfsPtrInput is an input type that accepts JobTaskNewClusterInitScriptDbfsArgs, JobTaskNewClusterInitScriptDbfsPtr and JobTaskNewClusterInitScriptDbfsPtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterInitScriptDbfsPtrInput` via:
 //
-//          JobTaskNewClusterInitScriptDbfsArgs{...}
+//	        JobTaskNewClusterInitScriptDbfsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterInitScriptDbfsPtrInput interface {
 	pulumi.Input
 
@@ -16872,7 +16872,7 @@ type JobTaskNewClusterInitScriptFile struct {
 // JobTaskNewClusterInitScriptFileInput is an input type that accepts JobTaskNewClusterInitScriptFileArgs and JobTaskNewClusterInitScriptFileOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterInitScriptFileInput` via:
 //
-//          JobTaskNewClusterInitScriptFileArgs{...}
+//	JobTaskNewClusterInitScriptFileArgs{...}
 type JobTaskNewClusterInitScriptFileInput interface {
 	pulumi.Input
 
@@ -16907,11 +16907,11 @@ func (i JobTaskNewClusterInitScriptFileArgs) ToJobTaskNewClusterInitScriptFilePt
 // JobTaskNewClusterInitScriptFilePtrInput is an input type that accepts JobTaskNewClusterInitScriptFileArgs, JobTaskNewClusterInitScriptFilePtr and JobTaskNewClusterInitScriptFilePtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterInitScriptFilePtrInput` via:
 //
-//          JobTaskNewClusterInitScriptFileArgs{...}
+//	        JobTaskNewClusterInitScriptFileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterInitScriptFilePtrInput interface {
 	pulumi.Input
 
@@ -17005,7 +17005,7 @@ type JobTaskNewClusterInitScriptGcs struct {
 // JobTaskNewClusterInitScriptGcsInput is an input type that accepts JobTaskNewClusterInitScriptGcsArgs and JobTaskNewClusterInitScriptGcsOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterInitScriptGcsInput` via:
 //
-//          JobTaskNewClusterInitScriptGcsArgs{...}
+//	JobTaskNewClusterInitScriptGcsArgs{...}
 type JobTaskNewClusterInitScriptGcsInput interface {
 	pulumi.Input
 
@@ -17040,11 +17040,11 @@ func (i JobTaskNewClusterInitScriptGcsArgs) ToJobTaskNewClusterInitScriptGcsPtrO
 // JobTaskNewClusterInitScriptGcsPtrInput is an input type that accepts JobTaskNewClusterInitScriptGcsArgs, JobTaskNewClusterInitScriptGcsPtr and JobTaskNewClusterInitScriptGcsPtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterInitScriptGcsPtrInput` via:
 //
-//          JobTaskNewClusterInitScriptGcsArgs{...}
+//	        JobTaskNewClusterInitScriptGcsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterInitScriptGcsPtrInput interface {
 	pulumi.Input
 
@@ -17144,7 +17144,7 @@ type JobTaskNewClusterInitScriptS3 struct {
 // JobTaskNewClusterInitScriptS3Input is an input type that accepts JobTaskNewClusterInitScriptS3Args and JobTaskNewClusterInitScriptS3Output values.
 // You can construct a concrete instance of `JobTaskNewClusterInitScriptS3Input` via:
 //
-//          JobTaskNewClusterInitScriptS3Args{...}
+//	JobTaskNewClusterInitScriptS3Args{...}
 type JobTaskNewClusterInitScriptS3Input interface {
 	pulumi.Input
 
@@ -17185,11 +17185,11 @@ func (i JobTaskNewClusterInitScriptS3Args) ToJobTaskNewClusterInitScriptS3PtrOut
 // JobTaskNewClusterInitScriptS3PtrInput is an input type that accepts JobTaskNewClusterInitScriptS3Args, JobTaskNewClusterInitScriptS3Ptr and JobTaskNewClusterInitScriptS3PtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterInitScriptS3PtrInput` via:
 //
-//          JobTaskNewClusterInitScriptS3Args{...}
+//	        JobTaskNewClusterInitScriptS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterInitScriptS3PtrInput interface {
 	pulumi.Input
 
@@ -17361,7 +17361,7 @@ type JobTaskNewClusterWorkloadType struct {
 // JobTaskNewClusterWorkloadTypeInput is an input type that accepts JobTaskNewClusterWorkloadTypeArgs and JobTaskNewClusterWorkloadTypeOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterWorkloadTypeInput` via:
 //
-//          JobTaskNewClusterWorkloadTypeArgs{...}
+//	JobTaskNewClusterWorkloadTypeArgs{...}
 type JobTaskNewClusterWorkloadTypeInput interface {
 	pulumi.Input
 
@@ -17396,11 +17396,11 @@ func (i JobTaskNewClusterWorkloadTypeArgs) ToJobTaskNewClusterWorkloadTypePtrOut
 // JobTaskNewClusterWorkloadTypePtrInput is an input type that accepts JobTaskNewClusterWorkloadTypeArgs, JobTaskNewClusterWorkloadTypePtr and JobTaskNewClusterWorkloadTypePtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterWorkloadTypePtrInput` via:
 //
-//          JobTaskNewClusterWorkloadTypeArgs{...}
+//	        JobTaskNewClusterWorkloadTypeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterWorkloadTypePtrInput interface {
 	pulumi.Input
 
@@ -17495,7 +17495,7 @@ type JobTaskNewClusterWorkloadTypeClients struct {
 // JobTaskNewClusterWorkloadTypeClientsInput is an input type that accepts JobTaskNewClusterWorkloadTypeClientsArgs and JobTaskNewClusterWorkloadTypeClientsOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterWorkloadTypeClientsInput` via:
 //
-//          JobTaskNewClusterWorkloadTypeClientsArgs{...}
+//	JobTaskNewClusterWorkloadTypeClientsArgs{...}
 type JobTaskNewClusterWorkloadTypeClientsInput interface {
 	pulumi.Input
 
@@ -17531,11 +17531,11 @@ func (i JobTaskNewClusterWorkloadTypeClientsArgs) ToJobTaskNewClusterWorkloadTyp
 // JobTaskNewClusterWorkloadTypeClientsPtrInput is an input type that accepts JobTaskNewClusterWorkloadTypeClientsArgs, JobTaskNewClusterWorkloadTypeClientsPtr and JobTaskNewClusterWorkloadTypeClientsPtrOutput values.
 // You can construct a concrete instance of `JobTaskNewClusterWorkloadTypeClientsPtrInput` via:
 //
-//          JobTaskNewClusterWorkloadTypeClientsArgs{...}
+//	        JobTaskNewClusterWorkloadTypeClientsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNewClusterWorkloadTypeClientsPtrInput interface {
 	pulumi.Input
 
@@ -17645,7 +17645,7 @@ type JobTaskNotebookTask struct {
 // JobTaskNotebookTaskInput is an input type that accepts JobTaskNotebookTaskArgs and JobTaskNotebookTaskOutput values.
 // You can construct a concrete instance of `JobTaskNotebookTaskInput` via:
 //
-//          JobTaskNotebookTaskArgs{...}
+//	JobTaskNotebookTaskArgs{...}
 type JobTaskNotebookTaskInput interface {
 	pulumi.Input
 
@@ -17683,11 +17683,11 @@ func (i JobTaskNotebookTaskArgs) ToJobTaskNotebookTaskPtrOutputWithContext(ctx c
 // JobTaskNotebookTaskPtrInput is an input type that accepts JobTaskNotebookTaskArgs, JobTaskNotebookTaskPtr and JobTaskNotebookTaskPtrOutput values.
 // You can construct a concrete instance of `JobTaskNotebookTaskPtrInput` via:
 //
-//          JobTaskNotebookTaskArgs{...}
+//	        JobTaskNotebookTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskNotebookTaskPtrInput interface {
 	pulumi.Input
 
@@ -17799,7 +17799,7 @@ type JobTaskPipelineTask struct {
 // JobTaskPipelineTaskInput is an input type that accepts JobTaskPipelineTaskArgs and JobTaskPipelineTaskOutput values.
 // You can construct a concrete instance of `JobTaskPipelineTaskInput` via:
 //
-//          JobTaskPipelineTaskArgs{...}
+//	JobTaskPipelineTaskArgs{...}
 type JobTaskPipelineTaskInput interface {
 	pulumi.Input
 
@@ -17835,11 +17835,11 @@ func (i JobTaskPipelineTaskArgs) ToJobTaskPipelineTaskPtrOutputWithContext(ctx c
 // JobTaskPipelineTaskPtrInput is an input type that accepts JobTaskPipelineTaskArgs, JobTaskPipelineTaskPtr and JobTaskPipelineTaskPtrOutput values.
 // You can construct a concrete instance of `JobTaskPipelineTaskPtrInput` via:
 //
-//          JobTaskPipelineTaskArgs{...}
+//	        JobTaskPipelineTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskPipelineTaskPtrInput interface {
 	pulumi.Input
 
@@ -17942,7 +17942,7 @@ type JobTaskPythonWheelTask struct {
 // JobTaskPythonWheelTaskInput is an input type that accepts JobTaskPythonWheelTaskArgs and JobTaskPythonWheelTaskOutput values.
 // You can construct a concrete instance of `JobTaskPythonWheelTaskInput` via:
 //
-//          JobTaskPythonWheelTaskArgs{...}
+//	JobTaskPythonWheelTaskArgs{...}
 type JobTaskPythonWheelTaskInput interface {
 	pulumi.Input
 
@@ -17984,11 +17984,11 @@ func (i JobTaskPythonWheelTaskArgs) ToJobTaskPythonWheelTaskPtrOutputWithContext
 // JobTaskPythonWheelTaskPtrInput is an input type that accepts JobTaskPythonWheelTaskArgs, JobTaskPythonWheelTaskPtr and JobTaskPythonWheelTaskPtrOutput values.
 // You can construct a concrete instance of `JobTaskPythonWheelTaskPtrInput` via:
 //
-//          JobTaskPythonWheelTaskArgs{...}
+//	        JobTaskPythonWheelTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskPythonWheelTaskPtrInput interface {
 	pulumi.Input
 
@@ -18133,7 +18133,7 @@ type JobTaskSparkJarTask struct {
 // JobTaskSparkJarTaskInput is an input type that accepts JobTaskSparkJarTaskArgs and JobTaskSparkJarTaskOutput values.
 // You can construct a concrete instance of `JobTaskSparkJarTaskInput` via:
 //
-//          JobTaskSparkJarTaskArgs{...}
+//	JobTaskSparkJarTaskArgs{...}
 type JobTaskSparkJarTaskInput interface {
 	pulumi.Input
 
@@ -18172,11 +18172,11 @@ func (i JobTaskSparkJarTaskArgs) ToJobTaskSparkJarTaskPtrOutputWithContext(ctx c
 // JobTaskSparkJarTaskPtrInput is an input type that accepts JobTaskSparkJarTaskArgs, JobTaskSparkJarTaskPtr and JobTaskSparkJarTaskPtrOutput values.
 // You can construct a concrete instance of `JobTaskSparkJarTaskPtrInput` via:
 //
-//          JobTaskSparkJarTaskArgs{...}
+//	        JobTaskSparkJarTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskSparkJarTaskPtrInput interface {
 	pulumi.Input
 
@@ -18303,7 +18303,7 @@ type JobTaskSparkPythonTask struct {
 // JobTaskSparkPythonTaskInput is an input type that accepts JobTaskSparkPythonTaskArgs and JobTaskSparkPythonTaskOutput values.
 // You can construct a concrete instance of `JobTaskSparkPythonTaskInput` via:
 //
-//          JobTaskSparkPythonTaskArgs{...}
+//	JobTaskSparkPythonTaskArgs{...}
 type JobTaskSparkPythonTaskInput interface {
 	pulumi.Input
 
@@ -18341,11 +18341,11 @@ func (i JobTaskSparkPythonTaskArgs) ToJobTaskSparkPythonTaskPtrOutputWithContext
 // JobTaskSparkPythonTaskPtrInput is an input type that accepts JobTaskSparkPythonTaskArgs, JobTaskSparkPythonTaskPtr and JobTaskSparkPythonTaskPtrOutput values.
 // You can construct a concrete instance of `JobTaskSparkPythonTaskPtrInput` via:
 //
-//          JobTaskSparkPythonTaskArgs{...}
+//	        JobTaskSparkPythonTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskSparkPythonTaskPtrInput interface {
 	pulumi.Input
 
@@ -18457,7 +18457,7 @@ type JobTaskSparkSubmitTask struct {
 // JobTaskSparkSubmitTaskInput is an input type that accepts JobTaskSparkSubmitTaskArgs and JobTaskSparkSubmitTaskOutput values.
 // You can construct a concrete instance of `JobTaskSparkSubmitTaskInput` via:
 //
-//          JobTaskSparkSubmitTaskArgs{...}
+//	JobTaskSparkSubmitTaskArgs{...}
 type JobTaskSparkSubmitTaskInput interface {
 	pulumi.Input
 
@@ -18493,11 +18493,11 @@ func (i JobTaskSparkSubmitTaskArgs) ToJobTaskSparkSubmitTaskPtrOutputWithContext
 // JobTaskSparkSubmitTaskPtrInput is an input type that accepts JobTaskSparkSubmitTaskArgs, JobTaskSparkSubmitTaskPtr and JobTaskSparkSubmitTaskPtrOutput values.
 // You can construct a concrete instance of `JobTaskSparkSubmitTaskPtrInput` via:
 //
-//          JobTaskSparkSubmitTaskArgs{...}
+//	        JobTaskSparkSubmitTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskSparkSubmitTaskPtrInput interface {
 	pulumi.Input
 
@@ -18598,7 +18598,7 @@ type JobTaskSqlTask struct {
 // JobTaskSqlTaskInput is an input type that accepts JobTaskSqlTaskArgs and JobTaskSqlTaskOutput values.
 // You can construct a concrete instance of `JobTaskSqlTaskInput` via:
 //
-//          JobTaskSqlTaskArgs{...}
+//	JobTaskSqlTaskArgs{...}
 type JobTaskSqlTaskInput interface {
 	pulumi.Input
 
@@ -18638,11 +18638,11 @@ func (i JobTaskSqlTaskArgs) ToJobTaskSqlTaskPtrOutputWithContext(ctx context.Con
 // JobTaskSqlTaskPtrInput is an input type that accepts JobTaskSqlTaskArgs, JobTaskSqlTaskPtr and JobTaskSqlTaskPtrOutput values.
 // You can construct a concrete instance of `JobTaskSqlTaskPtrInput` via:
 //
-//          JobTaskSqlTaskArgs{...}
+//	        JobTaskSqlTaskArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskSqlTaskPtrInput interface {
 	pulumi.Input
 
@@ -18790,7 +18790,7 @@ type JobTaskSqlTaskAlert struct {
 // JobTaskSqlTaskAlertInput is an input type that accepts JobTaskSqlTaskAlertArgs and JobTaskSqlTaskAlertOutput values.
 // You can construct a concrete instance of `JobTaskSqlTaskAlertInput` via:
 //
-//          JobTaskSqlTaskAlertArgs{...}
+//	JobTaskSqlTaskAlertArgs{...}
 type JobTaskSqlTaskAlertInput interface {
 	pulumi.Input
 
@@ -18825,11 +18825,11 @@ func (i JobTaskSqlTaskAlertArgs) ToJobTaskSqlTaskAlertPtrOutputWithContext(ctx c
 // JobTaskSqlTaskAlertPtrInput is an input type that accepts JobTaskSqlTaskAlertArgs, JobTaskSqlTaskAlertPtr and JobTaskSqlTaskAlertPtrOutput values.
 // You can construct a concrete instance of `JobTaskSqlTaskAlertPtrInput` via:
 //
-//          JobTaskSqlTaskAlertArgs{...}
+//	        JobTaskSqlTaskAlertArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskSqlTaskAlertPtrInput interface {
 	pulumi.Input
 
@@ -18923,7 +18923,7 @@ type JobTaskSqlTaskDashboard struct {
 // JobTaskSqlTaskDashboardInput is an input type that accepts JobTaskSqlTaskDashboardArgs and JobTaskSqlTaskDashboardOutput values.
 // You can construct a concrete instance of `JobTaskSqlTaskDashboardInput` via:
 //
-//          JobTaskSqlTaskDashboardArgs{...}
+//	JobTaskSqlTaskDashboardArgs{...}
 type JobTaskSqlTaskDashboardInput interface {
 	pulumi.Input
 
@@ -18958,11 +18958,11 @@ func (i JobTaskSqlTaskDashboardArgs) ToJobTaskSqlTaskDashboardPtrOutputWithConte
 // JobTaskSqlTaskDashboardPtrInput is an input type that accepts JobTaskSqlTaskDashboardArgs, JobTaskSqlTaskDashboardPtr and JobTaskSqlTaskDashboardPtrOutput values.
 // You can construct a concrete instance of `JobTaskSqlTaskDashboardPtrInput` via:
 //
-//          JobTaskSqlTaskDashboardArgs{...}
+//	        JobTaskSqlTaskDashboardArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskSqlTaskDashboardPtrInput interface {
 	pulumi.Input
 
@@ -19056,7 +19056,7 @@ type JobTaskSqlTaskQuery struct {
 // JobTaskSqlTaskQueryInput is an input type that accepts JobTaskSqlTaskQueryArgs and JobTaskSqlTaskQueryOutput values.
 // You can construct a concrete instance of `JobTaskSqlTaskQueryInput` via:
 //
-//          JobTaskSqlTaskQueryArgs{...}
+//	JobTaskSqlTaskQueryArgs{...}
 type JobTaskSqlTaskQueryInput interface {
 	pulumi.Input
 
@@ -19091,11 +19091,11 @@ func (i JobTaskSqlTaskQueryArgs) ToJobTaskSqlTaskQueryPtrOutputWithContext(ctx c
 // JobTaskSqlTaskQueryPtrInput is an input type that accepts JobTaskSqlTaskQueryArgs, JobTaskSqlTaskQueryPtr and JobTaskSqlTaskQueryPtrOutput values.
 // You can construct a concrete instance of `JobTaskSqlTaskQueryPtrInput` via:
 //
-//          JobTaskSqlTaskQueryArgs{...}
+//	        JobTaskSqlTaskQueryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobTaskSqlTaskQueryPtrInput interface {
 	pulumi.Input
 
@@ -19190,7 +19190,7 @@ type LibraryCran struct {
 // LibraryCranInput is an input type that accepts LibraryCranArgs and LibraryCranOutput values.
 // You can construct a concrete instance of `LibraryCranInput` via:
 //
-//          LibraryCranArgs{...}
+//	LibraryCranArgs{...}
 type LibraryCranInput interface {
 	pulumi.Input
 
@@ -19226,11 +19226,11 @@ func (i LibraryCranArgs) ToLibraryCranPtrOutputWithContext(ctx context.Context) 
 // LibraryCranPtrInput is an input type that accepts LibraryCranArgs, LibraryCranPtr and LibraryCranPtrOutput values.
 // You can construct a concrete instance of `LibraryCranPtrInput` via:
 //
-//          LibraryCranArgs{...}
+//	        LibraryCranArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LibraryCranPtrInput interface {
 	pulumi.Input
 
@@ -19339,7 +19339,7 @@ type LibraryMaven struct {
 // LibraryMavenInput is an input type that accepts LibraryMavenArgs and LibraryMavenOutput values.
 // You can construct a concrete instance of `LibraryMavenInput` via:
 //
-//          LibraryMavenArgs{...}
+//	LibraryMavenArgs{...}
 type LibraryMavenInput interface {
 	pulumi.Input
 
@@ -19376,11 +19376,11 @@ func (i LibraryMavenArgs) ToLibraryMavenPtrOutputWithContext(ctx context.Context
 // LibraryMavenPtrInput is an input type that accepts LibraryMavenArgs, LibraryMavenPtr and LibraryMavenPtrOutput values.
 // You can construct a concrete instance of `LibraryMavenPtrInput` via:
 //
-//          LibraryMavenArgs{...}
+//	        LibraryMavenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LibraryMavenPtrInput interface {
 	pulumi.Input
 
@@ -19501,7 +19501,7 @@ type LibraryPypi struct {
 // LibraryPypiInput is an input type that accepts LibraryPypiArgs and LibraryPypiOutput values.
 // You can construct a concrete instance of `LibraryPypiInput` via:
 //
-//          LibraryPypiArgs{...}
+//	LibraryPypiArgs{...}
 type LibraryPypiInput interface {
 	pulumi.Input
 
@@ -19537,11 +19537,11 @@ func (i LibraryPypiArgs) ToLibraryPypiPtrOutputWithContext(ctx context.Context) 
 // LibraryPypiPtrInput is an input type that accepts LibraryPypiArgs, LibraryPypiPtr and LibraryPypiPtrOutput values.
 // You can construct a concrete instance of `LibraryPypiPtrInput` via:
 //
-//          LibraryPypiArgs{...}
+//	        LibraryPypiArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LibraryPypiPtrInput interface {
 	pulumi.Input
 
@@ -19649,7 +19649,7 @@ type MetastoreDataAccessAwsIamRole struct {
 // MetastoreDataAccessAwsIamRoleInput is an input type that accepts MetastoreDataAccessAwsIamRoleArgs and MetastoreDataAccessAwsIamRoleOutput values.
 // You can construct a concrete instance of `MetastoreDataAccessAwsIamRoleInput` via:
 //
-//          MetastoreDataAccessAwsIamRoleArgs{...}
+//	MetastoreDataAccessAwsIamRoleArgs{...}
 type MetastoreDataAccessAwsIamRoleInput interface {
 	pulumi.Input
 
@@ -19685,11 +19685,11 @@ func (i MetastoreDataAccessAwsIamRoleArgs) ToMetastoreDataAccessAwsIamRolePtrOut
 // MetastoreDataAccessAwsIamRolePtrInput is an input type that accepts MetastoreDataAccessAwsIamRoleArgs, MetastoreDataAccessAwsIamRolePtr and MetastoreDataAccessAwsIamRolePtrOutput values.
 // You can construct a concrete instance of `MetastoreDataAccessAwsIamRolePtrInput` via:
 //
-//          MetastoreDataAccessAwsIamRoleArgs{...}
+//	        MetastoreDataAccessAwsIamRoleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetastoreDataAccessAwsIamRolePtrInput interface {
 	pulumi.Input
 
@@ -19786,7 +19786,7 @@ type MetastoreDataAccessAzureManagedIdentity struct {
 // MetastoreDataAccessAzureManagedIdentityInput is an input type that accepts MetastoreDataAccessAzureManagedIdentityArgs and MetastoreDataAccessAzureManagedIdentityOutput values.
 // You can construct a concrete instance of `MetastoreDataAccessAzureManagedIdentityInput` via:
 //
-//          MetastoreDataAccessAzureManagedIdentityArgs{...}
+//	MetastoreDataAccessAzureManagedIdentityArgs{...}
 type MetastoreDataAccessAzureManagedIdentityInput interface {
 	pulumi.Input
 
@@ -19822,11 +19822,11 @@ func (i MetastoreDataAccessAzureManagedIdentityArgs) ToMetastoreDataAccessAzureM
 // MetastoreDataAccessAzureManagedIdentityPtrInput is an input type that accepts MetastoreDataAccessAzureManagedIdentityArgs, MetastoreDataAccessAzureManagedIdentityPtr and MetastoreDataAccessAzureManagedIdentityPtrOutput values.
 // You can construct a concrete instance of `MetastoreDataAccessAzureManagedIdentityPtrInput` via:
 //
-//          MetastoreDataAccessAzureManagedIdentityArgs{...}
+//	        MetastoreDataAccessAzureManagedIdentityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetastoreDataAccessAzureManagedIdentityPtrInput interface {
 	pulumi.Input
 
@@ -19927,7 +19927,7 @@ type MetastoreDataAccessAzureServicePrincipal struct {
 // MetastoreDataAccessAzureServicePrincipalInput is an input type that accepts MetastoreDataAccessAzureServicePrincipalArgs and MetastoreDataAccessAzureServicePrincipalOutput values.
 // You can construct a concrete instance of `MetastoreDataAccessAzureServicePrincipalInput` via:
 //
-//          MetastoreDataAccessAzureServicePrincipalArgs{...}
+//	MetastoreDataAccessAzureServicePrincipalArgs{...}
 type MetastoreDataAccessAzureServicePrincipalInput interface {
 	pulumi.Input
 
@@ -19967,11 +19967,11 @@ func (i MetastoreDataAccessAzureServicePrincipalArgs) ToMetastoreDataAccessAzure
 // MetastoreDataAccessAzureServicePrincipalPtrInput is an input type that accepts MetastoreDataAccessAzureServicePrincipalArgs, MetastoreDataAccessAzureServicePrincipalPtr and MetastoreDataAccessAzureServicePrincipalPtrOutput values.
 // You can construct a concrete instance of `MetastoreDataAccessAzureServicePrincipalPtrInput` via:
 //
-//          MetastoreDataAccessAzureServicePrincipalArgs{...}
+//	        MetastoreDataAccessAzureServicePrincipalArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetastoreDataAccessAzureServicePrincipalPtrInput interface {
 	pulumi.Input
 
@@ -20098,7 +20098,7 @@ type MlflowModelTag struct {
 // MlflowModelTagInput is an input type that accepts MlflowModelTagArgs and MlflowModelTagOutput values.
 // You can construct a concrete instance of `MlflowModelTagInput` via:
 //
-//          MlflowModelTagArgs{...}
+//	MlflowModelTagArgs{...}
 type MlflowModelTagInput interface {
 	pulumi.Input
 
@@ -20126,7 +20126,7 @@ func (i MlflowModelTagArgs) ToMlflowModelTagOutputWithContext(ctx context.Contex
 // MlflowModelTagArrayInput is an input type that accepts MlflowModelTagArray and MlflowModelTagArrayOutput values.
 // You can construct a concrete instance of `MlflowModelTagArrayInput` via:
 //
-//          MlflowModelTagArray{ MlflowModelTagArgs{...} }
+//	MlflowModelTagArray{ MlflowModelTagArgs{...} }
 type MlflowModelTagArrayInput interface {
 	pulumi.Input
 
@@ -20203,7 +20203,7 @@ type MlflowWebhookHttpUrlSpec struct {
 // MlflowWebhookHttpUrlSpecInput is an input type that accepts MlflowWebhookHttpUrlSpecArgs and MlflowWebhookHttpUrlSpecOutput values.
 // You can construct a concrete instance of `MlflowWebhookHttpUrlSpecInput` via:
 //
-//          MlflowWebhookHttpUrlSpecArgs{...}
+//	MlflowWebhookHttpUrlSpecArgs{...}
 type MlflowWebhookHttpUrlSpecInput interface {
 	pulumi.Input
 
@@ -20244,11 +20244,11 @@ func (i MlflowWebhookHttpUrlSpecArgs) ToMlflowWebhookHttpUrlSpecPtrOutputWithCon
 // MlflowWebhookHttpUrlSpecPtrInput is an input type that accepts MlflowWebhookHttpUrlSpecArgs, MlflowWebhookHttpUrlSpecPtr and MlflowWebhookHttpUrlSpecPtrOutput values.
 // You can construct a concrete instance of `MlflowWebhookHttpUrlSpecPtrInput` via:
 //
-//          MlflowWebhookHttpUrlSpecArgs{...}
+//	        MlflowWebhookHttpUrlSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MlflowWebhookHttpUrlSpecPtrInput interface {
 	pulumi.Input
 
@@ -20392,7 +20392,7 @@ type MlflowWebhookJobSpec struct {
 // MlflowWebhookJobSpecInput is an input type that accepts MlflowWebhookJobSpecArgs and MlflowWebhookJobSpecOutput values.
 // You can construct a concrete instance of `MlflowWebhookJobSpecInput` via:
 //
-//          MlflowWebhookJobSpecArgs{...}
+//	MlflowWebhookJobSpecArgs{...}
 type MlflowWebhookJobSpecInput interface {
 	pulumi.Input
 
@@ -20432,11 +20432,11 @@ func (i MlflowWebhookJobSpecArgs) ToMlflowWebhookJobSpecPtrOutputWithContext(ctx
 // MlflowWebhookJobSpecPtrInput is an input type that accepts MlflowWebhookJobSpecArgs, MlflowWebhookJobSpecPtr and MlflowWebhookJobSpecPtrOutput values.
 // You can construct a concrete instance of `MlflowWebhookJobSpecPtrInput` via:
 //
-//          MlflowWebhookJobSpecArgs{...}
+//	        MlflowWebhookJobSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MlflowWebhookJobSpecPtrInput interface {
 	pulumi.Input
 
@@ -20569,7 +20569,7 @@ type MountAbfs struct {
 // MountAbfsInput is an input type that accepts MountAbfsArgs and MountAbfsOutput values.
 // You can construct a concrete instance of `MountAbfsInput` via:
 //
-//          MountAbfsArgs{...}
+//	MountAbfsArgs{...}
 type MountAbfsInput interface {
 	pulumi.Input
 
@@ -20611,11 +20611,11 @@ func (i MountAbfsArgs) ToMountAbfsPtrOutputWithContext(ctx context.Context) Moun
 // MountAbfsPtrInput is an input type that accepts MountAbfsArgs, MountAbfsPtr and MountAbfsPtrOutput values.
 // You can construct a concrete instance of `MountAbfsPtrInput` via:
 //
-//          MountAbfsArgs{...}
+//	        MountAbfsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MountAbfsPtrInput interface {
 	pulumi.Input
 
@@ -20806,7 +20806,7 @@ type MountAdl struct {
 // MountAdlInput is an input type that accepts MountAdlArgs and MountAdlOutput values.
 // You can construct a concrete instance of `MountAdlInput` via:
 //
-//          MountAdlArgs{...}
+//	MountAdlArgs{...}
 type MountAdlInput interface {
 	pulumi.Input
 
@@ -20847,11 +20847,11 @@ func (i MountAdlArgs) ToMountAdlPtrOutputWithContext(ctx context.Context) MountA
 // MountAdlPtrInput is an input type that accepts MountAdlArgs, MountAdlPtr and MountAdlPtrOutput values.
 // You can construct a concrete instance of `MountAdlPtrInput` via:
 //
-//          MountAdlArgs{...}
+//	        MountAdlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MountAdlPtrInput interface {
 	pulumi.Input
 
@@ -21024,7 +21024,7 @@ type MountGs struct {
 // MountGsInput is an input type that accepts MountGsArgs and MountGsOutput values.
 // You can construct a concrete instance of `MountGsInput` via:
 //
-//          MountGsArgs{...}
+//	MountGsArgs{...}
 type MountGsInput interface {
 	pulumi.Input
 
@@ -21060,11 +21060,11 @@ func (i MountGsArgs) ToMountGsPtrOutputWithContext(ctx context.Context) MountGsP
 // MountGsPtrInput is an input type that accepts MountGsArgs, MountGsPtr and MountGsPtrOutput values.
 // You can construct a concrete instance of `MountGsPtrInput` via:
 //
-//          MountGsArgs{...}
+//	        MountGsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MountGsPtrInput interface {
 	pulumi.Input
 
@@ -21172,7 +21172,7 @@ type MountS3 struct {
 // MountS3Input is an input type that accepts MountS3Args and MountS3Output values.
 // You can construct a concrete instance of `MountS3Input` via:
 //
-//          MountS3Args{...}
+//	MountS3Args{...}
 type MountS3Input interface {
 	pulumi.Input
 
@@ -21208,11 +21208,11 @@ func (i MountS3Args) ToMountS3PtrOutputWithContext(ctx context.Context) MountS3P
 // MountS3PtrInput is an input type that accepts MountS3Args, MountS3Ptr and MountS3PtrOutput values.
 // You can construct a concrete instance of `MountS3PtrInput` via:
 //
-//          MountS3Args{...}
+//	        MountS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MountS3PtrInput interface {
 	pulumi.Input
 
@@ -21324,7 +21324,7 @@ type MountWasb struct {
 // MountWasbInput is an input type that accepts MountWasbArgs and MountWasbOutput values.
 // You can construct a concrete instance of `MountWasbInput` via:
 //
-//          MountWasbArgs{...}
+//	MountWasbArgs{...}
 type MountWasbInput interface {
 	pulumi.Input
 
@@ -21364,11 +21364,11 @@ func (i MountWasbArgs) ToMountWasbPtrOutputWithContext(ctx context.Context) Moun
 // MountWasbPtrInput is an input type that accepts MountWasbArgs, MountWasbPtr and MountWasbPtrOutput values.
 // You can construct a concrete instance of `MountWasbPtrInput` via:
 //
-//          MountWasbArgs{...}
+//	        MountWasbArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MountWasbPtrInput interface {
 	pulumi.Input
 
@@ -21532,7 +21532,7 @@ type MwsCustomerManagedKeysAwsKeyInfo struct {
 // MwsCustomerManagedKeysAwsKeyInfoInput is an input type that accepts MwsCustomerManagedKeysAwsKeyInfoArgs and MwsCustomerManagedKeysAwsKeyInfoOutput values.
 // You can construct a concrete instance of `MwsCustomerManagedKeysAwsKeyInfoInput` via:
 //
-//          MwsCustomerManagedKeysAwsKeyInfoArgs{...}
+//	MwsCustomerManagedKeysAwsKeyInfoArgs{...}
 type MwsCustomerManagedKeysAwsKeyInfoInput interface {
 	pulumi.Input
 
@@ -21572,11 +21572,11 @@ func (i MwsCustomerManagedKeysAwsKeyInfoArgs) ToMwsCustomerManagedKeysAwsKeyInfo
 // MwsCustomerManagedKeysAwsKeyInfoPtrInput is an input type that accepts MwsCustomerManagedKeysAwsKeyInfoArgs, MwsCustomerManagedKeysAwsKeyInfoPtr and MwsCustomerManagedKeysAwsKeyInfoPtrOutput values.
 // You can construct a concrete instance of `MwsCustomerManagedKeysAwsKeyInfoPtrInput` via:
 //
-//          MwsCustomerManagedKeysAwsKeyInfoArgs{...}
+//	        MwsCustomerManagedKeysAwsKeyInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MwsCustomerManagedKeysAwsKeyInfoPtrInput interface {
 	pulumi.Input
 
@@ -21703,7 +21703,7 @@ type MwsNetworksErrorMessage struct {
 // MwsNetworksErrorMessageInput is an input type that accepts MwsNetworksErrorMessageArgs and MwsNetworksErrorMessageOutput values.
 // You can construct a concrete instance of `MwsNetworksErrorMessageInput` via:
 //
-//          MwsNetworksErrorMessageArgs{...}
+//	MwsNetworksErrorMessageArgs{...}
 type MwsNetworksErrorMessageInput interface {
 	pulumi.Input
 
@@ -21731,7 +21731,7 @@ func (i MwsNetworksErrorMessageArgs) ToMwsNetworksErrorMessageOutputWithContext(
 // MwsNetworksErrorMessageArrayInput is an input type that accepts MwsNetworksErrorMessageArray and MwsNetworksErrorMessageArrayOutput values.
 // You can construct a concrete instance of `MwsNetworksErrorMessageArrayInput` via:
 //
-//          MwsNetworksErrorMessageArray{ MwsNetworksErrorMessageArgs{...} }
+//	MwsNetworksErrorMessageArray{ MwsNetworksErrorMessageArgs{...} }
 type MwsNetworksErrorMessageArrayInput interface {
 	pulumi.Input
 
@@ -21803,7 +21803,7 @@ type MwsNetworksVpcEndpoints struct {
 // MwsNetworksVpcEndpointsInput is an input type that accepts MwsNetworksVpcEndpointsArgs and MwsNetworksVpcEndpointsOutput values.
 // You can construct a concrete instance of `MwsNetworksVpcEndpointsInput` via:
 //
-//          MwsNetworksVpcEndpointsArgs{...}
+//	MwsNetworksVpcEndpointsArgs{...}
 type MwsNetworksVpcEndpointsInput interface {
 	pulumi.Input
 
@@ -21839,11 +21839,11 @@ func (i MwsNetworksVpcEndpointsArgs) ToMwsNetworksVpcEndpointsPtrOutputWithConte
 // MwsNetworksVpcEndpointsPtrInput is an input type that accepts MwsNetworksVpcEndpointsArgs, MwsNetworksVpcEndpointsPtr and MwsNetworksVpcEndpointsPtrOutput values.
 // You can construct a concrete instance of `MwsNetworksVpcEndpointsPtrInput` via:
 //
-//          MwsNetworksVpcEndpointsArgs{...}
+//	        MwsNetworksVpcEndpointsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MwsNetworksVpcEndpointsPtrInput interface {
 	pulumi.Input
 
@@ -21950,7 +21950,7 @@ type MwsWorkspacesCloudResourceBucket struct {
 // MwsWorkspacesCloudResourceBucketInput is an input type that accepts MwsWorkspacesCloudResourceBucketArgs and MwsWorkspacesCloudResourceBucketOutput values.
 // You can construct a concrete instance of `MwsWorkspacesCloudResourceBucketInput` via:
 //
-//          MwsWorkspacesCloudResourceBucketArgs{...}
+//	MwsWorkspacesCloudResourceBucketArgs{...}
 type MwsWorkspacesCloudResourceBucketInput interface {
 	pulumi.Input
 
@@ -21985,11 +21985,11 @@ func (i MwsWorkspacesCloudResourceBucketArgs) ToMwsWorkspacesCloudResourceBucket
 // MwsWorkspacesCloudResourceBucketPtrInput is an input type that accepts MwsWorkspacesCloudResourceBucketArgs, MwsWorkspacesCloudResourceBucketPtr and MwsWorkspacesCloudResourceBucketPtrOutput values.
 // You can construct a concrete instance of `MwsWorkspacesCloudResourceBucketPtrInput` via:
 //
-//          MwsWorkspacesCloudResourceBucketArgs{...}
+//	        MwsWorkspacesCloudResourceBucketArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MwsWorkspacesCloudResourceBucketPtrInput interface {
 	pulumi.Input
 
@@ -22083,7 +22083,7 @@ type MwsWorkspacesCloudResourceBucketGcp struct {
 // MwsWorkspacesCloudResourceBucketGcpInput is an input type that accepts MwsWorkspacesCloudResourceBucketGcpArgs and MwsWorkspacesCloudResourceBucketGcpOutput values.
 // You can construct a concrete instance of `MwsWorkspacesCloudResourceBucketGcpInput` via:
 //
-//          MwsWorkspacesCloudResourceBucketGcpArgs{...}
+//	MwsWorkspacesCloudResourceBucketGcpArgs{...}
 type MwsWorkspacesCloudResourceBucketGcpInput interface {
 	pulumi.Input
 
@@ -22118,11 +22118,11 @@ func (i MwsWorkspacesCloudResourceBucketGcpArgs) ToMwsWorkspacesCloudResourceBuc
 // MwsWorkspacesCloudResourceBucketGcpPtrInput is an input type that accepts MwsWorkspacesCloudResourceBucketGcpArgs, MwsWorkspacesCloudResourceBucketGcpPtr and MwsWorkspacesCloudResourceBucketGcpPtrOutput values.
 // You can construct a concrete instance of `MwsWorkspacesCloudResourceBucketGcpPtrInput` via:
 //
-//          MwsWorkspacesCloudResourceBucketGcpArgs{...}
+//	        MwsWorkspacesCloudResourceBucketGcpArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MwsWorkspacesCloudResourceBucketGcpPtrInput interface {
 	pulumi.Input
 
@@ -22218,7 +22218,7 @@ type MwsWorkspacesExternalCustomerInfo struct {
 // MwsWorkspacesExternalCustomerInfoInput is an input type that accepts MwsWorkspacesExternalCustomerInfoArgs and MwsWorkspacesExternalCustomerInfoOutput values.
 // You can construct a concrete instance of `MwsWorkspacesExternalCustomerInfoInput` via:
 //
-//          MwsWorkspacesExternalCustomerInfoArgs{...}
+//	MwsWorkspacesExternalCustomerInfoArgs{...}
 type MwsWorkspacesExternalCustomerInfoInput interface {
 	pulumi.Input
 
@@ -22255,11 +22255,11 @@ func (i MwsWorkspacesExternalCustomerInfoArgs) ToMwsWorkspacesExternalCustomerIn
 // MwsWorkspacesExternalCustomerInfoPtrInput is an input type that accepts MwsWorkspacesExternalCustomerInfoArgs, MwsWorkspacesExternalCustomerInfoPtr and MwsWorkspacesExternalCustomerInfoPtrOutput values.
 // You can construct a concrete instance of `MwsWorkspacesExternalCustomerInfoPtrInput` via:
 //
-//          MwsWorkspacesExternalCustomerInfoArgs{...}
+//	        MwsWorkspacesExternalCustomerInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MwsWorkspacesExternalCustomerInfoPtrInput interface {
 	pulumi.Input
 
@@ -22381,7 +22381,7 @@ type MwsWorkspacesNetwork struct {
 // MwsWorkspacesNetworkInput is an input type that accepts MwsWorkspacesNetworkArgs and MwsWorkspacesNetworkOutput values.
 // You can construct a concrete instance of `MwsWorkspacesNetworkInput` via:
 //
-//          MwsWorkspacesNetworkArgs{...}
+//	MwsWorkspacesNetworkArgs{...}
 type MwsWorkspacesNetworkInput interface {
 	pulumi.Input
 
@@ -22418,11 +22418,11 @@ func (i MwsWorkspacesNetworkArgs) ToMwsWorkspacesNetworkPtrOutputWithContext(ctx
 // MwsWorkspacesNetworkPtrInput is an input type that accepts MwsWorkspacesNetworkArgs, MwsWorkspacesNetworkPtr and MwsWorkspacesNetworkPtrOutput values.
 // You can construct a concrete instance of `MwsWorkspacesNetworkPtrInput` via:
 //
-//          MwsWorkspacesNetworkArgs{...}
+//	        MwsWorkspacesNetworkArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MwsWorkspacesNetworkPtrInput interface {
 	pulumi.Input
 
@@ -22547,7 +22547,7 @@ type MwsWorkspacesNetworkGcpCommonNetworkConfig struct {
 // MwsWorkspacesNetworkGcpCommonNetworkConfigInput is an input type that accepts MwsWorkspacesNetworkGcpCommonNetworkConfigArgs and MwsWorkspacesNetworkGcpCommonNetworkConfigOutput values.
 // You can construct a concrete instance of `MwsWorkspacesNetworkGcpCommonNetworkConfigInput` via:
 //
-//          MwsWorkspacesNetworkGcpCommonNetworkConfigArgs{...}
+//	MwsWorkspacesNetworkGcpCommonNetworkConfigArgs{...}
 type MwsWorkspacesNetworkGcpCommonNetworkConfigInput interface {
 	pulumi.Input
 
@@ -22583,11 +22583,11 @@ func (i MwsWorkspacesNetworkGcpCommonNetworkConfigArgs) ToMwsWorkspacesNetworkGc
 // MwsWorkspacesNetworkGcpCommonNetworkConfigPtrInput is an input type that accepts MwsWorkspacesNetworkGcpCommonNetworkConfigArgs, MwsWorkspacesNetworkGcpCommonNetworkConfigPtr and MwsWorkspacesNetworkGcpCommonNetworkConfigPtrOutput values.
 // You can construct a concrete instance of `MwsWorkspacesNetworkGcpCommonNetworkConfigPtrInput` via:
 //
-//          MwsWorkspacesNetworkGcpCommonNetworkConfigArgs{...}
+//	        MwsWorkspacesNetworkGcpCommonNetworkConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MwsWorkspacesNetworkGcpCommonNetworkConfigPtrInput interface {
 	pulumi.Input
 
@@ -22696,7 +22696,7 @@ type MwsWorkspacesNetworkGcpManagedNetworkConfig struct {
 // MwsWorkspacesNetworkGcpManagedNetworkConfigInput is an input type that accepts MwsWorkspacesNetworkGcpManagedNetworkConfigArgs and MwsWorkspacesNetworkGcpManagedNetworkConfigOutput values.
 // You can construct a concrete instance of `MwsWorkspacesNetworkGcpManagedNetworkConfigInput` via:
 //
-//          MwsWorkspacesNetworkGcpManagedNetworkConfigArgs{...}
+//	MwsWorkspacesNetworkGcpManagedNetworkConfigArgs{...}
 type MwsWorkspacesNetworkGcpManagedNetworkConfigInput interface {
 	pulumi.Input
 
@@ -22733,11 +22733,11 @@ func (i MwsWorkspacesNetworkGcpManagedNetworkConfigArgs) ToMwsWorkspacesNetworkG
 // MwsWorkspacesNetworkGcpManagedNetworkConfigPtrInput is an input type that accepts MwsWorkspacesNetworkGcpManagedNetworkConfigArgs, MwsWorkspacesNetworkGcpManagedNetworkConfigPtr and MwsWorkspacesNetworkGcpManagedNetworkConfigPtrOutput values.
 // You can construct a concrete instance of `MwsWorkspacesNetworkGcpManagedNetworkConfigPtrInput` via:
 //
-//          MwsWorkspacesNetworkGcpManagedNetworkConfigArgs{...}
+//	        MwsWorkspacesNetworkGcpManagedNetworkConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MwsWorkspacesNetworkGcpManagedNetworkConfigPtrInput interface {
 	pulumi.Input
 
@@ -22860,7 +22860,7 @@ type MwsWorkspacesToken struct {
 // MwsWorkspacesTokenInput is an input type that accepts MwsWorkspacesTokenArgs and MwsWorkspacesTokenOutput values.
 // You can construct a concrete instance of `MwsWorkspacesTokenInput` via:
 //
-//          MwsWorkspacesTokenArgs{...}
+//	MwsWorkspacesTokenArgs{...}
 type MwsWorkspacesTokenInput interface {
 	pulumi.Input
 
@@ -22898,11 +22898,11 @@ func (i MwsWorkspacesTokenArgs) ToMwsWorkspacesTokenPtrOutputWithContext(ctx con
 // MwsWorkspacesTokenPtrInput is an input type that accepts MwsWorkspacesTokenArgs, MwsWorkspacesTokenPtr and MwsWorkspacesTokenPtrOutput values.
 // You can construct a concrete instance of `MwsWorkspacesTokenPtrInput` via:
 //
-//          MwsWorkspacesTokenArgs{...}
+//	        MwsWorkspacesTokenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MwsWorkspacesTokenPtrInput interface {
 	pulumi.Input
 
@@ -23042,7 +23042,7 @@ type PermissionsAccessControl struct {
 // PermissionsAccessControlInput is an input type that accepts PermissionsAccessControlArgs and PermissionsAccessControlOutput values.
 // You can construct a concrete instance of `PermissionsAccessControlInput` via:
 //
-//          PermissionsAccessControlArgs{...}
+//	PermissionsAccessControlArgs{...}
 type PermissionsAccessControlInput interface {
 	pulumi.Input
 
@@ -23076,7 +23076,7 @@ func (i PermissionsAccessControlArgs) ToPermissionsAccessControlOutputWithContex
 // PermissionsAccessControlArrayInput is an input type that accepts PermissionsAccessControlArray and PermissionsAccessControlArrayOutput values.
 // You can construct a concrete instance of `PermissionsAccessControlArrayInput` via:
 //
-//          PermissionsAccessControlArray{ PermissionsAccessControlArgs{...} }
+//	PermissionsAccessControlArray{ PermissionsAccessControlArgs{...} }
 type PermissionsAccessControlArrayInput interface {
 	pulumi.Input
 
@@ -23173,7 +23173,7 @@ type PipelineCluster struct {
 // PipelineClusterInput is an input type that accepts PipelineClusterArgs and PipelineClusterOutput values.
 // You can construct a concrete instance of `PipelineClusterInput` via:
 //
-//          PipelineClusterArgs{...}
+//	PipelineClusterArgs{...}
 type PipelineClusterInput interface {
 	pulumi.Input
 
@@ -23214,7 +23214,7 @@ func (i PipelineClusterArgs) ToPipelineClusterOutputWithContext(ctx context.Cont
 // PipelineClusterArrayInput is an input type that accepts PipelineClusterArray and PipelineClusterArrayOutput values.
 // You can construct a concrete instance of `PipelineClusterArrayInput` via:
 //
-//          PipelineClusterArray{ PipelineClusterArgs{...} }
+//	PipelineClusterArray{ PipelineClusterArgs{...} }
 type PipelineClusterArrayInput interface {
 	pulumi.Input
 
@@ -23338,7 +23338,7 @@ type PipelineClusterAutoscale struct {
 // PipelineClusterAutoscaleInput is an input type that accepts PipelineClusterAutoscaleArgs and PipelineClusterAutoscaleOutput values.
 // You can construct a concrete instance of `PipelineClusterAutoscaleInput` via:
 //
-//          PipelineClusterAutoscaleArgs{...}
+//	PipelineClusterAutoscaleArgs{...}
 type PipelineClusterAutoscaleInput interface {
 	pulumi.Input
 
@@ -23374,11 +23374,11 @@ func (i PipelineClusterAutoscaleArgs) ToPipelineClusterAutoscalePtrOutputWithCon
 // PipelineClusterAutoscalePtrInput is an input type that accepts PipelineClusterAutoscaleArgs, PipelineClusterAutoscalePtr and PipelineClusterAutoscalePtrOutput values.
 // You can construct a concrete instance of `PipelineClusterAutoscalePtrInput` via:
 //
-//          PipelineClusterAutoscaleArgs{...}
+//	        PipelineClusterAutoscaleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PipelineClusterAutoscalePtrInput interface {
 	pulumi.Input
 
@@ -23487,7 +23487,7 @@ type PipelineClusterAwsAttributes struct {
 // PipelineClusterAwsAttributesInput is an input type that accepts PipelineClusterAwsAttributesArgs and PipelineClusterAwsAttributesOutput values.
 // You can construct a concrete instance of `PipelineClusterAwsAttributesInput` via:
 //
-//          PipelineClusterAwsAttributesArgs{...}
+//	PipelineClusterAwsAttributesArgs{...}
 type PipelineClusterAwsAttributesInput interface {
 	pulumi.Input
 
@@ -23524,11 +23524,11 @@ func (i PipelineClusterAwsAttributesArgs) ToPipelineClusterAwsAttributesPtrOutpu
 // PipelineClusterAwsAttributesPtrInput is an input type that accepts PipelineClusterAwsAttributesArgs, PipelineClusterAwsAttributesPtr and PipelineClusterAwsAttributesPtrOutput values.
 // You can construct a concrete instance of `PipelineClusterAwsAttributesPtrInput` via:
 //
-//          PipelineClusterAwsAttributesArgs{...}
+//	        PipelineClusterAwsAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PipelineClusterAwsAttributesPtrInput interface {
 	pulumi.Input
 
@@ -23649,7 +23649,7 @@ type PipelineClusterClusterLogConf struct {
 // PipelineClusterClusterLogConfInput is an input type that accepts PipelineClusterClusterLogConfArgs and PipelineClusterClusterLogConfOutput values.
 // You can construct a concrete instance of `PipelineClusterClusterLogConfInput` via:
 //
-//          PipelineClusterClusterLogConfArgs{...}
+//	PipelineClusterClusterLogConfArgs{...}
 type PipelineClusterClusterLogConfInput interface {
 	pulumi.Input
 
@@ -23685,11 +23685,11 @@ func (i PipelineClusterClusterLogConfArgs) ToPipelineClusterClusterLogConfPtrOut
 // PipelineClusterClusterLogConfPtrInput is an input type that accepts PipelineClusterClusterLogConfArgs, PipelineClusterClusterLogConfPtr and PipelineClusterClusterLogConfPtrOutput values.
 // You can construct a concrete instance of `PipelineClusterClusterLogConfPtrInput` via:
 //
-//          PipelineClusterClusterLogConfArgs{...}
+//	        PipelineClusterClusterLogConfArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PipelineClusterClusterLogConfPtrInput interface {
 	pulumi.Input
 
@@ -23796,7 +23796,7 @@ type PipelineClusterClusterLogConfDbfs struct {
 // PipelineClusterClusterLogConfDbfsInput is an input type that accepts PipelineClusterClusterLogConfDbfsArgs and PipelineClusterClusterLogConfDbfsOutput values.
 // You can construct a concrete instance of `PipelineClusterClusterLogConfDbfsInput` via:
 //
-//          PipelineClusterClusterLogConfDbfsArgs{...}
+//	PipelineClusterClusterLogConfDbfsArgs{...}
 type PipelineClusterClusterLogConfDbfsInput interface {
 	pulumi.Input
 
@@ -23831,11 +23831,11 @@ func (i PipelineClusterClusterLogConfDbfsArgs) ToPipelineClusterClusterLogConfDb
 // PipelineClusterClusterLogConfDbfsPtrInput is an input type that accepts PipelineClusterClusterLogConfDbfsArgs, PipelineClusterClusterLogConfDbfsPtr and PipelineClusterClusterLogConfDbfsPtrOutput values.
 // You can construct a concrete instance of `PipelineClusterClusterLogConfDbfsPtrInput` via:
 //
-//          PipelineClusterClusterLogConfDbfsArgs{...}
+//	        PipelineClusterClusterLogConfDbfsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PipelineClusterClusterLogConfDbfsPtrInput interface {
 	pulumi.Input
 
@@ -23935,7 +23935,7 @@ type PipelineClusterClusterLogConfS3 struct {
 // PipelineClusterClusterLogConfS3Input is an input type that accepts PipelineClusterClusterLogConfS3Args and PipelineClusterClusterLogConfS3Output values.
 // You can construct a concrete instance of `PipelineClusterClusterLogConfS3Input` via:
 //
-//          PipelineClusterClusterLogConfS3Args{...}
+//	PipelineClusterClusterLogConfS3Args{...}
 type PipelineClusterClusterLogConfS3Input interface {
 	pulumi.Input
 
@@ -23976,11 +23976,11 @@ func (i PipelineClusterClusterLogConfS3Args) ToPipelineClusterClusterLogConfS3Pt
 // PipelineClusterClusterLogConfS3PtrInput is an input type that accepts PipelineClusterClusterLogConfS3Args, PipelineClusterClusterLogConfS3Ptr and PipelineClusterClusterLogConfS3PtrOutput values.
 // You can construct a concrete instance of `PipelineClusterClusterLogConfS3PtrInput` via:
 //
-//          PipelineClusterClusterLogConfS3Args{...}
+//	        PipelineClusterClusterLogConfS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PipelineClusterClusterLogConfS3PtrInput interface {
 	pulumi.Input
 
@@ -24152,7 +24152,7 @@ type PipelineClusterGcpAttributes struct {
 // PipelineClusterGcpAttributesInput is an input type that accepts PipelineClusterGcpAttributesArgs and PipelineClusterGcpAttributesOutput values.
 // You can construct a concrete instance of `PipelineClusterGcpAttributesInput` via:
 //
-//          PipelineClusterGcpAttributesArgs{...}
+//	PipelineClusterGcpAttributesArgs{...}
 type PipelineClusterGcpAttributesInput interface {
 	pulumi.Input
 
@@ -24187,11 +24187,11 @@ func (i PipelineClusterGcpAttributesArgs) ToPipelineClusterGcpAttributesPtrOutpu
 // PipelineClusterGcpAttributesPtrInput is an input type that accepts PipelineClusterGcpAttributesArgs, PipelineClusterGcpAttributesPtr and PipelineClusterGcpAttributesPtrOutput values.
 // You can construct a concrete instance of `PipelineClusterGcpAttributesPtrInput` via:
 //
-//          PipelineClusterGcpAttributesArgs{...}
+//	        PipelineClusterGcpAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PipelineClusterGcpAttributesPtrInput interface {
 	pulumi.Input
 
@@ -24288,7 +24288,7 @@ type PipelineClusterInitScript struct {
 // PipelineClusterInitScriptInput is an input type that accepts PipelineClusterInitScriptArgs and PipelineClusterInitScriptOutput values.
 // You can construct a concrete instance of `PipelineClusterInitScriptInput` via:
 //
-//          PipelineClusterInitScriptArgs{...}
+//	PipelineClusterInitScriptArgs{...}
 type PipelineClusterInitScriptInput interface {
 	pulumi.Input
 
@@ -24318,7 +24318,7 @@ func (i PipelineClusterInitScriptArgs) ToPipelineClusterInitScriptOutputWithCont
 // PipelineClusterInitScriptArrayInput is an input type that accepts PipelineClusterInitScriptArray and PipelineClusterInitScriptArrayOutput values.
 // You can construct a concrete instance of `PipelineClusterInitScriptArrayInput` via:
 //
-//          PipelineClusterInitScriptArray{ PipelineClusterInitScriptArgs{...} }
+//	PipelineClusterInitScriptArray{ PipelineClusterInitScriptArgs{...} }
 type PipelineClusterInitScriptArrayInput interface {
 	pulumi.Input
 
@@ -24397,7 +24397,7 @@ type PipelineClusterInitScriptDbfs struct {
 // PipelineClusterInitScriptDbfsInput is an input type that accepts PipelineClusterInitScriptDbfsArgs and PipelineClusterInitScriptDbfsOutput values.
 // You can construct a concrete instance of `PipelineClusterInitScriptDbfsInput` via:
 //
-//          PipelineClusterInitScriptDbfsArgs{...}
+//	PipelineClusterInitScriptDbfsArgs{...}
 type PipelineClusterInitScriptDbfsInput interface {
 	pulumi.Input
 
@@ -24432,11 +24432,11 @@ func (i PipelineClusterInitScriptDbfsArgs) ToPipelineClusterInitScriptDbfsPtrOut
 // PipelineClusterInitScriptDbfsPtrInput is an input type that accepts PipelineClusterInitScriptDbfsArgs, PipelineClusterInitScriptDbfsPtr and PipelineClusterInitScriptDbfsPtrOutput values.
 // You can construct a concrete instance of `PipelineClusterInitScriptDbfsPtrInput` via:
 //
-//          PipelineClusterInitScriptDbfsArgs{...}
+//	        PipelineClusterInitScriptDbfsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PipelineClusterInitScriptDbfsPtrInput interface {
 	pulumi.Input
 
@@ -24530,7 +24530,7 @@ type PipelineClusterInitScriptFile struct {
 // PipelineClusterInitScriptFileInput is an input type that accepts PipelineClusterInitScriptFileArgs and PipelineClusterInitScriptFileOutput values.
 // You can construct a concrete instance of `PipelineClusterInitScriptFileInput` via:
 //
-//          PipelineClusterInitScriptFileArgs{...}
+//	PipelineClusterInitScriptFileArgs{...}
 type PipelineClusterInitScriptFileInput interface {
 	pulumi.Input
 
@@ -24565,11 +24565,11 @@ func (i PipelineClusterInitScriptFileArgs) ToPipelineClusterInitScriptFilePtrOut
 // PipelineClusterInitScriptFilePtrInput is an input type that accepts PipelineClusterInitScriptFileArgs, PipelineClusterInitScriptFilePtr and PipelineClusterInitScriptFilePtrOutput values.
 // You can construct a concrete instance of `PipelineClusterInitScriptFilePtrInput` via:
 //
-//          PipelineClusterInitScriptFileArgs{...}
+//	        PipelineClusterInitScriptFileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PipelineClusterInitScriptFilePtrInput interface {
 	pulumi.Input
 
@@ -24663,7 +24663,7 @@ type PipelineClusterInitScriptGcs struct {
 // PipelineClusterInitScriptGcsInput is an input type that accepts PipelineClusterInitScriptGcsArgs and PipelineClusterInitScriptGcsOutput values.
 // You can construct a concrete instance of `PipelineClusterInitScriptGcsInput` via:
 //
-//          PipelineClusterInitScriptGcsArgs{...}
+//	PipelineClusterInitScriptGcsArgs{...}
 type PipelineClusterInitScriptGcsInput interface {
 	pulumi.Input
 
@@ -24698,11 +24698,11 @@ func (i PipelineClusterInitScriptGcsArgs) ToPipelineClusterInitScriptGcsPtrOutpu
 // PipelineClusterInitScriptGcsPtrInput is an input type that accepts PipelineClusterInitScriptGcsArgs, PipelineClusterInitScriptGcsPtr and PipelineClusterInitScriptGcsPtrOutput values.
 // You can construct a concrete instance of `PipelineClusterInitScriptGcsPtrInput` via:
 //
-//          PipelineClusterInitScriptGcsArgs{...}
+//	        PipelineClusterInitScriptGcsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PipelineClusterInitScriptGcsPtrInput interface {
 	pulumi.Input
 
@@ -24802,7 +24802,7 @@ type PipelineClusterInitScriptS3 struct {
 // PipelineClusterInitScriptS3Input is an input type that accepts PipelineClusterInitScriptS3Args and PipelineClusterInitScriptS3Output values.
 // You can construct a concrete instance of `PipelineClusterInitScriptS3Input` via:
 //
-//          PipelineClusterInitScriptS3Args{...}
+//	PipelineClusterInitScriptS3Args{...}
 type PipelineClusterInitScriptS3Input interface {
 	pulumi.Input
 
@@ -24843,11 +24843,11 @@ func (i PipelineClusterInitScriptS3Args) ToPipelineClusterInitScriptS3PtrOutputW
 // PipelineClusterInitScriptS3PtrInput is an input type that accepts PipelineClusterInitScriptS3Args, PipelineClusterInitScriptS3Ptr and PipelineClusterInitScriptS3PtrOutput values.
 // You can construct a concrete instance of `PipelineClusterInitScriptS3PtrInput` via:
 //
-//          PipelineClusterInitScriptS3Args{...}
+//	        PipelineClusterInitScriptS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PipelineClusterInitScriptS3PtrInput interface {
 	pulumi.Input
 
@@ -25020,7 +25020,7 @@ type PipelineFilters struct {
 // PipelineFiltersInput is an input type that accepts PipelineFiltersArgs and PipelineFiltersOutput values.
 // You can construct a concrete instance of `PipelineFiltersInput` via:
 //
-//          PipelineFiltersArgs{...}
+//	PipelineFiltersArgs{...}
 type PipelineFiltersInput interface {
 	pulumi.Input
 
@@ -25056,11 +25056,11 @@ func (i PipelineFiltersArgs) ToPipelineFiltersPtrOutputWithContext(ctx context.C
 // PipelineFiltersPtrInput is an input type that accepts PipelineFiltersArgs, PipelineFiltersPtr and PipelineFiltersPtrOutput values.
 // You can construct a concrete instance of `PipelineFiltersPtrInput` via:
 //
-//          PipelineFiltersArgs{...}
+//	        PipelineFiltersArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PipelineFiltersPtrInput interface {
 	pulumi.Input
 
@@ -25170,7 +25170,7 @@ type PipelineLibrary struct {
 // PipelineLibraryInput is an input type that accepts PipelineLibraryArgs and PipelineLibraryOutput values.
 // You can construct a concrete instance of `PipelineLibraryInput` via:
 //
-//          PipelineLibraryArgs{...}
+//	PipelineLibraryArgs{...}
 type PipelineLibraryInput interface {
 	pulumi.Input
 
@@ -25200,7 +25200,7 @@ func (i PipelineLibraryArgs) ToPipelineLibraryOutputWithContext(ctx context.Cont
 // PipelineLibraryArrayInput is an input type that accepts PipelineLibraryArray and PipelineLibraryArrayOutput values.
 // You can construct a concrete instance of `PipelineLibraryArrayInput` via:
 //
-//          PipelineLibraryArray{ PipelineLibraryArgs{...} }
+//	PipelineLibraryArray{ PipelineLibraryArgs{...} }
 type PipelineLibraryArrayInput interface {
 	pulumi.Input
 
@@ -25281,7 +25281,7 @@ type PipelineLibraryMaven struct {
 // PipelineLibraryMavenInput is an input type that accepts PipelineLibraryMavenArgs and PipelineLibraryMavenOutput values.
 // You can construct a concrete instance of `PipelineLibraryMavenInput` via:
 //
-//          PipelineLibraryMavenArgs{...}
+//	PipelineLibraryMavenArgs{...}
 type PipelineLibraryMavenInput interface {
 	pulumi.Input
 
@@ -25318,11 +25318,11 @@ func (i PipelineLibraryMavenArgs) ToPipelineLibraryMavenPtrOutputWithContext(ctx
 // PipelineLibraryMavenPtrInput is an input type that accepts PipelineLibraryMavenArgs, PipelineLibraryMavenPtr and PipelineLibraryMavenPtrOutput values.
 // You can construct a concrete instance of `PipelineLibraryMavenPtrInput` via:
 //
-//          PipelineLibraryMavenArgs{...}
+//	        PipelineLibraryMavenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PipelineLibraryMavenPtrInput interface {
 	pulumi.Input
 
@@ -25442,7 +25442,7 @@ type PipelineLibraryNotebook struct {
 // PipelineLibraryNotebookInput is an input type that accepts PipelineLibraryNotebookArgs and PipelineLibraryNotebookOutput values.
 // You can construct a concrete instance of `PipelineLibraryNotebookInput` via:
 //
-//          PipelineLibraryNotebookArgs{...}
+//	PipelineLibraryNotebookArgs{...}
 type PipelineLibraryNotebookInput interface {
 	pulumi.Input
 
@@ -25477,11 +25477,11 @@ func (i PipelineLibraryNotebookArgs) ToPipelineLibraryNotebookPtrOutputWithConte
 // PipelineLibraryNotebookPtrInput is an input type that accepts PipelineLibraryNotebookArgs, PipelineLibraryNotebookPtr and PipelineLibraryNotebookPtrOutput values.
 // You can construct a concrete instance of `PipelineLibraryNotebookPtrInput` via:
 //
-//          PipelineLibraryNotebookArgs{...}
+//	        PipelineLibraryNotebookArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PipelineLibraryNotebookPtrInput interface {
 	pulumi.Input
 
@@ -25576,7 +25576,7 @@ type SecretScopeKeyvaultMetadata struct {
 // SecretScopeKeyvaultMetadataInput is an input type that accepts SecretScopeKeyvaultMetadataArgs and SecretScopeKeyvaultMetadataOutput values.
 // You can construct a concrete instance of `SecretScopeKeyvaultMetadataInput` via:
 //
-//          SecretScopeKeyvaultMetadataArgs{...}
+//	SecretScopeKeyvaultMetadataArgs{...}
 type SecretScopeKeyvaultMetadataInput interface {
 	pulumi.Input
 
@@ -25612,11 +25612,11 @@ func (i SecretScopeKeyvaultMetadataArgs) ToSecretScopeKeyvaultMetadataPtrOutputW
 // SecretScopeKeyvaultMetadataPtrInput is an input type that accepts SecretScopeKeyvaultMetadataArgs, SecretScopeKeyvaultMetadataPtr and SecretScopeKeyvaultMetadataPtrOutput values.
 // You can construct a concrete instance of `SecretScopeKeyvaultMetadataPtrInput` via:
 //
-//          SecretScopeKeyvaultMetadataArgs{...}
+//	        SecretScopeKeyvaultMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SecretScopeKeyvaultMetadataPtrInput interface {
 	pulumi.Input
 
@@ -25724,7 +25724,7 @@ type SqlEndpointChannel struct {
 // SqlEndpointChannelInput is an input type that accepts SqlEndpointChannelArgs and SqlEndpointChannelOutput values.
 // You can construct a concrete instance of `SqlEndpointChannelInput` via:
 //
-//          SqlEndpointChannelArgs{...}
+//	SqlEndpointChannelArgs{...}
 type SqlEndpointChannelInput interface {
 	pulumi.Input
 
@@ -25760,11 +25760,11 @@ func (i SqlEndpointChannelArgs) ToSqlEndpointChannelPtrOutputWithContext(ctx con
 // SqlEndpointChannelPtrInput is an input type that accepts SqlEndpointChannelArgs, SqlEndpointChannelPtr and SqlEndpointChannelPtrOutput values.
 // You can construct a concrete instance of `SqlEndpointChannelPtrInput` via:
 //
-//          SqlEndpointChannelArgs{...}
+//	        SqlEndpointChannelArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlEndpointChannelPtrInput interface {
 	pulumi.Input
 
@@ -25864,7 +25864,7 @@ type SqlEndpointOdbcParams struct {
 // SqlEndpointOdbcParamsInput is an input type that accepts SqlEndpointOdbcParamsArgs and SqlEndpointOdbcParamsOutput values.
 // You can construct a concrete instance of `SqlEndpointOdbcParamsInput` via:
 //
-//          SqlEndpointOdbcParamsArgs{...}
+//	SqlEndpointOdbcParamsArgs{...}
 type SqlEndpointOdbcParamsInput interface {
 	pulumi.Input
 
@@ -25903,11 +25903,11 @@ func (i SqlEndpointOdbcParamsArgs) ToSqlEndpointOdbcParamsPtrOutputWithContext(c
 // SqlEndpointOdbcParamsPtrInput is an input type that accepts SqlEndpointOdbcParamsArgs, SqlEndpointOdbcParamsPtr and SqlEndpointOdbcParamsPtrOutput values.
 // You can construct a concrete instance of `SqlEndpointOdbcParamsPtrInput` via:
 //
-//          SqlEndpointOdbcParamsArgs{...}
+//	        SqlEndpointOdbcParamsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlEndpointOdbcParamsPtrInput interface {
 	pulumi.Input
 
@@ -26053,7 +26053,7 @@ type SqlEndpointTags struct {
 // SqlEndpointTagsInput is an input type that accepts SqlEndpointTagsArgs and SqlEndpointTagsOutput values.
 // You can construct a concrete instance of `SqlEndpointTagsInput` via:
 //
-//          SqlEndpointTagsArgs{...}
+//	SqlEndpointTagsArgs{...}
 type SqlEndpointTagsInput interface {
 	pulumi.Input
 
@@ -26088,11 +26088,11 @@ func (i SqlEndpointTagsArgs) ToSqlEndpointTagsPtrOutputWithContext(ctx context.C
 // SqlEndpointTagsPtrInput is an input type that accepts SqlEndpointTagsArgs, SqlEndpointTagsPtr and SqlEndpointTagsPtrOutput values.
 // You can construct a concrete instance of `SqlEndpointTagsPtrInput` via:
 //
-//          SqlEndpointTagsArgs{...}
+//	        SqlEndpointTagsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlEndpointTagsPtrInput interface {
 	pulumi.Input
 
@@ -26187,7 +26187,7 @@ type SqlEndpointTagsCustomTag struct {
 // SqlEndpointTagsCustomTagInput is an input type that accepts SqlEndpointTagsCustomTagArgs and SqlEndpointTagsCustomTagOutput values.
 // You can construct a concrete instance of `SqlEndpointTagsCustomTagInput` via:
 //
-//          SqlEndpointTagsCustomTagArgs{...}
+//	SqlEndpointTagsCustomTagArgs{...}
 type SqlEndpointTagsCustomTagInput interface {
 	pulumi.Input
 
@@ -26215,7 +26215,7 @@ func (i SqlEndpointTagsCustomTagArgs) ToSqlEndpointTagsCustomTagOutputWithContex
 // SqlEndpointTagsCustomTagArrayInput is an input type that accepts SqlEndpointTagsCustomTagArray and SqlEndpointTagsCustomTagArrayOutput values.
 // You can construct a concrete instance of `SqlEndpointTagsCustomTagArrayInput` via:
 //
-//          SqlEndpointTagsCustomTagArray{ SqlEndpointTagsCustomTagArgs{...} }
+//	SqlEndpointTagsCustomTagArray{ SqlEndpointTagsCustomTagArgs{...} }
 type SqlEndpointTagsCustomTagArrayInput interface {
 	pulumi.Input
 
@@ -26289,7 +26289,7 @@ type SqlPermissionsPrivilegeAssignment struct {
 // SqlPermissionsPrivilegeAssignmentInput is an input type that accepts SqlPermissionsPrivilegeAssignmentArgs and SqlPermissionsPrivilegeAssignmentOutput values.
 // You can construct a concrete instance of `SqlPermissionsPrivilegeAssignmentInput` via:
 //
-//          SqlPermissionsPrivilegeAssignmentArgs{...}
+//	SqlPermissionsPrivilegeAssignmentArgs{...}
 type SqlPermissionsPrivilegeAssignmentInput interface {
 	pulumi.Input
 
@@ -26319,7 +26319,7 @@ func (i SqlPermissionsPrivilegeAssignmentArgs) ToSqlPermissionsPrivilegeAssignme
 // SqlPermissionsPrivilegeAssignmentArrayInput is an input type that accepts SqlPermissionsPrivilegeAssignmentArray and SqlPermissionsPrivilegeAssignmentArrayOutput values.
 // You can construct a concrete instance of `SqlPermissionsPrivilegeAssignmentArrayInput` via:
 //
-//          SqlPermissionsPrivilegeAssignmentArray{ SqlPermissionsPrivilegeAssignmentArgs{...} }
+//	SqlPermissionsPrivilegeAssignmentArray{ SqlPermissionsPrivilegeAssignmentArgs{...} }
 type SqlPermissionsPrivilegeAssignmentArrayInput interface {
 	pulumi.Input
 
@@ -26403,7 +26403,7 @@ type SqlQueryParameter struct {
 // SqlQueryParameterInput is an input type that accepts SqlQueryParameterArgs and SqlQueryParameterOutput values.
 // You can construct a concrete instance of `SqlQueryParameterInput` via:
 //
-//          SqlQueryParameterArgs{...}
+//	SqlQueryParameterArgs{...}
 type SqlQueryParameterInput interface {
 	pulumi.Input
 
@@ -26441,7 +26441,7 @@ func (i SqlQueryParameterArgs) ToSqlQueryParameterOutputWithContext(ctx context.
 // SqlQueryParameterArrayInput is an input type that accepts SqlQueryParameterArray and SqlQueryParameterArrayOutput values.
 // You can construct a concrete instance of `SqlQueryParameterArrayInput` via:
 //
-//          SqlQueryParameterArray{ SqlQueryParameterArgs{...} }
+//	SqlQueryParameterArray{ SqlQueryParameterArgs{...} }
 type SqlQueryParameterArrayInput interface {
 	pulumi.Input
 
@@ -26552,7 +26552,7 @@ type SqlQueryParameterDate struct {
 // SqlQueryParameterDateInput is an input type that accepts SqlQueryParameterDateArgs and SqlQueryParameterDateOutput values.
 // You can construct a concrete instance of `SqlQueryParameterDateInput` via:
 //
-//          SqlQueryParameterDateArgs{...}
+//	SqlQueryParameterDateArgs{...}
 type SqlQueryParameterDateInput interface {
 	pulumi.Input
 
@@ -26587,11 +26587,11 @@ func (i SqlQueryParameterDateArgs) ToSqlQueryParameterDatePtrOutputWithContext(c
 // SqlQueryParameterDatePtrInput is an input type that accepts SqlQueryParameterDateArgs, SqlQueryParameterDatePtr and SqlQueryParameterDatePtrOutput values.
 // You can construct a concrete instance of `SqlQueryParameterDatePtrInput` via:
 //
-//          SqlQueryParameterDateArgs{...}
+//	        SqlQueryParameterDateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryParameterDatePtrInput interface {
 	pulumi.Input
 
@@ -26685,7 +26685,7 @@ type SqlQueryParameterDateRange struct {
 // SqlQueryParameterDateRangeInput is an input type that accepts SqlQueryParameterDateRangeArgs and SqlQueryParameterDateRangeOutput values.
 // You can construct a concrete instance of `SqlQueryParameterDateRangeInput` via:
 //
-//          SqlQueryParameterDateRangeArgs{...}
+//	SqlQueryParameterDateRangeArgs{...}
 type SqlQueryParameterDateRangeInput interface {
 	pulumi.Input
 
@@ -26720,11 +26720,11 @@ func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangePtrOutputWit
 // SqlQueryParameterDateRangePtrInput is an input type that accepts SqlQueryParameterDateRangeArgs, SqlQueryParameterDateRangePtr and SqlQueryParameterDateRangePtrOutput values.
 // You can construct a concrete instance of `SqlQueryParameterDateRangePtrInput` via:
 //
-//          SqlQueryParameterDateRangeArgs{...}
+//	        SqlQueryParameterDateRangeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryParameterDateRangePtrInput interface {
 	pulumi.Input
 
@@ -26818,7 +26818,7 @@ type SqlQueryParameterDatetime struct {
 // SqlQueryParameterDatetimeInput is an input type that accepts SqlQueryParameterDatetimeArgs and SqlQueryParameterDatetimeOutput values.
 // You can construct a concrete instance of `SqlQueryParameterDatetimeInput` via:
 //
-//          SqlQueryParameterDatetimeArgs{...}
+//	SqlQueryParameterDatetimeArgs{...}
 type SqlQueryParameterDatetimeInput interface {
 	pulumi.Input
 
@@ -26853,11 +26853,11 @@ func (i SqlQueryParameterDatetimeArgs) ToSqlQueryParameterDatetimePtrOutputWithC
 // SqlQueryParameterDatetimePtrInput is an input type that accepts SqlQueryParameterDatetimeArgs, SqlQueryParameterDatetimePtr and SqlQueryParameterDatetimePtrOutput values.
 // You can construct a concrete instance of `SqlQueryParameterDatetimePtrInput` via:
 //
-//          SqlQueryParameterDatetimeArgs{...}
+//	        SqlQueryParameterDatetimeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryParameterDatetimePtrInput interface {
 	pulumi.Input
 
@@ -26951,7 +26951,7 @@ type SqlQueryParameterDatetimeRange struct {
 // SqlQueryParameterDatetimeRangeInput is an input type that accepts SqlQueryParameterDatetimeRangeArgs and SqlQueryParameterDatetimeRangeOutput values.
 // You can construct a concrete instance of `SqlQueryParameterDatetimeRangeInput` via:
 //
-//          SqlQueryParameterDatetimeRangeArgs{...}
+//	SqlQueryParameterDatetimeRangeArgs{...}
 type SqlQueryParameterDatetimeRangeInput interface {
 	pulumi.Input
 
@@ -26986,11 +26986,11 @@ func (i SqlQueryParameterDatetimeRangeArgs) ToSqlQueryParameterDatetimeRangePtrO
 // SqlQueryParameterDatetimeRangePtrInput is an input type that accepts SqlQueryParameterDatetimeRangeArgs, SqlQueryParameterDatetimeRangePtr and SqlQueryParameterDatetimeRangePtrOutput values.
 // You can construct a concrete instance of `SqlQueryParameterDatetimeRangePtrInput` via:
 //
-//          SqlQueryParameterDatetimeRangeArgs{...}
+//	        SqlQueryParameterDatetimeRangeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryParameterDatetimeRangePtrInput interface {
 	pulumi.Input
 
@@ -27084,7 +27084,7 @@ type SqlQueryParameterDatetimesec struct {
 // SqlQueryParameterDatetimesecInput is an input type that accepts SqlQueryParameterDatetimesecArgs and SqlQueryParameterDatetimesecOutput values.
 // You can construct a concrete instance of `SqlQueryParameterDatetimesecInput` via:
 //
-//          SqlQueryParameterDatetimesecArgs{...}
+//	SqlQueryParameterDatetimesecArgs{...}
 type SqlQueryParameterDatetimesecInput interface {
 	pulumi.Input
 
@@ -27119,11 +27119,11 @@ func (i SqlQueryParameterDatetimesecArgs) ToSqlQueryParameterDatetimesecPtrOutpu
 // SqlQueryParameterDatetimesecPtrInput is an input type that accepts SqlQueryParameterDatetimesecArgs, SqlQueryParameterDatetimesecPtr and SqlQueryParameterDatetimesecPtrOutput values.
 // You can construct a concrete instance of `SqlQueryParameterDatetimesecPtrInput` via:
 //
-//          SqlQueryParameterDatetimesecArgs{...}
+//	        SqlQueryParameterDatetimesecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryParameterDatetimesecPtrInput interface {
 	pulumi.Input
 
@@ -27217,7 +27217,7 @@ type SqlQueryParameterDatetimesecRange struct {
 // SqlQueryParameterDatetimesecRangeInput is an input type that accepts SqlQueryParameterDatetimesecRangeArgs and SqlQueryParameterDatetimesecRangeOutput values.
 // You can construct a concrete instance of `SqlQueryParameterDatetimesecRangeInput` via:
 //
-//          SqlQueryParameterDatetimesecRangeArgs{...}
+//	SqlQueryParameterDatetimesecRangeArgs{...}
 type SqlQueryParameterDatetimesecRangeInput interface {
 	pulumi.Input
 
@@ -27252,11 +27252,11 @@ func (i SqlQueryParameterDatetimesecRangeArgs) ToSqlQueryParameterDatetimesecRan
 // SqlQueryParameterDatetimesecRangePtrInput is an input type that accepts SqlQueryParameterDatetimesecRangeArgs, SqlQueryParameterDatetimesecRangePtr and SqlQueryParameterDatetimesecRangePtrOutput values.
 // You can construct a concrete instance of `SqlQueryParameterDatetimesecRangePtrInput` via:
 //
-//          SqlQueryParameterDatetimesecRangeArgs{...}
+//	        SqlQueryParameterDatetimesecRangeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryParameterDatetimesecRangePtrInput interface {
 	pulumi.Input
 
@@ -27353,7 +27353,7 @@ type SqlQueryParameterEnum struct {
 // SqlQueryParameterEnumInput is an input type that accepts SqlQueryParameterEnumArgs and SqlQueryParameterEnumOutput values.
 // You can construct a concrete instance of `SqlQueryParameterEnumInput` via:
 //
-//          SqlQueryParameterEnumArgs{...}
+//	SqlQueryParameterEnumArgs{...}
 type SqlQueryParameterEnumInput interface {
 	pulumi.Input
 
@@ -27391,11 +27391,11 @@ func (i SqlQueryParameterEnumArgs) ToSqlQueryParameterEnumPtrOutputWithContext(c
 // SqlQueryParameterEnumPtrInput is an input type that accepts SqlQueryParameterEnumArgs, SqlQueryParameterEnumPtr and SqlQueryParameterEnumPtrOutput values.
 // You can construct a concrete instance of `SqlQueryParameterEnumPtrInput` via:
 //
-//          SqlQueryParameterEnumArgs{...}
+//	        SqlQueryParameterEnumArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryParameterEnumPtrInput interface {
 	pulumi.Input
 
@@ -27530,7 +27530,7 @@ type SqlQueryParameterEnumMultiple struct {
 // SqlQueryParameterEnumMultipleInput is an input type that accepts SqlQueryParameterEnumMultipleArgs and SqlQueryParameterEnumMultipleOutput values.
 // You can construct a concrete instance of `SqlQueryParameterEnumMultipleInput` via:
 //
-//          SqlQueryParameterEnumMultipleArgs{...}
+//	SqlQueryParameterEnumMultipleArgs{...}
 type SqlQueryParameterEnumMultipleInput interface {
 	pulumi.Input
 
@@ -27567,11 +27567,11 @@ func (i SqlQueryParameterEnumMultipleArgs) ToSqlQueryParameterEnumMultiplePtrOut
 // SqlQueryParameterEnumMultiplePtrInput is an input type that accepts SqlQueryParameterEnumMultipleArgs, SqlQueryParameterEnumMultiplePtr and SqlQueryParameterEnumMultiplePtrOutput values.
 // You can construct a concrete instance of `SqlQueryParameterEnumMultiplePtrInput` via:
 //
-//          SqlQueryParameterEnumMultipleArgs{...}
+//	        SqlQueryParameterEnumMultipleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryParameterEnumMultiplePtrInput interface {
 	pulumi.Input
 
@@ -27691,7 +27691,7 @@ type SqlQueryParameterNumber struct {
 // SqlQueryParameterNumberInput is an input type that accepts SqlQueryParameterNumberArgs and SqlQueryParameterNumberOutput values.
 // You can construct a concrete instance of `SqlQueryParameterNumberInput` via:
 //
-//          SqlQueryParameterNumberArgs{...}
+//	SqlQueryParameterNumberArgs{...}
 type SqlQueryParameterNumberInput interface {
 	pulumi.Input
 
@@ -27726,11 +27726,11 @@ func (i SqlQueryParameterNumberArgs) ToSqlQueryParameterNumberPtrOutputWithConte
 // SqlQueryParameterNumberPtrInput is an input type that accepts SqlQueryParameterNumberArgs, SqlQueryParameterNumberPtr and SqlQueryParameterNumberPtrOutput values.
 // You can construct a concrete instance of `SqlQueryParameterNumberPtrInput` via:
 //
-//          SqlQueryParameterNumberArgs{...}
+//	        SqlQueryParameterNumberArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryParameterNumberPtrInput interface {
 	pulumi.Input
 
@@ -27827,7 +27827,7 @@ type SqlQueryParameterQuery struct {
 // SqlQueryParameterQueryInput is an input type that accepts SqlQueryParameterQueryArgs and SqlQueryParameterQueryOutput values.
 // You can construct a concrete instance of `SqlQueryParameterQueryInput` via:
 //
-//          SqlQueryParameterQueryArgs{...}
+//	SqlQueryParameterQueryArgs{...}
 type SqlQueryParameterQueryInput interface {
 	pulumi.Input
 
@@ -27865,11 +27865,11 @@ func (i SqlQueryParameterQueryArgs) ToSqlQueryParameterQueryPtrOutputWithContext
 // SqlQueryParameterQueryPtrInput is an input type that accepts SqlQueryParameterQueryArgs, SqlQueryParameterQueryPtr and SqlQueryParameterQueryPtrOutput values.
 // You can construct a concrete instance of `SqlQueryParameterQueryPtrInput` via:
 //
-//          SqlQueryParameterQueryArgs{...}
+//	        SqlQueryParameterQueryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryParameterQueryPtrInput interface {
 	pulumi.Input
 
@@ -28004,7 +28004,7 @@ type SqlQueryParameterQueryMultiple struct {
 // SqlQueryParameterQueryMultipleInput is an input type that accepts SqlQueryParameterQueryMultipleArgs and SqlQueryParameterQueryMultipleOutput values.
 // You can construct a concrete instance of `SqlQueryParameterQueryMultipleInput` via:
 //
-//          SqlQueryParameterQueryMultipleArgs{...}
+//	SqlQueryParameterQueryMultipleArgs{...}
 type SqlQueryParameterQueryMultipleInput interface {
 	pulumi.Input
 
@@ -28041,11 +28041,11 @@ func (i SqlQueryParameterQueryMultipleArgs) ToSqlQueryParameterQueryMultiplePtrO
 // SqlQueryParameterQueryMultiplePtrInput is an input type that accepts SqlQueryParameterQueryMultipleArgs, SqlQueryParameterQueryMultiplePtr and SqlQueryParameterQueryMultiplePtrOutput values.
 // You can construct a concrete instance of `SqlQueryParameterQueryMultiplePtrInput` via:
 //
-//          SqlQueryParameterQueryMultipleArgs{...}
+//	        SqlQueryParameterQueryMultipleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryParameterQueryMultiplePtrInput interface {
 	pulumi.Input
 
@@ -28165,7 +28165,7 @@ type SqlQueryParameterText struct {
 // SqlQueryParameterTextInput is an input type that accepts SqlQueryParameterTextArgs and SqlQueryParameterTextOutput values.
 // You can construct a concrete instance of `SqlQueryParameterTextInput` via:
 //
-//          SqlQueryParameterTextArgs{...}
+//	SqlQueryParameterTextArgs{...}
 type SqlQueryParameterTextInput interface {
 	pulumi.Input
 
@@ -28200,11 +28200,11 @@ func (i SqlQueryParameterTextArgs) ToSqlQueryParameterTextPtrOutputWithContext(c
 // SqlQueryParameterTextPtrInput is an input type that accepts SqlQueryParameterTextArgs, SqlQueryParameterTextPtr and SqlQueryParameterTextPtrOutput values.
 // You can construct a concrete instance of `SqlQueryParameterTextPtrInput` via:
 //
-//          SqlQueryParameterTextArgs{...}
+//	        SqlQueryParameterTextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryParameterTextPtrInput interface {
 	pulumi.Input
 
@@ -28300,7 +28300,7 @@ type SqlQuerySchedule struct {
 // SqlQueryScheduleInput is an input type that accepts SqlQueryScheduleArgs and SqlQueryScheduleOutput values.
 // You can construct a concrete instance of `SqlQueryScheduleInput` via:
 //
-//          SqlQueryScheduleArgs{...}
+//	SqlQueryScheduleArgs{...}
 type SqlQueryScheduleInput interface {
 	pulumi.Input
 
@@ -28337,11 +28337,11 @@ func (i SqlQueryScheduleArgs) ToSqlQuerySchedulePtrOutputWithContext(ctx context
 // SqlQuerySchedulePtrInput is an input type that accepts SqlQueryScheduleArgs, SqlQuerySchedulePtr and SqlQuerySchedulePtrOutput values.
 // You can construct a concrete instance of `SqlQuerySchedulePtrInput` via:
 //
-//          SqlQueryScheduleArgs{...}
+//	        SqlQueryScheduleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQuerySchedulePtrInput interface {
 	pulumi.Input
 
@@ -28462,7 +28462,7 @@ type SqlQueryScheduleContinuous struct {
 // SqlQueryScheduleContinuousInput is an input type that accepts SqlQueryScheduleContinuousArgs and SqlQueryScheduleContinuousOutput values.
 // You can construct a concrete instance of `SqlQueryScheduleContinuousInput` via:
 //
-//          SqlQueryScheduleContinuousArgs{...}
+//	SqlQueryScheduleContinuousArgs{...}
 type SqlQueryScheduleContinuousInput interface {
 	pulumi.Input
 
@@ -28498,11 +28498,11 @@ func (i SqlQueryScheduleContinuousArgs) ToSqlQueryScheduleContinuousPtrOutputWit
 // SqlQueryScheduleContinuousPtrInput is an input type that accepts SqlQueryScheduleContinuousArgs, SqlQueryScheduleContinuousPtr and SqlQueryScheduleContinuousPtrOutput values.
 // You can construct a concrete instance of `SqlQueryScheduleContinuousPtrInput` via:
 //
-//          SqlQueryScheduleContinuousArgs{...}
+//	        SqlQueryScheduleContinuousArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryScheduleContinuousPtrInput interface {
 	pulumi.Input
 
@@ -28611,7 +28611,7 @@ type SqlQueryScheduleDaily struct {
 // SqlQueryScheduleDailyInput is an input type that accepts SqlQueryScheduleDailyArgs and SqlQueryScheduleDailyOutput values.
 // You can construct a concrete instance of `SqlQueryScheduleDailyInput` via:
 //
-//          SqlQueryScheduleDailyArgs{...}
+//	SqlQueryScheduleDailyArgs{...}
 type SqlQueryScheduleDailyInput interface {
 	pulumi.Input
 
@@ -28648,11 +28648,11 @@ func (i SqlQueryScheduleDailyArgs) ToSqlQueryScheduleDailyPtrOutputWithContext(c
 // SqlQueryScheduleDailyPtrInput is an input type that accepts SqlQueryScheduleDailyArgs, SqlQueryScheduleDailyPtr and SqlQueryScheduleDailyPtrOutput values.
 // You can construct a concrete instance of `SqlQueryScheduleDailyPtrInput` via:
 //
-//          SqlQueryScheduleDailyArgs{...}
+//	        SqlQueryScheduleDailyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryScheduleDailyPtrInput interface {
 	pulumi.Input
 
@@ -28775,7 +28775,7 @@ type SqlQueryScheduleWeekly struct {
 // SqlQueryScheduleWeeklyInput is an input type that accepts SqlQueryScheduleWeeklyArgs and SqlQueryScheduleWeeklyOutput values.
 // You can construct a concrete instance of `SqlQueryScheduleWeeklyInput` via:
 //
-//          SqlQueryScheduleWeeklyArgs{...}
+//	SqlQueryScheduleWeeklyArgs{...}
 type SqlQueryScheduleWeeklyInput interface {
 	pulumi.Input
 
@@ -28813,11 +28813,11 @@ func (i SqlQueryScheduleWeeklyArgs) ToSqlQueryScheduleWeeklyPtrOutputWithContext
 // SqlQueryScheduleWeeklyPtrInput is an input type that accepts SqlQueryScheduleWeeklyArgs, SqlQueryScheduleWeeklyPtr and SqlQueryScheduleWeeklyPtrOutput values.
 // You can construct a concrete instance of `SqlQueryScheduleWeeklyPtrInput` via:
 //
-//          SqlQueryScheduleWeeklyArgs{...}
+//	        SqlQueryScheduleWeeklyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlQueryScheduleWeeklyPtrInput interface {
 	pulumi.Input
 
@@ -28955,7 +28955,7 @@ type SqlWidgetParameter struct {
 // SqlWidgetParameterInput is an input type that accepts SqlWidgetParameterArgs and SqlWidgetParameterOutput values.
 // You can construct a concrete instance of `SqlWidgetParameterInput` via:
 //
-//          SqlWidgetParameterArgs{...}
+//	SqlWidgetParameterArgs{...}
 type SqlWidgetParameterInput interface {
 	pulumi.Input
 
@@ -28987,7 +28987,7 @@ func (i SqlWidgetParameterArgs) ToSqlWidgetParameterOutputWithContext(ctx contex
 // SqlWidgetParameterArrayInput is an input type that accepts SqlWidgetParameterArray and SqlWidgetParameterArrayOutput values.
 // You can construct a concrete instance of `SqlWidgetParameterArrayInput` via:
 //
-//          SqlWidgetParameterArray{ SqlWidgetParameterArgs{...} }
+//	SqlWidgetParameterArray{ SqlWidgetParameterArgs{...} }
 type SqlWidgetParameterArrayInput interface {
 	pulumi.Input
 
@@ -29078,7 +29078,7 @@ type SqlWidgetPosition struct {
 // SqlWidgetPositionInput is an input type that accepts SqlWidgetPositionArgs and SqlWidgetPositionOutput values.
 // You can construct a concrete instance of `SqlWidgetPositionInput` via:
 //
-//          SqlWidgetPositionArgs{...}
+//	SqlWidgetPositionArgs{...}
 type SqlWidgetPositionInput interface {
 	pulumi.Input
 
@@ -29117,11 +29117,11 @@ func (i SqlWidgetPositionArgs) ToSqlWidgetPositionPtrOutputWithContext(ctx conte
 // SqlWidgetPositionPtrInput is an input type that accepts SqlWidgetPositionArgs, SqlWidgetPositionPtr and SqlWidgetPositionPtrOutput values.
 // You can construct a concrete instance of `SqlWidgetPositionPtrInput` via:
 //
-//          SqlWidgetPositionArgs{...}
+//	        SqlWidgetPositionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlWidgetPositionPtrInput interface {
 	pulumi.Input
 
@@ -29268,7 +29268,7 @@ type StorageCredentialAwsIamRole struct {
 // StorageCredentialAwsIamRoleInput is an input type that accepts StorageCredentialAwsIamRoleArgs and StorageCredentialAwsIamRoleOutput values.
 // You can construct a concrete instance of `StorageCredentialAwsIamRoleInput` via:
 //
-//          StorageCredentialAwsIamRoleArgs{...}
+//	StorageCredentialAwsIamRoleArgs{...}
 type StorageCredentialAwsIamRoleInput interface {
 	pulumi.Input
 
@@ -29304,11 +29304,11 @@ func (i StorageCredentialAwsIamRoleArgs) ToStorageCredentialAwsIamRolePtrOutputW
 // StorageCredentialAwsIamRolePtrInput is an input type that accepts StorageCredentialAwsIamRoleArgs, StorageCredentialAwsIamRolePtr and StorageCredentialAwsIamRolePtrOutput values.
 // You can construct a concrete instance of `StorageCredentialAwsIamRolePtrInput` via:
 //
-//          StorageCredentialAwsIamRoleArgs{...}
+//	        StorageCredentialAwsIamRoleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StorageCredentialAwsIamRolePtrInput interface {
 	pulumi.Input
 
@@ -29405,7 +29405,7 @@ type StorageCredentialAzureManagedIdentity struct {
 // StorageCredentialAzureManagedIdentityInput is an input type that accepts StorageCredentialAzureManagedIdentityArgs and StorageCredentialAzureManagedIdentityOutput values.
 // You can construct a concrete instance of `StorageCredentialAzureManagedIdentityInput` via:
 //
-//          StorageCredentialAzureManagedIdentityArgs{...}
+//	StorageCredentialAzureManagedIdentityArgs{...}
 type StorageCredentialAzureManagedIdentityInput interface {
 	pulumi.Input
 
@@ -29441,11 +29441,11 @@ func (i StorageCredentialAzureManagedIdentityArgs) ToStorageCredentialAzureManag
 // StorageCredentialAzureManagedIdentityPtrInput is an input type that accepts StorageCredentialAzureManagedIdentityArgs, StorageCredentialAzureManagedIdentityPtr and StorageCredentialAzureManagedIdentityPtrOutput values.
 // You can construct a concrete instance of `StorageCredentialAzureManagedIdentityPtrInput` via:
 //
-//          StorageCredentialAzureManagedIdentityArgs{...}
+//	        StorageCredentialAzureManagedIdentityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StorageCredentialAzureManagedIdentityPtrInput interface {
 	pulumi.Input
 
@@ -29546,7 +29546,7 @@ type StorageCredentialAzureServicePrincipal struct {
 // StorageCredentialAzureServicePrincipalInput is an input type that accepts StorageCredentialAzureServicePrincipalArgs and StorageCredentialAzureServicePrincipalOutput values.
 // You can construct a concrete instance of `StorageCredentialAzureServicePrincipalInput` via:
 //
-//          StorageCredentialAzureServicePrincipalArgs{...}
+//	StorageCredentialAzureServicePrincipalArgs{...}
 type StorageCredentialAzureServicePrincipalInput interface {
 	pulumi.Input
 
@@ -29586,11 +29586,11 @@ func (i StorageCredentialAzureServicePrincipalArgs) ToStorageCredentialAzureServ
 // StorageCredentialAzureServicePrincipalPtrInput is an input type that accepts StorageCredentialAzureServicePrincipalArgs, StorageCredentialAzureServicePrincipalPtr and StorageCredentialAzureServicePrincipalPtrOutput values.
 // You can construct a concrete instance of `StorageCredentialAzureServicePrincipalPtrInput` via:
 //
-//          StorageCredentialAzureServicePrincipalArgs{...}
+//	        StorageCredentialAzureServicePrincipalArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StorageCredentialAzureServicePrincipalPtrInput interface {
 	pulumi.Input
 
@@ -29737,7 +29737,7 @@ type TableColumn struct {
 // TableColumnInput is an input type that accepts TableColumnArgs and TableColumnOutput values.
 // You can construct a concrete instance of `TableColumnInput` via:
 //
-//          TableColumnArgs{...}
+//	TableColumnArgs{...}
 type TableColumnInput interface {
 	pulumi.Input
 
@@ -29785,7 +29785,7 @@ func (i TableColumnArgs) ToTableColumnOutputWithContext(ctx context.Context) Tab
 // TableColumnArrayInput is an input type that accepts TableColumnArray and TableColumnArrayOutput values.
 // You can construct a concrete instance of `TableColumnArrayInput` via:
 //
-//          TableColumnArray{ TableColumnArgs{...} }
+//	TableColumnArray{ TableColumnArgs{...} }
 type TableColumnArrayInput interface {
 	pulumi.Input
 
@@ -29961,7 +29961,7 @@ type GetClusterClusterInfo struct {
 // GetClusterClusterInfoInput is an input type that accepts GetClusterClusterInfoArgs and GetClusterClusterInfoOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoInput` via:
 //
-//          GetClusterClusterInfoArgs{...}
+//	GetClusterClusterInfoArgs{...}
 type GetClusterClusterInfoInput interface {
 	pulumi.Input
 
@@ -30054,11 +30054,11 @@ func (i GetClusterClusterInfoArgs) ToGetClusterClusterInfoPtrOutputWithContext(c
 // GetClusterClusterInfoPtrInput is an input type that accepts GetClusterClusterInfoArgs, GetClusterClusterInfoPtr and GetClusterClusterInfoPtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoPtrInput` via:
 //
-//          GetClusterClusterInfoArgs{...}
+//	        GetClusterClusterInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoPtrInput interface {
 	pulumi.Input
 
@@ -30720,7 +30720,7 @@ type GetClusterClusterInfoAutoscale struct {
 // GetClusterClusterInfoAutoscaleInput is an input type that accepts GetClusterClusterInfoAutoscaleArgs and GetClusterClusterInfoAutoscaleOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoAutoscaleInput` via:
 //
-//          GetClusterClusterInfoAutoscaleArgs{...}
+//	GetClusterClusterInfoAutoscaleArgs{...}
 type GetClusterClusterInfoAutoscaleInput interface {
 	pulumi.Input
 
@@ -30756,11 +30756,11 @@ func (i GetClusterClusterInfoAutoscaleArgs) ToGetClusterClusterInfoAutoscalePtrO
 // GetClusterClusterInfoAutoscalePtrInput is an input type that accepts GetClusterClusterInfoAutoscaleArgs, GetClusterClusterInfoAutoscalePtr and GetClusterClusterInfoAutoscalePtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoAutoscalePtrInput` via:
 //
-//          GetClusterClusterInfoAutoscaleArgs{...}
+//	        GetClusterClusterInfoAutoscaleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoAutoscalePtrInput interface {
 	pulumi.Input
 
@@ -30874,7 +30874,7 @@ type GetClusterClusterInfoAwsAttributes struct {
 // GetClusterClusterInfoAwsAttributesInput is an input type that accepts GetClusterClusterInfoAwsAttributesArgs and GetClusterClusterInfoAwsAttributesOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoAwsAttributesInput` via:
 //
-//          GetClusterClusterInfoAwsAttributesArgs{...}
+//	GetClusterClusterInfoAwsAttributesArgs{...}
 type GetClusterClusterInfoAwsAttributesInput interface {
 	pulumi.Input
 
@@ -30916,11 +30916,11 @@ func (i GetClusterClusterInfoAwsAttributesArgs) ToGetClusterClusterInfoAwsAttrib
 // GetClusterClusterInfoAwsAttributesPtrInput is an input type that accepts GetClusterClusterInfoAwsAttributesArgs, GetClusterClusterInfoAwsAttributesPtr and GetClusterClusterInfoAwsAttributesPtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoAwsAttributesPtrInput` via:
 //
-//          GetClusterClusterInfoAwsAttributesArgs{...}
+//	        GetClusterClusterInfoAwsAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoAwsAttributesPtrInput interface {
 	pulumi.Input
 
@@ -31107,7 +31107,7 @@ type GetClusterClusterInfoAzureAttributes struct {
 // GetClusterClusterInfoAzureAttributesInput is an input type that accepts GetClusterClusterInfoAzureAttributesArgs and GetClusterClusterInfoAzureAttributesOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoAzureAttributesInput` via:
 //
-//          GetClusterClusterInfoAzureAttributesArgs{...}
+//	GetClusterClusterInfoAzureAttributesArgs{...}
 type GetClusterClusterInfoAzureAttributesInput interface {
 	pulumi.Input
 
@@ -31144,11 +31144,11 @@ func (i GetClusterClusterInfoAzureAttributesArgs) ToGetClusterClusterInfoAzureAt
 // GetClusterClusterInfoAzureAttributesPtrInput is an input type that accepts GetClusterClusterInfoAzureAttributesArgs, GetClusterClusterInfoAzureAttributesPtr and GetClusterClusterInfoAzureAttributesPtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoAzureAttributesPtrInput` via:
 //
-//          GetClusterClusterInfoAzureAttributesArgs{...}
+//	        GetClusterClusterInfoAzureAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoAzureAttributesPtrInput interface {
 	pulumi.Input
 
@@ -31269,7 +31269,7 @@ type GetClusterClusterInfoClusterLogConf struct {
 // GetClusterClusterInfoClusterLogConfInput is an input type that accepts GetClusterClusterInfoClusterLogConfArgs and GetClusterClusterInfoClusterLogConfOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoClusterLogConfInput` via:
 //
-//          GetClusterClusterInfoClusterLogConfArgs{...}
+//	GetClusterClusterInfoClusterLogConfArgs{...}
 type GetClusterClusterInfoClusterLogConfInput interface {
 	pulumi.Input
 
@@ -31305,11 +31305,11 @@ func (i GetClusterClusterInfoClusterLogConfArgs) ToGetClusterClusterInfoClusterL
 // GetClusterClusterInfoClusterLogConfPtrInput is an input type that accepts GetClusterClusterInfoClusterLogConfArgs, GetClusterClusterInfoClusterLogConfPtr and GetClusterClusterInfoClusterLogConfPtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoClusterLogConfPtrInput` via:
 //
-//          GetClusterClusterInfoClusterLogConfArgs{...}
+//	        GetClusterClusterInfoClusterLogConfArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoClusterLogConfPtrInput interface {
 	pulumi.Input
 
@@ -31416,7 +31416,7 @@ type GetClusterClusterInfoClusterLogConfDbfs struct {
 // GetClusterClusterInfoClusterLogConfDbfsInput is an input type that accepts GetClusterClusterInfoClusterLogConfDbfsArgs and GetClusterClusterInfoClusterLogConfDbfsOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoClusterLogConfDbfsInput` via:
 //
-//          GetClusterClusterInfoClusterLogConfDbfsArgs{...}
+//	GetClusterClusterInfoClusterLogConfDbfsArgs{...}
 type GetClusterClusterInfoClusterLogConfDbfsInput interface {
 	pulumi.Input
 
@@ -31451,11 +31451,11 @@ func (i GetClusterClusterInfoClusterLogConfDbfsArgs) ToGetClusterClusterInfoClus
 // GetClusterClusterInfoClusterLogConfDbfsPtrInput is an input type that accepts GetClusterClusterInfoClusterLogConfDbfsArgs, GetClusterClusterInfoClusterLogConfDbfsPtr and GetClusterClusterInfoClusterLogConfDbfsPtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoClusterLogConfDbfsPtrInput` via:
 //
-//          GetClusterClusterInfoClusterLogConfDbfsArgs{...}
+//	        GetClusterClusterInfoClusterLogConfDbfsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoClusterLogConfDbfsPtrInput interface {
 	pulumi.Input
 
@@ -31555,7 +31555,7 @@ type GetClusterClusterInfoClusterLogConfS3 struct {
 // GetClusterClusterInfoClusterLogConfS3Input is an input type that accepts GetClusterClusterInfoClusterLogConfS3Args and GetClusterClusterInfoClusterLogConfS3Output values.
 // You can construct a concrete instance of `GetClusterClusterInfoClusterLogConfS3Input` via:
 //
-//          GetClusterClusterInfoClusterLogConfS3Args{...}
+//	GetClusterClusterInfoClusterLogConfS3Args{...}
 type GetClusterClusterInfoClusterLogConfS3Input interface {
 	pulumi.Input
 
@@ -31596,11 +31596,11 @@ func (i GetClusterClusterInfoClusterLogConfS3Args) ToGetClusterClusterInfoCluste
 // GetClusterClusterInfoClusterLogConfS3PtrInput is an input type that accepts GetClusterClusterInfoClusterLogConfS3Args, GetClusterClusterInfoClusterLogConfS3Ptr and GetClusterClusterInfoClusterLogConfS3PtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoClusterLogConfS3PtrInput` via:
 //
-//          GetClusterClusterInfoClusterLogConfS3Args{...}
+//	        GetClusterClusterInfoClusterLogConfS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoClusterLogConfS3PtrInput interface {
 	pulumi.Input
 
@@ -31773,7 +31773,7 @@ type GetClusterClusterInfoClusterLogStatus struct {
 // GetClusterClusterInfoClusterLogStatusInput is an input type that accepts GetClusterClusterInfoClusterLogStatusArgs and GetClusterClusterInfoClusterLogStatusOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoClusterLogStatusInput` via:
 //
-//          GetClusterClusterInfoClusterLogStatusArgs{...}
+//	GetClusterClusterInfoClusterLogStatusArgs{...}
 type GetClusterClusterInfoClusterLogStatusInput interface {
 	pulumi.Input
 
@@ -31809,11 +31809,11 @@ func (i GetClusterClusterInfoClusterLogStatusArgs) ToGetClusterClusterInfoCluste
 // GetClusterClusterInfoClusterLogStatusPtrInput is an input type that accepts GetClusterClusterInfoClusterLogStatusArgs, GetClusterClusterInfoClusterLogStatusPtr and GetClusterClusterInfoClusterLogStatusPtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoClusterLogStatusPtrInput` via:
 //
-//          GetClusterClusterInfoClusterLogStatusArgs{...}
+//	        GetClusterClusterInfoClusterLogStatusArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoClusterLogStatusPtrInput interface {
 	pulumi.Input
 
@@ -31921,7 +31921,7 @@ type GetClusterClusterInfoDockerImage struct {
 // GetClusterClusterInfoDockerImageInput is an input type that accepts GetClusterClusterInfoDockerImageArgs and GetClusterClusterInfoDockerImageOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoDockerImageInput` via:
 //
-//          GetClusterClusterInfoDockerImageArgs{...}
+//	GetClusterClusterInfoDockerImageArgs{...}
 type GetClusterClusterInfoDockerImageInput interface {
 	pulumi.Input
 
@@ -31957,11 +31957,11 @@ func (i GetClusterClusterInfoDockerImageArgs) ToGetClusterClusterInfoDockerImage
 // GetClusterClusterInfoDockerImagePtrInput is an input type that accepts GetClusterClusterInfoDockerImageArgs, GetClusterClusterInfoDockerImagePtr and GetClusterClusterInfoDockerImagePtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoDockerImagePtrInput` via:
 //
-//          GetClusterClusterInfoDockerImageArgs{...}
+//	        GetClusterClusterInfoDockerImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoDockerImagePtrInput interface {
 	pulumi.Input
 
@@ -32071,7 +32071,7 @@ type GetClusterClusterInfoDockerImageBasicAuth struct {
 // GetClusterClusterInfoDockerImageBasicAuthInput is an input type that accepts GetClusterClusterInfoDockerImageBasicAuthArgs and GetClusterClusterInfoDockerImageBasicAuthOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoDockerImageBasicAuthInput` via:
 //
-//          GetClusterClusterInfoDockerImageBasicAuthArgs{...}
+//	GetClusterClusterInfoDockerImageBasicAuthArgs{...}
 type GetClusterClusterInfoDockerImageBasicAuthInput interface {
 	pulumi.Input
 
@@ -32107,11 +32107,11 @@ func (i GetClusterClusterInfoDockerImageBasicAuthArgs) ToGetClusterClusterInfoDo
 // GetClusterClusterInfoDockerImageBasicAuthPtrInput is an input type that accepts GetClusterClusterInfoDockerImageBasicAuthArgs, GetClusterClusterInfoDockerImageBasicAuthPtr and GetClusterClusterInfoDockerImageBasicAuthPtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoDockerImageBasicAuthPtrInput` via:
 //
-//          GetClusterClusterInfoDockerImageBasicAuthArgs{...}
+//	        GetClusterClusterInfoDockerImageBasicAuthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoDockerImageBasicAuthPtrInput interface {
 	pulumi.Input
 
@@ -32224,7 +32224,7 @@ type GetClusterClusterInfoDriver struct {
 // GetClusterClusterInfoDriverInput is an input type that accepts GetClusterClusterInfoDriverArgs and GetClusterClusterInfoDriverOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoDriverInput` via:
 //
-//          GetClusterClusterInfoDriverArgs{...}
+//	GetClusterClusterInfoDriverArgs{...}
 type GetClusterClusterInfoDriverInput interface {
 	pulumi.Input
 
@@ -32265,11 +32265,11 @@ func (i GetClusterClusterInfoDriverArgs) ToGetClusterClusterInfoDriverPtrOutputW
 // GetClusterClusterInfoDriverPtrInput is an input type that accepts GetClusterClusterInfoDriverArgs, GetClusterClusterInfoDriverPtr and GetClusterClusterInfoDriverPtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoDriverPtrInput` via:
 //
-//          GetClusterClusterInfoDriverArgs{...}
+//	        GetClusterClusterInfoDriverArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoDriverPtrInput interface {
 	pulumi.Input
 
@@ -32443,7 +32443,7 @@ type GetClusterClusterInfoDriverNodeAwsAttributes struct {
 // GetClusterClusterInfoDriverNodeAwsAttributesInput is an input type that accepts GetClusterClusterInfoDriverNodeAwsAttributesArgs and GetClusterClusterInfoDriverNodeAwsAttributesOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoDriverNodeAwsAttributesInput` via:
 //
-//          GetClusterClusterInfoDriverNodeAwsAttributesArgs{...}
+//	GetClusterClusterInfoDriverNodeAwsAttributesArgs{...}
 type GetClusterClusterInfoDriverNodeAwsAttributesInput interface {
 	pulumi.Input
 
@@ -32478,11 +32478,11 @@ func (i GetClusterClusterInfoDriverNodeAwsAttributesArgs) ToGetClusterClusterInf
 // GetClusterClusterInfoDriverNodeAwsAttributesPtrInput is an input type that accepts GetClusterClusterInfoDriverNodeAwsAttributesArgs, GetClusterClusterInfoDriverNodeAwsAttributesPtr and GetClusterClusterInfoDriverNodeAwsAttributesPtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoDriverNodeAwsAttributesPtrInput` via:
 //
-//          GetClusterClusterInfoDriverNodeAwsAttributesArgs{...}
+//	        GetClusterClusterInfoDriverNodeAwsAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoDriverNodeAwsAttributesPtrInput interface {
 	pulumi.Input
 
@@ -32582,7 +32582,7 @@ type GetClusterClusterInfoExecutor struct {
 // GetClusterClusterInfoExecutorInput is an input type that accepts GetClusterClusterInfoExecutorArgs and GetClusterClusterInfoExecutorOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoExecutorInput` via:
 //
-//          GetClusterClusterInfoExecutorArgs{...}
+//	GetClusterClusterInfoExecutorArgs{...}
 type GetClusterClusterInfoExecutorInput interface {
 	pulumi.Input
 
@@ -32615,7 +32615,7 @@ func (i GetClusterClusterInfoExecutorArgs) ToGetClusterClusterInfoExecutorOutput
 // GetClusterClusterInfoExecutorArrayInput is an input type that accepts GetClusterClusterInfoExecutorArray and GetClusterClusterInfoExecutorArrayOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoExecutorArrayInput` via:
 //
-//          GetClusterClusterInfoExecutorArray{ GetClusterClusterInfoExecutorArgs{...} }
+//	GetClusterClusterInfoExecutorArray{ GetClusterClusterInfoExecutorArgs{...} }
 type GetClusterClusterInfoExecutorArrayInput interface {
 	pulumi.Input
 
@@ -32708,7 +32708,7 @@ type GetClusterClusterInfoExecutorNodeAwsAttributes struct {
 // GetClusterClusterInfoExecutorNodeAwsAttributesInput is an input type that accepts GetClusterClusterInfoExecutorNodeAwsAttributesArgs and GetClusterClusterInfoExecutorNodeAwsAttributesOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoExecutorNodeAwsAttributesInput` via:
 //
-//          GetClusterClusterInfoExecutorNodeAwsAttributesArgs{...}
+//	GetClusterClusterInfoExecutorNodeAwsAttributesArgs{...}
 type GetClusterClusterInfoExecutorNodeAwsAttributesInput interface {
 	pulumi.Input
 
@@ -32743,11 +32743,11 @@ func (i GetClusterClusterInfoExecutorNodeAwsAttributesArgs) ToGetClusterClusterI
 // GetClusterClusterInfoExecutorNodeAwsAttributesPtrInput is an input type that accepts GetClusterClusterInfoExecutorNodeAwsAttributesArgs, GetClusterClusterInfoExecutorNodeAwsAttributesPtr and GetClusterClusterInfoExecutorNodeAwsAttributesPtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoExecutorNodeAwsAttributesPtrInput` via:
 //
-//          GetClusterClusterInfoExecutorNodeAwsAttributesArgs{...}
+//	        GetClusterClusterInfoExecutorNodeAwsAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoExecutorNodeAwsAttributesPtrInput interface {
 	pulumi.Input
 
@@ -32845,7 +32845,7 @@ type GetClusterClusterInfoGcpAttributes struct {
 // GetClusterClusterInfoGcpAttributesInput is an input type that accepts GetClusterClusterInfoGcpAttributesArgs and GetClusterClusterInfoGcpAttributesOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoGcpAttributesInput` via:
 //
-//          GetClusterClusterInfoGcpAttributesArgs{...}
+//	GetClusterClusterInfoGcpAttributesArgs{...}
 type GetClusterClusterInfoGcpAttributesInput interface {
 	pulumi.Input
 
@@ -32884,11 +32884,11 @@ func (i GetClusterClusterInfoGcpAttributesArgs) ToGetClusterClusterInfoGcpAttrib
 // GetClusterClusterInfoGcpAttributesPtrInput is an input type that accepts GetClusterClusterInfoGcpAttributesArgs, GetClusterClusterInfoGcpAttributesPtr and GetClusterClusterInfoGcpAttributesPtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoGcpAttributesPtrInput` via:
 //
-//          GetClusterClusterInfoGcpAttributesArgs{...}
+//	        GetClusterClusterInfoGcpAttributesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoGcpAttributesPtrInput interface {
 	pulumi.Input
 
@@ -33035,7 +33035,7 @@ type GetClusterClusterInfoInitScript struct {
 // GetClusterClusterInfoInitScriptInput is an input type that accepts GetClusterClusterInfoInitScriptArgs and GetClusterClusterInfoInitScriptOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoInitScriptInput` via:
 //
-//          GetClusterClusterInfoInitScriptArgs{...}
+//	GetClusterClusterInfoInitScriptArgs{...}
 type GetClusterClusterInfoInitScriptInput interface {
 	pulumi.Input
 
@@ -33063,7 +33063,7 @@ func (i GetClusterClusterInfoInitScriptArgs) ToGetClusterClusterInfoInitScriptOu
 // GetClusterClusterInfoInitScriptArrayInput is an input type that accepts GetClusterClusterInfoInitScriptArray and GetClusterClusterInfoInitScriptArrayOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoInitScriptArrayInput` via:
 //
-//          GetClusterClusterInfoInitScriptArray{ GetClusterClusterInfoInitScriptArgs{...} }
+//	GetClusterClusterInfoInitScriptArray{ GetClusterClusterInfoInitScriptArgs{...} }
 type GetClusterClusterInfoInitScriptArrayInput interface {
 	pulumi.Input
 
@@ -33134,7 +33134,7 @@ type GetClusterClusterInfoInitScriptDbfs struct {
 // GetClusterClusterInfoInitScriptDbfsInput is an input type that accepts GetClusterClusterInfoInitScriptDbfsArgs and GetClusterClusterInfoInitScriptDbfsOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoInitScriptDbfsInput` via:
 //
-//          GetClusterClusterInfoInitScriptDbfsArgs{...}
+//	GetClusterClusterInfoInitScriptDbfsArgs{...}
 type GetClusterClusterInfoInitScriptDbfsInput interface {
 	pulumi.Input
 
@@ -33169,11 +33169,11 @@ func (i GetClusterClusterInfoInitScriptDbfsArgs) ToGetClusterClusterInfoInitScri
 // GetClusterClusterInfoInitScriptDbfsPtrInput is an input type that accepts GetClusterClusterInfoInitScriptDbfsArgs, GetClusterClusterInfoInitScriptDbfsPtr and GetClusterClusterInfoInitScriptDbfsPtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoInitScriptDbfsPtrInput` via:
 //
-//          GetClusterClusterInfoInitScriptDbfsArgs{...}
+//	        GetClusterClusterInfoInitScriptDbfsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoInitScriptDbfsPtrInput interface {
 	pulumi.Input
 
@@ -33273,7 +33273,7 @@ type GetClusterClusterInfoInitScriptS3 struct {
 // GetClusterClusterInfoInitScriptS3Input is an input type that accepts GetClusterClusterInfoInitScriptS3Args and GetClusterClusterInfoInitScriptS3Output values.
 // You can construct a concrete instance of `GetClusterClusterInfoInitScriptS3Input` via:
 //
-//          GetClusterClusterInfoInitScriptS3Args{...}
+//	GetClusterClusterInfoInitScriptS3Args{...}
 type GetClusterClusterInfoInitScriptS3Input interface {
 	pulumi.Input
 
@@ -33314,11 +33314,11 @@ func (i GetClusterClusterInfoInitScriptS3Args) ToGetClusterClusterInfoInitScript
 // GetClusterClusterInfoInitScriptS3PtrInput is an input type that accepts GetClusterClusterInfoInitScriptS3Args, GetClusterClusterInfoInitScriptS3Ptr and GetClusterClusterInfoInitScriptS3PtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoInitScriptS3PtrInput` via:
 //
-//          GetClusterClusterInfoInitScriptS3Args{...}
+//	        GetClusterClusterInfoInitScriptS3Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoInitScriptS3PtrInput interface {
 	pulumi.Input
 
@@ -33492,7 +33492,7 @@ type GetClusterClusterInfoTerminationReason struct {
 // GetClusterClusterInfoTerminationReasonInput is an input type that accepts GetClusterClusterInfoTerminationReasonArgs and GetClusterClusterInfoTerminationReasonOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoTerminationReasonInput` via:
 //
-//          GetClusterClusterInfoTerminationReasonArgs{...}
+//	GetClusterClusterInfoTerminationReasonArgs{...}
 type GetClusterClusterInfoTerminationReasonInput interface {
 	pulumi.Input
 
@@ -33529,11 +33529,11 @@ func (i GetClusterClusterInfoTerminationReasonArgs) ToGetClusterClusterInfoTermi
 // GetClusterClusterInfoTerminationReasonPtrInput is an input type that accepts GetClusterClusterInfoTerminationReasonArgs, GetClusterClusterInfoTerminationReasonPtr and GetClusterClusterInfoTerminationReasonPtrOutput values.
 // You can construct a concrete instance of `GetClusterClusterInfoTerminationReasonPtrInput` via:
 //
-//          GetClusterClusterInfoTerminationReasonArgs{...}
+//	        GetClusterClusterInfoTerminationReasonArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetClusterClusterInfoTerminationReasonPtrInput interface {
 	pulumi.Input
 
@@ -33655,7 +33655,7 @@ type GetDbfsFilePathsPathList struct {
 // GetDbfsFilePathsPathListInput is an input type that accepts GetDbfsFilePathsPathListArgs and GetDbfsFilePathsPathListOutput values.
 // You can construct a concrete instance of `GetDbfsFilePathsPathListInput` via:
 //
-//          GetDbfsFilePathsPathListArgs{...}
+//	GetDbfsFilePathsPathListArgs{...}
 type GetDbfsFilePathsPathListInput interface {
 	pulumi.Input
 
@@ -33684,7 +33684,7 @@ func (i GetDbfsFilePathsPathListArgs) ToGetDbfsFilePathsPathListOutputWithContex
 // GetDbfsFilePathsPathListArrayInput is an input type that accepts GetDbfsFilePathsPathListArray and GetDbfsFilePathsPathListArrayOutput values.
 // You can construct a concrete instance of `GetDbfsFilePathsPathListArrayInput` via:
 //
-//          GetDbfsFilePathsPathListArray{ GetDbfsFilePathsPathListArgs{...} }
+//	GetDbfsFilePathsPathListArray{ GetDbfsFilePathsPathListArgs{...} }
 type GetDbfsFilePathsPathListArrayInput interface {
 	pulumi.Input
 
@@ -33758,7 +33758,7 @@ type GetNotebookPathsNotebookPathList struct {
 // GetNotebookPathsNotebookPathListInput is an input type that accepts GetNotebookPathsNotebookPathListArgs and GetNotebookPathsNotebookPathListOutput values.
 // You can construct a concrete instance of `GetNotebookPathsNotebookPathListInput` via:
 //
-//          GetNotebookPathsNotebookPathListArgs{...}
+//	GetNotebookPathsNotebookPathListArgs{...}
 type GetNotebookPathsNotebookPathListInput interface {
 	pulumi.Input
 
@@ -33787,7 +33787,7 @@ func (i GetNotebookPathsNotebookPathListArgs) ToGetNotebookPathsNotebookPathList
 // GetNotebookPathsNotebookPathListArrayInput is an input type that accepts GetNotebookPathsNotebookPathListArray and GetNotebookPathsNotebookPathListArrayOutput values.
 // You can construct a concrete instance of `GetNotebookPathsNotebookPathListArrayInput` via:
 //
-//          GetNotebookPathsNotebookPathListArray{ GetNotebookPathsNotebookPathListArgs{...} }
+//	GetNotebookPathsNotebookPathListArray{ GetNotebookPathsNotebookPathListArgs{...} }
 type GetNotebookPathsNotebookPathListArrayInput interface {
 	pulumi.Input
 
@@ -33860,7 +33860,7 @@ type GetSqlWarehouseChannel struct {
 // GetSqlWarehouseChannelInput is an input type that accepts GetSqlWarehouseChannelArgs and GetSqlWarehouseChannelOutput values.
 // You can construct a concrete instance of `GetSqlWarehouseChannelInput` via:
 //
-//          GetSqlWarehouseChannelArgs{...}
+//	GetSqlWarehouseChannelArgs{...}
 type GetSqlWarehouseChannelInput interface {
 	pulumi.Input
 
@@ -33896,11 +33896,11 @@ func (i GetSqlWarehouseChannelArgs) ToGetSqlWarehouseChannelPtrOutputWithContext
 // GetSqlWarehouseChannelPtrInput is an input type that accepts GetSqlWarehouseChannelArgs, GetSqlWarehouseChannelPtr and GetSqlWarehouseChannelPtrOutput values.
 // You can construct a concrete instance of `GetSqlWarehouseChannelPtrInput` via:
 //
-//          GetSqlWarehouseChannelArgs{...}
+//	        GetSqlWarehouseChannelArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetSqlWarehouseChannelPtrInput interface {
 	pulumi.Input
 
@@ -34000,7 +34000,7 @@ type GetSqlWarehouseOdbcParams struct {
 // GetSqlWarehouseOdbcParamsInput is an input type that accepts GetSqlWarehouseOdbcParamsArgs and GetSqlWarehouseOdbcParamsOutput values.
 // You can construct a concrete instance of `GetSqlWarehouseOdbcParamsInput` via:
 //
-//          GetSqlWarehouseOdbcParamsArgs{...}
+//	GetSqlWarehouseOdbcParamsArgs{...}
 type GetSqlWarehouseOdbcParamsInput interface {
 	pulumi.Input
 
@@ -34039,11 +34039,11 @@ func (i GetSqlWarehouseOdbcParamsArgs) ToGetSqlWarehouseOdbcParamsPtrOutputWithC
 // GetSqlWarehouseOdbcParamsPtrInput is an input type that accepts GetSqlWarehouseOdbcParamsArgs, GetSqlWarehouseOdbcParamsPtr and GetSqlWarehouseOdbcParamsPtrOutput values.
 // You can construct a concrete instance of `GetSqlWarehouseOdbcParamsPtrInput` via:
 //
-//          GetSqlWarehouseOdbcParamsArgs{...}
+//	        GetSqlWarehouseOdbcParamsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetSqlWarehouseOdbcParamsPtrInput interface {
 	pulumi.Input
 
@@ -34189,7 +34189,7 @@ type GetSqlWarehouseTags struct {
 // GetSqlWarehouseTagsInput is an input type that accepts GetSqlWarehouseTagsArgs and GetSqlWarehouseTagsOutput values.
 // You can construct a concrete instance of `GetSqlWarehouseTagsInput` via:
 //
-//          GetSqlWarehouseTagsArgs{...}
+//	GetSqlWarehouseTagsArgs{...}
 type GetSqlWarehouseTagsInput interface {
 	pulumi.Input
 
@@ -34224,11 +34224,11 @@ func (i GetSqlWarehouseTagsArgs) ToGetSqlWarehouseTagsPtrOutputWithContext(ctx c
 // GetSqlWarehouseTagsPtrInput is an input type that accepts GetSqlWarehouseTagsArgs, GetSqlWarehouseTagsPtr and GetSqlWarehouseTagsPtrOutput values.
 // You can construct a concrete instance of `GetSqlWarehouseTagsPtrInput` via:
 //
-//          GetSqlWarehouseTagsArgs{...}
+//	        GetSqlWarehouseTagsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GetSqlWarehouseTagsPtrInput interface {
 	pulumi.Input
 
@@ -34323,7 +34323,7 @@ type GetSqlWarehouseTagsCustomTag struct {
 // GetSqlWarehouseTagsCustomTagInput is an input type that accepts GetSqlWarehouseTagsCustomTagArgs and GetSqlWarehouseTagsCustomTagOutput values.
 // You can construct a concrete instance of `GetSqlWarehouseTagsCustomTagInput` via:
 //
-//          GetSqlWarehouseTagsCustomTagArgs{...}
+//	GetSqlWarehouseTagsCustomTagArgs{...}
 type GetSqlWarehouseTagsCustomTagInput interface {
 	pulumi.Input
 
@@ -34351,7 +34351,7 @@ func (i GetSqlWarehouseTagsCustomTagArgs) ToGetSqlWarehouseTagsCustomTagOutputWi
 // GetSqlWarehouseTagsCustomTagArrayInput is an input type that accepts GetSqlWarehouseTagsCustomTagArray and GetSqlWarehouseTagsCustomTagArrayOutput values.
 // You can construct a concrete instance of `GetSqlWarehouseTagsCustomTagArrayInput` via:
 //
-//          GetSqlWarehouseTagsCustomTagArray{ GetSqlWarehouseTagsCustomTagArgs{...} }
+//	GetSqlWarehouseTagsCustomTagArray{ GetSqlWarehouseTagsCustomTagArgs{...} }
 type GetSqlWarehouseTagsCustomTagArrayInput interface {
 	pulumi.Input
 

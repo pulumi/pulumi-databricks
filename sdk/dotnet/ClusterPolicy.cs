@@ -54,7 +54,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/clusterPolicy:ClusterPolicy")]
-    public partial class ClusterPolicy : Pulumi.CustomResource
+    public partial class ClusterPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
@@ -118,7 +118,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class ClusterPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ClusterPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
@@ -135,9 +135,10 @@ namespace Pulumi.Databricks
         public ClusterPolicyArgs()
         {
         }
+        public static new ClusterPolicyArgs Empty => new ClusterPolicyArgs();
     }
 
-    public sealed class ClusterPolicyState : Pulumi.ResourceArgs
+    public sealed class ClusterPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
@@ -160,5 +161,6 @@ namespace Pulumi.Databricks
         public ClusterPolicyState()
         {
         }
+        public static new ClusterPolicyState Empty => new ClusterPolicyState();
     }
 }

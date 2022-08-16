@@ -19,20 +19,19 @@ namespace Pulumi.Databricks
         /// Listing all catalogs:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Databricks.GetCatalogs.InvokeAsync());
-        ///         this.AllCatalogs = all;
-        ///     }
+        ///     var all = Databricks.GetCatalogs.Invoke();
         /// 
-        ///     [Output("allCatalogs")]
-        ///     public Output&lt;string&gt; AllCatalogs { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allCatalogs"] = all.Apply(getCatalogsResult =&gt; getCatalogsResult),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -55,20 +54,19 @@ namespace Pulumi.Databricks
         /// Listing all catalogs:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Databricks.GetCatalogs.InvokeAsync());
-        ///         this.AllCatalogs = all;
-        ///     }
+        ///     var all = Databricks.GetCatalogs.Invoke();
         /// 
-        ///     [Output("allCatalogs")]
-        ///     public Output&lt;string&gt; AllCatalogs { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allCatalogs"] = all.Apply(getCatalogsResult =&gt; getCatalogsResult),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -85,7 +83,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetCatalogsArgs : Pulumi.InvokeArgs
+    public sealed class GetCatalogsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -102,9 +100,10 @@ namespace Pulumi.Databricks
         public GetCatalogsArgs()
         {
         }
+        public static new GetCatalogsArgs Empty => new GetCatalogsArgs();
     }
 
-    public sealed class GetCatalogsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCatalogsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -121,6 +120,7 @@ namespace Pulumi.Databricks
         public GetCatalogsInvokeArgs()
         {
         }
+        public static new GetCatalogsInvokeArgs Empty => new GetCatalogsInvokeArgs();
     }
 
 

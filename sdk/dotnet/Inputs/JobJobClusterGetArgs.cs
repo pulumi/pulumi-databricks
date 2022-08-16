@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobJobClusterGetArgs : Pulumi.ResourceArgs
+    public sealed class JobJobClusterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
@@ -27,5 +27,6 @@ namespace Pulumi.Databricks.Inputs
         public JobJobClusterGetArgs()
         {
         }
+        public static new JobJobClusterGetArgs Empty => new JobJobClusterGetArgs();
     }
 }

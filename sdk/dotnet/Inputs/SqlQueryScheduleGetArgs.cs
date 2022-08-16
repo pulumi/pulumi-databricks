@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class SqlQueryScheduleGetArgs : Pulumi.ResourceArgs
+    public sealed class SqlQueryScheduleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("continuous")]
         public Input<Inputs.SqlQueryScheduleContinuousGetArgs>? Continuous { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Databricks.Inputs
         public SqlQueryScheduleGetArgs()
         {
         }
+        public static new SqlQueryScheduleGetArgs Empty => new SqlQueryScheduleGetArgs();
     }
 }

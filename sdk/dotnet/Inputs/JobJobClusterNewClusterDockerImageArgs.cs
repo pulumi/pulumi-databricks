@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobJobClusterNewClusterDockerImageArgs : Pulumi.ResourceArgs
+    public sealed class JobJobClusterNewClusterDockerImageArgs : global::Pulumi.ResourceArgs
     {
         [Input("basicAuth")]
         public Input<Inputs.JobJobClusterNewClusterDockerImageBasicAuthArgs>? BasicAuth { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Databricks.Inputs
         public JobJobClusterNewClusterDockerImageArgs()
         {
         }
+        public static new JobJobClusterNewClusterDockerImageArgs Empty => new JobJobClusterNewClusterDockerImageArgs();
     }
 }

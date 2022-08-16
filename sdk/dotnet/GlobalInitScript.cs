@@ -19,7 +19,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/globalInitScript:GlobalInitScript")]
-    public partial class GlobalInitScript : Pulumi.CustomResource
+    public partial class GlobalInitScript : global::Pulumi.CustomResource
     {
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class GlobalInitScriptArgs : Pulumi.ResourceArgs
+    public sealed class GlobalInitScriptArgs : global::Pulumi.ResourceArgs
     {
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -130,9 +130,10 @@ namespace Pulumi.Databricks
         public GlobalInitScriptArgs()
         {
         }
+        public static new GlobalInitScriptArgs Empty => new GlobalInitScriptArgs();
     }
 
-    public sealed class GlobalInitScriptState : Pulumi.ResourceArgs
+    public sealed class GlobalInitScriptState : global::Pulumi.ResourceArgs
     {
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -167,5 +168,6 @@ namespace Pulumi.Databricks
         public GlobalInitScriptState()
         {
         }
+        public static new GlobalInitScriptState Empty => new GlobalInitScriptState();
     }
 }

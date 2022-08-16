@@ -21,64 +21,64 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
     ///     {
-    ///         var sandbox = new Databricks.Catalog("sandbox", new Databricks.CatalogArgs
+    ///         MetastoreId = databricks_metastore.This.Id,
+    ///         Comment = "this catalog is managed by terraform",
+    ///         Properties = 
     ///         {
-    ///             MetastoreId = databricks_metastore.This.Id,
-    ///             Comment = "this catalog is managed by terraform",
-    ///             Properties = 
-    ///             {
-    ///                 { "purpose", "testing" },
-    ///             },
-    ///         });
-    ///         var things = new Databricks.Schema("things", new Databricks.SchemaArgs
-    ///         {
-    ///             CatalogName = sandbox.Id,
-    ///             Comment = "this database is managed by terraform",
-    ///             Properties = 
-    ///             {
-    ///                 { "kind", "various" },
-    ///             },
-    ///         });
-    ///         var thing = new Databricks.Table("thing", new Databricks.TableArgs
-    ///         {
-    ///             CatalogName = sandbox.Id,
-    ///             SchemaName = things.Name,
-    ///             TableType = "MANAGED",
-    ///             DataSourceFormat = "DELTA",
-    ///             Columns = 
-    ///             {
-    ///                 new Databricks.Inputs.TableColumnArgs
-    ///                 {
-    ///                     Name = "id",
-    ///                     Position = 0,
-    ///                     TypeName = "INT",
-    ///                     TypeText = "int",
-    ///                     TypeJson = "{\"name\":\"id\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}",
-    ///                 },
-    ///                 new Databricks.Inputs.TableColumnArgs
-    ///                 {
-    ///                     Name = "name",
-    ///                     Position = 1,
-    ///                     TypeName = "STRING",
-    ///                     TypeText = "varchar(64)",
-    ///                     TypeJson = "{\"name\":\"name\",\"type\":\"varchar(64)\",\"nullable\":true,\"metadata\":{}}",
-    ///                 },
-    ///             },
-    ///             Comment = "this table is managed by terraform",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = databricks.Workspace,
-    ///         });
-    ///     }
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var things = new Databricks.Schema("things", new()
+    ///     {
+    ///         CatalogName = sandbox.Id,
+    ///         Comment = "this database is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "kind", "various" },
+    ///         },
+    ///     });
+    /// 
+    ///     var thing = new Databricks.Table("thing", new()
+    ///     {
+    ///         CatalogName = sandbox.Id,
+    ///         SchemaName = things.Name,
+    ///         TableType = "MANAGED",
+    ///         DataSourceFormat = "DELTA",
+    ///         Columns = new[]
+    ///         {
+    ///             new Databricks.Inputs.TableColumnArgs
+    ///             {
+    ///                 Name = "id",
+    ///                 Position = 0,
+    ///                 TypeName = "INT",
+    ///                 TypeText = "int",
+    ///                 TypeJson = "{\"name\":\"id\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}",
+    ///             },
+    ///             new Databricks.Inputs.TableColumnArgs
+    ///             {
+    ///                 Name = "name",
+    ///                 Position = 1,
+    ///                 TypeName = "STRING",
+    ///                 TypeText = "varchar(64)",
+    ///                 TypeJson = "{\"name\":\"name\",\"type\":\"varchar(64)\",\"nullable\":true,\"metadata\":{}}",
+    ///             },
+    ///         },
+    ///         Comment = "this table is managed by terraform",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Workspace,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -97,7 +97,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/table:Table")]
-    public partial class Table : Pulumi.CustomResource
+    public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of parent catalog
@@ -212,7 +212,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class TableArgs : Pulumi.ResourceArgs
+    public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of parent catalog
@@ -297,9 +297,10 @@ namespace Pulumi.Databricks
         public TableArgs()
         {
         }
+        public static new TableArgs Empty => new TableArgs();
     }
 
-    public sealed class TableState : Pulumi.ResourceArgs
+    public sealed class TableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of parent catalog
@@ -384,5 +385,6 @@ namespace Pulumi.Databricks
         public TableState()
         {
         }
+        public static new TableState Empty => new TableState();
     }
 }

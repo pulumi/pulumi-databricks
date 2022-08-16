@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class LibraryMavenArgs : Pulumi.ResourceArgs
+    public sealed class LibraryMavenArgs : global::Pulumi.ResourceArgs
     {
         [Input("coordinates", required: true)]
         public Input<string> Coordinates { get; set; } = null!;
@@ -29,5 +29,6 @@ namespace Pulumi.Databricks.Inputs
         public LibraryMavenArgs()
         {
         }
+        public static new LibraryMavenArgs Empty => new LibraryMavenArgs();
     }
 }

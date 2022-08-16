@@ -17,29 +17,29 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instanceProfile = new Databricks.InstanceProfile("instanceProfile", new()
     ///     {
-    ///         var instanceProfile = new Databricks.InstanceProfile("instanceProfile", new Databricks.InstanceProfileArgs
-    ///         {
-    ///             InstanceProfileArn = "my_instance_profile_arn",
-    ///         });
-    ///         var myUser = new Databricks.User("myUser", new Databricks.UserArgs
-    ///         {
-    ///             UserName = "me@example.com",
-    ///         });
-    ///         var myUserInstanceProfile = new Databricks.UserInstanceProfile("myUserInstanceProfile", new Databricks.UserInstanceProfileArgs
-    ///         {
-    ///             UserId = myUser.Id,
-    ///             InstanceProfileId = instanceProfile.Id,
-    ///         });
-    ///     }
+    ///         InstanceProfileArn = "my_instance_profile_arn",
+    ///     });
     /// 
-    /// }
+    ///     var myUser = new Databricks.User("myUser", new()
+    ///     {
+    ///         UserName = "me@example.com",
+    ///     });
+    /// 
+    ///     var myUserInstanceProfile = new Databricks.UserInstanceProfile("myUserInstanceProfile", new()
+    ///     {
+    ///         UserId = myUser.Id,
+    ///         InstanceProfileId = instanceProfile.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -57,7 +57,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/userInstanceProfile:UserInstanceProfile")]
-    public partial class UserInstanceProfile : Pulumi.CustomResource
+    public partial class UserInstanceProfile : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This is the id of the instance profile resource.
@@ -115,7 +115,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class UserInstanceProfileArgs : Pulumi.ResourceArgs
+    public sealed class UserInstanceProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is the id of the instance profile resource.
@@ -132,9 +132,10 @@ namespace Pulumi.Databricks
         public UserInstanceProfileArgs()
         {
         }
+        public static new UserInstanceProfileArgs Empty => new UserInstanceProfileArgs();
     }
 
-    public sealed class UserInstanceProfileState : Pulumi.ResourceArgs
+    public sealed class UserInstanceProfileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is the id of the instance profile resource.
@@ -151,5 +152,6 @@ namespace Pulumi.Databricks
         public UserInstanceProfileState()
         {
         }
+        public static new UserInstanceProfileState Empty => new UserInstanceProfileState();
     }
 }

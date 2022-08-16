@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class InstancePoolDiskSpecDiskTypeArgs : Pulumi.ResourceArgs
+    public sealed class InstancePoolDiskSpecDiskTypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("azureDiskVolumeType")]
         public Input<string>? AzureDiskVolumeType { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public InstancePoolDiskSpecDiskTypeArgs()
         {
         }
+        public static new InstancePoolDiskSpecDiskTypeArgs Empty => new InstancePoolDiskSpecDiskTypeArgs();
     }
 }

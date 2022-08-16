@@ -27,7 +27,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/mwsStorageConfigurations:MwsStorageConfigurations")]
-    public partial class MwsStorageConfigurations : Pulumi.CustomResource
+    public partial class MwsStorageConfigurations : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class MwsStorageConfigurationsArgs : Pulumi.ResourceArgs
+    public sealed class MwsStorageConfigurationsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -123,9 +123,10 @@ namespace Pulumi.Databricks
         public MwsStorageConfigurationsArgs()
         {
         }
+        public static new MwsStorageConfigurationsArgs Empty => new MwsStorageConfigurationsArgs();
     }
 
-    public sealed class MwsStorageConfigurationsState : Pulumi.ResourceArgs
+    public sealed class MwsStorageConfigurationsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -157,5 +158,6 @@ namespace Pulumi.Databricks
         public MwsStorageConfigurationsState()
         {
         }
+        public static new MwsStorageConfigurationsState Empty => new MwsStorageConfigurationsState();
     }
 }

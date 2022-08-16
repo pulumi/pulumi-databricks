@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobPythonWheelTaskGetArgs : Pulumi.ResourceArgs
+    public sealed class JobPythonWheelTaskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Python function as entry point for the task
@@ -51,5 +51,6 @@ namespace Pulumi.Databricks.Inputs
         public JobPythonWheelTaskGetArgs()
         {
         }
+        public static new JobPythonWheelTaskGetArgs Empty => new JobPythonWheelTaskGetArgs();
     }
 }

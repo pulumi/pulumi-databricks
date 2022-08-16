@@ -19,7 +19,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/metastoreDataAccess:MetastoreDataAccess")]
-    public partial class MetastoreDataAccess : Pulumi.CustomResource
+    public partial class MetastoreDataAccess : global::Pulumi.CustomResource
     {
         [Output("awsIamRole")]
         public Output<Outputs.MetastoreDataAccessAwsIamRole?> AwsIamRole { get; private set; } = null!;
@@ -92,7 +92,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class MetastoreDataAccessArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreDataAccessArgs : global::Pulumi.ResourceArgs
     {
         [Input("awsIamRole")]
         public Input<Inputs.MetastoreDataAccessAwsIamRoleArgs>? AwsIamRole { get; set; }
@@ -124,9 +124,10 @@ namespace Pulumi.Databricks
         public MetastoreDataAccessArgs()
         {
         }
+        public static new MetastoreDataAccessArgs Empty => new MetastoreDataAccessArgs();
     }
 
-    public sealed class MetastoreDataAccessState : Pulumi.ResourceArgs
+    public sealed class MetastoreDataAccessState : global::Pulumi.ResourceArgs
     {
         [Input("awsIamRole")]
         public Input<Inputs.MetastoreDataAccessAwsIamRoleGetArgs>? AwsIamRole { get; set; }
@@ -158,5 +159,6 @@ namespace Pulumi.Databricks
         public MetastoreDataAccessState()
         {
         }
+        public static new MetastoreDataAccessState Empty => new MetastoreDataAccessState();
     }
 }

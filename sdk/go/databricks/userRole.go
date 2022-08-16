@@ -15,70 +15,76 @@ import (
 //
 // ## Example Usage
 //
-// Adding AWS instance profile to a user
+// # Adding AWS instance profile to a user
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instanceProfile, err := databricks.NewInstanceProfile(ctx, "instanceProfile", &databricks.InstanceProfileArgs{
-// 			InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myUser, err := databricks.NewUser(ctx, "myUser", &databricks.UserArgs{
-// 			UserName: pulumi.String("me@example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewUserRole(ctx, "myUserRole", &databricks.UserRoleArgs{
-// 			UserId: myUser.ID(),
-// 			Role:   instanceProfile.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instanceProfile", &databricks.InstanceProfileArgs{
+//				InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myUser, err := databricks.NewUser(ctx, "myUser", &databricks.UserArgs{
+//				UserName: pulumi.String("me@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewUserRole(ctx, "myUserRole", &databricks.UserRoleArgs{
+//				UserId: myUser.ID(),
+//				Role:   instanceProfile.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// Adding user as administrator to Databricks Account
+// # Adding user as administrator to Databricks Account
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myUser, err := databricks.NewUser(ctx, "myUser", &databricks.UserArgs{
-// 			UserName: pulumi.String("me@example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewUserRole(ctx, "myUserAccountAdmin", &databricks.UserRoleArgs{
-// 			UserId: myUser.ID(),
-// 			Role:   pulumi.String("account_admin"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myUser, err := databricks.NewUser(ctx, "myUser", &databricks.UserArgs{
+//				UserName: pulumi.String("me@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewUserRole(ctx, "myUserAccountAdmin", &databricks.UserRoleArgs{
+//				UserId: myUser.ID(),
+//				Role:   pulumi.String("account_admin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -196,7 +202,7 @@ func (i *UserRole) ToUserRoleOutputWithContext(ctx context.Context) UserRoleOutp
 // UserRoleArrayInput is an input type that accepts UserRoleArray and UserRoleArrayOutput values.
 // You can construct a concrete instance of `UserRoleArrayInput` via:
 //
-//          UserRoleArray{ UserRoleArgs{...} }
+//	UserRoleArray{ UserRoleArgs{...} }
 type UserRoleArrayInput interface {
 	pulumi.Input
 
@@ -221,7 +227,7 @@ func (i UserRoleArray) ToUserRoleArrayOutputWithContext(ctx context.Context) Use
 // UserRoleMapInput is an input type that accepts UserRoleMap and UserRoleMapOutput values.
 // You can construct a concrete instance of `UserRoleMapInput` via:
 //
-//          UserRoleMap{ "key": UserRoleArgs{...} }
+//	UserRoleMap{ "key": UserRoleArgs{...} }
 type UserRoleMapInput interface {
 	pulumi.Input
 

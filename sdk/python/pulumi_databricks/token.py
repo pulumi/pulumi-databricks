@@ -198,10 +198,9 @@ class Token(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_databricks as databricks
-        import pulumi_pulumi as pulumi
 
         # initialize provider in normal mode
-        created_workspace = pulumi.providers.Databricks("createdWorkspace", host=databricks_mws_workspaces["this"]["workspace_url"])
+        created_workspace = databricks.Provider("createdWorkspace", host=databricks_mws_workspaces["this"]["workspace_url"])
         # create PAT token to provision entities within workspace
         pat = databricks.Token("pat",
             comment="Terraform Provisioning",
@@ -233,10 +232,9 @@ class Token(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_databricks as databricks
-        import pulumi_pulumi as pulumi
 
         # initialize provider in normal mode
-        created_workspace = pulumi.providers.Databricks("createdWorkspace", host=databricks_mws_workspaces["this"]["workspace_url"])
+        created_workspace = databricks.Provider("createdWorkspace", host=databricks_mws_workspaces["this"]["workspace_url"])
         # create PAT token to provision entities within workspace
         pat = databricks.Token("pat",
             comment="Terraform Provisioning",

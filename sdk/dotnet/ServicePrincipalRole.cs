@@ -17,29 +17,29 @@ namespace Pulumi.Databricks
     /// Granting a service principal access to an instance profile
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instanceProfile = new Databricks.InstanceProfile("instanceProfile", new()
     ///     {
-    ///         var instanceProfile = new Databricks.InstanceProfile("instanceProfile", new Databricks.InstanceProfileArgs
-    ///         {
-    ///             InstanceProfileArn = "my_instance_profile_arn",
-    ///         });
-    ///         var @this = new Databricks.ServicePrincipal("this", new Databricks.ServicePrincipalArgs
-    ///         {
-    ///             DisplayName = "My Service Principal",
-    ///         });
-    ///         var myServicePrincipalInstanceProfile = new Databricks.ServicePrincipalRole("myServicePrincipalInstanceProfile", new Databricks.ServicePrincipalRoleArgs
-    ///         {
-    ///             ServicePrincipalId = @this.Id,
-    ///             Role = instanceProfile.Id,
-    ///         });
-    ///     }
+    ///         InstanceProfileArn = "my_instance_profile_arn",
+    ///     });
     /// 
-    /// }
+    ///     var @this = new Databricks.ServicePrincipal("this", new()
+    ///     {
+    ///         DisplayName = "My Service Principal",
+    ///     });
+    /// 
+    ///     var myServicePrincipalInstanceProfile = new Databricks.ServicePrincipalRole("myServicePrincipalInstanceProfile", new()
+    ///     {
+    ///         ServicePrincipalId = @this.Id,
+    ///         Role = instanceProfile.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -56,7 +56,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/servicePrincipalRole:ServicePrincipalRole")]
-    public partial class ServicePrincipalRole : Pulumi.CustomResource
+    public partial class ServicePrincipalRole : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This is the id of the role or instance profile resource.
@@ -114,7 +114,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class ServicePrincipalRoleArgs : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is the id of the role or instance profile resource.
@@ -131,9 +131,10 @@ namespace Pulumi.Databricks
         public ServicePrincipalRoleArgs()
         {
         }
+        public static new ServicePrincipalRoleArgs Empty => new ServicePrincipalRoleArgs();
     }
 
-    public sealed class ServicePrincipalRoleState : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is the id of the role or instance profile resource.
@@ -150,5 +151,6 @@ namespace Pulumi.Databricks
         public ServicePrincipalRoleState()
         {
         }
+        public static new ServicePrincipalRoleState Empty => new ServicePrincipalRoleState();
     }
 }

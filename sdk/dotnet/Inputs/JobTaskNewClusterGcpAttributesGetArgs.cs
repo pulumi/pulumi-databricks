@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobTaskNewClusterGcpAttributesGetArgs : Pulumi.ResourceArgs
+    public sealed class JobTaskNewClusterGcpAttributesGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("availability")]
         public Input<string>? Availability { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Databricks.Inputs
         public JobTaskNewClusterGcpAttributesGetArgs()
         {
         }
+        public static new JobTaskNewClusterGcpAttributesGetArgs Empty => new JobTaskNewClusterGcpAttributesGetArgs();
     }
 }

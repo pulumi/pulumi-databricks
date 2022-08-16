@@ -13,10 +13,12 @@ import (
 
 // ## Import
 //
-// The resource directory can be imported using directory path bash
+// # The resource directory can be imported using directory path bash
 //
 // ```sh
-//  $ pulumi import databricks:index/directory:Directory this /path/to/directory
+//
+//	$ pulumi import databricks:index/directory:Directory this /path/to/directory
+//
 // ```
 type Directory struct {
 	pulumi.CustomResourceState
@@ -122,7 +124,7 @@ func (i *Directory) ToDirectoryOutputWithContext(ctx context.Context) DirectoryO
 // DirectoryArrayInput is an input type that accepts DirectoryArray and DirectoryArrayOutput values.
 // You can construct a concrete instance of `DirectoryArrayInput` via:
 //
-//          DirectoryArray{ DirectoryArgs{...} }
+//	DirectoryArray{ DirectoryArgs{...} }
 type DirectoryArrayInput interface {
 	pulumi.Input
 
@@ -147,7 +149,7 @@ func (i DirectoryArray) ToDirectoryArrayOutputWithContext(ctx context.Context) D
 // DirectoryMapInput is an input type that accepts DirectoryMap and DirectoryMapOutput values.
 // You can construct a concrete instance of `DirectoryMapInput` via:
 //
-//          DirectoryMap{ "key": DirectoryArgs{...} }
+//	DirectoryMap{ "key": DirectoryArgs{...} }
 type DirectoryMapInput interface {
 	pulumi.Input
 

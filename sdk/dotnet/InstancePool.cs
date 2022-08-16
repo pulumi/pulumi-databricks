@@ -19,7 +19,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/instancePool:InstancePool")]
-    public partial class InstancePool : Pulumi.CustomResource
+    public partial class InstancePool : global::Pulumi.CustomResource
     {
         [Output("awsAttributes")]
         public Output<Outputs.InstancePoolAwsAttributes> AwsAttributes { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class InstancePoolArgs : Pulumi.ResourceArgs
+    public sealed class InstancePoolArgs : global::Pulumi.ResourceArgs
     {
         [Input("awsAttributes")]
         public Input<Inputs.InstancePoolAwsAttributesArgs>? AwsAttributes { get; set; }
@@ -225,9 +225,10 @@ namespace Pulumi.Databricks
         public InstancePoolArgs()
         {
         }
+        public static new InstancePoolArgs Empty => new InstancePoolArgs();
     }
 
-    public sealed class InstancePoolState : Pulumi.ResourceArgs
+    public sealed class InstancePoolState : global::Pulumi.ResourceArgs
     {
         [Input("awsAttributes")]
         public Input<Inputs.InstancePoolAwsAttributesGetArgs>? AwsAttributes { get; set; }
@@ -318,5 +319,6 @@ namespace Pulumi.Databricks
         public InstancePoolState()
         {
         }
+        public static new InstancePoolState Empty => new InstancePoolState();
     }
 }

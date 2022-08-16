@@ -41,7 +41,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetSqlWarehouseArgs : Pulumi.InvokeArgs
+    public sealed class GetSqlWarehouseArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Time in minutes until an idle SQL warehouse terminates all clusters and stops.
@@ -137,9 +137,10 @@ namespace Pulumi.Databricks
         public GetSqlWarehouseArgs()
         {
         }
+        public static new GetSqlWarehouseArgs Empty => new GetSqlWarehouseArgs();
     }
 
-    public sealed class GetSqlWarehouseInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSqlWarehouseInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Time in minutes until an idle SQL warehouse terminates all clusters and stops.
@@ -235,6 +236,7 @@ namespace Pulumi.Databricks
         public GetSqlWarehouseInvokeArgs()
         {
         }
+        public static new GetSqlWarehouseInvokeArgs Empty => new GetSqlWarehouseInvokeArgs();
     }
 
 

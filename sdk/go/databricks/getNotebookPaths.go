@@ -16,22 +16,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.GetNotebookPaths(ctx, &GetNotebookPathsArgs{
-// 			Path:      "/Production",
-// 			Recursive: true,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetNotebookPaths(ctx, &GetNotebookPathsArgs{
+//				Path:      "/Production",
+//				Recursive: true,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetNotebookPaths(ctx *pulumi.Context, args *GetNotebookPathsArgs, opts ...pulumi.InvokeOption) (*GetNotebookPathsResult, error) {
 	var rv GetNotebookPathsResult

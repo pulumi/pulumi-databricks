@@ -190,7 +190,7 @@ func (i *MwsNetworks) ToMwsNetworksOutputWithContext(ctx context.Context) MwsNet
 // MwsNetworksArrayInput is an input type that accepts MwsNetworksArray and MwsNetworksArrayOutput values.
 // You can construct a concrete instance of `MwsNetworksArrayInput` via:
 //
-//          MwsNetworksArray{ MwsNetworksArgs{...} }
+//	MwsNetworksArray{ MwsNetworksArgs{...} }
 type MwsNetworksArrayInput interface {
 	pulumi.Input
 
@@ -215,7 +215,7 @@ func (i MwsNetworksArray) ToMwsNetworksArrayOutputWithContext(ctx context.Contex
 // MwsNetworksMapInput is an input type that accepts MwsNetworksMap and MwsNetworksMapOutput values.
 // You can construct a concrete instance of `MwsNetworksMapInput` via:
 //
-//          MwsNetworksMap{ "key": MwsNetworksArgs{...} }
+//	MwsNetworksMap{ "key": MwsNetworksArgs{...} }
 type MwsNetworksMapInput interface {
 	pulumi.Input
 

@@ -16,25 +16,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
-// 			MetastoreId: pulumi.Any(databricks_metastore.This.Id),
-// 			Comment:     pulumi.String("this catalog is managed by terraform"),
-// 			Properties: pulumi.AnyMap{
-// 				"purpose": pulumi.Any("testing"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				MetastoreId: pulumi.Any(databricks_metastore.This.Id),
+//				Comment:     pulumi.String("this catalog is managed by terraform"),
+//				Properties: pulumi.AnyMap{
+//					"purpose": pulumi.Any("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -46,10 +49,12 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by namebash
+// # This resource can be imported by namebash
 //
 // ```sh
-//  $ pulumi import databricks:index/catalog:Catalog this <name>
+//
+//	$ pulumi import databricks:index/catalog:Catalog this <name>
+//
 // ```
 type Catalog struct {
 	pulumi.CustomResourceState
@@ -172,7 +177,7 @@ func (i *Catalog) ToCatalogOutputWithContext(ctx context.Context) CatalogOutput 
 // CatalogArrayInput is an input type that accepts CatalogArray and CatalogArrayOutput values.
 // You can construct a concrete instance of `CatalogArrayInput` via:
 //
-//          CatalogArray{ CatalogArgs{...} }
+//	CatalogArray{ CatalogArgs{...} }
 type CatalogArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +202,7 @@ func (i CatalogArray) ToCatalogArrayOutputWithContext(ctx context.Context) Catal
 // CatalogMapInput is an input type that accepts CatalogMap and CatalogMapOutput values.
 // You can construct a concrete instance of `CatalogMapInput` via:
 //
-//          CatalogMap{ "key": CatalogArgs{...} }
+//	CatalogMap{ "key": CatalogArgs{...} }
 type CatalogMapInput interface {
 	pulumi.Input
 

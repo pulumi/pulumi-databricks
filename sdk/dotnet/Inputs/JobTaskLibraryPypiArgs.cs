@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobTaskLibraryPypiArgs : Pulumi.ResourceArgs
+    public sealed class JobTaskLibraryPypiArgs : global::Pulumi.ResourceArgs
     {
         [Input("package", required: true)]
         public Input<string> Package { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public JobTaskLibraryPypiArgs()
         {
         }
+        public static new JobTaskLibraryPypiArgs Empty => new JobTaskLibraryPypiArgs();
     }
 }

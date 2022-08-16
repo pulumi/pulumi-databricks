@@ -15,40 +15,43 @@ import (
 //
 // ## Example Usage
 //
-// Granting a service principal access to an instance profile
+// # Granting a service principal access to an instance profile
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instanceProfile, err := databricks.NewInstanceProfile(ctx, "instanceProfile", &databricks.InstanceProfileArgs{
-// 			InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		this, err := databricks.NewServicePrincipal(ctx, "this", &databricks.ServicePrincipalArgs{
-// 			DisplayName: pulumi.String("My Service Principal"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewServicePrincipalRole(ctx, "myServicePrincipalInstanceProfile", &databricks.ServicePrincipalRoleArgs{
-// 			ServicePrincipalId: this.ID(),
-// 			Role:               instanceProfile.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instanceProfile", &databricks.InstanceProfileArgs{
+//				InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			this, err := databricks.NewServicePrincipal(ctx, "this", &databricks.ServicePrincipalArgs{
+//				DisplayName: pulumi.String("My Service Principal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewServicePrincipalRole(ctx, "myServicePrincipalInstanceProfile", &databricks.ServicePrincipalRoleArgs{
+//				ServicePrincipalId: this.ID(),
+//				Role:               instanceProfile.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -165,7 +168,7 @@ func (i *ServicePrincipalRole) ToServicePrincipalRoleOutputWithContext(ctx conte
 // ServicePrincipalRoleArrayInput is an input type that accepts ServicePrincipalRoleArray and ServicePrincipalRoleArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalRoleArrayInput` via:
 //
-//          ServicePrincipalRoleArray{ ServicePrincipalRoleArgs{...} }
+//	ServicePrincipalRoleArray{ ServicePrincipalRoleArgs{...} }
 type ServicePrincipalRoleArrayInput interface {
 	pulumi.Input
 
@@ -190,7 +193,7 @@ func (i ServicePrincipalRoleArray) ToServicePrincipalRoleArrayOutputWithContext(
 // ServicePrincipalRoleMapInput is an input type that accepts ServicePrincipalRoleMap and ServicePrincipalRoleMapOutput values.
 // You can construct a concrete instance of `ServicePrincipalRoleMapInput` via:
 //
-//          ServicePrincipalRoleMap{ "key": ServicePrincipalRoleArgs{...} }
+//	ServicePrincipalRoleMap{ "key": ServicePrincipalRoleArgs{...} }
 type ServicePrincipalRoleMapInput interface {
 	pulumi.Input
 

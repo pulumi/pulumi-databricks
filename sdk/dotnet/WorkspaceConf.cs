@@ -19,23 +19,21 @@ namespace Pulumi.Databricks
     ///  * `enableTokensConfig` - (boolean) Enable or disable personal access tokens for this workspace.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @this = new Databricks.WorkspaceConf("this", new()
     ///     {
-    ///         var @this = new Databricks.WorkspaceConf("this", new Databricks.WorkspaceConfArgs
+    ///         CustomConfig = 
     ///         {
-    ///             CustomConfig = 
-    ///             {
-    ///                 { "enableIpAccessLists", true },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "enableIpAccessLists", true },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/workspaceConf:WorkspaceConf")]
-    public partial class WorkspaceConf : Pulumi.CustomResource
+    public partial class WorkspaceConf : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
@@ -95,7 +93,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class WorkspaceConfArgs : Pulumi.ResourceArgs
+    public sealed class WorkspaceConfArgs : global::Pulumi.ResourceArgs
     {
         [Input("customConfig")]
         private InputMap<object>? _customConfig;
@@ -112,9 +110,10 @@ namespace Pulumi.Databricks
         public WorkspaceConfArgs()
         {
         }
+        public static new WorkspaceConfArgs Empty => new WorkspaceConfArgs();
     }
 
-    public sealed class WorkspaceConfState : Pulumi.ResourceArgs
+    public sealed class WorkspaceConfState : global::Pulumi.ResourceArgs
     {
         [Input("customConfig")]
         private InputMap<object>? _customConfig;
@@ -131,5 +130,6 @@ namespace Pulumi.Databricks
         public WorkspaceConfState()
         {
         }
+        public static new WorkspaceConfState Empty => new WorkspaceConfState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class SqlQueryScheduleDailyArgs : Pulumi.ResourceArgs
+    public sealed class SqlQueryScheduleDailyArgs : global::Pulumi.ResourceArgs
     {
         [Input("intervalDays", required: true)]
         public Input<int> IntervalDays { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.Databricks.Inputs
         public SqlQueryScheduleDailyArgs()
         {
         }
+        public static new SqlQueryScheduleDailyArgs Empty => new SqlQueryScheduleDailyArgs();
     }
 }

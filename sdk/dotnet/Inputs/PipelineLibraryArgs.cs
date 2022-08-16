@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class PipelineLibraryArgs : Pulumi.ResourceArgs
+    public sealed class PipelineLibraryArgs : global::Pulumi.ResourceArgs
     {
         [Input("jar")]
         public Input<string>? Jar { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Databricks.Inputs
         public PipelineLibraryArgs()
         {
         }
+        public static new PipelineLibraryArgs Empty => new PipelineLibraryArgs();
     }
 }

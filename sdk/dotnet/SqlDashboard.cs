@@ -19,51 +19,47 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var d1 = new Databricks.SqlDashboard("d1", new()
     ///     {
-    ///         var d1 = new Databricks.SqlDashboard("d1", new Databricks.SqlDashboardArgs
+    ///         Tags = new[]
     ///         {
-    ///             Tags = 
-    ///             {
-    ///                 "some-tag",
-    ///                 "another-tag",
-    ///             },
-    ///         });
-    ///     }
+    ///             "some-tag",
+    ///             "another-tag",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Example permission to share dashboard with all users:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var d1 = new Databricks.Permissions("d1", new()
     ///     {
-    ///         var d1 = new Databricks.Permissions("d1", new Databricks.PermissionsArgs
+    ///         SqlDashboardId = databricks_sql_dashboard.D1.Id,
+    ///         AccessControls = new[]
     ///         {
-    ///             SqlDashboardId = databricks_sql_dashboard.D1.Id,
-    ///             AccessControls = 
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
     ///             {
-    ///                 new Databricks.Inputs.PermissionsAccessControlArgs
-    ///                 {
-    ///                     GroupName = data.Databricks_group.Users.Display_name,
-    ///                     PermissionLevel = "CAN_RUN",
-    ///                 },
+    ///                 GroupName = data.Databricks_group.Users.Display_name,
+    ///                 PermissionLevel = "CAN_RUN",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -83,7 +79,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlDashboard:SqlDashboard")]
-    public partial class SqlDashboard : Pulumi.CustomResource
+    public partial class SqlDashboard : global::Pulumi.CustomResource
     {
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -135,7 +131,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class SqlDashboardArgs : Pulumi.ResourceArgs
+    public sealed class SqlDashboardArgs : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -151,9 +147,10 @@ namespace Pulumi.Databricks
         public SqlDashboardArgs()
         {
         }
+        public static new SqlDashboardArgs Empty => new SqlDashboardArgs();
     }
 
-    public sealed class SqlDashboardState : Pulumi.ResourceArgs
+    public sealed class SqlDashboardState : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -169,5 +166,6 @@ namespace Pulumi.Databricks
         public SqlDashboardState()
         {
         }
+        public static new SqlDashboardState Empty => new SqlDashboardState();
     }
 }

@@ -19,78 +19,74 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var q1 = new Databricks.SqlQuery("q1", new()
     ///     {
-    ///         var q1 = new Databricks.SqlQuery("q1", new Databricks.SqlQueryArgs
+    ///         DataSourceId = databricks_sql_endpoint.Example.Data_source_id,
+    ///         Query = "SELECT {{ p1 }} AS p1, 2 as p2",
+    ///         RunAsRole = "viewer",
+    ///         Schedule = new Databricks.Inputs.SqlQueryScheduleArgs
     ///         {
-    ///             DataSourceId = databricks_sql_endpoint.Example.Data_source_id,
-    ///             Query = "SELECT {{ p1 }} AS p1, 2 as p2",
-    ///             RunAsRole = "viewer",
-    ///             Schedule = new Databricks.Inputs.SqlQueryScheduleArgs
+    ///             Continuous = new Databricks.Inputs.SqlQueryScheduleContinuousArgs
     ///             {
-    ///                 Continuous = new Databricks.Inputs.SqlQueryScheduleContinuousArgs
+    ///                 IntervalSeconds = 5 * 60,
+    ///             },
+    ///         },
+    ///         Parameters = new[]
+    ///         {
+    ///             new Databricks.Inputs.SqlQueryParameterArgs
+    ///             {
+    ///                 Name = "p1",
+    ///                 Title = "Title for p1",
+    ///                 Text = new Databricks.Inputs.SqlQueryParameterTextArgs
     ///                 {
-    ///                     IntervalSeconds = 5 * 60,
+    ///                     Value = "default",
     ///                 },
     ///             },
-    ///             Parameters = 
-    ///             {
-    ///                 new Databricks.Inputs.SqlQueryParameterArgs
-    ///                 {
-    ///                     Name = "p1",
-    ///                     Title = "Title for p1",
-    ///                     Text = new Databricks.Inputs.SqlQueryParameterTextArgs
-    ///                     {
-    ///                         Value = "default",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Tags = 
-    ///             {
-    ///                 "t1",
-    ///                 "t2",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "t1",
+    ///             "t2",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Example permission to share query with all users:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var q1 = new Databricks.Permissions("q1", new()
     ///     {
-    ///         var q1 = new Databricks.Permissions("q1", new Databricks.PermissionsArgs
+    ///         SqlQueryId = databricks_sql_query.Q1.Id,
+    ///         AccessControls = new[]
     ///         {
-    ///             SqlQueryId = databricks_sql_query.Q1.Id,
-    ///             AccessControls = 
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
     ///             {
-    ///                 new Databricks.Inputs.PermissionsAccessControlArgs
-    ///                 {
-    ///                     GroupName = data.Databricks_group.Users.Display_name,
-    ///                     PermissionLevel = "CAN_RUN",
-    ///                 },
-    ///                 new Databricks.Inputs.PermissionsAccessControlArgs
-    ///                 {
-    ///                     GroupName = data.Databricks_group.Team.Display_name,
-    ///                     PermissionLevel = "CAN_EDIT",
-    ///                 },
+    ///                 GroupName = data.Databricks_group.Users.Display_name,
+    ///                 PermissionLevel = "CAN_RUN",
     ///             },
-    ///         });
-    ///     }
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = data.Databricks_group.Team.Display_name,
+    ///                 PermissionLevel = "CAN_EDIT",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -111,7 +107,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlQuery:SqlQuery")]
-    public partial class SqlQuery : Pulumi.CustomResource
+    public partial class SqlQuery : global::Pulumi.CustomResource
     {
         [Output("dataSourceId")]
         public Output<string> DataSourceId { get; private set; } = null!;
@@ -181,7 +177,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class SqlQueryArgs : Pulumi.ResourceArgs
+    public sealed class SqlQueryArgs : global::Pulumi.ResourceArgs
     {
         [Input("dataSourceId", required: true)]
         public Input<string> DataSourceId { get; set; } = null!;
@@ -220,9 +216,10 @@ namespace Pulumi.Databricks
         public SqlQueryArgs()
         {
         }
+        public static new SqlQueryArgs Empty => new SqlQueryArgs();
     }
 
-    public sealed class SqlQueryState : Pulumi.ResourceArgs
+    public sealed class SqlQueryState : global::Pulumi.ResourceArgs
     {
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }
@@ -261,5 +258,6 @@ namespace Pulumi.Databricks
         public SqlQueryState()
         {
         }
+        public static new SqlQueryState Empty => new SqlQueryState();
     }
 }

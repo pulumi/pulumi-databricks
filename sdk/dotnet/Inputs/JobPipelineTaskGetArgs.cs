@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobPipelineTaskGetArgs : Pulumi.ResourceArgs
+    public sealed class JobPipelineTaskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The pipeline's unique ID.
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public JobPipelineTaskGetArgs()
         {
         }
+        public static new JobPipelineTaskGetArgs Empty => new JobPipelineTaskGetArgs();
     }
 }

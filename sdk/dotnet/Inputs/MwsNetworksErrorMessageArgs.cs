@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MwsNetworksErrorMessageArgs : Pulumi.ResourceArgs
+    public sealed class MwsNetworksErrorMessageArgs : global::Pulumi.ResourceArgs
     {
         [Input("errorMessage")]
         public Input<string>? ErrorMessage { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public MwsNetworksErrorMessageArgs()
         {
         }
+        public static new MwsNetworksErrorMessageArgs Empty => new MwsNetworksErrorMessageArgs();
     }
 }

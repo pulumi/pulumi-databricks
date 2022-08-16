@@ -23,41 +23,44 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewSqlQuery(ctx, "q1", &databricks.SqlQueryArgs{
-// 			DataSourceId: pulumi.Any(databricks_sql_endpoint.Example.Data_source_id),
-// 			Query:        pulumi.String("SELECT {{ p1 }} AS p1, 2 as p2"),
-// 			RunAsRole:    pulumi.String("viewer"),
-// 			Schedule: &SqlQueryScheduleArgs{
-// 				Continuous: &SqlQueryScheduleContinuousArgs{
-// 					IntervalSeconds: 5 * 60,
-// 				},
-// 			},
-// 			Parameters: SqlQueryParameterArray{
-// 				&SqlQueryParameterArgs{
-// 					Name:  pulumi.String("p1"),
-// 					Title: pulumi.String("Title for p1"),
-// 					Text: &SqlQueryParameterTextArgs{
-// 						Value: pulumi.String("default"),
-// 					},
-// 				},
-// 			},
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("t1"),
-// 				pulumi.String("t2"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewSqlQuery(ctx, "q1", &databricks.SqlQueryArgs{
+//				DataSourceId: pulumi.Any(databricks_sql_endpoint.Example.Data_source_id),
+//				Query:        pulumi.String("SELECT {{ p1 }} AS p1, 2 as p2"),
+//				RunAsRole:    pulumi.String("viewer"),
+//				Schedule: &SqlQueryScheduleArgs{
+//					Continuous: &SqlQueryScheduleContinuousArgs{
+//						IntervalSeconds: 5 * 60,
+//					},
+//				},
+//				Parameters: SqlQueryParameterArray{
+//					&SqlQueryParameterArgs{
+//						Name:  pulumi.String("p1"),
+//						Title: pulumi.String("Title for p1"),
+//						Text: &SqlQueryParameterTextArgs{
+//							Value: pulumi.String("default"),
+//						},
+//					},
+//				},
+//				Tags: pulumi.StringArray{
+//					pulumi.String("t1"),
+//					pulumi.String("t2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Example permission to share query with all users:
@@ -66,31 +69,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewPermissions(ctx, "q1", &databricks.PermissionsArgs{
-// 			SqlQueryId: pulumi.Any(databricks_sql_query.Q1.Id),
-// 			AccessControls: PermissionsAccessControlArray{
-// 				&PermissionsAccessControlArgs{
-// 					GroupName:       pulumi.Any(data.Databricks_group.Users.Display_name),
-// 					PermissionLevel: pulumi.String("CAN_RUN"),
-// 				},
-// 				&PermissionsAccessControlArgs{
-// 					GroupName:       pulumi.Any(data.Databricks_group.Team.Display_name),
-// 					PermissionLevel: pulumi.String("CAN_EDIT"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPermissions(ctx, "q1", &databricks.PermissionsArgs{
+//				SqlQueryId: pulumi.Any(databricks_sql_query.Q1.Id),
+//				AccessControls: PermissionsAccessControlArray{
+//					&PermissionsAccessControlArgs{
+//						GroupName:       pulumi.Any(data.Databricks_group.Users.Display_name),
+//						PermissionLevel: pulumi.String("CAN_RUN"),
+//					},
+//					&PermissionsAccessControlArgs{
+//						GroupName:       pulumi.Any(data.Databricks_group.Team.Display_name),
+//						PermissionLevel: pulumi.String("CAN_EDIT"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -107,7 +113,9 @@ import (
 // You can import a `databricks_sql_query` resource with ID like the followingbash
 //
 // ```sh
-//  $ pulumi import databricks:index/sqlQuery:SqlQuery this <query-id>
+//
+//	$ pulumi import databricks:index/sqlQuery:SqlQuery this <query-id>
+//
 // ```
 type SqlQuery struct {
 	pulumi.CustomResourceState
@@ -231,7 +239,7 @@ func (i *SqlQuery) ToSqlQueryOutputWithContext(ctx context.Context) SqlQueryOutp
 // SqlQueryArrayInput is an input type that accepts SqlQueryArray and SqlQueryArrayOutput values.
 // You can construct a concrete instance of `SqlQueryArrayInput` via:
 //
-//          SqlQueryArray{ SqlQueryArgs{...} }
+//	SqlQueryArray{ SqlQueryArgs{...} }
 type SqlQueryArrayInput interface {
 	pulumi.Input
 
@@ -256,7 +264,7 @@ func (i SqlQueryArray) ToSqlQueryArrayOutputWithContext(ctx context.Context) Sql
 // SqlQueryMapInput is an input type that accepts SqlQueryMap and SqlQueryMapOutput values.
 // You can construct a concrete instance of `SqlQueryMapInput` via:
 //
-//          SqlQueryMap{ "key": SqlQueryArgs{...} }
+//	SqlQueryMap{ "key": SqlQueryArgs{...} }
 type SqlQueryMapInput interface {
 	pulumi.Input
 

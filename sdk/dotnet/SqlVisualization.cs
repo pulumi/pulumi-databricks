@@ -24,42 +24,38 @@ namespace Pulumi.Databricks
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var q1v1 = new Databricks.SqlVisualization("q1v1", new()
     ///     {
-    ///         var q1v1 = new Databricks.SqlVisualization("q1v1", new Databricks.SqlVisualizationArgs
+    ///         QueryId = databricks_sql_query.Q1.Id,
+    ///         Type = "table",
+    ///         Description = "Some Description",
+    ///         Options = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             QueryId = databricks_sql_query.Q1.Id,
-    ///             Type = "table",
-    ///             Description = "Some Description",
-    ///             Options = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             ["itemsPerPage"] = 25,
+    ///             ["columns"] = new[]
     ///             {
-    ///                 { "itemsPerPage", 25 },
-    ///                 { "columns", new[]
-    ///                     {
-    ///                         new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "name", "p1" },
-    ///                             { "type", "string" },
-    ///                             { "title", "Parameter 1" },
-    ///                             { "displayAs", "string" },
-    ///                         },
-    ///                         new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "name", "p2" },
-    ///                             { "type", "string" },
-    ///                             { "title", "Parameter 2" },
-    ///                             { "displayAs", "link" },
-    ///                             { "highlightLinks", true },
-    ///                         },
-    ///                     }
-    ///                  },
-    ///             }),
-    ///         });
-    ///     }
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "p1",
+    ///                     ["type"] = "string",
+    ///                     ["title"] = "Parameter 1",
+    ///                     ["displayAs"] = "string",
+    ///                 },
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "p2",
+    ///                     ["type"] = "string",
+    ///                     ["title"] = "Parameter 2",
+    ///                     ["displayAs"] = "link",
+    ///                     ["highlightLinks"] = true,
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -80,7 +76,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlVisualization:SqlVisualization")]
-    public partial class SqlVisualization : Pulumi.CustomResource
+    public partial class SqlVisualization : global::Pulumi.CustomResource
     {
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -144,7 +140,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class SqlVisualizationArgs : Pulumi.ResourceArgs
+    public sealed class SqlVisualizationArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -167,9 +163,10 @@ namespace Pulumi.Databricks
         public SqlVisualizationArgs()
         {
         }
+        public static new SqlVisualizationArgs Empty => new SqlVisualizationArgs();
     }
 
-    public sealed class SqlVisualizationState : Pulumi.ResourceArgs
+    public sealed class SqlVisualizationState : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -192,5 +189,6 @@ namespace Pulumi.Databricks
         public SqlVisualizationState()
         {
         }
+        public static new SqlVisualizationState Empty => new SqlVisualizationState();
     }
 }

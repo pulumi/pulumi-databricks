@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/servicePrincipal:ServicePrincipal")]
-    public partial class ServicePrincipal : Pulumi.CustomResource
+    public partial class ServicePrincipal : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
@@ -131,7 +131,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class ServicePrincipalArgs : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
@@ -187,9 +187,10 @@ namespace Pulumi.Databricks
         public ServicePrincipalArgs()
         {
         }
+        public static new ServicePrincipalArgs Empty => new ServicePrincipalArgs();
     }
 
-    public sealed class ServicePrincipalState : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
@@ -245,5 +246,6 @@ namespace Pulumi.Databricks
         public ServicePrincipalState()
         {
         }
+        public static new ServicePrincipalState Empty => new ServicePrincipalState();
     }
 }

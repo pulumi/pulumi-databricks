@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class SqlEndpointChannelArgs : Pulumi.ResourceArgs
+    public sealed class SqlEndpointChannelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public SqlEndpointChannelArgs()
         {
         }
+        public static new SqlEndpointChannelArgs Empty => new SqlEndpointChannelArgs();
     }
 }

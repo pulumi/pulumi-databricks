@@ -19,7 +19,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/job:Job")]
-    public partial class Job : Pulumi.CustomResource
+    public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
@@ -179,7 +179,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class JobArgs : Pulumi.ResourceArgs
+    public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
@@ -314,9 +314,10 @@ namespace Pulumi.Databricks
         public JobArgs()
         {
         }
+        public static new JobArgs Empty => new JobArgs();
     }
 
-    public sealed class JobState : Pulumi.ResourceArgs
+    public sealed class JobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
@@ -457,5 +458,6 @@ namespace Pulumi.Databricks
         public JobState()
         {
         }
+        public static new JobState Empty => new JobState();
     }
 }

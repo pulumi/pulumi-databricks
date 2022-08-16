@@ -74,6 +74,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MwsLogDelivery{}
 	case "databricks:index/mwsNetworks:MwsNetworks":
 		r = &MwsNetworks{}
+	case "databricks:index/mwsPermissionAssignment:MwsPermissionAssignment":
+		r = &MwsPermissionAssignment{}
 	case "databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings":
 		r = &MwsPrivateAccessSettings{}
 	case "databricks:index/mwsStorageConfigurations:MwsStorageConfigurations":
@@ -86,6 +88,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Notebook{}
 	case "databricks:index/oboToken:OboToken":
 		r = &OboToken{}
+	case "databricks:index/permissionAssignment:PermissionAssignment":
+		r = &PermissionAssignment{}
 	case "databricks:index/permissions:Permissions":
 		r = &Permissions{}
 	case "databricks:index/pipeline:Pipeline":
@@ -297,6 +301,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/mwsPermissionAssignment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/mwsPrivateAccessSettings",
 		&module{version},
 	)
@@ -323,6 +332,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/oboToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/permissionAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

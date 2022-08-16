@@ -47,10 +47,12 @@ import (
 //
 // ## Import
 //
-// The resource cluster policy can be imported using the policy idbash
+// # The resource cluster policy can be imported using the policy idbash
 //
 // ```sh
-//  $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>
+//
+//	$ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>
+//
 // ```
 type ClusterPolicy struct {
 	pulumi.CustomResourceState
@@ -154,7 +156,7 @@ func (i *ClusterPolicy) ToClusterPolicyOutputWithContext(ctx context.Context) Cl
 // ClusterPolicyArrayInput is an input type that accepts ClusterPolicyArray and ClusterPolicyArrayOutput values.
 // You can construct a concrete instance of `ClusterPolicyArrayInput` via:
 //
-//          ClusterPolicyArray{ ClusterPolicyArgs{...} }
+//	ClusterPolicyArray{ ClusterPolicyArgs{...} }
 type ClusterPolicyArrayInput interface {
 	pulumi.Input
 
@@ -179,7 +181,7 @@ func (i ClusterPolicyArray) ToClusterPolicyArrayOutputWithContext(ctx context.Co
 // ClusterPolicyMapInput is an input type that accepts ClusterPolicyMap and ClusterPolicyMapOutput values.
 // You can construct a concrete instance of `ClusterPolicyMapInput` via:
 //
-//          ClusterPolicyMap{ "key": ClusterPolicyArgs{...} }
+//	ClusterPolicyMap{ "key": ClusterPolicyArgs{...} }
 type ClusterPolicyMapInput interface {
 	pulumi.Input
 

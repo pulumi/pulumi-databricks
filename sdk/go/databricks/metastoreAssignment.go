@@ -21,32 +21,35 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		thisMetastore, err := databricks.NewMetastore(ctx, "thisMetastore", &databricks.MetastoreArgs{
-// 			StorageRoot:  pulumi.String(fmt.Sprintf("s3://%v/metastore", aws_s3_bucket.Metastore.Id)),
-// 			Owner:        pulumi.String("uc admins"),
-// 			ForceDestroy: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewMetastoreAssignment(ctx, "thisMetastoreAssignment", &databricks.MetastoreAssignmentArgs{
-// 			MetastoreId: thisMetastore.ID(),
-// 			WorkspaceId: pulumi.Any(local.Workspace_id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisMetastore, err := databricks.NewMetastore(ctx, "thisMetastore", &databricks.MetastoreArgs{
+//				StorageRoot:  pulumi.String(fmt.Sprintf("s3://%v/metastore", aws_s3_bucket.Metastore.Id)),
+//				Owner:        pulumi.String("uc admins"),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMetastoreAssignment(ctx, "thisMetastoreAssignment", &databricks.MetastoreAssignmentArgs{
+//				MetastoreId: thisMetastore.ID(),
+//				WorkspaceId: pulumi.Any(local.Workspace_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type MetastoreAssignment struct {
 	pulumi.CustomResourceState
@@ -160,7 +163,7 @@ func (i *MetastoreAssignment) ToMetastoreAssignmentOutputWithContext(ctx context
 // MetastoreAssignmentArrayInput is an input type that accepts MetastoreAssignmentArray and MetastoreAssignmentArrayOutput values.
 // You can construct a concrete instance of `MetastoreAssignmentArrayInput` via:
 //
-//          MetastoreAssignmentArray{ MetastoreAssignmentArgs{...} }
+//	MetastoreAssignmentArray{ MetastoreAssignmentArgs{...} }
 type MetastoreAssignmentArrayInput interface {
 	pulumi.Input
 
@@ -185,7 +188,7 @@ func (i MetastoreAssignmentArray) ToMetastoreAssignmentArrayOutputWithContext(ct
 // MetastoreAssignmentMapInput is an input type that accepts MetastoreAssignmentMap and MetastoreAssignmentMapOutput values.
 // You can construct a concrete instance of `MetastoreAssignmentMapInput` via:
 //
-//          MetastoreAssignmentMap{ "key": MetastoreAssignmentArgs{...} }
+//	MetastoreAssignmentMap{ "key": MetastoreAssignmentArgs{...} }
 type MetastoreAssignmentMapInput interface {
 	pulumi.Input
 

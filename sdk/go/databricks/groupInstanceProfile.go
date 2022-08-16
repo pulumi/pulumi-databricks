@@ -21,34 +21,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instanceProfile, err := databricks.NewInstanceProfile(ctx, "instanceProfile", &databricks.InstanceProfileArgs{
-// 			InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myGroup, err := databricks.NewGroup(ctx, "myGroup", &databricks.GroupArgs{
-// 			DisplayName: pulumi.String("my_group_name"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewGroupInstanceProfile(ctx, "myGroupInstanceProfile", &databricks.GroupInstanceProfileArgs{
-// 			GroupId:           myGroup.ID(),
-// 			InstanceProfileId: instanceProfile.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instanceProfile", &databricks.InstanceProfileArgs{
+//				InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myGroup, err := databricks.NewGroup(ctx, "myGroup", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("my_group_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGroupInstanceProfile(ctx, "myGroupInstanceProfile", &databricks.GroupInstanceProfileArgs{
+//				GroupId:           myGroup.ID(),
+//				InstanceProfileId: instanceProfile.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -169,7 +172,7 @@ func (i *GroupInstanceProfile) ToGroupInstanceProfileOutputWithContext(ctx conte
 // GroupInstanceProfileArrayInput is an input type that accepts GroupInstanceProfileArray and GroupInstanceProfileArrayOutput values.
 // You can construct a concrete instance of `GroupInstanceProfileArrayInput` via:
 //
-//          GroupInstanceProfileArray{ GroupInstanceProfileArgs{...} }
+//	GroupInstanceProfileArray{ GroupInstanceProfileArgs{...} }
 type GroupInstanceProfileArrayInput interface {
 	pulumi.Input
 
@@ -194,7 +197,7 @@ func (i GroupInstanceProfileArray) ToGroupInstanceProfileArrayOutputWithContext(
 // GroupInstanceProfileMapInput is an input type that accepts GroupInstanceProfileMap and GroupInstanceProfileMapOutput values.
 // You can construct a concrete instance of `GroupInstanceProfileMapInput` via:
 //
-//          GroupInstanceProfileMap{ "key": GroupInstanceProfileArgs{...} }
+//	GroupInstanceProfileMap{ "key": GroupInstanceProfileArgs{...} }
 type GroupInstanceProfileMapInput interface {
 	pulumi.Input
 

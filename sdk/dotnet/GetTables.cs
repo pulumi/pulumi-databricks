@@ -37,7 +37,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetTablesArgs : Pulumi.InvokeArgs
+    public sealed class GetTablesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of databricks_catalog
@@ -66,9 +66,10 @@ namespace Pulumi.Databricks
         public GetTablesArgs()
         {
         }
+        public static new GetTablesArgs Empty => new GetTablesArgs();
     }
 
-    public sealed class GetTablesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTablesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of databricks_catalog
@@ -97,6 +98,7 @@ namespace Pulumi.Databricks
         public GetTablesInvokeArgs()
         {
         }
+        public static new GetTablesInvokeArgs Empty => new GetTablesInvokeArgs();
     }
 
 

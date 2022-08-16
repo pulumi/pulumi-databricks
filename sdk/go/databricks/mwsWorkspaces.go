@@ -276,7 +276,7 @@ func (i *MwsWorkspaces) ToMwsWorkspacesOutputWithContext(ctx context.Context) Mw
 // MwsWorkspacesArrayInput is an input type that accepts MwsWorkspacesArray and MwsWorkspacesArrayOutput values.
 // You can construct a concrete instance of `MwsWorkspacesArrayInput` via:
 //
-//          MwsWorkspacesArray{ MwsWorkspacesArgs{...} }
+//	MwsWorkspacesArray{ MwsWorkspacesArgs{...} }
 type MwsWorkspacesArrayInput interface {
 	pulumi.Input
 
@@ -301,7 +301,7 @@ func (i MwsWorkspacesArray) ToMwsWorkspacesArrayOutputWithContext(ctx context.Co
 // MwsWorkspacesMapInput is an input type that accepts MwsWorkspacesMap and MwsWorkspacesMapOutput values.
 // You can construct a concrete instance of `MwsWorkspacesMapInput` via:
 //
-//          MwsWorkspacesMap{ "key": MwsWorkspacesArgs{...} }
+//	MwsWorkspacesMap{ "key": MwsWorkspacesArgs{...} }
 type MwsWorkspacesMapInput interface {
 	pulumi.Input
 

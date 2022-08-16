@@ -13,10 +13,12 @@ import (
 
 // ## Import
 //
-// The resource dbfs file can be imported using the path of the file bash
+// # The resource dbfs file can be imported using the path of the file bash
 //
 // ```sh
-//  $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
+//
+//	$ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
+//
 // ```
 type DbfsFile struct {
 	pulumi.CustomResourceState
@@ -139,7 +141,7 @@ func (i *DbfsFile) ToDbfsFileOutputWithContext(ctx context.Context) DbfsFileOutp
 // DbfsFileArrayInput is an input type that accepts DbfsFileArray and DbfsFileArrayOutput values.
 // You can construct a concrete instance of `DbfsFileArrayInput` via:
 //
-//          DbfsFileArray{ DbfsFileArgs{...} }
+//	DbfsFileArray{ DbfsFileArgs{...} }
 type DbfsFileArrayInput interface {
 	pulumi.Input
 
@@ -164,7 +166,7 @@ func (i DbfsFileArray) ToDbfsFileArrayOutputWithContext(ctx context.Context) Dbf
 // DbfsFileMapInput is an input type that accepts DbfsFileMap and DbfsFileMapOutput values.
 // You can construct a concrete instance of `DbfsFileMapInput` via:
 //
-//          DbfsFileMap{ "key": DbfsFileArgs{...} }
+//	DbfsFileMap{ "key": DbfsFileArgs{...} }
 type DbfsFileMapInput interface {
 	pulumi.Input
 

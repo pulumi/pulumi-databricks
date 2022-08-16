@@ -12,10 +12,12 @@ import (
 
 // ## Import
 //
-// The resource global init script can be imported using script IDbash
+// # The resource global init script can be imported using script IDbash
 //
 // ```sh
-//  $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
+//
+//	$ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
+//
 // ```
 type GlobalInitScript struct {
 	pulumi.CustomResourceState
@@ -143,7 +145,7 @@ func (i *GlobalInitScript) ToGlobalInitScriptOutputWithContext(ctx context.Conte
 // GlobalInitScriptArrayInput is an input type that accepts GlobalInitScriptArray and GlobalInitScriptArrayOutput values.
 // You can construct a concrete instance of `GlobalInitScriptArrayInput` via:
 //
-//          GlobalInitScriptArray{ GlobalInitScriptArgs{...} }
+//	GlobalInitScriptArray{ GlobalInitScriptArgs{...} }
 type GlobalInitScriptArrayInput interface {
 	pulumi.Input
 
@@ -168,7 +170,7 @@ func (i GlobalInitScriptArray) ToGlobalInitScriptArrayOutputWithContext(ctx cont
 // GlobalInitScriptMapInput is an input type that accepts GlobalInitScriptMap and GlobalInitScriptMapOutput values.
 // You can construct a concrete instance of `GlobalInitScriptMapInput` via:
 //
-//          GlobalInitScriptMap{ "key": GlobalInitScriptArgs{...} }
+//	GlobalInitScriptMap{ "key": GlobalInitScriptArgs{...} }
 type GlobalInitScriptMapInput interface {
 	pulumi.Input
 

@@ -17,17 +17,15 @@ namespace Pulumi.Databricks
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var zones = Output.Create(Databricks.GetZones.InvokeAsync());
-        ///     }
+        ///     var zones = Databricks.GetZones.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}

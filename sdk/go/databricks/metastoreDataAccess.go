@@ -142,7 +142,7 @@ func (i *MetastoreDataAccess) ToMetastoreDataAccessOutputWithContext(ctx context
 // MetastoreDataAccessArrayInput is an input type that accepts MetastoreDataAccessArray and MetastoreDataAccessArrayOutput values.
 // You can construct a concrete instance of `MetastoreDataAccessArrayInput` via:
 //
-//          MetastoreDataAccessArray{ MetastoreDataAccessArgs{...} }
+//	MetastoreDataAccessArray{ MetastoreDataAccessArgs{...} }
 type MetastoreDataAccessArrayInput interface {
 	pulumi.Input
 
@@ -167,7 +167,7 @@ func (i MetastoreDataAccessArray) ToMetastoreDataAccessArrayOutputWithContext(ct
 // MetastoreDataAccessMapInput is an input type that accepts MetastoreDataAccessMap and MetastoreDataAccessMapOutput values.
 // You can construct a concrete instance of `MetastoreDataAccessMapInput` via:
 //
-//          MetastoreDataAccessMap{ "key": MetastoreDataAccessArgs{...} }
+//	MetastoreDataAccessMap{ "key": MetastoreDataAccessArgs{...} }
 type MetastoreDataAccessMapInput interface {
 	pulumi.Input
 

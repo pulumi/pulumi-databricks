@@ -15,25 +15,22 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var app = new Databricks.SecretScope("app", new Databricks.SecretScopeArgs
-    ///         {
-    ///         });
-    ///         var publishingApi = new Databricks.Secret("publishingApi", new Databricks.SecretArgs
-    ///         {
-    ///             Key = "publishing_api",
-    ///             StringValue = data.Azurerm_key_vault_secret.Example.Value,
-    ///             Scope = app.Id,
-    ///         });
-    ///     }
+    ///     var app = new Databricks.SecretScope("app");
     /// 
-    /// }
+    ///     var publishingApi = new Databricks.Secret("publishingApi", new()
+    ///     {
+    ///         Key = "publishing_api",
+    ///         StringValue = data.Azurerm_key_vault_secret.Example.Value,
+    ///         Scope = app.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -55,7 +52,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/secret:Secret")]
-    public partial class Secret : Pulumi.CustomResource
+    public partial class Secret : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
@@ -125,7 +122,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class SecretArgs : Pulumi.ResourceArgs
+    public sealed class SecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
@@ -148,9 +145,10 @@ namespace Pulumi.Databricks
         public SecretArgs()
         {
         }
+        public static new SecretArgs Empty => new SecretArgs();
     }
 
-    public sealed class SecretState : Pulumi.ResourceArgs
+    public sealed class SecretState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
@@ -179,5 +177,6 @@ namespace Pulumi.Databricks
         public SecretState()
         {
         }
+        public static new SecretState Empty => new SecretState();
     }
 }

@@ -150,7 +150,7 @@ func (i *Mount) ToMountOutputWithContext(ctx context.Context) MountOutput {
 // MountArrayInput is an input type that accepts MountArray and MountArrayOutput values.
 // You can construct a concrete instance of `MountArrayInput` via:
 //
-//          MountArray{ MountArgs{...} }
+//	MountArray{ MountArgs{...} }
 type MountArrayInput interface {
 	pulumi.Input
 
@@ -175,7 +175,7 @@ func (i MountArray) ToMountArrayOutputWithContext(ctx context.Context) MountArra
 // MountMapInput is an input type that accepts MountMap and MountMapOutput values.
 // You can construct a concrete instance of `MountMapInput` via:
 //
-//          MountMap{ "key": MountArgs{...} }
+//	MountMap{ "key": MountArgs{...} }
 type MountMapInput interface {
 	pulumi.Input
 

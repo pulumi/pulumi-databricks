@@ -19,7 +19,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/cluster:Cluster")]
-    public partial class Cluster : Pulumi.CustomResource
+    public partial class Cluster : global::Pulumi.CustomResource
     {
         [Output("autoscale")]
         public Output<Outputs.ClusterAutoscale?> Autoscale { get; private set; } = null!;
@@ -221,7 +221,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class ClusterArgs : Pulumi.ResourceArgs
+    public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoscale")]
         public Input<Inputs.ClusterAutoscaleArgs>? Autoscale { get; set; }
@@ -401,9 +401,10 @@ namespace Pulumi.Databricks
         public ClusterArgs()
         {
         }
+        public static new ClusterArgs Empty => new ClusterArgs();
     }
 
-    public sealed class ClusterState : Pulumi.ResourceArgs
+    public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         [Input("autoscale")]
         public Input<Inputs.ClusterAutoscaleGetArgs>? Autoscale { get; set; }
@@ -604,5 +605,6 @@ namespace Pulumi.Databricks
         public ClusterState()
         {
         }
+        public static new ClusterState Empty => new ClusterState();
     }
 }

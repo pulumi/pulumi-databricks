@@ -22,6 +22,7 @@ from .get_dbfs_file import *
 from .get_dbfs_file_paths import *
 from .get_group import *
 from .get_jobs import *
+from .get_mws_workspaces import *
 from .get_node_type import *
 from .get_notebook import *
 from .get_notebook_paths import *
@@ -56,12 +57,14 @@ from .mws_credentials import *
 from .mws_customer_managed_keys import *
 from .mws_log_delivery import *
 from .mws_networks import *
+from .mws_permission_assignment import *
 from .mws_private_access_settings import *
 from .mws_storage_configurations import *
 from .mws_vpc_endpoint import *
 from .mws_workspaces import *
 from .notebook import *
 from .obo_token import *
+from .permission_assignment import *
 from .permissions import *
 from .pipeline import *
 from .provider import *
@@ -317,6 +320,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/mwsPermissionAssignment",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/mwsPermissionAssignment:MwsPermissionAssignment": "MwsPermissionAssignment"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/mwsPrivateAccessSettings",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -361,6 +372,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/oboToken:OboToken": "OboToken"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/permissionAssignment",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/permissionAssignment:PermissionAssignment": "PermissionAssignment"
   }
  },
  {

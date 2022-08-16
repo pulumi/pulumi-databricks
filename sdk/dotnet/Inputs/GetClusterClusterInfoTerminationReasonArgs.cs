@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class GetClusterClusterInfoTerminationReasonInputArgs : Pulumi.ResourceArgs
+    public sealed class GetClusterClusterInfoTerminationReasonInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("code")]
         public Input<string>? Code { get; set; }
@@ -29,5 +29,6 @@ namespace Pulumi.Databricks.Inputs
         public GetClusterClusterInfoTerminationReasonInputArgs()
         {
         }
+        public static new GetClusterClusterInfoTerminationReasonInputArgs Empty => new GetClusterClusterInfoTerminationReasonInputArgs();
     }
 }

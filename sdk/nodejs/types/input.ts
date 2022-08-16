@@ -406,14 +406,14 @@ export interface GetClusterClusterInfoClusterLogStatusArgs {
     lastException?: pulumi.Input<string>;
 }
 
-export interface GetClusterClusterInfoDockerImageArgs {
-    basicAuth?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageBasicAuthArgs>;
-    url: pulumi.Input<string>;
-}
-
 export interface GetClusterClusterInfoDockerImage {
     basicAuth?: inputs.GetClusterClusterInfoDockerImageBasicAuth;
     url: string;
+}
+
+export interface GetClusterClusterInfoDockerImageArgs {
+    basicAuth?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageBasicAuthArgs>;
+    url: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoDockerImageBasicAuth {
@@ -446,12 +446,12 @@ export interface GetClusterClusterInfoDriverArgs {
     startTimestamp?: pulumi.Input<number>;
 }
 
-export interface GetClusterClusterInfoDriverNodeAwsAttributes {
-    isSpot?: boolean;
-}
-
 export interface GetClusterClusterInfoDriverNodeAwsAttributesArgs {
     isSpot?: pulumi.Input<boolean>;
+}
+
+export interface GetClusterClusterInfoDriverNodeAwsAttributes {
+    isSpot?: boolean;
 }
 
 export interface GetClusterClusterInfoExecutor {
@@ -482,14 +482,6 @@ export interface GetClusterClusterInfoExecutorNodeAwsAttributesArgs {
     isSpot?: pulumi.Input<boolean>;
 }
 
-export interface GetClusterClusterInfoGcpAttributesArgs {
-    availability?: pulumi.Input<string>;
-    bootDiskSize?: pulumi.Input<number>;
-    googleServiceAccount?: pulumi.Input<string>;
-    usePreemptibleExecutors?: pulumi.Input<boolean>;
-    zoneId?: pulumi.Input<string>;
-}
-
 export interface GetClusterClusterInfoGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
@@ -498,9 +490,12 @@ export interface GetClusterClusterInfoGcpAttributes {
     zoneId?: string;
 }
 
-export interface GetClusterClusterInfoInitScript {
-    dbfs?: inputs.GetClusterClusterInfoInitScriptDbfs;
-    s3?: inputs.GetClusterClusterInfoInitScriptS3;
+export interface GetClusterClusterInfoGcpAttributesArgs {
+    availability?: pulumi.Input<string>;
+    bootDiskSize?: pulumi.Input<number>;
+    googleServiceAccount?: pulumi.Input<string>;
+    usePreemptibleExecutors?: pulumi.Input<boolean>;
+    zoneId?: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoInitScriptArgs {
@@ -508,12 +503,17 @@ export interface GetClusterClusterInfoInitScriptArgs {
     s3?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptS3Args>;
 }
 
-export interface GetClusterClusterInfoInitScriptDbfsArgs {
-    destination: pulumi.Input<string>;
+export interface GetClusterClusterInfoInitScript {
+    dbfs?: inputs.GetClusterClusterInfoInitScriptDbfs;
+    s3?: inputs.GetClusterClusterInfoInitScriptS3;
 }
 
 export interface GetClusterClusterInfoInitScriptDbfs {
     destination: string;
+}
+
+export interface GetClusterClusterInfoInitScriptDbfsArgs {
+    destination: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoInitScriptS3 {
@@ -548,13 +548,6 @@ export interface GetClusterClusterInfoTerminationReasonArgs {
     type?: pulumi.Input<string>;
 }
 
-export interface GetSqlWarehouseChannel {
-    /**
-     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
-     */
-    name?: string;
-}
-
 export interface GetSqlWarehouseChannelArgs {
     /**
      * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
@@ -562,12 +555,11 @@ export interface GetSqlWarehouseChannelArgs {
     name?: pulumi.Input<string>;
 }
 
-export interface GetSqlWarehouseOdbcParams {
-    host?: string;
-    hostname?: string;
-    path: string;
-    port: number;
-    protocol: string;
+export interface GetSqlWarehouseChannel {
+    /**
+     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     */
+    name?: string;
 }
 
 export interface GetSqlWarehouseOdbcParamsArgs {
@@ -578,6 +570,14 @@ export interface GetSqlWarehouseOdbcParamsArgs {
     protocol: pulumi.Input<string>;
 }
 
+export interface GetSqlWarehouseOdbcParams {
+    host?: string;
+    hostname?: string;
+    path: string;
+    port: number;
+    protocol: string;
+}
+
 export interface GetSqlWarehouseTags {
     customTags: inputs.GetSqlWarehouseTagsCustomTag[];
 }
@@ -586,14 +586,14 @@ export interface GetSqlWarehouseTagsArgs {
     customTags: pulumi.Input<pulumi.Input<inputs.GetSqlWarehouseTagsCustomTagArgs>[]>;
 }
 
-export interface GetSqlWarehouseTagsCustomTag {
-    key: string;
-    value: string;
-}
-
 export interface GetSqlWarehouseTagsCustomTagArgs {
     key: pulumi.Input<string>;
     value: pulumi.Input<string>;
+}
+
+export interface GetSqlWarehouseTagsCustomTag {
+    key: string;
+    value: string;
 }
 
 export interface GrantsGrant {

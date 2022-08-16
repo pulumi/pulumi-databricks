@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobSparkJarTaskArgs : Pulumi.ResourceArgs
+    public sealed class JobSparkJarTaskArgs : global::Pulumi.ResourceArgs
     {
         [Input("jarUri")]
         public Input<string>? JarUri { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.Databricks.Inputs
         public JobSparkJarTaskArgs()
         {
         }
+        public static new JobSparkJarTaskArgs Empty => new JobSparkJarTaskArgs();
     }
 }

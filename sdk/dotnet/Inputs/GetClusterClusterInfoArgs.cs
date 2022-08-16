@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class GetClusterClusterInfoInputArgs : Pulumi.ResourceArgs
+    public sealed class GetClusterClusterInfoInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoscale")]
         public Input<Inputs.GetClusterClusterInfoAutoscaleInputArgs>? Autoscale { get; set; }
@@ -229,5 +229,6 @@ namespace Pulumi.Databricks.Inputs
         public GetClusterClusterInfoInputArgs()
         {
         }
+        public static new GetClusterClusterInfoInputArgs Empty => new GetClusterClusterInfoInputArgs();
     }
 }

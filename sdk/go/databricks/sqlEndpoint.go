@@ -19,34 +19,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.GetCurrentUser(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewSqlEndpoint(ctx, "this", &databricks.SqlEndpointArgs{
-// 			ClusterSize:    pulumi.String("Small"),
-// 			MaxNumClusters: pulumi.Int(1),
-// 			Tags: &SqlEndpointTagsArgs{
-// 				CustomTags: SqlEndpointTagsCustomTagArray{
-// 					&SqlEndpointTagsCustomTagArgs{
-// 						Key:   pulumi.String("City"),
-// 						Value: pulumi.String("Amsterdam"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetCurrentUser(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSqlEndpoint(ctx, "this", &databricks.SqlEndpointArgs{
+//				ClusterSize:    pulumi.String("Small"),
+//				MaxNumClusters: pulumi.Int(1),
+//				Tags: &SqlEndpointTagsArgs{
+//					CustomTags: SqlEndpointTagsCustomTagArray{
+//						&SqlEndpointTagsCustomTagArgs{
+//							Key:   pulumi.String("City"),
+//							Value: pulumi.String("Amsterdam"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Access Control
 //
@@ -68,7 +71,9 @@ import (
 // You can import a `databricks_sql_endpoint` resource with ID like the followingbash
 //
 // ```sh
-//  $ pulumi import databricks:index/sqlEndpoint:SqlEndpoint this <endpoint-id>
+//
+//	$ pulumi import databricks:index/sqlEndpoint:SqlEndpoint this <endpoint-id>
+//
 // ```
 type SqlEndpoint struct {
 	pulumi.CustomResourceState
@@ -294,7 +299,7 @@ func (i *SqlEndpoint) ToSqlEndpointOutputWithContext(ctx context.Context) SqlEnd
 // SqlEndpointArrayInput is an input type that accepts SqlEndpointArray and SqlEndpointArrayOutput values.
 // You can construct a concrete instance of `SqlEndpointArrayInput` via:
 //
-//          SqlEndpointArray{ SqlEndpointArgs{...} }
+//	SqlEndpointArray{ SqlEndpointArgs{...} }
 type SqlEndpointArrayInput interface {
 	pulumi.Input
 
@@ -319,7 +324,7 @@ func (i SqlEndpointArray) ToSqlEndpointArrayOutputWithContext(ctx context.Contex
 // SqlEndpointMapInput is an input type that accepts SqlEndpointMap and SqlEndpointMapOutput values.
 // You can construct a concrete instance of `SqlEndpointMapInput` via:
 //
-//          SqlEndpointMap{ "key": SqlEndpointArgs{...} }
+//	SqlEndpointMap{ "key": SqlEndpointArgs{...} }
 type SqlEndpointMapInput interface {
 	pulumi.Input
 

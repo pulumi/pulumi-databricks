@@ -13,10 +13,12 @@ import (
 
 // ## Import
 //
-// The resource instance pool can be imported using it's idbash
+// # The resource instance pool can be imported using it's idbash
 //
 // ```sh
-//  $ pulumi import databricks:index/instancePool:InstancePool this <instance-pool-id>
+//
+//	$ pulumi import databricks:index/instancePool:InstancePool this <instance-pool-id>
+//
 // ```
 type InstancePool struct {
 	pulumi.CustomResourceState
@@ -215,7 +217,7 @@ func (i *InstancePool) ToInstancePoolOutputWithContext(ctx context.Context) Inst
 // InstancePoolArrayInput is an input type that accepts InstancePoolArray and InstancePoolArrayOutput values.
 // You can construct a concrete instance of `InstancePoolArrayInput` via:
 //
-//          InstancePoolArray{ InstancePoolArgs{...} }
+//	InstancePoolArray{ InstancePoolArgs{...} }
 type InstancePoolArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +242,7 @@ func (i InstancePoolArray) ToInstancePoolArrayOutputWithContext(ctx context.Cont
 // InstancePoolMapInput is an input type that accepts InstancePoolMap and InstancePoolMapOutput values.
 // You can construct a concrete instance of `InstancePoolMapInput` via:
 //
-//          InstancePoolMap{ "key": InstancePoolArgs{...} }
+//	InstancePoolMap{ "key": InstancePoolArgs{...} }
 type InstancePoolMapInput interface {
 	pulumi.Input
 

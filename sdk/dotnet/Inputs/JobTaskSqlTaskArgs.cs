@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobTaskSqlTaskArgs : Pulumi.ResourceArgs
+    public sealed class JobTaskSqlTaskArgs : global::Pulumi.ResourceArgs
     {
         [Input("alert")]
         public Input<Inputs.JobTaskSqlTaskAlertArgs>? Alert { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.Databricks.Inputs
         public JobTaskSqlTaskArgs()
         {
         }
+        public static new JobTaskSqlTaskArgs Empty => new JobTaskSqlTaskArgs();
     }
 }

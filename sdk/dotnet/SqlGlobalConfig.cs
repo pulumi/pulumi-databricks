@@ -16,57 +16,53 @@ namespace Pulumi.Databricks
     /// ### AWS example
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @this = new Databricks.SqlGlobalConfig("this", new()
     ///     {
-    ///         var @this = new Databricks.SqlGlobalConfig("this", new Databricks.SqlGlobalConfigArgs
+    ///         SecurityPolicy = "DATA_ACCESS_CONTROL",
+    ///         InstanceProfileArn = "arn:....",
+    ///         DataAccessConfig = 
     ///         {
-    ///             SecurityPolicy = "DATA_ACCESS_CONTROL",
-    ///             InstanceProfileArn = "arn:....",
-    ///             DataAccessConfig = 
-    ///             {
-    ///                 { "spark.sql.session.timeZone", "UTC" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "spark.sql.session.timeZone", "UTC" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Azure example
     /// 
     /// For Azure you should use the `data_access_config` to provide the service principal configuration. You can use the Databricks SQL Admin Console UI to help you generate the right configuration values.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @this = new Databricks.SqlGlobalConfig("this", new()
     ///     {
-    ///         var @this = new Databricks.SqlGlobalConfig("this", new Databricks.SqlGlobalConfigArgs
+    ///         SecurityPolicy = "DATA_ACCESS_CONTROL",
+    ///         DataAccessConfig = 
     ///         {
-    ///             SecurityPolicy = "DATA_ACCESS_CONTROL",
-    ///             DataAccessConfig = 
-    ///             {
-    ///                 { "spark.hadoop.fs.azure.account.auth.type", "OAuth" },
-    ///                 { "spark.hadoop.fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider" },
-    ///                 { "spark.hadoop.fs.azure.account.oauth2.client.id", @var.Tenant_id },
-    ///                 { "spark.hadoop.fs.azure.account.oauth2.client.secret", $"{{{{secrets/{local.Secret_scope}/{local.Secret_key}}}}}" },
-    ///                 { "spark.hadoop.fs.azure.account.oauth2.client.endpoint", $"https://login.microsoftonline.com/{@var.Tenant_id}/oauth2/token" },
-    ///             },
-    ///             SqlConfigParams = 
-    ///             {
-    ///                 { "ANSI_MODE", "true" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "spark.hadoop.fs.azure.account.auth.type", "OAuth" },
+    ///             { "spark.hadoop.fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider" },
+    ///             { "spark.hadoop.fs.azure.account.oauth2.client.id", @var.Tenant_id },
+    ///             { "spark.hadoop.fs.azure.account.oauth2.client.secret", $"{{{{secrets/{local.Secret_scope}/{local.Secret_key}}}}}" },
+    ///             { "spark.hadoop.fs.azure.account.oauth2.client.endpoint", $"https://login.microsoftonline.com/{@var.Tenant_id}/oauth2/token" },
+    ///         },
+    ///         SqlConfigParams = 
+    ///         {
+    ///             { "ANSI_MODE", "true" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -87,7 +83,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlGlobalConfig:SqlGlobalConfig")]
-    public partial class SqlGlobalConfig : Pulumi.CustomResource
+    public partial class SqlGlobalConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
@@ -160,7 +156,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class SqlGlobalConfigArgs : Pulumi.ResourceArgs
+    public sealed class SqlGlobalConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("dataAccessConfig")]
         private InputMap<object>? _dataAccessConfig;
@@ -204,9 +200,10 @@ namespace Pulumi.Databricks
         public SqlGlobalConfigArgs()
         {
         }
+        public static new SqlGlobalConfigArgs Empty => new SqlGlobalConfigArgs();
     }
 
-    public sealed class SqlGlobalConfigState : Pulumi.ResourceArgs
+    public sealed class SqlGlobalConfigState : global::Pulumi.ResourceArgs
     {
         [Input("dataAccessConfig")]
         private InputMap<object>? _dataAccessConfig;
@@ -250,5 +247,6 @@ namespace Pulumi.Databricks
         public SqlGlobalConfigState()
         {
         }
+        public static new SqlGlobalConfigState Empty => new SqlGlobalConfigState();
     }
 }
