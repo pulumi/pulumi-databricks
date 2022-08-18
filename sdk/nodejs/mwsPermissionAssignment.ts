@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const dataEng = new databricks.Group("dataEng", {displayName: "Data Engineering"});
+ * const dataEng = new databricks.Group("dataEng", {});
  * const addAdminGroup = new databricks.MwsPermissionAssignment("addAdminGroup", {
  *     workspaceId: databricks_mws_workspaces["this"].workspace_id,
  *     principalId: dataEng.id,

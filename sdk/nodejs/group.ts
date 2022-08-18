@@ -85,7 +85,7 @@ export class Group extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: GroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -101,9 +101,6 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["workspaceAccess"] = state ? state.workspaceAccess : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'displayName'");
-            }
             resourceInputs["allowClusterCreate"] = args ? args.allowClusterCreate : undefined;
             resourceInputs["allowInstancePoolCreate"] = args ? args.allowInstancePoolCreate : undefined;
             resourceInputs["databricksSqlAccess"] = args ? args.databricksSqlAccess : undefined;
@@ -169,7 +166,7 @@ export interface GroupArgs {
     /**
      * This is the display name for the given group.
      */
-    displayName: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * ID of the group in an external identity provider.
      */

@@ -81,7 +81,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Group(string name, GroupArgs args, CustomResourceOptions? options = null)
+        public Group(string name, GroupArgs? args = null, CustomResourceOptions? options = null)
             : base("databricks:index/group:Group", name, args ?? new GroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -140,8 +140,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// This is the display name for the given group.
         /// </summary>
-        [Input("displayName", required: true)]
-        public Input<string> DisplayName { get; set; } = null!;
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
 
         /// <summary>
         /// ID of the group in an external identity provider.

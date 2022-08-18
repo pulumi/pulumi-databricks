@@ -26,7 +26,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.Group;
- * import com.pulumi.databricks.GroupArgs;
  * import com.pulumi.databricks.SecretScope;
  * import com.pulumi.databricks.SecretAcl;
  * import com.pulumi.databricks.SecretAclArgs;
@@ -45,9 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ds = new Group(&#34;ds&#34;, GroupArgs.builder()        
- *             .displayName(&#34;data-scientists&#34;)
- *             .build());
+ *         var ds = new Group(&#34;ds&#34;);
  * 
  *         var app = new SecretScope(&#34;app&#34;);
  * 

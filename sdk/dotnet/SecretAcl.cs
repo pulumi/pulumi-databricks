@@ -23,10 +23,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ds = new Databricks.Group("ds", new()
-    ///     {
-    ///         DisplayName = "data-scientists",
-    ///     });
+    ///     var ds = new Databricks.Group("ds");
     /// 
     ///     var app = new Databricks.SecretScope("app");
     /// 

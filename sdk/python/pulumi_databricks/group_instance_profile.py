@@ -109,7 +109,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
-        my_group = databricks.Group("myGroup", display_name="my_group_name")
+        my_group = databricks.Group("myGroup")
         my_group_instance_profile = databricks.GroupInstanceProfile("myGroupInstanceProfile",
             group_id=my_group.id,
             instance_profile_id=instance_profile.id)
@@ -155,7 +155,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
-        my_group = databricks.Group("myGroup", display_name="my_group_name")
+        my_group = databricks.Group("myGroup")
         my_group_instance_profile = databricks.GroupInstanceProfile("myGroupInstanceProfile",
             group_id=my_group.id,
             instance_profile_id=instance_profile.id)

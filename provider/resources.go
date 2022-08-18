@@ -90,7 +90,12 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"databricks_group":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
+			"databricks_group": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"display_name": tfbridge.AutoName("displayName", 255, "-"),
+				},
+			},
 			"databricks_group_instance_profile":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupInstanceProfile")},
 			"databricks_instance_pool":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstancePool")},
 			"databricks_instance_profile":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstanceProfile")},

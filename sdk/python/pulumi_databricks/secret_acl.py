@@ -140,7 +140,7 @@ class SecretAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        ds = databricks.Group("ds", display_name="data-scientists")
+        ds = databricks.Group("ds")
         app = databricks.SecretScope("app")
         my_secret_acl = databricks.SecretAcl("mySecretAcl",
             principal=ds.display_name,
@@ -193,7 +193,7 @@ class SecretAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        ds = databricks.Group("ds", display_name="data-scientists")
+        ds = databricks.Group("ds")
         app = databricks.SecretScope("app")
         my_secret_acl = databricks.SecretAcl("mySecretAcl",
             principal=ds.display_name,

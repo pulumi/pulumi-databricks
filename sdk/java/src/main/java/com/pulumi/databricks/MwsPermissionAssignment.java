@@ -28,7 +28,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.Group;
- * import com.pulumi.databricks.GroupArgs;
  * import com.pulumi.databricks.MwsPermissionAssignment;
  * import com.pulumi.databricks.MwsPermissionAssignmentArgs;
  * import java.util.List;
@@ -44,9 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataEng = new Group(&#34;dataEng&#34;, GroupArgs.builder()        
- *             .displayName(&#34;Data Engineering&#34;)
- *             .build());
+ *         var dataEng = new Group(&#34;dataEng&#34;);
  * 
  *         var addAdminGroup = new MwsPermissionAssignment(&#34;addAdminGroup&#34;, MwsPermissionAssignmentArgs.builder()        
  *             .workspaceId(databricks_mws_workspaces.this().workspace_id())

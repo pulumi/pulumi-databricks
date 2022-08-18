@@ -65,15 +65,15 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
      * This is the display name for the given group.
      * 
      */
-    @Import(name="displayName", required=true)
-    private Output<String> displayName;
+    @Import(name="displayName")
+    private @Nullable Output<String> displayName;
 
     /**
      * @return This is the display name for the given group.
      * 
      */
-    public Output<String> displayName() {
-        return this.displayName;
+    public Optional<Output<String>> displayName() {
+        return Optional.ofNullable(this.displayName);
     }
 
     /**
@@ -220,7 +220,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder displayName(Output<String> displayName) {
+        public Builder displayName(@Nullable Output<String> displayName) {
             $.displayName = displayName;
             return this;
         }
@@ -296,7 +296,6 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GroupArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
             return $;
         }
     }

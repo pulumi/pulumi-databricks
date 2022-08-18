@@ -28,10 +28,7 @@ namespace Pulumi.Databricks
     ///         InstanceProfileArn = "my_instance_profile_arn",
     ///     });
     /// 
-    ///     var myGroup = new Databricks.Group("myGroup", new()
-    ///     {
-    ///         DisplayName = "my_group_name",
-    ///     });
+    ///     var myGroup = new Databricks.Group("myGroup");
     /// 
     ///     var myGroupInstanceProfile = new Databricks.GroupInstanceProfile("myGroupInstanceProfile", new()
     ///     {

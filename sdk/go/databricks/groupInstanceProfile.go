@@ -35,9 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			myGroup, err := databricks.NewGroup(ctx, "myGroup", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("my_group_name"),
-//			})
+//			myGroup, err := databricks.NewGroup(ctx, "myGroup", nil)
 //			if err != nil {
 //				return err
 //			}

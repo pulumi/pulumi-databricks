@@ -14,30 +14,31 @@ __all__ = ['GroupArgs', 'Group']
 @pulumi.input_type
 class GroupArgs:
     def __init__(__self__, *,
-                 display_name: pulumi.Input[str],
                  allow_cluster_create: Optional[pulumi.Input[bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
                  databricks_sql_access: Optional[pulumi.Input[bool]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Group resource.
-        :param pulumi.Input[str] display_name: This is the display name for the given group.
         :param pulumi.Input[bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        :param pulumi.Input[str] display_name: This is the display name for the given group.
         :param pulumi.Input[str] external_id: ID of the group in an external identity provider.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
-        pulumi.set(__self__, "display_name", display_name)
         if allow_cluster_create is not None:
             pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
             pulumi.set(__self__, "allow_instance_pool_create", allow_instance_pool_create)
         if databricks_sql_access is not None:
             pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
         if external_id is not None:
             pulumi.set(__self__, "external_id", external_id)
         if force is not None:
@@ -46,18 +47,6 @@ class GroupArgs:
             pulumi.set(__self__, "url", url)
         if workspace_access is not None:
             pulumi.set(__self__, "workspace_access", workspace_access)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> pulumi.Input[str]:
-        """
-        This is the display name for the given group.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="allowClusterCreate")
@@ -94,6 +83,18 @@ class GroupArgs:
     @databricks_sql_access.setter
     def databricks_sql_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "databricks_sql_access", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the display name for the given group.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="externalId")
@@ -312,7 +313,7 @@ class Group(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GroupArgs,
+                 args: Optional[GroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users and service principals to groups. This is useful if you are using an application to sync users & groups with SCIM API.
@@ -368,8 +369,6 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["allow_cluster_create"] = allow_cluster_create
             __props__.__dict__["allow_instance_pool_create"] = allow_instance_pool_create
             __props__.__dict__["databricks_sql_access"] = databricks_sql_access
-            if display_name is None and not opts.urn:
-                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["external_id"] = external_id
             __props__.__dict__["force"] = force

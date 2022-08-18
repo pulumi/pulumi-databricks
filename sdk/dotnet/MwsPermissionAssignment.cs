@@ -23,10 +23,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dataEng = new Databricks.Group("dataEng", new()
-    ///     {
-    ///         DisplayName = "Data Engineering",
-    ///     });
+    ///     var dataEng = new Databricks.Group("dataEng");
     /// 
     ///     var addAdminGroup = new Databricks.MwsPermissionAssignment("addAdminGroup", new()
     ///     {

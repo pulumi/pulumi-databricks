@@ -29,9 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ds, err := databricks.NewGroup(ctx, "ds", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("data-scientists"),
-//			})
+//			ds, err := databricks.NewGroup(ctx, "ds", nil)
 //			if err != nil {
 //				return err
 //			}
