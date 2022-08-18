@@ -13,25 +13,23 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
     ///     {
-    ///         var sandbox = new Databricks.Catalog("sandbox", new Databricks.CatalogArgs
+    ///         MetastoreId = databricks_metastore.This.Id,
+    ///         Comment = "this catalog is managed by terraform",
+    ///         Properties = 
     ///         {
-    ///             MetastoreId = databricks_metastore.This.Id,
-    ///             Comment = "this catalog is managed by terraform",
-    ///             Properties = 
-    ///             {
-    ///                 { "purpose", "testing" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -50,7 +48,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/catalog:Catalog")]
-    public partial class Catalog : Pulumi.CustomResource
+    public partial class Catalog : global::Pulumi.CustomResource
     {
         /// <summary>
         /// User-supplied free-form text.
@@ -123,7 +121,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class CatalogArgs : Pulumi.ResourceArgs
+    public sealed class CatalogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-supplied free-form text.
@@ -161,9 +159,10 @@ namespace Pulumi.Databricks
         public CatalogArgs()
         {
         }
+        public static new CatalogArgs Empty => new CatalogArgs();
     }
 
-    public sealed class CatalogState : Pulumi.ResourceArgs
+    public sealed class CatalogState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-supplied free-form text.
@@ -201,5 +200,6 @@ namespace Pulumi.Databricks
         public CatalogState()
         {
         }
+        public static new CatalogState Empty => new CatalogState();
     }
 }

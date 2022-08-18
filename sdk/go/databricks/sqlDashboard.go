@@ -22,24 +22,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewSqlDashboard(ctx, "d1", &databricks.SqlDashboardArgs{
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("some-tag"),
-// 				pulumi.String("another-tag"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewSqlDashboard(ctx, "d1", &databricks.SqlDashboardArgs{
+//				Tags: pulumi.StringArray{
+//					pulumi.String("some-tag"),
+//					pulumi.String("another-tag"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Example permission to share dashboard with all users:
@@ -48,27 +51,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewPermissions(ctx, "d1", &databricks.PermissionsArgs{
-// 			SqlDashboardId: pulumi.Any(databricks_sql_dashboard.D1.Id),
-// 			AccessControls: PermissionsAccessControlArray{
-// 				&PermissionsAccessControlArgs{
-// 					GroupName:       pulumi.Any(data.Databricks_group.Users.Display_name),
-// 					PermissionLevel: pulumi.String("CAN_RUN"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPermissions(ctx, "d1", &databricks.PermissionsArgs{
+//				SqlDashboardId: pulumi.Any(databricks_sql_dashboard.D1.Id),
+//				AccessControls: PermissionsAccessControlArray{
+//					&PermissionsAccessControlArgs{
+//						GroupName:       pulumi.Any(data.Databricks_group.Users.Display_name),
+//						PermissionLevel: pulumi.String("CAN_RUN"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -84,7 +90,9 @@ import (
 // You can import a `databricks_sql_dashboard` resource with ID like the followingbash
 //
 // ```sh
-//  $ pulumi import databricks:index/sqlDashboard:SqlDashboard this <dashboard-id>
+//
+//	$ pulumi import databricks:index/sqlDashboard:SqlDashboard this <dashboard-id>
+//
 // ```
 type SqlDashboard struct {
 	pulumi.CustomResourceState
@@ -172,7 +180,7 @@ func (i *SqlDashboard) ToSqlDashboardOutputWithContext(ctx context.Context) SqlD
 // SqlDashboardArrayInput is an input type that accepts SqlDashboardArray and SqlDashboardArrayOutput values.
 // You can construct a concrete instance of `SqlDashboardArrayInput` via:
 //
-//          SqlDashboardArray{ SqlDashboardArgs{...} }
+//	SqlDashboardArray{ SqlDashboardArgs{...} }
 type SqlDashboardArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +205,7 @@ func (i SqlDashboardArray) ToSqlDashboardArrayOutputWithContext(ctx context.Cont
 // SqlDashboardMapInput is an input type that accepts SqlDashboardMap and SqlDashboardMapOutput values.
 // You can construct a concrete instance of `SqlDashboardMapInput` via:
 //
-//          SqlDashboardMap{ "key": SqlDashboardArgs{...} }
+//	SqlDashboardMap{ "key": SqlDashboardArgs{...} }
 type SqlDashboardMapInput interface {
 	pulumi.Input
 

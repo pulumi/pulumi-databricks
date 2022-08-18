@@ -22,6 +22,7 @@ export * from "./getDbfsFile";
 export * from "./getDbfsFilePaths";
 export * from "./getGroup";
 export * from "./getJobs";
+export * from "./getMwsWorkspaces";
 export * from "./getNodeType";
 export * from "./getNotebook";
 export * from "./getNotebookPaths";
@@ -56,12 +57,14 @@ export * from "./mwsCredentials";
 export * from "./mwsCustomerManagedKeys";
 export * from "./mwsLogDelivery";
 export * from "./mwsNetworks";
+export * from "./mwsPermissionAssignment";
 export * from "./mwsPrivateAccessSettings";
 export * from "./mwsStorageConfigurations";
 export * from "./mwsVpcEndpoint";
 export * from "./mwsWorkspaces";
 export * from "./notebook";
 export * from "./oboToken";
+export * from "./permissionAssignment";
 export * from "./permissions";
 export * from "./pipeline";
 export * from "./provider";
@@ -124,12 +127,14 @@ import { MwsCredentials } from "./mwsCredentials";
 import { MwsCustomerManagedKeys } from "./mwsCustomerManagedKeys";
 import { MwsLogDelivery } from "./mwsLogDelivery";
 import { MwsNetworks } from "./mwsNetworks";
+import { MwsPermissionAssignment } from "./mwsPermissionAssignment";
 import { MwsPrivateAccessSettings } from "./mwsPrivateAccessSettings";
 import { MwsStorageConfigurations } from "./mwsStorageConfigurations";
 import { MwsVpcEndpoint } from "./mwsVpcEndpoint";
 import { MwsWorkspaces } from "./mwsWorkspaces";
 import { Notebook } from "./notebook";
 import { OboToken } from "./oboToken";
+import { PermissionAssignment } from "./permissionAssignment";
 import { Permissions } from "./permissions";
 import { Pipeline } from "./pipeline";
 import { Repo } from "./repo";
@@ -212,6 +217,8 @@ const _module = {
                 return new MwsLogDelivery(name, <any>undefined, { urn })
             case "databricks:index/mwsNetworks:MwsNetworks":
                 return new MwsNetworks(name, <any>undefined, { urn })
+            case "databricks:index/mwsPermissionAssignment:MwsPermissionAssignment":
+                return new MwsPermissionAssignment(name, <any>undefined, { urn })
             case "databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings":
                 return new MwsPrivateAccessSettings(name, <any>undefined, { urn })
             case "databricks:index/mwsStorageConfigurations:MwsStorageConfigurations":
@@ -224,6 +231,8 @@ const _module = {
                 return new Notebook(name, <any>undefined, { urn })
             case "databricks:index/oboToken:OboToken":
                 return new OboToken(name, <any>undefined, { urn })
+            case "databricks:index/permissionAssignment:PermissionAssignment":
+                return new PermissionAssignment(name, <any>undefined, { urn })
             case "databricks:index/permissions:Permissions":
                 return new Permissions(name, <any>undefined, { urn })
             case "databricks:index/pipeline:Pipeline":
@@ -302,12 +311,14 @@ pulumi.runtime.registerResourceModule("databricks", "index/mwsCredentials", _mod
 pulumi.runtime.registerResourceModule("databricks", "index/mwsCustomerManagedKeys", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsLogDelivery", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsNetworks", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/mwsPermissionAssignment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsPrivateAccessSettings", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsStorageConfigurations", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsVpcEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsWorkspaces", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/notebook", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/oboToken", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/permissionAssignment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/permissions", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/repo", _module)

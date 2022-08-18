@@ -19,7 +19,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/directory:Directory")]
-    public partial class Directory : Pulumi.CustomResource
+    public partial class Directory : global::Pulumi.CustomResource
     {
         [Output("deleteRecursive")]
         public Output<bool?> DeleteRecursive { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class DirectoryArgs : Pulumi.ResourceArgs
+    public sealed class DirectoryArgs : global::Pulumi.ResourceArgs
     {
         [Input("deleteRecursive")]
         public Input<bool>? DeleteRecursive { get; set; }
@@ -100,9 +100,10 @@ namespace Pulumi.Databricks
         public DirectoryArgs()
         {
         }
+        public static new DirectoryArgs Empty => new DirectoryArgs();
     }
 
-    public sealed class DirectoryState : Pulumi.ResourceArgs
+    public sealed class DirectoryState : global::Pulumi.ResourceArgs
     {
         [Input("deleteRecursive")]
         public Input<bool>? DeleteRecursive { get; set; }
@@ -122,5 +123,6 @@ namespace Pulumi.Databricks
         public DirectoryState()
         {
         }
+        public static new DirectoryState Empty => new DirectoryState();
     }
 }

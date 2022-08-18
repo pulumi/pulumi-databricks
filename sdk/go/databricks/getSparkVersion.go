@@ -16,44 +16,47 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		withGpu, err := databricks.GetNodeType(ctx, &GetNodeTypeArgs{
-// 			LocalDisk: pulumi.BoolRef(true),
-// 			MinCores:  pulumi.IntRef(16),
-// 			GbPerCore: pulumi.IntRef(1),
-// 			MinGpus:   pulumi.IntRef(1),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		gpuMl, err := databricks.GetSparkVersion(ctx, &GetSparkVersionArgs{
-// 			Gpu: pulumi.BoolRef(true),
-// 			Ml:  pulumi.BoolRef(true),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewCluster(ctx, "research", &databricks.ClusterArgs{
-// 			ClusterName:            pulumi.String("Research Cluster"),
-// 			SparkVersion:           pulumi.String(gpuMl.Id),
-// 			NodeTypeId:             pulumi.String(withGpu.Id),
-// 			AutoterminationMinutes: pulumi.Int(20),
-// 			Autoscale: &ClusterAutoscaleArgs{
-// 				MinWorkers: pulumi.Int(1),
-// 				MaxWorkers: pulumi.Int(50),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			withGpu, err := databricks.GetNodeType(ctx, &GetNodeTypeArgs{
+//				LocalDisk: pulumi.BoolRef(true),
+//				MinCores:  pulumi.IntRef(16),
+//				GbPerCore: pulumi.IntRef(1),
+//				MinGpus:   pulumi.IntRef(1),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			gpuMl, err := databricks.GetSparkVersion(ctx, &GetSparkVersionArgs{
+//				Gpu: pulumi.BoolRef(true),
+//				Ml:  pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewCluster(ctx, "research", &databricks.ClusterArgs{
+//				ClusterName:            pulumi.String("Research Cluster"),
+//				SparkVersion:           pulumi.String(gpuMl.Id),
+//				NodeTypeId:             pulumi.String(withGpu.Id),
+//				AutoterminationMinutes: pulumi.Int(20),
+//				Autoscale: &ClusterAutoscaleArgs{
+//					MinWorkers: pulumi.Int(1),
+//					MaxWorkers: pulumi.Int(50),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //

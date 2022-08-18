@@ -15,7 +15,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings")]
-    public partial class MwsPrivateAccessSettings : Pulumi.CustomResource
+    public partial class MwsPrivateAccessSettings : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -109,7 +109,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class MwsPrivateAccessSettingsArgs : Pulumi.ResourceArgs
+    public sealed class MwsPrivateAccessSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -168,9 +168,10 @@ namespace Pulumi.Databricks
         public MwsPrivateAccessSettingsArgs()
         {
         }
+        public static new MwsPrivateAccessSettingsArgs Empty => new MwsPrivateAccessSettingsArgs();
     }
 
-    public sealed class MwsPrivateAccessSettingsState : Pulumi.ResourceArgs
+    public sealed class MwsPrivateAccessSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -229,5 +230,6 @@ namespace Pulumi.Databricks
         public MwsPrivateAccessSettingsState()
         {
         }
+        public static new MwsPrivateAccessSettingsState Empty => new MwsPrivateAccessSettingsState();
     }
 }

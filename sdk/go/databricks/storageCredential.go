@@ -19,10 +19,12 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by namebash
+// # This resource can be imported by namebash
 //
 // ```sh
-//  $ pulumi import databricks:index/storageCredential:StorageCredential this <name>
+//
+//	$ pulumi import databricks:index/storageCredential:StorageCredential this <name>
+//
 // ```
 type StorageCredential struct {
 	pulumi.CustomResourceState
@@ -140,7 +142,7 @@ func (i *StorageCredential) ToStorageCredentialOutputWithContext(ctx context.Con
 // StorageCredentialArrayInput is an input type that accepts StorageCredentialArray and StorageCredentialArrayOutput values.
 // You can construct a concrete instance of `StorageCredentialArrayInput` via:
 //
-//          StorageCredentialArray{ StorageCredentialArgs{...} }
+//	StorageCredentialArray{ StorageCredentialArgs{...} }
 type StorageCredentialArrayInput interface {
 	pulumi.Input
 
@@ -165,7 +167,7 @@ func (i StorageCredentialArray) ToStorageCredentialArrayOutputWithContext(ctx co
 // StorageCredentialMapInput is an input type that accepts StorageCredentialMap and StorageCredentialMapOutput values.
 // You can construct a concrete instance of `StorageCredentialMapInput` via:
 //
-//          StorageCredentialMap{ "key": StorageCredentialArgs{...} }
+//	StorageCredentialMap{ "key": StorageCredentialArgs{...} }
 type StorageCredentialMapInput interface {
 	pulumi.Input
 

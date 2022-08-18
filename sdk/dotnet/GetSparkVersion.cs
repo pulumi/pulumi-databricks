@@ -17,40 +17,40 @@ namespace Pulumi.Databricks
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var withGpu = Databricks.GetNodeType.Invoke(new()
         ///     {
-        ///         var withGpu = Output.Create(Databricks.GetNodeType.InvokeAsync(new Databricks.GetNodeTypeArgs
-        ///         {
-        ///             LocalDisk = true,
-        ///             MinCores = 16,
-        ///             GbPerCore = 1,
-        ///             MinGpus = 1,
-        ///         }));
-        ///         var gpuMl = Output.Create(Databricks.GetSparkVersion.InvokeAsync(new Databricks.GetSparkVersionArgs
-        ///         {
-        ///             Gpu = true,
-        ///             Ml = true,
-        ///         }));
-        ///         var research = new Databricks.Cluster("research", new Databricks.ClusterArgs
-        ///         {
-        ///             ClusterName = "Research Cluster",
-        ///             SparkVersion = gpuMl.Apply(gpuMl =&gt; gpuMl.Id),
-        ///             NodeTypeId = withGpu.Apply(withGpu =&gt; withGpu.Id),
-        ///             AutoterminationMinutes = 20,
-        ///             Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
-        ///             {
-        ///                 MinWorkers = 1,
-        ///                 MaxWorkers = 50,
-        ///             },
-        ///         });
-        ///     }
+        ///         LocalDisk = true,
+        ///         MinCores = 16,
+        ///         GbPerCore = 1,
+        ///         MinGpus = 1,
+        ///     });
         /// 
-        /// }
+        ///     var gpuMl = Databricks.GetSparkVersion.Invoke(new()
+        ///     {
+        ///         Gpu = true,
+        ///         Ml = true,
+        ///     });
+        /// 
+        ///     var research = new Databricks.Cluster("research", new()
+        ///     {
+        ///         ClusterName = "Research Cluster",
+        ///         SparkVersion = gpuMl.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
+        ///         NodeTypeId = withGpu.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
+        ///         AutoterminationMinutes = 20,
+        ///         Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
+        ///         {
+        ///             MinWorkers = 1,
+        ///             MaxWorkers = 50,
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -73,40 +73,40 @@ namespace Pulumi.Databricks
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var withGpu = Databricks.GetNodeType.Invoke(new()
         ///     {
-        ///         var withGpu = Output.Create(Databricks.GetNodeType.InvokeAsync(new Databricks.GetNodeTypeArgs
-        ///         {
-        ///             LocalDisk = true,
-        ///             MinCores = 16,
-        ///             GbPerCore = 1,
-        ///             MinGpus = 1,
-        ///         }));
-        ///         var gpuMl = Output.Create(Databricks.GetSparkVersion.InvokeAsync(new Databricks.GetSparkVersionArgs
-        ///         {
-        ///             Gpu = true,
-        ///             Ml = true,
-        ///         }));
-        ///         var research = new Databricks.Cluster("research", new Databricks.ClusterArgs
-        ///         {
-        ///             ClusterName = "Research Cluster",
-        ///             SparkVersion = gpuMl.Apply(gpuMl =&gt; gpuMl.Id),
-        ///             NodeTypeId = withGpu.Apply(withGpu =&gt; withGpu.Id),
-        ///             AutoterminationMinutes = 20,
-        ///             Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
-        ///             {
-        ///                 MinWorkers = 1,
-        ///                 MaxWorkers = 50,
-        ///             },
-        ///         });
-        ///     }
+        ///         LocalDisk = true,
+        ///         MinCores = 16,
+        ///         GbPerCore = 1,
+        ///         MinGpus = 1,
+        ///     });
         /// 
-        /// }
+        ///     var gpuMl = Databricks.GetSparkVersion.Invoke(new()
+        ///     {
+        ///         Gpu = true,
+        ///         Ml = true,
+        ///     });
+        /// 
+        ///     var research = new Databricks.Cluster("research", new()
+        ///     {
+        ///         ClusterName = "Research Cluster",
+        ///         SparkVersion = gpuMl.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
+        ///         NodeTypeId = withGpu.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
+        ///         AutoterminationMinutes = 20,
+        ///         Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
+        ///         {
+        ///             MinWorkers = 1,
+        ///             MaxWorkers = 50,
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -125,7 +125,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetSparkVersionArgs : Pulumi.InvokeArgs
+    public sealed class GetSparkVersionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
@@ -190,9 +190,10 @@ namespace Pulumi.Databricks
         public GetSparkVersionArgs()
         {
         }
+        public static new GetSparkVersionArgs Empty => new GetSparkVersionArgs();
     }
 
-    public sealed class GetSparkVersionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSparkVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
@@ -257,6 +258,7 @@ namespace Pulumi.Databricks
         public GetSparkVersionInvokeArgs()
         {
         }
+        public static new GetSparkVersionInvokeArgs Empty => new GetSparkVersionInvokeArgs();
     }
 
 

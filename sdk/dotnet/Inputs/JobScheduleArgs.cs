@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobScheduleArgs : Pulumi.ResourceArgs
+    public sealed class JobScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
@@ -33,5 +33,6 @@ namespace Pulumi.Databricks.Inputs
         public JobScheduleArgs()
         {
         }
+        public static new JobScheduleArgs Empty => new JobScheduleArgs();
     }
 }

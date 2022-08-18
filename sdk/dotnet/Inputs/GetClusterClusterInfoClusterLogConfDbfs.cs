@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class GetClusterClusterInfoClusterLogConfDbfsArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterClusterInfoClusterLogConfDbfsArgs : global::Pulumi.InvokeArgs
     {
         [Input("destination", required: true)]
         public string Destination { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Databricks.Inputs
         public GetClusterClusterInfoClusterLogConfDbfsArgs()
         {
         }
+        public static new GetClusterClusterInfoClusterLogConfDbfsArgs Empty => new GetClusterClusterInfoClusterLogConfDbfsArgs();
     }
 }

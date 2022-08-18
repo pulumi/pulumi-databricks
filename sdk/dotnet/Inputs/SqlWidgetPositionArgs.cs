@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class SqlWidgetPositionArgs : Pulumi.ResourceArgs
+    public sealed class SqlWidgetPositionArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoHeight")]
         public Input<bool>? AutoHeight { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Databricks.Inputs
         public SqlWidgetPositionArgs()
         {
         }
+        public static new SqlWidgetPositionArgs Empty => new SqlWidgetPositionArgs();
     }
 }

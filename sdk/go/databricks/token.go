@@ -18,30 +18,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/providers"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := providers.Newdatabricks(ctx, "createdWorkspace", &providers.databricksArgs{
-// 			Host: databricks_mws_workspaces.This.Workspace_url,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		pat, err := databricks.NewToken(ctx, "pat", &databricks.TokenArgs{
-// 			Comment:         pulumi.String("Terraform Provisioning"),
-// 			LifetimeSeconds: pulumi.Int(8640000),
-// 		}, pulumi.Provider(databricks.Created_workspace))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("databricksToken", pat.TokenValue)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewProvider(ctx, "createdWorkspace", &databricks.ProviderArgs{
+//				Host: pulumi.Any(databricks_mws_workspaces.This.Workspace_url),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pat, err := databricks.NewToken(ctx, "pat", &databricks.TokenArgs{
+//				Comment:         pulumi.String("Terraform Provisioning"),
+//				LifetimeSeconds: pulumi.Int(8640000),
+//			}, pulumi.Provider(databricks.Created_workspace))
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databricksToken", pat.TokenValue)
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -164,7 +166,7 @@ func (i *Token) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 // TokenArrayInput is an input type that accepts TokenArray and TokenArrayOutput values.
 // You can construct a concrete instance of `TokenArrayInput` via:
 //
-//          TokenArray{ TokenArgs{...} }
+//	TokenArray{ TokenArgs{...} }
 type TokenArrayInput interface {
 	pulumi.Input
 
@@ -189,7 +191,7 @@ func (i TokenArray) ToTokenArrayOutputWithContext(ctx context.Context) TokenArra
 // TokenMapInput is an input type that accepts TokenMap and TokenMapOutput values.
 // You can construct a concrete instance of `TokenMapInput` via:
 //
-//          TokenMap{ "key": TokenArgs{...} }
+//	TokenMap{ "key": TokenArgs{...} }
 type TokenMapInput interface {
 	pulumi.Input
 

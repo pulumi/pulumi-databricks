@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobTaskEmailNotificationsGetArgs : Pulumi.ResourceArgs
+    public sealed class JobTaskEmailNotificationsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("alertOnLastAttempt")]
         public Input<bool>? AlertOnLastAttempt { get; set; }
@@ -60,5 +60,6 @@ namespace Pulumi.Databricks.Inputs
         public JobTaskEmailNotificationsGetArgs()
         {
         }
+        public static new JobTaskEmailNotificationsGetArgs Empty => new JobTaskEmailNotificationsGetArgs();
     }
 }

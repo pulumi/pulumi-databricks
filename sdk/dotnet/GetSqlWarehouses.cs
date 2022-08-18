@@ -19,36 +19,32 @@ namespace Pulumi.Databricks
         /// Retrieve all SQL warehouses on this workspace on AWS or GCP:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Databricks.GetSqlWarehouses.InvokeAsync());
-        ///     }
+        ///     var all = Databricks.GetSqlWarehouses.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var allShared = Databricks.GetSqlWarehouses.Invoke(new()
         ///     {
-        ///         var allShared = Output.Create(Databricks.GetSqlWarehouses.InvokeAsync(new Databricks.GetSqlWarehousesArgs
-        ///         {
-        ///             WarehouseNameContains = "shared",
-        ///         }));
-        ///     }
+        ///         WarehouseNameContains = "shared",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -73,36 +69,32 @@ namespace Pulumi.Databricks
         /// Retrieve all SQL warehouses on this workspace on AWS or GCP:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Databricks.GetSqlWarehouses.InvokeAsync());
-        ///     }
+        ///     var all = Databricks.GetSqlWarehouses.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var allShared = Databricks.GetSqlWarehouses.Invoke(new()
         ///     {
-        ///         var allShared = Output.Create(Databricks.GetSqlWarehouses.InvokeAsync(new Databricks.GetSqlWarehousesArgs
-        ///         {
-        ///             WarehouseNameContains = "shared",
-        ///         }));
-        ///     }
+        ///         WarehouseNameContains = "shared",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -121,7 +113,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetSqlWarehousesArgs : Pulumi.InvokeArgs
+    public sealed class GetSqlWarehousesArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private List<string>? _ids;
@@ -144,9 +136,10 @@ namespace Pulumi.Databricks
         public GetSqlWarehousesArgs()
         {
         }
+        public static new GetSqlWarehousesArgs Empty => new GetSqlWarehousesArgs();
     }
 
-    public sealed class GetSqlWarehousesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSqlWarehousesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputList<string>? _ids;
@@ -169,6 +162,7 @@ namespace Pulumi.Databricks
         public GetSqlWarehousesInvokeArgs()
         {
         }
+        public static new GetSqlWarehousesInvokeArgs Empty => new GetSqlWarehousesInvokeArgs();
     }
 
 

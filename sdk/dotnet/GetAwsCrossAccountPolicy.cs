@@ -23,17 +23,15 @@ namespace Pulumi.Databricks
         /// For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @this = Output.Create(Databricks.GetAwsCrossAccountPolicy.InvokeAsync());
-        ///     }
+        ///     var @this = Databricks.GetAwsCrossAccountPolicy.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -61,17 +59,15 @@ namespace Pulumi.Databricks
         /// For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var @this = Output.Create(Databricks.GetAwsCrossAccountPolicy.InvokeAsync());
-        ///     }
+        ///     var @this = Databricks.GetAwsCrossAccountPolicy.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -89,7 +85,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetAwsCrossAccountPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetAwsCrossAccountPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("passRoles")]
         private List<string>? _passRoles;
@@ -106,9 +102,10 @@ namespace Pulumi.Databricks
         public GetAwsCrossAccountPolicyArgs()
         {
         }
+        public static new GetAwsCrossAccountPolicyArgs Empty => new GetAwsCrossAccountPolicyArgs();
     }
 
-    public sealed class GetAwsCrossAccountPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAwsCrossAccountPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("passRoles")]
         private InputList<string>? _passRoles;
@@ -125,6 +122,7 @@ namespace Pulumi.Databricks
         public GetAwsCrossAccountPolicyInvokeArgs()
         {
         }
+        public static new GetAwsCrossAccountPolicyInvokeArgs Empty => new GetAwsCrossAccountPolicyInvokeArgs();
     }
 
 

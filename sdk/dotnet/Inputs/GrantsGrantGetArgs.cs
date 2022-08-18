@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class GrantsGrantGetArgs : Pulumi.ResourceArgs
+    public sealed class GrantsGrantGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("principal", required: true)]
         public Input<string> Principal { get; set; } = null!;
@@ -26,5 +26,6 @@ namespace Pulumi.Databricks.Inputs
         public GrantsGrantGetArgs()
         {
         }
+        public static new GrantsGrantGetArgs Empty => new GrantsGrantGetArgs();
     }
 }

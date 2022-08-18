@@ -163,7 +163,7 @@ func (i *MwsCustomerManagedKeys) ToMwsCustomerManagedKeysOutputWithContext(ctx c
 // MwsCustomerManagedKeysArrayInput is an input type that accepts MwsCustomerManagedKeysArray and MwsCustomerManagedKeysArrayOutput values.
 // You can construct a concrete instance of `MwsCustomerManagedKeysArrayInput` via:
 //
-//          MwsCustomerManagedKeysArray{ MwsCustomerManagedKeysArgs{...} }
+//	MwsCustomerManagedKeysArray{ MwsCustomerManagedKeysArgs{...} }
 type MwsCustomerManagedKeysArrayInput interface {
 	pulumi.Input
 
@@ -188,7 +188,7 @@ func (i MwsCustomerManagedKeysArray) ToMwsCustomerManagedKeysArrayOutputWithCont
 // MwsCustomerManagedKeysMapInput is an input type that accepts MwsCustomerManagedKeysMap and MwsCustomerManagedKeysMapOutput values.
 // You can construct a concrete instance of `MwsCustomerManagedKeysMapInput` via:
 //
-//          MwsCustomerManagedKeysMap{ "key": MwsCustomerManagedKeysArgs{...} }
+//	MwsCustomerManagedKeysMap{ "key": MwsCustomerManagedKeysArgs{...} }
 type MwsCustomerManagedKeysMapInput interface {
 	pulumi.Input
 

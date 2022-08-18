@@ -15,33 +15,33 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // initialize provider in normal mode
+    ///     var createdWorkspace = new Databricks.Provider("createdWorkspace", new()
     ///     {
-    ///         // initialize provider in normal mode
-    ///         var createdWorkspace = new Databricks.Provider("createdWorkspace", new Databricks.ProviderArgs
-    ///         {
-    ///             Host = databricks_mws_workspaces.This.Workspace_url,
-    ///         });
-    ///         // create PAT token to provision entities within workspace
-    ///         var pat = new Databricks.Token("pat", new Databricks.TokenArgs
-    ///         {
-    ///             Comment = "Terraform Provisioning",
-    ///             LifetimeSeconds = 8640000,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = databricks.Created_workspace,
-    ///         });
-    ///         this.DatabricksToken = pat.TokenValue;
-    ///     }
+    ///         Host = databricks_mws_workspaces.This.Workspace_url,
+    ///     });
     /// 
-    ///     [Output("databricksToken")]
-    ///     public Output&lt;string&gt; DatabricksToken { get; set; }
-    /// }
+    ///     // create PAT token to provision entities within workspace
+    ///     var pat = new Databricks.Token("pat", new()
+    ///     {
+    ///         Comment = "Terraform Provisioning",
+    ///         LifetimeSeconds = 8640000,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Created_workspace,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["databricksToken"] = pat.TokenValue,
+    ///     };
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/token:Token")]
-    public partial class Token : Pulumi.CustomResource
+    public partial class Token : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (String) Comment that will appear on the user’s settings page for this token.
@@ -122,7 +122,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class TokenArgs : Pulumi.ResourceArgs
+    public sealed class TokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (String) Comment that will appear on the user’s settings page for this token.
@@ -148,9 +148,10 @@ namespace Pulumi.Databricks
         public TokenArgs()
         {
         }
+        public static new TokenArgs Empty => new TokenArgs();
     }
 
-    public sealed class TokenState : Pulumi.ResourceArgs
+    public sealed class TokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (String) Comment that will appear on the user’s settings page for this token.
@@ -182,5 +183,6 @@ namespace Pulumi.Databricks
         public TokenState()
         {
         }
+        public static new TokenState Empty => new TokenState();
     }
 }

@@ -19,10 +19,12 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by IDbash
+// # This resource can be imported by IDbash
 //
 // ```sh
-//  $ pulumi import databricks:index/metastore:Metastore this <id>
+//
+//	$ pulumi import databricks:index/metastore:Metastore this <id>
+//
 // ```
 type Metastore struct {
 	pulumi.CustomResourceState
@@ -213,7 +215,7 @@ func (i *Metastore) ToMetastoreOutputWithContext(ctx context.Context) MetastoreO
 // MetastoreArrayInput is an input type that accepts MetastoreArray and MetastoreArrayOutput values.
 // You can construct a concrete instance of `MetastoreArrayInput` via:
 //
-//          MetastoreArray{ MetastoreArgs{...} }
+//	MetastoreArray{ MetastoreArgs{...} }
 type MetastoreArrayInput interface {
 	pulumi.Input
 
@@ -238,7 +240,7 @@ func (i MetastoreArray) ToMetastoreArrayOutputWithContext(ctx context.Context) M
 // MetastoreMapInput is an input type that accepts MetastoreMap and MetastoreMapOutput values.
 // You can construct a concrete instance of `MetastoreMapInput` via:
 //
-//          MetastoreMap{ "key": MetastoreArgs{...} }
+//	MetastoreMap{ "key": MetastoreArgs{...} }
 type MetastoreMapInput interface {
 	pulumi.Input
 

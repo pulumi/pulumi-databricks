@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MlflowWebhookJobSpecGetArgs : Pulumi.ResourceArgs
+    public sealed class MlflowWebhookJobSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The personal access token used to authorize webhook's job runs.
@@ -33,5 +33,6 @@ namespace Pulumi.Databricks.Inputs
         public MlflowWebhookJobSpecGetArgs()
         {
         }
+        public static new MlflowWebhookJobSpecGetArgs Empty => new MlflowWebhookJobSpecGetArgs();
     }
 }

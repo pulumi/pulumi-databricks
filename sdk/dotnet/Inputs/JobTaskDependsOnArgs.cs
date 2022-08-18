@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobTaskDependsOnArgs : Pulumi.ResourceArgs
+    public sealed class JobTaskDependsOnArgs : global::Pulumi.ResourceArgs
     {
         [Input("taskKey")]
         public Input<string>? TaskKey { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Databricks.Inputs
         public JobTaskDependsOnArgs()
         {
         }
+        public static new JobTaskDependsOnArgs Empty => new JobTaskDependsOnArgs();
     }
 }

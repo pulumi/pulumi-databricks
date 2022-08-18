@@ -16,28 +16,26 @@ namespace Pulumi.Databricks
     /// ### POSTing to URL
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var url = new Databricks.MlflowWebhook("url", new()
     ///     {
-    ///         var url = new Databricks.MlflowWebhook("url", new Databricks.MlflowWebhookArgs
+    ///         Description = "URL webhook trigger",
+    ///         Events = new[]
     ///         {
-    ///             Description = "URL webhook trigger",
-    ///             Events = 
-    ///             {
-    ///                 "TRANSITION_REQUEST_CREATED",
-    ///             },
-    ///             HttpUrlSpec = new Databricks.Inputs.MlflowWebhookHttpUrlSpecArgs
-    ///             {
-    ///                 Url = "https://my_cool_host/webhook",
-    ///             },
-    ///         });
-    ///     }
+    ///             "TRANSITION_REQUEST_CREATED",
+    ///         },
+    ///         HttpUrlSpec = new Databricks.Inputs.MlflowWebhookHttpUrlSpecArgs
+    ///         {
+    ///             Url = "https://my_cool_host/webhook",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Access Control
     /// 
@@ -60,7 +58,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/mlflowWebhook:MlflowWebhook")]
-    public partial class MlflowWebhook : Pulumi.CustomResource
+    public partial class MlflowWebhook : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional description of the MLflow webhook.
@@ -136,7 +134,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class MlflowWebhookArgs : Pulumi.ResourceArgs
+    public sealed class MlflowWebhookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional description of the MLflow webhook.
@@ -177,9 +175,10 @@ namespace Pulumi.Databricks
         public MlflowWebhookArgs()
         {
         }
+        public static new MlflowWebhookArgs Empty => new MlflowWebhookArgs();
     }
 
-    public sealed class MlflowWebhookState : Pulumi.ResourceArgs
+    public sealed class MlflowWebhookState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional description of the MLflow webhook.
@@ -220,5 +219,6 @@ namespace Pulumi.Databricks
         public MlflowWebhookState()
         {
         }
+        public static new MlflowWebhookState Empty => new MlflowWebhookState();
     }
 }

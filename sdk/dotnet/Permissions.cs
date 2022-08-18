@@ -37,7 +37,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/permissions:Permissions")]
-    public partial class Permissions : Pulumi.CustomResource
+    public partial class Permissions : global::Pulumi.CustomResource
     {
         [Output("accessControls")]
         public Output<ImmutableArray<Outputs.PermissionsAccessControl>> AccessControls { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class PermissionsArgs : Pulumi.ResourceArgs
+    public sealed class PermissionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessControls", required: true)]
         private InputList<Inputs.PermissionsAccessControlArgs>? _accessControls;
@@ -327,9 +327,10 @@ namespace Pulumi.Databricks
         public PermissionsArgs()
         {
         }
+        public static new PermissionsArgs Empty => new PermissionsArgs();
     }
 
-    public sealed class PermissionsState : Pulumi.ResourceArgs
+    public sealed class PermissionsState : global::Pulumi.ResourceArgs
     {
         [Input("accessControls")]
         private InputList<Inputs.PermissionsAccessControlGetArgs>? _accessControls;
@@ -456,5 +457,6 @@ namespace Pulumi.Databricks
         public PermissionsState()
         {
         }
+        public static new PermissionsState Empty => new PermissionsState();
     }
 }

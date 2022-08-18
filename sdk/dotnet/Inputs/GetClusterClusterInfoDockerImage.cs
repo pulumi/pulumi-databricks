@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class GetClusterClusterInfoDockerImageArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterClusterInfoDockerImageArgs : global::Pulumi.InvokeArgs
     {
         [Input("basicAuth")]
         public Inputs.GetClusterClusterInfoDockerImageBasicAuthArgs? BasicAuth { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public GetClusterClusterInfoDockerImageArgs()
         {
         }
+        public static new GetClusterClusterInfoDockerImageArgs Empty => new GetClusterClusterInfoDockerImageArgs();
     }
 }

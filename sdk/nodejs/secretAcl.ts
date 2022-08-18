@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const ds = new databricks.Group("ds", {displayName: "data-scientists"});
+ * const ds = new databricks.Group("ds", {});
  * const app = new databricks.SecretScope("app", {});
  * const mySecretAcl = new databricks.SecretAcl("mySecretAcl", {
  *     principal: ds.displayName,

@@ -20,40 +20,38 @@ namespace Pulumi.Databricks
     /// * ``` GRANT SELECT ON TABLE `default`.`foo` TO `special group`  ```
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fooTable = new Databricks.SqlPermissions("fooTable", new()
     ///     {
-    ///         var fooTable = new Databricks.SqlPermissions("fooTable", new Databricks.SqlPermissionsArgs
+    ///         PrivilegeAssignments = new[]
     ///         {
-    ///             PrivilegeAssignments = 
+    ///             new Databricks.Inputs.SqlPermissionsPrivilegeAssignmentArgs
     ///             {
-    ///                 new Databricks.Inputs.SqlPermissionsPrivilegeAssignmentArgs
+    ///                 Principal = "serge@example.com",
+    ///                 Privileges = new[]
     ///                 {
-    ///                     Principal = "serge@example.com",
-    ///                     Privileges = 
-    ///                     {
-    ///                         "SELECT",
-    ///                         "MODIFY",
-    ///                     },
-    ///                 },
-    ///                 new Databricks.Inputs.SqlPermissionsPrivilegeAssignmentArgs
-    ///                 {
-    ///                     Principal = "special group",
-    ///                     Privileges = 
-    ///                     {
-    ///                         "SELECT",
-    ///                     },
+    ///                     "SELECT",
+    ///                     "MODIFY",
     ///                 },
     ///             },
-    ///             Table = "foo",
-    ///         });
-    ///     }
+    ///             new Databricks.Inputs.SqlPermissionsPrivilegeAssignmentArgs
+    ///             {
+    ///                 Principal = "special group",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "SELECT",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Table = "foo",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -74,7 +72,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlPermissions:SqlPermissions")]
-    public partial class SqlPermissions : Pulumi.CustomResource
+    public partial class SqlPermissions : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If this access control for using anonymous function. Defaults to `false`.
@@ -162,7 +160,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class SqlPermissionsArgs : Pulumi.ResourceArgs
+    public sealed class SqlPermissionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If this access control for using anonymous function. Defaults to `false`.
@@ -214,9 +212,10 @@ namespace Pulumi.Databricks
         public SqlPermissionsArgs()
         {
         }
+        public static new SqlPermissionsArgs Empty => new SqlPermissionsArgs();
     }
 
-    public sealed class SqlPermissionsState : Pulumi.ResourceArgs
+    public sealed class SqlPermissionsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If this access control for using anonymous function. Defaults to `false`.
@@ -268,5 +267,6 @@ namespace Pulumi.Databricks
         public SqlPermissionsState()
         {
         }
+        public static new SqlPermissionsState Empty => new SqlPermissionsState();
     }
 }

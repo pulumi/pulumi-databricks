@@ -17,21 +17,19 @@ namespace Pulumi.Databricks
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var features = Databricks.GetNotebook.Invoke(new()
         ///     {
-        ///         var features = Output.Create(Databricks.GetNotebook.InvokeAsync(new Databricks.GetNotebookArgs
-        ///         {
-        ///             Format = "SOURCE",
-        ///             Path = "/Production/Features",
-        ///         }));
-        ///     }
+        ///         Format = "SOURCE",
+        ///         Path = "/Production/Features",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -45,21 +43,19 @@ namespace Pulumi.Databricks
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var features = Databricks.GetNotebook.Invoke(new()
         ///     {
-        ///         var features = Output.Create(Databricks.GetNotebook.InvokeAsync(new Databricks.GetNotebookArgs
-        ///         {
-        ///             Format = "SOURCE",
-        ///             Path = "/Production/Features",
-        ///         }));
-        ///     }
+        ///         Format = "SOURCE",
+        ///         Path = "/Production/Features",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -69,7 +65,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetNotebookArgs : Pulumi.InvokeArgs
+    public sealed class GetNotebookArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
@@ -104,9 +100,10 @@ namespace Pulumi.Databricks
         public GetNotebookArgs()
         {
         }
+        public static new GetNotebookArgs Empty => new GetNotebookArgs();
     }
 
-    public sealed class GetNotebookInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNotebookInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
@@ -141,6 +138,7 @@ namespace Pulumi.Databricks
         public GetNotebookInvokeArgs()
         {
         }
+        public static new GetNotebookInvokeArgs Empty => new GetNotebookInvokeArgs();
     }
 
 

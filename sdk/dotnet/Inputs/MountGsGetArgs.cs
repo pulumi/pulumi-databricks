@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MountGsGetArgs : Pulumi.ResourceArgs
+    public sealed class MountGsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public MountGsGetArgs()
         {
         }
+        public static new MountGsGetArgs Empty => new MountGsGetArgs();
     }
 }

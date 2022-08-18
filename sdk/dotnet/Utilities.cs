@@ -74,7 +74,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    internal sealed class DatabricksResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class DatabricksResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public DatabricksResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

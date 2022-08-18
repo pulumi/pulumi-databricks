@@ -130,7 +130,7 @@ func (i *Grants) ToGrantsOutputWithContext(ctx context.Context) GrantsOutput {
 // GrantsArrayInput is an input type that accepts GrantsArray and GrantsArrayOutput values.
 // You can construct a concrete instance of `GrantsArrayInput` via:
 //
-//          GrantsArray{ GrantsArgs{...} }
+//	GrantsArray{ GrantsArgs{...} }
 type GrantsArrayInput interface {
 	pulumi.Input
 
@@ -155,7 +155,7 @@ func (i GrantsArray) ToGrantsArrayOutputWithContext(ctx context.Context) GrantsA
 // GrantsMapInput is an input type that accepts GrantsMap and GrantsMapOutput values.
 // You can construct a concrete instance of `GrantsMapInput` via:
 //
-//          GrantsMap{ "key": GrantsArgs{...} }
+//	GrantsMap{ "key": GrantsArgs{...} }
 type GrantsMapInput interface {
 	pulumi.Input
 

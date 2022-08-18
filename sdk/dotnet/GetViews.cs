@@ -37,7 +37,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetViewsArgs : Pulumi.InvokeArgs
+    public sealed class GetViewsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of databricks_catalog
@@ -66,9 +66,10 @@ namespace Pulumi.Databricks
         public GetViewsArgs()
         {
         }
+        public static new GetViewsArgs Empty => new GetViewsArgs();
     }
 
-    public sealed class GetViewsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetViewsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of databricks_catalog
@@ -97,6 +98,7 @@ namespace Pulumi.Databricks
         public GetViewsInvokeArgs()
         {
         }
+        public static new GetViewsInvokeArgs Empty => new GetViewsInvokeArgs();
     }
 
 

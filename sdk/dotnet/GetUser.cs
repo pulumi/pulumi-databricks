@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetUserArgs : Pulumi.InvokeArgs
+    public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the user.
@@ -66,9 +66,10 @@ namespace Pulumi.Databricks
         public GetUserArgs()
         {
         }
+        public static new GetUserArgs Empty => new GetUserArgs();
     }
 
-    public sealed class GetUserInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// ID of the user.
@@ -85,6 +86,7 @@ namespace Pulumi.Databricks
         public GetUserInvokeArgs()
         {
         }
+        public static new GetUserInvokeArgs Empty => new GetUserInvokeArgs();
     }
 
 

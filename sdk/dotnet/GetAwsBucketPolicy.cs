@@ -43,7 +43,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetAwsBucketPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetAwsBucketPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// AWS S3 Bucket name for which to generate the policy document.
@@ -63,9 +63,10 @@ namespace Pulumi.Databricks
         public GetAwsBucketPolicyArgs()
         {
         }
+        public static new GetAwsBucketPolicyArgs Empty => new GetAwsBucketPolicyArgs();
     }
 
-    public sealed class GetAwsBucketPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAwsBucketPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// AWS S3 Bucket name for which to generate the policy document.
@@ -85,6 +86,7 @@ namespace Pulumi.Databricks
         public GetAwsBucketPolicyInvokeArgs()
         {
         }
+        public static new GetAwsBucketPolicyInvokeArgs Empty => new GetAwsBucketPolicyInvokeArgs();
     }
 
 

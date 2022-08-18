@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class GetClusterClusterInfoClusterLogStatusInputArgs : Pulumi.ResourceArgs
+    public sealed class GetClusterClusterInfoClusterLogStatusInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("lastAttempted")]
         public Input<int>? LastAttempted { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public GetClusterClusterInfoClusterLogStatusInputArgs()
         {
         }
+        public static new GetClusterClusterInfoClusterLogStatusInputArgs Empty => new GetClusterClusterInfoClusterLogStatusInputArgs();
     }
 }

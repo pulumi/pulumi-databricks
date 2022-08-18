@@ -27,27 +27,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewMwsLogDelivery(ctx, "usageLogs", &databricks.MwsLogDeliveryArgs{
-// 			AccountId:              pulumi.Any(_var.Databricks_account_id),
-// 			CredentialsId:          pulumi.Any(databricks_mws_credentials.Log_writer.Credentials_id),
-// 			StorageConfigurationId: pulumi.Any(databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id),
-// 			DeliveryPathPrefix:     pulumi.String("billable-usage"),
-// 			ConfigName:             pulumi.String("Usage Logs"),
-// 			LogType:                pulumi.String("BILLABLE_USAGE"),
-// 			OutputFormat:           pulumi.String("CSV"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMwsLogDelivery(ctx, "usageLogs", &databricks.MwsLogDeliveryArgs{
+//				AccountId:              pulumi.Any(_var.Databricks_account_id),
+//				CredentialsId:          pulumi.Any(databricks_mws_credentials.Log_writer.Credentials_id),
+//				StorageConfigurationId: pulumi.Any(databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id),
+//				DeliveryPathPrefix:     pulumi.String("billable-usage"),
+//				ConfigName:             pulumi.String("Usage Logs"),
+//				LogType:                pulumi.String("BILLABLE_USAGE"),
+//				OutputFormat:           pulumi.String("CSV"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Audit Logs
@@ -58,27 +61,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewMwsLogDelivery(ctx, "auditLogs", &databricks.MwsLogDeliveryArgs{
-// 			AccountId:              pulumi.Any(_var.Databricks_account_id),
-// 			CredentialsId:          pulumi.Any(databricks_mws_credentials.Log_writer.Credentials_id),
-// 			StorageConfigurationId: pulumi.Any(databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id),
-// 			DeliveryPathPrefix:     pulumi.String("audit-logs"),
-// 			ConfigName:             pulumi.String("Audit Logs"),
-// 			LogType:                pulumi.String("AUDIT_LOGS"),
-// 			OutputFormat:           pulumi.String("JSON"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMwsLogDelivery(ctx, "auditLogs", &databricks.MwsLogDeliveryArgs{
+//				AccountId:              pulumi.Any(_var.Databricks_account_id),
+//				CredentialsId:          pulumi.Any(databricks_mws_credentials.Log_writer.Credentials_id),
+//				StorageConfigurationId: pulumi.Any(databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id),
+//				DeliveryPathPrefix:     pulumi.String("audit-logs"),
+//				ConfigName:             pulumi.String("Audit Logs"),
+//				LogType:                pulumi.String("AUDIT_LOGS"),
+//				OutputFormat:           pulumi.String("JSON"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Related Resources
@@ -296,7 +302,7 @@ func (i *MwsLogDelivery) ToMwsLogDeliveryOutputWithContext(ctx context.Context) 
 // MwsLogDeliveryArrayInput is an input type that accepts MwsLogDeliveryArray and MwsLogDeliveryArrayOutput values.
 // You can construct a concrete instance of `MwsLogDeliveryArrayInput` via:
 //
-//          MwsLogDeliveryArray{ MwsLogDeliveryArgs{...} }
+//	MwsLogDeliveryArray{ MwsLogDeliveryArgs{...} }
 type MwsLogDeliveryArrayInput interface {
 	pulumi.Input
 
@@ -321,7 +327,7 @@ func (i MwsLogDeliveryArray) ToMwsLogDeliveryArrayOutputWithContext(ctx context.
 // MwsLogDeliveryMapInput is an input type that accepts MwsLogDeliveryMap and MwsLogDeliveryMapOutput values.
 // You can construct a concrete instance of `MwsLogDeliveryMapInput` via:
 //
-//          MwsLogDeliveryMap{ "key": MwsLogDeliveryArgs{...} }
+//	MwsLogDeliveryMap{ "key": MwsLogDeliveryArgs{...} }
 type MwsLogDeliveryMapInput interface {
 	pulumi.Input
 

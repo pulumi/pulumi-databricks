@@ -15,7 +15,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/oboToken:OboToken")]
-    public partial class OboToken : Pulumi.CustomResource
+    public partial class OboToken : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Application ID of databricks.ServicePrincipal to create a PAT token for.
@@ -85,7 +85,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class OboTokenArgs : Pulumi.ResourceArgs
+    public sealed class OboTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Application ID of databricks.ServicePrincipal to create a PAT token for.
@@ -108,9 +108,10 @@ namespace Pulumi.Databricks
         public OboTokenArgs()
         {
         }
+        public static new OboTokenArgs Empty => new OboTokenArgs();
     }
 
-    public sealed class OboTokenState : Pulumi.ResourceArgs
+    public sealed class OboTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Application ID of databricks.ServicePrincipal to create a PAT token for.
@@ -139,5 +140,6 @@ namespace Pulumi.Databricks
         public OboTokenState()
         {
         }
+        public static new OboTokenState Empty => new OboTokenState();
     }
 }

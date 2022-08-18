@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class ClusterAwsAttributesArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAwsAttributesArgs : global::Pulumi.ResourceArgs
     {
         [Input("availability")]
         public Input<string>? Availability { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.Databricks.Inputs
         public ClusterAwsAttributesArgs()
         {
         }
+        public static new ClusterAwsAttributesArgs Empty => new ClusterAwsAttributesArgs();
     }
 }

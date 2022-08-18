@@ -19,40 +19,39 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var d1w1 = new Databricks.SqlWidget("d1w1", new()
     ///     {
-    ///         var d1w1 = new Databricks.SqlWidget("d1w1", new Databricks.SqlWidgetArgs
+    ///         DashboardId = databricks_sql_dashboard.D1.Id,
+    ///         Text = "Hello! I'm a **text widget**!",
+    ///         Position = new Databricks.Inputs.SqlWidgetPositionArgs
     ///         {
-    ///             DashboardId = databricks_sql_dashboard.D1.Id,
-    ///             Text = "Hello! I'm a **text widget**!",
-    ///             Position = new Databricks.Inputs.SqlWidgetPositionArgs
-    ///             {
-    ///                 SizeX = 3,
-    ///                 SizeY = 4,
-    ///                 PosX = 0,
-    ///                 PosY = 0,
-    ///             },
-    ///         });
-    ///         var d1w2 = new Databricks.SqlWidget("d1w2", new Databricks.SqlWidgetArgs
-    ///         {
-    ///             DashboardId = databricks_sql_dashboard.D1.Id,
-    ///             VisualizationId = databricks_sql_visualization.Q1v1.Id,
-    ///             Position = new Databricks.Inputs.SqlWidgetPositionArgs
-    ///             {
-    ///                 SizeX = 3,
-    ///                 SizeY = 4,
-    ///                 PosX = 3,
-    ///                 PosY = 0,
-    ///             },
-    ///         });
-    ///     }
+    ///             SizeX = 3,
+    ///             SizeY = 4,
+    ///             PosX = 0,
+    ///             PosY = 0,
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var d1w2 = new Databricks.SqlWidget("d1w2", new()
+    ///     {
+    ///         DashboardId = databricks_sql_dashboard.D1.Id,
+    ///         VisualizationId = databricks_sql_visualization.Q1v1.Id,
+    ///         Position = new Databricks.Inputs.SqlWidgetPositionArgs
+    ///         {
+    ///             SizeX = 3,
+    ///             SizeY = 4,
+    ///             PosX = 3,
+    ///             PosY = 0,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -73,7 +72,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlWidget:SqlWidget")]
-    public partial class SqlWidget : Pulumi.CustomResource
+    public partial class SqlWidget : global::Pulumi.CustomResource
     {
         [Output("dashboardId")]
         public Output<string> DashboardId { get; private set; } = null!;
@@ -143,7 +142,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class SqlWidgetArgs : Pulumi.ResourceArgs
+    public sealed class SqlWidgetArgs : global::Pulumi.ResourceArgs
     {
         [Input("dashboardId", required: true)]
         public Input<string> DashboardId { get; set; } = null!;
@@ -177,9 +176,10 @@ namespace Pulumi.Databricks
         public SqlWidgetArgs()
         {
         }
+        public static new SqlWidgetArgs Empty => new SqlWidgetArgs();
     }
 
-    public sealed class SqlWidgetState : Pulumi.ResourceArgs
+    public sealed class SqlWidgetState : global::Pulumi.ResourceArgs
     {
         [Input("dashboardId")]
         public Input<string>? DashboardId { get; set; }
@@ -213,5 +213,6 @@ namespace Pulumi.Databricks
         public SqlWidgetState()
         {
         }
+        public static new SqlWidgetState Empty => new SqlWidgetState();
     }
 }

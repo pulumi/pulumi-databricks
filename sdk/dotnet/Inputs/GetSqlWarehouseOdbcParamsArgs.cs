@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class GetSqlWarehouseOdbcParamsInputArgs : Pulumi.ResourceArgs
+    public sealed class GetSqlWarehouseOdbcParamsInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Databricks.Inputs
         public GetSqlWarehouseOdbcParamsInputArgs()
         {
         }
+        public static new GetSqlWarehouseOdbcParamsInputArgs Empty => new GetSqlWarehouseOdbcParamsInputArgs();
     }
 }

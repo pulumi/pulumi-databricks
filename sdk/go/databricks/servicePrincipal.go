@@ -27,10 +27,12 @@ import (
 //
 // ## Import
 //
-// The resource scim service principal can be imported using idbash
+// # The resource scim service principal can be imported using idbash
 //
 // ```sh
-//  $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me <service-principal-id>
+//
+//	$ pulumi import databricks:index/servicePrincipal:ServicePrincipal me <service-principal-id>
+//
 // ```
 type ServicePrincipal struct {
 	pulumi.CustomResourceState
@@ -193,7 +195,7 @@ func (i *ServicePrincipal) ToServicePrincipalOutputWithContext(ctx context.Conte
 // ServicePrincipalArrayInput is an input type that accepts ServicePrincipalArray and ServicePrincipalArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalArrayInput` via:
 //
-//          ServicePrincipalArray{ ServicePrincipalArgs{...} }
+//	ServicePrincipalArray{ ServicePrincipalArgs{...} }
 type ServicePrincipalArrayInput interface {
 	pulumi.Input
 
@@ -218,7 +220,7 @@ func (i ServicePrincipalArray) ToServicePrincipalArrayOutputWithContext(ctx cont
 // ServicePrincipalMapInput is an input type that accepts ServicePrincipalMap and ServicePrincipalMapOutput values.
 // You can construct a concrete instance of `ServicePrincipalMapInput` via:
 //
-//          ServicePrincipalMap{ "key": ServicePrincipalArgs{...} }
+//	ServicePrincipalMap{ "key": ServicePrincipalArgs{...} }
 type ServicePrincipalMapInput interface {
 	pulumi.Input
 

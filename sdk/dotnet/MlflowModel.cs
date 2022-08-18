@@ -15,33 +15,31 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test = new Databricks.MlflowModel("test", new()
     ///     {
-    ///         var test = new Databricks.MlflowModel("test", new Databricks.MlflowModelArgs
+    ///         Description = "My MLflow model description",
+    ///         Tags = new[]
     ///         {
-    ///             Description = "My MLflow model description",
-    ///             Tags = 
+    ///             new Databricks.Inputs.MlflowModelTagArgs
     ///             {
-    ///                 new Databricks.Inputs.MlflowModelTagArgs
-    ///                 {
-    ///                     Key = "key1",
-    ///                     Value = "value1",
-    ///                 },
-    ///                 new Databricks.Inputs.MlflowModelTagArgs
-    ///                 {
-    ///                     Key = "key2",
-    ///                     Value = "value2",
-    ///                 },
+    ///                 Key = "key1",
+    ///                 Value = "value1",
     ///             },
-    ///         });
-    ///     }
+    ///             new Databricks.Inputs.MlflowModelTagArgs
+    ///             {
+    ///                 Key = "key2",
+    ///                 Value = "value2",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Access Control
     /// 
@@ -67,7 +65,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/mlflowModel:MlflowModel")]
-    public partial class MlflowModel : Pulumi.CustomResource
+    public partial class MlflowModel : global::Pulumi.CustomResource
     {
         [Output("creationTimestamp")]
         public Output<int> CreationTimestamp { get; private set; } = null!;
@@ -143,7 +141,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class MlflowModelArgs : Pulumi.ResourceArgs
+    public sealed class MlflowModelArgs : global::Pulumi.ResourceArgs
     {
         [Input("creationTimestamp")]
         public Input<int>? CreationTimestamp { get; set; }
@@ -184,9 +182,10 @@ namespace Pulumi.Databricks
         public MlflowModelArgs()
         {
         }
+        public static new MlflowModelArgs Empty => new MlflowModelArgs();
     }
 
-    public sealed class MlflowModelState : Pulumi.ResourceArgs
+    public sealed class MlflowModelState : global::Pulumi.ResourceArgs
     {
         [Input("creationTimestamp")]
         public Input<int>? CreationTimestamp { get; set; }
@@ -227,5 +226,6 @@ namespace Pulumi.Databricks
         public MlflowModelState()
         {
         }
+        public static new MlflowModelState Empty => new MlflowModelState();
     }
 }

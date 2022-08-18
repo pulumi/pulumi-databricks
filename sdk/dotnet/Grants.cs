@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     [DatabricksResourceType("databricks:index/grants:Grants")]
-    public partial class Grants : Pulumi.CustomResource
+    public partial class Grants : global::Pulumi.CustomResource
     {
         [Output("catalog")]
         public Output<string?> Catalog { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class GrantsArgs : Pulumi.ResourceArgs
+    public sealed class GrantsArgs : global::Pulumi.ResourceArgs
     {
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
@@ -114,9 +114,10 @@ namespace Pulumi.Databricks
         public GrantsArgs()
         {
         }
+        public static new GrantsArgs Empty => new GrantsArgs();
     }
 
-    public sealed class GrantsState : Pulumi.ResourceArgs
+    public sealed class GrantsState : global::Pulumi.ResourceArgs
     {
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
@@ -150,5 +151,6 @@ namespace Pulumi.Databricks
         public GrantsState()
         {
         }
+        public static new GrantsState Empty => new GrantsState();
     }
 }

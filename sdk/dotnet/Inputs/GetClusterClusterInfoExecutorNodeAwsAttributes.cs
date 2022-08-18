@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class GetClusterClusterInfoExecutorNodeAwsAttributesArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterClusterInfoExecutorNodeAwsAttributesArgs : global::Pulumi.InvokeArgs
     {
         [Input("isSpot")]
         public bool? IsSpot { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Databricks.Inputs
         public GetClusterClusterInfoExecutorNodeAwsAttributesArgs()
         {
         }
+        public static new GetClusterClusterInfoExecutorNodeAwsAttributesArgs Empty => new GetClusterClusterInfoExecutorNodeAwsAttributesArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs : Pulumi.ResourceArgs
+    public sealed class InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs : global::Pulumi.ResourceArgs
     {
         [Input("availabilityZone", required: true)]
         public Input<string> AvailabilityZone { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs()
         {
         }
+        public static new InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs Empty => new InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs();
     }
 }

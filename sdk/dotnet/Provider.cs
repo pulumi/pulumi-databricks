@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [DatabricksResourceType("pulumi:providers:databricks")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -157,5 +157,6 @@ namespace Pulumi.Databricks
         public ProviderArgs()
         {
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

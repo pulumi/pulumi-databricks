@@ -15,7 +15,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/mount:Mount")]
-    public partial class Mount : Pulumi.CustomResource
+    public partial class Mount : global::Pulumi.CustomResource
     {
         [Output("abfs")]
         public Output<Outputs.MountAbfs?> Abfs { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class MountArgs : Pulumi.ResourceArgs
+    public sealed class MountArgs : global::Pulumi.ResourceArgs
     {
         [Input("abfs")]
         public Input<Inputs.MountAbfsArgs>? Abfs { get; set; }
@@ -143,9 +143,10 @@ namespace Pulumi.Databricks
         public MountArgs()
         {
         }
+        public static new MountArgs Empty => new MountArgs();
     }
 
-    public sealed class MountState : Pulumi.ResourceArgs
+    public sealed class MountState : global::Pulumi.ResourceArgs
     {
         [Input("abfs")]
         public Input<Inputs.MountAbfsGetArgs>? Abfs { get; set; }
@@ -194,5 +195,6 @@ namespace Pulumi.Databricks
         public MountState()
         {
         }
+        public static new MountState Empty => new MountState();
     }
 }

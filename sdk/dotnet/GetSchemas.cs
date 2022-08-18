@@ -19,23 +19,22 @@ namespace Pulumi.Databricks
         /// Listing all schemas in a _sandbox_ databricks_catalog:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sandbox = Databricks.GetSchemas.Invoke(new()
         ///     {
-        ///         var sandbox = Output.Create(Databricks.GetSchemas.InvokeAsync(new Databricks.GetSchemasArgs
-        ///         {
-        ///             CatalogName = "sandbox",
-        ///         }));
-        ///         this.AllSandboxSchemas = sandbox;
-        ///     }
+        ///         CatalogName = "sandbox",
+        ///     });
         /// 
-        ///     [Output("allSandboxSchemas")]
-        ///     public Output&lt;string&gt; AllSandboxSchemas { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allSandboxSchemas"] = sandbox.Apply(getSchemasResult =&gt; getSchemasResult),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -58,23 +57,22 @@ namespace Pulumi.Databricks
         /// Listing all schemas in a _sandbox_ databricks_catalog:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sandbox = Databricks.GetSchemas.Invoke(new()
         ///     {
-        ///         var sandbox = Output.Create(Databricks.GetSchemas.InvokeAsync(new Databricks.GetSchemasArgs
-        ///         {
-        ///             CatalogName = "sandbox",
-        ///         }));
-        ///         this.AllSandboxSchemas = sandbox;
-        ///     }
+        ///         CatalogName = "sandbox",
+        ///     });
         /// 
-        ///     [Output("allSandboxSchemas")]
-        ///     public Output&lt;string&gt; AllSandboxSchemas { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allSandboxSchemas"] = sandbox.Apply(getSchemasResult =&gt; getSchemasResult),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -91,7 +89,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetSchemasArgs : Pulumi.InvokeArgs
+    public sealed class GetSchemasArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of databricks_catalog
@@ -114,9 +112,10 @@ namespace Pulumi.Databricks
         public GetSchemasArgs()
         {
         }
+        public static new GetSchemasArgs Empty => new GetSchemasArgs();
     }
 
-    public sealed class GetSchemasInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSchemasInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Name of databricks_catalog
@@ -139,6 +138,7 @@ namespace Pulumi.Databricks
         public GetSchemasInvokeArgs()
         {
         }
+        public static new GetSchemasInvokeArgs Empty => new GetSchemasInvokeArgs();
     }
 
 

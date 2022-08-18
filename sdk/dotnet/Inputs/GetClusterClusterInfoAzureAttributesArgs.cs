@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class GetClusterClusterInfoAzureAttributesInputArgs : Pulumi.ResourceArgs
+    public sealed class GetClusterClusterInfoAzureAttributesInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("availability")]
         public Input<string>? Availability { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.Databricks.Inputs
         public GetClusterClusterInfoAzureAttributesInputArgs()
         {
         }
+        public static new GetClusterClusterInfoAzureAttributesInputArgs Empty => new GetClusterClusterInfoAzureAttributesInputArgs();
     }
 }

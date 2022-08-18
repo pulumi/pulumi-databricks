@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MwsWorkspacesTokenGetArgs : Pulumi.ResourceArgs
+    public sealed class MwsWorkspacesTokenGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("comment")]
         public Input<string>? Comment { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Databricks.Inputs
         public MwsWorkspacesTokenGetArgs()
         {
         }
+        public static new MwsWorkspacesTokenGetArgs Empty => new MwsWorkspacesTokenGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MetastoreDataAccessAzureServicePrincipalGetArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreDataAccessAzureServicePrincipalGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The application ID of the application registration within the referenced AAD tenant
@@ -33,5 +33,6 @@ namespace Pulumi.Databricks.Inputs
         public MetastoreDataAccessAzureServicePrincipalGetArgs()
         {
         }
+        public static new MetastoreDataAccessAzureServicePrincipalGetArgs Empty => new MetastoreDataAccessAzureServicePrincipalGetArgs();
     }
 }

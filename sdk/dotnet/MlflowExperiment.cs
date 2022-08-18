@@ -15,22 +15,21 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var me = Output.Create(Databricks.GetCurrentUser.InvokeAsync());
-    ///         var @this = new Databricks.MlflowExperiment("this", new Databricks.MlflowExperimentArgs
-    ///         {
-    ///             ArtifactLocation = "dbfs:/tmp/my-experiment",
-    ///             Description = "My MLflow experiment description",
-    ///         });
-    ///     }
+    ///     var me = Databricks.GetCurrentUser.Invoke();
     /// 
-    /// }
+    ///     var @this = new Databricks.MlflowExperiment("this", new()
+    ///     {
+    ///         ArtifactLocation = "dbfs:/tmp/my-experiment",
+    ///         Description = "My MLflow experiment description",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Access Control
     /// 
@@ -56,7 +55,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/mlflowExperiment:MlflowExperiment")]
-    public partial class MlflowExperiment : Pulumi.CustomResource
+    public partial class MlflowExperiment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
@@ -132,7 +131,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class MlflowExperimentArgs : Pulumi.ResourceArgs
+    public sealed class MlflowExperimentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
@@ -167,9 +166,10 @@ namespace Pulumi.Databricks
         public MlflowExperimentArgs()
         {
         }
+        public static new MlflowExperimentArgs Empty => new MlflowExperimentArgs();
     }
 
-    public sealed class MlflowExperimentState : Pulumi.ResourceArgs
+    public sealed class MlflowExperimentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
@@ -204,5 +204,6 @@ namespace Pulumi.Databricks
         public MlflowExperimentState()
         {
         }
+        public static new MlflowExperimentState Empty => new MlflowExperimentState();
     }
 }

@@ -19,7 +19,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/dbfsFile:DbfsFile")]
-    public partial class DbfsFile : Pulumi.CustomResource
+    public partial class DbfsFile : global::Pulumi.CustomResource
     {
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class DbfsFileArgs : Pulumi.ResourceArgs
+    public sealed class DbfsFileArgs : global::Pulumi.ResourceArgs
     {
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -118,9 +118,10 @@ namespace Pulumi.Databricks
         public DbfsFileArgs()
         {
         }
+        public static new DbfsFileArgs Empty => new DbfsFileArgs();
     }
 
-    public sealed class DbfsFileState : Pulumi.ResourceArgs
+    public sealed class DbfsFileState : global::Pulumi.ResourceArgs
     {
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -155,5 +156,6 @@ namespace Pulumi.Databricks
         public DbfsFileState()
         {
         }
+        public static new DbfsFileState Empty => new DbfsFileState();
     }
 }

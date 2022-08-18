@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MountAdlArgs : Pulumi.ResourceArgs
+    public sealed class MountAdlArgs : global::Pulumi.ResourceArgs
     {
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
@@ -36,5 +36,6 @@ namespace Pulumi.Databricks.Inputs
         public MountAdlArgs()
         {
         }
+        public static new MountAdlArgs Empty => new MountAdlArgs();
     }
 }

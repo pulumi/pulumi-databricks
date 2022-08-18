@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class SqlPermissionsPrivilegeAssignmentGetArgs : Pulumi.ResourceArgs
+    public sealed class SqlPermissionsPrivilegeAssignmentGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
@@ -33,5 +33,6 @@ namespace Pulumi.Databricks.Inputs
         public SqlPermissionsPrivilegeAssignmentGetArgs()
         {
         }
+        public static new SqlPermissionsPrivilegeAssignmentGetArgs Empty => new SqlPermissionsPrivilegeAssignmentGetArgs();
     }
 }

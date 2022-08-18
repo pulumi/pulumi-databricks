@@ -15,26 +15,28 @@ import (
 //
 // ### Import Example Configuration filehcl resource "databricks_mlflow_model" "model" {
 //
-//  name
+//	name
 //
 // = "example_model"
 //
-//  description = "MLflow registered model" } resource "databricks_permissions" "model_usage" {
+//	description = "MLflow registered model" } resource "databricks_permissions" "model_usage" {
 //
-//  registered_model_id = databricks_mlflow_model.model.registered_model_id
+//	registered_model_id = databricks_mlflow_model.model.registered_model_id
 //
-//  access_control {
+//	access_control {
 //
-//  group_name
+//	group_name
 //
-//  = "users"
+//	= "users"
 //
-//  permission_level = "CAN_READ"
+//	permission_level = "CAN_READ"
 //
-//  } } Import commandbash
+//	} } Import commandbash
 //
 // ```sh
-//  $ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/<registered_model_id>
+//
+//	$ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/<registered_model_id>
+//
 // ```
 type Permissions struct {
 	pulumi.CustomResourceState
@@ -310,7 +312,7 @@ func (i *Permissions) ToPermissionsOutputWithContext(ctx context.Context) Permis
 // PermissionsArrayInput is an input type that accepts PermissionsArray and PermissionsArrayOutput values.
 // You can construct a concrete instance of `PermissionsArrayInput` via:
 //
-//          PermissionsArray{ PermissionsArgs{...} }
+//	PermissionsArray{ PermissionsArgs{...} }
 type PermissionsArrayInput interface {
 	pulumi.Input
 
@@ -335,7 +337,7 @@ func (i PermissionsArray) ToPermissionsArrayOutputWithContext(ctx context.Contex
 // PermissionsMapInput is an input type that accepts PermissionsMap and PermissionsMapOutput values.
 // You can construct a concrete instance of `PermissionsMapInput` via:
 //
-//          PermissionsMap{ "key": PermissionsArgs{...} }
+//	PermissionsMap{ "key": PermissionsArgs{...} }
 type PermissionsMapInput interface {
 	pulumi.Input
 

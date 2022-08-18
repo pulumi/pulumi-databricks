@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MwsCustomerManagedKeysAwsKeyInfoArgs : Pulumi.ResourceArgs
+    public sealed class MwsCustomerManagedKeysAwsKeyInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The AWS KMS key alias.
@@ -33,5 +33,6 @@ namespace Pulumi.Databricks.Inputs
         public MwsCustomerManagedKeysAwsKeyInfoArgs()
         {
         }
+        public static new MwsCustomerManagedKeysAwsKeyInfoArgs Empty => new MwsCustomerManagedKeysAwsKeyInfoArgs();
     }
 }

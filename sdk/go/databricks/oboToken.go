@@ -135,7 +135,7 @@ func (i *OboToken) ToOboTokenOutputWithContext(ctx context.Context) OboTokenOutp
 // OboTokenArrayInput is an input type that accepts OboTokenArray and OboTokenArrayOutput values.
 // You can construct a concrete instance of `OboTokenArrayInput` via:
 //
-//          OboTokenArray{ OboTokenArgs{...} }
+//	OboTokenArray{ OboTokenArgs{...} }
 type OboTokenArrayInput interface {
 	pulumi.Input
 
@@ -160,7 +160,7 @@ func (i OboTokenArray) ToOboTokenArrayOutputWithContext(ctx context.Context) Obo
 // OboTokenMapInput is an input type that accepts OboTokenMap and OboTokenMapOutput values.
 // You can construct a concrete instance of `OboTokenMapInput` via:
 //
-//          OboTokenMap{ "key": OboTokenArgs{...} }
+//	OboTokenMap{ "key": OboTokenArgs{...} }
 type OboTokenMapInput interface {
 	pulumi.Input
 

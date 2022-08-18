@@ -17,39 +17,38 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var @this = new Databricks.WorkspaceConf("this", new()
     ///     {
-    ///         var @this = new Databricks.WorkspaceConf("this", new Databricks.WorkspaceConfArgs
+    ///         CustomConfig = 
     ///         {
-    ///             CustomConfig = 
-    ///             {
-    ///                 { "enableIpAccessLists", true },
-    ///             },
-    ///         });
-    ///         var allowed_list = new Databricks.IpAccessList("allowed-list", new Databricks.IpAccessListArgs
-    ///         {
-    ///             Label = "allow_in",
-    ///             ListType = "ALLOW",
-    ///             IpAddresses = 
-    ///             {
-    ///                 "1.2.3.0/24",
-    ///                 "1.2.5.0/24",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 @this,
-    ///             },
-    ///         });
-    ///     }
+    ///             { "enableIpAccessLists", true },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var allowed_list = new Databricks.IpAccessList("allowed-list", new()
+    ///     {
+    ///         Label = "allow_in",
+    ///         ListType = "ALLOW",
+    ///         IpAddresses = new[]
+    ///         {
+    ///             "1.2.3.0/24",
+    ///             "1.2.5.0/24",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             @this,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Related Resources
     /// 
@@ -71,7 +70,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/ipAccessList:IpAccessList")]
-    public partial class IpAccessList : Pulumi.CustomResource
+    public partial class IpAccessList : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
@@ -141,7 +140,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class IpAccessListArgs : Pulumi.ResourceArgs
+    public sealed class IpAccessListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
@@ -176,9 +175,10 @@ namespace Pulumi.Databricks
         public IpAccessListArgs()
         {
         }
+        public static new IpAccessListArgs Empty => new IpAccessListArgs();
     }
 
-    public sealed class IpAccessListState : Pulumi.ResourceArgs
+    public sealed class IpAccessListState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
@@ -213,5 +213,6 @@ namespace Pulumi.Databricks
         public IpAccessListState()
         {
         }
+        public static new IpAccessListState Empty => new IpAccessListState();
     }
 }

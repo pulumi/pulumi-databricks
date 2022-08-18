@@ -25,7 +25,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/externalLocation:ExternalLocation")]
-    public partial class ExternalLocation : Pulumi.CustomResource
+    public partial class ExternalLocation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// User-supplied free-form text.
@@ -110,7 +110,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class ExternalLocationArgs : Pulumi.ResourceArgs
+    public sealed class ExternalLocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-supplied free-form text.
@@ -154,9 +154,10 @@ namespace Pulumi.Databricks
         public ExternalLocationArgs()
         {
         }
+        public static new ExternalLocationArgs Empty => new ExternalLocationArgs();
     }
 
-    public sealed class ExternalLocationState : Pulumi.ResourceArgs
+    public sealed class ExternalLocationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-supplied free-form text.
@@ -200,5 +201,6 @@ namespace Pulumi.Databricks
         public ExternalLocationState()
         {
         }
+        public static new ExternalLocationState Empty => new ExternalLocationState();
     }
 }

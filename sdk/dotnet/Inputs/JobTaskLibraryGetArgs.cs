@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobTaskLibraryGetArgs : Pulumi.ResourceArgs
+    public sealed class JobTaskLibraryGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("cran")]
         public Input<Inputs.JobTaskLibraryCranGetArgs>? Cran { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Databricks.Inputs
         public JobTaskLibraryGetArgs()
         {
         }
+        public static new JobTaskLibraryGetArgs Empty => new JobTaskLibraryGetArgs();
     }
 }

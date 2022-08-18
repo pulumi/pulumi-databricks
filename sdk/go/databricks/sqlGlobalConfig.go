@@ -19,25 +19,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewSqlGlobalConfig(ctx, "this", &databricks.SqlGlobalConfigArgs{
-// 			SecurityPolicy:     pulumi.String("DATA_ACCESS_CONTROL"),
-// 			InstanceProfileArn: pulumi.String("arn:...."),
-// 			DataAccessConfig: pulumi.AnyMap{
-// 				"spark.sql.session.timeZone": pulumi.Any("UTC"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewSqlGlobalConfig(ctx, "this", &databricks.SqlGlobalConfigArgs{
+//				SecurityPolicy:     pulumi.String("DATA_ACCESS_CONTROL"),
+//				InstanceProfileArn: pulumi.String("arn:...."),
+//				DataAccessConfig: pulumi.AnyMap{
+//					"spark.sql.session.timeZone": pulumi.Any("UTC"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Azure example
 //
@@ -47,33 +50,36 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.NewSqlGlobalConfig(ctx, "this", &databricks.SqlGlobalConfigArgs{
-// 			SecurityPolicy: pulumi.String("DATA_ACCESS_CONTROL"),
-// 			DataAccessConfig: pulumi.AnyMap{
-// 				"spark.hadoop.fs.azure.account.auth.type":              pulumi.Any("OAuth"),
-// 				"spark.hadoop.fs.azure.account.oauth.provider.type":    pulumi.Any("org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
-// 				"spark.hadoop.fs.azure.account.oauth2.client.id":       pulumi.Any(_var.Tenant_id),
-// 				"spark.hadoop.fs.azure.account.oauth2.client.secret":   pulumi.Any(fmt.Sprintf("{{secrets/%v/%v}}", local.Secret_scope, local.Secret_key)),
-// 				"spark.hadoop.fs.azure.account.oauth2.client.endpoint": pulumi.Any(fmt.Sprintf("https://login.microsoftonline.com/%v/oauth2/token", _var.Tenant_id)),
-// 			},
-// 			SqlConfigParams: pulumi.AnyMap{
-// 				"ANSI_MODE": pulumi.Any("true"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewSqlGlobalConfig(ctx, "this", &databricks.SqlGlobalConfigArgs{
+//				SecurityPolicy: pulumi.String("DATA_ACCESS_CONTROL"),
+//				DataAccessConfig: pulumi.AnyMap{
+//					"spark.hadoop.fs.azure.account.auth.type":              pulumi.Any("OAuth"),
+//					"spark.hadoop.fs.azure.account.oauth.provider.type":    pulumi.Any("org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
+//					"spark.hadoop.fs.azure.account.oauth2.client.id":       pulumi.Any(_var.Tenant_id),
+//					"spark.hadoop.fs.azure.account.oauth2.client.secret":   pulumi.Any(fmt.Sprintf("{{secrets/%v/%v}}", local.Secret_scope, local.Secret_key)),
+//					"spark.hadoop.fs.azure.account.oauth2.client.endpoint": pulumi.Any(fmt.Sprintf("https://login.microsoftonline.com/%v/oauth2/token", _var.Tenant_id)),
+//				},
+//				SqlConfigParams: pulumi.AnyMap{
+//					"ANSI_MODE": pulumi.Any("true"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //
@@ -90,7 +96,9 @@ import (
 // You can import a `databricks_sql_global_config` resource with command like the following (you need to use `global` as ID)bash
 //
 // ```sh
-//  $ pulumi import databricks:index/sqlGlobalConfig:SqlGlobalConfig this global
+//
+//	$ pulumi import databricks:index/sqlGlobalConfig:SqlGlobalConfig this global
+//
 // ```
 type SqlGlobalConfig struct {
 	pulumi.CustomResourceState
@@ -213,7 +221,7 @@ func (i *SqlGlobalConfig) ToSqlGlobalConfigOutputWithContext(ctx context.Context
 // SqlGlobalConfigArrayInput is an input type that accepts SqlGlobalConfigArray and SqlGlobalConfigArrayOutput values.
 // You can construct a concrete instance of `SqlGlobalConfigArrayInput` via:
 //
-//          SqlGlobalConfigArray{ SqlGlobalConfigArgs{...} }
+//	SqlGlobalConfigArray{ SqlGlobalConfigArgs{...} }
 type SqlGlobalConfigArrayInput interface {
 	pulumi.Input
 
@@ -238,7 +246,7 @@ func (i SqlGlobalConfigArray) ToSqlGlobalConfigArrayOutputWithContext(ctx contex
 // SqlGlobalConfigMapInput is an input type that accepts SqlGlobalConfigMap and SqlGlobalConfigMapOutput values.
 // You can construct a concrete instance of `SqlGlobalConfigMapInput` via:
 //
-//          SqlGlobalConfigMap{ "key": SqlGlobalConfigArgs{...} }
+//	SqlGlobalConfigMap{ "key": SqlGlobalConfigArgs{...} }
 type SqlGlobalConfigMapInput interface {
 	pulumi.Input
 

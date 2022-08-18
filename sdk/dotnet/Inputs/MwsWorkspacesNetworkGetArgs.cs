@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MwsWorkspacesNetworkGetArgs : Pulumi.ResourceArgs
+    public sealed class MwsWorkspacesNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("gcpCommonNetworkConfig", required: true)]
         public Input<Inputs.MwsWorkspacesNetworkGcpCommonNetworkConfigGetArgs> GcpCommonNetworkConfig { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.Databricks.Inputs
         public MwsWorkspacesNetworkGetArgs()
         {
         }
+        public static new MwsWorkspacesNetworkGetArgs Empty => new MwsWorkspacesNetworkGetArgs();
     }
 }

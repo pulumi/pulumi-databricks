@@ -19,10 +19,12 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by namebash
+// # This resource can be imported by namebash
 //
 // ```sh
-//  $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>
+//
+//	$ pulumi import databricks:index/externalLocation:ExternalLocation this <name>
+//
 // ```
 type ExternalLocation struct {
 	pulumi.CustomResourceState
@@ -171,7 +173,7 @@ func (i *ExternalLocation) ToExternalLocationOutputWithContext(ctx context.Conte
 // ExternalLocationArrayInput is an input type that accepts ExternalLocationArray and ExternalLocationArrayOutput values.
 // You can construct a concrete instance of `ExternalLocationArrayInput` via:
 //
-//          ExternalLocationArray{ ExternalLocationArgs{...} }
+//	ExternalLocationArray{ ExternalLocationArgs{...} }
 type ExternalLocationArrayInput interface {
 	pulumi.Input
 
@@ -196,7 +198,7 @@ func (i ExternalLocationArray) ToExternalLocationArrayOutputWithContext(ctx cont
 // ExternalLocationMapInput is an input type that accepts ExternalLocationMap and ExternalLocationMapOutput values.
 // You can construct a concrete instance of `ExternalLocationMapInput` via:
 //
-//          ExternalLocationMap{ "key": ExternalLocationArgs{...} }
+//	ExternalLocationMap{ "key": ExternalLocationArgs{...} }
 type ExternalLocationMapInput interface {
 	pulumi.Input
 

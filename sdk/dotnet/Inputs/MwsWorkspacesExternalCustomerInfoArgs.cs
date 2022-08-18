@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MwsWorkspacesExternalCustomerInfoArgs : Pulumi.ResourceArgs
+    public sealed class MwsWorkspacesExternalCustomerInfoArgs : global::Pulumi.ResourceArgs
     {
         [Input("authoritativeUserEmail", required: true)]
         public Input<string> AuthoritativeUserEmail { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.Databricks.Inputs
         public MwsWorkspacesExternalCustomerInfoArgs()
         {
         }
+        public static new MwsWorkspacesExternalCustomerInfoArgs Empty => new MwsWorkspacesExternalCustomerInfoArgs();
     }
 }

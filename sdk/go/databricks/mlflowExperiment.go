@@ -18,26 +18,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := databricks.GetCurrentUser(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewMlflowExperiment(ctx, "this", &databricks.MlflowExperimentArgs{
-// 			ArtifactLocation: pulumi.String("dbfs:/tmp/my-experiment"),
-// 			Description:      pulumi.String("My MLflow experiment description"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetCurrentUser(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMlflowExperiment(ctx, "this", &databricks.MlflowExperimentArgs{
+//				ArtifactLocation: pulumi.String("dbfs:/tmp/my-experiment"),
+//				Description:      pulumi.String("My MLflow experiment description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Access Control
 //
@@ -56,10 +59,12 @@ import (
 //
 // ## Import
 //
-// The experiment resource can be imported using the id of the experiment bash
+// # The experiment resource can be imported using the id of the experiment bash
 //
 // ```sh
-//  $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>
+//
+//	$ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>
+//
 // ```
 type MlflowExperiment struct {
 	pulumi.CustomResourceState
@@ -187,7 +192,7 @@ func (i *MlflowExperiment) ToMlflowExperimentOutputWithContext(ctx context.Conte
 // MlflowExperimentArrayInput is an input type that accepts MlflowExperimentArray and MlflowExperimentArrayOutput values.
 // You can construct a concrete instance of `MlflowExperimentArrayInput` via:
 //
-//          MlflowExperimentArray{ MlflowExperimentArgs{...} }
+//	MlflowExperimentArray{ MlflowExperimentArgs{...} }
 type MlflowExperimentArrayInput interface {
 	pulumi.Input
 
@@ -212,7 +217,7 @@ func (i MlflowExperimentArray) ToMlflowExperimentArrayOutputWithContext(ctx cont
 // MlflowExperimentMapInput is an input type that accepts MlflowExperimentMap and MlflowExperimentMapOutput values.
 // You can construct a concrete instance of `MlflowExperimentMapInput` via:
 //
-//          MlflowExperimentMap{ "key": MlflowExperimentArgs{...} }
+//	MlflowExperimentMap{ "key": MlflowExperimentArgs{...} }
 type MlflowExperimentMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class InstancePoolInstancePoolFleetAttributesArgs : Pulumi.ResourceArgs
+    public sealed class InstancePoolInstancePoolFleetAttributesArgs : global::Pulumi.ResourceArgs
     {
         [Input("fleetOnDemandOption")]
         public Input<Inputs.InstancePoolInstancePoolFleetAttributesFleetOnDemandOptionArgs>? FleetOnDemandOption { get; set; }
@@ -29,5 +29,6 @@ namespace Pulumi.Databricks.Inputs
         public InstancePoolInstancePoolFleetAttributesArgs()
         {
         }
+        public static new InstancePoolInstancePoolFleetAttributesArgs Empty => new InstancePoolInstancePoolFleetAttributesArgs();
     }
 }

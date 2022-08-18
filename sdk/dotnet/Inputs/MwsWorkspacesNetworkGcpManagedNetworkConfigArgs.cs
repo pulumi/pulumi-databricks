@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MwsWorkspacesNetworkGcpManagedNetworkConfigArgs : Pulumi.ResourceArgs
+    public sealed class MwsWorkspacesNetworkGcpManagedNetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("gkeClusterPodIpRange", required: true)]
         public Input<string> GkeClusterPodIpRange { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.Databricks.Inputs
         public MwsWorkspacesNetworkGcpManagedNetworkConfigArgs()
         {
         }
+        public static new MwsWorkspacesNetworkGcpManagedNetworkConfigArgs Empty => new MwsWorkspacesNetworkGcpManagedNetworkConfigArgs();
     }
 }

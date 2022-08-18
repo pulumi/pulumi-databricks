@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class ClusterDockerImageBasicAuthArgs : Pulumi.ResourceArgs
+    public sealed class ClusterDockerImageBasicAuthArgs : global::Pulumi.ResourceArgs
     {
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.Databricks.Inputs
         public ClusterDockerImageBasicAuthArgs()
         {
         }
+        public static new ClusterDockerImageBasicAuthArgs Empty => new ClusterDockerImageBasicAuthArgs();
     }
 }

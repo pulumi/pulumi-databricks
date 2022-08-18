@@ -17,26 +17,25 @@ namespace Pulumi.Databricks
     /// ## Java/Scala JAR
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var appDbfsFile = new Databricks.DbfsFile("appDbfsFile", new()
     ///     {
-    ///         var appDbfsFile = new Databricks.DbfsFile("appDbfsFile", new Databricks.DbfsFileArgs
-    ///         {
-    ///             Source = $"{path.Module}/app-0.0.1.jar",
-    ///             Path = "/FileStore/app-0.0.1.jar",
-    ///         });
-    ///         var appLibrary = new Databricks.Library("appLibrary", new Databricks.LibraryArgs
-    ///         {
-    ///             ClusterId = databricks_cluster.This.Id,
-    ///             Jar = appDbfsFile.DbfsPath,
-    ///         });
-    ///     }
+    ///         Source = $"{path.Module}/app-0.0.1.jar",
+    ///         Path = "/FileStore/app-0.0.1.jar",
+    ///     });
     /// 
-    /// }
+    ///     var appLibrary = new Databricks.Library("appLibrary", new()
+    ///     {
+    ///         ClusterId = databricks_cluster.This.Id,
+    ///         Jar = appDbfsFile.DbfsPath,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Java/Scala Maven
@@ -44,53 +43,50 @@ namespace Pulumi.Databricks
     /// Installing artifacts from Maven repository. You can also optionally specify a `repo` parameter for a custom Maven-style repository, that should be accessible without any authentication. Maven libraries are resolved in Databricks Control Plane, so repo should be accessible from it. It can even be properly configured [maven s3 wagon](https://github.com/seahen/maven-s3-wagon), [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) or [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/).
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var deequ = new Databricks.Library("deequ", new()
     ///     {
-    ///         var deequ = new Databricks.Library("deequ", new Databricks.LibraryArgs
+    ///         ClusterId = databricks_cluster.This.Id,
+    ///         Maven = new Databricks.Inputs.LibraryMavenArgs
     ///         {
-    ///             ClusterId = databricks_cluster.This.Id,
-    ///             Maven = new Databricks.Inputs.LibraryMavenArgs
+    ///             Coordinates = "com.amazon.deequ:deequ:1.0.4",
+    ///             Exclusions = new[]
     ///             {
-    ///                 Coordinates = "com.amazon.deequ:deequ:1.0.4",
-    ///                 Exclusions = 
-    ///                 {
-    ///                     "org.apache.avro:avro",
-    ///                 },
+    ///                 "org.apache.avro:avro",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Python Wheel
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var appDbfsFile = new Databricks.DbfsFile("appDbfsFile", new()
     ///     {
-    ///         var appDbfsFile = new Databricks.DbfsFile("appDbfsFile", new Databricks.DbfsFileArgs
-    ///         {
-    ///             Source = $"{path.Module}/baz.whl",
-    ///             Path = "/FileStore/baz.whl",
-    ///         });
-    ///         var appLibrary = new Databricks.Library("appLibrary", new Databricks.LibraryArgs
-    ///         {
-    ///             ClusterId = databricks_cluster.This.Id,
-    ///             Whl = appDbfsFile.DbfsPath,
-    ///         });
-    ///     }
+    ///         Source = $"{path.Module}/baz.whl",
+    ///         Path = "/FileStore/baz.whl",
+    ///     });
     /// 
-    /// }
+    ///     var appLibrary = new Databricks.Library("appLibrary", new()
+    ///     {
+    ///         ClusterId = databricks_cluster.This.Id,
+    ///         Whl = appDbfsFile.DbfsPath,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Python PyPI
@@ -100,49 +96,46 @@ namespace Pulumi.Databricks
     /// &gt; **Note** `repo` host should be accessible from the Internet by Databricks control plane. If connectivity to custom PyPI repositories is required, please modify cluster-node `/etc/pip.conf` through databricks_global_init_script.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var fbprophet = new Databricks.Library("fbprophet", new()
     ///     {
-    ///         var fbprophet = new Databricks.Library("fbprophet", new Databricks.LibraryArgs
+    ///         ClusterId = databricks_cluster.This.Id,
+    ///         Pypi = new Databricks.Inputs.LibraryPypiArgs
     ///         {
-    ///             ClusterId = databricks_cluster.This.Id,
-    ///             Pypi = new Databricks.Inputs.LibraryPypiArgs
-    ///             {
-    ///                 Package = "fbprophet==0.6",
-    ///             },
-    ///         });
-    ///     }
+    ///             Package = "fbprophet==0.6",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Python EGG
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var appDbfsFile = new Databricks.DbfsFile("appDbfsFile", new()
     ///     {
-    ///         var appDbfsFile = new Databricks.DbfsFile("appDbfsFile", new Databricks.DbfsFileArgs
-    ///         {
-    ///             Source = $"{path.Module}/foo.egg",
-    ///             Path = "/FileStore/foo.egg",
-    ///         });
-    ///         var appLibrary = new Databricks.Library("appLibrary", new Databricks.LibraryArgs
-    ///         {
-    ///             ClusterId = databricks_cluster.This.Id,
-    ///             Egg = appDbfsFile.DbfsPath,
-    ///         });
-    ///     }
+    ///         Source = $"{path.Module}/foo.egg",
+    ///         Path = "/FileStore/foo.egg",
+    ///     });
     /// 
-    /// }
+    ///     var appLibrary = new Databricks.Library("appLibrary", new()
+    ///     {
+    ///         ClusterId = databricks_cluster.This.Id,
+    ///         Egg = appDbfsFile.DbfsPath,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## R CRan
@@ -150,24 +143,22 @@ namespace Pulumi.Databricks
     /// Installing artifacts from CRan. You can also optionally specify a `repo` parameter for a custom cran mirror.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var rkeops = new Databricks.Library("rkeops", new()
     ///     {
-    ///         var rkeops = new Databricks.Library("rkeops", new Databricks.LibraryArgs
+    ///         ClusterId = databricks_cluster.This.Id,
+    ///         Cran = new Databricks.Inputs.LibraryCranArgs
     ///         {
-    ///             ClusterId = databricks_cluster.This.Id,
-    ///             Cran = new Databricks.Inputs.LibraryCranArgs
-    ///             {
-    ///                 Package = "rkeops",
-    ///             },
-    ///         });
-    ///     }
+    ///             Package = "rkeops",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Related Resources
@@ -192,7 +183,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/library:Library")]
-    public partial class Library : Pulumi.CustomResource
+    public partial class Library : global::Pulumi.CustomResource
     {
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
@@ -259,7 +250,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class LibraryArgs : Pulumi.ResourceArgs
+    public sealed class LibraryArgs : global::Pulumi.ResourceArgs
     {
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
@@ -285,9 +276,10 @@ namespace Pulumi.Databricks
         public LibraryArgs()
         {
         }
+        public static new LibraryArgs Empty => new LibraryArgs();
     }
 
-    public sealed class LibraryState : Pulumi.ResourceArgs
+    public sealed class LibraryState : global::Pulumi.ResourceArgs
     {
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -313,5 +305,6 @@ namespace Pulumi.Databricks
         public LibraryState()
         {
         }
+        public static new LibraryState Empty => new LibraryState();
     }
 }

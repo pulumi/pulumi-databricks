@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobTaskArgs : Pulumi.ResourceArgs
+    public sealed class JobTaskArgs : global::Pulumi.ResourceArgs
     {
         [Input("dbtTask")]
         public Input<Inputs.JobTaskDbtTaskArgs>? DbtTask { get; set; }
@@ -113,5 +113,6 @@ namespace Pulumi.Databricks.Inputs
         public JobTaskArgs()
         {
         }
+        public static new JobTaskArgs Empty => new JobTaskArgs();
     }
 }

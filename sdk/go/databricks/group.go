@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,7 +25,9 @@ import (
 // You can import a `databricks_group` resource with the name `my_group` like the followingbash
 //
 // ```sh
-//  $ pulumi import databricks:index/group:Group my_group <group_id>
+//
+//	$ pulumi import databricks:index/group:Group my_group <group_id>
+//
 // ```
 type Group struct {
 	pulumi.CustomResourceState
@@ -51,12 +52,9 @@ type Group struct {
 func NewGroup(ctx *pulumi.Context,
 	name string, args *GroupArgs, opts ...pulumi.ResourceOption) (*Group, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &GroupArgs{}
 	}
 
-	if args.DisplayName == nil {
-		return nil, errors.New("invalid value for required argument 'DisplayName'")
-	}
 	var resource Group
 	err := ctx.RegisterResource("databricks:index/group:Group", name, args, &resource, opts...)
 	if err != nil {
@@ -124,7 +122,7 @@ type groupArgs struct {
 	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
 	// This is the display name for the given group.
-	DisplayName string `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
 	// ID of the group in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
 	Force      *bool   `pulumi:"force"`
@@ -142,7 +140,7 @@ type GroupArgs struct {
 	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrInput
 	// This is the display name for the given group.
-	DisplayName pulumi.StringInput
+	DisplayName pulumi.StringPtrInput
 	// ID of the group in an external identity provider.
 	ExternalId pulumi.StringPtrInput
 	Force      pulumi.BoolPtrInput
@@ -177,7 +175,7 @@ func (i *Group) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 // GroupArrayInput is an input type that accepts GroupArray and GroupArrayOutput values.
 // You can construct a concrete instance of `GroupArrayInput` via:
 //
-//          GroupArray{ GroupArgs{...} }
+//	GroupArray{ GroupArgs{...} }
 type GroupArrayInput interface {
 	pulumi.Input
 
@@ -202,7 +200,7 @@ func (i GroupArray) ToGroupArrayOutputWithContext(ctx context.Context) GroupArra
 // GroupMapInput is an input type that accepts GroupMap and GroupMapOutput values.
 // You can construct a concrete instance of `GroupMapInput` via:
 //
-//          GroupMap{ "key": GroupArgs{...} }
+//	GroupMap{ "key": GroupArgs{...} }
 type GroupMapInput interface {
 	pulumi.Input
 

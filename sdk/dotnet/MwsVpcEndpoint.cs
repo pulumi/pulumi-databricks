@@ -15,7 +15,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/mwsVpcEndpoint:MwsVpcEndpoint")]
-    public partial class MwsVpcEndpoint : Pulumi.CustomResource
+    public partial class MwsVpcEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -106,7 +106,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class MwsVpcEndpointArgs : Pulumi.ResourceArgs
+    public sealed class MwsVpcEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -156,9 +156,10 @@ namespace Pulumi.Databricks
         public MwsVpcEndpointArgs()
         {
         }
+        public static new MwsVpcEndpointArgs Empty => new MwsVpcEndpointArgs();
     }
 
-    public sealed class MwsVpcEndpointState : Pulumi.ResourceArgs
+    public sealed class MwsVpcEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -208,5 +209,6 @@ namespace Pulumi.Databricks
         public MwsVpcEndpointState()
         {
         }
+        public static new MwsVpcEndpointState Empty => new MwsVpcEndpointState();
     }
 }

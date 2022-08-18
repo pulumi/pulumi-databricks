@@ -13,10 +13,12 @@ import (
 
 // ## Import
 //
-// The resource notebook can be imported using notebook path bash
+// # The resource notebook can be imported using notebook path bash
 //
 // ```sh
-//  $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
+//
+//	$ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
+//
 // ```
 type Notebook struct {
 	pulumi.CustomResourceState
@@ -178,7 +180,7 @@ func (i *Notebook) ToNotebookOutputWithContext(ctx context.Context) NotebookOutp
 // NotebookArrayInput is an input type that accepts NotebookArray and NotebookArrayOutput values.
 // You can construct a concrete instance of `NotebookArrayInput` via:
 //
-//          NotebookArray{ NotebookArgs{...} }
+//	NotebookArray{ NotebookArgs{...} }
 type NotebookArrayInput interface {
 	pulumi.Input
 
@@ -203,7 +205,7 @@ func (i NotebookArray) ToNotebookArrayOutputWithContext(ctx context.Context) Not
 // NotebookMapInput is an input type that accepts NotebookMap and NotebookMapOutput values.
 // You can construct a concrete instance of `NotebookMapInput` via:
 //
-//          NotebookMap{ "key": NotebookArgs{...} }
+//	NotebookMap{ "key": NotebookArgs{...} }
 type NotebookMapInput interface {
 	pulumi.Input
 

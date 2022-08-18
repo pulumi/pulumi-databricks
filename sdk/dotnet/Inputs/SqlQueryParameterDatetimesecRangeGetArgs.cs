@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class SqlQueryParameterDatetimesecRangeGetArgs : Pulumi.ResourceArgs
+    public sealed class SqlQueryParameterDatetimesecRangeGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.Databricks.Inputs
         public SqlQueryParameterDatetimesecRangeGetArgs()
         {
         }
+        public static new SqlQueryParameterDatetimesecRangeGetArgs Empty => new SqlQueryParameterDatetimesecRangeGetArgs();
     }
 }

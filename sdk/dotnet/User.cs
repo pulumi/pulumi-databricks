@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
@@ -129,7 +129,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
@@ -182,9 +182,10 @@ namespace Pulumi.Databricks
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
@@ -237,5 +238,6 @@ namespace Pulumi.Databricks
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

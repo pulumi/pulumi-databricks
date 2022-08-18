@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class JobGitSourceArgs : Pulumi.ResourceArgs
+    public sealed class JobGitSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// name of the Git branch to use. Conflicts with `tag` and `commit`.
@@ -45,5 +45,6 @@ namespace Pulumi.Databricks.Inputs
         public JobGitSourceArgs()
         {
         }
+        public static new JobGitSourceArgs Empty => new JobGitSourceArgs();
     }
 }

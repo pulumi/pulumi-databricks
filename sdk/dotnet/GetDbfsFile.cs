@@ -17,21 +17,19 @@ namespace Pulumi.Databricks
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var report = Databricks.GetDbfsFile.Invoke(new()
         ///     {
-        ///         var report = Output.Create(Databricks.GetDbfsFile.InvokeAsync(new Databricks.GetDbfsFileArgs
-        ///         {
-        ///             LimitFileSize = 10240,
-        ///             Path = "dbfs:/reports/some.csv",
-        ///         }));
-        ///     }
+        ///         LimitFileSize = 10240,
+        ///         Path = "dbfs:/reports/some.csv",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -53,21 +51,19 @@ namespace Pulumi.Databricks
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var report = Databricks.GetDbfsFile.Invoke(new()
         ///     {
-        ///         var report = Output.Create(Databricks.GetDbfsFile.InvokeAsync(new Databricks.GetDbfsFileArgs
-        ///         {
-        ///             LimitFileSize = 10240,
-        ///             Path = "dbfs:/reports/some.csv",
-        ///         }));
-        ///     }
+        ///         LimitFileSize = 10240,
+        ///         Path = "dbfs:/reports/some.csv",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -85,7 +81,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetDbfsFileArgs : Pulumi.InvokeArgs
+    public sealed class GetDbfsFileArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Do lot load content for files smaller than this in bytes
@@ -102,9 +98,10 @@ namespace Pulumi.Databricks
         public GetDbfsFileArgs()
         {
         }
+        public static new GetDbfsFileArgs Empty => new GetDbfsFileArgs();
     }
 
-    public sealed class GetDbfsFileInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDbfsFileInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Do lot load content for files smaller than this in bytes
@@ -121,6 +118,7 @@ namespace Pulumi.Databricks
         public GetDbfsFileInvokeArgs()
         {
         }
+        public static new GetDbfsFileInvokeArgs Empty => new GetDbfsFileInvokeArgs();
     }
 
 

@@ -174,7 +174,7 @@ func (i *MwsVpcEndpoint) ToMwsVpcEndpointOutputWithContext(ctx context.Context) 
 // MwsVpcEndpointArrayInput is an input type that accepts MwsVpcEndpointArray and MwsVpcEndpointArrayOutput values.
 // You can construct a concrete instance of `MwsVpcEndpointArrayInput` via:
 //
-//          MwsVpcEndpointArray{ MwsVpcEndpointArgs{...} }
+//	MwsVpcEndpointArray{ MwsVpcEndpointArgs{...} }
 type MwsVpcEndpointArrayInput interface {
 	pulumi.Input
 
@@ -199,7 +199,7 @@ func (i MwsVpcEndpointArray) ToMwsVpcEndpointArrayOutputWithContext(ctx context.
 // MwsVpcEndpointMapInput is an input type that accepts MwsVpcEndpointMap and MwsVpcEndpointMapOutput values.
 // You can construct a concrete instance of `MwsVpcEndpointMapInput` via:
 //
-//          MwsVpcEndpointMap{ "key": MwsVpcEndpointArgs{...} }
+//	MwsVpcEndpointMap{ "key": MwsVpcEndpointArgs{...} }
 type MwsVpcEndpointMapInput interface {
 	pulumi.Input
 

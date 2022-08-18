@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class InstancePoolAzureAttributesArgs : Pulumi.ResourceArgs
+    public sealed class InstancePoolAzureAttributesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
@@ -27,5 +27,6 @@ namespace Pulumi.Databricks.Inputs
         public InstancePoolAzureAttributesArgs()
         {
         }
+        public static new InstancePoolAzureAttributesArgs Empty => new InstancePoolAzureAttributesArgs();
     }
 }

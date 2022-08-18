@@ -176,7 +176,7 @@ func (i *MwsPrivateAccessSettings) ToMwsPrivateAccessSettingsOutputWithContext(c
 // MwsPrivateAccessSettingsArrayInput is an input type that accepts MwsPrivateAccessSettingsArray and MwsPrivateAccessSettingsArrayOutput values.
 // You can construct a concrete instance of `MwsPrivateAccessSettingsArrayInput` via:
 //
-//          MwsPrivateAccessSettingsArray{ MwsPrivateAccessSettingsArgs{...} }
+//	MwsPrivateAccessSettingsArray{ MwsPrivateAccessSettingsArgs{...} }
 type MwsPrivateAccessSettingsArrayInput interface {
 	pulumi.Input
 
@@ -201,7 +201,7 @@ func (i MwsPrivateAccessSettingsArray) ToMwsPrivateAccessSettingsArrayOutputWith
 // MwsPrivateAccessSettingsMapInput is an input type that accepts MwsPrivateAccessSettingsMap and MwsPrivateAccessSettingsMapOutput values.
 // You can construct a concrete instance of `MwsPrivateAccessSettingsMapInput` via:
 //
-//          MwsPrivateAccessSettingsMap{ "key": MwsPrivateAccessSettingsArgs{...} }
+//	MwsPrivateAccessSettingsMap{ "key": MwsPrivateAccessSettingsArgs{...} }
 type MwsPrivateAccessSettingsMapInput interface {
 	pulumi.Input
 

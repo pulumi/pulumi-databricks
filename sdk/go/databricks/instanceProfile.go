@@ -18,119 +18,122 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws"
-// 	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws"
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cfg := config.New(ctx, "")
-// 		crossaccountRoleName := cfg.Require("crossaccountRoleName")
-// 		assumeRoleForEc2, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-// 			Statements: []iam.GetPolicyDocumentStatement{
-// 				iam.GetPolicyDocumentStatement{
-// 					Effect: pulumi.StringRef("Allow"),
-// 					Actions: []string{
-// 						"sts:AssumeRole",
-// 					},
-// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-// 						iam.GetPolicyDocumentStatementPrincipal{
-// 							Identifiers: []string{
-// 								"ec2.amazonaws.com",
-// 							},
-// 							Type: "Service",
-// 						},
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		roleForS3Access, err := iam.NewRole(ctx, "roleForS3Access", &iam.RoleArgs{
-// 			Description:      pulumi.String("Role for shared access"),
-// 			AssumeRolePolicy: pulumi.String(assumeRoleForEc2.Json),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		passRoleForS3AccessPolicyDocument := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
-// 			Statements: iam.GetPolicyDocumentStatementArray{
-// 				&iam.GetPolicyDocumentStatementArgs{
-// 					Effect: pulumi.String("Allow"),
-// 					Actions: pulumi.StringArray{
-// 						pulumi.String("iam:PassRole"),
-// 					},
-// 					Resources: pulumi.StringArray{
-// 						roleForS3Access.Arn,
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		passRoleForS3AccessPolicy, err := iam.NewPolicy(ctx, "passRoleForS3AccessPolicy", &iam.PolicyArgs{
-// 			Path: pulumi.String("/"),
-// 			Policy: passRoleForS3AccessPolicyDocument.ApplyT(func(passRoleForS3AccessPolicyDocument iam.GetPolicyDocumentResult) (string, error) {
-// 				return passRoleForS3AccessPolicyDocument.Json, nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRolePolicyAttachment(ctx, "crossAccount", &iam.RolePolicyAttachmentArgs{
-// 			PolicyArn: passRoleForS3AccessPolicy.Arn,
-// 			Role:      pulumi.String(crossaccountRoleName),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		sharedInstanceProfile, err := iam.NewInstanceProfile(ctx, "sharedInstanceProfile", &iam.InstanceProfileArgs{
-// 			Role: roleForS3Access.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewInstanceProfile(ctx, "sharedIndex/instanceProfileInstanceProfile", &databricks.InstanceProfileArgs{
-// 			InstanceProfileArn: sharedInstanceProfile.Arn,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		latest, err := databricks.GetSparkVersion(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		smallest, err := databricks.GetNodeType(ctx, &GetNodeTypeArgs{
-// 			LocalDisk: pulumi.BoolRef(true),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewCluster(ctx, "this", &databricks.ClusterArgs{
-// 			ClusterName:            pulumi.String("Shared Autoscaling"),
-// 			SparkVersion:           pulumi.String(latest.Id),
-// 			NodeTypeId:             pulumi.String(smallest.Id),
-// 			AutoterminationMinutes: pulumi.Int(20),
-// 			Autoscale: &ClusterAutoscaleArgs{
-// 				MinWorkers: pulumi.Int(1),
-// 				MaxWorkers: pulumi.Int(50),
-// 			},
-// 			AwsAttributes: &ClusterAwsAttributesArgs{
-// 				InstanceProfileArn:  sharedIndex / instanceProfileInstanceProfile.Id,
-// 				Availability:        pulumi.String("SPOT"),
-// 				ZoneId:              pulumi.String("us-east-1"),
-// 				FirstOnDemand:       pulumi.Int(1),
-// 				SpotBidPricePercent: pulumi.Int(100),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			crossaccountRoleName := cfg.Require("crossaccountRoleName")
+//			assumeRoleForEc2, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+//				Statements: []iam.GetPolicyDocumentStatement{
+//					iam.GetPolicyDocumentStatement{
+//						Effect: pulumi.StringRef("Allow"),
+//						Actions: []string{
+//							"sts:AssumeRole",
+//						},
+//						Principals: []iam.GetPolicyDocumentStatementPrincipal{
+//							iam.GetPolicyDocumentStatementPrincipal{
+//								Identifiers: []string{
+//									"ec2.amazonaws.com",
+//								},
+//								Type: "Service",
+//							},
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			roleForS3Access, err := iam.NewRole(ctx, "roleForS3Access", &iam.RoleArgs{
+//				Description:      pulumi.String("Role for shared access"),
+//				AssumeRolePolicy: pulumi.String(assumeRoleForEc2.Json),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			passRoleForS3AccessPolicyDocument := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+//				Statements: iam.GetPolicyDocumentStatementArray{
+//					&iam.GetPolicyDocumentStatementArgs{
+//						Effect: pulumi.String("Allow"),
+//						Actions: pulumi.StringArray{
+//							pulumi.String("iam:PassRole"),
+//						},
+//						Resources: pulumi.StringArray{
+//							roleForS3Access.Arn,
+//						},
+//					},
+//				},
+//			}, nil)
+//			passRoleForS3AccessPolicy, err := iam.NewPolicy(ctx, "passRoleForS3AccessPolicy", &iam.PolicyArgs{
+//				Path: pulumi.String("/"),
+//				Policy: passRoleForS3AccessPolicyDocument.ApplyT(func(passRoleForS3AccessPolicyDocument iam.GetPolicyDocumentResult) (string, error) {
+//					return passRoleForS3AccessPolicyDocument.Json, nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewRolePolicyAttachment(ctx, "crossAccount", &iam.RolePolicyAttachmentArgs{
+//				PolicyArn: passRoleForS3AccessPolicy.Arn,
+//				Role:      pulumi.String(crossaccountRoleName),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sharedInstanceProfile, err := iam.NewInstanceProfile(ctx, "sharedInstanceProfile", &iam.InstanceProfileArgs{
+//				Role: roleForS3Access.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewInstanceProfile(ctx, "sharedIndex/instanceProfileInstanceProfile", &databricks.InstanceProfileArgs{
+//				InstanceProfileArn: sharedInstanceProfile.Arn,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			latest, err := databricks.GetSparkVersion(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			smallest, err := databricks.GetNodeType(ctx, &GetNodeTypeArgs{
+//				LocalDisk: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewCluster(ctx, "this", &databricks.ClusterArgs{
+//				ClusterName:            pulumi.String("Shared Autoscaling"),
+//				SparkVersion:           pulumi.String(latest.Id),
+//				NodeTypeId:             pulumi.String(smallest.Id),
+//				AutoterminationMinutes: pulumi.Int(20),
+//				Autoscale: &ClusterAutoscaleArgs{
+//					MinWorkers: pulumi.Int(1),
+//					MaxWorkers: pulumi.Int(50),
+//				},
+//				AwsAttributes: &ClusterAwsAttributesArgs{
+//					InstanceProfileArn:  sharedIndex / instanceProfileInstanceProfile.Id,
+//					Availability:        pulumi.String("SPOT"),
+//					ZoneId:              pulumi.String("us-east-1"),
+//					FirstOnDemand:       pulumi.Int(1),
+//					SpotBidPricePercent: pulumi.Int(100),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Usage with Cluster Policies
@@ -141,33 +144,36 @@ import (
 // package main
 //
 // import (
-// 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"aws_attributes.instance_profile_arn": map[string]interface{}{
-// 				"type":  "fixed",
-// 				"value": databricks_instance_profile.Shared.Arn,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		json0 := string(tmpJSON0)
-// 		_, err = databricks.NewClusterPolicy(ctx, "this", &databricks.ClusterPolicyArgs{
-// 			Definition: pulumi.String(json0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"aws_attributes.instance_profile_arn": map[string]interface{}{
+//					"type":  "fixed",
+//					"value": databricks_instance_profile.Shared.Arn,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = databricks.NewClusterPolicy(ctx, "this", &databricks.ClusterPolicyArgs{
+//				Definition: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Granting access to all users
@@ -178,42 +184,47 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		this, err := databricks.NewInstanceProfile(ctx, "this", &databricks.InstanceProfileArgs{
-// 			InstanceProfileArn: pulumi.Any(aws_iam_instance_profile.Shared.Arn),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		users, err := databricks.LookupGroup(ctx, &GetGroupArgs{
-// 			DisplayName: "users",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = databricks.NewGroupInstanceProfile(ctx, "all", &databricks.GroupInstanceProfileArgs{
-// 			GroupId:           pulumi.String(users.Id),
-// 			InstanceProfileId: this.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewInstanceProfile(ctx, "this", &databricks.InstanceProfileArgs{
+//				InstanceProfileArn: pulumi.Any(aws_iam_instance_profile.Shared.Arn),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			users, err := databricks.LookupGroup(ctx, &GetGroupArgs{
+//				DisplayName: "users",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGroupInstanceProfile(ctx, "all", &databricks.GroupInstanceProfileArgs{
+//				GroupId:           pulumi.String(users.Id),
+//				InstanceProfileId: this.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// The resource instance profile can be imported using the ARN of it bash
+// # The resource instance profile can be imported using the ARN of it bash
 //
 // ```sh
-//  $ pulumi import databricks:index/instanceProfile:InstanceProfile this <instance-profile-arn>
+//
+//	$ pulumi import databricks:index/instanceProfile:InstanceProfile this <instance-profile-arn>
+//
 // ```
 type InstanceProfile struct {
 	pulumi.CustomResourceState
@@ -321,7 +332,7 @@ func (i *InstanceProfile) ToInstanceProfileOutputWithContext(ctx context.Context
 // InstanceProfileArrayInput is an input type that accepts InstanceProfileArray and InstanceProfileArrayOutput values.
 // You can construct a concrete instance of `InstanceProfileArrayInput` via:
 //
-//          InstanceProfileArray{ InstanceProfileArgs{...} }
+//	InstanceProfileArray{ InstanceProfileArgs{...} }
 type InstanceProfileArrayInput interface {
 	pulumi.Input
 
@@ -346,7 +357,7 @@ func (i InstanceProfileArray) ToInstanceProfileArrayOutputWithContext(ctx contex
 // InstanceProfileMapInput is an input type that accepts InstanceProfileMap and InstanceProfileMapOutput values.
 // You can construct a concrete instance of `InstanceProfileMapInput` via:
 //
-//          InstanceProfileMap{ "key": InstanceProfileArgs{...} }
+//	InstanceProfileMap{ "key": InstanceProfileArgs{...} }
 type InstanceProfileMapInput interface {
 	pulumi.Input
 

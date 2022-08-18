@@ -18,20 +18,23 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		all, err := databricks.GetCatalogs(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("allCatalogs", all)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.GetCatalogs(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("allCatalogs", all)
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Related Resources
 //

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class MountWasbGetArgs : Pulumi.ResourceArgs
+    public sealed class MountWasbGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("authType", required: true)]
         public Input<string> AuthType { get; set; } = null!;
@@ -33,5 +33,6 @@ namespace Pulumi.Databricks.Inputs
         public MountWasbGetArgs()
         {
         }
+        public static new MountWasbGetArgs Empty => new MountWasbGetArgs();
     }
 }

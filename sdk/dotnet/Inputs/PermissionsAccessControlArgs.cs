@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks.Inputs
 {
 
-    public sealed class PermissionsAccessControlArgs : Pulumi.ResourceArgs
+    public sealed class PermissionsAccessControlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// name of the group. We recommend setting permissions on groups.
@@ -39,5 +39,6 @@ namespace Pulumi.Databricks.Inputs
         public PermissionsAccessControlArgs()
         {
         }
+        public static new PermissionsAccessControlArgs Empty => new PermissionsAccessControlArgs();
     }
 }

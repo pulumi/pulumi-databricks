@@ -33,7 +33,7 @@ namespace Pulumi.Databricks
     }
 
 
-    public sealed class GetJobsArgs : Pulumi.InvokeArgs
+    public sealed class GetJobsArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private Dictionary<string, object>? _ids;
@@ -50,9 +50,10 @@ namespace Pulumi.Databricks
         public GetJobsArgs()
         {
         }
+        public static new GetJobsArgs Empty => new GetJobsArgs();
     }
 
-    public sealed class GetJobsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetJobsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ids")]
         private InputMap<object>? _ids;
@@ -69,6 +70,7 @@ namespace Pulumi.Databricks
         public GetJobsInvokeArgs()
         {
         }
+        public static new GetJobsInvokeArgs Empty => new GetJobsInvokeArgs();
     }
 
 

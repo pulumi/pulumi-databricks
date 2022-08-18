@@ -23,26 +23,24 @@ namespace Pulumi.Databricks
     /// Common processing scenario is to apply [cost allocation tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html), that could be enforced by setting custom_tags on a cluster or through cluster policy. Report contains `clusterId` field, that could be joined with data from AWS [cost and usage reports](https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html), that can be joined with `user:ClusterId` tag from AWS usage report.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var usageLogs = new Databricks.MwsLogDelivery("usageLogs", new()
     ///     {
-    ///         var usageLogs = new Databricks.MwsLogDelivery("usageLogs", new Databricks.MwsLogDeliveryArgs
-    ///         {
-    ///             AccountId = @var.Databricks_account_id,
-    ///             CredentialsId = databricks_mws_credentials.Log_writer.Credentials_id,
-    ///             StorageConfigurationId = databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id,
-    ///             DeliveryPathPrefix = "billable-usage",
-    ///             ConfigName = "Usage Logs",
-    ///             LogType = "BILLABLE_USAGE",
-    ///             OutputFormat = "CSV",
-    ///         });
-    ///     }
+    ///         AccountId = @var.Databricks_account_id,
+    ///         CredentialsId = databricks_mws_credentials.Log_writer.Credentials_id,
+    ///         StorageConfigurationId = databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id,
+    ///         DeliveryPathPrefix = "billable-usage",
+    ///         ConfigName = "Usage Logs",
+    ///         LogType = "BILLABLE_USAGE",
+    ///         OutputFormat = "CSV",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Audit Logs
@@ -50,26 +48,24 @@ namespace Pulumi.Databricks
     /// JSON files with [static schema](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html#audit-log-schema) are delivered to `&lt;delivery_path_prefix&gt;/workspaceId=&lt;workspaceId&gt;/date=&lt;yyyy-mm-dd&gt;/auditlogs_&lt;internal-id&gt;.json`. Logs are available within 15 minutes of activation for audit logs. New JSON files are delivered every few minutes, potentially overwriting existing files for each workspace. Sometimes data may arrive later than 15 minutes. Databricks can overwrite the delivered log files in your bucket at any time. If a file is overwritten, the existing content remains, but there may be additional lines for more auditable events. Overwriting ensures exactly-once semantics without requiring read or delete access to your account.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var auditLogs = new Databricks.MwsLogDelivery("auditLogs", new()
     ///     {
-    ///         var auditLogs = new Databricks.MwsLogDelivery("auditLogs", new Databricks.MwsLogDeliveryArgs
-    ///         {
-    ///             AccountId = @var.Databricks_account_id,
-    ///             CredentialsId = databricks_mws_credentials.Log_writer.Credentials_id,
-    ///             StorageConfigurationId = databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id,
-    ///             DeliveryPathPrefix = "audit-logs",
-    ///             ConfigName = "Audit Logs",
-    ///             LogType = "AUDIT_LOGS",
-    ///             OutputFormat = "JSON",
-    ///         });
-    ///     }
+    ///         AccountId = @var.Databricks_account_id,
+    ///         CredentialsId = databricks_mws_credentials.Log_writer.Credentials_id,
+    ///         StorageConfigurationId = databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id,
+    ///         DeliveryPathPrefix = "audit-logs",
+    ///         ConfigName = "Audit Logs",
+    ///         LogType = "AUDIT_LOGS",
+    ///         OutputFormat = "JSON",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Related Resources
@@ -88,7 +84,7 @@ namespace Pulumi.Databricks
     /// -&gt; **Note** Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/mwsLogDelivery:MwsLogDelivery")]
-    public partial class MwsLogDelivery : Pulumi.CustomResource
+    public partial class MwsLogDelivery : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
@@ -200,7 +196,7 @@ namespace Pulumi.Databricks
         }
     }
 
-    public sealed class MwsLogDeliveryArgs : Pulumi.ResourceArgs
+    public sealed class MwsLogDeliveryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
@@ -277,9 +273,10 @@ namespace Pulumi.Databricks
         public MwsLogDeliveryArgs()
         {
         }
+        public static new MwsLogDeliveryArgs Empty => new MwsLogDeliveryArgs();
     }
 
-    public sealed class MwsLogDeliveryState : Pulumi.ResourceArgs
+    public sealed class MwsLogDeliveryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
@@ -356,5 +353,6 @@ namespace Pulumi.Databricks
         public MwsLogDeliveryState()
         {
         }
+        public static new MwsLogDeliveryState Empty => new MwsLogDeliveryState();
     }
 }
