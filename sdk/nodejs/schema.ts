@@ -90,7 +90,7 @@ export class Schema extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Username/groupname/sp applicationId schema owner.
+     * Username/groupname/sp applicationId of the schema owner.
      */
     public readonly owner!: pulumi.Output<string>;
     /**
@@ -152,7 +152,7 @@ export interface SchemaState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname/sp applicationId schema owner.
+     * Username/groupname/sp applicationId of the schema owner.
      */
     owner?: pulumi.Input<string>;
     /**
@@ -179,7 +179,7 @@ export interface SchemaArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname/sp applicationId schema owner.
+     * Username/groupname/sp applicationId of the schema owner.
      */
     owner?: pulumi.Input<string>;
     /**

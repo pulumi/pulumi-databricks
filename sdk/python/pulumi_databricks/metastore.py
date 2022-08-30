@@ -37,7 +37,7 @@ class MetastoreArgs:
         :param pulumi.Input[str] delta_sharing_scope: Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id Metastore owner.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
         """
         pulumi.set(__self__, "storage_root", storage_root)
         if cloud is not None:
@@ -190,7 +190,7 @@ class MetastoreArgs:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
-        Username/groupname/sp application_id Metastore owner.
+        Username/groupname/sp application_id of the metastore owner.
         """
         return pulumi.get(self, "owner")
 
@@ -251,7 +251,7 @@ class _MetastoreState:
         :param pulumi.Input[str] delta_sharing_scope: Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id Metastore owner.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
         """
         if cloud is not None:
@@ -394,7 +394,7 @@ class _MetastoreState:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
-        Username/groupname/sp application_id Metastore owner.
+        Username/groupname/sp application_id of the metastore owner.
         """
         return pulumi.get(self, "owner")
 
@@ -485,7 +485,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[str] delta_sharing_scope: Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id Metastore owner.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
         """
         ...
@@ -602,7 +602,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[str] delta_sharing_scope: Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id Metastore owner.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -695,7 +695,7 @@ class Metastore(pulumi.CustomResource):
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
         """
-        Username/groupname/sp application_id Metastore owner.
+        Username/groupname/sp application_id of the metastore owner.
         """
         return pulumi.get(self, "owner")
 

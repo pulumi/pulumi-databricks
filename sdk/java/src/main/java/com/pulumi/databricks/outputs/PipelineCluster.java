@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.PipelineClusterAwsAttributes;
 import com.pulumi.databricks.outputs.PipelineClusterClusterLogConf;
 import com.pulumi.databricks.outputs.PipelineClusterGcpAttributes;
 import com.pulumi.databricks.outputs.PipelineClusterInitScript;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -20,6 +21,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineCluster {
+    private final @Nullable Boolean applyPolicyDefaultValues;
     private final @Nullable PipelineClusterAutoscale autoscale;
     private final @Nullable PipelineClusterAwsAttributes awsAttributes;
     private final @Nullable PipelineClusterClusterLogConf clusterLogConf;
@@ -32,12 +34,14 @@ public final class PipelineCluster {
     private final @Nullable String label;
     private final @Nullable String nodeTypeId;
     private final @Nullable Integer numWorkers;
+    private final @Nullable String policyId;
     private final @Nullable Map<String,Object> sparkConf;
     private final @Nullable Map<String,Object> sparkEnvVars;
     private final @Nullable List<String> sshPublicKeys;
 
     @CustomType.Constructor
     private PipelineCluster(
+        @CustomType.Parameter("applyPolicyDefaultValues") @Nullable Boolean applyPolicyDefaultValues,
         @CustomType.Parameter("autoscale") @Nullable PipelineClusterAutoscale autoscale,
         @CustomType.Parameter("awsAttributes") @Nullable PipelineClusterAwsAttributes awsAttributes,
         @CustomType.Parameter("clusterLogConf") @Nullable PipelineClusterClusterLogConf clusterLogConf,
@@ -50,9 +54,11 @@ public final class PipelineCluster {
         @CustomType.Parameter("label") @Nullable String label,
         @CustomType.Parameter("nodeTypeId") @Nullable String nodeTypeId,
         @CustomType.Parameter("numWorkers") @Nullable Integer numWorkers,
+        @CustomType.Parameter("policyId") @Nullable String policyId,
         @CustomType.Parameter("sparkConf") @Nullable Map<String,Object> sparkConf,
         @CustomType.Parameter("sparkEnvVars") @Nullable Map<String,Object> sparkEnvVars,
         @CustomType.Parameter("sshPublicKeys") @Nullable List<String> sshPublicKeys) {
+        this.applyPolicyDefaultValues = applyPolicyDefaultValues;
         this.autoscale = autoscale;
         this.awsAttributes = awsAttributes;
         this.clusterLogConf = clusterLogConf;
@@ -65,11 +71,15 @@ public final class PipelineCluster {
         this.label = label;
         this.nodeTypeId = nodeTypeId;
         this.numWorkers = numWorkers;
+        this.policyId = policyId;
         this.sparkConf = sparkConf;
         this.sparkEnvVars = sparkEnvVars;
         this.sshPublicKeys = sshPublicKeys;
     }
 
+    public Optional<Boolean> applyPolicyDefaultValues() {
+        return Optional.ofNullable(this.applyPolicyDefaultValues);
+    }
     public Optional<PipelineClusterAutoscale> autoscale() {
         return Optional.ofNullable(this.autoscale);
     }
@@ -106,6 +116,9 @@ public final class PipelineCluster {
     public Optional<Integer> numWorkers() {
         return Optional.ofNullable(this.numWorkers);
     }
+    public Optional<String> policyId() {
+        return Optional.ofNullable(this.policyId);
+    }
     public Map<String,Object> sparkConf() {
         return this.sparkConf == null ? Map.of() : this.sparkConf;
     }
@@ -125,6 +138,7 @@ public final class PipelineCluster {
     }
 
     public static final class Builder {
+        private @Nullable Boolean applyPolicyDefaultValues;
         private @Nullable PipelineClusterAutoscale autoscale;
         private @Nullable PipelineClusterAwsAttributes awsAttributes;
         private @Nullable PipelineClusterClusterLogConf clusterLogConf;
@@ -137,6 +151,7 @@ public final class PipelineCluster {
         private @Nullable String label;
         private @Nullable String nodeTypeId;
         private @Nullable Integer numWorkers;
+        private @Nullable String policyId;
         private @Nullable Map<String,Object> sparkConf;
         private @Nullable Map<String,Object> sparkEnvVars;
         private @Nullable List<String> sshPublicKeys;
@@ -147,6 +162,7 @@ public final class PipelineCluster {
 
         public Builder(PipelineCluster defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.applyPolicyDefaultValues = defaults.applyPolicyDefaultValues;
     	      this.autoscale = defaults.autoscale;
     	      this.awsAttributes = defaults.awsAttributes;
     	      this.clusterLogConf = defaults.clusterLogConf;
@@ -159,11 +175,16 @@ public final class PipelineCluster {
     	      this.label = defaults.label;
     	      this.nodeTypeId = defaults.nodeTypeId;
     	      this.numWorkers = defaults.numWorkers;
+    	      this.policyId = defaults.policyId;
     	      this.sparkConf = defaults.sparkConf;
     	      this.sparkEnvVars = defaults.sparkEnvVars;
     	      this.sshPublicKeys = defaults.sshPublicKeys;
         }
 
+        public Builder applyPolicyDefaultValues(@Nullable Boolean applyPolicyDefaultValues) {
+            this.applyPolicyDefaultValues = applyPolicyDefaultValues;
+            return this;
+        }
         public Builder autoscale(@Nullable PipelineClusterAutoscale autoscale) {
             this.autoscale = autoscale;
             return this;
@@ -215,6 +236,10 @@ public final class PipelineCluster {
             this.numWorkers = numWorkers;
             return this;
         }
+        public Builder policyId(@Nullable String policyId) {
+            this.policyId = policyId;
+            return this;
+        }
         public Builder sparkConf(@Nullable Map<String,Object> sparkConf) {
             this.sparkConf = sparkConf;
             return this;
@@ -230,7 +255,7 @@ public final class PipelineCluster {
         public Builder sshPublicKeys(String... sshPublicKeys) {
             return sshPublicKeys(List.of(sshPublicKeys));
         }        public PipelineCluster build() {
-            return new PipelineCluster(autoscale, awsAttributes, clusterLogConf, customTags, driverInstancePoolId, driverNodeTypeId, gcpAttributes, initScripts, instancePoolId, label, nodeTypeId, numWorkers, sparkConf, sparkEnvVars, sshPublicKeys);
+            return new PipelineCluster(applyPolicyDefaultValues, autoscale, awsAttributes, clusterLogConf, customTags, driverInstancePoolId, driverNodeTypeId, gcpAttributes, initScripts, instancePoolId, label, nodeTypeId, numWorkers, policyId, sparkConf, sparkEnvVars, sshPublicKeys);
         }
     }
 }

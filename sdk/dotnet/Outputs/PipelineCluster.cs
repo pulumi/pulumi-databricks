@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineCluster
     {
+        public readonly bool? ApplyPolicyDefaultValues;
         public readonly Outputs.PipelineClusterAutoscale? Autoscale;
         public readonly Outputs.PipelineClusterAwsAttributes? AwsAttributes;
         public readonly Outputs.PipelineClusterClusterLogConf? ClusterLogConf;
@@ -25,12 +26,15 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Label;
         public readonly string? NodeTypeId;
         public readonly int? NumWorkers;
+        public readonly string? PolicyId;
         public readonly ImmutableDictionary<string, object>? SparkConf;
         public readonly ImmutableDictionary<string, object>? SparkEnvVars;
         public readonly ImmutableArray<string> SshPublicKeys;
 
         [OutputConstructor]
         private PipelineCluster(
+            bool? applyPolicyDefaultValues,
+
             Outputs.PipelineClusterAutoscale? autoscale,
 
             Outputs.PipelineClusterAwsAttributes? awsAttributes,
@@ -55,12 +59,15 @@ namespace Pulumi.Databricks.Outputs
 
             int? numWorkers,
 
+            string? policyId,
+
             ImmutableDictionary<string, object>? sparkConf,
 
             ImmutableDictionary<string, object>? sparkEnvVars,
 
             ImmutableArray<string> sshPublicKeys)
         {
+            ApplyPolicyDefaultValues = applyPolicyDefaultValues;
             Autoscale = autoscale;
             AwsAttributes = awsAttributes;
             ClusterLogConf = clusterLogConf;
@@ -73,6 +80,7 @@ namespace Pulumi.Databricks.Outputs
             Label = label;
             NodeTypeId = nodeTypeId;
             NumWorkers = numWorkers;
+            PolicyId = policyId;
             SparkConf = sparkConf;
             SparkEnvVars = sparkEnvVars;
             SshPublicKeys = sshPublicKeys;

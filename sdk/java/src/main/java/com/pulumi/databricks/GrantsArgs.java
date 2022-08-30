@@ -31,6 +31,13 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.externalLocation);
     }
 
+    @Import(name="function")
+    private @Nullable Output<String> function;
+
+    public Optional<Output<String>> function() {
+        return Optional.ofNullable(this.function);
+    }
+
     @Import(name="grants", required=true)
     private Output<List<GrantsGrantArgs>> grants;
 
@@ -78,6 +85,7 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
     private GrantsArgs(GrantsArgs $) {
         this.catalog = $.catalog;
         this.externalLocation = $.externalLocation;
+        this.function = $.function;
         this.grants = $.grants;
         this.metastore = $.metastore;
         this.schema = $.schema;
@@ -120,6 +128,15 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder externalLocation(String externalLocation) {
             return externalLocation(Output.of(externalLocation));
+        }
+
+        public Builder function(@Nullable Output<String> function) {
+            $.function = function;
+            return this;
+        }
+
+        public Builder function(String function) {
+            return function(Output.of(function));
         }
 
         public Builder grants(Output<List<GrantsGrantArgs>> grants) {

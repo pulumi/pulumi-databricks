@@ -26,6 +26,7 @@ class StorageCredentialArgs:
         """
         The set of arguments for constructing a StorageCredential resource.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -102,6 +103,9 @@ class StorageCredentialArgs:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username/groupname/sp application_id of the storage credential owner.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -122,6 +126,7 @@ class _StorageCredentialState:
         """
         Input properties used for looking up and filtering StorageCredential resources.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -198,6 +203,9 @@ class _StorageCredentialState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username/groupname/sp application_id of the storage credential owner.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -237,6 +245,7 @@ class StorageCredential(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         """
         ...
     @overload
@@ -323,6 +332,7 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -373,5 +383,8 @@ class StorageCredential(pulumi.CustomResource):
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
+        """
+        Username/groupname/sp application_id of the storage credential owner.
+        """
         return pulumi.get(self, "owner")
 

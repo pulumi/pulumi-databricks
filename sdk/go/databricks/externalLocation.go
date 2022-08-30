@@ -14,6 +14,7 @@ import (
 // > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
 //
 // To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
+//
 // - StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
 // - `ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
 //
@@ -36,7 +37,7 @@ type ExternalLocation struct {
 	MetastoreId    pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Username/groupname/sp applicationId External Location owner.
+	// Username/groupname/sp applicationId of the external Location owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
@@ -86,7 +87,7 @@ type externalLocationState struct {
 	MetastoreId    *string `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
-	// Username/groupname/sp applicationId External Location owner.
+	// Username/groupname/sp applicationId of the external Location owner.
 	Owner *string `pulumi:"owner"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation *bool `pulumi:"skipValidation"`
@@ -102,7 +103,7 @@ type ExternalLocationState struct {
 	MetastoreId    pulumi.StringPtrInput
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
-	// Username/groupname/sp applicationId External Location owner.
+	// Username/groupname/sp applicationId of the external Location owner.
 	Owner pulumi.StringPtrInput
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrInput
@@ -122,7 +123,7 @@ type externalLocationArgs struct {
 	MetastoreId    *string `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
-	// Username/groupname/sp applicationId External Location owner.
+	// Username/groupname/sp applicationId of the external Location owner.
 	Owner *string `pulumi:"owner"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation *bool `pulumi:"skipValidation"`
@@ -139,7 +140,7 @@ type ExternalLocationArgs struct {
 	MetastoreId    pulumi.StringPtrInput
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
-	// Username/groupname/sp applicationId External Location owner.
+	// Username/groupname/sp applicationId of the external Location owner.
 	Owner pulumi.StringPtrInput
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrInput
@@ -253,7 +254,7 @@ func (o ExternalLocationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Username/groupname/sp applicationId External Location owner.
+// Username/groupname/sp applicationId of the external Location owner.
 func (o ExternalLocationOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }

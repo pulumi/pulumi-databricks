@@ -24,6 +24,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobJobClusterNewCluster {
+    private final @Nullable Boolean applyPolicyDefaultValues;
     private final @Nullable JobJobClusterNewClusterAutoscale autoscale;
     private final @Nullable Integer autoterminationMinutes;
     private final @Nullable JobJobClusterNewClusterAwsAttributes awsAttributes;
@@ -54,6 +55,7 @@ public final class JobJobClusterNewCluster {
 
     @CustomType.Constructor
     private JobJobClusterNewCluster(
+        @CustomType.Parameter("applyPolicyDefaultValues") @Nullable Boolean applyPolicyDefaultValues,
         @CustomType.Parameter("autoscale") @Nullable JobJobClusterNewClusterAutoscale autoscale,
         @CustomType.Parameter("autoterminationMinutes") @Nullable Integer autoterminationMinutes,
         @CustomType.Parameter("awsAttributes") @Nullable JobJobClusterNewClusterAwsAttributes awsAttributes,
@@ -81,6 +83,7 @@ public final class JobJobClusterNewCluster {
         @CustomType.Parameter("sparkVersion") String sparkVersion,
         @CustomType.Parameter("sshPublicKeys") @Nullable List<String> sshPublicKeys,
         @CustomType.Parameter("workloadType") @Nullable JobJobClusterNewClusterWorkloadType workloadType) {
+        this.applyPolicyDefaultValues = applyPolicyDefaultValues;
         this.autoscale = autoscale;
         this.autoterminationMinutes = autoterminationMinutes;
         this.awsAttributes = awsAttributes;
@@ -110,6 +113,9 @@ public final class JobJobClusterNewCluster {
         this.workloadType = workloadType;
     }
 
+    public Optional<Boolean> applyPolicyDefaultValues() {
+        return Optional.ofNullable(this.applyPolicyDefaultValues);
+    }
     public Optional<JobJobClusterNewClusterAutoscale> autoscale() {
         return Optional.ofNullable(this.autoscale);
     }
@@ -201,6 +207,7 @@ public final class JobJobClusterNewCluster {
     }
 
     public static final class Builder {
+        private @Nullable Boolean applyPolicyDefaultValues;
         private @Nullable JobJobClusterNewClusterAutoscale autoscale;
         private @Nullable Integer autoterminationMinutes;
         private @Nullable JobJobClusterNewClusterAwsAttributes awsAttributes;
@@ -235,6 +242,7 @@ public final class JobJobClusterNewCluster {
 
         public Builder(JobJobClusterNewCluster defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.applyPolicyDefaultValues = defaults.applyPolicyDefaultValues;
     	      this.autoscale = defaults.autoscale;
     	      this.autoterminationMinutes = defaults.autoterminationMinutes;
     	      this.awsAttributes = defaults.awsAttributes;
@@ -264,6 +272,10 @@ public final class JobJobClusterNewCluster {
     	      this.workloadType = defaults.workloadType;
         }
 
+        public Builder applyPolicyDefaultValues(@Nullable Boolean applyPolicyDefaultValues) {
+            this.applyPolicyDefaultValues = applyPolicyDefaultValues;
+            return this;
+        }
         public Builder autoscale(@Nullable JobJobClusterNewClusterAutoscale autoscale) {
             this.autoscale = autoscale;
             return this;
@@ -378,7 +390,7 @@ public final class JobJobClusterNewCluster {
             this.workloadType = workloadType;
             return this;
         }        public JobJobClusterNewCluster build() {
-            return new JobJobClusterNewCluster(autoscale, autoterminationMinutes, awsAttributes, azureAttributes, clusterId, clusterLogConf, clusterName, customTags, dataSecurityMode, dockerImage, driverInstancePoolId, driverNodeTypeId, enableElasticDisk, enableLocalDiskEncryption, gcpAttributes, idempotencyToken, initScripts, instancePoolId, nodeTypeId, numWorkers, policyId, singleUserName, sparkConf, sparkEnvVars, sparkVersion, sshPublicKeys, workloadType);
+            return new JobJobClusterNewCluster(applyPolicyDefaultValues, autoscale, autoterminationMinutes, awsAttributes, azureAttributes, clusterId, clusterLogConf, clusterName, customTags, dataSecurityMode, dockerImage, driverInstancePoolId, driverNodeTypeId, enableElasticDisk, enableLocalDiskEncryption, gcpAttributes, idempotencyToken, initScripts, instancePoolId, nodeTypeId, numWorkers, policyId, singleUserName, sparkConf, sparkEnvVars, sparkVersion, sshPublicKeys, workloadType);
         }
     }
 }

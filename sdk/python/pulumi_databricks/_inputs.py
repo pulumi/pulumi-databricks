@@ -1667,6 +1667,7 @@ class JobJobClusterArgs:
 class JobJobClusterNewClusterArgs:
     def __init__(__self__, *,
                  spark_version: pulumi.Input[str],
+                 apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input['JobJobClusterNewClusterAutoscaleArgs']] = None,
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobJobClusterNewClusterAwsAttributesArgs']] = None,
@@ -1694,6 +1695,8 @@ class JobJobClusterNewClusterArgs:
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobJobClusterNewClusterWorkloadTypeArgs']] = None):
         pulumi.set(__self__, "spark_version", spark_version)
+        if apply_policy_default_values is not None:
+            pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if autotermination_minutes is not None:
@@ -1755,6 +1758,15 @@ class JobJobClusterNewClusterArgs:
     @spark_version.setter
     def spark_version(self, value: pulumi.Input[str]):
         pulumi.set(self, "spark_version", value)
+
+    @property
+    @pulumi.getter(name="applyPolicyDefaultValues")
+    def apply_policy_default_values(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "apply_policy_default_values")
+
+    @apply_policy_default_values.setter
+    def apply_policy_default_values(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "apply_policy_default_values", value)
 
     @property
     @pulumi.getter
@@ -2834,6 +2846,7 @@ class JobLibraryPypiArgs:
 class JobNewClusterArgs:
     def __init__(__self__, *,
                  spark_version: pulumi.Input[str],
+                 apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input['JobNewClusterAutoscaleArgs']] = None,
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobNewClusterAwsAttributesArgs']] = None,
@@ -2861,6 +2874,8 @@ class JobNewClusterArgs:
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobNewClusterWorkloadTypeArgs']] = None):
         pulumi.set(__self__, "spark_version", spark_version)
+        if apply_policy_default_values is not None:
+            pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if autotermination_minutes is not None:
@@ -2922,6 +2937,15 @@ class JobNewClusterArgs:
     @spark_version.setter
     def spark_version(self, value: pulumi.Input[str]):
         pulumi.set(self, "spark_version", value)
+
+    @property
+    @pulumi.getter(name="applyPolicyDefaultValues")
+    def apply_policy_default_values(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "apply_policy_default_values")
+
+    @apply_policy_default_values.setter
+    def apply_policy_default_values(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "apply_policy_default_values", value)
 
     @property
     @pulumi.getter
@@ -4720,6 +4744,7 @@ class JobTaskLibraryPypiArgs:
 class JobTaskNewClusterArgs:
     def __init__(__self__, *,
                  spark_version: pulumi.Input[str],
+                 apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input['JobTaskNewClusterAutoscaleArgs']] = None,
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['JobTaskNewClusterAwsAttributesArgs']] = None,
@@ -4747,6 +4772,8 @@ class JobTaskNewClusterArgs:
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  workload_type: Optional[pulumi.Input['JobTaskNewClusterWorkloadTypeArgs']] = None):
         pulumi.set(__self__, "spark_version", spark_version)
+        if apply_policy_default_values is not None:
+            pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if autotermination_minutes is not None:
@@ -4808,6 +4835,15 @@ class JobTaskNewClusterArgs:
     @spark_version.setter
     def spark_version(self, value: pulumi.Input[str]):
         pulumi.set(self, "spark_version", value)
+
+    @property
+    @pulumi.getter(name="applyPolicyDefaultValues")
+    def apply_policy_default_values(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "apply_policy_default_values")
+
+    @apply_policy_default_values.setter
+    def apply_policy_default_values(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "apply_policy_default_values", value)
 
     @property
     @pulumi.getter
@@ -7133,6 +7169,7 @@ class PermissionsAccessControlArgs:
 @pulumi.input_type
 class PipelineClusterArgs:
     def __init__(__self__, *,
+                 apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input['PipelineClusterAutoscaleArgs']] = None,
                  aws_attributes: Optional[pulumi.Input['PipelineClusterAwsAttributesArgs']] = None,
                  cluster_log_conf: Optional[pulumi.Input['PipelineClusterClusterLogConfArgs']] = None,
@@ -7145,9 +7182,12 @@ class PipelineClusterArgs:
                  label: Optional[pulumi.Input[str]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None,
                  spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if apply_policy_default_values is not None:
+            pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if aws_attributes is not None:
@@ -7172,12 +7212,23 @@ class PipelineClusterArgs:
             pulumi.set(__self__, "node_type_id", node_type_id)
         if num_workers is not None:
             pulumi.set(__self__, "num_workers", num_workers)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
         if spark_conf is not None:
             pulumi.set(__self__, "spark_conf", spark_conf)
         if spark_env_vars is not None:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+
+    @property
+    @pulumi.getter(name="applyPolicyDefaultValues")
+    def apply_policy_default_values(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "apply_policy_default_values")
+
+    @apply_policy_default_values.setter
+    def apply_policy_default_values(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "apply_policy_default_values", value)
 
     @property
     @pulumi.getter
@@ -7286,6 +7337,15 @@ class PipelineClusterArgs:
     @num_workers.setter
     def num_workers(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_workers", value)
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_id", value)
 
     @property
     @pulumi.getter(name="sparkConf")

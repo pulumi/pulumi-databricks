@@ -24,6 +24,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobNewCluster {
+    private final @Nullable Boolean applyPolicyDefaultValues;
     private final @Nullable JobNewClusterAutoscale autoscale;
     private final @Nullable Integer autoterminationMinutes;
     private final @Nullable JobNewClusterAwsAttributes awsAttributes;
@@ -54,6 +55,7 @@ public final class JobNewCluster {
 
     @CustomType.Constructor
     private JobNewCluster(
+        @CustomType.Parameter("applyPolicyDefaultValues") @Nullable Boolean applyPolicyDefaultValues,
         @CustomType.Parameter("autoscale") @Nullable JobNewClusterAutoscale autoscale,
         @CustomType.Parameter("autoterminationMinutes") @Nullable Integer autoterminationMinutes,
         @CustomType.Parameter("awsAttributes") @Nullable JobNewClusterAwsAttributes awsAttributes,
@@ -81,6 +83,7 @@ public final class JobNewCluster {
         @CustomType.Parameter("sparkVersion") String sparkVersion,
         @CustomType.Parameter("sshPublicKeys") @Nullable List<String> sshPublicKeys,
         @CustomType.Parameter("workloadType") @Nullable JobNewClusterWorkloadType workloadType) {
+        this.applyPolicyDefaultValues = applyPolicyDefaultValues;
         this.autoscale = autoscale;
         this.autoterminationMinutes = autoterminationMinutes;
         this.awsAttributes = awsAttributes;
@@ -110,6 +113,9 @@ public final class JobNewCluster {
         this.workloadType = workloadType;
     }
 
+    public Optional<Boolean> applyPolicyDefaultValues() {
+        return Optional.ofNullable(this.applyPolicyDefaultValues);
+    }
     public Optional<JobNewClusterAutoscale> autoscale() {
         return Optional.ofNullable(this.autoscale);
     }
@@ -201,6 +207,7 @@ public final class JobNewCluster {
     }
 
     public static final class Builder {
+        private @Nullable Boolean applyPolicyDefaultValues;
         private @Nullable JobNewClusterAutoscale autoscale;
         private @Nullable Integer autoterminationMinutes;
         private @Nullable JobNewClusterAwsAttributes awsAttributes;
@@ -235,6 +242,7 @@ public final class JobNewCluster {
 
         public Builder(JobNewCluster defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.applyPolicyDefaultValues = defaults.applyPolicyDefaultValues;
     	      this.autoscale = defaults.autoscale;
     	      this.autoterminationMinutes = defaults.autoterminationMinutes;
     	      this.awsAttributes = defaults.awsAttributes;
@@ -264,6 +272,10 @@ public final class JobNewCluster {
     	      this.workloadType = defaults.workloadType;
         }
 
+        public Builder applyPolicyDefaultValues(@Nullable Boolean applyPolicyDefaultValues) {
+            this.applyPolicyDefaultValues = applyPolicyDefaultValues;
+            return this;
+        }
         public Builder autoscale(@Nullable JobNewClusterAutoscale autoscale) {
             this.autoscale = autoscale;
             return this;
@@ -378,7 +390,7 @@ public final class JobNewCluster {
             this.workloadType = workloadType;
             return this;
         }        public JobNewCluster build() {
-            return new JobNewCluster(autoscale, autoterminationMinutes, awsAttributes, azureAttributes, clusterId, clusterLogConf, clusterName, customTags, dataSecurityMode, dockerImage, driverInstancePoolId, driverNodeTypeId, enableElasticDisk, enableLocalDiskEncryption, gcpAttributes, idempotencyToken, initScripts, instancePoolId, nodeTypeId, numWorkers, policyId, singleUserName, sparkConf, sparkEnvVars, sparkVersion, sshPublicKeys, workloadType);
+            return new JobNewCluster(applyPolicyDefaultValues, autoscale, autoterminationMinutes, awsAttributes, azureAttributes, clusterId, clusterLogConf, clusterName, customTags, dataSecurityMode, dockerImage, driverInstancePoolId, driverNodeTypeId, enableElasticDisk, enableLocalDiskEncryption, gcpAttributes, idempotencyToken, initScripts, instancePoolId, nodeTypeId, numWorkers, policyId, singleUserName, sparkConf, sparkEnvVars, sparkVersion, sshPublicKeys, workloadType);
         }
     }
 }

@@ -80,9 +80,17 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Username/groupname/sp application_id of the storage credential owner.
+     * 
+     */
     @Export(name="owner", type=String.class, parameters={})
     private Output<String> owner;
 
+    /**
+     * @return Username/groupname/sp application_id of the storage credential owner.
+     * 
+     */
     public Output<String> owner() {
         return this.owner;
     }

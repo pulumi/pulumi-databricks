@@ -17,6 +17,7 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  spark_version: pulumi.Input[str],
+                 apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input['ClusterAutoscaleArgs']] = None,
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['ClusterAwsAttributesArgs']] = None,
@@ -48,6 +49,7 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported get_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
+        :param pulumi.Input[bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
         :param pulumi.Input[str] cluster_name: Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
         :param pulumi.Input[Mapping[str, Any]] custom_tags: Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`.
@@ -67,6 +69,8 @@ class ClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
         """
         pulumi.set(__self__, "spark_version", spark_version)
+        if apply_policy_default_values is not None:
+            pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if autotermination_minutes is not None:
@@ -135,6 +139,18 @@ class ClusterArgs:
     @spark_version.setter
     def spark_version(self, value: pulumi.Input[str]):
         pulumi.set(self, "spark_version", value)
+
+    @property
+    @pulumi.getter(name="applyPolicyDefaultValues")
+    def apply_policy_default_values(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to use policy default values for missing cluster attributes.
+        """
+        return pulumi.get(self, "apply_policy_default_values")
+
+    @apply_policy_default_values.setter
+    def apply_policy_default_values(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "apply_policy_default_values", value)
 
     @property
     @pulumi.getter
@@ -443,6 +459,7 @@ class ClusterArgs:
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
+                 apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input['ClusterAutoscaleArgs']] = None,
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input['ClusterAwsAttributesArgs']] = None,
@@ -477,6 +494,7 @@ class _ClusterState:
                  workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+        :param pulumi.Input[bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
         :param pulumi.Input[str] cluster_name: Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
         :param pulumi.Input[Mapping[str, Any]] custom_tags: Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`.
@@ -498,6 +516,8 @@ class _ClusterState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
         :param pulumi.Input[str] state: (string) State of the cluster.
         """
+        if apply_policy_default_values is not None:
+            pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if autotermination_minutes is not None:
@@ -562,6 +582,18 @@ class _ClusterState:
             pulumi.set(__self__, "url", url)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
+
+    @property
+    @pulumi.getter(name="applyPolicyDefaultValues")
+    def apply_policy_default_values(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to use policy default values for missing cluster attributes.
+        """
+        return pulumi.get(self, "apply_policy_default_values")
+
+    @apply_policy_default_values.setter
+    def apply_policy_default_values(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "apply_policy_default_values", value)
 
     @property
     @pulumi.getter
@@ -917,6 +949,7 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input[pulumi.InputType['ClusterAutoscaleArgs']]] = None,
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAwsAttributesArgs']]] = None,
@@ -958,6 +991,7 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
         :param pulumi.Input[str] cluster_name: Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
         :param pulumi.Input[Mapping[str, Any]] custom_tags: Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`.
@@ -1007,6 +1041,7 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
                  autoscale: Optional[pulumi.Input[pulumi.InputType['ClusterAutoscaleArgs']]] = None,
                  autotermination_minutes: Optional[pulumi.Input[int]] = None,
                  aws_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAwsAttributesArgs']]] = None,
@@ -1045,6 +1080,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
+            __props__.__dict__["apply_policy_default_values"] = apply_policy_default_values
             __props__.__dict__["autoscale"] = autoscale
             __props__.__dict__["autotermination_minutes"] = autotermination_minutes
             __props__.__dict__["aws_attributes"] = aws_attributes
@@ -1089,6 +1125,7 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
             autoscale: Optional[pulumi.Input[pulumi.InputType['ClusterAutoscaleArgs']]] = None,
             autotermination_minutes: Optional[pulumi.Input[int]] = None,
             aws_attributes: Optional[pulumi.Input[pulumi.InputType['ClusterAwsAttributesArgs']]] = None,
@@ -1128,6 +1165,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] apply_policy_default_values: Whether to use policy default values for missing cluster attributes.
         :param pulumi.Input[int] autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
         :param pulumi.Input[str] cluster_name: Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
         :param pulumi.Input[Mapping[str, Any]] custom_tags: Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`.
@@ -1153,6 +1191,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__ = _ClusterState.__new__(_ClusterState)
 
+        __props__.__dict__["apply_policy_default_values"] = apply_policy_default_values
         __props__.__dict__["autoscale"] = autoscale
         __props__.__dict__["autotermination_minutes"] = autotermination_minutes
         __props__.__dict__["aws_attributes"] = aws_attributes
@@ -1186,6 +1225,14 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         __props__.__dict__["workload_type"] = workload_type
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="applyPolicyDefaultValues")
+    def apply_policy_default_values(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to use policy default values for missing cluster attributes.
+        """
+        return pulumi.get(self, "apply_policy_default_values")
 
     @property
     @pulumi.getter

@@ -35,7 +35,8 @@ type StorageCredential struct {
 	Comment               pulumi.StringPtrOutput                          `pulumi:"comment"`
 	MetastoreId           pulumi.StringOutput                             `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-	Name  pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 }
 
@@ -74,7 +75,8 @@ type storageCredentialState struct {
 	Comment               *string                                 `pulumi:"comment"`
 	MetastoreId           *string                                 `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-	Name  *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner *string `pulumi:"owner"`
 }
 
@@ -85,7 +87,8 @@ type StorageCredentialState struct {
 	Comment               pulumi.StringPtrInput
 	MetastoreId           pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-	Name  pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner pulumi.StringPtrInput
 }
 
@@ -100,7 +103,8 @@ type storageCredentialArgs struct {
 	Comment               *string                                 `pulumi:"comment"`
 	MetastoreId           *string                                 `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-	Name  *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner *string `pulumi:"owner"`
 }
 
@@ -112,7 +116,8 @@ type StorageCredentialArgs struct {
 	Comment               pulumi.StringPtrInput
 	MetastoreId           pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-	Name  pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner pulumi.StringPtrInput
 }
 
@@ -232,6 +237,7 @@ func (o StorageCredentialOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Username/groupname/sp applicationId of the storage credential owner.
 func (o StorageCredentialOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }

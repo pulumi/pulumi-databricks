@@ -44,7 +44,7 @@ type Metastore struct {
 	GlobalMetastoreId pulumi.StringOutput  `pulumi:"globalMetastoreId"`
 	// Name of metastore.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Username/groupname/sp applicationId Metastore owner.
+	// Username/groupname/sp applicationId of the metastore owner.
 	Owner  pulumi.StringOutput `pulumi:"owner"`
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
@@ -100,7 +100,7 @@ type metastoreState struct {
 	GlobalMetastoreId *string `pulumi:"globalMetastoreId"`
 	// Name of metastore.
 	Name *string `pulumi:"name"`
-	// Username/groupname/sp applicationId Metastore owner.
+	// Username/groupname/sp applicationId of the metastore owner.
 	Owner  *string `pulumi:"owner"`
 	Region *string `pulumi:"region"`
 	// Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
@@ -125,7 +125,7 @@ type MetastoreState struct {
 	GlobalMetastoreId pulumi.StringPtrInput
 	// Name of metastore.
 	Name pulumi.StringPtrInput
-	// Username/groupname/sp applicationId Metastore owner.
+	// Username/groupname/sp applicationId of the metastore owner.
 	Owner  pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 	// Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
@@ -154,7 +154,7 @@ type metastoreArgs struct {
 	GlobalMetastoreId *string `pulumi:"globalMetastoreId"`
 	// Name of metastore.
 	Name *string `pulumi:"name"`
-	// Username/groupname/sp applicationId Metastore owner.
+	// Username/groupname/sp applicationId of the metastore owner.
 	Owner  *string `pulumi:"owner"`
 	Region *string `pulumi:"region"`
 	// Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
@@ -180,7 +180,7 @@ type MetastoreArgs struct {
 	GlobalMetastoreId pulumi.StringPtrInput
 	// Name of metastore.
 	Name pulumi.StringPtrInput
-	// Username/groupname/sp applicationId Metastore owner.
+	// Username/groupname/sp applicationId of the metastore owner.
 	Owner  pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 	// Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
@@ -321,7 +321,7 @@ func (o MetastoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Username/groupname/sp applicationId Metastore owner.
+// Username/groupname/sp applicationId of the metastore owner.
 func (o MetastoreOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }

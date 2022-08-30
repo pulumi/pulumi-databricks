@@ -122,7 +122,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Username/groupname/sp applicationId Table owner.
+     * Username/groupname/sp applicationId of the table owner.
      */
     public readonly owner!: pulumi.Output<string>;
     /**
@@ -232,7 +232,7 @@ export interface TableState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname/sp applicationId Table owner.
+     * Username/groupname/sp applicationId of the table owner.
      */
     owner?: pulumi.Input<string>;
     /**
@@ -283,7 +283,7 @@ export interface TableArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname/sp applicationId Table owner.
+     * Username/groupname/sp applicationId of the table owner.
      */
     owner?: pulumi.Input<string>;
     /**

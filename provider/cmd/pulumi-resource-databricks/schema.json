@@ -1218,6 +1218,14 @@
         },
         "databricks:index/JobJobClusterNewCluster:JobJobClusterNewCluster": {
             "properties": {
+                "applyPolicyDefaultValues": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "autoscale": {
                     "$ref": "#/types/databricks:index/JobJobClusterNewClusterAutoscale:JobJobClusterNewClusterAutoscale",
                     "language": {
@@ -2101,6 +2109,14 @@
         },
         "databricks:index/JobNewCluster:JobNewCluster": {
             "properties": {
+                "applyPolicyDefaultValues": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "autoscale": {
                     "$ref": "#/types/databricks:index/JobNewClusterAutoscale:JobNewClusterAutoscale",
                     "language": {
@@ -3495,6 +3511,14 @@
         },
         "databricks:index/JobTaskNewCluster:JobTaskNewCluster": {
             "properties": {
+                "applyPolicyDefaultValues": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "autoscale": {
                     "$ref": "#/types/databricks:index/JobTaskNewClusterAutoscale:JobTaskNewClusterAutoscale",
                     "language": {
@@ -5434,6 +5458,14 @@
         },
         "databricks:index/PipelineCluster:PipelineCluster": {
             "properties": {
+                "applyPolicyDefaultValues": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "autoscale": {
                     "$ref": "#/types/databricks:index/PipelineClusterAutoscale:PipelineClusterAutoscale",
                     "language": {
@@ -5530,6 +5562,14 @@
                 },
                 "numWorkers": {
                     "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "policyId": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8286,7 +8326,7 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Username/groupname/sp application_id catalog owner.\n"
+                    "description": "Username/groupname/sp application_id of the catalog owner.\n"
                 },
                 "properties": {
                     "type": "object",
@@ -8316,7 +8356,7 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Username/groupname/sp application_id catalog owner.\n"
+                    "description": "Username/groupname/sp application_id of the catalog owner.\n"
                 },
                 "properties": {
                     "type": "object",
@@ -8343,7 +8383,7 @@
                     },
                     "owner": {
                         "type": "string",
-                        "description": "Username/groupname/sp application_id catalog owner.\n"
+                        "description": "Username/groupname/sp application_id of the catalog owner.\n"
                     },
                     "properties": {
                         "type": "object",
@@ -8359,6 +8399,10 @@
         "databricks:index/cluster:Cluster": {
             "description": "\n\n\n## Import\n\nThe resource cluster can be imported using cluster id. bash\n\n```sh\n $ pulumi import databricks:index/cluster:Cluster this \u003ccluster-id\u003e\n```\n\n ",
             "properties": {
+                "applyPolicyDefaultValues": {
+                    "type": "boolean",
+                    "description": "Whether to use policy default values for missing cluster attributes.\n"
+                },
                 "autoscale": {
                     "$ref": "#/types/databricks:index/ClusterAutoscale:ClusterAutoscale"
                 },
@@ -8510,6 +8554,10 @@
                 "url"
             ],
             "inputProperties": {
+                "applyPolicyDefaultValues": {
+                    "type": "boolean",
+                    "description": "Whether to use policy default values for missing cluster attributes.\n"
+                },
                 "autoscale": {
                     "$ref": "#/types/databricks:index/ClusterAutoscale:ClusterAutoscale"
                 },
@@ -8641,6 +8689,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Cluster resources.\n",
                 "properties": {
+                    "applyPolicyDefaultValues": {
+                        "type": "boolean",
+                        "description": "Whether to use policy default values for missing cluster attributes.\n"
+                    },
                     "autoscale": {
                         "$ref": "#/types/databricks:index/ClusterAutoscale:ClusterAutoscale"
                     },
@@ -8975,7 +9027,7 @@
             }
         },
         "databricks:index/externalLocation:ExternalLocation": {
-            "description": "\u003e **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access. \n\nTo work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:\n- databricks.StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.\n- `databricks.ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location. \n\n\n## Import\n\nThis resource can be imported by namebash\n\n```sh\n $ pulumi import databricks:index/externalLocation:ExternalLocation this \u003cname\u003e\n```\n\n ",
+            "description": "\u003e **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.\n\nTo work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:\n\n- databricks.StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.\n- `databricks.ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.\n\n\n## Import\n\nThis resource can be imported by namebash\n\n```sh\n $ pulumi import databricks:index/externalLocation:ExternalLocation this \u003cname\u003e\n```\n\n ",
             "properties": {
                 "comment": {
                     "type": "string",
@@ -8994,7 +9046,7 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Username/groupname/sp application_id External Location owner.\n"
+                    "description": "Username/groupname/sp application_id of the external Location owner.\n"
                 },
                 "skipValidation": {
                     "type": "boolean",
@@ -9031,7 +9083,7 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Username/groupname/sp application_id External Location owner.\n"
+                    "description": "Username/groupname/sp application_id of the external Location owner.\n"
                 },
                 "skipValidation": {
                     "type": "boolean",
@@ -9067,7 +9119,7 @@
                     },
                     "owner": {
                         "type": "string",
-                        "description": "Username/groupname/sp application_id External Location owner.\n"
+                        "description": "Username/groupname/sp application_id of the external Location owner.\n"
                     },
                     "skipValidation": {
                         "type": "boolean",
@@ -9240,6 +9292,9 @@
                 "externalLocation": {
                     "type": "string"
                 },
+                "function": {
+                    "type": "string"
+                },
                 "grants": {
                     "type": "array",
                     "items": {
@@ -9276,6 +9331,10 @@
                     "willReplaceOnChanges": true
                 },
                 "externalLocation": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "function": {
                     "type": "string",
                     "willReplaceOnChanges": true
                 },
@@ -9322,6 +9381,10 @@
                         "willReplaceOnChanges": true
                     },
                     "externalLocation": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "function": {
                         "type": "string",
                         "willReplaceOnChanges": true
                     },
@@ -10329,7 +10392,7 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Username/groupname/sp application_id Metastore owner.\n"
+                    "description": "Username/groupname/sp application_id of the metastore owner.\n"
                 },
                 "region": {
                     "type": "string"
@@ -10395,7 +10458,7 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Username/groupname/sp application_id Metastore owner.\n"
+                    "description": "Username/groupname/sp application_id of the metastore owner.\n"
                 },
                 "region": {
                     "type": "string"
@@ -10455,7 +10518,7 @@
                     },
                     "owner": {
                         "type": "string",
-                        "description": "Username/groupname/sp application_id Metastore owner.\n"
+                        "description": "Username/groupname/sp application_id of the metastore owner.\n"
                     },
                     "region": {
                         "type": "string"
@@ -13242,7 +13305,7 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Username/groupname/sp application_id schema owner.\n"
+                    "description": "Username/groupname/sp application_id of the schema owner.\n"
                 },
                 "properties": {
                     "type": "object",
@@ -13277,7 +13340,7 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Username/groupname/sp application_id schema owner.\n"
+                    "description": "Username/groupname/sp application_id of the schema owner.\n"
                 },
                 "properties": {
                     "type": "object",
@@ -13311,7 +13374,7 @@
                     },
                     "owner": {
                         "type": "string",
-                        "description": "Username/groupname/sp application_id schema owner.\n"
+                        "description": "Username/groupname/sp application_id of the schema owner.\n"
                     },
                     "properties": {
                         "type": "object",
@@ -14494,7 +14557,8 @@
                     "description": "Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.\n"
                 },
                 "owner": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Username/groupname/sp application_id of the storage credential owner.\n"
                 }
             },
             "required": [
@@ -14524,7 +14588,8 @@
                     "willReplaceOnChanges": true
                 },
                 "owner": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Username/groupname/sp application_id of the storage credential owner.\n"
                 }
             },
             "stateInputs": {
@@ -14551,7 +14616,8 @@
                         "willReplaceOnChanges": true
                     },
                     "owner": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Username/groupname/sp application_id of the storage credential owner.\n"
                     }
                 },
                 "type": "object"
@@ -14584,7 +14650,7 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Username/groupname/sp application_id Table owner.\n"
+                    "description": "Username/groupname/sp application_id of the table owner.\n"
                 },
                 "properties": {
                     "type": "object",
@@ -14649,7 +14715,7 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Username/groupname/sp application_id Table owner.\n"
+                    "description": "Username/groupname/sp application_id of the table owner.\n"
                 },
                 "properties": {
                     "type": "object",
@@ -14717,7 +14783,7 @@
                     },
                     "owner": {
                         "type": "string",
-                        "description": "Username/groupname/sp application_id Table owner.\n"
+                        "description": "Username/groupname/sp application_id of the table owner.\n"
                     },
                     "properties": {
                         "type": "object",
@@ -15349,7 +15415,7 @@
             }
         },
         "databricks:index/getCurrentUser:getCurrentUser": {
-            "description": "## Exported attributes\n\nData source exposes the following attributes:\n\n* `id` -  The id of the calling user.\n* `application_id` - Application ID of the service principal if the currently logged-in user is a service principal, e.g. `11111111-2222-3333-4444-555666777888`\n* `external_id` - ID of the user in an external identity provider.\n* `user_name` - Name of the user, e.g. `mr.foo@example.com`.\n* `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.\n* `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.\n* `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.\n* `workspace_url` - URL of the current Databricks workspace.\n\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide\n* databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).\n* databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).\n* databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).\n",
+            "description": "## Exported attributes\n\nData source exposes the following attributes:\n\n* `id` -  The id of the calling user.\n* `external_id` - ID of the user in an external identity provider.\n* `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`\n* `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.\n* `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.\n* `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.\n* `workspace_url` - URL of the current Databricks workspace.\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide\n* databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).\n* databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).\n* databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).\n",
             "outputs": {
                 "description": "A collection of values returned by getCurrentUser.\n",
                 "properties": {

@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
  * > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
  *
  * To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
+ *
  * - databricks.StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
  * - `databricks.ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
  *
@@ -61,7 +62,7 @@ export class ExternalLocation extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Username/groupname/sp applicationId External Location owner.
+     * Username/groupname/sp applicationId of the external Location owner.
      */
     public readonly owner!: pulumi.Output<string>;
     /**
@@ -132,7 +133,7 @@ export interface ExternalLocationState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname/sp applicationId External Location owner.
+     * Username/groupname/sp applicationId of the external Location owner.
      */
     owner?: pulumi.Input<string>;
     /**
@@ -163,7 +164,7 @@ export interface ExternalLocationArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname/sp applicationId External Location owner.
+     * Username/groupname/sp applicationId of the external Location owner.
      */
     owner?: pulumi.Input<string>;
     /**

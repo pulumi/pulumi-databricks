@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineClusterArgs : global::Pulumi.ResourceArgs
     {
+        [Input("applyPolicyDefaultValues")]
+        public Input<bool>? ApplyPolicyDefaultValues { get; set; }
+
         [Input("autoscale")]
         public Input<Inputs.PipelineClusterAutoscaleArgs>? Autoscale { get; set; }
 
@@ -57,6 +60,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("numWorkers")]
         public Input<int>? NumWorkers { get; set; }
+
+        [Input("policyId")]
+        public Input<string>? PolicyId { get; set; }
 
         [Input("sparkConf")]
         private InputMap<object>? _sparkConf;

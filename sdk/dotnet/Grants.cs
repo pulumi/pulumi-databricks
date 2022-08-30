@@ -18,6 +18,9 @@ namespace Pulumi.Databricks
         [Output("externalLocation")]
         public Output<string?> ExternalLocation { get; private set; } = null!;
 
+        [Output("function")]
+        public Output<string?> Function { get; private set; } = null!;
+
         [Output("grants")]
         public Output<ImmutableArray<Outputs.GrantsGrant>> GrantDetails { get; private set; } = null!;
 
@@ -88,6 +91,9 @@ namespace Pulumi.Databricks
         [Input("externalLocation")]
         public Input<string>? ExternalLocation { get; set; }
 
+        [Input("function")]
+        public Input<string>? Function { get; set; }
+
         [Input("grants", required: true)]
         private InputList<Inputs.GrantsGrantArgs>? _grants;
         public InputList<Inputs.GrantsGrantArgs> GrantDetails
@@ -124,6 +130,9 @@ namespace Pulumi.Databricks
 
         [Input("externalLocation")]
         public Input<string>? ExternalLocation { get; set; }
+
+        [Input("function")]
+        public Input<string>? Function { get; set; }
 
         [Input("grants")]
         private InputList<Inputs.GrantsGrantGetArgs>? _grants;

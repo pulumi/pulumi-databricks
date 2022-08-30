@@ -87,14 +87,14 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Username/groupname/sp application_id Table owner.
+     * Username/groupname/sp application_id of the table owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id Table owner.
+     * @return Username/groupname/sp application_id of the table owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -324,7 +324,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id Table owner.
+         * @param owner Username/groupname/sp application_id of the table owner.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id Table owner.
+         * @param owner Username/groupname/sp application_id of the table owner.
          * 
          * @return builder
          * 

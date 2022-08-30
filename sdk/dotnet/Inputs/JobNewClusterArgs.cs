@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobNewClusterArgs : global::Pulumi.ResourceArgs
     {
+        [Input("applyPolicyDefaultValues")]
+        public Input<bool>? ApplyPolicyDefaultValues { get; set; }
+
         [Input("autoscale")]
         public Input<Inputs.JobNewClusterAutoscaleArgs>? Autoscale { get; set; }
 

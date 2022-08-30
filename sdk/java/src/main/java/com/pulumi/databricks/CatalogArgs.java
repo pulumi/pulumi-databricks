@@ -55,14 +55,14 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Username/groupname/sp application_id catalog owner.
+     * Username/groupname/sp application_id of the catalog owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id catalog owner.
+     * @return Username/groupname/sp application_id of the catalog owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -164,7 +164,7 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id catalog owner.
+         * @param owner Username/groupname/sp application_id of the catalog owner.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id catalog owner.
+         * @param owner Username/groupname/sp application_id of the catalog owner.
          * 
          * @return builder
          * 
