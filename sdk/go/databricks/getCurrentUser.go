@@ -12,9 +12,8 @@ import (
 // Data source exposes the following attributes:
 //
 // * `id` -  The id of the calling user.
-// * `applicationId` - Application ID of the service principal if the currently logged-in user is a service principal, e.g. `11111111-2222-3333-4444-555666777888`
 // * `externalId` - ID of the user in an external identity provider.
-// * `userName` - Name of the user, e.g. `mr.foo@example.com`.
+// * `userName` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
 // * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
 // * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 // * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mrFoo`.

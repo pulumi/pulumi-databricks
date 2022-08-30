@@ -58,6 +58,9 @@ export class StorageCredential extends pulumi.CustomResource {
      * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Username/groupname/sp applicationId of the storage credential owner.
+     */
     public readonly owner!: pulumi.Output<string>;
 
     /**
@@ -108,6 +111,9 @@ export interface StorageCredentialState {
      * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Username/groupname/sp applicationId of the storage credential owner.
+     */
     owner?: pulumi.Input<string>;
 }
 
@@ -124,5 +130,8 @@ export interface StorageCredentialArgs {
      * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Username/groupname/sp applicationId of the storage credential owner.
+     */
     owner?: pulumi.Input<string>;
 }

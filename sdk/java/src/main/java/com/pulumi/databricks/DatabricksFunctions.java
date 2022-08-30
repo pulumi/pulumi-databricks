@@ -1233,9 +1233,8 @@ public final class DatabricksFunctions {
      * Data source exposes the following attributes:
      * 
      * * `id` -  The id of the calling user.
-     * * `application_id` - Application ID of the service principal if the currently logged-in user is a service principal, e.g. `11111111-2222-3333-4444-555666777888`
      * * `external_id` - ID of the user in an external identity provider.
-     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`.
+     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
      * * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      * * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      * * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
@@ -1260,9 +1259,8 @@ public final class DatabricksFunctions {
      * Data source exposes the following attributes:
      * 
      * * `id` -  The id of the calling user.
-     * * `application_id` - Application ID of the service principal if the currently logged-in user is a service principal, e.g. `11111111-2222-3333-4444-555666777888`
      * * `external_id` - ID of the user in an external identity provider.
-     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`.
+     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
      * * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      * * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      * * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
@@ -1287,9 +1285,8 @@ public final class DatabricksFunctions {
      * Data source exposes the following attributes:
      * 
      * * `id` -  The id of the calling user.
-     * * `application_id` - Application ID of the service principal if the currently logged-in user is a service principal, e.g. `11111111-2222-3333-4444-555666777888`
      * * `external_id` - ID of the user in an external identity provider.
-     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`.
+     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
      * * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      * * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      * * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
@@ -1314,9 +1311,8 @@ public final class DatabricksFunctions {
      * Data source exposes the following attributes:
      * 
      * * `id` -  The id of the calling user.
-     * * `application_id` - Application ID of the service principal if the currently logged-in user is a service principal, e.g. `11111111-2222-3333-4444-555666777888`
      * * `external_id` - ID of the user in an external identity provider.
-     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`.
+     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
      * * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      * * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      * * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
@@ -1341,9 +1337,8 @@ public final class DatabricksFunctions {
      * Data source exposes the following attributes:
      * 
      * * `id` -  The id of the calling user.
-     * * `application_id` - Application ID of the service principal if the currently logged-in user is a service principal, e.g. `11111111-2222-3333-4444-555666777888`
      * * `external_id` - ID of the user in an external identity provider.
-     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`.
+     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
      * * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      * * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      * * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
@@ -1368,9 +1363,8 @@ public final class DatabricksFunctions {
      * Data source exposes the following attributes:
      * 
      * * `id` -  The id of the calling user.
-     * * `application_id` - Application ID of the service principal if the currently logged-in user is a service principal, e.g. `11111111-2222-3333-4444-555666777888`
      * * `external_id` - ID of the user in an external identity provider.
-     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`.
+     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
      * * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      * * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      * * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.

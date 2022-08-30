@@ -27,7 +27,7 @@ class ExternalLocationArgs:
         :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id External Location owner.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external Location owner.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
         """
         pulumi.set(__self__, "credential_name", credential_name)
@@ -104,7 +104,7 @@ class ExternalLocationArgs:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
-        Username/groupname/sp application_id External Location owner.
+        Username/groupname/sp application_id of the external Location owner.
         """
         return pulumi.get(self, "owner")
 
@@ -140,7 +140,7 @@ class _ExternalLocationState:
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] credential_name: Name of the StorageCredential to use with this External Location.
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id External Location owner.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external Location owner.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
         :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
         """
@@ -208,7 +208,7 @@ class _ExternalLocationState:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
-        Username/groupname/sp application_id External Location owner.
+        Username/groupname/sp application_id of the external Location owner.
         """
         return pulumi.get(self, "owner")
 
@@ -258,6 +258,7 @@ class ExternalLocation(pulumi.CustomResource):
         > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
 
         To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
+
         - StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
         - `ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
 
@@ -274,7 +275,7 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] credential_name: Name of the StorageCredential to use with this External Location.
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id External Location owner.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external Location owner.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
         :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
         """
@@ -288,6 +289,7 @@ class ExternalLocation(pulumi.CustomResource):
         > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
 
         To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
+
         - StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
         - `ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
 
@@ -368,7 +370,7 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] credential_name: Name of the StorageCredential to use with this External Location.
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id External Location owner.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external Location owner.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
         :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
         """
@@ -418,7 +420,7 @@ class ExternalLocation(pulumi.CustomResource):
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
         """
-        Username/groupname/sp application_id External Location owner.
+        Username/groupname/sp application_id of the external Location owner.
         """
         return pulumi.get(self, "owner")
 

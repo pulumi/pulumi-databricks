@@ -42,6 +42,10 @@ export class Cluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === Cluster.__pulumiType;
     }
 
+    /**
+     * Whether to use policy default values for missing cluster attributes.
+     */
+    public readonly applyPolicyDefaultValues!: pulumi.Output<boolean | undefined>;
     public readonly autoscale!: pulumi.Output<outputs.ClusterAutoscale | undefined>;
     /**
      * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
@@ -148,6 +152,7 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
+            resourceInputs["applyPolicyDefaultValues"] = state ? state.applyPolicyDefaultValues : undefined;
             resourceInputs["autoscale"] = state ? state.autoscale : undefined;
             resourceInputs["autoterminationMinutes"] = state ? state.autoterminationMinutes : undefined;
             resourceInputs["awsAttributes"] = state ? state.awsAttributes : undefined;
@@ -185,6 +190,7 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.sparkVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sparkVersion'");
             }
+            resourceInputs["applyPolicyDefaultValues"] = args ? args.applyPolicyDefaultValues : undefined;
             resourceInputs["autoscale"] = args ? args.autoscale : undefined;
             resourceInputs["autoterminationMinutes"] = args ? args.autoterminationMinutes : undefined;
             resourceInputs["awsAttributes"] = args ? args.awsAttributes : undefined;
@@ -227,6 +233,10 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
+    /**
+     * Whether to use policy default values for missing cluster attributes.
+     */
+    applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.ClusterAutoscale>;
     /**
      * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
@@ -325,6 +335,10 @@ export interface ClusterState {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
+    /**
+     * Whether to use policy default values for missing cluster attributes.
+     */
+    applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.ClusterAutoscale>;
     /**
      * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._

@@ -102,14 +102,14 @@ public class Catalog extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Username/groupname/sp application_id catalog owner.
+     * Username/groupname/sp application_id of the catalog owner.
      * 
      */
     @Export(name="owner", type=String.class, parameters={})
     private Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id catalog owner.
+     * @return Username/groupname/sp application_id of the catalog owner.
      * 
      */
     public Output<String> owner() {

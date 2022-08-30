@@ -113,7 +113,7 @@ type Table struct {
 	DataSourceFormat pulumi.StringOutput `pulumi:"dataSourceFormat"`
 	// User-visible name of column
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Username/groupname/sp applicationId Table owner.
+	// Username/groupname/sp applicationId of the table owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Extensible Table properties.
 	Properties pulumi.MapOutput `pulumi:"properties"`
@@ -182,7 +182,7 @@ type tableState struct {
 	DataSourceFormat *string `pulumi:"dataSourceFormat"`
 	// User-visible name of column
 	Name *string `pulumi:"name"`
-	// Username/groupname/sp applicationId Table owner.
+	// Username/groupname/sp applicationId of the table owner.
 	Owner *string `pulumi:"owner"`
 	// Extensible Table properties.
 	Properties map[string]interface{} `pulumi:"properties"`
@@ -208,7 +208,7 @@ type TableState struct {
 	DataSourceFormat pulumi.StringPtrInput
 	// User-visible name of column
 	Name pulumi.StringPtrInput
-	// Username/groupname/sp applicationId Table owner.
+	// Username/groupname/sp applicationId of the table owner.
 	Owner pulumi.StringPtrInput
 	// Extensible Table properties.
 	Properties pulumi.MapInput
@@ -238,7 +238,7 @@ type tableArgs struct {
 	DataSourceFormat string `pulumi:"dataSourceFormat"`
 	// User-visible name of column
 	Name *string `pulumi:"name"`
-	// Username/groupname/sp applicationId Table owner.
+	// Username/groupname/sp applicationId of the table owner.
 	Owner *string `pulumi:"owner"`
 	// Extensible Table properties.
 	Properties map[string]interface{} `pulumi:"properties"`
@@ -265,7 +265,7 @@ type TableArgs struct {
 	DataSourceFormat pulumi.StringInput
 	// User-visible name of column
 	Name pulumi.StringPtrInput
-	// Username/groupname/sp applicationId Table owner.
+	// Username/groupname/sp applicationId of the table owner.
 	Owner pulumi.StringPtrInput
 	// Extensible Table properties.
 	Properties pulumi.MapInput
@@ -392,7 +392,7 @@ func (o TableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Username/groupname/sp applicationId Table owner.
+// Username/groupname/sp applicationId of the table owner.
 func (o TableOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }

@@ -518,6 +518,7 @@ export interface JobJobCluster {
 }
 
 export interface JobJobClusterNewCluster {
+    applyPolicyDefaultValues?: boolean;
     autoscale?: outputs.JobJobClusterNewClusterAutoscale;
     autoterminationMinutes?: number;
     awsAttributes?: outputs.JobJobClusterNewClusterAwsAttributes;
@@ -673,6 +674,7 @@ export interface JobLibraryPypi {
 }
 
 export interface JobNewCluster {
+    applyPolicyDefaultValues?: boolean;
     autoscale?: outputs.JobNewClusterAutoscale;
     autoterminationMinutes?: number;
     awsAttributes?: outputs.JobNewClusterAwsAttributes;
@@ -990,6 +992,7 @@ export interface JobTaskLibraryPypi {
 }
 
 export interface JobTaskNewCluster {
+    applyPolicyDefaultValues?: boolean;
     autoscale?: outputs.JobTaskNewClusterAutoscale;
     autoterminationMinutes?: number;
     awsAttributes?: outputs.JobTaskNewClusterAwsAttributes;
@@ -1413,6 +1416,7 @@ export interface PermissionsAccessControl {
 }
 
 export interface PipelineCluster {
+    applyPolicyDefaultValues?: boolean;
     autoscale?: outputs.PipelineClusterAutoscale;
     awsAttributes?: outputs.PipelineClusterAwsAttributes;
     clusterLogConf?: outputs.PipelineClusterClusterLogConf;
@@ -1425,6 +1429,7 @@ export interface PipelineCluster {
     label?: string;
     nodeTypeId: string;
     numWorkers?: number;
+    policyId?: string;
     sparkConf?: {[key: string]: any};
     sparkEnvVars?: {[key: string]: any};
     sshPublicKeys?: string[];

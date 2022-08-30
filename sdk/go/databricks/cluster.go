@@ -23,7 +23,9 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	Autoscale ClusterAutoscalePtrOutput `pulumi:"autoscale"`
+	// Whether to use policy default values for missing cluster attributes.
+	ApplyPolicyDefaultValues pulumi.BoolPtrOutput      `pulumi:"applyPolicyDefaultValues"`
+	Autoscale                ClusterAutoscalePtrOutput `pulumi:"autoscale"`
 	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
 	AutoterminationMinutes pulumi.IntPtrOutput             `pulumi:"autoterminationMinutes"`
 	AwsAttributes          ClusterAwsAttributesPtrOutput   `pulumi:"awsAttributes"`
@@ -109,7 +111,9 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	Autoscale *ClusterAutoscale `pulumi:"autoscale"`
+	// Whether to use policy default values for missing cluster attributes.
+	ApplyPolicyDefaultValues *bool             `pulumi:"applyPolicyDefaultValues"`
+	Autoscale                *ClusterAutoscale `pulumi:"autoscale"`
 	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
 	AutoterminationMinutes *int                    `pulumi:"autoterminationMinutes"`
 	AwsAttributes          *ClusterAwsAttributes   `pulumi:"awsAttributes"`
@@ -164,7 +168,9 @@ type clusterState struct {
 }
 
 type ClusterState struct {
-	Autoscale ClusterAutoscalePtrInput
+	// Whether to use policy default values for missing cluster attributes.
+	ApplyPolicyDefaultValues pulumi.BoolPtrInput
+	Autoscale                ClusterAutoscalePtrInput
 	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
 	AutoterminationMinutes pulumi.IntPtrInput
 	AwsAttributes          ClusterAwsAttributesPtrInput
@@ -223,7 +229,9 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	Autoscale *ClusterAutoscale `pulumi:"autoscale"`
+	// Whether to use policy default values for missing cluster attributes.
+	ApplyPolicyDefaultValues *bool             `pulumi:"applyPolicyDefaultValues"`
+	Autoscale                *ClusterAutoscale `pulumi:"autoscale"`
 	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
 	AutoterminationMinutes *int                    `pulumi:"autoterminationMinutes"`
 	AwsAttributes          *ClusterAwsAttributes   `pulumi:"awsAttributes"`
@@ -274,7 +282,9 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	Autoscale ClusterAutoscalePtrInput
+	// Whether to use policy default values for missing cluster attributes.
+	ApplyPolicyDefaultValues pulumi.BoolPtrInput
+	Autoscale                ClusterAutoscalePtrInput
 	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
 	AutoterminationMinutes pulumi.IntPtrInput
 	AwsAttributes          ClusterAwsAttributesPtrInput
@@ -408,6 +418,11 @@ func (o ClusterOutput) ToClusterOutput() ClusterOutput {
 
 func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return o
+}
+
+// Whether to use policy default values for missing cluster attributes.
+func (o ClusterOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.ApplyPolicyDefaultValues }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterOutput) Autoscale() ClusterAutoscalePtrOutput {

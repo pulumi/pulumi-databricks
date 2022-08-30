@@ -35,6 +35,7 @@ export class Grants extends pulumi.CustomResource {
 
     public readonly catalog!: pulumi.Output<string | undefined>;
     public readonly externalLocation!: pulumi.Output<string | undefined>;
+    public readonly function!: pulumi.Output<string | undefined>;
     public readonly grants!: pulumi.Output<outputs.GrantsGrant[]>;
     public readonly metastore!: pulumi.Output<string | undefined>;
     public readonly schema!: pulumi.Output<string | undefined>;
@@ -57,6 +58,7 @@ export class Grants extends pulumi.CustomResource {
             const state = argsOrState as GrantsState | undefined;
             resourceInputs["catalog"] = state ? state.catalog : undefined;
             resourceInputs["externalLocation"] = state ? state.externalLocation : undefined;
+            resourceInputs["function"] = state ? state.function : undefined;
             resourceInputs["grants"] = state ? state.grants : undefined;
             resourceInputs["metastore"] = state ? state.metastore : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
@@ -70,6 +72,7 @@ export class Grants extends pulumi.CustomResource {
             }
             resourceInputs["catalog"] = args ? args.catalog : undefined;
             resourceInputs["externalLocation"] = args ? args.externalLocation : undefined;
+            resourceInputs["function"] = args ? args.function : undefined;
             resourceInputs["grants"] = args ? args.grants : undefined;
             resourceInputs["metastore"] = args ? args.metastore : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
@@ -88,6 +91,7 @@ export class Grants extends pulumi.CustomResource {
 export interface GrantsState {
     catalog?: pulumi.Input<string>;
     externalLocation?: pulumi.Input<string>;
+    function?: pulumi.Input<string>;
     grants?: pulumi.Input<pulumi.Input<inputs.GrantsGrant>[]>;
     metastore?: pulumi.Input<string>;
     schema?: pulumi.Input<string>;
@@ -102,6 +106,7 @@ export interface GrantsState {
 export interface GrantsArgs {
     catalog?: pulumi.Input<string>;
     externalLocation?: pulumi.Input<string>;
+    function?: pulumi.Input<string>;
     grants: pulumi.Input<pulumi.Input<inputs.GrantsGrant>[]>;
     metastore?: pulumi.Input<string>;
     schema?: pulumi.Input<string>;

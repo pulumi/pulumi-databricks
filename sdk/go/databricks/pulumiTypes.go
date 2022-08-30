@@ -5385,6 +5385,7 @@ func (o JobJobClusterArrayOutput) Index(i pulumi.IntInput) JobJobClusterOutput {
 }
 
 type JobJobClusterNewCluster struct {
+	ApplyPolicyDefaultValues  *bool                                   `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 *JobJobClusterNewClusterAutoscale       `pulumi:"autoscale"`
 	AutoterminationMinutes    *int                                    `pulumi:"autoterminationMinutes"`
 	AwsAttributes             *JobJobClusterNewClusterAwsAttributes   `pulumi:"awsAttributes"`
@@ -5426,6 +5427,7 @@ type JobJobClusterNewClusterInput interface {
 }
 
 type JobJobClusterNewClusterArgs struct {
+	ApplyPolicyDefaultValues  pulumi.BoolPtrInput                            `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 JobJobClusterNewClusterAutoscalePtrInput       `pulumi:"autoscale"`
 	AutoterminationMinutes    pulumi.IntPtrInput                             `pulumi:"autoterminationMinutes"`
 	AwsAttributes             JobJobClusterNewClusterAwsAttributesPtrInput   `pulumi:"awsAttributes"`
@@ -5530,6 +5532,10 @@ func (o JobJobClusterNewClusterOutput) ToJobJobClusterNewClusterPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobClusterNewCluster) *JobJobClusterNewCluster {
 		return &v
 	}).(JobJobClusterNewClusterPtrOutput)
+}
+
+func (o JobJobClusterNewClusterOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewCluster) *bool { return v.ApplyPolicyDefaultValues }).(pulumi.BoolPtrOutput)
 }
 
 func (o JobJobClusterNewClusterOutput) Autoscale() JobJobClusterNewClusterAutoscalePtrOutput {
@@ -5662,6 +5668,15 @@ func (o JobJobClusterNewClusterPtrOutput) Elem() JobJobClusterNewClusterOutput {
 		var ret JobJobClusterNewCluster
 		return ret
 	}).(JobJobClusterNewClusterOutput)
+}
+
+func (o JobJobClusterNewClusterPtrOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewCluster) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApplyPolicyDefaultValues
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o JobJobClusterNewClusterPtrOutput) Autoscale() JobJobClusterNewClusterAutoscalePtrOutput {
@@ -9058,6 +9073,7 @@ func (o JobLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type JobNewCluster struct {
+	ApplyPolicyDefaultValues  *bool                         `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 *JobNewClusterAutoscale       `pulumi:"autoscale"`
 	AutoterminationMinutes    *int                          `pulumi:"autoterminationMinutes"`
 	AwsAttributes             *JobNewClusterAwsAttributes   `pulumi:"awsAttributes"`
@@ -9099,6 +9115,7 @@ type JobNewClusterInput interface {
 }
 
 type JobNewClusterArgs struct {
+	ApplyPolicyDefaultValues  pulumi.BoolPtrInput                  `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 JobNewClusterAutoscalePtrInput       `pulumi:"autoscale"`
 	AutoterminationMinutes    pulumi.IntPtrInput                   `pulumi:"autoterminationMinutes"`
 	AwsAttributes             JobNewClusterAwsAttributesPtrInput   `pulumi:"awsAttributes"`
@@ -9203,6 +9220,10 @@ func (o JobNewClusterOutput) ToJobNewClusterPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobNewCluster) *JobNewCluster {
 		return &v
 	}).(JobNewClusterPtrOutput)
+}
+
+func (o JobNewClusterOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobNewCluster) *bool { return v.ApplyPolicyDefaultValues }).(pulumi.BoolPtrOutput)
 }
 
 func (o JobNewClusterOutput) Autoscale() JobNewClusterAutoscalePtrOutput {
@@ -9335,6 +9356,15 @@ func (o JobNewClusterPtrOutput) Elem() JobNewClusterOutput {
 		var ret JobNewCluster
 		return ret
 	}).(JobNewClusterOutput)
+}
+
+func (o JobNewClusterPtrOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobNewCluster) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApplyPolicyDefaultValues
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o JobNewClusterPtrOutput) Autoscale() JobNewClusterAutoscalePtrOutput {
@@ -14552,6 +14582,7 @@ func (o JobTaskLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type JobTaskNewCluster struct {
+	ApplyPolicyDefaultValues  *bool                             `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 *JobTaskNewClusterAutoscale       `pulumi:"autoscale"`
 	AutoterminationMinutes    *int                              `pulumi:"autoterminationMinutes"`
 	AwsAttributes             *JobTaskNewClusterAwsAttributes   `pulumi:"awsAttributes"`
@@ -14593,6 +14624,7 @@ type JobTaskNewClusterInput interface {
 }
 
 type JobTaskNewClusterArgs struct {
+	ApplyPolicyDefaultValues  pulumi.BoolPtrInput                      `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                 JobTaskNewClusterAutoscalePtrInput       `pulumi:"autoscale"`
 	AutoterminationMinutes    pulumi.IntPtrInput                       `pulumi:"autoterminationMinutes"`
 	AwsAttributes             JobTaskNewClusterAwsAttributesPtrInput   `pulumi:"awsAttributes"`
@@ -14697,6 +14729,10 @@ func (o JobTaskNewClusterOutput) ToJobTaskNewClusterPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskNewCluster) *JobTaskNewCluster {
 		return &v
 	}).(JobTaskNewClusterPtrOutput)
+}
+
+func (o JobTaskNewClusterOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskNewCluster) *bool { return v.ApplyPolicyDefaultValues }).(pulumi.BoolPtrOutput)
 }
 
 func (o JobTaskNewClusterOutput) Autoscale() JobTaskNewClusterAutoscalePtrOutput {
@@ -14829,6 +14865,15 @@ func (o JobTaskNewClusterPtrOutput) Elem() JobTaskNewClusterOutput {
 		var ret JobTaskNewCluster
 		return ret
 	}).(JobTaskNewClusterOutput)
+}
+
+func (o JobTaskNewClusterPtrOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewCluster) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApplyPolicyDefaultValues
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o JobTaskNewClusterPtrOutput) Autoscale() JobTaskNewClusterAutoscalePtrOutput {
@@ -23153,21 +23198,23 @@ func (o PermissionsAccessControlArrayOutput) Index(i pulumi.IntInput) Permission
 }
 
 type PipelineCluster struct {
-	Autoscale            *PipelineClusterAutoscale      `pulumi:"autoscale"`
-	AwsAttributes        *PipelineClusterAwsAttributes  `pulumi:"awsAttributes"`
-	ClusterLogConf       *PipelineClusterClusterLogConf `pulumi:"clusterLogConf"`
-	CustomTags           map[string]interface{}         `pulumi:"customTags"`
-	DriverInstancePoolId *string                        `pulumi:"driverInstancePoolId"`
-	DriverNodeTypeId     *string                        `pulumi:"driverNodeTypeId"`
-	GcpAttributes        *PipelineClusterGcpAttributes  `pulumi:"gcpAttributes"`
-	InitScripts          []PipelineClusterInitScript    `pulumi:"initScripts"`
-	InstancePoolId       *string                        `pulumi:"instancePoolId"`
-	Label                *string                        `pulumi:"label"`
-	NodeTypeId           *string                        `pulumi:"nodeTypeId"`
-	NumWorkers           *int                           `pulumi:"numWorkers"`
-	SparkConf            map[string]interface{}         `pulumi:"sparkConf"`
-	SparkEnvVars         map[string]interface{}         `pulumi:"sparkEnvVars"`
-	SshPublicKeys        []string                       `pulumi:"sshPublicKeys"`
+	ApplyPolicyDefaultValues *bool                          `pulumi:"applyPolicyDefaultValues"`
+	Autoscale                *PipelineClusterAutoscale      `pulumi:"autoscale"`
+	AwsAttributes            *PipelineClusterAwsAttributes  `pulumi:"awsAttributes"`
+	ClusterLogConf           *PipelineClusterClusterLogConf `pulumi:"clusterLogConf"`
+	CustomTags               map[string]interface{}         `pulumi:"customTags"`
+	DriverInstancePoolId     *string                        `pulumi:"driverInstancePoolId"`
+	DriverNodeTypeId         *string                        `pulumi:"driverNodeTypeId"`
+	GcpAttributes            *PipelineClusterGcpAttributes  `pulumi:"gcpAttributes"`
+	InitScripts              []PipelineClusterInitScript    `pulumi:"initScripts"`
+	InstancePoolId           *string                        `pulumi:"instancePoolId"`
+	Label                    *string                        `pulumi:"label"`
+	NodeTypeId               *string                        `pulumi:"nodeTypeId"`
+	NumWorkers               *int                           `pulumi:"numWorkers"`
+	PolicyId                 *string                        `pulumi:"policyId"`
+	SparkConf                map[string]interface{}         `pulumi:"sparkConf"`
+	SparkEnvVars             map[string]interface{}         `pulumi:"sparkEnvVars"`
+	SshPublicKeys            []string                       `pulumi:"sshPublicKeys"`
 }
 
 // PipelineClusterInput is an input type that accepts PipelineClusterArgs and PipelineClusterOutput values.
@@ -23182,21 +23229,23 @@ type PipelineClusterInput interface {
 }
 
 type PipelineClusterArgs struct {
-	Autoscale            PipelineClusterAutoscalePtrInput      `pulumi:"autoscale"`
-	AwsAttributes        PipelineClusterAwsAttributesPtrInput  `pulumi:"awsAttributes"`
-	ClusterLogConf       PipelineClusterClusterLogConfPtrInput `pulumi:"clusterLogConf"`
-	CustomTags           pulumi.MapInput                       `pulumi:"customTags"`
-	DriverInstancePoolId pulumi.StringPtrInput                 `pulumi:"driverInstancePoolId"`
-	DriverNodeTypeId     pulumi.StringPtrInput                 `pulumi:"driverNodeTypeId"`
-	GcpAttributes        PipelineClusterGcpAttributesPtrInput  `pulumi:"gcpAttributes"`
-	InitScripts          PipelineClusterInitScriptArrayInput   `pulumi:"initScripts"`
-	InstancePoolId       pulumi.StringPtrInput                 `pulumi:"instancePoolId"`
-	Label                pulumi.StringPtrInput                 `pulumi:"label"`
-	NodeTypeId           pulumi.StringPtrInput                 `pulumi:"nodeTypeId"`
-	NumWorkers           pulumi.IntPtrInput                    `pulumi:"numWorkers"`
-	SparkConf            pulumi.MapInput                       `pulumi:"sparkConf"`
-	SparkEnvVars         pulumi.MapInput                       `pulumi:"sparkEnvVars"`
-	SshPublicKeys        pulumi.StringArrayInput               `pulumi:"sshPublicKeys"`
+	ApplyPolicyDefaultValues pulumi.BoolPtrInput                   `pulumi:"applyPolicyDefaultValues"`
+	Autoscale                PipelineClusterAutoscalePtrInput      `pulumi:"autoscale"`
+	AwsAttributes            PipelineClusterAwsAttributesPtrInput  `pulumi:"awsAttributes"`
+	ClusterLogConf           PipelineClusterClusterLogConfPtrInput `pulumi:"clusterLogConf"`
+	CustomTags               pulumi.MapInput                       `pulumi:"customTags"`
+	DriverInstancePoolId     pulumi.StringPtrInput                 `pulumi:"driverInstancePoolId"`
+	DriverNodeTypeId         pulumi.StringPtrInput                 `pulumi:"driverNodeTypeId"`
+	GcpAttributes            PipelineClusterGcpAttributesPtrInput  `pulumi:"gcpAttributes"`
+	InitScripts              PipelineClusterInitScriptArrayInput   `pulumi:"initScripts"`
+	InstancePoolId           pulumi.StringPtrInput                 `pulumi:"instancePoolId"`
+	Label                    pulumi.StringPtrInput                 `pulumi:"label"`
+	NodeTypeId               pulumi.StringPtrInput                 `pulumi:"nodeTypeId"`
+	NumWorkers               pulumi.IntPtrInput                    `pulumi:"numWorkers"`
+	PolicyId                 pulumi.StringPtrInput                 `pulumi:"policyId"`
+	SparkConf                pulumi.MapInput                       `pulumi:"sparkConf"`
+	SparkEnvVars             pulumi.MapInput                       `pulumi:"sparkEnvVars"`
+	SshPublicKeys            pulumi.StringArrayInput               `pulumi:"sshPublicKeys"`
 }
 
 func (PipelineClusterArgs) ElementType() reflect.Type {
@@ -23250,6 +23299,10 @@ func (o PipelineClusterOutput) ToPipelineClusterOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o PipelineClusterOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PipelineCluster) *bool { return v.ApplyPolicyDefaultValues }).(pulumi.BoolPtrOutput)
+}
+
 func (o PipelineClusterOutput) Autoscale() PipelineClusterAutoscalePtrOutput {
 	return o.ApplyT(func(v PipelineCluster) *PipelineClusterAutoscale { return v.Autoscale }).(PipelineClusterAutoscalePtrOutput)
 }
@@ -23296,6 +23349,10 @@ func (o PipelineClusterOutput) NodeTypeId() pulumi.StringPtrOutput {
 
 func (o PipelineClusterOutput) NumWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PipelineCluster) *int { return v.NumWorkers }).(pulumi.IntPtrOutput)
+}
+
+func (o PipelineClusterOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineCluster) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
 }
 
 func (o PipelineClusterOutput) SparkConf() pulumi.MapOutput {

@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobJobClusterNewCluster
     {
+        public readonly bool? ApplyPolicyDefaultValues;
         public readonly Outputs.JobJobClusterNewClusterAutoscale? Autoscale;
         public readonly int? AutoterminationMinutes;
         public readonly Outputs.JobJobClusterNewClusterAwsAttributes? AwsAttributes;
@@ -43,6 +44,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobJobClusterNewCluster(
+            bool? applyPolicyDefaultValues,
+
             Outputs.JobJobClusterNewClusterAutoscale? autoscale,
 
             int? autoterminationMinutes,
@@ -97,6 +100,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobJobClusterNewClusterWorkloadType? workloadType)
         {
+            ApplyPolicyDefaultValues = applyPolicyDefaultValues;
             Autoscale = autoscale;
             AutoterminationMinutes = autoterminationMinutes;
             AwsAttributes = awsAttributes;

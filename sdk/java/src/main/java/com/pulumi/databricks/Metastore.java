@@ -135,14 +135,14 @@ public class Metastore extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Username/groupname/sp application_id Metastore owner.
+     * Username/groupname/sp application_id of the metastore owner.
      * 
      */
     @Export(name="owner", type=String.class, parameters={})
     private Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id Metastore owner.
+     * @return Username/groupname/sp application_id of the metastore owner.
      * 
      */
     public Output<String> owner() {

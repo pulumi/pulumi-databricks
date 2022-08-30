@@ -1641,6 +1641,8 @@ class JobJobClusterNewCluster(dict):
         suggest = None
         if key == "sparkVersion":
             suggest = "spark_version"
+        elif key == "applyPolicyDefaultValues":
+            suggest = "apply_policy_default_values"
         elif key == "autoterminationMinutes":
             suggest = "autotermination_minutes"
         elif key == "awsAttributes":
@@ -1705,6 +1707,7 @@ class JobJobClusterNewCluster(dict):
 
     def __init__(__self__, *,
                  spark_version: str,
+                 apply_policy_default_values: Optional[bool] = None,
                  autoscale: Optional['outputs.JobJobClusterNewClusterAutoscale'] = None,
                  autotermination_minutes: Optional[int] = None,
                  aws_attributes: Optional['outputs.JobJobClusterNewClusterAwsAttributes'] = None,
@@ -1732,6 +1735,8 @@ class JobJobClusterNewCluster(dict):
                  ssh_public_keys: Optional[Sequence[str]] = None,
                  workload_type: Optional['outputs.JobJobClusterNewClusterWorkloadType'] = None):
         pulumi.set(__self__, "spark_version", spark_version)
+        if apply_policy_default_values is not None:
+            pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if autotermination_minutes is not None:
@@ -1789,6 +1794,11 @@ class JobJobClusterNewCluster(dict):
     @pulumi.getter(name="sparkVersion")
     def spark_version(self) -> str:
         return pulumi.get(self, "spark_version")
+
+    @property
+    @pulumi.getter(name="applyPolicyDefaultValues")
+    def apply_policy_default_values(self) -> Optional[bool]:
+        return pulumi.get(self, "apply_policy_default_values")
 
     @property
     @pulumi.getter
@@ -2672,6 +2682,8 @@ class JobNewCluster(dict):
         suggest = None
         if key == "sparkVersion":
             suggest = "spark_version"
+        elif key == "applyPolicyDefaultValues":
+            suggest = "apply_policy_default_values"
         elif key == "autoterminationMinutes":
             suggest = "autotermination_minutes"
         elif key == "awsAttributes":
@@ -2736,6 +2748,7 @@ class JobNewCluster(dict):
 
     def __init__(__self__, *,
                  spark_version: str,
+                 apply_policy_default_values: Optional[bool] = None,
                  autoscale: Optional['outputs.JobNewClusterAutoscale'] = None,
                  autotermination_minutes: Optional[int] = None,
                  aws_attributes: Optional['outputs.JobNewClusterAwsAttributes'] = None,
@@ -2763,6 +2776,8 @@ class JobNewCluster(dict):
                  ssh_public_keys: Optional[Sequence[str]] = None,
                  workload_type: Optional['outputs.JobNewClusterWorkloadType'] = None):
         pulumi.set(__self__, "spark_version", spark_version)
+        if apply_policy_default_values is not None:
+            pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if autotermination_minutes is not None:
@@ -2820,6 +2835,11 @@ class JobNewCluster(dict):
     @pulumi.getter(name="sparkVersion")
     def spark_version(self) -> str:
         return pulumi.get(self, "spark_version")
+
+    @property
+    @pulumi.getter(name="applyPolicyDefaultValues")
+    def apply_policy_default_values(self) -> Optional[bool]:
+        return pulumi.get(self, "apply_policy_default_values")
 
     @property
     @pulumi.getter
@@ -4466,6 +4486,8 @@ class JobTaskNewCluster(dict):
         suggest = None
         if key == "sparkVersion":
             suggest = "spark_version"
+        elif key == "applyPolicyDefaultValues":
+            suggest = "apply_policy_default_values"
         elif key == "autoterminationMinutes":
             suggest = "autotermination_minutes"
         elif key == "awsAttributes":
@@ -4530,6 +4552,7 @@ class JobTaskNewCluster(dict):
 
     def __init__(__self__, *,
                  spark_version: str,
+                 apply_policy_default_values: Optional[bool] = None,
                  autoscale: Optional['outputs.JobTaskNewClusterAutoscale'] = None,
                  autotermination_minutes: Optional[int] = None,
                  aws_attributes: Optional['outputs.JobTaskNewClusterAwsAttributes'] = None,
@@ -4557,6 +4580,8 @@ class JobTaskNewCluster(dict):
                  ssh_public_keys: Optional[Sequence[str]] = None,
                  workload_type: Optional['outputs.JobTaskNewClusterWorkloadType'] = None):
         pulumi.set(__self__, "spark_version", spark_version)
+        if apply_policy_default_values is not None:
+            pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if autotermination_minutes is not None:
@@ -4614,6 +4639,11 @@ class JobTaskNewCluster(dict):
     @pulumi.getter(name="sparkVersion")
     def spark_version(self) -> str:
         return pulumi.get(self, "spark_version")
+
+    @property
+    @pulumi.getter(name="applyPolicyDefaultValues")
+    def apply_policy_default_values(self) -> Optional[bool]:
+        return pulumi.get(self, "apply_policy_default_values")
 
     @property
     @pulumi.getter
@@ -6989,7 +7019,9 @@ class PipelineCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "awsAttributes":
+        if key == "applyPolicyDefaultValues":
+            suggest = "apply_policy_default_values"
+        elif key == "awsAttributes":
             suggest = "aws_attributes"
         elif key == "clusterLogConf":
             suggest = "cluster_log_conf"
@@ -7009,6 +7041,8 @@ class PipelineCluster(dict):
             suggest = "node_type_id"
         elif key == "numWorkers":
             suggest = "num_workers"
+        elif key == "policyId":
+            suggest = "policy_id"
         elif key == "sparkConf":
             suggest = "spark_conf"
         elif key == "sparkEnvVars":
@@ -7028,6 +7062,7 @@ class PipelineCluster(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 apply_policy_default_values: Optional[bool] = None,
                  autoscale: Optional['outputs.PipelineClusterAutoscale'] = None,
                  aws_attributes: Optional['outputs.PipelineClusterAwsAttributes'] = None,
                  cluster_log_conf: Optional['outputs.PipelineClusterClusterLogConf'] = None,
@@ -7040,9 +7075,12 @@ class PipelineCluster(dict):
                  label: Optional[str] = None,
                  node_type_id: Optional[str] = None,
                  num_workers: Optional[int] = None,
+                 policy_id: Optional[str] = None,
                  spark_conf: Optional[Mapping[str, Any]] = None,
                  spark_env_vars: Optional[Mapping[str, Any]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None):
+        if apply_policy_default_values is not None:
+            pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if aws_attributes is not None:
@@ -7067,12 +7105,19 @@ class PipelineCluster(dict):
             pulumi.set(__self__, "node_type_id", node_type_id)
         if num_workers is not None:
             pulumi.set(__self__, "num_workers", num_workers)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
         if spark_conf is not None:
             pulumi.set(__self__, "spark_conf", spark_conf)
         if spark_env_vars is not None:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+
+    @property
+    @pulumi.getter(name="applyPolicyDefaultValues")
+    def apply_policy_default_values(self) -> Optional[bool]:
+        return pulumi.get(self, "apply_policy_default_values")
 
     @property
     @pulumi.getter
@@ -7133,6 +7178,11 @@ class PipelineCluster(dict):
     @pulumi.getter(name="numWorkers")
     def num_workers(self) -> Optional[int]:
         return pulumi.get(self, "num_workers")
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[str]:
+        return pulumi.get(self, "policy_id")
 
     @property
     @pulumi.getter(name="sparkConf")

@@ -21,6 +21,12 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/cluster:Cluster")]
     public partial class Cluster : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether to use policy default values for missing cluster attributes.
+        /// </summary>
+        [Output("applyPolicyDefaultValues")]
+        public Output<bool?> ApplyPolicyDefaultValues { get; private set; } = null!;
+
         [Output("autoscale")]
         public Output<Outputs.ClusterAutoscale?> Autoscale { get; private set; } = null!;
 
@@ -223,6 +229,12 @@ namespace Pulumi.Databricks
 
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to use policy default values for missing cluster attributes.
+        /// </summary>
+        [Input("applyPolicyDefaultValues")]
+        public Input<bool>? ApplyPolicyDefaultValues { get; set; }
+
         [Input("autoscale")]
         public Input<Inputs.ClusterAutoscaleArgs>? Autoscale { get; set; }
 
@@ -406,6 +418,12 @@ namespace Pulumi.Databricks
 
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to use policy default values for missing cluster attributes.
+        /// </summary>
+        [Input("applyPolicyDefaultValues")]
+        public Input<bool>? ApplyPolicyDefaultValues { get; set; }
+
         [Input("autoscale")]
         public Input<Inputs.ClusterAutoscaleGetArgs>? Autoscale { get; set; }
 

@@ -69,14 +69,14 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Username/groupname/sp application_id External Location owner.
+     * Username/groupname/sp application_id of the external Location owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id External Location owner.
+     * @return Username/groupname/sp application_id of the external Location owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -216,7 +216,7 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param owner Username/groupname/sp application_id External Location owner.
+         * @param owner Username/groupname/sp application_id of the external Location owner.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param owner Username/groupname/sp application_id External Location owner.
+         * @param owner Username/groupname/sp application_id of the external Location owner.
          * 
          * @return builder
          * 

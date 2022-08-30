@@ -737,6 +737,7 @@ export interface JobJobCluster {
 }
 
 export interface JobJobClusterNewCluster {
+    applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.JobJobClusterNewClusterAutoscale>;
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAwsAttributes>;
@@ -892,6 +893,7 @@ export interface JobLibraryPypi {
 }
 
 export interface JobNewCluster {
+    applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.JobNewClusterAutoscale>;
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobNewClusterAwsAttributes>;
@@ -1209,6 +1211,7 @@ export interface JobTaskLibraryPypi {
 }
 
 export interface JobTaskNewCluster {
+    applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.JobTaskNewClusterAutoscale>;
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.JobTaskNewClusterAwsAttributes>;
@@ -1632,6 +1635,7 @@ export interface PermissionsAccessControl {
 }
 
 export interface PipelineCluster {
+    applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.PipelineClusterAutoscale>;
     awsAttributes?: pulumi.Input<inputs.PipelineClusterAwsAttributes>;
     clusterLogConf?: pulumi.Input<inputs.PipelineClusterClusterLogConf>;
@@ -1644,6 +1648,7 @@ export interface PipelineCluster {
     label?: pulumi.Input<string>;
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
+    policyId?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: any}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;

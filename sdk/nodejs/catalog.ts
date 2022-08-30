@@ -73,7 +73,7 @@ export class Catalog extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Username/groupname/sp applicationId catalog owner.
+     * Username/groupname/sp applicationId of the catalog owner.
      */
     public readonly owner!: pulumi.Output<string>;
     /**
@@ -126,7 +126,7 @@ export interface CatalogState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname/sp applicationId catalog owner.
+     * Username/groupname/sp applicationId of the catalog owner.
      */
     owner?: pulumi.Input<string>;
     /**
@@ -149,7 +149,7 @@ export interface CatalogArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname/sp applicationId catalog owner.
+     * Username/groupname/sp applicationId of the catalog owner.
      */
     owner?: pulumi.Input<string>;
     /**

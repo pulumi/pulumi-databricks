@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.PipelineClusterAwsAttributesArgs;
 import com.pulumi.databricks.inputs.PipelineClusterClusterLogConfArgs;
 import com.pulumi.databricks.inputs.PipelineClusterGcpAttributesArgs;
 import com.pulumi.databricks.inputs.PipelineClusterInitScriptArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -23,6 +24,13 @@ import javax.annotation.Nullable;
 public final class PipelineClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineClusterArgs Empty = new PipelineClusterArgs();
+
+    @Import(name="applyPolicyDefaultValues")
+    private @Nullable Output<Boolean> applyPolicyDefaultValues;
+
+    public Optional<Output<Boolean>> applyPolicyDefaultValues() {
+        return Optional.ofNullable(this.applyPolicyDefaultValues);
+    }
 
     @Import(name="autoscale")
     private @Nullable Output<PipelineClusterAutoscaleArgs> autoscale;
@@ -108,6 +116,13 @@ public final class PipelineClusterArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.numWorkers);
     }
 
+    @Import(name="policyId")
+    private @Nullable Output<String> policyId;
+
+    public Optional<Output<String>> policyId() {
+        return Optional.ofNullable(this.policyId);
+    }
+
     @Import(name="sparkConf")
     private @Nullable Output<Map<String,Object>> sparkConf;
 
@@ -132,6 +147,7 @@ public final class PipelineClusterArgs extends com.pulumi.resources.ResourceArgs
     private PipelineClusterArgs() {}
 
     private PipelineClusterArgs(PipelineClusterArgs $) {
+        this.applyPolicyDefaultValues = $.applyPolicyDefaultValues;
         this.autoscale = $.autoscale;
         this.awsAttributes = $.awsAttributes;
         this.clusterLogConf = $.clusterLogConf;
@@ -144,6 +160,7 @@ public final class PipelineClusterArgs extends com.pulumi.resources.ResourceArgs
         this.label = $.label;
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
+        this.policyId = $.policyId;
         this.sparkConf = $.sparkConf;
         this.sparkEnvVars = $.sparkEnvVars;
         this.sshPublicKeys = $.sshPublicKeys;
@@ -165,6 +182,15 @@ public final class PipelineClusterArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(PipelineClusterArgs defaults) {
             $ = new PipelineClusterArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder applyPolicyDefaultValues(@Nullable Output<Boolean> applyPolicyDefaultValues) {
+            $.applyPolicyDefaultValues = applyPolicyDefaultValues;
+            return this;
+        }
+
+        public Builder applyPolicyDefaultValues(Boolean applyPolicyDefaultValues) {
+            return applyPolicyDefaultValues(Output.of(applyPolicyDefaultValues));
         }
 
         public Builder autoscale(@Nullable Output<PipelineClusterAutoscaleArgs> autoscale) {
@@ -277,6 +303,15 @@ public final class PipelineClusterArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder numWorkers(Integer numWorkers) {
             return numWorkers(Output.of(numWorkers));
+        }
+
+        public Builder policyId(@Nullable Output<String> policyId) {
+            $.policyId = policyId;
+            return this;
+        }
+
+        public Builder policyId(String policyId) {
+            return policyId(Output.of(policyId));
         }
 
         public Builder sparkConf(@Nullable Output<Map<String,Object>> sparkConf) {

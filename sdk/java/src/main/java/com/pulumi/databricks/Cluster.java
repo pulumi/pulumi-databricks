@@ -40,6 +40,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether to use policy default values for missing cluster attributes.
+     * 
+     */
+    @Export(name="applyPolicyDefaultValues", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> applyPolicyDefaultValues;
+
+    /**
+     * @return Whether to use policy default values for missing cluster attributes.
+     * 
+     */
+    public Output<Optional<Boolean>> applyPolicyDefaultValues() {
+        return Codegen.optional(this.applyPolicyDefaultValues);
+    }
     @Export(name="autoscale", type=ClusterAutoscale.class, parameters={})
     private Output</* @Nullable */ ClusterAutoscale> autoscale;
 

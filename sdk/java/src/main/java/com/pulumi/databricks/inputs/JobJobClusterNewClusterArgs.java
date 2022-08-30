@@ -28,6 +28,13 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
 
     public static final JobJobClusterNewClusterArgs Empty = new JobJobClusterNewClusterArgs();
 
+    @Import(name="applyPolicyDefaultValues")
+    private @Nullable Output<Boolean> applyPolicyDefaultValues;
+
+    public Optional<Output<Boolean>> applyPolicyDefaultValues() {
+        return Optional.ofNullable(this.applyPolicyDefaultValues);
+    }
+
     @Import(name="autoscale")
     private @Nullable Output<JobJobClusterNewClusterAutoscaleArgs> autoscale;
 
@@ -220,6 +227,7 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
     private JobJobClusterNewClusterArgs() {}
 
     private JobJobClusterNewClusterArgs(JobJobClusterNewClusterArgs $) {
+        this.applyPolicyDefaultValues = $.applyPolicyDefaultValues;
         this.autoscale = $.autoscale;
         this.autoterminationMinutes = $.autoterminationMinutes;
         this.awsAttributes = $.awsAttributes;
@@ -265,6 +273,15 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
 
         public Builder(JobJobClusterNewClusterArgs defaults) {
             $ = new JobJobClusterNewClusterArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder applyPolicyDefaultValues(@Nullable Output<Boolean> applyPolicyDefaultValues) {
+            $.applyPolicyDefaultValues = applyPolicyDefaultValues;
+            return this;
+        }
+
+        public Builder applyPolicyDefaultValues(Boolean applyPolicyDefaultValues) {
+            return applyPolicyDefaultValues(Output.of(applyPolicyDefaultValues));
         }
 
         public Builder autoscale(@Nullable Output<JobJobClusterNewClusterAutoscaleArgs> autoscale) {

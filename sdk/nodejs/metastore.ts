@@ -73,7 +73,7 @@ export class Metastore extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Username/groupname/sp applicationId Metastore owner.
+     * Username/groupname/sp applicationId of the metastore owner.
      */
     public readonly owner!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
@@ -168,7 +168,7 @@ export interface MetastoreState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname/sp applicationId Metastore owner.
+     * Username/groupname/sp applicationId of the metastore owner.
      */
     owner?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
@@ -210,7 +210,7 @@ export interface MetastoreArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname/sp applicationId Metastore owner.
+     * Username/groupname/sp applicationId of the metastore owner.
      */
     owner?: pulumi.Input<string>;
     region?: pulumi.Input<string>;

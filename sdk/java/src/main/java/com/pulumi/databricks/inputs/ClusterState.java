@@ -29,6 +29,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterState Empty = new ClusterState();
 
+    /**
+     * Whether to use policy default values for missing cluster attributes.
+     * 
+     */
+    @Import(name="applyPolicyDefaultValues")
+    private @Nullable Output<Boolean> applyPolicyDefaultValues;
+
+    /**
+     * @return Whether to use policy default values for missing cluster attributes.
+     * 
+     */
+    public Optional<Output<Boolean>> applyPolicyDefaultValues() {
+        return Optional.ofNullable(this.applyPolicyDefaultValues);
+    }
+
     @Import(name="autoscale")
     private @Nullable Output<ClusterAutoscaleArgs> autoscale;
 
@@ -416,6 +431,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private ClusterState() {}
 
     private ClusterState(ClusterState $) {
+        this.applyPolicyDefaultValues = $.applyPolicyDefaultValues;
         this.autoscale = $.autoscale;
         this.autoterminationMinutes = $.autoterminationMinutes;
         this.awsAttributes = $.awsAttributes;
@@ -466,6 +482,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClusterState defaults) {
             $ = new ClusterState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param applyPolicyDefaultValues Whether to use policy default values for missing cluster attributes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applyPolicyDefaultValues(@Nullable Output<Boolean> applyPolicyDefaultValues) {
+            $.applyPolicyDefaultValues = applyPolicyDefaultValues;
+            return this;
+        }
+
+        /**
+         * @param applyPolicyDefaultValues Whether to use policy default values for missing cluster attributes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applyPolicyDefaultValues(Boolean applyPolicyDefaultValues) {
+            return applyPolicyDefaultValues(Output.of(applyPolicyDefaultValues));
         }
 
         public Builder autoscale(@Nullable Output<ClusterAutoscaleArgs> autoscale) {
