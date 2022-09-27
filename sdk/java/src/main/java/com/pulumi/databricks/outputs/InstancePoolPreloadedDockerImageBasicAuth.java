@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class InstancePoolPreloadedDockerImageBasicAuth {
-    private final String password;
-    private final String username;
+    private String password;
+    private String username;
 
-    @CustomType.Constructor
-    private InstancePoolPreloadedDockerImageBasicAuth(
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("username") String username) {
-        this.password = password;
-        this.username = username;
-    }
-
+    private InstancePoolPreloadedDockerImageBasicAuth() {}
     public String password() {
         return this.password;
     }
@@ -34,30 +27,32 @@ public final class InstancePoolPreloadedDockerImageBasicAuth {
     public static Builder builder(InstancePoolPreloadedDockerImageBasicAuth defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String password;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstancePoolPreloadedDockerImageBasicAuth defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public InstancePoolPreloadedDockerImageBasicAuth build() {
-            return new InstancePoolPreloadedDockerImageBasicAuth(password, username);
+        }
+        public InstancePoolPreloadedDockerImageBasicAuth build() {
+            final var o = new InstancePoolPreloadedDockerImageBasicAuth();
+            o.password = password;
+            o.username = username;
+            return o;
         }
     }
 }

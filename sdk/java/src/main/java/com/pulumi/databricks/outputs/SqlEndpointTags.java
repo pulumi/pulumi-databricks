@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class SqlEndpointTags {
-    private final List<SqlEndpointTagsCustomTag> customTags;
+    private List<SqlEndpointTagsCustomTag> customTags;
 
-    @CustomType.Constructor
-    private SqlEndpointTags(@CustomType.Parameter("customTags") List<SqlEndpointTagsCustomTag> customTags) {
-        this.customTags = customTags;
-    }
-
+    private SqlEndpointTags() {}
     public List<SqlEndpointTagsCustomTag> customTags() {
         return this.customTags;
     }
@@ -28,27 +24,27 @@ public final class SqlEndpointTags {
     public static Builder builder(SqlEndpointTags defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<SqlEndpointTagsCustomTag> customTags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlEndpointTags defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customTags = defaults.customTags;
         }
 
+        @CustomType.Setter
         public Builder customTags(List<SqlEndpointTagsCustomTag> customTags) {
             this.customTags = Objects.requireNonNull(customTags);
             return this;
         }
         public Builder customTags(SqlEndpointTagsCustomTag... customTags) {
             return customTags(List.of(customTags));
-        }        public SqlEndpointTags build() {
-            return new SqlEndpointTags(customTags);
+        }
+        public SqlEndpointTags build() {
+            final var o = new SqlEndpointTags();
+            o.customTags = customTags;
+            return o;
         }
     }
 }

@@ -18,35 +18,24 @@ public final class JobPythonWheelTask {
      * @return Python function as entry point for the task
      * 
      */
-    private final @Nullable String entryPoint;
+    private @Nullable String entryPoint;
     /**
      * @return Named parameters for the task
      * 
      */
-    private final @Nullable Map<String,Object> namedParameters;
+    private @Nullable Map<String,Object> namedParameters;
     /**
      * @return Name of Python package
      * 
      */
-    private final @Nullable String packageName;
+    private @Nullable String packageName;
     /**
-     * @return Parameters for the task
+     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      * 
      */
-    private final @Nullable List<String> parameters;
+    private @Nullable List<String> parameters;
 
-    @CustomType.Constructor
-    private JobPythonWheelTask(
-        @CustomType.Parameter("entryPoint") @Nullable String entryPoint,
-        @CustomType.Parameter("namedParameters") @Nullable Map<String,Object> namedParameters,
-        @CustomType.Parameter("packageName") @Nullable String packageName,
-        @CustomType.Parameter("parameters") @Nullable List<String> parameters) {
-        this.entryPoint = entryPoint;
-        this.namedParameters = namedParameters;
-        this.packageName = packageName;
-        this.parameters = parameters;
-    }
-
+    private JobPythonWheelTask() {}
     /**
      * @return Python function as entry point for the task
      * 
@@ -69,7 +58,7 @@ public final class JobPythonWheelTask {
         return Optional.ofNullable(this.packageName);
     }
     /**
-     * @return Parameters for the task
+     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      * 
      */
     public List<String> parameters() {
@@ -83,17 +72,13 @@ public final class JobPythonWheelTask {
     public static Builder builder(JobPythonWheelTask defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String entryPoint;
         private @Nullable Map<String,Object> namedParameters;
         private @Nullable String packageName;
         private @Nullable List<String> parameters;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobPythonWheelTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entryPoint = defaults.entryPoint;
@@ -102,26 +87,36 @@ public final class JobPythonWheelTask {
     	      this.parameters = defaults.parameters;
         }
 
+        @CustomType.Setter
         public Builder entryPoint(@Nullable String entryPoint) {
             this.entryPoint = entryPoint;
             return this;
         }
+        @CustomType.Setter
         public Builder namedParameters(@Nullable Map<String,Object> namedParameters) {
             this.namedParameters = namedParameters;
             return this;
         }
+        @CustomType.Setter
         public Builder packageName(@Nullable String packageName) {
             this.packageName = packageName;
             return this;
         }
+        @CustomType.Setter
         public Builder parameters(@Nullable List<String> parameters) {
             this.parameters = parameters;
             return this;
         }
         public Builder parameters(String... parameters) {
             return parameters(List.of(parameters));
-        }        public JobPythonWheelTask build() {
-            return new JobPythonWheelTask(entryPoint, namedParameters, packageName, parameters);
+        }
+        public JobPythonWheelTask build() {
+            final var o = new JobPythonWheelTask();
+            o.entryPoint = entryPoint;
+            o.namedParameters = namedParameters;
+            o.packageName = packageName;
+            o.parameters = parameters;
+            return o;
         }
     }
 }

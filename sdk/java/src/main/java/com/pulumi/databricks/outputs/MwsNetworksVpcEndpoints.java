@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class MwsNetworksVpcEndpoints {
-    private final List<String> dataplaneRelays;
-    private final List<String> restApis;
+    private List<String> dataplaneRelays;
+    private List<String> restApis;
 
-    @CustomType.Constructor
-    private MwsNetworksVpcEndpoints(
-        @CustomType.Parameter("dataplaneRelays") List<String> dataplaneRelays,
-        @CustomType.Parameter("restApis") List<String> restApis) {
-        this.dataplaneRelays = dataplaneRelays;
-        this.restApis = restApis;
-    }
-
+    private MwsNetworksVpcEndpoints() {}
     public List<String> dataplaneRelays() {
         return this.dataplaneRelays;
     }
@@ -35,21 +28,18 @@ public final class MwsNetworksVpcEndpoints {
     public static Builder builder(MwsNetworksVpcEndpoints defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> dataplaneRelays;
         private List<String> restApis;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MwsNetworksVpcEndpoints defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataplaneRelays = defaults.dataplaneRelays;
     	      this.restApis = defaults.restApis;
         }
 
+        @CustomType.Setter
         public Builder dataplaneRelays(List<String> dataplaneRelays) {
             this.dataplaneRelays = Objects.requireNonNull(dataplaneRelays);
             return this;
@@ -57,14 +47,19 @@ public final class MwsNetworksVpcEndpoints {
         public Builder dataplaneRelays(String... dataplaneRelays) {
             return dataplaneRelays(List.of(dataplaneRelays));
         }
+        @CustomType.Setter
         public Builder restApis(List<String> restApis) {
             this.restApis = Objects.requireNonNull(restApis);
             return this;
         }
         public Builder restApis(String... restApis) {
             return restApis(List.of(restApis));
-        }        public MwsNetworksVpcEndpoints build() {
-            return new MwsNetworksVpcEndpoints(dataplaneRelays, restApis);
+        }
+        public MwsNetworksVpcEndpoints build() {
+            final var o = new MwsNetworksVpcEndpoints();
+            o.dataplaneRelays = dataplaneRelays;
+            o.restApis = restApis;
+            return o;
         }
     }
 }

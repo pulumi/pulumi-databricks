@@ -14,23 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineClusterInitScript {
-    private final @Nullable PipelineClusterInitScriptDbfs dbfs;
-    private final @Nullable PipelineClusterInitScriptFile file;
-    private final @Nullable PipelineClusterInitScriptGcs gcs;
-    private final @Nullable PipelineClusterInitScriptS3 s3;
+    private @Nullable PipelineClusterInitScriptDbfs dbfs;
+    private @Nullable PipelineClusterInitScriptFile file;
+    private @Nullable PipelineClusterInitScriptGcs gcs;
+    private @Nullable PipelineClusterInitScriptS3 s3;
 
-    @CustomType.Constructor
-    private PipelineClusterInitScript(
-        @CustomType.Parameter("dbfs") @Nullable PipelineClusterInitScriptDbfs dbfs,
-        @CustomType.Parameter("file") @Nullable PipelineClusterInitScriptFile file,
-        @CustomType.Parameter("gcs") @Nullable PipelineClusterInitScriptGcs gcs,
-        @CustomType.Parameter("s3") @Nullable PipelineClusterInitScriptS3 s3) {
-        this.dbfs = dbfs;
-        this.file = file;
-        this.gcs = gcs;
-        this.s3 = s3;
-    }
-
+    private PipelineClusterInitScript() {}
     public Optional<PipelineClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -51,17 +40,13 @@ public final class PipelineClusterInitScript {
     public static Builder builder(PipelineClusterInitScript defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable PipelineClusterInitScriptDbfs dbfs;
         private @Nullable PipelineClusterInitScriptFile file;
         private @Nullable PipelineClusterInitScriptGcs gcs;
         private @Nullable PipelineClusterInitScriptS3 s3;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PipelineClusterInitScript defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
@@ -70,23 +55,33 @@ public final class PipelineClusterInitScript {
     	      this.s3 = defaults.s3;
         }
 
+        @CustomType.Setter
         public Builder dbfs(@Nullable PipelineClusterInitScriptDbfs dbfs) {
             this.dbfs = dbfs;
             return this;
         }
+        @CustomType.Setter
         public Builder file(@Nullable PipelineClusterInitScriptFile file) {
             this.file = file;
             return this;
         }
+        @CustomType.Setter
         public Builder gcs(@Nullable PipelineClusterInitScriptGcs gcs) {
             this.gcs = gcs;
             return this;
         }
+        @CustomType.Setter
         public Builder s3(@Nullable PipelineClusterInitScriptS3 s3) {
             this.s3 = s3;
             return this;
-        }        public PipelineClusterInitScript build() {
-            return new PipelineClusterInitScript(dbfs, file, gcs, s3);
+        }
+        public PipelineClusterInitScript build() {
+            final var o = new PipelineClusterInitScript();
+            o.dbfs = dbfs;
+            o.file = file;
+            o.gcs = gcs;
+            o.s3 = s3;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class SqlEndpointChannel {
      * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
 
-    @CustomType.Constructor
-    private SqlEndpointChannel(@CustomType.Parameter("name") @Nullable String name) {
-        this.name = name;
-    }
-
+    private SqlEndpointChannel() {}
     /**
      * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
      * 
@@ -37,24 +33,24 @@ public final class SqlEndpointChannel {
     public static Builder builder(SqlEndpointChannel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlEndpointChannel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
-        }        public SqlEndpointChannel build() {
-            return new SqlEndpointChannel(name);
+        }
+        public SqlEndpointChannel build() {
+            final var o = new SqlEndpointChannel();
+            o.name = name;
+            return o;
         }
     }
 }

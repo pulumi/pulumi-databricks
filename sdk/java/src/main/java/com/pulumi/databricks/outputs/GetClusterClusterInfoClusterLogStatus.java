@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterInfoClusterLogStatus {
-    private final @Nullable Integer lastAttempted;
-    private final @Nullable String lastException;
+    private @Nullable Integer lastAttempted;
+    private @Nullable String lastException;
 
-    @CustomType.Constructor
-    private GetClusterClusterInfoClusterLogStatus(
-        @CustomType.Parameter("lastAttempted") @Nullable Integer lastAttempted,
-        @CustomType.Parameter("lastException") @Nullable String lastException) {
-        this.lastAttempted = lastAttempted;
-        this.lastException = lastException;
-    }
-
+    private GetClusterClusterInfoClusterLogStatus() {}
     public Optional<Integer> lastAttempted() {
         return Optional.ofNullable(this.lastAttempted);
     }
@@ -37,30 +30,32 @@ public final class GetClusterClusterInfoClusterLogStatus {
     public static Builder builder(GetClusterClusterInfoClusterLogStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer lastAttempted;
         private @Nullable String lastException;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterInfoClusterLogStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lastAttempted = defaults.lastAttempted;
     	      this.lastException = defaults.lastException;
         }
 
+        @CustomType.Setter
         public Builder lastAttempted(@Nullable Integer lastAttempted) {
             this.lastAttempted = lastAttempted;
             return this;
         }
+        @CustomType.Setter
         public Builder lastException(@Nullable String lastException) {
             this.lastException = lastException;
             return this;
-        }        public GetClusterClusterInfoClusterLogStatus build() {
-            return new GetClusterClusterInfoClusterLogStatus(lastAttempted, lastException);
+        }
+        public GetClusterClusterInfoClusterLogStatus build() {
+            final var o = new GetClusterClusterInfoClusterLogStatus();
+            o.lastAttempted = lastAttempted;
+            o.lastException = lastException;
+            return o;
         }
     }
 }

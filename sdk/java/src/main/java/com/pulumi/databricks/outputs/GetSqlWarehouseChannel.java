@@ -15,13 +15,9 @@ public final class GetSqlWarehouseChannel {
      * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
 
-    @CustomType.Constructor
-    private GetSqlWarehouseChannel(@CustomType.Parameter("name") @Nullable String name) {
-        this.name = name;
-    }
-
+    private GetSqlWarehouseChannel() {}
     /**
      * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
      * 
@@ -37,24 +33,24 @@ public final class GetSqlWarehouseChannel {
     public static Builder builder(GetSqlWarehouseChannel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSqlWarehouseChannel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
-        }        public GetSqlWarehouseChannel build() {
-            return new GetSqlWarehouseChannel(name);
+        }
+        public GetSqlWarehouseChannel build() {
+            final var o = new GetSqlWarehouseChannel();
+            o.name = name;
+            return o;
         }
     }
 }

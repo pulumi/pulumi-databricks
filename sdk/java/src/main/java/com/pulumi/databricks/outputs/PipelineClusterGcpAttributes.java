@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineClusterGcpAttributes {
-    private final @Nullable String googleServiceAccount;
+    private @Nullable String googleServiceAccount;
 
-    @CustomType.Constructor
-    private PipelineClusterGcpAttributes(@CustomType.Parameter("googleServiceAccount") @Nullable String googleServiceAccount) {
-        this.googleServiceAccount = googleServiceAccount;
-    }
-
+    private PipelineClusterGcpAttributes() {}
     public Optional<String> googleServiceAccount() {
         return Optional.ofNullable(this.googleServiceAccount);
     }
@@ -29,24 +25,24 @@ public final class PipelineClusterGcpAttributes {
     public static Builder builder(PipelineClusterGcpAttributes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String googleServiceAccount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PipelineClusterGcpAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.googleServiceAccount = defaults.googleServiceAccount;
         }
 
+        @CustomType.Setter
         public Builder googleServiceAccount(@Nullable String googleServiceAccount) {
             this.googleServiceAccount = googleServiceAccount;
             return this;
-        }        public PipelineClusterGcpAttributes build() {
-            return new PipelineClusterGcpAttributes(googleServiceAccount);
+        }
+        public PipelineClusterGcpAttributes build() {
+            final var o = new PipelineClusterGcpAttributes();
+            o.googleServiceAccount = googleServiceAccount;
+            return o;
         }
     }
 }

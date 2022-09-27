@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.JobArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.JobState;
+import com.pulumi.databricks.outputs.JobDbtTask;
 import com.pulumi.databricks.outputs.JobEmailNotifications;
 import com.pulumi.databricks.outputs.JobGitSource;
 import com.pulumi.databricks.outputs.JobJobCluster;
@@ -57,6 +58,12 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> alwaysRunning() {
         return Codegen.optional(this.alwaysRunning);
+    }
+    @Export(name="dbtTask", type=JobDbtTask.class, parameters={})
+    private Output</* @Nullable */ JobDbtTask> dbtTask;
+
+    public Output<Optional<JobDbtTask>> dbtTask() {
+        return Codegen.optional(this.dbtTask);
     }
     /**
      * (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.

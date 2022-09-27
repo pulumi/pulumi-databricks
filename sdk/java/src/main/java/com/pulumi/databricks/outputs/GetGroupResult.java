@@ -17,91 +17,60 @@ public final class GetGroupResult {
      * @return True if group members can create clusters
      * 
      */
-    private final @Nullable Boolean allowClusterCreate;
+    private @Nullable Boolean allowClusterCreate;
     /**
      * @return True if group members can create instance pools
      * 
      */
-    private final @Nullable Boolean allowInstancePoolCreate;
+    private @Nullable Boolean allowInstancePoolCreate;
     /**
      * @return Set of databricks.Group identifiers, that can be modified with databricks_group_member resource.
      * 
      */
-    private final List<String> childGroups;
-    private final @Nullable Boolean databricksSqlAccess;
-    private final String displayName;
+    private List<String> childGroups;
+    private @Nullable Boolean databricksSqlAccess;
+    private String displayName;
     /**
      * @return ID of the group in an external identity provider.
      * 
      */
-    private final String externalId;
+    private String externalId;
     /**
      * @return Set of group identifiers, that can be modified with databricks_group_member resource.
      * 
      */
-    private final List<String> groups;
+    private List<String> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
      * 
      */
-    private final List<String> instanceProfiles;
+    private List<String> instanceProfiles;
     /**
      * @deprecated
      * Please use `users`, `service_principals`, and `child_groups` instead
      * 
      */
     @Deprecated /* Please use `users`, `service_principals`, and `child_groups` instead */
-    private final List<String> members;
-    private final @Nullable Boolean recursive;
+    private List<String> members;
+    private @Nullable Boolean recursive;
     /**
      * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks_group_member resource.
      * 
      */
-    private final List<String> servicePrincipals;
+    private List<String> servicePrincipals;
     /**
      * @return Set of databricks.User identifiers, that can be modified with databricks_group_member resource.
      * 
      */
-    private final List<String> users;
-    private final @Nullable Boolean workspaceAccess;
+    private List<String> users;
+    private @Nullable Boolean workspaceAccess;
 
-    @CustomType.Constructor
-    private GetGroupResult(
-        @CustomType.Parameter("allowClusterCreate") @Nullable Boolean allowClusterCreate,
-        @CustomType.Parameter("allowInstancePoolCreate") @Nullable Boolean allowInstancePoolCreate,
-        @CustomType.Parameter("childGroups") List<String> childGroups,
-        @CustomType.Parameter("databricksSqlAccess") @Nullable Boolean databricksSqlAccess,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("externalId") String externalId,
-        @CustomType.Parameter("groups") List<String> groups,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceProfiles") List<String> instanceProfiles,
-        @CustomType.Parameter("members") List<String> members,
-        @CustomType.Parameter("recursive") @Nullable Boolean recursive,
-        @CustomType.Parameter("servicePrincipals") List<String> servicePrincipals,
-        @CustomType.Parameter("users") List<String> users,
-        @CustomType.Parameter("workspaceAccess") @Nullable Boolean workspaceAccess) {
-        this.allowClusterCreate = allowClusterCreate;
-        this.allowInstancePoolCreate = allowInstancePoolCreate;
-        this.childGroups = childGroups;
-        this.databricksSqlAccess = databricksSqlAccess;
-        this.displayName = displayName;
-        this.externalId = externalId;
-        this.groups = groups;
-        this.id = id;
-        this.instanceProfiles = instanceProfiles;
-        this.members = members;
-        this.recursive = recursive;
-        this.servicePrincipals = servicePrincipals;
-        this.users = users;
-        this.workspaceAccess = workspaceAccess;
-    }
-
+    private GetGroupResult() {}
     /**
      * @return True if group members can create clusters
      * 
@@ -194,7 +163,7 @@ public final class GetGroupResult {
     public static Builder builder(GetGroupResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowClusterCreate;
         private @Nullable Boolean allowInstancePoolCreate;
@@ -210,11 +179,7 @@ public final class GetGroupResult {
         private List<String> servicePrincipals;
         private List<String> users;
         private @Nullable Boolean workspaceAccess;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowClusterCreate = defaults.allowClusterCreate;
@@ -233,14 +198,17 @@ public final class GetGroupResult {
     	      this.workspaceAccess = defaults.workspaceAccess;
         }
 
+        @CustomType.Setter
         public Builder allowClusterCreate(@Nullable Boolean allowClusterCreate) {
             this.allowClusterCreate = allowClusterCreate;
             return this;
         }
+        @CustomType.Setter
         public Builder allowInstancePoolCreate(@Nullable Boolean allowInstancePoolCreate) {
             this.allowInstancePoolCreate = allowInstancePoolCreate;
             return this;
         }
+        @CustomType.Setter
         public Builder childGroups(List<String> childGroups) {
             this.childGroups = Objects.requireNonNull(childGroups);
             return this;
@@ -248,18 +216,22 @@ public final class GetGroupResult {
         public Builder childGroups(String... childGroups) {
             return childGroups(List.of(childGroups));
         }
+        @CustomType.Setter
         public Builder databricksSqlAccess(@Nullable Boolean databricksSqlAccess) {
             this.databricksSqlAccess = databricksSqlAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder externalId(String externalId) {
             this.externalId = Objects.requireNonNull(externalId);
             return this;
         }
+        @CustomType.Setter
         public Builder groups(List<String> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -267,10 +239,12 @@ public final class GetGroupResult {
         public Builder groups(String... groups) {
             return groups(List.of(groups));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceProfiles(List<String> instanceProfiles) {
             this.instanceProfiles = Objects.requireNonNull(instanceProfiles);
             return this;
@@ -278,6 +252,7 @@ public final class GetGroupResult {
         public Builder instanceProfiles(String... instanceProfiles) {
             return instanceProfiles(List.of(instanceProfiles));
         }
+        @CustomType.Setter
         public Builder members(List<String> members) {
             this.members = Objects.requireNonNull(members);
             return this;
@@ -285,10 +260,12 @@ public final class GetGroupResult {
         public Builder members(String... members) {
             return members(List.of(members));
         }
+        @CustomType.Setter
         public Builder recursive(@Nullable Boolean recursive) {
             this.recursive = recursive;
             return this;
         }
+        @CustomType.Setter
         public Builder servicePrincipals(List<String> servicePrincipals) {
             this.servicePrincipals = Objects.requireNonNull(servicePrincipals);
             return this;
@@ -296,6 +273,7 @@ public final class GetGroupResult {
         public Builder servicePrincipals(String... servicePrincipals) {
             return servicePrincipals(List.of(servicePrincipals));
         }
+        @CustomType.Setter
         public Builder users(List<String> users) {
             this.users = Objects.requireNonNull(users);
             return this;
@@ -303,11 +281,28 @@ public final class GetGroupResult {
         public Builder users(String... users) {
             return users(List.of(users));
         }
+        @CustomType.Setter
         public Builder workspaceAccess(@Nullable Boolean workspaceAccess) {
             this.workspaceAccess = workspaceAccess;
             return this;
-        }        public GetGroupResult build() {
-            return new GetGroupResult(allowClusterCreate, allowInstancePoolCreate, childGroups, databricksSqlAccess, displayName, externalId, groups, id, instanceProfiles, members, recursive, servicePrincipals, users, workspaceAccess);
+        }
+        public GetGroupResult build() {
+            final var o = new GetGroupResult();
+            o.allowClusterCreate = allowClusterCreate;
+            o.allowInstancePoolCreate = allowInstancePoolCreate;
+            o.childGroups = childGroups;
+            o.databricksSqlAccess = databricksSqlAccess;
+            o.displayName = displayName;
+            o.externalId = externalId;
+            o.groups = groups;
+            o.id = id;
+            o.instanceProfiles = instanceProfiles;
+            o.members = members;
+            o.recursive = recursive;
+            o.servicePrincipals = servicePrincipals;
+            o.users = users;
+            o.workspaceAccess = workspaceAccess;
+            return o;
         }
     }
 }

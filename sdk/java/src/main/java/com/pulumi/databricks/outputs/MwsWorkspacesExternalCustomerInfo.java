@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class MwsWorkspacesExternalCustomerInfo {
-    private final String authoritativeUserEmail;
-    private final String authoritativeUserFullName;
-    private final String customerName;
+    private String authoritativeUserEmail;
+    private String authoritativeUserFullName;
+    private String customerName;
 
-    @CustomType.Constructor
-    private MwsWorkspacesExternalCustomerInfo(
-        @CustomType.Parameter("authoritativeUserEmail") String authoritativeUserEmail,
-        @CustomType.Parameter("authoritativeUserFullName") String authoritativeUserFullName,
-        @CustomType.Parameter("customerName") String customerName) {
-        this.authoritativeUserEmail = authoritativeUserEmail;
-        this.authoritativeUserFullName = authoritativeUserFullName;
-        this.customerName = customerName;
-    }
-
+    private MwsWorkspacesExternalCustomerInfo() {}
     public String authoritativeUserEmail() {
         return this.authoritativeUserEmail;
     }
@@ -40,16 +31,12 @@ public final class MwsWorkspacesExternalCustomerInfo {
     public static Builder builder(MwsWorkspacesExternalCustomerInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String authoritativeUserEmail;
         private String authoritativeUserFullName;
         private String customerName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MwsWorkspacesExternalCustomerInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authoritativeUserEmail = defaults.authoritativeUserEmail;
@@ -57,19 +44,27 @@ public final class MwsWorkspacesExternalCustomerInfo {
     	      this.customerName = defaults.customerName;
         }
 
+        @CustomType.Setter
         public Builder authoritativeUserEmail(String authoritativeUserEmail) {
             this.authoritativeUserEmail = Objects.requireNonNull(authoritativeUserEmail);
             return this;
         }
+        @CustomType.Setter
         public Builder authoritativeUserFullName(String authoritativeUserFullName) {
             this.authoritativeUserFullName = Objects.requireNonNull(authoritativeUserFullName);
             return this;
         }
+        @CustomType.Setter
         public Builder customerName(String customerName) {
             this.customerName = Objects.requireNonNull(customerName);
             return this;
-        }        public MwsWorkspacesExternalCustomerInfo build() {
-            return new MwsWorkspacesExternalCustomerInfo(authoritativeUserEmail, authoritativeUserFullName, customerName);
+        }
+        public MwsWorkspacesExternalCustomerInfo build() {
+            final var o = new MwsWorkspacesExternalCustomerInfo();
+            o.authoritativeUserEmail = authoritativeUserEmail;
+            o.authoritativeUserFullName = authoritativeUserFullName;
+            o.customerName = customerName;
+            return o;
         }
     }
 }

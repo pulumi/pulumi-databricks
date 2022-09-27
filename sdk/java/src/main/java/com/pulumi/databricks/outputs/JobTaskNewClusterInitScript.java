@@ -14,23 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskNewClusterInitScript {
-    private final @Nullable JobTaskNewClusterInitScriptDbfs dbfs;
-    private final @Nullable JobTaskNewClusterInitScriptFile file;
-    private final @Nullable JobTaskNewClusterInitScriptGcs gcs;
-    private final @Nullable JobTaskNewClusterInitScriptS3 s3;
+    private @Nullable JobTaskNewClusterInitScriptDbfs dbfs;
+    private @Nullable JobTaskNewClusterInitScriptFile file;
+    private @Nullable JobTaskNewClusterInitScriptGcs gcs;
+    private @Nullable JobTaskNewClusterInitScriptS3 s3;
 
-    @CustomType.Constructor
-    private JobTaskNewClusterInitScript(
-        @CustomType.Parameter("dbfs") @Nullable JobTaskNewClusterInitScriptDbfs dbfs,
-        @CustomType.Parameter("file") @Nullable JobTaskNewClusterInitScriptFile file,
-        @CustomType.Parameter("gcs") @Nullable JobTaskNewClusterInitScriptGcs gcs,
-        @CustomType.Parameter("s3") @Nullable JobTaskNewClusterInitScriptS3 s3) {
-        this.dbfs = dbfs;
-        this.file = file;
-        this.gcs = gcs;
-        this.s3 = s3;
-    }
-
+    private JobTaskNewClusterInitScript() {}
     public Optional<JobTaskNewClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -51,17 +40,13 @@ public final class JobTaskNewClusterInitScript {
     public static Builder builder(JobTaskNewClusterInitScript defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable JobTaskNewClusterInitScriptDbfs dbfs;
         private @Nullable JobTaskNewClusterInitScriptFile file;
         private @Nullable JobTaskNewClusterInitScriptGcs gcs;
         private @Nullable JobTaskNewClusterInitScriptS3 s3;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobTaskNewClusterInitScript defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
@@ -70,23 +55,33 @@ public final class JobTaskNewClusterInitScript {
     	      this.s3 = defaults.s3;
         }
 
+        @CustomType.Setter
         public Builder dbfs(@Nullable JobTaskNewClusterInitScriptDbfs dbfs) {
             this.dbfs = dbfs;
             return this;
         }
+        @CustomType.Setter
         public Builder file(@Nullable JobTaskNewClusterInitScriptFile file) {
             this.file = file;
             return this;
         }
+        @CustomType.Setter
         public Builder gcs(@Nullable JobTaskNewClusterInitScriptGcs gcs) {
             this.gcs = gcs;
             return this;
         }
+        @CustomType.Setter
         public Builder s3(@Nullable JobTaskNewClusterInitScriptS3 s3) {
             this.s3 = s3;
             return this;
-        }        public JobTaskNewClusterInitScript build() {
-            return new JobTaskNewClusterInitScript(dbfs, file, gcs, s3);
+        }
+        public JobTaskNewClusterInitScript build() {
+            final var o = new JobTaskNewClusterInitScript();
+            o.dbfs = dbfs;
+            o.file = file;
+            o.gcs = gcs;
+            o.s3 = s3;
+            return o;
         }
     }
 }

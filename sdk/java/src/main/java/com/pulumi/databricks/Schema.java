@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.SchemaArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SchemaState;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -17,8 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
- * 
  * Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
  * 
  * A `databricks.Schema` is contained within databricks.Catalog and can contain tables &amp; views.
@@ -108,6 +107,20 @@ public class Schema extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
+    }
+    /**
+     * Delete schema regardless of its contents.
+     * 
+     */
+    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> forceDestroy;
+
+    /**
+     * @return Delete schema regardless of its contents.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDestroy() {
+        return Codegen.optional(this.forceDestroy);
     }
     @Export(name="metastoreId", type=String.class, parameters={})
     private Output<String> metastoreId;

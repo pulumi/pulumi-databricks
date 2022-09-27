@@ -14,24 +14,15 @@ public final class GetServicePrincipalsResult {
      * @return List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
      * 
      */
-    private final List<String> applicationIds;
-    private final String displayNameContains;
+    private List<String> applicationIds;
+    private String displayNameContains;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetServicePrincipalsResult(
-        @CustomType.Parameter("applicationIds") List<String> applicationIds,
-        @CustomType.Parameter("displayNameContains") String displayNameContains,
-        @CustomType.Parameter("id") String id) {
-        this.applicationIds = applicationIds;
-        this.displayNameContains = displayNameContains;
-        this.id = id;
-    }
-
+    private GetServicePrincipalsResult() {}
     /**
      * @return List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
      * 
@@ -57,16 +48,12 @@ public final class GetServicePrincipalsResult {
     public static Builder builder(GetServicePrincipalsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> applicationIds;
         private String displayNameContains;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServicePrincipalsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationIds = defaults.applicationIds;
@@ -74,6 +61,7 @@ public final class GetServicePrincipalsResult {
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder applicationIds(List<String> applicationIds) {
             this.applicationIds = Objects.requireNonNull(applicationIds);
             return this;
@@ -81,15 +69,22 @@ public final class GetServicePrincipalsResult {
         public Builder applicationIds(String... applicationIds) {
             return applicationIds(List.of(applicationIds));
         }
+        @CustomType.Setter
         public Builder displayNameContains(String displayNameContains) {
             this.displayNameContains = Objects.requireNonNull(displayNameContains);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetServicePrincipalsResult build() {
-            return new GetServicePrincipalsResult(applicationIds, displayNameContains, id);
+        }
+        public GetServicePrincipalsResult build() {
+            final var o = new GetServicePrincipalsResult();
+            o.applicationIds = applicationIds;
+            o.displayNameContains = displayNameContains;
+            o.id = id;
+            return o;
         }
     }
 }

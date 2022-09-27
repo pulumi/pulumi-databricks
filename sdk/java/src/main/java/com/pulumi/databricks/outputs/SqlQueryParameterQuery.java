@@ -13,23 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlQueryParameterQuery {
-    private final @Nullable SqlQueryParameterQueryMultiple multiple;
-    private final String queryId;
-    private final @Nullable String value;
-    private final @Nullable List<String> values;
+    private @Nullable SqlQueryParameterQueryMultiple multiple;
+    private String queryId;
+    private @Nullable String value;
+    private @Nullable List<String> values;
 
-    @CustomType.Constructor
-    private SqlQueryParameterQuery(
-        @CustomType.Parameter("multiple") @Nullable SqlQueryParameterQueryMultiple multiple,
-        @CustomType.Parameter("queryId") String queryId,
-        @CustomType.Parameter("value") @Nullable String value,
-        @CustomType.Parameter("values") @Nullable List<String> values) {
-        this.multiple = multiple;
-        this.queryId = queryId;
-        this.value = value;
-        this.values = values;
-    }
-
+    private SqlQueryParameterQuery() {}
     public Optional<SqlQueryParameterQueryMultiple> multiple() {
         return Optional.ofNullable(this.multiple);
     }
@@ -50,17 +39,13 @@ public final class SqlQueryParameterQuery {
     public static Builder builder(SqlQueryParameterQuery defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable SqlQueryParameterQueryMultiple multiple;
         private String queryId;
         private @Nullable String value;
         private @Nullable List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlQueryParameterQuery defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.multiple = defaults.multiple;
@@ -69,26 +54,36 @@ public final class SqlQueryParameterQuery {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder multiple(@Nullable SqlQueryParameterQueryMultiple multiple) {
             this.multiple = multiple;
             return this;
         }
+        @CustomType.Setter
         public Builder queryId(String queryId) {
             this.queryId = Objects.requireNonNull(queryId);
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
         }
+        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public SqlQueryParameterQuery build() {
-            return new SqlQueryParameterQuery(multiple, queryId, value, values);
+        }
+        public SqlQueryParameterQuery build() {
+            final var o = new SqlQueryParameterQuery();
+            o.multiple = multiple;
+            o.queryId = queryId;
+            o.value = value;
+            o.values = values;
+            return o;
         }
     }
 }

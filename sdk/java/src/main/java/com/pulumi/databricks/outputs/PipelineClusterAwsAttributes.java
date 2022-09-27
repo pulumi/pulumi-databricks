@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineClusterAwsAttributes {
-    private final @Nullable Integer firstOnDemand;
-    private final @Nullable String instanceProfileArn;
-    private final @Nullable String zoneId;
+    private @Nullable Integer firstOnDemand;
+    private @Nullable String instanceProfileArn;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private PipelineClusterAwsAttributes(
-        @CustomType.Parameter("firstOnDemand") @Nullable Integer firstOnDemand,
-        @CustomType.Parameter("instanceProfileArn") @Nullable String instanceProfileArn,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.firstOnDemand = firstOnDemand;
-        this.instanceProfileArn = instanceProfileArn;
-        this.zoneId = zoneId;
-    }
-
+    private PipelineClusterAwsAttributes() {}
     public Optional<Integer> firstOnDemand() {
         return Optional.ofNullable(this.firstOnDemand);
     }
@@ -43,16 +34,12 @@ public final class PipelineClusterAwsAttributes {
     public static Builder builder(PipelineClusterAwsAttributes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer firstOnDemand;
         private @Nullable String instanceProfileArn;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PipelineClusterAwsAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.firstOnDemand = defaults.firstOnDemand;
@@ -60,19 +47,27 @@ public final class PipelineClusterAwsAttributes {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder firstOnDemand(@Nullable Integer firstOnDemand) {
             this.firstOnDemand = firstOnDemand;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceProfileArn(@Nullable String instanceProfileArn) {
             this.instanceProfileArn = instanceProfileArn;
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public PipelineClusterAwsAttributes build() {
-            return new PipelineClusterAwsAttributes(firstOnDemand, instanceProfileArn, zoneId);
+        }
+        public PipelineClusterAwsAttributes build() {
+            final var o = new PipelineClusterAwsAttributes();
+            o.firstOnDemand = firstOnDemand;
+            o.instanceProfileArn = instanceProfileArn;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

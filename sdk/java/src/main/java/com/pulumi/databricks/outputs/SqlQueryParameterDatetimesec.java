@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class SqlQueryParameterDatetimesec {
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private SqlQueryParameterDatetimesec(@CustomType.Parameter("value") String value) {
-        this.value = value;
-    }
-
+    private SqlQueryParameterDatetimesec() {}
     public String value() {
         return this.value;
     }
@@ -27,24 +23,24 @@ public final class SqlQueryParameterDatetimesec {
     public static Builder builder(SqlQueryParameterDatetimesec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlQueryParameterDatetimesec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public SqlQueryParameterDatetimesec build() {
-            return new SqlQueryParameterDatetimesec(value);
+        }
+        public SqlQueryParameterDatetimesec build() {
+            final var o = new SqlQueryParameterDatetimesec();
+            o.value = value;
+            return o;
         }
     }
 }

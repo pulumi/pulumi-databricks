@@ -14,59 +14,40 @@ public final class GetServicePrincipalResult {
      * @return Whether service principal is active or not.
      * 
      */
-    private final Boolean active;
-    private final String applicationId;
+    private Boolean active;
+    private String applicationId;
     /**
      * @return Display name of the service principal, e.g. `Foo SPN`.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return ID of the service principal in an external identity provider.
      * 
      */
-    private final String externalId;
+    private String externalId;
     /**
      * @return Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
      * 
      */
-    private final String home;
+    private String home;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      * 
      */
-    private final String repos;
+    private String repos;
     /**
      * @return The id of the service principal.
      * 
      */
-    private final String spId;
+    private String spId;
 
-    @CustomType.Constructor
-    private GetServicePrincipalResult(
-        @CustomType.Parameter("active") Boolean active,
-        @CustomType.Parameter("applicationId") String applicationId,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("externalId") String externalId,
-        @CustomType.Parameter("home") String home,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("repos") String repos,
-        @CustomType.Parameter("spId") String spId) {
-        this.active = active;
-        this.applicationId = applicationId;
-        this.displayName = displayName;
-        this.externalId = externalId;
-        this.home = home;
-        this.id = id;
-        this.repos = repos;
-        this.spId = spId;
-    }
-
+    private GetServicePrincipalResult() {}
     /**
      * @return Whether service principal is active or not.
      * 
@@ -127,7 +108,7 @@ public final class GetServicePrincipalResult {
     public static Builder builder(GetServicePrincipalResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean active;
         private String applicationId;
@@ -137,11 +118,7 @@ public final class GetServicePrincipalResult {
         private String id;
         private String repos;
         private String spId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServicePrincipalResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.active = defaults.active;
@@ -154,39 +131,57 @@ public final class GetServicePrincipalResult {
     	      this.spId = defaults.spId;
         }
 
+        @CustomType.Setter
         public Builder active(Boolean active) {
             this.active = Objects.requireNonNull(active);
             return this;
         }
+        @CustomType.Setter
         public Builder applicationId(String applicationId) {
             this.applicationId = Objects.requireNonNull(applicationId);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder externalId(String externalId) {
             this.externalId = Objects.requireNonNull(externalId);
             return this;
         }
+        @CustomType.Setter
         public Builder home(String home) {
             this.home = Objects.requireNonNull(home);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder repos(String repos) {
             this.repos = Objects.requireNonNull(repos);
             return this;
         }
+        @CustomType.Setter
         public Builder spId(String spId) {
             this.spId = Objects.requireNonNull(spId);
             return this;
-        }        public GetServicePrincipalResult build() {
-            return new GetServicePrincipalResult(active, applicationId, displayName, externalId, home, id, repos, spId);
+        }
+        public GetServicePrincipalResult build() {
+            final var o = new GetServicePrincipalResult();
+            o.active = active;
+            o.applicationId = applicationId;
+            o.displayName = displayName;
+            o.externalId = externalId;
+            o.home = home;
+            o.id = id;
+            o.repos = repos;
+            o.spId = spId;
+            return o;
         }
     }
 }

@@ -24,6 +24,7 @@ type Job struct {
 
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning pulumi.BoolPtrOutput `pulumi:"alwaysRunning"`
+	DbtTask       JobDbtTaskPtrOutput  `pulumi:"dbtTask"`
 	// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrOutput `pulumi:"emailNotifications"`
 	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
@@ -92,7 +93,8 @@ func GetJob(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Job resources.
 type jobState struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
-	AlwaysRunning *bool `pulumi:"alwaysRunning"`
+	AlwaysRunning *bool       `pulumi:"alwaysRunning"`
+	DbtTask       *JobDbtTask `pulumi:"dbtTask"`
 	// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
 	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
@@ -134,6 +136,7 @@ type jobState struct {
 type JobState struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning pulumi.BoolPtrInput
+	DbtTask       JobDbtTaskPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrInput
 	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
@@ -178,7 +181,8 @@ func (JobState) ElementType() reflect.Type {
 
 type jobArgs struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
-	AlwaysRunning *bool `pulumi:"alwaysRunning"`
+	AlwaysRunning *bool       `pulumi:"alwaysRunning"`
+	DbtTask       *JobDbtTask `pulumi:"dbtTask"`
 	// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
 	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
@@ -219,6 +223,7 @@ type jobArgs struct {
 type JobArgs struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning pulumi.BoolPtrInput
+	DbtTask       JobDbtTaskPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrInput
 	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
@@ -345,6 +350,10 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 // (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 func (o JobOutput) AlwaysRunning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.AlwaysRunning }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobOutput) DbtTask() JobDbtTaskPtrOutput {
+	return o.ApplyT(func(v *Job) JobDbtTaskPtrOutput { return v.DbtTask }).(JobDbtTaskPtrOutput)
 }
 
 // (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.

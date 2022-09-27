@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterInfoInitScript {
-    private final @Nullable GetClusterClusterInfoInitScriptDbfs dbfs;
-    private final @Nullable GetClusterClusterInfoInitScriptS3 s3;
+    private @Nullable GetClusterClusterInfoInitScriptDbfs dbfs;
+    private @Nullable GetClusterClusterInfoInitScriptS3 s3;
 
-    @CustomType.Constructor
-    private GetClusterClusterInfoInitScript(
-        @CustomType.Parameter("dbfs") @Nullable GetClusterClusterInfoInitScriptDbfs dbfs,
-        @CustomType.Parameter("s3") @Nullable GetClusterClusterInfoInitScriptS3 s3) {
-        this.dbfs = dbfs;
-        this.s3 = s3;
-    }
-
+    private GetClusterClusterInfoInitScript() {}
     public Optional<GetClusterClusterInfoInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -37,30 +30,32 @@ public final class GetClusterClusterInfoInitScript {
     public static Builder builder(GetClusterClusterInfoInitScript defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GetClusterClusterInfoInitScriptDbfs dbfs;
         private @Nullable GetClusterClusterInfoInitScriptS3 s3;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterInfoInitScript defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
     	      this.s3 = defaults.s3;
         }
 
+        @CustomType.Setter
         public Builder dbfs(@Nullable GetClusterClusterInfoInitScriptDbfs dbfs) {
             this.dbfs = dbfs;
             return this;
         }
+        @CustomType.Setter
         public Builder s3(@Nullable GetClusterClusterInfoInitScriptS3 s3) {
             this.s3 = s3;
             return this;
-        }        public GetClusterClusterInfoInitScript build() {
-            return new GetClusterClusterInfoInitScript(dbfs, s3);
+        }
+        public GetClusterClusterInfoInitScript build() {
+            final var o = new GetClusterClusterInfoInitScript();
+            o.dbfs = dbfs;
+            o.s3 = s3;
+            return o;
         }
     }
 }

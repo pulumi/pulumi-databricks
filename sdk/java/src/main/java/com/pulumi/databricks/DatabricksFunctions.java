@@ -476,7 +476,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -519,7 +518,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -562,7 +560,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -605,7 +602,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -648,7 +644,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -691,7 +686,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -2618,7 +2612,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -2663,7 +2656,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -2708,7 +2700,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -2753,7 +2744,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -3892,7 +3882,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -3905,7 +3894,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -3918,7 +3906,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -3931,7 +3918,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -4058,7 +4044,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -4071,7 +4056,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -4084,7 +4068,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -4097,7 +4080,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 

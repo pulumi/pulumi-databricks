@@ -67,6 +67,13 @@ namespace Pulumi.Databricks
             set => _azureEnvironment.Set(value);
         }
 
+        private static readonly __Value<string?> _azureLoginAppId = new __Value<string?>(() => __config.Get("azureLoginAppId"));
+        public static string? AzureLoginAppId
+        {
+            get => _azureLoginAppId.Get();
+            set => _azureLoginAppId.Set(value);
+        }
+
         private static readonly __Value<string?> _azureTenantId = new __Value<string?>(() => __config.Get("azureTenantId"));
         public static string? AzureTenantId
         {

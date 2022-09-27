@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider.
+ * &gt; **Deprecated** Please migrate to databricks_group_role.
  * 
  * This resource allows you to attach databricks.InstanceProfile (AWS) to databricks_group.
  * 

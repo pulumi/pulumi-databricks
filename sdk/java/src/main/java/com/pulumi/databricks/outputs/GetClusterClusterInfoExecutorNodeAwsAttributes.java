@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterInfoExecutorNodeAwsAttributes {
-    private final @Nullable Boolean isSpot;
+    private @Nullable Boolean isSpot;
 
-    @CustomType.Constructor
-    private GetClusterClusterInfoExecutorNodeAwsAttributes(@CustomType.Parameter("isSpot") @Nullable Boolean isSpot) {
-        this.isSpot = isSpot;
-    }
-
+    private GetClusterClusterInfoExecutorNodeAwsAttributes() {}
     public Optional<Boolean> isSpot() {
         return Optional.ofNullable(this.isSpot);
     }
@@ -29,24 +25,24 @@ public final class GetClusterClusterInfoExecutorNodeAwsAttributes {
     public static Builder builder(GetClusterClusterInfoExecutorNodeAwsAttributes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean isSpot;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterInfoExecutorNodeAwsAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isSpot = defaults.isSpot;
         }
 
+        @CustomType.Setter
         public Builder isSpot(@Nullable Boolean isSpot) {
             this.isSpot = isSpot;
             return this;
-        }        public GetClusterClusterInfoExecutorNodeAwsAttributes build() {
-            return new GetClusterClusterInfoExecutorNodeAwsAttributes(isSpot);
+        }
+        public GetClusterClusterInfoExecutorNodeAwsAttributes build() {
+            final var o = new GetClusterClusterInfoExecutorNodeAwsAttributes();
+            o.isSpot = isSpot;
+            return o;
         }
     }
 }

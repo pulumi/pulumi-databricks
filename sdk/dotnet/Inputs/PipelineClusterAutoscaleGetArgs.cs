@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("minWorkers")]
         public Input<int>? MinWorkers { get; set; }
 
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
         public PipelineClusterAutoscaleGetArgs()
         {
         }

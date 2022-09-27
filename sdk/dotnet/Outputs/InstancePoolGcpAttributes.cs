@@ -13,15 +13,12 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class InstancePoolGcpAttributes
     {
-        /// <summary>
-        /// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-        /// </summary>
-        public readonly string? Availability;
+        public readonly string? GcpAvailability;
 
         [OutputConstructor]
-        private InstancePoolGcpAttributes(string? availability)
+        private InstancePoolGcpAttributes(string? gcpAvailability)
         {
-            Availability = availability;
+            GcpAvailability = gcpAvailability;
         }
     }
 }

@@ -9,36 +9,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCurrentUserResult {
-    private final String alphanumeric;
-    private final String externalId;
-    private final String home;
+    private String alphanumeric;
+    private String externalId;
+    private String home;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String repos;
-    private final String userName;
-    private final String workspaceUrl;
+    private String id;
+    private String repos;
+    private String userName;
+    private String workspaceUrl;
 
-    @CustomType.Constructor
-    private GetCurrentUserResult(
-        @CustomType.Parameter("alphanumeric") String alphanumeric,
-        @CustomType.Parameter("externalId") String externalId,
-        @CustomType.Parameter("home") String home,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("repos") String repos,
-        @CustomType.Parameter("userName") String userName,
-        @CustomType.Parameter("workspaceUrl") String workspaceUrl) {
-        this.alphanumeric = alphanumeric;
-        this.externalId = externalId;
-        this.home = home;
-        this.id = id;
-        this.repos = repos;
-        this.userName = userName;
-        this.workspaceUrl = workspaceUrl;
-    }
-
+    private GetCurrentUserResult() {}
     public String alphanumeric() {
         return this.alphanumeric;
     }
@@ -72,7 +55,7 @@ public final class GetCurrentUserResult {
     public static Builder builder(GetCurrentUserResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String alphanumeric;
         private String externalId;
@@ -81,11 +64,7 @@ public final class GetCurrentUserResult {
         private String repos;
         private String userName;
         private String workspaceUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCurrentUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alphanumeric = defaults.alphanumeric;
@@ -97,35 +76,51 @@ public final class GetCurrentUserResult {
     	      this.workspaceUrl = defaults.workspaceUrl;
         }
 
+        @CustomType.Setter
         public Builder alphanumeric(String alphanumeric) {
             this.alphanumeric = Objects.requireNonNull(alphanumeric);
             return this;
         }
+        @CustomType.Setter
         public Builder externalId(String externalId) {
             this.externalId = Objects.requireNonNull(externalId);
             return this;
         }
+        @CustomType.Setter
         public Builder home(String home) {
             this.home = Objects.requireNonNull(home);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder repos(String repos) {
             this.repos = Objects.requireNonNull(repos);
             return this;
         }
+        @CustomType.Setter
         public Builder userName(String userName) {
             this.userName = Objects.requireNonNull(userName);
             return this;
         }
+        @CustomType.Setter
         public Builder workspaceUrl(String workspaceUrl) {
             this.workspaceUrl = Objects.requireNonNull(workspaceUrl);
             return this;
-        }        public GetCurrentUserResult build() {
-            return new GetCurrentUserResult(alphanumeric, externalId, home, id, repos, userName, workspaceUrl);
+        }
+        public GetCurrentUserResult build() {
+            final var o = new GetCurrentUserResult();
+            o.alphanumeric = alphanumeric;
+            o.externalId = externalId;
+            o.home = home;
+            o.id = id;
+            o.repos = repos;
+            o.userName = userName;
+            o.workspaceUrl = workspaceUrl;
+            return o;
         }
     }
 }

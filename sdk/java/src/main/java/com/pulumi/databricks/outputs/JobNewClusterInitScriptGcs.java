@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobNewClusterInitScriptGcs {
-    private final @Nullable String destination;
+    private @Nullable String destination;
 
-    @CustomType.Constructor
-    private JobNewClusterInitScriptGcs(@CustomType.Parameter("destination") @Nullable String destination) {
-        this.destination = destination;
-    }
-
+    private JobNewClusterInitScriptGcs() {}
     public Optional<String> destination() {
         return Optional.ofNullable(this.destination);
     }
@@ -29,24 +25,24 @@ public final class JobNewClusterInitScriptGcs {
     public static Builder builder(JobNewClusterInitScriptGcs defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String destination;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobNewClusterInitScriptGcs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destination = defaults.destination;
         }
 
+        @CustomType.Setter
         public Builder destination(@Nullable String destination) {
             this.destination = destination;
             return this;
-        }        public JobNewClusterInitScriptGcs build() {
-            return new JobNewClusterInitScriptGcs(destination);
+        }
+        public JobNewClusterInitScriptGcs build() {
+            final var o = new JobNewClusterInitScriptGcs();
+            o.destination = destination;
+            return o;
         }
     }
 }

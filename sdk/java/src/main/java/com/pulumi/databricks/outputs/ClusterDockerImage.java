@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterDockerImage {
-    private final @Nullable ClusterDockerImageBasicAuth basicAuth;
-    private final String url;
+    private @Nullable ClusterDockerImageBasicAuth basicAuth;
+    private String url;
 
-    @CustomType.Constructor
-    private ClusterDockerImage(
-        @CustomType.Parameter("basicAuth") @Nullable ClusterDockerImageBasicAuth basicAuth,
-        @CustomType.Parameter("url") String url) {
-        this.basicAuth = basicAuth;
-        this.url = url;
-    }
-
+    private ClusterDockerImage() {}
     public Optional<ClusterDockerImageBasicAuth> basicAuth() {
         return Optional.ofNullable(this.basicAuth);
     }
@@ -37,30 +30,32 @@ public final class ClusterDockerImage {
     public static Builder builder(ClusterDockerImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterDockerImageBasicAuth basicAuth;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterDockerImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.basicAuth = defaults.basicAuth;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder basicAuth(@Nullable ClusterDockerImageBasicAuth basicAuth) {
             this.basicAuth = basicAuth;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public ClusterDockerImage build() {
-            return new ClusterDockerImage(basicAuth, url);
+        }
+        public ClusterDockerImage build() {
+            final var o = new ClusterDockerImage();
+            o.basicAuth = basicAuth;
+            o.url = url;
+            return o;
         }
     }
 }

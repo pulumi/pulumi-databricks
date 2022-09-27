@@ -234,69 +234,6 @@ class SqlQuery(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
-
-        **Note:** documentation for this resource is a work in progress.
-
-        A query may have one or more visualizations.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        q1 = databricks.SqlQuery("q1",
-            data_source_id=databricks_sql_endpoint["example"]["data_source_id"],
-            query="SELECT {{ p1 }} AS p1, 2 as p2",
-            run_as_role="viewer",
-            schedule=databricks.SqlQueryScheduleArgs(
-                continuous=databricks.SqlQueryScheduleContinuousArgs(
-                    interval_seconds=5 * 60,
-                ),
-            ),
-            parameters=[databricks.SqlQueryParameterArgs(
-                name="p1",
-                title="Title for p1",
-                text=databricks.SqlQueryParameterTextArgs(
-                    value="default",
-                ),
-            )],
-            tags=[
-                "t1",
-                "t2",
-            ])
-        ```
-
-        Example permission to share query with all users:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        q1 = databricks.Permissions("q1",
-            sql_query_id=databricks_sql_query["q1"]["id"],
-            access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=data["databricks_group"]["users"]["display_name"],
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=data["databricks_group"]["team"]["display_name"],
-                    permission_level="CAN_EDIT",
-                ),
-            ])
-        ```
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-        * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
-        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
-
         ## Import
 
         You can import a `databricks_sql_query` resource with ID like the followingbash
@@ -315,69 +252,6 @@ class SqlQuery(pulumi.CustomResource):
                  args: SqlQueryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
-
-        **Note:** documentation for this resource is a work in progress.
-
-        A query may have one or more visualizations.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        q1 = databricks.SqlQuery("q1",
-            data_source_id=databricks_sql_endpoint["example"]["data_source_id"],
-            query="SELECT {{ p1 }} AS p1, 2 as p2",
-            run_as_role="viewer",
-            schedule=databricks.SqlQueryScheduleArgs(
-                continuous=databricks.SqlQueryScheduleContinuousArgs(
-                    interval_seconds=5 * 60,
-                ),
-            ),
-            parameters=[databricks.SqlQueryParameterArgs(
-                name="p1",
-                title="Title for p1",
-                text=databricks.SqlQueryParameterTextArgs(
-                    value="default",
-                ),
-            )],
-            tags=[
-                "t1",
-                "t2",
-            ])
-        ```
-
-        Example permission to share query with all users:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        q1 = databricks.Permissions("q1",
-            sql_query_id=databricks_sql_query["q1"]["id"],
-            access_controls=[
-                databricks.PermissionsAccessControlArgs(
-                    group_name=data["databricks_group"]["users"]["display_name"],
-                    permission_level="CAN_RUN",
-                ),
-                databricks.PermissionsAccessControlArgs(
-                    group_name=data["databricks_group"]["team"]["display_name"],
-                    permission_level="CAN_EDIT",
-                ),
-            ])
-        ```
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-        * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
-        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
-
         ## Import
 
         You can import a `databricks_sql_query` resource with ID like the followingbash

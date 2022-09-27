@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterInitScriptDbfs {
-    private final String destination;
+    private String destination;
 
-    @CustomType.Constructor
-    private ClusterInitScriptDbfs(@CustomType.Parameter("destination") String destination) {
-        this.destination = destination;
-    }
-
+    private ClusterInitScriptDbfs() {}
     public String destination() {
         return this.destination;
     }
@@ -27,24 +23,24 @@ public final class ClusterInitScriptDbfs {
     public static Builder builder(ClusterInitScriptDbfs defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String destination;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterInitScriptDbfs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destination = defaults.destination;
         }
 
+        @CustomType.Setter
         public Builder destination(String destination) {
             this.destination = Objects.requireNonNull(destination);
             return this;
-        }        public ClusterInitScriptDbfs build() {
-            return new ClusterInitScriptDbfs(destination);
+        }
+        public ClusterInitScriptDbfs build() {
+            final var o = new ClusterInitScriptDbfs();
+            o.destination = destination;
+            return o;
         }
     }
 }

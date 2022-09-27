@@ -15,15 +15,19 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly int? MaxWorkers;
         public readonly int? MinWorkers;
+        public readonly string? Mode;
 
         [OutputConstructor]
         private PipelineClusterAutoscale(
             int? maxWorkers,
 
-            int? minWorkers)
+            int? minWorkers,
+
+            string? mode)
         {
             MaxWorkers = maxWorkers;
             MinWorkers = minWorkers;
+            Mode = mode;
         }
     }
 }

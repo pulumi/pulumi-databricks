@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsNetworksErrorMessage {
-    private final @Nullable String errorMessage;
-    private final @Nullable String errorType;
+    private @Nullable String errorMessage;
+    private @Nullable String errorType;
 
-    @CustomType.Constructor
-    private MwsNetworksErrorMessage(
-        @CustomType.Parameter("errorMessage") @Nullable String errorMessage,
-        @CustomType.Parameter("errorType") @Nullable String errorType) {
-        this.errorMessage = errorMessage;
-        this.errorType = errorType;
-    }
-
+    private MwsNetworksErrorMessage() {}
     public Optional<String> errorMessage() {
         return Optional.ofNullable(this.errorMessage);
     }
@@ -36,30 +29,32 @@ public final class MwsNetworksErrorMessage {
     public static Builder builder(MwsNetworksErrorMessage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String errorMessage;
         private @Nullable String errorType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MwsNetworksErrorMessage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.errorMessage = defaults.errorMessage;
     	      this.errorType = defaults.errorType;
         }
 
+        @CustomType.Setter
         public Builder errorMessage(@Nullable String errorMessage) {
             this.errorMessage = errorMessage;
             return this;
         }
+        @CustomType.Setter
         public Builder errorType(@Nullable String errorType) {
             this.errorType = errorType;
             return this;
-        }        public MwsNetworksErrorMessage build() {
-            return new MwsNetworksErrorMessage(errorMessage, errorType);
+        }
+        public MwsNetworksErrorMessage build() {
+            final var o = new MwsNetworksErrorMessage();
+            o.errorMessage = errorMessage;
+            o.errorType = errorType;
+            return o;
         }
     }
 }

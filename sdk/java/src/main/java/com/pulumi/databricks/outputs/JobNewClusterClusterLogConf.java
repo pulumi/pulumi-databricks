@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobNewClusterClusterLogConf {
-    private final @Nullable JobNewClusterClusterLogConfDbfs dbfs;
-    private final @Nullable JobNewClusterClusterLogConfS3 s3;
+    private @Nullable JobNewClusterClusterLogConfDbfs dbfs;
+    private @Nullable JobNewClusterClusterLogConfS3 s3;
 
-    @CustomType.Constructor
-    private JobNewClusterClusterLogConf(
-        @CustomType.Parameter("dbfs") @Nullable JobNewClusterClusterLogConfDbfs dbfs,
-        @CustomType.Parameter("s3") @Nullable JobNewClusterClusterLogConfS3 s3) {
-        this.dbfs = dbfs;
-        this.s3 = s3;
-    }
-
+    private JobNewClusterClusterLogConf() {}
     public Optional<JobNewClusterClusterLogConfDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -37,30 +30,32 @@ public final class JobNewClusterClusterLogConf {
     public static Builder builder(JobNewClusterClusterLogConf defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable JobNewClusterClusterLogConfDbfs dbfs;
         private @Nullable JobNewClusterClusterLogConfS3 s3;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobNewClusterClusterLogConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
     	      this.s3 = defaults.s3;
         }
 
+        @CustomType.Setter
         public Builder dbfs(@Nullable JobNewClusterClusterLogConfDbfs dbfs) {
             this.dbfs = dbfs;
             return this;
         }
+        @CustomType.Setter
         public Builder s3(@Nullable JobNewClusterClusterLogConfS3 s3) {
             this.s3 = s3;
             return this;
-        }        public JobNewClusterClusterLogConf build() {
-            return new JobNewClusterClusterLogConf(dbfs, s3);
+        }
+        public JobNewClusterClusterLogConf build() {
+            final var o = new JobNewClusterClusterLogConf();
+            o.dbfs = dbfs;
+            o.s3 = s3;
+            return o;
         }
     }
 }

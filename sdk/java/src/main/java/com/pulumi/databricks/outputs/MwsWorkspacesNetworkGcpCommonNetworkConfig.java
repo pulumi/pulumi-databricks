@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class MwsWorkspacesNetworkGcpCommonNetworkConfig {
-    private final String gkeClusterMasterIpRange;
-    private final String gkeConnectivityType;
+    private String gkeClusterMasterIpRange;
+    private String gkeConnectivityType;
 
-    @CustomType.Constructor
-    private MwsWorkspacesNetworkGcpCommonNetworkConfig(
-        @CustomType.Parameter("gkeClusterMasterIpRange") String gkeClusterMasterIpRange,
-        @CustomType.Parameter("gkeConnectivityType") String gkeConnectivityType) {
-        this.gkeClusterMasterIpRange = gkeClusterMasterIpRange;
-        this.gkeConnectivityType = gkeConnectivityType;
-    }
-
+    private MwsWorkspacesNetworkGcpCommonNetworkConfig() {}
     public String gkeClusterMasterIpRange() {
         return this.gkeClusterMasterIpRange;
     }
@@ -34,30 +27,32 @@ public final class MwsWorkspacesNetworkGcpCommonNetworkConfig {
     public static Builder builder(MwsWorkspacesNetworkGcpCommonNetworkConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String gkeClusterMasterIpRange;
         private String gkeConnectivityType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MwsWorkspacesNetworkGcpCommonNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gkeClusterMasterIpRange = defaults.gkeClusterMasterIpRange;
     	      this.gkeConnectivityType = defaults.gkeConnectivityType;
         }
 
+        @CustomType.Setter
         public Builder gkeClusterMasterIpRange(String gkeClusterMasterIpRange) {
             this.gkeClusterMasterIpRange = Objects.requireNonNull(gkeClusterMasterIpRange);
             return this;
         }
+        @CustomType.Setter
         public Builder gkeConnectivityType(String gkeConnectivityType) {
             this.gkeConnectivityType = Objects.requireNonNull(gkeConnectivityType);
             return this;
-        }        public MwsWorkspacesNetworkGcpCommonNetworkConfig build() {
-            return new MwsWorkspacesNetworkGcpCommonNetworkConfig(gkeClusterMasterIpRange, gkeConnectivityType);
+        }
+        public MwsWorkspacesNetworkGcpCommonNetworkConfig build() {
+            final var o = new MwsWorkspacesNetworkGcpCommonNetworkConfig();
+            o.gkeClusterMasterIpRange = gkeClusterMasterIpRange;
+            o.gkeConnectivityType = gkeConnectivityType;
+            return o;
         }
     }
 }

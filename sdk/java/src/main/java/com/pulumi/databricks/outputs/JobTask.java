@@ -26,107 +26,64 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTask {
-    private final @Nullable JobTaskDbtTask dbtTask;
-    private final @Nullable List<JobTaskDependsOn> dependsOns;
-    private final @Nullable String description;
+    private @Nullable JobTaskDbtTask dbtTask;
+    private @Nullable List<JobTaskDependsOn> dependsOns;
+    private @Nullable String description;
     /**
      * @return (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
      */
-    private final @Nullable JobTaskEmailNotifications emailNotifications;
+    private @Nullable JobTaskEmailNotifications emailNotifications;
     /**
      * @return If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `new_cluster` for greater reliability.
      * 
      */
-    private final @Nullable String existingClusterId;
+    private @Nullable String existingClusterId;
     /**
      * @return Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      * 
      */
-    private final @Nullable String jobClusterKey;
+    private @Nullable String jobClusterKey;
     /**
      * @return (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
      * 
      */
-    private final @Nullable List<JobTaskLibrary> libraries;
+    private @Nullable List<JobTaskLibrary> libraries;
     /**
      * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED result_state or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
      * 
      */
-    private final @Nullable Integer maxRetries;
+    private @Nullable Integer maxRetries;
     /**
      * @return (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      * 
      */
-    private final @Nullable Integer minRetryIntervalMillis;
+    private @Nullable Integer minRetryIntervalMillis;
     /**
      * @return Same set of parameters as for databricks.Cluster resource.
      * 
      */
-    private final @Nullable JobTaskNewCluster newCluster;
-    private final @Nullable JobTaskNotebookTask notebookTask;
-    private final @Nullable JobTaskPipelineTask pipelineTask;
-    private final @Nullable JobTaskPythonWheelTask pythonWheelTask;
+    private @Nullable JobTaskNewCluster newCluster;
+    private @Nullable JobTaskNotebookTask notebookTask;
+    private @Nullable JobTaskPipelineTask pipelineTask;
+    private @Nullable JobTaskPythonWheelTask pythonWheelTask;
     /**
      * @return (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      * 
      */
-    private final @Nullable Boolean retryOnTimeout;
-    private final @Nullable JobTaskSparkJarTask sparkJarTask;
-    private final @Nullable JobTaskSparkPythonTask sparkPythonTask;
-    private final @Nullable JobTaskSparkSubmitTask sparkSubmitTask;
-    private final @Nullable JobTaskSqlTask sqlTask;
-    private final @Nullable String taskKey;
+    private @Nullable Boolean retryOnTimeout;
+    private @Nullable JobTaskSparkJarTask sparkJarTask;
+    private @Nullable JobTaskSparkPythonTask sparkPythonTask;
+    private @Nullable JobTaskSparkSubmitTask sparkSubmitTask;
+    private @Nullable JobTaskSqlTask sqlTask;
+    private @Nullable String taskKey;
     /**
      * @return (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      * 
      */
-    private final @Nullable Integer timeoutSeconds;
+    private @Nullable Integer timeoutSeconds;
 
-    @CustomType.Constructor
-    private JobTask(
-        @CustomType.Parameter("dbtTask") @Nullable JobTaskDbtTask dbtTask,
-        @CustomType.Parameter("dependsOns") @Nullable List<JobTaskDependsOn> dependsOns,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("emailNotifications") @Nullable JobTaskEmailNotifications emailNotifications,
-        @CustomType.Parameter("existingClusterId") @Nullable String existingClusterId,
-        @CustomType.Parameter("jobClusterKey") @Nullable String jobClusterKey,
-        @CustomType.Parameter("libraries") @Nullable List<JobTaskLibrary> libraries,
-        @CustomType.Parameter("maxRetries") @Nullable Integer maxRetries,
-        @CustomType.Parameter("minRetryIntervalMillis") @Nullable Integer minRetryIntervalMillis,
-        @CustomType.Parameter("newCluster") @Nullable JobTaskNewCluster newCluster,
-        @CustomType.Parameter("notebookTask") @Nullable JobTaskNotebookTask notebookTask,
-        @CustomType.Parameter("pipelineTask") @Nullable JobTaskPipelineTask pipelineTask,
-        @CustomType.Parameter("pythonWheelTask") @Nullable JobTaskPythonWheelTask pythonWheelTask,
-        @CustomType.Parameter("retryOnTimeout") @Nullable Boolean retryOnTimeout,
-        @CustomType.Parameter("sparkJarTask") @Nullable JobTaskSparkJarTask sparkJarTask,
-        @CustomType.Parameter("sparkPythonTask") @Nullable JobTaskSparkPythonTask sparkPythonTask,
-        @CustomType.Parameter("sparkSubmitTask") @Nullable JobTaskSparkSubmitTask sparkSubmitTask,
-        @CustomType.Parameter("sqlTask") @Nullable JobTaskSqlTask sqlTask,
-        @CustomType.Parameter("taskKey") @Nullable String taskKey,
-        @CustomType.Parameter("timeoutSeconds") @Nullable Integer timeoutSeconds) {
-        this.dbtTask = dbtTask;
-        this.dependsOns = dependsOns;
-        this.description = description;
-        this.emailNotifications = emailNotifications;
-        this.existingClusterId = existingClusterId;
-        this.jobClusterKey = jobClusterKey;
-        this.libraries = libraries;
-        this.maxRetries = maxRetries;
-        this.minRetryIntervalMillis = minRetryIntervalMillis;
-        this.newCluster = newCluster;
-        this.notebookTask = notebookTask;
-        this.pipelineTask = pipelineTask;
-        this.pythonWheelTask = pythonWheelTask;
-        this.retryOnTimeout = retryOnTimeout;
-        this.sparkJarTask = sparkJarTask;
-        this.sparkPythonTask = sparkPythonTask;
-        this.sparkSubmitTask = sparkSubmitTask;
-        this.sqlTask = sqlTask;
-        this.taskKey = taskKey;
-        this.timeoutSeconds = timeoutSeconds;
-    }
-
+    private JobTask() {}
     public Optional<JobTaskDbtTask> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
     }
@@ -231,7 +188,7 @@ public final class JobTask {
     public static Builder builder(JobTask defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable JobTaskDbtTask dbtTask;
         private @Nullable List<JobTaskDependsOn> dependsOns;
@@ -253,11 +210,7 @@ public final class JobTask {
         private @Nullable JobTaskSqlTask sqlTask;
         private @Nullable String taskKey;
         private @Nullable Integer timeoutSeconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbtTask = defaults.dbtTask;
@@ -282,10 +235,12 @@ public final class JobTask {
     	      this.timeoutSeconds = defaults.timeoutSeconds;
         }
 
+        @CustomType.Setter
         public Builder dbtTask(@Nullable JobTaskDbtTask dbtTask) {
             this.dbtTask = dbtTask;
             return this;
         }
+        @CustomType.Setter
         public Builder dependsOns(@Nullable List<JobTaskDependsOn> dependsOns) {
             this.dependsOns = dependsOns;
             return this;
@@ -293,22 +248,27 @@ public final class JobTask {
         public Builder dependsOns(JobTaskDependsOn... dependsOns) {
             return dependsOns(List.of(dependsOns));
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder emailNotifications(@Nullable JobTaskEmailNotifications emailNotifications) {
             this.emailNotifications = emailNotifications;
             return this;
         }
+        @CustomType.Setter
         public Builder existingClusterId(@Nullable String existingClusterId) {
             this.existingClusterId = existingClusterId;
             return this;
         }
+        @CustomType.Setter
         public Builder jobClusterKey(@Nullable String jobClusterKey) {
             this.jobClusterKey = jobClusterKey;
             return this;
         }
+        @CustomType.Setter
         public Builder libraries(@Nullable List<JobTaskLibrary> libraries) {
             this.libraries = libraries;
             return this;
@@ -316,59 +276,94 @@ public final class JobTask {
         public Builder libraries(JobTaskLibrary... libraries) {
             return libraries(List.of(libraries));
         }
+        @CustomType.Setter
         public Builder maxRetries(@Nullable Integer maxRetries) {
             this.maxRetries = maxRetries;
             return this;
         }
+        @CustomType.Setter
         public Builder minRetryIntervalMillis(@Nullable Integer minRetryIntervalMillis) {
             this.minRetryIntervalMillis = minRetryIntervalMillis;
             return this;
         }
+        @CustomType.Setter
         public Builder newCluster(@Nullable JobTaskNewCluster newCluster) {
             this.newCluster = newCluster;
             return this;
         }
+        @CustomType.Setter
         public Builder notebookTask(@Nullable JobTaskNotebookTask notebookTask) {
             this.notebookTask = notebookTask;
             return this;
         }
+        @CustomType.Setter
         public Builder pipelineTask(@Nullable JobTaskPipelineTask pipelineTask) {
             this.pipelineTask = pipelineTask;
             return this;
         }
+        @CustomType.Setter
         public Builder pythonWheelTask(@Nullable JobTaskPythonWheelTask pythonWheelTask) {
             this.pythonWheelTask = pythonWheelTask;
             return this;
         }
+        @CustomType.Setter
         public Builder retryOnTimeout(@Nullable Boolean retryOnTimeout) {
             this.retryOnTimeout = retryOnTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkJarTask(@Nullable JobTaskSparkJarTask sparkJarTask) {
             this.sparkJarTask = sparkJarTask;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkPythonTask(@Nullable JobTaskSparkPythonTask sparkPythonTask) {
             this.sparkPythonTask = sparkPythonTask;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkSubmitTask(@Nullable JobTaskSparkSubmitTask sparkSubmitTask) {
             this.sparkSubmitTask = sparkSubmitTask;
             return this;
         }
+        @CustomType.Setter
         public Builder sqlTask(@Nullable JobTaskSqlTask sqlTask) {
             this.sqlTask = sqlTask;
             return this;
         }
+        @CustomType.Setter
         public Builder taskKey(@Nullable String taskKey) {
             this.taskKey = taskKey;
             return this;
         }
+        @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
             this.timeoutSeconds = timeoutSeconds;
             return this;
-        }        public JobTask build() {
-            return new JobTask(dbtTask, dependsOns, description, emailNotifications, existingClusterId, jobClusterKey, libraries, maxRetries, minRetryIntervalMillis, newCluster, notebookTask, pipelineTask, pythonWheelTask, retryOnTimeout, sparkJarTask, sparkPythonTask, sparkSubmitTask, sqlTask, taskKey, timeoutSeconds);
+        }
+        public JobTask build() {
+            final var o = new JobTask();
+            o.dbtTask = dbtTask;
+            o.dependsOns = dependsOns;
+            o.description = description;
+            o.emailNotifications = emailNotifications;
+            o.existingClusterId = existingClusterId;
+            o.jobClusterKey = jobClusterKey;
+            o.libraries = libraries;
+            o.maxRetries = maxRetries;
+            o.minRetryIntervalMillis = minRetryIntervalMillis;
+            o.newCluster = newCluster;
+            o.notebookTask = notebookTask;
+            o.pipelineTask = pipelineTask;
+            o.pythonWheelTask = pythonWheelTask;
+            o.retryOnTimeout = retryOnTimeout;
+            o.sparkJarTask = sparkJarTask;
+            o.sparkPythonTask = sparkPythonTask;
+            o.sparkSubmitTask = sparkSubmitTask;
+            o.sqlTask = sqlTask;
+            o.taskKey = taskKey;
+            o.timeoutSeconds = timeoutSeconds;
+            return o;
         }
     }
 }

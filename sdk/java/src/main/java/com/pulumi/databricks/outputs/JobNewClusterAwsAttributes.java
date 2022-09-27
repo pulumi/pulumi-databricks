@@ -12,35 +12,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobNewClusterAwsAttributes {
-    private final @Nullable String availability;
-    private final @Nullable Integer ebsVolumeCount;
-    private final @Nullable Integer ebsVolumeSize;
-    private final @Nullable String ebsVolumeType;
-    private final @Nullable Integer firstOnDemand;
-    private final @Nullable String instanceProfileArn;
-    private final @Nullable Integer spotBidPricePercent;
-    private final @Nullable String zoneId;
+    private @Nullable String availability;
+    private @Nullable Integer ebsVolumeCount;
+    private @Nullable Integer ebsVolumeSize;
+    private @Nullable String ebsVolumeType;
+    private @Nullable Integer firstOnDemand;
+    private @Nullable String instanceProfileArn;
+    private @Nullable Integer spotBidPricePercent;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private JobNewClusterAwsAttributes(
-        @CustomType.Parameter("availability") @Nullable String availability,
-        @CustomType.Parameter("ebsVolumeCount") @Nullable Integer ebsVolumeCount,
-        @CustomType.Parameter("ebsVolumeSize") @Nullable Integer ebsVolumeSize,
-        @CustomType.Parameter("ebsVolumeType") @Nullable String ebsVolumeType,
-        @CustomType.Parameter("firstOnDemand") @Nullable Integer firstOnDemand,
-        @CustomType.Parameter("instanceProfileArn") @Nullable String instanceProfileArn,
-        @CustomType.Parameter("spotBidPricePercent") @Nullable Integer spotBidPricePercent,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.availability = availability;
-        this.ebsVolumeCount = ebsVolumeCount;
-        this.ebsVolumeSize = ebsVolumeSize;
-        this.ebsVolumeType = ebsVolumeType;
-        this.firstOnDemand = firstOnDemand;
-        this.instanceProfileArn = instanceProfileArn;
-        this.spotBidPricePercent = spotBidPricePercent;
-        this.zoneId = zoneId;
-    }
-
+    private JobNewClusterAwsAttributes() {}
     public Optional<String> availability() {
         return Optional.ofNullable(this.availability);
     }
@@ -73,7 +54,7 @@ public final class JobNewClusterAwsAttributes {
     public static Builder builder(JobNewClusterAwsAttributes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String availability;
         private @Nullable Integer ebsVolumeCount;
@@ -83,11 +64,7 @@ public final class JobNewClusterAwsAttributes {
         private @Nullable String instanceProfileArn;
         private @Nullable Integer spotBidPricePercent;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobNewClusterAwsAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
@@ -100,39 +77,57 @@ public final class JobNewClusterAwsAttributes {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder availability(@Nullable String availability) {
             this.availability = availability;
             return this;
         }
+        @CustomType.Setter
         public Builder ebsVolumeCount(@Nullable Integer ebsVolumeCount) {
             this.ebsVolumeCount = ebsVolumeCount;
             return this;
         }
+        @CustomType.Setter
         public Builder ebsVolumeSize(@Nullable Integer ebsVolumeSize) {
             this.ebsVolumeSize = ebsVolumeSize;
             return this;
         }
+        @CustomType.Setter
         public Builder ebsVolumeType(@Nullable String ebsVolumeType) {
             this.ebsVolumeType = ebsVolumeType;
             return this;
         }
+        @CustomType.Setter
         public Builder firstOnDemand(@Nullable Integer firstOnDemand) {
             this.firstOnDemand = firstOnDemand;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceProfileArn(@Nullable String instanceProfileArn) {
             this.instanceProfileArn = instanceProfileArn;
             return this;
         }
+        @CustomType.Setter
         public Builder spotBidPricePercent(@Nullable Integer spotBidPricePercent) {
             this.spotBidPricePercent = spotBidPricePercent;
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public JobNewClusterAwsAttributes build() {
-            return new JobNewClusterAwsAttributes(availability, ebsVolumeCount, ebsVolumeSize, ebsVolumeType, firstOnDemand, instanceProfileArn, spotBidPricePercent, zoneId);
+        }
+        public JobNewClusterAwsAttributes build() {
+            final var o = new JobNewClusterAwsAttributes();
+            o.availability = availability;
+            o.ebsVolumeCount = ebsVolumeCount;
+            o.ebsVolumeSize = ebsVolumeSize;
+            o.ebsVolumeType = ebsVolumeType;
+            o.firstOnDemand = firstOnDemand;
+            o.instanceProfileArn = instanceProfileArn;
+            o.spotBidPricePercent = spotBidPricePercent;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

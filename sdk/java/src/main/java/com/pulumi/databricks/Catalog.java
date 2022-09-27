@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.CatalogArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.CatalogState;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -80,6 +81,20 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
+    }
+    /**
+     * Delete catalog regardless of its contents.
+     * 
+     */
+    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> forceDestroy;
+
+    /**
+     * @return Delete catalog regardless of its contents.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDestroy() {
+        return Codegen.optional(this.forceDestroy);
     }
     @Export(name="metastoreId", type=String.class, parameters={})
     private Output<String> metastoreId;

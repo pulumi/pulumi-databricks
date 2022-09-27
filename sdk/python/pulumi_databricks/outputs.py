@@ -43,6 +43,7 @@ __all__ = [
     'InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride',
     'InstancePoolPreloadedDockerImage',
     'InstancePoolPreloadedDockerImageBasicAuth',
+    'JobDbtTask',
     'JobEmailNotifications',
     'JobGitSource',
     'JobJobCluster',
@@ -1008,7 +1009,7 @@ class InstancePoolAwsAttributes(dict):
         """
         :param str availability: Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
         :param int spot_bid_price_percent: (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
-        :param str zone_id: (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+        :param str zone_id: (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
         """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
@@ -1037,7 +1038,7 @@ class InstancePoolAwsAttributes(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[str]:
         """
-        (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+        (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
         """
         return pulumi.get(self, "zone_id")
 
@@ -1192,21 +1193,32 @@ class InstancePoolDiskSpecDiskType(dict):
 
 @pulumi.output_type
 class InstancePoolGcpAttributes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpAvailability":
+            suggest = "gcp_availability"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstancePoolGcpAttributes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstancePoolGcpAttributes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstancePoolGcpAttributes.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 availability: Optional[str] = None):
-        """
-        :param str availability: Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-        """
-        if availability is not None:
-            pulumi.set(__self__, "availability", availability)
+                 gcp_availability: Optional[str] = None):
+        if gcp_availability is not None:
+            pulumi.set(__self__, "gcp_availability", gcp_availability)
 
     @property
-    @pulumi.getter
-    def availability(self) -> Optional[str]:
-        """
-        Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-        """
-        return pulumi.get(self, "availability")
+    @pulumi.getter(name="gcpAvailability")
+    def gcp_availability(self) -> Optional[str]:
+        return pulumi.get(self, "gcp_availability")
 
 
 @pulumi.output_type
@@ -1428,6 +1440,93 @@ class InstancePoolPreloadedDockerImageBasicAuth(dict):
     @pulumi.getter
     def username(self) -> str:
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class JobDbtTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "profilesDirectory":
+            suggest = "profiles_directory"
+        elif key == "projectDirectory":
+            suggest = "project_directory"
+        elif key == "warehouseId":
+            suggest = "warehouse_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobDbtTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobDbtTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobDbtTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 commands: Sequence[str],
+                 profiles_directory: Optional[str] = None,
+                 project_directory: Optional[str] = None,
+                 schema: Optional[str] = None,
+                 warehouse_id: Optional[str] = None):
+        """
+        :param Sequence[str] commands: (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+        :param str profiles_directory: The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+        :param str project_directory: The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+        :param str schema: The name of the schema dbt should run in. Defaults to `default`.
+        :param str warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        """
+        pulumi.set(__self__, "commands", commands)
+        if profiles_directory is not None:
+            pulumi.set(__self__, "profiles_directory", profiles_directory)
+        if project_directory is not None:
+            pulumi.set(__self__, "project_directory", project_directory)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Sequence[str]:
+        """
+        (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+        """
+        return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter(name="profilesDirectory")
+    def profiles_directory(self) -> Optional[str]:
+        """
+        The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+        """
+        return pulumi.get(self, "profiles_directory")
+
+    @property
+    @pulumi.getter(name="projectDirectory")
+    def project_directory(self) -> Optional[str]:
+        """
+        The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+        """
+        return pulumi.get(self, "project_directory")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[str]:
+        """
+        The name of the schema dbt should run in. Defaults to `default`.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[str]:
+        """
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        """
+        return pulumi.get(self, "warehouse_id")
 
 
 @pulumi.output_type
@@ -3711,7 +3810,7 @@ class JobPythonWheelTask(dict):
         :param str entry_point: Python function as entry point for the task
         :param Mapping[str, Any] named_parameters: Named parameters for the task
         :param str package_name: Name of Python package
-        :param Sequence[str] parameters: Parameters for the task
+        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         if entry_point is not None:
             pulumi.set(__self__, "entry_point", entry_point)
@@ -3750,7 +3849,7 @@ class JobPythonWheelTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        Parameters for the task
+        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         return pulumi.get(self, "parameters")
 
@@ -3844,7 +3943,7 @@ class JobSparkJarTask(dict):
                  parameters: Optional[Sequence[str]] = None):
         """
         :param str main_class_name: The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
-        :param Sequence[str] parameters: Parameters for the task
+        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         if jar_uri is not None:
             pulumi.set(__self__, "jar_uri", jar_uri)
@@ -3870,7 +3969,7 @@ class JobSparkJarTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        Parameters for the task
+        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         return pulumi.get(self, "parameters")
 
@@ -3899,7 +3998,7 @@ class JobSparkPythonTask(dict):
                  parameters: Optional[Sequence[str]] = None):
         """
         :param str python_file: The URI of the Python file to be executed. DbfsFile and S3 paths are supported. This field is required.
-        :param Sequence[str] parameters: Parameters for the task
+        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         pulumi.set(__self__, "python_file", python_file)
         if parameters is not None:
@@ -3917,7 +4016,7 @@ class JobSparkPythonTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        Parameters for the task
+        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         return pulumi.get(self, "parameters")
 
@@ -3927,7 +4026,7 @@ class JobSparkSubmitTask(dict):
     def __init__(__self__, *,
                  parameters: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] parameters: Parameters for the task
+        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
@@ -3936,7 +4035,7 @@ class JobSparkSubmitTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        Parameters for the task
+        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         return pulumi.get(self, "parameters")
 
@@ -4200,8 +4299,12 @@ class JobTaskDbtTask(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "projectDirectory":
+        if key == "profilesDirectory":
+            suggest = "profiles_directory"
+        elif key == "projectDirectory":
             suggest = "project_directory"
+        elif key == "warehouseId":
+            suggest = "warehouse_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobTaskDbtTask. Access the value via the '{suggest}' property getter instead.")
@@ -4216,28 +4319,66 @@ class JobTaskDbtTask(dict):
 
     def __init__(__self__, *,
                  commands: Sequence[str],
+                 profiles_directory: Optional[str] = None,
                  project_directory: Optional[str] = None,
-                 schema: Optional[str] = None):
+                 schema: Optional[str] = None,
+                 warehouse_id: Optional[str] = None):
+        """
+        :param Sequence[str] commands: (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+        :param str profiles_directory: The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+        :param str project_directory: The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+        :param str schema: The name of the schema dbt should run in. Defaults to `default`.
+        :param str warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        """
         pulumi.set(__self__, "commands", commands)
+        if profiles_directory is not None:
+            pulumi.set(__self__, "profiles_directory", profiles_directory)
         if project_directory is not None:
             pulumi.set(__self__, "project_directory", project_directory)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
 
     @property
     @pulumi.getter
     def commands(self) -> Sequence[str]:
+        """
+        (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+        """
         return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter(name="profilesDirectory")
+    def profiles_directory(self) -> Optional[str]:
+        """
+        The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+        """
+        return pulumi.get(self, "profiles_directory")
 
     @property
     @pulumi.getter(name="projectDirectory")
     def project_directory(self) -> Optional[str]:
+        """
+        The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+        """
         return pulumi.get(self, "project_directory")
 
     @property
     @pulumi.getter
     def schema(self) -> Optional[str]:
+        """
+        The name of the schema dbt should run in. Defaults to `default`.
+        """
         return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[str]:
+        """
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        """
+        return pulumi.get(self, "warehouse_id")
 
 
 @pulumi.output_type
@@ -5515,7 +5656,7 @@ class JobTaskPythonWheelTask(dict):
         :param str entry_point: Python function as entry point for the task
         :param Mapping[str, Any] named_parameters: Named parameters for the task
         :param str package_name: Name of Python package
-        :param Sequence[str] parameters: Parameters for the task
+        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         if entry_point is not None:
             pulumi.set(__self__, "entry_point", entry_point)
@@ -5554,7 +5695,7 @@ class JobTaskPythonWheelTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        Parameters for the task
+        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         return pulumi.get(self, "parameters")
 
@@ -5586,7 +5727,7 @@ class JobTaskSparkJarTask(dict):
                  parameters: Optional[Sequence[str]] = None):
         """
         :param str main_class_name: The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
-        :param Sequence[str] parameters: Parameters for the task
+        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         if jar_uri is not None:
             pulumi.set(__self__, "jar_uri", jar_uri)
@@ -5612,7 +5753,7 @@ class JobTaskSparkJarTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        Parameters for the task
+        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         return pulumi.get(self, "parameters")
 
@@ -5641,7 +5782,7 @@ class JobTaskSparkPythonTask(dict):
                  parameters: Optional[Sequence[str]] = None):
         """
         :param str python_file: The URI of the Python file to be executed. DbfsFile and S3 paths are supported. This field is required.
-        :param Sequence[str] parameters: Parameters for the task
+        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         pulumi.set(__self__, "python_file", python_file)
         if parameters is not None:
@@ -5659,7 +5800,7 @@ class JobTaskSparkPythonTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        Parameters for the task
+        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         return pulumi.get(self, "parameters")
 
@@ -5669,7 +5810,7 @@ class JobTaskSparkSubmitTask(dict):
     def __init__(__self__, *,
                  parameters: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] parameters: Parameters for the task
+        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
@@ -5678,7 +5819,7 @@ class JobTaskSparkSubmitTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        Parameters for the task
+        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         return pulumi.get(self, "parameters")
 
@@ -5709,7 +5850,11 @@ class JobTaskSqlTask(dict):
                  query: Optional['outputs.JobTaskSqlTaskQuery'] = None,
                  warehouse_id: Optional[str] = None):
         """
-        :param Mapping[str, Any] parameters: Parameters for the task
+        :param 'JobTaskSqlTaskAlertArgs' alert: block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.
+        :param 'JobTaskSqlTaskDashboardArgs' dashboard: block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        :param Mapping[str, Any] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        :param 'JobTaskSqlTaskQueryArgs' query: block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        :param str warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
         """
         if alert is not None:
             pulumi.set(__self__, "alert", alert)
@@ -5725,29 +5870,41 @@ class JobTaskSqlTask(dict):
     @property
     @pulumi.getter
     def alert(self) -> Optional['outputs.JobTaskSqlTaskAlert']:
+        """
+        block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.
+        """
         return pulumi.get(self, "alert")
 
     @property
     @pulumi.getter
     def dashboard(self) -> Optional['outputs.JobTaskSqlTaskDashboard']:
+        """
+        block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
         return pulumi.get(self, "dashboard")
 
     @property
     @pulumi.getter
     def parameters(self) -> Optional[Mapping[str, Any]]:
         """
-        Parameters for the task
+        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         """
         return pulumi.get(self, "parameters")
 
     @property
     @pulumi.getter
     def query(self) -> Optional['outputs.JobTaskSqlTaskQuery']:
+        """
+        block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        """
         return pulumi.get(self, "query")
 
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[str]:
+        """
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        """
         return pulumi.get(self, "warehouse_id")
 
 
@@ -6079,19 +6236,20 @@ class MlflowWebhookHttpUrlSpec(dict):
                  url: str,
                  authorization: Optional[str] = None,
                  enable_ssl_verification: Optional[bool] = None,
-                 string: Optional[str] = None):
+                 secret: Optional[str] = None):
         """
         :param str url: External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
         :param str authorization: Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `<auth type> <credentials>`, e.g. `Bearer <access_token>`. If set to an empty string, no authorization header will be included in the request.
         :param bool enable_ssl_verification: Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
+        :param str secret: Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
         """
         pulumi.set(__self__, "url", url)
         if authorization is not None:
             pulumi.set(__self__, "authorization", authorization)
         if enable_ssl_verification is not None:
             pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
-        if string is not None:
-            pulumi.set(__self__, "string", string)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
 
     @property
     @pulumi.getter
@@ -6119,8 +6277,11 @@ class MlflowWebhookHttpUrlSpec(dict):
 
     @property
     @pulumi.getter
-    def string(self) -> Optional[str]:
-        return pulumi.get(self, "string")
+    def secret(self) -> Optional[str]:
+        """
+        Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+        """
+        return pulumi.get(self, "secret")
 
 
 @pulumi.output_type
@@ -7223,11 +7384,14 @@ class PipelineClusterAutoscale(dict):
 
     def __init__(__self__, *,
                  max_workers: Optional[int] = None,
-                 min_workers: Optional[int] = None):
+                 min_workers: Optional[int] = None,
+                 mode: Optional[str] = None):
         if max_workers is not None:
             pulumi.set(__self__, "max_workers", max_workers)
         if min_workers is not None:
             pulumi.set(__self__, "min_workers", min_workers)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter(name="maxWorkers")
@@ -7238,6 +7402,11 @@ class PipelineClusterAutoscale(dict):
     @pulumi.getter(name="minWorkers")
     def min_workers(self) -> Optional[int]:
         return pulumi.get(self, "min_workers")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type

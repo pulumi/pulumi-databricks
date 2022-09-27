@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstancePoolInstancePoolFleetAttributesFleetOnDemandOption {
-    private final String allocationStrategy;
-    private final @Nullable Integer instancePoolsToUseCount;
+    private String allocationStrategy;
+    private @Nullable Integer instancePoolsToUseCount;
 
-    @CustomType.Constructor
-    private InstancePoolInstancePoolFleetAttributesFleetOnDemandOption(
-        @CustomType.Parameter("allocationStrategy") String allocationStrategy,
-        @CustomType.Parameter("instancePoolsToUseCount") @Nullable Integer instancePoolsToUseCount) {
-        this.allocationStrategy = allocationStrategy;
-        this.instancePoolsToUseCount = instancePoolsToUseCount;
-    }
-
+    private InstancePoolInstancePoolFleetAttributesFleetOnDemandOption() {}
     public String allocationStrategy() {
         return this.allocationStrategy;
     }
@@ -37,30 +30,32 @@ public final class InstancePoolInstancePoolFleetAttributesFleetOnDemandOption {
     public static Builder builder(InstancePoolInstancePoolFleetAttributesFleetOnDemandOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String allocationStrategy;
         private @Nullable Integer instancePoolsToUseCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstancePoolInstancePoolFleetAttributesFleetOnDemandOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocationStrategy = defaults.allocationStrategy;
     	      this.instancePoolsToUseCount = defaults.instancePoolsToUseCount;
         }
 
+        @CustomType.Setter
         public Builder allocationStrategy(String allocationStrategy) {
             this.allocationStrategy = Objects.requireNonNull(allocationStrategy);
             return this;
         }
+        @CustomType.Setter
         public Builder instancePoolsToUseCount(@Nullable Integer instancePoolsToUseCount) {
             this.instancePoolsToUseCount = instancePoolsToUseCount;
             return this;
-        }        public InstancePoolInstancePoolFleetAttributesFleetOnDemandOption build() {
-            return new InstancePoolInstancePoolFleetAttributesFleetOnDemandOption(allocationStrategy, instancePoolsToUseCount);
+        }
+        public InstancePoolInstancePoolFleetAttributesFleetOnDemandOption build() {
+            final var o = new InstancePoolInstancePoolFleetAttributesFleetOnDemandOption();
+            o.allocationStrategy = allocationStrategy;
+            o.instancePoolsToUseCount = instancePoolsToUseCount;
+            return o;
         }
     }
 }

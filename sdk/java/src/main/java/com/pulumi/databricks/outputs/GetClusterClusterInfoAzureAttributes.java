@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterInfoAzureAttributes {
-    private final @Nullable String availability;
-    private final @Nullable Integer firstOnDemand;
-    private final @Nullable Double spotBidMaxPrice;
+    private @Nullable String availability;
+    private @Nullable Integer firstOnDemand;
+    private @Nullable Double spotBidMaxPrice;
 
-    @CustomType.Constructor
-    private GetClusterClusterInfoAzureAttributes(
-        @CustomType.Parameter("availability") @Nullable String availability,
-        @CustomType.Parameter("firstOnDemand") @Nullable Integer firstOnDemand,
-        @CustomType.Parameter("spotBidMaxPrice") @Nullable Double spotBidMaxPrice) {
-        this.availability = availability;
-        this.firstOnDemand = firstOnDemand;
-        this.spotBidMaxPrice = spotBidMaxPrice;
-    }
-
+    private GetClusterClusterInfoAzureAttributes() {}
     public Optional<String> availability() {
         return Optional.ofNullable(this.availability);
     }
@@ -44,16 +35,12 @@ public final class GetClusterClusterInfoAzureAttributes {
     public static Builder builder(GetClusterClusterInfoAzureAttributes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String availability;
         private @Nullable Integer firstOnDemand;
         private @Nullable Double spotBidMaxPrice;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterInfoAzureAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
@@ -61,19 +48,27 @@ public final class GetClusterClusterInfoAzureAttributes {
     	      this.spotBidMaxPrice = defaults.spotBidMaxPrice;
         }
 
+        @CustomType.Setter
         public Builder availability(@Nullable String availability) {
             this.availability = availability;
             return this;
         }
+        @CustomType.Setter
         public Builder firstOnDemand(@Nullable Integer firstOnDemand) {
             this.firstOnDemand = firstOnDemand;
             return this;
         }
+        @CustomType.Setter
         public Builder spotBidMaxPrice(@Nullable Double spotBidMaxPrice) {
             this.spotBidMaxPrice = spotBidMaxPrice;
             return this;
-        }        public GetClusterClusterInfoAzureAttributes build() {
-            return new GetClusterClusterInfoAzureAttributes(availability, firstOnDemand, spotBidMaxPrice);
+        }
+        public GetClusterClusterInfoAzureAttributes build() {
+            final var o = new GetClusterClusterInfoAzureAttributes();
+            o.availability = availability;
+            o.firstOnDemand = firstOnDemand;
+            o.spotBidMaxPrice = spotBidMaxPrice;
+            return o;
         }
     }
 }

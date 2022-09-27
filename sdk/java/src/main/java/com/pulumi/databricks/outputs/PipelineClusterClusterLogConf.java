@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineClusterClusterLogConf {
-    private final @Nullable PipelineClusterClusterLogConfDbfs dbfs;
-    private final @Nullable PipelineClusterClusterLogConfS3 s3;
+    private @Nullable PipelineClusterClusterLogConfDbfs dbfs;
+    private @Nullable PipelineClusterClusterLogConfS3 s3;
 
-    @CustomType.Constructor
-    private PipelineClusterClusterLogConf(
-        @CustomType.Parameter("dbfs") @Nullable PipelineClusterClusterLogConfDbfs dbfs,
-        @CustomType.Parameter("s3") @Nullable PipelineClusterClusterLogConfS3 s3) {
-        this.dbfs = dbfs;
-        this.s3 = s3;
-    }
-
+    private PipelineClusterClusterLogConf() {}
     public Optional<PipelineClusterClusterLogConfDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -37,30 +30,32 @@ public final class PipelineClusterClusterLogConf {
     public static Builder builder(PipelineClusterClusterLogConf defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable PipelineClusterClusterLogConfDbfs dbfs;
         private @Nullable PipelineClusterClusterLogConfS3 s3;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PipelineClusterClusterLogConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
     	      this.s3 = defaults.s3;
         }
 
+        @CustomType.Setter
         public Builder dbfs(@Nullable PipelineClusterClusterLogConfDbfs dbfs) {
             this.dbfs = dbfs;
             return this;
         }
+        @CustomType.Setter
         public Builder s3(@Nullable PipelineClusterClusterLogConfS3 s3) {
             this.s3 = s3;
             return this;
-        }        public PipelineClusterClusterLogConf build() {
-            return new PipelineClusterClusterLogConf(dbfs, s3);
+        }
+        public PipelineClusterClusterLogConf build() {
+            final var o = new PipelineClusterClusterLogConf();
+            o.dbfs = dbfs;
+            o.s3 = s3;
+            return o;
         }
     }
 }

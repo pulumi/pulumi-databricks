@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride {
-    private final String availabilityZone;
-    private final String instanceType;
+    private String availabilityZone;
+    private String instanceType;
 
-    @CustomType.Constructor
-    private InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride(
-        @CustomType.Parameter("availabilityZone") String availabilityZone,
-        @CustomType.Parameter("instanceType") String instanceType) {
-        this.availabilityZone = availabilityZone;
-        this.instanceType = instanceType;
-    }
-
+    private InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride() {}
     public String availabilityZone() {
         return this.availabilityZone;
     }
@@ -34,30 +27,32 @@ public final class InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride
     public static Builder builder(InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String availabilityZone;
         private String instanceType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
     	      this.instanceType = defaults.instanceType;
         }
 
+        @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
             this.availabilityZone = Objects.requireNonNull(availabilityZone);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
-        }        public InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride build() {
-            return new InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride(availabilityZone, instanceType);
+        }
+        public InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride build() {
+            final var o = new InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride();
+            o.availabilityZone = availabilityZone;
+            o.instanceType = instanceType;
+            return o;
         }
     }
 }

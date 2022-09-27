@@ -36,6 +36,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('azureEnvironment')
 
     @property
+    def azure_login_app_id(self) -> Optional[str]:
+        return __config__.get('azureLoginAppId')
+
+    @property
     def azure_tenant_id(self) -> Optional[str]:
         return __config__.get('azureTenantId')
 

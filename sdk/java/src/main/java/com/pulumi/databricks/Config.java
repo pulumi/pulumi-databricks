@@ -27,6 +27,9 @@ public final class Config {
     public Optional<String> azureEnvironment() {
         return Codegen.stringProp("azureEnvironment").config(config).get();
     }
+    public Optional<String> azureLoginAppId() {
+        return Codegen.stringProp("azureLoginAppId").config(config).get();
+    }
     public Optional<String> azureTenantId() {
         return Codegen.stringProp("azureTenantId").config(config).get();
     }

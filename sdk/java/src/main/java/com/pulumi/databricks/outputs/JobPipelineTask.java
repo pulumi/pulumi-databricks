@@ -13,13 +13,9 @@ public final class JobPipelineTask {
      * @return The pipeline&#39;s unique ID.
      * 
      */
-    private final String pipelineId;
+    private String pipelineId;
 
-    @CustomType.Constructor
-    private JobPipelineTask(@CustomType.Parameter("pipelineId") String pipelineId) {
-        this.pipelineId = pipelineId;
-    }
-
+    private JobPipelineTask() {}
     /**
      * @return The pipeline&#39;s unique ID.
      * 
@@ -35,24 +31,24 @@ public final class JobPipelineTask {
     public static Builder builder(JobPipelineTask defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String pipelineId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobPipelineTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pipelineId = defaults.pipelineId;
         }
 
+        @CustomType.Setter
         public Builder pipelineId(String pipelineId) {
             this.pipelineId = Objects.requireNonNull(pipelineId);
             return this;
-        }        public JobPipelineTask build() {
-            return new JobPipelineTask(pipelineId);
+        }
+        public JobPipelineTask build() {
+            final var o = new JobPipelineTask();
+            o.pipelineId = pipelineId;
+            return o;
         }
     }
 }

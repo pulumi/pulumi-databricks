@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class JobTaskSqlTaskQuery {
-    private final String queryId;
+    private String queryId;
 
-    @CustomType.Constructor
-    private JobTaskSqlTaskQuery(@CustomType.Parameter("queryId") String queryId) {
-        this.queryId = queryId;
-    }
-
+    private JobTaskSqlTaskQuery() {}
     public String queryId() {
         return this.queryId;
     }
@@ -27,24 +23,24 @@ public final class JobTaskSqlTaskQuery {
     public static Builder builder(JobTaskSqlTaskQuery defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String queryId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobTaskSqlTaskQuery defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.queryId = defaults.queryId;
         }
 
+        @CustomType.Setter
         public Builder queryId(String queryId) {
             this.queryId = Objects.requireNonNull(queryId);
             return this;
-        }        public JobTaskSqlTaskQuery build() {
-            return new JobTaskSqlTaskQuery(queryId);
+        }
+        public JobTaskSqlTaskQuery build() {
+            final var o = new JobTaskSqlTaskQuery();
+            o.queryId = queryId;
+            return o;
         }
     }
 }

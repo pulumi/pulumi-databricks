@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskNewClusterClusterLogConf {
-    private final @Nullable JobTaskNewClusterClusterLogConfDbfs dbfs;
-    private final @Nullable JobTaskNewClusterClusterLogConfS3 s3;
+    private @Nullable JobTaskNewClusterClusterLogConfDbfs dbfs;
+    private @Nullable JobTaskNewClusterClusterLogConfS3 s3;
 
-    @CustomType.Constructor
-    private JobTaskNewClusterClusterLogConf(
-        @CustomType.Parameter("dbfs") @Nullable JobTaskNewClusterClusterLogConfDbfs dbfs,
-        @CustomType.Parameter("s3") @Nullable JobTaskNewClusterClusterLogConfS3 s3) {
-        this.dbfs = dbfs;
-        this.s3 = s3;
-    }
-
+    private JobTaskNewClusterClusterLogConf() {}
     public Optional<JobTaskNewClusterClusterLogConfDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -37,30 +30,32 @@ public final class JobTaskNewClusterClusterLogConf {
     public static Builder builder(JobTaskNewClusterClusterLogConf defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable JobTaskNewClusterClusterLogConfDbfs dbfs;
         private @Nullable JobTaskNewClusterClusterLogConfS3 s3;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobTaskNewClusterClusterLogConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
     	      this.s3 = defaults.s3;
         }
 
+        @CustomType.Setter
         public Builder dbfs(@Nullable JobTaskNewClusterClusterLogConfDbfs dbfs) {
             this.dbfs = dbfs;
             return this;
         }
+        @CustomType.Setter
         public Builder s3(@Nullable JobTaskNewClusterClusterLogConfS3 s3) {
             this.s3 = s3;
             return this;
-        }        public JobTaskNewClusterClusterLogConf build() {
-            return new JobTaskNewClusterClusterLogConf(dbfs, s3);
+        }
+        public JobTaskNewClusterClusterLogConf build() {
+            final var o = new JobTaskNewClusterClusterLogConf();
+            o.dbfs = dbfs;
+            o.s3 = s3;
+            return o;
         }
     }
 }

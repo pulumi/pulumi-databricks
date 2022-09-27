@@ -12,26 +12,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskSparkPythonTask {
     /**
-     * @return Parameters for the task
+     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      * 
      */
-    private final @Nullable List<String> parameters;
+    private @Nullable List<String> parameters;
     /**
      * @return The URI of the Python file to be executed. databricks.DbfsFile and S3 paths are supported. This field is required.
      * 
      */
-    private final String pythonFile;
+    private String pythonFile;
 
-    @CustomType.Constructor
-    private JobTaskSparkPythonTask(
-        @CustomType.Parameter("parameters") @Nullable List<String> parameters,
-        @CustomType.Parameter("pythonFile") String pythonFile) {
-        this.parameters = parameters;
-        this.pythonFile = pythonFile;
-    }
-
+    private JobTaskSparkPythonTask() {}
     /**
-     * @return Parameters for the task
+     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      * 
      */
     public List<String> parameters() {
@@ -52,21 +45,18 @@ public final class JobTaskSparkPythonTask {
     public static Builder builder(JobTaskSparkPythonTask defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> parameters;
         private String pythonFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobTaskSparkPythonTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameters = defaults.parameters;
     	      this.pythonFile = defaults.pythonFile;
         }
 
+        @CustomType.Setter
         public Builder parameters(@Nullable List<String> parameters) {
             this.parameters = parameters;
             return this;
@@ -74,11 +64,16 @@ public final class JobTaskSparkPythonTask {
         public Builder parameters(String... parameters) {
             return parameters(List.of(parameters));
         }
+        @CustomType.Setter
         public Builder pythonFile(String pythonFile) {
             this.pythonFile = Objects.requireNonNull(pythonFile);
             return this;
-        }        public JobTaskSparkPythonTask build() {
-            return new JobTaskSparkPythonTask(parameters, pythonFile);
+        }
+        public JobTaskSparkPythonTask build() {
+            final var o = new JobTaskSparkPythonTask();
+            o.parameters = parameters;
+            o.pythonFile = pythonFile;
+            return o;
         }
     }
 }

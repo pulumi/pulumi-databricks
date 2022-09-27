@@ -14,23 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterInitScript {
-    private final @Nullable ClusterInitScriptDbfs dbfs;
-    private final @Nullable ClusterInitScriptFile file;
-    private final @Nullable ClusterInitScriptGcs gcs;
-    private final @Nullable ClusterInitScriptS3 s3;
+    private @Nullable ClusterInitScriptDbfs dbfs;
+    private @Nullable ClusterInitScriptFile file;
+    private @Nullable ClusterInitScriptGcs gcs;
+    private @Nullable ClusterInitScriptS3 s3;
 
-    @CustomType.Constructor
-    private ClusterInitScript(
-        @CustomType.Parameter("dbfs") @Nullable ClusterInitScriptDbfs dbfs,
-        @CustomType.Parameter("file") @Nullable ClusterInitScriptFile file,
-        @CustomType.Parameter("gcs") @Nullable ClusterInitScriptGcs gcs,
-        @CustomType.Parameter("s3") @Nullable ClusterInitScriptS3 s3) {
-        this.dbfs = dbfs;
-        this.file = file;
-        this.gcs = gcs;
-        this.s3 = s3;
-    }
-
+    private ClusterInitScript() {}
     public Optional<ClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -51,17 +40,13 @@ public final class ClusterInitScript {
     public static Builder builder(ClusterInitScript defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterInitScriptDbfs dbfs;
         private @Nullable ClusterInitScriptFile file;
         private @Nullable ClusterInitScriptGcs gcs;
         private @Nullable ClusterInitScriptS3 s3;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterInitScript defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
@@ -70,23 +55,33 @@ public final class ClusterInitScript {
     	      this.s3 = defaults.s3;
         }
 
+        @CustomType.Setter
         public Builder dbfs(@Nullable ClusterInitScriptDbfs dbfs) {
             this.dbfs = dbfs;
             return this;
         }
+        @CustomType.Setter
         public Builder file(@Nullable ClusterInitScriptFile file) {
             this.file = file;
             return this;
         }
+        @CustomType.Setter
         public Builder gcs(@Nullable ClusterInitScriptGcs gcs) {
             this.gcs = gcs;
             return this;
         }
+        @CustomType.Setter
         public Builder s3(@Nullable ClusterInitScriptS3 s3) {
             this.s3 = s3;
             return this;
-        }        public ClusterInitScript build() {
-            return new ClusterInitScript(dbfs, file, gcs, s3);
+        }
+        public ClusterInitScript build() {
+            final var o = new ClusterInitScript();
+            o.dbfs = dbfs;
+            o.file = file;
+            o.gcs = gcs;
+            o.s3 = s3;
+            return o;
         }
     }
 }

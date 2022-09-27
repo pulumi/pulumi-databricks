@@ -16,7 +16,6 @@ namespace Pulumi.Databricks
         /// 
         /// The following resources are used in the same context:
         /// 
-        /// * databricks.Table to manage tables within Unity Catalog.
         /// * databricks.Schema to manage schemas within Unity Catalog.
         /// * databricks.Catalog to manage catalogs within Unity Catalog.
         /// </summary>
@@ -28,7 +27,6 @@ namespace Pulumi.Databricks
         /// 
         /// The following resources are used in the same context:
         /// 
-        /// * databricks.Table to manage tables within Unity Catalog.
         /// * databricks.Schema to manage schemas within Unity Catalog.
         /// * databricks.Catalog to manage catalogs within Unity Catalog.
         /// </summary>
@@ -49,7 +47,7 @@ namespace Pulumi.Databricks
         private List<string>? _ids;
 
         /// <summary>
-        /// set of databricks.Table full names: *`catalog`.`schema`.`view`*
+        /// set of databricks_view full names: *`catalog`.`schema`.`view`*
         /// </summary>
         public List<string> Ids
         {
@@ -81,7 +79,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _ids;
 
         /// <summary>
-        /// set of databricks.Table full names: *`catalog`.`schema`.`view`*
+        /// set of databricks_view full names: *`catalog`.`schema`.`view`*
         /// </summary>
         public InputList<string> Ids
         {
@@ -111,7 +109,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// set of databricks.Table full names: *`catalog`.`schema`.`view`*
+        /// set of databricks_view full names: *`catalog`.`schema`.`view`*
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string SchemaName;

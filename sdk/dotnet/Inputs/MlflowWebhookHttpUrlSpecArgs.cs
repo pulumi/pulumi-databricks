@@ -24,8 +24,11 @@ namespace Pulumi.Databricks.Inputs
         [Input("enableSslVerification")]
         public Input<bool>? EnableSslVerification { get; set; }
 
-        [Input("string")]
-        public Input<string>? String { get; set; }
+        /// <summary>
+        /// Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+        /// </summary>
+        [Input("secret")]
+        public Input<string>? Secret { get; set; }
 
         /// <summary>
         /// External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.

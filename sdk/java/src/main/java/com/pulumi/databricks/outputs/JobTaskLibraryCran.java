@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskLibraryCran {
-    private final String package_;
-    private final @Nullable String repo;
+    private String package_;
+    private @Nullable String repo;
 
-    @CustomType.Constructor
-    private JobTaskLibraryCran(
-        @CustomType.Parameter("package") String package_,
-        @CustomType.Parameter("repo") @Nullable String repo) {
-        this.package_ = package_;
-        this.repo = repo;
-    }
-
+    private JobTaskLibraryCran() {}
     public String package_() {
         return this.package_;
     }
@@ -36,30 +29,32 @@ public final class JobTaskLibraryCran {
     public static Builder builder(JobTaskLibraryCran defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String package_;
         private @Nullable String repo;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobTaskLibraryCran defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.package_ = defaults.package_;
     	      this.repo = defaults.repo;
         }
 
+        @CustomType.Setter("package")
         public Builder package_(String package_) {
             this.package_ = Objects.requireNonNull(package_);
             return this;
         }
+        @CustomType.Setter
         public Builder repo(@Nullable String repo) {
             this.repo = repo;
             return this;
-        }        public JobTaskLibraryCran build() {
-            return new JobTaskLibraryCran(package_, repo);
+        }
+        public JobTaskLibraryCran build() {
+            final var o = new JobTaskLibraryCran();
+            o.package_ = package_;
+            o.repo = repo;
+            return o;
         }
     }
 }

@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterWorkloadTypeClients {
-    private final @Nullable Boolean jobs;
-    private final @Nullable Boolean notebooks;
+    private @Nullable Boolean jobs;
+    private @Nullable Boolean notebooks;
 
-    @CustomType.Constructor
-    private ClusterWorkloadTypeClients(
-        @CustomType.Parameter("jobs") @Nullable Boolean jobs,
-        @CustomType.Parameter("notebooks") @Nullable Boolean notebooks) {
-        this.jobs = jobs;
-        this.notebooks = notebooks;
-    }
-
+    private ClusterWorkloadTypeClients() {}
     public Optional<Boolean> jobs() {
         return Optional.ofNullable(this.jobs);
     }
@@ -36,30 +29,32 @@ public final class ClusterWorkloadTypeClients {
     public static Builder builder(ClusterWorkloadTypeClients defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean jobs;
         private @Nullable Boolean notebooks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterWorkloadTypeClients defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jobs = defaults.jobs;
     	      this.notebooks = defaults.notebooks;
         }
 
+        @CustomType.Setter
         public Builder jobs(@Nullable Boolean jobs) {
             this.jobs = jobs;
             return this;
         }
+        @CustomType.Setter
         public Builder notebooks(@Nullable Boolean notebooks) {
             this.notebooks = notebooks;
             return this;
-        }        public ClusterWorkloadTypeClients build() {
-            return new ClusterWorkloadTypeClients(jobs, notebooks);
+        }
+        public ClusterWorkloadTypeClients build() {
+            final var o = new ClusterWorkloadTypeClients();
+            o.jobs = jobs;
+            o.notebooks = notebooks;
+            return o;
         }
     }
 }

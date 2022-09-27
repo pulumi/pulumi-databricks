@@ -11,21 +11,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotebookPathsNotebookPathList {
-    private final @Nullable String language;
+    private @Nullable String language;
     /**
      * @return Path to workspace directory
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
 
-    @CustomType.Constructor
-    private GetNotebookPathsNotebookPathList(
-        @CustomType.Parameter("language") @Nullable String language,
-        @CustomType.Parameter("path") @Nullable String path) {
-        this.language = language;
-        this.path = path;
-    }
-
+    private GetNotebookPathsNotebookPathList() {}
     public Optional<String> language() {
         return Optional.ofNullable(this.language);
     }
@@ -44,30 +37,32 @@ public final class GetNotebookPathsNotebookPathList {
     public static Builder builder(GetNotebookPathsNotebookPathList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String language;
         private @Nullable String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNotebookPathsNotebookPathList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.language = defaults.language;
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder language(@Nullable String language) {
             this.language = language;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
-        }        public GetNotebookPathsNotebookPathList build() {
-            return new GetNotebookPathsNotebookPathList(language, path);
+        }
+        public GetNotebookPathsNotebookPathList build() {
+            final var o = new GetNotebookPathsNotebookPathList();
+            o.language = language;
+            o.path = path;
+            return o;
         }
     }
 }

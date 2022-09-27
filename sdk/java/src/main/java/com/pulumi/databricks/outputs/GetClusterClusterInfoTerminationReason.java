@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterInfoTerminationReason {
-    private final @Nullable String code;
-    private final @Nullable Map<String,Object> parameters;
-    private final @Nullable String type;
+    private @Nullable String code;
+    private @Nullable Map<String,Object> parameters;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private GetClusterClusterInfoTerminationReason(
-        @CustomType.Parameter("code") @Nullable String code,
-        @CustomType.Parameter("parameters") @Nullable Map<String,Object> parameters,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.code = code;
-        this.parameters = parameters;
-        this.type = type;
-    }
-
+    private GetClusterClusterInfoTerminationReason() {}
     public Optional<String> code() {
         return Optional.ofNullable(this.code);
     }
@@ -44,16 +35,12 @@ public final class GetClusterClusterInfoTerminationReason {
     public static Builder builder(GetClusterClusterInfoTerminationReason defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String code;
         private @Nullable Map<String,Object> parameters;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterInfoTerminationReason defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
@@ -61,19 +48,27 @@ public final class GetClusterClusterInfoTerminationReason {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder code(@Nullable String code) {
             this.code = code;
             return this;
         }
+        @CustomType.Setter
         public Builder parameters(@Nullable Map<String,Object> parameters) {
             this.parameters = parameters;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public GetClusterClusterInfoTerminationReason build() {
-            return new GetClusterClusterInfoTerminationReason(code, parameters, type);
+        }
+        public GetClusterClusterInfoTerminationReason build() {
+            final var o = new GetClusterClusterInfoTerminationReason();
+            o.code = code;
+            o.parameters = parameters;
+            o.type = type;
+            return o;
         }
     }
 }

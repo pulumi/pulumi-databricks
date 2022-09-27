@@ -17,84 +17,59 @@ public final class TableColumn {
      * @return User-supplied free-form text.
      * 
      */
-    private final @Nullable String comment;
+    private @Nullable String comment;
     /**
      * @return User-visible name of column
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Whether field is nullable (Default: `true`)
      * 
      */
-    private final @Nullable Boolean nullable;
+    private @Nullable Boolean nullable;
     /**
      * @return Partition ID
      * 
      */
-    private final @Nullable Integer partitionIndex;
+    private @Nullable Integer partitionIndex;
     /**
      * @return Ordinal position of column, starting at 0.
      * 
      */
-    private final Integer position;
+    private Integer position;
     /**
      * @return Format of `INTERVAL` columns
      * 
      */
-    private final @Nullable String typeIntervalType;
+    private @Nullable String typeIntervalType;
     /**
      * @return Column type spec (with metadata) as JSON string
      * 
      */
-    private final @Nullable String typeJson;
+    private @Nullable String typeJson;
     /**
      * @return Name of (outer) type
      * 
      */
-    private final String typeName;
+    private String typeName;
     /**
      * @return Digits of precision; applies to `DECIMAL` columns
      * 
      */
-    private final @Nullable Integer typePrecision;
+    private @Nullable Integer typePrecision;
     /**
      * @return Digits to right of decimal; applies to `DECIMAL` columns
      * 
      */
-    private final @Nullable Integer typeScale;
+    private @Nullable Integer typeScale;
     /**
      * @return Column type spec (with metadata) as SQL text
      * 
      */
-    private final String typeText;
+    private String typeText;
 
-    @CustomType.Constructor
-    private TableColumn(
-        @CustomType.Parameter("comment") @Nullable String comment,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nullable") @Nullable Boolean nullable,
-        @CustomType.Parameter("partitionIndex") @Nullable Integer partitionIndex,
-        @CustomType.Parameter("position") Integer position,
-        @CustomType.Parameter("typeIntervalType") @Nullable String typeIntervalType,
-        @CustomType.Parameter("typeJson") @Nullable String typeJson,
-        @CustomType.Parameter("typeName") String typeName,
-        @CustomType.Parameter("typePrecision") @Nullable Integer typePrecision,
-        @CustomType.Parameter("typeScale") @Nullable Integer typeScale,
-        @CustomType.Parameter("typeText") String typeText) {
-        this.comment = comment;
-        this.name = name;
-        this.nullable = nullable;
-        this.partitionIndex = partitionIndex;
-        this.position = position;
-        this.typeIntervalType = typeIntervalType;
-        this.typeJson = typeJson;
-        this.typeName = typeName;
-        this.typePrecision = typePrecision;
-        this.typeScale = typeScale;
-        this.typeText = typeText;
-    }
-
+    private TableColumn() {}
     /**
      * @return User-supplied free-form text.
      * 
@@ -180,7 +155,7 @@ public final class TableColumn {
     public static Builder builder(TableColumn defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String comment;
         private String name;
@@ -193,11 +168,7 @@ public final class TableColumn {
         private @Nullable Integer typePrecision;
         private @Nullable Integer typeScale;
         private String typeText;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TableColumn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
@@ -213,51 +184,75 @@ public final class TableColumn {
     	      this.typeText = defaults.typeText;
         }
 
+        @CustomType.Setter
         public Builder comment(@Nullable String comment) {
             this.comment = comment;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nullable(@Nullable Boolean nullable) {
             this.nullable = nullable;
             return this;
         }
+        @CustomType.Setter
         public Builder partitionIndex(@Nullable Integer partitionIndex) {
             this.partitionIndex = partitionIndex;
             return this;
         }
+        @CustomType.Setter
         public Builder position(Integer position) {
             this.position = Objects.requireNonNull(position);
             return this;
         }
+        @CustomType.Setter
         public Builder typeIntervalType(@Nullable String typeIntervalType) {
             this.typeIntervalType = typeIntervalType;
             return this;
         }
+        @CustomType.Setter
         public Builder typeJson(@Nullable String typeJson) {
             this.typeJson = typeJson;
             return this;
         }
+        @CustomType.Setter
         public Builder typeName(String typeName) {
             this.typeName = Objects.requireNonNull(typeName);
             return this;
         }
+        @CustomType.Setter
         public Builder typePrecision(@Nullable Integer typePrecision) {
             this.typePrecision = typePrecision;
             return this;
         }
+        @CustomType.Setter
         public Builder typeScale(@Nullable Integer typeScale) {
             this.typeScale = typeScale;
             return this;
         }
+        @CustomType.Setter
         public Builder typeText(String typeText) {
             this.typeText = Objects.requireNonNull(typeText);
             return this;
-        }        public TableColumn build() {
-            return new TableColumn(comment, name, nullable, partitionIndex, position, typeIntervalType, typeJson, typeName, typePrecision, typeScale, typeText);
+        }
+        public TableColumn build() {
+            final var o = new TableColumn();
+            o.comment = comment;
+            o.name = name;
+            o.nullable = nullable;
+            o.partitionIndex = partitionIndex;
+            o.position = position;
+            o.typeIntervalType = typeIntervalType;
+            o.typeJson = typeJson;
+            o.typeName = typeName;
+            o.typePrecision = typePrecision;
+            o.typeScale = typeScale;
+            o.typeText = typeText;
+            return o;
         }
     }
 }

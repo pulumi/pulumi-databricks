@@ -33,6 +33,9 @@ namespace Pulumi.Databricks
         [Output("azureEnvironment")]
         public Output<string?> AzureEnvironment { get; private set; } = null!;
 
+        [Output("azureLoginAppId")]
+        public Output<string?> AzureLoginAppId { get; private set; } = null!;
+
         [Output("azureTenantId")]
         public Output<string?> AzureTenantId { get; private set; } = null!;
 
@@ -105,6 +108,9 @@ namespace Pulumi.Databricks
 
         [Input("azureEnvironment")]
         public Input<string>? AzureEnvironment { get; set; }
+
+        [Input("azureLoginAppId")]
+        public Input<string>? AzureLoginAppId { get; set; }
 
         [Input("azureTenantId")]
         public Input<string>? AzureTenantId { get; set; }

@@ -16,10 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource allows you to manage [users in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/users.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users to databricks_group. Upon user creation the user will receive a password reset email. You can also get information about caller identity using databricks.getCurrentUser data source.
- * 
- * To create users in the Databricks account, the provider must be configured with `host = &#34;https://accounts.cloud.databricks.com&#34;` on AWS deployments or `host = &#34;https://accounts.azuredatabricks.net&#34;` and authenticate using AAD tokens on Azure deployments
- * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:

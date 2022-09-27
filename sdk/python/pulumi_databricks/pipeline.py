@@ -32,7 +32,7 @@ class PipelineArgs:
         """
         The set of arguments for constructing a Pipeline resource.
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
-        :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
+        :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `false`.
@@ -95,7 +95,7 @@ class PipelineArgs:
     @pulumi.getter
     def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]]:
         """
-        blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
+        blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         """
         return pulumi.get(self, "clusters")
 
@@ -241,7 +241,7 @@ class _PipelineState:
         """
         Input properties used for looking up and filtering Pipeline resources.
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
-        :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
+        :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `false`.
@@ -306,7 +306,7 @@ class _PipelineState:
     @pulumi.getter
     def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]]:
         """
-        blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
+        blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         """
         return pulumi.get(self, "clusters")
 
@@ -520,7 +520,7 @@ class Pipeline(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `false`.
@@ -677,7 +677,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `false`.
@@ -725,7 +725,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter
     def clusters(self) -> pulumi.Output[Optional[Sequence['outputs.PipelineCluster']]]:
         """
-        blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
+        blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         """
         return pulumi.get(self, "clusters")
 

@@ -15,28 +15,19 @@ public final class MlflowWebhookJobSpec {
      * @return The personal access token used to authorize webhook&#39;s job runs.
      * 
      */
-    private final String accessToken;
+    private String accessToken;
     /**
      * @return ID of the Databricks job that the webhook runs.
      * 
      */
-    private final String jobId;
+    private String jobId;
     /**
      * @return URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
      * 
      */
-    private final @Nullable String workspaceUrl;
+    private @Nullable String workspaceUrl;
 
-    @CustomType.Constructor
-    private MlflowWebhookJobSpec(
-        @CustomType.Parameter("accessToken") String accessToken,
-        @CustomType.Parameter("jobId") String jobId,
-        @CustomType.Parameter("workspaceUrl") @Nullable String workspaceUrl) {
-        this.accessToken = accessToken;
-        this.jobId = jobId;
-        this.workspaceUrl = workspaceUrl;
-    }
-
+    private MlflowWebhookJobSpec() {}
     /**
      * @return The personal access token used to authorize webhook&#39;s job runs.
      * 
@@ -66,16 +57,12 @@ public final class MlflowWebhookJobSpec {
     public static Builder builder(MlflowWebhookJobSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessToken;
         private String jobId;
         private @Nullable String workspaceUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MlflowWebhookJobSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessToken = defaults.accessToken;
@@ -83,19 +70,27 @@ public final class MlflowWebhookJobSpec {
     	      this.workspaceUrl = defaults.workspaceUrl;
         }
 
+        @CustomType.Setter
         public Builder accessToken(String accessToken) {
             this.accessToken = Objects.requireNonNull(accessToken);
             return this;
         }
+        @CustomType.Setter
         public Builder jobId(String jobId) {
             this.jobId = Objects.requireNonNull(jobId);
             return this;
         }
+        @CustomType.Setter
         public Builder workspaceUrl(@Nullable String workspaceUrl) {
             this.workspaceUrl = workspaceUrl;
             return this;
-        }        public MlflowWebhookJobSpec build() {
-            return new MlflowWebhookJobSpec(accessToken, jobId, workspaceUrl);
+        }
+        public MlflowWebhookJobSpec build() {
+            final var o = new MlflowWebhookJobSpec();
+            o.accessToken = accessToken;
+            o.jobId = jobId;
+            o.workspaceUrl = workspaceUrl;
+            return o;
         }
     }
 }

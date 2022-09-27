@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * The following resources are used in the same context:
  *
- * * databricks.Table to manage tables within Unity Catalog.
  * * databricks.Schema to manage schemas within Unity Catalog.
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
@@ -35,7 +34,7 @@ export interface GetViewsArgs {
      */
     catalogName: string;
     /**
-     * set of databricks.Table full names: *`catalog`.`schema`.`view`*
+     * set of databricksView full names: *`catalog`.`schema`.`view`*
      */
     ids?: string[];
     /**
@@ -54,7 +53,7 @@ export interface GetViewsResult {
      */
     readonly id: string;
     /**
-     * set of databricks.Table full names: *`catalog`.`schema`.`view`*
+     * set of databricksView full names: *`catalog`.`schema`.`view`*
      */
     readonly ids: string[];
     readonly schemaName: string;
@@ -73,7 +72,7 @@ export interface GetViewsOutputArgs {
      */
     catalogName: pulumi.Input<string>;
     /**
-     * set of databricks.Table full names: *`catalog`.`schema`.`view`*
+     * set of databricksView full names: *`catalog`.`schema`.`view`*
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**

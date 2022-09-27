@@ -18,107 +18,70 @@ public final class GetSqlWarehouseResult {
      * @return Time in minutes until an idle SQL warehouse terminates all clusters and stops.
      * 
      */
-    private final Integer autoStopMins;
-    private final GetSqlWarehouseChannel channel;
+    private Integer autoStopMins;
+    private GetSqlWarehouseChannel channel;
     /**
      * @return The size of the clusters allocated to the warehouse: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;.
      * 
      */
-    private final String clusterSize;
+    private String clusterSize;
     /**
      * @return ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      * 
      */
-    private final String dataSourceId;
+    private String dataSourceId;
     /**
      * @return Whether to enable [Photon](https://databricks.com/product/delta-engine).
      * 
      */
-    private final Boolean enablePhoton;
+    private Boolean enablePhoton;
     /**
      * @return Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
      * * `channel` block, consisting of following fields:
      * 
      */
-    private final Boolean enableServerlessCompute;
-    private final String id;
-    private final String instanceProfileArn;
+    private Boolean enableServerlessCompute;
+    private String id;
+    private String instanceProfileArn;
     /**
      * @return JDBC connection string.
      * 
      */
-    private final String jdbcUrl;
+    private String jdbcUrl;
     /**
      * @return Maximum number of clusters available when a SQL warehouse is running.
      * 
      */
-    private final Integer maxNumClusters;
+    private Integer maxNumClusters;
     /**
      * @return Minimum number of clusters available when a SQL warehouse is running.
      * 
      */
-    private final Integer minNumClusters;
+    private Integer minNumClusters;
     /**
      * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
      * 
      */
-    private final String name;
-    private final Integer numClusters;
+    private String name;
+    private Integer numClusters;
     /**
      * @return ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
      * 
      */
-    private final GetSqlWarehouseOdbcParams odbcParams;
+    private GetSqlWarehouseOdbcParams odbcParams;
     /**
      * @return The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      * 
      */
-    private final String spotInstancePolicy;
-    private final String state;
+    private String spotInstancePolicy;
+    private String state;
     /**
      * @return Databricks tags all warehouse resources with these tags.
      * 
      */
-    private final GetSqlWarehouseTags tags;
+    private GetSqlWarehouseTags tags;
 
-    @CustomType.Constructor
-    private GetSqlWarehouseResult(
-        @CustomType.Parameter("autoStopMins") Integer autoStopMins,
-        @CustomType.Parameter("channel") GetSqlWarehouseChannel channel,
-        @CustomType.Parameter("clusterSize") String clusterSize,
-        @CustomType.Parameter("dataSourceId") String dataSourceId,
-        @CustomType.Parameter("enablePhoton") Boolean enablePhoton,
-        @CustomType.Parameter("enableServerlessCompute") Boolean enableServerlessCompute,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceProfileArn") String instanceProfileArn,
-        @CustomType.Parameter("jdbcUrl") String jdbcUrl,
-        @CustomType.Parameter("maxNumClusters") Integer maxNumClusters,
-        @CustomType.Parameter("minNumClusters") Integer minNumClusters,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("numClusters") Integer numClusters,
-        @CustomType.Parameter("odbcParams") GetSqlWarehouseOdbcParams odbcParams,
-        @CustomType.Parameter("spotInstancePolicy") String spotInstancePolicy,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("tags") GetSqlWarehouseTags tags) {
-        this.autoStopMins = autoStopMins;
-        this.channel = channel;
-        this.clusterSize = clusterSize;
-        this.dataSourceId = dataSourceId;
-        this.enablePhoton = enablePhoton;
-        this.enableServerlessCompute = enableServerlessCompute;
-        this.id = id;
-        this.instanceProfileArn = instanceProfileArn;
-        this.jdbcUrl = jdbcUrl;
-        this.maxNumClusters = maxNumClusters;
-        this.minNumClusters = minNumClusters;
-        this.name = name;
-        this.numClusters = numClusters;
-        this.odbcParams = odbcParams;
-        this.spotInstancePolicy = spotInstancePolicy;
-        this.state = state;
-        this.tags = tags;
-    }
-
+    private GetSqlWarehouseResult() {}
     /**
      * @return Time in minutes until an idle SQL warehouse terminates all clusters and stops.
      * 
@@ -227,7 +190,7 @@ public final class GetSqlWarehouseResult {
     public static Builder builder(GetSqlWarehouseResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer autoStopMins;
         private GetSqlWarehouseChannel channel;
@@ -246,11 +209,7 @@ public final class GetSqlWarehouseResult {
         private String spotInstancePolicy;
         private String state;
         private GetSqlWarehouseTags tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSqlWarehouseResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoStopMins = defaults.autoStopMins;
@@ -272,75 +231,111 @@ public final class GetSqlWarehouseResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder autoStopMins(Integer autoStopMins) {
             this.autoStopMins = Objects.requireNonNull(autoStopMins);
             return this;
         }
+        @CustomType.Setter
         public Builder channel(GetSqlWarehouseChannel channel) {
             this.channel = Objects.requireNonNull(channel);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterSize(String clusterSize) {
             this.clusterSize = Objects.requireNonNull(clusterSize);
             return this;
         }
+        @CustomType.Setter
         public Builder dataSourceId(String dataSourceId) {
             this.dataSourceId = Objects.requireNonNull(dataSourceId);
             return this;
         }
+        @CustomType.Setter
         public Builder enablePhoton(Boolean enablePhoton) {
             this.enablePhoton = Objects.requireNonNull(enablePhoton);
             return this;
         }
+        @CustomType.Setter
         public Builder enableServerlessCompute(Boolean enableServerlessCompute) {
             this.enableServerlessCompute = Objects.requireNonNull(enableServerlessCompute);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceProfileArn(String instanceProfileArn) {
             this.instanceProfileArn = Objects.requireNonNull(instanceProfileArn);
             return this;
         }
+        @CustomType.Setter
         public Builder jdbcUrl(String jdbcUrl) {
             this.jdbcUrl = Objects.requireNonNull(jdbcUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder maxNumClusters(Integer maxNumClusters) {
             this.maxNumClusters = Objects.requireNonNull(maxNumClusters);
             return this;
         }
+        @CustomType.Setter
         public Builder minNumClusters(Integer minNumClusters) {
             this.minNumClusters = Objects.requireNonNull(minNumClusters);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder numClusters(Integer numClusters) {
             this.numClusters = Objects.requireNonNull(numClusters);
             return this;
         }
+        @CustomType.Setter
         public Builder odbcParams(GetSqlWarehouseOdbcParams odbcParams) {
             this.odbcParams = Objects.requireNonNull(odbcParams);
             return this;
         }
+        @CustomType.Setter
         public Builder spotInstancePolicy(String spotInstancePolicy) {
             this.spotInstancePolicy = Objects.requireNonNull(spotInstancePolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(GetSqlWarehouseTags tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
-        }        public GetSqlWarehouseResult build() {
-            return new GetSqlWarehouseResult(autoStopMins, channel, clusterSize, dataSourceId, enablePhoton, enableServerlessCompute, id, instanceProfileArn, jdbcUrl, maxNumClusters, minNumClusters, name, numClusters, odbcParams, spotInstancePolicy, state, tags);
+        }
+        public GetSqlWarehouseResult build() {
+            final var o = new GetSqlWarehouseResult();
+            o.autoStopMins = autoStopMins;
+            o.channel = channel;
+            o.clusterSize = clusterSize;
+            o.dataSourceId = dataSourceId;
+            o.enablePhoton = enablePhoton;
+            o.enableServerlessCompute = enableServerlessCompute;
+            o.id = id;
+            o.instanceProfileArn = instanceProfileArn;
+            o.jdbcUrl = jdbcUrl;
+            o.maxNumClusters = maxNumClusters;
+            o.minNumClusters = minNumClusters;
+            o.name = name;
+            o.numClusters = numClusters;
+            o.odbcParams = odbcParams;
+            o.spotInstancePolicy = spotInstancePolicy;
+            o.state = state;
+            o.tags = tags;
+            return o;
         }
     }
 }

@@ -14,21 +14,14 @@ public final class GetCatalogsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return set of databricks.Catalog names
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
 
-    @CustomType.Constructor
-    private GetCatalogsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids) {
-        this.id = id;
-        this.ids = ids;
-    }
-
+    private GetCatalogsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -51,33 +44,35 @@ public final class GetCatalogsResult {
     public static Builder builder(GetCatalogsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCatalogsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
         }
         public Builder ids(String... ids) {
             return ids(List.of(ids));
-        }        public GetCatalogsResult build() {
-            return new GetCatalogsResult(id, ids);
+        }
+        public GetCatalogsResult build() {
+            final var o = new GetCatalogsResult();
+            o.id = id;
+            o.ids = ids;
+            return o;
         }
     }
 }

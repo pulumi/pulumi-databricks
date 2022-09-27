@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSqlWarehouseTags {
-    private final List<GetSqlWarehouseTagsCustomTag> customTags;
+    private List<GetSqlWarehouseTagsCustomTag> customTags;
 
-    @CustomType.Constructor
-    private GetSqlWarehouseTags(@CustomType.Parameter("customTags") List<GetSqlWarehouseTagsCustomTag> customTags) {
-        this.customTags = customTags;
-    }
-
+    private GetSqlWarehouseTags() {}
     public List<GetSqlWarehouseTagsCustomTag> customTags() {
         return this.customTags;
     }
@@ -28,27 +24,27 @@ public final class GetSqlWarehouseTags {
     public static Builder builder(GetSqlWarehouseTags defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetSqlWarehouseTagsCustomTag> customTags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSqlWarehouseTags defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customTags = defaults.customTags;
         }
 
+        @CustomType.Setter
         public Builder customTags(List<GetSqlWarehouseTagsCustomTag> customTags) {
             this.customTags = Objects.requireNonNull(customTags);
             return this;
         }
         public Builder customTags(GetSqlWarehouseTagsCustomTag... customTags) {
             return customTags(List.of(customTags));
-        }        public GetSqlWarehouseTags build() {
-            return new GetSqlWarehouseTags(customTags);
+        }
+        public GetSqlWarehouseTags build() {
+            final var o = new GetSqlWarehouseTags();
+            o.customTags = customTags;
+            return o;
         }
     }
 }

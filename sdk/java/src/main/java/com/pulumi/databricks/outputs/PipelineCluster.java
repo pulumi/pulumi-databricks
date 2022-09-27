@@ -21,62 +21,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineCluster {
-    private final @Nullable Boolean applyPolicyDefaultValues;
-    private final @Nullable PipelineClusterAutoscale autoscale;
-    private final @Nullable PipelineClusterAwsAttributes awsAttributes;
-    private final @Nullable PipelineClusterClusterLogConf clusterLogConf;
-    private final @Nullable Map<String,Object> customTags;
-    private final @Nullable String driverInstancePoolId;
-    private final @Nullable String driverNodeTypeId;
-    private final @Nullable PipelineClusterGcpAttributes gcpAttributes;
-    private final @Nullable List<PipelineClusterInitScript> initScripts;
-    private final @Nullable String instancePoolId;
-    private final @Nullable String label;
-    private final @Nullable String nodeTypeId;
-    private final @Nullable Integer numWorkers;
-    private final @Nullable String policyId;
-    private final @Nullable Map<String,Object> sparkConf;
-    private final @Nullable Map<String,Object> sparkEnvVars;
-    private final @Nullable List<String> sshPublicKeys;
+    private @Nullable Boolean applyPolicyDefaultValues;
+    private @Nullable PipelineClusterAutoscale autoscale;
+    private @Nullable PipelineClusterAwsAttributes awsAttributes;
+    private @Nullable PipelineClusterClusterLogConf clusterLogConf;
+    private @Nullable Map<String,Object> customTags;
+    private @Nullable String driverInstancePoolId;
+    private @Nullable String driverNodeTypeId;
+    private @Nullable PipelineClusterGcpAttributes gcpAttributes;
+    private @Nullable List<PipelineClusterInitScript> initScripts;
+    private @Nullable String instancePoolId;
+    private @Nullable String label;
+    private @Nullable String nodeTypeId;
+    private @Nullable Integer numWorkers;
+    private @Nullable String policyId;
+    private @Nullable Map<String,Object> sparkConf;
+    private @Nullable Map<String,Object> sparkEnvVars;
+    private @Nullable List<String> sshPublicKeys;
 
-    @CustomType.Constructor
-    private PipelineCluster(
-        @CustomType.Parameter("applyPolicyDefaultValues") @Nullable Boolean applyPolicyDefaultValues,
-        @CustomType.Parameter("autoscale") @Nullable PipelineClusterAutoscale autoscale,
-        @CustomType.Parameter("awsAttributes") @Nullable PipelineClusterAwsAttributes awsAttributes,
-        @CustomType.Parameter("clusterLogConf") @Nullable PipelineClusterClusterLogConf clusterLogConf,
-        @CustomType.Parameter("customTags") @Nullable Map<String,Object> customTags,
-        @CustomType.Parameter("driverInstancePoolId") @Nullable String driverInstancePoolId,
-        @CustomType.Parameter("driverNodeTypeId") @Nullable String driverNodeTypeId,
-        @CustomType.Parameter("gcpAttributes") @Nullable PipelineClusterGcpAttributes gcpAttributes,
-        @CustomType.Parameter("initScripts") @Nullable List<PipelineClusterInitScript> initScripts,
-        @CustomType.Parameter("instancePoolId") @Nullable String instancePoolId,
-        @CustomType.Parameter("label") @Nullable String label,
-        @CustomType.Parameter("nodeTypeId") @Nullable String nodeTypeId,
-        @CustomType.Parameter("numWorkers") @Nullable Integer numWorkers,
-        @CustomType.Parameter("policyId") @Nullable String policyId,
-        @CustomType.Parameter("sparkConf") @Nullable Map<String,Object> sparkConf,
-        @CustomType.Parameter("sparkEnvVars") @Nullable Map<String,Object> sparkEnvVars,
-        @CustomType.Parameter("sshPublicKeys") @Nullable List<String> sshPublicKeys) {
-        this.applyPolicyDefaultValues = applyPolicyDefaultValues;
-        this.autoscale = autoscale;
-        this.awsAttributes = awsAttributes;
-        this.clusterLogConf = clusterLogConf;
-        this.customTags = customTags;
-        this.driverInstancePoolId = driverInstancePoolId;
-        this.driverNodeTypeId = driverNodeTypeId;
-        this.gcpAttributes = gcpAttributes;
-        this.initScripts = initScripts;
-        this.instancePoolId = instancePoolId;
-        this.label = label;
-        this.nodeTypeId = nodeTypeId;
-        this.numWorkers = numWorkers;
-        this.policyId = policyId;
-        this.sparkConf = sparkConf;
-        this.sparkEnvVars = sparkEnvVars;
-        this.sshPublicKeys = sshPublicKeys;
-    }
-
+    private PipelineCluster() {}
     public Optional<Boolean> applyPolicyDefaultValues() {
         return Optional.ofNullable(this.applyPolicyDefaultValues);
     }
@@ -136,7 +99,7 @@ public final class PipelineCluster {
     public static Builder builder(PipelineCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean applyPolicyDefaultValues;
         private @Nullable PipelineClusterAutoscale autoscale;
@@ -155,11 +118,7 @@ public final class PipelineCluster {
         private @Nullable Map<String,Object> sparkConf;
         private @Nullable Map<String,Object> sparkEnvVars;
         private @Nullable List<String> sshPublicKeys;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PipelineCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applyPolicyDefaultValues = defaults.applyPolicyDefaultValues;
@@ -181,38 +140,47 @@ public final class PipelineCluster {
     	      this.sshPublicKeys = defaults.sshPublicKeys;
         }
 
+        @CustomType.Setter
         public Builder applyPolicyDefaultValues(@Nullable Boolean applyPolicyDefaultValues) {
             this.applyPolicyDefaultValues = applyPolicyDefaultValues;
             return this;
         }
+        @CustomType.Setter
         public Builder autoscale(@Nullable PipelineClusterAutoscale autoscale) {
             this.autoscale = autoscale;
             return this;
         }
+        @CustomType.Setter
         public Builder awsAttributes(@Nullable PipelineClusterAwsAttributes awsAttributes) {
             this.awsAttributes = awsAttributes;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterLogConf(@Nullable PipelineClusterClusterLogConf clusterLogConf) {
             this.clusterLogConf = clusterLogConf;
             return this;
         }
+        @CustomType.Setter
         public Builder customTags(@Nullable Map<String,Object> customTags) {
             this.customTags = customTags;
             return this;
         }
+        @CustomType.Setter
         public Builder driverInstancePoolId(@Nullable String driverInstancePoolId) {
             this.driverInstancePoolId = driverInstancePoolId;
             return this;
         }
+        @CustomType.Setter
         public Builder driverNodeTypeId(@Nullable String driverNodeTypeId) {
             this.driverNodeTypeId = driverNodeTypeId;
             return this;
         }
+        @CustomType.Setter
         public Builder gcpAttributes(@Nullable PipelineClusterGcpAttributes gcpAttributes) {
             this.gcpAttributes = gcpAttributes;
             return this;
         }
+        @CustomType.Setter
         public Builder initScripts(@Nullable List<PipelineClusterInitScript> initScripts) {
             this.initScripts = initScripts;
             return this;
@@ -220,42 +188,69 @@ public final class PipelineCluster {
         public Builder initScripts(PipelineClusterInitScript... initScripts) {
             return initScripts(List.of(initScripts));
         }
+        @CustomType.Setter
         public Builder instancePoolId(@Nullable String instancePoolId) {
             this.instancePoolId = instancePoolId;
             return this;
         }
+        @CustomType.Setter
         public Builder label(@Nullable String label) {
             this.label = label;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeTypeId(@Nullable String nodeTypeId) {
             this.nodeTypeId = nodeTypeId;
             return this;
         }
+        @CustomType.Setter
         public Builder numWorkers(@Nullable Integer numWorkers) {
             this.numWorkers = numWorkers;
             return this;
         }
+        @CustomType.Setter
         public Builder policyId(@Nullable String policyId) {
             this.policyId = policyId;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkConf(@Nullable Map<String,Object> sparkConf) {
             this.sparkConf = sparkConf;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkEnvVars(@Nullable Map<String,Object> sparkEnvVars) {
             this.sparkEnvVars = sparkEnvVars;
             return this;
         }
+        @CustomType.Setter
         public Builder sshPublicKeys(@Nullable List<String> sshPublicKeys) {
             this.sshPublicKeys = sshPublicKeys;
             return this;
         }
         public Builder sshPublicKeys(String... sshPublicKeys) {
             return sshPublicKeys(List.of(sshPublicKeys));
-        }        public PipelineCluster build() {
-            return new PipelineCluster(applyPolicyDefaultValues, autoscale, awsAttributes, clusterLogConf, customTags, driverInstancePoolId, driverNodeTypeId, gcpAttributes, initScripts, instancePoolId, label, nodeTypeId, numWorkers, policyId, sparkConf, sparkEnvVars, sshPublicKeys);
+        }
+        public PipelineCluster build() {
+            final var o = new PipelineCluster();
+            o.applyPolicyDefaultValues = applyPolicyDefaultValues;
+            o.autoscale = autoscale;
+            o.awsAttributes = awsAttributes;
+            o.clusterLogConf = clusterLogConf;
+            o.customTags = customTags;
+            o.driverInstancePoolId = driverInstancePoolId;
+            o.driverNodeTypeId = driverNodeTypeId;
+            o.gcpAttributes = gcpAttributes;
+            o.initScripts = initScripts;
+            o.instancePoolId = instancePoolId;
+            o.label = label;
+            o.nodeTypeId = nodeTypeId;
+            o.numWorkers = numWorkers;
+            o.policyId = policyId;
+            o.sparkConf = sparkConf;
+            o.sparkEnvVars = sparkEnvVars;
+            o.sshPublicKeys = sshPublicKeys;
+            return o;
         }
     }
 }

@@ -16,28 +16,19 @@ public final class InstancePoolAwsAttributes {
      * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
      * 
      */
-    private final @Nullable String availability;
+    private @Nullable String availability;
     /**
      * @return (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
      * 
      */
-    private final @Nullable Integer spotBidPricePercent;
+    private @Nullable Integer spotBidPricePercent;
     /**
-     * @return (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+     * @return (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
      * 
      */
-    private final @Nullable String zoneId;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private InstancePoolAwsAttributes(
-        @CustomType.Parameter("availability") @Nullable String availability,
-        @CustomType.Parameter("spotBidPricePercent") @Nullable Integer spotBidPricePercent,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.availability = availability;
-        this.spotBidPricePercent = spotBidPricePercent;
-        this.zoneId = zoneId;
-    }
-
+    private InstancePoolAwsAttributes() {}
     /**
      * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
      * 
@@ -53,7 +44,7 @@ public final class InstancePoolAwsAttributes {
         return Optional.ofNullable(this.spotBidPricePercent);
     }
     /**
-     * @return (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+     * @return (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
      * 
      */
     public Optional<String> zoneId() {
@@ -67,16 +58,12 @@ public final class InstancePoolAwsAttributes {
     public static Builder builder(InstancePoolAwsAttributes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String availability;
         private @Nullable Integer spotBidPricePercent;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstancePoolAwsAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
@@ -84,19 +71,27 @@ public final class InstancePoolAwsAttributes {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder availability(@Nullable String availability) {
             this.availability = availability;
             return this;
         }
+        @CustomType.Setter
         public Builder spotBidPricePercent(@Nullable Integer spotBidPricePercent) {
             this.spotBidPricePercent = spotBidPricePercent;
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public InstancePoolAwsAttributes build() {
-            return new InstancePoolAwsAttributes(availability, spotBidPricePercent, zoneId);
+        }
+        public InstancePoolAwsAttributes build() {
+            final var o = new InstancePoolAwsAttributes();
+            o.availability = availability;
+            o.spotBidPricePercent = spotBidPricePercent;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

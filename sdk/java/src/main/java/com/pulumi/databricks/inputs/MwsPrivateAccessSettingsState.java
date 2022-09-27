@@ -48,14 +48,14 @@ public final class MwsPrivateAccessSettingsState extends com.pulumi.resources.Re
     }
 
     /**
-     * The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ANY` level access _(default)_ lets any databricks.MwsVpcEndpoint connect to your databricks_mws_workspaces. `ACCOUNT` level access lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+     * The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
      * 
      */
     @Import(name="privateAccessLevel")
     private @Nullable Output<String> privateAccessLevel;
 
     /**
-     * @return The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ANY` level access _(default)_ lets any databricks.MwsVpcEndpoint connect to your databricks_mws_workspaces. `ACCOUNT` level access lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+     * @return The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
      * 
      */
     public Optional<Output<String>> privateAccessLevel() {
@@ -221,7 +221,7 @@ public final class MwsPrivateAccessSettingsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param privateAccessLevel The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ANY` level access _(default)_ lets any databricks.MwsVpcEndpoint connect to your databricks_mws_workspaces. `ACCOUNT` level access lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+         * @param privateAccessLevel The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class MwsPrivateAccessSettingsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param privateAccessLevel The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ANY` level access _(default)_ lets any databricks.MwsVpcEndpoint connect to your databricks_mws_workspaces. `ACCOUNT` level access lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+         * @param privateAccessLevel The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
          * 
          * @return builder
          * 

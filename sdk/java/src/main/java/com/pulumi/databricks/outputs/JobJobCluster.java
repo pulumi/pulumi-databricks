@@ -16,21 +16,14 @@ public final class JobJobCluster {
      * @return Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      * 
      */
-    private final @Nullable String jobClusterKey;
+    private @Nullable String jobClusterKey;
     /**
      * @return Same set of parameters as for databricks.Cluster resource.
      * 
      */
-    private final @Nullable JobJobClusterNewCluster newCluster;
+    private @Nullable JobJobClusterNewCluster newCluster;
 
-    @CustomType.Constructor
-    private JobJobCluster(
-        @CustomType.Parameter("jobClusterKey") @Nullable String jobClusterKey,
-        @CustomType.Parameter("newCluster") @Nullable JobJobClusterNewCluster newCluster) {
-        this.jobClusterKey = jobClusterKey;
-        this.newCluster = newCluster;
-    }
-
+    private JobJobCluster() {}
     /**
      * @return Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      * 
@@ -53,30 +46,32 @@ public final class JobJobCluster {
     public static Builder builder(JobJobCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String jobClusterKey;
         private @Nullable JobJobClusterNewCluster newCluster;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobJobCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jobClusterKey = defaults.jobClusterKey;
     	      this.newCluster = defaults.newCluster;
         }
 
+        @CustomType.Setter
         public Builder jobClusterKey(@Nullable String jobClusterKey) {
             this.jobClusterKey = jobClusterKey;
             return this;
         }
+        @CustomType.Setter
         public Builder newCluster(@Nullable JobJobClusterNewCluster newCluster) {
             this.newCluster = newCluster;
             return this;
-        }        public JobJobCluster build() {
-            return new JobJobCluster(jobClusterKey, newCluster);
+        }
+        public JobJobCluster build() {
+            final var o = new JobJobCluster();
+            o.jobClusterKey = jobClusterKey;
+            o.newCluster = newCluster;
+            return o;
         }
     }
 }

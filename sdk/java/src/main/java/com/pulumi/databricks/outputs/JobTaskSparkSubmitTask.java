@@ -12,18 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskSparkSubmitTask {
     /**
-     * @return Parameters for the task
+     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      * 
      */
-    private final @Nullable List<String> parameters;
+    private @Nullable List<String> parameters;
 
-    @CustomType.Constructor
-    private JobTaskSparkSubmitTask(@CustomType.Parameter("parameters") @Nullable List<String> parameters) {
-        this.parameters = parameters;
-    }
-
+    private JobTaskSparkSubmitTask() {}
     /**
-     * @return Parameters for the task
+     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      * 
      */
     public List<String> parameters() {
@@ -37,27 +33,27 @@ public final class JobTaskSparkSubmitTask {
     public static Builder builder(JobTaskSparkSubmitTask defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> parameters;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobTaskSparkSubmitTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameters = defaults.parameters;
         }
 
+        @CustomType.Setter
         public Builder parameters(@Nullable List<String> parameters) {
             this.parameters = parameters;
             return this;
         }
         public Builder parameters(String... parameters) {
             return parameters(List.of(parameters));
-        }        public JobTaskSparkSubmitTask build() {
-            return new JobTaskSparkSubmitTask(parameters);
+        }
+        public JobTaskSparkSubmitTask build() {
+            final var o = new JobTaskSparkSubmitTask();
+            o.parameters = parameters;
+            return o;
         }
     }
 }

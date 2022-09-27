@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobSparkPythonTask
     {
         /// <summary>
-        /// Parameters for the task
+        /// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         /// </summary>
         public readonly ImmutableArray<string> Parameters;
         /// <summary>

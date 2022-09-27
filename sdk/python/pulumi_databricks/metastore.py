@@ -31,7 +31,7 @@ class MetastoreArgs:
                  updated_by: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Metastore resource.
-        :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         :param pulumi.Input[str] delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
         :param pulumi.Input[int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
         :param pulumi.Input[str] delta_sharing_scope: Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
@@ -73,7 +73,7 @@ class MetastoreArgs:
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> pulumi.Input[str]:
         """
-        Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
+        Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 
@@ -252,7 +252,7 @@ class _MetastoreState:
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
-        :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
@@ -415,7 +415,7 @@ class _MetastoreState:
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[str]]:
         """
-        Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
+        Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 
@@ -464,8 +464,6 @@ class Metastore(pulumi.CustomResource):
                  updated_by: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
-
         A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
 
         Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
@@ -486,7 +484,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
-        :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
         ...
     @overload
@@ -495,8 +493,6 @@ class Metastore(pulumi.CustomResource):
                  args: MetastoreArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
-
         A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
 
         Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
@@ -603,7 +599,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
-        :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -708,7 +704,7 @@ class Metastore(pulumi.CustomResource):
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> pulumi.Output[str]:
         """
-        Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
+        Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 

@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterInfoDriverNodeAwsAttributes {
-    private final @Nullable Boolean isSpot;
+    private @Nullable Boolean isSpot;
 
-    @CustomType.Constructor
-    private GetClusterClusterInfoDriverNodeAwsAttributes(@CustomType.Parameter("isSpot") @Nullable Boolean isSpot) {
-        this.isSpot = isSpot;
-    }
-
+    private GetClusterClusterInfoDriverNodeAwsAttributes() {}
     public Optional<Boolean> isSpot() {
         return Optional.ofNullable(this.isSpot);
     }
@@ -29,24 +25,24 @@ public final class GetClusterClusterInfoDriverNodeAwsAttributes {
     public static Builder builder(GetClusterClusterInfoDriverNodeAwsAttributes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean isSpot;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterInfoDriverNodeAwsAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isSpot = defaults.isSpot;
         }
 
+        @CustomType.Setter
         public Builder isSpot(@Nullable Boolean isSpot) {
             this.isSpot = isSpot;
             return this;
-        }        public GetClusterClusterInfoDriverNodeAwsAttributes build() {
-            return new GetClusterClusterInfoDriverNodeAwsAttributes(isSpot);
+        }
+        public GetClusterClusterInfoDriverNodeAwsAttributes build() {
+            final var o = new GetClusterClusterInfoDriverNodeAwsAttributes();
+            o.isSpot = isSpot;
+            return o;
         }
     }
 }

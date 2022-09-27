@@ -60,8 +60,10 @@ type Catalog struct {
 	pulumi.CustomResourceState
 
 	// User-supplied free-form text.
-	Comment     pulumi.StringPtrOutput `pulumi:"comment"`
-	MetastoreId pulumi.StringOutput    `pulumi:"metastoreId"`
+	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	// Delete catalog regardless of its contents.
+	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
+	MetastoreId  pulumi.StringOutput  `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Username/groupname/sp applicationId of the catalog owner.
@@ -100,8 +102,10 @@ func GetCatalog(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Catalog resources.
 type catalogState struct {
 	// User-supplied free-form text.
-	Comment     *string `pulumi:"comment"`
-	MetastoreId *string `pulumi:"metastoreId"`
+	Comment *string `pulumi:"comment"`
+	// Delete catalog regardless of its contents.
+	ForceDestroy *bool   `pulumi:"forceDestroy"`
+	MetastoreId  *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the catalog owner.
@@ -112,8 +116,10 @@ type catalogState struct {
 
 type CatalogState struct {
 	// User-supplied free-form text.
-	Comment     pulumi.StringPtrInput
-	MetastoreId pulumi.StringPtrInput
+	Comment pulumi.StringPtrInput
+	// Delete catalog regardless of its contents.
+	ForceDestroy pulumi.BoolPtrInput
+	MetastoreId  pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the catalog owner.
@@ -128,8 +134,10 @@ func (CatalogState) ElementType() reflect.Type {
 
 type catalogArgs struct {
 	// User-supplied free-form text.
-	Comment     *string `pulumi:"comment"`
-	MetastoreId *string `pulumi:"metastoreId"`
+	Comment *string `pulumi:"comment"`
+	// Delete catalog regardless of its contents.
+	ForceDestroy *bool   `pulumi:"forceDestroy"`
+	MetastoreId  *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the catalog owner.
@@ -141,8 +149,10 @@ type catalogArgs struct {
 // The set of arguments for constructing a Catalog resource.
 type CatalogArgs struct {
 	// User-supplied free-form text.
-	Comment     pulumi.StringPtrInput
-	MetastoreId pulumi.StringPtrInput
+	Comment pulumi.StringPtrInput
+	// Delete catalog regardless of its contents.
+	ForceDestroy pulumi.BoolPtrInput
+	MetastoreId  pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the catalog owner.
@@ -241,6 +251,11 @@ func (o CatalogOutput) ToCatalogOutputWithContext(ctx context.Context) CatalogOu
 // User-supplied free-form text.
 func (o CatalogOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Delete catalog regardless of its contents.
+func (o CatalogOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
 func (o CatalogOutput) MetastoreId() pulumi.StringOutput {

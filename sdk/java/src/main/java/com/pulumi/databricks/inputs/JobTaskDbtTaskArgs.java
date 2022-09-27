@@ -16,33 +16,89 @@ public final class JobTaskDbtTaskArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final JobTaskDbtTaskArgs Empty = new JobTaskDbtTaskArgs();
 
+    /**
+     * (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
+     * 
+     */
     @Import(name="commands", required=true)
     private Output<List<String>> commands;
 
+    /**
+     * @return (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
+     * 
+     */
     public Output<List<String>> commands() {
         return this.commands;
     }
 
+    /**
+     * The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     * 
+     */
+    @Import(name="profilesDirectory")
+    private @Nullable Output<String> profilesDirectory;
+
+    /**
+     * @return The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     * 
+     */
+    public Optional<Output<String>> profilesDirectory() {
+        return Optional.ofNullable(this.profilesDirectory);
+    }
+
+    /**
+     * The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--project-dir` to a dbt command.
+     * 
+     */
     @Import(name="projectDirectory")
     private @Nullable Output<String> projectDirectory;
 
+    /**
+     * @return The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--project-dir` to a dbt command.
+     * 
+     */
     public Optional<Output<String>> projectDirectory() {
         return Optional.ofNullable(this.projectDirectory);
     }
 
+    /**
+     * The name of the schema dbt should run in. Defaults to `default`.
+     * 
+     */
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
+    /**
+     * @return The name of the schema dbt should run in. Defaults to `default`.
+     * 
+     */
     public Optional<Output<String>> schema() {
         return Optional.ofNullable(this.schema);
+    }
+
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * 
+     */
+    @Import(name="warehouseId")
+    private @Nullable Output<String> warehouseId;
+
+    /**
+     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * 
+     */
+    public Optional<Output<String>> warehouseId() {
+        return Optional.ofNullable(this.warehouseId);
     }
 
     private JobTaskDbtTaskArgs() {}
 
     private JobTaskDbtTaskArgs(JobTaskDbtTaskArgs $) {
         this.commands = $.commands;
+        this.profilesDirectory = $.profilesDirectory;
         this.projectDirectory = $.projectDirectory;
         this.schema = $.schema;
+        this.warehouseId = $.warehouseId;
     }
 
     public static Builder builder() {
@@ -63,35 +119,119 @@ public final class JobTaskDbtTaskArgs extends com.pulumi.resources.ResourceArgs 
             $ = new JobTaskDbtTaskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param commands (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commands(Output<List<String>> commands) {
             $.commands = commands;
             return this;
         }
 
+        /**
+         * @param commands (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commands(List<String> commands) {
             return commands(Output.of(commands));
         }
 
+        /**
+         * @param commands (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commands(String... commands) {
             return commands(List.of(commands));
         }
 
+        /**
+         * @param profilesDirectory The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder profilesDirectory(@Nullable Output<String> profilesDirectory) {
+            $.profilesDirectory = profilesDirectory;
+            return this;
+        }
+
+        /**
+         * @param profilesDirectory The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder profilesDirectory(String profilesDirectory) {
+            return profilesDirectory(Output.of(profilesDirectory));
+        }
+
+        /**
+         * @param projectDirectory The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--project-dir` to a dbt command.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectDirectory(@Nullable Output<String> projectDirectory) {
             $.projectDirectory = projectDirectory;
             return this;
         }
 
+        /**
+         * @param projectDirectory The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--project-dir` to a dbt command.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectDirectory(String projectDirectory) {
             return projectDirectory(Output.of(projectDirectory));
         }
 
+        /**
+         * @param schema The name of the schema dbt should run in. Defaults to `default`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(@Nullable Output<String> schema) {
             $.schema = schema;
             return this;
         }
 
+        /**
+         * @param schema The name of the schema dbt should run in. Defaults to `default`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(String schema) {
             return schema(Output.of(schema));
+        }
+
+        /**
+         * @param warehouseId ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warehouseId(@Nullable Output<String> warehouseId) {
+            $.warehouseId = warehouseId;
+            return this;
+        }
+
+        /**
+         * @param warehouseId ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warehouseId(String warehouseId) {
+            return warehouseId(Output.of(warehouseId));
         }
 
         public JobTaskDbtTaskArgs build() {

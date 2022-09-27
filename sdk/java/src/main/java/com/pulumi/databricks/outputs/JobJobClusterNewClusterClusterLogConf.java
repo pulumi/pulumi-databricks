@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobJobClusterNewClusterClusterLogConf {
-    private final @Nullable JobJobClusterNewClusterClusterLogConfDbfs dbfs;
-    private final @Nullable JobJobClusterNewClusterClusterLogConfS3 s3;
+    private @Nullable JobJobClusterNewClusterClusterLogConfDbfs dbfs;
+    private @Nullable JobJobClusterNewClusterClusterLogConfS3 s3;
 
-    @CustomType.Constructor
-    private JobJobClusterNewClusterClusterLogConf(
-        @CustomType.Parameter("dbfs") @Nullable JobJobClusterNewClusterClusterLogConfDbfs dbfs,
-        @CustomType.Parameter("s3") @Nullable JobJobClusterNewClusterClusterLogConfS3 s3) {
-        this.dbfs = dbfs;
-        this.s3 = s3;
-    }
-
+    private JobJobClusterNewClusterClusterLogConf() {}
     public Optional<JobJobClusterNewClusterClusterLogConfDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -37,30 +30,32 @@ public final class JobJobClusterNewClusterClusterLogConf {
     public static Builder builder(JobJobClusterNewClusterClusterLogConf defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable JobJobClusterNewClusterClusterLogConfDbfs dbfs;
         private @Nullable JobJobClusterNewClusterClusterLogConfS3 s3;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobJobClusterNewClusterClusterLogConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
     	      this.s3 = defaults.s3;
         }
 
+        @CustomType.Setter
         public Builder dbfs(@Nullable JobJobClusterNewClusterClusterLogConfDbfs dbfs) {
             this.dbfs = dbfs;
             return this;
         }
+        @CustomType.Setter
         public Builder s3(@Nullable JobJobClusterNewClusterClusterLogConfS3 s3) {
             this.s3 = s3;
             return this;
-        }        public JobJobClusterNewClusterClusterLogConf build() {
-            return new JobJobClusterNewClusterClusterLogConf(dbfs, s3);
+        }
+        public JobJobClusterNewClusterClusterLogConf build() {
+            final var o = new JobJobClusterNewClusterClusterLogConf();
+            o.dbfs = dbfs;
+            o.s3 = s3;
+            return o;
         }
     }
 }

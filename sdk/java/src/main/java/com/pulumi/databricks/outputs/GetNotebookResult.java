@@ -14,48 +14,31 @@ public final class GetNotebookResult {
      * @return notebook content in selected format
      * 
      */
-    private final String content;
-    private final String format;
+    private String content;
+    private String format;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return notebook language
      * 
      */
-    private final String language;
+    private String language;
     /**
      * @return notebook object ID
      * 
      */
-    private final Integer objectId;
+    private Integer objectId;
     /**
      * @return notebook object type
      * 
      */
-    private final String objectType;
-    private final String path;
+    private String objectType;
+    private String path;
 
-    @CustomType.Constructor
-    private GetNotebookResult(
-        @CustomType.Parameter("content") String content,
-        @CustomType.Parameter("format") String format,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("language") String language,
-        @CustomType.Parameter("objectId") Integer objectId,
-        @CustomType.Parameter("objectType") String objectType,
-        @CustomType.Parameter("path") String path) {
-        this.content = content;
-        this.format = format;
-        this.id = id;
-        this.language = language;
-        this.objectId = objectId;
-        this.objectType = objectType;
-        this.path = path;
-    }
-
+    private GetNotebookResult() {}
     /**
      * @return notebook content in selected format
      * 
@@ -105,7 +88,7 @@ public final class GetNotebookResult {
     public static Builder builder(GetNotebookResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String content;
         private String format;
@@ -114,11 +97,7 @@ public final class GetNotebookResult {
         private Integer objectId;
         private String objectType;
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNotebookResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -130,35 +109,51 @@ public final class GetNotebookResult {
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
+        @CustomType.Setter
         public Builder format(String format) {
             this.format = Objects.requireNonNull(format);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder language(String language) {
             this.language = Objects.requireNonNull(language);
             return this;
         }
+        @CustomType.Setter
         public Builder objectId(Integer objectId) {
             this.objectId = Objects.requireNonNull(objectId);
             return this;
         }
+        @CustomType.Setter
         public Builder objectType(String objectType) {
             this.objectType = Objects.requireNonNull(objectType);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public GetNotebookResult build() {
-            return new GetNotebookResult(content, format, id, language, objectId, objectType, path);
+        }
+        public GetNotebookResult build() {
+            final var o = new GetNotebookResult();
+            o.content = content;
+            o.format = format;
+            o.id = id;
+            o.language = language;
+            o.objectId = objectId;
+            o.objectType = objectType;
+            o.path = path;
+            return o;
         }
     }
 }

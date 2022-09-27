@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobNewClusterWorkloadTypeClients {
-    private final @Nullable Boolean jobs;
-    private final @Nullable Boolean notebooks;
+    private @Nullable Boolean jobs;
+    private @Nullable Boolean notebooks;
 
-    @CustomType.Constructor
-    private JobNewClusterWorkloadTypeClients(
-        @CustomType.Parameter("jobs") @Nullable Boolean jobs,
-        @CustomType.Parameter("notebooks") @Nullable Boolean notebooks) {
-        this.jobs = jobs;
-        this.notebooks = notebooks;
-    }
-
+    private JobNewClusterWorkloadTypeClients() {}
     public Optional<Boolean> jobs() {
         return Optional.ofNullable(this.jobs);
     }
@@ -36,30 +29,32 @@ public final class JobNewClusterWorkloadTypeClients {
     public static Builder builder(JobNewClusterWorkloadTypeClients defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean jobs;
         private @Nullable Boolean notebooks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobNewClusterWorkloadTypeClients defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jobs = defaults.jobs;
     	      this.notebooks = defaults.notebooks;
         }
 
+        @CustomType.Setter
         public Builder jobs(@Nullable Boolean jobs) {
             this.jobs = jobs;
             return this;
         }
+        @CustomType.Setter
         public Builder notebooks(@Nullable Boolean notebooks) {
             this.notebooks = notebooks;
             return this;
-        }        public JobNewClusterWorkloadTypeClients build() {
-            return new JobNewClusterWorkloadTypeClients(jobs, notebooks);
+        }
+        public JobNewClusterWorkloadTypeClients build() {
+            final var o = new JobNewClusterWorkloadTypeClients();
+            o.jobs = jobs;
+            o.notebooks = notebooks;
+            return o;
         }
     }
 }

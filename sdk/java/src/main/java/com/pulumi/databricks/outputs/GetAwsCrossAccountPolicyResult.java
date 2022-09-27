@@ -15,24 +15,15 @@ public final class GetAwsCrossAccountPolicyResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return AWS IAM Policy JSON document
      * 
      */
-    private final String json;
-    private final @Nullable List<String> passRoles;
+    private String json;
+    private @Nullable List<String> passRoles;
 
-    @CustomType.Constructor
-    private GetAwsCrossAccountPolicyResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("json") String json,
-        @CustomType.Parameter("passRoles") @Nullable List<String> passRoles) {
-        this.id = id;
-        this.json = json;
-        this.passRoles = passRoles;
-    }
-
+    private GetAwsCrossAccountPolicyResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -58,16 +49,12 @@ public final class GetAwsCrossAccountPolicyResult {
     public static Builder builder(GetAwsCrossAccountPolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String json;
         private @Nullable List<String> passRoles;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAwsCrossAccountPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -75,22 +62,30 @@ public final class GetAwsCrossAccountPolicyResult {
     	      this.passRoles = defaults.passRoles;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder json(String json) {
             this.json = Objects.requireNonNull(json);
             return this;
         }
+        @CustomType.Setter
         public Builder passRoles(@Nullable List<String> passRoles) {
             this.passRoles = passRoles;
             return this;
         }
         public Builder passRoles(String... passRoles) {
             return passRoles(List.of(passRoles));
-        }        public GetAwsCrossAccountPolicyResult build() {
-            return new GetAwsCrossAccountPolicyResult(id, json, passRoles);
+        }
+        public GetAwsCrossAccountPolicyResult build() {
+            final var o = new GetAwsCrossAccountPolicyResult();
+            o.id = id;
+            o.json = json;
+            o.passRoles = passRoles;
+            return o;
         }
     }
 }

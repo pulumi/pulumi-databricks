@@ -3255,7 +3255,7 @@ type InstancePoolAwsAttributes struct {
 	Availability *string `pulumi:"availability"`
 	// (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
 	SpotBidPricePercent *int `pulumi:"spotBidPricePercent"`
-	// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+	// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -3275,7 +3275,7 @@ type InstancePoolAwsAttributesArgs struct {
 	Availability pulumi.StringPtrInput `pulumi:"availability"`
 	// (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
 	SpotBidPricePercent pulumi.IntPtrInput `pulumi:"spotBidPricePercent"`
-	// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+	// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -3366,7 +3366,7 @@ func (o InstancePoolAwsAttributesOutput) SpotBidPricePercent() pulumi.IntPtrOutp
 	return o.ApplyT(func(v InstancePoolAwsAttributes) *int { return v.SpotBidPricePercent }).(pulumi.IntPtrOutput)
 }
 
-// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
 func (o InstancePoolAwsAttributesOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePoolAwsAttributes) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
@@ -3415,7 +3415,7 @@ func (o InstancePoolAwsAttributesPtrOutput) SpotBidPricePercent() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+// (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
 func (o InstancePoolAwsAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePoolAwsAttributes) *string {
 		if v == nil {
@@ -3901,8 +3901,7 @@ func (o InstancePoolDiskSpecDiskTypePtrOutput) EbsVolumeType() pulumi.StringPtrO
 }
 
 type InstancePoolGcpAttributes struct {
-	// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-	Availability *string `pulumi:"availability"`
+	GcpAvailability *string `pulumi:"gcpAvailability"`
 }
 
 // InstancePoolGcpAttributesInput is an input type that accepts InstancePoolGcpAttributesArgs and InstancePoolGcpAttributesOutput values.
@@ -3917,8 +3916,7 @@ type InstancePoolGcpAttributesInput interface {
 }
 
 type InstancePoolGcpAttributesArgs struct {
-	// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-	Availability pulumi.StringPtrInput `pulumi:"availability"`
+	GcpAvailability pulumi.StringPtrInput `pulumi:"gcpAvailability"`
 }
 
 func (InstancePoolGcpAttributesArgs) ElementType() reflect.Type {
@@ -3998,9 +3996,8 @@ func (o InstancePoolGcpAttributesOutput) ToInstancePoolGcpAttributesPtrOutputWit
 	}).(InstancePoolGcpAttributesPtrOutput)
 }
 
-// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-func (o InstancePoolGcpAttributesOutput) Availability() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstancePoolGcpAttributes) *string { return v.Availability }).(pulumi.StringPtrOutput)
+func (o InstancePoolGcpAttributesOutput) GcpAvailability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePoolGcpAttributes) *string { return v.GcpAvailability }).(pulumi.StringPtrOutput)
 }
 
 type InstancePoolGcpAttributesPtrOutput struct{ *pulumi.OutputState }
@@ -4027,13 +4024,12 @@ func (o InstancePoolGcpAttributesPtrOutput) Elem() InstancePoolGcpAttributesOutp
 	}).(InstancePoolGcpAttributesOutput)
 }
 
-// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-func (o InstancePoolGcpAttributesPtrOutput) Availability() pulumi.StringPtrOutput {
+func (o InstancePoolGcpAttributesPtrOutput) GcpAvailability() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePoolGcpAttributes) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Availability
+		return v.GcpAvailability
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4853,6 +4849,219 @@ func (o InstancePoolPreloadedDockerImageBasicAuthPtrOutput) Username() pulumi.St
 			return nil
 		}
 		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobDbtTask struct {
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+	Commands []string `pulumi:"commands"`
+	// The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+	ProfilesDirectory *string `pulumi:"profilesDirectory"`
+	// The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+	ProjectDirectory *string `pulumi:"projectDirectory"`
+	// The name of the schema dbt should run in. Defaults to `default`.
+	Schema *string `pulumi:"schema"`
+	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+	WarehouseId *string `pulumi:"warehouseId"`
+}
+
+// JobDbtTaskInput is an input type that accepts JobDbtTaskArgs and JobDbtTaskOutput values.
+// You can construct a concrete instance of `JobDbtTaskInput` via:
+//
+//	JobDbtTaskArgs{...}
+type JobDbtTaskInput interface {
+	pulumi.Input
+
+	ToJobDbtTaskOutput() JobDbtTaskOutput
+	ToJobDbtTaskOutputWithContext(context.Context) JobDbtTaskOutput
+}
+
+type JobDbtTaskArgs struct {
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+	ProfilesDirectory pulumi.StringPtrInput `pulumi:"profilesDirectory"`
+	// The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+	ProjectDirectory pulumi.StringPtrInput `pulumi:"projectDirectory"`
+	// The name of the schema dbt should run in. Defaults to `default`.
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+	WarehouseId pulumi.StringPtrInput `pulumi:"warehouseId"`
+}
+
+func (JobDbtTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDbtTask)(nil)).Elem()
+}
+
+func (i JobDbtTaskArgs) ToJobDbtTaskOutput() JobDbtTaskOutput {
+	return i.ToJobDbtTaskOutputWithContext(context.Background())
+}
+
+func (i JobDbtTaskArgs) ToJobDbtTaskOutputWithContext(ctx context.Context) JobDbtTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDbtTaskOutput)
+}
+
+func (i JobDbtTaskArgs) ToJobDbtTaskPtrOutput() JobDbtTaskPtrOutput {
+	return i.ToJobDbtTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobDbtTaskArgs) ToJobDbtTaskPtrOutputWithContext(ctx context.Context) JobDbtTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDbtTaskOutput).ToJobDbtTaskPtrOutputWithContext(ctx)
+}
+
+// JobDbtTaskPtrInput is an input type that accepts JobDbtTaskArgs, JobDbtTaskPtr and JobDbtTaskPtrOutput values.
+// You can construct a concrete instance of `JobDbtTaskPtrInput` via:
+//
+//	        JobDbtTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobDbtTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobDbtTaskPtrOutput() JobDbtTaskPtrOutput
+	ToJobDbtTaskPtrOutputWithContext(context.Context) JobDbtTaskPtrOutput
+}
+
+type jobDbtTaskPtrType JobDbtTaskArgs
+
+func JobDbtTaskPtr(v *JobDbtTaskArgs) JobDbtTaskPtrInput {
+	return (*jobDbtTaskPtrType)(v)
+}
+
+func (*jobDbtTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobDbtTask)(nil)).Elem()
+}
+
+func (i *jobDbtTaskPtrType) ToJobDbtTaskPtrOutput() JobDbtTaskPtrOutput {
+	return i.ToJobDbtTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobDbtTaskPtrType) ToJobDbtTaskPtrOutputWithContext(ctx context.Context) JobDbtTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDbtTaskPtrOutput)
+}
+
+type JobDbtTaskOutput struct{ *pulumi.OutputState }
+
+func (JobDbtTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDbtTask)(nil)).Elem()
+}
+
+func (o JobDbtTaskOutput) ToJobDbtTaskOutput() JobDbtTaskOutput {
+	return o
+}
+
+func (o JobDbtTaskOutput) ToJobDbtTaskOutputWithContext(ctx context.Context) JobDbtTaskOutput {
+	return o
+}
+
+func (o JobDbtTaskOutput) ToJobDbtTaskPtrOutput() JobDbtTaskPtrOutput {
+	return o.ToJobDbtTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobDbtTaskOutput) ToJobDbtTaskPtrOutputWithContext(ctx context.Context) JobDbtTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobDbtTask) *JobDbtTask {
+		return &v
+	}).(JobDbtTaskPtrOutput)
+}
+
+// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+func (o JobDbtTaskOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobDbtTask) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+func (o JobDbtTaskOutput) ProfilesDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobDbtTask) *string { return v.ProfilesDirectory }).(pulumi.StringPtrOutput)
+}
+
+// The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+func (o JobDbtTaskOutput) ProjectDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobDbtTask) *string { return v.ProjectDirectory }).(pulumi.StringPtrOutput)
+}
+
+// The name of the schema dbt should run in. Defaults to `default`.
+func (o JobDbtTaskOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobDbtTask) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+func (o JobDbtTaskOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobDbtTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+type JobDbtTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobDbtTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobDbtTask)(nil)).Elem()
+}
+
+func (o JobDbtTaskPtrOutput) ToJobDbtTaskPtrOutput() JobDbtTaskPtrOutput {
+	return o
+}
+
+func (o JobDbtTaskPtrOutput) ToJobDbtTaskPtrOutputWithContext(ctx context.Context) JobDbtTaskPtrOutput {
+	return o
+}
+
+func (o JobDbtTaskPtrOutput) Elem() JobDbtTaskOutput {
+	return o.ApplyT(func(v *JobDbtTask) JobDbtTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobDbtTask
+		return ret
+	}).(JobDbtTaskOutput)
+}
+
+// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+func (o JobDbtTaskPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobDbtTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+// The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+func (o JobDbtTaskPtrOutput) ProfilesDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProfilesDirectory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+func (o JobDbtTaskPtrOutput) ProjectDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectDirectory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the schema dbt should run in. Defaults to `default`.
+func (o JobDbtTaskPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+func (o JobDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarehouseId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12471,7 +12680,7 @@ type JobPythonWheelTask struct {
 	NamedParameters map[string]interface{} `pulumi:"namedParameters"`
 	// Name of Python package
 	PackageName *string `pulumi:"packageName"`
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters []string `pulumi:"parameters"`
 }
 
@@ -12493,7 +12702,7 @@ type JobPythonWheelTaskArgs struct {
 	NamedParameters pulumi.MapInput `pulumi:"namedParameters"`
 	// Name of Python package
 	PackageName pulumi.StringPtrInput `pulumi:"packageName"`
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
 }
 
@@ -12589,7 +12798,7 @@ func (o JobPythonWheelTaskOutput) PackageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobPythonWheelTask) *string { return v.PackageName }).(pulumi.StringPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobPythonWheelTaskOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobPythonWheelTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
@@ -12648,7 +12857,7 @@ func (o JobPythonWheelTaskPtrOutput) PackageName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobPythonWheelTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobPythonWheelTask) []string {
 		if v == nil {
@@ -12837,7 +13046,7 @@ type JobSparkJarTask struct {
 	JarUri *string `pulumi:"jarUri"`
 	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
 	MainClassName *string `pulumi:"mainClassName"`
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters []string `pulumi:"parameters"`
 }
 
@@ -12856,7 +13065,7 @@ type JobSparkJarTaskArgs struct {
 	JarUri pulumi.StringPtrInput `pulumi:"jarUri"`
 	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
 	MainClassName pulumi.StringPtrInput `pulumi:"mainClassName"`
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
 }
 
@@ -12946,7 +13155,7 @@ func (o JobSparkJarTaskOutput) MainClassName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobSparkJarTask) *string { return v.MainClassName }).(pulumi.StringPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobSparkJarTaskOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobSparkJarTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
@@ -12994,7 +13203,7 @@ func (o JobSparkJarTaskPtrOutput) MainClassName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobSparkJarTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobSparkJarTask) []string {
 		if v == nil {
@@ -13005,7 +13214,7 @@ func (o JobSparkJarTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 }
 
 type JobSparkPythonTask struct {
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters []string `pulumi:"parameters"`
 	// The URI of the Python file to be executed. DbfsFile and S3 paths are supported. This field is required.
 	PythonFile string `pulumi:"pythonFile"`
@@ -13023,7 +13232,7 @@ type JobSparkPythonTaskInput interface {
 }
 
 type JobSparkPythonTaskArgs struct {
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
 	// The URI of the Python file to be executed. DbfsFile and S3 paths are supported. This field is required.
 	PythonFile pulumi.StringInput `pulumi:"pythonFile"`
@@ -13106,7 +13315,7 @@ func (o JobSparkPythonTaskOutput) ToJobSparkPythonTaskPtrOutputWithContext(ctx c
 	}).(JobSparkPythonTaskPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobSparkPythonTaskOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobSparkPythonTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
@@ -13140,7 +13349,7 @@ func (o JobSparkPythonTaskPtrOutput) Elem() JobSparkPythonTaskOutput {
 	}).(JobSparkPythonTaskOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobSparkPythonTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobSparkPythonTask) []string {
 		if v == nil {
@@ -13161,7 +13370,7 @@ func (o JobSparkPythonTaskPtrOutput) PythonFile() pulumi.StringPtrOutput {
 }
 
 type JobSparkSubmitTask struct {
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters []string `pulumi:"parameters"`
 }
 
@@ -13177,7 +13386,7 @@ type JobSparkSubmitTaskInput interface {
 }
 
 type JobSparkSubmitTaskArgs struct {
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
 }
 
@@ -13258,7 +13467,7 @@ func (o JobSparkSubmitTaskOutput) ToJobSparkSubmitTaskPtrOutputWithContext(ctx c
 	}).(JobSparkSubmitTaskPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobSparkSubmitTaskOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobSparkSubmitTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
@@ -13287,7 +13496,7 @@ func (o JobSparkSubmitTaskPtrOutput) Elem() JobSparkSubmitTaskOutput {
 	}).(JobSparkSubmitTaskOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobSparkSubmitTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobSparkSubmitTask) []string {
 		if v == nil {
@@ -13533,9 +13742,16 @@ func (o JobTaskArrayOutput) Index(i pulumi.IntInput) JobTaskOutput {
 }
 
 type JobTaskDbtTask struct {
-	Commands         []string `pulumi:"commands"`
-	ProjectDirectory *string  `pulumi:"projectDirectory"`
-	Schema           *string  `pulumi:"schema"`
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+	Commands []string `pulumi:"commands"`
+	// The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+	ProfilesDirectory *string `pulumi:"profilesDirectory"`
+	// The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+	ProjectDirectory *string `pulumi:"projectDirectory"`
+	// The name of the schema dbt should run in. Defaults to `default`.
+	Schema *string `pulumi:"schema"`
+	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+	WarehouseId *string `pulumi:"warehouseId"`
 }
 
 // JobTaskDbtTaskInput is an input type that accepts JobTaskDbtTaskArgs and JobTaskDbtTaskOutput values.
@@ -13550,9 +13766,16 @@ type JobTaskDbtTaskInput interface {
 }
 
 type JobTaskDbtTaskArgs struct {
-	Commands         pulumi.StringArrayInput `pulumi:"commands"`
-	ProjectDirectory pulumi.StringPtrInput   `pulumi:"projectDirectory"`
-	Schema           pulumi.StringPtrInput   `pulumi:"schema"`
+	// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+	ProfilesDirectory pulumi.StringPtrInput `pulumi:"profilesDirectory"`
+	// The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+	ProjectDirectory pulumi.StringPtrInput `pulumi:"projectDirectory"`
+	// The name of the schema dbt should run in. Defaults to `default`.
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+	WarehouseId pulumi.StringPtrInput `pulumi:"warehouseId"`
 }
 
 func (JobTaskDbtTaskArgs) ElementType() reflect.Type {
@@ -13632,16 +13855,29 @@ func (o JobTaskDbtTaskOutput) ToJobTaskDbtTaskPtrOutputWithContext(ctx context.C
 	}).(JobTaskDbtTaskPtrOutput)
 }
 
+// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 func (o JobTaskDbtTaskOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskDbtTask) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
+// The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+func (o JobTaskDbtTaskOutput) ProfilesDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskDbtTask) *string { return v.ProfilesDirectory }).(pulumi.StringPtrOutput)
+}
+
+// The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
 func (o JobTaskDbtTaskOutput) ProjectDirectory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskDbtTask) *string { return v.ProjectDirectory }).(pulumi.StringPtrOutput)
 }
 
+// The name of the schema dbt should run in. Defaults to `default`.
 func (o JobTaskDbtTaskOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskDbtTask) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+func (o JobTaskDbtTaskOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskDbtTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }
 
 type JobTaskDbtTaskPtrOutput struct{ *pulumi.OutputState }
@@ -13668,6 +13904,7 @@ func (o JobTaskDbtTaskPtrOutput) Elem() JobTaskDbtTaskOutput {
 	}).(JobTaskDbtTaskOutput)
 }
 
+// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
 func (o JobTaskDbtTaskPtrOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskDbtTask) []string {
 		if v == nil {
@@ -13677,6 +13914,17 @@ func (o JobTaskDbtTaskPtrOutput) Commands() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+func (o JobTaskDbtTaskPtrOutput) ProfilesDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProfilesDirectory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
 func (o JobTaskDbtTaskPtrOutput) ProjectDirectory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskDbtTask) *string {
 		if v == nil {
@@ -13686,12 +13934,23 @@ func (o JobTaskDbtTaskPtrOutput) ProjectDirectory() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the schema dbt should run in. Defaults to `default`.
 func (o JobTaskDbtTaskPtrOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskDbtTask) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+func (o JobTaskDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarehouseId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17980,7 +18239,7 @@ type JobTaskPythonWheelTask struct {
 	NamedParameters map[string]interface{} `pulumi:"namedParameters"`
 	// Name of Python package
 	PackageName *string `pulumi:"packageName"`
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters []string `pulumi:"parameters"`
 }
 
@@ -18002,7 +18261,7 @@ type JobTaskPythonWheelTaskArgs struct {
 	NamedParameters pulumi.MapInput `pulumi:"namedParameters"`
 	// Name of Python package
 	PackageName pulumi.StringPtrInput `pulumi:"packageName"`
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
 }
 
@@ -18098,7 +18357,7 @@ func (o JobTaskPythonWheelTaskOutput) PackageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskPythonWheelTask) *string { return v.PackageName }).(pulumi.StringPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobTaskPythonWheelTaskOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskPythonWheelTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
@@ -18157,7 +18416,7 @@ func (o JobTaskPythonWheelTaskPtrOutput) PackageName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobTaskPythonWheelTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskPythonWheelTask) []string {
 		if v == nil {
@@ -18171,7 +18430,7 @@ type JobTaskSparkJarTask struct {
 	JarUri *string `pulumi:"jarUri"`
 	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
 	MainClassName *string `pulumi:"mainClassName"`
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters []string `pulumi:"parameters"`
 }
 
@@ -18190,7 +18449,7 @@ type JobTaskSparkJarTaskArgs struct {
 	JarUri pulumi.StringPtrInput `pulumi:"jarUri"`
 	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
 	MainClassName pulumi.StringPtrInput `pulumi:"mainClassName"`
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
 }
 
@@ -18280,7 +18539,7 @@ func (o JobTaskSparkJarTaskOutput) MainClassName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskSparkJarTask) *string { return v.MainClassName }).(pulumi.StringPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobTaskSparkJarTaskOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskSparkJarTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
@@ -18328,7 +18587,7 @@ func (o JobTaskSparkJarTaskPtrOutput) MainClassName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobTaskSparkJarTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskSparkJarTask) []string {
 		if v == nil {
@@ -18339,7 +18598,7 @@ func (o JobTaskSparkJarTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 }
 
 type JobTaskSparkPythonTask struct {
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters []string `pulumi:"parameters"`
 	// The URI of the Python file to be executed. DbfsFile and S3 paths are supported. This field is required.
 	PythonFile string `pulumi:"pythonFile"`
@@ -18357,7 +18616,7 @@ type JobTaskSparkPythonTaskInput interface {
 }
 
 type JobTaskSparkPythonTaskArgs struct {
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
 	// The URI of the Python file to be executed. DbfsFile and S3 paths are supported. This field is required.
 	PythonFile pulumi.StringInput `pulumi:"pythonFile"`
@@ -18440,7 +18699,7 @@ func (o JobTaskSparkPythonTaskOutput) ToJobTaskSparkPythonTaskPtrOutputWithConte
 	}).(JobTaskSparkPythonTaskPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobTaskSparkPythonTaskOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskSparkPythonTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
@@ -18474,7 +18733,7 @@ func (o JobTaskSparkPythonTaskPtrOutput) Elem() JobTaskSparkPythonTaskOutput {
 	}).(JobTaskSparkPythonTaskOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobTaskSparkPythonTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskSparkPythonTask) []string {
 		if v == nil {
@@ -18495,7 +18754,7 @@ func (o JobTaskSparkPythonTaskPtrOutput) PythonFile() pulumi.StringPtrOutput {
 }
 
 type JobTaskSparkSubmitTask struct {
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters []string `pulumi:"parameters"`
 }
 
@@ -18511,7 +18770,7 @@ type JobTaskSparkSubmitTaskInput interface {
 }
 
 type JobTaskSparkSubmitTaskArgs struct {
-	// Parameters for the task
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
 }
 
@@ -18592,7 +18851,7 @@ func (o JobTaskSparkSubmitTaskOutput) ToJobTaskSparkSubmitTaskPtrOutputWithConte
 	}).(JobTaskSparkSubmitTaskPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobTaskSparkSubmitTaskOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskSparkSubmitTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
@@ -18621,7 +18880,7 @@ func (o JobTaskSparkSubmitTaskPtrOutput) Elem() JobTaskSparkSubmitTaskOutput {
 	}).(JobTaskSparkSubmitTaskOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobTaskSparkSubmitTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskSparkSubmitTask) []string {
 		if v == nil {
@@ -18632,12 +18891,16 @@ func (o JobTaskSparkSubmitTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 }
 
 type JobTaskSqlTask struct {
-	Alert     *JobTaskSqlTaskAlert     `pulumi:"alert"`
+	// block consisting of single string field: `alertId` - identifier of the Databricks SQL Alert.
+	Alert *JobTaskSqlTaskAlert `pulumi:"alert"`
+	// block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	Dashboard *JobTaskSqlTaskDashboard `pulumi:"dashboard"`
-	// Parameters for the task
-	Parameters  map[string]interface{} `pulumi:"parameters"`
-	Query       *JobTaskSqlTaskQuery   `pulumi:"query"`
-	WarehouseId *string                `pulumi:"warehouseId"`
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+	Parameters map[string]interface{} `pulumi:"parameters"`
+	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
+	Query *JobTaskSqlTaskQuery `pulumi:"query"`
+	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+	WarehouseId *string `pulumi:"warehouseId"`
 }
 
 // JobTaskSqlTaskInput is an input type that accepts JobTaskSqlTaskArgs and JobTaskSqlTaskOutput values.
@@ -18652,12 +18915,16 @@ type JobTaskSqlTaskInput interface {
 }
 
 type JobTaskSqlTaskArgs struct {
-	Alert     JobTaskSqlTaskAlertPtrInput     `pulumi:"alert"`
+	// block consisting of single string field: `alertId` - identifier of the Databricks SQL Alert.
+	Alert JobTaskSqlTaskAlertPtrInput `pulumi:"alert"`
+	// block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	Dashboard JobTaskSqlTaskDashboardPtrInput `pulumi:"dashboard"`
-	// Parameters for the task
-	Parameters  pulumi.MapInput             `pulumi:"parameters"`
-	Query       JobTaskSqlTaskQueryPtrInput `pulumi:"query"`
-	WarehouseId pulumi.StringPtrInput       `pulumi:"warehouseId"`
+	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+	Parameters pulumi.MapInput `pulumi:"parameters"`
+	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
+	Query JobTaskSqlTaskQueryPtrInput `pulumi:"query"`
+	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+	WarehouseId pulumi.StringPtrInput `pulumi:"warehouseId"`
 }
 
 func (JobTaskSqlTaskArgs) ElementType() reflect.Type {
@@ -18737,23 +19004,27 @@ func (o JobTaskSqlTaskOutput) ToJobTaskSqlTaskPtrOutputWithContext(ctx context.C
 	}).(JobTaskSqlTaskPtrOutput)
 }
 
+// block consisting of single string field: `alertId` - identifier of the Databricks SQL Alert.
 func (o JobTaskSqlTaskOutput) Alert() JobTaskSqlTaskAlertPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTask) *JobTaskSqlTaskAlert { return v.Alert }).(JobTaskSqlTaskAlertPtrOutput)
 }
 
+// block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 func (o JobTaskSqlTaskOutput) Dashboard() JobTaskSqlTaskDashboardPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTask) *JobTaskSqlTaskDashboard { return v.Dashboard }).(JobTaskSqlTaskDashboardPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobTaskSqlTaskOutput) Parameters() pulumi.MapOutput {
 	return o.ApplyT(func(v JobTaskSqlTask) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
 }
 
+// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
 func (o JobTaskSqlTaskOutput) Query() JobTaskSqlTaskQueryPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTask) *JobTaskSqlTaskQuery { return v.Query }).(JobTaskSqlTaskQueryPtrOutput)
 }
 
+// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
 func (o JobTaskSqlTaskOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }
@@ -18782,6 +19053,7 @@ func (o JobTaskSqlTaskPtrOutput) Elem() JobTaskSqlTaskOutput {
 	}).(JobTaskSqlTaskOutput)
 }
 
+// block consisting of single string field: `alertId` - identifier of the Databricks SQL Alert.
 func (o JobTaskSqlTaskPtrOutput) Alert() JobTaskSqlTaskAlertPtrOutput {
 	return o.ApplyT(func(v *JobTaskSqlTask) *JobTaskSqlTaskAlert {
 		if v == nil {
@@ -18791,6 +19063,7 @@ func (o JobTaskSqlTaskPtrOutput) Alert() JobTaskSqlTaskAlertPtrOutput {
 	}).(JobTaskSqlTaskAlertPtrOutput)
 }
 
+// block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 func (o JobTaskSqlTaskPtrOutput) Dashboard() JobTaskSqlTaskDashboardPtrOutput {
 	return o.ApplyT(func(v *JobTaskSqlTask) *JobTaskSqlTaskDashboard {
 		if v == nil {
@@ -18800,7 +19073,7 @@ func (o JobTaskSqlTaskPtrOutput) Dashboard() JobTaskSqlTaskDashboardPtrOutput {
 	}).(JobTaskSqlTaskDashboardPtrOutput)
 }
 
-// Parameters for the task
+// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobTaskSqlTaskPtrOutput) Parameters() pulumi.MapOutput {
 	return o.ApplyT(func(v *JobTaskSqlTask) map[string]interface{} {
 		if v == nil {
@@ -18810,6 +19083,7 @@ func (o JobTaskSqlTaskPtrOutput) Parameters() pulumi.MapOutput {
 	}).(pulumi.MapOutput)
 }
 
+// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
 func (o JobTaskSqlTaskPtrOutput) Query() JobTaskSqlTaskQueryPtrOutput {
 	return o.ApplyT(func(v *JobTaskSqlTask) *JobTaskSqlTaskQuery {
 		if v == nil {
@@ -18819,6 +19093,7 @@ func (o JobTaskSqlTaskPtrOutput) Query() JobTaskSqlTaskQueryPtrOutput {
 	}).(JobTaskSqlTaskQueryPtrOutput)
 }
 
+// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
 func (o JobTaskSqlTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskSqlTask) *string {
 		if v == nil {
@@ -20239,8 +20514,9 @@ type MlflowWebhookHttpUrlSpec struct {
 	// Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `<auth type> <credentials>`, e.g. `Bearer <access_token>`. If set to an empty string, no authorization header will be included in the request.
 	Authorization *string `pulumi:"authorization"`
 	// Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
-	EnableSslVerification *bool   `pulumi:"enableSslVerification"`
-	String                *string `pulumi:"string"`
+	EnableSslVerification *bool `pulumi:"enableSslVerification"`
+	// Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
+	Secret *string `pulumi:"secret"`
 	// External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
 	Url string `pulumi:"url"`
 }
@@ -20260,8 +20536,9 @@ type MlflowWebhookHttpUrlSpecArgs struct {
 	// Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `<auth type> <credentials>`, e.g. `Bearer <access_token>`. If set to an empty string, no authorization header will be included in the request.
 	Authorization pulumi.StringPtrInput `pulumi:"authorization"`
 	// Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
-	EnableSslVerification pulumi.BoolPtrInput   `pulumi:"enableSslVerification"`
-	String                pulumi.StringPtrInput `pulumi:"string"`
+	EnableSslVerification pulumi.BoolPtrInput `pulumi:"enableSslVerification"`
+	// Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
 	// External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
 	Url pulumi.StringInput `pulumi:"url"`
 }
@@ -20353,8 +20630,9 @@ func (o MlflowWebhookHttpUrlSpecOutput) EnableSslVerification() pulumi.BoolPtrOu
 	return o.ApplyT(func(v MlflowWebhookHttpUrlSpec) *bool { return v.EnableSslVerification }).(pulumi.BoolPtrOutput)
 }
 
-func (o MlflowWebhookHttpUrlSpecOutput) String() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MlflowWebhookHttpUrlSpec) *string { return v.String }).(pulumi.StringPtrOutput)
+// Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
+func (o MlflowWebhookHttpUrlSpecOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MlflowWebhookHttpUrlSpec) *string { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
 // External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
@@ -20406,12 +20684,13 @@ func (o MlflowWebhookHttpUrlSpecPtrOutput) EnableSslVerification() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o MlflowWebhookHttpUrlSpecPtrOutput) String() pulumi.StringPtrOutput {
+// Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
+func (o MlflowWebhookHttpUrlSpecPtrOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MlflowWebhookHttpUrlSpec) *string {
 		if v == nil {
 			return nil
 		}
-		return v.String
+		return v.Secret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23388,8 +23667,9 @@ func (o PipelineClusterArrayOutput) Index(i pulumi.IntInput) PipelineClusterOutp
 }
 
 type PipelineClusterAutoscale struct {
-	MaxWorkers *int `pulumi:"maxWorkers"`
-	MinWorkers *int `pulumi:"minWorkers"`
+	MaxWorkers *int    `pulumi:"maxWorkers"`
+	MinWorkers *int    `pulumi:"minWorkers"`
+	Mode       *string `pulumi:"mode"`
 }
 
 // PipelineClusterAutoscaleInput is an input type that accepts PipelineClusterAutoscaleArgs and PipelineClusterAutoscaleOutput values.
@@ -23404,8 +23684,9 @@ type PipelineClusterAutoscaleInput interface {
 }
 
 type PipelineClusterAutoscaleArgs struct {
-	MaxWorkers pulumi.IntPtrInput `pulumi:"maxWorkers"`
-	MinWorkers pulumi.IntPtrInput `pulumi:"minWorkers"`
+	MaxWorkers pulumi.IntPtrInput    `pulumi:"maxWorkers"`
+	MinWorkers pulumi.IntPtrInput    `pulumi:"minWorkers"`
+	Mode       pulumi.StringPtrInput `pulumi:"mode"`
 }
 
 func (PipelineClusterAutoscaleArgs) ElementType() reflect.Type {
@@ -23493,6 +23774,10 @@ func (o PipelineClusterAutoscaleOutput) MinWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PipelineClusterAutoscale) *int { return v.MinWorkers }).(pulumi.IntPtrOutput)
 }
 
+func (o PipelineClusterAutoscaleOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineClusterAutoscale) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
 type PipelineClusterAutoscalePtrOutput struct{ *pulumi.OutputState }
 
 func (PipelineClusterAutoscalePtrOutput) ElementType() reflect.Type {
@@ -23533,6 +23818,15 @@ func (o PipelineClusterAutoscalePtrOutput) MinWorkers() pulumi.IntPtrOutput {
 		}
 		return v.MinWorkers
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o PipelineClusterAutoscalePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineClusterAutoscale) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
 }
 
 type PipelineClusterAwsAttributes struct {
@@ -34537,6 +34831,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolPreloadedDockerImageArrayInput)(nil)).Elem(), InstancePoolPreloadedDockerImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolPreloadedDockerImageBasicAuthInput)(nil)).Elem(), InstancePoolPreloadedDockerImageBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolPreloadedDockerImageBasicAuthPtrInput)(nil)).Elem(), InstancePoolPreloadedDockerImageBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobDbtTaskInput)(nil)).Elem(), JobDbtTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobDbtTaskPtrInput)(nil)).Elem(), JobDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobEmailNotificationsInput)(nil)).Elem(), JobEmailNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobEmailNotificationsPtrInput)(nil)).Elem(), JobEmailNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobGitSourceInput)(nil)).Elem(), JobGitSourceArgs{})
@@ -34957,6 +35253,8 @@ func init() {
 	pulumi.RegisterOutputType(InstancePoolPreloadedDockerImageArrayOutput{})
 	pulumi.RegisterOutputType(InstancePoolPreloadedDockerImageBasicAuthOutput{})
 	pulumi.RegisterOutputType(InstancePoolPreloadedDockerImageBasicAuthPtrOutput{})
+	pulumi.RegisterOutputType(JobDbtTaskOutput{})
+	pulumi.RegisterOutputType(JobDbtTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobEmailNotificationsOutput{})
 	pulumi.RegisterOutputType(JobEmailNotificationsPtrOutput{})
 	pulumi.RegisterOutputType(JobGitSourceOutput{})

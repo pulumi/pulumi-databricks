@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MountGs {
-    private final String bucketName;
-    private final @Nullable String serviceAccount;
+    private String bucketName;
+    private @Nullable String serviceAccount;
 
-    @CustomType.Constructor
-    private MountGs(
-        @CustomType.Parameter("bucketName") String bucketName,
-        @CustomType.Parameter("serviceAccount") @Nullable String serviceAccount) {
-        this.bucketName = bucketName;
-        this.serviceAccount = serviceAccount;
-    }
-
+    private MountGs() {}
     public String bucketName() {
         return this.bucketName;
     }
@@ -36,30 +29,32 @@ public final class MountGs {
     public static Builder builder(MountGs defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucketName;
         private @Nullable String serviceAccount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MountGs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
     	      this.serviceAccount = defaults.serviceAccount;
         }
 
+        @CustomType.Setter
         public Builder bucketName(String bucketName) {
             this.bucketName = Objects.requireNonNull(bucketName);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
             this.serviceAccount = serviceAccount;
             return this;
-        }        public MountGs build() {
-            return new MountGs(bucketName, serviceAccount);
+        }
+        public MountGs build() {
+            final var o = new MountGs();
+            o.bucketName = bucketName;
+            o.serviceAccount = serviceAccount;
+            return o;
         }
     }
 }

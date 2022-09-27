@@ -13,13 +13,9 @@ public final class StorageCredentialAzureManagedIdentity {
      * @return The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
      * 
      */
-    private final String accessConnectorId;
+    private String accessConnectorId;
 
-    @CustomType.Constructor
-    private StorageCredentialAzureManagedIdentity(@CustomType.Parameter("accessConnectorId") String accessConnectorId) {
-        this.accessConnectorId = accessConnectorId;
-    }
-
+    private StorageCredentialAzureManagedIdentity() {}
     /**
      * @return The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
      * 
@@ -35,24 +31,24 @@ public final class StorageCredentialAzureManagedIdentity {
     public static Builder builder(StorageCredentialAzureManagedIdentity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessConnectorId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StorageCredentialAzureManagedIdentity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessConnectorId = defaults.accessConnectorId;
         }
 
+        @CustomType.Setter
         public Builder accessConnectorId(String accessConnectorId) {
             this.accessConnectorId = Objects.requireNonNull(accessConnectorId);
             return this;
-        }        public StorageCredentialAzureManagedIdentity build() {
-            return new StorageCredentialAzureManagedIdentity(accessConnectorId);
+        }
+        public StorageCredentialAzureManagedIdentity build() {
+            final var o = new StorageCredentialAzureManagedIdentity();
+            o.accessConnectorId = accessConnectorId;
+            return o;
         }
     }
 }

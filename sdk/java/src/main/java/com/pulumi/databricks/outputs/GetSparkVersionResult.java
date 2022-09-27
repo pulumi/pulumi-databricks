@@ -12,48 +12,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSparkVersionResult {
-    private final @Nullable Boolean beta;
-    private final @Nullable Boolean genomics;
-    private final @Nullable Boolean gpu;
-    private final @Nullable Boolean graviton;
+    private @Nullable Boolean beta;
+    private @Nullable Boolean genomics;
+    private @Nullable Boolean gpu;
+    private @Nullable Boolean graviton;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable Boolean latest;
-    private final @Nullable Boolean longTermSupport;
-    private final @Nullable Boolean ml;
-    private final @Nullable Boolean photon;
-    private final @Nullable String scala;
-    private final @Nullable String sparkVersion;
+    private String id;
+    private @Nullable Boolean latest;
+    private @Nullable Boolean longTermSupport;
+    private @Nullable Boolean ml;
+    private @Nullable Boolean photon;
+    private @Nullable String scala;
+    private @Nullable String sparkVersion;
 
-    @CustomType.Constructor
-    private GetSparkVersionResult(
-        @CustomType.Parameter("beta") @Nullable Boolean beta,
-        @CustomType.Parameter("genomics") @Nullable Boolean genomics,
-        @CustomType.Parameter("gpu") @Nullable Boolean gpu,
-        @CustomType.Parameter("graviton") @Nullable Boolean graviton,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("latest") @Nullable Boolean latest,
-        @CustomType.Parameter("longTermSupport") @Nullable Boolean longTermSupport,
-        @CustomType.Parameter("ml") @Nullable Boolean ml,
-        @CustomType.Parameter("photon") @Nullable Boolean photon,
-        @CustomType.Parameter("scala") @Nullable String scala,
-        @CustomType.Parameter("sparkVersion") @Nullable String sparkVersion) {
-        this.beta = beta;
-        this.genomics = genomics;
-        this.gpu = gpu;
-        this.graviton = graviton;
-        this.id = id;
-        this.latest = latest;
-        this.longTermSupport = longTermSupport;
-        this.ml = ml;
-        this.photon = photon;
-        this.scala = scala;
-        this.sparkVersion = sparkVersion;
-    }
-
+    private GetSparkVersionResult() {}
     public Optional<Boolean> beta() {
         return Optional.ofNullable(this.beta);
     }
@@ -99,7 +74,7 @@ public final class GetSparkVersionResult {
     public static Builder builder(GetSparkVersionResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean beta;
         private @Nullable Boolean genomics;
@@ -112,11 +87,7 @@ public final class GetSparkVersionResult {
         private @Nullable Boolean photon;
         private @Nullable String scala;
         private @Nullable String sparkVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSparkVersionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.beta = defaults.beta;
@@ -132,51 +103,75 @@ public final class GetSparkVersionResult {
     	      this.sparkVersion = defaults.sparkVersion;
         }
 
+        @CustomType.Setter
         public Builder beta(@Nullable Boolean beta) {
             this.beta = beta;
             return this;
         }
+        @CustomType.Setter
         public Builder genomics(@Nullable Boolean genomics) {
             this.genomics = genomics;
             return this;
         }
+        @CustomType.Setter
         public Builder gpu(@Nullable Boolean gpu) {
             this.gpu = gpu;
             return this;
         }
+        @CustomType.Setter
         public Builder graviton(@Nullable Boolean graviton) {
             this.graviton = graviton;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder latest(@Nullable Boolean latest) {
             this.latest = latest;
             return this;
         }
+        @CustomType.Setter
         public Builder longTermSupport(@Nullable Boolean longTermSupport) {
             this.longTermSupport = longTermSupport;
             return this;
         }
+        @CustomType.Setter
         public Builder ml(@Nullable Boolean ml) {
             this.ml = ml;
             return this;
         }
+        @CustomType.Setter
         public Builder photon(@Nullable Boolean photon) {
             this.photon = photon;
             return this;
         }
+        @CustomType.Setter
         public Builder scala(@Nullable String scala) {
             this.scala = scala;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkVersion(@Nullable String sparkVersion) {
             this.sparkVersion = sparkVersion;
             return this;
-        }        public GetSparkVersionResult build() {
-            return new GetSparkVersionResult(beta, genomics, gpu, graviton, id, latest, longTermSupport, ml, photon, scala, sparkVersion);
+        }
+        public GetSparkVersionResult build() {
+            final var o = new GetSparkVersionResult();
+            o.beta = beta;
+            o.genomics = genomics;
+            o.gpu = gpu;
+            o.graviton = graviton;
+            o.id = id;
+            o.latest = latest;
+            o.longTermSupport = longTermSupport;
+            o.ml = ml;
+            o.photon = photon;
+            o.scala = scala;
+            o.sparkVersion = sparkVersion;
+            return o;
         }
     }
 }

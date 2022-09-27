@@ -12,32 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobNewClusterInitScriptS3 {
-    private final @Nullable String cannedAcl;
-    private final String destination;
-    private final @Nullable Boolean enableEncryption;
-    private final @Nullable String encryptionType;
-    private final @Nullable String endpoint;
-    private final @Nullable String kmsKey;
-    private final @Nullable String region;
+    private @Nullable String cannedAcl;
+    private String destination;
+    private @Nullable Boolean enableEncryption;
+    private @Nullable String encryptionType;
+    private @Nullable String endpoint;
+    private @Nullable String kmsKey;
+    private @Nullable String region;
 
-    @CustomType.Constructor
-    private JobNewClusterInitScriptS3(
-        @CustomType.Parameter("cannedAcl") @Nullable String cannedAcl,
-        @CustomType.Parameter("destination") String destination,
-        @CustomType.Parameter("enableEncryption") @Nullable Boolean enableEncryption,
-        @CustomType.Parameter("encryptionType") @Nullable String encryptionType,
-        @CustomType.Parameter("endpoint") @Nullable String endpoint,
-        @CustomType.Parameter("kmsKey") @Nullable String kmsKey,
-        @CustomType.Parameter("region") @Nullable String region) {
-        this.cannedAcl = cannedAcl;
-        this.destination = destination;
-        this.enableEncryption = enableEncryption;
-        this.encryptionType = encryptionType;
-        this.endpoint = endpoint;
-        this.kmsKey = kmsKey;
-        this.region = region;
-    }
-
+    private JobNewClusterInitScriptS3() {}
     public Optional<String> cannedAcl() {
         return Optional.ofNullable(this.cannedAcl);
     }
@@ -67,7 +50,7 @@ public final class JobNewClusterInitScriptS3 {
     public static Builder builder(JobNewClusterInitScriptS3 defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cannedAcl;
         private String destination;
@@ -76,11 +59,7 @@ public final class JobNewClusterInitScriptS3 {
         private @Nullable String endpoint;
         private @Nullable String kmsKey;
         private @Nullable String region;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobNewClusterInitScriptS3 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cannedAcl = defaults.cannedAcl;
@@ -92,35 +71,51 @@ public final class JobNewClusterInitScriptS3 {
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
         public Builder cannedAcl(@Nullable String cannedAcl) {
             this.cannedAcl = cannedAcl;
             return this;
         }
+        @CustomType.Setter
         public Builder destination(String destination) {
             this.destination = Objects.requireNonNull(destination);
             return this;
         }
+        @CustomType.Setter
         public Builder enableEncryption(@Nullable Boolean enableEncryption) {
             this.enableEncryption = enableEncryption;
             return this;
         }
+        @CustomType.Setter
         public Builder encryptionType(@Nullable String encryptionType) {
             this.encryptionType = encryptionType;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(@Nullable String endpoint) {
             this.endpoint = endpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
             this.kmsKey = kmsKey;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
-        }        public JobNewClusterInitScriptS3 build() {
-            return new JobNewClusterInitScriptS3(cannedAcl, destination, enableEncryption, encryptionType, endpoint, kmsKey, region);
+        }
+        public JobNewClusterInitScriptS3 build() {
+            final var o = new JobNewClusterInitScriptS3();
+            o.cannedAcl = cannedAcl;
+            o.destination = destination;
+            o.enableEncryption = enableEncryption;
+            o.encryptionType = encryptionType;
+            o.endpoint = endpoint;
+            o.kmsKey = kmsKey;
+            o.region = region;
+            return o;
         }
     }
 }

@@ -11,29 +11,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MountWasb {
-    private final String authType;
-    private final @Nullable String containerName;
-    private final @Nullable String directory;
-    private final @Nullable String storageAccountName;
-    private final String tokenSecretKey;
-    private final String tokenSecretScope;
+    private String authType;
+    private @Nullable String containerName;
+    private @Nullable String directory;
+    private @Nullable String storageAccountName;
+    private String tokenSecretKey;
+    private String tokenSecretScope;
 
-    @CustomType.Constructor
-    private MountWasb(
-        @CustomType.Parameter("authType") String authType,
-        @CustomType.Parameter("containerName") @Nullable String containerName,
-        @CustomType.Parameter("directory") @Nullable String directory,
-        @CustomType.Parameter("storageAccountName") @Nullable String storageAccountName,
-        @CustomType.Parameter("tokenSecretKey") String tokenSecretKey,
-        @CustomType.Parameter("tokenSecretScope") String tokenSecretScope) {
-        this.authType = authType;
-        this.containerName = containerName;
-        this.directory = directory;
-        this.storageAccountName = storageAccountName;
-        this.tokenSecretKey = tokenSecretKey;
-        this.tokenSecretScope = tokenSecretScope;
-    }
-
+    private MountWasb() {}
     public String authType() {
         return this.authType;
     }
@@ -60,7 +45,7 @@ public final class MountWasb {
     public static Builder builder(MountWasb defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String authType;
         private @Nullable String containerName;
@@ -68,11 +53,7 @@ public final class MountWasb {
         private @Nullable String storageAccountName;
         private String tokenSecretKey;
         private String tokenSecretScope;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MountWasb defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
@@ -83,31 +64,45 @@ public final class MountWasb {
     	      this.tokenSecretScope = defaults.tokenSecretScope;
         }
 
+        @CustomType.Setter
         public Builder authType(String authType) {
             this.authType = Objects.requireNonNull(authType);
             return this;
         }
+        @CustomType.Setter
         public Builder containerName(@Nullable String containerName) {
             this.containerName = containerName;
             return this;
         }
+        @CustomType.Setter
         public Builder directory(@Nullable String directory) {
             this.directory = directory;
             return this;
         }
+        @CustomType.Setter
         public Builder storageAccountName(@Nullable String storageAccountName) {
             this.storageAccountName = storageAccountName;
             return this;
         }
+        @CustomType.Setter
         public Builder tokenSecretKey(String tokenSecretKey) {
             this.tokenSecretKey = Objects.requireNonNull(tokenSecretKey);
             return this;
         }
+        @CustomType.Setter
         public Builder tokenSecretScope(String tokenSecretScope) {
             this.tokenSecretScope = Objects.requireNonNull(tokenSecretScope);
             return this;
-        }        public MountWasb build() {
-            return new MountWasb(authType, containerName, directory, storageAccountName, tokenSecretKey, tokenSecretScope);
+        }
+        public MountWasb build() {
+            final var o = new MountWasb();
+            o.authType = authType;
+            o.containerName = containerName;
+            o.directory = directory;
+            o.storageAccountName = storageAccountName;
+            o.tokenSecretKey = tokenSecretKey;
+            o.tokenSecretScope = tokenSecretScope;
+            return o;
         }
     }
 }

@@ -12,26 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlWidgetPosition {
-    private final @Nullable Boolean autoHeight;
-    private final @Nullable Integer posX;
-    private final @Nullable Integer posY;
-    private final Integer sizeX;
-    private final Integer sizeY;
+    private @Nullable Boolean autoHeight;
+    private @Nullable Integer posX;
+    private @Nullable Integer posY;
+    private Integer sizeX;
+    private Integer sizeY;
 
-    @CustomType.Constructor
-    private SqlWidgetPosition(
-        @CustomType.Parameter("autoHeight") @Nullable Boolean autoHeight,
-        @CustomType.Parameter("posX") @Nullable Integer posX,
-        @CustomType.Parameter("posY") @Nullable Integer posY,
-        @CustomType.Parameter("sizeX") Integer sizeX,
-        @CustomType.Parameter("sizeY") Integer sizeY) {
-        this.autoHeight = autoHeight;
-        this.posX = posX;
-        this.posY = posY;
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
-    }
-
+    private SqlWidgetPosition() {}
     public Optional<Boolean> autoHeight() {
         return Optional.ofNullable(this.autoHeight);
     }
@@ -55,18 +42,14 @@ public final class SqlWidgetPosition {
     public static Builder builder(SqlWidgetPosition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean autoHeight;
         private @Nullable Integer posX;
         private @Nullable Integer posY;
         private Integer sizeX;
         private Integer sizeY;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlWidgetPosition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoHeight = defaults.autoHeight;
@@ -76,27 +59,39 @@ public final class SqlWidgetPosition {
     	      this.sizeY = defaults.sizeY;
         }
 
+        @CustomType.Setter
         public Builder autoHeight(@Nullable Boolean autoHeight) {
             this.autoHeight = autoHeight;
             return this;
         }
+        @CustomType.Setter
         public Builder posX(@Nullable Integer posX) {
             this.posX = posX;
             return this;
         }
+        @CustomType.Setter
         public Builder posY(@Nullable Integer posY) {
             this.posY = posY;
             return this;
         }
+        @CustomType.Setter
         public Builder sizeX(Integer sizeX) {
             this.sizeX = Objects.requireNonNull(sizeX);
             return this;
         }
+        @CustomType.Setter
         public Builder sizeY(Integer sizeY) {
             this.sizeY = Objects.requireNonNull(sizeY);
             return this;
-        }        public SqlWidgetPosition build() {
-            return new SqlWidgetPosition(autoHeight, posX, posY, sizeX, sizeY);
+        }
+        public SqlWidgetPosition build() {
+            final var o = new SqlWidgetPosition();
+            o.autoHeight = autoHeight;
+            o.posX = posX;
+            o.posY = posY;
+            o.sizeX = sizeX;
+            o.sizeY = sizeY;
+            return o;
         }
     }
 }

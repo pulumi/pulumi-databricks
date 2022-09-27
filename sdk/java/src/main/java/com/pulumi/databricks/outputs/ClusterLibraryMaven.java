@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterLibraryMaven {
-    private final String coordinates;
-    private final @Nullable List<String> exclusions;
-    private final @Nullable String repo;
+    private String coordinates;
+    private @Nullable List<String> exclusions;
+    private @Nullable String repo;
 
-    @CustomType.Constructor
-    private ClusterLibraryMaven(
-        @CustomType.Parameter("coordinates") String coordinates,
-        @CustomType.Parameter("exclusions") @Nullable List<String> exclusions,
-        @CustomType.Parameter("repo") @Nullable String repo) {
-        this.coordinates = coordinates;
-        this.exclusions = exclusions;
-        this.repo = repo;
-    }
-
+    private ClusterLibraryMaven() {}
     public String coordinates() {
         return this.coordinates;
     }
@@ -43,16 +34,12 @@ public final class ClusterLibraryMaven {
     public static Builder builder(ClusterLibraryMaven defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String coordinates;
         private @Nullable List<String> exclusions;
         private @Nullable String repo;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterLibraryMaven defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.coordinates = defaults.coordinates;
@@ -60,10 +47,12 @@ public final class ClusterLibraryMaven {
     	      this.repo = defaults.repo;
         }
 
+        @CustomType.Setter
         public Builder coordinates(String coordinates) {
             this.coordinates = Objects.requireNonNull(coordinates);
             return this;
         }
+        @CustomType.Setter
         public Builder exclusions(@Nullable List<String> exclusions) {
             this.exclusions = exclusions;
             return this;
@@ -71,11 +60,17 @@ public final class ClusterLibraryMaven {
         public Builder exclusions(String... exclusions) {
             return exclusions(List.of(exclusions));
         }
+        @CustomType.Setter
         public Builder repo(@Nullable String repo) {
             this.repo = repo;
             return this;
-        }        public ClusterLibraryMaven build() {
-            return new ClusterLibraryMaven(coordinates, exclusions, repo);
+        }
+        public ClusterLibraryMaven build() {
+            final var o = new ClusterLibraryMaven();
+            o.coordinates = coordinates;
+            o.exclusions = exclusions;
+            o.repo = repo;
+            return o;
         }
     }
 }

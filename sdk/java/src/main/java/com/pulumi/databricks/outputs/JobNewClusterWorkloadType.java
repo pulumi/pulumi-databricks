@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class JobNewClusterWorkloadType {
-    private final JobNewClusterWorkloadTypeClients clients;
+    private JobNewClusterWorkloadTypeClients clients;
 
-    @CustomType.Constructor
-    private JobNewClusterWorkloadType(@CustomType.Parameter("clients") JobNewClusterWorkloadTypeClients clients) {
-        this.clients = clients;
-    }
-
+    private JobNewClusterWorkloadType() {}
     public JobNewClusterWorkloadTypeClients clients() {
         return this.clients;
     }
@@ -27,24 +23,24 @@ public final class JobNewClusterWorkloadType {
     public static Builder builder(JobNewClusterWorkloadType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private JobNewClusterWorkloadTypeClients clients;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobNewClusterWorkloadType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clients = defaults.clients;
         }
 
+        @CustomType.Setter
         public Builder clients(JobNewClusterWorkloadTypeClients clients) {
             this.clients = Objects.requireNonNull(clients);
             return this;
-        }        public JobNewClusterWorkloadType build() {
-            return new JobNewClusterWorkloadType(clients);
+        }
+        public JobNewClusterWorkloadType build() {
+            final var o = new JobNewClusterWorkloadType();
+            o.clients = clients;
+            return o;
         }
     }
 }

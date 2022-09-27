@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsWorkspacesNetwork {
-    private final MwsWorkspacesNetworkGcpCommonNetworkConfig gcpCommonNetworkConfig;
-    private final @Nullable MwsWorkspacesNetworkGcpManagedNetworkConfig gcpManagedNetworkConfig;
-    private final @Nullable String networkId;
+    private MwsWorkspacesNetworkGcpCommonNetworkConfig gcpCommonNetworkConfig;
+    private @Nullable MwsWorkspacesNetworkGcpManagedNetworkConfig gcpManagedNetworkConfig;
+    private @Nullable String networkId;
 
-    @CustomType.Constructor
-    private MwsWorkspacesNetwork(
-        @CustomType.Parameter("gcpCommonNetworkConfig") MwsWorkspacesNetworkGcpCommonNetworkConfig gcpCommonNetworkConfig,
-        @CustomType.Parameter("gcpManagedNetworkConfig") @Nullable MwsWorkspacesNetworkGcpManagedNetworkConfig gcpManagedNetworkConfig,
-        @CustomType.Parameter("networkId") @Nullable String networkId) {
-        this.gcpCommonNetworkConfig = gcpCommonNetworkConfig;
-        this.gcpManagedNetworkConfig = gcpManagedNetworkConfig;
-        this.networkId = networkId;
-    }
-
+    private MwsWorkspacesNetwork() {}
     public MwsWorkspacesNetworkGcpCommonNetworkConfig gcpCommonNetworkConfig() {
         return this.gcpCommonNetworkConfig;
     }
@@ -44,16 +35,12 @@ public final class MwsWorkspacesNetwork {
     public static Builder builder(MwsWorkspacesNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private MwsWorkspacesNetworkGcpCommonNetworkConfig gcpCommonNetworkConfig;
         private @Nullable MwsWorkspacesNetworkGcpManagedNetworkConfig gcpManagedNetworkConfig;
         private @Nullable String networkId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MwsWorkspacesNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gcpCommonNetworkConfig = defaults.gcpCommonNetworkConfig;
@@ -61,19 +48,27 @@ public final class MwsWorkspacesNetwork {
     	      this.networkId = defaults.networkId;
         }
 
+        @CustomType.Setter
         public Builder gcpCommonNetworkConfig(MwsWorkspacesNetworkGcpCommonNetworkConfig gcpCommonNetworkConfig) {
             this.gcpCommonNetworkConfig = Objects.requireNonNull(gcpCommonNetworkConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder gcpManagedNetworkConfig(@Nullable MwsWorkspacesNetworkGcpManagedNetworkConfig gcpManagedNetworkConfig) {
             this.gcpManagedNetworkConfig = gcpManagedNetworkConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder networkId(@Nullable String networkId) {
             this.networkId = networkId;
             return this;
-        }        public MwsWorkspacesNetwork build() {
-            return new MwsWorkspacesNetwork(gcpCommonNetworkConfig, gcpManagedNetworkConfig, networkId);
+        }
+        public MwsWorkspacesNetwork build() {
+            final var o = new MwsWorkspacesNetwork();
+            o.gcpCommonNetworkConfig = gcpCommonNetworkConfig;
+            o.gcpManagedNetworkConfig = gcpManagedNetworkConfig;
+            o.networkId = networkId;
+            return o;
         }
     }
 }

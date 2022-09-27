@@ -12,21 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDbfsFilePathsPathList {
-    private final @Nullable Integer fileSize;
+    private @Nullable Integer fileSize;
     /**
      * @return Path on DBFS for the file to perform listing
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
 
-    @CustomType.Constructor
-    private GetDbfsFilePathsPathList(
-        @CustomType.Parameter("fileSize") @Nullable Integer fileSize,
-        @CustomType.Parameter("path") @Nullable String path) {
-        this.fileSize = fileSize;
-        this.path = path;
-    }
-
+    private GetDbfsFilePathsPathList() {}
     public Optional<Integer> fileSize() {
         return Optional.ofNullable(this.fileSize);
     }
@@ -45,30 +38,32 @@ public final class GetDbfsFilePathsPathList {
     public static Builder builder(GetDbfsFilePathsPathList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer fileSize;
         private @Nullable String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDbfsFilePathsPathList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fileSize = defaults.fileSize;
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder fileSize(@Nullable Integer fileSize) {
             this.fileSize = fileSize;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
-        }        public GetDbfsFilePathsPathList build() {
-            return new GetDbfsFilePathsPathList(fileSize, path);
+        }
+        public GetDbfsFilePathsPathList build() {
+            final var o = new GetDbfsFilePathsPathList();
+            o.fileSize = fileSize;
+            o.path = path;
+            return o;
         }
     }
 }

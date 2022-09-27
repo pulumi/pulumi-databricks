@@ -93,7 +93,7 @@ type Pipeline struct {
 	AllowDuplicateNames pulumi.BoolPtrOutput `pulumi:"allowDuplicateNames"`
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel pulumi.StringPtrOutput `pulumi:"channel"`
-	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters PipelineClusterArrayOutput `pulumi:"clusters"`
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 	Configuration pulumi.MapOutput `pulumi:"configuration"`
@@ -149,7 +149,7 @@ type pipelineState struct {
 	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel *string `pulumi:"channel"`
-	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters []PipelineCluster `pulumi:"clusters"`
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 	Configuration map[string]interface{} `pulumi:"configuration"`
@@ -177,7 +177,7 @@ type PipelineState struct {
 	AllowDuplicateNames pulumi.BoolPtrInput
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel pulumi.StringPtrInput
-	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters PipelineClusterArrayInput
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 	Configuration pulumi.MapInput
@@ -209,7 +209,7 @@ type pipelineArgs struct {
 	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel *string `pulumi:"channel"`
-	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters []PipelineCluster `pulumi:"clusters"`
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 	Configuration map[string]interface{} `pulumi:"configuration"`
@@ -237,7 +237,7 @@ type PipelineArgs struct {
 	AllowDuplicateNames pulumi.BoolPtrInput
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel pulumi.StringPtrInput
-	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters PipelineClusterArrayInput
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 	Configuration pulumi.MapInput
@@ -356,7 +356,7 @@ func (o PipelineOutput) Channel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Channel }).(pulumi.StringPtrOutput)
 }
 
-// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*
+// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 func (o PipelineOutput) Clusters() PipelineClusterArrayOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineClusterArrayOutput { return v.Clusters }).(PipelineClusterArrayOutput)
 }

@@ -5,28 +5,26 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineClusterAutoscale {
-    private final @Nullable Integer maxWorkers;
-    private final @Nullable Integer minWorkers;
+    private @Nullable Integer maxWorkers;
+    private @Nullable Integer minWorkers;
+    private @Nullable String mode;
 
-    @CustomType.Constructor
-    private PipelineClusterAutoscale(
-        @CustomType.Parameter("maxWorkers") @Nullable Integer maxWorkers,
-        @CustomType.Parameter("minWorkers") @Nullable Integer minWorkers) {
-        this.maxWorkers = maxWorkers;
-        this.minWorkers = minWorkers;
-    }
-
+    private PipelineClusterAutoscale() {}
     public Optional<Integer> maxWorkers() {
         return Optional.ofNullable(this.maxWorkers);
     }
     public Optional<Integer> minWorkers() {
         return Optional.ofNullable(this.minWorkers);
+    }
+    public Optional<String> mode() {
+        return Optional.ofNullable(this.mode);
     }
 
     public static Builder builder() {
@@ -36,30 +34,40 @@ public final class PipelineClusterAutoscale {
     public static Builder builder(PipelineClusterAutoscale defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxWorkers;
         private @Nullable Integer minWorkers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        private @Nullable String mode;
+        public Builder() {}
         public Builder(PipelineClusterAutoscale defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxWorkers = defaults.maxWorkers;
     	      this.minWorkers = defaults.minWorkers;
+    	      this.mode = defaults.mode;
         }
 
+        @CustomType.Setter
         public Builder maxWorkers(@Nullable Integer maxWorkers) {
             this.maxWorkers = maxWorkers;
             return this;
         }
+        @CustomType.Setter
         public Builder minWorkers(@Nullable Integer minWorkers) {
             this.minWorkers = minWorkers;
             return this;
-        }        public PipelineClusterAutoscale build() {
-            return new PipelineClusterAutoscale(maxWorkers, minWorkers);
+        }
+        @CustomType.Setter
+        public Builder mode(@Nullable String mode) {
+            this.mode = mode;
+            return this;
+        }
+        public PipelineClusterAutoscale build() {
+            final var o = new PipelineClusterAutoscale();
+            o.maxWorkers = maxWorkers;
+            o.minWorkers = minWorkers;
+            o.mode = mode;
+            return o;
         }
     }
 }

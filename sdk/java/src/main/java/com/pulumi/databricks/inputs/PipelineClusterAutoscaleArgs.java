@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,11 +30,19 @@ public final class PipelineClusterAutoscaleArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.minWorkers);
     }
 
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
     private PipelineClusterAutoscaleArgs() {}
 
     private PipelineClusterAutoscaleArgs(PipelineClusterAutoscaleArgs $) {
         this.maxWorkers = $.maxWorkers;
         this.minWorkers = $.minWorkers;
+        this.mode = $.mode;
     }
 
     public static Builder builder() {
@@ -70,6 +79,15 @@ public final class PipelineClusterAutoscaleArgs extends com.pulumi.resources.Res
 
         public Builder minWorkers(Integer minWorkers) {
             return minWorkers(Output.of(minWorkers));
+        }
+
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
         }
 
         public PipelineClusterAutoscaleArgs build() {

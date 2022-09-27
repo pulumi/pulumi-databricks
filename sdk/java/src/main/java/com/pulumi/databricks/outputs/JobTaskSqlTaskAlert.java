@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class JobTaskSqlTaskAlert {
-    private final String alertId;
+    private String alertId;
 
-    @CustomType.Constructor
-    private JobTaskSqlTaskAlert(@CustomType.Parameter("alertId") String alertId) {
-        this.alertId = alertId;
-    }
-
+    private JobTaskSqlTaskAlert() {}
     public String alertId() {
         return this.alertId;
     }
@@ -27,24 +23,24 @@ public final class JobTaskSqlTaskAlert {
     public static Builder builder(JobTaskSqlTaskAlert defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String alertId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobTaskSqlTaskAlert defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alertId = defaults.alertId;
         }
 
+        @CustomType.Setter
         public Builder alertId(String alertId) {
             this.alertId = Objects.requireNonNull(alertId);
             return this;
-        }        public JobTaskSqlTaskAlert build() {
-            return new JobTaskSqlTaskAlert(alertId);
+        }
+        public JobTaskSqlTaskAlert build() {
+            final var o = new JobTaskSqlTaskAlert();
+            o.alertId = alertId;
+            return o;
         }
     }
 }

@@ -69,6 +69,9 @@
             "azureEnvironment": {
                 "type": "string"
             },
+            "azureLoginAppId": {
+                "type": "string"
+            },
             "azureTenantId": {
                 "type": "string"
             },
@@ -802,7 +805,7 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "(String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `\"us-west-2a\"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `\"us-west-2a\"` is not a valid zone ID if the Databricks deployment resides in the `\"us-east-1\"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).\n",
+                    "description": "(String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `\"us-west-2a\"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `\"us-west-2a\"` is not a valid zone ID if the Databricks deployment resides in the `\"us-east-1\"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -901,9 +904,8 @@
         },
         "databricks:index/InstancePoolGcpAttributes:InstancePoolGcpAttributes": {
             "properties": {
-                "availability": {
+                "gcpAvailability": {
                     "type": "string",
-                    "description": "Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1080,6 +1082,62 @@
             "required": [
                 "password",
                 "username"
+            ]
+        },
+        "databricks:index/JobDbtTask:JobDbtTask": {
+            "properties": {
+                "commands": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "(Array) Series of dbt commands to execute in sequence. Every command must start with \"dbt\".\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "profilesDirectory": {
+                    "type": "string",
+                    "description": "The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectDirectory": {
+                    "type": "string",
+                    "description": "The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "The name of the schema dbt should run in. Defaults to `default`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "warehouseId": {
+                    "type": "string",
+                    "description": "ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "commands"
             ]
         },
         "databricks:index/JobEmailNotifications:JobEmailNotifications": {
@@ -2945,7 +3003,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Parameters for the task\n",
+                    "description": "(Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3024,7 +3082,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Parameters for the task\n",
+                    "description": "(Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3041,7 +3099,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Parameters for the task\n",
+                    "description": "(Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3070,7 +3128,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Parameters for the task\n",
+                    "description": "(Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3274,6 +3332,16 @@
                     "items": {
                         "type": "string"
                     },
+                    "description": "(Array) Series of dbt commands to execute in sequence. Every command must start with \"dbt\".\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "profilesDirectory": {
+                    "type": "string",
+                    "description": "The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3282,6 +3350,7 @@
                 },
                 "projectDirectory": {
                     "type": "string",
+                    "description": "The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3290,6 +3359,16 @@
                 },
                 "schema": {
                     "type": "string",
+                    "description": "The name of the schema dbt should run in. Defaults to `default`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "warehouseId": {
+                    "type": "string",
+                    "description": "ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4347,7 +4426,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Parameters for the task\n",
+                    "description": "(Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4381,7 +4460,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Parameters for the task\n",
+                    "description": "(Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4398,7 +4477,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Parameters for the task\n",
+                    "description": "(Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4427,7 +4506,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Parameters for the task\n",
+                    "description": "(Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4441,6 +4520,7 @@
             "properties": {
                 "alert": {
                     "$ref": "#/types/databricks:index/JobTaskSqlTaskAlert:JobTaskSqlTaskAlert",
+                    "description": "block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4449,6 +4529,7 @@
                 },
                 "dashboard": {
                     "$ref": "#/types/databricks:index/JobTaskSqlTaskDashboard:JobTaskSqlTaskDashboard",
+                    "description": "block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4460,7 +4541,7 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Parameters for the task\n",
+                    "description": "(Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4469,6 +4550,7 @@
                 },
                 "query": {
                     "$ref": "#/types/databricks:index/JobTaskSqlTaskQuery:JobTaskSqlTaskQuery",
+                    "description": "block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4477,6 +4559,7 @@
                 },
                 "warehouseId": {
                     "type": "string",
+                    "description": "ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4745,8 +4828,9 @@
                         }
                     }
                 },
-                "string": {
+                "secret": {
                     "type": "string",
+                    "description": "Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5632,6 +5716,14 @@
                 },
                 "minWorkers": {
                     "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mode": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8194,6 +8286,9 @@
             "azureEnvironment": {
                 "type": "string"
             },
+            "azureLoginAppId": {
+                "type": "string"
+            },
             "azureTenantId": {
                 "type": "string"
             },
@@ -8259,6 +8354,9 @@
             "azureEnvironment": {
                 "type": "string"
             },
+            "azureLoginAppId": {
+                "type": "string"
+            },
             "azureTenantId": {
                 "type": "string"
             },
@@ -8317,6 +8415,10 @@
                     "type": "string",
                     "description": "User-supplied free-form text.\n"
                 },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "Delete catalog regardless of its contents.\n"
+                },
                 "metastoreId": {
                     "type": "string"
                 },
@@ -8346,6 +8448,10 @@
                     "type": "string",
                     "description": "User-supplied free-form text.\n"
                 },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "Delete catalog regardless of its contents.\n"
+                },
                 "metastoreId": {
                     "type": "string"
                 },
@@ -8372,6 +8478,10 @@
                     "comment": {
                         "type": "string",
                         "description": "User-supplied free-form text.\n"
+                    },
+                    "forceDestroy": {
+                        "type": "boolean",
+                        "description": "Delete catalog regardless of its contents.\n"
                     },
                     "metastoreId": {
                         "type": "string"
@@ -9027,7 +9137,7 @@
             }
         },
         "databricks:index/externalLocation:ExternalLocation": {
-            "description": "\u003e **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.\n\nTo work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:\n\n- databricks.StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.\n- `databricks.ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.\n\n\n## Import\n\nThis resource can be imported by namebash\n\n```sh\n $ pulumi import databricks:index/externalLocation:ExternalLocation this \u003cname\u003e\n```\n\n ",
+            "description": "To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:\n\n- databricks.StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.\n- `databricks.ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.\n\n\n## Import\n\nThis resource can be imported by namebash\n\n```sh\n $ pulumi import databricks:index/externalLocation:ExternalLocation this \u003cname\u003e\n```\n\n ",
             "properties": {
                 "comment": {
                     "type": "string",
@@ -9424,7 +9534,7 @@
             }
         },
         "databricks:index/group:Group": {
-            "description": "This resource allows you to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users and service principals to groups. This is useful if you are using an application to sync users \u0026 groups with SCIM API.\n\nTo create groups in the Databricks account, the provider must be configured with `host = \"https://accounts.cloud.databricks.com\"` on AWS deployments or `host = \"https://accounts.azuredatabricks.net\"` and authenticate using AAD tokens on Azure deployments\n\nRecommended to use along with Identity Provider SCIM provisioning to populate users into those groups:\n\n* [Azure Active Directory](https://docs.microsoft.com/en-us/azure/databricks/administration-guide/users-groups/scim/aad)\n* [Okta](https://docs.databricks.com/administration-guide/users-groups/scim/okta.html)\n* [OneLogin](https://docs.databricks.com/administration-guide/users-groups/scim/onelogin.html)\n\n\n## Import\n\nYou can import a `databricks_group` resource with the name `my_group` like the followingbash\n\n```sh\n $ pulumi import databricks:index/group:Group my_group \u003cgroup_id\u003e\n```\n\n ",
+            "description": "\n\n## Import\n\nYou can import a `databricks_group` resource with the name `my_group` like the followingbash\n\n```sh\n $ pulumi import databricks:index/group:Group my_group \u003cgroup_id\u003e\n```\n\n ",
             "properties": {
                 "allowClusterCreate": {
                     "type": "boolean",
@@ -9535,7 +9645,7 @@
             }
         },
         "databricks:index/groupInstanceProfile:GroupInstanceProfile": {
-            "description": "\u003e **Note** This resource has an evolving API, which may change in future versions of the provider.\n\nThis resource allows you to attach databricks.InstanceProfile (AWS) to databricks_group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst instanceProfile = new databricks.InstanceProfile(\"instanceProfile\", {instanceProfileArn: \"my_instance_profile_arn\"});\nconst myGroup = new databricks.Group(\"myGroup\", {});\nconst myGroupInstanceProfile = new databricks.GroupInstanceProfile(\"myGroupInstanceProfile\", {\n    groupId: myGroup.id,\n    instanceProfileId: instanceProfile.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ninstance_profile = databricks.InstanceProfile(\"instanceProfile\", instance_profile_arn=\"my_instance_profile_arn\")\nmy_group = databricks.Group(\"myGroup\")\nmy_group_instance_profile = databricks.GroupInstanceProfile(\"myGroupInstanceProfile\",\n    group_id=my_group.id,\n    instance_profile_id=instance_profile.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var instanceProfile = new Databricks.InstanceProfile(\"instanceProfile\", new()\n    {\n        InstanceProfileArn = \"my_instance_profile_arn\",\n    });\n\n    var myGroup = new Databricks.Group(\"myGroup\");\n\n    var myGroupInstanceProfile = new Databricks.GroupInstanceProfile(\"myGroupInstanceProfile\", new()\n    {\n        GroupId = myGroup.Id,\n        InstanceProfileId = instanceProfile.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinstanceProfile, err := databricks.NewInstanceProfile(ctx, \"instanceProfile\", \u0026databricks.InstanceProfileArgs{\n\t\t\tInstanceProfileArn: pulumi.String(\"my_instance_profile_arn\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyGroup, err := databricks.NewGroup(ctx, \"myGroup\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupInstanceProfile(ctx, \"myGroupInstanceProfile\", \u0026databricks.GroupInstanceProfileArgs{\n\t\t\tGroupId:           myGroup.ID(),\n\t\t\tInstanceProfileId: instanceProfile.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.InstanceProfile;\nimport com.pulumi.databricks.InstanceProfileArgs;\nimport com.pulumi.databricks.Group;\nimport com.pulumi.databricks.GroupInstanceProfile;\nimport com.pulumi.databricks.GroupInstanceProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var instanceProfile = new InstanceProfile(\"instanceProfile\", InstanceProfileArgs.builder()        \n            .instanceProfileArn(\"my_instance_profile_arn\")\n            .build());\n\n        var myGroup = new Group(\"myGroup\");\n\n        var myGroupInstanceProfile = new GroupInstanceProfile(\"myGroupInstanceProfile\", GroupInstanceProfileArgs.builder()        \n            .groupId(myGroup.id())\n            .instanceProfileId(instanceProfile.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  instanceProfile:\n    type: databricks:InstanceProfile\n    properties:\n      instanceProfileArn: my_instance_profile_arn\n  myGroup:\n    type: databricks:Group\n  myGroupInstanceProfile:\n    type: databricks:GroupInstanceProfile\n    properties:\n      groupId: ${myGroup.id}\n      instanceProfileId: ${instanceProfile.id}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks_group_member to attach users and groups as group members.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.\n\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported. ",
+            "description": "\u003e **Deprecated** Please migrate to databricks_group_role.\n\nThis resource allows you to attach databricks.InstanceProfile (AWS) to databricks_group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst instanceProfile = new databricks.InstanceProfile(\"instanceProfile\", {instanceProfileArn: \"my_instance_profile_arn\"});\nconst myGroup = new databricks.Group(\"myGroup\", {});\nconst myGroupInstanceProfile = new databricks.GroupInstanceProfile(\"myGroupInstanceProfile\", {\n    groupId: myGroup.id,\n    instanceProfileId: instanceProfile.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ninstance_profile = databricks.InstanceProfile(\"instanceProfile\", instance_profile_arn=\"my_instance_profile_arn\")\nmy_group = databricks.Group(\"myGroup\")\nmy_group_instance_profile = databricks.GroupInstanceProfile(\"myGroupInstanceProfile\",\n    group_id=my_group.id,\n    instance_profile_id=instance_profile.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var instanceProfile = new Databricks.InstanceProfile(\"instanceProfile\", new()\n    {\n        InstanceProfileArn = \"my_instance_profile_arn\",\n    });\n\n    var myGroup = new Databricks.Group(\"myGroup\");\n\n    var myGroupInstanceProfile = new Databricks.GroupInstanceProfile(\"myGroupInstanceProfile\", new()\n    {\n        GroupId = myGroup.Id,\n        InstanceProfileId = instanceProfile.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinstanceProfile, err := databricks.NewInstanceProfile(ctx, \"instanceProfile\", \u0026databricks.InstanceProfileArgs{\n\t\t\tInstanceProfileArn: pulumi.String(\"my_instance_profile_arn\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyGroup, err := databricks.NewGroup(ctx, \"myGroup\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupInstanceProfile(ctx, \"myGroupInstanceProfile\", \u0026databricks.GroupInstanceProfileArgs{\n\t\t\tGroupId:           myGroup.ID(),\n\t\t\tInstanceProfileId: instanceProfile.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.InstanceProfile;\nimport com.pulumi.databricks.InstanceProfileArgs;\nimport com.pulumi.databricks.Group;\nimport com.pulumi.databricks.GroupInstanceProfile;\nimport com.pulumi.databricks.GroupInstanceProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var instanceProfile = new InstanceProfile(\"instanceProfile\", InstanceProfileArgs.builder()        \n            .instanceProfileArn(\"my_instance_profile_arn\")\n            .build());\n\n        var myGroup = new Group(\"myGroup\");\n\n        var myGroupInstanceProfile = new GroupInstanceProfile(\"myGroupInstanceProfile\", GroupInstanceProfileArgs.builder()        \n            .groupId(myGroup.id())\n            .instanceProfileId(instanceProfile.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  instanceProfile:\n    type: databricks:InstanceProfile\n    properties:\n      instanceProfileArn: my_instance_profile_arn\n  myGroup:\n    type: databricks:Group\n  myGroupInstanceProfile:\n    type: databricks:GroupInstanceProfile\n    properties:\n      groupId: ${myGroup.id}\n      instanceProfileId: ${instanceProfile.id}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks_group_member to attach users and groups as group members.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.\n\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported. ",
             "properties": {
                 "groupId": {
                     "type": "string",
@@ -9625,7 +9735,7 @@
                 },
                 "maxCapacity": {
                     "type": "integer",
-                    "description": "(Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling.\n"
+                    "description": "(Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.\n"
                 },
                 "minIdleInstances": {
                     "type": "integer",
@@ -9702,7 +9812,7 @@
                 },
                 "maxCapacity": {
                     "type": "integer",
-                    "description": "(Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling.\n"
+                    "description": "(Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.\n"
                 },
                 "minIdleInstances": {
                     "type": "integer",
@@ -9782,7 +9892,7 @@
                     },
                     "maxCapacity": {
                         "type": "integer",
-                        "description": "(Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling.\n"
+                        "description": "(Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.\n"
                     },
                     "minIdleInstances": {
                         "type": "integer",
@@ -9955,6 +10065,9 @@
                     "type": "boolean",
                     "description": "(Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.\n"
                 },
+                "dbtTask": {
+                    "$ref": "#/types/databricks:index/JobDbtTask:JobDbtTask"
+                },
                 "emailNotifications": {
                     "$ref": "#/types/databricks:index/JobEmailNotifications:JobEmailNotifications",
                     "description": "(List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.\n"
@@ -10060,6 +10173,9 @@
                     "type": "boolean",
                     "description": "(Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.\n"
                 },
+                "dbtTask": {
+                    "$ref": "#/types/databricks:index/JobDbtTask:JobDbtTask"
+                },
                 "emailNotifications": {
                     "$ref": "#/types/databricks:index/JobEmailNotifications:JobEmailNotifications",
                     "description": "(List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.\n"
@@ -10157,6 +10273,9 @@
                     "alwaysRunning": {
                         "type": "boolean",
                         "description": "(Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.\n"
+                    },
+                    "dbtTask": {
+                        "$ref": "#/types/databricks:index/JobDbtTask:JobDbtTask"
                     },
                     "emailNotifications": {
                         "$ref": "#/types/databricks:index/JobEmailNotifications:JobEmailNotifications",
@@ -10353,7 +10472,7 @@
             }
         },
         "databricks:index/metastore:Metastore": {
-            "description": "\u003e **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access. \n\nA metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.\n\nUnity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).\n\n\n## Import\n\nThis resource can be imported by IDbash\n\n```sh\n $ pulumi import databricks:index/metastore:Metastore this \u003cid\u003e\n```\n\n ",
+            "description": "A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.\n\nUnity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).\n\n\n## Import\n\nThis resource can be imported by IDbash\n\n```sh\n $ pulumi import databricks:index/metastore:Metastore this \u003cid\u003e\n```\n\n ",
             "properties": {
                 "cloud": {
                     "type": "string"
@@ -10399,7 +10518,7 @@
                 },
                 "storageRoot": {
                     "type": "string",
-                    "description": "Path on cloud storage account, where managed databricks.Table are stored. Change forces creation of a new resource.\n"
+                    "description": "Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.\n"
                 },
                 "updatedAt": {
                     "type": "integer"
@@ -10465,7 +10584,7 @@
                 },
                 "storageRoot": {
                     "type": "string",
-                    "description": "Path on cloud storage account, where managed databricks.Table are stored. Change forces creation of a new resource.\n",
+                    "description": "Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "updatedAt": {
@@ -10525,7 +10644,7 @@
                     },
                     "storageRoot": {
                         "type": "string",
-                        "description": "Path on cloud storage account, where managed databricks.Table are stored. Change forces creation of a new resource.\n",
+                        "description": "Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "updatedAt": {
@@ -10539,7 +10658,7 @@
             }
         },
         "databricks:index/metastoreAssignment:MetastoreAssignment": {
-            "description": "\u003e **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access. \n\nA single databricks.Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. It is only recommended to have multiple metastores when organizations wish to have hard isolation boundaries between data (note that data cannot be easily joined/queried across metastores).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst thisMetastore = new databricks.Metastore(\"thisMetastore\", {\n    storageRoot: `s3://${aws_s3_bucket.metastore.id}/metastore`,\n    owner: \"uc admins\",\n    forceDestroy: true,\n});\nconst thisMetastoreAssignment = new databricks.MetastoreAssignment(\"thisMetastoreAssignment\", {\n    metastoreId: thisMetastore.id,\n    workspaceId: local.workspace_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis_metastore = databricks.Metastore(\"thisMetastore\",\n    storage_root=f\"s3://{aws_s3_bucket['metastore']['id']}/metastore\",\n    owner=\"uc admins\",\n    force_destroy=True)\nthis_metastore_assignment = databricks.MetastoreAssignment(\"thisMetastoreAssignment\",\n    metastore_id=this_metastore.id,\n    workspace_id=local[\"workspace_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var thisMetastore = new Databricks.Metastore(\"thisMetastore\", new()\n    {\n        StorageRoot = $\"s3://{aws_s3_bucket.Metastore.Id}/metastore\",\n        Owner = \"uc admins\",\n        ForceDestroy = true,\n    });\n\n    var thisMetastoreAssignment = new Databricks.MetastoreAssignment(\"thisMetastoreAssignment\", new()\n    {\n        MetastoreId = thisMetastore.Id,\n        WorkspaceId = local.Workspace_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthisMetastore, err := databricks.NewMetastore(ctx, \"thisMetastore\", \u0026databricks.MetastoreArgs{\n\t\t\tStorageRoot:  pulumi.String(fmt.Sprintf(\"s3://%v/metastore\", aws_s3_bucket.Metastore.Id)),\n\t\t\tOwner:        pulumi.String(\"uc admins\"),\n\t\t\tForceDestroy: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewMetastoreAssignment(ctx, \"thisMetastoreAssignment\", \u0026databricks.MetastoreAssignmentArgs{\n\t\t\tMetastoreId: thisMetastore.ID(),\n\t\t\tWorkspaceId: pulumi.Any(local.Workspace_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Metastore;\nimport com.pulumi.databricks.MetastoreArgs;\nimport com.pulumi.databricks.MetastoreAssignment;\nimport com.pulumi.databricks.MetastoreAssignmentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var thisMetastore = new Metastore(\"thisMetastore\", MetastoreArgs.builder()        \n            .storageRoot(String.format(\"s3://%s/metastore\", aws_s3_bucket.metastore().id()))\n            .owner(\"uc admins\")\n            .forceDestroy(true)\n            .build());\n\n        var thisMetastoreAssignment = new MetastoreAssignment(\"thisMetastoreAssignment\", MetastoreAssignmentArgs.builder()        \n            .metastoreId(thisMetastore.id())\n            .workspaceId(local.workspace_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  thisMetastore:\n    type: databricks:Metastore\n    properties:\n      storageRoot: s3://${aws_s3_bucket.metastore.id}/metastore\n      owner: uc admins\n      forceDestroy: true\n  thisMetastoreAssignment:\n    type: databricks:MetastoreAssignment\n    properties:\n      metastoreId: ${thisMetastore.id}\n      workspaceId: ${local.workspace_id}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "A single databricks.Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. It is only recommended to have multiple metastores when organizations wish to have hard isolation boundaries between data (note that data cannot be easily joined/queried across metastores).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst thisMetastore = new databricks.Metastore(\"thisMetastore\", {\n    storageRoot: `s3://${aws_s3_bucket.metastore.id}/metastore`,\n    owner: \"uc admins\",\n    forceDestroy: true,\n});\nconst thisMetastoreAssignment = new databricks.MetastoreAssignment(\"thisMetastoreAssignment\", {\n    metastoreId: thisMetastore.id,\n    workspaceId: local.workspace_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis_metastore = databricks.Metastore(\"thisMetastore\",\n    storage_root=f\"s3://{aws_s3_bucket['metastore']['id']}/metastore\",\n    owner=\"uc admins\",\n    force_destroy=True)\nthis_metastore_assignment = databricks.MetastoreAssignment(\"thisMetastoreAssignment\",\n    metastore_id=this_metastore.id,\n    workspace_id=local[\"workspace_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var thisMetastore = new Databricks.Metastore(\"thisMetastore\", new()\n    {\n        StorageRoot = $\"s3://{aws_s3_bucket.Metastore.Id}/metastore\",\n        Owner = \"uc admins\",\n        ForceDestroy = true,\n    });\n\n    var thisMetastoreAssignment = new Databricks.MetastoreAssignment(\"thisMetastoreAssignment\", new()\n    {\n        MetastoreId = thisMetastore.Id,\n        WorkspaceId = local.Workspace_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthisMetastore, err := databricks.NewMetastore(ctx, \"thisMetastore\", \u0026databricks.MetastoreArgs{\n\t\t\tStorageRoot:  pulumi.String(fmt.Sprintf(\"s3://%v/metastore\", aws_s3_bucket.Metastore.Id)),\n\t\t\tOwner:        pulumi.String(\"uc admins\"),\n\t\t\tForceDestroy: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewMetastoreAssignment(ctx, \"thisMetastoreAssignment\", \u0026databricks.MetastoreAssignmentArgs{\n\t\t\tMetastoreId: thisMetastore.ID(),\n\t\t\tWorkspaceId: pulumi.Any(local.Workspace_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Metastore;\nimport com.pulumi.databricks.MetastoreArgs;\nimport com.pulumi.databricks.MetastoreAssignment;\nimport com.pulumi.databricks.MetastoreAssignmentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var thisMetastore = new Metastore(\"thisMetastore\", MetastoreArgs.builder()        \n            .storageRoot(String.format(\"s3://%s/metastore\", aws_s3_bucket.metastore().id()))\n            .owner(\"uc admins\")\n            .forceDestroy(true)\n            .build());\n\n        var thisMetastoreAssignment = new MetastoreAssignment(\"thisMetastoreAssignment\", MetastoreAssignmentArgs.builder()        \n            .metastoreId(thisMetastore.id())\n            .workspaceId(local.workspace_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  thisMetastore:\n    type: databricks:Metastore\n    properties:\n      storageRoot: s3://${aws_s3_bucket.metastore.id}/metastore\n      owner: uc admins\n      forceDestroy: true\n  thisMetastoreAssignment:\n    type: databricks:MetastoreAssignment\n    properties:\n      metastoreId: ${thisMetastore.id}\n      workspaceId: ${local.workspace_id}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "defaultCatalogName": {
                     "type": "string",
@@ -10598,7 +10717,7 @@
             }
         },
         "databricks:index/metastoreDataAccess:MetastoreDataAccess": {
-            "description": "\u003e **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.\n\nEach databricks.Metastore requires an IAM role that will be assumed by Unity Catalog to access data. `databricks.MetastoreDataAccess` defines this\n\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported. ",
+            "description": "Each databricks.Metastore requires an IAM role that will be assumed by Unity Catalog to access data. `databricks.MetastoreDataAccess` defines this\n\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported. ",
             "properties": {
                 "awsIamRole": {
                     "$ref": "#/types/databricks:index/MetastoreDataAccessAwsIamRole:MetastoreDataAccessAwsIamRole"
@@ -11799,7 +11918,7 @@
                 },
                 "privateAccessLevel": {
                     "type": "string",
-                    "description": "The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ANY` level access _(default)_ lets any databricks.MwsVpcEndpoint connect to your databricks_mws_workspaces. `ACCOUNT` level access lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.\n"
+                    "description": "The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.\n"
                 },
                 "privateAccessSettingsId": {
                     "type": "string",
@@ -11842,7 +11961,7 @@
                 },
                 "privateAccessLevel": {
                     "type": "string",
-                    "description": "The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ANY` level access _(default)_ lets any databricks.MwsVpcEndpoint connect to your databricks_mws_workspaces. `ACCOUNT` level access lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.\n"
+                    "description": "The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.\n"
                 },
                 "privateAccessSettingsId": {
                     "type": "string",
@@ -11885,7 +12004,7 @@
                     },
                     "privateAccessLevel": {
                         "type": "string",
-                        "description": "The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ANY` level access _(default)_ lets any databricks.MwsVpcEndpoint connect to your databricks_mws_workspaces. `ACCOUNT` level access lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.\n"
+                        "description": "The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.\n"
                     },
                     "privateAccessSettingsId": {
                         "type": "string",
@@ -12997,7 +13116,7 @@
                     "items": {
                         "$ref": "#/types/databricks:index/PipelineCluster:PipelineCluster"
                     },
-                    "description": "blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*\n"
+                    "description": "blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).\n"
                 },
                 "configuration": {
                     "type": "object",
@@ -13065,7 +13184,7 @@
                     "items": {
                         "$ref": "#/types/databricks:index/PipelineCluster:PipelineCluster"
                     },
-                    "description": "blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*\n"
+                    "description": "blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).\n"
                 },
                 "configuration": {
                     "type": "object",
@@ -13129,7 +13248,7 @@
                         "items": {
                             "$ref": "#/types/databricks:index/PipelineCluster:PipelineCluster"
                         },
-                        "description": "blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*\n"
+                        "description": "blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).\n"
                     },
                     "configuration": {
                         "type": "object",
@@ -13286,7 +13405,7 @@
             }
         },
         "databricks:index/schema:Schema": {
-            "description": "\u003e **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access. \n\nWithin a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.\n\nA `databricks.Schema` is contained within databricks.Catalog and can contain tables \u0026 views.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sandbox = new databricks.Catalog(\"sandbox\", {\n    metastoreId: databricks_metastore[\"this\"].id,\n    comment: \"this catalog is managed by terraform\",\n    properties: {\n        purpose: \"testing\",\n    },\n});\nconst things = new databricks.Schema(\"things\", {\n    catalogName: sandbox.id,\n    comment: \"this database is managed by terraform\",\n    properties: {\n        kind: \"various\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsandbox = databricks.Catalog(\"sandbox\",\n    metastore_id=databricks_metastore[\"this\"][\"id\"],\n    comment=\"this catalog is managed by terraform\",\n    properties={\n        \"purpose\": \"testing\",\n    })\nthings = databricks.Schema(\"things\",\n    catalog_name=sandbox.id,\n    comment=\"this database is managed by terraform\",\n    properties={\n        \"kind\": \"various\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sandbox = new Databricks.Catalog(\"sandbox\", new()\n    {\n        MetastoreId = databricks_metastore.This.Id,\n        Comment = \"this catalog is managed by terraform\",\n        Properties = \n        {\n            { \"purpose\", \"testing\" },\n        },\n    });\n\n    var things = new Databricks.Schema(\"things\", new()\n    {\n        CatalogName = sandbox.Id,\n        Comment = \"this database is managed by terraform\",\n        Properties = \n        {\n            { \"kind\", \"various\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsandbox, err := databricks.NewCatalog(ctx, \"sandbox\", \u0026databricks.CatalogArgs{\n\t\t\tMetastoreId: pulumi.Any(databricks_metastore.This.Id),\n\t\t\tComment:     pulumi.String(\"this catalog is managed by terraform\"),\n\t\t\tProperties: pulumi.AnyMap{\n\t\t\t\t\"purpose\": pulumi.Any(\"testing\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewSchema(ctx, \"things\", \u0026databricks.SchemaArgs{\n\t\t\tCatalogName: sandbox.ID(),\n\t\t\tComment:     pulumi.String(\"this database is managed by terraform\"),\n\t\t\tProperties: pulumi.AnyMap{\n\t\t\t\t\"kind\": pulumi.Any(\"various\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Catalog;\nimport com.pulumi.databricks.CatalogArgs;\nimport com.pulumi.databricks.Schema;\nimport com.pulumi.databricks.SchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sandbox = new Catalog(\"sandbox\", CatalogArgs.builder()        \n            .metastoreId(databricks_metastore.this().id())\n            .comment(\"this catalog is managed by terraform\")\n            .properties(Map.of(\"purpose\", \"testing\"))\n            .build());\n\n        var things = new Schema(\"things\", SchemaArgs.builder()        \n            .catalogName(sandbox.id())\n            .comment(\"this database is managed by terraform\")\n            .properties(Map.of(\"kind\", \"various\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sandbox:\n    type: databricks:Catalog\n    properties:\n      metastoreId: ${databricks_metastore.this.id}\n      comment: this catalog is managed by terraform\n      properties:\n        purpose: testing\n  things:\n    type: databricks:Schema\n    properties:\n      catalogName: ${sandbox.id}\n      comment: this database is managed by terraform\n      properties:\n        kind: various\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Table data to list tables within Unity Catalog.\n* databricks.Schema data to list schemas within Unity Catalog.\n* databricks.Catalog data to list catalogs within Unity Catalog.\n\n\n## Import\n\nThis resource can be imported by namebash\n\n```sh\n $ pulumi import databricks:index/schema:Schema this \u003cname\u003e\n```\n\n ",
+            "description": "Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.\n\nA `databricks.Schema` is contained within databricks.Catalog and can contain tables \u0026 views.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sandbox = new databricks.Catalog(\"sandbox\", {\n    metastoreId: databricks_metastore[\"this\"].id,\n    comment: \"this catalog is managed by terraform\",\n    properties: {\n        purpose: \"testing\",\n    },\n});\nconst things = new databricks.Schema(\"things\", {\n    catalogName: sandbox.id,\n    comment: \"this database is managed by terraform\",\n    properties: {\n        kind: \"various\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsandbox = databricks.Catalog(\"sandbox\",\n    metastore_id=databricks_metastore[\"this\"][\"id\"],\n    comment=\"this catalog is managed by terraform\",\n    properties={\n        \"purpose\": \"testing\",\n    })\nthings = databricks.Schema(\"things\",\n    catalog_name=sandbox.id,\n    comment=\"this database is managed by terraform\",\n    properties={\n        \"kind\": \"various\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sandbox = new Databricks.Catalog(\"sandbox\", new()\n    {\n        MetastoreId = databricks_metastore.This.Id,\n        Comment = \"this catalog is managed by terraform\",\n        Properties = \n        {\n            { \"purpose\", \"testing\" },\n        },\n    });\n\n    var things = new Databricks.Schema(\"things\", new()\n    {\n        CatalogName = sandbox.Id,\n        Comment = \"this database is managed by terraform\",\n        Properties = \n        {\n            { \"kind\", \"various\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsandbox, err := databricks.NewCatalog(ctx, \"sandbox\", \u0026databricks.CatalogArgs{\n\t\t\tMetastoreId: pulumi.Any(databricks_metastore.This.Id),\n\t\t\tComment:     pulumi.String(\"this catalog is managed by terraform\"),\n\t\t\tProperties: pulumi.AnyMap{\n\t\t\t\t\"purpose\": pulumi.Any(\"testing\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewSchema(ctx, \"things\", \u0026databricks.SchemaArgs{\n\t\t\tCatalogName: sandbox.ID(),\n\t\t\tComment:     pulumi.String(\"this database is managed by terraform\"),\n\t\t\tProperties: pulumi.AnyMap{\n\t\t\t\t\"kind\": pulumi.Any(\"various\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Catalog;\nimport com.pulumi.databricks.CatalogArgs;\nimport com.pulumi.databricks.Schema;\nimport com.pulumi.databricks.SchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sandbox = new Catalog(\"sandbox\", CatalogArgs.builder()        \n            .metastoreId(databricks_metastore.this().id())\n            .comment(\"this catalog is managed by terraform\")\n            .properties(Map.of(\"purpose\", \"testing\"))\n            .build());\n\n        var things = new Schema(\"things\", SchemaArgs.builder()        \n            .catalogName(sandbox.id())\n            .comment(\"this database is managed by terraform\")\n            .properties(Map.of(\"kind\", \"various\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sandbox:\n    type: databricks:Catalog\n    properties:\n      metastoreId: ${databricks_metastore.this.id}\n      comment: this catalog is managed by terraform\n      properties:\n        purpose: testing\n  things:\n    type: databricks:Schema\n    properties:\n      catalogName: ${sandbox.id}\n      comment: this database is managed by terraform\n      properties:\n        kind: various\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Table data to list tables within Unity Catalog.\n* databricks.Schema data to list schemas within Unity Catalog.\n* databricks.Catalog data to list catalogs within Unity Catalog.\n\n\n## Import\n\nThis resource can be imported by namebash\n\n```sh\n $ pulumi import databricks:index/schema:Schema this \u003cname\u003e\n```\n\n ",
             "properties": {
                 "catalogName": {
                     "type": "string",
@@ -13295,6 +13414,10 @@
                 "comment": {
                     "type": "string",
                     "description": "User-supplied free-form text.\n"
+                },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "Delete schema regardless of its contents.\n"
                 },
                 "metastoreId": {
                     "type": "string"
@@ -13330,6 +13453,10 @@
                     "type": "string",
                     "description": "User-supplied free-form text.\n"
                 },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "Delete schema regardless of its contents.\n"
+                },
                 "metastoreId": {
                     "type": "string"
                 },
@@ -13363,6 +13490,10 @@
                     "comment": {
                         "type": "string",
                         "description": "User-supplied free-form text.\n"
+                    },
+                    "forceDestroy": {
+                        "type": "boolean",
+                        "description": "Delete schema regardless of its contents.\n"
                     },
                     "metastoreId": {
                         "type": "string"
@@ -13595,7 +13726,7 @@
             }
         },
         "databricks:index/servicePrincipal:ServicePrincipal": {
-            "description": "Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to databricks.Group in Databricks workspace or account.\n\nTo create service principals in the Databricks account, the provider must be configured with `host = \"https://accounts.cloud.databricks.com\"` on AWS deployments or `host = \"https://accounts.azuredatabricks.net\"` and authenticate using AAD tokens on Azure deployments\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks_group_member to attach users and groups as group members.\n* databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.\n* databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.\n\n\n## Import\n\nThe resource scim service principal can be imported using idbash\n\n```sh\n $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me \u003cservice-principal-id\u003e\n```\n\n ",
+            "description": "## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks_group_member to attach users and groups as group members.\n* databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.\n* databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.\n\n\n## Import\n\nThe resource scim service principal can be imported using idbash\n\n```sh\n $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me \u003cservice-principal-id\u003e\n```\n\n ",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -14233,7 +14364,7 @@
             }
         },
         "databricks:index/sqlQuery:SqlQuery": {
-            "description": "To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.\n\n**Note:** documentation for this resource is a work in progress.\n\nA query may have one or more visualizations.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst q1 = new databricks.SqlQuery(\"q1\", {\n    dataSourceId: databricks_sql_endpoint.example.data_source_id,\n    query: \"SELECT {{ p1 }} AS p1, 2 as p2\",\n    runAsRole: \"viewer\",\n    schedule: {\n        continuous: {\n            intervalSeconds: 5 * 60,\n        },\n    },\n    parameters: [{\n        name: \"p1\",\n        title: \"Title for p1\",\n        text: {\n            value: \"default\",\n        },\n    }],\n    tags: [\n        \"t1\",\n        \"t2\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nq1 = databricks.SqlQuery(\"q1\",\n    data_source_id=databricks_sql_endpoint[\"example\"][\"data_source_id\"],\n    query=\"SELECT {{ p1 }} AS p1, 2 as p2\",\n    run_as_role=\"viewer\",\n    schedule=databricks.SqlQueryScheduleArgs(\n        continuous=databricks.SqlQueryScheduleContinuousArgs(\n            interval_seconds=5 * 60,\n        ),\n    ),\n    parameters=[databricks.SqlQueryParameterArgs(\n        name=\"p1\",\n        title=\"Title for p1\",\n        text=databricks.SqlQueryParameterTextArgs(\n            value=\"default\",\n        ),\n    )],\n    tags=[\n        \"t1\",\n        \"t2\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var q1 = new Databricks.SqlQuery(\"q1\", new()\n    {\n        DataSourceId = databricks_sql_endpoint.Example.Data_source_id,\n        Query = \"SELECT {{ p1 }} AS p1, 2 as p2\",\n        RunAsRole = \"viewer\",\n        Schedule = new Databricks.Inputs.SqlQueryScheduleArgs\n        {\n            Continuous = new Databricks.Inputs.SqlQueryScheduleContinuousArgs\n            {\n                IntervalSeconds = 5 * 60,\n            },\n        },\n        Parameters = new[]\n        {\n            new Databricks.Inputs.SqlQueryParameterArgs\n            {\n                Name = \"p1\",\n                Title = \"Title for p1\",\n                Text = new Databricks.Inputs.SqlQueryParameterTextArgs\n                {\n                    Value = \"default\",\n                },\n            },\n        },\n        Tags = new[]\n        {\n            \"t1\",\n            \"t2\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewSqlQuery(ctx, \"q1\", \u0026databricks.SqlQueryArgs{\n\t\t\tDataSourceId: pulumi.Any(databricks_sql_endpoint.Example.Data_source_id),\n\t\t\tQuery:        pulumi.String(\"SELECT {{ p1 }} AS p1, 2 as p2\"),\n\t\t\tRunAsRole:    pulumi.String(\"viewer\"),\n\t\t\tSchedule: \u0026SqlQueryScheduleArgs{\n\t\t\t\tContinuous: \u0026SqlQueryScheduleContinuousArgs{\n\t\t\t\t\tIntervalSeconds: 5 * 60,\n\t\t\t\t},\n\t\t\t},\n\t\t\tParameters: SqlQueryParameterArray{\n\t\t\t\t\u0026SqlQueryParameterArgs{\n\t\t\t\t\tName:  pulumi.String(\"p1\"),\n\t\t\t\t\tTitle: pulumi.String(\"Title for p1\"),\n\t\t\t\t\tText: \u0026SqlQueryParameterTextArgs{\n\t\t\t\t\t\tValue: pulumi.String(\"default\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"t1\"),\n\t\t\t\tpulumi.String(\"t2\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.SqlQuery;\nimport com.pulumi.databricks.SqlQueryArgs;\nimport com.pulumi.databricks.inputs.SqlQueryScheduleArgs;\nimport com.pulumi.databricks.inputs.SqlQueryScheduleContinuousArgs;\nimport com.pulumi.databricks.inputs.SqlQueryParameterArgs;\nimport com.pulumi.databricks.inputs.SqlQueryParameterTextArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var q1 = new SqlQuery(\"q1\", SqlQueryArgs.builder()        \n            .dataSourceId(databricks_sql_endpoint.example().data_source_id())\n            .query(\"SELECT {{ p1 }} AS p1, 2 as p2\")\n            .runAsRole(\"viewer\")\n            .schedule(SqlQueryScheduleArgs.builder()\n                .continuous(SqlQueryScheduleContinuousArgs.builder()\n                    .intervalSeconds(5 * 60)\n                    .build())\n                .build())\n            .parameters(SqlQueryParameterArgs.builder()\n                .name(\"p1\")\n                .title(\"Title for p1\")\n                .text(SqlQueryParameterTextArgs.builder()\n                    .value(\"default\")\n                    .build())\n                .build())\n            .tags(            \n                \"t1\",\n                \"t2\")\n            .build());\n\n    }\n}\n```\n\nExample permission to share query with all users:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst q1 = new databricks.Permissions(\"q1\", {\n    sqlQueryId: databricks_sql_query.q1.id,\n    accessControls: [\n        {\n            groupName: data.databricks_group.users.display_name,\n            permissionLevel: \"CAN_RUN\",\n        },\n        {\n            groupName: data.databricks_group.team.display_name,\n            permissionLevel: \"CAN_EDIT\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nq1 = databricks.Permissions(\"q1\",\n    sql_query_id=databricks_sql_query[\"q1\"][\"id\"],\n    access_controls=[\n        databricks.PermissionsAccessControlArgs(\n            group_name=data[\"databricks_group\"][\"users\"][\"display_name\"],\n            permission_level=\"CAN_RUN\",\n        ),\n        databricks.PermissionsAccessControlArgs(\n            group_name=data[\"databricks_group\"][\"team\"][\"display_name\"],\n            permission_level=\"CAN_EDIT\",\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var q1 = new Databricks.Permissions(\"q1\", new()\n    {\n        SqlQueryId = databricks_sql_query.Q1.Id,\n        AccessControls = new[]\n        {\n            new Databricks.Inputs.PermissionsAccessControlArgs\n            {\n                GroupName = data.Databricks_group.Users.Display_name,\n                PermissionLevel = \"CAN_RUN\",\n            },\n            new Databricks.Inputs.PermissionsAccessControlArgs\n            {\n                GroupName = data.Databricks_group.Team.Display_name,\n                PermissionLevel = \"CAN_EDIT\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewPermissions(ctx, \"q1\", \u0026databricks.PermissionsArgs{\n\t\t\tSqlQueryId: pulumi.Any(databricks_sql_query.Q1.Id),\n\t\t\tAccessControls: PermissionsAccessControlArray{\n\t\t\t\t\u0026PermissionsAccessControlArgs{\n\t\t\t\t\tGroupName:       pulumi.Any(data.Databricks_group.Users.Display_name),\n\t\t\t\t\tPermissionLevel: pulumi.String(\"CAN_RUN\"),\n\t\t\t\t},\n\t\t\t\t\u0026PermissionsAccessControlArgs{\n\t\t\t\t\tGroupName:       pulumi.Any(data.Databricks_group.Team.Display_name),\n\t\t\t\t\tPermissionLevel: pulumi.String(\"CAN_EDIT\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Permissions;\nimport com.pulumi.databricks.PermissionsArgs;\nimport com.pulumi.databricks.inputs.PermissionsAccessControlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var q1 = new Permissions(\"q1\", PermissionsArgs.builder()        \n            .sqlQueryId(databricks_sql_query.q1().id())\n            .accessControls(            \n                PermissionsAccessControlArgs.builder()\n                    .groupName(data.databricks_group().users().display_name())\n                    .permissionLevel(\"CAN_RUN\")\n                    .build(),\n                PermissionsAccessControlArgs.builder()\n                    .groupName(data.databricks_group().team().display_name())\n                    .permissionLevel(\"CAN_EDIT\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  q1:\n    type: databricks:Permissions\n    properties:\n      sqlQueryId: ${databricks_sql_query.q1.id}\n      accessControls:\n        - groupName: ${data.databricks_group.users.display_name}\n          permissionLevel: CAN_RUN\n        - groupName: ${data.databricks_group.team.display_name}\n          permissionLevel: CAN_EDIT\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).\n* databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).\n* databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.\n* databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).\n\n\n## Import\n\nYou can import a `databricks_sql_query` resource with ID like the followingbash\n\n```sh\n $ pulumi import databricks:index/sqlQuery:SqlQuery this \u003cquery-id\u003e\n```\n\n ",
+            "description": "\n\n\n## Import\n\nYou can import a `databricks_sql_query` resource with ID like the followingbash\n\n```sh\n $ pulumi import databricks:index/sqlQuery:SqlQuery this \u003cquery-id\u003e\n```\n\n ",
             "properties": {
                 "dataSourceId": {
                     "type": "string"
@@ -14535,7 +14666,7 @@
             }
         },
         "databricks:index/storageCredential:StorageCredential": {
-            "description": "\u003e **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.\n\nTo work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:\n\n- `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.\n- databricks.ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.\n\n\n## Import\n\nThis resource can be imported by namebash\n\n```sh\n $ pulumi import databricks:index/storageCredential:StorageCredential this \u003cname\u003e\n```\n\n ",
+            "description": "To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:\n\n- `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.\n- databricks.ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.\n\n\n## Import\n\nThis resource can be imported by namebash\n\n```sh\n $ pulumi import databricks:index/storageCredential:StorageCredential this \u003cname\u003e\n```\n\n ",
             "properties": {
                 "awsIamRole": {
                     "$ref": "#/types/databricks:index/StorageCredentialAwsIamRole:StorageCredentialAwsIamRole"
@@ -14902,7 +15033,7 @@
             }
         },
         "databricks:index/user:User": {
-            "description": "This resource allows you to manage [users in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/users.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users to databricks_group. Upon user creation the user will receive a password reset email. You can also get information about caller identity using databricks.getCurrentUser data source.\n\nTo create users in the Databricks account, the provider must be configured with `host = \"https://accounts.cloud.databricks.com\"` on AWS deployments or `host = \"https://accounts.azuredatabricks.net\"` and authenticate using AAD tokens on Azure deployments\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.\n* databricks_group_member to attach users and groups as group members.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.User data to retrieve information about databricks_user.\n\n\n## Import\n\nThe resource scim user can be imported using idbash\n\n```sh\n $ pulumi import databricks:index/user:User me \u003cuser-id\u003e\n```\n\n ",
+            "description": "## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.\n* databricks_group_member to attach users and groups as group members.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.User data to retrieve information about databricks_user.\n\n\n## Import\n\nThe resource scim user can be imported using idbash\n\n```sh\n $ pulumi import databricks:index/user:User me \u003cuser-id\u003e\n```\n\n ",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -15301,7 +15432,7 @@
             }
         },
         "databricks:index/getCatalogs:getCatalogs": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nListing all catalogs:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getCatalogs({});\nexport const allCatalogs = all;\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_catalogs()\npulumi.export(\"allCatalogs\", all)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetCatalogs.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allCatalogs\"] = all.Apply(getCatalogsResult =\u003e getCatalogsResult),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := databricks.GetCatalogs(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allCatalogs\", all)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetCatalogsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getCatalogs();\n\n        ctx.export(\"allCatalogs\", all.applyValue(getCatalogsResult -\u003e getCatalogsResult));\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    Fn::Invoke:\n      Function: databricks:getCatalogs\n      Arguments: {}\noutputs:\n  allCatalogs: ${all}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Table to manage tables within Unity Catalog.\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nListing all catalogs:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getCatalogs({});\nexport const allCatalogs = all;\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_catalogs()\npulumi.export(\"allCatalogs\", all)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetCatalogs.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allCatalogs\"] = all.Apply(getCatalogsResult =\u003e getCatalogsResult),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := databricks.GetCatalogs(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allCatalogs\", all)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetCatalogsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getCatalogs();\n\n        ctx.export(\"allCatalogs\", all.applyValue(getCatalogsResult -\u003e getCatalogsResult));\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    Fn::Invoke:\n      Function: databricks:getCatalogs\n      Arguments: {}\noutputs:\n  allCatalogs: ${all}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getCatalogs.\n",
                 "properties": {
@@ -16034,7 +16165,7 @@
             }
         },
         "databricks:index/getSchemas:getSchemas": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nListing all schemas in a _sandbox_ databricks_catalog:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sandbox = databricks.getSchemas({\n    catalogName: \"sandbox\",\n});\nexport const allSandboxSchemas = sandbox;\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsandbox = databricks.get_schemas(catalog_name=\"sandbox\")\npulumi.export(\"allSandboxSchemas\", sandbox)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sandbox = Databricks.GetSchemas.Invoke(new()\n    {\n        CatalogName = \"sandbox\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allSandboxSchemas\"] = sandbox.Apply(getSchemasResult =\u003e getSchemasResult),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsandbox, err := databricks.GetSchemas(ctx, \u0026GetSchemasArgs{\n\t\t\tCatalogName: \"sandbox\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allSandboxSchemas\", sandbox)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetSchemasArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var sandbox = DatabricksFunctions.getSchemas(GetSchemasArgs.builder()\n            .catalogName(\"sandbox\")\n            .build());\n\n        ctx.export(\"allSandboxSchemas\", sandbox.applyValue(getSchemasResult -\u003e getSchemasResult));\n    }\n}\n```\n```yaml\nvariables:\n  sandbox:\n    Fn::Invoke:\n      Function: databricks:getSchemas\n      Arguments:\n        catalogName: sandbox\noutputs:\n  allSandboxSchemas: ${sandbox}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Table to manage tables within Unity Catalog.\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nListing all schemas in a _sandbox_ databricks_catalog:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sandbox = databricks.getSchemas({\n    catalogName: \"sandbox\",\n});\nexport const allSandboxSchemas = sandbox;\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsandbox = databricks.get_schemas(catalog_name=\"sandbox\")\npulumi.export(\"allSandboxSchemas\", sandbox)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sandbox = Databricks.GetSchemas.Invoke(new()\n    {\n        CatalogName = \"sandbox\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allSandboxSchemas\"] = sandbox.Apply(getSchemasResult =\u003e getSchemasResult),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsandbox, err := databricks.GetSchemas(ctx, \u0026GetSchemasArgs{\n\t\t\tCatalogName: \"sandbox\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allSandboxSchemas\", sandbox)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetSchemasArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var sandbox = DatabricksFunctions.getSchemas(GetSchemasArgs.builder()\n            .catalogName(\"sandbox\")\n            .build());\n\n        ctx.export(\"allSandboxSchemas\", sandbox.applyValue(getSchemasResult -\u003e getSchemasResult));\n    }\n}\n```\n```yaml\nvariables:\n  sandbox:\n    Fn::Invoke:\n      Function: databricks:getSchemas\n      Arguments:\n        catalogName: sandbox\noutputs:\n  allSandboxSchemas: ${sandbox}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSchemas.\n",
                 "properties": {
@@ -16511,7 +16642,7 @@
             }
         },
         "databricks:index/getTables:getTables": {
-            "description": "## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Table to manage tables within Unity Catalog.\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
+            "description": "## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getTables.\n",
                 "properties": {
@@ -16634,7 +16765,7 @@
             }
         },
         "databricks:index/getViews:getViews": {
-            "description": "## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Table to manage tables within Unity Catalog.\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
+            "description": "## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getViews.\n",
                 "properties": {
@@ -16647,7 +16778,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "set of databricks.Table full names: *`catalog`.`schema`.`view`*\n"
+                        "description": "set of databricks_view full names: *`catalog`.`schema`.`view`*\n"
                     },
                     "schemaName": {
                         "type": "string",
@@ -16675,7 +16806,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "set of databricks.Table full names: *`catalog`.`schema`.`view`*\n"
+                        "description": "set of databricks_view full names: *`catalog`.`schema`.`view`*\n"
                     },
                     "schemaName": {
                         "type": "string"

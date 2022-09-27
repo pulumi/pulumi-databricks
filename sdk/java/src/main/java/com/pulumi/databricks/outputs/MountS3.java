@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MountS3 {
-    private final String bucketName;
-    private final @Nullable String instanceProfile;
+    private String bucketName;
+    private @Nullable String instanceProfile;
 
-    @CustomType.Constructor
-    private MountS3(
-        @CustomType.Parameter("bucketName") String bucketName,
-        @CustomType.Parameter("instanceProfile") @Nullable String instanceProfile) {
-        this.bucketName = bucketName;
-        this.instanceProfile = instanceProfile;
-    }
-
+    private MountS3() {}
     public String bucketName() {
         return this.bucketName;
     }
@@ -36,30 +29,32 @@ public final class MountS3 {
     public static Builder builder(MountS3 defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucketName;
         private @Nullable String instanceProfile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MountS3 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
     	      this.instanceProfile = defaults.instanceProfile;
         }
 
+        @CustomType.Setter
         public Builder bucketName(String bucketName) {
             this.bucketName = Objects.requireNonNull(bucketName);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceProfile(@Nullable String instanceProfile) {
             this.instanceProfile = instanceProfile;
             return this;
-        }        public MountS3 build() {
-            return new MountS3(bucketName, instanceProfile);
+        }
+        public MountS3 build() {
+            final var o = new MountS3();
+            o.bucketName = bucketName;
+            o.instanceProfile = instanceProfile;
+            return o;
         }
     }
 }

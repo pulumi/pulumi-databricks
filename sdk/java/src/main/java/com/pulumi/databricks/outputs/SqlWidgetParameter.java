@@ -12,29 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlWidgetParameter {
-    private final @Nullable String mapTo;
-    private final String name;
-    private final @Nullable String title;
-    private final String type;
-    private final @Nullable String value;
-    private final @Nullable List<String> values;
+    private @Nullable String mapTo;
+    private String name;
+    private @Nullable String title;
+    private String type;
+    private @Nullable String value;
+    private @Nullable List<String> values;
 
-    @CustomType.Constructor
-    private SqlWidgetParameter(
-        @CustomType.Parameter("mapTo") @Nullable String mapTo,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("title") @Nullable String title,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("value") @Nullable String value,
-        @CustomType.Parameter("values") @Nullable List<String> values) {
-        this.mapTo = mapTo;
-        this.name = name;
-        this.title = title;
-        this.type = type;
-        this.value = value;
-        this.values = values;
-    }
-
+    private SqlWidgetParameter() {}
     public Optional<String> mapTo() {
         return Optional.ofNullable(this.mapTo);
     }
@@ -61,7 +46,7 @@ public final class SqlWidgetParameter {
     public static Builder builder(SqlWidgetParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String mapTo;
         private String name;
@@ -69,11 +54,7 @@ public final class SqlWidgetParameter {
         private String type;
         private @Nullable String value;
         private @Nullable List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlWidgetParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mapTo = defaults.mapTo;
@@ -84,34 +65,48 @@ public final class SqlWidgetParameter {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder mapTo(@Nullable String mapTo) {
             this.mapTo = mapTo;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder title(@Nullable String title) {
             this.title = title;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
         }
+        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public SqlWidgetParameter build() {
-            return new SqlWidgetParameter(mapTo, name, title, type, value, values);
+        }
+        public SqlWidgetParameter build() {
+            final var o = new SqlWidgetParameter();
+            o.mapTo = mapTo;
+            o.name = name;
+            o.title = title;
+            o.type = type;
+            o.value = value;
+            o.values = values;
+            return o;
         }
     }
 }

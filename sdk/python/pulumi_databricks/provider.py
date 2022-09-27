@@ -19,6 +19,7 @@ class ProviderArgs:
                  azure_client_id: Optional[pulumi.Input[str]] = None,
                  azure_client_secret: Optional[pulumi.Input[str]] = None,
                  azure_environment: Optional[pulumi.Input[str]] = None,
+                 azure_login_app_id: Optional[pulumi.Input[str]] = None,
                  azure_tenant_id: Optional[pulumi.Input[str]] = None,
                  azure_use_msi: Optional[pulumi.Input[bool]] = None,
                  azure_workspace_resource_id: Optional[pulumi.Input[str]] = None,
@@ -48,6 +49,8 @@ class ProviderArgs:
             pulumi.set(__self__, "azure_client_secret", azure_client_secret)
         if azure_environment is not None:
             pulumi.set(__self__, "azure_environment", azure_environment)
+        if azure_login_app_id is not None:
+            pulumi.set(__self__, "azure_login_app_id", azure_login_app_id)
         if azure_tenant_id is not None:
             pulumi.set(__self__, "azure_tenant_id", azure_tenant_id)
         if azure_use_msi is not None:
@@ -125,6 +128,15 @@ class ProviderArgs:
     @azure_environment.setter
     def azure_environment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "azure_environment", value)
+
+    @property
+    @pulumi.getter(name="azureLoginAppId")
+    def azure_login_app_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "azure_login_app_id")
+
+    @azure_login_app_id.setter
+    def azure_login_app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "azure_login_app_id", value)
 
     @property
     @pulumi.getter(name="azureTenantId")
@@ -281,6 +293,7 @@ class Provider(pulumi.ProviderResource):
                  azure_client_id: Optional[pulumi.Input[str]] = None,
                  azure_client_secret: Optional[pulumi.Input[str]] = None,
                  azure_environment: Optional[pulumi.Input[str]] = None,
+                 azure_login_app_id: Optional[pulumi.Input[str]] = None,
                  azure_tenant_id: Optional[pulumi.Input[str]] = None,
                  azure_use_msi: Optional[pulumi.Input[bool]] = None,
                  azure_workspace_resource_id: Optional[pulumi.Input[str]] = None,
@@ -339,6 +352,7 @@ class Provider(pulumi.ProviderResource):
                  azure_client_id: Optional[pulumi.Input[str]] = None,
                  azure_client_secret: Optional[pulumi.Input[str]] = None,
                  azure_environment: Optional[pulumi.Input[str]] = None,
+                 azure_login_app_id: Optional[pulumi.Input[str]] = None,
                  azure_tenant_id: Optional[pulumi.Input[str]] = None,
                  azure_use_msi: Optional[pulumi.Input[bool]] = None,
                  azure_workspace_resource_id: Optional[pulumi.Input[str]] = None,
@@ -369,6 +383,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["azure_client_id"] = azure_client_id
             __props__.__dict__["azure_client_secret"] = azure_client_secret
             __props__.__dict__["azure_environment"] = azure_environment
+            __props__.__dict__["azure_login_app_id"] = azure_login_app_id
             __props__.__dict__["azure_tenant_id"] = azure_tenant_id
             __props__.__dict__["azure_use_msi"] = pulumi.Output.from_input(azure_use_msi).apply(pulumi.runtime.to_json) if azure_use_msi is not None else None
             __props__.__dict__["azure_workspace_resource_id"] = azure_workspace_resource_id
@@ -415,6 +430,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="azureEnvironment")
     def azure_environment(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "azure_environment")
+
+    @property
+    @pulumi.getter(name="azureLoginAppId")
+    def azure_login_app_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "azure_login_app_id")
 
     @property
     @pulumi.getter(name="azureTenantId")

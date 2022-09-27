@@ -24,95 +24,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskNewCluster {
-    private final @Nullable Boolean applyPolicyDefaultValues;
-    private final @Nullable JobTaskNewClusterAutoscale autoscale;
-    private final @Nullable Integer autoterminationMinutes;
-    private final @Nullable JobTaskNewClusterAwsAttributes awsAttributes;
-    private final @Nullable JobTaskNewClusterAzureAttributes azureAttributes;
-    private final @Nullable String clusterId;
-    private final @Nullable JobTaskNewClusterClusterLogConf clusterLogConf;
-    private final @Nullable String clusterName;
-    private final @Nullable Map<String,Object> customTags;
-    private final @Nullable String dataSecurityMode;
-    private final @Nullable JobTaskNewClusterDockerImage dockerImage;
-    private final @Nullable String driverInstancePoolId;
-    private final @Nullable String driverNodeTypeId;
-    private final @Nullable Boolean enableElasticDisk;
-    private final @Nullable Boolean enableLocalDiskEncryption;
-    private final @Nullable JobTaskNewClusterGcpAttributes gcpAttributes;
-    private final @Nullable String idempotencyToken;
-    private final @Nullable List<JobTaskNewClusterInitScript> initScripts;
-    private final @Nullable String instancePoolId;
-    private final @Nullable String nodeTypeId;
-    private final @Nullable Integer numWorkers;
-    private final @Nullable String policyId;
-    private final @Nullable String singleUserName;
-    private final @Nullable Map<String,Object> sparkConf;
-    private final @Nullable Map<String,Object> sparkEnvVars;
-    private final String sparkVersion;
-    private final @Nullable List<String> sshPublicKeys;
-    private final @Nullable JobTaskNewClusterWorkloadType workloadType;
+    private @Nullable Boolean applyPolicyDefaultValues;
+    private @Nullable JobTaskNewClusterAutoscale autoscale;
+    private @Nullable Integer autoterminationMinutes;
+    private @Nullable JobTaskNewClusterAwsAttributes awsAttributes;
+    private @Nullable JobTaskNewClusterAzureAttributes azureAttributes;
+    private @Nullable String clusterId;
+    private @Nullable JobTaskNewClusterClusterLogConf clusterLogConf;
+    private @Nullable String clusterName;
+    private @Nullable Map<String,Object> customTags;
+    private @Nullable String dataSecurityMode;
+    private @Nullable JobTaskNewClusterDockerImage dockerImage;
+    private @Nullable String driverInstancePoolId;
+    private @Nullable String driverNodeTypeId;
+    private @Nullable Boolean enableElasticDisk;
+    private @Nullable Boolean enableLocalDiskEncryption;
+    private @Nullable JobTaskNewClusterGcpAttributes gcpAttributes;
+    private @Nullable String idempotencyToken;
+    private @Nullable List<JobTaskNewClusterInitScript> initScripts;
+    private @Nullable String instancePoolId;
+    private @Nullable String nodeTypeId;
+    private @Nullable Integer numWorkers;
+    private @Nullable String policyId;
+    private @Nullable String singleUserName;
+    private @Nullable Map<String,Object> sparkConf;
+    private @Nullable Map<String,Object> sparkEnvVars;
+    private String sparkVersion;
+    private @Nullable List<String> sshPublicKeys;
+    private @Nullable JobTaskNewClusterWorkloadType workloadType;
 
-    @CustomType.Constructor
-    private JobTaskNewCluster(
-        @CustomType.Parameter("applyPolicyDefaultValues") @Nullable Boolean applyPolicyDefaultValues,
-        @CustomType.Parameter("autoscale") @Nullable JobTaskNewClusterAutoscale autoscale,
-        @CustomType.Parameter("autoterminationMinutes") @Nullable Integer autoterminationMinutes,
-        @CustomType.Parameter("awsAttributes") @Nullable JobTaskNewClusterAwsAttributes awsAttributes,
-        @CustomType.Parameter("azureAttributes") @Nullable JobTaskNewClusterAzureAttributes azureAttributes,
-        @CustomType.Parameter("clusterId") @Nullable String clusterId,
-        @CustomType.Parameter("clusterLogConf") @Nullable JobTaskNewClusterClusterLogConf clusterLogConf,
-        @CustomType.Parameter("clusterName") @Nullable String clusterName,
-        @CustomType.Parameter("customTags") @Nullable Map<String,Object> customTags,
-        @CustomType.Parameter("dataSecurityMode") @Nullable String dataSecurityMode,
-        @CustomType.Parameter("dockerImage") @Nullable JobTaskNewClusterDockerImage dockerImage,
-        @CustomType.Parameter("driverInstancePoolId") @Nullable String driverInstancePoolId,
-        @CustomType.Parameter("driverNodeTypeId") @Nullable String driverNodeTypeId,
-        @CustomType.Parameter("enableElasticDisk") @Nullable Boolean enableElasticDisk,
-        @CustomType.Parameter("enableLocalDiskEncryption") @Nullable Boolean enableLocalDiskEncryption,
-        @CustomType.Parameter("gcpAttributes") @Nullable JobTaskNewClusterGcpAttributes gcpAttributes,
-        @CustomType.Parameter("idempotencyToken") @Nullable String idempotencyToken,
-        @CustomType.Parameter("initScripts") @Nullable List<JobTaskNewClusterInitScript> initScripts,
-        @CustomType.Parameter("instancePoolId") @Nullable String instancePoolId,
-        @CustomType.Parameter("nodeTypeId") @Nullable String nodeTypeId,
-        @CustomType.Parameter("numWorkers") @Nullable Integer numWorkers,
-        @CustomType.Parameter("policyId") @Nullable String policyId,
-        @CustomType.Parameter("singleUserName") @Nullable String singleUserName,
-        @CustomType.Parameter("sparkConf") @Nullable Map<String,Object> sparkConf,
-        @CustomType.Parameter("sparkEnvVars") @Nullable Map<String,Object> sparkEnvVars,
-        @CustomType.Parameter("sparkVersion") String sparkVersion,
-        @CustomType.Parameter("sshPublicKeys") @Nullable List<String> sshPublicKeys,
-        @CustomType.Parameter("workloadType") @Nullable JobTaskNewClusterWorkloadType workloadType) {
-        this.applyPolicyDefaultValues = applyPolicyDefaultValues;
-        this.autoscale = autoscale;
-        this.autoterminationMinutes = autoterminationMinutes;
-        this.awsAttributes = awsAttributes;
-        this.azureAttributes = azureAttributes;
-        this.clusterId = clusterId;
-        this.clusterLogConf = clusterLogConf;
-        this.clusterName = clusterName;
-        this.customTags = customTags;
-        this.dataSecurityMode = dataSecurityMode;
-        this.dockerImage = dockerImage;
-        this.driverInstancePoolId = driverInstancePoolId;
-        this.driverNodeTypeId = driverNodeTypeId;
-        this.enableElasticDisk = enableElasticDisk;
-        this.enableLocalDiskEncryption = enableLocalDiskEncryption;
-        this.gcpAttributes = gcpAttributes;
-        this.idempotencyToken = idempotencyToken;
-        this.initScripts = initScripts;
-        this.instancePoolId = instancePoolId;
-        this.nodeTypeId = nodeTypeId;
-        this.numWorkers = numWorkers;
-        this.policyId = policyId;
-        this.singleUserName = singleUserName;
-        this.sparkConf = sparkConf;
-        this.sparkEnvVars = sparkEnvVars;
-        this.sparkVersion = sparkVersion;
-        this.sshPublicKeys = sshPublicKeys;
-        this.workloadType = workloadType;
-    }
-
+    private JobTaskNewCluster() {}
     public Optional<Boolean> applyPolicyDefaultValues() {
         return Optional.ofNullable(this.applyPolicyDefaultValues);
     }
@@ -205,7 +146,7 @@ public final class JobTaskNewCluster {
     public static Builder builder(JobTaskNewCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean applyPolicyDefaultValues;
         private @Nullable JobTaskNewClusterAutoscale autoscale;
@@ -235,11 +176,7 @@ public final class JobTaskNewCluster {
         private String sparkVersion;
         private @Nullable List<String> sshPublicKeys;
         private @Nullable JobTaskNewClusterWorkloadType workloadType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobTaskNewCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applyPolicyDefaultValues = defaults.applyPolicyDefaultValues;
@@ -272,74 +209,92 @@ public final class JobTaskNewCluster {
     	      this.workloadType = defaults.workloadType;
         }
 
+        @CustomType.Setter
         public Builder applyPolicyDefaultValues(@Nullable Boolean applyPolicyDefaultValues) {
             this.applyPolicyDefaultValues = applyPolicyDefaultValues;
             return this;
         }
+        @CustomType.Setter
         public Builder autoscale(@Nullable JobTaskNewClusterAutoscale autoscale) {
             this.autoscale = autoscale;
             return this;
         }
+        @CustomType.Setter
         public Builder autoterminationMinutes(@Nullable Integer autoterminationMinutes) {
             this.autoterminationMinutes = autoterminationMinutes;
             return this;
         }
+        @CustomType.Setter
         public Builder awsAttributes(@Nullable JobTaskNewClusterAwsAttributes awsAttributes) {
             this.awsAttributes = awsAttributes;
             return this;
         }
+        @CustomType.Setter
         public Builder azureAttributes(@Nullable JobTaskNewClusterAzureAttributes azureAttributes) {
             this.azureAttributes = azureAttributes;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
             this.clusterId = clusterId;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterLogConf(@Nullable JobTaskNewClusterClusterLogConf clusterLogConf) {
             this.clusterLogConf = clusterLogConf;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterName(@Nullable String clusterName) {
             this.clusterName = clusterName;
             return this;
         }
+        @CustomType.Setter
         public Builder customTags(@Nullable Map<String,Object> customTags) {
             this.customTags = customTags;
             return this;
         }
+        @CustomType.Setter
         public Builder dataSecurityMode(@Nullable String dataSecurityMode) {
             this.dataSecurityMode = dataSecurityMode;
             return this;
         }
+        @CustomType.Setter
         public Builder dockerImage(@Nullable JobTaskNewClusterDockerImage dockerImage) {
             this.dockerImage = dockerImage;
             return this;
         }
+        @CustomType.Setter
         public Builder driverInstancePoolId(@Nullable String driverInstancePoolId) {
             this.driverInstancePoolId = driverInstancePoolId;
             return this;
         }
+        @CustomType.Setter
         public Builder driverNodeTypeId(@Nullable String driverNodeTypeId) {
             this.driverNodeTypeId = driverNodeTypeId;
             return this;
         }
+        @CustomType.Setter
         public Builder enableElasticDisk(@Nullable Boolean enableElasticDisk) {
             this.enableElasticDisk = enableElasticDisk;
             return this;
         }
+        @CustomType.Setter
         public Builder enableLocalDiskEncryption(@Nullable Boolean enableLocalDiskEncryption) {
             this.enableLocalDiskEncryption = enableLocalDiskEncryption;
             return this;
         }
+        @CustomType.Setter
         public Builder gcpAttributes(@Nullable JobTaskNewClusterGcpAttributes gcpAttributes) {
             this.gcpAttributes = gcpAttributes;
             return this;
         }
+        @CustomType.Setter
         public Builder idempotencyToken(@Nullable String idempotencyToken) {
             this.idempotencyToken = idempotencyToken;
             return this;
         }
+        @CustomType.Setter
         public Builder initScripts(@Nullable List<JobTaskNewClusterInitScript> initScripts) {
             this.initScripts = initScripts;
             return this;
@@ -347,38 +302,47 @@ public final class JobTaskNewCluster {
         public Builder initScripts(JobTaskNewClusterInitScript... initScripts) {
             return initScripts(List.of(initScripts));
         }
+        @CustomType.Setter
         public Builder instancePoolId(@Nullable String instancePoolId) {
             this.instancePoolId = instancePoolId;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeTypeId(@Nullable String nodeTypeId) {
             this.nodeTypeId = nodeTypeId;
             return this;
         }
+        @CustomType.Setter
         public Builder numWorkers(@Nullable Integer numWorkers) {
             this.numWorkers = numWorkers;
             return this;
         }
+        @CustomType.Setter
         public Builder policyId(@Nullable String policyId) {
             this.policyId = policyId;
             return this;
         }
+        @CustomType.Setter
         public Builder singleUserName(@Nullable String singleUserName) {
             this.singleUserName = singleUserName;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkConf(@Nullable Map<String,Object> sparkConf) {
             this.sparkConf = sparkConf;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkEnvVars(@Nullable Map<String,Object> sparkEnvVars) {
             this.sparkEnvVars = sparkEnvVars;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkVersion(String sparkVersion) {
             this.sparkVersion = Objects.requireNonNull(sparkVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder sshPublicKeys(@Nullable List<String> sshPublicKeys) {
             this.sshPublicKeys = sshPublicKeys;
             return this;
@@ -386,11 +350,42 @@ public final class JobTaskNewCluster {
         public Builder sshPublicKeys(String... sshPublicKeys) {
             return sshPublicKeys(List.of(sshPublicKeys));
         }
+        @CustomType.Setter
         public Builder workloadType(@Nullable JobTaskNewClusterWorkloadType workloadType) {
             this.workloadType = workloadType;
             return this;
-        }        public JobTaskNewCluster build() {
-            return new JobTaskNewCluster(applyPolicyDefaultValues, autoscale, autoterminationMinutes, awsAttributes, azureAttributes, clusterId, clusterLogConf, clusterName, customTags, dataSecurityMode, dockerImage, driverInstancePoolId, driverNodeTypeId, enableElasticDisk, enableLocalDiskEncryption, gcpAttributes, idempotencyToken, initScripts, instancePoolId, nodeTypeId, numWorkers, policyId, singleUserName, sparkConf, sparkEnvVars, sparkVersion, sshPublicKeys, workloadType);
+        }
+        public JobTaskNewCluster build() {
+            final var o = new JobTaskNewCluster();
+            o.applyPolicyDefaultValues = applyPolicyDefaultValues;
+            o.autoscale = autoscale;
+            o.autoterminationMinutes = autoterminationMinutes;
+            o.awsAttributes = awsAttributes;
+            o.azureAttributes = azureAttributes;
+            o.clusterId = clusterId;
+            o.clusterLogConf = clusterLogConf;
+            o.clusterName = clusterName;
+            o.customTags = customTags;
+            o.dataSecurityMode = dataSecurityMode;
+            o.dockerImage = dockerImage;
+            o.driverInstancePoolId = driverInstancePoolId;
+            o.driverNodeTypeId = driverNodeTypeId;
+            o.enableElasticDisk = enableElasticDisk;
+            o.enableLocalDiskEncryption = enableLocalDiskEncryption;
+            o.gcpAttributes = gcpAttributes;
+            o.idempotencyToken = idempotencyToken;
+            o.initScripts = initScripts;
+            o.instancePoolId = instancePoolId;
+            o.nodeTypeId = nodeTypeId;
+            o.numWorkers = numWorkers;
+            o.policyId = policyId;
+            o.singleUserName = singleUserName;
+            o.sparkConf = sparkConf;
+            o.sparkEnvVars = sparkEnvVars;
+            o.sparkVersion = sparkVersion;
+            o.sshPublicKeys = sshPublicKeys;
+            o.workloadType = workloadType;
+            return o;
         }
     }
 }

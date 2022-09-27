@@ -392,7 +392,7 @@ export interface InstancePoolAwsAttributes {
      */
     spotBidPricePercent?: number;
     /**
-     * (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+     * (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
      */
     zoneId: string;
 }
@@ -426,10 +426,7 @@ export interface InstancePoolDiskSpecDiskType {
 }
 
 export interface InstancePoolGcpAttributes {
-    /**
-     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     */
-    availability?: string;
+    gcpAvailability?: string;
 }
 
 export interface InstancePoolInstancePoolFleetAttributes {
@@ -461,6 +458,29 @@ export interface InstancePoolPreloadedDockerImage {
 export interface InstancePoolPreloadedDockerImageBasicAuth {
     password: string;
     username: string;
+}
+
+export interface JobDbtTask {
+    /**
+     * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+     */
+    commands: string[];
+    /**
+     * The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     */
+    profilesDirectory?: string;
+    /**
+     * The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+     */
+    projectDirectory?: string;
+    /**
+     * The name of the schema dbt should run in. Defaults to `default`.
+     */
+    schema?: string;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     */
+    warehouseId?: string;
 }
 
 export interface JobEmailNotifications {
@@ -836,7 +856,7 @@ export interface JobPythonWheelTask {
      */
     packageName?: string;
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
 }
@@ -863,14 +883,14 @@ export interface JobSparkJarTask {
      */
     mainClassName?: string;
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
 }
 
 export interface JobSparkPythonTask {
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
     /**
@@ -881,7 +901,7 @@ export interface JobSparkPythonTask {
 
 export interface JobSparkSubmitTask {
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
 }
@@ -937,9 +957,26 @@ export interface JobTask {
 }
 
 export interface JobTaskDbtTask {
+    /**
+     * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+     */
     commands: string[];
+    /**
+     * The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     */
+    profilesDirectory?: string;
+    /**
+     * The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+     */
     projectDirectory?: string;
+    /**
+     * The name of the schema dbt should run in. Defaults to `default`.
+     */
     schema?: string;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     */
+    warehouseId?: string;
 }
 
 export interface JobTaskDependsOn {
@@ -1154,7 +1191,7 @@ export interface JobTaskPythonWheelTask {
      */
     packageName?: string;
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
 }
@@ -1166,14 +1203,14 @@ export interface JobTaskSparkJarTask {
      */
     mainClassName?: string;
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
 }
 
 export interface JobTaskSparkPythonTask {
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
     /**
@@ -1184,19 +1221,31 @@ export interface JobTaskSparkPythonTask {
 
 export interface JobTaskSparkSubmitTask {
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
 }
 
 export interface JobTaskSqlTask {
+    /**
+     * block consisting of single string field: `alertId` - identifier of the Databricks SQL Alert.
+     */
     alert?: outputs.JobTaskSqlTaskAlert;
+    /**
+     * block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     */
     dashboard?: outputs.JobTaskSqlTaskDashboard;
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: {[key: string]: any};
+    /**
+     * block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
+     */
     query?: outputs.JobTaskSqlTaskQuery;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     */
     warehouseId?: string;
 }
 
@@ -1271,7 +1320,10 @@ export interface MlflowWebhookHttpUrlSpec {
      * Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
      */
     enableSslVerification?: boolean;
-    string?: string;
+    /**
+     * Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
+     */
+    secret?: string;
     /**
      * External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
      */
@@ -1438,6 +1490,7 @@ export interface PipelineCluster {
 export interface PipelineClusterAutoscale {
     maxWorkers?: number;
     minWorkers?: number;
+    mode?: string;
 }
 
 export interface PipelineClusterAwsAttributes {
