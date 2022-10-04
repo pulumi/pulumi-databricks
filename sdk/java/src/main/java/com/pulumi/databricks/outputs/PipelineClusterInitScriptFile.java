@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineClusterInitScriptFile {
-    private final @Nullable String destination;
+    private @Nullable String destination;
 
-    @CustomType.Constructor
-    private PipelineClusterInitScriptFile(@CustomType.Parameter("destination") @Nullable String destination) {
-        this.destination = destination;
-    }
-
+    private PipelineClusterInitScriptFile() {}
     public Optional<String> destination() {
         return Optional.ofNullable(this.destination);
     }
@@ -29,24 +25,24 @@ public final class PipelineClusterInitScriptFile {
     public static Builder builder(PipelineClusterInitScriptFile defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String destination;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PipelineClusterInitScriptFile defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destination = defaults.destination;
         }
 
+        @CustomType.Setter
         public Builder destination(@Nullable String destination) {
             this.destination = destination;
             return this;
-        }        public PipelineClusterInitScriptFile build() {
-            return new PipelineClusterInitScriptFile(destination);
+        }
+        public PipelineClusterInitScriptFile build() {
+            final var o = new PipelineClusterInitScriptFile();
+            o.destination = destination;
+            return o;
         }
     }
 }

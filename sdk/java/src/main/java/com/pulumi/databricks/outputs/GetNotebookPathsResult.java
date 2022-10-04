@@ -16,27 +16,16 @@ public final class GetNotebookPathsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return list of objects with `path` and `language` attributes
      * 
      */
-    private final List<GetNotebookPathsNotebookPathList> notebookPathLists;
-    private final String path;
-    private final Boolean recursive;
+    private List<GetNotebookPathsNotebookPathList> notebookPathLists;
+    private String path;
+    private Boolean recursive;
 
-    @CustomType.Constructor
-    private GetNotebookPathsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("notebookPathLists") List<GetNotebookPathsNotebookPathList> notebookPathLists,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("recursive") Boolean recursive) {
-        this.id = id;
-        this.notebookPathLists = notebookPathLists;
-        this.path = path;
-        this.recursive = recursive;
-    }
-
+    private GetNotebookPathsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -65,17 +54,13 @@ public final class GetNotebookPathsResult {
     public static Builder builder(GetNotebookPathsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<GetNotebookPathsNotebookPathList> notebookPathLists;
         private String path;
         private Boolean recursive;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNotebookPathsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -84,10 +69,12 @@ public final class GetNotebookPathsResult {
     	      this.recursive = defaults.recursive;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder notebookPathLists(List<GetNotebookPathsNotebookPathList> notebookPathLists) {
             this.notebookPathLists = Objects.requireNonNull(notebookPathLists);
             return this;
@@ -95,15 +82,23 @@ public final class GetNotebookPathsResult {
         public Builder notebookPathLists(GetNotebookPathsNotebookPathList... notebookPathLists) {
             return notebookPathLists(List.of(notebookPathLists));
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder recursive(Boolean recursive) {
             this.recursive = Objects.requireNonNull(recursive);
             return this;
-        }        public GetNotebookPathsResult build() {
-            return new GetNotebookPathsResult(id, notebookPathLists, path, recursive);
+        }
+        public GetNotebookPathsResult build() {
+            final var o = new GetNotebookPathsResult();
+            o.id = id;
+            o.notebookPathLists = notebookPathLists;
+            o.path = path;
+            o.recursive = recursive;
+            return o;
         }
     }
 }

@@ -12,28 +12,67 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskDbtTask {
-    private final List<String> commands;
-    private final @Nullable String projectDirectory;
-    private final @Nullable String schema;
+    /**
+     * @return (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
+     * 
+     */
+    private List<String> commands;
+    /**
+     * @return The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     * 
+     */
+    private @Nullable String profilesDirectory;
+    /**
+     * @return The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--project-dir` to a dbt command.
+     * 
+     */
+    private @Nullable String projectDirectory;
+    /**
+     * @return The name of the schema dbt should run in. Defaults to `default`.
+     * 
+     */
+    private @Nullable String schema;
+    /**
+     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * 
+     */
+    private @Nullable String warehouseId;
 
-    @CustomType.Constructor
-    private JobTaskDbtTask(
-        @CustomType.Parameter("commands") List<String> commands,
-        @CustomType.Parameter("projectDirectory") @Nullable String projectDirectory,
-        @CustomType.Parameter("schema") @Nullable String schema) {
-        this.commands = commands;
-        this.projectDirectory = projectDirectory;
-        this.schema = schema;
-    }
-
+    private JobTaskDbtTask() {}
+    /**
+     * @return (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
+     * 
+     */
     public List<String> commands() {
         return this.commands;
     }
+    /**
+     * @return The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     * 
+     */
+    public Optional<String> profilesDirectory() {
+        return Optional.ofNullable(this.profilesDirectory);
+    }
+    /**
+     * @return The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--project-dir` to a dbt command.
+     * 
+     */
     public Optional<String> projectDirectory() {
         return Optional.ofNullable(this.projectDirectory);
     }
+    /**
+     * @return The name of the schema dbt should run in. Defaults to `default`.
+     * 
+     */
     public Optional<String> schema() {
         return Optional.ofNullable(this.schema);
+    }
+    /**
+     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * 
+     */
+    public Optional<String> warehouseId() {
+        return Optional.ofNullable(this.warehouseId);
     }
 
     public static Builder builder() {
@@ -43,23 +82,24 @@ public final class JobTaskDbtTask {
     public static Builder builder(JobTaskDbtTask defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> commands;
+        private @Nullable String profilesDirectory;
         private @Nullable String projectDirectory;
         private @Nullable String schema;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        private @Nullable String warehouseId;
+        public Builder() {}
         public Builder(JobTaskDbtTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.commands = defaults.commands;
+    	      this.profilesDirectory = defaults.profilesDirectory;
     	      this.projectDirectory = defaults.projectDirectory;
     	      this.schema = defaults.schema;
+    	      this.warehouseId = defaults.warehouseId;
         }
 
+        @CustomType.Setter
         public Builder commands(List<String> commands) {
             this.commands = Objects.requireNonNull(commands);
             return this;
@@ -67,15 +107,34 @@ public final class JobTaskDbtTask {
         public Builder commands(String... commands) {
             return commands(List.of(commands));
         }
+        @CustomType.Setter
+        public Builder profilesDirectory(@Nullable String profilesDirectory) {
+            this.profilesDirectory = profilesDirectory;
+            return this;
+        }
+        @CustomType.Setter
         public Builder projectDirectory(@Nullable String projectDirectory) {
             this.projectDirectory = projectDirectory;
             return this;
         }
+        @CustomType.Setter
         public Builder schema(@Nullable String schema) {
             this.schema = schema;
             return this;
-        }        public JobTaskDbtTask build() {
-            return new JobTaskDbtTask(commands, projectDirectory, schema);
+        }
+        @CustomType.Setter
+        public Builder warehouseId(@Nullable String warehouseId) {
+            this.warehouseId = warehouseId;
+            return this;
+        }
+        public JobTaskDbtTask build() {
+            final var o = new JobTaskDbtTask();
+            o.commands = commands;
+            o.profilesDirectory = profilesDirectory;
+            o.projectDirectory = projectDirectory;
+            o.schema = schema;
+            o.warehouseId = warehouseId;
+            return o;
         }
     }
 }

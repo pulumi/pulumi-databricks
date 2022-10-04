@@ -13,26 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterGcpAttributes {
-    private final @Nullable String availability;
-    private final @Nullable Integer bootDiskSize;
-    private final @Nullable String googleServiceAccount;
-    private final @Nullable Boolean usePreemptibleExecutors;
-    private final @Nullable String zoneId;
+    private @Nullable String availability;
+    private @Nullable Integer bootDiskSize;
+    private @Nullable String googleServiceAccount;
+    private @Nullable Boolean usePreemptibleExecutors;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private ClusterGcpAttributes(
-        @CustomType.Parameter("availability") @Nullable String availability,
-        @CustomType.Parameter("bootDiskSize") @Nullable Integer bootDiskSize,
-        @CustomType.Parameter("googleServiceAccount") @Nullable String googleServiceAccount,
-        @CustomType.Parameter("usePreemptibleExecutors") @Nullable Boolean usePreemptibleExecutors,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.availability = availability;
-        this.bootDiskSize = bootDiskSize;
-        this.googleServiceAccount = googleServiceAccount;
-        this.usePreemptibleExecutors = usePreemptibleExecutors;
-        this.zoneId = zoneId;
-    }
-
+    private ClusterGcpAttributes() {}
     public Optional<String> availability() {
         return Optional.ofNullable(this.availability);
     }
@@ -56,18 +43,14 @@ public final class ClusterGcpAttributes {
     public static Builder builder(ClusterGcpAttributes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String availability;
         private @Nullable Integer bootDiskSize;
         private @Nullable String googleServiceAccount;
         private @Nullable Boolean usePreemptibleExecutors;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterGcpAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
@@ -77,27 +60,39 @@ public final class ClusterGcpAttributes {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder availability(@Nullable String availability) {
             this.availability = availability;
             return this;
         }
+        @CustomType.Setter
         public Builder bootDiskSize(@Nullable Integer bootDiskSize) {
             this.bootDiskSize = bootDiskSize;
             return this;
         }
+        @CustomType.Setter
         public Builder googleServiceAccount(@Nullable String googleServiceAccount) {
             this.googleServiceAccount = googleServiceAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder usePreemptibleExecutors(@Nullable Boolean usePreemptibleExecutors) {
             this.usePreemptibleExecutors = usePreemptibleExecutors;
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public ClusterGcpAttributes build() {
-            return new ClusterGcpAttributes(availability, bootDiskSize, googleServiceAccount, usePreemptibleExecutors, zoneId);
+        }
+        public ClusterGcpAttributes build() {
+            final var o = new ClusterGcpAttributes();
+            o.availability = availability;
+            o.bootDiskSize = bootDiskSize;
+            o.googleServiceAccount = googleServiceAccount;
+            o.usePreemptibleExecutors = usePreemptibleExecutors;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

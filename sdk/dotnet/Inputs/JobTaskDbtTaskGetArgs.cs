@@ -14,17 +14,39 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("commands", required: true)]
         private InputList<string>? _commands;
+
+        /// <summary>
+        /// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+        /// </summary>
         public InputList<string> Commands
         {
             get => _commands ?? (_commands = new InputList<string>());
             set => _commands = value;
         }
 
+        /// <summary>
+        /// The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+        /// </summary>
+        [Input("profilesDirectory")]
+        public Input<string>? ProfilesDirectory { get; set; }
+
+        /// <summary>
+        /// The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+        /// </summary>
         [Input("projectDirectory")]
         public Input<string>? ProjectDirectory { get; set; }
 
+        /// <summary>
+        /// The name of the schema dbt should run in. Defaults to `default`.
+        /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        /// <summary>
+        /// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        /// </summary>
+        [Input("warehouseId")]
+        public Input<string>? WarehouseId { get; set; }
 
         public JobTaskDbtTaskGetArgs()
         {

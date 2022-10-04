@@ -47,14 +47,14 @@ public final class InstancePoolAwsAttributesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+     * (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+     * @return (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -130,7 +130,7 @@ public final class InstancePoolAwsAttributesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+         * @param zoneId (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class InstancePoolAwsAttributesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+         * @param zoneId (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
          * 
          * @return builder
          * 

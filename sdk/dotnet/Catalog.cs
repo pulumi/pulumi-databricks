@@ -56,6 +56,12 @@ namespace Pulumi.Databricks
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
+        /// <summary>
+        /// Delete catalog regardless of its contents.
+        /// </summary>
+        [Output("forceDestroy")]
+        public Output<bool?> ForceDestroy { get; private set; } = null!;
+
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
@@ -129,6 +135,12 @@ namespace Pulumi.Databricks
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// Delete catalog regardless of its contents.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
+
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
@@ -169,6 +181,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
+
+        /// <summary>
+        /// Delete catalog regardless of its contents.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
 
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }

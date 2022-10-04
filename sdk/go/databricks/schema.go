@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
-//
 // Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
 //
 // A `Schema` is contained within Catalog and can contain tables & views.
@@ -79,8 +77,10 @@ type Schema struct {
 	// Name of parent catalog
 	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
 	// User-supplied free-form text.
-	Comment     pulumi.StringPtrOutput `pulumi:"comment"`
-	MetastoreId pulumi.StringOutput    `pulumi:"metastoreId"`
+	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	// Delete schema regardless of its contents.
+	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
+	MetastoreId  pulumi.StringOutput  `pulumi:"metastoreId"`
 	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Username/groupname/sp applicationId of the schema owner.
@@ -124,8 +124,10 @@ type schemaState struct {
 	// Name of parent catalog
 	CatalogName *string `pulumi:"catalogName"`
 	// User-supplied free-form text.
-	Comment     *string `pulumi:"comment"`
-	MetastoreId *string `pulumi:"metastoreId"`
+	Comment *string `pulumi:"comment"`
+	// Delete schema regardless of its contents.
+	ForceDestroy *bool   `pulumi:"forceDestroy"`
+	MetastoreId  *string `pulumi:"metastoreId"`
 	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the schema owner.
@@ -138,8 +140,10 @@ type SchemaState struct {
 	// Name of parent catalog
 	CatalogName pulumi.StringPtrInput
 	// User-supplied free-form text.
-	Comment     pulumi.StringPtrInput
-	MetastoreId pulumi.StringPtrInput
+	Comment pulumi.StringPtrInput
+	// Delete schema regardless of its contents.
+	ForceDestroy pulumi.BoolPtrInput
+	MetastoreId  pulumi.StringPtrInput
 	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the schema owner.
@@ -156,8 +160,10 @@ type schemaArgs struct {
 	// Name of parent catalog
 	CatalogName string `pulumi:"catalogName"`
 	// User-supplied free-form text.
-	Comment     *string `pulumi:"comment"`
-	MetastoreId *string `pulumi:"metastoreId"`
+	Comment *string `pulumi:"comment"`
+	// Delete schema regardless of its contents.
+	ForceDestroy *bool   `pulumi:"forceDestroy"`
+	MetastoreId  *string `pulumi:"metastoreId"`
 	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the schema owner.
@@ -171,8 +177,10 @@ type SchemaArgs struct {
 	// Name of parent catalog
 	CatalogName pulumi.StringInput
 	// User-supplied free-form text.
-	Comment     pulumi.StringPtrInput
-	MetastoreId pulumi.StringPtrInput
+	Comment pulumi.StringPtrInput
+	// Delete schema regardless of its contents.
+	ForceDestroy pulumi.BoolPtrInput
+	MetastoreId  pulumi.StringPtrInput
 	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the schema owner.
@@ -276,6 +284,11 @@ func (o SchemaOutput) CatalogName() pulumi.StringOutput {
 // User-supplied free-form text.
 func (o SchemaOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Delete schema regardless of its contents.
+func (o SchemaOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Schema) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
 func (o SchemaOutput) MetastoreId() pulumi.StringOutput {

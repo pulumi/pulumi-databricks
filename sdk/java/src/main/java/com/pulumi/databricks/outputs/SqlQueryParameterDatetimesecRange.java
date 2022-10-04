@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class SqlQueryParameterDatetimesecRange {
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private SqlQueryParameterDatetimesecRange(@CustomType.Parameter("value") String value) {
-        this.value = value;
-    }
-
+    private SqlQueryParameterDatetimesecRange() {}
     public String value() {
         return this.value;
     }
@@ -27,24 +23,24 @@ public final class SqlQueryParameterDatetimesecRange {
     public static Builder builder(SqlQueryParameterDatetimesecRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlQueryParameterDatetimesecRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public SqlQueryParameterDatetimesecRange build() {
-            return new SqlQueryParameterDatetimesecRange(value);
+        }
+        public SqlQueryParameterDatetimesecRange build() {
+            final var o = new SqlQueryParameterDatetimesecRange();
+            o.value = value;
+            return o;
         }
     }
 }

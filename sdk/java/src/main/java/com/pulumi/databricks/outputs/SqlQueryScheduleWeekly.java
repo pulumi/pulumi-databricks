@@ -12,23 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlQueryScheduleWeekly {
-    private final String dayOfWeek;
-    private final Integer intervalWeeks;
-    private final String timeOfDay;
-    private final @Nullable String untilDate;
+    private String dayOfWeek;
+    private Integer intervalWeeks;
+    private String timeOfDay;
+    private @Nullable String untilDate;
 
-    @CustomType.Constructor
-    private SqlQueryScheduleWeekly(
-        @CustomType.Parameter("dayOfWeek") String dayOfWeek,
-        @CustomType.Parameter("intervalWeeks") Integer intervalWeeks,
-        @CustomType.Parameter("timeOfDay") String timeOfDay,
-        @CustomType.Parameter("untilDate") @Nullable String untilDate) {
-        this.dayOfWeek = dayOfWeek;
-        this.intervalWeeks = intervalWeeks;
-        this.timeOfDay = timeOfDay;
-        this.untilDate = untilDate;
-    }
-
+    private SqlQueryScheduleWeekly() {}
     public String dayOfWeek() {
         return this.dayOfWeek;
     }
@@ -49,17 +38,13 @@ public final class SqlQueryScheduleWeekly {
     public static Builder builder(SqlQueryScheduleWeekly defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dayOfWeek;
         private Integer intervalWeeks;
         private String timeOfDay;
         private @Nullable String untilDate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlQueryScheduleWeekly defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dayOfWeek = defaults.dayOfWeek;
@@ -68,23 +53,33 @@ public final class SqlQueryScheduleWeekly {
     	      this.untilDate = defaults.untilDate;
         }
 
+        @CustomType.Setter
         public Builder dayOfWeek(String dayOfWeek) {
             this.dayOfWeek = Objects.requireNonNull(dayOfWeek);
             return this;
         }
+        @CustomType.Setter
         public Builder intervalWeeks(Integer intervalWeeks) {
             this.intervalWeeks = Objects.requireNonNull(intervalWeeks);
             return this;
         }
+        @CustomType.Setter
         public Builder timeOfDay(String timeOfDay) {
             this.timeOfDay = Objects.requireNonNull(timeOfDay);
             return this;
         }
+        @CustomType.Setter
         public Builder untilDate(@Nullable String untilDate) {
             this.untilDate = untilDate;
             return this;
-        }        public SqlQueryScheduleWeekly build() {
-            return new SqlQueryScheduleWeekly(dayOfWeek, intervalWeeks, timeOfDay, untilDate);
+        }
+        public SqlQueryScheduleWeekly build() {
+            final var o = new SqlQueryScheduleWeekly();
+            o.dayOfWeek = dayOfWeek;
+            o.intervalWeeks = intervalWeeks;
+            o.timeOfDay = timeOfDay;
+            o.untilDate = untilDate;
+            return o;
         }
     }
 }

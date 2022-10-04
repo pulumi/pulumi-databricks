@@ -345,6 +345,636 @@ export interface GetDbfsFilePathsPathList {
     path?: string;
 }
 
+export interface GetJobJobSettings {
+    createdTime?: number;
+    creatorUserName?: string;
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    jobId?: number;
+    settings?: outputs.GetJobJobSettingsSettings;
+}
+
+export interface GetJobJobSettingsSettings {
+    dbtTask?: outputs.GetJobJobSettingsSettingsDbtTask;
+    emailNotifications?: outputs.GetJobJobSettingsSettingsEmailNotifications;
+    existingClusterId?: string;
+    format: string;
+    gitSource?: outputs.GetJobJobSettingsSettingsGitSource;
+    jobClusters?: outputs.GetJobJobSettingsSettingsJobCluster[];
+    libraries?: outputs.GetJobJobSettingsSettingsLibrary[];
+    maxConcurrentRuns?: number;
+    maxRetries?: number;
+    minRetryIntervalMillis?: number;
+    name?: string;
+    newCluster?: outputs.GetJobJobSettingsSettingsNewCluster;
+    notebookTask?: outputs.GetJobJobSettingsSettingsNotebookTask;
+    pipelineTask?: outputs.GetJobJobSettingsSettingsPipelineTask;
+    pythonWheelTask?: outputs.GetJobJobSettingsSettingsPythonWheelTask;
+    retryOnTimeout?: boolean;
+    schedule?: outputs.GetJobJobSettingsSettingsSchedule;
+    sparkJarTask?: outputs.GetJobJobSettingsSettingsSparkJarTask;
+    sparkPythonTask?: outputs.GetJobJobSettingsSettingsSparkPythonTask;
+    sparkSubmitTask?: outputs.GetJobJobSettingsSettingsSparkSubmitTask;
+    tags?: {[key: string]: any};
+    tasks?: outputs.GetJobJobSettingsSettingsTask[];
+    timeoutSeconds?: number;
+}
+
+export interface GetJobJobSettingsSettingsDbtTask {
+    commands: string[];
+    profilesDirectory?: string;
+    projectDirectory?: string;
+    schema?: string;
+    warehouseId?: string;
+}
+
+export interface GetJobJobSettingsSettingsEmailNotifications {
+    alertOnLastAttempt?: boolean;
+    noAlertForSkippedRuns?: boolean;
+    onFailures?: string[];
+    onStarts?: string[];
+    onSuccesses?: string[];
+}
+
+export interface GetJobJobSettingsSettingsGitSource {
+    branch?: string;
+    commit?: string;
+    provider?: string;
+    tag?: string;
+    url: string;
+}
+
+export interface GetJobJobSettingsSettingsJobCluster {
+    jobClusterKey?: string;
+    newCluster?: outputs.GetJobJobSettingsSettingsJobClusterNewCluster;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewCluster {
+    applyPolicyDefaultValues?: boolean;
+    autoscale?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterAutoscale;
+    autoterminationMinutes?: number;
+    awsAttributes?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributes;
+    azureAttributes?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributes;
+    clusterId?: string;
+    clusterLogConf?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf;
+    clusterName?: string;
+    customTags?: {[key: string]: any};
+    dataSecurityMode?: string;
+    dockerImage?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterDockerImage;
+    driverInstancePoolId: string;
+    driverNodeTypeId: string;
+    enableElasticDisk: boolean;
+    enableLocalDiskEncryption: boolean;
+    gcpAttributes?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributes;
+    idempotencyToken?: string;
+    initScripts?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScript[];
+    instancePoolId?: string;
+    nodeTypeId: string;
+    numWorkers: number;
+    policyId?: string;
+    singleUserName?: string;
+    sparkConf?: {[key: string]: any};
+    sparkEnvVars?: {[key: string]: any};
+    sparkVersion: string;
+    sshPublicKeys?: string[];
+    workloadType?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterAutoscale {
+    maxWorkers?: number;
+    minWorkers?: number;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributes {
+    availability?: string;
+    ebsVolumeCount?: number;
+    ebsVolumeSize?: number;
+    ebsVolumeType?: string;
+    firstOnDemand?: number;
+    instanceProfileArn?: string;
+    spotBidPricePercent?: number;
+    zoneId?: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributes {
+    availability?: string;
+    firstOnDemand?: number;
+    spotBidMaxPrice?: number;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf {
+    dbfs?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfs;
+    s3?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfs {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterDockerImage {
+    basicAuth?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuth;
+    url: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuth {
+    password: string;
+    username: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributes {
+    availability?: string;
+    bootDiskSize?: number;
+    googleServiceAccount?: string;
+    usePreemptibleExecutors?: boolean;
+    zoneId?: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
+    dbfs?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs;
+    file?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile;
+    gcs?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs;
+    s3?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType {
+    clients: outputs.GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
+}
+
+export interface GetJobJobSettingsSettingsLibrary {
+    cran?: outputs.GetJobJobSettingsSettingsLibraryCran;
+    egg?: string;
+    jar?: string;
+    maven?: outputs.GetJobJobSettingsSettingsLibraryMaven;
+    pypi?: outputs.GetJobJobSettingsSettingsLibraryPypi;
+    whl?: string;
+}
+
+export interface GetJobJobSettingsSettingsLibraryCran {
+    package: string;
+    repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsLibraryMaven {
+    coordinates: string;
+    exclusions?: string[];
+    repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsLibraryPypi {
+    package: string;
+    repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewCluster {
+    applyPolicyDefaultValues?: boolean;
+    autoscale?: outputs.GetJobJobSettingsSettingsNewClusterAutoscale;
+    autoterminationMinutes?: number;
+    awsAttributes?: outputs.GetJobJobSettingsSettingsNewClusterAwsAttributes;
+    azureAttributes?: outputs.GetJobJobSettingsSettingsNewClusterAzureAttributes;
+    clusterId?: string;
+    clusterLogConf?: outputs.GetJobJobSettingsSettingsNewClusterClusterLogConf;
+    clusterName?: string;
+    customTags?: {[key: string]: any};
+    dataSecurityMode?: string;
+    dockerImage?: outputs.GetJobJobSettingsSettingsNewClusterDockerImage;
+    driverInstancePoolId: string;
+    driverNodeTypeId: string;
+    enableElasticDisk: boolean;
+    enableLocalDiskEncryption: boolean;
+    gcpAttributes?: outputs.GetJobJobSettingsSettingsNewClusterGcpAttributes;
+    idempotencyToken?: string;
+    initScripts?: outputs.GetJobJobSettingsSettingsNewClusterInitScript[];
+    instancePoolId?: string;
+    nodeTypeId: string;
+    numWorkers: number;
+    policyId?: string;
+    singleUserName?: string;
+    sparkConf?: {[key: string]: any};
+    sparkEnvVars?: {[key: string]: any};
+    sparkVersion: string;
+    sshPublicKeys?: string[];
+    workloadType?: outputs.GetJobJobSettingsSettingsNewClusterWorkloadType;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterAutoscale {
+    maxWorkers?: number;
+    minWorkers?: number;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterAwsAttributes {
+    availability?: string;
+    ebsVolumeCount?: number;
+    ebsVolumeSize?: number;
+    ebsVolumeType?: string;
+    firstOnDemand?: number;
+    instanceProfileArn?: string;
+    spotBidPricePercent?: number;
+    zoneId?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterAzureAttributes {
+    availability?: string;
+    firstOnDemand?: number;
+    spotBidMaxPrice?: number;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterClusterLogConf {
+    dbfs?: outputs.GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs;
+    s3?: outputs.GetJobJobSettingsSettingsNewClusterClusterLogConfS3;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterClusterLogConfS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterDockerImage {
+    basicAuth?: outputs.GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth;
+    url: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth {
+    password: string;
+    username: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterGcpAttributes {
+    availability?: string;
+    bootDiskSize?: number;
+    googleServiceAccount?: string;
+    usePreemptibleExecutors?: boolean;
+    zoneId?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScript {
+    dbfs?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptDbfs;
+    file?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptFile;
+    gcs?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptGcs;
+    s3?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptS3;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScriptDbfs {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScriptFile {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScriptGcs {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScriptS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterWorkloadType {
+    clients: outputs.GetJobJobSettingsSettingsNewClusterWorkloadTypeClients;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
+}
+
+export interface GetJobJobSettingsSettingsNotebookTask {
+    baseParameters?: {[key: string]: any};
+    notebookPath: string;
+}
+
+export interface GetJobJobSettingsSettingsPipelineTask {
+    pipelineId: string;
+}
+
+export interface GetJobJobSettingsSettingsPythonWheelTask {
+    entryPoint?: string;
+    namedParameters?: {[key: string]: any};
+    packageName?: string;
+    parameters?: string[];
+}
+
+export interface GetJobJobSettingsSettingsSchedule {
+    pauseStatus: string;
+    quartzCronExpression: string;
+    timezoneId: string;
+}
+
+export interface GetJobJobSettingsSettingsSparkJarTask {
+    jarUri?: string;
+    mainClassName?: string;
+    parameters?: string[];
+}
+
+export interface GetJobJobSettingsSettingsSparkPythonTask {
+    parameters?: string[];
+    pythonFile: string;
+}
+
+export interface GetJobJobSettingsSettingsSparkSubmitTask {
+    parameters?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTask {
+    dbtTask?: outputs.GetJobJobSettingsSettingsTaskDbtTask;
+    dependsOns?: outputs.GetJobJobSettingsSettingsTaskDependsOn[];
+    description?: string;
+    emailNotifications?: outputs.GetJobJobSettingsSettingsTaskEmailNotifications;
+    existingClusterId?: string;
+    jobClusterKey?: string;
+    libraries?: outputs.GetJobJobSettingsSettingsTaskLibrary[];
+    maxRetries?: number;
+    minRetryIntervalMillis?: number;
+    newCluster?: outputs.GetJobJobSettingsSettingsTaskNewCluster;
+    notebookTask?: outputs.GetJobJobSettingsSettingsTaskNotebookTask;
+    pipelineTask?: outputs.GetJobJobSettingsSettingsTaskPipelineTask;
+    pythonWheelTask?: outputs.GetJobJobSettingsSettingsTaskPythonWheelTask;
+    retryOnTimeout: boolean;
+    sparkJarTask?: outputs.GetJobJobSettingsSettingsTaskSparkJarTask;
+    sparkPythonTask?: outputs.GetJobJobSettingsSettingsTaskSparkPythonTask;
+    sparkSubmitTask?: outputs.GetJobJobSettingsSettingsTaskSparkSubmitTask;
+    sqlTask?: outputs.GetJobJobSettingsSettingsTaskSqlTask;
+    taskKey?: string;
+    timeoutSeconds?: number;
+}
+
+export interface GetJobJobSettingsSettingsTaskDbtTask {
+    commands: string[];
+    profilesDirectory?: string;
+    projectDirectory?: string;
+    schema?: string;
+    warehouseId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskDependsOn {
+    taskKey?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskEmailNotifications {
+    alertOnLastAttempt?: boolean;
+    noAlertForSkippedRuns?: boolean;
+    onFailures?: string[];
+    onStarts?: string[];
+    onSuccesses?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskLibrary {
+    cran?: outputs.GetJobJobSettingsSettingsTaskLibraryCran;
+    egg?: string;
+    jar?: string;
+    maven?: outputs.GetJobJobSettingsSettingsTaskLibraryMaven;
+    pypi?: outputs.GetJobJobSettingsSettingsTaskLibraryPypi;
+    whl?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskLibraryCran {
+    package: string;
+    repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskLibraryMaven {
+    coordinates: string;
+    exclusions?: string[];
+    repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskLibraryPypi {
+    package: string;
+    repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewCluster {
+    applyPolicyDefaultValues?: boolean;
+    autoscale?: outputs.GetJobJobSettingsSettingsTaskNewClusterAutoscale;
+    autoterminationMinutes?: number;
+    awsAttributes?: outputs.GetJobJobSettingsSettingsTaskNewClusterAwsAttributes;
+    azureAttributes?: outputs.GetJobJobSettingsSettingsTaskNewClusterAzureAttributes;
+    clusterId?: string;
+    clusterLogConf?: outputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConf;
+    clusterName?: string;
+    customTags?: {[key: string]: any};
+    dataSecurityMode?: string;
+    dockerImage?: outputs.GetJobJobSettingsSettingsTaskNewClusterDockerImage;
+    driverInstancePoolId: string;
+    driverNodeTypeId: string;
+    enableElasticDisk: boolean;
+    enableLocalDiskEncryption: boolean;
+    gcpAttributes?: outputs.GetJobJobSettingsSettingsTaskNewClusterGcpAttributes;
+    idempotencyToken?: string;
+    initScripts?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScript[];
+    instancePoolId?: string;
+    nodeTypeId: string;
+    numWorkers: number;
+    policyId?: string;
+    singleUserName?: string;
+    sparkConf?: {[key: string]: any};
+    sparkEnvVars?: {[key: string]: any};
+    sparkVersion: string;
+    sshPublicKeys?: string[];
+    workloadType?: outputs.GetJobJobSettingsSettingsTaskNewClusterWorkloadType;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterAutoscale {
+    maxWorkers?: number;
+    minWorkers?: number;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterAwsAttributes {
+    availability?: string;
+    ebsVolumeCount?: number;
+    ebsVolumeSize?: number;
+    ebsVolumeType?: string;
+    firstOnDemand?: number;
+    instanceProfileArn?: string;
+    spotBidPricePercent?: number;
+    zoneId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterAzureAttributes {
+    availability?: string;
+    firstOnDemand?: number;
+    spotBidMaxPrice?: number;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConf {
+    dbfs?: outputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfs;
+    s3?: outputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfs {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterDockerImage {
+    basicAuth?: outputs.GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth;
+    url: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth {
+    password: string;
+    username: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterGcpAttributes {
+    availability?: string;
+    bootDiskSize?: number;
+    googleServiceAccount?: string;
+    usePreemptibleExecutors?: boolean;
+    zoneId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScript {
+    dbfs?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs;
+    file?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFile;
+    gcs?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs;
+    s3?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptFile {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterWorkloadType {
+    clients: outputs.GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClients;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
+}
+
+export interface GetJobJobSettingsSettingsTaskNotebookTask {
+    baseParameters?: {[key: string]: any};
+    notebookPath: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskPipelineTask {
+    pipelineId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskPythonWheelTask {
+    entryPoint?: string;
+    namedParameters?: {[key: string]: any};
+    packageName?: string;
+    parameters?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskSparkJarTask {
+    jarUri?: string;
+    mainClassName?: string;
+    parameters?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskSparkPythonTask {
+    parameters?: string[];
+    pythonFile: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskSparkSubmitTask {
+    parameters?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskSqlTask {
+    alert?: outputs.GetJobJobSettingsSettingsTaskSqlTaskAlert;
+    dashboard?: outputs.GetJobJobSettingsSettingsTaskSqlTaskDashboard;
+    parameters?: {[key: string]: any};
+    query?: outputs.GetJobJobSettingsSettingsTaskSqlTaskQuery;
+    warehouseId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskSqlTaskAlert {
+    alertId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskSqlTaskDashboard {
+    dashboardId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskSqlTaskQuery {
+    queryId: string;
+}
+
 export interface GetNotebookPathsNotebookPathList {
     language?: string;
     /**
@@ -392,7 +1022,7 @@ export interface InstancePoolAwsAttributes {
      */
     spotBidPricePercent?: number;
     /**
-     * (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. This is an optional field. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
+     * (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
      */
     zoneId: string;
 }
@@ -426,10 +1056,7 @@ export interface InstancePoolDiskSpecDiskType {
 }
 
 export interface InstancePoolGcpAttributes {
-    /**
-     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     */
-    availability?: string;
+    gcpAvailability?: string;
 }
 
 export interface InstancePoolInstancePoolFleetAttributes {
@@ -461,6 +1088,29 @@ export interface InstancePoolPreloadedDockerImage {
 export interface InstancePoolPreloadedDockerImageBasicAuth {
     password: string;
     username: string;
+}
+
+export interface JobDbtTask {
+    /**
+     * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+     */
+    commands: string[];
+    /**
+     * The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     */
+    profilesDirectory?: string;
+    /**
+     * The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+     */
+    projectDirectory?: string;
+    /**
+     * The name of the schema dbt should run in. Defaults to `default`.
+     */
+    schema?: string;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     */
+    warehouseId?: string;
 }
 
 export interface JobEmailNotifications {
@@ -836,7 +1486,7 @@ export interface JobPythonWheelTask {
      */
     packageName?: string;
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
 }
@@ -863,14 +1513,14 @@ export interface JobSparkJarTask {
      */
     mainClassName?: string;
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
 }
 
 export interface JobSparkPythonTask {
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
     /**
@@ -881,7 +1531,7 @@ export interface JobSparkPythonTask {
 
 export interface JobSparkSubmitTask {
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
 }
@@ -937,9 +1587,26 @@ export interface JobTask {
 }
 
 export interface JobTaskDbtTask {
+    /**
+     * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+     */
     commands: string[];
+    /**
+     * The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     */
+    profilesDirectory?: string;
+    /**
+     * The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+     */
     projectDirectory?: string;
+    /**
+     * The name of the schema dbt should run in. Defaults to `default`.
+     */
     schema?: string;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     */
+    warehouseId?: string;
 }
 
 export interface JobTaskDependsOn {
@@ -1154,7 +1821,7 @@ export interface JobTaskPythonWheelTask {
      */
     packageName?: string;
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
 }
@@ -1166,14 +1833,14 @@ export interface JobTaskSparkJarTask {
      */
     mainClassName?: string;
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
 }
 
 export interface JobTaskSparkPythonTask {
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
     /**
@@ -1184,19 +1851,31 @@ export interface JobTaskSparkPythonTask {
 
 export interface JobTaskSparkSubmitTask {
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: string[];
 }
 
 export interface JobTaskSqlTask {
+    /**
+     * block consisting of single string field: `alertId` - identifier of the Databricks SQL Alert.
+     */
     alert?: outputs.JobTaskSqlTaskAlert;
+    /**
+     * block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     */
     dashboard?: outputs.JobTaskSqlTaskDashboard;
     /**
-     * Parameters for the task
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: {[key: string]: any};
+    /**
+     * block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
+     */
     query?: outputs.JobTaskSqlTaskQuery;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     */
     warehouseId?: string;
 }
 
@@ -1271,7 +1950,10 @@ export interface MlflowWebhookHttpUrlSpec {
      * Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
      */
     enableSslVerification?: boolean;
-    string?: string;
+    /**
+     * Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
+     */
+    secret?: string;
     /**
      * External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
      */
@@ -1438,6 +2120,7 @@ export interface PipelineCluster {
 export interface PipelineClusterAutoscale {
     maxWorkers?: number;
     minWorkers?: number;
+    mode?: string;
 }
 
 export interface PipelineClusterAwsAttributes {
@@ -1518,6 +2201,23 @@ export interface PipelineLibraryMaven {
 
 export interface PipelineLibraryNotebook {
     path: string;
+}
+
+export interface RecipientIpAccessList {
+    /**
+     * Allowed IP Addresses in CIDR notation. Limit of 100.
+     */
+    allowedIpAddresses: string[];
+}
+
+export interface RecipientToken {
+    activationUrl: string;
+    createdAt: number;
+    createdBy: string;
+    expirationTime: number;
+    id: string;
+    updatedAt: number;
+    updatedBy: string;
 }
 
 export interface SecretScopeKeyvaultMetadata {
@@ -1749,4 +2449,3 @@ export interface TableColumn {
      */
     typeText: string;
 }
-

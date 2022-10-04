@@ -11,23 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstancePoolGcpAttributes {
-    /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     * 
-     */
-    private final @Nullable String availability;
+    private @Nullable String gcpAvailability;
 
-    @CustomType.Constructor
-    private InstancePoolGcpAttributes(@CustomType.Parameter("availability") @Nullable String availability) {
-        this.availability = availability;
-    }
-
-    /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     * 
-     */
-    public Optional<String> availability() {
-        return Optional.ofNullable(this.availability);
+    private InstancePoolGcpAttributes() {}
+    public Optional<String> gcpAvailability() {
+        return Optional.ofNullable(this.gcpAvailability);
     }
 
     public static Builder builder() {
@@ -37,24 +25,24 @@ public final class InstancePoolGcpAttributes {
     public static Builder builder(InstancePoolGcpAttributes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
-        private @Nullable String availability;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        private @Nullable String gcpAvailability;
+        public Builder() {}
         public Builder(InstancePoolGcpAttributes defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.availability = defaults.availability;
+    	      this.gcpAvailability = defaults.gcpAvailability;
         }
 
-        public Builder availability(@Nullable String availability) {
-            this.availability = availability;
+        @CustomType.Setter
+        public Builder gcpAvailability(@Nullable String gcpAvailability) {
+            this.gcpAvailability = gcpAvailability;
             return this;
-        }        public InstancePoolGcpAttributes build() {
-            return new InstancePoolGcpAttributes(availability);
+        }
+        public InstancePoolGcpAttributes build() {
+            final var o = new InstancePoolGcpAttributes();
+            o.gcpAvailability = gcpAvailability;
+            return o;
         }
     }
 }

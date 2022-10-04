@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskNewClusterAutoscale {
-    private final @Nullable Integer maxWorkers;
-    private final @Nullable Integer minWorkers;
+    private @Nullable Integer maxWorkers;
+    private @Nullable Integer minWorkers;
 
-    @CustomType.Constructor
-    private JobTaskNewClusterAutoscale(
-        @CustomType.Parameter("maxWorkers") @Nullable Integer maxWorkers,
-        @CustomType.Parameter("minWorkers") @Nullable Integer minWorkers) {
-        this.maxWorkers = maxWorkers;
-        this.minWorkers = minWorkers;
-    }
-
+    private JobTaskNewClusterAutoscale() {}
     public Optional<Integer> maxWorkers() {
         return Optional.ofNullable(this.maxWorkers);
     }
@@ -36,30 +29,32 @@ public final class JobTaskNewClusterAutoscale {
     public static Builder builder(JobTaskNewClusterAutoscale defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxWorkers;
         private @Nullable Integer minWorkers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobTaskNewClusterAutoscale defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxWorkers = defaults.maxWorkers;
     	      this.minWorkers = defaults.minWorkers;
         }
 
+        @CustomType.Setter
         public Builder maxWorkers(@Nullable Integer maxWorkers) {
             this.maxWorkers = maxWorkers;
             return this;
         }
+        @CustomType.Setter
         public Builder minWorkers(@Nullable Integer minWorkers) {
             this.minWorkers = minWorkers;
             return this;
-        }        public JobTaskNewClusterAutoscale build() {
-            return new JobTaskNewClusterAutoscale(maxWorkers, minWorkers);
+        }
+        public JobTaskNewClusterAutoscale build() {
+            final var o = new JobTaskNewClusterAutoscale();
+            o.maxWorkers = maxWorkers;
+            o.minWorkers = minWorkers;
+            return o;
         }
     }
 }

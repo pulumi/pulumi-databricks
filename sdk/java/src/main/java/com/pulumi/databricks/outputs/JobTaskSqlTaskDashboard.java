@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class JobTaskSqlTaskDashboard {
-    private final String dashboardId;
+    private String dashboardId;
 
-    @CustomType.Constructor
-    private JobTaskSqlTaskDashboard(@CustomType.Parameter("dashboardId") String dashboardId) {
-        this.dashboardId = dashboardId;
-    }
-
+    private JobTaskSqlTaskDashboard() {}
     public String dashboardId() {
         return this.dashboardId;
     }
@@ -27,24 +23,24 @@ public final class JobTaskSqlTaskDashboard {
     public static Builder builder(JobTaskSqlTaskDashboard defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dashboardId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobTaskSqlTaskDashboard defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dashboardId = defaults.dashboardId;
         }
 
+        @CustomType.Setter
         public Builder dashboardId(String dashboardId) {
             this.dashboardId = Objects.requireNonNull(dashboardId);
             return this;
-        }        public JobTaskSqlTaskDashboard build() {
-            return new JobTaskSqlTaskDashboard(dashboardId);
+        }
+        public JobTaskSqlTaskDashboard build() {
+            final var o = new JobTaskSqlTaskDashboard();
+            o.dashboardId = dashboardId;
+            return o;
         }
     }
 }

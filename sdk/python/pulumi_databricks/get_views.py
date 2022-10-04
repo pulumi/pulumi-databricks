@@ -52,7 +52,7 @@ class GetViewsResult:
     @pulumi.getter
     def ids(self) -> Sequence[str]:
         """
-        set of Table full names: *`catalog`.`schema`.`view`*
+        set of databricks_view full names: *`catalog`.`schema`.`view`*
         """
         return pulumi.get(self, "ids")
 
@@ -83,13 +83,12 @@ def get_views(catalog_name: Optional[str] = None,
 
     The following resources are used in the same context:
 
-    * Table to manage tables within Unity Catalog.
     * Schema to manage schemas within Unity Catalog.
     * Catalog to manage catalogs within Unity Catalog.
 
 
     :param str catalog_name: Name of databricks_catalog
-    :param Sequence[str] ids: set of Table full names: *`catalog`.`schema`.`view`*
+    :param Sequence[str] ids: set of databricks_view full names: *`catalog`.`schema`.`view`*
     :param str schema_name: Name of databricks_schema
     """
     __args__ = dict()
@@ -116,13 +115,12 @@ def get_views_output(catalog_name: Optional[pulumi.Input[str]] = None,
 
     The following resources are used in the same context:
 
-    * Table to manage tables within Unity Catalog.
     * Schema to manage schemas within Unity Catalog.
     * Catalog to manage catalogs within Unity Catalog.
 
 
     :param str catalog_name: Name of databricks_catalog
-    :param Sequence[str] ids: set of Table full names: *`catalog`.`schema`.`view`*
+    :param Sequence[str] ids: set of databricks_view full names: *`catalog`.`schema`.`view`*
     :param str schema_name: Name of databricks_schema
     """
     ...

@@ -16,24 +16,15 @@ public final class GetSqlWarehousesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return list of databricks.SqlEndpoint ids
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String warehouseNameContains;
+    private List<String> ids;
+    private @Nullable String warehouseNameContains;
 
-    @CustomType.Constructor
-    private GetSqlWarehousesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("warehouseNameContains") @Nullable String warehouseNameContains) {
-        this.id = id;
-        this.ids = ids;
-        this.warehouseNameContains = warehouseNameContains;
-    }
-
+    private GetSqlWarehousesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -59,16 +50,12 @@ public final class GetSqlWarehousesResult {
     public static Builder builder(GetSqlWarehousesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
         private @Nullable String warehouseNameContains;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSqlWarehousesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -76,10 +63,12 @@ public final class GetSqlWarehousesResult {
     	      this.warehouseNameContains = defaults.warehouseNameContains;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -87,11 +76,17 @@ public final class GetSqlWarehousesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder warehouseNameContains(@Nullable String warehouseNameContains) {
             this.warehouseNameContains = warehouseNameContains;
             return this;
-        }        public GetSqlWarehousesResult build() {
-            return new GetSqlWarehousesResult(id, ids, warehouseNameContains);
+        }
+        public GetSqlWarehousesResult build() {
+            final var o = new GetSqlWarehousesResult();
+            o.id = id;
+            o.ids = ids;
+            o.warehouseNameContains = warehouseNameContains;
+            return o;
         }
     }
 }

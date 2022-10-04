@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterClusterLogConf {
-    private final @Nullable ClusterClusterLogConfDbfs dbfs;
-    private final @Nullable ClusterClusterLogConfS3 s3;
+    private @Nullable ClusterClusterLogConfDbfs dbfs;
+    private @Nullable ClusterClusterLogConfS3 s3;
 
-    @CustomType.Constructor
-    private ClusterClusterLogConf(
-        @CustomType.Parameter("dbfs") @Nullable ClusterClusterLogConfDbfs dbfs,
-        @CustomType.Parameter("s3") @Nullable ClusterClusterLogConfS3 s3) {
-        this.dbfs = dbfs;
-        this.s3 = s3;
-    }
-
+    private ClusterClusterLogConf() {}
     public Optional<ClusterClusterLogConfDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -37,30 +30,32 @@ public final class ClusterClusterLogConf {
     public static Builder builder(ClusterClusterLogConf defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterClusterLogConfDbfs dbfs;
         private @Nullable ClusterClusterLogConfS3 s3;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterLogConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
     	      this.s3 = defaults.s3;
         }
 
+        @CustomType.Setter
         public Builder dbfs(@Nullable ClusterClusterLogConfDbfs dbfs) {
             this.dbfs = dbfs;
             return this;
         }
+        @CustomType.Setter
         public Builder s3(@Nullable ClusterClusterLogConfS3 s3) {
             this.s3 = s3;
             return this;
-        }        public ClusterClusterLogConf build() {
-            return new ClusterClusterLogConf(dbfs, s3);
+        }
+        public ClusterClusterLogConf build() {
+            final var o = new ClusterClusterLogConf();
+            o.dbfs = dbfs;
+            o.s3 = s3;
+            return o;
         }
     }
 }

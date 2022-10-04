@@ -15,6 +15,7 @@ __all__ = ['CatalogArgs', 'Catalog']
 class CatalogArgs:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -22,12 +23,15 @@ class CatalogArgs:
         """
         The set of arguments for constructing a Catalog resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -48,6 +52,18 @@ class CatalogArgs:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete catalog regardless of its contents.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -99,6 +115,7 @@ class CatalogArgs:
 class _CatalogState:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -106,12 +123,15 @@ class _CatalogState:
         """
         Input properties used for looking up and filtering Catalog resources.
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -132,6 +152,18 @@ class _CatalogState:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete catalog regardless of its contents.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -185,6 +217,7 @@ class Catalog(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -223,6 +256,7 @@ class Catalog(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
@@ -279,6 +313,7 @@ class Catalog(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -293,6 +328,7 @@ class Catalog(pulumi.CustomResource):
             __props__ = CatalogArgs.__new__(CatalogArgs)
 
             __props__.__dict__["comment"] = comment
+            __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
@@ -308,6 +344,7 @@ class Catalog(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: Optional[pulumi.Input[str]] = None,
+            force_destroy: Optional[pulumi.Input[bool]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
@@ -320,6 +357,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
@@ -329,6 +367,7 @@ class Catalog(pulumi.CustomResource):
         __props__ = _CatalogState.__new__(_CatalogState)
 
         __props__.__dict__["comment"] = comment
+        __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
@@ -342,6 +381,14 @@ class Catalog(pulumi.CustomResource):
         User-supplied free-form text.
         """
         return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Delete catalog regardless of its contents.
+        """
+        return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter(name="metastoreId")

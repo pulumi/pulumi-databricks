@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class SecretScopeKeyvaultMetadata {
-    private final String dnsName;
-    private final String resourceId;
+    private String dnsName;
+    private String resourceId;
 
-    @CustomType.Constructor
-    private SecretScopeKeyvaultMetadata(
-        @CustomType.Parameter("dnsName") String dnsName,
-        @CustomType.Parameter("resourceId") String resourceId) {
-        this.dnsName = dnsName;
-        this.resourceId = resourceId;
-    }
-
+    private SecretScopeKeyvaultMetadata() {}
     public String dnsName() {
         return this.dnsName;
     }
@@ -34,30 +27,32 @@ public final class SecretScopeKeyvaultMetadata {
     public static Builder builder(SecretScopeKeyvaultMetadata defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dnsName;
         private String resourceId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecretScopeKeyvaultMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dnsName = defaults.dnsName;
     	      this.resourceId = defaults.resourceId;
         }
 
+        @CustomType.Setter
         public Builder dnsName(String dnsName) {
             this.dnsName = Objects.requireNonNull(dnsName);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceId(String resourceId) {
             this.resourceId = Objects.requireNonNull(resourceId);
             return this;
-        }        public SecretScopeKeyvaultMetadata build() {
-            return new SecretScopeKeyvaultMetadata(dnsName, resourceId);
+        }
+        public SecretScopeKeyvaultMetadata build() {
+            final var o = new SecretScopeKeyvaultMetadata();
+            o.dnsName = dnsName;
+            o.resourceId = resourceId;
+            return o;
         }
     }
 }

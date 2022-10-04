@@ -23,6 +23,9 @@ func GetAzureClientSecret(ctx *pulumi.Context) string {
 func GetAzureEnvironment(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:azureEnvironment")
 }
+func GetAzureLoginAppId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:azureLoginAppId")
+}
 func GetAzureTenantId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:azureTenantId")
 }

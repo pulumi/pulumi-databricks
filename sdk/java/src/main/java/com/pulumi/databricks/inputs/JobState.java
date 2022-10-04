@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobEmailNotificationsArgs;
 import com.pulumi.databricks.inputs.JobGitSourceArgs;
 import com.pulumi.databricks.inputs.JobJobClusterArgs;
@@ -46,6 +47,13 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> alwaysRunning() {
         return Optional.ofNullable(this.alwaysRunning);
+    }
+
+    @Import(name="dbtTask")
+    private @Nullable Output<JobDbtTaskArgs> dbtTask;
+
+    public Optional<Output<JobDbtTaskArgs>> dbtTask() {
+        return Optional.ofNullable(this.dbtTask);
     }
 
     /**
@@ -317,6 +325,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     private JobState(JobState $) {
         this.alwaysRunning = $.alwaysRunning;
+        this.dbtTask = $.dbtTask;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
         this.format = $.format;
@@ -379,6 +388,15 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder alwaysRunning(Boolean alwaysRunning) {
             return alwaysRunning(Output.of(alwaysRunning));
+        }
+
+        public Builder dbtTask(@Nullable Output<JobDbtTaskArgs> dbtTask) {
+            $.dbtTask = dbtTask;
+            return this;
+        }
+
+        public Builder dbtTask(JobDbtTaskArgs dbtTask) {
+            return dbtTask(Output.of(dbtTask));
         }
 
         /**

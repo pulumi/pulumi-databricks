@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
- *
  * Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
  *
  * A `databricks.Schema` is contained within databricks.Catalog and can contain tables & views.
@@ -84,6 +82,10 @@ export class Schema extends pulumi.CustomResource {
      * User-supplied free-form text.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
+    /**
+     * Delete schema regardless of its contents.
+     */
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     public readonly metastoreId!: pulumi.Output<string>;
     /**
      * Name of Schema relative to parent catalog. Change forces creation of a new resource.
@@ -113,6 +115,7 @@ export class Schema extends pulumi.CustomResource {
             const state = argsOrState as SchemaState | undefined;
             resourceInputs["catalogName"] = state ? state.catalogName : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
@@ -124,6 +127,7 @@ export class Schema extends pulumi.CustomResource {
             }
             resourceInputs["catalogName"] = args ? args.catalogName : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
@@ -146,6 +150,10 @@ export interface SchemaState {
      * User-supplied free-form text.
      */
     comment?: pulumi.Input<string>;
+    /**
+     * Delete schema regardless of its contents.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of Schema relative to parent catalog. Change forces creation of a new resource.
@@ -173,6 +181,10 @@ export interface SchemaArgs {
      * User-supplied free-form text.
      */
     comment?: pulumi.Input<string>;
+    /**
+     * Delete schema regardless of its contents.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of Schema relative to parent catalog. Change forces creation of a new resource.

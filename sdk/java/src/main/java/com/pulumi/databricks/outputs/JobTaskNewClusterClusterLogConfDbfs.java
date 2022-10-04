@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class JobTaskNewClusterClusterLogConfDbfs {
-    private final String destination;
+    private String destination;
 
-    @CustomType.Constructor
-    private JobTaskNewClusterClusterLogConfDbfs(@CustomType.Parameter("destination") String destination) {
-        this.destination = destination;
-    }
-
+    private JobTaskNewClusterClusterLogConfDbfs() {}
     public String destination() {
         return this.destination;
     }
@@ -27,24 +23,24 @@ public final class JobTaskNewClusterClusterLogConfDbfs {
     public static Builder builder(JobTaskNewClusterClusterLogConfDbfs defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String destination;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobTaskNewClusterClusterLogConfDbfs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destination = defaults.destination;
         }
 
+        @CustomType.Setter
         public Builder destination(String destination) {
             this.destination = Objects.requireNonNull(destination);
             return this;
-        }        public JobTaskNewClusterClusterLogConfDbfs build() {
-            return new JobTaskNewClusterClusterLogConfDbfs(destination);
+        }
+        public JobTaskNewClusterClusterLogConfDbfs build() {
+            final var o = new JobTaskNewClusterClusterLogConfDbfs();
+            o.destination = destination;
+            return o;
         }
     }
 }

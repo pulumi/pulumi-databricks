@@ -150,14 +150,14 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Path on cloud storage account, where managed databricks.Table are stored. Change forces creation of a new resource.
+     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
      * 
      */
     @Import(name="storageRoot", required=true)
     private Output<String> storageRoot;
 
     /**
-     * @return Path on cloud storage account, where managed databricks.Table are stored. Change forces creation of a new resource.
+     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
      * 
      */
     public Output<String> storageRoot() {
@@ -397,7 +397,7 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageRoot Path on cloud storage account, where managed databricks.Table are stored. Change forces creation of a new resource.
+         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageRoot Path on cloud storage account, where managed databricks.Table are stored. Change forces creation of a new resource.
+         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
          * 
          * @return builder
          * 

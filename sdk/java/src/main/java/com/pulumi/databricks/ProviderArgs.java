@@ -52,6 +52,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.azureEnvironment);
     }
 
+    @Import(name="azureLoginAppId")
+    private @Nullable Output<String> azureLoginAppId;
+
+    public Optional<Output<String>> azureLoginAppId() {
+        return Optional.ofNullable(this.azureLoginAppId);
+    }
+
     @Import(name="azureTenantId")
     private @Nullable Output<String> azureTenantId;
 
@@ -172,6 +179,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.azureClientId = $.azureClientId;
         this.azureClientSecret = $.azureClientSecret;
         this.azureEnvironment = $.azureEnvironment;
+        this.azureLoginAppId = $.azureLoginAppId;
         this.azureTenantId = $.azureTenantId;
         this.azureUseMsi = $.azureUseMsi;
         this.azureWorkspaceResourceId = $.azureWorkspaceResourceId;
@@ -251,6 +259,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder azureEnvironment(String azureEnvironment) {
             return azureEnvironment(Output.of(azureEnvironment));
+        }
+
+        public Builder azureLoginAppId(@Nullable Output<String> azureLoginAppId) {
+            $.azureLoginAppId = azureLoginAppId;
+            return this;
+        }
+
+        public Builder azureLoginAppId(String azureLoginAppId) {
+            return azureLoginAppId(Output.of(azureLoginAppId));
         }
 
         public Builder azureTenantId(@Nullable Output<String> azureTenantId) {

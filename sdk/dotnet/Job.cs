@@ -27,6 +27,9 @@ namespace Pulumi.Databricks
         [Output("alwaysRunning")]
         public Output<bool?> AlwaysRunning { get; private set; } = null!;
 
+        [Output("dbtTask")]
+        public Output<Outputs.JobDbtTask?> DbtTask { get; private set; } = null!;
+
         /// <summary>
         /// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
@@ -187,6 +190,9 @@ namespace Pulumi.Databricks
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
 
+        [Input("dbtTask")]
+        public Input<Inputs.JobDbtTaskArgs>? DbtTask { get; set; }
+
         /// <summary>
         /// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
@@ -324,6 +330,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
+
+        [Input("dbtTask")]
+        public Input<Inputs.JobDbtTaskGetArgs>? DbtTask { get; set; }
 
         /// <summary>
         /// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.

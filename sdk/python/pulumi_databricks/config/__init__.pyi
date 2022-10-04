@@ -19,6 +19,8 @@ azureClientSecret: Optional[str]
 
 azureEnvironment: Optional[str]
 
+azureLoginAppId: Optional[str]
+
 azureTenantId: Optional[str]
 
 azureUseMsi: Optional[bool]

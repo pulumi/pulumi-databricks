@@ -227,8 +227,6 @@ class StorageCredential(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
-
         To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
 
         - `StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
@@ -254,8 +252,6 @@ class StorageCredential(pulumi.CustomResource):
                  args: Optional[StorageCredentialArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
-
         To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
 
         - `StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.

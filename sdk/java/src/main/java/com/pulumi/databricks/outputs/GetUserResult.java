@@ -15,62 +15,41 @@ public final class GetUserResult {
      * @return Alphanumeric representation of user local name. e.g. `mr_foo`.
      * 
      */
-    private final String alphanumeric;
-    private final String applicationId;
+    private String alphanumeric;
+    private String applicationId;
     /**
      * @return Display name of the user, e.g. `Mr Foo`.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return ID of the user in an external identity provider.
      * 
      */
-    private final String externalId;
+    private String externalId;
     /**
      * @return Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      * 
      */
-    private final String home;
+    private String home;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      * 
      */
-    private final String repos;
-    private final @Nullable String userId;
+    private String repos;
+    private @Nullable String userId;
     /**
      * @return Name of the user, e.g. `mr.foo@example.com`.
      * 
      */
-    private final @Nullable String userName;
+    private @Nullable String userName;
 
-    @CustomType.Constructor
-    private GetUserResult(
-        @CustomType.Parameter("alphanumeric") String alphanumeric,
-        @CustomType.Parameter("applicationId") String applicationId,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("externalId") String externalId,
-        @CustomType.Parameter("home") String home,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("repos") String repos,
-        @CustomType.Parameter("userId") @Nullable String userId,
-        @CustomType.Parameter("userName") @Nullable String userName) {
-        this.alphanumeric = alphanumeric;
-        this.applicationId = applicationId;
-        this.displayName = displayName;
-        this.externalId = externalId;
-        this.home = home;
-        this.id = id;
-        this.repos = repos;
-        this.userId = userId;
-        this.userName = userName;
-    }
-
+    private GetUserResult() {}
     /**
      * @return Alphanumeric representation of user local name. e.g. `mr_foo`.
      * 
@@ -134,7 +113,7 @@ public final class GetUserResult {
     public static Builder builder(GetUserResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String alphanumeric;
         private String applicationId;
@@ -145,11 +124,7 @@ public final class GetUserResult {
         private String repos;
         private @Nullable String userId;
         private @Nullable String userName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alphanumeric = defaults.alphanumeric;
@@ -163,43 +138,63 @@ public final class GetUserResult {
     	      this.userName = defaults.userName;
         }
 
+        @CustomType.Setter
         public Builder alphanumeric(String alphanumeric) {
             this.alphanumeric = Objects.requireNonNull(alphanumeric);
             return this;
         }
+        @CustomType.Setter
         public Builder applicationId(String applicationId) {
             this.applicationId = Objects.requireNonNull(applicationId);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder externalId(String externalId) {
             this.externalId = Objects.requireNonNull(externalId);
             return this;
         }
+        @CustomType.Setter
         public Builder home(String home) {
             this.home = Objects.requireNonNull(home);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder repos(String repos) {
             this.repos = Objects.requireNonNull(repos);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(@Nullable String userId) {
             this.userId = userId;
             return this;
         }
+        @CustomType.Setter
         public Builder userName(@Nullable String userName) {
             this.userName = userName;
             return this;
-        }        public GetUserResult build() {
-            return new GetUserResult(alphanumeric, applicationId, displayName, externalId, home, id, repos, userId, userName);
+        }
+        public GetUserResult build() {
+            final var o = new GetUserResult();
+            o.alphanumeric = alphanumeric;
+            o.applicationId = applicationId;
+            o.displayName = displayName;
+            o.externalId = externalId;
+            o.home = home;
+            o.id = id;
+            o.repos = repos;
+            o.userId = userId;
+            o.userName = userName;
+            return o;
         }
     }
 }

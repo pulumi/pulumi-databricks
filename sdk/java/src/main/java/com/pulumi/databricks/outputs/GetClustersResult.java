@@ -12,28 +12,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClustersResult {
-    private final @Nullable String clusterNameContains;
+    private @Nullable String clusterNameContains;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return list of databricks.Cluster ids
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
 
-    @CustomType.Constructor
-    private GetClustersResult(
-        @CustomType.Parameter("clusterNameContains") @Nullable String clusterNameContains,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids) {
-        this.clusterNameContains = clusterNameContains;
-        this.id = id;
-        this.ids = ids;
-    }
-
+    private GetClustersResult() {}
     public Optional<String> clusterNameContains() {
         return Optional.ofNullable(this.clusterNameContains);
     }
@@ -59,16 +50,12 @@ public final class GetClustersResult {
     public static Builder builder(GetClustersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterNameContains;
         private String id;
         private List<String> ids;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterNameContains = defaults.clusterNameContains;
@@ -76,22 +63,30 @@ public final class GetClustersResult {
     	      this.ids = defaults.ids;
         }
 
+        @CustomType.Setter
         public Builder clusterNameContains(@Nullable String clusterNameContains) {
             this.clusterNameContains = clusterNameContains;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
         }
         public Builder ids(String... ids) {
             return ids(List.of(ids));
-        }        public GetClustersResult build() {
-            return new GetClustersResult(clusterNameContains, id, ids);
+        }
+        public GetClustersResult build() {
+            final var o = new GetClustersResult();
+            o.clusterNameContains = clusterNameContains;
+            o.id = id;
+            o.ids = ids;
+            return o;
         }
     }
 }

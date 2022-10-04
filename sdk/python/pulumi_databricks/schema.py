@@ -16,6 +16,7 @@ class SchemaArgs:
     def __init__(__self__, *,
                  catalog_name: pulumi.Input[str],
                  comment: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -24,6 +25,7 @@ class SchemaArgs:
         The set of arguments for constructing a Schema resource.
         :param pulumi.Input[str] catalog_name: Name of parent catalog
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
@@ -31,6 +33,8 @@ class SchemaArgs:
         pulumi.set(__self__, "catalog_name", catalog_name)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -63,6 +67,18 @@ class SchemaArgs:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete schema regardless of its contents.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -115,6 +131,7 @@ class _SchemaState:
     def __init__(__self__, *,
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -123,6 +140,7 @@ class _SchemaState:
         Input properties used for looking up and filtering Schema resources.
         :param pulumi.Input[str] catalog_name: Name of parent catalog
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
@@ -131,6 +149,8 @@ class _SchemaState:
             pulumi.set(__self__, "catalog_name", catalog_name)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -163,6 +183,18 @@ class _SchemaState:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete schema regardless of its contents.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -217,14 +249,13 @@ class Schema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
-        > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
-
         Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
 
         A `Schema` is contained within Catalog and can contain tables & views.
@@ -268,6 +299,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] catalog_name: Name of parent catalog
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
@@ -279,8 +311,6 @@ class Schema(pulumi.CustomResource):
                  args: SchemaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
-
         Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
 
         A `Schema` is contained within Catalog and can contain tables & views.
@@ -337,6 +367,7 @@ class Schema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -354,6 +385,7 @@ class Schema(pulumi.CustomResource):
                 raise TypeError("Missing required property 'catalog_name'")
             __props__.__dict__["catalog_name"] = catalog_name
             __props__.__dict__["comment"] = comment
+            __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
@@ -370,6 +402,7 @@ class Schema(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             catalog_name: Optional[pulumi.Input[str]] = None,
             comment: Optional[pulumi.Input[str]] = None,
+            force_destroy: Optional[pulumi.Input[bool]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
@@ -383,6 +416,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] catalog_name: Name of parent catalog
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
@@ -393,6 +427,7 @@ class Schema(pulumi.CustomResource):
 
         __props__.__dict__["catalog_name"] = catalog_name
         __props__.__dict__["comment"] = comment
+        __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
@@ -414,6 +449,14 @@ class Schema(pulumi.CustomResource):
         User-supplied free-form text.
         """
         return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Delete schema regardless of its contents.
+        """
+        return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter(name="metastoreId")

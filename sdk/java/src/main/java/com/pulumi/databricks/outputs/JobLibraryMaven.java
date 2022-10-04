@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobLibraryMaven {
-    private final String coordinates;
-    private final @Nullable List<String> exclusions;
-    private final @Nullable String repo;
+    private String coordinates;
+    private @Nullable List<String> exclusions;
+    private @Nullable String repo;
 
-    @CustomType.Constructor
-    private JobLibraryMaven(
-        @CustomType.Parameter("coordinates") String coordinates,
-        @CustomType.Parameter("exclusions") @Nullable List<String> exclusions,
-        @CustomType.Parameter("repo") @Nullable String repo) {
-        this.coordinates = coordinates;
-        this.exclusions = exclusions;
-        this.repo = repo;
-    }
-
+    private JobLibraryMaven() {}
     public String coordinates() {
         return this.coordinates;
     }
@@ -43,16 +34,12 @@ public final class JobLibraryMaven {
     public static Builder builder(JobLibraryMaven defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String coordinates;
         private @Nullable List<String> exclusions;
         private @Nullable String repo;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobLibraryMaven defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.coordinates = defaults.coordinates;
@@ -60,10 +47,12 @@ public final class JobLibraryMaven {
     	      this.repo = defaults.repo;
         }
 
+        @CustomType.Setter
         public Builder coordinates(String coordinates) {
             this.coordinates = Objects.requireNonNull(coordinates);
             return this;
         }
+        @CustomType.Setter
         public Builder exclusions(@Nullable List<String> exclusions) {
             this.exclusions = exclusions;
             return this;
@@ -71,11 +60,17 @@ public final class JobLibraryMaven {
         public Builder exclusions(String... exclusions) {
             return exclusions(List.of(exclusions));
         }
+        @CustomType.Setter
         public Builder repo(@Nullable String repo) {
             this.repo = repo;
             return this;
-        }        public JobLibraryMaven build() {
-            return new JobLibraryMaven(coordinates, exclusions, repo);
+        }
+        public JobLibraryMaven build() {
+            final var o = new JobLibraryMaven();
+            o.coordinates = coordinates;
+            o.exclusions = exclusions;
+            o.repo = repo;
+            return o;
         }
     }
 }

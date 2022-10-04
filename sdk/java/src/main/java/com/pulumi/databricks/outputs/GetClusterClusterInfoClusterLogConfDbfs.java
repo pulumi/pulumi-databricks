@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterInfoClusterLogConfDbfs {
-    private final String destination;
+    private String destination;
 
-    @CustomType.Constructor
-    private GetClusterClusterInfoClusterLogConfDbfs(@CustomType.Parameter("destination") String destination) {
-        this.destination = destination;
-    }
-
+    private GetClusterClusterInfoClusterLogConfDbfs() {}
     public String destination() {
         return this.destination;
     }
@@ -27,24 +23,24 @@ public final class GetClusterClusterInfoClusterLogConfDbfs {
     public static Builder builder(GetClusterClusterInfoClusterLogConfDbfs defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String destination;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterInfoClusterLogConfDbfs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destination = defaults.destination;
         }
 
+        @CustomType.Setter
         public Builder destination(String destination) {
             this.destination = Objects.requireNonNull(destination);
             return this;
-        }        public GetClusterClusterInfoClusterLogConfDbfs build() {
-            return new GetClusterClusterInfoClusterLogConfDbfs(destination);
+        }
+        public GetClusterClusterInfoClusterLogConfDbfs build() {
+            final var o = new GetClusterClusterInfoClusterLogConfDbfs();
+            o.destination = destination;
+            return o;
         }
     }
 }

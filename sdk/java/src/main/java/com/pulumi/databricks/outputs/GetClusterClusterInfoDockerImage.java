@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterInfoDockerImage {
-    private final @Nullable GetClusterClusterInfoDockerImageBasicAuth basicAuth;
-    private final String url;
+    private @Nullable GetClusterClusterInfoDockerImageBasicAuth basicAuth;
+    private String url;
 
-    @CustomType.Constructor
-    private GetClusterClusterInfoDockerImage(
-        @CustomType.Parameter("basicAuth") @Nullable GetClusterClusterInfoDockerImageBasicAuth basicAuth,
-        @CustomType.Parameter("url") String url) {
-        this.basicAuth = basicAuth;
-        this.url = url;
-    }
-
+    private GetClusterClusterInfoDockerImage() {}
     public Optional<GetClusterClusterInfoDockerImageBasicAuth> basicAuth() {
         return Optional.ofNullable(this.basicAuth);
     }
@@ -37,30 +30,32 @@ public final class GetClusterClusterInfoDockerImage {
     public static Builder builder(GetClusterClusterInfoDockerImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GetClusterClusterInfoDockerImageBasicAuth basicAuth;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterInfoDockerImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.basicAuth = defaults.basicAuth;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder basicAuth(@Nullable GetClusterClusterInfoDockerImageBasicAuth basicAuth) {
             this.basicAuth = basicAuth;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public GetClusterClusterInfoDockerImage build() {
-            return new GetClusterClusterInfoDockerImage(basicAuth, url);
+        }
+        public GetClusterClusterInfoDockerImage build() {
+            final var o = new GetClusterClusterInfoDockerImage();
+            o.basicAuth = basicAuth;
+            o.url = url;
+            return o;
         }
     }
 }

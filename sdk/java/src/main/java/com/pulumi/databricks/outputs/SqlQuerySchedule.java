@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlQuerySchedule {
-    private final @Nullable SqlQueryScheduleContinuous continuous;
-    private final @Nullable SqlQueryScheduleDaily daily;
-    private final @Nullable SqlQueryScheduleWeekly weekly;
+    private @Nullable SqlQueryScheduleContinuous continuous;
+    private @Nullable SqlQueryScheduleDaily daily;
+    private @Nullable SqlQueryScheduleWeekly weekly;
 
-    @CustomType.Constructor
-    private SqlQuerySchedule(
-        @CustomType.Parameter("continuous") @Nullable SqlQueryScheduleContinuous continuous,
-        @CustomType.Parameter("daily") @Nullable SqlQueryScheduleDaily daily,
-        @CustomType.Parameter("weekly") @Nullable SqlQueryScheduleWeekly weekly) {
-        this.continuous = continuous;
-        this.daily = daily;
-        this.weekly = weekly;
-    }
-
+    private SqlQuerySchedule() {}
     public Optional<SqlQueryScheduleContinuous> continuous() {
         return Optional.ofNullable(this.continuous);
     }
@@ -44,16 +35,12 @@ public final class SqlQuerySchedule {
     public static Builder builder(SqlQuerySchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable SqlQueryScheduleContinuous continuous;
         private @Nullable SqlQueryScheduleDaily daily;
         private @Nullable SqlQueryScheduleWeekly weekly;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlQuerySchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.continuous = defaults.continuous;
@@ -61,19 +48,27 @@ public final class SqlQuerySchedule {
     	      this.weekly = defaults.weekly;
         }
 
+        @CustomType.Setter
         public Builder continuous(@Nullable SqlQueryScheduleContinuous continuous) {
             this.continuous = continuous;
             return this;
         }
+        @CustomType.Setter
         public Builder daily(@Nullable SqlQueryScheduleDaily daily) {
             this.daily = daily;
             return this;
         }
+        @CustomType.Setter
         public Builder weekly(@Nullable SqlQueryScheduleWeekly weekly) {
             this.weekly = weekly;
             return this;
-        }        public SqlQuerySchedule build() {
-            return new SqlQuerySchedule(continuous, daily, weekly);
+        }
+        public SqlQuerySchedule build() {
+            final var o = new SqlQuerySchedule();
+            o.continuous = continuous;
+            o.daily = daily;
+            o.weekly = weekly;
+            return o;
         }
     }
 }

@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
-    /// 
     /// Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
     /// 
     /// A `databricks.Schema` is contained within databricks.Catalog and can contain tables &amp; views.
@@ -77,6 +75,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
+
+        /// <summary>
+        /// Delete schema regardless of its contents.
+        /// </summary>
+        [Output("forceDestroy")]
+        public Output<bool?> ForceDestroy { get; private set; } = null!;
 
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
@@ -157,6 +161,12 @@ namespace Pulumi.Databricks
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// Delete schema regardless of its contents.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
+
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
@@ -203,6 +213,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
+
+        /// <summary>
+        /// Delete schema regardless of its contents.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
 
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }

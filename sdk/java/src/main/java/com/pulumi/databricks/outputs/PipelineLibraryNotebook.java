@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class PipelineLibraryNotebook {
-    private final String path;
+    private String path;
 
-    @CustomType.Constructor
-    private PipelineLibraryNotebook(@CustomType.Parameter("path") String path) {
-        this.path = path;
-    }
-
+    private PipelineLibraryNotebook() {}
     public String path() {
         return this.path;
     }
@@ -27,24 +23,24 @@ public final class PipelineLibraryNotebook {
     public static Builder builder(PipelineLibraryNotebook defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PipelineLibraryNotebook defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public PipelineLibraryNotebook build() {
-            return new PipelineLibraryNotebook(path);
+        }
+        public PipelineLibraryNotebook build() {
+            final var o = new PipelineLibraryNotebook();
+            o.path = path;
+            return o;
         }
     }
 }

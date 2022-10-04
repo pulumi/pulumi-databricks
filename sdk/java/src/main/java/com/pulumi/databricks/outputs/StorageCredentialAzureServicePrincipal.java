@@ -13,28 +13,19 @@ public final class StorageCredentialAzureServicePrincipal {
      * @return The application ID of the application registration within the referenced AAD tenant
      * 
      */
-    private final String applicationId;
+    private String applicationId;
     /**
      * @return The client secret generated for the above app ID in AAD. **This field is redacted on output**
      * 
      */
-    private final String clientSecret;
+    private String clientSecret;
     /**
      * @return The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
      * 
      */
-    private final String directoryId;
+    private String directoryId;
 
-    @CustomType.Constructor
-    private StorageCredentialAzureServicePrincipal(
-        @CustomType.Parameter("applicationId") String applicationId,
-        @CustomType.Parameter("clientSecret") String clientSecret,
-        @CustomType.Parameter("directoryId") String directoryId) {
-        this.applicationId = applicationId;
-        this.clientSecret = clientSecret;
-        this.directoryId = directoryId;
-    }
-
+    private StorageCredentialAzureServicePrincipal() {}
     /**
      * @return The application ID of the application registration within the referenced AAD tenant
      * 
@@ -64,16 +55,12 @@ public final class StorageCredentialAzureServicePrincipal {
     public static Builder builder(StorageCredentialAzureServicePrincipal defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String applicationId;
         private String clientSecret;
         private String directoryId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StorageCredentialAzureServicePrincipal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationId = defaults.applicationId;
@@ -81,19 +68,27 @@ public final class StorageCredentialAzureServicePrincipal {
     	      this.directoryId = defaults.directoryId;
         }
 
+        @CustomType.Setter
         public Builder applicationId(String applicationId) {
             this.applicationId = Objects.requireNonNull(applicationId);
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecret(String clientSecret) {
             this.clientSecret = Objects.requireNonNull(clientSecret);
             return this;
         }
+        @CustomType.Setter
         public Builder directoryId(String directoryId) {
             this.directoryId = Objects.requireNonNull(directoryId);
             return this;
-        }        public StorageCredentialAzureServicePrincipal build() {
-            return new StorageCredentialAzureServicePrincipal(applicationId, clientSecret, directoryId);
+        }
+        public StorageCredentialAzureServicePrincipal build() {
+            final var o = new StorageCredentialAzureServicePrincipal();
+            o.applicationId = applicationId;
+            o.clientSecret = clientSecret;
+            o.directoryId = directoryId;
+            return o;
         }
     }
 }

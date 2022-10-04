@@ -14,28 +14,19 @@ public final class GetZonesResult {
      * @return This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
      * 
      */
-    private final String defaultZone;
+    private String defaultZone;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return This is a list of all the zones available for your subnets in your Databricks workspace.
      * 
      */
-    private final List<String> zones;
+    private List<String> zones;
 
-    @CustomType.Constructor
-    private GetZonesResult(
-        @CustomType.Parameter("defaultZone") String defaultZone,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("zones") List<String> zones) {
-        this.defaultZone = defaultZone;
-        this.id = id;
-        this.zones = zones;
-    }
-
+    private GetZonesResult() {}
     /**
      * @return This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
      * 
@@ -65,16 +56,12 @@ public final class GetZonesResult {
     public static Builder builder(GetZonesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String defaultZone;
         private String id;
         private List<String> zones;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultZone = defaults.defaultZone;
@@ -82,22 +69,30 @@ public final class GetZonesResult {
     	      this.zones = defaults.zones;
         }
 
+        @CustomType.Setter
         public Builder defaultZone(String defaultZone) {
             this.defaultZone = Objects.requireNonNull(defaultZone);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder zones(List<String> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(String... zones) {
             return zones(List.of(zones));
-        }        public GetZonesResult build() {
-            return new GetZonesResult(defaultZone, id, zones);
+        }
+        public GetZonesResult build() {
+            final var o = new GetZonesResult();
+            o.defaultZone = defaultZone;
+            o.id = id;
+            o.zones = zones;
+            return o;
         }
     }
 }

@@ -14,7 +14,6 @@ import (
 //
 // The following resources are used in the same context:
 //
-// * Table to manage tables within Unity Catalog.
 // * Schema to manage schemas within Unity Catalog.
 // * Catalog to manage catalogs within Unity Catalog.
 func GetTables(ctx *pulumi.Context, args *GetTablesArgs, opts ...pulumi.InvokeOption) (*GetTablesResult, error) {

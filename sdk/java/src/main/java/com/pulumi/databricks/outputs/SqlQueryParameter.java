@@ -21,47 +21,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlQueryParameter {
-    private final @Nullable SqlQueryParameterDate date;
-    private final @Nullable SqlQueryParameterDateRange dateRange;
-    private final @Nullable SqlQueryParameterDatetime datetime;
-    private final @Nullable SqlQueryParameterDatetimeRange datetimeRange;
-    private final @Nullable SqlQueryParameterDatetimesec datetimesec;
-    private final @Nullable SqlQueryParameterDatetimesecRange datetimesecRange;
-    private final @Nullable SqlQueryParameterEnum enum_;
-    private final String name;
-    private final @Nullable SqlQueryParameterNumber number;
-    private final @Nullable SqlQueryParameterQuery query;
-    private final @Nullable SqlQueryParameterText text;
-    private final @Nullable String title;
+    private @Nullable SqlQueryParameterDate date;
+    private @Nullable SqlQueryParameterDateRange dateRange;
+    private @Nullable SqlQueryParameterDatetime datetime;
+    private @Nullable SqlQueryParameterDatetimeRange datetimeRange;
+    private @Nullable SqlQueryParameterDatetimesec datetimesec;
+    private @Nullable SqlQueryParameterDatetimesecRange datetimesecRange;
+    private @Nullable SqlQueryParameterEnum enum_;
+    private String name;
+    private @Nullable SqlQueryParameterNumber number;
+    private @Nullable SqlQueryParameterQuery query;
+    private @Nullable SqlQueryParameterText text;
+    private @Nullable String title;
 
-    @CustomType.Constructor
-    private SqlQueryParameter(
-        @CustomType.Parameter("date") @Nullable SqlQueryParameterDate date,
-        @CustomType.Parameter("dateRange") @Nullable SqlQueryParameterDateRange dateRange,
-        @CustomType.Parameter("datetime") @Nullable SqlQueryParameterDatetime datetime,
-        @CustomType.Parameter("datetimeRange") @Nullable SqlQueryParameterDatetimeRange datetimeRange,
-        @CustomType.Parameter("datetimesec") @Nullable SqlQueryParameterDatetimesec datetimesec,
-        @CustomType.Parameter("datetimesecRange") @Nullable SqlQueryParameterDatetimesecRange datetimesecRange,
-        @CustomType.Parameter("enum") @Nullable SqlQueryParameterEnum enum_,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("number") @Nullable SqlQueryParameterNumber number,
-        @CustomType.Parameter("query") @Nullable SqlQueryParameterQuery query,
-        @CustomType.Parameter("text") @Nullable SqlQueryParameterText text,
-        @CustomType.Parameter("title") @Nullable String title) {
-        this.date = date;
-        this.dateRange = dateRange;
-        this.datetime = datetime;
-        this.datetimeRange = datetimeRange;
-        this.datetimesec = datetimesec;
-        this.datetimesecRange = datetimesecRange;
-        this.enum_ = enum_;
-        this.name = name;
-        this.number = number;
-        this.query = query;
-        this.text = text;
-        this.title = title;
-    }
-
+    private SqlQueryParameter() {}
     public Optional<SqlQueryParameterDate> date() {
         return Optional.ofNullable(this.date);
     }
@@ -106,7 +79,7 @@ public final class SqlQueryParameter {
     public static Builder builder(SqlQueryParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable SqlQueryParameterDate date;
         private @Nullable SqlQueryParameterDateRange dateRange;
@@ -120,11 +93,7 @@ public final class SqlQueryParameter {
         private @Nullable SqlQueryParameterQuery query;
         private @Nullable SqlQueryParameterText text;
         private @Nullable String title;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlQueryParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.date = defaults.date;
@@ -141,55 +110,81 @@ public final class SqlQueryParameter {
     	      this.title = defaults.title;
         }
 
+        @CustomType.Setter
         public Builder date(@Nullable SqlQueryParameterDate date) {
             this.date = date;
             return this;
         }
+        @CustomType.Setter
         public Builder dateRange(@Nullable SqlQueryParameterDateRange dateRange) {
             this.dateRange = dateRange;
             return this;
         }
+        @CustomType.Setter
         public Builder datetime(@Nullable SqlQueryParameterDatetime datetime) {
             this.datetime = datetime;
             return this;
         }
+        @CustomType.Setter
         public Builder datetimeRange(@Nullable SqlQueryParameterDatetimeRange datetimeRange) {
             this.datetimeRange = datetimeRange;
             return this;
         }
+        @CustomType.Setter
         public Builder datetimesec(@Nullable SqlQueryParameterDatetimesec datetimesec) {
             this.datetimesec = datetimesec;
             return this;
         }
+        @CustomType.Setter
         public Builder datetimesecRange(@Nullable SqlQueryParameterDatetimesecRange datetimesecRange) {
             this.datetimesecRange = datetimesecRange;
             return this;
         }
+        @CustomType.Setter("enum")
         public Builder enum_(@Nullable SqlQueryParameterEnum enum_) {
             this.enum_ = enum_;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder number(@Nullable SqlQueryParameterNumber number) {
             this.number = number;
             return this;
         }
+        @CustomType.Setter
         public Builder query(@Nullable SqlQueryParameterQuery query) {
             this.query = query;
             return this;
         }
+        @CustomType.Setter
         public Builder text(@Nullable SqlQueryParameterText text) {
             this.text = text;
             return this;
         }
+        @CustomType.Setter
         public Builder title(@Nullable String title) {
             this.title = title;
             return this;
-        }        public SqlQueryParameter build() {
-            return new SqlQueryParameter(date, dateRange, datetime, datetimeRange, datetimesec, datetimesecRange, enum_, name, number, query, text, title);
+        }
+        public SqlQueryParameter build() {
+            final var o = new SqlQueryParameter();
+            o.date = date;
+            o.dateRange = dateRange;
+            o.datetime = datetime;
+            o.datetimeRange = datetimeRange;
+            o.datetimesec = datetimesec;
+            o.datetimesecRange = datetimesecRange;
+            o.enum_ = enum_;
+            o.name = name;
+            o.number = number;
+            o.query = query;
+            o.text = text;
+            o.title = title;
+            return o;
         }
     }
 }

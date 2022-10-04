@@ -14,21 +14,14 @@ public final class SqlPermissionsPrivilegeAssignment {
      * @return `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
      * 
      */
-    private final String principal;
+    private String principal;
     /**
      * @return set of available privilege names in upper case.
      * 
      */
-    private final List<String> privileges;
+    private List<String> privileges;
 
-    @CustomType.Constructor
-    private SqlPermissionsPrivilegeAssignment(
-        @CustomType.Parameter("principal") String principal,
-        @CustomType.Parameter("privileges") List<String> privileges) {
-        this.principal = principal;
-        this.privileges = privileges;
-    }
-
+    private SqlPermissionsPrivilegeAssignment() {}
     /**
      * @return `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
      * 
@@ -51,33 +44,35 @@ public final class SqlPermissionsPrivilegeAssignment {
     public static Builder builder(SqlPermissionsPrivilegeAssignment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String principal;
         private List<String> privileges;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlPermissionsPrivilegeAssignment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.principal = defaults.principal;
     	      this.privileges = defaults.privileges;
         }
 
+        @CustomType.Setter
         public Builder principal(String principal) {
             this.principal = Objects.requireNonNull(principal);
             return this;
         }
+        @CustomType.Setter
         public Builder privileges(List<String> privileges) {
             this.privileges = Objects.requireNonNull(privileges);
             return this;
         }
         public Builder privileges(String... privileges) {
             return privileges(List.of(privileges));
-        }        public SqlPermissionsPrivilegeAssignment build() {
-            return new SqlPermissionsPrivilegeAssignment(principal, privileges);
+        }
+        public SqlPermissionsPrivilegeAssignment build() {
+            final var o = new SqlPermissionsPrivilegeAssignment();
+            o.principal = principal;
+            o.privileges = privileges;
+            return o;
         }
     }
 }

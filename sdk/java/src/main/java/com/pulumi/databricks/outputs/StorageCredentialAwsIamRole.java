@@ -13,13 +13,9 @@ public final class StorageCredentialAwsIamRole {
      * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      * 
      */
-    private final String roleArn;
+    private String roleArn;
 
-    @CustomType.Constructor
-    private StorageCredentialAwsIamRole(@CustomType.Parameter("roleArn") String roleArn) {
-        this.roleArn = roleArn;
-    }
-
+    private StorageCredentialAwsIamRole() {}
     /**
      * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      * 
@@ -35,24 +31,24 @@ public final class StorageCredentialAwsIamRole {
     public static Builder builder(StorageCredentialAwsIamRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String roleArn;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StorageCredentialAwsIamRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.roleArn = defaults.roleArn;
         }
 
+        @CustomType.Setter
         public Builder roleArn(String roleArn) {
             this.roleArn = Objects.requireNonNull(roleArn);
             return this;
-        }        public StorageCredentialAwsIamRole build() {
-            return new StorageCredentialAwsIamRole(roleArn);
+        }
+        public StorageCredentialAwsIamRole build() {
+            final var o = new StorageCredentialAwsIamRole();
+            o.roleArn = roleArn;
+            return o;
         }
     }
 }

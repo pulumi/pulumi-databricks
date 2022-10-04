@@ -10,63 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
-    /// 
-    /// **Note:** documentation for this resource is a work in progress.
-    /// 
-    /// A visualization is always tied to a query. Every query may have one or more visualizations.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var q1v1 = new Databricks.SqlVisualization("q1v1", new()
-    ///     {
-    ///         QueryId = databricks_sql_query.Q1.Id,
-    ///         Type = "table",
-    ///         Description = "Some Description",
-    ///         Options = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["itemsPerPage"] = 25,
-    ///             ["columns"] = new[]
-    ///             {
-    ///                 new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["name"] = "p1",
-    ///                     ["type"] = "string",
-    ///                     ["title"] = "Parameter 1",
-    ///                     ["displayAs"] = "string",
-    ///                 },
-    ///                 new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["name"] = "p2",
-    ///                     ["type"] = "string",
-    ///                     ["title"] = "Parameter 2",
-    ///                     ["displayAs"] = "link",
-    ///                     ["highlightLinks"] = true,
-    ///                 },
-    ///             },
-    ///         }),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ## Related Resources
-    /// 
-    /// The following resources are often used in the same context:
-    /// 
-    /// * End to end workspace management guide.
-    /// * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-    /// * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-    /// * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
-    /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
-    /// 
     /// ## Import
     /// 
     /// You can import a `databricks_sql_visualization` resource with ID like the followingbash

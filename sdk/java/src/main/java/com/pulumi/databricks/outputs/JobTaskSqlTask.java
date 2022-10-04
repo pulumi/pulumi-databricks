@@ -16,46 +16,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskSqlTask {
-    private final @Nullable JobTaskSqlTaskAlert alert;
-    private final @Nullable JobTaskSqlTaskDashboard dashboard;
     /**
-     * @return Parameters for the task
+     * @return block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.
      * 
      */
-    private final @Nullable Map<String,Object> parameters;
-    private final @Nullable JobTaskSqlTaskQuery query;
-    private final @Nullable String warehouseId;
+    private @Nullable JobTaskSqlTaskAlert alert;
+    /**
+     * @return block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * 
+     */
+    private @Nullable JobTaskSqlTaskDashboard dashboard;
+    /**
+     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * 
+     */
+    private @Nullable Map<String,Object> parameters;
+    /**
+     * @return block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+     * 
+     */
+    private @Nullable JobTaskSqlTaskQuery query;
+    /**
+     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * 
+     */
+    private @Nullable String warehouseId;
 
-    @CustomType.Constructor
-    private JobTaskSqlTask(
-        @CustomType.Parameter("alert") @Nullable JobTaskSqlTaskAlert alert,
-        @CustomType.Parameter("dashboard") @Nullable JobTaskSqlTaskDashboard dashboard,
-        @CustomType.Parameter("parameters") @Nullable Map<String,Object> parameters,
-        @CustomType.Parameter("query") @Nullable JobTaskSqlTaskQuery query,
-        @CustomType.Parameter("warehouseId") @Nullable String warehouseId) {
-        this.alert = alert;
-        this.dashboard = dashboard;
-        this.parameters = parameters;
-        this.query = query;
-        this.warehouseId = warehouseId;
-    }
-
+    private JobTaskSqlTask() {}
+    /**
+     * @return block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.
+     * 
+     */
     public Optional<JobTaskSqlTaskAlert> alert() {
         return Optional.ofNullable(this.alert);
     }
+    /**
+     * @return block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * 
+     */
     public Optional<JobTaskSqlTaskDashboard> dashboard() {
         return Optional.ofNullable(this.dashboard);
     }
     /**
-     * @return Parameters for the task
+     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      * 
      */
     public Map<String,Object> parameters() {
         return this.parameters == null ? Map.of() : this.parameters;
     }
+    /**
+     * @return block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+     * 
+     */
     public Optional<JobTaskSqlTaskQuery> query() {
         return Optional.ofNullable(this.query);
     }
+    /**
+     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * 
+     */
     public Optional<String> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
     }
@@ -67,18 +86,14 @@ public final class JobTaskSqlTask {
     public static Builder builder(JobTaskSqlTask defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable JobTaskSqlTaskAlert alert;
         private @Nullable JobTaskSqlTaskDashboard dashboard;
         private @Nullable Map<String,Object> parameters;
         private @Nullable JobTaskSqlTaskQuery query;
         private @Nullable String warehouseId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobTaskSqlTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alert = defaults.alert;
@@ -88,27 +103,39 @@ public final class JobTaskSqlTask {
     	      this.warehouseId = defaults.warehouseId;
         }
 
+        @CustomType.Setter
         public Builder alert(@Nullable JobTaskSqlTaskAlert alert) {
             this.alert = alert;
             return this;
         }
+        @CustomType.Setter
         public Builder dashboard(@Nullable JobTaskSqlTaskDashboard dashboard) {
             this.dashboard = dashboard;
             return this;
         }
+        @CustomType.Setter
         public Builder parameters(@Nullable Map<String,Object> parameters) {
             this.parameters = parameters;
             return this;
         }
+        @CustomType.Setter
         public Builder query(@Nullable JobTaskSqlTaskQuery query) {
             this.query = query;
             return this;
         }
+        @CustomType.Setter
         public Builder warehouseId(@Nullable String warehouseId) {
             this.warehouseId = warehouseId;
             return this;
-        }        public JobTaskSqlTask build() {
-            return new JobTaskSqlTask(alert, dashboard, parameters, query, warehouseId);
+        }
+        public JobTaskSqlTask build() {
+            final var o = new JobTaskSqlTask();
+            o.alert = alert;
+            o.dashboard = dashboard;
+            o.parameters = parameters;
+            o.query = query;
+            o.warehouseId = warehouseId;
+            return o;
         }
     }
 }

@@ -10,24 +10,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterResult {
-    private final String clusterId;
-    private final GetClusterClusterInfo clusterInfo;
+    private String clusterId;
+    private GetClusterClusterInfo clusterInfo;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetClusterResult(
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("clusterInfo") GetClusterClusterInfo clusterInfo,
-        @CustomType.Parameter("id") String id) {
-        this.clusterId = clusterId;
-        this.clusterInfo = clusterInfo;
-        this.id = id;
-    }
-
+    private GetClusterResult() {}
     public String clusterId() {
         return this.clusterId;
     }
@@ -49,16 +40,12 @@ public final class GetClusterResult {
     public static Builder builder(GetClusterResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterId;
         private GetClusterClusterInfo clusterInfo;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -66,19 +53,27 @@ public final class GetClusterResult {
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterInfo(GetClusterClusterInfo clusterInfo) {
             this.clusterInfo = Objects.requireNonNull(clusterInfo);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetClusterResult build() {
-            return new GetClusterResult(clusterId, clusterInfo, id);
+        }
+        public GetClusterResult build() {
+            final var o = new GetClusterResult();
+            o.clusterId = clusterId;
+            o.clusterInfo = clusterInfo;
+            o.id = id;
+            return o;
         }
     }
 }

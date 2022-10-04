@@ -15,28 +15,19 @@ public final class MwsCustomerManagedKeysAwsKeyInfo {
      * @return The AWS KMS key alias.
      * 
      */
-    private final String keyAlias;
+    private String keyAlias;
     /**
      * @return The AWS KMS key&#39;s Amazon Resource Name (ARN).
      * 
      */
-    private final String keyArn;
+    private String keyArn;
     /**
      * @return (Computed) The AWS region in which KMS key is deployed to. This is not required.
      * 
      */
-    private final @Nullable String keyRegion;
+    private @Nullable String keyRegion;
 
-    @CustomType.Constructor
-    private MwsCustomerManagedKeysAwsKeyInfo(
-        @CustomType.Parameter("keyAlias") String keyAlias,
-        @CustomType.Parameter("keyArn") String keyArn,
-        @CustomType.Parameter("keyRegion") @Nullable String keyRegion) {
-        this.keyAlias = keyAlias;
-        this.keyArn = keyArn;
-        this.keyRegion = keyRegion;
-    }
-
+    private MwsCustomerManagedKeysAwsKeyInfo() {}
     /**
      * @return The AWS KMS key alias.
      * 
@@ -66,16 +57,12 @@ public final class MwsCustomerManagedKeysAwsKeyInfo {
     public static Builder builder(MwsCustomerManagedKeysAwsKeyInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String keyAlias;
         private String keyArn;
         private @Nullable String keyRegion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MwsCustomerManagedKeysAwsKeyInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.keyAlias = defaults.keyAlias;
@@ -83,19 +70,27 @@ public final class MwsCustomerManagedKeysAwsKeyInfo {
     	      this.keyRegion = defaults.keyRegion;
         }
 
+        @CustomType.Setter
         public Builder keyAlias(String keyAlias) {
             this.keyAlias = Objects.requireNonNull(keyAlias);
             return this;
         }
+        @CustomType.Setter
         public Builder keyArn(String keyArn) {
             this.keyArn = Objects.requireNonNull(keyArn);
             return this;
         }
+        @CustomType.Setter
         public Builder keyRegion(@Nullable String keyRegion) {
             this.keyRegion = keyRegion;
             return this;
-        }        public MwsCustomerManagedKeysAwsKeyInfo build() {
-            return new MwsCustomerManagedKeysAwsKeyInfo(keyAlias, keyArn, keyRegion);
+        }
+        public MwsCustomerManagedKeysAwsKeyInfo build() {
+            final var o = new MwsCustomerManagedKeysAwsKeyInfo();
+            o.keyAlias = keyAlias;
+            o.keyArn = keyArn;
+            o.keyRegion = keyRegion;
+            return o;
         }
     }
 }

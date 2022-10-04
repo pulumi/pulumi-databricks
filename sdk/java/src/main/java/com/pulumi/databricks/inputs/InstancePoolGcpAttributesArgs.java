@@ -15,25 +15,17 @@ public final class InstancePoolGcpAttributesArgs extends com.pulumi.resources.Re
 
     public static final InstancePoolGcpAttributesArgs Empty = new InstancePoolGcpAttributesArgs();
 
-    /**
-     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     * 
-     */
-    @Import(name="availability")
-    private @Nullable Output<String> availability;
+    @Import(name="gcpAvailability")
+    private @Nullable Output<String> gcpAvailability;
 
-    /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     * 
-     */
-    public Optional<Output<String>> availability() {
-        return Optional.ofNullable(this.availability);
+    public Optional<Output<String>> gcpAvailability() {
+        return Optional.ofNullable(this.gcpAvailability);
     }
 
     private InstancePoolGcpAttributesArgs() {}
 
     private InstancePoolGcpAttributesArgs(InstancePoolGcpAttributesArgs $) {
-        this.availability = $.availability;
+        this.gcpAvailability = $.gcpAvailability;
     }
 
     public static Builder builder() {
@@ -54,25 +46,13 @@ public final class InstancePoolGcpAttributesArgs extends com.pulumi.resources.Re
             $ = new InstancePoolGcpAttributesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param availability Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder availability(@Nullable Output<String> availability) {
-            $.availability = availability;
+        public Builder gcpAvailability(@Nullable Output<String> gcpAvailability) {
+            $.gcpAvailability = gcpAvailability;
             return this;
         }
 
-        /**
-         * @param availability Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder availability(String availability) {
-            return availability(Output.of(availability));
+        public Builder gcpAvailability(String gcpAvailability) {
+            return gcpAvailability(Output.of(gcpAvailability));
         }
 
         public InstancePoolGcpAttributesArgs build() {

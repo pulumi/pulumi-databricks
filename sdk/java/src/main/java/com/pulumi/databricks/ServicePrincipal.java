@@ -16,10 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to databricks.Group in Databricks workspace or account.
- * 
- * To create service principals in the Databricks account, the provider must be configured with `host = &#34;https://accounts.cloud.databricks.com&#34;` on AWS deployments or `host = &#34;https://accounts.azuredatabricks.net&#34;` and authenticate using AAD tokens on Azure deployments
- * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:

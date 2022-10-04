@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstancePoolPreloadedDockerImage {
-    private final @Nullable InstancePoolPreloadedDockerImageBasicAuth basicAuth;
-    private final String url;
+    private @Nullable InstancePoolPreloadedDockerImageBasicAuth basicAuth;
+    private String url;
 
-    @CustomType.Constructor
-    private InstancePoolPreloadedDockerImage(
-        @CustomType.Parameter("basicAuth") @Nullable InstancePoolPreloadedDockerImageBasicAuth basicAuth,
-        @CustomType.Parameter("url") String url) {
-        this.basicAuth = basicAuth;
-        this.url = url;
-    }
-
+    private InstancePoolPreloadedDockerImage() {}
     public Optional<InstancePoolPreloadedDockerImageBasicAuth> basicAuth() {
         return Optional.ofNullable(this.basicAuth);
     }
@@ -37,30 +30,32 @@ public final class InstancePoolPreloadedDockerImage {
     public static Builder builder(InstancePoolPreloadedDockerImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable InstancePoolPreloadedDockerImageBasicAuth basicAuth;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstancePoolPreloadedDockerImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.basicAuth = defaults.basicAuth;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder basicAuth(@Nullable InstancePoolPreloadedDockerImageBasicAuth basicAuth) {
             this.basicAuth = basicAuth;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public InstancePoolPreloadedDockerImage build() {
-            return new InstancePoolPreloadedDockerImage(basicAuth, url);
+        }
+        public InstancePoolPreloadedDockerImage build() {
+            final var o = new InstancePoolPreloadedDockerImage();
+            o.basicAuth = basicAuth;
+            o.url = url;
+            return o;
         }
     }
 }

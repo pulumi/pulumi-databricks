@@ -16,21 +16,14 @@ public final class InstancePoolAzureAttributes {
      * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
      * 
      */
-    private final @Nullable String availability;
+    private @Nullable String availability;
     /**
      * @return The max price for Azure spot instances.  Use `-1` to specify the lowest price.
      * 
      */
-    private final @Nullable Double spotBidMaxPrice;
+    private @Nullable Double spotBidMaxPrice;
 
-    @CustomType.Constructor
-    private InstancePoolAzureAttributes(
-        @CustomType.Parameter("availability") @Nullable String availability,
-        @CustomType.Parameter("spotBidMaxPrice") @Nullable Double spotBidMaxPrice) {
-        this.availability = availability;
-        this.spotBidMaxPrice = spotBidMaxPrice;
-    }
-
+    private InstancePoolAzureAttributes() {}
     /**
      * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
      * 
@@ -53,30 +46,32 @@ public final class InstancePoolAzureAttributes {
     public static Builder builder(InstancePoolAzureAttributes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String availability;
         private @Nullable Double spotBidMaxPrice;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstancePoolAzureAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
     	      this.spotBidMaxPrice = defaults.spotBidMaxPrice;
         }
 
+        @CustomType.Setter
         public Builder availability(@Nullable String availability) {
             this.availability = availability;
             return this;
         }
+        @CustomType.Setter
         public Builder spotBidMaxPrice(@Nullable Double spotBidMaxPrice) {
             this.spotBidMaxPrice = spotBidMaxPrice;
             return this;
-        }        public InstancePoolAzureAttributes build() {
-            return new InstancePoolAzureAttributes(availability, spotBidMaxPrice);
+        }
+        public InstancePoolAzureAttributes build() {
+            final var o = new InstancePoolAzureAttributes();
+            o.availability = availability;
+            o.spotBidMaxPrice = spotBidMaxPrice;
+            return o;
         }
     }
 }

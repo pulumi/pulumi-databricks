@@ -13,54 +13,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNodeTypeResult {
-    private final @Nullable String category;
-    private final @Nullable Integer gbPerCore;
-    private final @Nullable Boolean graviton;
+    private @Nullable String category;
+    private @Nullable Integer gbPerCore;
+    private @Nullable Boolean graviton;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable Boolean isIoCacheEnabled;
-    private final @Nullable Boolean localDisk;
-    private final @Nullable Integer minCores;
-    private final @Nullable Integer minGpus;
-    private final @Nullable Integer minMemoryGb;
-    private final @Nullable Boolean photonDriverCapable;
-    private final @Nullable Boolean photonWorkerCapable;
-    private final @Nullable Boolean supportPortForwarding;
-    private final @Nullable Boolean vcpu;
+    private String id;
+    private @Nullable Boolean isIoCacheEnabled;
+    private @Nullable Boolean localDisk;
+    private @Nullable Integer minCores;
+    private @Nullable Integer minGpus;
+    private @Nullable Integer minMemoryGb;
+    private @Nullable Boolean photonDriverCapable;
+    private @Nullable Boolean photonWorkerCapable;
+    private @Nullable Boolean supportPortForwarding;
+    private @Nullable Boolean vcpu;
 
-    @CustomType.Constructor
-    private GetNodeTypeResult(
-        @CustomType.Parameter("category") @Nullable String category,
-        @CustomType.Parameter("gbPerCore") @Nullable Integer gbPerCore,
-        @CustomType.Parameter("graviton") @Nullable Boolean graviton,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isIoCacheEnabled") @Nullable Boolean isIoCacheEnabled,
-        @CustomType.Parameter("localDisk") @Nullable Boolean localDisk,
-        @CustomType.Parameter("minCores") @Nullable Integer minCores,
-        @CustomType.Parameter("minGpus") @Nullable Integer minGpus,
-        @CustomType.Parameter("minMemoryGb") @Nullable Integer minMemoryGb,
-        @CustomType.Parameter("photonDriverCapable") @Nullable Boolean photonDriverCapable,
-        @CustomType.Parameter("photonWorkerCapable") @Nullable Boolean photonWorkerCapable,
-        @CustomType.Parameter("supportPortForwarding") @Nullable Boolean supportPortForwarding,
-        @CustomType.Parameter("vcpu") @Nullable Boolean vcpu) {
-        this.category = category;
-        this.gbPerCore = gbPerCore;
-        this.graviton = graviton;
-        this.id = id;
-        this.isIoCacheEnabled = isIoCacheEnabled;
-        this.localDisk = localDisk;
-        this.minCores = minCores;
-        this.minGpus = minGpus;
-        this.minMemoryGb = minMemoryGb;
-        this.photonDriverCapable = photonDriverCapable;
-        this.photonWorkerCapable = photonWorkerCapable;
-        this.supportPortForwarding = supportPortForwarding;
-        this.vcpu = vcpu;
-    }
-
+    private GetNodeTypeResult() {}
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
@@ -112,7 +83,7 @@ public final class GetNodeTypeResult {
     public static Builder builder(GetNodeTypeResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String category;
         private @Nullable Integer gbPerCore;
@@ -127,11 +98,7 @@ public final class GetNodeTypeResult {
         private @Nullable Boolean photonWorkerCapable;
         private @Nullable Boolean supportPortForwarding;
         private @Nullable Boolean vcpu;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNodeTypeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -149,59 +116,87 @@ public final class GetNodeTypeResult {
     	      this.vcpu = defaults.vcpu;
         }
 
+        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
+        @CustomType.Setter
         public Builder gbPerCore(@Nullable Integer gbPerCore) {
             this.gbPerCore = gbPerCore;
             return this;
         }
+        @CustomType.Setter
         public Builder graviton(@Nullable Boolean graviton) {
             this.graviton = graviton;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isIoCacheEnabled(@Nullable Boolean isIoCacheEnabled) {
             this.isIoCacheEnabled = isIoCacheEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder localDisk(@Nullable Boolean localDisk) {
             this.localDisk = localDisk;
             return this;
         }
+        @CustomType.Setter
         public Builder minCores(@Nullable Integer minCores) {
             this.minCores = minCores;
             return this;
         }
+        @CustomType.Setter
         public Builder minGpus(@Nullable Integer minGpus) {
             this.minGpus = minGpus;
             return this;
         }
+        @CustomType.Setter
         public Builder minMemoryGb(@Nullable Integer minMemoryGb) {
             this.minMemoryGb = minMemoryGb;
             return this;
         }
+        @CustomType.Setter
         public Builder photonDriverCapable(@Nullable Boolean photonDriverCapable) {
             this.photonDriverCapable = photonDriverCapable;
             return this;
         }
+        @CustomType.Setter
         public Builder photonWorkerCapable(@Nullable Boolean photonWorkerCapable) {
             this.photonWorkerCapable = photonWorkerCapable;
             return this;
         }
+        @CustomType.Setter
         public Builder supportPortForwarding(@Nullable Boolean supportPortForwarding) {
             this.supportPortForwarding = supportPortForwarding;
             return this;
         }
+        @CustomType.Setter
         public Builder vcpu(@Nullable Boolean vcpu) {
             this.vcpu = vcpu;
             return this;
-        }        public GetNodeTypeResult build() {
-            return new GetNodeTypeResult(category, gbPerCore, graviton, id, isIoCacheEnabled, localDisk, minCores, minGpus, minMemoryGb, photonDriverCapable, photonWorkerCapable, supportPortForwarding, vcpu);
+        }
+        public GetNodeTypeResult build() {
+            final var o = new GetNodeTypeResult();
+            o.category = category;
+            o.gbPerCore = gbPerCore;
+            o.graviton = graviton;
+            o.id = id;
+            o.isIoCacheEnabled = isIoCacheEnabled;
+            o.localDisk = localDisk;
+            o.minCores = minCores;
+            o.minGpus = minGpus;
+            o.minMemoryGb = minMemoryGb;
+            o.photonDriverCapable = photonDriverCapable;
+            o.photonWorkerCapable = photonWorkerCapable;
+            o.supportPortForwarding = supportPortForwarding;
+            o.vcpu = vcpu;
+            return o;
         }
     }
 }

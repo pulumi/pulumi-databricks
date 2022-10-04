@@ -24,6 +24,8 @@ import com.pulumi.databricks.inputs.GetDbfsFilePathsPlainArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePlainArgs;
 import com.pulumi.databricks.inputs.GetGroupArgs;
 import com.pulumi.databricks.inputs.GetGroupPlainArgs;
+import com.pulumi.databricks.inputs.GetJobArgs;
+import com.pulumi.databricks.inputs.GetJobPlainArgs;
 import com.pulumi.databricks.inputs.GetJobsArgs;
 import com.pulumi.databricks.inputs.GetJobsPlainArgs;
 import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
@@ -62,6 +64,7 @@ import com.pulumi.databricks.outputs.GetCurrentUserResult;
 import com.pulumi.databricks.outputs.GetDbfsFilePathsResult;
 import com.pulumi.databricks.outputs.GetDbfsFileResult;
 import com.pulumi.databricks.outputs.GetGroupResult;
+import com.pulumi.databricks.outputs.GetJobResult;
 import com.pulumi.databricks.outputs.GetJobsResult;
 import com.pulumi.databricks.outputs.GetMwsWorkspacesResult;
 import com.pulumi.databricks.outputs.GetNodeTypeResult;
@@ -476,7 +479,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -519,7 +521,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -562,7 +563,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -605,7 +605,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -648,7 +647,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -691,7 +689,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -1808,6 +1805,270 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getGroup:getGroup", TypeShape.of(GetGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Getting the existing cluster id of specific databricks.Job by name or by id:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJob(GetJobArgs.builder()
+     *             .jobName(&#34;My job&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clusterId&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getJobs data to get all jobs and their names from a workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * 
+     */
+    public static Output<GetJobResult> getJob() {
+        return getJob(GetJobArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting the existing cluster id of specific databricks.Job by name or by id:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJob(GetJobArgs.builder()
+     *             .jobName(&#34;My job&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clusterId&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getJobs data to get all jobs and their names from a workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * 
+     */
+    public static CompletableFuture<GetJobResult> getJobPlain() {
+        return getJobPlain(GetJobPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting the existing cluster id of specific databricks.Job by name or by id:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJob(GetJobArgs.builder()
+     *             .jobName(&#34;My job&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clusterId&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getJobs data to get all jobs and their names from a workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * 
+     */
+    public static Output<GetJobResult> getJob(GetJobArgs args) {
+        return getJob(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting the existing cluster id of specific databricks.Job by name or by id:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJob(GetJobArgs.builder()
+     *             .jobName(&#34;My job&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clusterId&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getJobs data to get all jobs and their names from a workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * 
+     */
+    public static CompletableFuture<GetJobResult> getJobPlain(GetJobPlainArgs args) {
+        return getJobPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting the existing cluster id of specific databricks.Job by name or by id:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJob(GetJobArgs.builder()
+     *             .jobName(&#34;My job&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clusterId&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getJobs data to get all jobs and their names from a workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * 
+     */
+    public static Output<GetJobResult> getJob(GetJobArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getJob:getJob", TypeShape.of(GetJobResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting the existing cluster id of specific databricks.Job by name or by id:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJob(GetJobArgs.builder()
+     *             .jobName(&#34;My job&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;clusterId&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getJobs data to get all jobs and their names from a workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * 
+     */
+    public static CompletableFuture<GetJobResult> getJobPlain(GetJobPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getJob:getJob", TypeShape.of(GetJobResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -2618,7 +2879,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -2663,7 +2923,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -2708,7 +2967,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -2753,7 +3011,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -3892,7 +4149,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -3905,7 +4161,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -3918,7 +4173,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -3931,7 +4185,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -4058,7 +4311,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -4071,7 +4323,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -4084,7 +4335,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
@@ -4097,7 +4347,6 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * databricks.Table to manage tables within Unity Catalog.
      * * databricks.Schema to manage schemas within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 

@@ -98,7 +98,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
                  instance_profile_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Note** This resource has an evolving API, which may change in future versions of the provider.
+        > **Deprecated** Please migrate to databricks_group_role.
 
         This resource allows you to attach InstanceProfile (AWS) to databricks_group.
 
@@ -144,7 +144,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
                  args: GroupInstanceProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Note** This resource has an evolving API, which may change in future versions of the provider.
+        > **Deprecated** Please migrate to databricks_group_role.
 
         This resource allows you to attach InstanceProfile (AWS) to databricks_group.
 

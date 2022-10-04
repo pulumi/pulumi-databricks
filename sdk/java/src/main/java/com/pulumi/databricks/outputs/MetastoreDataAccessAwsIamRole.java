@@ -13,13 +13,9 @@ public final class MetastoreDataAccessAwsIamRole {
      * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      * 
      */
-    private final String roleArn;
+    private String roleArn;
 
-    @CustomType.Constructor
-    private MetastoreDataAccessAwsIamRole(@CustomType.Parameter("roleArn") String roleArn) {
-        this.roleArn = roleArn;
-    }
-
+    private MetastoreDataAccessAwsIamRole() {}
     /**
      * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      * 
@@ -35,24 +31,24 @@ public final class MetastoreDataAccessAwsIamRole {
     public static Builder builder(MetastoreDataAccessAwsIamRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String roleArn;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetastoreDataAccessAwsIamRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.roleArn = defaults.roleArn;
         }
 
+        @CustomType.Setter
         public Builder roleArn(String roleArn) {
             this.roleArn = Objects.requireNonNull(roleArn);
             return this;
-        }        public MetastoreDataAccessAwsIamRole build() {
-            return new MetastoreDataAccessAwsIamRole(roleArn);
+        }
+        public MetastoreDataAccessAwsIamRole build() {
+            final var o = new MetastoreDataAccessAwsIamRole();
+            o.roleArn = roleArn;
+            return o;
         }
     }
 }

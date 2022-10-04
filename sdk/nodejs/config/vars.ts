@@ -47,6 +47,14 @@ Object.defineProperty(exports, "azureEnvironment", {
     enumerable: true,
 });
 
+export declare const azureLoginAppId: string | undefined;
+Object.defineProperty(exports, "azureLoginAppId", {
+    get() {
+        return __config.get("azureLoginAppId");
+    },
+    enumerable: true,
+});
+
 export declare const azureTenantId: string | undefined;
 Object.defineProperty(exports, "azureTenantId", {
     get() {

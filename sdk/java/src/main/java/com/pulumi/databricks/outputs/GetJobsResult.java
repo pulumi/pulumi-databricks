@@ -15,21 +15,14 @@ public final class GetJobsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return map of databricks.Job names to ids
      * 
      */
-    private final Map<String,Object> ids;
+    private Map<String,Object> ids;
 
-    @CustomType.Constructor
-    private GetJobsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") Map<String,Object> ids) {
-        this.id = id;
-        this.ids = ids;
-    }
-
+    private GetJobsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -52,30 +45,32 @@ public final class GetJobsResult {
     public static Builder builder(GetJobsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private Map<String,Object> ids;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetJobsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(Map<String,Object> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
-        }        public GetJobsResult build() {
-            return new GetJobsResult(id, ids);
+        }
+        public GetJobsResult build() {
+            final var o = new GetJobsResult();
+            o.id = id;
+            o.ids = ids;
+            return o;
         }
     }
 }

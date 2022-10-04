@@ -67,6 +67,10 @@ export class Catalog extends pulumi.CustomResource {
      * User-supplied free-form text.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
+    /**
+     * Delete catalog regardless of its contents.
+     */
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     public readonly metastoreId!: pulumi.Output<string>;
     /**
      * Name of Catalog relative to parent metastore. Change forces creation of a new resource.
@@ -95,6 +99,7 @@ export class Catalog extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CatalogState | undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
@@ -102,6 +107,7 @@ export class Catalog extends pulumi.CustomResource {
         } else {
             const args = argsOrState as CatalogArgs | undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
@@ -120,6 +126,10 @@ export interface CatalogState {
      * User-supplied free-form text.
      */
     comment?: pulumi.Input<string>;
+    /**
+     * Delete catalog regardless of its contents.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of Catalog relative to parent metastore. Change forces creation of a new resource.
@@ -143,6 +153,10 @@ export interface CatalogArgs {
      * User-supplied free-form text.
      */
     comment?: pulumi.Input<string>;
+    /**
+     * Delete catalog regardless of its contents.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of Catalog relative to parent metastore. Change forces creation of a new resource.

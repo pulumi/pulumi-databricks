@@ -13,23 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlQueryParameterEnum {
-    private final @Nullable SqlQueryParameterEnumMultiple multiple;
-    private final List<String> options;
-    private final @Nullable String value;
-    private final @Nullable List<String> values;
+    private @Nullable SqlQueryParameterEnumMultiple multiple;
+    private List<String> options;
+    private @Nullable String value;
+    private @Nullable List<String> values;
 
-    @CustomType.Constructor
-    private SqlQueryParameterEnum(
-        @CustomType.Parameter("multiple") @Nullable SqlQueryParameterEnumMultiple multiple,
-        @CustomType.Parameter("options") List<String> options,
-        @CustomType.Parameter("value") @Nullable String value,
-        @CustomType.Parameter("values") @Nullable List<String> values) {
-        this.multiple = multiple;
-        this.options = options;
-        this.value = value;
-        this.values = values;
-    }
-
+    private SqlQueryParameterEnum() {}
     public Optional<SqlQueryParameterEnumMultiple> multiple() {
         return Optional.ofNullable(this.multiple);
     }
@@ -50,17 +39,13 @@ public final class SqlQueryParameterEnum {
     public static Builder builder(SqlQueryParameterEnum defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable SqlQueryParameterEnumMultiple multiple;
         private List<String> options;
         private @Nullable String value;
         private @Nullable List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlQueryParameterEnum defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.multiple = defaults.multiple;
@@ -69,10 +54,12 @@ public final class SqlQueryParameterEnum {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder multiple(@Nullable SqlQueryParameterEnumMultiple multiple) {
             this.multiple = multiple;
             return this;
         }
+        @CustomType.Setter
         public Builder options(List<String> options) {
             this.options = Objects.requireNonNull(options);
             return this;
@@ -80,18 +67,26 @@ public final class SqlQueryParameterEnum {
         public Builder options(String... options) {
             return options(List.of(options));
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
         }
+        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public SqlQueryParameterEnum build() {
-            return new SqlQueryParameterEnum(multiple, options, value, values);
+        }
+        public SqlQueryParameterEnum build() {
+            final var o = new SqlQueryParameterEnum();
+            o.multiple = multiple;
+            o.options = options;
+            o.value = value;
+            o.values = values;
+            return o;
         }
     }
 }

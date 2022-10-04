@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -45,6 +46,21 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
+    }
+
+    /**
+     * Delete schema regardless of its contents.
+     * 
+     */
+    @Import(name="forceDestroy")
+    private @Nullable Output<Boolean> forceDestroy;
+
+    /**
+     * @return Delete schema regardless of its contents.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDestroy() {
+        return Optional.ofNullable(this.forceDestroy);
     }
 
     @Import(name="metastoreId")
@@ -104,6 +120,7 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
     private SchemaState(SchemaState $) {
         this.catalogName = $.catalogName;
         this.comment = $.comment;
+        this.forceDestroy = $.forceDestroy;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
@@ -168,6 +185,27 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
+        }
+
+        /**
+         * @param forceDestroy Delete schema regardless of its contents.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
+            $.forceDestroy = forceDestroy;
+            return this;
+        }
+
+        /**
+         * @param forceDestroy Delete schema regardless of its contents.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(Boolean forceDestroy) {
+            return forceDestroy(Output.of(forceDestroy));
         }
 
         public Builder metastoreId(@Nullable Output<String> metastoreId) {

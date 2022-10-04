@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GrantsGrant {
-    private final String principal;
-    private final List<String> privileges;
+    private String principal;
+    private List<String> privileges;
 
-    @CustomType.Constructor
-    private GrantsGrant(
-        @CustomType.Parameter("principal") String principal,
-        @CustomType.Parameter("privileges") List<String> privileges) {
-        this.principal = principal;
-        this.privileges = privileges;
-    }
-
+    private GrantsGrant() {}
     public String principal() {
         return this.principal;
     }
@@ -35,33 +28,35 @@ public final class GrantsGrant {
     public static Builder builder(GrantsGrant defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String principal;
         private List<String> privileges;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GrantsGrant defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.principal = defaults.principal;
     	      this.privileges = defaults.privileges;
         }
 
+        @CustomType.Setter
         public Builder principal(String principal) {
             this.principal = Objects.requireNonNull(principal);
             return this;
         }
+        @CustomType.Setter
         public Builder privileges(List<String> privileges) {
             this.privileges = Objects.requireNonNull(privileges);
             return this;
         }
         public Builder privileges(String... privileges) {
             return privileges(List.of(privileges));
-        }        public GrantsGrant build() {
-            return new GrantsGrant(principal, privileges);
+        }
+        public GrantsGrant build() {
+            final var o = new GrantsGrant();
+            o.principal = principal;
+            o.privileges = privileges;
+            return o;
         }
     }
 }

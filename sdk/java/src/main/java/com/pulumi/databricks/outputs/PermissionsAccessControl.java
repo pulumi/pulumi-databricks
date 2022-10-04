@@ -15,35 +15,24 @@ public final class PermissionsAccessControl {
      * @return name of the group. We recommend setting permissions on groups.
      * 
      */
-    private final @Nullable String groupName;
+    private @Nullable String groupName;
     /**
      * @return permission level according to specific resource. See examples above for the reference.
      * 
      */
-    private final String permissionLevel;
+    private String permissionLevel;
     /**
      * @return Application ID of the service_principal.
      * 
      */
-    private final @Nullable String servicePrincipalName;
+    private @Nullable String servicePrincipalName;
     /**
      * @return name of the user.
      * 
      */
-    private final @Nullable String userName;
+    private @Nullable String userName;
 
-    @CustomType.Constructor
-    private PermissionsAccessControl(
-        @CustomType.Parameter("groupName") @Nullable String groupName,
-        @CustomType.Parameter("permissionLevel") String permissionLevel,
-        @CustomType.Parameter("servicePrincipalName") @Nullable String servicePrincipalName,
-        @CustomType.Parameter("userName") @Nullable String userName) {
-        this.groupName = groupName;
-        this.permissionLevel = permissionLevel;
-        this.servicePrincipalName = servicePrincipalName;
-        this.userName = userName;
-    }
-
+    private PermissionsAccessControl() {}
     /**
      * @return name of the group. We recommend setting permissions on groups.
      * 
@@ -80,17 +69,13 @@ public final class PermissionsAccessControl {
     public static Builder builder(PermissionsAccessControl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String groupName;
         private String permissionLevel;
         private @Nullable String servicePrincipalName;
         private @Nullable String userName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PermissionsAccessControl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupName = defaults.groupName;
@@ -99,23 +84,33 @@ public final class PermissionsAccessControl {
     	      this.userName = defaults.userName;
         }
 
+        @CustomType.Setter
         public Builder groupName(@Nullable String groupName) {
             this.groupName = groupName;
             return this;
         }
+        @CustomType.Setter
         public Builder permissionLevel(String permissionLevel) {
             this.permissionLevel = Objects.requireNonNull(permissionLevel);
             return this;
         }
+        @CustomType.Setter
         public Builder servicePrincipalName(@Nullable String servicePrincipalName) {
             this.servicePrincipalName = servicePrincipalName;
             return this;
         }
+        @CustomType.Setter
         public Builder userName(@Nullable String userName) {
             this.userName = userName;
             return this;
-        }        public PermissionsAccessControl build() {
-            return new PermissionsAccessControl(groupName, permissionLevel, servicePrincipalName, userName);
+        }
+        public PermissionsAccessControl build() {
+            final var o = new PermissionsAccessControl();
+            o.groupName = groupName;
+            o.permissionLevel = permissionLevel;
+            o.servicePrincipalName = servicePrincipalName;
+            o.userName = userName;
+            return o;
         }
     }
 }

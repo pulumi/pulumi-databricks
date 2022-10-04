@@ -30,6 +30,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DbfsFile{}
 	case "databricks:index/directory:Directory":
 		r = &Directory{}
+	case "databricks:index/entitlements:Entitlements":
+		r = &Entitlements{}
 	case "databricks:index/externalLocation:ExternalLocation":
 		r = &ExternalLocation{}
 	case "databricks:index/gitCredential:GitCredential":
@@ -42,6 +44,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Group{}
 	case "databricks:index/groupInstanceProfile:GroupInstanceProfile":
 		r = &GroupInstanceProfile{}
+	case "databricks:index/groupRole:GroupRole":
+		r = &GroupRole{}
 	case "databricks:index/instancePool:InstancePool":
 		r = &InstancePool{}
 	case "databricks:index/instanceProfile:InstanceProfile":
@@ -94,6 +98,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Permissions{}
 	case "databricks:index/pipeline:Pipeline":
 		r = &Pipeline{}
+	case "databricks:index/recipient:Recipient":
+		r = &Recipient{}
 	case "databricks:index/repo:Repo":
 		r = &Repo{}
 	case "databricks:index/schema:Schema":
@@ -191,6 +197,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/entitlements",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/externalLocation",
 		&module{version},
 	)
@@ -217,6 +228,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/groupInstanceProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/groupRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -347,6 +363,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/pipeline",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/recipient",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

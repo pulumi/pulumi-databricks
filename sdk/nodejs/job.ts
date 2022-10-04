@@ -46,6 +46,7 @@ export class Job extends pulumi.CustomResource {
      * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      */
     public readonly alwaysRunning!: pulumi.Output<boolean | undefined>;
+    public readonly dbtTask!: pulumi.Output<outputs.JobDbtTask | undefined>;
     /**
      * (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
      */
@@ -123,6 +124,7 @@ export class Job extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
             resourceInputs["alwaysRunning"] = state ? state.alwaysRunning : undefined;
+            resourceInputs["dbtTask"] = state ? state.dbtTask : undefined;
             resourceInputs["emailNotifications"] = state ? state.emailNotifications : undefined;
             resourceInputs["existingClusterId"] = state ? state.existingClusterId : undefined;
             resourceInputs["format"] = state ? state.format : undefined;
@@ -149,6 +151,7 @@ export class Job extends pulumi.CustomResource {
         } else {
             const args = argsOrState as JobArgs | undefined;
             resourceInputs["alwaysRunning"] = args ? args.alwaysRunning : undefined;
+            resourceInputs["dbtTask"] = args ? args.dbtTask : undefined;
             resourceInputs["emailNotifications"] = args ? args.emailNotifications : undefined;
             resourceInputs["existingClusterId"] = args ? args.existingClusterId : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
@@ -186,6 +189,7 @@ export interface JobState {
      * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      */
     alwaysRunning?: pulumi.Input<boolean>;
+    dbtTask?: pulumi.Input<inputs.JobDbtTask>;
     /**
      * (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
      */
@@ -258,6 +262,7 @@ export interface JobArgs {
      * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      */
     alwaysRunning?: pulumi.Input<boolean>;
+    dbtTask?: pulumi.Input<inputs.JobDbtTask>;
     /**
      * (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
      */

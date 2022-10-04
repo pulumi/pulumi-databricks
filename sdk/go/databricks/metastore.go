@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
-//
 // A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
 //
 // Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
@@ -47,7 +45,7 @@ type Metastore struct {
 	// Username/groupname/sp applicationId of the metastore owner.
 	Owner  pulumi.StringOutput `pulumi:"owner"`
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
 	StorageRoot pulumi.StringOutput `pulumi:"storageRoot"`
 	UpdatedAt   pulumi.IntOutput    `pulumi:"updatedAt"`
 	UpdatedBy   pulumi.StringOutput `pulumi:"updatedBy"`
@@ -103,7 +101,7 @@ type metastoreState struct {
 	// Username/groupname/sp applicationId of the metastore owner.
 	Owner  *string `pulumi:"owner"`
 	Region *string `pulumi:"region"`
-	// Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
 	StorageRoot *string `pulumi:"storageRoot"`
 	UpdatedAt   *int    `pulumi:"updatedAt"`
 	UpdatedBy   *string `pulumi:"updatedBy"`
@@ -128,7 +126,7 @@ type MetastoreState struct {
 	// Username/groupname/sp applicationId of the metastore owner.
 	Owner  pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
-	// Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrInput
 	UpdatedAt   pulumi.IntPtrInput
 	UpdatedBy   pulumi.StringPtrInput
@@ -157,7 +155,7 @@ type metastoreArgs struct {
 	// Username/groupname/sp applicationId of the metastore owner.
 	Owner  *string `pulumi:"owner"`
 	Region *string `pulumi:"region"`
-	// Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
 	StorageRoot string  `pulumi:"storageRoot"`
 	UpdatedAt   *int    `pulumi:"updatedAt"`
 	UpdatedBy   *string `pulumi:"updatedBy"`
@@ -183,7 +181,7 @@ type MetastoreArgs struct {
 	// Username/groupname/sp applicationId of the metastore owner.
 	Owner  pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
-	// Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
 	StorageRoot pulumi.StringInput
 	UpdatedAt   pulumi.IntPtrInput
 	UpdatedBy   pulumi.StringPtrInput
@@ -330,7 +328,7 @@ func (o MetastoreOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Path on cloud storage account, where managed Table are stored. Change forces creation of a new resource.
+// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
 func (o MetastoreOutput) StorageRoot() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.StorageRoot }).(pulumi.StringOutput)
 }

@@ -14,20 +14,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstancePoolInstancePoolFleetAttributes {
-    private final @Nullable InstancePoolInstancePoolFleetAttributesFleetOnDemandOption fleetOnDemandOption;
-    private final @Nullable InstancePoolInstancePoolFleetAttributesFleetSpotOption fleetSpotOption;
-    private final List<InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride> launchTemplateOverrides;
+    private @Nullable InstancePoolInstancePoolFleetAttributesFleetOnDemandOption fleetOnDemandOption;
+    private @Nullable InstancePoolInstancePoolFleetAttributesFleetSpotOption fleetSpotOption;
+    private List<InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride> launchTemplateOverrides;
 
-    @CustomType.Constructor
-    private InstancePoolInstancePoolFleetAttributes(
-        @CustomType.Parameter("fleetOnDemandOption") @Nullable InstancePoolInstancePoolFleetAttributesFleetOnDemandOption fleetOnDemandOption,
-        @CustomType.Parameter("fleetSpotOption") @Nullable InstancePoolInstancePoolFleetAttributesFleetSpotOption fleetSpotOption,
-        @CustomType.Parameter("launchTemplateOverrides") List<InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride> launchTemplateOverrides) {
-        this.fleetOnDemandOption = fleetOnDemandOption;
-        this.fleetSpotOption = fleetSpotOption;
-        this.launchTemplateOverrides = launchTemplateOverrides;
-    }
-
+    private InstancePoolInstancePoolFleetAttributes() {}
     public Optional<InstancePoolInstancePoolFleetAttributesFleetOnDemandOption> fleetOnDemandOption() {
         return Optional.ofNullable(this.fleetOnDemandOption);
     }
@@ -45,16 +36,12 @@ public final class InstancePoolInstancePoolFleetAttributes {
     public static Builder builder(InstancePoolInstancePoolFleetAttributes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable InstancePoolInstancePoolFleetAttributesFleetOnDemandOption fleetOnDemandOption;
         private @Nullable InstancePoolInstancePoolFleetAttributesFleetSpotOption fleetSpotOption;
         private List<InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride> launchTemplateOverrides;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstancePoolInstancePoolFleetAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fleetOnDemandOption = defaults.fleetOnDemandOption;
@@ -62,22 +49,30 @@ public final class InstancePoolInstancePoolFleetAttributes {
     	      this.launchTemplateOverrides = defaults.launchTemplateOverrides;
         }
 
+        @CustomType.Setter
         public Builder fleetOnDemandOption(@Nullable InstancePoolInstancePoolFleetAttributesFleetOnDemandOption fleetOnDemandOption) {
             this.fleetOnDemandOption = fleetOnDemandOption;
             return this;
         }
+        @CustomType.Setter
         public Builder fleetSpotOption(@Nullable InstancePoolInstancePoolFleetAttributesFleetSpotOption fleetSpotOption) {
             this.fleetSpotOption = fleetSpotOption;
             return this;
         }
+        @CustomType.Setter
         public Builder launchTemplateOverrides(List<InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride> launchTemplateOverrides) {
             this.launchTemplateOverrides = Objects.requireNonNull(launchTemplateOverrides);
             return this;
         }
         public Builder launchTemplateOverrides(InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride... launchTemplateOverrides) {
             return launchTemplateOverrides(List.of(launchTemplateOverrides));
-        }        public InstancePoolInstancePoolFleetAttributes build() {
-            return new InstancePoolInstancePoolFleetAttributes(fleetOnDemandOption, fleetSpotOption, launchTemplateOverrides);
+        }
+        public InstancePoolInstancePoolFleetAttributes build() {
+            final var o = new InstancePoolInstancePoolFleetAttributes();
+            o.fleetOnDemandOption = fleetOnDemandOption;
+            o.fleetSpotOption = fleetSpotOption;
+            o.launchTemplateOverrides = launchTemplateOverrides;
+            return o;
         }
     }
 }

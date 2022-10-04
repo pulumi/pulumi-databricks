@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlQueryScheduleDaily {
-    private final Integer intervalDays;
-    private final String timeOfDay;
-    private final @Nullable String untilDate;
+    private Integer intervalDays;
+    private String timeOfDay;
+    private @Nullable String untilDate;
 
-    @CustomType.Constructor
-    private SqlQueryScheduleDaily(
-        @CustomType.Parameter("intervalDays") Integer intervalDays,
-        @CustomType.Parameter("timeOfDay") String timeOfDay,
-        @CustomType.Parameter("untilDate") @Nullable String untilDate) {
-        this.intervalDays = intervalDays;
-        this.timeOfDay = timeOfDay;
-        this.untilDate = untilDate;
-    }
-
+    private SqlQueryScheduleDaily() {}
     public Integer intervalDays() {
         return this.intervalDays;
     }
@@ -43,16 +34,12 @@ public final class SqlQueryScheduleDaily {
     public static Builder builder(SqlQueryScheduleDaily defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer intervalDays;
         private String timeOfDay;
         private @Nullable String untilDate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlQueryScheduleDaily defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.intervalDays = defaults.intervalDays;
@@ -60,19 +47,27 @@ public final class SqlQueryScheduleDaily {
     	      this.untilDate = defaults.untilDate;
         }
 
+        @CustomType.Setter
         public Builder intervalDays(Integer intervalDays) {
             this.intervalDays = Objects.requireNonNull(intervalDays);
             return this;
         }
+        @CustomType.Setter
         public Builder timeOfDay(String timeOfDay) {
             this.timeOfDay = Objects.requireNonNull(timeOfDay);
             return this;
         }
+        @CustomType.Setter
         public Builder untilDate(@Nullable String untilDate) {
             this.untilDate = untilDate;
             return this;
-        }        public SqlQueryScheduleDaily build() {
-            return new SqlQueryScheduleDaily(intervalDays, timeOfDay, untilDate);
+        }
+        public SqlQueryScheduleDaily build() {
+            final var o = new SqlQueryScheduleDaily();
+            o.intervalDays = intervalDays;
+            o.timeOfDay = timeOfDay;
+            o.untilDate = untilDate;
+            return o;
         }
     }
 }

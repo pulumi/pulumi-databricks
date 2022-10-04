@@ -52,6 +52,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> azureEnvironment() {
         return Codegen.optional(this.azureEnvironment);
     }
+    @Export(name="azureLoginAppId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> azureLoginAppId;
+
+    public Output<Optional<String>> azureLoginAppId() {
+        return Codegen.optional(this.azureLoginAppId);
+    }
     @Export(name="azureTenantId", type=String.class, parameters={})
     private Output</* @Nullable */ String> azureTenantId;
 

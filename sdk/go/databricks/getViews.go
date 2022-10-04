@@ -14,7 +14,6 @@ import (
 //
 // The following resources are used in the same context:
 //
-// * Table to manage tables within Unity Catalog.
 // * Schema to manage schemas within Unity Catalog.
 // * Catalog to manage catalogs within Unity Catalog.
 func GetViews(ctx *pulumi.Context, args *GetViewsArgs, opts ...pulumi.InvokeOption) (*GetViewsResult, error) {
@@ -30,7 +29,7 @@ func GetViews(ctx *pulumi.Context, args *GetViewsArgs, opts ...pulumi.InvokeOpti
 type GetViewsArgs struct {
 	// Name of databricks_catalog
 	CatalogName string `pulumi:"catalogName"`
-	// set of Table full names: *`catalog`.`schema`.`view`*
+	// set of databricksView full names: *`catalog`.`schema`.`view`*
 	Ids []string `pulumi:"ids"`
 	// Name of databricks_schema
 	SchemaName string `pulumi:"schemaName"`
@@ -41,7 +40,7 @@ type GetViewsResult struct {
 	CatalogName string `pulumi:"catalogName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// set of Table full names: *`catalog`.`schema`.`view`*
+	// set of databricksView full names: *`catalog`.`schema`.`view`*
 	Ids        []string `pulumi:"ids"`
 	SchemaName string   `pulumi:"schemaName"`
 }
@@ -63,7 +62,7 @@ func GetViewsOutput(ctx *pulumi.Context, args GetViewsOutputArgs, opts ...pulumi
 type GetViewsOutputArgs struct {
 	// Name of databricks_catalog
 	CatalogName pulumi.StringInput `pulumi:"catalogName"`
-	// set of Table full names: *`catalog`.`schema`.`view`*
+	// set of databricksView full names: *`catalog`.`schema`.`view`*
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// Name of databricks_schema
 	SchemaName pulumi.StringInput `pulumi:"schemaName"`
@@ -97,7 +96,7 @@ func (o GetViewsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetViewsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// set of Table full names: *`catalog`.`schema`.`view`*
+// set of databricksView full names: *`catalog`.`schema`.`view`*
 func (o GetViewsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetViewsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

@@ -226,8 +226,6 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
-
         Each Metastore requires an IAM role that will be assumed by Unity Catalog to access data. `MetastoreDataAccess` defines this
 
         ## Import
@@ -246,8 +244,6 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  args: MetastoreDataAccessArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
-
         Each Metastore requires an IAM role that will be assumed by Unity Catalog to access data. `MetastoreDataAccess` defines this
 
         ## Import

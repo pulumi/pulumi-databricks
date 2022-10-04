@@ -84,7 +84,6 @@ def get_schemas(catalog_name: Optional[str] = None,
 
     The following resources are used in the same context:
 
-    * Table to manage tables within Unity Catalog.
     * Schema to manage schemas within Unity Catalog.
     * Catalog to manage catalogs within Unity Catalog.
 
@@ -124,7 +123,6 @@ def get_schemas_output(catalog_name: Optional[pulumi.Input[str]] = None,
 
     The following resources are used in the same context:
 
-    * Table to manage tables within Unity Catalog.
     * Schema to manage schemas within Unity Catalog.
     * Catalog to manage catalogs within Unity Catalog.
 

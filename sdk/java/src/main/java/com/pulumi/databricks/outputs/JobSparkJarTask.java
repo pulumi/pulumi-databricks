@@ -12,28 +12,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobSparkJarTask {
-    private final @Nullable String jarUri;
+    private @Nullable String jarUri;
     /**
      * @return The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
      * 
      */
-    private final @Nullable String mainClassName;
+    private @Nullable String mainClassName;
     /**
-     * @return Parameters for the task
+     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      * 
      */
-    private final @Nullable List<String> parameters;
+    private @Nullable List<String> parameters;
 
-    @CustomType.Constructor
-    private JobSparkJarTask(
-        @CustomType.Parameter("jarUri") @Nullable String jarUri,
-        @CustomType.Parameter("mainClassName") @Nullable String mainClassName,
-        @CustomType.Parameter("parameters") @Nullable List<String> parameters) {
-        this.jarUri = jarUri;
-        this.mainClassName = mainClassName;
-        this.parameters = parameters;
-    }
-
+    private JobSparkJarTask() {}
     public Optional<String> jarUri() {
         return Optional.ofNullable(this.jarUri);
     }
@@ -45,7 +36,7 @@ public final class JobSparkJarTask {
         return Optional.ofNullable(this.mainClassName);
     }
     /**
-     * @return Parameters for the task
+     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      * 
      */
     public List<String> parameters() {
@@ -59,16 +50,12 @@ public final class JobSparkJarTask {
     public static Builder builder(JobSparkJarTask defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String jarUri;
         private @Nullable String mainClassName;
         private @Nullable List<String> parameters;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobSparkJarTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jarUri = defaults.jarUri;
@@ -76,22 +63,30 @@ public final class JobSparkJarTask {
     	      this.parameters = defaults.parameters;
         }
 
+        @CustomType.Setter
         public Builder jarUri(@Nullable String jarUri) {
             this.jarUri = jarUri;
             return this;
         }
+        @CustomType.Setter
         public Builder mainClassName(@Nullable String mainClassName) {
             this.mainClassName = mainClassName;
             return this;
         }
+        @CustomType.Setter
         public Builder parameters(@Nullable List<String> parameters) {
             this.parameters = parameters;
             return this;
         }
         public Builder parameters(String... parameters) {
             return parameters(List.of(parameters));
-        }        public JobSparkJarTask build() {
-            return new JobSparkJarTask(jarUri, mainClassName, parameters);
+        }
+        public JobSparkJarTask build() {
+            final var o = new JobSparkJarTask();
+            o.jarUri = jarUri;
+            o.mainClassName = mainClassName;
+            o.parameters = parameters;
+            return o;
         }
     }
 }

@@ -16,24 +16,15 @@ public final class InstancePoolDiskSpec {
      * @return (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
      * 
      */
-    private final @Nullable Integer diskCount;
+    private @Nullable Integer diskCount;
     /**
      * @return (Integer) The size of each disk (in GiB) to attach.
      * 
      */
-    private final @Nullable Integer diskSize;
-    private final @Nullable InstancePoolDiskSpecDiskType diskType;
+    private @Nullable Integer diskSize;
+    private @Nullable InstancePoolDiskSpecDiskType diskType;
 
-    @CustomType.Constructor
-    private InstancePoolDiskSpec(
-        @CustomType.Parameter("diskCount") @Nullable Integer diskCount,
-        @CustomType.Parameter("diskSize") @Nullable Integer diskSize,
-        @CustomType.Parameter("diskType") @Nullable InstancePoolDiskSpecDiskType diskType) {
-        this.diskCount = diskCount;
-        this.diskSize = diskSize;
-        this.diskType = diskType;
-    }
-
+    private InstancePoolDiskSpec() {}
     /**
      * @return (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
      * 
@@ -59,16 +50,12 @@ public final class InstancePoolDiskSpec {
     public static Builder builder(InstancePoolDiskSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer diskCount;
         private @Nullable Integer diskSize;
         private @Nullable InstancePoolDiskSpecDiskType diskType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstancePoolDiskSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskCount = defaults.diskCount;
@@ -76,19 +63,27 @@ public final class InstancePoolDiskSpec {
     	      this.diskType = defaults.diskType;
         }
 
+        @CustomType.Setter
         public Builder diskCount(@Nullable Integer diskCount) {
             this.diskCount = diskCount;
             return this;
         }
+        @CustomType.Setter
         public Builder diskSize(@Nullable Integer diskSize) {
             this.diskSize = diskSize;
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(@Nullable InstancePoolDiskSpecDiskType diskType) {
             this.diskType = diskType;
             return this;
-        }        public InstancePoolDiskSpec build() {
-            return new InstancePoolDiskSpec(diskCount, diskSize, diskType);
+        }
+        public InstancePoolDiskSpec build() {
+            final var o = new InstancePoolDiskSpec();
+            o.diskCount = diskCount;
+            o.diskSize = diskSize;
+            o.diskType = diskType;
+            return o;
         }
     }
 }

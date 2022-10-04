@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class SqlQueryParameterText {
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private SqlQueryParameterText(@CustomType.Parameter("value") String value) {
-        this.value = value;
-    }
-
+    private SqlQueryParameterText() {}
     public String value() {
         return this.value;
     }
@@ -27,24 +23,24 @@ public final class SqlQueryParameterText {
     public static Builder builder(SqlQueryParameterText defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlQueryParameterText defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public SqlQueryParameterText build() {
-            return new SqlQueryParameterText(value);
+        }
+        public SqlQueryParameterText build() {
+            final var o = new SqlQueryParameterText();
+            o.value = value;
+            return o;
         }
     }
 }

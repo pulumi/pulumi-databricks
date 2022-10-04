@@ -17,8 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
- * 
  * A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
  * 
  * Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
@@ -155,14 +153,14 @@ public class Metastore extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * Path on cloud storage account, where managed databricks.Table are stored. Change forces creation of a new resource.
+     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
      * 
      */
     @Export(name="storageRoot", type=String.class, parameters={})
     private Output<String> storageRoot;
 
     /**
-     * @return Path on cloud storage account, where managed databricks.Table are stored. Change forces creation of a new resource.
+     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
      * 
      */
     public Output<String> storageRoot() {

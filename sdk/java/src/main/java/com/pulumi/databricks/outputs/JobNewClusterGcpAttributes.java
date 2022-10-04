@@ -13,26 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobNewClusterGcpAttributes {
-    private final @Nullable String availability;
-    private final @Nullable Integer bootDiskSize;
-    private final @Nullable String googleServiceAccount;
-    private final @Nullable Boolean usePreemptibleExecutors;
-    private final @Nullable String zoneId;
+    private @Nullable String availability;
+    private @Nullable Integer bootDiskSize;
+    private @Nullable String googleServiceAccount;
+    private @Nullable Boolean usePreemptibleExecutors;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private JobNewClusterGcpAttributes(
-        @CustomType.Parameter("availability") @Nullable String availability,
-        @CustomType.Parameter("bootDiskSize") @Nullable Integer bootDiskSize,
-        @CustomType.Parameter("googleServiceAccount") @Nullable String googleServiceAccount,
-        @CustomType.Parameter("usePreemptibleExecutors") @Nullable Boolean usePreemptibleExecutors,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.availability = availability;
-        this.bootDiskSize = bootDiskSize;
-        this.googleServiceAccount = googleServiceAccount;
-        this.usePreemptibleExecutors = usePreemptibleExecutors;
-        this.zoneId = zoneId;
-    }
-
+    private JobNewClusterGcpAttributes() {}
     public Optional<String> availability() {
         return Optional.ofNullable(this.availability);
     }
@@ -56,18 +43,14 @@ public final class JobNewClusterGcpAttributes {
     public static Builder builder(JobNewClusterGcpAttributes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String availability;
         private @Nullable Integer bootDiskSize;
         private @Nullable String googleServiceAccount;
         private @Nullable Boolean usePreemptibleExecutors;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobNewClusterGcpAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
@@ -77,27 +60,39 @@ public final class JobNewClusterGcpAttributes {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder availability(@Nullable String availability) {
             this.availability = availability;
             return this;
         }
+        @CustomType.Setter
         public Builder bootDiskSize(@Nullable Integer bootDiskSize) {
             this.bootDiskSize = bootDiskSize;
             return this;
         }
+        @CustomType.Setter
         public Builder googleServiceAccount(@Nullable String googleServiceAccount) {
             this.googleServiceAccount = googleServiceAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder usePreemptibleExecutors(@Nullable Boolean usePreemptibleExecutors) {
             this.usePreemptibleExecutors = usePreemptibleExecutors;
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public JobNewClusterGcpAttributes build() {
-            return new JobNewClusterGcpAttributes(availability, bootDiskSize, googleServiceAccount, usePreemptibleExecutors, zoneId);
+        }
+        public JobNewClusterGcpAttributes build() {
+            final var o = new JobNewClusterGcpAttributes();
+            o.availability = availability;
+            o.bootDiskSize = bootDiskSize;
+            o.googleServiceAccount = googleServiceAccount;
+            o.usePreemptibleExecutors = usePreemptibleExecutors;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

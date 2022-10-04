@@ -12,35 +12,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MountAbfs {
-    private final String clientId;
-    private final String clientSecretKey;
-    private final String clientSecretScope;
-    private final @Nullable String containerName;
-    private final @Nullable String directory;
-    private final Boolean initializeFileSystem;
-    private final @Nullable String storageAccountName;
-    private final @Nullable String tenantId;
+    private String clientId;
+    private String clientSecretKey;
+    private String clientSecretScope;
+    private @Nullable String containerName;
+    private @Nullable String directory;
+    private Boolean initializeFileSystem;
+    private @Nullable String storageAccountName;
+    private @Nullable String tenantId;
 
-    @CustomType.Constructor
-    private MountAbfs(
-        @CustomType.Parameter("clientId") String clientId,
-        @CustomType.Parameter("clientSecretKey") String clientSecretKey,
-        @CustomType.Parameter("clientSecretScope") String clientSecretScope,
-        @CustomType.Parameter("containerName") @Nullable String containerName,
-        @CustomType.Parameter("directory") @Nullable String directory,
-        @CustomType.Parameter("initializeFileSystem") Boolean initializeFileSystem,
-        @CustomType.Parameter("storageAccountName") @Nullable String storageAccountName,
-        @CustomType.Parameter("tenantId") @Nullable String tenantId) {
-        this.clientId = clientId;
-        this.clientSecretKey = clientSecretKey;
-        this.clientSecretScope = clientSecretScope;
-        this.containerName = containerName;
-        this.directory = directory;
-        this.initializeFileSystem = initializeFileSystem;
-        this.storageAccountName = storageAccountName;
-        this.tenantId = tenantId;
-    }
-
+    private MountAbfs() {}
     public String clientId() {
         return this.clientId;
     }
@@ -73,7 +54,7 @@ public final class MountAbfs {
     public static Builder builder(MountAbfs defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clientId;
         private String clientSecretKey;
@@ -83,11 +64,7 @@ public final class MountAbfs {
         private Boolean initializeFileSystem;
         private @Nullable String storageAccountName;
         private @Nullable String tenantId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MountAbfs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientId = defaults.clientId;
@@ -100,39 +77,57 @@ public final class MountAbfs {
     	      this.tenantId = defaults.tenantId;
         }
 
+        @CustomType.Setter
         public Builder clientId(String clientId) {
             this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecretKey(String clientSecretKey) {
             this.clientSecretKey = Objects.requireNonNull(clientSecretKey);
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecretScope(String clientSecretScope) {
             this.clientSecretScope = Objects.requireNonNull(clientSecretScope);
             return this;
         }
+        @CustomType.Setter
         public Builder containerName(@Nullable String containerName) {
             this.containerName = containerName;
             return this;
         }
+        @CustomType.Setter
         public Builder directory(@Nullable String directory) {
             this.directory = directory;
             return this;
         }
+        @CustomType.Setter
         public Builder initializeFileSystem(Boolean initializeFileSystem) {
             this.initializeFileSystem = Objects.requireNonNull(initializeFileSystem);
             return this;
         }
+        @CustomType.Setter
         public Builder storageAccountName(@Nullable String storageAccountName) {
             this.storageAccountName = storageAccountName;
             return this;
         }
+        @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
             this.tenantId = tenantId;
             return this;
-        }        public MountAbfs build() {
-            return new MountAbfs(clientId, clientSecretKey, clientSecretScope, containerName, directory, initializeFileSystem, storageAccountName, tenantId);
+        }
+        public MountAbfs build() {
+            final var o = new MountAbfs();
+            o.clientId = clientId;
+            o.clientSecretKey = clientSecretKey;
+            o.clientSecretScope = clientSecretScope;
+            o.containerName = containerName;
+            o.directory = directory;
+            o.initializeFileSystem = initializeFileSystem;
+            o.storageAccountName = storageAccountName;
+            o.tenantId = tenantId;
+            return o;
         }
     }
 }

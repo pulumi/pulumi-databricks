@@ -13,42 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobEmailNotifications {
-    private final @Nullable Boolean alertOnLastAttempt;
+    private @Nullable Boolean alertOnLastAttempt;
     /**
      * @return (Bool) don&#39;t send alert for skipped runs
      * 
      */
-    private final @Nullable Boolean noAlertForSkippedRuns;
+    private @Nullable Boolean noAlertForSkippedRuns;
     /**
      * @return (List) list of emails to notify on failure
      * 
      */
-    private final @Nullable List<String> onFailures;
+    private @Nullable List<String> onFailures;
     /**
      * @return (List) list of emails to notify on failure
      * 
      */
-    private final @Nullable List<String> onStarts;
+    private @Nullable List<String> onStarts;
     /**
      * @return (List) list of emails to notify on failure
      * 
      */
-    private final @Nullable List<String> onSuccesses;
+    private @Nullable List<String> onSuccesses;
 
-    @CustomType.Constructor
-    private JobEmailNotifications(
-        @CustomType.Parameter("alertOnLastAttempt") @Nullable Boolean alertOnLastAttempt,
-        @CustomType.Parameter("noAlertForSkippedRuns") @Nullable Boolean noAlertForSkippedRuns,
-        @CustomType.Parameter("onFailures") @Nullable List<String> onFailures,
-        @CustomType.Parameter("onStarts") @Nullable List<String> onStarts,
-        @CustomType.Parameter("onSuccesses") @Nullable List<String> onSuccesses) {
-        this.alertOnLastAttempt = alertOnLastAttempt;
-        this.noAlertForSkippedRuns = noAlertForSkippedRuns;
-        this.onFailures = onFailures;
-        this.onStarts = onStarts;
-        this.onSuccesses = onSuccesses;
-    }
-
+    private JobEmailNotifications() {}
     public Optional<Boolean> alertOnLastAttempt() {
         return Optional.ofNullable(this.alertOnLastAttempt);
     }
@@ -88,18 +75,14 @@ public final class JobEmailNotifications {
     public static Builder builder(JobEmailNotifications defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean alertOnLastAttempt;
         private @Nullable Boolean noAlertForSkippedRuns;
         private @Nullable List<String> onFailures;
         private @Nullable List<String> onStarts;
         private @Nullable List<String> onSuccesses;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobEmailNotifications defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alertOnLastAttempt = defaults.alertOnLastAttempt;
@@ -109,14 +92,17 @@ public final class JobEmailNotifications {
     	      this.onSuccesses = defaults.onSuccesses;
         }
 
+        @CustomType.Setter
         public Builder alertOnLastAttempt(@Nullable Boolean alertOnLastAttempt) {
             this.alertOnLastAttempt = alertOnLastAttempt;
             return this;
         }
+        @CustomType.Setter
         public Builder noAlertForSkippedRuns(@Nullable Boolean noAlertForSkippedRuns) {
             this.noAlertForSkippedRuns = noAlertForSkippedRuns;
             return this;
         }
+        @CustomType.Setter
         public Builder onFailures(@Nullable List<String> onFailures) {
             this.onFailures = onFailures;
             return this;
@@ -124,6 +110,7 @@ public final class JobEmailNotifications {
         public Builder onFailures(String... onFailures) {
             return onFailures(List.of(onFailures));
         }
+        @CustomType.Setter
         public Builder onStarts(@Nullable List<String> onStarts) {
             this.onStarts = onStarts;
             return this;
@@ -131,14 +118,22 @@ public final class JobEmailNotifications {
         public Builder onStarts(String... onStarts) {
             return onStarts(List.of(onStarts));
         }
+        @CustomType.Setter
         public Builder onSuccesses(@Nullable List<String> onSuccesses) {
             this.onSuccesses = onSuccesses;
             return this;
         }
         public Builder onSuccesses(String... onSuccesses) {
             return onSuccesses(List.of(onSuccesses));
-        }        public JobEmailNotifications build() {
-            return new JobEmailNotifications(alertOnLastAttempt, noAlertForSkippedRuns, onFailures, onStarts, onSuccesses);
+        }
+        public JobEmailNotifications build() {
+            final var o = new JobEmailNotifications();
+            o.alertOnLastAttempt = alertOnLastAttempt;
+            o.noAlertForSkippedRuns = noAlertForSkippedRuns;
+            o.onFailures = onFailures;
+            o.onStarts = onStarts;
+            o.onSuccesses = onSuccesses;
+            return o;
         }
     }
 }

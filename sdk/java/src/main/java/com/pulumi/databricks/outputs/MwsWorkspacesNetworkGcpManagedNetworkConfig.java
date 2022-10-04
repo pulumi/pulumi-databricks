@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class MwsWorkspacesNetworkGcpManagedNetworkConfig {
-    private final String gkeClusterPodIpRange;
-    private final String gkeClusterServiceIpRange;
-    private final String subnetCidr;
+    private String gkeClusterPodIpRange;
+    private String gkeClusterServiceIpRange;
+    private String subnetCidr;
 
-    @CustomType.Constructor
-    private MwsWorkspacesNetworkGcpManagedNetworkConfig(
-        @CustomType.Parameter("gkeClusterPodIpRange") String gkeClusterPodIpRange,
-        @CustomType.Parameter("gkeClusterServiceIpRange") String gkeClusterServiceIpRange,
-        @CustomType.Parameter("subnetCidr") String subnetCidr) {
-        this.gkeClusterPodIpRange = gkeClusterPodIpRange;
-        this.gkeClusterServiceIpRange = gkeClusterServiceIpRange;
-        this.subnetCidr = subnetCidr;
-    }
-
+    private MwsWorkspacesNetworkGcpManagedNetworkConfig() {}
     public String gkeClusterPodIpRange() {
         return this.gkeClusterPodIpRange;
     }
@@ -40,16 +31,12 @@ public final class MwsWorkspacesNetworkGcpManagedNetworkConfig {
     public static Builder builder(MwsWorkspacesNetworkGcpManagedNetworkConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String gkeClusterPodIpRange;
         private String gkeClusterServiceIpRange;
         private String subnetCidr;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MwsWorkspacesNetworkGcpManagedNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gkeClusterPodIpRange = defaults.gkeClusterPodIpRange;
@@ -57,19 +44,27 @@ public final class MwsWorkspacesNetworkGcpManagedNetworkConfig {
     	      this.subnetCidr = defaults.subnetCidr;
         }
 
+        @CustomType.Setter
         public Builder gkeClusterPodIpRange(String gkeClusterPodIpRange) {
             this.gkeClusterPodIpRange = Objects.requireNonNull(gkeClusterPodIpRange);
             return this;
         }
+        @CustomType.Setter
         public Builder gkeClusterServiceIpRange(String gkeClusterServiceIpRange) {
             this.gkeClusterServiceIpRange = Objects.requireNonNull(gkeClusterServiceIpRange);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetCidr(String subnetCidr) {
             this.subnetCidr = Objects.requireNonNull(subnetCidr);
             return this;
-        }        public MwsWorkspacesNetworkGcpManagedNetworkConfig build() {
-            return new MwsWorkspacesNetworkGcpManagedNetworkConfig(gkeClusterPodIpRange, gkeClusterServiceIpRange, subnetCidr);
+        }
+        public MwsWorkspacesNetworkGcpManagedNetworkConfig build() {
+            final var o = new MwsWorkspacesNetworkGcpManagedNetworkConfig();
+            o.gkeClusterPodIpRange = gkeClusterPodIpRange;
+            o.gkeClusterServiceIpRange = gkeClusterServiceIpRange;
+            o.subnetCidr = subnetCidr;
+            return o;
         }
     }
 }

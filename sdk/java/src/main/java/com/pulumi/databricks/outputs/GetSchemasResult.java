@@ -10,28 +10,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSchemasResult {
-    private final String catalogName;
+    private String catalogName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return set of databricks.Schema full names: *`catalog`.`schema`*
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
 
-    @CustomType.Constructor
-    private GetSchemasResult(
-        @CustomType.Parameter("catalogName") String catalogName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids) {
-        this.catalogName = catalogName;
-        this.id = id;
-        this.ids = ids;
-    }
-
+    private GetSchemasResult() {}
     public String catalogName() {
         return this.catalogName;
     }
@@ -57,16 +48,12 @@ public final class GetSchemasResult {
     public static Builder builder(GetSchemasResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String catalogName;
         private String id;
         private List<String> ids;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSchemasResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.catalogName = defaults.catalogName;
@@ -74,22 +61,30 @@ public final class GetSchemasResult {
     	      this.ids = defaults.ids;
         }
 
+        @CustomType.Setter
         public Builder catalogName(String catalogName) {
             this.catalogName = Objects.requireNonNull(catalogName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
         }
         public Builder ids(String... ids) {
             return ids(List.of(ids));
-        }        public GetSchemasResult build() {
-            return new GetSchemasResult(catalogName, id, ids);
+        }
+        public GetSchemasResult build() {
+            final var o = new GetSchemasResult();
+            o.catalogName = catalogName;
+            o.id = id;
+            o.ids = ids;
+            return o;
         }
     }
 }

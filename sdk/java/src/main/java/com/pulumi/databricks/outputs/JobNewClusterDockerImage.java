@@ -12,21 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobNewClusterDockerImage {
-    private final @Nullable JobNewClusterDockerImageBasicAuth basicAuth;
+    private @Nullable JobNewClusterDockerImageBasicAuth basicAuth;
     /**
      * @return URL of the job on the given workspace
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private JobNewClusterDockerImage(
-        @CustomType.Parameter("basicAuth") @Nullable JobNewClusterDockerImageBasicAuth basicAuth,
-        @CustomType.Parameter("url") String url) {
-        this.basicAuth = basicAuth;
-        this.url = url;
-    }
-
+    private JobNewClusterDockerImage() {}
     public Optional<JobNewClusterDockerImageBasicAuth> basicAuth() {
         return Optional.ofNullable(this.basicAuth);
     }
@@ -45,30 +38,32 @@ public final class JobNewClusterDockerImage {
     public static Builder builder(JobNewClusterDockerImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable JobNewClusterDockerImageBasicAuth basicAuth;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobNewClusterDockerImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.basicAuth = defaults.basicAuth;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder basicAuth(@Nullable JobNewClusterDockerImageBasicAuth basicAuth) {
             this.basicAuth = basicAuth;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public JobNewClusterDockerImage build() {
-            return new JobNewClusterDockerImage(basicAuth, url);
+        }
+        public JobNewClusterDockerImage build() {
+            final var o = new JobNewClusterDockerImage();
+            o.basicAuth = basicAuth;
+            o.url = url;
+            return o;
         }
     }
 }

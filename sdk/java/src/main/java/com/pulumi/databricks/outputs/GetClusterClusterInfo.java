@@ -28,202 +28,115 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterInfo {
-    private final @Nullable GetClusterClusterInfoAutoscale autoscale;
+    private @Nullable GetClusterClusterInfoAutoscale autoscale;
     /**
      * @return Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
      * 
      */
-    private final @Nullable Integer autoterminationMinutes;
-    private final @Nullable GetClusterClusterInfoAwsAttributes awsAttributes;
-    private final @Nullable GetClusterClusterInfoAzureAttributes azureAttributes;
-    private final @Nullable Double clusterCores;
+    private @Nullable Integer autoterminationMinutes;
+    private @Nullable GetClusterClusterInfoAwsAttributes awsAttributes;
+    private @Nullable GetClusterClusterInfoAzureAttributes azureAttributes;
+    private @Nullable Double clusterCores;
     /**
      * @return The id of the cluster
      * 
      */
-    private final @Nullable String clusterId;
-    private final @Nullable GetClusterClusterInfoClusterLogConf clusterLogConf;
-    private final @Nullable GetClusterClusterInfoClusterLogStatus clusterLogStatus;
-    private final @Nullable Integer clusterMemoryMb;
+    private @Nullable String clusterId;
+    private @Nullable GetClusterClusterInfoClusterLogConf clusterLogConf;
+    private @Nullable GetClusterClusterInfoClusterLogStatus clusterLogStatus;
+    private @Nullable Integer clusterMemoryMb;
     /**
      * @return Cluster name, which doesn’t have to be unique.
      * 
      */
-    private final @Nullable String clusterName;
-    private final @Nullable String clusterSource;
-    private final @Nullable String creatorUserName;
+    private @Nullable String clusterName;
+    private @Nullable String clusterSource;
+    private @Nullable String creatorUserName;
     /**
      * @return Additional tags for cluster resources.
      * 
      */
-    private final @Nullable Map<String,Object> customTags;
+    private @Nullable Map<String,Object> customTags;
     /**
      * @return Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      * 
      */
-    private final @Nullable String dataSecurityMode;
-    private final Map<String,Object> defaultTags;
-    private final @Nullable GetClusterClusterInfoDockerImage dockerImage;
-    private final @Nullable GetClusterClusterInfoDriver driver;
+    private @Nullable String dataSecurityMode;
+    private Map<String,Object> defaultTags;
+    private @Nullable GetClusterClusterInfoDockerImage dockerImage;
+    private @Nullable GetClusterClusterInfoDriver driver;
     /**
      * @return similar to `instance_pool_id`, but for driver node.
      * 
      */
-    private final String driverInstancePoolId;
+    private String driverInstancePoolId;
     /**
      * @return The node type of the Spark driver.
      * 
      */
-    private final @Nullable String driverNodeTypeId;
+    private @Nullable String driverNodeTypeId;
     /**
      * @return Use autoscaling local storage.
      * 
      */
-    private final @Nullable Boolean enableElasticDisk;
+    private @Nullable Boolean enableElasticDisk;
     /**
      * @return Enable local disk encryption.
      * 
      */
-    private final @Nullable Boolean enableLocalDiskEncryption;
-    private final @Nullable List<GetClusterClusterInfoExecutor> executors;
-    private final @Nullable GetClusterClusterInfoGcpAttributes gcpAttributes;
-    private final @Nullable List<GetClusterClusterInfoInitScript> initScripts;
-    private final @Nullable String instancePoolId;
-    private final @Nullable Integer jdbcPort;
-    private final @Nullable Integer lastActivityTime;
-    private final @Nullable Integer lastStateLossTime;
+    private @Nullable Boolean enableLocalDiskEncryption;
+    private @Nullable List<GetClusterClusterInfoExecutor> executors;
+    private @Nullable GetClusterClusterInfoGcpAttributes gcpAttributes;
+    private @Nullable List<GetClusterClusterInfoInitScript> initScripts;
+    private @Nullable String instancePoolId;
+    private @Nullable Integer jdbcPort;
+    private @Nullable Integer lastActivityTime;
+    private @Nullable Integer lastStateLossTime;
     /**
      * @return Any supported databricks.getNodeType id.
      * * `instance_pool_id` The pool of idle instances the cluster is attached to.
      * 
      */
-    private final @Nullable String nodeTypeId;
-    private final @Nullable Integer numWorkers;
+    private @Nullable String nodeTypeId;
+    private @Nullable Integer numWorkers;
     /**
      * @return Identifier of Cluster Policy to validate cluster and preset certain defaults.
      * 
      */
-    private final @Nullable String policyId;
+    private @Nullable String policyId;
     /**
      * @return The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      * 
      */
-    private final @Nullable String singleUserName;
+    private @Nullable String singleUserName;
     /**
      * @return Map with key-value pairs to fine-tune Spark clusters.
      * 
      */
-    private final @Nullable Map<String,Object> sparkConf;
-    private final @Nullable Integer sparkContextId;
+    private @Nullable Map<String,Object> sparkConf;
+    private @Nullable Integer sparkContextId;
     /**
      * @return Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
      * 
      */
-    private final @Nullable Map<String,Object> sparkEnvVars;
+    private @Nullable Map<String,Object> sparkEnvVars;
     /**
      * @return [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      * 
      */
-    private final String sparkVersion;
+    private String sparkVersion;
     /**
      * @return SSH public key contents that will be added to each Spark node in this cluster.
      * 
      */
-    private final @Nullable List<String> sshPublicKeys;
-    private final @Nullable Integer startTime;
-    private final String state;
-    private final @Nullable String stateMessage;
-    private final @Nullable Integer terminateTime;
-    private final @Nullable GetClusterClusterInfoTerminationReason terminationReason;
+    private @Nullable List<String> sshPublicKeys;
+    private @Nullable Integer startTime;
+    private String state;
+    private @Nullable String stateMessage;
+    private @Nullable Integer terminateTime;
+    private @Nullable GetClusterClusterInfoTerminationReason terminationReason;
 
-    @CustomType.Constructor
-    private GetClusterClusterInfo(
-        @CustomType.Parameter("autoscale") @Nullable GetClusterClusterInfoAutoscale autoscale,
-        @CustomType.Parameter("autoterminationMinutes") @Nullable Integer autoterminationMinutes,
-        @CustomType.Parameter("awsAttributes") @Nullable GetClusterClusterInfoAwsAttributes awsAttributes,
-        @CustomType.Parameter("azureAttributes") @Nullable GetClusterClusterInfoAzureAttributes azureAttributes,
-        @CustomType.Parameter("clusterCores") @Nullable Double clusterCores,
-        @CustomType.Parameter("clusterId") @Nullable String clusterId,
-        @CustomType.Parameter("clusterLogConf") @Nullable GetClusterClusterInfoClusterLogConf clusterLogConf,
-        @CustomType.Parameter("clusterLogStatus") @Nullable GetClusterClusterInfoClusterLogStatus clusterLogStatus,
-        @CustomType.Parameter("clusterMemoryMb") @Nullable Integer clusterMemoryMb,
-        @CustomType.Parameter("clusterName") @Nullable String clusterName,
-        @CustomType.Parameter("clusterSource") @Nullable String clusterSource,
-        @CustomType.Parameter("creatorUserName") @Nullable String creatorUserName,
-        @CustomType.Parameter("customTags") @Nullable Map<String,Object> customTags,
-        @CustomType.Parameter("dataSecurityMode") @Nullable String dataSecurityMode,
-        @CustomType.Parameter("defaultTags") Map<String,Object> defaultTags,
-        @CustomType.Parameter("dockerImage") @Nullable GetClusterClusterInfoDockerImage dockerImage,
-        @CustomType.Parameter("driver") @Nullable GetClusterClusterInfoDriver driver,
-        @CustomType.Parameter("driverInstancePoolId") String driverInstancePoolId,
-        @CustomType.Parameter("driverNodeTypeId") @Nullable String driverNodeTypeId,
-        @CustomType.Parameter("enableElasticDisk") @Nullable Boolean enableElasticDisk,
-        @CustomType.Parameter("enableLocalDiskEncryption") @Nullable Boolean enableLocalDiskEncryption,
-        @CustomType.Parameter("executors") @Nullable List<GetClusterClusterInfoExecutor> executors,
-        @CustomType.Parameter("gcpAttributes") @Nullable GetClusterClusterInfoGcpAttributes gcpAttributes,
-        @CustomType.Parameter("initScripts") @Nullable List<GetClusterClusterInfoInitScript> initScripts,
-        @CustomType.Parameter("instancePoolId") @Nullable String instancePoolId,
-        @CustomType.Parameter("jdbcPort") @Nullable Integer jdbcPort,
-        @CustomType.Parameter("lastActivityTime") @Nullable Integer lastActivityTime,
-        @CustomType.Parameter("lastStateLossTime") @Nullable Integer lastStateLossTime,
-        @CustomType.Parameter("nodeTypeId") @Nullable String nodeTypeId,
-        @CustomType.Parameter("numWorkers") @Nullable Integer numWorkers,
-        @CustomType.Parameter("policyId") @Nullable String policyId,
-        @CustomType.Parameter("singleUserName") @Nullable String singleUserName,
-        @CustomType.Parameter("sparkConf") @Nullable Map<String,Object> sparkConf,
-        @CustomType.Parameter("sparkContextId") @Nullable Integer sparkContextId,
-        @CustomType.Parameter("sparkEnvVars") @Nullable Map<String,Object> sparkEnvVars,
-        @CustomType.Parameter("sparkVersion") String sparkVersion,
-        @CustomType.Parameter("sshPublicKeys") @Nullable List<String> sshPublicKeys,
-        @CustomType.Parameter("startTime") @Nullable Integer startTime,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("stateMessage") @Nullable String stateMessage,
-        @CustomType.Parameter("terminateTime") @Nullable Integer terminateTime,
-        @CustomType.Parameter("terminationReason") @Nullable GetClusterClusterInfoTerminationReason terminationReason) {
-        this.autoscale = autoscale;
-        this.autoterminationMinutes = autoterminationMinutes;
-        this.awsAttributes = awsAttributes;
-        this.azureAttributes = azureAttributes;
-        this.clusterCores = clusterCores;
-        this.clusterId = clusterId;
-        this.clusterLogConf = clusterLogConf;
-        this.clusterLogStatus = clusterLogStatus;
-        this.clusterMemoryMb = clusterMemoryMb;
-        this.clusterName = clusterName;
-        this.clusterSource = clusterSource;
-        this.creatorUserName = creatorUserName;
-        this.customTags = customTags;
-        this.dataSecurityMode = dataSecurityMode;
-        this.defaultTags = defaultTags;
-        this.dockerImage = dockerImage;
-        this.driver = driver;
-        this.driverInstancePoolId = driverInstancePoolId;
-        this.driverNodeTypeId = driverNodeTypeId;
-        this.enableElasticDisk = enableElasticDisk;
-        this.enableLocalDiskEncryption = enableLocalDiskEncryption;
-        this.executors = executors;
-        this.gcpAttributes = gcpAttributes;
-        this.initScripts = initScripts;
-        this.instancePoolId = instancePoolId;
-        this.jdbcPort = jdbcPort;
-        this.lastActivityTime = lastActivityTime;
-        this.lastStateLossTime = lastStateLossTime;
-        this.nodeTypeId = nodeTypeId;
-        this.numWorkers = numWorkers;
-        this.policyId = policyId;
-        this.singleUserName = singleUserName;
-        this.sparkConf = sparkConf;
-        this.sparkContextId = sparkContextId;
-        this.sparkEnvVars = sparkEnvVars;
-        this.sparkVersion = sparkVersion;
-        this.sshPublicKeys = sshPublicKeys;
-        this.startTime = startTime;
-        this.state = state;
-        this.stateMessage = stateMessage;
-        this.terminateTime = terminateTime;
-        this.terminationReason = terminationReason;
-    }
-
+    private GetClusterClusterInfo() {}
     public Optional<GetClusterClusterInfoAutoscale> autoscale() {
         return Optional.ofNullable(this.autoscale);
     }
@@ -423,7 +336,7 @@ public final class GetClusterClusterInfo {
     public static Builder builder(GetClusterClusterInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GetClusterClusterInfoAutoscale autoscale;
         private @Nullable Integer autoterminationMinutes;
@@ -467,11 +380,7 @@ public final class GetClusterClusterInfo {
         private @Nullable String stateMessage;
         private @Nullable Integer terminateTime;
         private @Nullable GetClusterClusterInfoTerminationReason terminationReason;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscale = defaults.autoscale;
@@ -518,90 +427,112 @@ public final class GetClusterClusterInfo {
     	      this.terminationReason = defaults.terminationReason;
         }
 
+        @CustomType.Setter
         public Builder autoscale(@Nullable GetClusterClusterInfoAutoscale autoscale) {
             this.autoscale = autoscale;
             return this;
         }
+        @CustomType.Setter
         public Builder autoterminationMinutes(@Nullable Integer autoterminationMinutes) {
             this.autoterminationMinutes = autoterminationMinutes;
             return this;
         }
+        @CustomType.Setter
         public Builder awsAttributes(@Nullable GetClusterClusterInfoAwsAttributes awsAttributes) {
             this.awsAttributes = awsAttributes;
             return this;
         }
+        @CustomType.Setter
         public Builder azureAttributes(@Nullable GetClusterClusterInfoAzureAttributes azureAttributes) {
             this.azureAttributes = azureAttributes;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterCores(@Nullable Double clusterCores) {
             this.clusterCores = clusterCores;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
             this.clusterId = clusterId;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterLogConf(@Nullable GetClusterClusterInfoClusterLogConf clusterLogConf) {
             this.clusterLogConf = clusterLogConf;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterLogStatus(@Nullable GetClusterClusterInfoClusterLogStatus clusterLogStatus) {
             this.clusterLogStatus = clusterLogStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterMemoryMb(@Nullable Integer clusterMemoryMb) {
             this.clusterMemoryMb = clusterMemoryMb;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterName(@Nullable String clusterName) {
             this.clusterName = clusterName;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterSource(@Nullable String clusterSource) {
             this.clusterSource = clusterSource;
             return this;
         }
+        @CustomType.Setter
         public Builder creatorUserName(@Nullable String creatorUserName) {
             this.creatorUserName = creatorUserName;
             return this;
         }
+        @CustomType.Setter
         public Builder customTags(@Nullable Map<String,Object> customTags) {
             this.customTags = customTags;
             return this;
         }
+        @CustomType.Setter
         public Builder dataSecurityMode(@Nullable String dataSecurityMode) {
             this.dataSecurityMode = dataSecurityMode;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultTags(Map<String,Object> defaultTags) {
             this.defaultTags = Objects.requireNonNull(defaultTags);
             return this;
         }
+        @CustomType.Setter
         public Builder dockerImage(@Nullable GetClusterClusterInfoDockerImage dockerImage) {
             this.dockerImage = dockerImage;
             return this;
         }
+        @CustomType.Setter
         public Builder driver(@Nullable GetClusterClusterInfoDriver driver) {
             this.driver = driver;
             return this;
         }
+        @CustomType.Setter
         public Builder driverInstancePoolId(String driverInstancePoolId) {
             this.driverInstancePoolId = Objects.requireNonNull(driverInstancePoolId);
             return this;
         }
+        @CustomType.Setter
         public Builder driverNodeTypeId(@Nullable String driverNodeTypeId) {
             this.driverNodeTypeId = driverNodeTypeId;
             return this;
         }
+        @CustomType.Setter
         public Builder enableElasticDisk(@Nullable Boolean enableElasticDisk) {
             this.enableElasticDisk = enableElasticDisk;
             return this;
         }
+        @CustomType.Setter
         public Builder enableLocalDiskEncryption(@Nullable Boolean enableLocalDiskEncryption) {
             this.enableLocalDiskEncryption = enableLocalDiskEncryption;
             return this;
         }
+        @CustomType.Setter
         public Builder executors(@Nullable List<GetClusterClusterInfoExecutor> executors) {
             this.executors = executors;
             return this;
@@ -609,10 +540,12 @@ public final class GetClusterClusterInfo {
         public Builder executors(GetClusterClusterInfoExecutor... executors) {
             return executors(List.of(executors));
         }
+        @CustomType.Setter
         public Builder gcpAttributes(@Nullable GetClusterClusterInfoGcpAttributes gcpAttributes) {
             this.gcpAttributes = gcpAttributes;
             return this;
         }
+        @CustomType.Setter
         public Builder initScripts(@Nullable List<GetClusterClusterInfoInitScript> initScripts) {
             this.initScripts = initScripts;
             return this;
@@ -620,54 +553,67 @@ public final class GetClusterClusterInfo {
         public Builder initScripts(GetClusterClusterInfoInitScript... initScripts) {
             return initScripts(List.of(initScripts));
         }
+        @CustomType.Setter
         public Builder instancePoolId(@Nullable String instancePoolId) {
             this.instancePoolId = instancePoolId;
             return this;
         }
+        @CustomType.Setter
         public Builder jdbcPort(@Nullable Integer jdbcPort) {
             this.jdbcPort = jdbcPort;
             return this;
         }
+        @CustomType.Setter
         public Builder lastActivityTime(@Nullable Integer lastActivityTime) {
             this.lastActivityTime = lastActivityTime;
             return this;
         }
+        @CustomType.Setter
         public Builder lastStateLossTime(@Nullable Integer lastStateLossTime) {
             this.lastStateLossTime = lastStateLossTime;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeTypeId(@Nullable String nodeTypeId) {
             this.nodeTypeId = nodeTypeId;
             return this;
         }
+        @CustomType.Setter
         public Builder numWorkers(@Nullable Integer numWorkers) {
             this.numWorkers = numWorkers;
             return this;
         }
+        @CustomType.Setter
         public Builder policyId(@Nullable String policyId) {
             this.policyId = policyId;
             return this;
         }
+        @CustomType.Setter
         public Builder singleUserName(@Nullable String singleUserName) {
             this.singleUserName = singleUserName;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkConf(@Nullable Map<String,Object> sparkConf) {
             this.sparkConf = sparkConf;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkContextId(@Nullable Integer sparkContextId) {
             this.sparkContextId = sparkContextId;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkEnvVars(@Nullable Map<String,Object> sparkEnvVars) {
             this.sparkEnvVars = sparkEnvVars;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkVersion(String sparkVersion) {
             this.sparkVersion = Objects.requireNonNull(sparkVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder sshPublicKeys(@Nullable List<String> sshPublicKeys) {
             this.sshPublicKeys = sshPublicKeys;
             return this;
@@ -675,27 +621,76 @@ public final class GetClusterClusterInfo {
         public Builder sshPublicKeys(String... sshPublicKeys) {
             return sshPublicKeys(List.of(sshPublicKeys));
         }
+        @CustomType.Setter
         public Builder startTime(@Nullable Integer startTime) {
             this.startTime = startTime;
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder stateMessage(@Nullable String stateMessage) {
             this.stateMessage = stateMessage;
             return this;
         }
+        @CustomType.Setter
         public Builder terminateTime(@Nullable Integer terminateTime) {
             this.terminateTime = terminateTime;
             return this;
         }
+        @CustomType.Setter
         public Builder terminationReason(@Nullable GetClusterClusterInfoTerminationReason terminationReason) {
             this.terminationReason = terminationReason;
             return this;
-        }        public GetClusterClusterInfo build() {
-            return new GetClusterClusterInfo(autoscale, autoterminationMinutes, awsAttributes, azureAttributes, clusterCores, clusterId, clusterLogConf, clusterLogStatus, clusterMemoryMb, clusterName, clusterSource, creatorUserName, customTags, dataSecurityMode, defaultTags, dockerImage, driver, driverInstancePoolId, driverNodeTypeId, enableElasticDisk, enableLocalDiskEncryption, executors, gcpAttributes, initScripts, instancePoolId, jdbcPort, lastActivityTime, lastStateLossTime, nodeTypeId, numWorkers, policyId, singleUserName, sparkConf, sparkContextId, sparkEnvVars, sparkVersion, sshPublicKeys, startTime, state, stateMessage, terminateTime, terminationReason);
+        }
+        public GetClusterClusterInfo build() {
+            final var o = new GetClusterClusterInfo();
+            o.autoscale = autoscale;
+            o.autoterminationMinutes = autoterminationMinutes;
+            o.awsAttributes = awsAttributes;
+            o.azureAttributes = azureAttributes;
+            o.clusterCores = clusterCores;
+            o.clusterId = clusterId;
+            o.clusterLogConf = clusterLogConf;
+            o.clusterLogStatus = clusterLogStatus;
+            o.clusterMemoryMb = clusterMemoryMb;
+            o.clusterName = clusterName;
+            o.clusterSource = clusterSource;
+            o.creatorUserName = creatorUserName;
+            o.customTags = customTags;
+            o.dataSecurityMode = dataSecurityMode;
+            o.defaultTags = defaultTags;
+            o.dockerImage = dockerImage;
+            o.driver = driver;
+            o.driverInstancePoolId = driverInstancePoolId;
+            o.driverNodeTypeId = driverNodeTypeId;
+            o.enableElasticDisk = enableElasticDisk;
+            o.enableLocalDiskEncryption = enableLocalDiskEncryption;
+            o.executors = executors;
+            o.gcpAttributes = gcpAttributes;
+            o.initScripts = initScripts;
+            o.instancePoolId = instancePoolId;
+            o.jdbcPort = jdbcPort;
+            o.lastActivityTime = lastActivityTime;
+            o.lastStateLossTime = lastStateLossTime;
+            o.nodeTypeId = nodeTypeId;
+            o.numWorkers = numWorkers;
+            o.policyId = policyId;
+            o.singleUserName = singleUserName;
+            o.sparkConf = sparkConf;
+            o.sparkContextId = sparkContextId;
+            o.sparkEnvVars = sparkEnvVars;
+            o.sparkVersion = sparkVersion;
+            o.sshPublicKeys = sshPublicKeys;
+            o.startTime = startTime;
+            o.state = state;
+            o.stateMessage = stateMessage;
+            o.terminateTime = terminateTime;
+            o.terminationReason = terminationReason;
+            return o;
         }
     }
 }

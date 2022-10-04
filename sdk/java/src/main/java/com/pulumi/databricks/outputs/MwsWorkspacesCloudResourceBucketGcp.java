@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class MwsWorkspacesCloudResourceBucketGcp {
-    private final String projectId;
+    private String projectId;
 
-    @CustomType.Constructor
-    private MwsWorkspacesCloudResourceBucketGcp(@CustomType.Parameter("projectId") String projectId) {
-        this.projectId = projectId;
-    }
-
+    private MwsWorkspacesCloudResourceBucketGcp() {}
     public String projectId() {
         return this.projectId;
     }
@@ -27,24 +23,24 @@ public final class MwsWorkspacesCloudResourceBucketGcp {
     public static Builder builder(MwsWorkspacesCloudResourceBucketGcp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String projectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MwsWorkspacesCloudResourceBucketGcp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
-        }        public MwsWorkspacesCloudResourceBucketGcp build() {
-            return new MwsWorkspacesCloudResourceBucketGcp(projectId);
+        }
+        public MwsWorkspacesCloudResourceBucketGcp build() {
+            final var o = new MwsWorkspacesCloudResourceBucketGcp();
+            o.projectId = projectId;
+            return o;
         }
     }
 }

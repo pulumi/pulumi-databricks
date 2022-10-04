@@ -12,23 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsWorkspacesToken {
-    private final @Nullable String comment;
-    private final @Nullable Integer lifetimeSeconds;
-    private final @Nullable String tokenId;
-    private final @Nullable String tokenValue;
+    private @Nullable String comment;
+    private @Nullable Integer lifetimeSeconds;
+    private @Nullable String tokenId;
+    private @Nullable String tokenValue;
 
-    @CustomType.Constructor
-    private MwsWorkspacesToken(
-        @CustomType.Parameter("comment") @Nullable String comment,
-        @CustomType.Parameter("lifetimeSeconds") @Nullable Integer lifetimeSeconds,
-        @CustomType.Parameter("tokenId") @Nullable String tokenId,
-        @CustomType.Parameter("tokenValue") @Nullable String tokenValue) {
-        this.comment = comment;
-        this.lifetimeSeconds = lifetimeSeconds;
-        this.tokenId = tokenId;
-        this.tokenValue = tokenValue;
-    }
-
+    private MwsWorkspacesToken() {}
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
@@ -49,17 +38,13 @@ public final class MwsWorkspacesToken {
     public static Builder builder(MwsWorkspacesToken defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String comment;
         private @Nullable Integer lifetimeSeconds;
         private @Nullable String tokenId;
         private @Nullable String tokenValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MwsWorkspacesToken defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
@@ -68,23 +53,33 @@ public final class MwsWorkspacesToken {
     	      this.tokenValue = defaults.tokenValue;
         }
 
+        @CustomType.Setter
         public Builder comment(@Nullable String comment) {
             this.comment = comment;
             return this;
         }
+        @CustomType.Setter
         public Builder lifetimeSeconds(@Nullable Integer lifetimeSeconds) {
             this.lifetimeSeconds = lifetimeSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder tokenId(@Nullable String tokenId) {
             this.tokenId = tokenId;
             return this;
         }
+        @CustomType.Setter
         public Builder tokenValue(@Nullable String tokenValue) {
             this.tokenValue = tokenValue;
             return this;
-        }        public MwsWorkspacesToken build() {
-            return new MwsWorkspacesToken(comment, lifetimeSeconds, tokenId, tokenValue);
+        }
+        public MwsWorkspacesToken build() {
+            final var o = new MwsWorkspacesToken();
+            o.comment = comment;
+            o.lifetimeSeconds = lifetimeSeconds;
+            o.tokenId = tokenId;
+            o.tokenValue = tokenValue;
+            return o;
         }
     }
 }

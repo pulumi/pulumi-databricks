@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineFilters {
-    private final @Nullable List<String> excludes;
-    private final @Nullable List<String> includes;
+    private @Nullable List<String> excludes;
+    private @Nullable List<String> includes;
 
-    @CustomType.Constructor
-    private PipelineFilters(
-        @CustomType.Parameter("excludes") @Nullable List<String> excludes,
-        @CustomType.Parameter("includes") @Nullable List<String> includes) {
-        this.excludes = excludes;
-        this.includes = includes;
-    }
-
+    private PipelineFilters() {}
     public List<String> excludes() {
         return this.excludes == null ? List.of() : this.excludes;
     }
@@ -36,21 +29,18 @@ public final class PipelineFilters {
     public static Builder builder(PipelineFilters defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludes;
         private @Nullable List<String> includes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PipelineFilters defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludes = defaults.excludes;
     	      this.includes = defaults.includes;
         }
 
+        @CustomType.Setter
         public Builder excludes(@Nullable List<String> excludes) {
             this.excludes = excludes;
             return this;
@@ -58,14 +48,19 @@ public final class PipelineFilters {
         public Builder excludes(String... excludes) {
             return excludes(List.of(excludes));
         }
+        @CustomType.Setter
         public Builder includes(@Nullable List<String> includes) {
             this.includes = includes;
             return this;
         }
         public Builder includes(String... includes) {
             return includes(List.of(includes));
-        }        public PipelineFilters build() {
-            return new PipelineFilters(excludes, includes);
+        }
+        public PipelineFilters build() {
+            final var o = new PipelineFilters();
+            o.excludes = excludes;
+            o.includes = includes;
+            return o;
         }
     }
 }

@@ -46,11 +46,19 @@ public final class MlflowWebhookHttpUrlSpecArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.enableSslVerification);
     }
 
-    @Import(name="string")
-    private @Nullable Output<String> string;
+    /**
+     * Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+     * 
+     */
+    @Import(name="secret")
+    private @Nullable Output<String> secret;
 
-    public Optional<Output<String>> string() {
-        return Optional.ofNullable(this.string);
+    /**
+     * @return Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+     * 
+     */
+    public Optional<Output<String>> secret() {
+        return Optional.ofNullable(this.secret);
     }
 
     /**
@@ -73,7 +81,7 @@ public final class MlflowWebhookHttpUrlSpecArgs extends com.pulumi.resources.Res
     private MlflowWebhookHttpUrlSpecArgs(MlflowWebhookHttpUrlSpecArgs $) {
         this.authorization = $.authorization;
         this.enableSslVerification = $.enableSslVerification;
-        this.string = $.string;
+        this.secret = $.secret;
         this.url = $.url;
     }
 
@@ -137,13 +145,25 @@ public final class MlflowWebhookHttpUrlSpecArgs extends com.pulumi.resources.Res
             return enableSslVerification(Output.of(enableSslVerification));
         }
 
-        public Builder string(@Nullable Output<String> string) {
-            $.string = string;
+        /**
+         * @param secret Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secret(@Nullable Output<String> secret) {
+            $.secret = secret;
             return this;
         }
 
-        public Builder string(String string) {
-            return string(Output.of(string));
+        /**
+         * @param secret Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secret(String secret) {
+            return secret(Output.of(secret));
         }
 
         /**

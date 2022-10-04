@@ -37,7 +37,7 @@ type InstancePool struct {
 	InstancePoolId                     pulumi.StringOutput                              `pulumi:"instancePoolId"`
 	// (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
 	InstancePoolName pulumi.StringOutput `pulumi:"instancePoolName"`
-	// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling.
+	// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
 	MaxCapacity pulumi.IntPtrOutput `pulumi:"maxCapacity"`
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances pulumi.IntPtrOutput `pulumi:"minIdleInstances"`
@@ -97,7 +97,7 @@ type instancePoolState struct {
 	InstancePoolId                     *string                                  `pulumi:"instancePoolId"`
 	// (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
 	InstancePoolName *string `pulumi:"instancePoolName"`
-	// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling.
+	// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
 	MaxCapacity *int `pulumi:"maxCapacity"`
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances *int `pulumi:"minIdleInstances"`
@@ -123,7 +123,7 @@ type InstancePoolState struct {
 	InstancePoolId                     pulumi.StringPtrInput
 	// (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
 	InstancePoolName pulumi.StringPtrInput
-	// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling.
+	// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
 	MaxCapacity pulumi.IntPtrInput
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances pulumi.IntPtrInput
@@ -153,7 +153,7 @@ type instancePoolArgs struct {
 	InstancePoolId                     *string                                  `pulumi:"instancePoolId"`
 	// (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
 	InstancePoolName string `pulumi:"instancePoolName"`
-	// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling.
+	// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
 	MaxCapacity *int `pulumi:"maxCapacity"`
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances *int `pulumi:"minIdleInstances"`
@@ -180,7 +180,7 @@ type InstancePoolArgs struct {
 	InstancePoolId                     pulumi.StringPtrInput
 	// (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
 	InstancePoolName pulumi.StringInput
-	// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling.
+	// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
 	MaxCapacity pulumi.IntPtrInput
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances pulumi.IntPtrInput
@@ -324,7 +324,7 @@ func (o InstancePoolOutput) InstancePoolName() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringOutput { return v.InstancePoolName }).(pulumi.StringOutput)
 }
 
-// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling.
+// (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
 func (o InstancePoolOutput) MaxCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.IntPtrOutput { return v.MaxCapacity }).(pulumi.IntPtrOutput)
 }

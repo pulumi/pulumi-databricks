@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstancePoolDiskSpecDiskType {
-    private final @Nullable String azureDiskVolumeType;
-    private final @Nullable String ebsVolumeType;
+    private @Nullable String azureDiskVolumeType;
+    private @Nullable String ebsVolumeType;
 
-    @CustomType.Constructor
-    private InstancePoolDiskSpecDiskType(
-        @CustomType.Parameter("azureDiskVolumeType") @Nullable String azureDiskVolumeType,
-        @CustomType.Parameter("ebsVolumeType") @Nullable String ebsVolumeType) {
-        this.azureDiskVolumeType = azureDiskVolumeType;
-        this.ebsVolumeType = ebsVolumeType;
-    }
-
+    private InstancePoolDiskSpecDiskType() {}
     public Optional<String> azureDiskVolumeType() {
         return Optional.ofNullable(this.azureDiskVolumeType);
     }
@@ -36,30 +29,32 @@ public final class InstancePoolDiskSpecDiskType {
     public static Builder builder(InstancePoolDiskSpecDiskType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String azureDiskVolumeType;
         private @Nullable String ebsVolumeType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstancePoolDiskSpecDiskType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.azureDiskVolumeType = defaults.azureDiskVolumeType;
     	      this.ebsVolumeType = defaults.ebsVolumeType;
         }
 
+        @CustomType.Setter
         public Builder azureDiskVolumeType(@Nullable String azureDiskVolumeType) {
             this.azureDiskVolumeType = azureDiskVolumeType;
             return this;
         }
+        @CustomType.Setter
         public Builder ebsVolumeType(@Nullable String ebsVolumeType) {
             this.ebsVolumeType = ebsVolumeType;
             return this;
-        }        public InstancePoolDiskSpecDiskType build() {
-            return new InstancePoolDiskSpecDiskType(azureDiskVolumeType, ebsVolumeType);
+        }
+        public InstancePoolDiskSpecDiskType build() {
+            final var o = new InstancePoolDiskSpecDiskType();
+            o.azureDiskVolumeType = azureDiskVolumeType;
+            o.ebsVolumeType = ebsVolumeType;
+            return o;
         }
     }
 }

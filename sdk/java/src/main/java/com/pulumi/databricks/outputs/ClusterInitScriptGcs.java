@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterInitScriptGcs {
-    private final @Nullable String destination;
+    private @Nullable String destination;
 
-    @CustomType.Constructor
-    private ClusterInitScriptGcs(@CustomType.Parameter("destination") @Nullable String destination) {
-        this.destination = destination;
-    }
-
+    private ClusterInitScriptGcs() {}
     public Optional<String> destination() {
         return Optional.ofNullable(this.destination);
     }
@@ -29,24 +25,24 @@ public final class ClusterInitScriptGcs {
     public static Builder builder(ClusterInitScriptGcs defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String destination;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterInitScriptGcs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destination = defaults.destination;
         }
 
+        @CustomType.Setter
         public Builder destination(@Nullable String destination) {
             this.destination = destination;
             return this;
-        }        public ClusterInitScriptGcs build() {
-            return new ClusterInitScriptGcs(destination);
+        }
+        public ClusterInitScriptGcs build() {
+            final var o = new ClusterInitScriptGcs();
+            o.destination = destination;
+            return o;
         }
     }
 }

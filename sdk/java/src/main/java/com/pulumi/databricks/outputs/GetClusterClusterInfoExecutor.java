@@ -13,32 +13,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterInfoExecutor {
-    private final @Nullable String hostPrivateIp;
-    private final @Nullable String instanceId;
-    private final @Nullable GetClusterClusterInfoExecutorNodeAwsAttributes nodeAwsAttributes;
-    private final @Nullable String nodeId;
-    private final @Nullable String privateIp;
-    private final @Nullable String publicDns;
-    private final @Nullable Integer startTimestamp;
+    private @Nullable String hostPrivateIp;
+    private @Nullable String instanceId;
+    private @Nullable GetClusterClusterInfoExecutorNodeAwsAttributes nodeAwsAttributes;
+    private @Nullable String nodeId;
+    private @Nullable String privateIp;
+    private @Nullable String publicDns;
+    private @Nullable Integer startTimestamp;
 
-    @CustomType.Constructor
-    private GetClusterClusterInfoExecutor(
-        @CustomType.Parameter("hostPrivateIp") @Nullable String hostPrivateIp,
-        @CustomType.Parameter("instanceId") @Nullable String instanceId,
-        @CustomType.Parameter("nodeAwsAttributes") @Nullable GetClusterClusterInfoExecutorNodeAwsAttributes nodeAwsAttributes,
-        @CustomType.Parameter("nodeId") @Nullable String nodeId,
-        @CustomType.Parameter("privateIp") @Nullable String privateIp,
-        @CustomType.Parameter("publicDns") @Nullable String publicDns,
-        @CustomType.Parameter("startTimestamp") @Nullable Integer startTimestamp) {
-        this.hostPrivateIp = hostPrivateIp;
-        this.instanceId = instanceId;
-        this.nodeAwsAttributes = nodeAwsAttributes;
-        this.nodeId = nodeId;
-        this.privateIp = privateIp;
-        this.publicDns = publicDns;
-        this.startTimestamp = startTimestamp;
-    }
-
+    private GetClusterClusterInfoExecutor() {}
     public Optional<String> hostPrivateIp() {
         return Optional.ofNullable(this.hostPrivateIp);
     }
@@ -68,7 +51,7 @@ public final class GetClusterClusterInfoExecutor {
     public static Builder builder(GetClusterClusterInfoExecutor defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String hostPrivateIp;
         private @Nullable String instanceId;
@@ -77,11 +60,7 @@ public final class GetClusterClusterInfoExecutor {
         private @Nullable String privateIp;
         private @Nullable String publicDns;
         private @Nullable Integer startTimestamp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterInfoExecutor defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostPrivateIp = defaults.hostPrivateIp;
@@ -93,35 +72,51 @@ public final class GetClusterClusterInfoExecutor {
     	      this.startTimestamp = defaults.startTimestamp;
         }
 
+        @CustomType.Setter
         public Builder hostPrivateIp(@Nullable String hostPrivateIp) {
             this.hostPrivateIp = hostPrivateIp;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeAwsAttributes(@Nullable GetClusterClusterInfoExecutorNodeAwsAttributes nodeAwsAttributes) {
             this.nodeAwsAttributes = nodeAwsAttributes;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
             this.nodeId = nodeId;
             return this;
         }
+        @CustomType.Setter
         public Builder privateIp(@Nullable String privateIp) {
             this.privateIp = privateIp;
             return this;
         }
+        @CustomType.Setter
         public Builder publicDns(@Nullable String publicDns) {
             this.publicDns = publicDns;
             return this;
         }
+        @CustomType.Setter
         public Builder startTimestamp(@Nullable Integer startTimestamp) {
             this.startTimestamp = startTimestamp;
             return this;
-        }        public GetClusterClusterInfoExecutor build() {
-            return new GetClusterClusterInfoExecutor(hostPrivateIp, instanceId, nodeAwsAttributes, nodeId, privateIp, publicDns, startTimestamp);
+        }
+        public GetClusterClusterInfoExecutor build() {
+            final var o = new GetClusterClusterInfoExecutor();
+            o.hostPrivateIp = hostPrivateIp;
+            o.instanceId = instanceId;
+            o.nodeAwsAttributes = nodeAwsAttributes;
+            o.nodeId = nodeId;
+            o.privateIp = privateIp;
+            o.publicDns = publicDns;
+            o.startTimestamp = startTimestamp;
+            return o;
         }
     }
 }

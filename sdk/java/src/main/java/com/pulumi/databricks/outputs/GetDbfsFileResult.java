@@ -15,34 +15,21 @@ public final class GetDbfsFileResult {
      * @return base64-encoded file contents
      * 
      */
-    private final String content;
+    private String content;
     /**
      * @return size of the file in bytes
      * 
      */
-    private final Integer fileSize;
+    private Integer fileSize;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Boolean limitFileSize;
-    private final String path;
+    private String id;
+    private Boolean limitFileSize;
+    private String path;
 
-    @CustomType.Constructor
-    private GetDbfsFileResult(
-        @CustomType.Parameter("content") String content,
-        @CustomType.Parameter("fileSize") Integer fileSize,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("limitFileSize") Boolean limitFileSize,
-        @CustomType.Parameter("path") String path) {
-        this.content = content;
-        this.fileSize = fileSize;
-        this.id = id;
-        this.limitFileSize = limitFileSize;
-        this.path = path;
-    }
-
+    private GetDbfsFileResult() {}
     /**
      * @return base64-encoded file contents
      * 
@@ -78,18 +65,14 @@ public final class GetDbfsFileResult {
     public static Builder builder(GetDbfsFileResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String content;
         private Integer fileSize;
         private String id;
         private Boolean limitFileSize;
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDbfsFileResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -99,27 +82,39 @@ public final class GetDbfsFileResult {
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
+        @CustomType.Setter
         public Builder fileSize(Integer fileSize) {
             this.fileSize = Objects.requireNonNull(fileSize);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder limitFileSize(Boolean limitFileSize) {
             this.limitFileSize = Objects.requireNonNull(limitFileSize);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public GetDbfsFileResult build() {
-            return new GetDbfsFileResult(content, fileSize, id, limitFileSize, path);
+        }
+        public GetDbfsFileResult build() {
+            final var o = new GetDbfsFileResult();
+            o.content = content;
+            o.fileSize = fileSize;
+            o.id = id;
+            o.limitFileSize = limitFileSize;
+            o.path = path;
+            return o;
         }
     }
 }

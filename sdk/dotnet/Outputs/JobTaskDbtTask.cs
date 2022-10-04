@@ -13,21 +13,44 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskDbtTask
     {
+        /// <summary>
+        /// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+        /// </summary>
         public readonly ImmutableArray<string> Commands;
+        /// <summary>
+        /// The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+        /// </summary>
+        public readonly string? ProfilesDirectory;
+        /// <summary>
+        /// The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+        /// </summary>
         public readonly string? ProjectDirectory;
+        /// <summary>
+        /// The name of the schema dbt should run in. Defaults to `default`.
+        /// </summary>
         public readonly string? Schema;
+        /// <summary>
+        /// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        /// </summary>
+        public readonly string? WarehouseId;
 
         [OutputConstructor]
         private JobTaskDbtTask(
             ImmutableArray<string> commands,
 
+            string? profilesDirectory,
+
             string? projectDirectory,
 
-            string? schema)
+            string? schema,
+
+            string? warehouseId)
         {
             Commands = commands;
+            ProfilesDirectory = profilesDirectory;
             ProjectDirectory = projectDirectory;
             Schema = schema;
+            WarehouseId = warehouseId;
         }
     }
 }

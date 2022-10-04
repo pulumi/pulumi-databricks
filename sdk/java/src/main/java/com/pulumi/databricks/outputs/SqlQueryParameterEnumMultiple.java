@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class SqlQueryParameterEnumMultiple {
-    private final String prefix;
-    private final String separator;
-    private final String suffix;
+    private String prefix;
+    private String separator;
+    private String suffix;
 
-    @CustomType.Constructor
-    private SqlQueryParameterEnumMultiple(
-        @CustomType.Parameter("prefix") String prefix,
-        @CustomType.Parameter("separator") String separator,
-        @CustomType.Parameter("suffix") String suffix) {
-        this.prefix = prefix;
-        this.separator = separator;
-        this.suffix = suffix;
-    }
-
+    private SqlQueryParameterEnumMultiple() {}
     public String prefix() {
         return this.prefix;
     }
@@ -40,16 +31,12 @@ public final class SqlQueryParameterEnumMultiple {
     public static Builder builder(SqlQueryParameterEnumMultiple defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String prefix;
         private String separator;
         private String suffix;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SqlQueryParameterEnumMultiple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.prefix = defaults.prefix;
@@ -57,19 +44,27 @@ public final class SqlQueryParameterEnumMultiple {
     	      this.suffix = defaults.suffix;
         }
 
+        @CustomType.Setter
         public Builder prefix(String prefix) {
             this.prefix = Objects.requireNonNull(prefix);
             return this;
         }
+        @CustomType.Setter
         public Builder separator(String separator) {
             this.separator = Objects.requireNonNull(separator);
             return this;
         }
+        @CustomType.Setter
         public Builder suffix(String suffix) {
             this.suffix = Objects.requireNonNull(suffix);
             return this;
-        }        public SqlQueryParameterEnumMultiple build() {
-            return new SqlQueryParameterEnumMultiple(prefix, separator, suffix);
+        }
+        public SqlQueryParameterEnumMultiple build() {
+            final var o = new SqlQueryParameterEnumMultiple();
+            o.prefix = prefix;
+            o.separator = separator;
+            o.suffix = suffix;
+            return o;
         }
     }
 }

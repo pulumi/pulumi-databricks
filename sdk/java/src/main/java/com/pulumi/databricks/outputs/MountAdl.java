@@ -11,32 +11,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MountAdl {
-    private final String clientId;
-    private final String clientSecretKey;
-    private final String clientSecretScope;
-    private final @Nullable String directory;
-    private final @Nullable String sparkConfPrefix;
-    private final @Nullable String storageResourceName;
-    private final @Nullable String tenantId;
+    private String clientId;
+    private String clientSecretKey;
+    private String clientSecretScope;
+    private @Nullable String directory;
+    private @Nullable String sparkConfPrefix;
+    private @Nullable String storageResourceName;
+    private @Nullable String tenantId;
 
-    @CustomType.Constructor
-    private MountAdl(
-        @CustomType.Parameter("clientId") String clientId,
-        @CustomType.Parameter("clientSecretKey") String clientSecretKey,
-        @CustomType.Parameter("clientSecretScope") String clientSecretScope,
-        @CustomType.Parameter("directory") @Nullable String directory,
-        @CustomType.Parameter("sparkConfPrefix") @Nullable String sparkConfPrefix,
-        @CustomType.Parameter("storageResourceName") @Nullable String storageResourceName,
-        @CustomType.Parameter("tenantId") @Nullable String tenantId) {
-        this.clientId = clientId;
-        this.clientSecretKey = clientSecretKey;
-        this.clientSecretScope = clientSecretScope;
-        this.directory = directory;
-        this.sparkConfPrefix = sparkConfPrefix;
-        this.storageResourceName = storageResourceName;
-        this.tenantId = tenantId;
-    }
-
+    private MountAdl() {}
     public String clientId() {
         return this.clientId;
     }
@@ -66,7 +49,7 @@ public final class MountAdl {
     public static Builder builder(MountAdl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clientId;
         private String clientSecretKey;
@@ -75,11 +58,7 @@ public final class MountAdl {
         private @Nullable String sparkConfPrefix;
         private @Nullable String storageResourceName;
         private @Nullable String tenantId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MountAdl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientId = defaults.clientId;
@@ -91,35 +70,51 @@ public final class MountAdl {
     	      this.tenantId = defaults.tenantId;
         }
 
+        @CustomType.Setter
         public Builder clientId(String clientId) {
             this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecretKey(String clientSecretKey) {
             this.clientSecretKey = Objects.requireNonNull(clientSecretKey);
             return this;
         }
+        @CustomType.Setter
         public Builder clientSecretScope(String clientSecretScope) {
             this.clientSecretScope = Objects.requireNonNull(clientSecretScope);
             return this;
         }
+        @CustomType.Setter
         public Builder directory(@Nullable String directory) {
             this.directory = directory;
             return this;
         }
+        @CustomType.Setter
         public Builder sparkConfPrefix(@Nullable String sparkConfPrefix) {
             this.sparkConfPrefix = sparkConfPrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder storageResourceName(@Nullable String storageResourceName) {
             this.storageResourceName = storageResourceName;
             return this;
         }
+        @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
             this.tenantId = tenantId;
             return this;
-        }        public MountAdl build() {
-            return new MountAdl(clientId, clientSecretKey, clientSecretScope, directory, sparkConfPrefix, storageResourceName, tenantId);
+        }
+        public MountAdl build() {
+            final var o = new MountAdl();
+            o.clientId = clientId;
+            o.clientSecretKey = clientSecretKey;
+            o.clientSecretScope = clientSecretScope;
+            o.directory = directory;
+            o.sparkConfPrefix = sparkConfPrefix;
+            o.storageResourceName = storageResourceName;
+            o.tenantId = tenantId;
+            return o;
         }
     }
 }

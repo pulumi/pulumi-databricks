@@ -14,29 +14,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobLibrary {
-    private final @Nullable JobLibraryCran cran;
-    private final @Nullable String egg;
-    private final @Nullable String jar;
-    private final @Nullable JobLibraryMaven maven;
-    private final @Nullable JobLibraryPypi pypi;
-    private final @Nullable String whl;
+    private @Nullable JobLibraryCran cran;
+    private @Nullable String egg;
+    private @Nullable String jar;
+    private @Nullable JobLibraryMaven maven;
+    private @Nullable JobLibraryPypi pypi;
+    private @Nullable String whl;
 
-    @CustomType.Constructor
-    private JobLibrary(
-        @CustomType.Parameter("cran") @Nullable JobLibraryCran cran,
-        @CustomType.Parameter("egg") @Nullable String egg,
-        @CustomType.Parameter("jar") @Nullable String jar,
-        @CustomType.Parameter("maven") @Nullable JobLibraryMaven maven,
-        @CustomType.Parameter("pypi") @Nullable JobLibraryPypi pypi,
-        @CustomType.Parameter("whl") @Nullable String whl) {
-        this.cran = cran;
-        this.egg = egg;
-        this.jar = jar;
-        this.maven = maven;
-        this.pypi = pypi;
-        this.whl = whl;
-    }
-
+    private JobLibrary() {}
     public Optional<JobLibraryCran> cran() {
         return Optional.ofNullable(this.cran);
     }
@@ -63,7 +48,7 @@ public final class JobLibrary {
     public static Builder builder(JobLibrary defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable JobLibraryCran cran;
         private @Nullable String egg;
@@ -71,11 +56,7 @@ public final class JobLibrary {
         private @Nullable JobLibraryMaven maven;
         private @Nullable JobLibraryPypi pypi;
         private @Nullable String whl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobLibrary defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cran = defaults.cran;
@@ -86,31 +67,45 @@ public final class JobLibrary {
     	      this.whl = defaults.whl;
         }
 
+        @CustomType.Setter
         public Builder cran(@Nullable JobLibraryCran cran) {
             this.cran = cran;
             return this;
         }
+        @CustomType.Setter
         public Builder egg(@Nullable String egg) {
             this.egg = egg;
             return this;
         }
+        @CustomType.Setter
         public Builder jar(@Nullable String jar) {
             this.jar = jar;
             return this;
         }
+        @CustomType.Setter
         public Builder maven(@Nullable JobLibraryMaven maven) {
             this.maven = maven;
             return this;
         }
+        @CustomType.Setter
         public Builder pypi(@Nullable JobLibraryPypi pypi) {
             this.pypi = pypi;
             return this;
         }
+        @CustomType.Setter
         public Builder whl(@Nullable String whl) {
             this.whl = whl;
             return this;
-        }        public JobLibrary build() {
-            return new JobLibrary(cran, egg, jar, maven, pypi, whl);
+        }
+        public JobLibrary build() {
+            final var o = new JobLibrary();
+            o.cran = cran;
+            o.egg = egg;
+            o.jar = jar;
+            o.maven = maven;
+            o.pypi = pypi;
+            o.whl = whl;
+            return o;
         }
     }
 }

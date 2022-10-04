@@ -12,34 +12,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAwsAssumeRolePolicyResult {
-    private final @Nullable String databricksAccountId;
-    private final String externalId;
-    private final @Nullable Boolean forLogDelivery;
+    private @Nullable String databricksAccountId;
+    private String externalId;
+    private @Nullable Boolean forLogDelivery;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return AWS IAM Policy JSON document
      * 
      */
-    private final String json;
+    private String json;
 
-    @CustomType.Constructor
-    private GetAwsAssumeRolePolicyResult(
-        @CustomType.Parameter("databricksAccountId") @Nullable String databricksAccountId,
-        @CustomType.Parameter("externalId") String externalId,
-        @CustomType.Parameter("forLogDelivery") @Nullable Boolean forLogDelivery,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("json") String json) {
-        this.databricksAccountId = databricksAccountId;
-        this.externalId = externalId;
-        this.forLogDelivery = forLogDelivery;
-        this.id = id;
-        this.json = json;
-    }
-
+    private GetAwsAssumeRolePolicyResult() {}
     public Optional<String> databricksAccountId() {
         return Optional.ofNullable(this.databricksAccountId);
     }
@@ -71,18 +58,14 @@ public final class GetAwsAssumeRolePolicyResult {
     public static Builder builder(GetAwsAssumeRolePolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String databricksAccountId;
         private String externalId;
         private @Nullable Boolean forLogDelivery;
         private String id;
         private String json;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAwsAssumeRolePolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databricksAccountId = defaults.databricksAccountId;
@@ -92,27 +75,39 @@ public final class GetAwsAssumeRolePolicyResult {
     	      this.json = defaults.json;
         }
 
+        @CustomType.Setter
         public Builder databricksAccountId(@Nullable String databricksAccountId) {
             this.databricksAccountId = databricksAccountId;
             return this;
         }
+        @CustomType.Setter
         public Builder externalId(String externalId) {
             this.externalId = Objects.requireNonNull(externalId);
             return this;
         }
+        @CustomType.Setter
         public Builder forLogDelivery(@Nullable Boolean forLogDelivery) {
             this.forLogDelivery = forLogDelivery;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder json(String json) {
             this.json = Objects.requireNonNull(json);
             return this;
-        }        public GetAwsAssumeRolePolicyResult build() {
-            return new GetAwsAssumeRolePolicyResult(databricksAccountId, externalId, forLogDelivery, id, json);
+        }
+        public GetAwsAssumeRolePolicyResult build() {
+            final var o = new GetAwsAssumeRolePolicyResult();
+            o.databricksAccountId = databricksAccountId;
+            o.externalId = externalId;
+            o.forLogDelivery = forLogDelivery;
+            o.id = id;
+            o.json = json;
+            return o;
         }
     }
 }

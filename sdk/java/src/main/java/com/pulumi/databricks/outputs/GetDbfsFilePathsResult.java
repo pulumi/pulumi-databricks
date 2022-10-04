@@ -16,27 +16,16 @@ public final class GetDbfsFilePathsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String path;
+    private String id;
+    private String path;
     /**
      * @return returns list of objects with `path` and `file_size` attributes in each
      * 
      */
-    private final List<GetDbfsFilePathsPathList> pathLists;
-    private final Boolean recursive;
+    private List<GetDbfsFilePathsPathList> pathLists;
+    private Boolean recursive;
 
-    @CustomType.Constructor
-    private GetDbfsFilePathsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("pathLists") List<GetDbfsFilePathsPathList> pathLists,
-        @CustomType.Parameter("recursive") Boolean recursive) {
-        this.id = id;
-        this.path = path;
-        this.pathLists = pathLists;
-        this.recursive = recursive;
-    }
-
+    private GetDbfsFilePathsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -65,17 +54,13 @@ public final class GetDbfsFilePathsResult {
     public static Builder builder(GetDbfsFilePathsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String path;
         private List<GetDbfsFilePathsPathList> pathLists;
         private Boolean recursive;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDbfsFilePathsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -84,14 +69,17 @@ public final class GetDbfsFilePathsResult {
     	      this.recursive = defaults.recursive;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder pathLists(List<GetDbfsFilePathsPathList> pathLists) {
             this.pathLists = Objects.requireNonNull(pathLists);
             return this;
@@ -99,11 +87,18 @@ public final class GetDbfsFilePathsResult {
         public Builder pathLists(GetDbfsFilePathsPathList... pathLists) {
             return pathLists(List.of(pathLists));
         }
+        @CustomType.Setter
         public Builder recursive(Boolean recursive) {
             this.recursive = Objects.requireNonNull(recursive);
             return this;
-        }        public GetDbfsFilePathsResult build() {
-            return new GetDbfsFilePathsResult(id, path, pathLists, recursive);
+        }
+        public GetDbfsFilePathsResult build() {
+            final var o = new GetDbfsFilePathsResult();
+            o.id = id;
+            o.path = path;
+            o.pathLists = pathLists;
+            o.recursive = recursive;
+            return o;
         }
     }
 }

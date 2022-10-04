@@ -15,28 +15,19 @@ public final class JobSchedule {
      * @return Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using &#34;UNPAUSED&#34; as a value for pause_status.
      * 
      */
-    private final @Nullable String pauseStatus;
+    private @Nullable String pauseStatus;
     /**
      * @return A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
      * 
      */
-    private final String quartzCronExpression;
+    private String quartzCronExpression;
     /**
      * @return A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
      * 
      */
-    private final String timezoneId;
+    private String timezoneId;
 
-    @CustomType.Constructor
-    private JobSchedule(
-        @CustomType.Parameter("pauseStatus") @Nullable String pauseStatus,
-        @CustomType.Parameter("quartzCronExpression") String quartzCronExpression,
-        @CustomType.Parameter("timezoneId") String timezoneId) {
-        this.pauseStatus = pauseStatus;
-        this.quartzCronExpression = quartzCronExpression;
-        this.timezoneId = timezoneId;
-    }
-
+    private JobSchedule() {}
     /**
      * @return Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using &#34;UNPAUSED&#34; as a value for pause_status.
      * 
@@ -66,16 +57,12 @@ public final class JobSchedule {
     public static Builder builder(JobSchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String pauseStatus;
         private String quartzCronExpression;
         private String timezoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pauseStatus = defaults.pauseStatus;
@@ -83,19 +70,27 @@ public final class JobSchedule {
     	      this.timezoneId = defaults.timezoneId;
         }
 
+        @CustomType.Setter
         public Builder pauseStatus(@Nullable String pauseStatus) {
             this.pauseStatus = pauseStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder quartzCronExpression(String quartzCronExpression) {
             this.quartzCronExpression = Objects.requireNonNull(quartzCronExpression);
             return this;
         }
+        @CustomType.Setter
         public Builder timezoneId(String timezoneId) {
             this.timezoneId = Objects.requireNonNull(timezoneId);
             return this;
-        }        public JobSchedule build() {
-            return new JobSchedule(pauseStatus, quartzCronExpression, timezoneId);
+        }
+        public JobSchedule build() {
+            final var o = new JobSchedule();
+            o.pauseStatus = pauseStatus;
+            o.quartzCronExpression = quartzCronExpression;
+            o.timezoneId = timezoneId;
+            return o;
         }
     }
 }

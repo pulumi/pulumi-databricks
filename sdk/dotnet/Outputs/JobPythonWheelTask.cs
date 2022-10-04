@@ -26,7 +26,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? PackageName;
         /// <summary>
-        /// Parameters for the task
+        /// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         /// </summary>
         public readonly ImmutableArray<string> Parameters;
 

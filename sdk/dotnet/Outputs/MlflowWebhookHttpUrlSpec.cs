@@ -21,7 +21,10 @@ namespace Pulumi.Databricks.Outputs
         /// Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
         /// </summary>
         public readonly bool? EnableSslVerification;
-        public readonly string? String;
+        /// <summary>
+        /// Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+        /// </summary>
+        public readonly string? Secret;
         /// <summary>
         /// External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
         /// </summary>
@@ -33,13 +36,13 @@ namespace Pulumi.Databricks.Outputs
 
             bool? enableSslVerification,
 
-            string? @string,
+            string? secret,
 
             string url)
         {
             Authorization = authorization;
             EnableSslVerification = enableSslVerification;
-            String = @string;
+            Secret = secret;
             Url = url;
         }
     }

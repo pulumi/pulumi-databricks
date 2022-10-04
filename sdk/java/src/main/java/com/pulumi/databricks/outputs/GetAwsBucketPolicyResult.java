@@ -11,34 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAwsBucketPolicyResult {
-    private final String bucket;
-    private final @Nullable String databricksAccountId;
-    private final @Nullable String fullAccessRole;
+    private String bucket;
+    private @Nullable String databricksAccountId;
+    private @Nullable String fullAccessRole;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Read-only) AWS IAM Policy JSON document to grant Databricks full access to bucket.
      * 
      */
-    private final String json;
+    private String json;
 
-    @CustomType.Constructor
-    private GetAwsBucketPolicyResult(
-        @CustomType.Parameter("bucket") String bucket,
-        @CustomType.Parameter("databricksAccountId") @Nullable String databricksAccountId,
-        @CustomType.Parameter("fullAccessRole") @Nullable String fullAccessRole,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("json") String json) {
-        this.bucket = bucket;
-        this.databricksAccountId = databricksAccountId;
-        this.fullAccessRole = fullAccessRole;
-        this.id = id;
-        this.json = json;
-    }
-
+    private GetAwsBucketPolicyResult() {}
     public String bucket() {
         return this.bucket;
     }
@@ -70,18 +57,14 @@ public final class GetAwsBucketPolicyResult {
     public static Builder builder(GetAwsBucketPolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucket;
         private @Nullable String databricksAccountId;
         private @Nullable String fullAccessRole;
         private String id;
         private String json;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAwsBucketPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -91,27 +74,39 @@ public final class GetAwsBucketPolicyResult {
     	      this.json = defaults.json;
         }
 
+        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
+        @CustomType.Setter
         public Builder databricksAccountId(@Nullable String databricksAccountId) {
             this.databricksAccountId = databricksAccountId;
             return this;
         }
+        @CustomType.Setter
         public Builder fullAccessRole(@Nullable String fullAccessRole) {
             this.fullAccessRole = fullAccessRole;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder json(String json) {
             this.json = Objects.requireNonNull(json);
             return this;
-        }        public GetAwsBucketPolicyResult build() {
-            return new GetAwsBucketPolicyResult(bucket, databricksAccountId, fullAccessRole, id, json);
+        }
+        public GetAwsBucketPolicyResult build() {
+            final var o = new GetAwsBucketPolicyResult();
+            o.bucket = bucket;
+            o.databricksAccountId = databricksAccountId;
+            o.fullAccessRole = fullAccessRole;
+            o.id = id;
+            o.json = json;
+            return o;
         }
     }
 }

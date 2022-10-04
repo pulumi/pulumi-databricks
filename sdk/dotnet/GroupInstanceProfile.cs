@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider.
+    /// &gt; **Deprecated** Please migrate to databricks_group_role.
     /// 
     /// This resource allows you to attach databricks.InstanceProfile (AWS) to databricks_group.
     /// 

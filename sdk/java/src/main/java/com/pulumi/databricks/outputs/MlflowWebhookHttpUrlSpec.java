@@ -16,31 +16,24 @@ public final class MlflowWebhookHttpUrlSpec {
      * @return Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `&lt;auth type&gt; &lt;credentials&gt;`, e.g. `Bearer &lt;access_token&gt;`. If set to an empty string, no authorization header will be included in the request.
      * 
      */
-    private final @Nullable String authorization;
+    private @Nullable String authorization;
     /**
      * @return Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
      * 
      */
-    private final @Nullable Boolean enableSslVerification;
-    private final @Nullable String string;
+    private @Nullable Boolean enableSslVerification;
+    /**
+     * @return Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+     * 
+     */
+    private @Nullable String secret;
     /**
      * @return External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private MlflowWebhookHttpUrlSpec(
-        @CustomType.Parameter("authorization") @Nullable String authorization,
-        @CustomType.Parameter("enableSslVerification") @Nullable Boolean enableSslVerification,
-        @CustomType.Parameter("string") @Nullable String string,
-        @CustomType.Parameter("url") String url) {
-        this.authorization = authorization;
-        this.enableSslVerification = enableSslVerification;
-        this.string = string;
-        this.url = url;
-    }
-
+    private MlflowWebhookHttpUrlSpec() {}
     /**
      * @return Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `&lt;auth type&gt; &lt;credentials&gt;`, e.g. `Bearer &lt;access_token&gt;`. If set to an empty string, no authorization header will be included in the request.
      * 
@@ -55,8 +48,12 @@ public final class MlflowWebhookHttpUrlSpec {
     public Optional<Boolean> enableSslVerification() {
         return Optional.ofNullable(this.enableSslVerification);
     }
-    public Optional<String> string() {
-        return Optional.ofNullable(this.string);
+    /**
+     * @return Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+     * 
+     */
+    public Optional<String> secret() {
+        return Optional.ofNullable(this.secret);
     }
     /**
      * @return External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
@@ -73,42 +70,48 @@ public final class MlflowWebhookHttpUrlSpec {
     public static Builder builder(MlflowWebhookHttpUrlSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String authorization;
         private @Nullable Boolean enableSslVerification;
-        private @Nullable String string;
+        private @Nullable String secret;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MlflowWebhookHttpUrlSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authorization = defaults.authorization;
     	      this.enableSslVerification = defaults.enableSslVerification;
-    	      this.string = defaults.string;
+    	      this.secret = defaults.secret;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder authorization(@Nullable String authorization) {
             this.authorization = authorization;
             return this;
         }
+        @CustomType.Setter
         public Builder enableSslVerification(@Nullable Boolean enableSslVerification) {
             this.enableSslVerification = enableSslVerification;
             return this;
         }
-        public Builder string(@Nullable String string) {
-            this.string = string;
+        @CustomType.Setter
+        public Builder secret(@Nullable String secret) {
+            this.secret = secret;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public MlflowWebhookHttpUrlSpec build() {
-            return new MlflowWebhookHttpUrlSpec(authorization, enableSslVerification, string, url);
+        }
+        public MlflowWebhookHttpUrlSpec build() {
+            final var o = new MlflowWebhookHttpUrlSpec();
+            o.authorization = authorization;
+            o.enableSslVerification = enableSslVerification;
+            o.secret = secret;
+            o.url = url;
+            return o;
         }
     }
 }

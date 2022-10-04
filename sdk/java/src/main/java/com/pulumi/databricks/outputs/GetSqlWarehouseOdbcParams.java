@@ -12,26 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSqlWarehouseOdbcParams {
-    private final @Nullable String host;
-    private final @Nullable String hostname;
-    private final String path;
-    private final Integer port;
-    private final String protocol;
+    private @Nullable String host;
+    private @Nullable String hostname;
+    private String path;
+    private Integer port;
+    private String protocol;
 
-    @CustomType.Constructor
-    private GetSqlWarehouseOdbcParams(
-        @CustomType.Parameter("host") @Nullable String host,
-        @CustomType.Parameter("hostname") @Nullable String hostname,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("protocol") String protocol) {
-        this.host = host;
-        this.hostname = hostname;
-        this.path = path;
-        this.port = port;
-        this.protocol = protocol;
-    }
-
+    private GetSqlWarehouseOdbcParams() {}
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
@@ -55,18 +42,14 @@ public final class GetSqlWarehouseOdbcParams {
     public static Builder builder(GetSqlWarehouseOdbcParams defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String host;
         private @Nullable String hostname;
         private String path;
         private Integer port;
         private String protocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSqlWarehouseOdbcParams defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.host = defaults.host;
@@ -76,27 +59,39 @@ public final class GetSqlWarehouseOdbcParams {
     	      this.protocol = defaults.protocol;
         }
 
+        @CustomType.Setter
         public Builder host(@Nullable String host) {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
         public Builder hostname(@Nullable String hostname) {
             this.hostname = hostname;
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
-        }        public GetSqlWarehouseOdbcParams build() {
-            return new GetSqlWarehouseOdbcParams(host, hostname, path, port, protocol);
+        }
+        public GetSqlWarehouseOdbcParams build() {
+            final var o = new GetSqlWarehouseOdbcParams();
+            o.host = host;
+            o.hostname = hostname;
+            o.path = path;
+            o.port = port;
+            o.protocol = protocol;
+            return o;
         }
     }
 }
