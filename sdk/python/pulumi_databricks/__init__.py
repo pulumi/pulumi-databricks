@@ -10,6 +10,7 @@ from .cluster import *
 from .cluster_policy import *
 from .dbfs_file import *
 from .directory import *
+from .entitlements import *
 from .external_location import *
 from .get_aws_assume_role_policy import *
 from .get_aws_bucket_policy import *
@@ -21,6 +22,7 @@ from .get_current_user import *
 from .get_dbfs_file import *
 from .get_dbfs_file_paths import *
 from .get_group import *
+from .get_job import *
 from .get_jobs import *
 from .get_mws_workspaces import *
 from .get_node_type import *
@@ -41,6 +43,7 @@ from .global_init_script import *
 from .grants import *
 from .group import *
 from .group_instance_profile import *
+from .group_role import *
 from .instance_pool import *
 from .instance_profile import *
 from .ip_access_list import *
@@ -68,6 +71,7 @@ from .permission_assignment import *
 from .permissions import *
 from .pipeline import *
 from .provider import *
+from .recipient import *
 from .repo import *
 from .schema import *
 from .secret import *
@@ -144,6 +148,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/entitlements",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/entitlements:Entitlements": "Entitlements"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/externalLocation",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -188,6 +200,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/groupInstanceProfile:GroupInstanceProfile": "GroupInstanceProfile"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/groupRole",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/groupRole:GroupRole": "GroupRole"
   }
  },
  {
@@ -396,6 +416,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/pipeline:Pipeline": "Pipeline"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/recipient",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/recipient:Recipient": "Recipient"
   }
  },
  {

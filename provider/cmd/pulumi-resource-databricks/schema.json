@@ -6134,6 +6134,100 @@
                 "path"
             ]
         },
+        "databricks:index/RecipientIpAccessList:RecipientIpAccessList": {
+            "properties": {
+                "allowedIpAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allowed IP Addresses in CIDR notation. Limit of 100.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedIpAddresses"
+            ]
+        },
+        "databricks:index/RecipientToken:RecipientToken": {
+            "properties": {
+                "activationUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createdAt": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createdBy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "expirationTime": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updatedAt": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "activationUrl",
+                        "createdAt",
+                        "createdBy",
+                        "expirationTime",
+                        "id",
+                        "updatedAt",
+                        "updatedBy"
+                    ]
+                }
+            }
+        },
         "databricks:index/SecretScopeKeyvaultMetadata:SecretScopeKeyvaultMetadata": {
             "properties": {
                 "dnsName": {
@@ -8137,6 +8231,3721 @@
             },
             "type": "object"
         },
+        "databricks:index/getJobJobSettings:getJobJobSettings": {
+            "properties": {
+                "createdTime": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "creatorUserName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "jobId": {
+                    "type": "integer",
+                    "description": "the id of databricks.Job if the resource was matched by name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "settings": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettings:getJobJobSettingsSettings",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettings:getJobJobSettingsSettings": {
+            "properties": {
+                "dbtTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsDbtTask:getJobJobSettingsSettingsDbtTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "emailNotifications": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsEmailNotifications:getJobJobSettingsSettingsEmailNotifications",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "existingClusterId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "format": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gitSource": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsGitSource:getJobJobSettingsSettingsGitSource",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "jobClusters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobCluster:getJobJobSettingsSettingsJobCluster"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "libraries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getJobJobSettingsSettingsLibrary:getJobJobSettingsSettingsLibrary"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxConcurrentRuns": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxRetries": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minRetryIntervalMillis": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "newCluster": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewCluster:getJobJobSettingsSettingsNewCluster",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "notebookTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNotebookTask:getJobJobSettingsSettingsNotebookTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pipelineTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsPipelineTask:getJobJobSettingsSettingsPipelineTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pythonWheelTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsPythonWheelTask:getJobJobSettingsSettingsPythonWheelTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "retryOnTimeout": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "schedule": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsSchedule:getJobJobSettingsSettingsSchedule",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkJarTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsSparkJarTask:getJobJobSettingsSettingsSparkJarTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkPythonTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsSparkPythonTask:getJobJobSettingsSettingsSparkPythonTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkSubmitTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsSparkSubmitTask:getJobJobSettingsSettingsSparkSubmitTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tasks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTask:getJobJobSettingsSettingsTask"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timeoutSeconds": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "format"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "databricks:index/getJobJobSettingsSettingsDbtTask:getJobJobSettingsSettingsDbtTask": {
+            "properties": {
+                "commands": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "profilesDirectory": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectDirectory": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "schema": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "warehouseId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "commands"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsEmailNotifications:getJobJobSettingsSettingsEmailNotifications": {
+            "properties": {
+                "alertOnLastAttempt": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "noAlertForSkippedRuns": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onFailures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onStarts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onSuccesses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsGitSource:getJobJobSettingsSettingsGitSource": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "commit": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "provider": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tag": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "url"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsJobCluster:getJobJobSettingsSettingsJobCluster": {
+            "properties": {
+                "jobClusterKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "newCluster": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewCluster:getJobJobSettingsSettingsJobClusterNewCluster",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewCluster:getJobJobSettingsSettingsJobClusterNewCluster": {
+            "properties": {
+                "applyPolicyDefaultValues": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autoscale": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterAutoscale:getJobJobSettingsSettingsJobClusterNewClusterAutoscale",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autoterminationMinutes": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "awsAttributes": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterAwsAttributes:getJobJobSettingsSettingsJobClusterNewClusterAwsAttributes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "azureAttributes": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterAzureAttributes:getJobJobSettingsSettingsJobClusterNewClusterAzureAttributes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterLogConf": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterClusterLogConf:getJobJobSettingsSettingsJobClusterNewClusterClusterLogConf",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "customTags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dataSecurityMode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dockerImage": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterDockerImage:getJobJobSettingsSettingsJobClusterNewClusterDockerImage",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "driverInstancePoolId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "driverNodeTypeId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableElasticDisk": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableLocalDiskEncryption": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gcpAttributes": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterGcpAttributes:getJobJobSettingsSettingsJobClusterNewClusterGcpAttributes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "idempotencyToken": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "initScripts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterInitScript:getJobJobSettingsSettingsJobClusterNewClusterInitScript"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instancePoolId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeTypeId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "numWorkers": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "policyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "singleUserName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkConf": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkEnvVars": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkVersion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sshPublicKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "workloadType": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterWorkloadType:getJobJobSettingsSettingsJobClusterNewClusterWorkloadType",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "driverInstancePoolId",
+                "driverNodeTypeId",
+                "enableElasticDisk",
+                "enableLocalDiskEncryption",
+                "nodeTypeId",
+                "numWorkers",
+                "sparkVersion"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "numWorkers",
+                        "sparkVersion"
+                    ]
+                }
+            }
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterAutoscale:getJobJobSettingsSettingsJobClusterNewClusterAutoscale": {
+            "properties": {
+                "maxWorkers": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minWorkers": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterAwsAttributes:getJobJobSettingsSettingsJobClusterNewClusterAwsAttributes": {
+            "properties": {
+                "availability": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ebsVolumeCount": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ebsVolumeSize": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ebsVolumeType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "firstOnDemand": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceProfileArn": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "spotBidPricePercent": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterAzureAttributes:getJobJobSettingsSettingsJobClusterNewClusterAzureAttributes": {
+            "properties": {
+                "availability": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "firstOnDemand": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "spotBidMaxPrice": {
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterClusterLogConf:getJobJobSettingsSettingsJobClusterNewClusterClusterLogConf": {
+            "properties": {
+                "dbfs": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfs:getJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "s3": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3:getJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfs:getJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfs": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3:getJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3": {
+            "properties": {
+                "cannedAcl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableEncryption": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "encryptionType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kmsKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterDockerImage:getJobJobSettingsSettingsJobClusterNewClusterDockerImage": {
+            "properties": {
+                "basicAuth": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuth:getJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuth",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "url"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuth:getJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuth": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterGcpAttributes:getJobJobSettingsSettingsJobClusterNewClusterGcpAttributes": {
+            "properties": {
+                "availability": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "bootDiskSize": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "googleServiceAccount": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usePreemptibleExecutors": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterInitScript:getJobJobSettingsSettingsJobClusterNewClusterInitScript": {
+            "properties": {
+                "dbfs": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs:getJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "file": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterInitScriptFile:getJobJobSettingsSettingsJobClusterNewClusterInitScriptFile",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gcs": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs:getJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "s3": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterInitScriptS3:getJobJobSettingsSettingsJobClusterNewClusterInitScriptS3",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs:getJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterInitScriptFile:getJobJobSettingsSettingsJobClusterNewClusterInitScriptFile": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs:getJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterInitScriptS3:getJobJobSettingsSettingsJobClusterNewClusterInitScriptS3": {
+            "properties": {
+                "cannedAcl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableEncryption": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "encryptionType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kmsKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterWorkloadType:getJobJobSettingsSettingsJobClusterNewClusterWorkloadType": {
+            "properties": {
+                "clients": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients:getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "clients"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients:getJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients": {
+            "properties": {
+                "jobs": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "notebooks": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsLibrary:getJobJobSettingsSettingsLibrary": {
+            "properties": {
+                "cran": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsLibraryCran:getJobJobSettingsSettingsLibraryCran",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "egg": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "jar": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maven": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsLibraryMaven:getJobJobSettingsSettingsLibraryMaven",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pypi": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsLibraryPypi:getJobJobSettingsSettingsLibraryPypi",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "whl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsLibraryCran:getJobJobSettingsSettingsLibraryCran": {
+            "properties": {
+                "package": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsLibraryMaven:getJobJobSettingsSettingsLibraryMaven": {
+            "properties": {
+                "coordinates": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "exclusions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "coordinates"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsLibraryPypi:getJobJobSettingsSettingsLibraryPypi": {
+            "properties": {
+                "package": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsNewCluster:getJobJobSettingsSettingsNewCluster": {
+            "properties": {
+                "applyPolicyDefaultValues": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autoscale": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterAutoscale:getJobJobSettingsSettingsNewClusterAutoscale",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autoterminationMinutes": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "awsAttributes": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterAwsAttributes:getJobJobSettingsSettingsNewClusterAwsAttributes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "azureAttributes": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterAzureAttributes:getJobJobSettingsSettingsNewClusterAzureAttributes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterLogConf": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterClusterLogConf:getJobJobSettingsSettingsNewClusterClusterLogConf",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "customTags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dataSecurityMode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dockerImage": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterDockerImage:getJobJobSettingsSettingsNewClusterDockerImage",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "driverInstancePoolId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "driverNodeTypeId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableElasticDisk": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableLocalDiskEncryption": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gcpAttributes": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterGcpAttributes:getJobJobSettingsSettingsNewClusterGcpAttributes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "idempotencyToken": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "initScripts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterInitScript:getJobJobSettingsSettingsNewClusterInitScript"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instancePoolId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeTypeId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "numWorkers": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "policyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "singleUserName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkConf": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkEnvVars": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkVersion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sshPublicKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "workloadType": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterWorkloadType:getJobJobSettingsSettingsNewClusterWorkloadType",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "driverInstancePoolId",
+                "driverNodeTypeId",
+                "enableElasticDisk",
+                "enableLocalDiskEncryption",
+                "nodeTypeId",
+                "numWorkers",
+                "sparkVersion"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "numWorkers",
+                        "sparkVersion"
+                    ]
+                }
+            }
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterAutoscale:getJobJobSettingsSettingsNewClusterAutoscale": {
+            "properties": {
+                "maxWorkers": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minWorkers": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterAwsAttributes:getJobJobSettingsSettingsNewClusterAwsAttributes": {
+            "properties": {
+                "availability": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ebsVolumeCount": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ebsVolumeSize": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ebsVolumeType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "firstOnDemand": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceProfileArn": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "spotBidPricePercent": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterAzureAttributes:getJobJobSettingsSettingsNewClusterAzureAttributes": {
+            "properties": {
+                "availability": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "firstOnDemand": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "spotBidMaxPrice": {
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterClusterLogConf:getJobJobSettingsSettingsNewClusterClusterLogConf": {
+            "properties": {
+                "dbfs": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterClusterLogConfDbfs:getJobJobSettingsSettingsNewClusterClusterLogConfDbfs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "s3": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterClusterLogConfS3:getJobJobSettingsSettingsNewClusterClusterLogConfS3",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterClusterLogConfDbfs:getJobJobSettingsSettingsNewClusterClusterLogConfDbfs": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterClusterLogConfS3:getJobJobSettingsSettingsNewClusterClusterLogConfS3": {
+            "properties": {
+                "cannedAcl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableEncryption": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "encryptionType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kmsKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterDockerImage:getJobJobSettingsSettingsNewClusterDockerImage": {
+            "properties": {
+                "basicAuth": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterDockerImageBasicAuth:getJobJobSettingsSettingsNewClusterDockerImageBasicAuth",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "url"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterDockerImageBasicAuth:getJobJobSettingsSettingsNewClusterDockerImageBasicAuth": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterGcpAttributes:getJobJobSettingsSettingsNewClusterGcpAttributes": {
+            "properties": {
+                "availability": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "bootDiskSize": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "googleServiceAccount": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usePreemptibleExecutors": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterInitScript:getJobJobSettingsSettingsNewClusterInitScript": {
+            "properties": {
+                "dbfs": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterInitScriptDbfs:getJobJobSettingsSettingsNewClusterInitScriptDbfs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "file": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterInitScriptFile:getJobJobSettingsSettingsNewClusterInitScriptFile",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gcs": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterInitScriptGcs:getJobJobSettingsSettingsNewClusterInitScriptGcs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "s3": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterInitScriptS3:getJobJobSettingsSettingsNewClusterInitScriptS3",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterInitScriptDbfs:getJobJobSettingsSettingsNewClusterInitScriptDbfs": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterInitScriptFile:getJobJobSettingsSettingsNewClusterInitScriptFile": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterInitScriptGcs:getJobJobSettingsSettingsNewClusterInitScriptGcs": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterInitScriptS3:getJobJobSettingsSettingsNewClusterInitScriptS3": {
+            "properties": {
+                "cannedAcl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableEncryption": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "encryptionType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kmsKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterWorkloadType:getJobJobSettingsSettingsNewClusterWorkloadType": {
+            "properties": {
+                "clients": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterWorkloadTypeClients:getJobJobSettingsSettingsNewClusterWorkloadTypeClients",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "clients"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterWorkloadTypeClients:getJobJobSettingsSettingsNewClusterWorkloadTypeClients": {
+            "properties": {
+                "jobs": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "notebooks": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsNotebookTask:getJobJobSettingsSettingsNotebookTask": {
+            "properties": {
+                "baseParameters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "notebookPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "notebookPath"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsPipelineTask:getJobJobSettingsSettingsPipelineTask": {
+            "properties": {
+                "pipelineId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "pipelineId"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsPythonWheelTask:getJobJobSettingsSettingsPythonWheelTask": {
+            "properties": {
+                "entryPoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namedParameters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "packageName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsSchedule:getJobJobSettingsSettingsSchedule": {
+            "properties": {
+                "pauseStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "quartzCronExpression": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timezoneId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "pauseStatus",
+                "quartzCronExpression",
+                "timezoneId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "quartzCronExpression",
+                        "timezoneId"
+                    ]
+                }
+            }
+        },
+        "databricks:index/getJobJobSettingsSettingsSparkJarTask:getJobJobSettingsSettingsSparkJarTask": {
+            "properties": {
+                "jarUri": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mainClassName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsSparkPythonTask:getJobJobSettingsSettingsSparkPythonTask": {
+            "properties": {
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pythonFile": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "pythonFile"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsSparkSubmitTask:getJobJobSettingsSettingsSparkSubmitTask": {
+            "properties": {
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTask:getJobJobSettingsSettingsTask": {
+            "properties": {
+                "dbtTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskDbtTask:getJobJobSettingsSettingsTaskDbtTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskDependsOn:getJobJobSettingsSettingsTaskDependsOn"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "emailNotifications": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskEmailNotifications:getJobJobSettingsSettingsTaskEmailNotifications",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "existingClusterId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "jobClusterKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "libraries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskLibrary:getJobJobSettingsSettingsTaskLibrary"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxRetries": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minRetryIntervalMillis": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "newCluster": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewCluster:getJobJobSettingsSettingsTaskNewCluster",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "notebookTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNotebookTask:getJobJobSettingsSettingsTaskNotebookTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pipelineTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskPipelineTask:getJobJobSettingsSettingsTaskPipelineTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pythonWheelTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskPythonWheelTask:getJobJobSettingsSettingsTaskPythonWheelTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "retryOnTimeout": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkJarTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskSparkJarTask:getJobJobSettingsSettingsTaskSparkJarTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkPythonTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskSparkPythonTask:getJobJobSettingsSettingsTaskSparkPythonTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkSubmitTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskSparkSubmitTask:getJobJobSettingsSettingsTaskSparkSubmitTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sqlTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskSqlTask:getJobJobSettingsSettingsTaskSqlTask",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "taskKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timeoutSeconds": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "retryOnTimeout"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskDbtTask:getJobJobSettingsSettingsTaskDbtTask": {
+            "properties": {
+                "commands": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "profilesDirectory": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "projectDirectory": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "schema": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "warehouseId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "commands"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskDependsOn:getJobJobSettingsSettingsTaskDependsOn": {
+            "properties": {
+                "taskKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskEmailNotifications:getJobJobSettingsSettingsTaskEmailNotifications": {
+            "properties": {
+                "alertOnLastAttempt": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "noAlertForSkippedRuns": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onFailures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onStarts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "onSuccesses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskLibrary:getJobJobSettingsSettingsTaskLibrary": {
+            "properties": {
+                "cran": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskLibraryCran:getJobJobSettingsSettingsTaskLibraryCran",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "egg": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "jar": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maven": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskLibraryMaven:getJobJobSettingsSettingsTaskLibraryMaven",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pypi": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskLibraryPypi:getJobJobSettingsSettingsTaskLibraryPypi",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "whl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskLibraryCran:getJobJobSettingsSettingsTaskLibraryCran": {
+            "properties": {
+                "package": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskLibraryMaven:getJobJobSettingsSettingsTaskLibraryMaven": {
+            "properties": {
+                "coordinates": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "exclusions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "coordinates"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskLibraryPypi:getJobJobSettingsSettingsTaskLibraryPypi": {
+            "properties": {
+                "package": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repo": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "package"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewCluster:getJobJobSettingsSettingsTaskNewCluster": {
+            "properties": {
+                "applyPolicyDefaultValues": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autoscale": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterAutoscale:getJobJobSettingsSettingsTaskNewClusterAutoscale",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "autoterminationMinutes": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "awsAttributes": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterAwsAttributes:getJobJobSettingsSettingsTaskNewClusterAwsAttributes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "azureAttributes": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterAzureAttributes:getJobJobSettingsSettingsTaskNewClusterAzureAttributes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterLogConf": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterClusterLogConf:getJobJobSettingsSettingsTaskNewClusterClusterLogConf",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "customTags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dataSecurityMode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dockerImage": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterDockerImage:getJobJobSettingsSettingsTaskNewClusterDockerImage",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "driverInstancePoolId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "driverNodeTypeId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableElasticDisk": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableLocalDiskEncryption": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gcpAttributes": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterGcpAttributes:getJobJobSettingsSettingsTaskNewClusterGcpAttributes",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "idempotencyToken": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "initScripts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterInitScript:getJobJobSettingsSettingsTaskNewClusterInitScript"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instancePoolId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeTypeId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "numWorkers": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "policyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "singleUserName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkConf": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkEnvVars": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sparkVersion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sshPublicKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "workloadType": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterWorkloadType:getJobJobSettingsSettingsTaskNewClusterWorkloadType",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "driverInstancePoolId",
+                "driverNodeTypeId",
+                "enableElasticDisk",
+                "enableLocalDiskEncryption",
+                "nodeTypeId",
+                "numWorkers",
+                "sparkVersion"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "numWorkers",
+                        "sparkVersion"
+                    ]
+                }
+            }
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterAutoscale:getJobJobSettingsSettingsTaskNewClusterAutoscale": {
+            "properties": {
+                "maxWorkers": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minWorkers": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterAwsAttributes:getJobJobSettingsSettingsTaskNewClusterAwsAttributes": {
+            "properties": {
+                "availability": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ebsVolumeCount": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ebsVolumeSize": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ebsVolumeType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "firstOnDemand": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceProfileArn": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "spotBidPricePercent": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterAzureAttributes:getJobJobSettingsSettingsTaskNewClusterAzureAttributes": {
+            "properties": {
+                "availability": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "firstOnDemand": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "spotBidMaxPrice": {
+                    "type": "number",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterClusterLogConf:getJobJobSettingsSettingsTaskNewClusterClusterLogConf": {
+            "properties": {
+                "dbfs": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfs:getJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "s3": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterClusterLogConfS3:getJobJobSettingsSettingsTaskNewClusterClusterLogConfS3",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfs:getJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfs": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterClusterLogConfS3:getJobJobSettingsSettingsTaskNewClusterClusterLogConfS3": {
+            "properties": {
+                "cannedAcl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableEncryption": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "encryptionType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kmsKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterDockerImage:getJobJobSettingsSettingsTaskNewClusterDockerImage": {
+            "properties": {
+                "basicAuth": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth:getJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "url": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "url"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth:getJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterGcpAttributes:getJobJobSettingsSettingsTaskNewClusterGcpAttributes": {
+            "properties": {
+                "availability": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "bootDiskSize": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "googleServiceAccount": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usePreemptibleExecutors": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterInitScript:getJobJobSettingsSettingsTaskNewClusterInitScript": {
+            "properties": {
+                "dbfs": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterInitScriptDbfs:getJobJobSettingsSettingsTaskNewClusterInitScriptDbfs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "file": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterInitScriptFile:getJobJobSettingsSettingsTaskNewClusterInitScriptFile",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gcs": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterInitScriptGcs:getJobJobSettingsSettingsTaskNewClusterInitScriptGcs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "s3": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterInitScriptS3:getJobJobSettingsSettingsTaskNewClusterInitScriptS3",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterInitScriptDbfs:getJobJobSettingsSettingsTaskNewClusterInitScriptDbfs": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterInitScriptFile:getJobJobSettingsSettingsTaskNewClusterInitScriptFile": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterInitScriptGcs:getJobJobSettingsSettingsTaskNewClusterInitScriptGcs": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterInitScriptS3:getJobJobSettingsSettingsTaskNewClusterInitScriptS3": {
+            "properties": {
+                "cannedAcl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableEncryption": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "encryptionType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kmsKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterWorkloadType:getJobJobSettingsSettingsTaskNewClusterWorkloadType": {
+            "properties": {
+                "clients": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterWorkloadTypeClients:getJobJobSettingsSettingsTaskNewClusterWorkloadTypeClients",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "clients"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterWorkloadTypeClients:getJobJobSettingsSettingsTaskNewClusterWorkloadTypeClients": {
+            "properties": {
+                "jobs": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "notebooks": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNotebookTask:getJobJobSettingsSettingsTaskNotebookTask": {
+            "properties": {
+                "baseParameters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "notebookPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "notebookPath"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskPipelineTask:getJobJobSettingsSettingsTaskPipelineTask": {
+            "properties": {
+                "pipelineId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "pipelineId"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskPythonWheelTask:getJobJobSettingsSettingsTaskPythonWheelTask": {
+            "properties": {
+                "entryPoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namedParameters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "packageName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskSparkJarTask:getJobJobSettingsSettingsTaskSparkJarTask": {
+            "properties": {
+                "jarUri": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mainClassName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskSparkPythonTask:getJobJobSettingsSettingsTaskSparkPythonTask": {
+            "properties": {
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pythonFile": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "pythonFile"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskSparkSubmitTask:getJobJobSettingsSettingsTaskSparkSubmitTask": {
+            "properties": {
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskSqlTask:getJobJobSettingsSettingsTaskSqlTask": {
+            "properties": {
+                "alert": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskSqlTaskAlert:getJobJobSettingsSettingsTaskSqlTaskAlert",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dashboard": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskSqlTaskDashboard:getJobJobSettingsSettingsTaskSqlTaskDashboard",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "parameters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "query": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskSqlTaskQuery:getJobJobSettingsSettingsTaskSqlTaskQuery",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "warehouseId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskSqlTaskAlert:getJobJobSettingsSettingsTaskSqlTaskAlert": {
+            "properties": {
+                "alertId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "alertId"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskSqlTaskDashboard:getJobJobSettingsSettingsTaskSqlTaskDashboard": {
+            "properties": {
+                "dashboardId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "dashboardId"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskSqlTaskQuery:getJobJobSettingsSettingsTaskSqlTaskQuery": {
+            "properties": {
+                "queryId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "queryId"
+            ]
+        },
         "databricks:index/getNotebookPathsNotebookPathList:getNotebookPathsNotebookPathList": {
             "properties": {
                 "language": {
@@ -9136,6 +12945,106 @@
                 "type": "object"
             }
         },
+        "databricks:index/entitlements:Entitlements": {
+            "description": "This resource allows you to set entitlements to existing databricks_users, databricks.Group or databricks.ServicePrincipal\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nSetting entitlements for a regular user:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst meUser = databricks.getUser({\n    userName: \"me@example.com\",\n});\nconst meEntitlements = new databricks.Entitlements(\"meEntitlements\", {\n    userId: meUser.then(meUser =\u003e meUser.id),\n    allowClusterCreate: true,\n    allowInstancePoolCreate: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nme_user = databricks.get_user(user_name=\"me@example.com\")\nme_entitlements = databricks.Entitlements(\"meEntitlements\",\n    user_id=me_user.id,\n    allow_cluster_create=True,\n    allow_instance_pool_create=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var meUser = Databricks.GetUser.Invoke(new()\n    {\n        UserName = \"me@example.com\",\n    });\n\n    var meEntitlements = new Databricks.Entitlements(\"meEntitlements\", new()\n    {\n        UserId = meUser.Apply(getUserResult =\u003e getUserResult.Id),\n        AllowClusterCreate = true,\n        AllowInstancePoolCreate = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmeUser, err := databricks.LookupUser(ctx, \u0026GetUserArgs{\n\t\t\tUserName: pulumi.StringRef(\"me@example.com\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewEntitlements(ctx, \"meEntitlements\", \u0026databricks.EntitlementsArgs{\n\t\t\tUserId:                  pulumi.String(meUser.Id),\n\t\t\tAllowClusterCreate:      pulumi.Bool(true),\n\t\t\tAllowInstancePoolCreate: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetUserArgs;\nimport com.pulumi.databricks.Entitlements;\nimport com.pulumi.databricks.EntitlementsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var meUser = DatabricksFunctions.getUser(GetUserArgs.builder()\n            .userName(\"me@example.com\")\n            .build());\n\n        var meEntitlements = new Entitlements(\"meEntitlements\", EntitlementsArgs.builder()        \n            .userId(meUser.applyValue(getUserResult -\u003e getUserResult.id()))\n            .allowClusterCreate(true)\n            .allowInstancePoolCreate(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  meEntitlements:\n    type: databricks:Entitlements\n    properties:\n      userId: ${meUser.id}\n      allowClusterCreate: true\n      allowInstancePoolCreate: true\nvariables:\n  meUser:\n    Fn::Invoke:\n      Function: databricks:getUser\n      Arguments:\n        userName: me@example.com\n```\n\nSetting entitlements for a service principal:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst thisServicePrincipal = databricks.getServicePrincipal({\n    applicationId: \"11111111-2222-3333-4444-555666777888\",\n});\nconst thisEntitlements = new databricks.Entitlements(\"thisEntitlements\", {\n    servicePrincipalId: thisServicePrincipal.then(thisServicePrincipal =\u003e thisServicePrincipal.spId),\n    allowClusterCreate: true,\n    allowInstancePoolCreate: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis_service_principal = databricks.get_service_principal(application_id=\"11111111-2222-3333-4444-555666777888\")\nthis_entitlements = databricks.Entitlements(\"thisEntitlements\",\n    service_principal_id=this_service_principal.sp_id,\n    allow_cluster_create=True,\n    allow_instance_pool_create=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var thisServicePrincipal = Databricks.GetServicePrincipal.Invoke(new()\n    {\n        ApplicationId = \"11111111-2222-3333-4444-555666777888\",\n    });\n\n    var thisEntitlements = new Databricks.Entitlements(\"thisEntitlements\", new()\n    {\n        ServicePrincipalId = thisServicePrincipal.Apply(getServicePrincipalResult =\u003e getServicePrincipalResult.SpId),\n        AllowClusterCreate = true,\n        AllowInstancePoolCreate = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthisServicePrincipal, err := databricks.LookupServicePrincipal(ctx, \u0026GetServicePrincipalArgs{\n\t\t\tApplicationId: pulumi.StringRef(\"11111111-2222-3333-4444-555666777888\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewEntitlements(ctx, \"thisEntitlements\", \u0026databricks.EntitlementsArgs{\n\t\t\tServicePrincipalId:      pulumi.String(thisServicePrincipal.SpId),\n\t\t\tAllowClusterCreate:      pulumi.Bool(true),\n\t\t\tAllowInstancePoolCreate: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetServicePrincipalArgs;\nimport com.pulumi.databricks.Entitlements;\nimport com.pulumi.databricks.EntitlementsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var thisServicePrincipal = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()\n            .applicationId(\"11111111-2222-3333-4444-555666777888\")\n            .build());\n\n        var thisEntitlements = new Entitlements(\"thisEntitlements\", EntitlementsArgs.builder()        \n            .servicePrincipalId(thisServicePrincipal.applyValue(getServicePrincipalResult -\u003e getServicePrincipalResult.spId()))\n            .allowClusterCreate(true)\n            .allowInstancePoolCreate(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  thisEntitlements:\n    type: databricks:Entitlements\n    properties:\n      servicePrincipalId: ${thisServicePrincipal.spId}\n      allowClusterCreate: true\n      allowInstancePoolCreate: true\nvariables:\n  thisServicePrincipal:\n    Fn::Invoke:\n      Function: databricks:getServicePrincipal\n      Arguments:\n        applicationId: 11111111-2222-3333-4444-555666777888\n```\n\nSetting entitlements to all users in a workspace - referencing special `users` databricks.Group\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst users = databricks.getGroup({\n    displayName: \"users\",\n});\nconst workspace_users = new databricks.Entitlements(\"workspace-users\", {\n    groupId: users.then(users =\u003e users.id),\n    allowClusterCreate: true,\n    allowInstancePoolCreate: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nusers = databricks.get_group(display_name=\"users\")\nworkspace_users = databricks.Entitlements(\"workspace-users\",\n    group_id=users.id,\n    allow_cluster_create=True,\n    allow_instance_pool_create=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var users = Databricks.GetGroup.Invoke(new()\n    {\n        DisplayName = \"users\",\n    });\n\n    var workspace_users = new Databricks.Entitlements(\"workspace-users\", new()\n    {\n        GroupId = users.Apply(getGroupResult =\u003e getGroupResult.Id),\n        AllowClusterCreate = true,\n        AllowInstancePoolCreate = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tusers, err := databricks.LookupGroup(ctx, \u0026GetGroupArgs{\n\t\t\tDisplayName: \"users\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewEntitlements(ctx, \"workspace-users\", \u0026databricks.EntitlementsArgs{\n\t\t\tGroupId:                 pulumi.String(users.Id),\n\t\t\tAllowClusterCreate:      pulumi.Bool(true),\n\t\t\tAllowInstancePoolCreate: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetGroupArgs;\nimport com.pulumi.databricks.Entitlements;\nimport com.pulumi.databricks.EntitlementsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var users = DatabricksFunctions.getGroup(GetGroupArgs.builder()\n            .displayName(\"users\")\n            .build());\n\n        var workspace_users = new Entitlements(\"workspace-users\", EntitlementsArgs.builder()        \n            .groupId(users.applyValue(getGroupResult -\u003e getGroupResult.id()))\n            .allowClusterCreate(true)\n            .allowInstancePoolCreate(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  workspace-users:\n    type: databricks:Entitlements\n    properties:\n      groupId: ${users.id}\n      allowClusterCreate: true\n      allowInstancePoolCreate: true\nvariables:\n  users:\n    Fn::Invoke:\n      Function: databricks:getGroup\n      Arguments:\n        displayName: users\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.\n* databricks_group_member to attach users and groups as group members.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.User data to retrieve information about databricks_user.\n\n\n## Import\n\nThe resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are* `user/user_id` - user `user_id`. * `group/group_id` - group `group_id`. * `spn/spn_id` - service principal `spn_id`. bash\n\n```sh\n $ pulumi import databricks:index/entitlements:Entitlements me user/\u003cuser-id\u003e\n```\n\n ",
+            "properties": {
+                "allowClusterCreate": {
+                    "type": "boolean",
+                    "description": "Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.\n"
+                },
+                "allowInstancePoolCreate": {
+                    "type": "boolean",
+                    "description": "Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.\n"
+                },
+                "databricksSqlAccess": {
+                    "type": "boolean",
+                    "description": "This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "Canonical unique identifier for the group.\n"
+                },
+                "servicePrincipalId": {
+                    "type": "string",
+                    "description": "Canonical unique identifier for the service principal.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "Canonical unique identifier for the user.\n"
+                },
+                "workspaceAccess": {
+                    "type": "boolean"
+                }
+            },
+            "inputProperties": {
+                "allowClusterCreate": {
+                    "type": "boolean",
+                    "description": "Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.\n"
+                },
+                "allowInstancePoolCreate": {
+                    "type": "boolean",
+                    "description": "Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.\n"
+                },
+                "databricksSqlAccess": {
+                    "type": "boolean",
+                    "description": "This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "Canonical unique identifier for the group.\n",
+                    "willReplaceOnChanges": true
+                },
+                "servicePrincipalId": {
+                    "type": "string",
+                    "description": "Canonical unique identifier for the service principal.\n",
+                    "willReplaceOnChanges": true
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "Canonical unique identifier for the user.\n",
+                    "willReplaceOnChanges": true
+                },
+                "workspaceAccess": {
+                    "type": "boolean"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Entitlements resources.\n",
+                "properties": {
+                    "allowClusterCreate": {
+                        "type": "boolean",
+                        "description": "Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.\n"
+                    },
+                    "allowInstancePoolCreate": {
+                        "type": "boolean",
+                        "description": "Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.\n"
+                    },
+                    "databricksSqlAccess": {
+                        "type": "boolean",
+                        "description": "This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "Canonical unique identifier for the group.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "servicePrincipalId": {
+                        "type": "string",
+                        "description": "Canonical unique identifier for the service principal.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "Canonical unique identifier for the user.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "workspaceAccess": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "databricks:index/externalLocation:ExternalLocation": {
             "description": "To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:\n\n- databricks.StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.\n- `databricks.ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.\n\n\n## Import\n\nThis resource can be imported by namebash\n\n```sh\n $ pulumi import databricks:index/externalLocation:ExternalLocation this \u003cname\u003e\n```\n\n ",
             "properties": {
@@ -9687,6 +13596,55 @@
                     "instanceProfileId": {
                         "type": "string",
                         "description": "This is the id of the instance profile resource.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "databricks:index/groupRole:GroupRole": {
+            "description": "This resource allows you to attach Role ARN (AWS) to databricks_group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst myGroup = new databricks.Group(\"myGroup\", {});\nconst myGroupRole = new databricks.GroupRole(\"myGroupRole\", {\n    groupId: myGroup.id,\n    role: \"arn:aws:iam::000000000000:role/my-role\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nmy_group = databricks.Group(\"myGroup\")\nmy_group_role = databricks.GroupRole(\"myGroupRole\",\n    group_id=my_group.id,\n    role=\"arn:aws:iam::000000000000:role/my-role\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myGroup = new Databricks.Group(\"myGroup\");\n\n    var myGroupRole = new Databricks.GroupRole(\"myGroupRole\", new()\n    {\n        GroupId = myGroup.Id,\n        Role = \"arn:aws:iam::000000000000:role/my-role\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyGroup, err := databricks.NewGroup(ctx, \"myGroup\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupRole(ctx, \"myGroupRole\", \u0026databricks.GroupRoleArgs{\n\t\t\tGroupId: myGroup.ID(),\n\t\t\tRole:    pulumi.String(\"arn:aws:iam::000000000000:role/my-role\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Group;\nimport com.pulumi.databricks.GroupRole;\nimport com.pulumi.databricks.GroupRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myGroup = new Group(\"myGroup\");\n\n        var myGroupRole = new GroupRole(\"myGroupRole\", GroupRoleArgs.builder()        \n            .groupId(myGroup.id())\n            .role(\"arn:aws:iam::000000000000:role/my-role\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myGroup:\n    type: databricks:Group\n  myGroupRole:\n    type: databricks:GroupRole\n    properties:\n      groupId: ${myGroup.id}\n      role: arn:aws:iam::000000000000:role/my-role\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks_group_member to attach users and groups as group members.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.\n\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported. ",
+            "properties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "This is the id of the group resource.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "This is the AWS role ARN.\n"
+                }
+            },
+            "required": [
+                "groupId",
+                "role"
+            ],
+            "inputProperties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "This is the id of the group resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "role": {
+                    "type": "string",
+                    "description": "This is the AWS role ARN.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "groupId",
+                "role"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupRole resources.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "This is the id of the group resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "This is the AWS role ARN.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -13303,6 +17261,125 @@
                 "type": "object"
             }
         },
+        "databricks:index/recipient:Recipient": {
+            "description": "Within a metastore, Unity Catalog provides the ability to create a recipient to attach delta shares to.\n\nA `databricks.Recipient` is contained within databricks.Metastore and can contain a list of shares.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Databricks Sharing with non databricks recipient\n\nSetting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to \nauthenticate to the sharing server to access data. This is for when the recipient is not using Databricks. \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\nimport * as random from \"@pulumi/random\";\n\nconst db2opensharecode = new random.RandomPassword(\"db2opensharecode\", {\n    length: 16,\n    special: true,\n});\nconst current = databricks.getCurrentUser({});\nconst db2open = new databricks.Recipient(\"db2open\", {\n    comment: \"made by terraform\",\n    authenticationType: \"TOKEN\",\n    sharingCode: db2opensharecode.result,\n    ipAccessList: {\n        allowedIpAddresses: [],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\nimport pulumi_random as random\n\ndb2opensharecode = random.RandomPassword(\"db2opensharecode\",\n    length=16,\n    special=True)\ncurrent = databricks.get_current_user()\ndb2open = databricks.Recipient(\"db2open\",\n    comment=\"made by terraform\",\n    authentication_type=\"TOKEN\",\n    sharing_code=db2opensharecode.result,\n    ip_access_list=databricks.RecipientIpAccessListArgs(\n        allowed_ip_addresses=[],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\nusing Random = Pulumi.Random;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var db2opensharecode = new Random.RandomPassword(\"db2opensharecode\", new()\n    {\n        Length = 16,\n        Special = true,\n    });\n\n    var current = Databricks.GetCurrentUser.Invoke();\n\n    var db2open = new Databricks.Recipient(\"db2open\", new()\n    {\n        Comment = \"made by terraform\",\n        AuthenticationType = \"TOKEN\",\n        SharingCode = db2opensharecode.Result,\n        IpAccessList = new Databricks.Inputs.RecipientIpAccessListArgs\n        {\n            AllowedIpAddresses = new[] {},\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi-random/sdk/v4/go/random\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdb2opensharecode, err := random.NewRandomPassword(ctx, \"db2opensharecode\", \u0026random.RandomPasswordArgs{\n\t\t\tLength:  pulumi.Int(16),\n\t\t\tSpecial: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.GetCurrentUser(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewRecipient(ctx, \"db2open\", \u0026databricks.RecipientArgs{\n\t\t\tComment:            pulumi.String(\"made by terraform\"),\n\t\t\tAuthenticationType: pulumi.String(\"TOKEN\"),\n\t\t\tSharingCode:        db2opensharecode.Result,\n\t\t\tIpAccessList: \u0026RecipientIpAccessListArgs{\n\t\t\t\tAllowedIpAddresses: pulumi.StringArray{},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.random.RandomPassword;\nimport com.pulumi.random.RandomPasswordArgs;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.Recipient;\nimport com.pulumi.databricks.RecipientArgs;\nimport com.pulumi.databricks.inputs.RecipientIpAccessListArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var db2opensharecode = new RandomPassword(\"db2opensharecode\", RandomPasswordArgs.builder()        \n            .length(16)\n            .special(true)\n            .build());\n\n        final var current = DatabricksFunctions.getCurrentUser();\n\n        var db2open = new Recipient(\"db2open\", RecipientArgs.builder()        \n            .comment(\"made by terraform\")\n            .authenticationType(\"TOKEN\")\n            .sharingCode(db2opensharecode.result())\n            .ipAccessList(RecipientIpAccessListArgs.builder()\n                .allowedIpAddresses()\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  db2opensharecode:\n    type: random:RandomPassword\n    properties:\n      length: 16\n      special: true\n  db2open:\n    type: databricks:Recipient\n    properties:\n      comment: made by terraform\n      authenticationType: TOKEN\n      sharingCode: ${db2opensharecode.result}\n      ipAccessList:\n        allowedIpAddresses: []\nvariables:\n  current:\n    Fn::Invoke:\n      Function: databricks:getCurrentUser\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attribute Reference:\n\n* `tokens` - (Optional) List of Recipient Tokens.\n",
+            "properties": {
+                "authenticationType": {
+                    "type": "string",
+                    "description": "The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.\n"
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "Description about the recipient.\n"
+                },
+                "dataRecipientGlobalMetastoreId": {
+                    "type": "string",
+                    "description": "Required when authentication_type is DATABRICKS.\n"
+                },
+                "ipAccessList": {
+                    "$ref": "#/types/databricks:index/RecipientIpAccessList:RecipientIpAccessList",
+                    "description": "The one-time sharing code provided by the data recipient.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of recipient. Change forces creation of a new resource.\n"
+                },
+                "sharingCode": {
+                    "type": "string",
+                    "description": "The one-time sharing code provided by the data recipient.\n"
+                },
+                "tokens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/RecipientToken:RecipientToken"
+                    }
+                }
+            },
+            "required": [
+                "authenticationType",
+                "name",
+                "tokens"
+            ],
+            "inputProperties": {
+                "authenticationType": {
+                    "type": "string",
+                    "description": "The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "Description about the recipient.\n"
+                },
+                "dataRecipientGlobalMetastoreId": {
+                    "type": "string",
+                    "description": "Required when authentication_type is DATABRICKS.\n",
+                    "willReplaceOnChanges": true
+                },
+                "ipAccessList": {
+                    "$ref": "#/types/databricks:index/RecipientIpAccessList:RecipientIpAccessList",
+                    "description": "The one-time sharing code provided by the data recipient.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of recipient. Change forces creation of a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "sharingCode": {
+                    "type": "string",
+                    "description": "The one-time sharing code provided by the data recipient.\n",
+                    "willReplaceOnChanges": true
+                },
+                "tokens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/RecipientToken:RecipientToken"
+                    }
+                }
+            },
+            "requiredInputs": [
+                "authenticationType"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Recipient resources.\n",
+                "properties": {
+                    "authenticationType": {
+                        "type": "string",
+                        "description": "The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "comment": {
+                        "type": "string",
+                        "description": "Description about the recipient.\n"
+                    },
+                    "dataRecipientGlobalMetastoreId": {
+                        "type": "string",
+                        "description": "Required when authentication_type is DATABRICKS.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "ipAccessList": {
+                        "$ref": "#/types/databricks:index/RecipientIpAccessList:RecipientIpAccessList",
+                        "description": "The one-time sharing code provided by the data recipient.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of recipient. Change forces creation of a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "sharingCode": {
+                        "type": "string",
+                        "description": "The one-time sharing code provided by the data recipient.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "tokens": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/databricks:index/RecipientToken:RecipientToken"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        },
         "databricks:index/repo:Repo": {
             "description": "\n\n\n## Import\n\nThe resource Repo can be imported using the Repo ID (obtained via UI or using API) bash\n\n```sh\n $ pulumi import databricks:index/repo:Repo this repo_id\n```\n\n ",
             "properties": {
@@ -14476,7 +18553,7 @@
             }
         },
         "databricks:index/sqlVisualization:SqlVisualization": {
-            "description": "To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.\n\n**Note:** documentation for this resource is a work in progress.\n\nA visualization is always tied to a query. Every query may have one or more visualizations.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst q1v1 = new databricks.SqlVisualization(\"q1v1\", {\n    queryId: databricks_sql_query.q1.id,\n    type: \"table\",\n    description: \"Some Description\",\n    options: JSON.stringify({\n        itemsPerPage: 25,\n        columns: [\n            {\n                name: \"p1\",\n                type: \"string\",\n                title: \"Parameter 1\",\n                displayAs: \"string\",\n            },\n            {\n                name: \"p2\",\n                type: \"string\",\n                title: \"Parameter 2\",\n                displayAs: \"link\",\n                highlightLinks: true,\n            },\n        ],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_databricks as databricks\n\nq1v1 = databricks.SqlVisualization(\"q1v1\",\n    query_id=databricks_sql_query[\"q1\"][\"id\"],\n    type=\"table\",\n    description=\"Some Description\",\n    options=json.dumps({\n        \"itemsPerPage\": 25,\n        \"columns\": [\n            {\n                \"name\": \"p1\",\n                \"type\": \"string\",\n                \"title\": \"Parameter 1\",\n                \"displayAs\": \"string\",\n            },\n            {\n                \"name\": \"p2\",\n                \"type\": \"string\",\n                \"title\": \"Parameter 2\",\n                \"displayAs\": \"link\",\n                \"highlightLinks\": True,\n            },\n        ],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var q1v1 = new Databricks.SqlVisualization(\"q1v1\", new()\n    {\n        QueryId = databricks_sql_query.Q1.Id,\n        Type = \"table\",\n        Description = \"Some Description\",\n        Options = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"itemsPerPage\"] = 25,\n            [\"columns\"] = new[]\n            {\n                new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"name\"] = \"p1\",\n                    [\"type\"] = \"string\",\n                    [\"title\"] = \"Parameter 1\",\n                    [\"displayAs\"] = \"string\",\n                },\n                new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"name\"] = \"p2\",\n                    [\"type\"] = \"string\",\n                    [\"title\"] = \"Parameter 2\",\n                    [\"displayAs\"] = \"link\",\n                    [\"highlightLinks\"] = true,\n                },\n            },\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"itemsPerPage\": 25,\n\t\t\t\"columns\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"name\":      \"p1\",\n\t\t\t\t\t\"type\":      \"string\",\n\t\t\t\t\t\"title\":     \"Parameter 1\",\n\t\t\t\t\t\"displayAs\": \"string\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"name\":           \"p2\",\n\t\t\t\t\t\"type\":           \"string\",\n\t\t\t\t\t\"title\":          \"Parameter 2\",\n\t\t\t\t\t\"displayAs\":      \"link\",\n\t\t\t\t\t\"highlightLinks\": true,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = databricks.NewSqlVisualization(ctx, \"q1v1\", \u0026databricks.SqlVisualizationArgs{\n\t\t\tQueryId:     pulumi.Any(databricks_sql_query.Q1.Id),\n\t\t\tType:        pulumi.String(\"table\"),\n\t\t\tDescription: pulumi.String(\"Some Description\"),\n\t\t\tOptions:     pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.SqlVisualization;\nimport com.pulumi.databricks.SqlVisualizationArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var q1v1 = new SqlVisualization(\"q1v1\", SqlVisualizationArgs.builder()        \n            .queryId(databricks_sql_query.q1().id())\n            .type(\"table\")\n            .description(\"Some Description\")\n            .options(serializeJson(\n                jsonObject(\n                    jsonProperty(\"itemsPerPage\", 25),\n                    jsonProperty(\"columns\", jsonArray(\n                        jsonObject(\n                            jsonProperty(\"name\", \"p1\"),\n                            jsonProperty(\"type\", \"string\"),\n                            jsonProperty(\"title\", \"Parameter 1\"),\n                            jsonProperty(\"displayAs\", \"string\")\n                        ), \n                        jsonObject(\n                            jsonProperty(\"name\", \"p2\"),\n                            jsonProperty(\"type\", \"string\"),\n                            jsonProperty(\"title\", \"Parameter 2\"),\n                            jsonProperty(\"displayAs\", \"link\"),\n                            jsonProperty(\"highlightLinks\", true)\n                        )\n                    ))\n                )))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  q1v1:\n    type: databricks:SqlVisualization\n    properties:\n      queryId: ${databricks_sql_query.q1.id}\n      type: table\n      description: Some Description\n      # The options encoded in this field are passed verbatim to the SQLA API.\n      options:\n        Fn::ToJSON:\n          itemsPerPage: 25\n          columns:\n            - name: p1\n              type: string\n              title: Parameter 1\n              displayAs: string\n            - name: p2\n              type: string\n              title: Parameter 2\n              displayAs: link\n              highlightLinks: true\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).\n* databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).\n* databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.\n* databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).\n\n\n## Import\n\nYou can import a `databricks_sql_visualization` resource with ID like the followingbash\n\n```sh\n $ pulumi import databricks:index/sqlVisualization:SqlVisualization this \u003cquery-id\u003e/\u003cvisualization-id\u003e\n```\n\n ",
+            "description": "\n\n\n## Import\n\nYou can import a `databricks_sql_visualization` resource with ID like the followingbash\n\n```sh\n $ pulumi import databricks:index/sqlVisualization:SqlVisualization this \u003cquery-id\u003e/\u003cvisualization-id\u003e\n```\n\n ",
             "properties": {
                 "description": {
                     "type": "string"
@@ -15854,6 +19931,55 @@
                     "members",
                     "servicePrincipals",
                     "users",
+                    "id"
+                ]
+            }
+        },
+        "databricks:index/getJob:getJob": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGetting the existing cluster id of specific databricks.Job by name or by id:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst this = databricks.getJob({\n    jobName: \"My job\",\n});\nexport const clusterId = _this.then(_this =\u003e _this.jobSettings?.settings?.newCluster?.numWorkers);\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.get_job(job_name=\"My job\")\npulumi.export(\"clusterId\", this.job_settings.settings.new_cluster.num_workers)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Databricks.GetJob.Invoke(new()\n    {\n        JobName = \"My job\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"clusterId\"] = @this.Apply(getJobResult =\u003e getJobResult).Apply(@this =\u003e @this.Apply(getJobResult =\u003e getJobResult.JobSettings?.Settings?.NewCluster?.NumWorkers)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthis, err := databricks.LookupJob(ctx, \u0026GetJobArgs{\n\t\t\tJobName: pulumi.StringRef(\"My job\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"clusterId\", this.JobSettings.Settings.NewCluster.NumWorkers)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetJobArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = DatabricksFunctions.getJob(GetJobArgs.builder()\n            .jobName(\"My job\")\n            .build());\n\n        ctx.export(\"clusterId\", this_.jobSettings().settings().newCluster().numWorkers());\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    Fn::Invoke:\n      Function: databricks:getJob\n      Arguments:\n        jobName: My job\noutputs:\n  clusterId: ${this.jobSettings.settings.newCluster.numWorkers}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.getJobs data to get all jobs and their names from a workspace.\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getJob.\n",
+                "properties": {
+                    "jobId": {
+                        "type": "string",
+                        "description": "the id of databricks.Job if the resource was matched by name.\n"
+                    },
+                    "jobName": {
+                        "type": "string",
+                        "description": "the job name of databricks.Job if the resource was matched by id.\n"
+                    },
+                    "jobSettings": {
+                        "$ref": "#/types/databricks:index/getJobJobSettings:getJobJobSettings",
+                        "description": "the same fields as in databricks_job.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getJob.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "jobId": {
+                        "type": "string",
+                        "description": "the id of databricks.Job if the resource was matched by name.\n"
+                    },
+                    "jobName": {
+                        "type": "string",
+                        "description": "the job name of databricks.Job if the resource was matched by id.\n"
+                    },
+                    "jobSettings": {
+                        "$ref": "#/types/databricks:index/getJobJobSettings:getJobJobSettings",
+                        "description": "the same fields as in databricks_job.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "jobId",
+                    "jobName",
+                    "jobSettings",
                     "id"
                 ]
             }

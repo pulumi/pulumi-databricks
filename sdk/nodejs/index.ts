@@ -10,6 +10,7 @@ export * from "./cluster";
 export * from "./clusterPolicy";
 export * from "./dbfsFile";
 export * from "./directory";
+export * from "./entitlements";
 export * from "./externalLocation";
 export * from "./getAwsAssumeRolePolicy";
 export * from "./getAwsBucketPolicy";
@@ -21,6 +22,7 @@ export * from "./getCurrentUser";
 export * from "./getDbfsFile";
 export * from "./getDbfsFilePaths";
 export * from "./getGroup";
+export * from "./getJob";
 export * from "./getJobs";
 export * from "./getMwsWorkspaces";
 export * from "./getNodeType";
@@ -41,6 +43,7 @@ export * from "./globalInitScript";
 export * from "./grants";
 export * from "./group";
 export * from "./groupInstanceProfile";
+export * from "./groupRole";
 export * from "./instancePool";
 export * from "./instanceProfile";
 export * from "./ipAccessList";
@@ -68,6 +71,7 @@ export * from "./permissionAssignment";
 export * from "./permissions";
 export * from "./pipeline";
 export * from "./provider";
+export * from "./recipient";
 export * from "./repo";
 export * from "./schema";
 export * from "./secret";
@@ -105,12 +109,14 @@ import { Cluster } from "./cluster";
 import { ClusterPolicy } from "./clusterPolicy";
 import { DbfsFile } from "./dbfsFile";
 import { Directory } from "./directory";
+import { Entitlements } from "./entitlements";
 import { ExternalLocation } from "./externalLocation";
 import { GitCredential } from "./gitCredential";
 import { GlobalInitScript } from "./globalInitScript";
 import { Grants } from "./grants";
 import { Group } from "./group";
 import { GroupInstanceProfile } from "./groupInstanceProfile";
+import { GroupRole } from "./groupRole";
 import { InstancePool } from "./instancePool";
 import { InstanceProfile } from "./instanceProfile";
 import { IpAccessList } from "./ipAccessList";
@@ -137,6 +143,7 @@ import { OboToken } from "./oboToken";
 import { PermissionAssignment } from "./permissionAssignment";
 import { Permissions } from "./permissions";
 import { Pipeline } from "./pipeline";
+import { Recipient } from "./recipient";
 import { Repo } from "./repo";
 import { Schema } from "./schema";
 import { Secret } from "./secret";
@@ -173,6 +180,8 @@ const _module = {
                 return new DbfsFile(name, <any>undefined, { urn })
             case "databricks:index/directory:Directory":
                 return new Directory(name, <any>undefined, { urn })
+            case "databricks:index/entitlements:Entitlements":
+                return new Entitlements(name, <any>undefined, { urn })
             case "databricks:index/externalLocation:ExternalLocation":
                 return new ExternalLocation(name, <any>undefined, { urn })
             case "databricks:index/gitCredential:GitCredential":
@@ -185,6 +194,8 @@ const _module = {
                 return new Group(name, <any>undefined, { urn })
             case "databricks:index/groupInstanceProfile:GroupInstanceProfile":
                 return new GroupInstanceProfile(name, <any>undefined, { urn })
+            case "databricks:index/groupRole:GroupRole":
+                return new GroupRole(name, <any>undefined, { urn })
             case "databricks:index/instancePool:InstancePool":
                 return new InstancePool(name, <any>undefined, { urn })
             case "databricks:index/instanceProfile:InstanceProfile":
@@ -237,6 +248,8 @@ const _module = {
                 return new Permissions(name, <any>undefined, { urn })
             case "databricks:index/pipeline:Pipeline":
                 return new Pipeline(name, <any>undefined, { urn })
+            case "databricks:index/recipient:Recipient":
+                return new Recipient(name, <any>undefined, { urn })
             case "databricks:index/repo:Repo":
                 return new Repo(name, <any>undefined, { urn })
             case "databricks:index/schema:Schema":
@@ -289,12 +302,14 @@ pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/clusterPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dbfsFile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/directory", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/entitlements", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/externalLocation", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/gitCredential", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/globalInitScript", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/grants", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/group", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/groupInstanceProfile", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/groupRole", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/instancePool", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/instanceProfile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/ipAccessList", _module)
@@ -321,6 +336,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/oboToken", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/permissionAssignment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/permissions", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/recipient", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/repo", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/schema", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secret", _module)
