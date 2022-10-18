@@ -88,6 +88,8 @@ export class OboToken extends pulumi.CustomResource {
             resourceInputs["tokenValue"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["tokenValue"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(OboToken.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -415,7 +415,7 @@ class MwsNetworks(pulumi.CustomResource):
 
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
-            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["account_id"] = None if account_id is None else pulumi.Output.secret(account_id)
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["error_messages"] = error_messages
             __props__.__dict__["network_id"] = network_id
@@ -434,6 +434,8 @@ class MwsNetworks(pulumi.CustomResource):
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vpc_status"] = vpc_status
             __props__.__dict__["workspace_id"] = workspace_id
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountId"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MwsNetworks, __self__).__init__(
             'databricks:index/mwsNetworks:MwsNetworks',
             resource_name,

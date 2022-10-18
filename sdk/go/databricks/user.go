@@ -11,6 +11,169 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Creating regular user:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewUser(ctx, "me", &databricks.UserArgs{
+//				UserName: pulumi.String("me@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating user with administrative permissions - referencing special `admins` Group in GroupMember resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admins, err := databricks.LookupGroup(ctx, &GetGroupArgs{
+//				DisplayName: "admins",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			me, err := databricks.NewUser(ctx, "me", &databricks.UserArgs{
+//				UserName: pulumi.String("me@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGroupMember(ctx, "i-am-admin", &databricks.GroupMemberArgs{
+//				GroupId:  pulumi.String(admins.Id),
+//				MemberId: me.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating user with cluster create permissions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewUser(ctx, "me", &databricks.UserArgs{
+//				AllowClusterCreate: pulumi.Bool(true),
+//				DisplayName:        pulumi.String("Example user"),
+//				UserName:           pulumi.String("me@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating user in AWS Databricks account:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewProvider(ctx, "mws", &databricks.ProviderArgs{
+//				Host:      pulumi.String("https://accounts.cloud.databricks.com"),
+//				AccountId: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				Username:  pulumi.Any(_var.Databricks_account_username),
+//				Password:  pulumi.Any(_var.Databricks_account_password),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewUser(ctx, "accountUser", &databricks.UserArgs{
+//				UserName:    pulumi.String("me@example.com"),
+//				DisplayName: pulumi.String("Example user"),
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating user in Azure Databricks account:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewProvider(ctx, "azureAccount", &databricks.ProviderArgs{
+//				Host:      pulumi.String("https://accounts.azuredatabricks.net"),
+//				AccountId: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				AuthType:  pulumi.String("azure-cli"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewUser(ctx, "accountUser", &databricks.UserArgs{
+//				UserName:    pulumi.String("me@example.com"),
+//				DisplayName: pulumi.String("Example user"),
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -19,7 +182,7 @@ import (
 // * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
 // * Group data to retrieve information about Group members, entitlements and instance profiles.
 // * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-// * databricksGroupMember to attach users and groups as group members.
+// * GroupMember to attach users and groups as group members.
 // * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
 // * User data to retrieve information about databricks_user.
 //

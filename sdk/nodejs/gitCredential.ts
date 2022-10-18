@@ -86,9 +86,11 @@ export class GitCredential extends pulumi.CustomResource {
             resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["gitProvider"] = args ? args.gitProvider : undefined;
             resourceInputs["gitUsername"] = args ? args.gitUsername : undefined;
-            resourceInputs["personalAccessToken"] = args ? args.personalAccessToken : undefined;
+            resourceInputs["personalAccessToken"] = args?.personalAccessToken ? pulumi.secret(args.personalAccessToken) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["personalAccessToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(GitCredential.__pulumiType, name, resourceInputs, opts);
     }
 }

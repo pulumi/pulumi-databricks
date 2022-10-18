@@ -10,6 +10,167 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Creating regular service principal:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewServicePrincipal(ctx, "sp", &databricks.ServicePrincipalArgs{
+//				ApplicationId: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating service principal with administrative permissions - referencing special `admins` Group in GroupMember resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admins, err := databricks.LookupGroup(ctx, &GetGroupArgs{
+//				DisplayName: "admins",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			sp, err := databricks.NewServicePrincipal(ctx, "sp", &databricks.ServicePrincipalArgs{
+//				ApplicationId: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGroupMember(ctx, "i-am-admin", &databricks.GroupMemberArgs{
+//				GroupId:  pulumi.String(admins.Id),
+//				MemberId: sp.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating service principal with cluster create permissions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewServicePrincipal(ctx, "sp", &databricks.ServicePrincipalArgs{
+//				AllowClusterCreate: pulumi.Bool(true),
+//				ApplicationId:      pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				DisplayName:        pulumi.String("Example service principal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating service principal in AWS Databricks account:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewProvider(ctx, "mws", &databricks.ProviderArgs{
+//				Host:      pulumi.String("https://accounts.cloud.databricks.com"),
+//				AccountId: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				Username:  pulumi.Any(_var.Databricks_account_username),
+//				Password:  pulumi.Any(_var.Databricks_account_password),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewServicePrincipal(ctx, "sp", &databricks.ServicePrincipalArgs{
+//				DisplayName: pulumi.String("Automation-only SP"),
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating group in Azure Databricks account:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewProvider(ctx, "azureAccount", &databricks.ProviderArgs{
+//				Host:      pulumi.String("https://accounts.azuredatabricks.net"),
+//				AccountId: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				AuthType:  pulumi.String("azure-cli"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewServicePrincipal(ctx, "sp", &databricks.ServicePrincipalArgs{
+//				ApplicationId: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//			}, pulumi.Provider(databricks.Azure_account))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -17,7 +178,7 @@ import (
 // * End to end workspace management guide.
 // * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
 // * Group data to retrieve information about Group members, entitlements and instance profiles.
-// * databricksGroupMember to attach users and groups as group members.
+// * GroupMember to attach users and groups as group members.
 // * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
 // * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.
 //

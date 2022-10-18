@@ -12,10 +12,10 @@ namespace Pulumi.Databricks
     public static class GetAwsAssumeRolePolicy
     {
         public static Task<GetAwsAssumeRolePolicyResult> InvokeAsync(GetAwsAssumeRolePolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAwsAssumeRolePolicyResult>("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", args ?? new GetAwsAssumeRolePolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsAssumeRolePolicyResult>("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", args ?? new GetAwsAssumeRolePolicyArgs(), options.WithDefaults());
 
         public static Output<GetAwsAssumeRolePolicyResult> Invoke(GetAwsAssumeRolePolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAwsAssumeRolePolicyResult>("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", args ?? new GetAwsAssumeRolePolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsAssumeRolePolicyResult>("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", args ?? new GetAwsAssumeRolePolicyInvokeArgs(), options.WithDefaults());
     }
 
 

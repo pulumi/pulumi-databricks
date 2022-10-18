@@ -92,6 +92,13 @@ func NewRecipient(ctx *pulumi.Context,
 	if args.AuthenticationType == nil {
 		return nil, errors.New("invalid value for required argument 'AuthenticationType'")
 	}
+	if args.SharingCode != nil {
+		args.SharingCode = pulumi.ToSecret(args.SharingCode).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"sharingCode",
+	})
+	opts = append(opts, secrets)
 	var resource Recipient
 	err := ctx.RegisterResource("databricks:index/recipient:Recipient", name, args, &resource, opts...)
 	if err != nil {

@@ -10,6 +10,46 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// # Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admins, err := databricks.LookupGroup(ctx, &GetGroupArgs{
+//				DisplayName: "admins",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			spn, err := databricks.LookupServicePrincipal(ctx, &GetServicePrincipalArgs{
+//				ApplicationId: pulumi.StringRef("11111111-2222-3333-4444-555666777888"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGroupMember(ctx, "myMemberA", &databricks.GroupMemberArgs{
+//				GroupId:  pulumi.String(admins.Id),
+//				MemberId: pulumi.String(spn.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Related Resources
 //
 // The following resources are used in the same context:
@@ -19,7 +59,7 @@ import (
 // * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
 // * Group data to retrieve information about Group members, entitlements and instance profiles.
 // * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-// * databricksGroupMember to attach users and groups as group members.
+// * GroupMember to attach users and groups as group members.
 // * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
 // * databricksService principal to manage service principals
 func LookupServicePrincipal(ctx *pulumi.Context, args *LookupServicePrincipalArgs, opts ...pulumi.InvokeOption) (*LookupServicePrincipalResult, error) {

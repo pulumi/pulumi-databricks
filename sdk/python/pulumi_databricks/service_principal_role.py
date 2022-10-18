@@ -121,7 +121,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
         * End to end workspace management guide.
         * UserRole to attach role or InstanceProfile (AWS) to databricks_user.
         * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-        * databricks_group_member to attach users and groups as group members.
+        * GroupMember to attach users and groups as group members.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
 
         ## Import
@@ -163,7 +163,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
         * End to end workspace management guide.
         * UserRole to attach role or InstanceProfile (AWS) to databricks_user.
         * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-        * databricks_group_member to attach users and groups as group members.
+        * GroupMember to attach users and groups as group members.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
 
         ## Import

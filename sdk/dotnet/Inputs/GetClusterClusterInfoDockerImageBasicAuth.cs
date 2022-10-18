@@ -13,7 +13,12 @@ namespace Pulumi.Databricks.Inputs
     public sealed class GetClusterClusterInfoDockerImageBasicAuthArgs : global::Pulumi.InvokeArgs
     {
         [Input("password", required: true)]
-        public string Password { get; set; } = null!;
+        private string? _password;
+        public string? Password
+        {
+            get => _password;
+            set => _password = value;
+        }
 
         [Input("username", required: true)]
         public string Username { get; set; } = null!;

@@ -84,6 +84,13 @@ namespace Pulumi.Databricks
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "azureClientSecret",
+                    "googleCredentials",
+                    "password",
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -104,7 +111,16 @@ namespace Pulumi.Databricks
         public Input<string>? AzureClientId { get; set; }
 
         [Input("azureClientSecret")]
-        public Input<string>? AzureClientSecret { get; set; }
+        private Input<string>? _azureClientSecret;
+        public Input<string>? AzureClientSecret
+        {
+            get => _azureClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _azureClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("azureEnvironment")]
         public Input<string>? AzureEnvironment { get; set; }
@@ -131,7 +147,16 @@ namespace Pulumi.Databricks
         public Input<int>? DebugTruncateBytes { get; set; }
 
         [Input("googleCredentials")]
-        public Input<string>? GoogleCredentials { get; set; }
+        private Input<string>? _googleCredentials;
+        public Input<string>? GoogleCredentials
+        {
+            get => _googleCredentials;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _googleCredentials = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("googleServiceAccount")]
         public Input<string>? GoogleServiceAccount { get; set; }
@@ -143,7 +168,16 @@ namespace Pulumi.Databricks
         public Input<int>? HttpTimeoutSeconds { get; set; }
 
         [Input("password")]
-        public Input<string>? Password { get; set; }
+        private Input<string>? _password;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("profile")]
         public Input<string>? Profile { get; set; }
@@ -155,7 +189,16 @@ namespace Pulumi.Databricks
         public Input<bool>? SkipVerify { get; set; }
 
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("username")]
         public Input<string>? Username { get; set; }

@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         /// </summary>
         public static Task<GetJobResult> InvokeAsync(GetJobArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("databricks:index/getJob:getJob", args ?? new GetJobArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("databricks:index/getJob:getJob", args ?? new GetJobArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -83,7 +83,7 @@ namespace Pulumi.Databricks
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         /// </summary>
         public static Output<GetJobResult> Invoke(GetJobInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetJobResult>("databricks:index/getJob:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetJobResult>("databricks:index/getJob:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
     }
 
 

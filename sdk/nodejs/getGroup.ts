@@ -5,6 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Adding user to administrative group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const admins = databricks.getGroup({
+ *     displayName: "admins",
+ * });
+ * const me = new databricks.User("me", {userName: "me@example.com"});
+ * const myMemberA = new databricks.GroupMember("myMemberA", {
+ *     groupId: admins.then(admins => admins.id),
+ *     memberId: me.id,
+ * });
+ * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -12,7 +29,7 @@ import * as utilities from "./utilities";
  * * End to end workspace management guide
  * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
  * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
- * * databricksGroupMember to attach users and groups as group members.
+ * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
  * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
  */
@@ -52,7 +69,7 @@ export interface GetGroupArgs {
      */
     allowInstancePoolCreate?: boolean;
     /**
-     * Set of databricks.Group identifiers, that can be modified with databricksGroupMember resource.
+     * Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
      */
     childGroups?: string[];
     databricksSqlAccess?: boolean;
@@ -65,7 +82,7 @@ export interface GetGroupArgs {
      */
     externalId?: string;
     /**
-     * Set of group identifiers, that can be modified with databricksGroupMember resource.
+     * Set of group identifiers, that can be modified with databricks.GroupMember resource.
      */
     groups?: string[];
     /**
@@ -81,11 +98,11 @@ export interface GetGroupArgs {
      */
     recursive?: boolean;
     /**
-     * Set of databricks.ServicePrincipal identifiers, that can be modified with databricksGroupMember resource.
+     * Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
      */
     servicePrincipals?: string[];
     /**
-     * Set of databricks.User identifiers, that can be modified with databricksGroupMember resource.
+     * Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
      */
     users?: string[];
     workspaceAccess?: boolean;
@@ -104,7 +121,7 @@ export interface GetGroupResult {
      */
     readonly allowInstancePoolCreate?: boolean;
     /**
-     * Set of databricks.Group identifiers, that can be modified with databricksGroupMember resource.
+     * Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
      */
     readonly childGroups: string[];
     readonly databricksSqlAccess?: boolean;
@@ -114,7 +131,7 @@ export interface GetGroupResult {
      */
     readonly externalId: string;
     /**
-     * Set of group identifiers, that can be modified with databricksGroupMember resource.
+     * Set of group identifiers, that can be modified with databricks.GroupMember resource.
      */
     readonly groups: string[];
     /**
@@ -131,11 +148,11 @@ export interface GetGroupResult {
     readonly members: string[];
     readonly recursive?: boolean;
     /**
-     * Set of databricks.ServicePrincipal identifiers, that can be modified with databricksGroupMember resource.
+     * Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
      */
     readonly servicePrincipals: string[];
     /**
-     * Set of databricks.User identifiers, that can be modified with databricksGroupMember resource.
+     * Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
      */
     readonly users: string[];
     readonly workspaceAccess?: boolean;
@@ -158,7 +175,7 @@ export interface GetGroupOutputArgs {
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
     /**
-     * Set of databricks.Group identifiers, that can be modified with databricksGroupMember resource.
+     * Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
      */
     childGroups?: pulumi.Input<pulumi.Input<string>[]>;
     databricksSqlAccess?: pulumi.Input<boolean>;
@@ -171,7 +188,7 @@ export interface GetGroupOutputArgs {
      */
     externalId?: pulumi.Input<string>;
     /**
-     * Set of group identifiers, that can be modified with databricksGroupMember resource.
+     * Set of group identifiers, that can be modified with databricks.GroupMember resource.
      */
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -187,11 +204,11 @@ export interface GetGroupOutputArgs {
      */
     recursive?: pulumi.Input<boolean>;
     /**
-     * Set of databricks.ServicePrincipal identifiers, that can be modified with databricksGroupMember resource.
+     * Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
      */
     servicePrincipals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Set of databricks.User identifiers, that can be modified with databricksGroupMember resource.
+     * Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
      */
     users?: pulumi.Input<pulumi.Input<string>[]>;
     workspaceAccess?: pulumi.Input<boolean>;

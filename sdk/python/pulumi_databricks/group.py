@@ -282,6 +282,61 @@ class Group(pulumi.CustomResource):
                  workspace_access: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Creating some group
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Group("this",
+            allow_cluster_create=True,
+            allow_instance_pool_create=True)
+        ```
+
+        Adding User as GroupMember of some group
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this_group = databricks.Group("thisGroup",
+            allow_cluster_create=True,
+            allow_instance_pool_create=True)
+        this_user = databricks.User("thisUser", user_name="someone@example.com")
+        vip_member = databricks.GroupMember("vipMember",
+            group_id=this_group.id,
+            member_id=this_user.id)
+        ```
+
+        Creating group in AWS Databricks account:
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider at account-level
+        mws = databricks.Provider("mws",
+            host="https://accounts.cloud.databricks.com",
+            account_id="00000000-0000-0000-0000-000000000000",
+            username=var["databricks_account_username"],
+            password=var["databricks_account_password"])
+        this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        ```
+
+        Creating group in Azure Databricks account:
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider at Azure account-level
+        azure_account = databricks.Provider("azureAccount",
+            host="https://accounts.azuredatabricks.net",
+            account_id="00000000-0000-0000-0000-000000000000",
+            auth_type="azure-cli")
+        this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
+        ```
+
         ## Import
 
         You can import a `databricks_group` resource with the name `my_group` like the followingbash
@@ -306,6 +361,61 @@ class Group(pulumi.CustomResource):
                  args: Optional[GroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Creating some group
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Group("this",
+            allow_cluster_create=True,
+            allow_instance_pool_create=True)
+        ```
+
+        Adding User as GroupMember of some group
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this_group = databricks.Group("thisGroup",
+            allow_cluster_create=True,
+            allow_instance_pool_create=True)
+        this_user = databricks.User("thisUser", user_name="someone@example.com")
+        vip_member = databricks.GroupMember("vipMember",
+            group_id=this_group.id,
+            member_id=this_user.id)
+        ```
+
+        Creating group in AWS Databricks account:
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider at account-level
+        mws = databricks.Provider("mws",
+            host="https://accounts.cloud.databricks.com",
+            account_id="00000000-0000-0000-0000-000000000000",
+            username=var["databricks_account_username"],
+            password=var["databricks_account_password"])
+        this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        ```
+
+        Creating group in Azure Databricks account:
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider at Azure account-level
+        azure_account = databricks.Provider("azureAccount",
+            host="https://accounts.azuredatabricks.net",
+            account_id="00000000-0000-0000-0000-000000000000",
+            auth_type="azure-cli")
+        this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
+        ```
+
         ## Import
 
         You can import a `databricks_group` resource with the name `my_group` like the followingbash

@@ -314,6 +314,74 @@ class User(pulumi.CustomResource):
                  workspace_access: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Creating regular user:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        me = databricks.User("me", user_name="me@example.com")
+        ```
+
+        Creating user with administrative permissions - referencing special `admins` Group in GroupMember resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        admins = databricks.get_group(display_name="admins")
+        me = databricks.User("me", user_name="me@example.com")
+        i_am_admin = databricks.GroupMember("i-am-admin",
+            group_id=admins.id,
+            member_id=me.id)
+        ```
+
+        Creating user with cluster create permissions:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        me = databricks.User("me",
+            allow_cluster_create=True,
+            display_name="Example user",
+            user_name="me@example.com")
+        ```
+
+        Creating user in AWS Databricks account:
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider at account-level
+        mws = databricks.Provider("mws",
+            host="https://accounts.cloud.databricks.com",
+            account_id="00000000-0000-0000-0000-000000000000",
+            username=var["databricks_account_username"],
+            password=var["databricks_account_password"])
+        account_user = databricks.User("accountUser",
+            user_name="me@example.com",
+            display_name="Example user",
+            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        ```
+
+        Creating user in Azure Databricks account:
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider at Azure account-level
+        azure_account = databricks.Provider("azureAccount",
+            host="https://accounts.azuredatabricks.net",
+            account_id="00000000-0000-0000-0000-000000000000",
+            auth_type="azure-cli")
+        account_user = databricks.User("accountUser",
+            user_name="me@example.com",
+            display_name="Example user",
+            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        ```
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -322,7 +390,7 @@ class User(pulumi.CustomResource):
         * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
         * Group data to retrieve information about Group members, entitlements and instance profiles.
         * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-        * databricks_group_member to attach users and groups as group members.
+        * GroupMember to attach users and groups as group members.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * User data to retrieve information about databricks_user.
 
@@ -351,6 +419,74 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Creating regular user:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        me = databricks.User("me", user_name="me@example.com")
+        ```
+
+        Creating user with administrative permissions - referencing special `admins` Group in GroupMember resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        admins = databricks.get_group(display_name="admins")
+        me = databricks.User("me", user_name="me@example.com")
+        i_am_admin = databricks.GroupMember("i-am-admin",
+            group_id=admins.id,
+            member_id=me.id)
+        ```
+
+        Creating user with cluster create permissions:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        me = databricks.User("me",
+            allow_cluster_create=True,
+            display_name="Example user",
+            user_name="me@example.com")
+        ```
+
+        Creating user in AWS Databricks account:
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider at account-level
+        mws = databricks.Provider("mws",
+            host="https://accounts.cloud.databricks.com",
+            account_id="00000000-0000-0000-0000-000000000000",
+            username=var["databricks_account_username"],
+            password=var["databricks_account_password"])
+        account_user = databricks.User("accountUser",
+            user_name="me@example.com",
+            display_name="Example user",
+            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        ```
+
+        Creating user in Azure Databricks account:
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider at Azure account-level
+        azure_account = databricks.Provider("azureAccount",
+            host="https://accounts.azuredatabricks.net",
+            account_id="00000000-0000-0000-0000-000000000000",
+            auth_type="azure-cli")
+        account_user = databricks.User("accountUser",
+            user_name="me@example.com",
+            display_name="Example user",
+            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        ```
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -359,7 +495,7 @@ class User(pulumi.CustomResource):
         * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
         * Group data to retrieve information about Group members, entitlements and instance profiles.
         * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-        * databricks_group_member to attach users and groups as group members.
+        * GroupMember to attach users and groups as group members.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * User data to retrieve information about databricks_user.
 

@@ -68,6 +68,13 @@ func NewMwsWorkspaces(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
+	if args.AccountId != nil {
+		args.AccountId = pulumi.ToSecret(args.AccountId).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accountId",
+	})
+	opts = append(opts, secrets)
 	var resource MwsWorkspaces
 	err := ctx.RegisterResource("databricks:index/mwsWorkspaces:MwsWorkspaces", name, args, &resource, opts...)
 	if err != nil {

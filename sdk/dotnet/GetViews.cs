@@ -20,7 +20,7 @@ namespace Pulumi.Databricks
         /// * databricks.Catalog to manage catalogs within Unity Catalog.
         /// </summary>
         public static Task<GetViewsResult> InvokeAsync(GetViewsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetViewsResult>("databricks:index/getViews:getViews", args ?? new GetViewsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetViewsResult>("databricks:index/getViews:getViews", args ?? new GetViewsArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Related Resources
@@ -31,7 +31,7 @@ namespace Pulumi.Databricks
         /// * databricks.Catalog to manage catalogs within Unity Catalog.
         /// </summary>
         public static Output<GetViewsResult> Invoke(GetViewsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetViewsResult>("databricks:index/getViews:getViews", args ?? new GetViewsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetViewsResult>("databricks:index/getViews:getViews", args ?? new GetViewsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -102,6 +102,8 @@ export class Token extends pulumi.CustomResource {
             resourceInputs["tokenValue"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["tokenValue"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Token.__pulumiType, name, resourceInputs, opts);
     }
 }

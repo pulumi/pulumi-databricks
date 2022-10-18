@@ -807,7 +807,7 @@ class MwsWorkspaces(pulumi.CustomResource):
 
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
-            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["account_id"] = None if account_id is None else pulumi.Output.secret(account_id)
             __props__.__dict__["aws_region"] = aws_region
             __props__.__dict__["cloud"] = cloud
             __props__.__dict__["cloud_resource_bucket"] = cloud_resource_bucket
@@ -836,6 +836,8 @@ class MwsWorkspaces(pulumi.CustomResource):
             __props__.__dict__["workspace_status"] = workspace_status
             __props__.__dict__["workspace_status_message"] = workspace_status_message
             __props__.__dict__["workspace_url"] = workspace_url
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountId"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MwsWorkspaces, __self__).__init__(
             'databricks:index/mwsWorkspaces:MwsWorkspaces',
             resource_name,

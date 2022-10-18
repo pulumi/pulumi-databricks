@@ -131,7 +131,7 @@ export class MwsCredentials extends pulumi.CustomResource {
             if ((!args || args.roleArn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roleArn'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["accountId"] = args?.accountId ? pulumi.secret(args.accountId) : undefined;
             resourceInputs["credentialsName"] = args ? args.credentialsName : undefined;
             resourceInputs["roleArn"] = args ? args.roleArn : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
@@ -139,6 +139,8 @@ export class MwsCredentials extends pulumi.CustomResource {
             resourceInputs["externalId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accountId"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(MwsCredentials.__pulumiType, name, resourceInputs, opts);
     }
 }

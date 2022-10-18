@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -109,7 +110,7 @@ export class MwsNetworks extends pulumi.CustomResource {
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["accountId"] = args?.accountId ? pulumi.secret(args.accountId) : undefined;
             resourceInputs["creationTime"] = args ? args.creationTime : undefined;
             resourceInputs["errorMessages"] = args ? args.errorMessages : undefined;
             resourceInputs["networkId"] = args ? args.networkId : undefined;
@@ -122,6 +123,8 @@ export class MwsNetworks extends pulumi.CustomResource {
             resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accountId"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(MwsNetworks.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -381,7 +381,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["auth_type"] = auth_type
             __props__.__dict__["azure_client_id"] = azure_client_id
-            __props__.__dict__["azure_client_secret"] = azure_client_secret
+            __props__.__dict__["azure_client_secret"] = None if azure_client_secret is None else pulumi.Output.secret(azure_client_secret)
             __props__.__dict__["azure_environment"] = azure_environment
             __props__.__dict__["azure_login_app_id"] = azure_login_app_id
             __props__.__dict__["azure_tenant_id"] = azure_tenant_id
@@ -390,16 +390,18 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["config_file"] = config_file
             __props__.__dict__["debug_headers"] = pulumi.Output.from_input(debug_headers).apply(pulumi.runtime.to_json) if debug_headers is not None else None
             __props__.__dict__["debug_truncate_bytes"] = pulumi.Output.from_input(debug_truncate_bytes).apply(pulumi.runtime.to_json) if debug_truncate_bytes is not None else None
-            __props__.__dict__["google_credentials"] = google_credentials
+            __props__.__dict__["google_credentials"] = None if google_credentials is None else pulumi.Output.secret(google_credentials)
             __props__.__dict__["google_service_account"] = google_service_account
             __props__.__dict__["host"] = host
             __props__.__dict__["http_timeout_seconds"] = pulumi.Output.from_input(http_timeout_seconds).apply(pulumi.runtime.to_json) if http_timeout_seconds is not None else None
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["profile"] = profile
             __props__.__dict__["rate_limit"] = pulumi.Output.from_input(rate_limit).apply(pulumi.runtime.to_json) if rate_limit is not None else None
             __props__.__dict__["skip_verify"] = pulumi.Output.from_input(skip_verify).apply(pulumi.runtime.to_json) if skip_verify is not None else None
-            __props__.__dict__["token"] = token
+            __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
             __props__.__dict__["username"] = username
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["azureClientSecret", "googleCredentials", "password", "token"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'databricks',
             resource_name,

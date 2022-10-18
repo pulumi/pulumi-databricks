@@ -52,7 +52,7 @@ import (
 // * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
 // * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
 // * Group data to retrieve information about Group members, entitlements and instance profiles.
-// * databricksGroupMember to attach users and groups as group members.
+// * GroupMember to attach users and groups as group members.
 // * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
 // * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
 // * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.

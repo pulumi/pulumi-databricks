@@ -22,7 +22,16 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? TokenId { get; set; }
 
         [Input("tokenValue")]
-        public Input<string>? TokenValue { get; set; }
+        private Input<string>? _tokenValue;
+        public Input<string>? TokenValue
+        {
+            get => _tokenValue;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tokenValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public MwsWorkspacesTokenArgs()
         {

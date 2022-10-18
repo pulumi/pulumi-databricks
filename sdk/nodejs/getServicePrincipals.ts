@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
  * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
  * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
- * * databricksGroupMember to attach users and groups as group members.
+ * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
  * * databricksService principal to manage service principals
  */

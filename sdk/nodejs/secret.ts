@@ -114,10 +114,12 @@ export class Secret extends pulumi.CustomResource {
             }
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["stringValue"] = args ? args.stringValue : undefined;
+            resourceInputs["stringValue"] = args?.stringValue ? pulumi.secret(args.stringValue) : undefined;
             resourceInputs["lastUpdatedTimestamp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["stringValue"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Secret.__pulumiType, name, resourceInputs, opts);
     }
 }

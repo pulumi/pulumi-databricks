@@ -67,7 +67,7 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:  "databricks",
 		Config:     map[string]*tfbridge.SchemaInfo{},
 		IgnoreMappings: []string{
-			"databricks_group_member", // causes the schema to have no deterministic generation
+			// "databricks_group_member", // causes the schema to have no deterministic generation
 			"databricks_aws_s3_mount",
 			"databricks_azure_adls_gen1_mount",
 			"databricks_azure_adls_gen2_mount",
@@ -98,6 +98,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"databricks_group_instance_profile":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupInstanceProfile")},
+			"databricks_group_member":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupMember")},
 			"databricks_group_role":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupRole")},
 			"databricks_instance_pool":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstancePool")},
 			"databricks_instance_profile":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstanceProfile")},

@@ -12,11 +12,11 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MwsStorageConfigurationsState;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -25,6 +25,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.aws.s3.BucketV2;
  * import com.pulumi.aws.s3.BucketV2Args;
+ * import com.pulumi.aws.s3.inputs.BucketV2VersioningArgs;
  * import com.pulumi.databricks.MwsStorageConfigurations;
  * import com.pulumi.databricks.MwsStorageConfigurationsArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -45,7 +46,9 @@ import javax.annotation.Nullable;
  *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
  *         var rootStorageBucket = new BucketV2(&#34;rootStorageBucket&#34;, BucketV2Args.builder()        
  *             .acl(&#34;private&#34;)
- *             .versionings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .versionings(BucketV2VersioningArgs.builder()
+ *                 .enabled(false)
+ *                 .build())
  *             .build());
  * 
  *         var this_ = new MwsStorageConfigurations(&#34;this&#34;, MwsStorageConfigurationsArgs.builder()        
@@ -173,6 +176,9 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "accountId"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

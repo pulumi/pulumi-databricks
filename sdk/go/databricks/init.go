@@ -44,6 +44,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Group{}
 	case "databricks:index/groupInstanceProfile:GroupInstanceProfile":
 		r = &GroupInstanceProfile{}
+	case "databricks:index/groupMember:GroupMember":
+		r = &GroupMember{}
 	case "databricks:index/groupRole:GroupRole":
 		r = &GroupRole{}
 	case "databricks:index/instancePool:InstancePool":
@@ -228,6 +230,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/groupInstanceProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/groupMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -10,6 +10,138 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// # Creating some group
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewGroup(ctx, "this", &databricks.GroupArgs{
+//				AllowClusterCreate:      pulumi.Bool(true),
+//				AllowInstancePoolCreate: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Adding User as GroupMember of some group
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisGroup, err := databricks.NewGroup(ctx, "thisGroup", &databricks.GroupArgs{
+//				AllowClusterCreate:      pulumi.Bool(true),
+//				AllowInstancePoolCreate: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisUser, err := databricks.NewUser(ctx, "thisUser", &databricks.UserArgs{
+//				UserName: pulumi.String("someone@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGroupMember(ctx, "vipMember", &databricks.GroupMemberArgs{
+//				GroupId:  thisGroup.ID(),
+//				MemberId: thisUser.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating group in AWS Databricks account:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewProvider(ctx, "mws", &databricks.ProviderArgs{
+//				Host:      pulumi.String("https://accounts.cloud.databricks.com"),
+//				AccountId: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				Username:  pulumi.Any(_var.Databricks_account_username),
+//				Password:  pulumi.Any(_var.Databricks_account_password),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGroup(ctx, "this", nil, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating group in Azure Databricks account:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewProvider(ctx, "azureAccount", &databricks.ProviderArgs{
+//				Host:      pulumi.String("https://accounts.azuredatabricks.net"),
+//				AccountId: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				AuthType:  pulumi.String("azure-cli"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGroup(ctx, "this", nil, pulumi.Provider(databricks.Azure_account))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // You can import a `databricks_group` resource with the name `my_group` like the followingbash

@@ -16,6 +16,162 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * ## Example Usage
+ * 
+ * Creating some group
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Group(&#34;this&#34;, GroupArgs.builder()        
+ *             .allowClusterCreate(true)
+ *             .allowInstancePoolCreate(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Adding databricks.User as databricks.GroupMember of some group
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import com.pulumi.databricks.User;
+ * import com.pulumi.databricks.UserArgs;
+ * import com.pulumi.databricks.GroupMember;
+ * import com.pulumi.databricks.GroupMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var thisGroup = new Group(&#34;thisGroup&#34;, GroupArgs.builder()        
+ *             .allowClusterCreate(true)
+ *             .allowInstancePoolCreate(true)
+ *             .build());
+ * 
+ *         var thisUser = new User(&#34;thisUser&#34;, UserArgs.builder()        
+ *             .userName(&#34;someone@example.com&#34;)
+ *             .build());
+ * 
+ *         var vipMember = new GroupMember(&#34;vipMember&#34;, GroupMemberArgs.builder()        
+ *             .groupId(thisGroup.id())
+ *             .memberId(thisUser.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Creating group in AWS Databricks account:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Provider;
+ * import com.pulumi.databricks.ProviderArgs;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mws = new Provider(&#34;mws&#34;, ProviderArgs.builder()        
+ *             .host(&#34;https://accounts.cloud.databricks.com&#34;)
+ *             .accountId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+ *             .username(var_.databricks_account_username())
+ *             .password(var_.databricks_account_password())
+ *             .build());
+ * 
+ *         var this_ = new Group(&#34;this&#34;, GroupArgs.Empty, CustomResourceOptions.builder()
+ *             .provider(databricks.mws())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Creating group in Azure Databricks account:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Provider;
+ * import com.pulumi.databricks.ProviderArgs;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var azureAccount = new Provider(&#34;azureAccount&#34;, ProviderArgs.builder()        
+ *             .host(&#34;https://accounts.azuredatabricks.net&#34;)
+ *             .accountId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+ *             .authType(&#34;azure-cli&#34;)
+ *             .build());
+ * 
+ *         var this_ = new Group(&#34;this&#34;, GroupArgs.Empty, CustomResourceOptions.builder()
+ *             .provider(databricks.azure_account())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * You can import a `databricks_group` resource with the name `my_group` like the followingbash

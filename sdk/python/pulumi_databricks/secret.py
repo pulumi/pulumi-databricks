@@ -260,8 +260,10 @@ class Secret(pulumi.CustomResource):
             __props__.__dict__["scope"] = scope
             if string_value is None and not opts.urn:
                 raise TypeError("Missing required property 'string_value'")
-            __props__.__dict__["string_value"] = string_value
+            __props__.__dict__["string_value"] = None if string_value is None else pulumi.Output.secret(string_value)
             __props__.__dict__["last_updated_timestamp"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["stringValue"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Secret, __self__).__init__(
             'databricks:index/secret:Secret',
             resource_name,

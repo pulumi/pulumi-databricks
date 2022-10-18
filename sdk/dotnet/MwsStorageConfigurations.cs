@@ -10,6 +10,42 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     var rootStorageBucket = new Aws.S3.BucketV2("rootStorageBucket", new()
+    ///     {
+    ///         Acl = "private",
+    ///         Versionings = new[]
+    ///         {
+    ///             new Aws.S3.Inputs.BucketV2VersioningArgs
+    ///             {
+    ///                 Enabled = false,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @this = new Databricks.MwsStorageConfigurations("this", new()
+    ///     {
+    ///         AccountId = databricksAccountId,
+    ///         StorageConfigurationName = $"{@var.Prefix}-storage",
+    ///         BucketName = rootStorageBucket.Bucket,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Mws,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Related Resources
     /// 
     /// The following resources are used in the same context:
@@ -79,6 +115,10 @@ namespace Pulumi.Databricks
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accountId",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -102,11 +142,21 @@ namespace Pulumi.Databricks
 
     public sealed class MwsStorageConfigurationsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accountId", required: true)]
+        private Input<string>? _accountId;
+
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        public Input<string>? AccountId
+        {
+            get => _accountId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// name of AWS S3 bucket
@@ -128,11 +178,21 @@ namespace Pulumi.Databricks
 
     public sealed class MwsStorageConfigurationsState : global::Pulumi.ResourceArgs
     {
+        [Input("accountId")]
+        private Input<string>? _accountId;
+
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        public Input<string>? AccountId
+        {
+            get => _accountId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// name of AWS S3 bucket

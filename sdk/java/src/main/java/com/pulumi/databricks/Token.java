@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.TokenState;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -25,8 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.pulumi.providers.databricks;
- * import com.pulumi.pulumi.providers.ProviderArgs;
+ * import com.pulumi.databricks.Provider;
+ * import com.pulumi.databricks.ProviderArgs;
  * import com.pulumi.databricks.Token;
  * import com.pulumi.databricks.TokenArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -159,6 +160,9 @@ public class Token extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "tokenValue"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

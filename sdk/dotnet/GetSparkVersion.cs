@@ -65,7 +65,7 @@ namespace Pulumi.Databricks
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         /// </summary>
         public static Task<GetSparkVersionResult> InvokeAsync(GetSparkVersionArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSparkVersionResult>("databricks:index/getSparkVersion:getSparkVersion", args ?? new GetSparkVersionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSparkVersionResult>("databricks:index/getSparkVersion:getSparkVersion", args ?? new GetSparkVersionArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -121,7 +121,7 @@ namespace Pulumi.Databricks
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         /// </summary>
         public static Output<GetSparkVersionResult> Invoke(GetSparkVersionInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSparkVersionResult>("databricks:index/getSparkVersion:getSparkVersion", args ?? new GetSparkVersionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSparkVersionResult>("databricks:index/getSparkVersion:getSparkVersion", args ?? new GetSparkVersionInvokeArgs(), options.WithDefaults());
     }
 
 

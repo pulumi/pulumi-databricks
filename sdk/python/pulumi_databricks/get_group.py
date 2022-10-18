@@ -89,7 +89,7 @@ class GetGroupResult:
     @pulumi.getter(name="childGroups")
     def child_groups(self) -> Sequence[str]:
         """
-        Set of Group identifiers, that can be modified with databricks_group_member resource.
+        Set of Group identifiers, that can be modified with GroupMember resource.
         """
         return pulumi.get(self, "child_groups")
 
@@ -115,7 +115,7 @@ class GetGroupResult:
     @pulumi.getter
     def groups(self) -> Sequence[str]:
         """
-        Set of group identifiers, that can be modified with databricks_group_member resource.
+        Set of group identifiers, that can be modified with GroupMember resource.
         """
         return pulumi.get(self, "groups")
 
@@ -149,7 +149,7 @@ class GetGroupResult:
     @pulumi.getter(name="servicePrincipals")
     def service_principals(self) -> Sequence[str]:
         """
-        Set of ServicePrincipal identifiers, that can be modified with databricks_group_member resource.
+        Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
         """
         return pulumi.get(self, "service_principals")
 
@@ -157,7 +157,7 @@ class GetGroupResult:
     @pulumi.getter
     def users(self) -> Sequence[str]:
         """
-        Set of User identifiers, that can be modified with databricks_group_member resource.
+        Set of User identifiers, that can be modified with GroupMember resource.
         """
         return pulumi.get(self, "users")
 
@@ -204,6 +204,20 @@ def get_group(allow_cluster_create: Optional[bool] = None,
               workspace_access: Optional[bool] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
+    ## Example Usage
+
+    Adding user to administrative group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    admins = databricks.get_group(display_name="admins")
+    me = databricks.User("me", user_name="me@example.com")
+    my_member_a = databricks.GroupMember("myMemberA",
+        group_id=admins.id,
+        member_id=me.id)
+    ```
     ## Related Resources
 
     The following resources are used in the same context:
@@ -211,21 +225,21 @@ def get_group(allow_cluster_create: Optional[bool] = None,
     * End to end workspace management guide
     * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
     * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-    * databricks_group_member to attach users and groups as group members.
+    * GroupMember to attach users and groups as group members.
     * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
     * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
 
 
     :param bool allow_cluster_create: True if group members can create clusters
     :param bool allow_instance_pool_create: True if group members can create instance pools
-    :param Sequence[str] child_groups: Set of Group identifiers, that can be modified with databricks_group_member resource.
+    :param Sequence[str] child_groups: Set of Group identifiers, that can be modified with GroupMember resource.
     :param str display_name: Display name of the group. The group must exist before this resource can be planned.
     :param str external_id: ID of the group in an external identity provider.
-    :param Sequence[str] groups: Set of group identifiers, that can be modified with databricks_group_member resource.
+    :param Sequence[str] groups: Set of group identifiers, that can be modified with GroupMember resource.
     :param Sequence[str] instance_profiles: Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
     :param bool recursive: Collect information for all nested groups. *Defaults to true.*
-    :param Sequence[str] service_principals: Set of ServicePrincipal identifiers, that can be modified with databricks_group_member resource.
-    :param Sequence[str] users: Set of User identifiers, that can be modified with databricks_group_member resource.
+    :param Sequence[str] service_principals: Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
+    :param Sequence[str] users: Set of User identifiers, that can be modified with GroupMember resource.
     """
     __args__ = dict()
     __args__['allowClusterCreate'] = allow_cluster_create
@@ -277,6 +291,20 @@ def get_group_output(allow_cluster_create: Optional[pulumi.Input[Optional[bool]]
                      workspace_access: Optional[pulumi.Input[Optional[bool]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
     """
+    ## Example Usage
+
+    Adding user to administrative group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    admins = databricks.get_group(display_name="admins")
+    me = databricks.User("me", user_name="me@example.com")
+    my_member_a = databricks.GroupMember("myMemberA",
+        group_id=admins.id,
+        member_id=me.id)
+    ```
     ## Related Resources
 
     The following resources are used in the same context:
@@ -284,20 +312,20 @@ def get_group_output(allow_cluster_create: Optional[pulumi.Input[Optional[bool]]
     * End to end workspace management guide
     * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
     * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-    * databricks_group_member to attach users and groups as group members.
+    * GroupMember to attach users and groups as group members.
     * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
     * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
 
 
     :param bool allow_cluster_create: True if group members can create clusters
     :param bool allow_instance_pool_create: True if group members can create instance pools
-    :param Sequence[str] child_groups: Set of Group identifiers, that can be modified with databricks_group_member resource.
+    :param Sequence[str] child_groups: Set of Group identifiers, that can be modified with GroupMember resource.
     :param str display_name: Display name of the group. The group must exist before this resource can be planned.
     :param str external_id: ID of the group in an external identity provider.
-    :param Sequence[str] groups: Set of group identifiers, that can be modified with databricks_group_member resource.
+    :param Sequence[str] groups: Set of group identifiers, that can be modified with GroupMember resource.
     :param Sequence[str] instance_profiles: Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
     :param bool recursive: Collect information for all nested groups. *Defaults to true.*
-    :param Sequence[str] service_principals: Set of ServicePrincipal identifiers, that can be modified with databricks_group_member resource.
-    :param Sequence[str] users: Set of User identifiers, that can be modified with databricks_group_member resource.
+    :param Sequence[str] service_principals: Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
+    :param Sequence[str] users: Set of User identifiers, that can be modified with GroupMember resource.
     """
     ...

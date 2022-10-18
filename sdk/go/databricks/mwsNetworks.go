@@ -58,6 +58,13 @@ func NewMwsNetworks(ctx *pulumi.Context,
 	if args.VpcId == nil {
 		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
+	if args.AccountId != nil {
+		args.AccountId = pulumi.ToSecret(args.AccountId).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accountId",
+	})
+	opts = append(opts, secrets)
 	var resource MwsNetworks
 	err := ctx.RegisterResource("databricks:index/mwsNetworks:MwsNetworks", name, args, &resource, opts...)
 	if err != nil {

@@ -24,7 +24,7 @@ public final class GetGroupResult {
      */
     private @Nullable Boolean allowInstancePoolCreate;
     /**
-     * @return Set of databricks.Group identifiers, that can be modified with databricks_group_member resource.
+     * @return Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     private List<String> childGroups;
@@ -36,7 +36,7 @@ public final class GetGroupResult {
      */
     private String externalId;
     /**
-     * @return Set of group identifiers, that can be modified with databricks_group_member resource.
+     * @return Set of group identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     private List<String> groups;
@@ -59,12 +59,12 @@ public final class GetGroupResult {
     private List<String> members;
     private @Nullable Boolean recursive;
     /**
-     * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks_group_member resource.
+     * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     private List<String> servicePrincipals;
     /**
-     * @return Set of databricks.User identifiers, that can be modified with databricks_group_member resource.
+     * @return Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     private List<String> users;
@@ -86,7 +86,7 @@ public final class GetGroupResult {
         return Optional.ofNullable(this.allowInstancePoolCreate);
     }
     /**
-     * @return Set of databricks.Group identifiers, that can be modified with databricks_group_member resource.
+     * @return Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     public List<String> childGroups() {
@@ -106,7 +106,7 @@ public final class GetGroupResult {
         return this.externalId;
     }
     /**
-     * @return Set of group identifiers, that can be modified with databricks_group_member resource.
+     * @return Set of group identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     public List<String> groups() {
@@ -139,14 +139,14 @@ public final class GetGroupResult {
         return Optional.ofNullable(this.recursive);
     }
     /**
-     * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks_group_member resource.
+     * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     public List<String> servicePrincipals() {
         return this.servicePrincipals;
     }
     /**
-     * @return Set of databricks.User identifiers, that can be modified with databricks_group_member resource.
+     * @return Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     public List<String> users() {

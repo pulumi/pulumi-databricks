@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
         /// * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
         /// </summary>
         public static Task<GetCurrentUserResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCurrentUserResult>("databricks:index/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCurrentUserResult>("databricks:index/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

@@ -296,7 +296,7 @@ class MwsCredentials(pulumi.CustomResource):
 
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
-            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["account_id"] = None if account_id is None else pulumi.Output.secret(account_id)
             if credentials_name is None and not opts.urn:
                 raise TypeError("Missing required property 'credentials_name'")
             __props__.__dict__["credentials_name"] = credentials_name
@@ -306,6 +306,8 @@ class MwsCredentials(pulumi.CustomResource):
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["credentials_id"] = None
             __props__.__dict__["external_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountId"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MwsCredentials, __self__).__init__(
             'databricks:index/mwsCredentials:MwsCredentials',
             resource_name,

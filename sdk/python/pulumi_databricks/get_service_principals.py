@@ -78,7 +78,7 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
     * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
     * Group data to retrieve information about Group members, entitlements and instance profiles.
     * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-    * databricks_group_member to attach users and groups as group members.
+    * GroupMember to attach users and groups as group members.
     * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
     * databricks_service principal to manage service principals
 
@@ -112,7 +112,7 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
     * Group data to retrieve information about Group members, entitlements and instance profiles.
     * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-    * databricks_group_member to attach users and groups as group members.
+    * GroupMember to attach users and groups as group members.
     * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
     * databricks_service principal to manage service principals
 

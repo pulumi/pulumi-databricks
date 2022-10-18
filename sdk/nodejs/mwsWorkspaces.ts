@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -144,7 +145,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["accountId"] = args?.accountId ? pulumi.secret(args.accountId) : undefined;
             resourceInputs["awsRegion"] = args ? args.awsRegion : undefined;
             resourceInputs["cloud"] = args ? args.cloud : undefined;
             resourceInputs["cloudResourceBucket"] = args ? args.cloudResourceBucket : undefined;
@@ -170,6 +171,8 @@ export class MwsWorkspaces extends pulumi.CustomResource {
             resourceInputs["workspaceUrl"] = args ? args.workspaceUrl : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accountId"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(MwsWorkspaces.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -5,6 +5,70 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Creating some group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const thisGroup = new databricks.Group("this", {
+ *     allowClusterCreate: true,
+ *     allowInstancePoolCreate: true,
+ * });
+ * ```
+ *
+ * Adding databricks.User as databricks.GroupMember of some group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const thisGroup = new databricks.Group("thisGroup", {
+ *     allowClusterCreate: true,
+ *     allowInstancePoolCreate: true,
+ * });
+ * const thisUser = new databricks.User("thisUser", {userName: "someone@example.com"});
+ * const vipMember = new databricks.GroupMember("vipMember", {
+ *     groupId: thisGroup.id,
+ *     memberId: thisUser.id,
+ * });
+ * ```
+ *
+ * Creating group in AWS Databricks account:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // initialize provider at account-level
+ * const mws = new databricks.Provider("mws", {
+ *     host: "https://accounts.cloud.databricks.com",
+ *     accountId: "00000000-0000-0000-0000-000000000000",
+ *     username: _var.databricks_account_username,
+ *     password: _var.databricks_account_password,
+ * });
+ * const _this = new databricks.Group("this", {}, {
+ *     provider: databricks.mws,
+ * });
+ * ```
+ *
+ * Creating group in Azure Databricks account:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // initialize provider at Azure account-level
+ * const azureAccount = new databricks.Provider("azureAccount", {
+ *     host: "https://accounts.azuredatabricks.net",
+ *     accountId: "00000000-0000-0000-0000-000000000000",
+ *     authType: "azure-cli",
+ * });
+ * const _this = new databricks.Group("this", {}, {
+ *     provider: databricks.azure_account,
+ * });
+ * ```
+ *
  * ## Import
  *
  * You can import a `databricks_group` resource with the name `my_group` like the followingbash

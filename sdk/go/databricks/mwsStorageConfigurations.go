@@ -11,6 +11,50 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/s3"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			rootStorageBucket, err := s3.NewBucketV2(ctx, "rootStorageBucket", &s3.BucketV2Args{
+//				Acl: pulumi.String("private"),
+//				Versionings: s3.BucketV2VersioningArray{
+//					&s3.BucketV2VersioningArgs{
+//						Enabled: pulumi.Bool(false),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMwsStorageConfigurations(ctx, "this", &databricks.MwsStorageConfigurationsArgs{
+//				AccountId:                pulumi.Any(databricksAccountId),
+//				StorageConfigurationName: pulumi.String(fmt.Sprintf("%v-storage", _var.Prefix)),
+//				BucketName:               rootStorageBucket.Bucket,
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Related Resources
 //
 // The following resources are used in the same context:
@@ -56,6 +100,13 @@ func NewMwsStorageConfigurations(ctx *pulumi.Context,
 	if args.StorageConfigurationName == nil {
 		return nil, errors.New("invalid value for required argument 'StorageConfigurationName'")
 	}
+	if args.AccountId != nil {
+		args.AccountId = pulumi.ToSecret(args.AccountId).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accountId",
+	})
+	opts = append(opts, secrets)
 	var resource MwsStorageConfigurations
 	err := ctx.RegisterResource("databricks:index/mwsStorageConfigurations:MwsStorageConfigurations", name, args, &resource, opts...)
 	if err != nil {

@@ -374,8 +374,10 @@ class Recipient(pulumi.CustomResource):
             __props__.__dict__["data_recipient_global_metastore_id"] = data_recipient_global_metastore_id
             __props__.__dict__["ip_access_list"] = ip_access_list
             __props__.__dict__["name"] = name
-            __props__.__dict__["sharing_code"] = sharing_code
+            __props__.__dict__["sharing_code"] = None if sharing_code is None else pulumi.Output.secret(sharing_code)
             __props__.__dict__["tokens"] = tokens
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["sharingCode"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Recipient, __self__).__init__(
             'databricks:index/recipient:Recipient',
             resource_name,

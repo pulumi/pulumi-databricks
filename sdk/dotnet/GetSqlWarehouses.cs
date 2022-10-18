@@ -59,7 +59,7 @@ namespace Pulumi.Databricks
         /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
         /// </summary>
         public static Task<GetSqlWarehousesResult> InvokeAsync(GetSqlWarehousesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSqlWarehousesResult>("databricks:index/getSqlWarehouses:getSqlWarehouses", args ?? new GetSqlWarehousesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSqlWarehousesResult>("databricks:index/getSqlWarehouses:getSqlWarehouses", args ?? new GetSqlWarehousesArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -109,7 +109,7 @@ namespace Pulumi.Databricks
         /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
         /// </summary>
         public static Output<GetSqlWarehousesResult> Invoke(GetSqlWarehousesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSqlWarehousesResult>("databricks:index/getSqlWarehouses:getSqlWarehouses", args ?? new GetSqlWarehousesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSqlWarehousesResult>("databricks:index/getSqlWarehouses:getSqlWarehouses", args ?? new GetSqlWarehousesInvokeArgs(), options.WithDefaults());
     }
 
 

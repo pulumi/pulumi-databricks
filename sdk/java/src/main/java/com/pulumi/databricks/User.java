@@ -16,6 +16,197 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * ## Example Usage
+ * 
+ * Creating regular user:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.User;
+ * import com.pulumi.databricks.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var me = new User(&#34;me&#34;, UserArgs.builder()        
+ *             .userName(&#34;me@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Creating user with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetGroupArgs;
+ * import com.pulumi.databricks.User;
+ * import com.pulumi.databricks.UserArgs;
+ * import com.pulumi.databricks.GroupMember;
+ * import com.pulumi.databricks.GroupMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+ *             .displayName(&#34;admins&#34;)
+ *             .build());
+ * 
+ *         var me = new User(&#34;me&#34;, UserArgs.builder()        
+ *             .userName(&#34;me@example.com&#34;)
+ *             .build());
+ * 
+ *         var i_am_admin = new GroupMember(&#34;i-am-admin&#34;, GroupMemberArgs.builder()        
+ *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+ *             .memberId(me.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Creating user with cluster create permissions:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.User;
+ * import com.pulumi.databricks.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var me = new User(&#34;me&#34;, UserArgs.builder()        
+ *             .allowClusterCreate(true)
+ *             .displayName(&#34;Example user&#34;)
+ *             .userName(&#34;me@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Creating user in AWS Databricks account:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Provider;
+ * import com.pulumi.databricks.ProviderArgs;
+ * import com.pulumi.databricks.User;
+ * import com.pulumi.databricks.UserArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mws = new Provider(&#34;mws&#34;, ProviderArgs.builder()        
+ *             .host(&#34;https://accounts.cloud.databricks.com&#34;)
+ *             .accountId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+ *             .username(var_.databricks_account_username())
+ *             .password(var_.databricks_account_password())
+ *             .build());
+ * 
+ *         var accountUser = new User(&#34;accountUser&#34;, UserArgs.builder()        
+ *             .userName(&#34;me@example.com&#34;)
+ *             .displayName(&#34;Example user&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(databricks.mws())
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Creating user in Azure Databricks account:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Provider;
+ * import com.pulumi.databricks.ProviderArgs;
+ * import com.pulumi.databricks.User;
+ * import com.pulumi.databricks.UserArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var azureAccount = new Provider(&#34;azureAccount&#34;, ProviderArgs.builder()        
+ *             .host(&#34;https://accounts.azuredatabricks.net&#34;)
+ *             .accountId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+ *             .authType(&#34;azure-cli&#34;)
+ *             .build());
+ * 
+ *         var accountUser = new User(&#34;accountUser&#34;, UserArgs.builder()        
+ *             .userName(&#34;me@example.com&#34;)
+ *             .displayName(&#34;Example user&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(databricks.mws())
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -24,7 +215,7 @@ import javax.annotation.Nullable;
  * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
  * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
  * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
- * * databricks_group_member to attach users and groups as group members.
+ * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
  * * databricks.User data to retrieve information about databricks_user.
  * 

@@ -158,6 +158,26 @@ class MwsStorageConfigurations(pulumi.CustomResource):
                  storage_configuration_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        databricks_account_id = config.require_object("databricksAccountId")
+        root_storage_bucket = aws.s3.BucketV2("rootStorageBucket",
+            acl="private",
+            versionings=[aws.s3.BucketV2VersioningArgs(
+                enabled=False,
+            )])
+        this = databricks.MwsStorageConfigurations("this",
+            account_id=databricks_account_id,
+            storage_configuration_name=f"{var['prefix']}-storage",
+            bucket_name=root_storage_bucket.bucket,
+            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        ```
         ## Related Resources
 
         The following resources are used in the same context:
@@ -187,6 +207,26 @@ class MwsStorageConfigurations(pulumi.CustomResource):
                  args: MwsStorageConfigurationsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        databricks_account_id = config.require_object("databricksAccountId")
+        root_storage_bucket = aws.s3.BucketV2("rootStorageBucket",
+            acl="private",
+            versionings=[aws.s3.BucketV2VersioningArgs(
+                enabled=False,
+            )])
+        this = databricks.MwsStorageConfigurations("this",
+            account_id=databricks_account_id,
+            storage_configuration_name=f"{var['prefix']}-storage",
+            bucket_name=root_storage_bucket.bucket,
+            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        ```
         ## Related Resources
 
         The following resources are used in the same context:
@@ -232,7 +272,7 @@ class MwsStorageConfigurations(pulumi.CustomResource):
 
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
-            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["account_id"] = None if account_id is None else pulumi.Output.secret(account_id)
             if bucket_name is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_name'")
             __props__.__dict__["bucket_name"] = bucket_name
@@ -241,6 +281,8 @@ class MwsStorageConfigurations(pulumi.CustomResource):
             __props__.__dict__["storage_configuration_name"] = storage_configuration_name
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["storage_configuration_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountId"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MwsStorageConfigurations, __self__).__init__(
             'databricks:index/mwsStorageConfigurations:MwsStorageConfigurations',
             resource_name,

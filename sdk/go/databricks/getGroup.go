@@ -10,6 +10,46 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// # Adding user to administrative group
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admins, err := databricks.LookupGroup(ctx, &GetGroupArgs{
+//				DisplayName: "admins",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			me, err := databricks.NewUser(ctx, "me", &databricks.UserArgs{
+//				UserName: pulumi.String("me@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGroupMember(ctx, "myMemberA", &databricks.GroupMemberArgs{
+//				GroupId:  pulumi.String(admins.Id),
+//				MemberId: me.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Related Resources
 //
 // The following resources are used in the same context:
@@ -17,7 +57,7 @@ import (
 // * End to end workspace management guide
 // * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
 // * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-// * databricksGroupMember to attach users and groups as group members.
+// * GroupMember to attach users and groups as group members.
 // * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
 // * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
@@ -35,14 +75,14 @@ type LookupGroupArgs struct {
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// True if group members can create instance pools
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
-	// Set of Group identifiers, that can be modified with databricksGroupMember resource.
+	// Set of Group identifiers, that can be modified with GroupMember resource.
 	ChildGroups         []string `pulumi:"childGroups"`
 	DatabricksSqlAccess *bool    `pulumi:"databricksSqlAccess"`
 	// Display name of the group. The group must exist before this resource can be planned.
 	DisplayName string `pulumi:"displayName"`
 	// ID of the group in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
-	// Set of group identifiers, that can be modified with databricksGroupMember resource.
+	// Set of group identifiers, that can be modified with GroupMember resource.
 	Groups []string `pulumi:"groups"`
 	// Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
 	InstanceProfiles []string `pulumi:"instanceProfiles"`
@@ -50,9 +90,9 @@ type LookupGroupArgs struct {
 	Members []string `pulumi:"members"`
 	// Collect information for all nested groups. *Defaults to true.*
 	Recursive *bool `pulumi:"recursive"`
-	// Set of ServicePrincipal identifiers, that can be modified with databricksGroupMember resource.
+	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
 	ServicePrincipals []string `pulumi:"servicePrincipals"`
-	// Set of User identifiers, that can be modified with databricksGroupMember resource.
+	// Set of User identifiers, that can be modified with GroupMember resource.
 	Users           []string `pulumi:"users"`
 	WorkspaceAccess *bool    `pulumi:"workspaceAccess"`
 }
@@ -63,13 +103,13 @@ type LookupGroupResult struct {
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// True if group members can create instance pools
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
-	// Set of Group identifiers, that can be modified with databricksGroupMember resource.
+	// Set of Group identifiers, that can be modified with GroupMember resource.
 	ChildGroups         []string `pulumi:"childGroups"`
 	DatabricksSqlAccess *bool    `pulumi:"databricksSqlAccess"`
 	DisplayName         string   `pulumi:"displayName"`
 	// ID of the group in an external identity provider.
 	ExternalId string `pulumi:"externalId"`
-	// Set of group identifiers, that can be modified with databricksGroupMember resource.
+	// Set of group identifiers, that can be modified with GroupMember resource.
 	Groups []string `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -78,9 +118,9 @@ type LookupGroupResult struct {
 	// Deprecated: Please use `users`, `service_principals`, and `child_groups` instead
 	Members   []string `pulumi:"members"`
 	Recursive *bool    `pulumi:"recursive"`
-	// Set of ServicePrincipal identifiers, that can be modified with databricksGroupMember resource.
+	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
 	ServicePrincipals []string `pulumi:"servicePrincipals"`
-	// Set of User identifiers, that can be modified with databricksGroupMember resource.
+	// Set of User identifiers, that can be modified with GroupMember resource.
 	Users           []string `pulumi:"users"`
 	WorkspaceAccess *bool    `pulumi:"workspaceAccess"`
 }
@@ -104,14 +144,14 @@ type LookupGroupOutputArgs struct {
 	AllowClusterCreate pulumi.BoolPtrInput `pulumi:"allowClusterCreate"`
 	// True if group members can create instance pools
 	AllowInstancePoolCreate pulumi.BoolPtrInput `pulumi:"allowInstancePoolCreate"`
-	// Set of Group identifiers, that can be modified with databricksGroupMember resource.
+	// Set of Group identifiers, that can be modified with GroupMember resource.
 	ChildGroups         pulumi.StringArrayInput `pulumi:"childGroups"`
 	DatabricksSqlAccess pulumi.BoolPtrInput     `pulumi:"databricksSqlAccess"`
 	// Display name of the group. The group must exist before this resource can be planned.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// ID of the group in an external identity provider.
 	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
-	// Set of group identifiers, that can be modified with databricksGroupMember resource.
+	// Set of group identifiers, that can be modified with GroupMember resource.
 	Groups pulumi.StringArrayInput `pulumi:"groups"`
 	// Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
 	InstanceProfiles pulumi.StringArrayInput `pulumi:"instanceProfiles"`
@@ -119,9 +159,9 @@ type LookupGroupOutputArgs struct {
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Collect information for all nested groups. *Defaults to true.*
 	Recursive pulumi.BoolPtrInput `pulumi:"recursive"`
-	// Set of ServicePrincipal identifiers, that can be modified with databricksGroupMember resource.
+	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
 	ServicePrincipals pulumi.StringArrayInput `pulumi:"servicePrincipals"`
-	// Set of User identifiers, that can be modified with databricksGroupMember resource.
+	// Set of User identifiers, that can be modified with GroupMember resource.
 	Users           pulumi.StringArrayInput `pulumi:"users"`
 	WorkspaceAccess pulumi.BoolPtrInput     `pulumi:"workspaceAccess"`
 }
@@ -155,7 +195,7 @@ func (o LookupGroupResultOutput) AllowInstancePoolCreate() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v LookupGroupResult) *bool { return v.AllowInstancePoolCreate }).(pulumi.BoolPtrOutput)
 }
 
-// Set of Group identifiers, that can be modified with databricksGroupMember resource.
+// Set of Group identifiers, that can be modified with GroupMember resource.
 func (o LookupGroupResultOutput) ChildGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.ChildGroups }).(pulumi.StringArrayOutput)
 }
@@ -173,7 +213,7 @@ func (o LookupGroupResultOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.ExternalId }).(pulumi.StringOutput)
 }
 
-// Set of group identifiers, that can be modified with databricksGroupMember resource.
+// Set of group identifiers, that can be modified with GroupMember resource.
 func (o LookupGroupResultOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
@@ -197,12 +237,12 @@ func (o LookupGroupResultOutput) Recursive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGroupResult) *bool { return v.Recursive }).(pulumi.BoolPtrOutput)
 }
 
-// Set of ServicePrincipal identifiers, that can be modified with databricksGroupMember resource.
+// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
 func (o LookupGroupResultOutput) ServicePrincipals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.ServicePrincipals }).(pulumi.StringArrayOutput)
 }
 
-// Set of User identifiers, that can be modified with databricksGroupMember resource.
+// Set of User identifiers, that can be modified with GroupMember resource.
 func (o LookupGroupResultOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.Users }).(pulumi.StringArrayOutput)
 }

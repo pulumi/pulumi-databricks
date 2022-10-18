@@ -1741,6 +1741,50 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDbfsFilePaths:getDbfsFilePaths", TypeShape.of(GetDbfsFilePathsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding user to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.User;
+     * import com.pulumi.databricks.UserArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         var me = new User(&#34;me&#34;, UserArgs.builder()        
+     *             .userName(&#34;me@example.com&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(me.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -1748,7 +1792,7 @@ public final class DatabricksFunctions {
      * * End to end workspace management guide
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
      * 
@@ -1757,6 +1801,50 @@ public final class DatabricksFunctions {
         return getGroup(args, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding user to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.User;
+     * import com.pulumi.databricks.UserArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         var me = new User(&#34;me&#34;, UserArgs.builder()        
+     *             .userName(&#34;me@example.com&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(me.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -1764,7 +1852,7 @@ public final class DatabricksFunctions {
      * * End to end workspace management guide
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
      * 
@@ -1773,6 +1861,50 @@ public final class DatabricksFunctions {
         return getGroupPlain(args, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding user to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.User;
+     * import com.pulumi.databricks.UserArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         var me = new User(&#34;me&#34;, UserArgs.builder()        
+     *             .userName(&#34;me@example.com&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(me.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -1780,7 +1912,7 @@ public final class DatabricksFunctions {
      * * End to end workspace management guide
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
      * 
@@ -1789,6 +1921,50 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getGroup:getGroup", TypeShape.of(GetGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding user to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.User;
+     * import com.pulumi.databricks.UserArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         var me = new User(&#34;me&#34;, UserArgs.builder()        
+     *             .userName(&#34;me@example.com&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(me.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -1796,7 +1972,7 @@ public final class DatabricksFunctions {
      * * End to end workspace management guide
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
      * 
@@ -3019,6 +3195,49 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSchemas:getSchemas", TypeShape.of(GetSchemasResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(spn.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3028,7 +3247,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks_service principal to manage service principals
      * 
@@ -3037,6 +3256,49 @@ public final class DatabricksFunctions {
         return getServicePrincipal(GetServicePrincipalArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(spn.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3046,7 +3308,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks_service principal to manage service principals
      * 
@@ -3055,6 +3317,49 @@ public final class DatabricksFunctions {
         return getServicePrincipalPlain(GetServicePrincipalPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(spn.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3064,7 +3369,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks_service principal to manage service principals
      * 
@@ -3073,6 +3378,49 @@ public final class DatabricksFunctions {
         return getServicePrincipal(args, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(spn.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3082,7 +3430,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks_service principal to manage service principals
      * 
@@ -3091,6 +3439,49 @@ public final class DatabricksFunctions {
         return getServicePrincipalPlain(args, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(spn.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3100,7 +3491,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks_service principal to manage service principals
      * 
@@ -3109,6 +3500,49 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipal:getServicePrincipal", TypeShape.of(GetServicePrincipalResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(spn.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3118,7 +3552,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks_service principal to manage service principals
      * 
@@ -3136,7 +3570,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks_service principal to manage service principals
      * 
@@ -3154,7 +3588,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks_service principal to manage service principals
      * 
@@ -3172,7 +3606,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks_service principal to manage service principals
      * 
@@ -3190,7 +3624,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks_service principal to manage service principals
      * 
@@ -3208,7 +3642,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks_service principal to manage service principals
      * 
@@ -3226,7 +3660,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks_service principal to manage service principals
      * 
@@ -4193,6 +4627,49 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding user to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.inputs.GetUserArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
+     *             .userName(&#34;me@example.com&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(me.applyValue(getUserResult -&gt; getUserResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4202,7 +4679,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
      * * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
@@ -4212,6 +4689,49 @@ public final class DatabricksFunctions {
         return getUser(GetUserArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding user to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.inputs.GetUserArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
+     *             .userName(&#34;me@example.com&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(me.applyValue(getUserResult -&gt; getUserResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4221,7 +4741,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
      * * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
@@ -4231,6 +4751,49 @@ public final class DatabricksFunctions {
         return getUserPlain(GetUserPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding user to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.inputs.GetUserArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
+     *             .userName(&#34;me@example.com&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(me.applyValue(getUserResult -&gt; getUserResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4240,7 +4803,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
      * * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
@@ -4250,6 +4813,49 @@ public final class DatabricksFunctions {
         return getUser(args, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding user to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.inputs.GetUserArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
+     *             .userName(&#34;me@example.com&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(me.applyValue(getUserResult -&gt; getUserResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4259,7 +4865,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
      * * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
@@ -4269,6 +4875,49 @@ public final class DatabricksFunctions {
         return getUserPlain(args, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding user to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.inputs.GetUserArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
+     *             .userName(&#34;me@example.com&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(me.applyValue(getUserResult -&gt; getUserResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4278,7 +4927,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
      * * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
@@ -4288,6 +4937,49 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Adding user to administrative group
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetGroupArgs;
+     * import com.pulumi.databricks.inputs.GetUserArgs;
+     * import com.pulumi.databricks.GroupMember;
+     * import com.pulumi.databricks.GroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+     *             .displayName(&#34;admins&#34;)
+     *             .build());
+     * 
+     *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
+     *             .userName(&#34;me@example.com&#34;)
+     *             .build());
+     * 
+     *         var myMemberA = new GroupMember(&#34;myMemberA&#34;, GroupMemberArgs.builder()        
+     *             .groupId(admins.applyValue(getGroupResult -&gt; getGroupResult.id()))
+     *             .memberId(me.applyValue(getUserResult -&gt; getUserResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4297,7 +4989,7 @@ public final class DatabricksFunctions {
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
      * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks_group_member to attach users and groups as group members.
+     * * databricks.GroupMember to attach users and groups as group members.
      * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
      * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
      * * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
