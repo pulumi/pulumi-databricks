@@ -21,14 +21,14 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @group = new Databricks.Group("group");
-    /// 
     ///     var index_groupGroup = new Databricks.Group("index/groupGroup");
+    /// 
+    ///     var @group = new Databricks.Group("group");
     /// 
     ///     var ab = new Databricks.GroupMember("ab", new()
     ///     {
-    ///         GroupId = @group.Id,
-    ///         MemberId = index / groupGroup.Id,
+    ///         GroupId = index / groupGroup.Id,
+    ///         MemberId = @group.Id,
     ///     });
     /// 
     ///     var bradley = new Databricks.User("bradley", new()
@@ -38,7 +38,7 @@ namespace Pulumi.Databricks
     /// 
     ///     var bb = new Databricks.GroupMember("bb", new()
     ///     {
-    ///         GroupId = index / groupGroup.Id,
+    ///         GroupId = @group.Id,
     ///         MemberId = bradley.Id,
     ///     });
     /// 

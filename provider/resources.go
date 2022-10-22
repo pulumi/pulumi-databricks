@@ -67,7 +67,6 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:  "databricks",
 		Config:     map[string]*tfbridge.SchemaInfo{},
 		IgnoreMappings: []string{
-			// "databricks_group_member", // causes the schema to have no deterministic generation
 			"databricks_aws_s3_mount",
 			"databricks_azure_adls_gen1_mount",
 			"databricks_azure_adls_gen2_mount",
