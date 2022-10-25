@@ -129,6 +129,10 @@ namespace Pulumi.Databricks
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accountId",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -152,11 +156,21 @@ namespace Pulumi.Databricks
 
     public sealed class MwsCredentialsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accountId", required: true)]
+        private Input<string>? _accountId;
+
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        public Input<string>? AccountId
+        {
+            get => _accountId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// name of credentials to register
@@ -178,11 +192,21 @@ namespace Pulumi.Databricks
 
     public sealed class MwsCredentialsState : global::Pulumi.ResourceArgs
     {
+        [Input("accountId")]
+        private Input<string>? _accountId;
+
         /// <summary>
         /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        public Input<string>? AccountId
+        {
+            get => _accountId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accountId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// (Integer) time of credentials registration

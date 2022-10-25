@@ -5,6 +5,86 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Creating regular user:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const me = new databricks.User("me", {
+ *     userName: "me@example.com",
+ * });
+ * ```
+ *
+ * Creating user with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const admins = databricks.getGroup({
+ *     displayName: "admins",
+ * });
+ * const me = new databricks.User("me", {userName: "me@example.com"});
+ * const i_am_admin = new databricks.GroupMember("i-am-admin", {
+ *     groupId: admins.then(admins => admins.id),
+ *     memberId: me.id,
+ * });
+ * ```
+ *
+ * Creating user with cluster create permissions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const me = new databricks.User("me", {
+ *     allowClusterCreate: true,
+ *     displayName: "Example user",
+ *     userName: "me@example.com",
+ * });
+ * ```
+ *
+ * Creating user in AWS Databricks account:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // initialize provider at account-level
+ * const mws = new databricks.Provider("mws", {
+ *     host: "https://accounts.cloud.databricks.com",
+ *     accountId: "00000000-0000-0000-0000-000000000000",
+ *     username: _var.databricks_account_username,
+ *     password: _var.databricks_account_password,
+ * });
+ * const accountUser = new databricks.User("accountUser", {
+ *     userName: "me@example.com",
+ *     displayName: "Example user",
+ * }, {
+ *     provider: databricks.mws,
+ * });
+ * ```
+ *
+ * Creating user in Azure Databricks account:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // initialize provider at Azure account-level
+ * const azureAccount = new databricks.Provider("azureAccount", {
+ *     host: "https://accounts.azuredatabricks.net",
+ *     accountId: "00000000-0000-0000-0000-000000000000",
+ *     authType: "azure-cli",
+ * });
+ * const accountUser = new databricks.User("accountUser", {
+ *     userName: "me@example.com",
+ *     displayName: "Example user",
+ * }, {
+ *     provider: databricks.mws,
+ * });
+ * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -13,7 +93,7 @@ import * as utilities from "./utilities";
  * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
  * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
  * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
- * * databricksGroupMember to attach users and groups as group members.
+ * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
  * * databricks.User data to retrieve information about databricks_user.
  *

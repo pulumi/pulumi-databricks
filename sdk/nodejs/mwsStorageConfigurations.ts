@@ -5,6 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const rootStorageBucket = new aws.s3.BucketV2("rootStorageBucket", {
+ *     acl: "private",
+ *     versionings: [{
+ *         enabled: false,
+ *     }],
+ * });
+ * const _this = new databricks.MwsStorageConfigurations("this", {
+ *     accountId: databricksAccountId,
+ *     storageConfigurationName: `${_var.prefix}-storage`,
+ *     bucketName: rootStorageBucket.bucket,
+ * }, {
+ *     provider: databricks.mws,
+ * });
+ * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -96,13 +119,15 @@ export class MwsStorageConfigurations extends pulumi.CustomResource {
             if ((!args || args.storageConfigurationName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'storageConfigurationName'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["accountId"] = args?.accountId ? pulumi.secret(args.accountId) : undefined;
             resourceInputs["bucketName"] = args ? args.bucketName : undefined;
             resourceInputs["storageConfigurationName"] = args ? args.storageConfigurationName : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["storageConfigurationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["accountId"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(MwsStorageConfigurations.__pulumiType, name, resourceInputs, opts);
     }
 }

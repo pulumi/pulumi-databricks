@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("databricks");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("databricks");
 
         private static readonly __Value<string?> _accountId = new __Value<string?>(() => __config.Get("accountId"));
         public static string? AccountId

@@ -323,6 +323,70 @@ class ServicePrincipal(pulumi.CustomResource):
                  workspace_access: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Creating regular service principal:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000")
+        ```
+
+        Creating service principal with administrative permissions - referencing special `admins` Group in GroupMember resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        admins = databricks.get_group(display_name="admins")
+        sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000")
+        i_am_admin = databricks.GroupMember("i-am-admin",
+            group_id=admins.id,
+            member_id=sp.id)
+        ```
+
+        Creating service principal with cluster create permissions:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sp = databricks.ServicePrincipal("sp",
+            allow_cluster_create=True,
+            application_id="00000000-0000-0000-0000-000000000000",
+            display_name="Example service principal")
+        ```
+
+        Creating service principal in AWS Databricks account:
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider at account-level
+        mws = databricks.Provider("mws",
+            host="https://accounts.cloud.databricks.com",
+            account_id="00000000-0000-0000-0000-000000000000",
+            username=var["databricks_account_username"],
+            password=var["databricks_account_password"])
+        sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP",
+        opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        ```
+
+        Creating group in Azure Databricks account:
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider at Azure account-level
+        azure_account = databricks.Provider("azureAccount",
+            host="https://accounts.azuredatabricks.net",
+            account_id="00000000-0000-0000-0000-000000000000",
+            auth_type="azure-cli")
+        sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000",
+        opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
+        ```
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -330,7 +394,7 @@ class ServicePrincipal(pulumi.CustomResource):
         * End to end workspace management guide.
         * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
         * Group data to retrieve information about Group members, entitlements and instance profiles.
-        * databricks_group_member to attach users and groups as group members.
+        * GroupMember to attach users and groups as group members.
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
         * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.
 
@@ -360,6 +424,70 @@ class ServicePrincipal(pulumi.CustomResource):
                  args: Optional[ServicePrincipalArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Creating regular service principal:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000")
+        ```
+
+        Creating service principal with administrative permissions - referencing special `admins` Group in GroupMember resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        admins = databricks.get_group(display_name="admins")
+        sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000")
+        i_am_admin = databricks.GroupMember("i-am-admin",
+            group_id=admins.id,
+            member_id=sp.id)
+        ```
+
+        Creating service principal with cluster create permissions:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sp = databricks.ServicePrincipal("sp",
+            allow_cluster_create=True,
+            application_id="00000000-0000-0000-0000-000000000000",
+            display_name="Example service principal")
+        ```
+
+        Creating service principal in AWS Databricks account:
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider at account-level
+        mws = databricks.Provider("mws",
+            host="https://accounts.cloud.databricks.com",
+            account_id="00000000-0000-0000-0000-000000000000",
+            username=var["databricks_account_username"],
+            password=var["databricks_account_password"])
+        sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP",
+        opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        ```
+
+        Creating group in Azure Databricks account:
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider at Azure account-level
+        azure_account = databricks.Provider("azureAccount",
+            host="https://accounts.azuredatabricks.net",
+            account_id="00000000-0000-0000-0000-000000000000",
+            auth_type="azure-cli")
+        sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000",
+        opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
+        ```
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -367,7 +495,7 @@ class ServicePrincipal(pulumi.CustomResource):
         * End to end workspace management guide.
         * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
         * Group data to retrieve information about Group members, entitlements and instance profiles.
-        * databricks_group_member to attach users and groups as group members.
+        * GroupMember to attach users and groups as group members.
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
         * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.
 

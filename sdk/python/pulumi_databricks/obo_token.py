@@ -204,6 +204,8 @@ class OboToken(pulumi.CustomResource):
                 raise TypeError("Missing required property 'lifetime_seconds'")
             __props__.__dict__["lifetime_seconds"] = lifetime_seconds
             __props__.__dict__["token_value"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["tokenValue"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(OboToken, __self__).__init__(
             'databricks:index/oboToken:OboToken',
             resource_name,

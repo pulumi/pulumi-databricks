@@ -45,7 +45,7 @@ namespace Pulumi.Databricks
         /// * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
         /// </summary>
         public static Task<GetDbfsFilePathsResult> InvokeAsync(GetDbfsFilePathsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDbfsFilePathsResult>("databricks:index/getDbfsFilePaths:getDbfsFilePaths", args ?? new GetDbfsFilePathsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDbfsFilePathsResult>("databricks:index/getDbfsFilePaths:getDbfsFilePaths", args ?? new GetDbfsFilePathsArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -81,7 +81,7 @@ namespace Pulumi.Databricks
         /// * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
         /// </summary>
         public static Output<GetDbfsFilePathsResult> Invoke(GetDbfsFilePathsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDbfsFilePathsResult>("databricks:index/getDbfsFilePaths:getDbfsFilePaths", args ?? new GetDbfsFilePathsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDbfsFilePathsResult>("databricks:index/getDbfsFilePaths:getDbfsFilePaths", args ?? new GetDbfsFilePathsInvokeArgs(), options.WithDefaults());
     }
 
 

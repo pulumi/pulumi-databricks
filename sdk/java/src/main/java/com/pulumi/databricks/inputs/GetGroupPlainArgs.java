@@ -47,14 +47,14 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Set of databricks.Group identifiers, that can be modified with databricks_group_member resource.
+     * Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     @Import(name="childGroups")
     private @Nullable List<String> childGroups;
 
     /**
-     * @return Set of databricks.Group identifiers, that can be modified with databricks_group_member resource.
+     * @return Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     public Optional<List<String>> childGroups() {
@@ -99,14 +99,14 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Set of group identifiers, that can be modified with databricks_group_member resource.
+     * Set of group identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     @Import(name="groups")
     private @Nullable List<String> groups;
 
     /**
-     * @return Set of group identifiers, that can be modified with databricks_group_member resource.
+     * @return Set of group identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     public Optional<List<String>> groups() {
@@ -163,14 +163,14 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Set of databricks.ServicePrincipal identifiers, that can be modified with databricks_group_member resource.
+     * Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     @Import(name="servicePrincipals")
     private @Nullable List<String> servicePrincipals;
 
     /**
-     * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks_group_member resource.
+     * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     public Optional<List<String>> servicePrincipals() {
@@ -178,14 +178,14 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Set of databricks.User identifiers, that can be modified with databricks_group_member resource.
+     * Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     @Import(name="users")
     private @Nullable List<String> users;
 
     /**
-     * @return Set of databricks.User identifiers, that can be modified with databricks_group_member resource.
+     * @return Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
      * 
      */
     public Optional<List<String>> users() {
@@ -258,7 +258,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param childGroups Set of databricks.Group identifiers, that can be modified with databricks_group_member resource.
+         * @param childGroups Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param childGroups Set of databricks.Group identifiers, that can be modified with databricks_group_member resource.
+         * @param childGroups Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param groups Set of group identifiers, that can be modified with databricks_group_member resource.
+         * @param groups Set of group identifiers, that can be modified with databricks.GroupMember resource.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param groups Set of group identifiers, that can be modified with databricks_group_member resource.
+         * @param groups Set of group identifiers, that can be modified with databricks.GroupMember resource.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param servicePrincipals Set of databricks.ServicePrincipal identifiers, that can be modified with databricks_group_member resource.
+         * @param servicePrincipals Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param servicePrincipals Set of databricks.ServicePrincipal identifiers, that can be modified with databricks_group_member resource.
+         * @param servicePrincipals Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param users Set of databricks.User identifiers, that can be modified with databricks_group_member resource.
+         * @param users Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param users Set of databricks.User identifiers, that can be modified with databricks_group_member resource.
+         * @param users Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
          * 
          * @return builder
          * 

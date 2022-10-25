@@ -10,6 +10,108 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Creating some group
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.Group("this", new()
+    ///     {
+    ///         AllowClusterCreate = true,
+    ///         AllowInstancePoolCreate = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Adding databricks.User as databricks.GroupMember of some group
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var thisGroup = new Databricks.Group("thisGroup", new()
+    ///     {
+    ///         AllowClusterCreate = true,
+    ///         AllowInstancePoolCreate = true,
+    ///     });
+    /// 
+    ///     var thisUser = new Databricks.User("thisUser", new()
+    ///     {
+    ///         UserName = "someone@example.com",
+    ///     });
+    /// 
+    ///     var vipMember = new Databricks.GroupMember("vipMember", new()
+    ///     {
+    ///         GroupId = thisGroup.Id,
+    ///         MemberId = thisUser.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating group in AWS Databricks account:
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // initialize provider at account-level
+    ///     var mws = new Databricks.Provider("mws", new()
+    ///     {
+    ///         Host = "https://accounts.cloud.databricks.com",
+    ///         AccountId = "00000000-0000-0000-0000-000000000000",
+    ///         Username = @var.Databricks_account_username,
+    ///         Password = @var.Databricks_account_password,
+    ///     });
+    /// 
+    ///     var @this = new Databricks.Group("this", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Mws,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating group in Azure Databricks account:
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // initialize provider at Azure account-level
+    ///     var azureAccount = new Databricks.Provider("azureAccount", new()
+    ///     {
+    ///         Host = "https://accounts.azuredatabricks.net",
+    ///         AccountId = "00000000-0000-0000-0000-000000000000",
+    ///         AuthType = "azure-cli",
+    ///     });
+    /// 
+    ///     var @this = new Databricks.Group("this", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Azure_account,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// You can import a `databricks_group` resource with the name `my_group` like the followingbash

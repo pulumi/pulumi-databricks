@@ -43,6 +43,10 @@ func NewOboToken(ctx *pulumi.Context,
 	if args.LifetimeSeconds == nil {
 		return nil, errors.New("invalid value for required argument 'LifetimeSeconds'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"tokenValue",
+	})
+	opts = append(opts, secrets)
 	var resource OboToken
 	err := ctx.RegisterResource("databricks:index/oboToken:OboToken", name, args, &resource, opts...)
 	if err != nil {

@@ -5,6 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Adding user to administrative group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const admins = databricks.getGroup({
+ *     displayName: "admins",
+ * });
+ * const me = databricks.getUser({
+ *     userName: "me@example.com",
+ * });
+ * const myMemberA = new databricks.GroupMember("myMemberA", {
+ *     groupId: admins.then(admins => admins.id),
+ *     memberId: me.then(me => me.id),
+ * });
+ * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -14,7 +33,7 @@ import * as utilities from "./utilities";
  * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
  * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
  * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
- * * databricksGroupMember to attach users and groups as group members.
+ * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
  * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
  * * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.

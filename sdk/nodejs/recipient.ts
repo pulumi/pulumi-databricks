@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -123,10 +124,12 @@ export class Recipient extends pulumi.CustomResource {
             resourceInputs["dataRecipientGlobalMetastoreId"] = args ? args.dataRecipientGlobalMetastoreId : undefined;
             resourceInputs["ipAccessList"] = args ? args.ipAccessList : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["sharingCode"] = args ? args.sharingCode : undefined;
+            resourceInputs["sharingCode"] = args?.sharingCode ? pulumi.secret(args.sharingCode) : undefined;
             resourceInputs["tokens"] = args ? args.tokens : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["sharingCode"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Recipient.__pulumiType, name, resourceInputs, opts);
     }
 }

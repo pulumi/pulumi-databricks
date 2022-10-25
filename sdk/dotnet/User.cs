@@ -10,6 +10,128 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Creating regular user:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var me = new Databricks.User("me", new()
+    ///     {
+    ///         UserName = "me@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating user with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admins = Databricks.GetGroup.Invoke(new()
+    ///     {
+    ///         DisplayName = "admins",
+    ///     });
+    /// 
+    ///     var me = new Databricks.User("me", new()
+    ///     {
+    ///         UserName = "me@example.com",
+    ///     });
+    /// 
+    ///     var i_am_admin = new Databricks.GroupMember("i-am-admin", new()
+    ///     {
+    ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
+    ///         MemberId = me.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating user with cluster create permissions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var me = new Databricks.User("me", new()
+    ///     {
+    ///         AllowClusterCreate = true,
+    ///         DisplayName = "Example user",
+    ///         UserName = "me@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating user in AWS Databricks account:
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // initialize provider at account-level
+    ///     var mws = new Databricks.Provider("mws", new()
+    ///     {
+    ///         Host = "https://accounts.cloud.databricks.com",
+    ///         AccountId = "00000000-0000-0000-0000-000000000000",
+    ///         Username = @var.Databricks_account_username,
+    ///         Password = @var.Databricks_account_password,
+    ///     });
+    /// 
+    ///     var accountUser = new Databricks.User("accountUser", new()
+    ///     {
+    ///         UserName = "me@example.com",
+    ///         DisplayName = "Example user",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Mws,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating user in Azure Databricks account:
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // initialize provider at Azure account-level
+    ///     var azureAccount = new Databricks.Provider("azureAccount", new()
+    ///     {
+    ///         Host = "https://accounts.azuredatabricks.net",
+    ///         AccountId = "00000000-0000-0000-0000-000000000000",
+    ///         AuthType = "azure-cli",
+    ///     });
+    /// 
+    ///     var accountUser = new Databricks.User("accountUser", new()
+    ///     {
+    ///         UserName = "me@example.com",
+    ///         DisplayName = "Example user",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Mws,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:
@@ -18,7 +140,7 @@ namespace Pulumi.Databricks
     /// * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
     /// * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
     /// * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-    /// * databricks_group_member to attach users and groups as group members.
+    /// * databricks.GroupMember to attach users and groups as group members.
     /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
     /// * databricks.User data to retrieve information about databricks_user.
     /// 

@@ -70,7 +70,7 @@ namespace Pulumi.Databricks
     /// 
     /// * End to end workspace management guide.
     /// * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-    /// * databricks_group_member to attach users and groups as group members.
+    /// * databricks.GroupMember to attach users and groups as group members.
     /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
     /// * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
     /// * databricks.User data to retrieve information about databricks_user.

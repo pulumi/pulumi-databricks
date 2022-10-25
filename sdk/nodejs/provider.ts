@@ -56,7 +56,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["authType"] = args ? args.authType : undefined;
             resourceInputs["azureClientId"] = args ? args.azureClientId : undefined;
-            resourceInputs["azureClientSecret"] = args ? args.azureClientSecret : undefined;
+            resourceInputs["azureClientSecret"] = args?.azureClientSecret ? pulumi.secret(args.azureClientSecret) : undefined;
             resourceInputs["azureEnvironment"] = args ? args.azureEnvironment : undefined;
             resourceInputs["azureLoginAppId"] = args ? args.azureLoginAppId : undefined;
             resourceInputs["azureTenantId"] = args ? args.azureTenantId : undefined;
@@ -65,18 +65,20 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["configFile"] = args ? args.configFile : undefined;
             resourceInputs["debugHeaders"] = pulumi.output(args ? args.debugHeaders : undefined).apply(JSON.stringify);
             resourceInputs["debugTruncateBytes"] = pulumi.output(args ? args.debugTruncateBytes : undefined).apply(JSON.stringify);
-            resourceInputs["googleCredentials"] = args ? args.googleCredentials : undefined;
+            resourceInputs["googleCredentials"] = args?.googleCredentials ? pulumi.secret(args.googleCredentials) : undefined;
             resourceInputs["googleServiceAccount"] = args ? args.googleServiceAccount : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["httpTimeoutSeconds"] = pulumi.output(args ? args.httpTimeoutSeconds : undefined).apply(JSON.stringify);
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["profile"] = args ? args.profile : undefined;
             resourceInputs["rateLimit"] = pulumi.output(args ? args.rateLimit : undefined).apply(JSON.stringify);
             resourceInputs["skipVerify"] = pulumi.output(args ? args.skipVerify : undefined).apply(JSON.stringify);
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["azureClientSecret", "googleCredentials", "password", "token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }

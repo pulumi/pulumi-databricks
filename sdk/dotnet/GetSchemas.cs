@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
         /// * databricks.Catalog to manage catalogs within Unity Catalog.
         /// </summary>
         public static Task<GetSchemasResult> InvokeAsync(GetSchemasArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSchemasResult>("databricks:index/getSchemas:getSchemas", args ?? new GetSchemasArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSchemasResult>("databricks:index/getSchemas:getSchemas", args ?? new GetSchemasArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -83,7 +83,7 @@ namespace Pulumi.Databricks
         /// * databricks.Catalog to manage catalogs within Unity Catalog.
         /// </summary>
         public static Output<GetSchemasResult> Invoke(GetSchemasInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSchemasResult>("databricks:index/getSchemas:getSchemas", args ?? new GetSchemasInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSchemasResult>("databricks:index/getSchemas:getSchemas", args ?? new GetSchemasInvokeArgs(), options.WithDefaults());
     }
 
 

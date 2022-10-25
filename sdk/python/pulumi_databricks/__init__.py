@@ -43,6 +43,7 @@ from .global_init_script import *
 from .grants import *
 from .group import *
 from .group_instance_profile import *
+from .group_member import *
 from .group_role import *
 from .instance_pool import *
 from .instance_profile import *
@@ -200,6 +201,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/groupInstanceProfile:GroupInstanceProfile": "GroupInstanceProfile"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/groupMember",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/groupMember:GroupMember": "GroupMember"
   }
  },
  {

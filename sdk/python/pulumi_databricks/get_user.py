@@ -138,6 +138,20 @@ def get_user(user_id: Optional[str] = None,
              user_name: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
+    ## Example Usage
+
+    Adding user to administrative group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    admins = databricks.get_group(display_name="admins")
+    me = databricks.get_user(user_name="me@example.com")
+    my_member_a = databricks.GroupMember("myMemberA",
+        group_id=admins.id,
+        member_id=me.id)
+    ```
     ## Related Resources
 
     The following resources are used in the same context:
@@ -147,7 +161,7 @@ def get_user(user_id: Optional[str] = None,
     * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
     * Group data to retrieve information about Group members, entitlements and instance profiles.
     * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-    * databricks_group_member to attach users and groups as group members.
+    * GroupMember to attach users and groups as group members.
     * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
     * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
     * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
@@ -179,6 +193,20 @@ def get_user_output(user_id: Optional[pulumi.Input[Optional[str]]] = None,
                     user_name: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
+    ## Example Usage
+
+    Adding user to administrative group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    admins = databricks.get_group(display_name="admins")
+    me = databricks.get_user(user_name="me@example.com")
+    my_member_a = databricks.GroupMember("myMemberA",
+        group_id=admins.id,
+        member_id=me.id)
+    ```
     ## Related Resources
 
     The following resources are used in the same context:
@@ -188,7 +216,7 @@ def get_user_output(user_id: Optional[pulumi.Input[Optional[str]]] = None,
     * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
     * Group data to retrieve information about Group members, entitlements and instance profiles.
     * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-    * databricks_group_member to attach users and groups as group members.
+    * GroupMember to attach users and groups as group members.
     * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
     * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
     * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.

@@ -5,6 +5,80 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Creating regular service principal:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const sp = new databricks.ServicePrincipal("sp", {
+ *     applicationId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
+ *
+ * Creating service principal with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const admins = databricks.getGroup({
+ *     displayName: "admins",
+ * });
+ * const sp = new databricks.ServicePrincipal("sp", {applicationId: "00000000-0000-0000-0000-000000000000"});
+ * const i_am_admin = new databricks.GroupMember("i-am-admin", {
+ *     groupId: admins.then(admins => admins.id),
+ *     memberId: sp.id,
+ * });
+ * ```
+ *
+ * Creating service principal with cluster create permissions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const sp = new databricks.ServicePrincipal("sp", {
+ *     allowClusterCreate: true,
+ *     applicationId: "00000000-0000-0000-0000-000000000000",
+ *     displayName: "Example service principal",
+ * });
+ * ```
+ *
+ * Creating service principal in AWS Databricks account:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // initialize provider at account-level
+ * const mws = new databricks.Provider("mws", {
+ *     host: "https://accounts.cloud.databricks.com",
+ *     accountId: "00000000-0000-0000-0000-000000000000",
+ *     username: _var.databricks_account_username,
+ *     password: _var.databricks_account_password,
+ * });
+ * const sp = new databricks.ServicePrincipal("sp", {displayName: "Automation-only SP"}, {
+ *     provider: databricks.mws,
+ * });
+ * ```
+ *
+ * Creating group in Azure Databricks account:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // initialize provider at Azure account-level
+ * const azureAccount = new databricks.Provider("azureAccount", {
+ *     host: "https://accounts.azuredatabricks.net",
+ *     accountId: "00000000-0000-0000-0000-000000000000",
+ *     authType: "azure-cli",
+ * });
+ * const sp = new databricks.ServicePrincipal("sp", {applicationId: "00000000-0000-0000-0000-000000000000"}, {
+ *     provider: databricks.azure_account,
+ * });
+ * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -12,7 +86,7 @@ import * as utilities from "./utilities";
  * * End to end workspace management guide.
  * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
  * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
- * * databricksGroupMember to attach users and groups as group members.
+ * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
  * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.
  *

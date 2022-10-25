@@ -93,6 +93,13 @@ func NewSecret(ctx *pulumi.Context,
 	if args.StringValue == nil {
 		return nil, errors.New("invalid value for required argument 'StringValue'")
 	}
+	if args.StringValue != nil {
+		args.StringValue = pulumi.ToSecret(args.StringValue).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"stringValue",
+	})
+	opts = append(opts, secrets)
 	var resource Secret
 	err := ctx.RegisterResource("databricks:index/secret:Secret", name, args, &resource, opts...)
 	if err != nil {

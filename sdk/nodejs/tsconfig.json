@@ -53,6 +53,7 @@
         "grants.ts",
         "group.ts",
         "groupInstanceProfile.ts",
+        "groupMember.ts",
         "groupRole.ts",
         "index.ts",
         "instancePool.ts",

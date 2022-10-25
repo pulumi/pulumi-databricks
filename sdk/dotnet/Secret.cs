@@ -101,6 +101,10 @@ namespace Pulumi.Databricks
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "stringValue",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -136,11 +140,21 @@ namespace Pulumi.Databricks
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;
 
+        [Input("stringValue", required: true)]
+        private Input<string>? _stringValue;
+
         /// <summary>
         /// (String) super secret sensitive value.
         /// </summary>
-        [Input("stringValue", required: true)]
-        public Input<string> StringValue { get; set; } = null!;
+        public Input<string>? StringValue
+        {
+            get => _stringValue;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _stringValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public SecretArgs()
         {
@@ -168,11 +182,21 @@ namespace Pulumi.Databricks
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
+        [Input("stringValue")]
+        private Input<string>? _stringValue;
+
         /// <summary>
         /// (String) super secret sensitive value.
         /// </summary>
-        [Input("stringValue")]
-        public Input<string>? StringValue { get; set; }
+        public Input<string>? StringValue
+        {
+            get => _stringValue;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _stringValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public SecretState()
         {

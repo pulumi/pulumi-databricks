@@ -134,6 +134,20 @@ def get_service_principal(active: Optional[bool] = None,
                           sp_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalResult:
     """
+    ## Example Usage
+
+    Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    admins = databricks.get_group(display_name="admins")
+    spn = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
+    my_member_a = databricks.GroupMember("myMemberA",
+        group_id=admins.id,
+        member_id=spn.id)
+    ```
     ## Related Resources
 
     The following resources are used in the same context:
@@ -143,7 +157,7 @@ def get_service_principal(active: Optional[bool] = None,
     * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
     * Group data to retrieve information about Group members, entitlements and instance profiles.
     * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-    * databricks_group_member to attach users and groups as group members.
+    * GroupMember to attach users and groups as group members.
     * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
     * databricks_service principal to manage service principals
 
@@ -188,6 +202,20 @@ def get_service_principal_output(active: Optional[pulumi.Input[Optional[bool]]] 
                                  sp_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePrincipalResult]:
     """
+    ## Example Usage
+
+    Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    admins = databricks.get_group(display_name="admins")
+    spn = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
+    my_member_a = databricks.GroupMember("myMemberA",
+        group_id=admins.id,
+        member_id=spn.id)
+    ```
     ## Related Resources
 
     The following resources are used in the same context:
@@ -197,7 +225,7 @@ def get_service_principal_output(active: Optional[pulumi.Input[Optional[bool]]] 
     * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
     * Group data to retrieve information about Group members, entitlements and instance profiles.
     * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-    * databricks_group_member to attach users and groups as group members.
+    * GroupMember to attach users and groups as group members.
     * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
     * databricks_service principal to manage service principals
 

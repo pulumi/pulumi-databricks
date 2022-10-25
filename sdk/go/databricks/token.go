@@ -70,6 +70,10 @@ func NewToken(ctx *pulumi.Context,
 		args = &TokenArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"tokenValue",
+	})
+	opts = append(opts, secrets)
 	var resource Token
 	err := ctx.RegisterResource("databricks:index/token:Token", name, args, &resource, opts...)
 	if err != nil {

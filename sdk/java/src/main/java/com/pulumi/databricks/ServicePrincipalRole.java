@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * * End to end workspace management guide.
  * * databricks.UserRole to attach role or databricks.InstanceProfile (AWS) to databricks_user.
  * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
- * * databricks_group_member to attach users and groups as group members.
+ * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
  * 
  * ## Import

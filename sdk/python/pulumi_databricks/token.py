@@ -282,6 +282,8 @@ class Token(pulumi.CustomResource):
             __props__.__dict__["lifetime_seconds"] = lifetime_seconds
             __props__.__dict__["token_id"] = token_id
             __props__.__dict__["token_value"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["tokenValue"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Token, __self__).__init__(
             'databricks:index/token:Token',
             resource_name,

@@ -12,11 +12,21 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class MlflowWebhookJobSpecGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessToken", required: true)]
+        private Input<string>? _accessToken;
+
         /// <summary>
         /// The personal access token used to authorize webhook's job runs.
         /// </summary>
-        [Input("accessToken", required: true)]
-        public Input<string> AccessToken { get; set; } = null!;
+        public Input<string>? AccessToken
+        {
+            get => _accessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// ID of the Databricks job that the webhook runs.

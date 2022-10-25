@@ -59,7 +59,7 @@ import (
 //
 // * End to end workspace management guide.
 // * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-// * databricksGroupMember to attach users and groups as group members.
+// * GroupMember to attach users and groups as group members.
 // * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
 // * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
 // * User data to retrieve information about databricks_user.

@@ -65,7 +65,7 @@ namespace Pulumi.Databricks
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         /// </summary>
         public static Task<GetNodeTypeResult> InvokeAsync(GetNodeTypeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTypeResult>("databricks:index/getNodeType:getNodeType", args ?? new GetNodeTypeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeTypeResult>("databricks:index/getNodeType:getNodeType", args ?? new GetNodeTypeArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -121,7 +121,7 @@ namespace Pulumi.Databricks
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         /// </summary>
         public static Output<GetNodeTypeResult> Invoke(GetNodeTypeInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeTypeResult>("databricks:index/getNodeType:getNodeType", args ?? new GetNodeTypeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeTypeResult>("databricks:index/getNodeType:getNodeType", args ?? new GetNodeTypeInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -118,6 +118,10 @@ namespace Pulumi.Databricks
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "sharingCode",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -171,11 +175,21 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("sharingCode")]
+        private Input<string>? _sharingCode;
+
         /// <summary>
         /// The one-time sharing code provided by the data recipient.
         /// </summary>
-        [Input("sharingCode")]
-        public Input<string>? SharingCode { get; set; }
+        public Input<string>? SharingCode
+        {
+            get => _sharingCode;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sharingCode = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("tokens")]
         private InputList<Inputs.RecipientTokenArgs>? _tokens;
@@ -223,11 +237,21 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("sharingCode")]
+        private Input<string>? _sharingCode;
+
         /// <summary>
         /// The one-time sharing code provided by the data recipient.
         /// </summary>
-        [Input("sharingCode")]
-        public Input<string>? SharingCode { get; set; }
+        public Input<string>? SharingCode
+        {
+            get => _sharingCode;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sharingCode = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("tokens")]
         private InputList<Inputs.RecipientTokenGetArgs>? _tokens;

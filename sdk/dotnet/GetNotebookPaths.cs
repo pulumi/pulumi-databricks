@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNotebookPathsResult> InvokeAsync(GetNotebookPathsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNotebookPathsResult>("databricks:index/getNotebookPaths:getNotebookPaths", args ?? new GetNotebookPathsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotebookPathsResult>("databricks:index/getNotebookPaths:getNotebookPaths", args ?? new GetNotebookPathsArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -61,7 +61,7 @@ namespace Pulumi.Databricks
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNotebookPathsResult> Invoke(GetNotebookPathsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNotebookPathsResult>("databricks:index/getNotebookPaths:getNotebookPaths", args ?? new GetNotebookPathsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNotebookPathsResult>("databricks:index/getNotebookPaths:getNotebookPaths", args ?? new GetNotebookPathsInvokeArgs(), options.WithDefaults());
     }
 
 

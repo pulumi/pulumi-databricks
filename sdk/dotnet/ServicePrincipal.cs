@@ -10,6 +10,126 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// Creating regular service principal:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sp = new Databricks.ServicePrincipal("sp", new()
+    ///     {
+    ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating service principal with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admins = Databricks.GetGroup.Invoke(new()
+    ///     {
+    ///         DisplayName = "admins",
+    ///     });
+    /// 
+    ///     var sp = new Databricks.ServicePrincipal("sp", new()
+    ///     {
+    ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
+    ///     });
+    /// 
+    ///     var i_am_admin = new Databricks.GroupMember("i-am-admin", new()
+    ///     {
+    ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
+    ///         MemberId = sp.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating service principal with cluster create permissions:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sp = new Databricks.ServicePrincipal("sp", new()
+    ///     {
+    ///         AllowClusterCreate = true,
+    ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
+    ///         DisplayName = "Example service principal",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating service principal in AWS Databricks account:
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // initialize provider at account-level
+    ///     var mws = new Databricks.Provider("mws", new()
+    ///     {
+    ///         Host = "https://accounts.cloud.databricks.com",
+    ///         AccountId = "00000000-0000-0000-0000-000000000000",
+    ///         Username = @var.Databricks_account_username,
+    ///         Password = @var.Databricks_account_password,
+    ///     });
+    /// 
+    ///     var sp = new Databricks.ServicePrincipal("sp", new()
+    ///     {
+    ///         DisplayName = "Automation-only SP",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Mws,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating group in Azure Databricks account:
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // initialize provider at Azure account-level
+    ///     var azureAccount = new Databricks.Provider("azureAccount", new()
+    ///     {
+    ///         Host = "https://accounts.azuredatabricks.net",
+    ///         AccountId = "00000000-0000-0000-0000-000000000000",
+    ///         AuthType = "azure-cli",
+    ///     });
+    /// 
+    ///     var sp = new Databricks.ServicePrincipal("sp", new()
+    ///     {
+    ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Azure_account,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:
@@ -17,7 +137,7 @@ namespace Pulumi.Databricks
     /// * End to end workspace management guide.
     /// * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
     /// * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-    /// * databricks_group_member to attach users and groups as group members.
+    /// * databricks.GroupMember to attach users and groups as group members.
     /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
     /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.
     /// 

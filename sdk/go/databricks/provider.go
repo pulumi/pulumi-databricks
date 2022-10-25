@@ -42,6 +42,25 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
+	if args.AzureClientSecret != nil {
+		args.AzureClientSecret = pulumi.ToSecret(args.AzureClientSecret).(pulumi.StringPtrOutput)
+	}
+	if args.GoogleCredentials != nil {
+		args.GoogleCredentials = pulumi.ToSecret(args.GoogleCredentials).(pulumi.StringPtrOutput)
+	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrOutput)
+	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"azureClientSecret",
+		"googleCredentials",
+		"password",
+		"token",
+	})
+	opts = append(opts, secrets)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:databricks", name, args, &resource, opts...)
 	if err != nil {

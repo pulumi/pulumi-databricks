@@ -64,6 +64,10 @@ namespace Pulumi.Databricks
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "tokenValue",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -131,11 +135,21 @@ namespace Pulumi.Databricks
         [Input("lifetimeSeconds")]
         public Input<int>? LifetimeSeconds { get; set; }
 
+        [Input("tokenValue")]
+        private Input<string>? _tokenValue;
+
         /// <summary>
         /// **Sensitive** value of the newly-created token.
         /// </summary>
-        [Input("tokenValue")]
-        public Input<string>? TokenValue { get; set; }
+        public Input<string>? TokenValue
+        {
+            get => _tokenValue;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tokenValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public OboTokenState()
         {
