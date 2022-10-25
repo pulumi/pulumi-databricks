@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to attach users, service_principal, and groups as group members.
+ * This resource allows you to attach `users`, `service principals`, and `groups` as group members.
  *
  * To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
  *
@@ -56,11 +56,11 @@ export class GroupMember extends pulumi.CustomResource {
     }
 
     /**
-     * This is the id of the group resource.
+     * This is the id of the `group` resource.
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * This is the id of the group, service principal, or user.
+     * This is the id of the `group`, `service principal`, or `user`.
      */
     public readonly memberId!: pulumi.Output<string>;
 
@@ -100,11 +100,11 @@ export class GroupMember extends pulumi.CustomResource {
  */
 export interface GroupMemberState {
     /**
-     * This is the id of the group resource.
+     * This is the id of the `group` resource.
      */
     groupId?: pulumi.Input<string>;
     /**
-     * This is the id of the group, service principal, or user.
+     * This is the id of the `group`, `service principal`, or `user`.
      */
     memberId?: pulumi.Input<string>;
 }
@@ -114,11 +114,11 @@ export interface GroupMemberState {
  */
 export interface GroupMemberArgs {
     /**
-     * This is the id of the group resource.
+     * This is the id of the `group` resource.
      */
     groupId: pulumi.Input<string>;
     /**
-     * This is the id of the group, service principal, or user.
+     * This is the id of the `group`, `service principal`, or `user`.
      */
     memberId: pulumi.Input<string>;
 }

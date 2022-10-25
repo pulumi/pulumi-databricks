@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to attach users, service_principal, and groups as group members.
+// This resource allows you to attach `users`, `service principals`, and `groups` as group members.
 //
 // To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
 //
@@ -35,9 +35,9 @@ import (
 type GroupMember struct {
 	pulumi.CustomResourceState
 
-	// This is the id of the group resource.
+	// This is the id of the `group` resource.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// This is the id of the group, service principal, or user.
+	// This is the id of the `group`, `service principal`, or `user`.
 	MemberId pulumi.StringOutput `pulumi:"memberId"`
 }
 
@@ -76,16 +76,16 @@ func GetGroupMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupMember resources.
 type groupMemberState struct {
-	// This is the id of the group resource.
+	// This is the id of the `group` resource.
 	GroupId *string `pulumi:"groupId"`
-	// This is the id of the group, service principal, or user.
+	// This is the id of the `group`, `service principal`, or `user`.
 	MemberId *string `pulumi:"memberId"`
 }
 
 type GroupMemberState struct {
-	// This is the id of the group resource.
+	// This is the id of the `group` resource.
 	GroupId pulumi.StringPtrInput
-	// This is the id of the group, service principal, or user.
+	// This is the id of the `group`, `service principal`, or `user`.
 	MemberId pulumi.StringPtrInput
 }
 
@@ -94,17 +94,17 @@ func (GroupMemberState) ElementType() reflect.Type {
 }
 
 type groupMemberArgs struct {
-	// This is the id of the group resource.
+	// This is the id of the `group` resource.
 	GroupId string `pulumi:"groupId"`
-	// This is the id of the group, service principal, or user.
+	// This is the id of the `group`, `service principal`, or `user`.
 	MemberId string `pulumi:"memberId"`
 }
 
 // The set of arguments for constructing a GroupMember resource.
 type GroupMemberArgs struct {
-	// This is the id of the group resource.
+	// This is the id of the `group` resource.
 	GroupId pulumi.StringInput
-	// This is the id of the group, service principal, or user.
+	// This is the id of the `group`, `service principal`, or `user`.
 	MemberId pulumi.StringInput
 }
 
@@ -195,12 +195,12 @@ func (o GroupMemberOutput) ToGroupMemberOutputWithContext(ctx context.Context) G
 	return o
 }
 
-// This is the id of the group resource.
+// This is the id of the `group` resource.
 func (o GroupMemberOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMember) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// This is the id of the group, service principal, or user.
+// This is the id of the `group`, `service principal`, or `user`.
 func (o GroupMemberOutput) MemberId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMember) pulumi.StringOutput { return v.MemberId }).(pulumi.StringOutput)
 }

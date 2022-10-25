@@ -14,14 +14,14 @@ public final class GroupMemberArgs extends com.pulumi.resources.ResourceArgs {
     public static final GroupMemberArgs Empty = new GroupMemberArgs();
 
     /**
-     * This is the id of the group resource.
+     * This is the id of the `group` resource.
      * 
      */
     @Import(name="groupId", required=true)
     private Output<String> groupId;
 
     /**
-     * @return This is the id of the group resource.
+     * @return This is the id of the `group` resource.
      * 
      */
     public Output<String> groupId() {
@@ -29,14 +29,14 @@ public final class GroupMemberArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is the id of the group, service principal, or user.
+     * This is the id of the `group`, `service principal`, or `user`.
      * 
      */
     @Import(name="memberId", required=true)
     private Output<String> memberId;
 
     /**
-     * @return This is the id of the group, service principal, or user.
+     * @return This is the id of the `group`, `service principal`, or `user`.
      * 
      */
     public Output<String> memberId() {
@@ -69,7 +69,7 @@ public final class GroupMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupId This is the id of the group resource.
+         * @param groupId This is the id of the `group` resource.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class GroupMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupId This is the id of the group resource.
+         * @param groupId This is the id of the `group` resource.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class GroupMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberId This is the id of the group, service principal, or user.
+         * @param memberId This is the id of the `group`, `service principal`, or `user`.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class GroupMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberId This is the id of the group, service principal, or user.
+         * @param memberId This is the id of the `group`, `service principal`, or `user`.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * This resource allows you to attach users, service_principal, and groups as group members.
+ * This resource allows you to attach `users`, `service principals`, and `groups` as group members.
  * 
  * To attach members to groups in the Databricks account, the provider must be configured with `host = &#34;https://accounts.cloud.databricks.com&#34;` on AWS deployments or `host = &#34;https://accounts.azuredatabricks.net&#34;` and authenticate using AAD tokens on Azure deployments.
  * 
@@ -40,28 +40,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/groupMember:GroupMember")
 public class GroupMember extends com.pulumi.resources.CustomResource {
     /**
-     * This is the id of the group resource.
+     * This is the id of the `group` resource.
      * 
      */
     @Export(name="groupId", type=String.class, parameters={})
     private Output<String> groupId;
 
     /**
-     * @return This is the id of the group resource.
+     * @return This is the id of the `group` resource.
      * 
      */
     public Output<String> groupId() {
         return this.groupId;
     }
     /**
-     * This is the id of the group, service principal, or user.
+     * This is the id of the `group`, `service principal`, or `user`.
      * 
      */
     @Export(name="memberId", type=String.class, parameters={})
     private Output<String> memberId;
 
     /**
-     * @return This is the id of the group, service principal, or user.
+     * @return This is the id of the `group`, `service principal`, or `user`.
      * 
      */
     public Output<String> memberId() {

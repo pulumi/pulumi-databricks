@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// This resource allows you to attach users, service_principal, and groups as group members.
+    /// This resource allows you to attach `users`, `service principals`, and `groups` as group members.
     /// 
     /// To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
     /// 
@@ -36,13 +36,13 @@ namespace Pulumi.Databricks
     public partial class GroupMember : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// This is the id of the group resource.
+        /// This is the id of the `group` resource.
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// This is the id of the group, service principal, or user.
+        /// This is the id of the `group`, `service principal`, or `user`.
         /// </summary>
         [Output("memberId")]
         public Output<string> MemberId { get; private set; } = null!;
@@ -94,13 +94,13 @@ namespace Pulumi.Databricks
     public sealed class GroupMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This is the id of the group resource.
+        /// This is the id of the `group` resource.
         /// </summary>
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// This is the id of the group, service principal, or user.
+        /// This is the id of the `group`, `service principal`, or `user`.
         /// </summary>
         [Input("memberId", required: true)]
         public Input<string> MemberId { get; set; } = null!;
@@ -114,13 +114,13 @@ namespace Pulumi.Databricks
     public sealed class GroupMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This is the id of the group resource.
+        /// This is the id of the `group` resource.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// This is the id of the group, service principal, or user.
+        /// This is the id of the `group`, `service principal`, or `user`.
         /// </summary>
         [Input("memberId")]
         public Input<string>? MemberId { get; set; }
