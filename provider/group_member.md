@@ -3,7 +3,7 @@ subcategory: "Security"
 ---
 # databricks_group_member Resource
 
-This resource allows you to attach [users](user.md), [service_principal](service_principal.md), and [groups](group.md) as group members.
+This resource allows you to attach `users`, `service principals`, and `groups` as group members.
 
 To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
 
@@ -11,8 +11,8 @@ To attach members to groups in the Databricks account, the provider must be conf
 
 The following arguments are supported:
 
-* `group_id` - (Required) This is the id of the [group](group.md) resource.
-* `member_id` - (Required) This is the id of the [group](group.md), [service principal](service_principal.md), or [user](user.md).
+* `group_id` - (Required) This is the id of the `group` resource.
+* `member_id` - (Required) This is the id of the `group`, `service principal`, or `user`.
 
 ## Attribute Reference
 

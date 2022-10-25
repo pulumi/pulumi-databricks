@@ -19,5 +19,8 @@ import _ "embed" //nolint:golint
 // Drop example which seems to trigger example translation non-determinism:
 // https://github.com/pulumi/pulumi-databricks/issues/19#issuecomment-1276437126
 //
+// Original copied from
+// https://github.com/databricks/terraform-provider-databricks/blob/dc7238fc43025d4ec267b8c61e4f57557fa0e3c3/docs/resources/group_member.md
+//
 //go:embed group_member.md
 var docGroupMember []byte
