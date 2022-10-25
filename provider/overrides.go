@@ -14,7 +14,7 @@
 
 package databricks
 
-import _ "embed"
+import _ "embed" //nolint:golint
 
 // Drop example which seems to trigger example translation non-determinism:
 // https://github.com/pulumi/pulumi-databricks/issues/19#issuecomment-1276437126
