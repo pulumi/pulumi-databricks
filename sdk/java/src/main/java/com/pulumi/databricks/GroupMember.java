@@ -14,54 +14,10 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
+ * This resource allows you to attach users, service_principal, and groups as group members.
  * 
- * After the following example, Bradley would have direct membership in group B and transitive membership in group A.
- * ```java
- * package generated_program;
+ * To attach members to groups in the Databricks account, the provider must be configured with `host = &#34;https://accounts.cloud.databricks.com&#34;` on AWS deployments or `host = &#34;https://accounts.azuredatabricks.net&#34;` and authenticate using AAD tokens on Azure deployments.
  * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Group;
- * import com.pulumi.databricks.GroupMember;
- * import com.pulumi.databricks.GroupMemberArgs;
- * import com.pulumi.databricks.User;
- * import com.pulumi.databricks.UserArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var group = new Group(&#34;group&#34;);
- * 
- *         var index_groupGroup = new Group(&#34;index/groupGroup&#34;);
- * 
- *         var ab = new GroupMember(&#34;ab&#34;, GroupMemberArgs.builder()        
- *             .groupId(group.id())
- *             .memberId(index / groupGroup.id())
- *             .build());
- * 
- *         var bradley = new User(&#34;bradley&#34;, UserArgs.builder()        
- *             .userName(&#34;bradley@example.com&#34;)
- *             .build());
- * 
- *         var bb = new GroupMember(&#34;bb&#34;, GroupMemberArgs.builder()        
- *             .groupId(index / groupGroup.id())
- *             .memberId(bradley.id())
- *             .build());
- * 
- *     }
- * }
- * ```
  * ## Related Resources
  * 
  * The following resources are often used in the same context:

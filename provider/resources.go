@@ -1,4 +1,4 @@
-// Copyright 2016-2018, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -96,8 +96,13 @@ func Provider() tfbridge.ProviderInfo {
 					"display_name": tfbridge.AutoName("displayName", 255, "-"),
 				},
 			},
-			"databricks_group_instance_profile":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupInstanceProfile")},
-			"databricks_group_member":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupMember")},
+			"databricks_group_instance_profile": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupInstanceProfile")},
+			"databricks_group_member": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupMember"),
+				Docs: &tfbridge.DocInfo{
+					Markdown: docGroupMember,
+				},
+			},
 			"databricks_group_role":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupRole")},
 			"databricks_instance_pool":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstancePool")},
 			"databricks_instance_profile":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstanceProfile")},

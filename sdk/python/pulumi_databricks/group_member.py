@@ -98,24 +98,10 @@ class GroupMember(pulumi.CustomResource):
                  member_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        This resource allows you to attach users, service_principal, and groups as group members.
 
-        After the following example, Bradley would have direct membership in group B and transitive membership in group A.
+        To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
 
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        group = databricks.Group("group")
-        index_group_group = databricks.Group("index/groupGroup")
-        ab = databricks.GroupMember("ab",
-            group_id=group.id,
-            member_id=index / group_group["id"])
-        bradley = databricks.User("bradley", user_name="bradley@example.com")
-        bb = databricks.GroupMember("bb",
-            group_id=index / group_group["id"],
-            member_id=bradley.id)
-        ```
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -146,24 +132,10 @@ class GroupMember(pulumi.CustomResource):
                  args: GroupMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        This resource allows you to attach users, service_principal, and groups as group members.
 
-        After the following example, Bradley would have direct membership in group B and transitive membership in group A.
+        To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
 
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        group = databricks.Group("group")
-        index_group_group = databricks.Group("index/groupGroup")
-        ab = databricks.GroupMember("ab",
-            group_id=group.id,
-            member_id=index / group_group["id"])
-        bradley = databricks.User("bradley", user_name="bradley@example.com")
-        bb = databricks.GroupMember("bb",
-            group_id=index / group_group["id"],
-            member_id=bradley.id)
-        ```
         ## Related Resources
 
         The following resources are often used in the same context:

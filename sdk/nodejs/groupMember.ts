@@ -5,26 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
+ * This resource allows you to attach users, service_principal, and groups as group members.
  *
- * After the following example, Bradley would have direct membership in group B and transitive membership in group A.
+ * To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const group = new databricks.Group("group", {});
- * const index_groupGroup = new databricks.Group("index/groupGroup", {});
- * const ab = new databricks.GroupMember("ab", {
- *     groupId: group.id,
- *     memberId: index / groupGroup.id,
- * });
- * const bradley = new databricks.User("bradley", {userName: "bradley@example.com"});
- * const bb = new databricks.GroupMember("bb", {
- *     groupId: index / groupGroup.id,
- *     memberId: bradley.id,
- * });
- * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:

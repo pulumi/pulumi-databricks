@@ -10,40 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// ## Example Usage
+    /// This resource allows you to attach users, service_principal, and groups as group members.
     /// 
-    /// After the following example, Bradley would have direct membership in group B and transitive membership in group A.
+    /// To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var index_groupGroup = new Databricks.Group("index/groupGroup");
-    /// 
-    ///     var @group = new Databricks.Group("group");
-    /// 
-    ///     var ab = new Databricks.GroupMember("ab", new()
-    ///     {
-    ///         GroupId = index / groupGroup.Id,
-    ///         MemberId = @group.Id,
-    ///     });
-    /// 
-    ///     var bradley = new Databricks.User("bradley", new()
-    ///     {
-    ///         UserName = "bradley@example.com",
-    ///     });
-    /// 
-    ///     var bb = new Databricks.GroupMember("bb", new()
-    ///     {
-    ///         GroupId = @group.Id,
-    ///         MemberId = bradley.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:

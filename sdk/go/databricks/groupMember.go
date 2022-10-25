@@ -11,55 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
+// This resource allows you to attach users, service_principal, and groups as group members.
 //
-// After the following example, Bradley would have direct membership in group B and transitive membership in group A.
+// To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			group, err := databricks.NewGroup(ctx, "group", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewGroup(ctx, "index/groupGroup", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewGroupMember(ctx, "ab", &databricks.GroupMemberArgs{
-//				GroupId:  group.ID(),
-//				MemberId: index / groupGroup.Id,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			bradley, err := databricks.NewUser(ctx, "bradley", &databricks.UserArgs{
-//				UserName: pulumi.String("bradley@example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewGroupMember(ctx, "bb", &databricks.GroupMemberArgs{
-//				GroupId:  index / groupGroup.Id,
-//				MemberId: bradley.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Related Resources
 //
 // The following resources are often used in the same context:
