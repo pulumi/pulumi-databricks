@@ -39,6 +39,12 @@ public final class Config {
     public Optional<String> azureWorkspaceResourceId() {
         return Codegen.stringProp("azureWorkspaceResourceId").config(config).get();
     }
+    public Optional<String> clientId() {
+        return Codegen.stringProp("clientId").config(config).get();
+    }
+    public Optional<String> clientSecret() {
+        return Codegen.stringProp("clientSecret").config(config).get();
+    }
     public Optional<String> configFile() {
         return Codegen.stringProp("configFile").config(config).get();
     }
@@ -74,6 +80,9 @@ public final class Config {
     }
     public Optional<String> token() {
         return Codegen.stringProp("token").config(config).get();
+    }
+    public Optional<String> tokenEndpoint() {
+        return Codegen.stringProp("tokenEndpoint").config(config).get();
     }
     public Optional<String> username() {
         return Codegen.stringProp("username").config(config).get();

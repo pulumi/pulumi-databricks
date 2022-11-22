@@ -31,6 +31,7 @@ class RecipientArgs:
         :param pulumi.Input['RecipientIpAccessListArgs'] ip_access_list: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
+        :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens.
         """
         pulumi.set(__self__, "authentication_type", authentication_type)
         if comment is not None:
@@ -121,6 +122,9 @@ class RecipientArgs:
     @property
     @pulumi.getter
     def tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]]:
+        """
+        List of Recipient Tokens.
+        """
         return pulumi.get(self, "tokens")
 
     @tokens.setter
@@ -146,6 +150,7 @@ class _RecipientState:
         :param pulumi.Input['RecipientIpAccessListArgs'] ip_access_list: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
+        :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens.
         """
         if authentication_type is not None:
             pulumi.set(__self__, "authentication_type", authentication_type)
@@ -237,6 +242,9 @@ class _RecipientState:
     @property
     @pulumi.getter
     def tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]]:
+        """
+        List of Recipient Tokens.
+        """
         return pulumi.get(self, "tokens")
 
     @tokens.setter
@@ -260,34 +268,16 @@ class Recipient(pulumi.CustomResource):
         """
         Within a metastore, Unity Catalog provides the ability to create a recipient to attach delta shares to.
 
-        A `Recipient` is contained within Metastore and can contain a list of shares.
+        A `Recipient` is contained within Metastore and can have permissions to `SELECT` from a list of shares.
 
         ## Example Usage
-        ### Databricks Sharing with non databricks recipient
+        ## Related Resources
 
-        Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
-        authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
+        The following resources are often used in the same context:
 
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_random as random
-
-        db2opensharecode = random.RandomPassword("db2opensharecode",
-            length=16,
-            special=True)
-        current = databricks.get_current_user()
-        db2open = databricks.Recipient("db2open",
-            comment="made by terraform",
-            authentication_type="TOKEN",
-            sharing_code=db2opensharecode.result,
-            ip_access_list=databricks.RecipientIpAccessListArgs(
-                allowed_ip_addresses=[],
-            ))
-        ```
-        ## Attribute Reference:
-
-        * `tokens` - (Optional) List of Recipient Tokens.
+        * Share to create Delta Sharing shares.
+        * Grants to manage Delta Sharing permissions.
+        * get_shares to read existing Delta Sharing shares.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -297,6 +287,7 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']] ip_access_list: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]] tokens: List of Recipient Tokens.
         """
         ...
     @overload
@@ -307,34 +298,16 @@ class Recipient(pulumi.CustomResource):
         """
         Within a metastore, Unity Catalog provides the ability to create a recipient to attach delta shares to.
 
-        A `Recipient` is contained within Metastore and can contain a list of shares.
+        A `Recipient` is contained within Metastore and can have permissions to `SELECT` from a list of shares.
 
         ## Example Usage
-        ### Databricks Sharing with non databricks recipient
+        ## Related Resources
 
-        Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
-        authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
+        The following resources are often used in the same context:
 
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_random as random
-
-        db2opensharecode = random.RandomPassword("db2opensharecode",
-            length=16,
-            special=True)
-        current = databricks.get_current_user()
-        db2open = databricks.Recipient("db2open",
-            comment="made by terraform",
-            authentication_type="TOKEN",
-            sharing_code=db2opensharecode.result,
-            ip_access_list=databricks.RecipientIpAccessListArgs(
-                allowed_ip_addresses=[],
-            ))
-        ```
-        ## Attribute Reference:
-
-        * `tokens` - (Optional) List of Recipient Tokens.
+        * Share to create Delta Sharing shares.
+        * Grants to manage Delta Sharing permissions.
+        * get_shares to read existing Delta Sharing shares.
 
         :param str resource_name: The name of the resource.
         :param RecipientArgs args: The arguments to use to populate this resource's properties.
@@ -408,6 +381,7 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']] ip_access_list: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]] tokens: List of Recipient Tokens.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -473,5 +447,8 @@ class Recipient(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tokens(self) -> pulumi.Output[Sequence['outputs.RecipientToken']]:
+        """
+        List of Recipient Tokens.
+        """
         return pulumi.get(self, "tokens")
 

@@ -34,15 +34,18 @@ type GetAwsBucketPolicyArgs struct {
 	// AWS S3 Bucket name for which to generate the policy document.
 	Bucket              string  `pulumi:"bucket"`
 	DatabricksAccountId *string `pulumi:"databricksAccountId"`
+	// Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+	DatabricksE2AccountId *string `pulumi:"databricksE2AccountId"`
 	// Data access role that can have full access for this bucket
 	FullAccessRole *string `pulumi:"fullAccessRole"`
 }
 
 // A collection of values returned by getAwsBucketPolicy.
 type GetAwsBucketPolicyResult struct {
-	Bucket              string  `pulumi:"bucket"`
-	DatabricksAccountId *string `pulumi:"databricksAccountId"`
-	FullAccessRole      *string `pulumi:"fullAccessRole"`
+	Bucket                string  `pulumi:"bucket"`
+	DatabricksAccountId   *string `pulumi:"databricksAccountId"`
+	DatabricksE2AccountId *string `pulumi:"databricksE2AccountId"`
+	FullAccessRole        *string `pulumi:"fullAccessRole"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Read-only) AWS IAM Policy JSON document to grant Databricks full access to bucket.
@@ -67,6 +70,8 @@ type GetAwsBucketPolicyOutputArgs struct {
 	// AWS S3 Bucket name for which to generate the policy document.
 	Bucket              pulumi.StringInput    `pulumi:"bucket"`
 	DatabricksAccountId pulumi.StringPtrInput `pulumi:"databricksAccountId"`
+	// Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+	DatabricksE2AccountId pulumi.StringPtrInput `pulumi:"databricksE2AccountId"`
 	// Data access role that can have full access for this bucket
 	FullAccessRole pulumi.StringPtrInput `pulumi:"fullAccessRole"`
 }
@@ -96,6 +101,10 @@ func (o GetAwsBucketPolicyResultOutput) Bucket() pulumi.StringOutput {
 
 func (o GetAwsBucketPolicyResultOutput) DatabricksAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAwsBucketPolicyResult) *string { return v.DatabricksAccountId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAwsBucketPolicyResultOutput) DatabricksE2AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsBucketPolicyResult) *string { return v.DatabricksE2AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o GetAwsBucketPolicyResultOutput) FullAccessRole() pulumi.StringPtrOutput {

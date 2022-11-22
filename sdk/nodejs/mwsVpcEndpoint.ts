@@ -43,7 +43,7 @@ export class MwsVpcEndpoint extends pulumi.CustomResource {
     public readonly accountId!: pulumi.Output<string | undefined>;
     public readonly awsAccountId!: pulumi.Output<string>;
     /**
-     * ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+     * The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      */
     public readonly awsEndpointServiceId!: pulumi.Output<string>;
     public readonly awsVpcEndpointId!: pulumi.Output<string>;
@@ -123,7 +123,7 @@ export interface MwsVpcEndpointState {
     accountId?: pulumi.Input<string>;
     awsAccountId?: pulumi.Input<string>;
     /**
-     * ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+     * The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      */
     awsEndpointServiceId?: pulumi.Input<string>;
     awsVpcEndpointId?: pulumi.Input<string>;
@@ -156,7 +156,7 @@ export interface MwsVpcEndpointArgs {
     accountId?: pulumi.Input<string>;
     awsAccountId?: pulumi.Input<string>;
     /**
-     * ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+     * The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      */
     awsEndpointServiceId?: pulumi.Input<string>;
     awsVpcEndpointId: pulumi.Input<string>;

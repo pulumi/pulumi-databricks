@@ -42,6 +42,12 @@ public class Grants extends com.pulumi.resources.CustomResource {
     public Output<List<GrantsGrant>> grants() {
         return this.grants;
     }
+    @Export(name="materializedView", type=String.class, parameters={})
+    private Output</* @Nullable */ String> materializedView;
+
+    public Output<Optional<String>> materializedView() {
+        return Codegen.optional(this.materializedView);
+    }
     @Export(name="metastore", type=String.class, parameters={})
     private Output</* @Nullable */ String> metastore;
 
@@ -53,6 +59,12 @@ public class Grants extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> schema() {
         return Codegen.optional(this.schema);
+    }
+    @Export(name="share", type=String.class, parameters={})
+    private Output</* @Nullable */ String> share;
+
+    public Output<Optional<String>> share() {
+        return Codegen.optional(this.share);
     }
     @Export(name="storageCredential", type=String.class, parameters={})
     private Output</* @Nullable */ String> storageCredential;

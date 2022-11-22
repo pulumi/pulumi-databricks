@@ -38,14 +38,14 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+     * The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      * 
      */
     @Import(name="awsEndpointServiceId")
     private @Nullable Output<String> awsEndpointServiceId;
 
     /**
-     * @return ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+     * @return The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      * 
      */
     public Optional<Output<String>> awsEndpointServiceId() {
@@ -189,7 +189,7 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param awsEndpointServiceId ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+         * @param awsEndpointServiceId The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param awsEndpointServiceId ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+         * @param awsEndpointServiceId The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
          * 
          * @return builder
          * 

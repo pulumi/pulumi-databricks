@@ -19,23 +19,31 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
     public static final SqlGlobalConfigArgs Empty = new SqlGlobalConfigArgs();
 
     /**
-     * - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
+     * - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
      * 
      */
     @Import(name="dataAccessConfig")
     private @Nullable Output<Map<String,Object>> dataAccessConfig;
 
     /**
-     * @return - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
+     * @return - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
      * 
      */
     public Optional<Output<Map<String,Object>>> dataAccessConfig() {
         return Optional.ofNullable(this.dataAccessConfig);
     }
 
+    /**
+     * - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+     * 
+     */
     @Import(name="enableServerlessCompute")
     private @Nullable Output<Boolean> enableServerlessCompute;
 
+    /**
+     * @return - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+     * 
+     */
     public Optional<Output<Boolean>> enableServerlessCompute() {
         return Optional.ofNullable(this.enableServerlessCompute);
     }
@@ -114,7 +122,7 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dataAccessConfig - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
+         * @param dataAccessConfig - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
          * 
          * @return builder
          * 
@@ -125,7 +133,7 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dataAccessConfig - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
+         * @param dataAccessConfig - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
          * 
          * @return builder
          * 
@@ -134,11 +142,23 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
             return dataAccessConfig(Output.of(dataAccessConfig));
         }
 
+        /**
+         * @param enableServerlessCompute - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableServerlessCompute(@Nullable Output<Boolean> enableServerlessCompute) {
             $.enableServerlessCompute = enableServerlessCompute;
             return this;
         }
 
+        /**
+         * @param enableServerlessCompute - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableServerlessCompute(Boolean enableServerlessCompute) {
             return enableServerlessCompute(Output.of(enableServerlessCompute));
         }

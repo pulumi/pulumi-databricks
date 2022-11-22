@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetNotebookPaths(ctx, &GetNotebookPathsArgs{
+//			_, err = databricks.GetNotebookPaths(ctx, &GetNotebookPathsArgs{
 //				Path:      "/Production",
 //				Recursive: true,
 //			}, nil)

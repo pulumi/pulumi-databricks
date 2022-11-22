@@ -69,14 +69,7 @@ class AwaitableGetZonesResult(GetZonesResult):
 
 def get_zones(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    zones = databricks.get_zones()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

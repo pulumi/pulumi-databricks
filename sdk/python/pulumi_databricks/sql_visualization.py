@@ -19,6 +19,7 @@ class SqlVisualizationArgs:
                  type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 query_plan: Optional[pulumi.Input[str]] = None,
                  visualization_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SqlVisualization resource.
@@ -30,6 +31,8 @@ class SqlVisualizationArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if query_plan is not None:
+            pulumi.set(__self__, "query_plan", query_plan)
         if visualization_id is not None:
             pulumi.set(__self__, "visualization_id", visualization_id)
 
@@ -79,6 +82,15 @@ class SqlVisualizationArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="queryPlan")
+    def query_plan(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "query_plan")
+
+    @query_plan.setter
+    def query_plan(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_plan", value)
+
+    @property
     @pulumi.getter(name="visualizationId")
     def visualization_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "visualization_id")
@@ -95,6 +107,7 @@ class _SqlVisualizationState:
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
                  query_id: Optional[pulumi.Input[str]] = None,
+                 query_plan: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  visualization_id: Optional[pulumi.Input[str]] = None):
         """
@@ -108,6 +121,8 @@ class _SqlVisualizationState:
             pulumi.set(__self__, "options", options)
         if query_id is not None:
             pulumi.set(__self__, "query_id", query_id)
+        if query_plan is not None:
+            pulumi.set(__self__, "query_plan", query_plan)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if visualization_id is not None:
@@ -150,6 +165,15 @@ class _SqlVisualizationState:
         pulumi.set(self, "query_id", value)
 
     @property
+    @pulumi.getter(name="queryPlan")
+    def query_plan(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "query_plan")
+
+    @query_plan.setter
+    def query_plan(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_plan", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "type")
@@ -177,6 +201,7 @@ class SqlVisualization(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
                  query_id: Optional[pulumi.Input[str]] = None,
+                 query_plan: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  visualization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -226,6 +251,7 @@ class SqlVisualization(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
                  query_id: Optional[pulumi.Input[str]] = None,
+                 query_plan: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  visualization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -245,6 +271,7 @@ class SqlVisualization(pulumi.CustomResource):
             if query_id is None and not opts.urn:
                 raise TypeError("Missing required property 'query_id'")
             __props__.__dict__["query_id"] = query_id
+            __props__.__dict__["query_plan"] = query_plan
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -263,6 +290,7 @@ class SqlVisualization(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             options: Optional[pulumi.Input[str]] = None,
             query_id: Optional[pulumi.Input[str]] = None,
+            query_plan: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             visualization_id: Optional[pulumi.Input[str]] = None) -> 'SqlVisualization':
         """
@@ -281,6 +309,7 @@ class SqlVisualization(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["options"] = options
         __props__.__dict__["query_id"] = query_id
+        __props__.__dict__["query_plan"] = query_plan
         __props__.__dict__["type"] = type
         __props__.__dict__["visualization_id"] = visualization_id
         return SqlVisualization(resource_name, opts=opts, __props__=__props__)
@@ -304,6 +333,11 @@ class SqlVisualization(pulumi.CustomResource):
     @pulumi.getter(name="queryId")
     def query_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "query_id")
+
+    @property
+    @pulumi.getter(name="queryPlan")
+    def query_plan(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "query_plan")
 
     @property
     @pulumi.getter

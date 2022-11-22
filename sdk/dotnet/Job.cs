@@ -138,6 +138,9 @@ namespace Pulumi.Databricks
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
+        [Output("webhookNotifications")]
+        public Output<Outputs.JobWebhookNotifications?> WebhookNotifications { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Job resource with the given unique name, arguments, and options.
@@ -317,6 +320,9 @@ namespace Pulumi.Databricks
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 
+        [Input("webhookNotifications")]
+        public Input<Inputs.JobWebhookNotificationsArgs>? WebhookNotifications { get; set; }
+
         public JobArgs()
         {
         }
@@ -463,6 +469,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        [Input("webhookNotifications")]
+        public Input<Inputs.JobWebhookNotificationsGetArgs>? WebhookNotifications { get; set; }
 
         public JobState()
         {

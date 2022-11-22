@@ -182,6 +182,13 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.policyId);
     }
 
+    @Import(name="runtimeEngine")
+    private @Nullable Output<String> runtimeEngine;
+
+    public Optional<Output<String>> runtimeEngine() {
+        return Optional.ofNullable(this.runtimeEngine);
+    }
+
     @Import(name="singleUserName")
     private @Nullable Output<String> singleUserName;
 
@@ -249,6 +256,7 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
         this.policyId = $.policyId;
+        this.runtimeEngine = $.runtimeEngine;
         this.singleUserName = $.singleUserName;
         this.sparkConf = $.sparkConf;
         this.sparkEnvVars = $.sparkEnvVars;
@@ -475,6 +483,15 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
 
         public Builder policyId(String policyId) {
             return policyId(Output.of(policyId));
+        }
+
+        public Builder runtimeEngine(@Nullable Output<String> runtimeEngine) {
+            $.runtimeEngine = runtimeEngine;
+            return this;
+        }
+
+        public Builder runtimeEngine(String runtimeEngine) {
+            return runtimeEngine(Output.of(runtimeEngine));
         }
 
         public Builder singleUserName(@Nullable Output<String> singleUserName) {

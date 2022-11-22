@@ -48,7 +48,6 @@ class MwsWorkspacesArgs:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-        :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration
         :param pulumi.Input[str] workspace_status: (String) workspace status
         :param pulumi.Input[str] workspace_status_message: (String) updates on workspace status
@@ -269,9 +268,6 @@ class MwsWorkspacesArgs:
     @property
     @pulumi.getter(name="privateAccessSettingsId")
     def private_access_settings_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account
-        """
         return pulumi.get(self, "private_access_settings_id")
 
     @private_access_settings_id.setter
@@ -388,7 +384,6 @@ class _MwsWorkspacesState:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-        :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI
         :param pulumi.Input[str] workspace_status: (String) workspace status
@@ -600,9 +595,6 @@ class _MwsWorkspacesState:
     @property
     @pulumi.getter(name="privateAccessSettingsId")
     def private_access_settings_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account
-        """
         return pulumi.get(self, "private_access_settings_id")
 
     @private_access_settings_id.setter
@@ -739,7 +731,6 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-        :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI
         :param pulumi.Input[str] workspace_status: (String) workspace status
@@ -884,7 +875,6 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-        :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI
         :param pulumi.Input[str] workspace_status: (String) workspace status
@@ -1014,9 +1004,6 @@ class MwsWorkspaces(pulumi.CustomResource):
     @property
     @pulumi.getter(name="privateAccessSettingsId")
     def private_access_settings_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account
-        """
         return pulumi.get(self, "private_access_settings_id")
 
     @property

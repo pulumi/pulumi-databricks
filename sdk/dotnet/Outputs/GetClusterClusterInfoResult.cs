@@ -79,6 +79,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? PolicyId;
         /// <summary>
+        /// The type of runtime of the cluster
+        /// </summary>
+        public readonly string? RuntimeEngine;
+        /// <summary>
         /// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         /// </summary>
         public readonly string? SingleUserName;
@@ -169,6 +173,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? policyId,
 
+            string? runtimeEngine,
+
             string? singleUserName,
 
             ImmutableDictionary<string, object>? sparkConf,
@@ -222,6 +228,7 @@ namespace Pulumi.Databricks.Outputs
             NodeTypeId = nodeTypeId;
             NumWorkers = numWorkers;
             PolicyId = policyId;
+            RuntimeEngine = runtimeEngine;
             SingleUserName = singleUserName;
             SparkConf = sparkConf;
             SparkContextId = sparkContextId;

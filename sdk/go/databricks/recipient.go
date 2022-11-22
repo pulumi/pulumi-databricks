@@ -13,57 +13,16 @@ import (
 
 // Within a metastore, Unity Catalog provides the ability to create a recipient to attach delta shares to.
 //
-// A `Recipient` is contained within Metastore and can contain a list of shares.
+// A `Recipient` is contained within Metastore and can have permissions to `SELECT` from a list of shares.
 //
 // ## Example Usage
-// ### Databricks Sharing with non databricks recipient
+// ## Related Resources
 //
-// Setting `authenticationType` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
-// authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
+// The following resources are often used in the same context:
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			db2opensharecode, err := random.NewRandomPassword(ctx, "db2opensharecode", &random.RandomPasswordArgs{
-//				Length:  pulumi.Int(16),
-//				Special: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.GetCurrentUser(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewRecipient(ctx, "db2open", &databricks.RecipientArgs{
-//				Comment:            pulumi.String("made by terraform"),
-//				AuthenticationType: pulumi.String("TOKEN"),
-//				SharingCode:        db2opensharecode.Result,
-//				IpAccessList: &RecipientIpAccessListArgs{
-//					AllowedIpAddresses: pulumi.StringArray{},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ## Attribute Reference:
-//
-// * `tokens` - (Optional) List of Recipient Tokens.
+// * Share to create Delta Sharing shares.
+// * Grants to manage Delta Sharing permissions.
+// * getShares to read existing Delta Sharing shares.
 type Recipient struct {
 	pulumi.CustomResourceState
 
@@ -78,8 +37,9 @@ type Recipient struct {
 	// Name of recipient. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The one-time sharing code provided by the data recipient.
-	SharingCode pulumi.StringPtrOutput    `pulumi:"sharingCode"`
-	Tokens      RecipientTokenArrayOutput `pulumi:"tokens"`
+	SharingCode pulumi.StringPtrOutput `pulumi:"sharingCode"`
+	// List of Recipient Tokens.
+	Tokens RecipientTokenArrayOutput `pulumi:"tokens"`
 }
 
 // NewRecipient registers a new resource with the given unique name, arguments, and options.
@@ -132,8 +92,9 @@ type recipientState struct {
 	// Name of recipient. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// The one-time sharing code provided by the data recipient.
-	SharingCode *string          `pulumi:"sharingCode"`
-	Tokens      []RecipientToken `pulumi:"tokens"`
+	SharingCode *string `pulumi:"sharingCode"`
+	// List of Recipient Tokens.
+	Tokens []RecipientToken `pulumi:"tokens"`
 }
 
 type RecipientState struct {
@@ -149,7 +110,8 @@ type RecipientState struct {
 	Name pulumi.StringPtrInput
 	// The one-time sharing code provided by the data recipient.
 	SharingCode pulumi.StringPtrInput
-	Tokens      RecipientTokenArrayInput
+	// List of Recipient Tokens.
+	Tokens RecipientTokenArrayInput
 }
 
 func (RecipientState) ElementType() reflect.Type {
@@ -168,8 +130,9 @@ type recipientArgs struct {
 	// Name of recipient. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// The one-time sharing code provided by the data recipient.
-	SharingCode *string          `pulumi:"sharingCode"`
-	Tokens      []RecipientToken `pulumi:"tokens"`
+	SharingCode *string `pulumi:"sharingCode"`
+	// List of Recipient Tokens.
+	Tokens []RecipientToken `pulumi:"tokens"`
 }
 
 // The set of arguments for constructing a Recipient resource.
@@ -186,7 +149,8 @@ type RecipientArgs struct {
 	Name pulumi.StringPtrInput
 	// The one-time sharing code provided by the data recipient.
 	SharingCode pulumi.StringPtrInput
-	Tokens      RecipientTokenArrayInput
+	// List of Recipient Tokens.
+	Tokens RecipientTokenArrayInput
 }
 
 func (RecipientArgs) ElementType() reflect.Type {
@@ -306,6 +270,7 @@ func (o RecipientOutput) SharingCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Recipient) pulumi.StringPtrOutput { return v.SharingCode }).(pulumi.StringPtrOutput)
 }
 
+// List of Recipient Tokens.
 func (o RecipientOutput) Tokens() RecipientTokenArrayOutput {
 	return o.ApplyT(func(v *Recipient) RecipientTokenArrayOutput { return v.Tokens }).(RecipientTokenArrayOutput)
 }

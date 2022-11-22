@@ -33,6 +33,9 @@ namespace Pulumi.Databricks
         [Output("queryId")]
         public Output<string> QueryId { get; private set; } = null!;
 
+        [Output("queryPlan")]
+        public Output<string?> QueryPlan { get; private set; } = null!;
+
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -97,6 +100,9 @@ namespace Pulumi.Databricks
         [Input("queryId", required: true)]
         public Input<string> QueryId { get; set; } = null!;
 
+        [Input("queryPlan")]
+        public Input<string>? QueryPlan { get; set; }
+
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -122,6 +128,9 @@ namespace Pulumi.Databricks
 
         [Input("queryId")]
         public Input<string>? QueryId { get; set; }
+
+        [Input("queryPlan")]
+        public Input<string>? QueryPlan { get; set; }
 
         [Input("type")]
         public Input<string>? Type { get; set; }

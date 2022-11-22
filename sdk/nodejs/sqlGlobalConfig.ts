@@ -91,9 +91,12 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
     }
 
     /**
-     * - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+     * - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
      */
     public readonly dataAccessConfig!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+     */
     public readonly enableServerlessCompute!: pulumi.Output<boolean | undefined>;
     /**
      * - databricks.InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
@@ -144,9 +147,12 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
  */
 export interface SqlGlobalConfigState {
     /**
-     * - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+     * - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
      */
     dataAccessConfig?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+     */
     enableServerlessCompute?: pulumi.Input<boolean>;
     /**
      * - databricks.InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
@@ -167,9 +173,12 @@ export interface SqlGlobalConfigState {
  */
 export interface SqlGlobalConfigArgs {
     /**
-     * - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+     * - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
      */
     dataAccessConfig?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+     */
     enableServerlessCompute?: pulumi.Input<boolean>;
     /**
      * - databricks.InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.

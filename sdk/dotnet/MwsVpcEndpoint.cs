@@ -27,7 +27,7 @@ namespace Pulumi.Databricks
         public Output<string> AwsAccountId { get; private set; } = null!;
 
         /// <summary>
-        /// ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+        /// The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         /// </summary>
         [Output("awsEndpointServiceId")]
         public Output<string> AwsEndpointServiceId { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.Databricks
         public Input<string>? AwsAccountId { get; set; }
 
         /// <summary>
-        /// ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+        /// The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         /// </summary>
         [Input("awsEndpointServiceId")]
         public Input<string>? AwsEndpointServiceId { get; set; }
@@ -171,7 +171,7 @@ namespace Pulumi.Databricks
         public Input<string>? AwsAccountId { get; set; }
 
         /// <summary>
-        /// ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+        /// The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         /// </summary>
         [Input("awsEndpointServiceId")]
         public Input<string>? AwsEndpointServiceId { get; set; }

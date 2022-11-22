@@ -18,6 +18,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsSparkJarTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsSparkPythonTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsSparkSubmitTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTask;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsWebhookNotifications;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -53,6 +54,7 @@ public final class GetJobJobSettingsSettings {
     private @Nullable Map<String,Object> tags;
     private @Nullable List<GetJobJobSettingsSettingsTask> tasks;
     private @Nullable Integer timeoutSeconds;
+    private @Nullable GetJobJobSettingsSettingsWebhookNotifications webhookNotifications;
 
     private GetJobJobSettingsSettings() {}
     public Optional<GetJobJobSettingsSettingsDbtTask> dbtTask() {
@@ -124,6 +126,9 @@ public final class GetJobJobSettingsSettings {
     public Optional<Integer> timeoutSeconds() {
         return Optional.ofNullable(this.timeoutSeconds);
     }
+    public Optional<GetJobJobSettingsSettingsWebhookNotifications> webhookNotifications() {
+        return Optional.ofNullable(this.webhookNotifications);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -157,6 +162,7 @@ public final class GetJobJobSettingsSettings {
         private @Nullable Map<String,Object> tags;
         private @Nullable List<GetJobJobSettingsSettingsTask> tasks;
         private @Nullable Integer timeoutSeconds;
+        private @Nullable GetJobJobSettingsSettingsWebhookNotifications webhookNotifications;
         public Builder() {}
         public Builder(GetJobJobSettingsSettings defaults) {
     	      Objects.requireNonNull(defaults);
@@ -183,6 +189,7 @@ public final class GetJobJobSettingsSettings {
     	      this.tags = defaults.tags;
     	      this.tasks = defaults.tasks;
     	      this.timeoutSeconds = defaults.timeoutSeconds;
+    	      this.webhookNotifications = defaults.webhookNotifications;
         }
 
         @CustomType.Setter
@@ -309,6 +316,11 @@ public final class GetJobJobSettingsSettings {
             this.timeoutSeconds = timeoutSeconds;
             return this;
         }
+        @CustomType.Setter
+        public Builder webhookNotifications(@Nullable GetJobJobSettingsSettingsWebhookNotifications webhookNotifications) {
+            this.webhookNotifications = webhookNotifications;
+            return this;
+        }
         public GetJobJobSettingsSettings build() {
             final var o = new GetJobJobSettingsSettings();
             o.dbtTask = dbtTask;
@@ -334,6 +346,7 @@ public final class GetJobJobSettingsSettings {
             o.tags = tags;
             o.tasks = tasks;
             o.timeoutSeconds = timeoutSeconds;
+            o.webhookNotifications = webhookNotifications;
             return o;
         }
     }

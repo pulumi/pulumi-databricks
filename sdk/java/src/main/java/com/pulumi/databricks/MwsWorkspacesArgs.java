@@ -178,17 +178,9 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pricingTier);
     }
 
-    /**
-     * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account
-     * 
-     */
     @Import(name="privateAccessSettingsId")
     private @Nullable Output<String> privateAccessSettingsId;
 
-    /**
-     * @return Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account
-     * 
-     */
     public Optional<Output<String>> privateAccessSettingsId() {
         return Optional.ofNullable(this.privateAccessSettingsId);
     }
@@ -547,23 +539,11 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
             return pricingTier(Output.of(pricingTier));
         }
 
-        /**
-         * @param privateAccessSettingsId Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account
-         * 
-         * @return builder
-         * 
-         */
         public Builder privateAccessSettingsId(@Nullable Output<String> privateAccessSettingsId) {
             $.privateAccessSettingsId = privateAccessSettingsId;
             return this;
         }
 
-        /**
-         * @param privateAccessSettingsId Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account
-         * 
-         * @return builder
-         * 
-         */
         public Builder privateAccessSettingsId(String privateAccessSettingsId) {
             return privateAccessSettingsId(Output.of(privateAccessSettingsId));
         }

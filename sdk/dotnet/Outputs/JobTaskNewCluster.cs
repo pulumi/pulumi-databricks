@@ -35,6 +35,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? NodeTypeId;
         public readonly int? NumWorkers;
         public readonly string? PolicyId;
+        public readonly string? RuntimeEngine;
         public readonly string? SingleUserName;
         public readonly ImmutableDictionary<string, object>? SparkConf;
         public readonly ImmutableDictionary<string, object>? SparkEnvVars;
@@ -88,6 +89,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? policyId,
 
+            string? runtimeEngine,
+
             string? singleUserName,
 
             ImmutableDictionary<string, object>? sparkConf,
@@ -122,6 +125,7 @@ namespace Pulumi.Databricks.Outputs
             NodeTypeId = nodeTypeId;
             NumWorkers = numWorkers;
             PolicyId = policyId;
+            RuntimeEngine = runtimeEngine;
             SingleUserName = singleUserName;
             SparkConf = sparkConf;
             SparkEnvVars = sparkEnvVars;

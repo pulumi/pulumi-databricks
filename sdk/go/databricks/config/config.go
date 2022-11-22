@@ -35,6 +35,12 @@ func GetAzureUseMsi(ctx *pulumi.Context) bool {
 func GetAzureWorkspaceResourceId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:azureWorkspaceResourceId")
 }
+func GetClientId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:clientId")
+}
+func GetClientSecret(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:clientSecret")
+}
 func GetConfigFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:configFile")
 }
@@ -70,6 +76,9 @@ func GetSkipVerify(ctx *pulumi.Context) bool {
 }
 func GetToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:token")
+}
+func GetTokenEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:tokenEndpoint")
 }
 func GetUsername(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:username")

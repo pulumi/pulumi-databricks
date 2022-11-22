@@ -38,6 +38,21 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
+     * Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+     * 
+     */
+    @Import(name="databricksE2AccountId")
+    private @Nullable Output<String> databricksE2AccountId;
+
+    /**
+     * @return Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+     * 
+     */
+    public Optional<Output<String>> databricksE2AccountId() {
+        return Optional.ofNullable(this.databricksE2AccountId);
+    }
+
+    /**
      * Data access role that can have full access for this bucket
      * 
      */
@@ -57,6 +72,7 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
     private GetAwsBucketPolicyArgs(GetAwsBucketPolicyArgs $) {
         this.bucket = $.bucket;
         this.databricksAccountId = $.databricksAccountId;
+        this.databricksE2AccountId = $.databricksE2AccountId;
         this.fullAccessRole = $.fullAccessRole;
     }
 
@@ -106,6 +122,27 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
 
         public Builder databricksAccountId(String databricksAccountId) {
             return databricksAccountId(Output.of(databricksAccountId));
+        }
+
+        /**
+         * @param databricksE2AccountId Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databricksE2AccountId(@Nullable Output<String> databricksE2AccountId) {
+            $.databricksE2AccountId = databricksE2AccountId;
+            return this;
+        }
+
+        /**
+         * @param databricksE2AccountId Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databricksE2AccountId(String databricksE2AccountId) {
+            return databricksE2AccountId(Output.of(databricksE2AccountId));
         }
 
         /**

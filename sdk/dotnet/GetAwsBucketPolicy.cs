@@ -55,6 +55,12 @@ namespace Pulumi.Databricks
         public string? DatabricksAccountId { get; set; }
 
         /// <summary>
+        /// Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+        /// </summary>
+        [Input("databricksE2AccountId")]
+        public string? DatabricksE2AccountId { get; set; }
+
+        /// <summary>
         /// Data access role that can have full access for this bucket
         /// </summary>
         [Input("fullAccessRole")]
@@ -78,6 +84,12 @@ namespace Pulumi.Databricks
         public Input<string>? DatabricksAccountId { get; set; }
 
         /// <summary>
+        /// Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+        /// </summary>
+        [Input("databricksE2AccountId")]
+        public Input<string>? DatabricksE2AccountId { get; set; }
+
+        /// <summary>
         /// Data access role that can have full access for this bucket
         /// </summary>
         [Input("fullAccessRole")]
@@ -95,6 +107,7 @@ namespace Pulumi.Databricks
     {
         public readonly string Bucket;
         public readonly string? DatabricksAccountId;
+        public readonly string? DatabricksE2AccountId;
         public readonly string? FullAccessRole;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -111,6 +124,8 @@ namespace Pulumi.Databricks
 
             string? databricksAccountId,
 
+            string? databricksE2AccountId,
+
             string? fullAccessRole,
 
             string id,
@@ -119,6 +134,7 @@ namespace Pulumi.Databricks
         {
             Bucket = bucket;
             DatabricksAccountId = databricksAccountId;
+            DatabricksE2AccountId = databricksE2AccountId;
             FullAccessRole = fullAccessRole;
             Id = id;
             Json = json;

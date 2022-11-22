@@ -236,6 +236,21 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+     * 
+     */
+    @Import(name="warehouseType")
+    private @Nullable Output<String> warehouseType;
+
+    /**
+     * @return [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+     * 
+     */
+    public Optional<Output<String>> warehouseType() {
+        return Optional.ofNullable(this.warehouseType);
+    }
+
     private SqlEndpointState() {}
 
     private SqlEndpointState(SqlEndpointState $) {
@@ -255,6 +270,7 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
         this.spotInstancePolicy = $.spotInstancePolicy;
         this.state = $.state;
         this.tags = $.tags;
+        this.warehouseType = $.warehouseType;
     }
 
     public static Builder builder() {
@@ -573,6 +589,27 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(SqlEndpointTagsArgs tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param warehouseType [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warehouseType(@Nullable Output<String> warehouseType) {
+            $.warehouseType = warehouseType;
+            return this;
+        }
+
+        /**
+         * @param warehouseType [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warehouseType(String warehouseType) {
+            return warehouseType(Output.of(warehouseType));
         }
 
         public SqlEndpointState build() {

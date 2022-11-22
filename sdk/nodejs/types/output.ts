@@ -194,6 +194,10 @@ export interface GetClusterClusterInfo {
      */
     policyId?: string;
     /**
+     * The type of runtime of the cluster
+     */
+    runtimeEngine?: string;
+    /**
      * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */
     singleUserName?: string;
@@ -380,6 +384,7 @@ export interface GetJobJobSettingsSettings {
     tags?: {[key: string]: any};
     tasks?: outputs.GetJobJobSettingsSettingsTask[];
     timeoutSeconds?: number;
+    webhookNotifications?: outputs.GetJobJobSettingsSettingsWebhookNotifications;
 }
 
 export interface GetJobJobSettingsSettingsDbtTask {
@@ -434,6 +439,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewCluster {
     nodeTypeId: string;
     numWorkers: number;
     policyId?: string;
+    runtimeEngine?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: any};
     sparkEnvVars?: {[key: string]: any};
@@ -587,6 +593,7 @@ export interface GetJobJobSettingsSettingsNewCluster {
     nodeTypeId: string;
     numWorkers: number;
     policyId?: string;
+    runtimeEngine?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: any};
     sparkEnvVars?: {[key: string]: any};
@@ -820,6 +827,7 @@ export interface GetJobJobSettingsSettingsTaskNewCluster {
     nodeTypeId: string;
     numWorkers: number;
     policyId?: string;
+    runtimeEngine?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: any};
     sparkEnvVars?: {[key: string]: any};
@@ -976,12 +984,48 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskQuery {
     queryId: string;
 }
 
+export interface GetJobJobSettingsSettingsWebhookNotifications {
+    onFailures?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailure[];
+    onStarts?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnStart[];
+    onSuccesses?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccess[];
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnStart {
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
+    id: string;
+}
+
 export interface GetNotebookPathsNotebookPathList {
     language?: string;
     /**
      * Path to workspace directory
      */
     path?: string;
+}
+
+export interface GetShareObject {
+    addedAt: number;
+    addedBy: string;
+    /**
+     * Description about the object.
+     */
+    comment?: string;
+    /**
+     * Type of the object.
+     */
+    dataObjectType: string;
+    /**
+     * The name of the share
+     */
+    name: string;
+    sharedAs: string;
 }
 
 export interface GetSqlWarehouseChannel {
@@ -1191,6 +1235,7 @@ export interface JobJobClusterNewCluster {
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
+    runtimeEngine?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: any};
     sparkEnvVars?: {[key: string]: any};
@@ -1347,6 +1392,7 @@ export interface JobNewCluster {
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
+    runtimeEngine?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: any};
     sparkEnvVars?: {[key: string]: any};
@@ -1682,6 +1728,7 @@ export interface JobTaskNewCluster {
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
+    runtimeEngine?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: any};
     sparkEnvVars?: {[key: string]: any};
@@ -1890,6 +1937,33 @@ export interface JobTaskSqlTaskDashboard {
 
 export interface JobTaskSqlTaskQuery {
     queryId: string;
+}
+
+export interface JobWebhookNotifications {
+    /**
+     * (List) list of emails to notify on failure
+     */
+    onFailures?: outputs.JobWebhookNotificationsOnFailure[];
+    /**
+     * (List) list of emails to notify on failure
+     */
+    onStarts?: outputs.JobWebhookNotificationsOnStart[];
+    /**
+     * (List) list of emails to notify on failure
+     */
+    onSuccesses?: outputs.JobWebhookNotificationsOnSuccess[];
+}
+
+export interface JobWebhookNotificationsOnFailure {
+    id: string;
+}
+
+export interface JobWebhookNotificationsOnStart {
+    id: string;
+}
+
+export interface JobWebhookNotificationsOnSuccess {
+    id: string;
 }
 
 export interface LibraryCran {
@@ -2226,6 +2300,24 @@ export interface SecretScopeKeyvaultMetadata {
     resourceId: string;
 }
 
+export interface ShareObject {
+    addedAt: number;
+    addedBy: string;
+    /**
+     * Description about the object.
+     */
+    comment?: string;
+    /**
+     * Type of the object, currently only `TABLE` is allowed.
+     */
+    dataObjectType: string;
+    /**
+     * Full name of the object, e.g. `catalog.schema.name` for a table.
+     */
+    name: string;
+    sharedAs: string;
+}
+
 export interface SqlEndpointChannel {
     /**
      * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
@@ -2450,3 +2542,4 @@ export interface TableColumn {
      */
     typeText: string;
 }
+

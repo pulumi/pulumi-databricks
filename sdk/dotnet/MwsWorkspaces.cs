@@ -77,9 +77,6 @@ namespace Pulumi.Databricks
         [Output("pricingTier")]
         public Output<string> PricingTier { get; private set; } = null!;
 
-        /// <summary>
-        /// Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account
-        /// </summary>
         [Output("privateAccessSettingsId")]
         public Output<string?> PrivateAccessSettingsId { get; private set; } = null!;
 
@@ -242,9 +239,6 @@ namespace Pulumi.Databricks
         [Input("pricingTier")]
         public Input<string>? PricingTier { get; set; }
 
-        /// <summary>
-        /// Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account
-        /// </summary>
         [Input("privateAccessSettingsId")]
         public Input<string>? PrivateAccessSettingsId { get; set; }
 
@@ -365,9 +359,6 @@ namespace Pulumi.Databricks
         [Input("pricingTier")]
         public Input<string>? PricingTier { get; set; }
 
-        /// <summary>
-        /// Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account
-        /// </summary>
         [Input("privateAccessSettingsId")]
         public Input<string>? PrivateAccessSettingsId { get; set; }
 

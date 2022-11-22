@@ -46,6 +46,7 @@ public final class JobJobClusterNewCluster {
     private @Nullable String nodeTypeId;
     private @Nullable Integer numWorkers;
     private @Nullable String policyId;
+    private @Nullable String runtimeEngine;
     private @Nullable String singleUserName;
     private @Nullable Map<String,Object> sparkConf;
     private @Nullable Map<String,Object> sparkEnvVars;
@@ -120,6 +121,9 @@ public final class JobJobClusterNewCluster {
     public Optional<String> policyId() {
         return Optional.ofNullable(this.policyId);
     }
+    public Optional<String> runtimeEngine() {
+        return Optional.ofNullable(this.runtimeEngine);
+    }
     public Optional<String> singleUserName() {
         return Optional.ofNullable(this.singleUserName);
     }
@@ -170,6 +174,7 @@ public final class JobJobClusterNewCluster {
         private @Nullable String nodeTypeId;
         private @Nullable Integer numWorkers;
         private @Nullable String policyId;
+        private @Nullable String runtimeEngine;
         private @Nullable String singleUserName;
         private @Nullable Map<String,Object> sparkConf;
         private @Nullable Map<String,Object> sparkEnvVars;
@@ -201,6 +206,7 @@ public final class JobJobClusterNewCluster {
     	      this.nodeTypeId = defaults.nodeTypeId;
     	      this.numWorkers = defaults.numWorkers;
     	      this.policyId = defaults.policyId;
+    	      this.runtimeEngine = defaults.runtimeEngine;
     	      this.singleUserName = defaults.singleUserName;
     	      this.sparkConf = defaults.sparkConf;
     	      this.sparkEnvVars = defaults.sparkEnvVars;
@@ -323,6 +329,11 @@ public final class JobJobClusterNewCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder runtimeEngine(@Nullable String runtimeEngine) {
+            this.runtimeEngine = runtimeEngine;
+            return this;
+        }
+        @CustomType.Setter
         public Builder singleUserName(@Nullable String singleUserName) {
             this.singleUserName = singleUserName;
             return this;
@@ -379,6 +390,7 @@ public final class JobJobClusterNewCluster {
             o.nodeTypeId = nodeTypeId;
             o.numWorkers = numWorkers;
             o.policyId = policyId;
+            o.runtimeEngine = runtimeEngine;
             o.singleUserName = singleUserName;
             o.sparkConf = sparkConf;
             o.sparkEnvVars = sparkEnvVars;

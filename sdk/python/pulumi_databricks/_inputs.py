@@ -126,6 +126,10 @@ __all__ = [
     'JobTaskSqlTaskAlertArgs',
     'JobTaskSqlTaskDashboardArgs',
     'JobTaskSqlTaskQueryArgs',
+    'JobWebhookNotificationsArgs',
+    'JobWebhookNotificationsOnFailureArgs',
+    'JobWebhookNotificationsOnStartArgs',
+    'JobWebhookNotificationsOnSuccessArgs',
     'LibraryCranArgs',
     'LibraryMavenArgs',
     'LibraryPypiArgs',
@@ -170,6 +174,7 @@ __all__ = [
     'RecipientIpAccessListArgs',
     'RecipientTokenArgs',
     'SecretScopeKeyvaultMetadataArgs',
+    'ShareObjectArgs',
     'SqlEndpointChannelArgs',
     'SqlEndpointOdbcParamsArgs',
     'SqlEndpointTagsArgs',
@@ -303,6 +308,11 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskSqlTaskAlertArgs',
     'GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs',
     'GetJobJobSettingsSettingsTaskSqlTaskQueryArgs',
+    'GetJobJobSettingsSettingsWebhookNotificationsArgs',
+    'GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs',
+    'GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs',
+    'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs',
+    'GetShareObjectArgs',
     'GetSqlWarehouseChannelArgs',
     'GetSqlWarehouseOdbcParamsArgs',
     'GetSqlWarehouseTagsArgs',
@@ -1858,6 +1868,7 @@ class JobJobClusterNewClusterArgs:
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
+                 runtime_engine: Optional[pulumi.Input[str]] = None,
                  single_user_name: Optional[pulumi.Input[str]] = None,
                  spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1908,6 +1919,8 @@ class JobJobClusterNewClusterArgs:
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if runtime_engine is not None:
+            pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
             pulumi.set(__self__, "single_user_name", single_user_name)
         if spark_conf is not None:
@@ -2125,6 +2138,15 @@ class JobJobClusterNewClusterArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter(name="runtimeEngine")
+    def runtime_engine(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "runtime_engine")
+
+    @runtime_engine.setter
+    def runtime_engine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_engine", value)
 
     @property
     @pulumi.getter(name="singleUserName")
@@ -3037,6 +3059,7 @@ class JobNewClusterArgs:
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
+                 runtime_engine: Optional[pulumi.Input[str]] = None,
                  single_user_name: Optional[pulumi.Input[str]] = None,
                  spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -3087,6 +3110,8 @@ class JobNewClusterArgs:
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if runtime_engine is not None:
+            pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
             pulumi.set(__self__, "single_user_name", single_user_name)
         if spark_conf is not None:
@@ -3304,6 +3329,15 @@ class JobNewClusterArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter(name="runtimeEngine")
+    def runtime_engine(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "runtime_engine")
+
+    @runtime_engine.setter
+    def runtime_engine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_engine", value)
 
     @property
     @pulumi.getter(name="singleUserName")
@@ -4981,6 +5015,7 @@ class JobTaskNewClusterArgs:
                  node_type_id: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
+                 runtime_engine: Optional[pulumi.Input[str]] = None,
                  single_user_name: Optional[pulumi.Input[str]] = None,
                  spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -5031,6 +5066,8 @@ class JobTaskNewClusterArgs:
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if runtime_engine is not None:
+            pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
             pulumi.set(__self__, "single_user_name", single_user_name)
         if spark_conf is not None:
@@ -5248,6 +5285,15 @@ class JobTaskNewClusterArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter(name="runtimeEngine")
+    def runtime_engine(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "runtime_engine")
+
+    @runtime_engine.setter
+    def runtime_engine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_engine", value)
 
     @property
     @pulumi.getter(name="singleUserName")
@@ -6337,6 +6383,109 @@ class JobTaskSqlTaskQueryArgs:
     @query_id.setter
     def query_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "query_id", value)
+
+
+@pulumi.input_type
+class JobWebhookNotificationsArgs:
+    def __init__(__self__, *,
+                 on_failures: Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnFailureArgs']]]] = None,
+                 on_starts: Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnStartArgs']]]] = None,
+                 on_successes: Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnSuccessArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnFailureArgs']]] on_failures: (List) list of emails to notify on failure
+        :param pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnStartArgs']]] on_starts: (List) list of emails to notify on failure
+        :param pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnSuccessArgs']]] on_successes: (List) list of emails to notify on failure
+        """
+        if on_failures is not None:
+            pulumi.set(__self__, "on_failures", on_failures)
+        if on_starts is not None:
+            pulumi.set(__self__, "on_starts", on_starts)
+        if on_successes is not None:
+            pulumi.set(__self__, "on_successes", on_successes)
+
+    @property
+    @pulumi.getter(name="onFailures")
+    def on_failures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnFailureArgs']]]]:
+        """
+        (List) list of emails to notify on failure
+        """
+        return pulumi.get(self, "on_failures")
+
+    @on_failures.setter
+    def on_failures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnFailureArgs']]]]):
+        pulumi.set(self, "on_failures", value)
+
+    @property
+    @pulumi.getter(name="onStarts")
+    def on_starts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnStartArgs']]]]:
+        """
+        (List) list of emails to notify on failure
+        """
+        return pulumi.get(self, "on_starts")
+
+    @on_starts.setter
+    def on_starts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnStartArgs']]]]):
+        pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onSuccesses")
+    def on_successes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnSuccessArgs']]]]:
+        """
+        (List) list of emails to notify on failure
+        """
+        return pulumi.get(self, "on_successes")
+
+    @on_successes.setter
+    def on_successes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobWebhookNotificationsOnSuccessArgs']]]]):
+        pulumi.set(self, "on_successes", value)
+
+
+@pulumi.input_type
+class JobWebhookNotificationsOnFailureArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class JobWebhookNotificationsOnStartArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class JobWebhookNotificationsOnSuccessArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
@@ -8310,6 +8459,95 @@ class SecretScopeKeyvaultMetadataArgs:
 
 
 @pulumi.input_type
+class ShareObjectArgs:
+    def __init__(__self__, *,
+                 data_object_type: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 added_at: Optional[pulumi.Input[int]] = None,
+                 added_by: Optional[pulumi.Input[str]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 shared_as: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] data_object_type: Type of the object, currently only `TABLE` is allowed.
+        :param pulumi.Input[str] name: Full name of the object, e.g. `catalog.schema.name` for a table.
+        :param pulumi.Input[str] comment: Description about the object.
+        """
+        pulumi.set(__self__, "data_object_type", data_object_type)
+        pulumi.set(__self__, "name", name)
+        if added_at is not None:
+            pulumi.set(__self__, "added_at", added_at)
+        if added_by is not None:
+            pulumi.set(__self__, "added_by", added_by)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if shared_as is not None:
+            pulumi.set(__self__, "shared_as", shared_as)
+
+    @property
+    @pulumi.getter(name="dataObjectType")
+    def data_object_type(self) -> pulumi.Input[str]:
+        """
+        Type of the object, currently only `TABLE` is allowed.
+        """
+        return pulumi.get(self, "data_object_type")
+
+    @data_object_type.setter
+    def data_object_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "data_object_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Full name of the object, e.g. `catalog.schema.name` for a table.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="addedAt")
+    def added_at(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "added_at")
+
+    @added_at.setter
+    def added_at(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "added_at", value)
+
+    @property
+    @pulumi.getter(name="addedBy")
+    def added_by(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "added_by")
+
+    @added_by.setter
+    def added_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "added_by", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description about the object.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="sharedAs")
+    def shared_as(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_as")
+
+    @shared_as.setter
+    def shared_as(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_as", value)
+
+
+@pulumi.input_type
 class SqlEndpointChannelArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None):
@@ -9537,6 +9775,7 @@ class GetClusterClusterInfoArgs:
                  node_type_id: Optional[str] = None,
                  num_workers: Optional[int] = None,
                  policy_id: Optional[str] = None,
+                 runtime_engine: Optional[str] = None,
                  single_user_name: Optional[str] = None,
                  spark_conf: Optional[Mapping[str, Any]] = None,
                  spark_context_id: Optional[int] = None,
@@ -9560,6 +9799,7 @@ class GetClusterClusterInfoArgs:
         :param str node_type_id: Any supported get_node_type id.
                * `instance_pool_id` The pool of idle instances the cluster is attached to.
         :param str policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults.
+        :param str runtime_engine: The type of runtime of the cluster
         :param str single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param Mapping[str, Any] spark_conf: Map with key-value pairs to fine-tune Spark clusters.
         :param Mapping[str, Any] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
@@ -9627,6 +9867,8 @@ class GetClusterClusterInfoArgs:
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if runtime_engine is not None:
+            pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
             pulumi.set(__self__, "single_user_name", single_user_name)
         if spark_conf is not None:
@@ -9979,6 +10221,18 @@ class GetClusterClusterInfoArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[str]):
         pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter(name="runtimeEngine")
+    def runtime_engine(self) -> Optional[str]:
+        """
+        The type of runtime of the cluster
+        """
+        return pulumi.get(self, "runtime_engine")
+
+    @runtime_engine.setter
+    def runtime_engine(self, value: Optional[str]):
+        pulumi.set(self, "runtime_engine", value)
 
     @property
     @pulumi.getter(name="singleUserName")
@@ -10997,7 +11251,8 @@ class GetJobJobSettingsSettingsArgs:
                  spark_submit_task: Optional['GetJobJobSettingsSettingsSparkSubmitTaskArgs'] = None,
                  tags: Optional[Mapping[str, Any]] = None,
                  tasks: Optional[Sequence['GetJobJobSettingsSettingsTaskArgs']] = None,
-                 timeout_seconds: Optional[int] = None):
+                 timeout_seconds: Optional[int] = None,
+                 webhook_notifications: Optional['GetJobJobSettingsSettingsWebhookNotificationsArgs'] = None):
         pulumi.set(__self__, "format", format)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
@@ -11043,6 +11298,8 @@ class GetJobJobSettingsSettingsArgs:
             pulumi.set(__self__, "tasks", tasks)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        if webhook_notifications is not None:
+            pulumi.set(__self__, "webhook_notifications", webhook_notifications)
 
     @property
     @pulumi.getter
@@ -11250,6 +11507,15 @@ class GetJobJobSettingsSettingsArgs:
     @timeout_seconds.setter
     def timeout_seconds(self, value: Optional[int]):
         pulumi.set(self, "timeout_seconds", value)
+
+    @property
+    @pulumi.getter(name="webhookNotifications")
+    def webhook_notifications(self) -> Optional['GetJobJobSettingsSettingsWebhookNotificationsArgs']:
+        return pulumi.get(self, "webhook_notifications")
+
+    @webhook_notifications.setter
+    def webhook_notifications(self, value: Optional['GetJobJobSettingsSettingsWebhookNotificationsArgs']):
+        pulumi.set(self, "webhook_notifications", value)
 
 
 @pulumi.input_type
@@ -11500,6 +11766,7 @@ class GetJobJobSettingsSettingsJobClusterNewClusterArgs:
                  init_scripts: Optional[Sequence['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs']] = None,
                  instance_pool_id: Optional[str] = None,
                  policy_id: Optional[str] = None,
+                 runtime_engine: Optional[str] = None,
                  single_user_name: Optional[str] = None,
                  spark_conf: Optional[Mapping[str, Any]] = None,
                  spark_env_vars: Optional[Mapping[str, Any]] = None,
@@ -11544,6 +11811,8 @@ class GetJobJobSettingsSettingsJobClusterNewClusterArgs:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if runtime_engine is not None:
+            pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
             pulumi.set(__self__, "single_user_name", single_user_name)
         if spark_conf is not None:
@@ -11761,6 +12030,15 @@ class GetJobJobSettingsSettingsJobClusterNewClusterArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[str]):
         pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter(name="runtimeEngine")
+    def runtime_engine(self) -> Optional[str]:
+        return pulumi.get(self, "runtime_engine")
+
+    @runtime_engine.setter
+    def runtime_engine(self, value: Optional[str]):
+        pulumi.set(self, "runtime_engine", value)
 
     @property
     @pulumi.getter(name="singleUserName")
@@ -12667,6 +12945,7 @@ class GetJobJobSettingsSettingsNewClusterArgs:
                  init_scripts: Optional[Sequence['GetJobJobSettingsSettingsNewClusterInitScriptArgs']] = None,
                  instance_pool_id: Optional[str] = None,
                  policy_id: Optional[str] = None,
+                 runtime_engine: Optional[str] = None,
                  single_user_name: Optional[str] = None,
                  spark_conf: Optional[Mapping[str, Any]] = None,
                  spark_env_vars: Optional[Mapping[str, Any]] = None,
@@ -12711,6 +12990,8 @@ class GetJobJobSettingsSettingsNewClusterArgs:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if runtime_engine is not None:
+            pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
             pulumi.set(__self__, "single_user_name", single_user_name)
         if spark_conf is not None:
@@ -12928,6 +13209,15 @@ class GetJobJobSettingsSettingsNewClusterArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[str]):
         pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter(name="runtimeEngine")
+    def runtime_engine(self) -> Optional[str]:
+        return pulumi.get(self, "runtime_engine")
+
+    @runtime_engine.setter
+    def runtime_engine(self, value: Optional[str]):
+        pulumi.set(self, "runtime_engine", value)
 
     @property
     @pulumi.getter(name="singleUserName")
@@ -14445,6 +14735,7 @@ class GetJobJobSettingsSettingsTaskNewClusterArgs:
                  init_scripts: Optional[Sequence['GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs']] = None,
                  instance_pool_id: Optional[str] = None,
                  policy_id: Optional[str] = None,
+                 runtime_engine: Optional[str] = None,
                  single_user_name: Optional[str] = None,
                  spark_conf: Optional[Mapping[str, Any]] = None,
                  spark_env_vars: Optional[Mapping[str, Any]] = None,
@@ -14489,6 +14780,8 @@ class GetJobJobSettingsSettingsTaskNewClusterArgs:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if runtime_engine is not None:
+            pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
             pulumi.set(__self__, "single_user_name", single_user_name)
         if spark_conf is not None:
@@ -14706,6 +14999,15 @@ class GetJobJobSettingsSettingsTaskNewClusterArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[str]):
         pulumi.set(self, "policy_id", value)
+
+    @property
+    @pulumi.getter(name="runtimeEngine")
+    def runtime_engine(self) -> Optional[str]:
+        return pulumi.get(self, "runtime_engine")
+
+    @runtime_engine.setter
+    def runtime_engine(self, value: Optional[str]):
+        pulumi.set(self, "runtime_engine", value)
 
     @property
     @pulumi.getter(name="singleUserName")
@@ -15707,6 +16009,181 @@ class GetJobJobSettingsSettingsTaskSqlTaskQueryArgs:
     @query_id.setter
     def query_id(self, value: str):
         pulumi.set(self, "query_id", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsWebhookNotificationsArgs:
+    def __init__(__self__, *,
+                 on_failures: Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs']] = None,
+                 on_starts: Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs']] = None,
+                 on_successes: Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs']] = None):
+        if on_failures is not None:
+            pulumi.set(__self__, "on_failures", on_failures)
+        if on_starts is not None:
+            pulumi.set(__self__, "on_starts", on_starts)
+        if on_successes is not None:
+            pulumi.set(__self__, "on_successes", on_successes)
+
+    @property
+    @pulumi.getter(name="onFailures")
+    def on_failures(self) -> Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs']]:
+        return pulumi.get(self, "on_failures")
+
+    @on_failures.setter
+    def on_failures(self, value: Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs']]):
+        pulumi.set(self, "on_failures", value)
+
+    @property
+    @pulumi.getter(name="onStarts")
+    def on_starts(self) -> Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs']]:
+        return pulumi.get(self, "on_starts")
+
+    @on_starts.setter
+    def on_starts(self, value: Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs']]):
+        pulumi.set(self, "on_starts", value)
+
+    @property
+    @pulumi.getter(name="onSuccesses")
+    def on_successes(self) -> Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs']]:
+        return pulumi.get(self, "on_successes")
+
+    @on_successes.setter
+    def on_successes(self, value: Optional[Sequence['GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs']]):
+        pulumi.set(self, "on_successes", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs:
+    def __init__(__self__, *,
+                 id: str):
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs:
+    def __init__(__self__, *,
+                 id: str):
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs:
+    def __init__(__self__, *,
+                 id: str):
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class GetShareObjectArgs:
+    def __init__(__self__, *,
+                 added_at: int,
+                 added_by: str,
+                 data_object_type: str,
+                 name: str,
+                 shared_as: str,
+                 comment: Optional[str] = None):
+        """
+        :param str data_object_type: Type of the object.
+        :param str name: The name of the share
+        :param str comment: Description about the object.
+        """
+        pulumi.set(__self__, "added_at", added_at)
+        pulumi.set(__self__, "added_by", added_by)
+        pulumi.set(__self__, "data_object_type", data_object_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "shared_as", shared_as)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+
+    @property
+    @pulumi.getter(name="addedAt")
+    def added_at(self) -> int:
+        return pulumi.get(self, "added_at")
+
+    @added_at.setter
+    def added_at(self, value: int):
+        pulumi.set(self, "added_at", value)
+
+    @property
+    @pulumi.getter(name="addedBy")
+    def added_by(self) -> str:
+        return pulumi.get(self, "added_by")
+
+    @added_by.setter
+    def added_by(self, value: str):
+        pulumi.set(self, "added_by", value)
+
+    @property
+    @pulumi.getter(name="dataObjectType")
+    def data_object_type(self) -> str:
+        """
+        Type of the object.
+        """
+        return pulumi.get(self, "data_object_type")
+
+    @data_object_type.setter
+    def data_object_type(self, value: str):
+        pulumi.set(self, "data_object_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the share
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="sharedAs")
+    def shared_as(self) -> str:
+        return pulumi.get(self, "shared_as")
+
+    @shared_as.setter
+    def shared_as(self, value: str):
+        pulumi.set(self, "shared_as", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        """
+        Description about the object.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[str]):
+        pulumi.set(self, "comment", value)
 
 
 @pulumi.input_type

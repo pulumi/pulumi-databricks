@@ -49,7 +49,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly applyPolicyDefaultValues!: pulumi.Output<boolean | undefined>;
     public readonly autoscale!: pulumi.Output<outputs.ClusterAutoscale | undefined>;
     /**
-     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
+     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
      */
     public readonly autoterminationMinutes!: pulumi.Output<number | undefined>;
     public readonly awsAttributes!: pulumi.Output<outputs.ClusterAwsAttributes | undefined>;
@@ -86,7 +86,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableElasticDisk!: pulumi.Output<boolean>;
     /**
-     * Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. _Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access._
+     * Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. *Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access.*
      */
     public readonly enableLocalDiskEncryption!: pulumi.Output<boolean>;
     public readonly gcpAttributes!: pulumi.Output<outputs.ClusterGcpAttributes | undefined>;
@@ -113,6 +113,10 @@ export class Cluster extends pulumi.CustomResource {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.
      */
     public readonly policyId!: pulumi.Output<string | undefined>;
+    /**
+     * The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
+     */
+    public readonly runtimeEngine!: pulumi.Output<string | undefined>;
     /**
      * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */
@@ -178,6 +182,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["nodeTypeId"] = state ? state.nodeTypeId : undefined;
             resourceInputs["numWorkers"] = state ? state.numWorkers : undefined;
             resourceInputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["runtimeEngine"] = state ? state.runtimeEngine : undefined;
             resourceInputs["singleUserName"] = state ? state.singleUserName : undefined;
             resourceInputs["sparkConf"] = state ? state.sparkConf : undefined;
             resourceInputs["sparkEnvVars"] = state ? state.sparkEnvVars : undefined;
@@ -215,6 +220,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["nodeTypeId"] = args ? args.nodeTypeId : undefined;
             resourceInputs["numWorkers"] = args ? args.numWorkers : undefined;
             resourceInputs["policyId"] = args ? args.policyId : undefined;
+            resourceInputs["runtimeEngine"] = args ? args.runtimeEngine : undefined;
             resourceInputs["singleUserName"] = args ? args.singleUserName : undefined;
             resourceInputs["sparkConf"] = args ? args.sparkConf : undefined;
             resourceInputs["sparkEnvVars"] = args ? args.sparkEnvVars : undefined;
@@ -240,7 +246,7 @@ export interface ClusterState {
     applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.ClusterAutoscale>;
     /**
-     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
+     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
      */
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.ClusterAwsAttributes>;
@@ -277,7 +283,7 @@ export interface ClusterState {
      */
     enableElasticDisk?: pulumi.Input<boolean>;
     /**
-     * Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. _Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access._
+     * Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. *Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access.*
      */
     enableLocalDiskEncryption?: pulumi.Input<boolean>;
     gcpAttributes?: pulumi.Input<inputs.ClusterGcpAttributes>;
@@ -304,6 +310,10 @@ export interface ClusterState {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.
      */
     policyId?: pulumi.Input<string>;
+    /**
+     * The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
+     */
+    runtimeEngine?: pulumi.Input<string>;
     /**
      * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */
@@ -342,7 +352,7 @@ export interface ClusterArgs {
     applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.ClusterAutoscale>;
     /**
-     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  _We highly recommend having this setting present for Interactive/BI clusters._
+     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
      */
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.ClusterAwsAttributes>;
@@ -375,7 +385,7 @@ export interface ClusterArgs {
      */
     enableElasticDisk?: pulumi.Input<boolean>;
     /**
-     * Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. _Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access._
+     * Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. *Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access.*
      */
     enableLocalDiskEncryption?: pulumi.Input<boolean>;
     gcpAttributes?: pulumi.Input<inputs.ClusterGcpAttributes>;
@@ -402,6 +412,10 @@ export interface ClusterArgs {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.
      */
     policyId?: pulumi.Input<string>;
+    /**
+     * The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
+     */
+    runtimeEngine?: pulumi.Input<string>;
     /**
      * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */

@@ -15,6 +15,102 @@ namespace Pulumi.Databricks
     /// - `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
     /// - databricks.ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
     /// 
+    /// ## Example Usage
+    /// 
+    /// For AWS
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var external = new Databricks.StorageCredential("external", new()
+    ///     {
+    ///         AwsIamRole = new Databricks.Inputs.StorageCredentialAwsIamRoleArgs
+    ///         {
+    ///             RoleArn = aws_iam_role.External_data_access.Arn,
+    ///         },
+    ///         Comment = "Managed by TF",
+    ///     });
+    /// 
+    ///     var externalCreds = new Databricks.Grants("externalCreds", new()
+    ///     {
+    ///         StorageCredential = external.Id,
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "Data Engineers",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "CREATE_TABLE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// For Azure
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Azure = Pulumi.Azure;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = Azure.Core.GetResourceGroup.Invoke(new()
+    ///     {
+    ///         Name = "example-rg",
+    ///     });
+    /// 
+    ///     var example = new Azure.DataBricks.AccessConnector("example", new()
+    ///     {
+    ///         ResourceGroupName = azurerm_resource_group.This.Name,
+    ///         Location = azurerm_resource_group.This.Location,
+    ///         Identity = new Azure.DataBricks.Inputs.AccessConnectorIdentityArgs
+    ///         {
+    ///             Type = "SystemAssigned",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Environment", "Production" },
+    ///         },
+    ///     });
+    /// 
+    ///     var externalMi = new Databricks.StorageCredential("externalMi", new()
+    ///     {
+    ///         AzureManagedIdentity = new Databricks.Inputs.StorageCredentialAzureManagedIdentityArgs
+    ///         {
+    ///             AccessConnectorId = example.Id,
+    ///         },
+    ///         Comment = "Managed identity credential managed by TF",
+    ///     });
+    /// 
+    ///     var externalCreds = new Databricks.Grants("externalCreds", new()
+    ///     {
+    ///         StorageCredential = databricks_storage_credential.External.Id,
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "Data Engineers",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "CREATE_TABLE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by namebash

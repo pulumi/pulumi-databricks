@@ -21,13 +21,16 @@ class GetAwsBucketPolicyResult:
     """
     A collection of values returned by getAwsBucketPolicy.
     """
-    def __init__(__self__, bucket=None, databricks_account_id=None, full_access_role=None, id=None, json=None):
+    def __init__(__self__, bucket=None, databricks_account_id=None, databricks_e2_account_id=None, full_access_role=None, id=None, json=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
         if databricks_account_id and not isinstance(databricks_account_id, str):
             raise TypeError("Expected argument 'databricks_account_id' to be a str")
         pulumi.set(__self__, "databricks_account_id", databricks_account_id)
+        if databricks_e2_account_id and not isinstance(databricks_e2_account_id, str):
+            raise TypeError("Expected argument 'databricks_e2_account_id' to be a str")
+        pulumi.set(__self__, "databricks_e2_account_id", databricks_e2_account_id)
         if full_access_role and not isinstance(full_access_role, str):
             raise TypeError("Expected argument 'full_access_role' to be a str")
         pulumi.set(__self__, "full_access_role", full_access_role)
@@ -47,6 +50,11 @@ class GetAwsBucketPolicyResult:
     @pulumi.getter(name="databricksAccountId")
     def databricks_account_id(self) -> Optional[str]:
         return pulumi.get(self, "databricks_account_id")
+
+    @property
+    @pulumi.getter(name="databricksE2AccountId")
+    def databricks_e2_account_id(self) -> Optional[str]:
+        return pulumi.get(self, "databricks_e2_account_id")
 
     @property
     @pulumi.getter(name="fullAccessRole")
@@ -78,6 +86,7 @@ class AwaitableGetAwsBucketPolicyResult(GetAwsBucketPolicyResult):
         return GetAwsBucketPolicyResult(
             bucket=self.bucket,
             databricks_account_id=self.databricks_account_id,
+            databricks_e2_account_id=self.databricks_e2_account_id,
             full_access_role=self.full_access_role,
             id=self.id,
             json=self.json)
@@ -85,6 +94,7 @@ class AwaitableGetAwsBucketPolicyResult(GetAwsBucketPolicyResult):
 
 def get_aws_bucket_policy(bucket: Optional[str] = None,
                           databricks_account_id: Optional[str] = None,
+                          databricks_e2_account_id: Optional[str] = None,
                           full_access_role: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsBucketPolicyResult:
     """
@@ -101,11 +111,13 @@ def get_aws_bucket_policy(bucket: Optional[str] = None,
 
 
     :param str bucket: AWS S3 Bucket name for which to generate the policy document.
+    :param str databricks_e2_account_id: Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
     :param str full_access_role: Data access role that can have full access for this bucket
     """
     __args__ = dict()
     __args__['bucket'] = bucket
     __args__['databricksAccountId'] = databricks_account_id
+    __args__['databricksE2AccountId'] = databricks_e2_account_id
     __args__['fullAccessRole'] = full_access_role
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAwsBucketPolicy:getAwsBucketPolicy', __args__, opts=opts, typ=GetAwsBucketPolicyResult).value
@@ -113,6 +125,7 @@ def get_aws_bucket_policy(bucket: Optional[str] = None,
     return AwaitableGetAwsBucketPolicyResult(
         bucket=__ret__.bucket,
         databricks_account_id=__ret__.databricks_account_id,
+        databricks_e2_account_id=__ret__.databricks_e2_account_id,
         full_access_role=__ret__.full_access_role,
         id=__ret__.id,
         json=__ret__.json)
@@ -121,6 +134,7 @@ def get_aws_bucket_policy(bucket: Optional[str] = None,
 @_utilities.lift_output_func(get_aws_bucket_policy)
 def get_aws_bucket_policy_output(bucket: Optional[pulumi.Input[str]] = None,
                                  databricks_account_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 databricks_e2_account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  full_access_role: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsBucketPolicyResult]:
     """
@@ -137,6 +151,7 @@ def get_aws_bucket_policy_output(bucket: Optional[pulumi.Input[str]] = None,
 
 
     :param str bucket: AWS S3 Bucket name for which to generate the policy document.
+    :param str databricks_e2_account_id: Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
     :param str full_access_role: Data access role that can have full access for this bucket
     """
     ...

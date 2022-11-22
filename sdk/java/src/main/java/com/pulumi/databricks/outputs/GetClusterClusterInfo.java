@@ -105,6 +105,11 @@ public final class GetClusterClusterInfo {
      */
     private @Nullable String policyId;
     /**
+     * @return The type of runtime of the cluster
+     * 
+     */
+    private @Nullable String runtimeEngine;
+    /**
      * @return The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      * 
      */
@@ -276,6 +281,13 @@ public final class GetClusterClusterInfo {
         return Optional.ofNullable(this.policyId);
     }
     /**
+     * @return The type of runtime of the cluster
+     * 
+     */
+    public Optional<String> runtimeEngine() {
+        return Optional.ofNullable(this.runtimeEngine);
+    }
+    /**
      * @return The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      * 
      */
@@ -369,6 +381,7 @@ public final class GetClusterClusterInfo {
         private @Nullable String nodeTypeId;
         private @Nullable Integer numWorkers;
         private @Nullable String policyId;
+        private @Nullable String runtimeEngine;
         private @Nullable String singleUserName;
         private @Nullable Map<String,Object> sparkConf;
         private @Nullable Integer sparkContextId;
@@ -414,6 +427,7 @@ public final class GetClusterClusterInfo {
     	      this.nodeTypeId = defaults.nodeTypeId;
     	      this.numWorkers = defaults.numWorkers;
     	      this.policyId = defaults.policyId;
+    	      this.runtimeEngine = defaults.runtimeEngine;
     	      this.singleUserName = defaults.singleUserName;
     	      this.sparkConf = defaults.sparkConf;
     	      this.sparkContextId = defaults.sparkContextId;
@@ -589,6 +603,11 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder runtimeEngine(@Nullable String runtimeEngine) {
+            this.runtimeEngine = runtimeEngine;
+            return this;
+        }
+        @CustomType.Setter
         public Builder singleUserName(@Nullable String singleUserName) {
             this.singleUserName = singleUserName;
             return this;
@@ -679,6 +698,7 @@ public final class GetClusterClusterInfo {
             o.nodeTypeId = nodeTypeId;
             o.numWorkers = numWorkers;
             o.policyId = policyId;
+            o.runtimeEngine = runtimeEngine;
             o.singleUserName = singleUserName;
             o.sparkConf = sparkConf;
             o.sparkContextId = sparkContextId;

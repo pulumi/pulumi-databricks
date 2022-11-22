@@ -38,8 +38,7 @@ type MwsWorkspaces struct {
 	Network                             MwsWorkspacesNetworkPtrOutput `pulumi:"network"`
 	NetworkId                           pulumi.StringPtrOutput        `pulumi:"networkId"`
 	PricingTier                         pulumi.StringOutput           `pulumi:"pricingTier"`
-	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account
-	PrivateAccessSettingsId pulumi.StringPtrOutput `pulumi:"privateAccessSettingsId"`
+	PrivateAccessSettingsId             pulumi.StringPtrOutput        `pulumi:"privateAccessSettingsId"`
 	// `storageConfigurationId` from storage configuration
 	StorageConfigurationId      pulumi.StringPtrOutput      `pulumi:"storageConfigurationId"`
 	StorageCustomerManagedKeyId pulumi.StringPtrOutput      `pulumi:"storageCustomerManagedKeyId"`
@@ -118,8 +117,7 @@ type mwsWorkspacesState struct {
 	Network                             *MwsWorkspacesNetwork `pulumi:"network"`
 	NetworkId                           *string               `pulumi:"networkId"`
 	PricingTier                         *string               `pulumi:"pricingTier"`
-	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account
-	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
+	PrivateAccessSettingsId             *string               `pulumi:"privateAccessSettingsId"`
 	// `storageConfigurationId` from storage configuration
 	StorageConfigurationId      *string             `pulumi:"storageConfigurationId"`
 	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
@@ -157,8 +155,7 @@ type MwsWorkspacesState struct {
 	Network                             MwsWorkspacesNetworkPtrInput
 	NetworkId                           pulumi.StringPtrInput
 	PricingTier                         pulumi.StringPtrInput
-	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account
-	PrivateAccessSettingsId pulumi.StringPtrInput
+	PrivateAccessSettingsId             pulumi.StringPtrInput
 	// `storageConfigurationId` from storage configuration
 	StorageConfigurationId      pulumi.StringPtrInput
 	StorageCustomerManagedKeyId pulumi.StringPtrInput
@@ -200,8 +197,7 @@ type mwsWorkspacesArgs struct {
 	Network                             *MwsWorkspacesNetwork `pulumi:"network"`
 	NetworkId                           *string               `pulumi:"networkId"`
 	PricingTier                         *string               `pulumi:"pricingTier"`
-	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account
-	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
+	PrivateAccessSettingsId             *string               `pulumi:"privateAccessSettingsId"`
 	// `storageConfigurationId` from storage configuration
 	StorageConfigurationId      *string             `pulumi:"storageConfigurationId"`
 	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
@@ -240,8 +236,7 @@ type MwsWorkspacesArgs struct {
 	Network                             MwsWorkspacesNetworkPtrInput
 	NetworkId                           pulumi.StringPtrInput
 	PricingTier                         pulumi.StringPtrInput
-	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account
-	PrivateAccessSettingsId pulumi.StringPtrInput
+	PrivateAccessSettingsId             pulumi.StringPtrInput
 	// `storageConfigurationId` from storage configuration
 	StorageConfigurationId      pulumi.StringPtrInput
 	StorageCustomerManagedKeyId pulumi.StringPtrInput
@@ -410,7 +405,6 @@ func (o MwsWorkspacesOutput) PricingTier() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.PricingTier }).(pulumi.StringOutput)
 }
 
-// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account
 func (o MwsWorkspacesOutput) PrivateAccessSettingsId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.PrivateAccessSettingsId }).(pulumi.StringPtrOutput)
 }

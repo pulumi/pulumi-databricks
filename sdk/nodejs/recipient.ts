@@ -9,36 +9,16 @@ import * as utilities from "./utilities";
 /**
  * Within a metastore, Unity Catalog provides the ability to create a recipient to attach delta shares to.
  *
- * A `databricks.Recipient` is contained within databricks.Metastore and can contain a list of shares.
+ * A `databricks.Recipient` is contained within databricks.Metastore and can have permissions to `SELECT` from a list of shares.
  *
  * ## Example Usage
- * ### Databricks Sharing with non databricks recipient
+ * ## Related Resources
  *
- * Setting `authenticationType` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
- * authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
+ * The following resources are often used in the same context:
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- * import * as random from "@pulumi/random";
- *
- * const db2opensharecode = new random.RandomPassword("db2opensharecode", {
- *     length: 16,
- *     special: true,
- * });
- * const current = databricks.getCurrentUser({});
- * const db2open = new databricks.Recipient("db2open", {
- *     comment: "made by terraform",
- *     authenticationType: "TOKEN",
- *     sharingCode: db2opensharecode.result,
- *     ipAccessList: {
- *         allowedIpAddresses: [],
- *     },
- * });
- * ```
- * ## Attribute Reference:
- *
- * * `tokens` - (Optional) List of Recipient Tokens.
+ * * databricks.Share to create Delta Sharing shares.
+ * * databricks.Grants to manage Delta Sharing permissions.
+ * * databricks.getShares to read existing Delta Sharing shares.
  */
 export class Recipient extends pulumi.CustomResource {
     /**
@@ -92,6 +72,9 @@ export class Recipient extends pulumi.CustomResource {
      * The one-time sharing code provided by the data recipient.
      */
     public readonly sharingCode!: pulumi.Output<string | undefined>;
+    /**
+     * List of Recipient Tokens.
+     */
     public readonly tokens!: pulumi.Output<outputs.RecipientToken[]>;
 
     /**
@@ -162,6 +145,9 @@ export interface RecipientState {
      * The one-time sharing code provided by the data recipient.
      */
     sharingCode?: pulumi.Input<string>;
+    /**
+     * List of Recipient Tokens.
+     */
     tokens?: pulumi.Input<pulumi.Input<inputs.RecipientToken>[]>;
 }
 
@@ -193,5 +179,8 @@ export interface RecipientArgs {
      * The one-time sharing code provided by the data recipient.
      */
     sharingCode?: pulumi.Input<string>;
+    /**
+     * List of Recipient Tokens.
+     */
     tokens?: pulumi.Input<pulumi.Input<inputs.RecipientToken>[]>;
 }

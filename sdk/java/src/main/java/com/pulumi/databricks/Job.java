@@ -24,6 +24,7 @@ import com.pulumi.databricks.outputs.JobSparkJarTask;
 import com.pulumi.databricks.outputs.JobSparkPythonTask;
 import com.pulumi.databricks.outputs.JobSparkSubmitTask;
 import com.pulumi.databricks.outputs.JobTask;
+import com.pulumi.databricks.outputs.JobWebhookNotifications;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -306,6 +307,12 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<String> url() {
         return this.url;
+    }
+    @Export(name="webhookNotifications", type=JobWebhookNotifications.class, parameters={})
+    private Output</* @Nullable */ JobWebhookNotifications> webhookNotifications;
+
+    public Output<Optional<JobWebhookNotifications>> webhookNotifications() {
+        return Codegen.optional(this.webhookNotifications);
     }
 
     /**

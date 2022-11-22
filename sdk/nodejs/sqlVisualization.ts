@@ -45,6 +45,7 @@ export class SqlVisualization extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly options!: pulumi.Output<string>;
     public readonly queryId!: pulumi.Output<string>;
+    public readonly queryPlan!: pulumi.Output<string | undefined>;
     public readonly type!: pulumi.Output<string>;
     public readonly visualizationId!: pulumi.Output<string>;
 
@@ -65,6 +66,7 @@ export class SqlVisualization extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["options"] = state ? state.options : undefined;
             resourceInputs["queryId"] = state ? state.queryId : undefined;
+            resourceInputs["queryPlan"] = state ? state.queryPlan : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["visualizationId"] = state ? state.visualizationId : undefined;
         } else {
@@ -82,6 +84,7 @@ export class SqlVisualization extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["options"] = args ? args.options : undefined;
             resourceInputs["queryId"] = args ? args.queryId : undefined;
+            resourceInputs["queryPlan"] = args ? args.queryPlan : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["visualizationId"] = args ? args.visualizationId : undefined;
         }
@@ -98,6 +101,7 @@ export interface SqlVisualizationState {
     name?: pulumi.Input<string>;
     options?: pulumi.Input<string>;
     queryId?: pulumi.Input<string>;
+    queryPlan?: pulumi.Input<string>;
     type?: pulumi.Input<string>;
     visualizationId?: pulumi.Input<string>;
 }
@@ -110,6 +114,7 @@ export interface SqlVisualizationArgs {
     name?: pulumi.Input<string>;
     options: pulumi.Input<string>;
     queryId: pulumi.Input<string>;
+    queryPlan?: pulumi.Input<string>;
     type: pulumi.Input<string>;
     visualizationId?: pulumi.Input<string>;
 }

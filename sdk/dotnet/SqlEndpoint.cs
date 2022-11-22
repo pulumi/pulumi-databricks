@@ -12,36 +12,6 @@ namespace Pulumi.Databricks
     /// <summary>
     /// This resource is used to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL endpoints](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var me = Databricks.GetCurrentUser.Invoke();
-    /// 
-    ///     var @this = new Databricks.SqlEndpoint("this", new()
-    ///     {
-    ///         ClusterSize = "Small",
-    ///         MaxNumClusters = 1,
-    ///         Tags = new Databricks.Inputs.SqlEndpointTagsArgs
-    ///         {
-    ///             CustomTags = new[]
-    ///             {
-    ///                 new Databricks.Inputs.SqlEndpointTagsCustomTagArgs
-    ///                 {
-    ///                     Key = "City",
-    ///                     Value = "Amsterdam",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ## Access Control
     /// 
     /// * databricks.Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL endpoints.
@@ -154,6 +124,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("tags")]
         public Output<Outputs.SqlEndpointTags?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+        /// </summary>
+        [Output("warehouseType")]
+        public Output<string?> WarehouseType { get; private set; } = null!;
 
 
         /// <summary>
@@ -288,6 +264,12 @@ namespace Pulumi.Databricks
         [Input("tags")]
         public Input<Inputs.SqlEndpointTagsArgs>? Tags { get; set; }
 
+        /// <summary>
+        /// [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+        /// </summary>
+        [Input("warehouseType")]
+        public Input<string>? WarehouseType { get; set; }
+
         public SqlEndpointArgs()
         {
         }
@@ -382,6 +364,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("tags")]
         public Input<Inputs.SqlEndpointTagsGetArgs>? Tags { get; set; }
+
+        /// <summary>
+        /// [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+        /// </summary>
+        [Input("warehouseType")]
+        public Input<string>? WarehouseType { get; set; }
 
         public SqlEndpointState()
         {

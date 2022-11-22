@@ -38,8 +38,10 @@ export class Grants extends pulumi.CustomResource {
     public readonly externalLocation!: pulumi.Output<string | undefined>;
     public readonly function!: pulumi.Output<string | undefined>;
     public readonly grants!: pulumi.Output<outputs.GrantsGrant[]>;
+    public readonly materializedView!: pulumi.Output<string | undefined>;
     public readonly metastore!: pulumi.Output<string | undefined>;
     public readonly schema!: pulumi.Output<string | undefined>;
+    public readonly share!: pulumi.Output<string | undefined>;
     public readonly storageCredential!: pulumi.Output<string | undefined>;
     public readonly table!: pulumi.Output<string | undefined>;
     public readonly view!: pulumi.Output<string | undefined>;
@@ -61,8 +63,10 @@ export class Grants extends pulumi.CustomResource {
             resourceInputs["externalLocation"] = state ? state.externalLocation : undefined;
             resourceInputs["function"] = state ? state.function : undefined;
             resourceInputs["grants"] = state ? state.grants : undefined;
+            resourceInputs["materializedView"] = state ? state.materializedView : undefined;
             resourceInputs["metastore"] = state ? state.metastore : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["share"] = state ? state.share : undefined;
             resourceInputs["storageCredential"] = state ? state.storageCredential : undefined;
             resourceInputs["table"] = state ? state.table : undefined;
             resourceInputs["view"] = state ? state.view : undefined;
@@ -75,8 +79,10 @@ export class Grants extends pulumi.CustomResource {
             resourceInputs["externalLocation"] = args ? args.externalLocation : undefined;
             resourceInputs["function"] = args ? args.function : undefined;
             resourceInputs["grants"] = args ? args.grants : undefined;
+            resourceInputs["materializedView"] = args ? args.materializedView : undefined;
             resourceInputs["metastore"] = args ? args.metastore : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["share"] = args ? args.share : undefined;
             resourceInputs["storageCredential"] = args ? args.storageCredential : undefined;
             resourceInputs["table"] = args ? args.table : undefined;
             resourceInputs["view"] = args ? args.view : undefined;
@@ -94,8 +100,10 @@ export interface GrantsState {
     externalLocation?: pulumi.Input<string>;
     function?: pulumi.Input<string>;
     grants?: pulumi.Input<pulumi.Input<inputs.GrantsGrant>[]>;
+    materializedView?: pulumi.Input<string>;
     metastore?: pulumi.Input<string>;
     schema?: pulumi.Input<string>;
+    share?: pulumi.Input<string>;
     storageCredential?: pulumi.Input<string>;
     table?: pulumi.Input<string>;
     view?: pulumi.Input<string>;
@@ -109,8 +117,10 @@ export interface GrantsArgs {
     externalLocation?: pulumi.Input<string>;
     function?: pulumi.Input<string>;
     grants: pulumi.Input<pulumi.Input<inputs.GrantsGrant>[]>;
+    materializedView?: pulumi.Input<string>;
     metastore?: pulumi.Input<string>;
     schema?: pulumi.Input<string>;
+    share?: pulumi.Input<string>;
     storageCredential?: pulumi.Input<string>;
     table?: pulumi.Input<string>;
     view?: pulumi.Input<string>;

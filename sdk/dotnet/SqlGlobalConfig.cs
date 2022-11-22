@@ -86,11 +86,14 @@ namespace Pulumi.Databricks
     public partial class SqlGlobalConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        /// - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         /// </summary>
         [Output("dataAccessConfig")]
         public Output<ImmutableDictionary<string, object>?> DataAccessConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+        /// </summary>
         [Output("enableServerlessCompute")]
         public Output<bool?> EnableServerlessCompute { get; private set; } = null!;
 
@@ -162,7 +165,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _dataAccessConfig;
 
         /// <summary>
-        /// - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        /// - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         /// </summary>
         public InputMap<object> DataAccessConfig
         {
@@ -170,6 +173,9 @@ namespace Pulumi.Databricks
             set => _dataAccessConfig = value;
         }
 
+        /// <summary>
+        /// - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+        /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
 
@@ -209,7 +215,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _dataAccessConfig;
 
         /// <summary>
-        /// - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        /// - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         /// </summary>
         public InputMap<object> DataAccessConfig
         {
@@ -217,6 +223,9 @@ namespace Pulumi.Databricks
             set => _dataAccessConfig = value;
         }
 
+        /// <summary>
+        /// - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+        /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
 

@@ -20,60 +20,16 @@ import javax.annotation.Nullable;
 /**
  * Within a metastore, Unity Catalog provides the ability to create a recipient to attach delta shares to.
  * 
- * A `databricks.Recipient` is contained within databricks.Metastore and can contain a list of shares.
+ * A `databricks.Recipient` is contained within databricks.Metastore and can have permissions to `SELECT` from a list of shares.
  * 
  * ## Example Usage
- * ### Databricks Sharing with non databricks recipient
+ * ## Related Resources
  * 
- * Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
- * authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
- * ```java
- * package generated_program;
+ * The following resources are often used in the same context:
  * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomPassword;
- * import com.pulumi.random.RandomPasswordArgs;
- * import com.pulumi.databricks.DatabricksFunctions;
- * import com.pulumi.databricks.Recipient;
- * import com.pulumi.databricks.RecipientArgs;
- * import com.pulumi.databricks.inputs.RecipientIpAccessListArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var db2opensharecode = new RandomPassword(&#34;db2opensharecode&#34;, RandomPasswordArgs.builder()        
- *             .length(16)
- *             .special(true)
- *             .build());
- * 
- *         final var current = DatabricksFunctions.getCurrentUser();
- * 
- *         var db2open = new Recipient(&#34;db2open&#34;, RecipientArgs.builder()        
- *             .comment(&#34;made by terraform&#34;)
- *             .authenticationType(&#34;TOKEN&#34;)
- *             .sharingCode(db2opensharecode.result())
- *             .ipAccessList(RecipientIpAccessListArgs.builder()
- *                 .allowedIpAddresses()
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * ## Attribute Reference:
- * 
- * * `tokens` - (Optional) List of Recipient Tokens.
+ * * databricks.Share to create Delta Sharing shares.
+ * * databricks.Grants to manage Delta Sharing permissions.
+ * * databricks.getShares to read existing Delta Sharing shares.
  * 
  */
 @ResourceType(type="databricks:index/recipient:Recipient")
@@ -162,9 +118,17 @@ public class Recipient extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> sharingCode() {
         return Codegen.optional(this.sharingCode);
     }
+    /**
+     * List of Recipient Tokens.
+     * 
+     */
     @Export(name="tokens", type=List.class, parameters={RecipientToken.class})
     private Output<List<RecipientToken>> tokens;
 
+    /**
+     * @return List of Recipient Tokens.
+     * 
+     */
     public Output<List<RecipientToken>> tokens() {
         return this.tokens;
     }

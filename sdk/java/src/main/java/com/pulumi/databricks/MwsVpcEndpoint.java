@@ -43,14 +43,14 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
         return this.awsAccountId;
     }
     /**
-     * ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+     * The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      * 
      */
     @Export(name="awsEndpointServiceId", type=String.class, parameters={})
     private Output<String> awsEndpointServiceId;
 
     /**
-     * @return ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+     * @return The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      * 
      */
     public Output<String> awsEndpointServiceId() {
