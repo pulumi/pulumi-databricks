@@ -110,6 +110,7 @@ export class Job extends pulumi.CustomResource {
      * URL of the job on the given workspace
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
+    public readonly webhookNotifications!: pulumi.Output<outputs.JobWebhookNotifications | undefined>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -149,6 +150,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["tasks"] = state ? state.tasks : undefined;
             resourceInputs["timeoutSeconds"] = state ? state.timeoutSeconds : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["webhookNotifications"] = state ? state.webhookNotifications : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
             resourceInputs["alwaysRunning"] = args ? args.alwaysRunning : undefined;
@@ -175,6 +177,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tasks"] = args ? args.tasks : undefined;
             resourceInputs["timeoutSeconds"] = args ? args.timeoutSeconds : undefined;
+            resourceInputs["webhookNotifications"] = args ? args.webhookNotifications : undefined;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -253,6 +256,7 @@ export interface JobState {
      * URL of the job on the given workspace
      */
     url?: pulumi.Input<string>;
+    webhookNotifications?: pulumi.Input<inputs.JobWebhookNotifications>;
 }
 
 /**
@@ -322,4 +326,5 @@ export interface JobArgs {
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
     timeoutSeconds?: pulumi.Input<number>;
+    webhookNotifications?: pulumi.Input<inputs.JobWebhookNotifications>;
 }

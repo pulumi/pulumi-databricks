@@ -165,17 +165,9 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<String> pricingTier() {
         return this.pricingTier;
     }
-    /**
-     * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account
-     * 
-     */
     @Export(name="privateAccessSettingsId", type=String.class, parameters={})
     private Output</* @Nullable */ String> privateAccessSettingsId;
 
-    /**
-     * @return Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account
-     * 
-     */
     public Output<Optional<String>> privateAccessSettingsId() {
         return Codegen.optional(this.privateAccessSettingsId);
     }

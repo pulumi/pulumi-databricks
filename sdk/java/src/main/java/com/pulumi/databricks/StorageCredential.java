@@ -23,6 +23,116 @@ import javax.annotation.Nullable;
  * - `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
  * - databricks.ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
  * 
+ * ## Example Usage
+ * 
+ * For AWS
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.StorageCredential;
+ * import com.pulumi.databricks.StorageCredentialArgs;
+ * import com.pulumi.databricks.inputs.StorageCredentialAwsIamRoleArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+ *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
+ *                 .roleArn(aws_iam_role.external_data_access().arn())
+ *                 .build())
+ *             .comment(&#34;Managed by TF&#34;)
+ *             .build());
+ * 
+ *         var externalCreds = new Grants(&#34;externalCreds&#34;, GrantsArgs.builder()        
+ *             .storageCredential(external.id())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal(&#34;Data Engineers&#34;)
+ *                 .privileges(&#34;CREATE_TABLE&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * For Azure
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azure.core.CoreFunctions;
+ * import com.pulumi.azure.consumption.inputs.GetBudgetResourceGroupArgs;
+ * import com.pulumi.azure.databricks.AccessConnector;
+ * import com.pulumi.azure.databricks.AccessConnectorArgs;
+ * import com.pulumi.azure.databricks.inputs.AccessConnectorIdentityArgs;
+ * import com.pulumi.databricks.StorageCredential;
+ * import com.pulumi.databricks.StorageCredentialArgs;
+ * import com.pulumi.databricks.inputs.StorageCredentialAzureManagedIdentityArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var this = CoreFunctions.getResourceGroup(GetBudgetResourceGroupArgs.builder()
+ *             .name(&#34;example-rg&#34;)
+ *             .build());
+ * 
+ *         var example = new AccessConnector(&#34;example&#34;, AccessConnectorArgs.builder()        
+ *             .resourceGroupName(azurerm_resource_group.this().name())
+ *             .location(azurerm_resource_group.this().location())
+ *             .identity(AccessConnectorIdentityArgs.builder()
+ *                 .type(&#34;SystemAssigned&#34;)
+ *                 .build())
+ *             .tags(Map.of(&#34;Environment&#34;, &#34;Production&#34;))
+ *             .build());
+ * 
+ *         var externalMi = new StorageCredential(&#34;externalMi&#34;, StorageCredentialArgs.builder()        
+ *             .azureManagedIdentity(StorageCredentialAzureManagedIdentityArgs.builder()
+ *                 .accessConnectorId(example.id())
+ *                 .build())
+ *             .comment(&#34;Managed identity credential managed by TF&#34;)
+ *             .build());
+ * 
+ *         var externalCreds = new Grants(&#34;externalCreds&#34;, GrantsArgs.builder()        
+ *             .storageCredential(databricks_storage_credential.external().id())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal(&#34;Data Engineers&#34;)
+ *                 .privileges(&#34;CREATE_TABLE&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * This resource can be imported by namebash

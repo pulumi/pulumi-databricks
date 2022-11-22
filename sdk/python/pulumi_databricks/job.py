@@ -39,7 +39,8 @@ class JobArgs:
                  spark_submit_task: Optional[pulumi.Input['JobSparkSubmitTaskArgs']] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]] = None,
-                 timeout_seconds: Optional[pulumi.Input[int]] = None):
+                 timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None):
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
@@ -104,6 +105,8 @@ class JobArgs:
             pulumi.set(__self__, "tasks", tasks)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        if webhook_notifications is not None:
+            pulumi.set(__self__, "webhook_notifications", webhook_notifications)
 
     @property
     @pulumi.getter(name="alwaysRunning")
@@ -360,6 +363,15 @@ class JobArgs:
     def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout_seconds", value)
 
+    @property
+    @pulumi.getter(name="webhookNotifications")
+    def webhook_notifications(self) -> Optional[pulumi.Input['JobWebhookNotificationsArgs']]:
+        return pulumi.get(self, "webhook_notifications")
+
+    @webhook_notifications.setter
+    def webhook_notifications(self, value: Optional[pulumi.Input['JobWebhookNotificationsArgs']]):
+        pulumi.set(self, "webhook_notifications", value)
+
 
 @pulumi.input_type
 class _JobState:
@@ -388,7 +400,8 @@ class _JobState:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
+                 url: Optional[pulumi.Input[str]] = None,
+                 webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None):
         """
         Input properties used for looking up and filtering Job resources.
         :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
@@ -456,6 +469,8 @@ class _JobState:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
         if url is not None:
             pulumi.set(__self__, "url", url)
+        if webhook_notifications is not None:
+            pulumi.set(__self__, "webhook_notifications", webhook_notifications)
 
     @property
     @pulumi.getter(name="alwaysRunning")
@@ -724,6 +739,15 @@ class _JobState:
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
 
+    @property
+    @pulumi.getter(name="webhookNotifications")
+    def webhook_notifications(self) -> Optional[pulumi.Input['JobWebhookNotificationsArgs']]:
+        return pulumi.get(self, "webhook_notifications")
+
+    @webhook_notifications.setter
+    def webhook_notifications(self, value: Optional[pulumi.Input['JobWebhookNotificationsArgs']]):
+        pulumi.set(self, "webhook_notifications", value)
+
 
 class Job(pulumi.CustomResource):
     @overload
@@ -754,6 +778,7 @@ class Job(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 webhook_notifications: Optional[pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']]] = None,
                  __props__=None):
         """
         ## Import
@@ -834,6 +859,7 @@ class Job(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 webhook_notifications: Optional[pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -867,6 +893,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tasks"] = tasks
             __props__.__dict__["timeout_seconds"] = timeout_seconds
+            __props__.__dict__["webhook_notifications"] = webhook_notifications
             __props__.__dict__["url"] = None
         super(Job, __self__).__init__(
             'databricks:index/job:Job',
@@ -902,7 +929,8 @@ class Job(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]]] = None,
             timeout_seconds: Optional[pulumi.Input[int]] = None,
-            url: Optional[pulumi.Input[str]] = None) -> 'Job':
+            url: Optional[pulumi.Input[str]] = None,
+            webhook_notifications: Optional[pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -954,6 +982,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["tasks"] = tasks
         __props__.__dict__["timeout_seconds"] = timeout_seconds
         __props__.__dict__["url"] = url
+        __props__.__dict__["webhook_notifications"] = webhook_notifications
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1122,4 +1151,9 @@ class Job(pulumi.CustomResource):
         URL of the job on the given workspace
         """
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="webhookNotifications")
+    def webhook_notifications(self) -> pulumi.Output[Optional['outputs.JobWebhookNotifications']]:
+        return pulumi.get(self, "webhook_notifications")
 

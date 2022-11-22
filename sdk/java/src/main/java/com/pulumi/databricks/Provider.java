@@ -71,6 +71,18 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> azureWorkspaceResourceId() {
         return Codegen.optional(this.azureWorkspaceResourceId);
     }
+    @Export(name="clientId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> clientId;
+
+    public Output<Optional<String>> clientId() {
+        return Codegen.optional(this.clientId);
+    }
+    @Export(name="clientSecret", type=String.class, parameters={})
+    private Output</* @Nullable */ String> clientSecret;
+
+    public Output<Optional<String>> clientSecret() {
+        return Codegen.optional(this.clientSecret);
+    }
     @Export(name="configFile", type=String.class, parameters={})
     private Output</* @Nullable */ String> configFile;
 
@@ -113,6 +125,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> token() {
         return Codegen.optional(this.token);
     }
+    @Export(name="tokenEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> tokenEndpoint;
+
+    public Output<Optional<String>> tokenEndpoint() {
+        return Codegen.optional(this.tokenEndpoint);
+    }
     @Export(name="username", type=String.class, parameters={})
     private Output</* @Nullable */ String> username;
 
@@ -150,6 +168,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
                 "azureClientSecret",
+                "clientSecret",
                 "googleCredentials",
                 "password",
                 "token"

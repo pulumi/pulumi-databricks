@@ -108,9 +108,17 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sharingCode);
     }
 
+    /**
+     * List of Recipient Tokens.
+     * 
+     */
     @Import(name="tokens")
     private @Nullable Output<List<RecipientTokenArgs>> tokens;
 
+    /**
+     * @return List of Recipient Tokens.
+     * 
+     */
     public Optional<Output<List<RecipientTokenArgs>>> tokens() {
         return Optional.ofNullable(this.tokens);
     }
@@ -271,15 +279,33 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
             return sharingCode(Output.of(sharingCode));
         }
 
+        /**
+         * @param tokens List of Recipient Tokens.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(@Nullable Output<List<RecipientTokenArgs>> tokens) {
             $.tokens = tokens;
             return this;
         }
 
+        /**
+         * @param tokens List of Recipient Tokens.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(List<RecipientTokenArgs> tokens) {
             return tokens(Output.of(tokens));
         }
 
+        /**
+         * @param tokens List of Recipient Tokens.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(RecipientTokenArgs... tokens) {
             return tokens(List.of(tokens));
         }

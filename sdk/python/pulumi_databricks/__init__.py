@@ -31,6 +31,8 @@ from .get_notebook_paths import *
 from .get_schemas import *
 from .get_service_principal import *
 from .get_service_principals import *
+from .get_share import *
+from .get_shares import *
 from .get_spark_version import *
 from .get_sql_warehouse import *
 from .get_sql_warehouses import *
@@ -80,6 +82,8 @@ from .secret_acl import *
 from .secret_scope import *
 from .service_principal import *
 from .service_principal_role import *
+from .service_principal_secret import *
+from .share import *
 from .sql_dashboard import *
 from .sql_endpoint import *
 from .sql_global_config import *
@@ -489,6 +493,22 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/servicePrincipalRole:ServicePrincipalRole": "ServicePrincipalRole"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/servicePrincipalSecret",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/servicePrincipalSecret:servicePrincipalSecret": "ServicePrincipalSecret"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/share",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/share:Share": "Share"
   }
  },
  {

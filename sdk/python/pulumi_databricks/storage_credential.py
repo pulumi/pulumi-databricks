@@ -232,6 +232,57 @@ class StorageCredential(pulumi.CustomResource):
         - `StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
         - ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
 
+        ## Example Usage
+
+        For AWS
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external = databricks.StorageCredential("external",
+            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
+                role_arn=aws_iam_role["external_data_access"]["arn"],
+            ),
+            comment="Managed by TF")
+        external_creds = databricks.Grants("externalCreds",
+            storage_credential=external.id,
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=["CREATE_TABLE"],
+            )])
+        ```
+
+        For Azure
+
+        ```python
+        import pulumi
+        import pulumi_azure as azure
+        import pulumi_databricks as databricks
+
+        this = azure.core.get_resource_group(name="example-rg")
+        example = azure.databricks.AccessConnector("example",
+            resource_group_name=azurerm_resource_group["this"]["name"],
+            location=azurerm_resource_group["this"]["location"],
+            identity=azure.databricks.AccessConnectorIdentityArgs(
+                type="SystemAssigned",
+            ),
+            tags={
+                "Environment": "Production",
+            })
+        external_mi = databricks.StorageCredential("externalMi",
+            azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(
+                access_connector_id=example.id,
+            ),
+            comment="Managed identity credential managed by TF")
+        external_creds = databricks.Grants("externalCreds",
+            storage_credential=databricks_storage_credential["external"]["id"],
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=["CREATE_TABLE"],
+            )])
+        ```
+
         ## Import
 
         This resource can be imported by namebash
@@ -256,6 +307,57 @@ class StorageCredential(pulumi.CustomResource):
 
         - `StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
         - ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
+
+        ## Example Usage
+
+        For AWS
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external = databricks.StorageCredential("external",
+            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
+                role_arn=aws_iam_role["external_data_access"]["arn"],
+            ),
+            comment="Managed by TF")
+        external_creds = databricks.Grants("externalCreds",
+            storage_credential=external.id,
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=["CREATE_TABLE"],
+            )])
+        ```
+
+        For Azure
+
+        ```python
+        import pulumi
+        import pulumi_azure as azure
+        import pulumi_databricks as databricks
+
+        this = azure.core.get_resource_group(name="example-rg")
+        example = azure.databricks.AccessConnector("example",
+            resource_group_name=azurerm_resource_group["this"]["name"],
+            location=azurerm_resource_group["this"]["location"],
+            identity=azure.databricks.AccessConnectorIdentityArgs(
+                type="SystemAssigned",
+            ),
+            tags={
+                "Environment": "Production",
+            })
+        external_mi = databricks.StorageCredential("externalMi",
+            azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(
+                access_connector_id=example.id,
+            ),
+            comment="Managed identity credential managed by TF")
+        external_creds = databricks.Grants("externalCreds",
+            storage_credential=databricks_storage_credential["external"]["id"],
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=["CREATE_TABLE"],
+            )])
+        ```
 
         ## Import
 

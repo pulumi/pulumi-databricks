@@ -45,6 +45,13 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
         return this.grants;
     }
 
+    @Import(name="materializedView")
+    private @Nullable Output<String> materializedView;
+
+    public Optional<Output<String>> materializedView() {
+        return Optional.ofNullable(this.materializedView);
+    }
+
     @Import(name="metastore")
     private @Nullable Output<String> metastore;
 
@@ -57,6 +64,13 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> schema() {
         return Optional.ofNullable(this.schema);
+    }
+
+    @Import(name="share")
+    private @Nullable Output<String> share;
+
+    public Optional<Output<String>> share() {
+        return Optional.ofNullable(this.share);
     }
 
     @Import(name="storageCredential")
@@ -87,8 +101,10 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
         this.externalLocation = $.externalLocation;
         this.function = $.function;
         this.grants = $.grants;
+        this.materializedView = $.materializedView;
         this.metastore = $.metastore;
         this.schema = $.schema;
+        this.share = $.share;
         this.storageCredential = $.storageCredential;
         this.table = $.table;
         this.view = $.view;
@@ -152,6 +168,15 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
             return grants(List.of(grants));
         }
 
+        public Builder materializedView(@Nullable Output<String> materializedView) {
+            $.materializedView = materializedView;
+            return this;
+        }
+
+        public Builder materializedView(String materializedView) {
+            return materializedView(Output.of(materializedView));
+        }
+
         public Builder metastore(@Nullable Output<String> metastore) {
             $.metastore = metastore;
             return this;
@@ -168,6 +193,15 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder schema(String schema) {
             return schema(Output.of(schema));
+        }
+
+        public Builder share(@Nullable Output<String> share) {
+            $.share = share;
+            return this;
+        }
+
+        public Builder share(String share) {
+            return share(Output.of(share));
         }
 
         public Builder storageCredential(@Nullable Output<String> storageCredential) {

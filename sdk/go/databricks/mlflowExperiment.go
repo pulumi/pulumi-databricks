@@ -12,36 +12,6 @@ import (
 
 // This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetCurrentUser(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewMlflowExperiment(ctx, "this", &databricks.MlflowExperimentArgs{
-//				ArtifactLocation: pulumi.String("dbfs:/tmp/my-experiment"),
-//				Description:      pulumi.String("My MLflow experiment description"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Access Control
 //
 // * Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.

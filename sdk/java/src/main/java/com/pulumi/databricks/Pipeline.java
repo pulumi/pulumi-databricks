@@ -163,14 +163,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.continuous);
     }
     /**
-     * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+     * A flag indicating whether to run the pipeline in development mode. The default value is `true`.
      * 
      */
     @Export(name="development", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> development;
 
     /**
-     * @return A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+     * @return A flag indicating whether to run the pipeline in development mode. The default value is `true`.
      * 
      */
     public Output<Optional<Boolean>> development() {

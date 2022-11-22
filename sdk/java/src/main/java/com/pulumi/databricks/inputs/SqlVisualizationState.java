@@ -43,6 +43,13 @@ public final class SqlVisualizationState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.queryId);
     }
 
+    @Import(name="queryPlan")
+    private @Nullable Output<String> queryPlan;
+
+    public Optional<Output<String>> queryPlan() {
+        return Optional.ofNullable(this.queryPlan);
+    }
+
     @Import(name="type")
     private @Nullable Output<String> type;
 
@@ -64,6 +71,7 @@ public final class SqlVisualizationState extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.options = $.options;
         this.queryId = $.queryId;
+        this.queryPlan = $.queryPlan;
         this.type = $.type;
         this.visualizationId = $.visualizationId;
     }
@@ -120,6 +128,15 @@ public final class SqlVisualizationState extends com.pulumi.resources.ResourceAr
 
         public Builder queryId(String queryId) {
             return queryId(Output.of(queryId));
+        }
+
+        public Builder queryPlan(@Nullable Output<String> queryPlan) {
+            $.queryPlan = queryPlan;
+            return this;
+        }
+
+        public Builder queryPlan(String queryPlan) {
+            return queryPlan(Output.of(queryPlan));
         }
 
         public Builder type(@Nullable Output<String> type) {

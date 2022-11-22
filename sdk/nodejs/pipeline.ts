@@ -110,7 +110,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly continuous!: pulumi.Output<boolean | undefined>;
     /**
-     * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+     * A flag indicating whether to run the pipeline in development mode. The default value is `true`.
      */
     public readonly development!: pulumi.Output<boolean | undefined>;
     /**
@@ -211,7 +211,7 @@ export interface PipelineState {
      */
     continuous?: pulumi.Input<boolean>;
     /**
-     * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+     * A flag indicating whether to run the pipeline in development mode. The default value is `true`.
      */
     development?: pulumi.Input<boolean>;
     /**
@@ -264,7 +264,7 @@ export interface PipelineArgs {
      */
     continuous?: pulumi.Input<boolean>;
     /**
-     * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+     * A flag indicating whether to run the pipeline in development mode. The default value is `true`.
      */
     development?: pulumi.Input<boolean>;
     /**

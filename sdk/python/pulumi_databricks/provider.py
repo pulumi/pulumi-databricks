@@ -23,6 +23,8 @@ class ProviderArgs:
                  azure_tenant_id: Optional[pulumi.Input[str]] = None,
                  azure_use_msi: Optional[pulumi.Input[bool]] = None,
                  azure_workspace_resource_id: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  config_file: Optional[pulumi.Input[str]] = None,
                  debug_headers: Optional[pulumi.Input[bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[int]] = None,
@@ -35,6 +37,7 @@ class ProviderArgs:
                  rate_limit: Optional[pulumi.Input[int]] = None,
                  skip_verify: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
+                 token_endpoint: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
@@ -57,6 +60,10 @@ class ProviderArgs:
             pulumi.set(__self__, "azure_use_msi", azure_use_msi)
         if azure_workspace_resource_id is not None:
             pulumi.set(__self__, "azure_workspace_resource_id", azure_workspace_resource_id)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if config_file is not None:
             pulumi.set(__self__, "config_file", config_file)
         if debug_headers is not None:
@@ -81,6 +88,8 @@ class ProviderArgs:
             pulumi.set(__self__, "skip_verify", skip_verify)
         if token is not None:
             pulumi.set(__self__, "token", token)
+        if token_endpoint is not None:
+            pulumi.set(__self__, "token_endpoint", token_endpoint)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -164,6 +173,24 @@ class ProviderArgs:
     @azure_workspace_resource_id.setter
     def azure_workspace_resource_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "azure_workspace_resource_id", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter(name="configFile")
@@ -274,6 +301,15 @@ class ProviderArgs:
         pulumi.set(self, "token", value)
 
     @property
+    @pulumi.getter(name="tokenEndpoint")
+    def token_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "token_endpoint")
+
+    @token_endpoint.setter
+    def token_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_endpoint", value)
+
+    @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "username")
@@ -297,6 +333,8 @@ class Provider(pulumi.ProviderResource):
                  azure_tenant_id: Optional[pulumi.Input[str]] = None,
                  azure_use_msi: Optional[pulumi.Input[bool]] = None,
                  azure_workspace_resource_id: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  config_file: Optional[pulumi.Input[str]] = None,
                  debug_headers: Optional[pulumi.Input[bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[int]] = None,
@@ -309,6 +347,7 @@ class Provider(pulumi.ProviderResource):
                  rate_limit: Optional[pulumi.Input[int]] = None,
                  skip_verify: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
+                 token_endpoint: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -356,6 +395,8 @@ class Provider(pulumi.ProviderResource):
                  azure_tenant_id: Optional[pulumi.Input[str]] = None,
                  azure_use_msi: Optional[pulumi.Input[bool]] = None,
                  azure_workspace_resource_id: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  config_file: Optional[pulumi.Input[str]] = None,
                  debug_headers: Optional[pulumi.Input[bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[int]] = None,
@@ -368,6 +409,7 @@ class Provider(pulumi.ProviderResource):
                  rate_limit: Optional[pulumi.Input[int]] = None,
                  skip_verify: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
+                 token_endpoint: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -387,6 +429,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["azure_tenant_id"] = azure_tenant_id
             __props__.__dict__["azure_use_msi"] = pulumi.Output.from_input(azure_use_msi).apply(pulumi.runtime.to_json) if azure_use_msi is not None else None
             __props__.__dict__["azure_workspace_resource_id"] = azure_workspace_resource_id
+            __props__.__dict__["client_id"] = client_id
+            __props__.__dict__["client_secret"] = None if client_secret is None else pulumi.Output.secret(client_secret)
             __props__.__dict__["config_file"] = config_file
             __props__.__dict__["debug_headers"] = pulumi.Output.from_input(debug_headers).apply(pulumi.runtime.to_json) if debug_headers is not None else None
             __props__.__dict__["debug_truncate_bytes"] = pulumi.Output.from_input(debug_truncate_bytes).apply(pulumi.runtime.to_json) if debug_truncate_bytes is not None else None
@@ -399,8 +443,9 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["rate_limit"] = pulumi.Output.from_input(rate_limit).apply(pulumi.runtime.to_json) if rate_limit is not None else None
             __props__.__dict__["skip_verify"] = pulumi.Output.from_input(skip_verify).apply(pulumi.runtime.to_json) if skip_verify is not None else None
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
+            __props__.__dict__["token_endpoint"] = token_endpoint
             __props__.__dict__["username"] = username
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["azureClientSecret", "googleCredentials", "password", "token"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["azureClientSecret", "clientSecret", "googleCredentials", "password", "token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'databricks',
@@ -449,6 +494,16 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "azure_workspace_resource_id")
 
     @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @property
     @pulumi.getter(name="configFile")
     def config_file(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "config_file")
@@ -482,6 +537,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter(name="tokenEndpoint")
+    def token_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "token_endpoint")
 
     @property
     @pulumi.getter

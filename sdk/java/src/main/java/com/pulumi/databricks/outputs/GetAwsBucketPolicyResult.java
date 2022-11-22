@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class GetAwsBucketPolicyResult {
     private String bucket;
     private @Nullable String databricksAccountId;
+    private @Nullable String databricksE2AccountId;
     private @Nullable String fullAccessRole;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -31,6 +32,9 @@ public final class GetAwsBucketPolicyResult {
     }
     public Optional<String> databricksAccountId() {
         return Optional.ofNullable(this.databricksAccountId);
+    }
+    public Optional<String> databricksE2AccountId() {
+        return Optional.ofNullable(this.databricksE2AccountId);
     }
     public Optional<String> fullAccessRole() {
         return Optional.ofNullable(this.fullAccessRole);
@@ -61,6 +65,7 @@ public final class GetAwsBucketPolicyResult {
     public static final class Builder {
         private String bucket;
         private @Nullable String databricksAccountId;
+        private @Nullable String databricksE2AccountId;
         private @Nullable String fullAccessRole;
         private String id;
         private String json;
@@ -69,6 +74,7 @@ public final class GetAwsBucketPolicyResult {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
     	      this.databricksAccountId = defaults.databricksAccountId;
+    	      this.databricksE2AccountId = defaults.databricksE2AccountId;
     	      this.fullAccessRole = defaults.fullAccessRole;
     	      this.id = defaults.id;
     	      this.json = defaults.json;
@@ -82,6 +88,11 @@ public final class GetAwsBucketPolicyResult {
         @CustomType.Setter
         public Builder databricksAccountId(@Nullable String databricksAccountId) {
             this.databricksAccountId = databricksAccountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder databricksE2AccountId(@Nullable String databricksE2AccountId) {
+            this.databricksE2AccountId = databricksE2AccountId;
             return this;
         }
         @CustomType.Setter
@@ -103,6 +114,7 @@ public final class GetAwsBucketPolicyResult {
             final var o = new GetAwsBucketPolicyResult();
             o.bucket = bucket;
             o.databricksAccountId = databricksAccountId;
+            o.databricksE2AccountId = databricksE2AccountId;
             o.fullAccessRole = fullAccessRole;
             o.id = id;
             o.json = json;

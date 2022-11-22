@@ -13,44 +13,6 @@ import (
 
 // This resource is used to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL endpoints](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your Group or databricks_user.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetCurrentUser(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewSqlEndpoint(ctx, "this", &databricks.SqlEndpointArgs{
-//				ClusterSize:    pulumi.String("Small"),
-//				MaxNumClusters: pulumi.Int(1),
-//				Tags: &SqlEndpointTagsArgs{
-//					CustomTags: SqlEndpointTagsCustomTagArray{
-//						&SqlEndpointTagsCustomTagArgs{
-//							Key:   pulumi.String("City"),
-//							Value: pulumi.String("Amsterdam"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Access Control
 //
 // * Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL endpoints.
@@ -107,6 +69,8 @@ type SqlEndpoint struct {
 	State              pulumi.StringOutput    `pulumi:"state"`
 	// Databricks tags all endpoint resources with these tags.
 	Tags SqlEndpointTagsPtrOutput `pulumi:"tags"`
+	// [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+	WarehouseType pulumi.StringPtrOutput `pulumi:"warehouseType"`
 }
 
 // NewSqlEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -170,6 +134,8 @@ type sqlEndpointState struct {
 	State              *string `pulumi:"state"`
 	// Databricks tags all endpoint resources with these tags.
 	Tags *SqlEndpointTags `pulumi:"tags"`
+	// [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+	WarehouseType *string `pulumi:"warehouseType"`
 }
 
 type SqlEndpointState struct {
@@ -202,6 +168,8 @@ type SqlEndpointState struct {
 	State              pulumi.StringPtrInput
 	// Databricks tags all endpoint resources with these tags.
 	Tags SqlEndpointTagsPtrInput
+	// [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+	WarehouseType pulumi.StringPtrInput
 }
 
 func (SqlEndpointState) ElementType() reflect.Type {
@@ -238,6 +206,8 @@ type sqlEndpointArgs struct {
 	State              *string `pulumi:"state"`
 	// Databricks tags all endpoint resources with these tags.
 	Tags *SqlEndpointTags `pulumi:"tags"`
+	// [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+	WarehouseType *string `pulumi:"warehouseType"`
 }
 
 // The set of arguments for constructing a SqlEndpoint resource.
@@ -271,6 +241,8 @@ type SqlEndpointArgs struct {
 	State              pulumi.StringPtrInput
 	// Databricks tags all endpoint resources with these tags.
 	Tags SqlEndpointTagsPtrInput
+	// [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+	WarehouseType pulumi.StringPtrInput
 }
 
 func (SqlEndpointArgs) ElementType() reflect.Type {
@@ -435,6 +407,11 @@ func (o SqlEndpointOutput) State() pulumi.StringOutput {
 // Databricks tags all endpoint resources with these tags.
 func (o SqlEndpointOutput) Tags() SqlEndpointTagsPtrOutput {
 	return o.ApplyT(func(v *SqlEndpoint) SqlEndpointTagsPtrOutput { return v.Tags }).(SqlEndpointTagsPtrOutput)
+}
+
+// [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+func (o SqlEndpointOutput) WarehouseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringPtrOutput { return v.WarehouseType }).(pulumi.StringPtrOutput)
 }
 
 type SqlEndpointArrayOutput struct{ *pulumi.OutputState }

@@ -113,22 +113,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/sqlGlobalConfig:SqlGlobalConfig")
 public class SqlGlobalConfig extends com.pulumi.resources.CustomResource {
     /**
-     * - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
+     * - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
      * 
      */
     @Export(name="dataAccessConfig", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> dataAccessConfig;
 
     /**
-     * @return - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
+     * @return - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
      * 
      */
     public Output<Optional<Map<String,Object>>> dataAccessConfig() {
         return Codegen.optional(this.dataAccessConfig);
     }
+    /**
+     * - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+     * 
+     */
     @Export(name="enableServerlessCompute", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableServerlessCompute;
 
+    /**
+     * @return - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+     * 
+     */
     public Output<Optional<Boolean>> enableServerlessCompute() {
         return Codegen.optional(this.enableServerlessCompute);
     }

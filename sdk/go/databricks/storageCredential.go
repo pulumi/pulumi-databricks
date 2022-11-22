@@ -15,6 +15,115 @@ import (
 // - `StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
 // - ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
 //
+// ## Example Usage
+//
+// # For AWS
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			external, err := databricks.NewStorageCredential(ctx, "external", &databricks.StorageCredentialArgs{
+//				AwsIamRole: &StorageCredentialAwsIamRoleArgs{
+//					RoleArn: pulumi.Any(aws_iam_role.External_data_access.Arn),
+//				},
+//				Comment: pulumi.String("Managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "externalCreds", &databricks.GrantsArgs{
+//				StorageCredential: external.ID(),
+//				Grants: GrantsGrantArray{
+//					&GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_TABLE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # For Azure
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azure/sdk/v5/go/azure/core"
+//	"github.com/pulumi/pulumi-azure/sdk/v5/go/azure/databricks"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err = core.LookupResourceGroup(ctx, &core.LookupResourceGroupArgs{
+//				Name: "example-rg",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example, err := databricks.NewAccessConnector(ctx, "example", &databricks.AccessConnectorArgs{
+//				ResourceGroupName: pulumi.Any(azurerm_resource_group.This.Name),
+//				Location:          pulumi.Any(azurerm_resource_group.This.Location),
+//				Identity: &databricks.AccessConnectorIdentityArgs{
+//					Type: pulumi.String("SystemAssigned"),
+//				},
+//				Tags: pulumi.StringMap{
+//					"Environment": pulumi.String("Production"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewStorageCredential(ctx, "externalMi", &databricks.StorageCredentialArgs{
+//				AzureManagedIdentity: &StorageCredentialAzureManagedIdentityArgs{
+//					AccessConnectorId: example.ID(),
+//				},
+//				Comment: pulumi.String("Managed identity credential managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "externalCreds", &databricks.GrantsArgs{
+//				StorageCredential: pulumi.Any(databricks_storage_credential.External.Id),
+//				Grants: GrantsGrantArray{
+//					&GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_TABLE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # This resource can be imported by namebash

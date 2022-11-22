@@ -12,6 +12,64 @@ import * as utilities from "./utilities";
  * - `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
  * - databricks.ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
  *
+ * ## Example Usage
+ *
+ * For AWS
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const external = new databricks.StorageCredential("external", {
+ *     awsIamRole: {
+ *         roleArn: aws_iam_role.external_data_access.arn,
+ *     },
+ *     comment: "Managed by TF",
+ * });
+ * const externalCreds = new databricks.Grants("externalCreds", {
+ *     storageCredential: external.id,
+ *     grants: [{
+ *         principal: "Data Engineers",
+ *         privileges: ["CREATE_TABLE"],
+ *     }],
+ * });
+ * ```
+ *
+ * For Azure
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azure from "@pulumi/azure";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = azure.core.getResourceGroup({
+ *     name: "example-rg",
+ * });
+ * const example = new azure.databricks.AccessConnector("example", {
+ *     resourceGroupName: azurerm_resource_group["this"].name,
+ *     location: azurerm_resource_group["this"].location,
+ *     identity: {
+ *         type: "SystemAssigned",
+ *     },
+ *     tags: {
+ *         Environment: "Production",
+ *     },
+ * });
+ * const externalMi = new databricks.StorageCredential("externalMi", {
+ *     azureManagedIdentity: {
+ *         accessConnectorId: example.id,
+ *     },
+ *     comment: "Managed identity credential managed by TF",
+ * });
+ * const externalCreds = new databricks.Grants("externalCreds", {
+ *     storageCredential: databricks_storage_credential.external.id,
+ *     grants: [{
+ *         principal: "Data Engineers",
+ *         privileges: ["CREATE_TABLE"],
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by namebash

@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
+//			_, err = databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}

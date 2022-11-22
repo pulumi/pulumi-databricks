@@ -52,6 +52,14 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('azureWorkspaceResourceId')
 
     @property
+    def client_id(self) -> Optional[str]:
+        return __config__.get('clientId')
+
+    @property
+    def client_secret(self) -> Optional[str]:
+        return __config__.get('clientSecret')
+
+    @property
     def config_file(self) -> Optional[str]:
         return __config__.get('configFile')
 
@@ -98,6 +106,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def token(self) -> Optional[str]:
         return __config__.get('token')
+
+    @property
+    def token_endpoint(self) -> Optional[str]:
+        return __config__.get('tokenEndpoint')
 
     @property
     def username(self) -> Optional[str]:

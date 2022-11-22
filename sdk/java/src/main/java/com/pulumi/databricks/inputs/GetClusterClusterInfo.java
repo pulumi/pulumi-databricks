@@ -339,6 +339,21 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
     }
 
     /**
+     * The type of runtime of the cluster
+     * 
+     */
+    @Import(name="runtimeEngine")
+    private @Nullable String runtimeEngine;
+
+    /**
+     * @return The type of runtime of the cluster
+     * 
+     */
+    public Optional<String> runtimeEngine() {
+        return Optional.ofNullable(this.runtimeEngine);
+    }
+
+    /**
      * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      * 
      */
@@ -489,6 +504,7 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
         this.policyId = $.policyId;
+        this.runtimeEngine = $.runtimeEngine;
         this.singleUserName = $.singleUserName;
         this.sparkConf = $.sparkConf;
         this.sparkContextId = $.sparkContextId;
@@ -747,6 +763,17 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
          */
         public Builder policyId(@Nullable String policyId) {
             $.policyId = policyId;
+            return this;
+        }
+
+        /**
+         * @param runtimeEngine The type of runtime of the cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runtimeEngine(@Nullable String runtimeEngine) {
+            $.runtimeEngine = runtimeEngine;
             return this;
         }
 

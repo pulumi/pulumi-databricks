@@ -95,6 +95,20 @@ namespace Pulumi.Databricks
             set => _azureWorkspaceResourceId.Set(value);
         }
 
+        private static readonly __Value<string?> _clientId = new __Value<string?>(() => __config.Get("clientId"));
+        public static string? ClientId
+        {
+            get => _clientId.Get();
+            set => _clientId.Set(value);
+        }
+
+        private static readonly __Value<string?> _clientSecret = new __Value<string?>(() => __config.Get("clientSecret"));
+        public static string? ClientSecret
+        {
+            get => _clientSecret.Get();
+            set => _clientSecret.Set(value);
+        }
+
         private static readonly __Value<string?> _configFile = new __Value<string?>(() => __config.Get("configFile"));
         public static string? ConfigFile
         {
@@ -177,6 +191,13 @@ namespace Pulumi.Databricks
         {
             get => _token.Get();
             set => _token.Set(value);
+        }
+
+        private static readonly __Value<string?> _tokenEndpoint = new __Value<string?>(() => __config.Get("tokenEndpoint"));
+        public static string? TokenEndpoint
+        {
+            get => _tokenEndpoint.Get();
+            set => _tokenEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _username = new __Value<string?>(() => __config.Get("username"));

@@ -19,6 +19,7 @@ import com.pulumi.databricks.inputs.JobSparkJarTaskArgs;
 import com.pulumi.databricks.inputs.JobSparkPythonTaskArgs;
 import com.pulumi.databricks.inputs.JobSparkSubmitTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskArgs;
+import com.pulumi.databricks.inputs.JobWebhookNotificationsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -321,6 +322,13 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.url);
     }
 
+    @Import(name="webhookNotifications")
+    private @Nullable Output<JobWebhookNotificationsArgs> webhookNotifications;
+
+    public Optional<Output<JobWebhookNotificationsArgs>> webhookNotifications() {
+        return Optional.ofNullable(this.webhookNotifications);
+    }
+
     private JobState() {}
 
     private JobState(JobState $) {
@@ -349,6 +357,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.tasks = $.tasks;
         this.timeoutSeconds = $.timeoutSeconds;
         this.url = $.url;
+        this.webhookNotifications = $.webhookNotifications;
     }
 
     public static Builder builder() {
@@ -778,6 +787,15 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        public Builder webhookNotifications(@Nullable Output<JobWebhookNotificationsArgs> webhookNotifications) {
+            $.webhookNotifications = webhookNotifications;
+            return this;
+        }
+
+        public Builder webhookNotifications(JobWebhookNotificationsArgs webhookNotifications) {
+            return webhookNotifications(Output.of(webhookNotifications));
         }
 
         public JobState build() {

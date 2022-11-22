@@ -235,17 +235,6 @@ class MlflowExperiment(pulumi.CustomResource):
         """
         This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.get_current_user()
-        this = databricks.MlflowExperiment("this",
-            artifact_location="dbfs:/tmp/my-experiment",
-            description="My MLflow experiment description")
-        ```
         ## Access Control
 
         * Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
@@ -284,17 +273,6 @@ class MlflowExperiment(pulumi.CustomResource):
         """
         This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.get_current_user()
-        this = databricks.MlflowExperiment("this",
-            artifact_location="dbfs:/tmp/my-experiment",
-            description="My MLflow experiment description")
-        ```
         ## Access Control
 
         * Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.

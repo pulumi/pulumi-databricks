@@ -80,6 +80,20 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.azureWorkspaceResourceId);
     }
 
+    @Import(name="clientId")
+    private @Nullable Output<String> clientId;
+
+    public Optional<Output<String>> clientId() {
+        return Optional.ofNullable(this.clientId);
+    }
+
+    @Import(name="clientSecret")
+    private @Nullable Output<String> clientSecret;
+
+    public Optional<Output<String>> clientSecret() {
+        return Optional.ofNullable(this.clientSecret);
+    }
+
     @Import(name="configFile")
     private @Nullable Output<String> configFile;
 
@@ -164,6 +178,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.token);
     }
 
+    @Import(name="tokenEndpoint")
+    private @Nullable Output<String> tokenEndpoint;
+
+    public Optional<Output<String>> tokenEndpoint() {
+        return Optional.ofNullable(this.tokenEndpoint);
+    }
+
     @Import(name="username")
     private @Nullable Output<String> username;
 
@@ -183,6 +204,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.azureTenantId = $.azureTenantId;
         this.azureUseMsi = $.azureUseMsi;
         this.azureWorkspaceResourceId = $.azureWorkspaceResourceId;
+        this.clientId = $.clientId;
+        this.clientSecret = $.clientSecret;
         this.configFile = $.configFile;
         this.debugHeaders = $.debugHeaders;
         this.debugTruncateBytes = $.debugTruncateBytes;
@@ -195,6 +218,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.rateLimit = $.rateLimit;
         this.skipVerify = $.skipVerify;
         this.token = $.token;
+        this.tokenEndpoint = $.tokenEndpoint;
         this.username = $.username;
     }
 
@@ -295,6 +319,24 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder azureWorkspaceResourceId(String azureWorkspaceResourceId) {
             return azureWorkspaceResourceId(Output.of(azureWorkspaceResourceId));
+        }
+
+        public Builder clientId(@Nullable Output<String> clientId) {
+            $.clientId = clientId;
+            return this;
+        }
+
+        public Builder clientId(String clientId) {
+            return clientId(Output.of(clientId));
+        }
+
+        public Builder clientSecret(@Nullable Output<String> clientSecret) {
+            $.clientSecret = clientSecret;
+            return this;
+        }
+
+        public Builder clientSecret(String clientSecret) {
+            return clientSecret(Output.of(clientSecret));
         }
 
         public Builder configFile(@Nullable Output<String> configFile) {
@@ -403,6 +445,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder token(String token) {
             return token(Output.of(token));
+        }
+
+        public Builder tokenEndpoint(@Nullable Output<String> tokenEndpoint) {
+            $.tokenEndpoint = tokenEndpoint;
+            return this;
+        }
+
+        public Builder tokenEndpoint(String tokenEndpoint) {
+            return tokenEndpoint(Output.of(tokenEndpoint));
         }
 
         public Builder username(@Nullable Output<String> username) {

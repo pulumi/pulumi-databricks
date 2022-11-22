@@ -42,6 +42,12 @@ namespace Pulumi.Databricks
         [Output("azureWorkspaceResourceId")]
         public Output<string?> AzureWorkspaceResourceId { get; private set; } = null!;
 
+        [Output("clientId")]
+        public Output<string?> ClientId { get; private set; } = null!;
+
+        [Output("clientSecret")]
+        public Output<string?> ClientSecret { get; private set; } = null!;
+
         [Output("configFile")]
         public Output<string?> ConfigFile { get; private set; } = null!;
 
@@ -62,6 +68,9 @@ namespace Pulumi.Databricks
 
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
+
+        [Output("tokenEndpoint")]
+        public Output<string?> TokenEndpoint { get; private set; } = null!;
 
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
@@ -87,6 +96,7 @@ namespace Pulumi.Databricks
                 AdditionalSecretOutputs =
                 {
                     "azureClientSecret",
+                    "clientSecret",
                     "googleCredentials",
                     "password",
                     "token",
@@ -136,6 +146,21 @@ namespace Pulumi.Databricks
 
         [Input("azureWorkspaceResourceId")]
         public Input<string>? AzureWorkspaceResourceId { get; set; }
+
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("configFile")]
         public Input<string>? ConfigFile { get; set; }
@@ -199,6 +224,9 @@ namespace Pulumi.Databricks
                 _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("tokenEndpoint")]
+        public Input<string>? TokenEndpoint { get; set; }
 
         [Input("username")]
         public Input<string>? Username { get; set; }

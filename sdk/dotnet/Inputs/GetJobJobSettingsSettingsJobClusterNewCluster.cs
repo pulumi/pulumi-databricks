@@ -88,6 +88,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("policyId")]
         public string? PolicyId { get; set; }
 
+        [Input("runtimeEngine")]
+        public string? RuntimeEngine { get; set; }
+
         [Input("singleUserName")]
         public string? SingleUserName { get; set; }
 

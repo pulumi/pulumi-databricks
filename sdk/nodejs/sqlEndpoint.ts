@@ -133,6 +133,10 @@ export class SqlEndpoint extends pulumi.CustomResource {
      * Databricks tags all endpoint resources with these tags.
      */
     public readonly tags!: pulumi.Output<outputs.SqlEndpointTags | undefined>;
+    /**
+     * [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+     */
+    public readonly warehouseType!: pulumi.Output<string | undefined>;
 
     /**
      * Create a SqlEndpoint resource with the given unique name, arguments, and options.
@@ -163,6 +167,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
             resourceInputs["spotInstancePolicy"] = state ? state.spotInstancePolicy : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["warehouseType"] = state ? state.warehouseType : undefined;
         } else {
             const args = argsOrState as SqlEndpointArgs | undefined;
             if ((!args || args.clusterSize === undefined) && !opts.urn) {
@@ -184,6 +189,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
             resourceInputs["spotInstancePolicy"] = args ? args.spotInstancePolicy : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["warehouseType"] = args ? args.warehouseType : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlEndpoint.__pulumiType, name, resourceInputs, opts);
@@ -249,6 +255,10 @@ export interface SqlEndpointState {
      * Databricks tags all endpoint resources with these tags.
      */
     tags?: pulumi.Input<inputs.SqlEndpointTags>;
+    /**
+     * [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+     */
+    warehouseType?: pulumi.Input<string>;
 }
 
 /**
@@ -310,4 +320,8 @@ export interface SqlEndpointArgs {
      * Databricks tags all endpoint resources with these tags.
      */
     tags?: pulumi.Input<inputs.SqlEndpointTags>;
+    /**
+     * [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+     */
+    warehouseType?: pulumi.Input<string>;
 }

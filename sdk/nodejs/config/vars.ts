@@ -79,6 +79,22 @@ Object.defineProperty(exports, "azureWorkspaceResourceId", {
     enumerable: true,
 });
 
+export declare const clientId: string | undefined;
+Object.defineProperty(exports, "clientId", {
+    get() {
+        return __config.get("clientId");
+    },
+    enumerable: true,
+});
+
+export declare const clientSecret: string | undefined;
+Object.defineProperty(exports, "clientSecret", {
+    get() {
+        return __config.get("clientSecret");
+    },
+    enumerable: true,
+});
+
 export declare const configFile: string | undefined;
 Object.defineProperty(exports, "configFile", {
     get() {
@@ -171,6 +187,14 @@ export declare const token: string | undefined;
 Object.defineProperty(exports, "token", {
     get() {
         return __config.get("token");
+    },
+    enumerable: true,
+});
+
+export declare const tokenEndpoint: string | undefined;
+Object.defineProperty(exports, "tokenEndpoint", {
+    get() {
+        return __config.get("tokenEndpoint");
     },
     enumerable: true,
 });

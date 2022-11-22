@@ -161,6 +161,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? PolicyId { get; set; }
 
         /// <summary>
+        /// The type of runtime of the cluster
+        /// </summary>
+        [Input("runtimeEngine")]
+        public Input<string>? RuntimeEngine { get; set; }
+
+        /// <summary>
         /// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         /// </summary>
         [Input("singleUserName")]

@@ -36,6 +36,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableDictionary<string, object>? Tags;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskResult> Tasks;
         public readonly int? TimeoutSeconds;
+        public readonly Outputs.GetJobJobSettingsSettingsWebhookNotificationsResult? WebhookNotifications;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsResult(
@@ -83,7 +84,9 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskResult> tasks,
 
-            int? timeoutSeconds)
+            int? timeoutSeconds,
+
+            Outputs.GetJobJobSettingsSettingsWebhookNotificationsResult? webhookNotifications)
         {
             DbtTask = dbtTask;
             EmailNotifications = emailNotifications;
@@ -108,6 +111,7 @@ namespace Pulumi.Databricks.Outputs
             Tags = tags;
             Tasks = tasks;
             TimeoutSeconds = timeoutSeconds;
+            WebhookNotifications = webhookNotifications;
         }
     }
 }

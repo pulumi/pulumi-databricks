@@ -8,446 +8,466 @@ import * as utilities from "./utilities";
 export { CatalogArgs, CatalogState } from "./catalog";
 export type Catalog = import("./catalog").Catalog;
 export const Catalog: typeof import("./catalog").Catalog = null as any;
+utilities.lazyLoad(exports, ["Catalog"], () => require("./catalog"));
 
 export { ClusterArgs, ClusterState } from "./cluster";
 export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
 export { ClusterPolicyArgs, ClusterPolicyState } from "./clusterPolicy";
 export type ClusterPolicy = import("./clusterPolicy").ClusterPolicy;
 export const ClusterPolicy: typeof import("./clusterPolicy").ClusterPolicy = null as any;
+utilities.lazyLoad(exports, ["ClusterPolicy"], () => require("./clusterPolicy"));
 
 export { DbfsFileArgs, DbfsFileState } from "./dbfsFile";
 export type DbfsFile = import("./dbfsFile").DbfsFile;
 export const DbfsFile: typeof import("./dbfsFile").DbfsFile = null as any;
+utilities.lazyLoad(exports, ["DbfsFile"], () => require("./dbfsFile"));
 
 export { DirectoryArgs, DirectoryState } from "./directory";
 export type Directory = import("./directory").Directory;
 export const Directory: typeof import("./directory").Directory = null as any;
+utilities.lazyLoad(exports, ["Directory"], () => require("./directory"));
 
 export { EntitlementsArgs, EntitlementsState } from "./entitlements";
 export type Entitlements = import("./entitlements").Entitlements;
 export const Entitlements: typeof import("./entitlements").Entitlements = null as any;
+utilities.lazyLoad(exports, ["Entitlements"], () => require("./entitlements"));
 
 export { ExternalLocationArgs, ExternalLocationState } from "./externalLocation";
 export type ExternalLocation = import("./externalLocation").ExternalLocation;
 export const ExternalLocation: typeof import("./externalLocation").ExternalLocation = null as any;
+utilities.lazyLoad(exports, ["ExternalLocation"], () => require("./externalLocation"));
 
 export { GetAwsAssumeRolePolicyArgs, GetAwsAssumeRolePolicyResult, GetAwsAssumeRolePolicyOutputArgs } from "./getAwsAssumeRolePolicy";
 export const getAwsAssumeRolePolicy: typeof import("./getAwsAssumeRolePolicy").getAwsAssumeRolePolicy = null as any;
 export const getAwsAssumeRolePolicyOutput: typeof import("./getAwsAssumeRolePolicy").getAwsAssumeRolePolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAwsAssumeRolePolicy","getAwsAssumeRolePolicyOutput"], () => require("./getAwsAssumeRolePolicy"));
 
 export { GetAwsBucketPolicyArgs, GetAwsBucketPolicyResult, GetAwsBucketPolicyOutputArgs } from "./getAwsBucketPolicy";
 export const getAwsBucketPolicy: typeof import("./getAwsBucketPolicy").getAwsBucketPolicy = null as any;
 export const getAwsBucketPolicyOutput: typeof import("./getAwsBucketPolicy").getAwsBucketPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAwsBucketPolicy","getAwsBucketPolicyOutput"], () => require("./getAwsBucketPolicy"));
 
 export { GetAwsCrossAccountPolicyArgs, GetAwsCrossAccountPolicyResult, GetAwsCrossAccountPolicyOutputArgs } from "./getAwsCrossAccountPolicy";
 export const getAwsCrossAccountPolicy: typeof import("./getAwsCrossAccountPolicy").getAwsCrossAccountPolicy = null as any;
 export const getAwsCrossAccountPolicyOutput: typeof import("./getAwsCrossAccountPolicy").getAwsCrossAccountPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAwsCrossAccountPolicy","getAwsCrossAccountPolicyOutput"], () => require("./getAwsCrossAccountPolicy"));
 
 export { GetCatalogsArgs, GetCatalogsResult, GetCatalogsOutputArgs } from "./getCatalogs";
 export const getCatalogs: typeof import("./getCatalogs").getCatalogs = null as any;
 export const getCatalogsOutput: typeof import("./getCatalogs").getCatalogsOutput = null as any;
+utilities.lazyLoad(exports, ["getCatalogs","getCatalogsOutput"], () => require("./getCatalogs"));
 
 export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getCluster";
 export const getCluster: typeof import("./getCluster").getCluster = null as any;
 export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
+utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
 
 export { GetClustersArgs, GetClustersResult, GetClustersOutputArgs } from "./getClusters";
 export const getClusters: typeof import("./getClusters").getClusters = null as any;
 export const getClustersOutput: typeof import("./getClusters").getClustersOutput = null as any;
+utilities.lazyLoad(exports, ["getClusters","getClustersOutput"], () => require("./getClusters"));
 
 export { GetCurrentUserResult } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
+utilities.lazyLoad(exports, ["getCurrentUser"], () => require("./getCurrentUser"));
 
 export { GetDbfsFileArgs, GetDbfsFileResult, GetDbfsFileOutputArgs } from "./getDbfsFile";
 export const getDbfsFile: typeof import("./getDbfsFile").getDbfsFile = null as any;
 export const getDbfsFileOutput: typeof import("./getDbfsFile").getDbfsFileOutput = null as any;
+utilities.lazyLoad(exports, ["getDbfsFile","getDbfsFileOutput"], () => require("./getDbfsFile"));
 
 export { GetDbfsFilePathsArgs, GetDbfsFilePathsResult, GetDbfsFilePathsOutputArgs } from "./getDbfsFilePaths";
 export const getDbfsFilePaths: typeof import("./getDbfsFilePaths").getDbfsFilePaths = null as any;
 export const getDbfsFilePathsOutput: typeof import("./getDbfsFilePaths").getDbfsFilePathsOutput = null as any;
+utilities.lazyLoad(exports, ["getDbfsFilePaths","getDbfsFilePathsOutput"], () => require("./getDbfsFilePaths"));
 
 export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
 export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
 
 export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
 export const getJob: typeof import("./getJob").getJob = null as any;
 export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
+utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
 
 export { GetJobsArgs, GetJobsResult, GetJobsOutputArgs } from "./getJobs";
 export const getJobs: typeof import("./getJobs").getJobs = null as any;
 export const getJobsOutput: typeof import("./getJobs").getJobsOutput = null as any;
+utilities.lazyLoad(exports, ["getJobs","getJobsOutput"], () => require("./getJobs"));
 
 export { GetMwsWorkspacesArgs, GetMwsWorkspacesResult, GetMwsWorkspacesOutputArgs } from "./getMwsWorkspaces";
 export const getMwsWorkspaces: typeof import("./getMwsWorkspaces").getMwsWorkspaces = null as any;
 export const getMwsWorkspacesOutput: typeof import("./getMwsWorkspaces").getMwsWorkspacesOutput = null as any;
+utilities.lazyLoad(exports, ["getMwsWorkspaces","getMwsWorkspacesOutput"], () => require("./getMwsWorkspaces"));
 
 export { GetNodeTypeArgs, GetNodeTypeResult, GetNodeTypeOutputArgs } from "./getNodeType";
 export const getNodeType: typeof import("./getNodeType").getNodeType = null as any;
 export const getNodeTypeOutput: typeof import("./getNodeType").getNodeTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getNodeType","getNodeTypeOutput"], () => require("./getNodeType"));
 
 export { GetNotebookArgs, GetNotebookResult, GetNotebookOutputArgs } from "./getNotebook";
 export const getNotebook: typeof import("./getNotebook").getNotebook = null as any;
 export const getNotebookOutput: typeof import("./getNotebook").getNotebookOutput = null as any;
+utilities.lazyLoad(exports, ["getNotebook","getNotebookOutput"], () => require("./getNotebook"));
 
 export { GetNotebookPathsArgs, GetNotebookPathsResult, GetNotebookPathsOutputArgs } from "./getNotebookPaths";
 export const getNotebookPaths: typeof import("./getNotebookPaths").getNotebookPaths = null as any;
 export const getNotebookPathsOutput: typeof import("./getNotebookPaths").getNotebookPathsOutput = null as any;
+utilities.lazyLoad(exports, ["getNotebookPaths","getNotebookPathsOutput"], () => require("./getNotebookPaths"));
 
 export { GetSchemasArgs, GetSchemasResult, GetSchemasOutputArgs } from "./getSchemas";
 export const getSchemas: typeof import("./getSchemas").getSchemas = null as any;
 export const getSchemasOutput: typeof import("./getSchemas").getSchemasOutput = null as any;
+utilities.lazyLoad(exports, ["getSchemas","getSchemasOutput"], () => require("./getSchemas"));
 
 export { GetServicePrincipalArgs, GetServicePrincipalResult, GetServicePrincipalOutputArgs } from "./getServicePrincipal";
 export const getServicePrincipal: typeof import("./getServicePrincipal").getServicePrincipal = null as any;
 export const getServicePrincipalOutput: typeof import("./getServicePrincipal").getServicePrincipalOutput = null as any;
+utilities.lazyLoad(exports, ["getServicePrincipal","getServicePrincipalOutput"], () => require("./getServicePrincipal"));
 
 export { GetServicePrincipalsArgs, GetServicePrincipalsResult, GetServicePrincipalsOutputArgs } from "./getServicePrincipals";
 export const getServicePrincipals: typeof import("./getServicePrincipals").getServicePrincipals = null as any;
 export const getServicePrincipalsOutput: typeof import("./getServicePrincipals").getServicePrincipalsOutput = null as any;
+utilities.lazyLoad(exports, ["getServicePrincipals","getServicePrincipalsOutput"], () => require("./getServicePrincipals"));
+
+export { GetShareArgs, GetShareResult, GetShareOutputArgs } from "./getShare";
+export const getShare: typeof import("./getShare").getShare = null as any;
+export const getShareOutput: typeof import("./getShare").getShareOutput = null as any;
+utilities.lazyLoad(exports, ["getShare","getShareOutput"], () => require("./getShare"));
+
+export { GetSharesArgs, GetSharesResult, GetSharesOutputArgs } from "./getShares";
+export const getShares: typeof import("./getShares").getShares = null as any;
+export const getSharesOutput: typeof import("./getShares").getSharesOutput = null as any;
+utilities.lazyLoad(exports, ["getShares","getSharesOutput"], () => require("./getShares"));
 
 export { GetSparkVersionArgs, GetSparkVersionResult, GetSparkVersionOutputArgs } from "./getSparkVersion";
 export const getSparkVersion: typeof import("./getSparkVersion").getSparkVersion = null as any;
 export const getSparkVersionOutput: typeof import("./getSparkVersion").getSparkVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getSparkVersion","getSparkVersionOutput"], () => require("./getSparkVersion"));
 
 export { GetSqlWarehouseArgs, GetSqlWarehouseResult, GetSqlWarehouseOutputArgs } from "./getSqlWarehouse";
 export const getSqlWarehouse: typeof import("./getSqlWarehouse").getSqlWarehouse = null as any;
 export const getSqlWarehouseOutput: typeof import("./getSqlWarehouse").getSqlWarehouseOutput = null as any;
+utilities.lazyLoad(exports, ["getSqlWarehouse","getSqlWarehouseOutput"], () => require("./getSqlWarehouse"));
 
 export { GetSqlWarehousesArgs, GetSqlWarehousesResult, GetSqlWarehousesOutputArgs } from "./getSqlWarehouses";
 export const getSqlWarehouses: typeof import("./getSqlWarehouses").getSqlWarehouses = null as any;
 export const getSqlWarehousesOutput: typeof import("./getSqlWarehouses").getSqlWarehousesOutput = null as any;
+utilities.lazyLoad(exports, ["getSqlWarehouses","getSqlWarehousesOutput"], () => require("./getSqlWarehouses"));
 
 export { GetTablesArgs, GetTablesResult, GetTablesOutputArgs } from "./getTables";
 export const getTables: typeof import("./getTables").getTables = null as any;
 export const getTablesOutput: typeof import("./getTables").getTablesOutput = null as any;
+utilities.lazyLoad(exports, ["getTables","getTablesOutput"], () => require("./getTables"));
 
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
 
 export { GetViewsArgs, GetViewsResult, GetViewsOutputArgs } from "./getViews";
 export const getViews: typeof import("./getViews").getViews = null as any;
 export const getViewsOutput: typeof import("./getViews").getViewsOutput = null as any;
+utilities.lazyLoad(exports, ["getViews","getViewsOutput"], () => require("./getViews"));
 
 export { GetZonesResult } from "./getZones";
 export const getZones: typeof import("./getZones").getZones = null as any;
+utilities.lazyLoad(exports, ["getZones"], () => require("./getZones"));
 
 export { GitCredentialArgs, GitCredentialState } from "./gitCredential";
 export type GitCredential = import("./gitCredential").GitCredential;
 export const GitCredential: typeof import("./gitCredential").GitCredential = null as any;
+utilities.lazyLoad(exports, ["GitCredential"], () => require("./gitCredential"));
 
 export { GlobalInitScriptArgs, GlobalInitScriptState } from "./globalInitScript";
 export type GlobalInitScript = import("./globalInitScript").GlobalInitScript;
 export const GlobalInitScript: typeof import("./globalInitScript").GlobalInitScript = null as any;
+utilities.lazyLoad(exports, ["GlobalInitScript"], () => require("./globalInitScript"));
 
 export { GrantsArgs, GrantsState } from "./grants";
 export type Grants = import("./grants").Grants;
 export const Grants: typeof import("./grants").Grants = null as any;
+utilities.lazyLoad(exports, ["Grants"], () => require("./grants"));
 
 export { GroupArgs, GroupState } from "./group";
 export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
 
 export { GroupInstanceProfileArgs, GroupInstanceProfileState } from "./groupInstanceProfile";
 export type GroupInstanceProfile = import("./groupInstanceProfile").GroupInstanceProfile;
 export const GroupInstanceProfile: typeof import("./groupInstanceProfile").GroupInstanceProfile = null as any;
+utilities.lazyLoad(exports, ["GroupInstanceProfile"], () => require("./groupInstanceProfile"));
 
 export { GroupMemberArgs, GroupMemberState } from "./groupMember";
 export type GroupMember = import("./groupMember").GroupMember;
 export const GroupMember: typeof import("./groupMember").GroupMember = null as any;
+utilities.lazyLoad(exports, ["GroupMember"], () => require("./groupMember"));
 
 export { GroupRoleArgs, GroupRoleState } from "./groupRole";
 export type GroupRole = import("./groupRole").GroupRole;
 export const GroupRole: typeof import("./groupRole").GroupRole = null as any;
+utilities.lazyLoad(exports, ["GroupRole"], () => require("./groupRole"));
 
 export { InstancePoolArgs, InstancePoolState } from "./instancePool";
 export type InstancePool = import("./instancePool").InstancePool;
 export const InstancePool: typeof import("./instancePool").InstancePool = null as any;
+utilities.lazyLoad(exports, ["InstancePool"], () => require("./instancePool"));
 
 export { InstanceProfileArgs, InstanceProfileState } from "./instanceProfile";
 export type InstanceProfile = import("./instanceProfile").InstanceProfile;
 export const InstanceProfile: typeof import("./instanceProfile").InstanceProfile = null as any;
+utilities.lazyLoad(exports, ["InstanceProfile"], () => require("./instanceProfile"));
 
 export { IpAccessListArgs, IpAccessListState } from "./ipAccessList";
 export type IpAccessList = import("./ipAccessList").IpAccessList;
 export const IpAccessList: typeof import("./ipAccessList").IpAccessList = null as any;
+utilities.lazyLoad(exports, ["IpAccessList"], () => require("./ipAccessList"));
 
 export { JobArgs, JobState } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 
 export { LibraryArgs, LibraryState } from "./library";
 export type Library = import("./library").Library;
 export const Library: typeof import("./library").Library = null as any;
+utilities.lazyLoad(exports, ["Library"], () => require("./library"));
 
 export { MetastoreArgs, MetastoreState } from "./metastore";
 export type Metastore = import("./metastore").Metastore;
 export const Metastore: typeof import("./metastore").Metastore = null as any;
+utilities.lazyLoad(exports, ["Metastore"], () => require("./metastore"));
 
 export { MetastoreAssignmentArgs, MetastoreAssignmentState } from "./metastoreAssignment";
 export type MetastoreAssignment = import("./metastoreAssignment").MetastoreAssignment;
 export const MetastoreAssignment: typeof import("./metastoreAssignment").MetastoreAssignment = null as any;
+utilities.lazyLoad(exports, ["MetastoreAssignment"], () => require("./metastoreAssignment"));
 
 export { MetastoreDataAccessArgs, MetastoreDataAccessState } from "./metastoreDataAccess";
 export type MetastoreDataAccess = import("./metastoreDataAccess").MetastoreDataAccess;
 export const MetastoreDataAccess: typeof import("./metastoreDataAccess").MetastoreDataAccess = null as any;
+utilities.lazyLoad(exports, ["MetastoreDataAccess"], () => require("./metastoreDataAccess"));
 
 export { MlflowExperimentArgs, MlflowExperimentState } from "./mlflowExperiment";
 export type MlflowExperiment = import("./mlflowExperiment").MlflowExperiment;
 export const MlflowExperiment: typeof import("./mlflowExperiment").MlflowExperiment = null as any;
+utilities.lazyLoad(exports, ["MlflowExperiment"], () => require("./mlflowExperiment"));
 
 export { MlflowModelArgs, MlflowModelState } from "./mlflowModel";
 export type MlflowModel = import("./mlflowModel").MlflowModel;
 export const MlflowModel: typeof import("./mlflowModel").MlflowModel = null as any;
+utilities.lazyLoad(exports, ["MlflowModel"], () => require("./mlflowModel"));
 
 export { MlflowWebhookArgs, MlflowWebhookState } from "./mlflowWebhook";
 export type MlflowWebhook = import("./mlflowWebhook").MlflowWebhook;
 export const MlflowWebhook: typeof import("./mlflowWebhook").MlflowWebhook = null as any;
+utilities.lazyLoad(exports, ["MlflowWebhook"], () => require("./mlflowWebhook"));
 
 export { MountArgs, MountState } from "./mount";
 export type Mount = import("./mount").Mount;
 export const Mount: typeof import("./mount").Mount = null as any;
+utilities.lazyLoad(exports, ["Mount"], () => require("./mount"));
 
 export { MwsCredentialsArgs, MwsCredentialsState } from "./mwsCredentials";
 export type MwsCredentials = import("./mwsCredentials").MwsCredentials;
 export const MwsCredentials: typeof import("./mwsCredentials").MwsCredentials = null as any;
+utilities.lazyLoad(exports, ["MwsCredentials"], () => require("./mwsCredentials"));
 
 export { MwsCustomerManagedKeysArgs, MwsCustomerManagedKeysState } from "./mwsCustomerManagedKeys";
 export type MwsCustomerManagedKeys = import("./mwsCustomerManagedKeys").MwsCustomerManagedKeys;
 export const MwsCustomerManagedKeys: typeof import("./mwsCustomerManagedKeys").MwsCustomerManagedKeys = null as any;
+utilities.lazyLoad(exports, ["MwsCustomerManagedKeys"], () => require("./mwsCustomerManagedKeys"));
 
 export { MwsLogDeliveryArgs, MwsLogDeliveryState } from "./mwsLogDelivery";
 export type MwsLogDelivery = import("./mwsLogDelivery").MwsLogDelivery;
 export const MwsLogDelivery: typeof import("./mwsLogDelivery").MwsLogDelivery = null as any;
+utilities.lazyLoad(exports, ["MwsLogDelivery"], () => require("./mwsLogDelivery"));
 
 export { MwsNetworksArgs, MwsNetworksState } from "./mwsNetworks";
 export type MwsNetworks = import("./mwsNetworks").MwsNetworks;
 export const MwsNetworks: typeof import("./mwsNetworks").MwsNetworks = null as any;
+utilities.lazyLoad(exports, ["MwsNetworks"], () => require("./mwsNetworks"));
 
 export { MwsPermissionAssignmentArgs, MwsPermissionAssignmentState } from "./mwsPermissionAssignment";
 export type MwsPermissionAssignment = import("./mwsPermissionAssignment").MwsPermissionAssignment;
 export const MwsPermissionAssignment: typeof import("./mwsPermissionAssignment").MwsPermissionAssignment = null as any;
+utilities.lazyLoad(exports, ["MwsPermissionAssignment"], () => require("./mwsPermissionAssignment"));
 
 export { MwsPrivateAccessSettingsArgs, MwsPrivateAccessSettingsState } from "./mwsPrivateAccessSettings";
 export type MwsPrivateAccessSettings = import("./mwsPrivateAccessSettings").MwsPrivateAccessSettings;
 export const MwsPrivateAccessSettings: typeof import("./mwsPrivateAccessSettings").MwsPrivateAccessSettings = null as any;
+utilities.lazyLoad(exports, ["MwsPrivateAccessSettings"], () => require("./mwsPrivateAccessSettings"));
 
 export { MwsStorageConfigurationsArgs, MwsStorageConfigurationsState } from "./mwsStorageConfigurations";
 export type MwsStorageConfigurations = import("./mwsStorageConfigurations").MwsStorageConfigurations;
 export const MwsStorageConfigurations: typeof import("./mwsStorageConfigurations").MwsStorageConfigurations = null as any;
+utilities.lazyLoad(exports, ["MwsStorageConfigurations"], () => require("./mwsStorageConfigurations"));
 
 export { MwsVpcEndpointArgs, MwsVpcEndpointState } from "./mwsVpcEndpoint";
 export type MwsVpcEndpoint = import("./mwsVpcEndpoint").MwsVpcEndpoint;
 export const MwsVpcEndpoint: typeof import("./mwsVpcEndpoint").MwsVpcEndpoint = null as any;
+utilities.lazyLoad(exports, ["MwsVpcEndpoint"], () => require("./mwsVpcEndpoint"));
 
 export { MwsWorkspacesArgs, MwsWorkspacesState } from "./mwsWorkspaces";
 export type MwsWorkspaces = import("./mwsWorkspaces").MwsWorkspaces;
 export const MwsWorkspaces: typeof import("./mwsWorkspaces").MwsWorkspaces = null as any;
+utilities.lazyLoad(exports, ["MwsWorkspaces"], () => require("./mwsWorkspaces"));
 
 export { NotebookArgs, NotebookState } from "./notebook";
 export type Notebook = import("./notebook").Notebook;
 export const Notebook: typeof import("./notebook").Notebook = null as any;
+utilities.lazyLoad(exports, ["Notebook"], () => require("./notebook"));
 
 export { OboTokenArgs, OboTokenState } from "./oboToken";
 export type OboToken = import("./oboToken").OboToken;
 export const OboToken: typeof import("./oboToken").OboToken = null as any;
+utilities.lazyLoad(exports, ["OboToken"], () => require("./oboToken"));
 
 export { PermissionAssignmentArgs, PermissionAssignmentState } from "./permissionAssignment";
 export type PermissionAssignment = import("./permissionAssignment").PermissionAssignment;
 export const PermissionAssignment: typeof import("./permissionAssignment").PermissionAssignment = null as any;
+utilities.lazyLoad(exports, ["PermissionAssignment"], () => require("./permissionAssignment"));
 
 export { PermissionsArgs, PermissionsState } from "./permissions";
 export type Permissions = import("./permissions").Permissions;
 export const Permissions: typeof import("./permissions").Permissions = null as any;
+utilities.lazyLoad(exports, ["Permissions"], () => require("./permissions"));
 
 export { PipelineArgs, PipelineState } from "./pipeline";
 export type Pipeline = import("./pipeline").Pipeline;
 export const Pipeline: typeof import("./pipeline").Pipeline = null as any;
+utilities.lazyLoad(exports, ["Pipeline"], () => require("./pipeline"));
 
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
 export { RecipientArgs, RecipientState } from "./recipient";
 export type Recipient = import("./recipient").Recipient;
 export const Recipient: typeof import("./recipient").Recipient = null as any;
+utilities.lazyLoad(exports, ["Recipient"], () => require("./recipient"));
 
 export { RepoArgs, RepoState } from "./repo";
 export type Repo = import("./repo").Repo;
 export const Repo: typeof import("./repo").Repo = null as any;
+utilities.lazyLoad(exports, ["Repo"], () => require("./repo"));
 
 export { SchemaArgs, SchemaState } from "./schema";
 export type Schema = import("./schema").Schema;
 export const Schema: typeof import("./schema").Schema = null as any;
+utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
 
 export { SecretArgs, SecretState } from "./secret";
 export type Secret = import("./secret").Secret;
 export const Secret: typeof import("./secret").Secret = null as any;
+utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
 
 export { SecretAclArgs, SecretAclState } from "./secretAcl";
 export type SecretAcl = import("./secretAcl").SecretAcl;
 export const SecretAcl: typeof import("./secretAcl").SecretAcl = null as any;
+utilities.lazyLoad(exports, ["SecretAcl"], () => require("./secretAcl"));
 
 export { SecretScopeArgs, SecretScopeState } from "./secretScope";
 export type SecretScope = import("./secretScope").SecretScope;
 export const SecretScope: typeof import("./secretScope").SecretScope = null as any;
+utilities.lazyLoad(exports, ["SecretScope"], () => require("./secretScope"));
 
 export { ServicePrincipalArgs, ServicePrincipalState } from "./servicePrincipal";
 export type ServicePrincipal = import("./servicePrincipal").ServicePrincipal;
 export const ServicePrincipal: typeof import("./servicePrincipal").ServicePrincipal = null as any;
+utilities.lazyLoad(exports, ["ServicePrincipal"], () => require("./servicePrincipal"));
 
 export { ServicePrincipalRoleArgs, ServicePrincipalRoleState } from "./servicePrincipalRole";
 export type ServicePrincipalRole = import("./servicePrincipalRole").ServicePrincipalRole;
 export const ServicePrincipalRole: typeof import("./servicePrincipalRole").ServicePrincipalRole = null as any;
+utilities.lazyLoad(exports, ["ServicePrincipalRole"], () => require("./servicePrincipalRole"));
+
+export { ServicePrincipalSecretArgs, ServicePrincipalSecretState } from "./servicePrincipalSecret";
+export type ServicePrincipalSecret = import("./servicePrincipalSecret").ServicePrincipalSecret;
+export const ServicePrincipalSecret: typeof import("./servicePrincipalSecret").ServicePrincipalSecret = null as any;
+utilities.lazyLoad(exports, ["ServicePrincipalSecret"], () => require("./servicePrincipalSecret"));
+
+export { ShareArgs, ShareState } from "./share";
+export type Share = import("./share").Share;
+export const Share: typeof import("./share").Share = null as any;
+utilities.lazyLoad(exports, ["Share"], () => require("./share"));
 
 export { SqlDashboardArgs, SqlDashboardState } from "./sqlDashboard";
 export type SqlDashboard = import("./sqlDashboard").SqlDashboard;
 export const SqlDashboard: typeof import("./sqlDashboard").SqlDashboard = null as any;
+utilities.lazyLoad(exports, ["SqlDashboard"], () => require("./sqlDashboard"));
 
 export { SqlEndpointArgs, SqlEndpointState } from "./sqlEndpoint";
 export type SqlEndpoint = import("./sqlEndpoint").SqlEndpoint;
 export const SqlEndpoint: typeof import("./sqlEndpoint").SqlEndpoint = null as any;
+utilities.lazyLoad(exports, ["SqlEndpoint"], () => require("./sqlEndpoint"));
 
 export { SqlGlobalConfigArgs, SqlGlobalConfigState } from "./sqlGlobalConfig";
 export type SqlGlobalConfig = import("./sqlGlobalConfig").SqlGlobalConfig;
 export const SqlGlobalConfig: typeof import("./sqlGlobalConfig").SqlGlobalConfig = null as any;
+utilities.lazyLoad(exports, ["SqlGlobalConfig"], () => require("./sqlGlobalConfig"));
 
 export { SqlPermissionsArgs, SqlPermissionsState } from "./sqlPermissions";
 export type SqlPermissions = import("./sqlPermissions").SqlPermissions;
 export const SqlPermissions: typeof import("./sqlPermissions").SqlPermissions = null as any;
+utilities.lazyLoad(exports, ["SqlPermissions"], () => require("./sqlPermissions"));
 
 export { SqlQueryArgs, SqlQueryState } from "./sqlQuery";
 export type SqlQuery = import("./sqlQuery").SqlQuery;
 export const SqlQuery: typeof import("./sqlQuery").SqlQuery = null as any;
+utilities.lazyLoad(exports, ["SqlQuery"], () => require("./sqlQuery"));
 
 export { SqlVisualizationArgs, SqlVisualizationState } from "./sqlVisualization";
 export type SqlVisualization = import("./sqlVisualization").SqlVisualization;
 export const SqlVisualization: typeof import("./sqlVisualization").SqlVisualization = null as any;
+utilities.lazyLoad(exports, ["SqlVisualization"], () => require("./sqlVisualization"));
 
 export { SqlWidgetArgs, SqlWidgetState } from "./sqlWidget";
 export type SqlWidget = import("./sqlWidget").SqlWidget;
 export const SqlWidget: typeof import("./sqlWidget").SqlWidget = null as any;
+utilities.lazyLoad(exports, ["SqlWidget"], () => require("./sqlWidget"));
 
 export { StorageCredentialArgs, StorageCredentialState } from "./storageCredential";
 export type StorageCredential = import("./storageCredential").StorageCredential;
 export const StorageCredential: typeof import("./storageCredential").StorageCredential = null as any;
+utilities.lazyLoad(exports, ["StorageCredential"], () => require("./storageCredential"));
 
 export { TableArgs, TableState } from "./table";
 export type Table = import("./table").Table;
 export const Table: typeof import("./table").Table = null as any;
+utilities.lazyLoad(exports, ["Table"], () => require("./table"));
 
 export { TokenArgs, TokenState } from "./token";
 export type Token = import("./token").Token;
 export const Token: typeof import("./token").Token = null as any;
+utilities.lazyLoad(exports, ["Token"], () => require("./token"));
 
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
 export { UserInstanceProfileArgs, UserInstanceProfileState } from "./userInstanceProfile";
 export type UserInstanceProfile = import("./userInstanceProfile").UserInstanceProfile;
 export const UserInstanceProfile: typeof import("./userInstanceProfile").UserInstanceProfile = null as any;
+utilities.lazyLoad(exports, ["UserInstanceProfile"], () => require("./userInstanceProfile"));
 
 export { UserRoleArgs, UserRoleState } from "./userRole";
 export type UserRole = import("./userRole").UserRole;
 export const UserRole: typeof import("./userRole").UserRole = null as any;
+utilities.lazyLoad(exports, ["UserRole"], () => require("./userRole"));
 
 export { WorkspaceConfArgs, WorkspaceConfState } from "./workspaceConf";
 export type WorkspaceConf = import("./workspaceConf").WorkspaceConf;
 export const WorkspaceConf: typeof import("./workspaceConf").WorkspaceConf = null as any;
-
-utilities.lazyLoad(exports, ["Catalog"], () => require("./catalog"));
-utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
-utilities.lazyLoad(exports, ["ClusterPolicy"], () => require("./clusterPolicy"));
-utilities.lazyLoad(exports, ["DbfsFile"], () => require("./dbfsFile"));
-utilities.lazyLoad(exports, ["Directory"], () => require("./directory"));
-utilities.lazyLoad(exports, ["Entitlements"], () => require("./entitlements"));
-utilities.lazyLoad(exports, ["ExternalLocation"], () => require("./externalLocation"));
-utilities.lazyLoad(exports, ["getAwsAssumeRolePolicy","getAwsAssumeRolePolicyOutput"], () => require("./getAwsAssumeRolePolicy"));
-utilities.lazyLoad(exports, ["getAwsBucketPolicy","getAwsBucketPolicyOutput"], () => require("./getAwsBucketPolicy"));
-utilities.lazyLoad(exports, ["getAwsCrossAccountPolicy","getAwsCrossAccountPolicyOutput"], () => require("./getAwsCrossAccountPolicy"));
-utilities.lazyLoad(exports, ["getCatalogs","getCatalogsOutput"], () => require("./getCatalogs"));
-utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
-utilities.lazyLoad(exports, ["getClusters","getClustersOutput"], () => require("./getClusters"));
-utilities.lazyLoad(exports, ["getCurrentUser"], () => require("./getCurrentUser"));
-utilities.lazyLoad(exports, ["getDbfsFile","getDbfsFileOutput"], () => require("./getDbfsFile"));
-utilities.lazyLoad(exports, ["getDbfsFilePaths","getDbfsFilePathsOutput"], () => require("./getDbfsFilePaths"));
-utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
-utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
-utilities.lazyLoad(exports, ["getJobs","getJobsOutput"], () => require("./getJobs"));
-utilities.lazyLoad(exports, ["getMwsWorkspaces","getMwsWorkspacesOutput"], () => require("./getMwsWorkspaces"));
-utilities.lazyLoad(exports, ["getNodeType","getNodeTypeOutput"], () => require("./getNodeType"));
-utilities.lazyLoad(exports, ["getNotebook","getNotebookOutput"], () => require("./getNotebook"));
-utilities.lazyLoad(exports, ["getNotebookPaths","getNotebookPathsOutput"], () => require("./getNotebookPaths"));
-utilities.lazyLoad(exports, ["getSchemas","getSchemasOutput"], () => require("./getSchemas"));
-utilities.lazyLoad(exports, ["getServicePrincipal","getServicePrincipalOutput"], () => require("./getServicePrincipal"));
-utilities.lazyLoad(exports, ["getServicePrincipals","getServicePrincipalsOutput"], () => require("./getServicePrincipals"));
-utilities.lazyLoad(exports, ["getSparkVersion","getSparkVersionOutput"], () => require("./getSparkVersion"));
-utilities.lazyLoad(exports, ["getSqlWarehouse","getSqlWarehouseOutput"], () => require("./getSqlWarehouse"));
-utilities.lazyLoad(exports, ["getSqlWarehouses","getSqlWarehousesOutput"], () => require("./getSqlWarehouses"));
-utilities.lazyLoad(exports, ["getTables","getTablesOutput"], () => require("./getTables"));
-utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
-utilities.lazyLoad(exports, ["getViews","getViewsOutput"], () => require("./getViews"));
-utilities.lazyLoad(exports, ["getZones"], () => require("./getZones"));
-utilities.lazyLoad(exports, ["GitCredential"], () => require("./gitCredential"));
-utilities.lazyLoad(exports, ["GlobalInitScript"], () => require("./globalInitScript"));
-utilities.lazyLoad(exports, ["Grants"], () => require("./grants"));
-utilities.lazyLoad(exports, ["Group"], () => require("./group"));
-utilities.lazyLoad(exports, ["GroupInstanceProfile"], () => require("./groupInstanceProfile"));
-utilities.lazyLoad(exports, ["GroupMember"], () => require("./groupMember"));
-utilities.lazyLoad(exports, ["GroupRole"], () => require("./groupRole"));
-utilities.lazyLoad(exports, ["InstancePool"], () => require("./instancePool"));
-utilities.lazyLoad(exports, ["InstanceProfile"], () => require("./instanceProfile"));
-utilities.lazyLoad(exports, ["IpAccessList"], () => require("./ipAccessList"));
-utilities.lazyLoad(exports, ["Job"], () => require("./job"));
-utilities.lazyLoad(exports, ["Library"], () => require("./library"));
-utilities.lazyLoad(exports, ["Metastore"], () => require("./metastore"));
-utilities.lazyLoad(exports, ["MetastoreAssignment"], () => require("./metastoreAssignment"));
-utilities.lazyLoad(exports, ["MetastoreDataAccess"], () => require("./metastoreDataAccess"));
-utilities.lazyLoad(exports, ["MlflowExperiment"], () => require("./mlflowExperiment"));
-utilities.lazyLoad(exports, ["MlflowModel"], () => require("./mlflowModel"));
-utilities.lazyLoad(exports, ["MlflowWebhook"], () => require("./mlflowWebhook"));
-utilities.lazyLoad(exports, ["Mount"], () => require("./mount"));
-utilities.lazyLoad(exports, ["MwsCredentials"], () => require("./mwsCredentials"));
-utilities.lazyLoad(exports, ["MwsCustomerManagedKeys"], () => require("./mwsCustomerManagedKeys"));
-utilities.lazyLoad(exports, ["MwsLogDelivery"], () => require("./mwsLogDelivery"));
-utilities.lazyLoad(exports, ["MwsNetworks"], () => require("./mwsNetworks"));
-utilities.lazyLoad(exports, ["MwsPermissionAssignment"], () => require("./mwsPermissionAssignment"));
-utilities.lazyLoad(exports, ["MwsPrivateAccessSettings"], () => require("./mwsPrivateAccessSettings"));
-utilities.lazyLoad(exports, ["MwsStorageConfigurations"], () => require("./mwsStorageConfigurations"));
-utilities.lazyLoad(exports, ["MwsVpcEndpoint"], () => require("./mwsVpcEndpoint"));
-utilities.lazyLoad(exports, ["MwsWorkspaces"], () => require("./mwsWorkspaces"));
-utilities.lazyLoad(exports, ["Notebook"], () => require("./notebook"));
-utilities.lazyLoad(exports, ["OboToken"], () => require("./oboToken"));
-utilities.lazyLoad(exports, ["PermissionAssignment"], () => require("./permissionAssignment"));
-utilities.lazyLoad(exports, ["Permissions"], () => require("./permissions"));
-utilities.lazyLoad(exports, ["Pipeline"], () => require("./pipeline"));
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
-utilities.lazyLoad(exports, ["Recipient"], () => require("./recipient"));
-utilities.lazyLoad(exports, ["Repo"], () => require("./repo"));
-utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
-utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
-utilities.lazyLoad(exports, ["SecretAcl"], () => require("./secretAcl"));
-utilities.lazyLoad(exports, ["SecretScope"], () => require("./secretScope"));
-utilities.lazyLoad(exports, ["ServicePrincipal"], () => require("./servicePrincipal"));
-utilities.lazyLoad(exports, ["ServicePrincipalRole"], () => require("./servicePrincipalRole"));
-utilities.lazyLoad(exports, ["SqlDashboard"], () => require("./sqlDashboard"));
-utilities.lazyLoad(exports, ["SqlEndpoint"], () => require("./sqlEndpoint"));
-utilities.lazyLoad(exports, ["SqlGlobalConfig"], () => require("./sqlGlobalConfig"));
-utilities.lazyLoad(exports, ["SqlPermissions"], () => require("./sqlPermissions"));
-utilities.lazyLoad(exports, ["SqlQuery"], () => require("./sqlQuery"));
-utilities.lazyLoad(exports, ["SqlVisualization"], () => require("./sqlVisualization"));
-utilities.lazyLoad(exports, ["SqlWidget"], () => require("./sqlWidget"));
-utilities.lazyLoad(exports, ["StorageCredential"], () => require("./storageCredential"));
-utilities.lazyLoad(exports, ["Table"], () => require("./table"));
-utilities.lazyLoad(exports, ["Token"], () => require("./token"));
-utilities.lazyLoad(exports, ["User"], () => require("./user"));
-utilities.lazyLoad(exports, ["UserInstanceProfile"], () => require("./userInstanceProfile"));
-utilities.lazyLoad(exports, ["UserRole"], () => require("./userRole"));
 utilities.lazyLoad(exports, ["WorkspaceConf"], () => require("./workspaceConf"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -558,6 +578,10 @@ const _module = {
                 return new ServicePrincipal(name, <any>undefined, { urn })
             case "databricks:index/servicePrincipalRole:ServicePrincipalRole":
                 return new ServicePrincipalRole(name, <any>undefined, { urn })
+            case "databricks:index/servicePrincipalSecret:servicePrincipalSecret":
+                return new ServicePrincipalSecret(name, <any>undefined, { urn })
+            case "databricks:index/share:Share":
+                return new Share(name, <any>undefined, { urn })
             case "databricks:index/sqlDashboard:SqlDashboard":
                 return new SqlDashboard(name, <any>undefined, { urn })
             case "databricks:index/sqlEndpoint:SqlEndpoint":
@@ -639,6 +663,8 @@ pulumi.runtime.registerResourceModule("databricks", "index/secretAcl", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secretScope", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipal", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipalRole", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipalSecret", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/share", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlDashboard", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlGlobalConfig", _module)

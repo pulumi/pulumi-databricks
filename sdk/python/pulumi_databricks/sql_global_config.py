@@ -21,7 +21,8 @@ class SqlGlobalConfigArgs:
                  sql_config_params: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a SqlGlobalConfig resource.
-        :param pulumi.Input[Mapping[str, Any]] data_access_config: - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        :param pulumi.Input[Mapping[str, Any]] data_access_config: - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        :param pulumi.Input[bool] enable_serverless_compute: - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
         :param pulumi.Input[str] instance_profile_arn: - InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         :param pulumi.Input[str] security_policy: - The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         :param pulumi.Input[Mapping[str, Any]] sql_config_params: - SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
@@ -41,7 +42,7 @@ class SqlGlobalConfigArgs:
     @pulumi.getter(name="dataAccessConfig")
     def data_access_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         """
         return pulumi.get(self, "data_access_config")
 
@@ -52,6 +53,9 @@ class SqlGlobalConfigArgs:
     @property
     @pulumi.getter(name="enableServerlessCompute")
     def enable_serverless_compute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+        """
         return pulumi.get(self, "enable_serverless_compute")
 
     @enable_serverless_compute.setter
@@ -105,7 +109,8 @@ class _SqlGlobalConfigState:
                  sql_config_params: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering SqlGlobalConfig resources.
-        :param pulumi.Input[Mapping[str, Any]] data_access_config: - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        :param pulumi.Input[Mapping[str, Any]] data_access_config: - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        :param pulumi.Input[bool] enable_serverless_compute: - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
         :param pulumi.Input[str] instance_profile_arn: - InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         :param pulumi.Input[str] security_policy: - The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         :param pulumi.Input[Mapping[str, Any]] sql_config_params: - SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
@@ -125,7 +130,7 @@ class _SqlGlobalConfigState:
     @pulumi.getter(name="dataAccessConfig")
     def data_access_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         """
         return pulumi.get(self, "data_access_config")
 
@@ -136,6 +141,9 @@ class _SqlGlobalConfigState:
     @property
     @pulumi.getter(name="enableServerlessCompute")
     def enable_serverless_compute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+        """
         return pulumi.get(self, "enable_serverless_compute")
 
     @enable_serverless_compute.setter
@@ -248,7 +256,8 @@ class SqlGlobalConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] data_access_config: - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        :param pulumi.Input[Mapping[str, Any]] data_access_config: - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        :param pulumi.Input[bool] enable_serverless_compute: - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
         :param pulumi.Input[str] instance_profile_arn: - InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         :param pulumi.Input[str] security_policy: - The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         :param pulumi.Input[Mapping[str, Any]] sql_config_params: - SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
@@ -371,7 +380,8 @@ class SqlGlobalConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] data_access_config: - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        :param pulumi.Input[Mapping[str, Any]] data_access_config: - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        :param pulumi.Input[bool] enable_serverless_compute: - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
         :param pulumi.Input[str] instance_profile_arn: - InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         :param pulumi.Input[str] security_policy: - The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         :param pulumi.Input[Mapping[str, Any]] sql_config_params: - SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
@@ -391,13 +401,16 @@ class SqlGlobalConfig(pulumi.CustomResource):
     @pulumi.getter(name="dataAccessConfig")
     def data_access_config(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        - data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         """
         return pulumi.get(self, "data_access_config")
 
     @property
     @pulumi.getter(name="enableServerlessCompute")
     def enable_serverless_compute(self) -> pulumi.Output[Optional[bool]]:
+        """
+        - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+        """
         return pulumi.get(self, "enable_serverless_compute")
 
     @property

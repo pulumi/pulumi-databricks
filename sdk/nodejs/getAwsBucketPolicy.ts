@@ -25,6 +25,7 @@ export function getAwsBucketPolicy(args: GetAwsBucketPolicyArgs, opts?: pulumi.I
     return pulumi.runtime.invoke("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", {
         "bucket": args.bucket,
         "databricksAccountId": args.databricksAccountId,
+        "databricksE2AccountId": args.databricksE2AccountId,
         "fullAccessRole": args.fullAccessRole,
     }, opts);
 }
@@ -39,6 +40,10 @@ export interface GetAwsBucketPolicyArgs {
     bucket: string;
     databricksAccountId?: string;
     /**
+     * Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+     */
+    databricksE2AccountId?: string;
+    /**
      * Data access role that can have full access for this bucket
      */
     fullAccessRole?: string;
@@ -50,6 +55,7 @@ export interface GetAwsBucketPolicyArgs {
 export interface GetAwsBucketPolicyResult {
     readonly bucket: string;
     readonly databricksAccountId?: string;
+    readonly databricksE2AccountId?: string;
     readonly fullAccessRole?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -74,6 +80,10 @@ export interface GetAwsBucketPolicyOutputArgs {
      */
     bucket: pulumi.Input<string>;
     databricksAccountId?: pulumi.Input<string>;
+    /**
+     * Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+     */
+    databricksE2AccountId?: pulumi.Input<string>;
     /**
      * Data access role that can have full access for this bucket
      */

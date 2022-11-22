@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetDbfsFilePaths(ctx, &GetDbfsFilePathsArgs{
+//			_, err = databricks.GetDbfsFilePaths(ctx, &GetDbfsFilePathsArgs{
 //				Path:      "dbfs:/user/hive/default.db/table",
 //				Recursive: false,
 //			}, nil)

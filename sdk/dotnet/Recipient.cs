@@ -12,46 +12,16 @@ namespace Pulumi.Databricks
     /// <summary>
     /// Within a metastore, Unity Catalog provides the ability to create a recipient to attach delta shares to.
     /// 
-    /// A `databricks.Recipient` is contained within databricks.Metastore and can contain a list of shares.
+    /// A `databricks.Recipient` is contained within databricks.Metastore and can have permissions to `SELECT` from a list of shares.
     /// 
     /// ## Example Usage
-    /// ### Databricks Sharing with non databricks recipient
+    /// ## Related Resources
     /// 
-    /// Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
-    /// authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
+    /// The following resources are often used in the same context:
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var db2opensharecode = new Random.RandomPassword("db2opensharecode", new()
-    ///     {
-    ///         Length = 16,
-    ///         Special = true,
-    ///     });
-    /// 
-    ///     var current = Databricks.GetCurrentUser.Invoke();
-    /// 
-    ///     var db2open = new Databricks.Recipient("db2open", new()
-    ///     {
-    ///         Comment = "made by terraform",
-    ///         AuthenticationType = "TOKEN",
-    ///         SharingCode = db2opensharecode.Result,
-    ///         IpAccessList = new Databricks.Inputs.RecipientIpAccessListArgs
-    ///         {
-    ///             AllowedIpAddresses = new[] {},
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ## Attribute Reference:
-    /// 
-    /// * `tokens` - (Optional) List of Recipient Tokens.
+    /// * databricks.Share to create Delta Sharing shares.
+    /// * databricks.Grants to manage Delta Sharing permissions.
+    /// * databricks.getShares to read existing Delta Sharing shares.
     /// </summary>
     [DatabricksResourceType("databricks:index/recipient:Recipient")]
     public partial class Recipient : global::Pulumi.CustomResource
@@ -92,6 +62,9 @@ namespace Pulumi.Databricks
         [Output("sharingCode")]
         public Output<string?> SharingCode { get; private set; } = null!;
 
+        /// <summary>
+        /// List of Recipient Tokens.
+        /// </summary>
         [Output("tokens")]
         public Output<ImmutableArray<Outputs.RecipientToken>> Tokens { get; private set; } = null!;
 
@@ -193,6 +166,10 @@ namespace Pulumi.Databricks
 
         [Input("tokens")]
         private InputList<Inputs.RecipientTokenArgs>? _tokens;
+
+        /// <summary>
+        /// List of Recipient Tokens.
+        /// </summary>
         public InputList<Inputs.RecipientTokenArgs> Tokens
         {
             get => _tokens ?? (_tokens = new InputList<Inputs.RecipientTokenArgs>());
@@ -255,6 +232,10 @@ namespace Pulumi.Databricks
 
         [Input("tokens")]
         private InputList<Inputs.RecipientTokenGetArgs>? _tokens;
+
+        /// <summary>
+        /// List of Recipient Tokens.
+        /// </summary>
         public InputList<Inputs.RecipientTokenGetArgs> Tokens
         {
             get => _tokens ?? (_tokens = new InputList<Inputs.RecipientTokenGetArgs>());

@@ -60,7 +60,8 @@ type Job struct {
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrOutput `pulumi:"timeoutSeconds"`
 	// URL of the job on the given workspace
-	Url pulumi.StringOutput `pulumi:"url"`
+	Url                  pulumi.StringOutput              `pulumi:"url"`
+	WebhookNotifications JobWebhookNotificationsPtrOutput `pulumi:"webhookNotifications"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -130,7 +131,8 @@ type jobState struct {
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 	// URL of the job on the given workspace
-	Url *string `pulumi:"url"`
+	Url                  *string                  `pulumi:"url"`
+	WebhookNotifications *JobWebhookNotifications `pulumi:"webhookNotifications"`
 }
 
 type JobState struct {
@@ -172,7 +174,8 @@ type JobState struct {
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
 	// URL of the job on the given workspace
-	Url pulumi.StringPtrInput
+	Url                  pulumi.StringPtrInput
+	WebhookNotifications JobWebhookNotificationsPtrInput
 }
 
 func (JobState) ElementType() reflect.Type {
@@ -216,7 +219,8 @@ type jobArgs struct {
 	Tags  map[string]interface{} `pulumi:"tags"`
 	Tasks []JobTask              `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+	TimeoutSeconds       *int                     `pulumi:"timeoutSeconds"`
+	WebhookNotifications *JobWebhookNotifications `pulumi:"webhookNotifications"`
 }
 
 // The set of arguments for constructing a Job resource.
@@ -257,7 +261,8 @@ type JobArgs struct {
 	Tags  pulumi.MapInput
 	Tasks JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-	TimeoutSeconds pulumi.IntPtrInput
+	TimeoutSeconds       pulumi.IntPtrInput
+	WebhookNotifications JobWebhookNotificationsPtrInput
 }
 
 func (JobArgs) ElementType() reflect.Type {
@@ -459,6 +464,10 @@ func (o JobOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 // URL of the job on the given workspace
 func (o JobOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o JobOutput) WebhookNotifications() JobWebhookNotificationsPtrOutput {
+	return o.ApplyT(func(v *Job) JobWebhookNotificationsPtrOutput { return v.WebhookNotifications }).(JobWebhookNotificationsPtrOutput)
 }
 
 type JobArrayOutput struct{ *pulumi.OutputState }

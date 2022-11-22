@@ -25,6 +25,8 @@ type Provider struct {
 	AzureLoginAppId          pulumi.StringPtrOutput `pulumi:"azureLoginAppId"`
 	AzureTenantId            pulumi.StringPtrOutput `pulumi:"azureTenantId"`
 	AzureWorkspaceResourceId pulumi.StringPtrOutput `pulumi:"azureWorkspaceResourceId"`
+	ClientId                 pulumi.StringPtrOutput `pulumi:"clientId"`
+	ClientSecret             pulumi.StringPtrOutput `pulumi:"clientSecret"`
 	ConfigFile               pulumi.StringPtrOutput `pulumi:"configFile"`
 	GoogleCredentials        pulumi.StringPtrOutput `pulumi:"googleCredentials"`
 	GoogleServiceAccount     pulumi.StringPtrOutput `pulumi:"googleServiceAccount"`
@@ -32,6 +34,7 @@ type Provider struct {
 	Password                 pulumi.StringPtrOutput `pulumi:"password"`
 	Profile                  pulumi.StringPtrOutput `pulumi:"profile"`
 	Token                    pulumi.StringPtrOutput `pulumi:"token"`
+	TokenEndpoint            pulumi.StringPtrOutput `pulumi:"tokenEndpoint"`
 	Username                 pulumi.StringPtrOutput `pulumi:"username"`
 }
 
@@ -45,6 +48,9 @@ func NewProvider(ctx *pulumi.Context,
 	if args.AzureClientSecret != nil {
 		args.AzureClientSecret = pulumi.ToSecret(args.AzureClientSecret).(pulumi.StringPtrOutput)
 	}
+	if args.ClientSecret != nil {
+		args.ClientSecret = pulumi.ToSecret(args.ClientSecret).(pulumi.StringPtrOutput)
+	}
 	if args.GoogleCredentials != nil {
 		args.GoogleCredentials = pulumi.ToSecret(args.GoogleCredentials).(pulumi.StringPtrOutput)
 	}
@@ -56,6 +62,7 @@ func NewProvider(ctx *pulumi.Context,
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"azureClientSecret",
+		"clientSecret",
 		"googleCredentials",
 		"password",
 		"token",
@@ -79,6 +86,8 @@ type providerArgs struct {
 	AzureTenantId            *string `pulumi:"azureTenantId"`
 	AzureUseMsi              *bool   `pulumi:"azureUseMsi"`
 	AzureWorkspaceResourceId *string `pulumi:"azureWorkspaceResourceId"`
+	ClientId                 *string `pulumi:"clientId"`
+	ClientSecret             *string `pulumi:"clientSecret"`
 	ConfigFile               *string `pulumi:"configFile"`
 	DebugHeaders             *bool   `pulumi:"debugHeaders"`
 	DebugTruncateBytes       *int    `pulumi:"debugTruncateBytes"`
@@ -91,6 +100,7 @@ type providerArgs struct {
 	RateLimit                *int    `pulumi:"rateLimit"`
 	SkipVerify               *bool   `pulumi:"skipVerify"`
 	Token                    *string `pulumi:"token"`
+	TokenEndpoint            *string `pulumi:"tokenEndpoint"`
 	Username                 *string `pulumi:"username"`
 }
 
@@ -105,6 +115,8 @@ type ProviderArgs struct {
 	AzureTenantId            pulumi.StringPtrInput
 	AzureUseMsi              pulumi.BoolPtrInput
 	AzureWorkspaceResourceId pulumi.StringPtrInput
+	ClientId                 pulumi.StringPtrInput
+	ClientSecret             pulumi.StringPtrInput
 	ConfigFile               pulumi.StringPtrInput
 	DebugHeaders             pulumi.BoolPtrInput
 	DebugTruncateBytes       pulumi.IntPtrInput
@@ -117,6 +129,7 @@ type ProviderArgs struct {
 	RateLimit                pulumi.IntPtrInput
 	SkipVerify               pulumi.BoolPtrInput
 	Token                    pulumi.StringPtrInput
+	TokenEndpoint            pulumi.StringPtrInput
 	Username                 pulumi.StringPtrInput
 }
 
@@ -189,6 +202,14 @@ func (o ProviderOutput) AzureWorkspaceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AzureWorkspaceResourceId }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) ConfigFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ConfigFile }).(pulumi.StringPtrOutput)
 }
@@ -215,6 +236,10 @@ func (o ProviderOutput) Profile() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Username() pulumi.StringPtrOutput {

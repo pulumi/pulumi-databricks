@@ -27,6 +27,10 @@ azureUseMsi: Optional[bool]
 
 azureWorkspaceResourceId: Optional[str]
 
+clientId: Optional[str]
+
+clientSecret: Optional[str]
+
 configFile: Optional[str]
 
 debugHeaders: Optional[bool]
@@ -50,6 +54,8 @@ rateLimit: Optional[int]
 skipVerify: Optional[bool]
 
 token: Optional[str]
+
+tokenEndpoint: Optional[str]
 
 username: Optional[str]
 

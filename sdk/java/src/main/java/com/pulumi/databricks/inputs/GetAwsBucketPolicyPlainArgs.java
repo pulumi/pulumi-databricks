@@ -37,6 +37,21 @@ public final class GetAwsBucketPolicyPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
+     * Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+     * 
+     */
+    @Import(name="databricksE2AccountId")
+    private @Nullable String databricksE2AccountId;
+
+    /**
+     * @return Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+     * 
+     */
+    public Optional<String> databricksE2AccountId() {
+        return Optional.ofNullable(this.databricksE2AccountId);
+    }
+
+    /**
      * Data access role that can have full access for this bucket
      * 
      */
@@ -56,6 +71,7 @@ public final class GetAwsBucketPolicyPlainArgs extends com.pulumi.resources.Invo
     private GetAwsBucketPolicyPlainArgs(GetAwsBucketPolicyPlainArgs $) {
         this.bucket = $.bucket;
         this.databricksAccountId = $.databricksAccountId;
+        this.databricksE2AccountId = $.databricksE2AccountId;
         this.fullAccessRole = $.fullAccessRole;
     }
 
@@ -90,6 +106,17 @@ public final class GetAwsBucketPolicyPlainArgs extends com.pulumi.resources.Invo
 
         public Builder databricksAccountId(@Nullable String databricksAccountId) {
             $.databricksAccountId = databricksAccountId;
+            return this;
+        }
+
+        /**
+         * @param databricksE2AccountId Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databricksE2AccountId(@Nullable String databricksE2AccountId) {
+            $.databricksE2AccountId = databricksE2AccountId;
             return this;
         }
 

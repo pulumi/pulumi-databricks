@@ -99,7 +99,7 @@ type Pipeline struct {
 	Configuration pulumi.MapOutput `pulumi:"configuration"`
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous pulumi.BoolPtrOutput `pulumi:"continuous"`
-	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development pulumi.BoolPtrOutput `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
 	Edition pulumi.StringPtrOutput   `pulumi:"edition"`
@@ -155,7 +155,7 @@ type pipelineState struct {
 	Configuration map[string]interface{} `pulumi:"configuration"`
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous *bool `pulumi:"continuous"`
-	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development *bool `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
 	Edition *string          `pulumi:"edition"`
@@ -183,7 +183,7 @@ type PipelineState struct {
 	Configuration pulumi.MapInput
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous pulumi.BoolPtrInput
-	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development pulumi.BoolPtrInput
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
 	Edition pulumi.StringPtrInput
@@ -215,7 +215,7 @@ type pipelineArgs struct {
 	Configuration map[string]interface{} `pulumi:"configuration"`
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous *bool `pulumi:"continuous"`
-	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development *bool `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
 	Edition *string          `pulumi:"edition"`
@@ -243,7 +243,7 @@ type PipelineArgs struct {
 	Configuration pulumi.MapInput
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous pulumi.BoolPtrInput
-	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development pulumi.BoolPtrInput
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
 	Edition pulumi.StringPtrInput
@@ -371,7 +371,7 @@ func (o PipelineOutput) Continuous() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Continuous }).(pulumi.BoolPtrOutput)
 }
 
-// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 func (o PipelineOutput) Development() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Development }).(pulumi.BoolPtrOutput)
 }

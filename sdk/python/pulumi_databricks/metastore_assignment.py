@@ -131,7 +131,7 @@ class MetastoreAssignment(pulumi.CustomResource):
                  workspace_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        A single Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. It is only recommended to have multiple metastores when organizations wish to have hard isolation boundaries between data (note that data cannot be easily joined/queried across metastores).
+        A single Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. You can only create a single metastore for each region in which your organization operates.
 
         ## Example Usage
 
@@ -161,7 +161,7 @@ class MetastoreAssignment(pulumi.CustomResource):
                  args: MetastoreAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A single Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. It is only recommended to have multiple metastores when organizations wish to have hard isolation boundaries between data (note that data cannot be easily joined/queried across metastores).
+        A single Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. You can only create a single metastore for each region in which your organization operates.
 
         ## Example Usage
 

@@ -28,7 +28,7 @@ class MwsVpcEndpointArgs:
         :param pulumi.Input[str] region: Region of AWS VPC
         :param pulumi.Input[str] vpc_endpoint_name: Name of VPC Endpoint in Databricks Account
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[str] aws_endpoint_service_id: ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+        :param pulumi.Input[str] aws_endpoint_service_id: The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         :param pulumi.Input[str] state: State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
         """
@@ -106,7 +106,7 @@ class MwsVpcEndpointArgs:
     @pulumi.getter(name="awsEndpointServiceId")
     def aws_endpoint_service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+        The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         """
         return pulumi.get(self, "aws_endpoint_service_id")
 
@@ -163,7 +163,7 @@ class _MwsVpcEndpointState:
         """
         Input properties used for looking up and filtering MwsVpcEndpoint resources.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[str] aws_endpoint_service_id: ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+        :param pulumi.Input[str] aws_endpoint_service_id: The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         :param pulumi.Input[str] region: Region of AWS VPC
         :param pulumi.Input[str] state: State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
@@ -213,7 +213,7 @@ class _MwsVpcEndpointState:
     @pulumi.getter(name="awsEndpointServiceId")
     def aws_endpoint_service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+        The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         """
         return pulumi.get(self, "aws_endpoint_service_id")
 
@@ -311,7 +311,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[str] aws_endpoint_service_id: ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+        :param pulumi.Input[str] aws_endpoint_service_id: The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         :param pulumi.Input[str] region: Region of AWS VPC
         :param pulumi.Input[str] state: State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
@@ -403,7 +403,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[str] aws_endpoint_service_id: ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+        :param pulumi.Input[str] aws_endpoint_service_id: The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         :param pulumi.Input[str] region: Region of AWS VPC
         :param pulumi.Input[str] state: State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
@@ -441,7 +441,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="awsEndpointServiceId")
     def aws_endpoint_service_id(self) -> pulumi.Output[str]:
         """
-        ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+        The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         """
         return pulumi.get(self, "aws_endpoint_service_id")
 

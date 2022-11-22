@@ -27,6 +27,7 @@ type SqlVisualization struct {
 	Name            pulumi.StringOutput    `pulumi:"name"`
 	Options         pulumi.StringOutput    `pulumi:"options"`
 	QueryId         pulumi.StringOutput    `pulumi:"queryId"`
+	QueryPlan       pulumi.StringPtrOutput `pulumi:"queryPlan"`
 	Type            pulumi.StringOutput    `pulumi:"type"`
 	VisualizationId pulumi.StringOutput    `pulumi:"visualizationId"`
 }
@@ -73,6 +74,7 @@ type sqlVisualizationState struct {
 	Name            *string `pulumi:"name"`
 	Options         *string `pulumi:"options"`
 	QueryId         *string `pulumi:"queryId"`
+	QueryPlan       *string `pulumi:"queryPlan"`
 	Type            *string `pulumi:"type"`
 	VisualizationId *string `pulumi:"visualizationId"`
 }
@@ -82,6 +84,7 @@ type SqlVisualizationState struct {
 	Name            pulumi.StringPtrInput
 	Options         pulumi.StringPtrInput
 	QueryId         pulumi.StringPtrInput
+	QueryPlan       pulumi.StringPtrInput
 	Type            pulumi.StringPtrInput
 	VisualizationId pulumi.StringPtrInput
 }
@@ -95,6 +98,7 @@ type sqlVisualizationArgs struct {
 	Name            *string `pulumi:"name"`
 	Options         string  `pulumi:"options"`
 	QueryId         string  `pulumi:"queryId"`
+	QueryPlan       *string `pulumi:"queryPlan"`
 	Type            string  `pulumi:"type"`
 	VisualizationId *string `pulumi:"visualizationId"`
 }
@@ -105,6 +109,7 @@ type SqlVisualizationArgs struct {
 	Name            pulumi.StringPtrInput
 	Options         pulumi.StringInput
 	QueryId         pulumi.StringInput
+	QueryPlan       pulumi.StringPtrInput
 	Type            pulumi.StringInput
 	VisualizationId pulumi.StringPtrInput
 }
@@ -210,6 +215,10 @@ func (o SqlVisualizationOutput) Options() pulumi.StringOutput {
 
 func (o SqlVisualizationOutput) QueryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlVisualization) pulumi.StringOutput { return v.QueryId }).(pulumi.StringOutput)
+}
+
+func (o SqlVisualizationOutput) QueryPlan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlVisualization) pulumi.StringPtrOutput { return v.QueryPlan }).(pulumi.StringPtrOutput)
 }
 
 func (o SqlVisualizationOutput) Type() pulumi.StringOutput {

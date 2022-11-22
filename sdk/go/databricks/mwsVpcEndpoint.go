@@ -20,7 +20,7 @@ type MwsVpcEndpoint struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId    pulumi.StringPtrOutput `pulumi:"accountId"`
 	AwsAccountId pulumi.StringOutput    `pulumi:"awsAccountId"`
-	// ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+	// The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
 	AwsEndpointServiceId pulumi.StringOutput `pulumi:"awsEndpointServiceId"`
 	AwsVpcEndpointId     pulumi.StringOutput `pulumi:"awsVpcEndpointId"`
 	// Region of AWS VPC
@@ -75,7 +75,7 @@ type mwsVpcEndpointState struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId    *string `pulumi:"accountId"`
 	AwsAccountId *string `pulumi:"awsAccountId"`
-	// ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+	// The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
 	AwsEndpointServiceId *string `pulumi:"awsEndpointServiceId"`
 	AwsVpcEndpointId     *string `pulumi:"awsVpcEndpointId"`
 	// Region of AWS VPC
@@ -93,7 +93,7 @@ type MwsVpcEndpointState struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId    pulumi.StringPtrInput
 	AwsAccountId pulumi.StringPtrInput
-	// ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+	// The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
 	AwsEndpointServiceId pulumi.StringPtrInput
 	AwsVpcEndpointId     pulumi.StringPtrInput
 	// Region of AWS VPC
@@ -115,7 +115,7 @@ type mwsVpcEndpointArgs struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId    *string `pulumi:"accountId"`
 	AwsAccountId *string `pulumi:"awsAccountId"`
-	// ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+	// The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
 	AwsEndpointServiceId *string `pulumi:"awsEndpointServiceId"`
 	AwsVpcEndpointId     string  `pulumi:"awsVpcEndpointId"`
 	// Region of AWS VPC
@@ -134,7 +134,7 @@ type MwsVpcEndpointArgs struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId    pulumi.StringPtrInput
 	AwsAccountId pulumi.StringPtrInput
-	// ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+	// The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
 	AwsEndpointServiceId pulumi.StringPtrInput
 	AwsVpcEndpointId     pulumi.StringInput
 	// Region of AWS VPC
@@ -244,7 +244,7 @@ func (o MwsVpcEndpointOutput) AwsAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsVpcEndpoint) pulumi.StringOutput { return v.AwsAccountId }).(pulumi.StringOutput)
 }
 
-// ID of Databricks VPC endpoint service to connect to. Please contact your Databricks representative to request mapping
+// The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
 func (o MwsVpcEndpointOutput) AwsEndpointServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsVpcEndpoint) pulumi.StringOutput { return v.AwsEndpointServiceId }).(pulumi.StringOutput)
 }

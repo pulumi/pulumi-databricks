@@ -42,6 +42,10 @@ import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalPlainArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalsArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalsPlainArgs;
+import com.pulumi.databricks.inputs.GetShareArgs;
+import com.pulumi.databricks.inputs.GetSharePlainArgs;
+import com.pulumi.databricks.inputs.GetSharesArgs;
+import com.pulumi.databricks.inputs.GetSharesPlainArgs;
 import com.pulumi.databricks.inputs.GetSparkVersionArgs;
 import com.pulumi.databricks.inputs.GetSparkVersionPlainArgs;
 import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
@@ -73,6 +77,8 @@ import com.pulumi.databricks.outputs.GetNotebookResult;
 import com.pulumi.databricks.outputs.GetSchemasResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalsResult;
+import com.pulumi.databricks.outputs.GetShareResult;
+import com.pulumi.databricks.outputs.GetSharesResult;
 import com.pulumi.databricks.outputs.GetSparkVersionResult;
 import com.pulumi.databricks.outputs.GetSqlWarehouseResult;
 import com.pulumi.databricks.outputs.GetSqlWarehousesResult;
@@ -3670,6 +3676,534 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * Getting details of an existing share in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetShareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getShare(GetShareArgs.builder()
+     *             .name(&#34;this&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;createdBy&#34;, this_.createdBy());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static Output<GetShareResult> getShare() {
+        return getShare(GetShareArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting details of an existing share in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetShareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getShare(GetShareArgs.builder()
+     *             .name(&#34;this&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;createdBy&#34;, this_.createdBy());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static CompletableFuture<GetShareResult> getSharePlain() {
+        return getSharePlain(GetSharePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting details of an existing share in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetShareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getShare(GetShareArgs.builder()
+     *             .name(&#34;this&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;createdBy&#34;, this_.createdBy());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static Output<GetShareResult> getShare(GetShareArgs args) {
+        return getShare(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting details of an existing share in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetShareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getShare(GetShareArgs.builder()
+     *             .name(&#34;this&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;createdBy&#34;, this_.createdBy());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static CompletableFuture<GetShareResult> getSharePlain(GetSharePlainArgs args) {
+        return getSharePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting details of an existing share in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetShareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getShare(GetShareArgs.builder()
+     *             .name(&#34;this&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;createdBy&#34;, this_.createdBy());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static Output<GetShareResult> getShare(GetShareArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getShare:getShare", TypeShape.of(GetShareResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting details of an existing share in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetShareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getShare(GetShareArgs.builder()
+     *             .name(&#34;this&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;createdBy&#34;, this_.createdBy());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static CompletableFuture<GetShareResult> getSharePlain(GetSharePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getShare:getShare", TypeShape.of(GetShareResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting all existing shares in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getShares();
+     * 
+     *         ctx.export(&#34;shareName&#34;, this_.shares());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static Output<GetSharesResult> getShares() {
+        return getShares(GetSharesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting all existing shares in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getShares();
+     * 
+     *         ctx.export(&#34;shareName&#34;, this_.shares());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static CompletableFuture<GetSharesResult> getSharesPlain() {
+        return getSharesPlain(GetSharesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting all existing shares in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getShares();
+     * 
+     *         ctx.export(&#34;shareName&#34;, this_.shares());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static Output<GetSharesResult> getShares(GetSharesArgs args) {
+        return getShares(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting all existing shares in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getShares();
+     * 
+     *         ctx.export(&#34;shareName&#34;, this_.shares());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static CompletableFuture<GetSharesResult> getSharesPlain(GetSharesPlainArgs args) {
+        return getSharesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting all existing shares in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getShares();
+     * 
+     *         ctx.export(&#34;shareName&#34;, this_.shares());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static Output<GetSharesResult> getShares(GetSharesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getShares:getShares", TypeShape.of(GetSharesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting all existing shares in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getShares();
+     * 
+     *         ctx.export(&#34;shareName&#34;, this_.shares());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Share to create Delta Sharing shares.
+     * * databricks.Recipient to create Delta Sharing recipients.
+     * * databricks.Grants to manage Delta Sharing permissions.
+     * 
+     */
+    public static CompletableFuture<GetSharesResult> getSharesPlain(GetSharesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getShares:getShares", TypeShape.of(GetSharesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
      * ```java
      * package generated_program;
      * 
@@ -5048,31 +5582,6 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var zones = DatabricksFunctions.getZones();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -5080,31 +5589,6 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var zones = DatabricksFunctions.getZones();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -5112,31 +5596,6 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var zones = DatabricksFunctions.getZones();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(InvokeArgs args) {
@@ -5144,31 +5603,6 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var zones = DatabricksFunctions.getZones();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(InvokeArgs args) {
@@ -5176,31 +5610,6 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var zones = DatabricksFunctions.getZones();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(InvokeArgs args, InvokeOptions options) {
@@ -5208,31 +5617,6 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var zones = DatabricksFunctions.getZones();
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(InvokeArgs args, InvokeOptions options) {

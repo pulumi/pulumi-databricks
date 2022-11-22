@@ -127,100 +127,6 @@ export interface ClusterWorkloadTypeClients {
     notebooks?: pulumi.Input<boolean>;
 }
 
-export interface GetClusterClusterInfoArgs {
-    autoscale?: pulumi.Input<inputs.GetClusterClusterInfoAutoscaleArgs>;
-    /**
-     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
-     */
-    autoterminationMinutes?: pulumi.Input<number>;
-    awsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAwsAttributesArgs>;
-    azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAzureAttributesArgs>;
-    clusterCores?: pulumi.Input<number>;
-    /**
-     * The id of the cluster
-     */
-    clusterId?: pulumi.Input<string>;
-    clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfArgs>;
-    clusterLogStatus?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogStatusArgs>;
-    clusterMemoryMb?: pulumi.Input<number>;
-    /**
-     * Cluster name, which doesn’t have to be unique.
-     */
-    clusterName?: pulumi.Input<string>;
-    clusterSource?: pulumi.Input<string>;
-    creatorUserName?: pulumi.Input<string>;
-    /**
-     * Additional tags for cluster resources.
-     */
-    customTags?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
-     */
-    dataSecurityMode?: pulumi.Input<string>;
-    defaultTags: pulumi.Input<{[key: string]: any}>;
-    dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageArgs>;
-    driver?: pulumi.Input<inputs.GetClusterClusterInfoDriverArgs>;
-    /**
-     * similar to `instancePoolId`, but for driver node.
-     */
-    driverInstancePoolId?: pulumi.Input<string>;
-    /**
-     * The node type of the Spark driver.
-     */
-    driverNodeTypeId?: pulumi.Input<string>;
-    /**
-     * Use autoscaling local storage.
-     */
-    enableElasticDisk?: pulumi.Input<boolean>;
-    /**
-     * Enable local disk encryption.
-     */
-    enableLocalDiskEncryption?: pulumi.Input<boolean>;
-    executors?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoExecutorArgs>[]>;
-    gcpAttributes?: pulumi.Input<inputs.GetClusterClusterInfoGcpAttributesArgs>;
-    initScripts?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoInitScriptArgs>[]>;
-    instancePoolId?: pulumi.Input<string>;
-    jdbcPort?: pulumi.Input<number>;
-    lastActivityTime?: pulumi.Input<number>;
-    lastStateLossTime?: pulumi.Input<number>;
-    /**
-     * Any supported databricks.getNodeType id.
-     * * `instancePoolId` The pool of idle instances the cluster is attached to.
-     */
-    nodeTypeId?: pulumi.Input<string>;
-    numWorkers?: pulumi.Input<number>;
-    /**
-     * Identifier of Cluster Policy to validate cluster and preset certain defaults.
-     */
-    policyId?: pulumi.Input<string>;
-    /**
-     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-     */
-    singleUserName?: pulumi.Input<string>;
-    /**
-     * Map with key-value pairs to fine-tune Spark clusters.
-     */
-    sparkConf?: pulumi.Input<{[key: string]: any}>;
-    sparkContextId?: pulumi.Input<number>;
-    /**
-     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-     */
-    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-     */
-    sparkVersion: pulumi.Input<string>;
-    /**
-     * SSH public key contents that will be added to each Spark node in this cluster.
-     */
-    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    startTime?: pulumi.Input<number>;
-    state: pulumi.Input<string>;
-    stateMessage?: pulumi.Input<string>;
-    terminateTime?: pulumi.Input<number>;
-    terminationReason?: pulumi.Input<inputs.GetClusterClusterInfoTerminationReasonArgs>;
-}
-
 export interface GetClusterClusterInfo {
     autoscale?: inputs.GetClusterClusterInfoAutoscale;
     /**
@@ -288,6 +194,10 @@ export interface GetClusterClusterInfo {
      */
     policyId?: string;
     /**
+     * The type of runtime of the cluster
+     */
+    runtimeEngine?: string;
+    /**
      * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */
     singleUserName?: string;
@@ -313,6 +223,104 @@ export interface GetClusterClusterInfo {
     stateMessage?: string;
     terminateTime?: number;
     terminationReason?: inputs.GetClusterClusterInfoTerminationReason;
+}
+
+export interface GetClusterClusterInfoArgs {
+    autoscale?: pulumi.Input<inputs.GetClusterClusterInfoAutoscaleArgs>;
+    /**
+     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
+     */
+    autoterminationMinutes?: pulumi.Input<number>;
+    awsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAwsAttributesArgs>;
+    azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAzureAttributesArgs>;
+    clusterCores?: pulumi.Input<number>;
+    /**
+     * The id of the cluster
+     */
+    clusterId?: pulumi.Input<string>;
+    clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfArgs>;
+    clusterLogStatus?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogStatusArgs>;
+    clusterMemoryMb?: pulumi.Input<number>;
+    /**
+     * Cluster name, which doesn’t have to be unique.
+     */
+    clusterName?: pulumi.Input<string>;
+    clusterSource?: pulumi.Input<string>;
+    creatorUserName?: pulumi.Input<string>;
+    /**
+     * Additional tags for cluster resources.
+     */
+    customTags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+     */
+    dataSecurityMode?: pulumi.Input<string>;
+    defaultTags: pulumi.Input<{[key: string]: any}>;
+    dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageArgs>;
+    driver?: pulumi.Input<inputs.GetClusterClusterInfoDriverArgs>;
+    /**
+     * similar to `instancePoolId`, but for driver node.
+     */
+    driverInstancePoolId?: pulumi.Input<string>;
+    /**
+     * The node type of the Spark driver.
+     */
+    driverNodeTypeId?: pulumi.Input<string>;
+    /**
+     * Use autoscaling local storage.
+     */
+    enableElasticDisk?: pulumi.Input<boolean>;
+    /**
+     * Enable local disk encryption.
+     */
+    enableLocalDiskEncryption?: pulumi.Input<boolean>;
+    executors?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoExecutorArgs>[]>;
+    gcpAttributes?: pulumi.Input<inputs.GetClusterClusterInfoGcpAttributesArgs>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoInitScriptArgs>[]>;
+    instancePoolId?: pulumi.Input<string>;
+    jdbcPort?: pulumi.Input<number>;
+    lastActivityTime?: pulumi.Input<number>;
+    lastStateLossTime?: pulumi.Input<number>;
+    /**
+     * Any supported databricks.getNodeType id.
+     * * `instancePoolId` The pool of idle instances the cluster is attached to.
+     */
+    nodeTypeId?: pulumi.Input<string>;
+    numWorkers?: pulumi.Input<number>;
+    /**
+     * Identifier of Cluster Policy to validate cluster and preset certain defaults.
+     */
+    policyId?: pulumi.Input<string>;
+    /**
+     * The type of runtime of the cluster
+     */
+    runtimeEngine?: pulumi.Input<string>;
+    /**
+     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     */
+    singleUserName?: pulumi.Input<string>;
+    /**
+     * Map with key-value pairs to fine-tune Spark clusters.
+     */
+    sparkConf?: pulumi.Input<{[key: string]: any}>;
+    sparkContextId?: pulumi.Input<number>;
+    /**
+     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+     */
+    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+     */
+    sparkVersion: pulumi.Input<string>;
+    /**
+     * SSH public key contents that will be added to each Spark node in this cluster.
+     */
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    startTime?: pulumi.Input<number>;
+    state: pulumi.Input<string>;
+    stateMessage?: pulumi.Input<string>;
+    terminateTime?: pulumi.Input<number>;
+    terminationReason?: pulumi.Input<inputs.GetClusterClusterInfoTerminationReasonArgs>;
 }
 
 export interface GetClusterClusterInfoAutoscale {
@@ -593,6 +601,7 @@ export interface GetJobJobSettingsSettings {
     tags?: {[key: string]: any};
     tasks?: inputs.GetJobJobSettingsSettingsTask[];
     timeoutSeconds?: number;
+    webhookNotifications?: inputs.GetJobJobSettingsSettingsWebhookNotifications;
 }
 
 export interface GetJobJobSettingsSettingsArgs {
@@ -619,6 +628,7 @@ export interface GetJobJobSettingsSettingsArgs {
     tags?: pulumi.Input<{[key: string]: any}>;
     tasks?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskArgs>[]>;
     timeoutSeconds?: pulumi.Input<number>;
+    webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsArgs>;
 }
 
 export interface GetJobJobSettingsSettingsDbtTask {
@@ -702,6 +712,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewCluster {
     nodeTypeId?: string;
     numWorkers: number;
     policyId?: string;
+    runtimeEngine?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: any};
     sparkEnvVars?: {[key: string]: any};
@@ -733,6 +744,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterArgs {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: any}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
@@ -859,18 +871,18 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgs 
     zoneId?: pulumi.Input<string>;
 }
 
-export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs {
-    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgs>;
-    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs>;
-    gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs>;
-    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args>;
-}
-
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
     dbfs?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs;
     file?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile;
     gcs?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs;
     s3?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs {
+    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgs>;
+    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs>;
+    gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs>;
+    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs {
@@ -1008,6 +1020,7 @@ export interface GetJobJobSettingsSettingsNewCluster {
     nodeTypeId?: string;
     numWorkers: number;
     policyId?: string;
+    runtimeEngine?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: any};
     sparkEnvVars?: {[key: string]: any};
@@ -1039,6 +1052,7 @@ export interface GetJobJobSettingsSettingsNewClusterArgs {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: any}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
@@ -1241,14 +1255,14 @@ export interface GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs {
     notebooks?: pulumi.Input<boolean>;
 }
 
-export interface GetJobJobSettingsSettingsNotebookTaskArgs {
-    baseParameters?: pulumi.Input<{[key: string]: any}>;
-    notebookPath: pulumi.Input<string>;
-}
-
 export interface GetJobJobSettingsSettingsNotebookTask {
     baseParameters?: {[key: string]: any};
     notebookPath: string;
+}
+
+export interface GetJobJobSettingsSettingsNotebookTaskArgs {
+    baseParameters?: pulumi.Input<{[key: string]: any}>;
+    notebookPath: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsPipelineTask {
@@ -1273,16 +1287,16 @@ export interface GetJobJobSettingsSettingsPythonWheelTaskArgs {
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetJobJobSettingsSettingsScheduleArgs {
-    pauseStatus?: pulumi.Input<string>;
-    quartzCronExpression: pulumi.Input<string>;
-    timezoneId: pulumi.Input<string>;
-}
-
 export interface GetJobJobSettingsSettingsSchedule {
     pauseStatus?: string;
     quartzCronExpression: string;
     timezoneId: string;
+}
+
+export interface GetJobJobSettingsSettingsScheduleArgs {
+    pauseStatus?: pulumi.Input<string>;
+    quartzCronExpression: pulumi.Input<string>;
+    timezoneId: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsSparkJarTask {
@@ -1315,29 +1329,6 @@ export interface GetJobJobSettingsSettingsSparkSubmitTaskArgs {
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetJobJobSettingsSettingsTaskArgs {
-    dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDbtTaskArgs>;
-    dependsOns?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDependsOnArgs>[]>;
-    description?: pulumi.Input<string>;
-    emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskEmailNotificationsArgs>;
-    existingClusterId?: pulumi.Input<string>;
-    jobClusterKey?: pulumi.Input<string>;
-    libraries?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryArgs>[]>;
-    maxRetries?: pulumi.Input<number>;
-    minRetryIntervalMillis?: pulumi.Input<number>;
-    newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterArgs>;
-    notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNotebookTaskArgs>;
-    pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPipelineTaskArgs>;
-    pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPythonWheelTaskArgs>;
-    retryOnTimeout?: pulumi.Input<boolean>;
-    sparkJarTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkJarTaskArgs>;
-    sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkPythonTaskArgs>;
-    sparkSubmitTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs>;
-    sqlTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskArgs>;
-    taskKey?: pulumi.Input<string>;
-    timeoutSeconds?: pulumi.Input<number>;
-}
-
 export interface GetJobJobSettingsSettingsTask {
     dbtTask?: inputs.GetJobJobSettingsSettingsTaskDbtTask;
     dependsOns?: inputs.GetJobJobSettingsSettingsTaskDependsOn[];
@@ -1359,6 +1350,29 @@ export interface GetJobJobSettingsSettingsTask {
     sqlTask?: inputs.GetJobJobSettingsSettingsTaskSqlTask;
     taskKey?: string;
     timeoutSeconds?: number;
+}
+
+export interface GetJobJobSettingsSettingsTaskArgs {
+    dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDbtTaskArgs>;
+    dependsOns?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDependsOnArgs>[]>;
+    description?: pulumi.Input<string>;
+    emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskEmailNotificationsArgs>;
+    existingClusterId?: pulumi.Input<string>;
+    jobClusterKey?: pulumi.Input<string>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryArgs>[]>;
+    maxRetries?: pulumi.Input<number>;
+    minRetryIntervalMillis?: pulumi.Input<number>;
+    newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterArgs>;
+    notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNotebookTaskArgs>;
+    pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPipelineTaskArgs>;
+    pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPythonWheelTaskArgs>;
+    retryOnTimeout?: pulumi.Input<boolean>;
+    sparkJarTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkJarTaskArgs>;
+    sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkPythonTaskArgs>;
+    sparkSubmitTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs>;
+    sqlTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskArgs>;
+    taskKey?: pulumi.Input<string>;
+    timeoutSeconds?: pulumi.Input<number>;
 }
 
 export interface GetJobJobSettingsSettingsTaskDbtTask {
@@ -1474,6 +1488,7 @@ export interface GetJobJobSettingsSettingsTaskNewCluster {
     nodeTypeId?: string;
     numWorkers: number;
     policyId?: string;
+    runtimeEngine?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: any};
     sparkEnvVars?: {[key: string]: any};
@@ -1505,6 +1520,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterArgs {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: any}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
@@ -1523,17 +1539,6 @@ export interface GetJobJobSettingsSettingsTaskNewClusterAutoscaleArgs {
     minWorkers?: pulumi.Input<number>;
 }
 
-export interface GetJobJobSettingsSettingsTaskNewClusterAwsAttributesArgs {
-    availability?: pulumi.Input<string>;
-    ebsVolumeCount?: pulumi.Input<number>;
-    ebsVolumeSize?: pulumi.Input<number>;
-    ebsVolumeType?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    instanceProfileArn?: pulumi.Input<string>;
-    spotBidPricePercent?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
-}
-
 export interface GetJobJobSettingsSettingsTaskNewClusterAwsAttributes {
     availability?: string;
     ebsVolumeCount?: number;
@@ -1545,16 +1550,27 @@ export interface GetJobJobSettingsSettingsTaskNewClusterAwsAttributes {
     zoneId?: string;
 }
 
-export interface GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgs {
+export interface GetJobJobSettingsSettingsTaskNewClusterAwsAttributesArgs {
     availability?: pulumi.Input<string>;
+    ebsVolumeCount?: pulumi.Input<number>;
+    ebsVolumeSize?: pulumi.Input<number>;
+    ebsVolumeType?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
-    spotBidMaxPrice?: pulumi.Input<number>;
+    instanceProfileArn?: pulumi.Input<string>;
+    spotBidPricePercent?: pulumi.Input<number>;
+    zoneId?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterAzureAttributes {
     availability?: string;
     firstOnDemand?: number;
     spotBidMaxPrice?: number;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgs {
+    availability?: pulumi.Input<string>;
+    firstOnDemand?: pulumi.Input<number>;
+    spotBidMaxPrice?: pulumi.Input<number>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConf {
@@ -1575,16 +1591,6 @@ export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfsArgs {
     destination: pulumi.Input<string>;
 }
 
-export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3Args {
-    cannedAcl?: pulumi.Input<string>;
-    destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-}
-
 export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3 {
     cannedAcl?: string;
     destination: string;
@@ -1593,6 +1599,16 @@ export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3Args {
+    cannedAcl?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean>;
+    encryptionType?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterDockerImage {
@@ -1605,14 +1621,14 @@ export interface GetJobJobSettingsSettingsTaskNewClusterDockerImageArgs {
     url: pulumi.Input<string>;
 }
 
-export interface GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthArgs {
-    password: pulumi.Input<string>;
-    username: pulumi.Input<string>;
-}
-
 export interface GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth {
     password: string;
     username: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthArgs {
+    password: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterGcpAttributes {
@@ -1669,16 +1685,6 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs {
     destination?: pulumi.Input<string>;
 }
 
-export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args {
-    cannedAcl?: pulumi.Input<string>;
-    destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-}
-
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3 {
     cannedAcl?: string;
     destination: string;
@@ -1687,6 +1693,16 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args {
+    cannedAcl?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean>;
+    encryptionType?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterWorkloadType {
@@ -1807,6 +1823,78 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskQuery {
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskQueryArgs {
     queryId: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotifications {
+    onFailures?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailure[];
+    onStarts?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStart[];
+    onSuccesses?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccess[];
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsArgs {
+    onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs>[]>;
+    onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs>[]>;
+    onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs {
+    id: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnStart {
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs {
+    id: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs {
+    id: pulumi.Input<string>;
+}
+
+export interface GetShareObject {
+    addedAt?: number;
+    addedBy?: string;
+    /**
+     * Description about the object.
+     */
+    comment?: string;
+    /**
+     * Type of the object.
+     */
+    dataObjectType: string;
+    /**
+     * The name of the share
+     */
+    name: string;
+    sharedAs?: string;
+}
+
+export interface GetShareObjectArgs {
+    addedAt?: pulumi.Input<number>;
+    addedBy?: pulumi.Input<string>;
+    /**
+     * Description about the object.
+     */
+    comment?: pulumi.Input<string>;
+    /**
+     * Type of the object.
+     */
+    dataObjectType: pulumi.Input<string>;
+    /**
+     * The name of the share
+     */
+    name: pulumi.Input<string>;
+    sharedAs?: pulumi.Input<string>;
 }
 
 export interface GetSqlWarehouseChannel {
@@ -2040,6 +2128,7 @@ export interface JobJobClusterNewCluster {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: any}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
@@ -2196,6 +2285,7 @@ export interface JobNewCluster {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: any}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
@@ -2531,6 +2621,7 @@ export interface JobTaskNewCluster {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: any}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
@@ -2739,6 +2830,33 @@ export interface JobTaskSqlTaskDashboard {
 
 export interface JobTaskSqlTaskQuery {
     queryId: pulumi.Input<string>;
+}
+
+export interface JobWebhookNotifications {
+    /**
+     * (List) list of emails to notify on failure
+     */
+    onFailures?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnFailure>[]>;
+    /**
+     * (List) list of emails to notify on failure
+     */
+    onStarts?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnStart>[]>;
+    /**
+     * (List) list of emails to notify on failure
+     */
+    onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnSuccess>[]>;
+}
+
+export interface JobWebhookNotificationsOnFailure {
+    id: pulumi.Input<string>;
+}
+
+export interface JobWebhookNotificationsOnStart {
+    id: pulumi.Input<string>;
+}
+
+export interface JobWebhookNotificationsOnSuccess {
+    id: pulumi.Input<string>;
 }
 
 export interface LibraryCran {
@@ -3075,6 +3193,24 @@ export interface SecretScopeKeyvaultMetadata {
     resourceId: pulumi.Input<string>;
 }
 
+export interface ShareObject {
+    addedAt?: pulumi.Input<number>;
+    addedBy?: pulumi.Input<string>;
+    /**
+     * Description about the object.
+     */
+    comment?: pulumi.Input<string>;
+    /**
+     * Type of the object, currently only `TABLE` is allowed.
+     */
+    dataObjectType: pulumi.Input<string>;
+    /**
+     * Full name of the object, e.g. `catalog.schema.name` for a table.
+     */
+    name: pulumi.Input<string>;
+    sharedAs?: pulumi.Input<string>;
+}
+
 export interface SqlEndpointChannel {
     /**
      * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
@@ -3299,4 +3435,3 @@ export interface TableColumn {
      */
     typeText: pulumi.Input<string>;
 }
-

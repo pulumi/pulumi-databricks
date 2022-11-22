@@ -50,6 +50,12 @@ public class SqlVisualization extends com.pulumi.resources.CustomResource {
     public Output<String> queryId() {
         return this.queryId;
     }
+    @Export(name="queryPlan", type=String.class, parameters={})
+    private Output</* @Nullable */ String> queryPlan;
+
+    public Output<Optional<String>> queryPlan() {
+        return Codegen.optional(this.queryPlan);
+    }
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 

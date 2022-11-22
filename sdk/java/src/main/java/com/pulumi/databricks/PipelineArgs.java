@@ -90,14 +90,14 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+     * A flag indicating whether to run the pipeline in development mode. The default value is `true`.
      * 
      */
     @Import(name="development")
     private @Nullable Output<Boolean> development;
 
     /**
-     * @return A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+     * @return A flag indicating whether to run the pipeline in development mode. The default value is `true`.
      * 
      */
     public Optional<Output<Boolean>> development() {
@@ -341,7 +341,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param development A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+         * @param development A flag indicating whether to run the pipeline in development mode. The default value is `true`.
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param development A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+         * @param development A flag indicating whether to run the pipeline in development mode. The default value is `true`.
          * 
          * @return builder
          * 

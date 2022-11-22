@@ -116,7 +116,7 @@ namespace Pulumi.Databricks
         public Output<bool?> Continuous { get; private set; } = null!;
 
         /// <summary>
-        /// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+        /// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
         /// </summary>
         [Output("development")]
         public Output<bool?> Development { get; private set; } = null!;
@@ -249,7 +249,7 @@ namespace Pulumi.Databricks
         public Input<bool>? Continuous { get; set; }
 
         /// <summary>
-        /// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+        /// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
         /// </summary>
         [Input("development")]
         public Input<bool>? Development { get; set; }
@@ -347,7 +347,7 @@ namespace Pulumi.Databricks
         public Input<bool>? Continuous { get; set; }
 
         /// <summary>
-        /// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+        /// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
         /// </summary>
         [Input("development")]
         public Input<bool>? Development { get; set; }

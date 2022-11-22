@@ -19,6 +19,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkJarTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkPythonTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkSubmitTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsWebhookNotificationsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -195,6 +196,13 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.timeoutSeconds);
     }
 
+    @Import(name="webhookNotifications")
+    private @Nullable Output<GetJobJobSettingsSettingsWebhookNotificationsArgs> webhookNotifications;
+
+    public Optional<Output<GetJobJobSettingsSettingsWebhookNotificationsArgs>> webhookNotifications() {
+        return Optional.ofNullable(this.webhookNotifications);
+    }
+
     private GetJobJobSettingsSettingsArgs() {}
 
     private GetJobJobSettingsSettingsArgs(GetJobJobSettingsSettingsArgs $) {
@@ -221,6 +229,7 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         this.tags = $.tags;
         this.tasks = $.tasks;
         this.timeoutSeconds = $.timeoutSeconds;
+        this.webhookNotifications = $.webhookNotifications;
     }
 
     public static Builder builder() {
@@ -458,6 +467,15 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
         public Builder timeoutSeconds(Integer timeoutSeconds) {
             return timeoutSeconds(Output.of(timeoutSeconds));
+        }
+
+        public Builder webhookNotifications(@Nullable Output<GetJobJobSettingsSettingsWebhookNotificationsArgs> webhookNotifications) {
+            $.webhookNotifications = webhookNotifications;
+            return this;
+        }
+
+        public Builder webhookNotifications(GetJobJobSettingsSettingsWebhookNotificationsArgs webhookNotifications) {
+            return webhookNotifications(Output.of(webhookNotifications));
         }
 
         public GetJobJobSettingsSettingsArgs build() {

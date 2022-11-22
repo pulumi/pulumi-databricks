@@ -181,6 +181,13 @@ public final class GetJobJobSettingsSettingsTaskNewCluster extends com.pulumi.re
         return Optional.ofNullable(this.policyId);
     }
 
+    @Import(name="runtimeEngine")
+    private @Nullable String runtimeEngine;
+
+    public Optional<String> runtimeEngine() {
+        return Optional.ofNullable(this.runtimeEngine);
+    }
+
     @Import(name="singleUserName")
     private @Nullable String singleUserName;
 
@@ -248,6 +255,7 @@ public final class GetJobJobSettingsSettingsTaskNewCluster extends com.pulumi.re
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
         this.policyId = $.policyId;
+        this.runtimeEngine = $.runtimeEngine;
         this.singleUserName = $.singleUserName;
         this.sparkConf = $.sparkConf;
         this.sparkEnvVars = $.sparkEnvVars;
@@ -385,6 +393,11 @@ public final class GetJobJobSettingsSettingsTaskNewCluster extends com.pulumi.re
 
         public Builder policyId(@Nullable String policyId) {
             $.policyId = policyId;
+            return this;
+        }
+
+        public Builder runtimeEngine(@Nullable String runtimeEngine) {
+            $.runtimeEngine = runtimeEngine;
             return this;
         }
 

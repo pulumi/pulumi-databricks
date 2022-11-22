@@ -31,7 +31,8 @@ class SqlEndpointArgs:
                  odbc_params: Optional[pulumi.Input['SqlEndpointOdbcParamsArgs']] = None,
                  spot_instance_policy: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input['SqlEndpointTagsArgs']] = None):
+                 tags: Optional[pulumi.Input['SqlEndpointTagsArgs']] = None,
+                 warehouse_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SqlEndpoint resource.
         :param pulumi.Input[str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
@@ -47,6 +48,7 @@ class SqlEndpointArgs:
         :param pulumi.Input['SqlEndpointOdbcParamsArgs'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
         :param pulumi.Input[str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input['SqlEndpointTagsArgs'] tags: Databricks tags all endpoint resources with these tags.
+        :param pulumi.Input[str] warehouse_type: [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
         """
         pulumi.set(__self__, "cluster_size", cluster_size)
         if auto_stop_mins is not None:
@@ -79,6 +81,8 @@ class SqlEndpointArgs:
             pulumi.set(__self__, "state", state)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if warehouse_type is not None:
+            pulumi.set(__self__, "warehouse_type", warehouse_type)
 
     @property
     @pulumi.getter(name="clusterSize")
@@ -263,6 +267,18 @@ class SqlEndpointArgs:
     def tags(self, value: Optional[pulumi.Input['SqlEndpointTagsArgs']]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="warehouseType")
+    def warehouse_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+        """
+        return pulumi.get(self, "warehouse_type")
+
+    @warehouse_type.setter
+    def warehouse_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warehouse_type", value)
+
 
 @pulumi.input_type
 class _SqlEndpointState:
@@ -282,7 +298,8 @@ class _SqlEndpointState:
                  odbc_params: Optional[pulumi.Input['SqlEndpointOdbcParamsArgs']] = None,
                  spot_instance_policy: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input['SqlEndpointTagsArgs']] = None):
+                 tags: Optional[pulumi.Input['SqlEndpointTagsArgs']] = None,
+                 warehouse_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SqlEndpoint resources.
         :param pulumi.Input[int] auto_stop_mins: Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
@@ -298,6 +315,7 @@ class _SqlEndpointState:
         :param pulumi.Input['SqlEndpointOdbcParamsArgs'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
         :param pulumi.Input[str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input['SqlEndpointTagsArgs'] tags: Databricks tags all endpoint resources with these tags.
+        :param pulumi.Input[str] warehouse_type: [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
         """
         if auto_stop_mins is not None:
             pulumi.set(__self__, "auto_stop_mins", auto_stop_mins)
@@ -331,6 +349,8 @@ class _SqlEndpointState:
             pulumi.set(__self__, "state", state)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if warehouse_type is not None:
+            pulumi.set(__self__, "warehouse_type", warehouse_type)
 
     @property
     @pulumi.getter(name="autoStopMins")
@@ -515,6 +535,18 @@ class _SqlEndpointState:
     def tags(self, value: Optional[pulumi.Input['SqlEndpointTagsArgs']]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="warehouseType")
+    def warehouse_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+        """
+        return pulumi.get(self, "warehouse_type")
+
+    @warehouse_type.setter
+    def warehouse_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warehouse_type", value)
+
 
 class SqlEndpoint(pulumi.CustomResource):
     @overload
@@ -537,27 +569,11 @@ class SqlEndpoint(pulumi.CustomResource):
                  spot_instance_policy: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[pulumi.InputType['SqlEndpointTagsArgs']]] = None,
+                 warehouse_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         This resource is used to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL endpoints](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.get_current_user()
-        this = databricks.SqlEndpoint("this",
-            cluster_size="Small",
-            max_num_clusters=1,
-            tags=databricks.SqlEndpointTagsArgs(
-                custom_tags=[databricks.SqlEndpointTagsCustomTagArgs(
-                    key="City",
-                    value="Amsterdam",
-                )],
-            ))
-        ```
         ## Access Control
 
         * Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL endpoints.
@@ -596,6 +612,7 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SqlEndpointOdbcParamsArgs']] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
         :param pulumi.Input[str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input[pulumi.InputType['SqlEndpointTagsArgs']] tags: Databricks tags all endpoint resources with these tags.
+        :param pulumi.Input[str] warehouse_type: [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
         """
         ...
     @overload
@@ -606,23 +623,6 @@ class SqlEndpoint(pulumi.CustomResource):
         """
         This resource is used to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL endpoints](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.get_current_user()
-        this = databricks.SqlEndpoint("this",
-            cluster_size="Small",
-            max_num_clusters=1,
-            tags=databricks.SqlEndpointTagsArgs(
-                custom_tags=[databricks.SqlEndpointTagsCustomTagArgs(
-                    key="City",
-                    value="Amsterdam",
-                )],
-            ))
-        ```
         ## Access Control
 
         * Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL endpoints.
@@ -677,6 +677,7 @@ class SqlEndpoint(pulumi.CustomResource):
                  spot_instance_policy: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[pulumi.InputType['SqlEndpointTagsArgs']]] = None,
+                 warehouse_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -704,6 +705,7 @@ class SqlEndpoint(pulumi.CustomResource):
             __props__.__dict__["spot_instance_policy"] = spot_instance_policy
             __props__.__dict__["state"] = state
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["warehouse_type"] = warehouse_type
         super(SqlEndpoint, __self__).__init__(
             'databricks:index/sqlEndpoint:SqlEndpoint',
             resource_name,
@@ -729,7 +731,8 @@ class SqlEndpoint(pulumi.CustomResource):
             odbc_params: Optional[pulumi.Input[pulumi.InputType['SqlEndpointOdbcParamsArgs']]] = None,
             spot_instance_policy: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[pulumi.InputType['SqlEndpointTagsArgs']]] = None) -> 'SqlEndpoint':
+            tags: Optional[pulumi.Input[pulumi.InputType['SqlEndpointTagsArgs']]] = None,
+            warehouse_type: Optional[pulumi.Input[str]] = None) -> 'SqlEndpoint':
         """
         Get an existing SqlEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -750,6 +753,7 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SqlEndpointOdbcParamsArgs']] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
         :param pulumi.Input[str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input[pulumi.InputType['SqlEndpointTagsArgs']] tags: Databricks tags all endpoint resources with these tags.
+        :param pulumi.Input[str] warehouse_type: [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -771,6 +775,7 @@ class SqlEndpoint(pulumi.CustomResource):
         __props__.__dict__["spot_instance_policy"] = spot_instance_policy
         __props__.__dict__["state"] = state
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["warehouse_type"] = warehouse_type
         return SqlEndpoint(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -891,4 +896,12 @@ class SqlEndpoint(pulumi.CustomResource):
         Databricks tags all endpoint resources with these tags.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="warehouseType")
+    def warehouse_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+        """
+        return pulumi.get(self, "warehouse_type")
 

@@ -24,11 +24,17 @@ namespace Pulumi.Databricks
         [Output("grants")]
         public Output<ImmutableArray<Outputs.GrantsGrant>> GrantDetails { get; private set; } = null!;
 
+        [Output("materializedView")]
+        public Output<string?> MaterializedView { get; private set; } = null!;
+
         [Output("metastore")]
         public Output<string?> Metastore { get; private set; } = null!;
 
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
+
+        [Output("share")]
+        public Output<string?> Share { get; private set; } = null!;
 
         [Output("storageCredential")]
         public Output<string?> StorageCredential { get; private set; } = null!;
@@ -102,11 +108,17 @@ namespace Pulumi.Databricks
             set => _grants = value;
         }
 
+        [Input("materializedView")]
+        public Input<string>? MaterializedView { get; set; }
+
         [Input("metastore")]
         public Input<string>? Metastore { get; set; }
 
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        [Input("share")]
+        public Input<string>? Share { get; set; }
 
         [Input("storageCredential")]
         public Input<string>? StorageCredential { get; set; }
@@ -142,11 +154,17 @@ namespace Pulumi.Databricks
             set => _grants = value;
         }
 
+        [Input("materializedView")]
+        public Input<string>? MaterializedView { get; set; }
+
         [Input("metastore")]
         public Input<string>? Metastore { get; set; }
 
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        [Input("share")]
+        public Input<string>? Share { get; set; }
 
         [Input("storageCredential")]
         public Input<string>? StorageCredential { get; set; }
