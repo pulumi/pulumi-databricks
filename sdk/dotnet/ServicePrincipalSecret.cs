@@ -9,7 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    [DatabricksResourceType("databricks:index/servicePrincipalSecret:servicePrincipalSecret")]
+    [DatabricksResourceType("databricks:index/servicePrincipalSecret:ServicePrincipalSecret")]
     public partial class ServicePrincipalSecret : global::Pulumi.CustomResource
     {
         [Output("secret")]
@@ -30,12 +30,12 @@ namespace Pulumi.Databricks
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServicePrincipalSecret(string name, ServicePrincipalSecretArgs args, CustomResourceOptions? options = null)
-            : base("databricks:index/servicePrincipalSecret:servicePrincipalSecret", name, args ?? new ServicePrincipalSecretArgs(), MakeResourceOptions(options, ""))
+            : base("databricks:index/servicePrincipalSecret:ServicePrincipalSecret", name, args ?? new ServicePrincipalSecretArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServicePrincipalSecret(string name, Input<string> id, ServicePrincipalSecretState? state = null, CustomResourceOptions? options = null)
-            : base("databricks:index/servicePrincipalSecret:servicePrincipalSecret", name, state, MakeResourceOptions(options, id))
+            : base("databricks:index/servicePrincipalSecret:ServicePrincipalSecret", name, state, MakeResourceOptions(options, id))
         {
         }
 

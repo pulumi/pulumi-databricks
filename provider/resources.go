@@ -143,7 +143,7 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_secret_scope":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretScope")},
 			"databricks_service_principal":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServicePrincipal")},
 			"databricks_service_principal_role":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServicePrincipalRole")},
-			"databricks_service_principal_secret": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "servicePrincipalSecret")},
+			"databricks_service_principal_secret": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServicePrincipalSecret")},
 			"databricks_share":                    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Share")},
 			"databricks_sql_dashboard":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlDashboard")},
 			"databricks_sql_endpoint":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlEndpoint")},

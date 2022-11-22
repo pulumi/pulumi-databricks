@@ -500,7 +500,7 @@ _utilities.register(
   "mod": "index/servicePrincipalSecret",
   "fqn": "pulumi_databricks",
   "classes": {
-   "databricks:index/servicePrincipalSecret:servicePrincipalSecret": "ServicePrincipalSecret"
+   "databricks:index/servicePrincipalSecret:ServicePrincipalSecret": "ServicePrincipalSecret"
   }
  },
  {

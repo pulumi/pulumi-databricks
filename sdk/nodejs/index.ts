@@ -578,7 +578,7 @@ const _module = {
                 return new ServicePrincipal(name, <any>undefined, { urn })
             case "databricks:index/servicePrincipalRole:ServicePrincipalRole":
                 return new ServicePrincipalRole(name, <any>undefined, { urn })
-            case "databricks:index/servicePrincipalSecret:servicePrincipalSecret":
+            case "databricks:index/servicePrincipalSecret:ServicePrincipalSecret":
                 return new ServicePrincipalSecret(name, <any>undefined, { urn })
             case "databricks:index/share:Share":
                 return new Share(name, <any>undefined, { urn })

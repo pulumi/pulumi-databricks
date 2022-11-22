@@ -19,7 +19,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'databricks:index/servicePrincipalSecret:servicePrincipalSecret';
+    public static readonly __pulumiType = 'databricks:index/servicePrincipalSecret:ServicePrincipalSecret';
 
     /**
      * Returns true if the given object is an instance of ServicePrincipalSecret.  This is designed to work even
@@ -69,7 +69,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
 }
 
 /**
- * Input properties used for looking up and filtering servicePrincipalSecret resources.
+ * Input properties used for looking up and filtering ServicePrincipalSecret resources.
  */
 export interface ServicePrincipalSecretState {
     secret?: pulumi.Input<string>;

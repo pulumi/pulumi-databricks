@@ -116,7 +116,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServicePrincipal{}
 	case "databricks:index/servicePrincipalRole:ServicePrincipalRole":
 		r = &ServicePrincipalRole{}
-	case "databricks:index/servicePrincipalSecret:servicePrincipalSecret":
+	case "databricks:index/servicePrincipalSecret:ServicePrincipalSecret":
 		r = &ServicePrincipalSecret{}
 	case "databricks:index/share:Share":
 		r = &Share{}

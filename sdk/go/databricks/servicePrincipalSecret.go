@@ -37,7 +37,7 @@ func NewServicePrincipalSecret(ctx *pulumi.Context,
 	})
 	opts = append(opts, secrets)
 	var resource ServicePrincipalSecret
-	err := ctx.RegisterResource("databricks:index/servicePrincipalSecret:servicePrincipalSecret", name, args, &resource, opts...)
+	err := ctx.RegisterResource("databricks:index/servicePrincipalSecret:ServicePrincipalSecret", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func NewServicePrincipalSecret(ctx *pulumi.Context,
 func GetServicePrincipalSecret(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ServicePrincipalSecretState, opts ...pulumi.ResourceOption) (*ServicePrincipalSecret, error) {
 	var resource ServicePrincipalSecret
-	err := ctx.ReadResource("databricks:index/servicePrincipalSecret:servicePrincipalSecret", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("databricks:index/servicePrincipalSecret:ServicePrincipalSecret", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -14,7 +14,7 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
-@ResourceType(type="databricks:index/servicePrincipalSecret:servicePrincipalSecret")
+@ResourceType(type="databricks:index/servicePrincipalSecret:ServicePrincipalSecret")
 public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource {
     @Export(name="secret", type=String.class, parameters={})
     private Output<String> secret;
@@ -57,11 +57,11 @@ public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource 
      * @param options A bag of options that control this resource's behavior.
      */
     public ServicePrincipalSecret(String name, ServicePrincipalSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/servicePrincipalSecret:servicePrincipalSecret", name, args == null ? ServicePrincipalSecretArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("databricks:index/servicePrincipalSecret:ServicePrincipalSecret", name, args == null ? ServicePrincipalSecretArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServicePrincipalSecret(String name, Output<String> id, @Nullable ServicePrincipalSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("databricks:index/servicePrincipalSecret:servicePrincipalSecret", name, state, makeResourceOptions(options, id));
+        super("databricks:index/servicePrincipalSecret:ServicePrincipalSecret", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

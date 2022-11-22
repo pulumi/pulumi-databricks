@@ -18522,7 +18522,7 @@
                 "type": "object"
             }
         },
-        "databricks:index/servicePrincipalSecret:servicePrincipalSecret": {
+        "databricks:index/servicePrincipalSecret:ServicePrincipalSecret": {
             "properties": {
                 "secret": {
                     "type": "string",
@@ -18557,7 +18557,7 @@
                 "servicePrincipalId"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering servicePrincipalSecret resources.\n",
+                "description": "Input properties used for looking up and filtering ServicePrincipalSecret resources.\n",
                 "properties": {
                     "secret": {
                         "type": "string",

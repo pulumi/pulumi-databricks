@@ -155,7 +155,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ServicePrincipalSecret, __self__).__init__(
-            'databricks:index/servicePrincipalSecret:servicePrincipalSecret',
+            'databricks:index/servicePrincipalSecret:ServicePrincipalSecret',
             resource_name,
             __props__,
             opts)
