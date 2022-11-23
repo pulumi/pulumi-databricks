@@ -5,13 +5,12 @@
     "keywords": [
         "pulumi",
         "databricks",
-        "category/Infrastructure"
+        "category/infrastructure"
     ],
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`databricks` Terraform Provider](https://github.com/databricks/terraform-provider-databricks).",
     "repository": "https://github.com/pulumi/pulumi-databricks",
-    "logoUrl": "https://databricks.com/wp-content/uploads/2021/10/db-nav-logo.svg",
     "publisher": "Pulumi",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
