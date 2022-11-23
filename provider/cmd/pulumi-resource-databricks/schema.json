@@ -5,7 +5,7 @@
     "keywords": [
         "pulumi",
         "databricks",
-        "category/Infrastructure"
+        "category/infrastructure"
     ],
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
