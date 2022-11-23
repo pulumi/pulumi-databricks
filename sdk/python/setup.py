@@ -45,7 +45,7 @@ setup(name='pulumi_databricks',
       cmdclass={
           'install': InstallPluginCommand,
       },
-      keywords='pulumi databricks category/Infrastructure',
+      keywords='pulumi databricks category/infrastructure',
       url='https://www.pulumi.com',
       project_urls={
           'Repository': 'https://github.com/pulumi/pulumi-databricks'

@@ -53,14 +53,16 @@ func Provider() tfbridge.ProviderInfo {
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
-		// You may host a logo on a domain you control or add an SVG logo for your package
-		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL:     "https://databricks.com/wp-content/uploads/2021/10/db-nav-logo.svg",
+		// This is removing the logo url so we can use the logo that's in hugo.
+		// The registry will end up using the following logo which is their horizontal word mark
+		// which better fills the space
+		// https://github.com/pulumi/pulumi-hugo/blob/master/themes/default/static/logos/pkg/databricks.svg
+		LogoURL:     "",
 		Description: "A Pulumi package for creating and managing databricks cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "databricks", "category/Infrastructure"},
+		Keywords:   []string{"pulumi", "databricks", "category/infrastructure"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
 		Repository: "https://github.com/pulumi/pulumi-databricks",
