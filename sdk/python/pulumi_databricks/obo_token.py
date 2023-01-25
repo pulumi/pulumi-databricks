@@ -15,17 +15,19 @@ __all__ = ['OboTokenArgs', 'OboToken']
 class OboTokenArgs:
     def __init__(__self__, *,
                  application_id: pulumi.Input[str],
-                 comment: pulumi.Input[str],
-                 lifetime_seconds: pulumi.Input[int]):
+                 comment: Optional[pulumi.Input[str]] = None,
+                 lifetime_seconds: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a OboToken resource.
         :param pulumi.Input[str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[str] comment: Comment that describes the purpose of the token.
-        :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires.
+        :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
         """
         pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "comment", comment)
-        pulumi.set(__self__, "lifetime_seconds", lifetime_seconds)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if lifetime_seconds is not None:
+            pulumi.set(__self__, "lifetime_seconds", lifetime_seconds)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -41,26 +43,26 @@ class OboTokenArgs:
 
     @property
     @pulumi.getter
-    def comment(self) -> pulumi.Input[str]:
+    def comment(self) -> Optional[pulumi.Input[str]]:
         """
         Comment that describes the purpose of the token.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: pulumi.Input[str]):
+    def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
 
     @property
     @pulumi.getter(name="lifetimeSeconds")
-    def lifetime_seconds(self) -> pulumi.Input[int]:
+    def lifetime_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of seconds before the token expires. Token resource is re-created when it expires.
+        The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
         """
         return pulumi.get(self, "lifetime_seconds")
 
     @lifetime_seconds.setter
-    def lifetime_seconds(self, value: pulumi.Input[int]):
+    def lifetime_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "lifetime_seconds", value)
 
 
@@ -75,7 +77,7 @@ class _OboTokenState:
         Input properties used for looking up and filtering OboToken resources.
         :param pulumi.Input[str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[str] comment: Comment that describes the purpose of the token.
-        :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires.
+        :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
         :param pulumi.Input[str] token_value: **Sensitive** value of the newly-created token.
         """
         if application_id is not None:
@@ -115,7 +117,7 @@ class _OboTokenState:
     @pulumi.getter(name="lifetimeSeconds")
     def lifetime_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of seconds before the token expires. Token resource is re-created when it expires.
+        The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
         """
         return pulumi.get(self, "lifetime_seconds")
 
@@ -154,7 +156,7 @@ class OboToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[str] comment: Comment that describes the purpose of the token.
-        :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires.
+        :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
         """
         ...
     @overload
@@ -197,11 +199,7 @@ class OboToken(pulumi.CustomResource):
             if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")
             __props__.__dict__["application_id"] = application_id
-            if comment is None and not opts.urn:
-                raise TypeError("Missing required property 'comment'")
             __props__.__dict__["comment"] = comment
-            if lifetime_seconds is None and not opts.urn:
-                raise TypeError("Missing required property 'lifetime_seconds'")
             __props__.__dict__["lifetime_seconds"] = lifetime_seconds
             __props__.__dict__["token_value"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["tokenValue"])
@@ -229,7 +227,7 @@ class OboToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: Application ID of ServicePrincipal to create a PAT token for.
         :param pulumi.Input[str] comment: Comment that describes the purpose of the token.
-        :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires.
+        :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
         :param pulumi.Input[str] token_value: **Sensitive** value of the newly-created token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -252,7 +250,7 @@ class OboToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def comment(self) -> pulumi.Output[str]:
+    def comment(self) -> pulumi.Output[Optional[str]]:
         """
         Comment that describes the purpose of the token.
         """
@@ -260,9 +258,9 @@ class OboToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lifetimeSeconds")
-    def lifetime_seconds(self) -> pulumi.Output[int]:
+    def lifetime_seconds(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of seconds before the token expires. Token resource is re-created when it expires.
+        The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
         """
         return pulumi.get(self, "lifetime_seconds")
 

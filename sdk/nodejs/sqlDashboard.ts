@@ -17,7 +17,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
+ * const sharedDir = new databricks.Directory("sharedDir", {path: "/Shared/Dashboards"});
  * const d1 = new databricks.SqlDashboard("d1", {
+ *     parent: pulumi.interpolate`folders/${sharedDir.objectId}`,
  *     tags: [
  *         "some-tag",
  *         "another-tag",
@@ -85,6 +87,7 @@ export class SqlDashboard extends pulumi.CustomResource {
     }
 
     public readonly name!: pulumi.Output<string>;
+    public readonly parent!: pulumi.Output<string | undefined>;
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -101,10 +104,12 @@ export class SqlDashboard extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SqlDashboardState | undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as SqlDashboardArgs | undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -117,6 +122,7 @@ export class SqlDashboard extends pulumi.CustomResource {
  */
 export interface SqlDashboardState {
     name?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -125,5 +131,6 @@ export interface SqlDashboardState {
  */
 export interface SqlDashboardArgs {
     name?: pulumi.Input<string>;
+    parent?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -70,6 +70,12 @@ type Catalog struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Extensible Catalog properties.
 	Properties pulumi.MapOutput `pulumi:"properties"`
+	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+	ProviderName pulumi.StringPtrOutput `pulumi:"providerName"`
+	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+	ShareName pulumi.StringPtrOutput `pulumi:"shareName"`
+	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	StorageRoot pulumi.StringPtrOutput `pulumi:"storageRoot"`
 }
 
 // NewCatalog registers a new resource with the given unique name, arguments, and options.
@@ -112,6 +118,12 @@ type catalogState struct {
 	Owner *string `pulumi:"owner"`
 	// Extensible Catalog properties.
 	Properties map[string]interface{} `pulumi:"properties"`
+	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+	ProviderName *string `pulumi:"providerName"`
+	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+	ShareName *string `pulumi:"shareName"`
+	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	StorageRoot *string `pulumi:"storageRoot"`
 }
 
 type CatalogState struct {
@@ -126,6 +138,12 @@ type CatalogState struct {
 	Owner pulumi.StringPtrInput
 	// Extensible Catalog properties.
 	Properties pulumi.MapInput
+	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+	ProviderName pulumi.StringPtrInput
+	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+	ShareName pulumi.StringPtrInput
+	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	StorageRoot pulumi.StringPtrInput
 }
 
 func (CatalogState) ElementType() reflect.Type {
@@ -144,6 +162,12 @@ type catalogArgs struct {
 	Owner *string `pulumi:"owner"`
 	// Extensible Catalog properties.
 	Properties map[string]interface{} `pulumi:"properties"`
+	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+	ProviderName *string `pulumi:"providerName"`
+	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+	ShareName *string `pulumi:"shareName"`
+	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	StorageRoot *string `pulumi:"storageRoot"`
 }
 
 // The set of arguments for constructing a Catalog resource.
@@ -159,6 +183,12 @@ type CatalogArgs struct {
 	Owner pulumi.StringPtrInput
 	// Extensible Catalog properties.
 	Properties pulumi.MapInput
+	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+	ProviderName pulumi.StringPtrInput
+	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+	ShareName pulumi.StringPtrInput
+	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	StorageRoot pulumi.StringPtrInput
 }
 
 func (CatalogArgs) ElementType() reflect.Type {
@@ -275,6 +305,21 @@ func (o CatalogOutput) Owner() pulumi.StringOutput {
 // Extensible Catalog properties.
 func (o CatalogOutput) Properties() pulumi.MapOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.MapOutput { return v.Properties }).(pulumi.MapOutput)
+}
+
+// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+func (o CatalogOutput) ProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.ProviderName }).(pulumi.StringPtrOutput)
+}
+
+// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+func (o CatalogOutput) ShareName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.ShareName }).(pulumi.StringPtrOutput)
+}
+
+// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+func (o CatalogOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }
 
 type CatalogArrayOutput struct{ *pulumi.OutputState }

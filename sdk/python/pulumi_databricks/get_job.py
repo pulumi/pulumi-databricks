@@ -23,7 +23,7 @@ class GetJobResult:
     """
     A collection of values returned by getJob.
     """
-    def __init__(__self__, id=None, job_id=None, job_name=None, job_settings=None):
+    def __init__(__self__, id=None, job_id=None, job_name=None, job_settings=None, name=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -36,29 +36,26 @@ class GetJobResult:
         if job_settings and not isinstance(job_settings, dict):
             raise TypeError("Expected argument 'job_settings' to be a dict")
         pulumi.set(__self__, "job_settings", job_settings)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        the id of Job if the resource was matched by name.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="jobId")
     def job_id(self) -> str:
-        """
-        the id of Job if the resource was matched by name.
-        """
         return pulumi.get(self, "job_id")
 
     @property
     @pulumi.getter(name="jobName")
     def job_name(self) -> str:
-        """
-        the job name of Job if the resource was matched by id.
-        """
         return pulumi.get(self, "job_name")
 
     @property
@@ -68,6 +65,14 @@ class GetJobResult:
         the same fields as in databricks_job.
         """
         return pulumi.get(self, "job_settings")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        the job name of Job if the resource was matched by id.
+        """
+        return pulumi.get(self, "name")
 
 
 class AwaitableGetJobResult(GetJobResult):
@@ -79,12 +84,15 @@ class AwaitableGetJobResult(GetJobResult):
             id=self.id,
             job_id=self.job_id,
             job_name=self.job_name,
-            job_settings=self.job_settings)
+            job_settings=self.job_settings,
+            name=self.name)
 
 
-def get_job(job_id: Optional[str] = None,
+def get_job(id: Optional[str] = None,
+            job_id: Optional[str] = None,
             job_name: Optional[str] = None,
             job_settings: Optional[pulumi.InputType['GetJobJobSettingsArgs']] = None,
+            name: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobResult:
     """
     ## Example Usage
@@ -96,7 +104,7 @@ def get_job(job_id: Optional[str] = None,
     import pulumi_databricks as databricks
 
     this = databricks.get_job(job_name="My job")
-    pulumi.export("clusterId", this.job_settings.settings.new_cluster.num_workers)
+    pulumi.export("jobNumWorkers", this.job_settings.settings.new_cluster.num_workers)
     ```
     ## Related Resources
 
@@ -106,14 +114,16 @@ def get_job(job_id: Optional[str] = None,
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 
 
-    :param str job_id: the id of Job if the resource was matched by name.
-    :param str job_name: the job name of Job if the resource was matched by id.
+    :param str id: the id of Job if the resource was matched by name.
     :param pulumi.InputType['GetJobJobSettingsArgs'] job_settings: the same fields as in databricks_job.
+    :param str name: the job name of Job if the resource was matched by id.
     """
     __args__ = dict()
+    __args__['id'] = id
     __args__['jobId'] = job_id
     __args__['jobName'] = job_name
     __args__['jobSettings'] = job_settings
+    __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getJob:getJob', __args__, opts=opts, typ=GetJobResult).value
 
@@ -121,13 +131,16 @@ def get_job(job_id: Optional[str] = None,
         id=__ret__.id,
         job_id=__ret__.job_id,
         job_name=__ret__.job_name,
-        job_settings=__ret__.job_settings)
+        job_settings=__ret__.job_settings,
+        name=__ret__.name)
 
 
 @_utilities.lift_output_func(get_job)
-def get_job_output(job_id: Optional[pulumi.Input[Optional[str]]] = None,
+def get_job_output(id: Optional[pulumi.Input[Optional[str]]] = None,
+                   job_id: Optional[pulumi.Input[Optional[str]]] = None,
                    job_name: Optional[pulumi.Input[Optional[str]]] = None,
                    job_settings: Optional[pulumi.Input[Optional[pulumi.InputType['GetJobJobSettingsArgs']]]] = None,
+                   name: Optional[pulumi.Input[Optional[str]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobResult]:
     """
     ## Example Usage
@@ -139,7 +152,7 @@ def get_job_output(job_id: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi_databricks as databricks
 
     this = databricks.get_job(job_name="My job")
-    pulumi.export("clusterId", this.job_settings.settings.new_cluster.num_workers)
+    pulumi.export("jobNumWorkers", this.job_settings.settings.new_cluster.num_workers)
     ```
     ## Related Resources
 
@@ -149,8 +162,8 @@ def get_job_output(job_id: Optional[pulumi.Input[Optional[str]]] = None,
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 
 
-    :param str job_id: the id of Job if the resource was matched by name.
-    :param str job_name: the job name of Job if the resource was matched by id.
+    :param str id: the id of Job if the resource was matched by name.
     :param pulumi.InputType['GetJobJobSettingsArgs'] job_settings: the same fields as in databricks_job.
+    :param str name: the job name of Job if the resource was matched by id.
     """
     ...

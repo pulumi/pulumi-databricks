@@ -12,6 +12,25 @@ namespace Pulumi.Databricks
     /// <summary>
     /// This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var me = Databricks.GetCurrentUser.Invoke();
+    /// 
+    ///     var @this = new Databricks.MlflowExperiment("this", new()
+    ///     {
+    ///         ArtifactLocation = "dbfs:/tmp/my-experiment",
+    ///         Description = "My MLflow experiment description",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Access Control
     /// 
     /// * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.

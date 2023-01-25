@@ -49,7 +49,7 @@ func NewGitCredential(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'PersonalAccessToken'")
 	}
 	if args.PersonalAccessToken != nil {
-		args.PersonalAccessToken = pulumi.ToSecret(args.PersonalAccessToken).(pulumi.StringOutput)
+		args.PersonalAccessToken = pulumi.ToSecret(args.PersonalAccessToken).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"personalAccessToken",

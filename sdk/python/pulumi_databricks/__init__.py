@@ -5,6 +5,10 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .aws_s3_mount import *
+from .azure_adls_gen1_mount import *
+from .azure_adls_gen2_mount import *
+from .azure_blob_mount import *
 from .catalog import *
 from .cluster import *
 from .cluster_policy import *
@@ -17,13 +21,17 @@ from .get_aws_bucket_policy import *
 from .get_aws_cross_account_policy import *
 from .get_catalogs import *
 from .get_cluster import *
+from .get_cluster_policy import *
 from .get_clusters import *
 from .get_current_user import *
 from .get_dbfs_file import *
 from .get_dbfs_file_paths import *
+from .get_directory import *
 from .get_group import *
+from .get_instance_pool import *
 from .get_job import *
 from .get_jobs import *
+from .get_mws_credentials import *
 from .get_mws_workspaces import *
 from .get_node_type import *
 from .get_notebook import *
@@ -55,6 +63,7 @@ from .library import *
 from .metastore import *
 from .metastore_assignment import *
 from .metastore_data_access import *
+from .metastore_provider import *
 from .mlflow_experiment import *
 from .mlflow_model import *
 from .mlflow_webhook import *
@@ -111,6 +120,38 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "databricks",
+  "mod": "index/awsS3Mount",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/awsS3Mount:AwsS3Mount": "AwsS3Mount"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/azureAdlsGen1Mount",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/azureAdlsGen1Mount:AzureAdlsGen1Mount": "AzureAdlsGen1Mount"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/azureAdlsGen2Mount",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/azureAdlsGen2Mount:AzureAdlsGen2Mount": "AzureAdlsGen2Mount"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/azureBlobMount",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/azureBlobMount:AzureBlobMount": "AzureBlobMount"
+  }
+ },
  {
   "pkg": "databricks",
   "mod": "index/catalog",
@@ -285,6 +326,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/metastoreDataAccess:MetastoreDataAccess": "MetastoreDataAccess"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/metastoreProvider",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/metastoreProvider:MetastoreProvider": "MetastoreProvider"
   }
  },
  {

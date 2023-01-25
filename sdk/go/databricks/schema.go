@@ -87,6 +87,8 @@ type Schema struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties pulumi.MapOutput `pulumi:"properties"`
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	StorageRoot pulumi.StringPtrOutput `pulumi:"storageRoot"`
 }
 
 // NewSchema registers a new resource with the given unique name, arguments, and options.
@@ -134,6 +136,8 @@ type schemaState struct {
 	Owner *string `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties map[string]interface{} `pulumi:"properties"`
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	StorageRoot *string `pulumi:"storageRoot"`
 }
 
 type SchemaState struct {
@@ -150,6 +154,8 @@ type SchemaState struct {
 	Owner pulumi.StringPtrInput
 	// Extensible Schema properties.
 	Properties pulumi.MapInput
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	StorageRoot pulumi.StringPtrInput
 }
 
 func (SchemaState) ElementType() reflect.Type {
@@ -170,6 +176,8 @@ type schemaArgs struct {
 	Owner *string `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties map[string]interface{} `pulumi:"properties"`
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	StorageRoot *string `pulumi:"storageRoot"`
 }
 
 // The set of arguments for constructing a Schema resource.
@@ -187,6 +195,8 @@ type SchemaArgs struct {
 	Owner pulumi.StringPtrInput
 	// Extensible Schema properties.
 	Properties pulumi.MapInput
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	StorageRoot pulumi.StringPtrInput
 }
 
 func (SchemaArgs) ElementType() reflect.Type {
@@ -308,6 +318,11 @@ func (o SchemaOutput) Owner() pulumi.StringOutput {
 // Extensible Schema properties.
 func (o SchemaOutput) Properties() pulumi.MapOutput {
 	return o.ApplyT(func(v *Schema) pulumi.MapOutput { return v.Properties }).(pulumi.MapOutput)
+}
+
+// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+func (o SchemaOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringPtrOutput { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }
 
 type SchemaArrayOutput struct{ *pulumi.OutputState }

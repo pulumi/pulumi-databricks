@@ -22,7 +22,7 @@ namespace Pulumi.Databricks
     public partial class InstancePool : global::Pulumi.CustomResource
     {
         [Output("awsAttributes")]
-        public Output<Outputs.InstancePoolAwsAttributes> AwsAttributes { get; private set; } = null!;
+        public Output<Outputs.InstancePoolAwsAttributes?> AwsAttributes { get; private set; } = null!;
 
         [Output("azureAttributes")]
         public Output<Outputs.InstancePoolAzureAttributes?> AzureAttributes { get; private set; } = null!;

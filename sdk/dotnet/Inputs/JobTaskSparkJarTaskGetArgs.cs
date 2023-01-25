@@ -25,7 +25,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<string>? _parameters;
 
         /// <summary>
-        /// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        /// (List) Parameters passed to the main method.
         /// </summary>
         public InputList<string> Parameters
         {

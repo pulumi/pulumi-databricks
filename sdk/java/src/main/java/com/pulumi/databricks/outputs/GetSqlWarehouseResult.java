@@ -19,6 +19,10 @@ public final class GetSqlWarehouseResult {
      * 
      */
     private Integer autoStopMins;
+    /**
+     * @return block, consisting of following fields:
+     * 
+     */
     private GetSqlWarehouseChannel channel;
     /**
      * @return The size of the clusters allocated to the warehouse: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;.
@@ -37,7 +41,6 @@ public final class GetSqlWarehouseResult {
     private Boolean enablePhoton;
     /**
      * @return Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-     * * `channel` block, consisting of following fields:
      * 
      */
     private Boolean enableServerlessCompute;
@@ -89,6 +92,10 @@ public final class GetSqlWarehouseResult {
     public Integer autoStopMins() {
         return this.autoStopMins;
     }
+    /**
+     * @return block, consisting of following fields:
+     * 
+     */
     public GetSqlWarehouseChannel channel() {
         return this.channel;
     }
@@ -115,7 +122,6 @@ public final class GetSqlWarehouseResult {
     }
     /**
      * @return Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-     * * `channel` block, consisting of following fields:
      * 
      */
     public Boolean enableServerlessCompute() {

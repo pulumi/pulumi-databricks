@@ -19,14 +19,14 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
     public static final SqlGlobalConfigState Empty = new SqlGlobalConfigState();
 
     /**
-     * - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
+     * Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
      * 
      */
     @Import(name="dataAccessConfig")
     private @Nullable Output<Map<String,Object>> dataAccessConfig;
 
     /**
-     * @return - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
+     * @return Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
      * 
      */
     public Optional<Output<Map<String,Object>>> dataAccessConfig() {
@@ -34,14 +34,14 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+     * Allows the possibility to create Serverless SQL warehouses. Default value: false.
      * 
      */
     @Import(name="enableServerlessCompute")
     private @Nullable Output<Boolean> enableServerlessCompute;
 
     /**
-     * @return - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+     * @return Allows the possibility to create Serverless SQL warehouses. Default value: false.
      * 
      */
     public Optional<Output<Boolean>> enableServerlessCompute() {
@@ -49,14 +49,14 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * - databricks.InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
+     * databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
      * 
      */
     @Import(name="instanceProfileArn")
     private @Nullable Output<String> instanceProfileArn;
 
     /**
-     * @return - databricks.InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
+     * @return databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
      * 
      */
     public Optional<Output<String>> instanceProfileArn() {
@@ -64,14 +64,14 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * - The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
+     * The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
      * 
      */
     @Import(name="securityPolicy")
     private @Nullable Output<String> securityPolicy;
 
     /**
-     * @return - The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
+     * @return The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
      * 
      */
     public Optional<Output<String>> securityPolicy() {
@@ -79,14 +79,14 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * - SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
+     * SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
      * 
      */
     @Import(name="sqlConfigParams")
     private @Nullable Output<Map<String,Object>> sqlConfigParams;
 
     /**
-     * @return - SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
+     * @return SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
      * 
      */
     public Optional<Output<Map<String,Object>>> sqlConfigParams() {
@@ -122,7 +122,7 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dataAccessConfig - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
+         * @param dataAccessConfig Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dataAccessConfig - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
+         * @param dataAccessConfig Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableServerlessCompute - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+         * @param enableServerlessCompute Allows the possibility to create Serverless SQL warehouses. Default value: false.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableServerlessCompute - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+         * @param enableServerlessCompute Allows the possibility to create Serverless SQL warehouses. Default value: false.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceProfileArn - databricks.InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
+         * @param instanceProfileArn databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceProfileArn - databricks.InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
+         * @param instanceProfileArn databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param securityPolicy - The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
+         * @param securityPolicy The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param securityPolicy - The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
+         * @param securityPolicy The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sqlConfigParams - SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
+         * @param sqlConfigParams SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sqlConfigParams - SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
+         * @param sqlConfigParams SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
          * 
          * @return builder
          * 

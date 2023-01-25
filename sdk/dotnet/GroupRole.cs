@@ -10,9 +10,36 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// This resource allows you to attach Role ARN (AWS) to databricks_group.
+    /// This resource allows you to attach a role to databricks_group. This role could be a pre-defined role such as account admin, or an instance profile ARN.
     /// 
     /// ## Example Usage
+    /// 
+    /// Attach an instance profile to a group
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instanceProfile = new Databricks.InstanceProfile("instanceProfile", new()
+    ///     {
+    ///         InstanceProfileArn = "my_instance_profile_arn",
+    ///     });
+    /// 
+    ///     var myGroup = new Databricks.Group("myGroup");
+    /// 
+    ///     var myGroupInstanceProfile = new Databricks.GroupInstanceProfile("myGroupInstanceProfile", new()
+    ///     {
+    ///         GroupId = myGroup.Id,
+    ///         InstanceProfileId = instanceProfile.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Attach account admin role to an account-level group
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -23,10 +50,10 @@ namespace Pulumi.Databricks
     /// {
     ///     var myGroup = new Databricks.Group("myGroup");
     /// 
-    ///     var myGroupRole = new Databricks.GroupRole("myGroupRole", new()
+    ///     var myUserAccountAdmin = new Databricks.UserRole("myUserAccountAdmin", new()
     ///     {
-    ///         GroupId = myGroup.Id,
-    ///         Role = "arn:aws:iam::000000000000:role/my-role",
+    ///         UserId = myGroup.Id,
+    ///         Role = "account_admin",
     ///     });
     /// 
     /// });
@@ -59,7 +86,7 @@ namespace Pulumi.Databricks
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// This is the AWS role ARN.
+        /// Either a role name or the ARN/ID of the instance profile resource.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -117,7 +144,7 @@ namespace Pulumi.Databricks
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// This is the AWS role ARN.
+        /// Either a role name or the ARN/ID of the instance profile resource.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -137,7 +164,7 @@ namespace Pulumi.Databricks
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// This is the AWS role ARN.
+        /// Either a role name or the ARN/ID of the instance profile resource.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

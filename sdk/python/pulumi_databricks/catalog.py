@@ -19,7 +19,10 @@ class CatalogArgs:
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 provider_name: Optional[pulumi.Input[str]] = None,
+                 share_name: Optional[pulumi.Input[str]] = None,
+                 storage_root: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Catalog resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
@@ -27,6 +30,9 @@ class CatalogArgs:
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
+        :param pulumi.Input[str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+        :param pulumi.Input[str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -40,6 +46,12 @@ class CatalogArgs:
             pulumi.set(__self__, "owner", owner)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if provider_name is not None:
+            pulumi.set(__self__, "provider_name", provider_name)
+        if share_name is not None:
+            pulumi.set(__self__, "share_name", share_name)
+        if storage_root is not None:
+            pulumi.set(__self__, "storage_root", storage_root)
 
     @property
     @pulumi.getter
@@ -109,6 +121,42 @@ class CatalogArgs:
     @properties.setter
     def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="providerName")
+    def provider_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "provider_name")
+
+    @provider_name.setter
+    def provider_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provider_name", value)
+
+    @property
+    @pulumi.getter(name="shareName")
+    def share_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "share_name")
+
+    @share_name.setter
+    def share_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "share_name", value)
+
+    @property
+    @pulumi.getter(name="storageRoot")
+    def storage_root(self) -> Optional[pulumi.Input[str]]:
+        """
+        Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "storage_root")
+
+    @storage_root.setter
+    def storage_root(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_root", value)
 
 
 @pulumi.input_type
@@ -119,7 +167,10 @@ class _CatalogState:
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 provider_name: Optional[pulumi.Input[str]] = None,
+                 share_name: Optional[pulumi.Input[str]] = None,
+                 storage_root: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Catalog resources.
         :param pulumi.Input[str] comment: User-supplied free-form text.
@@ -127,6 +178,9 @@ class _CatalogState:
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
+        :param pulumi.Input[str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+        :param pulumi.Input[str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -140,6 +194,12 @@ class _CatalogState:
             pulumi.set(__self__, "owner", owner)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if provider_name is not None:
+            pulumi.set(__self__, "provider_name", provider_name)
+        if share_name is not None:
+            pulumi.set(__self__, "share_name", share_name)
+        if storage_root is not None:
+            pulumi.set(__self__, "storage_root", storage_root)
 
     @property
     @pulumi.getter
@@ -209,6 +269,42 @@ class _CatalogState:
     @properties.setter
     def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="providerName")
+    def provider_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "provider_name")
+
+    @provider_name.setter
+    def provider_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provider_name", value)
+
+    @property
+    @pulumi.getter(name="shareName")
+    def share_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "share_name")
+
+    @share_name.setter
+    def share_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "share_name", value)
+
+    @property
+    @pulumi.getter(name="storageRoot")
+    def storage_root(self) -> Optional[pulumi.Input[str]]:
+        """
+        Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "storage_root")
+
+    @storage_root.setter
+    def storage_root(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_root", value)
 
 
 class Catalog(pulumi.CustomResource):
@@ -222,6 +318,9 @@ class Catalog(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 provider_name: Optional[pulumi.Input[str]] = None,
+                 share_name: Optional[pulumi.Input[str]] = None,
+                 storage_root: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -260,6 +359,9 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
+        :param pulumi.Input[str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+        :param pulumi.Input[str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
         ...
     @overload
@@ -318,6 +420,9 @@ class Catalog(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 provider_name: Optional[pulumi.Input[str]] = None,
+                 share_name: Optional[pulumi.Input[str]] = None,
+                 storage_root: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -333,6 +438,9 @@ class Catalog(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
             __props__.__dict__["properties"] = properties
+            __props__.__dict__["provider_name"] = provider_name
+            __props__.__dict__["share_name"] = share_name
+            __props__.__dict__["storage_root"] = storage_root
         super(Catalog, __self__).__init__(
             'databricks:index/catalog:Catalog',
             resource_name,
@@ -348,7 +456,10 @@ class Catalog(pulumi.CustomResource):
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
-            properties: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Catalog':
+            properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            provider_name: Optional[pulumi.Input[str]] = None,
+            share_name: Optional[pulumi.Input[str]] = None,
+            storage_root: Optional[pulumi.Input[str]] = None) -> 'Catalog':
         """
         Get an existing Catalog resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -361,6 +472,9 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
+        :param pulumi.Input[str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+        :param pulumi.Input[str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -372,6 +486,9 @@ class Catalog(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
         __props__.__dict__["properties"] = properties
+        __props__.__dict__["provider_name"] = provider_name
+        __props__.__dict__["share_name"] = share_name
+        __props__.__dict__["storage_root"] = storage_root
         return Catalog(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -418,4 +535,28 @@ class Catalog(pulumi.CustomResource):
         Extensible Catalog properties.
         """
         return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter(name="providerName")
+    def provider_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "provider_name")
+
+    @property
+    @pulumi.getter(name="shareName")
+    def share_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "share_name")
+
+    @property
+    @pulumi.getter(name="storageRoot")
+    def storage_root(self) -> pulumi.Output[Optional[str]]:
+        """
+        Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "storage_root")
 

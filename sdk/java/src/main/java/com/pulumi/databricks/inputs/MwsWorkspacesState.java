@@ -5,9 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceBucketArgs;
+import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerArgs;
 import com.pulumi.databricks.inputs.MwsWorkspacesExternalCustomerInfoArgs;
-import com.pulumi.databricks.inputs.MwsWorkspacesNetworkArgs;
+import com.pulumi.databricks.inputs.MwsWorkspacesGcpManagedNetworkConfigArgs;
+import com.pulumi.databricks.inputs.MwsWorkspacesGkeConfigArgs;
 import com.pulumi.databricks.inputs.MwsWorkspacesTokenArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -37,14 +38,14 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * AWS region of VPC
+     * region of VPC
      * 
      */
     @Import(name="awsRegion")
     private @Nullable Output<String> awsRegion;
 
     /**
-     * @return AWS region of VPC
+     * @return region of VPC
      * 
      */
     public Optional<Output<String>> awsRegion() {
@@ -58,11 +59,19 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.cloud);
     }
 
-    @Import(name="cloudResourceBucket")
-    private @Nullable Output<MwsWorkspacesCloudResourceBucketArgs> cloudResourceBucket;
+    /**
+     * A block that specifies GCP workspace configurations, consisting of following blocks:
+     * 
+     */
+    @Import(name="cloudResourceContainer")
+    private @Nullable Output<MwsWorkspacesCloudResourceContainerArgs> cloudResourceContainer;
 
-    public Optional<Output<MwsWorkspacesCloudResourceBucketArgs>> cloudResourceBucket() {
-        return Optional.ofNullable(this.cloudResourceBucket);
+    /**
+     * @return A block that specifies GCP workspace configurations, consisting of following blocks:
+     * 
+     */
+    public Optional<Output<MwsWorkspacesCloudResourceContainerArgs>> cloudResourceContainer() {
+        return Optional.ofNullable(this.cloudResourceContainer);
     }
 
     /**
@@ -128,6 +137,28 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.externalCustomerInfo);
     }
 
+    @Import(name="gcpManagedNetworkConfig")
+    private @Nullable Output<MwsWorkspacesGcpManagedNetworkConfigArgs> gcpManagedNetworkConfig;
+
+    public Optional<Output<MwsWorkspacesGcpManagedNetworkConfigArgs>> gcpManagedNetworkConfig() {
+        return Optional.ofNullable(this.gcpManagedNetworkConfig);
+    }
+
+    /**
+     * A block that specifies GKE configuration for the Databricks workspace:
+     * 
+     */
+    @Import(name="gkeConfig")
+    private @Nullable Output<MwsWorkspacesGkeConfigArgs> gkeConfig;
+
+    /**
+     * @return A block that specifies GKE configuration for the Databricks workspace:
+     * 
+     */
+    public Optional<Output<MwsWorkspacesGkeConfigArgs>> gkeConfig() {
+        return Optional.ofNullable(this.gkeConfig);
+    }
+
     @Import(name="isNoPublicIpEnabled")
     private @Nullable Output<Boolean> isNoPublicIpEnabled;
 
@@ -135,9 +166,17 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.isNoPublicIpEnabled);
     }
 
+    /**
+     * region of the subnet
+     * 
+     */
     @Import(name="location")
     private @Nullable Output<String> location;
 
+    /**
+     * @return region of the subnet
+     * 
+     */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
@@ -157,16 +196,17 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.managedServicesCustomerManagedKeyId);
     }
 
-    @Import(name="network")
-    private @Nullable Output<MwsWorkspacesNetworkArgs> network;
-
-    public Optional<Output<MwsWorkspacesNetworkArgs>> network() {
-        return Optional.ofNullable(this.network);
-    }
-
+    /**
+     * `network_id` from networks.
+     * 
+     */
     @Import(name="networkId")
     private @Nullable Output<String> networkId;
 
+    /**
+     * @return `network_id` from networks.
+     * 
+     */
     public Optional<Output<String>> networkId() {
         return Optional.ofNullable(this.networkId);
     }
@@ -287,16 +327,17 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         this.accountId = $.accountId;
         this.awsRegion = $.awsRegion;
         this.cloud = $.cloud;
-        this.cloudResourceBucket = $.cloudResourceBucket;
+        this.cloudResourceContainer = $.cloudResourceContainer;
         this.creationTime = $.creationTime;
         this.credentialsId = $.credentialsId;
         this.customerManagedKeyId = $.customerManagedKeyId;
         this.deploymentName = $.deploymentName;
         this.externalCustomerInfo = $.externalCustomerInfo;
+        this.gcpManagedNetworkConfig = $.gcpManagedNetworkConfig;
+        this.gkeConfig = $.gkeConfig;
         this.isNoPublicIpEnabled = $.isNoPublicIpEnabled;
         this.location = $.location;
         this.managedServicesCustomerManagedKeyId = $.managedServicesCustomerManagedKeyId;
-        this.network = $.network;
         this.networkId = $.networkId;
         this.pricingTier = $.pricingTier;
         this.privateAccessSettingsId = $.privateAccessSettingsId;
@@ -350,7 +391,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param awsRegion AWS region of VPC
+         * @param awsRegion region of VPC
          * 
          * @return builder
          * 
@@ -361,7 +402,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param awsRegion AWS region of VPC
+         * @param awsRegion region of VPC
          * 
          * @return builder
          * 
@@ -379,13 +420,25 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return cloud(Output.of(cloud));
         }
 
-        public Builder cloudResourceBucket(@Nullable Output<MwsWorkspacesCloudResourceBucketArgs> cloudResourceBucket) {
-            $.cloudResourceBucket = cloudResourceBucket;
+        /**
+         * @param cloudResourceContainer A block that specifies GCP workspace configurations, consisting of following blocks:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudResourceContainer(@Nullable Output<MwsWorkspacesCloudResourceContainerArgs> cloudResourceContainer) {
+            $.cloudResourceContainer = cloudResourceContainer;
             return this;
         }
 
-        public Builder cloudResourceBucket(MwsWorkspacesCloudResourceBucketArgs cloudResourceBucket) {
-            return cloudResourceBucket(Output.of(cloudResourceBucket));
+        /**
+         * @param cloudResourceContainer A block that specifies GCP workspace configurations, consisting of following blocks:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudResourceContainer(MwsWorkspacesCloudResourceContainerArgs cloudResourceContainer) {
+            return cloudResourceContainer(Output.of(cloudResourceContainer));
         }
 
         /**
@@ -473,6 +526,36 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return externalCustomerInfo(Output.of(externalCustomerInfo));
         }
 
+        public Builder gcpManagedNetworkConfig(@Nullable Output<MwsWorkspacesGcpManagedNetworkConfigArgs> gcpManagedNetworkConfig) {
+            $.gcpManagedNetworkConfig = gcpManagedNetworkConfig;
+            return this;
+        }
+
+        public Builder gcpManagedNetworkConfig(MwsWorkspacesGcpManagedNetworkConfigArgs gcpManagedNetworkConfig) {
+            return gcpManagedNetworkConfig(Output.of(gcpManagedNetworkConfig));
+        }
+
+        /**
+         * @param gkeConfig A block that specifies GKE configuration for the Databricks workspace:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeConfig(@Nullable Output<MwsWorkspacesGkeConfigArgs> gkeConfig) {
+            $.gkeConfig = gkeConfig;
+            return this;
+        }
+
+        /**
+         * @param gkeConfig A block that specifies GKE configuration for the Databricks workspace:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeConfig(MwsWorkspacesGkeConfigArgs gkeConfig) {
+            return gkeConfig(Output.of(gkeConfig));
+        }
+
         public Builder isNoPublicIpEnabled(@Nullable Output<Boolean> isNoPublicIpEnabled) {
             $.isNoPublicIpEnabled = isNoPublicIpEnabled;
             return this;
@@ -482,11 +565,23 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return isNoPublicIpEnabled(Output.of(isNoPublicIpEnabled));
         }
 
+        /**
+         * @param location region of the subnet
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(@Nullable Output<String> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location region of the subnet
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             return location(Output.of(location));
         }
@@ -512,20 +607,23 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return managedServicesCustomerManagedKeyId(Output.of(managedServicesCustomerManagedKeyId));
         }
 
-        public Builder network(@Nullable Output<MwsWorkspacesNetworkArgs> network) {
-            $.network = network;
-            return this;
-        }
-
-        public Builder network(MwsWorkspacesNetworkArgs network) {
-            return network(Output.of(network));
-        }
-
+        /**
+         * @param networkId `network_id` from networks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkId(@Nullable Output<String> networkId) {
             $.networkId = networkId;
             return this;
         }
 
+        /**
+         * @param networkId `network_id` from networks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkId(String networkId) {
             return networkId(Output.of(networkId));
         }

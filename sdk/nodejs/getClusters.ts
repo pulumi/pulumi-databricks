@@ -40,11 +40,8 @@ import * as utilities from "./utilities";
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getClusters:getClusters", {
         "clusterNameContains": args.clusterNameContains,
     }, opts);
@@ -74,9 +71,42 @@ export interface GetClustersResult {
      */
     readonly ids: string[];
 }
-
+/**
+ * ## Example Usage
+ *
+ * Retrieve all clusters on this workspace on AWS or GCP:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getClusters({});
+ * ```
+ *
+ * Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const allShared = databricks.getClusters({
+ *     clusterNameContains: "shared",
+ * });
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+ * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
-    return pulumi.output(args).apply(a => getClusters(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusters(a, opts))
 }
 
 /**

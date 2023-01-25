@@ -16,7 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource allows you to set entitlements to existing databricks_users, databricks.Group or databricks.ServicePrincipal
+ * This resource allows you to set entitlements to existing databricks_users, databricks.Group or databricks_service_principal.
+ * 
+ * &gt; **Note** You must define entitlements of a principal using either `databricks.Entitlements` or directly within one of databricks_users, databricks.Group or databricks_service_principal. Having entitlements defined in both resources will result in non-deterministic behaviour.
  * 
  * ## Example Usage
  * 
@@ -157,42 +159,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/entitlements:Entitlements")
 public class Entitlements extends com.pulumi.resources.CustomResource {
     /**
-     * Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+     * Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      * 
      */
     @Export(name="allowClusterCreate", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> allowClusterCreate;
 
     /**
-     * @return Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+     * @return Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      * 
      */
     public Output<Optional<Boolean>> allowClusterCreate() {
         return Codegen.optional(this.allowClusterCreate);
     }
     /**
-     * Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+     * Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
      * 
      */
     @Export(name="allowInstancePoolCreate", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> allowInstancePoolCreate;
 
     /**
-     * @return Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+     * @return Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
      * 
      */
     public Output<Optional<Boolean>> allowInstancePoolCreate() {
         return Codegen.optional(this.allowInstancePoolCreate);
     }
     /**
-     * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      * 
      */
     @Export(name="databricksSqlAccess", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> databricksSqlAccess;
 
     /**
-     * @return This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * @return This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      * 
      */
     public Output<Optional<Boolean>> databricksSqlAccess() {
@@ -240,9 +242,17 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> userId() {
         return Codegen.optional(this.userId);
     }
+    /**
+     * This is a field to allow the principal to have access to Databricks Workspace.
+     * 
+     */
     @Export(name="workspaceAccess", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> workspaceAccess;
 
+    /**
+     * @return This is a field to allow the principal to have access to Databricks Workspace.
+     * 
+     */
     public Output<Optional<Boolean>> workspaceAccess() {
         return Codegen.optional(this.workspaceAccess);
     }

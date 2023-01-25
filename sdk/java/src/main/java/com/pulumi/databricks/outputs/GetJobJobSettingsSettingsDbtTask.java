@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsDbtTask {
+    private @Nullable String catalog;
     private List<String> commands;
     private @Nullable String profilesDirectory;
     private @Nullable String projectDirectory;
@@ -19,6 +20,9 @@ public final class GetJobJobSettingsSettingsDbtTask {
     private @Nullable String warehouseId;
 
     private GetJobJobSettingsSettingsDbtTask() {}
+    public Optional<String> catalog() {
+        return Optional.ofNullable(this.catalog);
+    }
     public List<String> commands() {
         return this.commands;
     }
@@ -44,6 +48,7 @@ public final class GetJobJobSettingsSettingsDbtTask {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String catalog;
         private List<String> commands;
         private @Nullable String profilesDirectory;
         private @Nullable String projectDirectory;
@@ -52,6 +57,7 @@ public final class GetJobJobSettingsSettingsDbtTask {
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsDbtTask defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.catalog = defaults.catalog;
     	      this.commands = defaults.commands;
     	      this.profilesDirectory = defaults.profilesDirectory;
     	      this.projectDirectory = defaults.projectDirectory;
@@ -59,6 +65,11 @@ public final class GetJobJobSettingsSettingsDbtTask {
     	      this.warehouseId = defaults.warehouseId;
         }
 
+        @CustomType.Setter
+        public Builder catalog(@Nullable String catalog) {
+            this.catalog = catalog;
+            return this;
+        }
         @CustomType.Setter
         public Builder commands(List<String> commands) {
             this.commands = Objects.requireNonNull(commands);
@@ -89,6 +100,7 @@ public final class GetJobJobSettingsSettingsDbtTask {
         }
         public GetJobJobSettingsSettingsDbtTask build() {
             final var o = new GetJobJobSettingsSettingsDbtTask();
+            o.catalog = catalog;
             o.commands = commands;
             o.profilesDirectory = profilesDirectory;
             o.projectDirectory = projectDirectory;

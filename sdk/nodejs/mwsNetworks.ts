@@ -46,20 +46,27 @@ export class MwsNetworks extends pulumi.CustomResource {
     public readonly creationTime!: pulumi.Output<number>;
     public readonly errorMessages!: pulumi.Output<outputs.MwsNetworksErrorMessage[]>;
     /**
-     * (String) id of network to be used for databricksMwsWorkspace resource.
+     * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     */
+    public readonly gcpNetworkInfo!: pulumi.Output<outputs.MwsNetworksGcpNetworkInfo | undefined>;
+    /**
+     * (String) id of network to be used for databricks.MwsWorkspaces resource.
      */
     public readonly networkId!: pulumi.Output<string>;
     /**
      * name under which this network is registered
      */
     public readonly networkName!: pulumi.Output<string>;
-    public readonly securityGroupIds!: pulumi.Output<string[]>;
-    public readonly subnetIds!: pulumi.Output<string[]>;
+    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    public readonly subnetIds!: pulumi.Output<string[] | undefined>;
     /**
      * mapping of databricks.MwsVpcEndpoint for PrivateLink connections
      */
     public readonly vpcEndpoints!: pulumi.Output<outputs.MwsNetworksVpcEndpoints>;
-    public readonly vpcId!: pulumi.Output<string>;
+    /**
+     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     */
+    public readonly vpcId!: pulumi.Output<string | undefined>;
     /**
      * (String) VPC attachment status
      */
@@ -85,6 +92,7 @@ export class MwsNetworks extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["errorMessages"] = state ? state.errorMessages : undefined;
+            resourceInputs["gcpNetworkInfo"] = state ? state.gcpNetworkInfo : undefined;
             resourceInputs["networkId"] = state ? state.networkId : undefined;
             resourceInputs["networkName"] = state ? state.networkName : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
@@ -101,18 +109,10 @@ export class MwsNetworks extends pulumi.CustomResource {
             if ((!args || args.networkName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkName'");
             }
-            if ((!args || args.securityGroupIds === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'securityGroupIds'");
-            }
-            if ((!args || args.subnetIds === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'subnetIds'");
-            }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'vpcId'");
-            }
             resourceInputs["accountId"] = args?.accountId ? pulumi.secret(args.accountId) : undefined;
             resourceInputs["creationTime"] = args ? args.creationTime : undefined;
             resourceInputs["errorMessages"] = args ? args.errorMessages : undefined;
+            resourceInputs["gcpNetworkInfo"] = args ? args.gcpNetworkInfo : undefined;
             resourceInputs["networkId"] = args ? args.networkId : undefined;
             resourceInputs["networkName"] = args ? args.networkName : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
@@ -140,7 +140,11 @@ export interface MwsNetworksState {
     creationTime?: pulumi.Input<number>;
     errorMessages?: pulumi.Input<pulumi.Input<inputs.MwsNetworksErrorMessage>[]>;
     /**
-     * (String) id of network to be used for databricksMwsWorkspace resource.
+     * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     */
+    gcpNetworkInfo?: pulumi.Input<inputs.MwsNetworksGcpNetworkInfo>;
+    /**
+     * (String) id of network to be used for databricks.MwsWorkspaces resource.
      */
     networkId?: pulumi.Input<string>;
     /**
@@ -153,6 +157,9 @@ export interface MwsNetworksState {
      * mapping of databricks.MwsVpcEndpoint for PrivateLink connections
      */
     vpcEndpoints?: pulumi.Input<inputs.MwsNetworksVpcEndpoints>;
+    /**
+     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     */
     vpcId?: pulumi.Input<string>;
     /**
      * (String) VPC attachment status
@@ -175,20 +182,27 @@ export interface MwsNetworksArgs {
     creationTime?: pulumi.Input<number>;
     errorMessages?: pulumi.Input<pulumi.Input<inputs.MwsNetworksErrorMessage>[]>;
     /**
-     * (String) id of network to be used for databricksMwsWorkspace resource.
+     * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     */
+    gcpNetworkInfo?: pulumi.Input<inputs.MwsNetworksGcpNetworkInfo>;
+    /**
+     * (String) id of network to be used for databricks.MwsWorkspaces resource.
      */
     networkId?: pulumi.Input<string>;
     /**
      * name under which this network is registered
      */
     networkName: pulumi.Input<string>;
-    securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
-    subnetIds: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * mapping of databricks.MwsVpcEndpoint for PrivateLink connections
      */
     vpcEndpoints?: pulumi.Input<inputs.MwsNetworksVpcEndpoints>;
-    vpcId: pulumi.Input<string>;
+    /**
+     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     */
+    vpcId?: pulumi.Input<string>;
     /**
      * (String) VPC attachment status
      */

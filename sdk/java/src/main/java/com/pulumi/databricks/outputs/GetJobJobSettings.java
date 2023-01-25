@@ -15,10 +15,6 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettings {
     private @Nullable Integer createdTime;
     private @Nullable String creatorUserName;
-    /**
-     * @return the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     private @Nullable Integer jobId;
     private @Nullable GetJobJobSettingsSettings settings;
 
@@ -29,10 +25,6 @@ public final class GetJobJobSettings {
     public Optional<String> creatorUserName() {
         return Optional.ofNullable(this.creatorUserName);
     }
-    /**
-     * @return the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     public Optional<Integer> jobId() {
         return Optional.ofNullable(this.jobId);
     }

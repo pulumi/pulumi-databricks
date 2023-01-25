@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobNewClusterInitScriptAbfss;
 import com.pulumi.databricks.outputs.JobNewClusterInitScriptDbfs;
 import com.pulumi.databricks.outputs.JobNewClusterInitScriptFile;
 import com.pulumi.databricks.outputs.JobNewClusterInitScriptGcs;
@@ -14,12 +15,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobNewClusterInitScript {
+    private @Nullable JobNewClusterInitScriptAbfss abfss;
     private @Nullable JobNewClusterInitScriptDbfs dbfs;
     private @Nullable JobNewClusterInitScriptFile file;
     private @Nullable JobNewClusterInitScriptGcs gcs;
     private @Nullable JobNewClusterInitScriptS3 s3;
 
     private JobNewClusterInitScript() {}
+    public Optional<JobNewClusterInitScriptAbfss> abfss() {
+        return Optional.ofNullable(this.abfss);
+    }
     public Optional<JobNewClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -42,6 +47,7 @@ public final class JobNewClusterInitScript {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable JobNewClusterInitScriptAbfss abfss;
         private @Nullable JobNewClusterInitScriptDbfs dbfs;
         private @Nullable JobNewClusterInitScriptFile file;
         private @Nullable JobNewClusterInitScriptGcs gcs;
@@ -49,12 +55,18 @@ public final class JobNewClusterInitScript {
         public Builder() {}
         public Builder(JobNewClusterInitScript defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.abfss = defaults.abfss;
     	      this.dbfs = defaults.dbfs;
     	      this.file = defaults.file;
     	      this.gcs = defaults.gcs;
     	      this.s3 = defaults.s3;
         }
 
+        @CustomType.Setter
+        public Builder abfss(@Nullable JobNewClusterInitScriptAbfss abfss) {
+            this.abfss = abfss;
+            return this;
+        }
         @CustomType.Setter
         public Builder dbfs(@Nullable JobNewClusterInitScriptDbfs dbfs) {
             this.dbfs = dbfs;
@@ -77,6 +89,7 @@ public final class JobNewClusterInitScript {
         }
         public JobNewClusterInitScript build() {
             final var o = new JobNewClusterInitScript();
+            o.abfss = abfss;
             o.dbfs = dbfs;
             o.file = file;
             o.gcs = gcs;

@@ -17,14 +17,14 @@ public final class InstancePoolAwsAttributesArgs extends com.pulumi.resources.Re
     public static final InstancePoolAwsAttributesArgs Empty = new InstancePoolAwsAttributesArgs();
 
     /**
-     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
      * 
      */
     @Import(name="availability")
     private @Nullable Output<String> availability;
 
     /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * @return (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
      * 
      */
     public Optional<Output<String>> availability() {
@@ -88,7 +88,7 @@ public final class InstancePoolAwsAttributesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param availability Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+         * @param availability (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class InstancePoolAwsAttributesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param availability Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+         * @param availability (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
          * 
          * @return builder
          * 

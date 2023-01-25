@@ -176,8 +176,6 @@ class MwsCredentials(pulumi.CustomResource):
         """
         ## Example Usage
 
-        > **Note** This resource has an evolving API, which may change in future versions of the provider.
-
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -228,8 +226,6 @@ class MwsCredentials(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        > **Note** This resource has an evolving API, which may change in future versions of the provider.
 
         ```python
         import pulumi

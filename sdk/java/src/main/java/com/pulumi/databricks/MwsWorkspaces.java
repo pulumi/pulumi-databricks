@@ -10,9 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.MwsWorkspacesArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MwsWorkspacesState;
-import com.pulumi.databricks.outputs.MwsWorkspacesCloudResourceBucket;
+import com.pulumi.databricks.outputs.MwsWorkspacesCloudResourceContainer;
 import com.pulumi.databricks.outputs.MwsWorkspacesExternalCustomerInfo;
-import com.pulumi.databricks.outputs.MwsWorkspacesNetwork;
+import com.pulumi.databricks.outputs.MwsWorkspacesGcpManagedNetworkConfig;
+import com.pulumi.databricks.outputs.MwsWorkspacesGkeConfig;
 import com.pulumi.databricks.outputs.MwsWorkspacesToken;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -44,14 +45,14 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * AWS region of VPC
+     * region of VPC
      * 
      */
     @Export(name="awsRegion", type=String.class, parameters={})
     private Output</* @Nullable */ String> awsRegion;
 
     /**
-     * @return AWS region of VPC
+     * @return region of VPC
      * 
      */
     public Output<Optional<String>> awsRegion() {
@@ -63,11 +64,19 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<String> cloud() {
         return this.cloud;
     }
-    @Export(name="cloudResourceBucket", type=MwsWorkspacesCloudResourceBucket.class, parameters={})
-    private Output</* @Nullable */ MwsWorkspacesCloudResourceBucket> cloudResourceBucket;
+    /**
+     * A block that specifies GCP workspace configurations, consisting of following blocks:
+     * 
+     */
+    @Export(name="cloudResourceContainer", type=MwsWorkspacesCloudResourceContainer.class, parameters={})
+    private Output</* @Nullable */ MwsWorkspacesCloudResourceContainer> cloudResourceContainer;
 
-    public Output<Optional<MwsWorkspacesCloudResourceBucket>> cloudResourceBucket() {
-        return Codegen.optional(this.cloudResourceBucket);
+    /**
+     * @return A block that specifies GCP workspace configurations, consisting of following blocks:
+     * 
+     */
+    public Output<Optional<MwsWorkspacesCloudResourceContainer>> cloudResourceContainer() {
+        return Codegen.optional(this.cloudResourceContainer);
     }
     /**
      * (Integer) time when workspace was created
@@ -121,15 +130,43 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<MwsWorkspacesExternalCustomerInfo>> externalCustomerInfo() {
         return Codegen.optional(this.externalCustomerInfo);
     }
+    @Export(name="gcpManagedNetworkConfig", type=MwsWorkspacesGcpManagedNetworkConfig.class, parameters={})
+    private Output</* @Nullable */ MwsWorkspacesGcpManagedNetworkConfig> gcpManagedNetworkConfig;
+
+    public Output<Optional<MwsWorkspacesGcpManagedNetworkConfig>> gcpManagedNetworkConfig() {
+        return Codegen.optional(this.gcpManagedNetworkConfig);
+    }
+    /**
+     * A block that specifies GKE configuration for the Databricks workspace:
+     * 
+     */
+    @Export(name="gkeConfig", type=MwsWorkspacesGkeConfig.class, parameters={})
+    private Output</* @Nullable */ MwsWorkspacesGkeConfig> gkeConfig;
+
+    /**
+     * @return A block that specifies GKE configuration for the Databricks workspace:
+     * 
+     */
+    public Output<Optional<MwsWorkspacesGkeConfig>> gkeConfig() {
+        return Codegen.optional(this.gkeConfig);
+    }
     @Export(name="isNoPublicIpEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> isNoPublicIpEnabled;
 
     public Output<Optional<Boolean>> isNoPublicIpEnabled() {
         return Codegen.optional(this.isNoPublicIpEnabled);
     }
+    /**
+     * region of the subnet
+     * 
+     */
     @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
+    /**
+     * @return region of the subnet
+     * 
+     */
     public Output<Optional<String>> location() {
         return Codegen.optional(this.location);
     }
@@ -147,15 +184,17 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> managedServicesCustomerManagedKeyId() {
         return Codegen.optional(this.managedServicesCustomerManagedKeyId);
     }
-    @Export(name="network", type=MwsWorkspacesNetwork.class, parameters={})
-    private Output</* @Nullable */ MwsWorkspacesNetwork> network;
-
-    public Output<Optional<MwsWorkspacesNetwork>> network() {
-        return Codegen.optional(this.network);
-    }
+    /**
+     * `network_id` from networks.
+     * 
+     */
     @Export(name="networkId", type=String.class, parameters={})
     private Output</* @Nullable */ String> networkId;
 
+    /**
+     * @return `network_id` from networks.
+     * 
+     */
     public Output<Optional<String>> networkId() {
         return Codegen.optional(this.networkId);
     }

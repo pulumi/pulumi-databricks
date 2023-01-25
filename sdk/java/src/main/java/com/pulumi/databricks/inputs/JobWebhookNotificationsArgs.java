@@ -19,14 +19,14 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
     public static final JobWebhookNotificationsArgs Empty = new JobWebhookNotificationsArgs();
 
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      * 
      */
     @Import(name="onFailures")
     private @Nullable Output<List<JobWebhookNotificationsOnFailureArgs>> onFailures;
 
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      * 
      */
     public Optional<Output<List<JobWebhookNotificationsOnFailureArgs>>> onFailures() {
@@ -34,14 +34,14 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      * 
      */
     @Import(name="onStarts")
     private @Nullable Output<List<JobWebhookNotificationsOnStartArgs>> onStarts;
 
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      * 
      */
     public Optional<Output<List<JobWebhookNotificationsOnStartArgs>>> onStarts() {
@@ -49,14 +49,14 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      * 
      */
     @Import(name="onSuccesses")
     private @Nullable Output<List<JobWebhookNotificationsOnSuccessArgs>> onSuccesses;
 
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      * 
      */
     public Optional<Output<List<JobWebhookNotificationsOnSuccessArgs>>> onSuccesses() {
@@ -90,7 +90,7 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param onFailures (List) list of emails to notify on failure
+         * @param onFailures (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param onFailures (List) list of emails to notify on failure
+         * @param onFailures (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param onFailures (List) list of emails to notify on failure
+         * @param onFailures (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param onStarts (List) list of emails to notify on failure
+         * @param onStarts (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param onStarts (List) list of emails to notify on failure
+         * @param onStarts (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param onStarts (List) list of emails to notify on failure
+         * @param onStarts (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param onSuccesses (List) list of emails to notify on failure
+         * @param onSuccesses (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param onSuccesses (List) list of emails to notify on failure
+         * @param onSuccesses (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param onSuccesses (List) list of emails to notify on failure
+         * @param onSuccesses (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
          * 
          * @return builder
          * 

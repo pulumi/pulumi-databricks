@@ -44,11 +44,11 @@ export class OboToken extends pulumi.CustomResource {
     /**
      * Comment that describes the purpose of the token.
      */
-    public readonly comment!: pulumi.Output<string>;
+    public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * The number of seconds before the token expires. Token resource is re-created when it expires.
+     * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      */
-    public readonly lifetimeSeconds!: pulumi.Output<number>;
+    public readonly lifetimeSeconds!: pulumi.Output<number | undefined>;
     /**
      * **Sensitive** value of the newly-created token.
      */
@@ -76,12 +76,6 @@ export class OboToken extends pulumi.CustomResource {
             if ((!args || args.applicationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.comment === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'comment'");
-            }
-            if ((!args || args.lifetimeSeconds === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'lifetimeSeconds'");
-            }
             resourceInputs["applicationId"] = args ? args.applicationId : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["lifetimeSeconds"] = args ? args.lifetimeSeconds : undefined;
@@ -107,7 +101,7 @@ export interface OboTokenState {
      */
     comment?: pulumi.Input<string>;
     /**
-     * The number of seconds before the token expires. Token resource is re-created when it expires.
+     * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      */
     lifetimeSeconds?: pulumi.Input<number>;
     /**
@@ -127,9 +121,9 @@ export interface OboTokenArgs {
     /**
      * Comment that describes the purpose of the token.
      */
-    comment: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
-     * The number of seconds before the token expires. Token resource is re-created when it expires.
+     * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      */
-    lifetimeSeconds: pulumi.Input<number>;
+    lifetimeSeconds?: pulumi.Input<number>;
 }

@@ -101,7 +101,7 @@ func NewMwsStorageConfigurations(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'StorageConfigurationName'")
 	}
 	if args.AccountId != nil {
-		args.AccountId = pulumi.ToSecret(args.AccountId).(pulumi.StringOutput)
+		args.AccountId = pulumi.ToSecret(args.AccountId).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"accountId",

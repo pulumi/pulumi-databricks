@@ -11,10 +11,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const report = pulumi.output(databricks.getDbfsFile({
+ * const report = databricks.getDbfsFile({
  *     limitFileSize: 10240,
  *     path: "dbfs:/reports/some.csv",
- * }));
+ * });
  * ```
  * ## Related Resources
  *
@@ -26,11 +26,8 @@ import * as utilities from "./utilities";
  * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
  */
 export function getDbfsFile(args: GetDbfsFileArgs, opts?: pulumi.InvokeOptions): Promise<GetDbfsFileResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDbfsFile:getDbfsFile", {
         "limitFileSize": args.limitFileSize,
         "path": args.path,
@@ -70,9 +67,29 @@ export interface GetDbfsFileResult {
     readonly limitFileSize: boolean;
     readonly path: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const report = databricks.getDbfsFile({
+ *     limitFileSize: 10240,
+ *     path: "dbfs:/reports/some.csv",
+ * });
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide
+ * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
+ */
 export function getDbfsFileOutput(args: GetDbfsFileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbfsFileResult> {
-    return pulumi.output(args).apply(a => getDbfsFile(a, opts))
+    return pulumi.output(args).apply((a: any) => getDbfsFile(a, opts))
 }
 
 /**

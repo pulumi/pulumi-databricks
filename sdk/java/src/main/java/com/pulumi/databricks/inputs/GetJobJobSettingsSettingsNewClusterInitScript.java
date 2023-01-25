@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptAbfss;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptDbfs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptFile;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptGcs;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsNewClusterInitScript extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsNewClusterInitScript Empty = new GetJobJobSettingsSettingsNewClusterInitScript();
+
+    @Import(name="abfss")
+    private @Nullable GetJobJobSettingsSettingsNewClusterInitScriptAbfss abfss;
+
+    public Optional<GetJobJobSettingsSettingsNewClusterInitScriptAbfss> abfss() {
+        return Optional.ofNullable(this.abfss);
+    }
 
     @Import(name="dbfs")
     private @Nullable GetJobJobSettingsSettingsNewClusterInitScriptDbfs dbfs;
@@ -48,6 +56,7 @@ public final class GetJobJobSettingsSettingsNewClusterInitScript extends com.pul
     private GetJobJobSettingsSettingsNewClusterInitScript() {}
 
     private GetJobJobSettingsSettingsNewClusterInitScript(GetJobJobSettingsSettingsNewClusterInitScript $) {
+        this.abfss = $.abfss;
         this.dbfs = $.dbfs;
         this.file = $.file;
         this.gcs = $.gcs;
@@ -70,6 +79,11 @@ public final class GetJobJobSettingsSettingsNewClusterInitScript extends com.pul
 
         public Builder(GetJobJobSettingsSettingsNewClusterInitScript defaults) {
             $ = new GetJobJobSettingsSettingsNewClusterInitScript(Objects.requireNonNull(defaults));
+        }
+
+        public Builder abfss(@Nullable GetJobJobSettingsSettingsNewClusterInitScriptAbfss abfss) {
+            $.abfss = abfss;
+            return this;
         }
 
         public Builder dbfs(@Nullable GetJobJobSettingsSettingsNewClusterInitScriptDbfs dbfs) {

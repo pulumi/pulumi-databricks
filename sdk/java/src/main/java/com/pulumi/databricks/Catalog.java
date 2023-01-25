@@ -144,6 +144,48 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,Object>>> properties() {
         return Codegen.optional(this.properties);
     }
+    /**
+     * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+     * 
+     */
+    @Export(name="providerName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> providerName;
+
+    /**
+     * @return For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+     * 
+     */
+    public Output<Optional<String>> providerName() {
+        return Codegen.optional(this.providerName);
+    }
+    /**
+     * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+     * 
+     */
+    @Export(name="shareName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> shareName;
+
+    /**
+     * @return For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+     * 
+     */
+    public Output<Optional<String>> shareName() {
+        return Codegen.optional(this.shareName);
+    }
+    /**
+     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * 
+     */
+    @Export(name="storageRoot", type=String.class, parameters={})
+    private Output</* @Nullable */ String> storageRoot;
+
+    /**
+     * @return Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * 
+     */
+    public Output<Optional<String>> storageRoot() {
+        return Codegen.optional(this.storageRoot);
+    }
 
     /**
      *

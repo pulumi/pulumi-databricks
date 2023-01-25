@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			withGpu, err := databricks.GetNodeType(ctx, &GetNodeTypeArgs{
+//			withGpu, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
 //				LocalDisk: pulumi.BoolRef(true),
 //				MinCores:  pulumi.IntRef(16),
 //				GbPerCore: pulumi.IntRef(1),
@@ -33,7 +33,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			gpuMl, err := databricks.GetSparkVersion(ctx, &GetSparkVersionArgs{
+//			gpuMl, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
 //				Gpu: pulumi.BoolRef(true),
 //				Ml:  pulumi.BoolRef(true),
 //			}, nil)
@@ -42,10 +42,10 @@ import (
 //			}
 //			_, err = databricks.NewCluster(ctx, "research", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Research Cluster"),
-//				SparkVersion:           pulumi.String(gpuMl.Id),
-//				NodeTypeId:             pulumi.String(withGpu.Id),
+//				SparkVersion:           *pulumi.String(gpuMl.Id),
+//				NodeTypeId:             *pulumi.String(withGpu.Id),
 //				AutoterminationMinutes: pulumi.Int(20),
-//				Autoscale: &ClusterAutoscaleArgs{
+//				Autoscale: &databricks.ClusterAutoscaleArgs{
 //					MinWorkers: pulumi.Int(1),
 //					MaxWorkers: pulumi.Int(50),
 //				},

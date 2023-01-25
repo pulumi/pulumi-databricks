@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 export function getAwsAssumeRolePolicy(args: GetAwsAssumeRolePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsAssumeRolePolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", {
         "databricksAccountId": args.databricksAccountId,
         "externalId": args.externalId,
@@ -48,9 +45,8 @@ export interface GetAwsAssumeRolePolicyResult {
      */
     readonly json: string;
 }
-
 export function getAwsAssumeRolePolicyOutput(args: GetAwsAssumeRolePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsAssumeRolePolicyResult> {
-    return pulumi.output(args).apply(a => getAwsAssumeRolePolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getAwsAssumeRolePolicy(a, opts))
 }
 
 /**

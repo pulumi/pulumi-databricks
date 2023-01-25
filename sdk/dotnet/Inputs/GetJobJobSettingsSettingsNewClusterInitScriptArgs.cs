@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsNewClusterInitScriptInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("abfss")]
+        public Input<Inputs.GetJobJobSettingsSettingsNewClusterInitScriptAbfssInputArgs>? Abfss { get; set; }
+
         [Input("dbfs")]
         public Input<Inputs.GetJobJobSettingsSettingsNewClusterInitScriptDbfsInputArgs>? Dbfs { get; set; }
 

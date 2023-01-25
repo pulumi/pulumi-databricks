@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const me = pulumi.output(databricks.getCurrentUser());
- * const thisSqlEndpoint = new databricks.SqlEndpoint("this", {
+ * const me = databricks.getCurrentUser({});
+ * const _this = new databricks.SqlEndpoint("this", {
  *     clusterSize: "Small",
  *     maxNumClusters: 1,
  *     tags: {

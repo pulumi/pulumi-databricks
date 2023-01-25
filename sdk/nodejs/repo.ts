@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -57,6 +59,7 @@ export class Repo extends pulumi.CustomResource {
      * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
      */
     public readonly path!: pulumi.Output<string>;
+    public readonly sparseCheckout!: pulumi.Output<outputs.RepoSparseCheckout | undefined>;
     /**
      * name of the tag for initial checkout.  Conflicts with `branch`.
      */
@@ -83,6 +86,7 @@ export class Repo extends pulumi.CustomResource {
             resourceInputs["commitHash"] = state ? state.commitHash : undefined;
             resourceInputs["gitProvider"] = state ? state.gitProvider : undefined;
             resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["sparseCheckout"] = state ? state.sparseCheckout : undefined;
             resourceInputs["tag"] = state ? state.tag : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
@@ -94,6 +98,7 @@ export class Repo extends pulumi.CustomResource {
             resourceInputs["commitHash"] = args ? args.commitHash : undefined;
             resourceInputs["gitProvider"] = args ? args.gitProvider : undefined;
             resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["sparseCheckout"] = args ? args.sparseCheckout : undefined;
             resourceInputs["tag"] = args ? args.tag : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
         }
@@ -122,6 +127,7 @@ export interface RepoState {
      * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
      */
     path?: pulumi.Input<string>;
+    sparseCheckout?: pulumi.Input<inputs.RepoSparseCheckout>;
     /**
      * name of the tag for initial checkout.  Conflicts with `branch`.
      */
@@ -152,6 +158,7 @@ export interface RepoArgs {
      * path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
      */
     path?: pulumi.Input<string>;
+    sparseCheckout?: pulumi.Input<inputs.RepoSparseCheckout>;
     /**
      * name of the tag for initial checkout.  Conflicts with `branch`.
      */

@@ -16,6 +16,34 @@ public final class PipelineClusterAwsAttributesArgs extends com.pulumi.resources
 
     public static final PipelineClusterAwsAttributesArgs Empty = new PipelineClusterAwsAttributesArgs();
 
+    @Import(name="availability")
+    private @Nullable Output<String> availability;
+
+    public Optional<Output<String>> availability() {
+        return Optional.ofNullable(this.availability);
+    }
+
+    @Import(name="ebsVolumeCount")
+    private @Nullable Output<Integer> ebsVolumeCount;
+
+    public Optional<Output<Integer>> ebsVolumeCount() {
+        return Optional.ofNullable(this.ebsVolumeCount);
+    }
+
+    @Import(name="ebsVolumeSize")
+    private @Nullable Output<Integer> ebsVolumeSize;
+
+    public Optional<Output<Integer>> ebsVolumeSize() {
+        return Optional.ofNullable(this.ebsVolumeSize);
+    }
+
+    @Import(name="ebsVolumeType")
+    private @Nullable Output<String> ebsVolumeType;
+
+    public Optional<Output<String>> ebsVolumeType() {
+        return Optional.ofNullable(this.ebsVolumeType);
+    }
+
     @Import(name="firstOnDemand")
     private @Nullable Output<Integer> firstOnDemand;
 
@@ -30,6 +58,13 @@ public final class PipelineClusterAwsAttributesArgs extends com.pulumi.resources
         return Optional.ofNullable(this.instanceProfileArn);
     }
 
+    @Import(name="spotBidPricePercent")
+    private @Nullable Output<Integer> spotBidPricePercent;
+
+    public Optional<Output<Integer>> spotBidPricePercent() {
+        return Optional.ofNullable(this.spotBidPricePercent);
+    }
+
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
@@ -40,8 +75,13 @@ public final class PipelineClusterAwsAttributesArgs extends com.pulumi.resources
     private PipelineClusterAwsAttributesArgs() {}
 
     private PipelineClusterAwsAttributesArgs(PipelineClusterAwsAttributesArgs $) {
+        this.availability = $.availability;
+        this.ebsVolumeCount = $.ebsVolumeCount;
+        this.ebsVolumeSize = $.ebsVolumeSize;
+        this.ebsVolumeType = $.ebsVolumeType;
         this.firstOnDemand = $.firstOnDemand;
         this.instanceProfileArn = $.instanceProfileArn;
+        this.spotBidPricePercent = $.spotBidPricePercent;
         this.zoneId = $.zoneId;
     }
 
@@ -63,6 +103,42 @@ public final class PipelineClusterAwsAttributesArgs extends com.pulumi.resources
             $ = new PipelineClusterAwsAttributesArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder availability(@Nullable Output<String> availability) {
+            $.availability = availability;
+            return this;
+        }
+
+        public Builder availability(String availability) {
+            return availability(Output.of(availability));
+        }
+
+        public Builder ebsVolumeCount(@Nullable Output<Integer> ebsVolumeCount) {
+            $.ebsVolumeCount = ebsVolumeCount;
+            return this;
+        }
+
+        public Builder ebsVolumeCount(Integer ebsVolumeCount) {
+            return ebsVolumeCount(Output.of(ebsVolumeCount));
+        }
+
+        public Builder ebsVolumeSize(@Nullable Output<Integer> ebsVolumeSize) {
+            $.ebsVolumeSize = ebsVolumeSize;
+            return this;
+        }
+
+        public Builder ebsVolumeSize(Integer ebsVolumeSize) {
+            return ebsVolumeSize(Output.of(ebsVolumeSize));
+        }
+
+        public Builder ebsVolumeType(@Nullable Output<String> ebsVolumeType) {
+            $.ebsVolumeType = ebsVolumeType;
+            return this;
+        }
+
+        public Builder ebsVolumeType(String ebsVolumeType) {
+            return ebsVolumeType(Output.of(ebsVolumeType));
+        }
+
         public Builder firstOnDemand(@Nullable Output<Integer> firstOnDemand) {
             $.firstOnDemand = firstOnDemand;
             return this;
@@ -79,6 +155,15 @@ public final class PipelineClusterAwsAttributesArgs extends com.pulumi.resources
 
         public Builder instanceProfileArn(String instanceProfileArn) {
             return instanceProfileArn(Output.of(instanceProfileArn));
+        }
+
+        public Builder spotBidPricePercent(@Nullable Output<Integer> spotBidPricePercent) {
+            $.spotBidPricePercent = spotBidPricePercent;
+            return this;
+        }
+
+        public Builder spotBidPricePercent(Integer spotBidPricePercent) {
+            return spotBidPricePercent(Output.of(spotBidPricePercent));
         }
 
         public Builder zoneId(@Nullable Output<String> zoneId) {

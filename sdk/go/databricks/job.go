@@ -25,18 +25,17 @@ type Job struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning pulumi.BoolPtrOutput `pulumi:"alwaysRunning"`
 	DbtTask       JobDbtTaskPtrOutput  `pulumi:"dbtTask"`
-	// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrOutput `pulumi:"emailNotifications"`
-	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
-	ExistingClusterId pulumi.StringPtrOutput   `pulumi:"existingClusterId"`
-	Format            pulumi.StringOutput      `pulumi:"format"`
-	GitSource         JobGitSourcePtrOutput    `pulumi:"gitSource"`
-	JobClusters       JobJobClusterArrayOutput `pulumi:"jobClusters"`
+	ExistingClusterId  pulumi.StringPtrOutput         `pulumi:"existingClusterId"`
+	Format             pulumi.StringOutput            `pulumi:"format"`
+	GitSource          JobGitSourcePtrOutput          `pulumi:"gitSource"`
+	JobClusters        JobJobClusterArrayOutput       `pulumi:"jobClusters"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries JobLibraryArrayOutput `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrOutput `pulumi:"maxConcurrentRuns"`
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED resultState or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
 	MaxRetries pulumi.IntPtrOutput `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis pulumi.IntPtrOutput `pulumi:"minRetryIntervalMillis"`
@@ -59,8 +58,9 @@ type Job struct {
 	Tasks JobTaskArrayOutput `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrOutput `pulumi:"timeoutSeconds"`
-	// URL of the job on the given workspace
-	Url                  pulumi.StringOutput              `pulumi:"url"`
+	// URL of the Git repository to use.
+	Url pulumi.StringOutput `pulumi:"url"`
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications JobWebhookNotificationsPtrOutput `pulumi:"webhookNotifications"`
 }
 
@@ -96,18 +96,17 @@ type jobState struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning *bool       `pulumi:"alwaysRunning"`
 	DbtTask       *JobDbtTask `pulumi:"dbtTask"`
-	// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
-	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
-	ExistingClusterId *string         `pulumi:"existingClusterId"`
-	Format            *string         `pulumi:"format"`
-	GitSource         *JobGitSource   `pulumi:"gitSource"`
-	JobClusters       []JobJobCluster `pulumi:"jobClusters"`
+	ExistingClusterId  *string                `pulumi:"existingClusterId"`
+	Format             *string                `pulumi:"format"`
+	GitSource          *JobGitSource          `pulumi:"gitSource"`
+	JobClusters        []JobJobCluster        `pulumi:"jobClusters"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries []JobLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns *int `pulumi:"maxConcurrentRuns"`
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED resultState or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
 	MaxRetries *int `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis *int `pulumi:"minRetryIntervalMillis"`
@@ -130,8 +129,9 @@ type jobState struct {
 	Tasks []JobTask              `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
-	// URL of the job on the given workspace
-	Url                  *string                  `pulumi:"url"`
+	// URL of the Git repository to use.
+	Url *string `pulumi:"url"`
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications *JobWebhookNotifications `pulumi:"webhookNotifications"`
 }
 
@@ -139,18 +139,17 @@ type JobState struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning pulumi.BoolPtrInput
 	DbtTask       JobDbtTaskPtrInput
-	// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrInput
-	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
-	ExistingClusterId pulumi.StringPtrInput
-	Format            pulumi.StringPtrInput
-	GitSource         JobGitSourcePtrInput
-	JobClusters       JobJobClusterArrayInput
+	ExistingClusterId  pulumi.StringPtrInput
+	Format             pulumi.StringPtrInput
+	GitSource          JobGitSourcePtrInput
+	JobClusters        JobJobClusterArrayInput
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries JobLibraryArrayInput
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrInput
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED resultState or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
 	MaxRetries pulumi.IntPtrInput
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis pulumi.IntPtrInput
@@ -173,8 +172,9 @@ type JobState struct {
 	Tasks JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
-	// URL of the job on the given workspace
-	Url                  pulumi.StringPtrInput
+	// URL of the Git repository to use.
+	Url pulumi.StringPtrInput
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications JobWebhookNotificationsPtrInput
 }
 
@@ -186,18 +186,17 @@ type jobArgs struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning *bool       `pulumi:"alwaysRunning"`
 	DbtTask       *JobDbtTask `pulumi:"dbtTask"`
-	// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
-	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
-	ExistingClusterId *string         `pulumi:"existingClusterId"`
-	Format            *string         `pulumi:"format"`
-	GitSource         *JobGitSource   `pulumi:"gitSource"`
-	JobClusters       []JobJobCluster `pulumi:"jobClusters"`
+	ExistingClusterId  *string                `pulumi:"existingClusterId"`
+	Format             *string                `pulumi:"format"`
+	GitSource          *JobGitSource          `pulumi:"gitSource"`
+	JobClusters        []JobJobCluster        `pulumi:"jobClusters"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries []JobLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns *int `pulumi:"maxConcurrentRuns"`
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED resultState or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
 	MaxRetries *int `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis *int `pulumi:"minRetryIntervalMillis"`
@@ -219,7 +218,8 @@ type jobArgs struct {
 	Tags  map[string]interface{} `pulumi:"tags"`
 	Tasks []JobTask              `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-	TimeoutSeconds       *int                     `pulumi:"timeoutSeconds"`
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications *JobWebhookNotifications `pulumi:"webhookNotifications"`
 }
 
@@ -228,18 +228,17 @@ type JobArgs struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning pulumi.BoolPtrInput
 	DbtTask       JobDbtTaskPtrInput
-	// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrInput
-	// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
-	ExistingClusterId pulumi.StringPtrInput
-	Format            pulumi.StringPtrInput
-	GitSource         JobGitSourcePtrInput
-	JobClusters       JobJobClusterArrayInput
+	ExistingClusterId  pulumi.StringPtrInput
+	Format             pulumi.StringPtrInput
+	GitSource          JobGitSourcePtrInput
+	JobClusters        JobJobClusterArrayInput
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries JobLibraryArrayInput
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrInput
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED resultState or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
 	MaxRetries pulumi.IntPtrInput
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis pulumi.IntPtrInput
@@ -261,7 +260,8 @@ type JobArgs struct {
 	Tags  pulumi.MapInput
 	Tasks JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-	TimeoutSeconds       pulumi.IntPtrInput
+	TimeoutSeconds pulumi.IntPtrInput
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications JobWebhookNotificationsPtrInput
 }
 
@@ -361,12 +361,11 @@ func (o JobOutput) DbtTask() JobDbtTaskPtrOutput {
 	return o.ApplyT(func(v *Job) JobDbtTaskPtrOutput { return v.DbtTask }).(JobDbtTaskPtrOutput)
 }
 
-// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 func (o JobOutput) EmailNotifications() JobEmailNotificationsPtrOutput {
 	return o.ApplyT(func(v *Job) JobEmailNotificationsPtrOutput { return v.EmailNotifications }).(JobEmailNotificationsPtrOutput)
 }
 
-// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
 func (o JobOutput) ExistingClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.ExistingClusterId }).(pulumi.StringPtrOutput)
 }
@@ -393,7 +392,7 @@ func (o JobOutput) MaxConcurrentRuns() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntPtrOutput { return v.MaxConcurrentRuns }).(pulumi.IntPtrOutput)
 }
 
-// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED resultState or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
 func (o JobOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntPtrOutput { return v.MaxRetries }).(pulumi.IntPtrOutput)
 }
@@ -461,11 +460,12 @@ func (o JobOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntPtrOutput { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
-// URL of the job on the given workspace
+// URL of the Git repository to use.
 func (o JobOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
+// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 func (o JobOutput) WebhookNotifications() JobWebhookNotificationsPtrOutput {
 	return o.ApplyT(func(v *Job) JobWebhookNotificationsPtrOutput { return v.WebhookNotifications }).(JobWebhookNotificationsPtrOutput)
 }

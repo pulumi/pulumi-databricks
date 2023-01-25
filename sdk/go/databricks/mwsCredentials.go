@@ -13,8 +13,6 @@ import (
 
 // ## Example Usage
 //
-// > **Note** This resource has an evolving API, which may change in future versions of the provider.
-//
 // ```go
 // package main
 //
@@ -33,14 +31,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
-//			thisAwsAssumeRolePolicy, err := databricks.GetAwsAssumeRolePolicy(ctx, &GetAwsAssumeRolePolicyArgs{
+//			thisAwsAssumeRolePolicy, err := databricks.GetAwsAssumeRolePolicy(ctx, &databricks.GetAwsAssumeRolePolicyArgs{
 //				ExternalId: databricksAccountId,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			crossAccountRole, err := iam.NewRole(ctx, "crossAccountRole", &iam.RoleArgs{
-//				AssumeRolePolicy: pulumi.String(thisAwsAssumeRolePolicy.Json),
+//				AssumeRolePolicy: *pulumi.String(thisAwsAssumeRolePolicy.Json),
 //				Tags:             pulumi.Any(_var.Tags),
 //			})
 //			if err != nil {
@@ -52,7 +50,7 @@ import (
 //			}
 //			_, err = iam.NewRolePolicy(ctx, "thisRolePolicy", &iam.RolePolicyArgs{
 //				Role:   crossAccountRole.ID(),
-//				Policy: pulumi.String(thisAwsCrossAccountPolicy.Json),
+//				Policy: *pulumi.String(thisAwsCrossAccountPolicy.Json),
 //			})
 //			if err != nil {
 //				return err
@@ -117,7 +115,7 @@ func NewMwsCredentials(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'RoleArn'")
 	}
 	if args.AccountId != nil {
-		args.AccountId = pulumi.ToSecret(args.AccountId).(pulumi.StringOutput)
+		args.AccountId = pulumi.ToSecret(args.AccountId).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"accountId",

@@ -53,6 +53,12 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<SqlQueryParameter>>> parameters() {
         return Codegen.optional(this.parameters);
     }
+    @Export(name="parent", type=String.class, parameters={})
+    private Output</* @Nullable */ String> parent;
+
+    public Output<Optional<String>> parent() {
+        return Codegen.optional(this.parent);
+    }
     @Export(name="query", type=String.class, parameters={})
     private Output<String> query;
 

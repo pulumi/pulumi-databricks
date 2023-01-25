@@ -14,17 +14,20 @@ __all__ = ['InstanceProfileArgs', 'InstanceProfile']
 @pulumi.input_type
 class InstanceProfileArgs:
     def __init__(__self__, *,
-                 instance_profile_arn: Optional[pulumi.Input[str]] = None,
+                 instance_profile_arn: pulumi.Input[str],
+                 iam_role_arn: Optional[pulumi.Input[str]] = None,
                  is_meta_instance_profile: Optional[pulumi.Input[bool]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a InstanceProfile resource.
         :param pulumi.Input[str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
+        :param pulumi.Input[str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
         :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
-        if instance_profile_arn is not None:
-            pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
+        pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
+        if iam_role_arn is not None:
+            pulumi.set(__self__, "iam_role_arn", iam_role_arn)
         if is_meta_instance_profile is not None:
             pulumi.set(__self__, "is_meta_instance_profile", is_meta_instance_profile)
         if skip_validation is not None:
@@ -32,15 +35,27 @@ class InstanceProfileArgs:
 
     @property
     @pulumi.getter(name="instanceProfileArn")
-    def instance_profile_arn(self) -> Optional[pulumi.Input[str]]:
+    def instance_profile_arn(self) -> pulumi.Input[str]:
         """
         `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         """
         return pulumi.get(self, "instance_profile_arn")
 
     @instance_profile_arn.setter
-    def instance_profile_arn(self, value: Optional[pulumi.Input[str]]):
+    def instance_profile_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_profile_arn", value)
+
+    @property
+    @pulumi.getter(name="iamRoleArn")
+    def iam_role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+        """
+        return pulumi.get(self, "iam_role_arn")
+
+    @iam_role_arn.setter
+    def iam_role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam_role_arn", value)
 
     @property
     @pulumi.getter(name="isMetaInstanceProfile")
@@ -70,21 +85,37 @@ class InstanceProfileArgs:
 @pulumi.input_type
 class _InstanceProfileState:
     def __init__(__self__, *,
+                 iam_role_arn: Optional[pulumi.Input[str]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
                  is_meta_instance_profile: Optional[pulumi.Input[bool]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering InstanceProfile resources.
+        :param pulumi.Input[str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
         :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
+        if iam_role_arn is not None:
+            pulumi.set(__self__, "iam_role_arn", iam_role_arn)
         if instance_profile_arn is not None:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
         if is_meta_instance_profile is not None:
             pulumi.set(__self__, "is_meta_instance_profile", is_meta_instance_profile)
         if skip_validation is not None:
             pulumi.set(__self__, "skip_validation", skip_validation)
+
+    @property
+    @pulumi.getter(name="iamRoleArn")
+    def iam_role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+        """
+        return pulumi.get(self, "iam_role_arn")
+
+    @iam_role_arn.setter
+    def iam_role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam_role_arn", value)
 
     @property
     @pulumi.getter(name="instanceProfileArn")
@@ -128,6 +159,7 @@ class InstanceProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 iam_role_arn: Optional[pulumi.Input[str]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
                  is_meta_instance_profile: Optional[pulumi.Input[bool]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
@@ -219,6 +251,36 @@ class InstanceProfile(pulumi.CustomResource):
             group_id=users.id,
             instance_profile_id=this.id)
         ```
+        ## Usage with Databricks SQL serverless
+
+        When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        sql_serverless_assume_role = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
+            actions=["sts:AssumeRole"],
+            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                type="AWS",
+                identifiers=["arn:aws:iam::790110701330:role/serverless-customer-resource-role"],
+            )],
+            conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
+                test="StringEquals",
+                variable="sts:ExternalID",
+                values=[
+                    "databricks-serverless-<YOUR_WORKSPACE_ID1>",
+                    "databricks-serverless-<YOUR_WORKSPACE_ID2>",
+                ],
+            )],
+        )])
+        this_role = aws.iam.Role("thisRole", assume_role_policy=sql_serverless_assume_role.json)
+        this_instance_profile = aws.iam.InstanceProfile("thisInstanceProfile", role=this_role.name)
+        this_index_instance_profile_instance_profile = databricks.InstanceProfile("thisIndex/instanceProfileInstanceProfile",
+            instance_profile_arn=this_instance_profile.arn,
+            iam_role_arn=this_role.arn)
+        ```
 
         ## Import
 
@@ -230,6 +292,7 @@ class InstanceProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
         :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
@@ -238,7 +301,7 @@ class InstanceProfile(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[InstanceProfileArgs] = None,
+                 args: InstanceProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount. The following example demonstrates how to create an instance profile and create a cluster with it. When creating a new `InstanceProfile`, Databricks validates that it has sufficient permissions to launch instances with the instance profile. This validation uses AWS dry-run mode for the [AWS EC2 RunInstances API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html).
@@ -327,6 +390,36 @@ class InstanceProfile(pulumi.CustomResource):
             group_id=users.id,
             instance_profile_id=this.id)
         ```
+        ## Usage with Databricks SQL serverless
+
+        When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        sql_serverless_assume_role = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
+            actions=["sts:AssumeRole"],
+            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                type="AWS",
+                identifiers=["arn:aws:iam::790110701330:role/serverless-customer-resource-role"],
+            )],
+            conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
+                test="StringEquals",
+                variable="sts:ExternalID",
+                values=[
+                    "databricks-serverless-<YOUR_WORKSPACE_ID1>",
+                    "databricks-serverless-<YOUR_WORKSPACE_ID2>",
+                ],
+            )],
+        )])
+        this_role = aws.iam.Role("thisRole", assume_role_policy=sql_serverless_assume_role.json)
+        this_instance_profile = aws.iam.InstanceProfile("thisInstanceProfile", role=this_role.name)
+        this_index_instance_profile_instance_profile = databricks.InstanceProfile("thisIndex/instanceProfileInstanceProfile",
+            instance_profile_arn=this_instance_profile.arn,
+            iam_role_arn=this_role.arn)
+        ```
 
         ## Import
 
@@ -351,6 +444,7 @@ class InstanceProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 iam_role_arn: Optional[pulumi.Input[str]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
                  is_meta_instance_profile: Optional[pulumi.Input[bool]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
@@ -363,6 +457,9 @@ class InstanceProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceProfileArgs.__new__(InstanceProfileArgs)
 
+            __props__.__dict__["iam_role_arn"] = iam_role_arn
+            if instance_profile_arn is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_profile_arn'")
             __props__.__dict__["instance_profile_arn"] = instance_profile_arn
             __props__.__dict__["is_meta_instance_profile"] = is_meta_instance_profile
             __props__.__dict__["skip_validation"] = skip_validation
@@ -376,6 +473,7 @@ class InstanceProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            iam_role_arn: Optional[pulumi.Input[str]] = None,
             instance_profile_arn: Optional[pulumi.Input[str]] = None,
             is_meta_instance_profile: Optional[pulumi.Input[bool]] = None,
             skip_validation: Optional[pulumi.Input[bool]] = None) -> 'InstanceProfile':
@@ -386,6 +484,7 @@ class InstanceProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
         :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
@@ -394,14 +493,23 @@ class InstanceProfile(pulumi.CustomResource):
 
         __props__ = _InstanceProfileState.__new__(_InstanceProfileState)
 
+        __props__.__dict__["iam_role_arn"] = iam_role_arn
         __props__.__dict__["instance_profile_arn"] = instance_profile_arn
         __props__.__dict__["is_meta_instance_profile"] = is_meta_instance_profile
         __props__.__dict__["skip_validation"] = skip_validation
         return InstanceProfile(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="iamRoleArn")
+    def iam_role_arn(self) -> pulumi.Output[Optional[str]]:
+        """
+        The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+        """
+        return pulumi.get(self, "iam_role_arn")
+
+    @property
     @pulumi.getter(name="instanceProfileArn")
-    def instance_profile_arn(self) -> pulumi.Output[Optional[str]]:
+    def instance_profile_arn(self) -> pulumi.Output[str]:
         """
         `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         """

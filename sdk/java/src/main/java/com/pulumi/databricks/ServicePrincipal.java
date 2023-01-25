@@ -165,7 +165,7 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
- * Creating group in Azure Databricks account:
+ * Creating service principal in Azure Databricks account:
  * ```java
  * package generated_program;
  * 
@@ -214,11 +214,11 @@ import javax.annotation.Nullable;
  * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
  * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
- * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.
+ * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](&lt;https://docs.databricks&gt;.
  * 
  * ## Import
  * 
- * The resource scim service principal can be imported using idbash
+ * The resource scim service principal can be imported using its id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals). bash
  * 
  * ```sh
  *  $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me &lt;service-principal-id&gt;
@@ -270,14 +270,14 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowInstancePoolCreate);
     }
     /**
-     * This is the application id of the given service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
+     * This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
      * 
      */
     @Export(name="applicationId", type=String.class, parameters={})
     private Output<String> applicationId;
 
     /**
-     * @return This is the application id of the given service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
+     * @return This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
      * 
      */
     public Output<String> applicationId() {
@@ -330,6 +330,34 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
+    }
+    /**
+     * Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    @Export(name="home", type=String.class, parameters={})
+    private Output<String> home;
+
+    /**
+     * @return Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    public Output<String> home() {
+        return this.home;
+    }
+    /**
+     * Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    @Export(name="repos", type=String.class, parameters={})
+    private Output<String> repos;
+
+    /**
+     * @return Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    public Output<String> repos() {
+        return this.repos;
     }
     /**
      * This is a field to allow the group to have access to Databricks Workspace.

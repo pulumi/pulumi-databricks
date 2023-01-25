@@ -16,14 +16,14 @@ public final class UserRoleState extends com.pulumi.resources.ResourceArgs {
     public static final UserRoleState Empty = new UserRoleState();
 
     /**
-     * Either a role name or the id of the instance profile resource.
+     * Either a role name or the ARN/ID of the instance profile resource.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return Either a role name or the id of the instance profile resource.
+     * @return Either a role name or the ARN/ID of the instance profile resource.
      * 
      */
     public Optional<Output<String>> role() {
@@ -71,7 +71,7 @@ public final class UserRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param role Either a role name or the id of the instance profile resource.
+         * @param role Either a role name or the ARN/ID of the instance profile resource.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class UserRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param role Either a role name or the id of the instance profile resource.
+         * @param role Either a role name or the ARN/ID of the instance profile resource.
          * 
          * @return builder
          * 

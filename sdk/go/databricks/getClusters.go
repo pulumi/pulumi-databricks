@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = databricks.GetClusters(ctx, nil, nil)
+//			_, err := databricks.GetClusters(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -50,7 +50,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = databricks.GetClusters(ctx, &GetClustersArgs{
+//			_, err := databricks.GetClusters(ctx, &databricks.GetClustersArgs{
 //				ClusterNameContains: pulumi.StringRef("shared"),
 //			}, nil)
 //			if err != nil {

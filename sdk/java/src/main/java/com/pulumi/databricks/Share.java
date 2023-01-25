@@ -101,14 +101,14 @@ public class Share extends com.pulumi.resources.CustomResource {
         return this.createdBy;
     }
     /**
-     * Full name of the object, e.g. `catalog.schema.name` for a table.
+     * Name of share. Change forces creation of a new resource.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Full name of the object, e.g. `catalog.schema.name` for a table.
+     * @return Name of share. Change forces creation of a new resource.
      * 
      */
     public Output<String> name() {

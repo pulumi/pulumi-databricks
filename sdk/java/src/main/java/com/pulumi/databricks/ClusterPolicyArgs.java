@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,18 +17,33 @@ public final class ClusterPolicyArgs extends com.pulumi.resources.ResourceArgs {
     public static final ClusterPolicyArgs Empty = new ClusterPolicyArgs();
 
     /**
-     * Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
      * 
      */
-    @Import(name="definition")
-    private @Nullable Output<String> definition;
+    @Import(name="definition", required=true)
+    private Output<String> definition;
 
     /**
-     * @return Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
      * 
      */
-    public Optional<Output<String>> definition() {
-        return Optional.ofNullable(this.definition);
+    public Output<String> definition() {
+        return this.definition;
+    }
+
+    /**
+     * Maximum number of clusters allowed per user. When omitted, there is no limit.
+     * 
+     */
+    @Import(name="maxClustersPerUser")
+    private @Nullable Output<Integer> maxClustersPerUser;
+
+    /**
+     * @return Maximum number of clusters allowed per user. When omitted, there is no limit.
+     * 
+     */
+    public Optional<Output<Integer>> maxClustersPerUser() {
+        return Optional.ofNullable(this.maxClustersPerUser);
     }
 
     /**
@@ -49,6 +65,7 @@ public final class ClusterPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     private ClusterPolicyArgs(ClusterPolicyArgs $) {
         this.definition = $.definition;
+        this.maxClustersPerUser = $.maxClustersPerUser;
         this.name = $.name;
     }
 
@@ -71,24 +88,45 @@ public final class ClusterPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param definition Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+         * @param definition Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
          * 
          * @return builder
          * 
          */
-        public Builder definition(@Nullable Output<String> definition) {
+        public Builder definition(Output<String> definition) {
             $.definition = definition;
             return this;
         }
 
         /**
-         * @param definition Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+         * @param definition Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
          * 
          * @return builder
          * 
          */
         public Builder definition(String definition) {
             return definition(Output.of(definition));
+        }
+
+        /**
+         * @param maxClustersPerUser Maximum number of clusters allowed per user. When omitted, there is no limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxClustersPerUser(@Nullable Output<Integer> maxClustersPerUser) {
+            $.maxClustersPerUser = maxClustersPerUser;
+            return this;
+        }
+
+        /**
+         * @param maxClustersPerUser Maximum number of clusters allowed per user. When omitted, there is no limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxClustersPerUser(Integer maxClustersPerUser) {
+            return maxClustersPerUser(Output.of(maxClustersPerUser));
         }
 
         /**
@@ -113,6 +151,7 @@ public final class ClusterPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterPolicyArgs build() {
+            $.definition = Objects.requireNonNull($.definition, "expected parameter 'definition' to be non-null");
             return $;
         }
     }

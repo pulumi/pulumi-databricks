@@ -15,6 +15,40 @@ namespace Pulumi.Databricks
     /// A `databricks.Recipient` is contained within databricks.Metastore and can have permissions to `SELECT` from a list of shares.
     /// 
     /// ## Example Usage
+    /// ### Databricks Sharing with non databricks recipient
+    /// 
+    /// Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
+    /// authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var db2opensharecode = new Random.RandomPassword("db2opensharecode", new()
+    ///     {
+    ///         Length = 16,
+    ///         Special = true,
+    ///     });
+    /// 
+    ///     var current = Databricks.GetCurrentUser.Invoke();
+    /// 
+    ///     var db2open = new Databricks.Recipient("db2open", new()
+    ///     {
+    ///         Comment = "made by terraform",
+    ///         AuthenticationType = "TOKEN",
+    ///         SharingCode = db2opensharecode.Result,
+    ///         IpAccessList = new Databricks.Inputs.RecipientIpAccessListArgs
+    ///         {
+    ///             AllowedIpAddresses = new[] {},
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:

@@ -47,14 +47,14 @@ public final class OboTokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of seconds before the token expires. Token resource is re-created when it expires.
+     * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      * 
      */
     @Import(name="lifetimeSeconds")
     private @Nullable Output<Integer> lifetimeSeconds;
 
     /**
-     * @return The number of seconds before the token expires. Token resource is re-created when it expires.
+     * @return The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      * 
      */
     public Optional<Output<Integer>> lifetimeSeconds() {
@@ -146,7 +146,7 @@ public final class OboTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifetimeSeconds The number of seconds before the token expires. Token resource is re-created when it expires.
+         * @param lifetimeSeconds The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class OboTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifetimeSeconds The number of seconds before the token expires. Token resource is re-created when it expires.
+         * @param lifetimeSeconds The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
          * 
          * @return builder
          * 

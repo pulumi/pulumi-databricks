@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.ClusterInitScriptAbfss;
 import com.pulumi.databricks.outputs.ClusterInitScriptDbfs;
 import com.pulumi.databricks.outputs.ClusterInitScriptFile;
 import com.pulumi.databricks.outputs.ClusterInitScriptGcs;
@@ -14,12 +15,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterInitScript {
+    private @Nullable ClusterInitScriptAbfss abfss;
     private @Nullable ClusterInitScriptDbfs dbfs;
     private @Nullable ClusterInitScriptFile file;
     private @Nullable ClusterInitScriptGcs gcs;
     private @Nullable ClusterInitScriptS3 s3;
 
     private ClusterInitScript() {}
+    public Optional<ClusterInitScriptAbfss> abfss() {
+        return Optional.ofNullable(this.abfss);
+    }
     public Optional<ClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -42,6 +47,7 @@ public final class ClusterInitScript {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ClusterInitScriptAbfss abfss;
         private @Nullable ClusterInitScriptDbfs dbfs;
         private @Nullable ClusterInitScriptFile file;
         private @Nullable ClusterInitScriptGcs gcs;
@@ -49,12 +55,18 @@ public final class ClusterInitScript {
         public Builder() {}
         public Builder(ClusterInitScript defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.abfss = defaults.abfss;
     	      this.dbfs = defaults.dbfs;
     	      this.file = defaults.file;
     	      this.gcs = defaults.gcs;
     	      this.s3 = defaults.s3;
         }
 
+        @CustomType.Setter
+        public Builder abfss(@Nullable ClusterInitScriptAbfss abfss) {
+            this.abfss = abfss;
+            return this;
+        }
         @CustomType.Setter
         public Builder dbfs(@Nullable ClusterInitScriptDbfs dbfs) {
             this.dbfs = dbfs;
@@ -77,6 +89,7 @@ public final class ClusterInitScript {
         }
         public ClusterInitScript build() {
             final var o = new ClusterInitScript();
+            o.abfss = abfss;
             o.dbfs = dbfs;
             o.file = file;
             o.gcs = gcs;

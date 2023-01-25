@@ -39,14 +39,14 @@ public final class JobSparkJarTaskArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Parameters passed to the main method.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<String>> parameters;
 
     /**
-     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * @return (List) Parameters passed to the main method.
      * 
      */
     public Optional<Output<List<String>>> parameters() {
@@ -110,7 +110,7 @@ public final class JobSparkJarTaskArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param parameters (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+         * @param parameters (List) Parameters passed to the main method.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class JobSparkJarTaskArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param parameters (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+         * @param parameters (List) Parameters passed to the main method.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class JobSparkJarTaskArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param parameters (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+         * @param parameters (List) Parameters passed to the main method.
          * 
          * @return builder
          * 

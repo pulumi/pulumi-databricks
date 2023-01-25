@@ -49,12 +49,9 @@ export class Job extends pulumi.CustomResource {
     public readonly alwaysRunning!: pulumi.Output<boolean | undefined>;
     public readonly dbtTask!: pulumi.Output<outputs.JobDbtTask | undefined>;
     /**
-     * (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     public readonly emailNotifications!: pulumi.Output<outputs.JobEmailNotifications | undefined>;
-    /**
-     * If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
-     */
     public readonly existingClusterId!: pulumi.Output<string | undefined>;
     public readonly format!: pulumi.Output<string>;
     public readonly gitSource!: pulumi.Output<outputs.JobGitSource | undefined>;
@@ -68,7 +65,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly maxConcurrentRuns!: pulumi.Output<number | undefined>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED resultState or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
      */
     public readonly maxRetries!: pulumi.Output<number | undefined>;
     /**
@@ -107,9 +104,12 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly timeoutSeconds!: pulumi.Output<number | undefined>;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     */
     public readonly webhookNotifications!: pulumi.Output<outputs.JobWebhookNotifications | undefined>;
 
     /**
@@ -195,12 +195,9 @@ export interface JobState {
     alwaysRunning?: pulumi.Input<boolean>;
     dbtTask?: pulumi.Input<inputs.JobDbtTask>;
     /**
-     * (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobEmailNotifications>;
-    /**
-     * If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
-     */
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
     gitSource?: pulumi.Input<inputs.JobGitSource>;
@@ -214,7 +211,7 @@ export interface JobState {
      */
     maxConcurrentRuns?: pulumi.Input<number>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED resultState or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
      */
     maxRetries?: pulumi.Input<number>;
     /**
@@ -253,9 +250,12 @@ export interface JobState {
      */
     timeoutSeconds?: pulumi.Input<number>;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url?: pulumi.Input<string>;
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     */
     webhookNotifications?: pulumi.Input<inputs.JobWebhookNotifications>;
 }
 
@@ -269,12 +269,9 @@ export interface JobArgs {
     alwaysRunning?: pulumi.Input<boolean>;
     dbtTask?: pulumi.Input<inputs.JobDbtTask>;
     /**
-     * (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobEmailNotifications>;
-    /**
-     * If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
-     */
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
     gitSource?: pulumi.Input<inputs.JobGitSource>;
@@ -288,7 +285,7 @@ export interface JobArgs {
      */
     maxConcurrentRuns?: pulumi.Input<number>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED resultState or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
      */
     maxRetries?: pulumi.Input<number>;
     /**
@@ -326,5 +323,8 @@ export interface JobArgs {
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
     timeoutSeconds?: pulumi.Input<number>;
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     */
     webhookNotifications?: pulumi.Input<inputs.JobWebhookNotifications>;
 }

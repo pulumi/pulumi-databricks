@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.PipelineClusterAutoscale;
 import com.pulumi.databricks.outputs.PipelineClusterAwsAttributes;
+import com.pulumi.databricks.outputs.PipelineClusterAzureAttributes;
 import com.pulumi.databricks.outputs.PipelineClusterClusterLogConf;
 import com.pulumi.databricks.outputs.PipelineClusterGcpAttributes;
 import com.pulumi.databricks.outputs.PipelineClusterInitScript;
@@ -24,10 +25,12 @@ public final class PipelineCluster {
     private @Nullable Boolean applyPolicyDefaultValues;
     private @Nullable PipelineClusterAutoscale autoscale;
     private @Nullable PipelineClusterAwsAttributes awsAttributes;
+    private @Nullable PipelineClusterAzureAttributes azureAttributes;
     private @Nullable PipelineClusterClusterLogConf clusterLogConf;
     private @Nullable Map<String,Object> customTags;
     private @Nullable String driverInstancePoolId;
     private @Nullable String driverNodeTypeId;
+    private @Nullable Boolean enableLocalDiskEncryption;
     private @Nullable PipelineClusterGcpAttributes gcpAttributes;
     private @Nullable List<PipelineClusterInitScript> initScripts;
     private @Nullable String instancePoolId;
@@ -49,6 +52,9 @@ public final class PipelineCluster {
     public Optional<PipelineClusterAwsAttributes> awsAttributes() {
         return Optional.ofNullable(this.awsAttributes);
     }
+    public Optional<PipelineClusterAzureAttributes> azureAttributes() {
+        return Optional.ofNullable(this.azureAttributes);
+    }
     public Optional<PipelineClusterClusterLogConf> clusterLogConf() {
         return Optional.ofNullable(this.clusterLogConf);
     }
@@ -60,6 +66,9 @@ public final class PipelineCluster {
     }
     public Optional<String> driverNodeTypeId() {
         return Optional.ofNullable(this.driverNodeTypeId);
+    }
+    public Optional<Boolean> enableLocalDiskEncryption() {
+        return Optional.ofNullable(this.enableLocalDiskEncryption);
     }
     public Optional<PipelineClusterGcpAttributes> gcpAttributes() {
         return Optional.ofNullable(this.gcpAttributes);
@@ -104,10 +113,12 @@ public final class PipelineCluster {
         private @Nullable Boolean applyPolicyDefaultValues;
         private @Nullable PipelineClusterAutoscale autoscale;
         private @Nullable PipelineClusterAwsAttributes awsAttributes;
+        private @Nullable PipelineClusterAzureAttributes azureAttributes;
         private @Nullable PipelineClusterClusterLogConf clusterLogConf;
         private @Nullable Map<String,Object> customTags;
         private @Nullable String driverInstancePoolId;
         private @Nullable String driverNodeTypeId;
+        private @Nullable Boolean enableLocalDiskEncryption;
         private @Nullable PipelineClusterGcpAttributes gcpAttributes;
         private @Nullable List<PipelineClusterInitScript> initScripts;
         private @Nullable String instancePoolId;
@@ -124,10 +135,12 @@ public final class PipelineCluster {
     	      this.applyPolicyDefaultValues = defaults.applyPolicyDefaultValues;
     	      this.autoscale = defaults.autoscale;
     	      this.awsAttributes = defaults.awsAttributes;
+    	      this.azureAttributes = defaults.azureAttributes;
     	      this.clusterLogConf = defaults.clusterLogConf;
     	      this.customTags = defaults.customTags;
     	      this.driverInstancePoolId = defaults.driverInstancePoolId;
     	      this.driverNodeTypeId = defaults.driverNodeTypeId;
+    	      this.enableLocalDiskEncryption = defaults.enableLocalDiskEncryption;
     	      this.gcpAttributes = defaults.gcpAttributes;
     	      this.initScripts = defaults.initScripts;
     	      this.instancePoolId = defaults.instancePoolId;
@@ -156,6 +169,11 @@ public final class PipelineCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder azureAttributes(@Nullable PipelineClusterAzureAttributes azureAttributes) {
+            this.azureAttributes = azureAttributes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder clusterLogConf(@Nullable PipelineClusterClusterLogConf clusterLogConf) {
             this.clusterLogConf = clusterLogConf;
             return this;
@@ -173,6 +191,11 @@ public final class PipelineCluster {
         @CustomType.Setter
         public Builder driverNodeTypeId(@Nullable String driverNodeTypeId) {
             this.driverNodeTypeId = driverNodeTypeId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableLocalDiskEncryption(@Nullable Boolean enableLocalDiskEncryption) {
+            this.enableLocalDiskEncryption = enableLocalDiskEncryption;
             return this;
         }
         @CustomType.Setter
@@ -236,10 +259,12 @@ public final class PipelineCluster {
             o.applyPolicyDefaultValues = applyPolicyDefaultValues;
             o.autoscale = autoscale;
             o.awsAttributes = awsAttributes;
+            o.azureAttributes = azureAttributes;
             o.clusterLogConf = clusterLogConf;
             o.customTags = customTags;
             o.driverInstancePoolId = driverInstancePoolId;
             o.driverNodeTypeId = driverNodeTypeId;
+            o.enableLocalDiskEncryption = enableLocalDiskEncryption;
             o.gcpAttributes = gcpAttributes;
             o.initScripts = initScripts;
             o.instancePoolId = instancePoolId;

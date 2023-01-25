@@ -32,7 +32,7 @@ public final class GetServicePrincipalResult {
      */
     private String home;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The id of the service principal.
      * 
      */
     private String id;
@@ -41,10 +41,6 @@ public final class GetServicePrincipalResult {
      * 
      */
     private String repos;
-    /**
-     * @return The id of the service principal.
-     * 
-     */
     private String spId;
 
     private GetServicePrincipalResult() {}
@@ -80,7 +76,7 @@ public final class GetServicePrincipalResult {
         return this.home;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The id of the service principal.
      * 
      */
     public String id() {
@@ -93,10 +89,6 @@ public final class GetServicePrincipalResult {
     public String repos() {
         return this.repos;
     }
-    /**
-     * @return The id of the service principal.
-     * 
-     */
     public String spId() {
         return this.spId;
     }

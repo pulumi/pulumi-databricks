@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs;
@@ -14,12 +15,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
+    private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss abfss;
     private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs dbfs;
     private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile file;
     private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs gcs;
     private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 s3;
 
     private GetJobJobSettingsSettingsJobClusterNewClusterInitScript() {}
+    public Optional<GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss> abfss() {
+        return Optional.ofNullable(this.abfss);
+    }
     public Optional<GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -42,6 +47,7 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss abfss;
         private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs dbfs;
         private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile file;
         private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs gcs;
@@ -49,12 +55,18 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsJobClusterNewClusterInitScript defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.abfss = defaults.abfss;
     	      this.dbfs = defaults.dbfs;
     	      this.file = defaults.file;
     	      this.gcs = defaults.gcs;
     	      this.s3 = defaults.s3;
         }
 
+        @CustomType.Setter
+        public Builder abfss(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss abfss) {
+            this.abfss = abfss;
+            return this;
+        }
         @CustomType.Setter
         public Builder dbfs(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs dbfs) {
             this.dbfs = dbfs;
@@ -77,6 +89,7 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
         }
         public GetJobJobSettingsSettingsJobClusterNewClusterInitScript build() {
             final var o = new GetJobJobSettingsSettingsJobClusterNewClusterInitScript();
+            o.abfss = abfss;
             o.dbfs = dbfs;
             o.file = file;
             o.gcs = gcs;

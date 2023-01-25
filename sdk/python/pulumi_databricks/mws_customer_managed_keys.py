@@ -201,6 +201,54 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         ## Example Usage
 
         > **Note** If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+        ### Customer-managed key for managed services
+
+        You must configure this during workspace creation
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        databricks_account_id = config.require_object("databricksAccountId")
+        current = aws.get_caller_identity()
+        databricks_managed_services_cmk = aws.iam.get_policy_document(version="2012-10-17",
+            statements=[
+                aws.iam.GetPolicyDocumentStatementArgs(
+                    sid="Enable IAM User Permissions",
+                    effect="Allow",
+                    principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                        type="AWS",
+                        identifiers=[current.account_id],
+                    )],
+                    actions=["kms:*"],
+                    resources=["*"],
+                ),
+                aws.iam.GetPolicyDocumentStatementArgs(
+                    sid="Allow Databricks to use KMS key for control plane managed services",
+                    effect="Allow",
+                    principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                        type="AWS",
+                        identifiers=["arn:aws:iam::414351767826:root"],
+                    )],
+                    actions=[
+                        "kms:Encrypt",
+                        "kms:Decrypt",
+                    ],
+                    resources=["*"],
+                ),
+            ])
+        managed_services_customer_managed_key = aws.kms.Key("managedServicesCustomerManagedKey", policy=databricks_managed_services_cmk.json)
+        managed_services_customer_managed_key_alias = aws.kms.Alias("managedServicesCustomerManagedKeyAlias", target_key_id=managed_services_customer_managed_key.key_id)
+        managed_services = databricks.MwsCustomerManagedKeys("managedServices",
+            account_id=databricks_account_id,
+            aws_key_info=databricks.MwsCustomerManagedKeysAwsKeyInfoArgs(
+                key_arn=managed_services_customer_managed_key.arn,
+                key_alias=managed_services_customer_managed_key_alias.name,
+            ),
+            use_cases=["MANAGED_SERVICES"])
+        ```
         ### Customer-managed key for workspace storage
 
         ```python
@@ -322,6 +370,54 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         ## Example Usage
 
         > **Note** If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+        ### Customer-managed key for managed services
+
+        You must configure this during workspace creation
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        databricks_account_id = config.require_object("databricksAccountId")
+        current = aws.get_caller_identity()
+        databricks_managed_services_cmk = aws.iam.get_policy_document(version="2012-10-17",
+            statements=[
+                aws.iam.GetPolicyDocumentStatementArgs(
+                    sid="Enable IAM User Permissions",
+                    effect="Allow",
+                    principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                        type="AWS",
+                        identifiers=[current.account_id],
+                    )],
+                    actions=["kms:*"],
+                    resources=["*"],
+                ),
+                aws.iam.GetPolicyDocumentStatementArgs(
+                    sid="Allow Databricks to use KMS key for control plane managed services",
+                    effect="Allow",
+                    principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                        type="AWS",
+                        identifiers=["arn:aws:iam::414351767826:root"],
+                    )],
+                    actions=[
+                        "kms:Encrypt",
+                        "kms:Decrypt",
+                    ],
+                    resources=["*"],
+                ),
+            ])
+        managed_services_customer_managed_key = aws.kms.Key("managedServicesCustomerManagedKey", policy=databricks_managed_services_cmk.json)
+        managed_services_customer_managed_key_alias = aws.kms.Alias("managedServicesCustomerManagedKeyAlias", target_key_id=managed_services_customer_managed_key.key_id)
+        managed_services = databricks.MwsCustomerManagedKeys("managedServices",
+            account_id=databricks_account_id,
+            aws_key_info=databricks.MwsCustomerManagedKeysAwsKeyInfoArgs(
+                key_arn=managed_services_customer_managed_key.arn,
+                key_alias=managed_services_customer_managed_key_alias.name,
+            ),
+            use_cases=["MANAGED_SERVICES"])
+        ```
         ### Customer-managed key for workspace storage
 
         ```python

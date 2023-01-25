@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobClusterNewClust
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributes;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributes;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobClusterNewClusterDockerImage;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributes;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScript;
@@ -31,6 +32,7 @@ public final class GetJobJobSettingsSettingsJobClusterNewCluster {
     private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributes azureAttributes;
     private @Nullable String clusterId;
     private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf clusterLogConf;
+    private @Nullable List<GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo> clusterMountInfos;
     private @Nullable String clusterName;
     private @Nullable Map<String,Object> customTags;
     private @Nullable String dataSecurityMode;
@@ -75,6 +77,9 @@ public final class GetJobJobSettingsSettingsJobClusterNewCluster {
     }
     public Optional<GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf> clusterLogConf() {
         return Optional.ofNullable(this.clusterLogConf);
+    }
+    public List<GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo> clusterMountInfos() {
+        return this.clusterMountInfos == null ? List.of() : this.clusterMountInfos;
     }
     public Optional<String> clusterName() {
         return Optional.ofNullable(this.clusterName);
@@ -159,6 +164,7 @@ public final class GetJobJobSettingsSettingsJobClusterNewCluster {
         private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributes azureAttributes;
         private @Nullable String clusterId;
         private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf clusterLogConf;
+        private @Nullable List<GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo> clusterMountInfos;
         private @Nullable String clusterName;
         private @Nullable Map<String,Object> customTags;
         private @Nullable String dataSecurityMode;
@@ -191,6 +197,7 @@ public final class GetJobJobSettingsSettingsJobClusterNewCluster {
     	      this.azureAttributes = defaults.azureAttributes;
     	      this.clusterId = defaults.clusterId;
     	      this.clusterLogConf = defaults.clusterLogConf;
+    	      this.clusterMountInfos = defaults.clusterMountInfos;
     	      this.clusterName = defaults.clusterName;
     	      this.customTags = defaults.customTags;
     	      this.dataSecurityMode = defaults.dataSecurityMode;
@@ -249,6 +256,14 @@ public final class GetJobJobSettingsSettingsJobClusterNewCluster {
         public Builder clusterLogConf(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf clusterLogConf) {
             this.clusterLogConf = clusterLogConf;
             return this;
+        }
+        @CustomType.Setter
+        public Builder clusterMountInfos(@Nullable List<GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo> clusterMountInfos) {
+            this.clusterMountInfos = clusterMountInfos;
+            return this;
+        }
+        public Builder clusterMountInfos(GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo... clusterMountInfos) {
+            return clusterMountInfos(List.of(clusterMountInfos));
         }
         @CustomType.Setter
         public Builder clusterName(@Nullable String clusterName) {
@@ -375,6 +390,7 @@ public final class GetJobJobSettingsSettingsJobClusterNewCluster {
             o.azureAttributes = azureAttributes;
             o.clusterId = clusterId;
             o.clusterLogConf = clusterLogConf;
+            o.clusterMountInfos = clusterMountInfos;
             o.clusterName = clusterName;
             o.customTags = customTags;
             o.dataSecurityMode = dataSecurityMode;

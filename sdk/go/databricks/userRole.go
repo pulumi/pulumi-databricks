@@ -103,7 +103,7 @@ import (
 type UserRole struct {
 	pulumi.CustomResourceState
 
-	// Either a role name or the id of the instance profile resource.
+	// Either a role name or the ARN/ID of the instance profile resource.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// This is the id of the user resource.
 	UserId pulumi.StringOutput `pulumi:"userId"`
@@ -144,14 +144,14 @@ func GetUserRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserRole resources.
 type userRoleState struct {
-	// Either a role name or the id of the instance profile resource.
+	// Either a role name or the ARN/ID of the instance profile resource.
 	Role *string `pulumi:"role"`
 	// This is the id of the user resource.
 	UserId *string `pulumi:"userId"`
 }
 
 type UserRoleState struct {
-	// Either a role name or the id of the instance profile resource.
+	// Either a role name or the ARN/ID of the instance profile resource.
 	Role pulumi.StringPtrInput
 	// This is the id of the user resource.
 	UserId pulumi.StringPtrInput
@@ -162,7 +162,7 @@ func (UserRoleState) ElementType() reflect.Type {
 }
 
 type userRoleArgs struct {
-	// Either a role name or the id of the instance profile resource.
+	// Either a role name or the ARN/ID of the instance profile resource.
 	Role string `pulumi:"role"`
 	// This is the id of the user resource.
 	UserId string `pulumi:"userId"`
@@ -170,7 +170,7 @@ type userRoleArgs struct {
 
 // The set of arguments for constructing a UserRole resource.
 type UserRoleArgs struct {
-	// Either a role name or the id of the instance profile resource.
+	// Either a role name or the ARN/ID of the instance profile resource.
 	Role pulumi.StringInput
 	// This is the id of the user resource.
 	UserId pulumi.StringInput
@@ -263,7 +263,7 @@ func (o UserRoleOutput) ToUserRoleOutputWithContext(ctx context.Context) UserRol
 	return o
 }
 
-// Either a role name or the id of the instance profile resource.
+// Either a role name or the ARN/ID of the instance profile resource.
 func (o UserRoleOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserRole) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

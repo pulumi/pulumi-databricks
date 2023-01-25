@@ -10,6 +10,57 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * > **Note** If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+ * ### Customer-managed key for managed services
+ *
+ * You must configure this during workspace creation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const current = aws.getCallerIdentity({});
+ * const databricksManagedServicesCmk = current.then(current => aws.iam.getPolicyDocument({
+ *     version: "2012-10-17",
+ *     statements: [
+ *         {
+ *             sid: "Enable IAM User Permissions",
+ *             effect: "Allow",
+ *             principals: [{
+ *                 type: "AWS",
+ *                 identifiers: [current.accountId],
+ *             }],
+ *             actions: ["kms:*"],
+ *             resources: ["*"],
+ *         },
+ *         {
+ *             sid: "Allow Databricks to use KMS key for control plane managed services",
+ *             effect: "Allow",
+ *             principals: [{
+ *                 type: "AWS",
+ *                 identifiers: ["arn:aws:iam::414351767826:root"],
+ *             }],
+ *             actions: [
+ *                 "kms:Encrypt",
+ *                 "kms:Decrypt",
+ *             ],
+ *             resources: ["*"],
+ *         },
+ *     ],
+ * }));
+ * const managedServicesCustomerManagedKey = new aws.kms.Key("managedServicesCustomerManagedKey", {policy: databricksManagedServicesCmk.then(databricksManagedServicesCmk => databricksManagedServicesCmk.json)});
+ * const managedServicesCustomerManagedKeyAlias = new aws.kms.Alias("managedServicesCustomerManagedKeyAlias", {targetKeyId: managedServicesCustomerManagedKey.keyId});
+ * const managedServices = new databricks.MwsCustomerManagedKeys("managedServices", {
+ *     accountId: databricksAccountId,
+ *     awsKeyInfo: {
+ *         keyArn: managedServicesCustomerManagedKey.arn,
+ *         keyAlias: managedServicesCustomerManagedKeyAlias.name,
+ *     },
+ *     useCases: ["MANAGED_SERVICES"],
+ * });
+ * ```
  * ### Customer-managed key for workspace storage
  *
  * ```typescript

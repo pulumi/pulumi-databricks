@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobWebhookNotificationsOnStartArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.StorageCredentialAwsIamRoleArgs;
 import com.pulumi.databricks.inputs.StorageCredentialAzureManagedIdentityArgs;
 import com.pulumi.databricks.inputs.StorageCredentialAzureServicePrincipalArgs;
+import com.pulumi.databricks.inputs.StorageCredentialGcpServiceAccountKeyArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -44,6 +45,13 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
+    }
+
+    @Import(name="gcpServiceAccountKey")
+    private @Nullable Output<StorageCredentialGcpServiceAccountKeyArgs> gcpServiceAccountKey;
+
+    public Optional<Output<StorageCredentialGcpServiceAccountKeyArgs>> gcpServiceAccountKey() {
+        return Optional.ofNullable(this.gcpServiceAccountKey);
     }
 
     @Import(name="metastoreId")
@@ -90,6 +98,7 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         this.azureManagedIdentity = $.azureManagedIdentity;
         this.azureServicePrincipal = $.azureServicePrincipal;
         this.comment = $.comment;
+        this.gcpServiceAccountKey = $.gcpServiceAccountKey;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
@@ -147,6 +156,15 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
         public Builder comment(String comment) {
             return comment(Output.of(comment));
+        }
+
+        public Builder gcpServiceAccountKey(@Nullable Output<StorageCredentialGcpServiceAccountKeyArgs> gcpServiceAccountKey) {
+            $.gcpServiceAccountKey = gcpServiceAccountKey;
+            return this;
+        }
+
+        public Builder gcpServiceAccountKey(StorageCredentialGcpServiceAccountKeyArgs gcpServiceAccountKey) {
+            return gcpServiceAccountKey(Output.of(gcpServiceAccountKey));
         }
 
         public Builder metastoreId(@Nullable Output<String> metastoreId) {

@@ -46,7 +46,7 @@ public final class GetClusterClusterInfo {
     private @Nullable GetClusterClusterInfoClusterLogStatus clusterLogStatus;
     private @Nullable Integer clusterMemoryMb;
     /**
-     * @return Cluster name, which doesn’t have to be unique.
+     * @return The exact name of the cluster to search
      * 
      */
     private @Nullable String clusterName;
@@ -88,13 +88,16 @@ public final class GetClusterClusterInfo {
     private @Nullable List<GetClusterClusterInfoExecutor> executors;
     private @Nullable GetClusterClusterInfoGcpAttributes gcpAttributes;
     private @Nullable List<GetClusterClusterInfoInitScript> initScripts;
+    /**
+     * @return The pool of idle instances the cluster is attached to.
+     * 
+     */
     private @Nullable String instancePoolId;
     private @Nullable Integer jdbcPort;
     private @Nullable Integer lastActivityTime;
     private @Nullable Integer lastStateLossTime;
     /**
      * @return Any supported databricks.getNodeType id.
-     * * `instance_pool_id` The pool of idle instances the cluster is attached to.
      * 
      */
     private @Nullable String nodeTypeId;
@@ -178,7 +181,7 @@ public final class GetClusterClusterInfo {
         return Optional.ofNullable(this.clusterMemoryMb);
     }
     /**
-     * @return Cluster name, which doesn’t have to be unique.
+     * @return The exact name of the cluster to search
      * 
      */
     public Optional<String> clusterName() {
@@ -250,6 +253,10 @@ public final class GetClusterClusterInfo {
     public List<GetClusterClusterInfoInitScript> initScripts() {
         return this.initScripts == null ? List.of() : this.initScripts;
     }
+    /**
+     * @return The pool of idle instances the cluster is attached to.
+     * 
+     */
     public Optional<String> instancePoolId() {
         return Optional.ofNullable(this.instancePoolId);
     }
@@ -264,7 +271,6 @@ public final class GetClusterClusterInfo {
     }
     /**
      * @return Any supported databricks.getNodeType id.
-     * * `instance_pool_id` The pool of idle instances the cluster is attached to.
      * 
      */
     public Optional<String> nodeTypeId() {

@@ -33,6 +33,9 @@ namespace Pulumi.Databricks
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.SqlQueryParameter>> Parameters { get; private set; } = null!;
 
+        [Output("parent")]
+        public Output<string?> Parent { get; private set; } = null!;
+
         [Output("query")]
         public Output<string> Query { get; private set; } = null!;
 
@@ -108,6 +111,9 @@ namespace Pulumi.Databricks
             set => _parameters = value;
         }
 
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
+
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
 
@@ -149,6 +155,9 @@ namespace Pulumi.Databricks
             get => _parameters ?? (_parameters = new InputList<Inputs.SqlQueryParameterGetArgs>());
             set => _parameters = value;
         }
+
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         [Input("query")]
         public Input<string>? Query { get; set; }

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobSparkSubmitTask {
     /**
-     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * @return (List) Command-line parameters passed to spark submit.
      * 
      */
     private @Nullable List<String> parameters;
 
     private JobSparkSubmitTask() {}
     /**
-     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * @return (List) Command-line parameters passed to spark submit.
      * 
      */
     public List<String> parameters() {

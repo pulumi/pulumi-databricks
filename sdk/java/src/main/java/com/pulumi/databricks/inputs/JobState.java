@@ -58,31 +58,23 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
      */
     @Import(name="emailNotifications")
     private @Nullable Output<JobEmailNotificationsArgs> emailNotifications;
 
     /**
-     * @return (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+     * @return (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
      */
     public Optional<Output<JobEmailNotificationsArgs>> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
     }
 
-    /**
-     * If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `new_cluster` for greater reliability.
-     * 
-     */
     @Import(name="existingClusterId")
     private @Nullable Output<String> existingClusterId;
 
-    /**
-     * @return If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `new_cluster` for greater reliability.
-     * 
-     */
     public Optional<Output<String>> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
     }
@@ -139,14 +131,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED result_state or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
      * 
      */
     @Import(name="maxRetries")
     private @Nullable Output<Integer> maxRetries;
 
     /**
-     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED result_state or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
      * 
      */
     public Optional<Output<Integer>> maxRetries() {
@@ -308,23 +300,31 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return URL of the job on the given workspace
+     * @return URL of the Git repository to use.
      * 
      */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
 
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * 
+     */
     @Import(name="webhookNotifications")
     private @Nullable Output<JobWebhookNotificationsArgs> webhookNotifications;
 
+    /**
+     * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * 
+     */
     public Optional<Output<JobWebhookNotificationsArgs>> webhookNotifications() {
         return Optional.ofNullable(this.webhookNotifications);
     }
@@ -409,7 +409,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emailNotifications (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+         * @param emailNotifications (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emailNotifications (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+         * @param emailNotifications (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
          * 
          * @return builder
          * 
@@ -429,23 +429,11 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return emailNotifications(Output.of(emailNotifications));
         }
 
-        /**
-         * @param existingClusterId If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `new_cluster` for greater reliability.
-         * 
-         * @return builder
-         * 
-         */
         public Builder existingClusterId(@Nullable Output<String> existingClusterId) {
             $.existingClusterId = existingClusterId;
             return this;
         }
 
-        /**
-         * @param existingClusterId If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `new_cluster` for greater reliability.
-         * 
-         * @return builder
-         * 
-         */
         public Builder existingClusterId(String existingClusterId) {
             return existingClusterId(Output.of(existingClusterId));
         }
@@ -534,7 +522,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRetries (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED result_state or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+         * @param maxRetries (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
          * 
          * @return builder
          * 
@@ -545,7 +533,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRetries (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED result_state or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+         * @param maxRetries (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
          * 
          * @return builder
          * 
@@ -769,7 +757,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL of the job on the given workspace
+         * @param url URL of the Git repository to use.
          * 
          * @return builder
          * 
@@ -780,7 +768,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL of the job on the given workspace
+         * @param url URL of the Git repository to use.
          * 
          * @return builder
          * 
@@ -789,11 +777,23 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return url(Output.of(url));
         }
 
+        /**
+         * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder webhookNotifications(@Nullable Output<JobWebhookNotificationsArgs> webhookNotifications) {
             $.webhookNotifications = webhookNotifications;
             return this;
         }
 
+        /**
+         * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder webhookNotifications(JobWebhookNotificationsArgs webhookNotifications) {
             return webhookNotifications(Output.of(webhookNotifications));
         }

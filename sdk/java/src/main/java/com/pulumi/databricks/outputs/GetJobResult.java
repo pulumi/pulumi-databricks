@@ -11,45 +11,34 @@ import java.util.Objects;
 @CustomType
 public final class GetJobResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return the id of databricks.Job if the resource was matched by name.
      * 
      */
+    private String id;
     private String jobId;
-    /**
-     * @return the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     private String jobName;
     /**
      * @return the same fields as in databricks_job.
      * 
      */
     private GetJobJobSettings jobSettings;
+    /**
+     * @return the job name of databricks.Job if the resource was matched by id.
+     * 
+     */
+    private String name;
 
     private GetJobResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return the id of databricks.Job if the resource was matched by name.
      * 
      */
     public String id() {
         return this.id;
     }
-    /**
-     * @return the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     public String jobId() {
         return this.jobId;
     }
-    /**
-     * @return the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     public String jobName() {
         return this.jobName;
     }
@@ -59,6 +48,13 @@ public final class GetJobResult {
      */
     public GetJobJobSettings jobSettings() {
         return this.jobSettings;
+    }
+    /**
+     * @return the job name of databricks.Job if the resource was matched by id.
+     * 
+     */
+    public String name() {
+        return this.name;
     }
 
     public static Builder builder() {
@@ -74,6 +70,7 @@ public final class GetJobResult {
         private String jobId;
         private String jobName;
         private GetJobJobSettings jobSettings;
+        private String name;
         public Builder() {}
         public Builder(GetJobResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,6 +78,7 @@ public final class GetJobResult {
     	      this.jobId = defaults.jobId;
     	      this.jobName = defaults.jobName;
     	      this.jobSettings = defaults.jobSettings;
+    	      this.name = defaults.name;
         }
 
         @CustomType.Setter
@@ -103,12 +101,18 @@ public final class GetJobResult {
             this.jobSettings = Objects.requireNonNull(jobSettings);
             return this;
         }
+        @CustomType.Setter
+        public Builder name(String name) {
+            this.name = Objects.requireNonNull(name);
+            return this;
+        }
         public GetJobResult build() {
             final var o = new GetJobResult();
             o.id = id;
             o.jobId = jobId;
             o.jobName = jobName;
             o.jobSettings = jobSettings;
+            o.name = name;
             return o;
         }
     }

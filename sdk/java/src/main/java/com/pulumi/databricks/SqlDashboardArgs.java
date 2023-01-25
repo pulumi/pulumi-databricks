@@ -23,6 +23,13 @@ public final class SqlDashboardArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
@@ -34,6 +41,7 @@ public final class SqlDashboardArgs extends com.pulumi.resources.ResourceArgs {
 
     private SqlDashboardArgs(SqlDashboardArgs $) {
         this.name = $.name;
+        this.parent = $.parent;
         this.tags = $.tags;
     }
 
@@ -62,6 +70,15 @@ public final class SqlDashboardArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         public Builder tags(@Nullable Output<List<String>> tags) {

@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? AlertOnLastAttempt { get; set; }
 
         /// <summary>
-        /// (Bool) don't send alert for skipped runs
+        /// (Bool) don't send alert for skipped runs.
         /// </summary>
         [Input("noAlertForSkippedRuns")]
         public Input<bool>? NoAlertForSkippedRuns { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<string>? _onFailures;
 
         /// <summary>
-        /// (List) list of emails to notify on failure
+        /// (List) list of emails to notify when the run fails.
         /// </summary>
         public InputList<string> OnFailures
         {
@@ -37,7 +37,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<string>? _onStarts;
 
         /// <summary>
-        /// (List) list of emails to notify on failure
+        /// (List) list of emails to notify when the run starts.
         /// </summary>
         public InputList<string> OnStarts
         {
@@ -49,7 +49,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<string>? _onSuccesses;
 
         /// <summary>
-        /// (List) list of emails to notify on failure
+        /// (List) list of emails to notify when the run completes successfully.
         /// </summary>
         public InputList<string> OnSuccesses
         {

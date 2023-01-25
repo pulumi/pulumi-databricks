@@ -103,6 +103,12 @@ namespace Pulumi.Databricks
         [Output("properties")]
         public Output<ImmutableDictionary<string, object>?> Properties { get; private set; } = null!;
 
+        /// <summary>
+        /// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        /// </summary>
+        [Output("storageRoot")]
+        public Output<string?> StorageRoot { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Schema resource with the given unique name, arguments, and options.
@@ -194,6 +200,12 @@ namespace Pulumi.Databricks
             set => _properties = value;
         }
 
+        /// <summary>
+        /// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        /// </summary>
+        [Input("storageRoot")]
+        public Input<string>? StorageRoot { get; set; }
+
         public SchemaArgs()
         {
         }
@@ -246,6 +258,12 @@ namespace Pulumi.Databricks
             get => _properties ?? (_properties = new InputMap<object>());
             set => _properties = value;
         }
+
+        /// <summary>
+        /// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        /// </summary>
+        [Input("storageRoot")]
+        public Input<string>? StorageRoot { get; set; }
 
         public SchemaState()
         {

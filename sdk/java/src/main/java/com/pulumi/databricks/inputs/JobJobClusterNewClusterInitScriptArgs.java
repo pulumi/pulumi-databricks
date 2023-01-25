@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobJobClusterNewClusterInitScriptAbfssArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterInitScriptDbfsArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterInitScriptFileArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterInitScriptGcsArgs;
@@ -17,6 +18,13 @@ import javax.annotation.Nullable;
 public final class JobJobClusterNewClusterInitScriptArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobJobClusterNewClusterInitScriptArgs Empty = new JobJobClusterNewClusterInitScriptArgs();
+
+    @Import(name="abfss")
+    private @Nullable Output<JobJobClusterNewClusterInitScriptAbfssArgs> abfss;
+
+    public Optional<Output<JobJobClusterNewClusterInitScriptAbfssArgs>> abfss() {
+        return Optional.ofNullable(this.abfss);
+    }
 
     @Import(name="dbfs")
     private @Nullable Output<JobJobClusterNewClusterInitScriptDbfsArgs> dbfs;
@@ -49,6 +57,7 @@ public final class JobJobClusterNewClusterInitScriptArgs extends com.pulumi.reso
     private JobJobClusterNewClusterInitScriptArgs() {}
 
     private JobJobClusterNewClusterInitScriptArgs(JobJobClusterNewClusterInitScriptArgs $) {
+        this.abfss = $.abfss;
         this.dbfs = $.dbfs;
         this.file = $.file;
         this.gcs = $.gcs;
@@ -71,6 +80,15 @@ public final class JobJobClusterNewClusterInitScriptArgs extends com.pulumi.reso
 
         public Builder(JobJobClusterNewClusterInitScriptArgs defaults) {
             $ = new JobJobClusterNewClusterInitScriptArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder abfss(@Nullable Output<JobJobClusterNewClusterInitScriptAbfssArgs> abfss) {
+            $.abfss = abfss;
+            return this;
+        }
+
+        public Builder abfss(JobJobClusterNewClusterInitScriptAbfssArgs abfss) {
+            return abfss(Output.of(abfss));
         }
 
         public Builder dbfs(@Nullable Output<JobJobClusterNewClusterInitScriptDbfsArgs> dbfs) {

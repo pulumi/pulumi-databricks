@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// For more detailed usage please see getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
+// For more detailed usage please see getAwsAssumeRolePolicy or AwsS3Mount pages.
 //
 // ```go
 // package main
@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
+//			_, err := databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}

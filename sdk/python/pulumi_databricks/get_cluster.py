@@ -23,13 +23,16 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, cluster_id=None, cluster_info=None, id=None):
+    def __init__(__self__, cluster_id=None, cluster_info=None, cluster_name=None, id=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_info and not isinstance(cluster_info, dict):
             raise TypeError("Expected argument 'cluster_info' to be a dict")
         pulumi.set(__self__, "cluster_info", cluster_info)
+        if cluster_name and not isinstance(cluster_name, str):
+            raise TypeError("Expected argument 'cluster_name' to be a str")
+        pulumi.set(__self__, "cluster_name", cluster_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -42,13 +45,24 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="clusterInfo")
     def cluster_info(self) -> 'outputs.GetClusterClusterInfoResult':
+        """
+        block, consisting of following fields:
+        """
         return pulumi.get(self, "cluster_info")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> str:
+        """
+        Cluster name, which doesn’t have to be unique.
+        """
+        return pulumi.get(self, "cluster_name")
 
     @property
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        cluster ID
         """
         return pulumi.get(self, "id")
 
@@ -61,11 +75,14 @@ class AwaitableGetClusterResult(GetClusterResult):
         return GetClusterResult(
             cluster_id=self.cluster_id,
             cluster_info=self.cluster_info,
+            cluster_name=self.cluster_name,
             id=self.id)
 
 
 def get_cluster(cluster_id: Optional[str] = None,
                 cluster_info: Optional[pulumi.InputType['GetClusterClusterInfoArgs']] = None,
+                cluster_name: Optional[str] = None,
+                id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     ## Example Usage
@@ -93,22 +110,30 @@ def get_cluster(cluster_id: Optional[str] = None,
 
 
     :param str cluster_id: The id of the cluster
+    :param pulumi.InputType['GetClusterClusterInfoArgs'] cluster_info: block, consisting of following fields:
+    :param str cluster_name: The exact name of the cluster to search
+    :param str id: cluster ID
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['clusterInfo'] = cluster_info
+    __args__['clusterName'] = cluster_name
+    __args__['id'] = id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
         cluster_id=__ret__.cluster_id,
         cluster_info=__ret__.cluster_info,
+        cluster_name=__ret__.cluster_name,
         id=__ret__.id)
 
 
 @_utilities.lift_output_func(get_cluster)
-def get_cluster_output(cluster_id: Optional[pulumi.Input[str]] = None,
+def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
                        cluster_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetClusterClusterInfoArgs']]]] = None,
+                       cluster_name: Optional[pulumi.Input[Optional[str]]] = None,
+                       id: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
     """
     ## Example Usage
@@ -136,5 +161,8 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
 
     :param str cluster_id: The id of the cluster
+    :param pulumi.InputType['GetClusterClusterInfoArgs'] cluster_info: block, consisting of following fields:
+    :param str cluster_name: The exact name of the cluster to search
+    :param str id: cluster ID
     """
     ...

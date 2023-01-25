@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFile;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsTaskNewClusterInitScript extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsTaskNewClusterInitScript Empty = new GetJobJobSettingsSettingsTaskNewClusterInitScript();
+
+    @Import(name="abfss")
+    private @Nullable GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss abfss;
+
+    public Optional<GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss> abfss() {
+        return Optional.ofNullable(this.abfss);
+    }
 
     @Import(name="dbfs")
     private @Nullable GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs dbfs;
@@ -48,6 +56,7 @@ public final class GetJobJobSettingsSettingsTaskNewClusterInitScript extends com
     private GetJobJobSettingsSettingsTaskNewClusterInitScript() {}
 
     private GetJobJobSettingsSettingsTaskNewClusterInitScript(GetJobJobSettingsSettingsTaskNewClusterInitScript $) {
+        this.abfss = $.abfss;
         this.dbfs = $.dbfs;
         this.file = $.file;
         this.gcs = $.gcs;
@@ -70,6 +79,11 @@ public final class GetJobJobSettingsSettingsTaskNewClusterInitScript extends com
 
         public Builder(GetJobJobSettingsSettingsTaskNewClusterInitScript defaults) {
             $ = new GetJobJobSettingsSettingsTaskNewClusterInitScript(Objects.requireNonNull(defaults));
+        }
+
+        public Builder abfss(@Nullable GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss abfss) {
+            $.abfss = abfss;
+            return this;
         }
 
         public Builder dbfs(@Nullable GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs dbfs) {

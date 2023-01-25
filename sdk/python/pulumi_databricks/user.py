@@ -22,6 +22,8 @@ class UserArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 home: Optional[pulumi.Input[str]] = None,
+                 repos: Optional[pulumi.Input[str]] = None,
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a User resource.
@@ -32,6 +34,8 @@ class UserArgs:
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is an alias for the username that can be the full name of the user.
         :param pulumi.Input[str] external_id: ID of the user in an external identity provider.
+        :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+        :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         """
         pulumi.set(__self__, "user_name", user_name)
         if active is not None:
@@ -48,6 +52,10 @@ class UserArgs:
             pulumi.set(__self__, "external_id", external_id)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if home is not None:
+            pulumi.set(__self__, "home", home)
+        if repos is not None:
+            pulumi.set(__self__, "repos", repos)
         if workspace_access is not None:
             pulumi.set(__self__, "workspace_access", workspace_access)
 
@@ -145,6 +153,30 @@ class UserArgs:
         pulumi.set(self, "force", value)
 
     @property
+    @pulumi.getter
+    def home(self) -> Optional[pulumi.Input[str]]:
+        """
+        Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+        """
+        return pulumi.get(self, "home")
+
+    @home.setter
+    def home(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "home", value)
+
+    @property
+    @pulumi.getter
+    def repos(self) -> Optional[pulumi.Input[str]]:
+        """
+        Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+        """
+        return pulumi.get(self, "repos")
+
+    @repos.setter
+    def repos(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repos", value)
+
+    @property
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "workspace_access")
@@ -164,6 +196,8 @@ class _UserState:
                  display_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 home: Optional[pulumi.Input[str]] = None,
+                 repos: Optional[pulumi.Input[str]] = None,
                  user_name: Optional[pulumi.Input[str]] = None,
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
@@ -174,6 +208,8 @@ class _UserState:
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is an alias for the username that can be the full name of the user.
         :param pulumi.Input[str] external_id: ID of the user in an external identity provider.
+        :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+        :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.
         """
         if active is not None:
@@ -190,6 +226,10 @@ class _UserState:
             pulumi.set(__self__, "external_id", external_id)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if home is not None:
+            pulumi.set(__self__, "home", home)
+        if repos is not None:
+            pulumi.set(__self__, "repos", repos)
         if user_name is not None:
             pulumi.set(__self__, "user_name", user_name)
         if workspace_access is not None:
@@ -277,6 +317,30 @@ class _UserState:
         pulumi.set(self, "force", value)
 
     @property
+    @pulumi.getter
+    def home(self) -> Optional[pulumi.Input[str]]:
+        """
+        Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+        """
+        return pulumi.get(self, "home")
+
+    @home.setter
+    def home(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "home", value)
+
+    @property
+    @pulumi.getter
+    def repos(self) -> Optional[pulumi.Input[str]]:
+        """
+        Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+        """
+        return pulumi.get(self, "repos")
+
+    @repos.setter
+    def repos(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repos", value)
+
+    @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -310,6 +374,8 @@ class User(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 home: Optional[pulumi.Input[str]] = None,
+                 repos: Optional[pulumi.Input[str]] = None,
                  user_name: Optional[pulumi.Input[str]] = None,
                  workspace_access: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -410,6 +476,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is an alias for the username that can be the full name of the user.
         :param pulumi.Input[str] external_id: ID of the user in an external identity provider.
+        :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+        :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.
         """
         ...
@@ -529,6 +597,8 @@ class User(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 home: Optional[pulumi.Input[str]] = None,
+                 repos: Optional[pulumi.Input[str]] = None,
                  user_name: Optional[pulumi.Input[str]] = None,
                  workspace_access: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -547,6 +617,8 @@ class User(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["external_id"] = external_id
             __props__.__dict__["force"] = force
+            __props__.__dict__["home"] = home
+            __props__.__dict__["repos"] = repos
             if user_name is None and not opts.urn:
                 raise TypeError("Missing required property 'user_name'")
             __props__.__dict__["user_name"] = user_name
@@ -568,6 +640,8 @@ class User(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             external_id: Optional[pulumi.Input[str]] = None,
             force: Optional[pulumi.Input[bool]] = None,
+            home: Optional[pulumi.Input[str]] = None,
+            repos: Optional[pulumi.Input[str]] = None,
             user_name: Optional[pulumi.Input[str]] = None,
             workspace_access: Optional[pulumi.Input[bool]] = None) -> 'User':
         """
@@ -583,6 +657,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is an alias for the username that can be the full name of the user.
         :param pulumi.Input[str] external_id: ID of the user in an external identity provider.
+        :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+        :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -596,6 +672,8 @@ class User(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["external_id"] = external_id
         __props__.__dict__["force"] = force
+        __props__.__dict__["home"] = home
+        __props__.__dict__["repos"] = repos
         __props__.__dict__["user_name"] = user_name
         __props__.__dict__["workspace_access"] = workspace_access
         return User(resource_name, opts=opts, __props__=__props__)
@@ -652,6 +730,22 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter
+    def home(self) -> pulumi.Output[str]:
+        """
+        Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+        """
+        return pulumi.get(self, "home")
+
+    @property
+    @pulumi.getter
+    def repos(self) -> pulumi.Output[str]:
+        """
+        Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+        """
+        return pulumi.get(self, "repos")
 
     @property
     @pulumi.getter(name="userName")

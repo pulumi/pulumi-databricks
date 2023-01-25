@@ -25,8 +25,14 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var sharedDir = new Databricks.Directory("sharedDir", new()
+    ///     {
+    ///         Path = "/Shared/Dashboards",
+    ///     });
+    /// 
     ///     var d1 = new Databricks.SqlDashboard("d1", new()
     ///     {
+    ///         Parent = sharedDir.ObjectId.Apply(objectId =&gt; $"folders/{objectId}"),
     ///         Tags = new[]
     ///         {
     ///             "some-tag",
@@ -84,6 +90,9 @@ namespace Pulumi.Databricks
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("parent")]
+        public Output<string?> Parent { get; private set; } = null!;
+
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
@@ -136,6 +145,9 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
         public InputList<string> Tags
@@ -154,6 +166,9 @@ namespace Pulumi.Databricks
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

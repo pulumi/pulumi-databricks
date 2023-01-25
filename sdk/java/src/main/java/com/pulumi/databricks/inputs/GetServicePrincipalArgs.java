@@ -92,6 +92,21 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
+     * The id of the service principal.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    /**
+     * @return The id of the service principal.
+     * 
+     */
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      * 
      */
@@ -106,17 +121,9 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.repos);
     }
 
-    /**
-     * The id of the service principal.
-     * 
-     */
     @Import(name="spId")
     private @Nullable Output<String> spId;
 
-    /**
-     * @return The id of the service principal.
-     * 
-     */
     public Optional<Output<String>> spId() {
         return Optional.ofNullable(this.spId);
     }
@@ -129,6 +136,7 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
         this.displayName = $.displayName;
         this.externalId = $.externalId;
         this.home = $.home;
+        this.id = $.id;
         this.repos = $.repos;
         this.spId = $.spId;
     }
@@ -257,6 +265,27 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
+         * @param id The id of the service principal.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id The id of the service principal.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
+        }
+
+        /**
          * @param repos Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
          * 
          * @return builder
@@ -277,23 +306,11 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
             return repos(Output.of(repos));
         }
 
-        /**
-         * @param spId The id of the service principal.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spId(@Nullable Output<String> spId) {
             $.spId = spId;
             return this;
         }
 
-        /**
-         * @param spId The id of the service principal.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spId(String spId) {
             return spId(Output.of(spId));
         }

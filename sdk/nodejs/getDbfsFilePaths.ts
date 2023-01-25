@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const partitions = pulumi.output(databricks.getDbfsFilePaths({
+ * const partitions = databricks.getDbfsFilePaths({
  *     path: "dbfs:/user/hive/default.db/table",
  *     recursive: false,
- * }));
+ * });
  * ```
  * ## Related Resources
  *
@@ -30,11 +30,8 @@ import * as utilities from "./utilities";
  * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
  */
 export function getDbfsFilePaths(args: GetDbfsFilePathsArgs, opts?: pulumi.InvokeOptions): Promise<GetDbfsFilePathsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDbfsFilePaths:getDbfsFilePaths", {
         "path": args.path,
         "recursive": args.recursive,
@@ -70,9 +67,31 @@ export interface GetDbfsFilePathsResult {
     readonly pathLists: outputs.GetDbfsFilePathsPathList[];
     readonly recursive: boolean;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const partitions = databricks.getDbfsFilePaths({
+ *     path: "dbfs:/user/hive/default.db/table",
+ *     recursive: false,
+ * });
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide
+ * * databricks.DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+ * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
+ */
 export function getDbfsFilePathsOutput(args: GetDbfsFilePathsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbfsFilePathsResult> {
-    return pulumi.output(args).apply(a => getDbfsFilePaths(a, opts))
+    return pulumi.output(args).apply((a: any) => getDbfsFilePaths(a, opts))
 }
 
 /**

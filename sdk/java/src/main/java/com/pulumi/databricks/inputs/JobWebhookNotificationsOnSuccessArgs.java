@@ -13,9 +13,17 @@ public final class JobWebhookNotificationsOnSuccessArgs extends com.pulumi.resou
 
     public static final JobWebhookNotificationsOnSuccessArgs Empty = new JobWebhookNotificationsOnSuccessArgs();
 
+    /**
+     * ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+     * 
+     */
     @Import(name="id", required=true)
     private Output<String> id;
 
+    /**
+     * @return ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+     * 
+     */
     public Output<String> id() {
         return this.id;
     }
@@ -44,11 +52,23 @@ public final class JobWebhookNotificationsOnSuccessArgs extends com.pulumi.resou
             $ = new JobWebhookNotificationsOnSuccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }

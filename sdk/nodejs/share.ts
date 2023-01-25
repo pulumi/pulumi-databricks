@@ -56,7 +56,7 @@ export class Share extends pulumi.CustomResource {
      */
     public readonly createdBy!: pulumi.Output<string>;
     /**
-     * Full name of the object, e.g. `catalog.schema.name` for a table.
+     * Name of share. Change forces creation of a new resource.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly objects!: pulumi.Output<outputs.ShareObject[] | undefined>;
@@ -103,7 +103,7 @@ export interface ShareState {
      */
     createdBy?: pulumi.Input<string>;
     /**
-     * Full name of the object, e.g. `catalog.schema.name` for a table.
+     * Name of share. Change forces creation of a new resource.
      */
     name?: pulumi.Input<string>;
     objects?: pulumi.Input<pulumi.Input<inputs.ShareObject>[]>;
@@ -122,7 +122,7 @@ export interface ShareArgs {
      */
     createdBy?: pulumi.Input<string>;
     /**
-     * Full name of the object, e.g. `catalog.schema.name` for a table.
+     * Name of share. Change forces creation of a new resource.
      */
     name?: pulumi.Input<string>;
     objects?: pulumi.Input<pulumi.Input<inputs.ShareObject>[]>;

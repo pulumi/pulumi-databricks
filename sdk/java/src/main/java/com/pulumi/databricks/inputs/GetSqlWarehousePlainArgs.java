@@ -34,9 +34,17 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.autoStopMins);
     }
 
+    /**
+     * block, consisting of following fields:
+     * 
+     */
     @Import(name="channel")
     private @Nullable GetSqlWarehouseChannel channel;
 
+    /**
+     * @return block, consisting of following fields:
+     * 
+     */
     public Optional<GetSqlWarehouseChannel> channel() {
         return Optional.ofNullable(this.channel);
     }
@@ -88,7 +96,6 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
 
     /**
      * Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-     * * `channel` block, consisting of following fields:
      * 
      */
     @Import(name="enableServerlessCompute")
@@ -96,7 +103,6 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
 
     /**
      * @return Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-     * * `channel` block, consisting of following fields:
      * 
      */
     public Optional<Boolean> enableServerlessCompute() {
@@ -295,6 +301,12 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        /**
+         * @param channel block, consisting of following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder channel(@Nullable GetSqlWarehouseChannel channel) {
             $.channel = channel;
             return this;
@@ -335,7 +347,6 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param enableServerlessCompute Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-         * * `channel` block, consisting of following fields:
          * 
          * @return builder
          * 

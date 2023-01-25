@@ -30,17 +30,6 @@ class TableArgs:
                  view_definition: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Table resource.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog
-        :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
-        :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-        :param pulumi.Input[str] comment: User-supplied free-form text.
-        :param pulumi.Input[str] name: User-visible name of column
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the table owner.
-        :param pulumi.Input[Mapping[str, Any]] properties: Extensible Table properties.
-        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-        :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-        :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`)
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
         pulumi.set(__self__, "columns", columns)
@@ -65,9 +54,6 @@ class TableArgs:
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Input[str]:
-        """
-        Name of parent catalog
-        """
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
@@ -86,9 +72,6 @@ class TableArgs:
     @property
     @pulumi.getter(name="dataSourceFormat")
     def data_source_format(self) -> pulumi.Input[str]:
-        """
-        External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-        """
         return pulumi.get(self, "data_source_format")
 
     @data_source_format.setter
@@ -98,9 +81,6 @@ class TableArgs:
     @property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Input[str]:
-        """
-        Name of parent Schema relative to parent Catalog
-        """
         return pulumi.get(self, "schema_name")
 
     @schema_name.setter
@@ -110,9 +90,6 @@ class TableArgs:
     @property
     @pulumi.getter(name="tableType")
     def table_type(self) -> pulumi.Input[str]:
-        """
-        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-        """
         return pulumi.get(self, "table_type")
 
     @table_type.setter
@@ -122,9 +99,6 @@ class TableArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
-        """
-        User-supplied free-form text.
-        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -134,9 +108,6 @@ class TableArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        User-visible name of column
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -146,9 +117,6 @@ class TableArgs:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username/groupname/sp application_id of the table owner.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -158,9 +126,6 @@ class TableArgs:
     @property
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        Extensible Table properties.
-        """
         return pulumi.get(self, "properties")
 
     @properties.setter
@@ -170,9 +135,6 @@ class TableArgs:
     @property
     @pulumi.getter(name="storageCredentialName")
     def storage_credential_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-        """
         return pulumi.get(self, "storage_credential_name")
 
     @storage_credential_name.setter
@@ -182,9 +144,6 @@ class TableArgs:
     @property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[str]]:
-        """
-        URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-        """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
@@ -194,9 +153,6 @@ class TableArgs:
     @property
     @pulumi.getter(name="viewDefinition")
     def view_definition(self) -> Optional[pulumi.Input[str]]:
-        """
-        SQL text defining the view (for `table_type == "VIEW"`)
-        """
         return pulumi.get(self, "view_definition")
 
     @view_definition.setter
@@ -221,17 +177,6 @@ class _TableState:
                  view_definition: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Table resources.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog
-        :param pulumi.Input[str] comment: User-supplied free-form text.
-        :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-        :param pulumi.Input[str] name: User-visible name of column
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the table owner.
-        :param pulumi.Input[Mapping[str, Any]] properties: Extensible Table properties.
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
-        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-        :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-        :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-        :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`)
         """
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
@@ -261,9 +206,6 @@ class _TableState:
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of parent catalog
-        """
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
@@ -282,9 +224,6 @@ class _TableState:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
-        """
-        User-supplied free-form text.
-        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -294,9 +233,6 @@ class _TableState:
     @property
     @pulumi.getter(name="dataSourceFormat")
     def data_source_format(self) -> Optional[pulumi.Input[str]]:
-        """
-        External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-        """
         return pulumi.get(self, "data_source_format")
 
     @data_source_format.setter
@@ -306,9 +242,6 @@ class _TableState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        User-visible name of column
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -318,9 +251,6 @@ class _TableState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username/groupname/sp application_id of the table owner.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -330,9 +260,6 @@ class _TableState:
     @property
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        Extensible Table properties.
-        """
         return pulumi.get(self, "properties")
 
     @properties.setter
@@ -342,9 +269,6 @@ class _TableState:
     @property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of parent Schema relative to parent Catalog
-        """
         return pulumi.get(self, "schema_name")
 
     @schema_name.setter
@@ -354,9 +278,6 @@ class _TableState:
     @property
     @pulumi.getter(name="storageCredentialName")
     def storage_credential_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-        """
         return pulumi.get(self, "storage_credential_name")
 
     @storage_credential_name.setter
@@ -366,9 +287,6 @@ class _TableState:
     @property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[str]]:
-        """
-        URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-        """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
@@ -378,9 +296,6 @@ class _TableState:
     @property
     @pulumi.getter(name="tableType")
     def table_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-        """
         return pulumi.get(self, "table_type")
 
     @table_type.setter
@@ -390,9 +305,6 @@ class _TableState:
     @property
     @pulumi.getter(name="viewDefinition")
     def view_definition(self) -> Optional[pulumi.Input[str]]:
-        """
-        SQL text defining the view (for `table_type == "VIEW"`)
-        """
         return pulumi.get(self, "view_definition")
 
     @view_definition.setter
@@ -419,85 +331,9 @@ class Table(pulumi.CustomResource):
                  view_definition: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
-
-        Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables / views.
-
-        > **Note** This resource has an evolving API, which will change in the upcoming versions of the provider in order to simplify user experience.
-
-        A `Table` is contained within databricks_schema.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        sandbox = databricks.Catalog("sandbox",
-            metastore_id=databricks_metastore["this"]["id"],
-            comment="this catalog is managed by terraform",
-            properties={
-                "purpose": "testing",
-            })
-        things = databricks.Schema("things",
-            catalog_name=sandbox.id,
-            comment="this database is managed by terraform",
-            properties={
-                "kind": "various",
-            })
-        thing = databricks.Table("thing",
-            catalog_name=sandbox.id,
-            schema_name=things.name,
-            table_type="MANAGED",
-            data_source_format="DELTA",
-            columns=[
-                databricks.TableColumnArgs(
-                    name="id",
-                    position=0,
-                    type_name="INT",
-                    type_text="int",
-                    type_json="{\\"name\\":\\"id\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}}",
-                ),
-                databricks.TableColumnArgs(
-                    name="name",
-                    position=1,
-                    type_name="STRING",
-                    type_text="varchar(64)",
-                    type_json="{\\"name\\":\\"name\\",\\"type\\":\\"varchar(64)\\",\\"nullable\\":true,\\"metadata\\":{}}",
-                ),
-            ],
-            comment="this table is managed by terraform",
-            opts=pulumi.ResourceOptions(provider=databricks["workspace"]))
-        ```
-        ## Related Resources
-
-        The following resources are used in the same context:
-
-        * Table data to list tables within Unity Catalog.
-        * Schema data to list schemas within Unity Catalog.
-        * Catalog data to list catalogs within Unity Catalog.
-
-        ## Import
-
-        This resource can be imported by full name*`catalog`.`schema`.`table`*bash
-
-        ```sh
-         $ pulumi import databricks:index/table:Table this <full-name>
-        ```
-
+        Create a Table resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog
-        :param pulumi.Input[str] comment: User-supplied free-form text.
-        :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-        :param pulumi.Input[str] name: User-visible name of column
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the table owner.
-        :param pulumi.Input[Mapping[str, Any]] properties: Extensible Table properties.
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
-        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-        :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-        :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-        :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`)
         """
         ...
     @overload
@@ -506,72 +342,7 @@ class Table(pulumi.CustomResource):
                  args: TableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
-
-        Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables / views.
-
-        > **Note** This resource has an evolving API, which will change in the upcoming versions of the provider in order to simplify user experience.
-
-        A `Table` is contained within databricks_schema.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        sandbox = databricks.Catalog("sandbox",
-            metastore_id=databricks_metastore["this"]["id"],
-            comment="this catalog is managed by terraform",
-            properties={
-                "purpose": "testing",
-            })
-        things = databricks.Schema("things",
-            catalog_name=sandbox.id,
-            comment="this database is managed by terraform",
-            properties={
-                "kind": "various",
-            })
-        thing = databricks.Table("thing",
-            catalog_name=sandbox.id,
-            schema_name=things.name,
-            table_type="MANAGED",
-            data_source_format="DELTA",
-            columns=[
-                databricks.TableColumnArgs(
-                    name="id",
-                    position=0,
-                    type_name="INT",
-                    type_text="int",
-                    type_json="{\\"name\\":\\"id\\",\\"type\\":\\"integer\\",\\"nullable\\":true,\\"metadata\\":{}}",
-                ),
-                databricks.TableColumnArgs(
-                    name="name",
-                    position=1,
-                    type_name="STRING",
-                    type_text="varchar(64)",
-                    type_json="{\\"name\\":\\"name\\",\\"type\\":\\"varchar(64)\\",\\"nullable\\":true,\\"metadata\\":{}}",
-                ),
-            ],
-            comment="this table is managed by terraform",
-            opts=pulumi.ResourceOptions(provider=databricks["workspace"]))
-        ```
-        ## Related Resources
-
-        The following resources are used in the same context:
-
-        * Table data to list tables within Unity Catalog.
-        * Schema data to list schemas within Unity Catalog.
-        * Catalog data to list catalogs within Unity Catalog.
-
-        ## Import
-
-        This resource can be imported by full name*`catalog`.`schema`.`table`*bash
-
-        ```sh
-         $ pulumi import databricks:index/table:Table this <full-name>
-        ```
-
+        Create a Table resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param TableArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -659,17 +430,6 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog
-        :param pulumi.Input[str] comment: User-supplied free-form text.
-        :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-        :param pulumi.Input[str] name: User-visible name of column
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the table owner.
-        :param pulumi.Input[Mapping[str, Any]] properties: Extensible Table properties.
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
-        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-        :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-        :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-        :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -692,9 +452,6 @@ class Table(pulumi.CustomResource):
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Output[str]:
-        """
-        Name of parent catalog
-        """
         return pulumi.get(self, "catalog_name")
 
     @property
@@ -705,80 +462,50 @@ class Table(pulumi.CustomResource):
     @property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
-        """
-        User-supplied free-form text.
-        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter(name="dataSourceFormat")
     def data_source_format(self) -> pulumi.Output[str]:
-        """
-        External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-        """
         return pulumi.get(self, "data_source_format")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        User-visible name of column
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
-        """
-        Username/groupname/sp application_id of the table owner.
-        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter
     def properties(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        Extensible Table properties.
-        """
         return pulumi.get(self, "properties")
 
     @property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Output[str]:
-        """
-        Name of parent Schema relative to parent Catalog
-        """
         return pulumi.get(self, "schema_name")
 
     @property
     @pulumi.getter(name="storageCredentialName")
     def storage_credential_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-        """
         return pulumi.get(self, "storage_credential_name")
 
     @property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> pulumi.Output[Optional[str]]:
-        """
-        URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-        """
         return pulumi.get(self, "storage_location")
 
     @property
     @pulumi.getter(name="tableType")
     def table_type(self) -> pulumi.Output[str]:
-        """
-        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-        """
         return pulumi.get(self, "table_type")
 
     @property
     @pulumi.getter(name="viewDefinition")
     def view_definition(self) -> pulumi.Output[Optional[str]]:
-        """
-        SQL text defining the view (for `table_type == "VIEW"`)
-        """
         return pulumi.get(self, "view_definition")
 

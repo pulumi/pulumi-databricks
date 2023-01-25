@@ -17,6 +17,21 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
     public static final JobDbtTaskArgs Empty = new JobDbtTaskArgs();
 
     /**
+     * The name of the catalog to use inside Unity Catalog.
+     * 
+     */
+    @Import(name="catalog")
+    private @Nullable Output<String> catalog;
+
+    /**
+     * @return The name of the catalog to use inside Unity Catalog.
+     * 
+     */
+    public Optional<Output<String>> catalog() {
+        return Optional.ofNullable(this.catalog);
+    }
+
+    /**
      * (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
      * 
      */
@@ -77,14 +92,14 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * The ID of the SQL warehouse that dbt should execute against.
      * 
      */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
     /**
-     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * @return The ID of the SQL warehouse that dbt should execute against.
      * 
      */
     public Optional<Output<String>> warehouseId() {
@@ -94,6 +109,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
     private JobDbtTaskArgs() {}
 
     private JobDbtTaskArgs(JobDbtTaskArgs $) {
+        this.catalog = $.catalog;
         this.commands = $.commands;
         this.profilesDirectory = $.profilesDirectory;
         this.projectDirectory = $.projectDirectory;
@@ -117,6 +133,27 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(JobDbtTaskArgs defaults) {
             $ = new JobDbtTaskArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param catalog The name of the catalog to use inside Unity Catalog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalog(@Nullable Output<String> catalog) {
+            $.catalog = catalog;
+            return this;
+        }
+
+        /**
+         * @param catalog The name of the catalog to use inside Unity Catalog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalog(String catalog) {
+            return catalog(Output.of(catalog));
         }
 
         /**
@@ -214,7 +251,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warehouseId ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+         * @param warehouseId The ID of the SQL warehouse that dbt should execute against.
          * 
          * @return builder
          * 
@@ -225,7 +262,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warehouseId ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+         * @param warehouseId The ID of the SQL warehouse that dbt should execute against.
          * 
          * @return builder
          * 

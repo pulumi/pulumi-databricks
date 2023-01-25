@@ -23,6 +23,54 @@ import javax.annotation.Nullable;
  * A `databricks.Recipient` is contained within databricks.Metastore and can have permissions to `SELECT` from a list of shares.
  * 
  * ## Example Usage
+ * ### Databricks Sharing with non databricks recipient
+ * 
+ * Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
+ * authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomPassword;
+ * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.Recipient;
+ * import com.pulumi.databricks.RecipientArgs;
+ * import com.pulumi.databricks.inputs.RecipientIpAccessListArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var db2opensharecode = new RandomPassword(&#34;db2opensharecode&#34;, RandomPasswordArgs.builder()        
+ *             .length(16)
+ *             .special(true)
+ *             .build());
+ * 
+ *         final var current = DatabricksFunctions.getCurrentUser();
+ * 
+ *         var db2open = new Recipient(&#34;db2open&#34;, RecipientArgs.builder()        
+ *             .comment(&#34;made by terraform&#34;)
+ *             .authenticationType(&#34;TOKEN&#34;)
+ *             .sharingCode(db2opensharecode.result())
+ *             .ipAccessList(RecipientIpAccessListArgs.builder()
+ *                 .allowedIpAddresses()
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Related Resources
  * 
  * The following resources are often used in the same context:

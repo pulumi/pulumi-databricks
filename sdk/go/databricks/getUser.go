@@ -26,21 +26,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admins, err := databricks.LookupGroup(ctx, &GetGroupArgs{
+//			admins, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "admins",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			me, err := databricks.LookupUser(ctx, &GetUserArgs{
+//			me, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
 //				UserName: pulumi.StringRef("me@example.com"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewGroupMember(ctx, "myMemberA", &databricks.GroupMemberArgs{
-//				GroupId:  pulumi.String(admins.Id),
-//				MemberId: pulumi.String(me.Id),
+//				GroupId:  *pulumi.String(admins.Id),
+//				MemberId: *pulumi.String(me.Id),
 //			})
 //			if err != nil {
 //				return err

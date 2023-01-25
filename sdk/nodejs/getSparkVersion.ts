@@ -44,11 +44,8 @@ import * as utilities from "./utilities";
  */
 export function getSparkVersion(args?: GetSparkVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetSparkVersionResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getSparkVersion:getSparkVersion", {
         "beta": args.beta,
         "genomics": args.genomics,
@@ -128,9 +125,46 @@ export interface GetSparkVersionResult {
     readonly scala?: string;
     readonly sparkVersion?: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const withGpu = databricks.getNodeType({
+ *     localDisk: true,
+ *     minCores: 16,
+ *     gbPerCore: 1,
+ *     minGpus: 1,
+ * });
+ * const gpuMl = databricks.getSparkVersion({
+ *     gpu: true,
+ *     ml: true,
+ * });
+ * const research = new databricks.Cluster("research", {
+ *     clusterName: "Research Cluster",
+ *     sparkVersion: gpuMl.then(gpuMl => gpuMl.id),
+ *     nodeTypeId: withGpu.then(withGpu => withGpu.id),
+ *     autoterminationMinutes: 20,
+ *     autoscale: {
+ *         minWorkers: 1,
+ *         maxWorkers: 50,
+ *     },
+ * });
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+ * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ */
 export function getSparkVersionOutput(args?: GetSparkVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSparkVersionResult> {
-    return pulumi.output(args).apply(a => getSparkVersion(a, opts))
+    return pulumi.output(args).apply((a: any) => getSparkVersion(a, opts))
 }
 
 /**

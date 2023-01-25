@@ -29,7 +29,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetClusterClusterInfoClusterLogStatusResult? ClusterLogStatus;
         public readonly int? ClusterMemoryMb;
         /// <summary>
-        /// Cluster name, which doesn’t have to be unique.
+        /// The exact name of the cluster to search
         /// </summary>
         public readonly string? ClusterName;
         public readonly string? ClusterSource;
@@ -64,13 +64,15 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<Outputs.GetClusterClusterInfoExecutorResult> Executors;
         public readonly Outputs.GetClusterClusterInfoGcpAttributesResult? GcpAttributes;
         public readonly ImmutableArray<Outputs.GetClusterClusterInfoInitScriptResult> InitScripts;
+        /// <summary>
+        /// The pool of idle instances the cluster is attached to.
+        /// </summary>
         public readonly string? InstancePoolId;
         public readonly int? JdbcPort;
         public readonly int? LastActivityTime;
         public readonly int? LastStateLossTime;
         /// <summary>
         /// Any supported databricks.getNodeType id.
-        /// * `instance_pool_id` The pool of idle instances the cluster is attached to.
         /// </summary>
         public readonly string? NodeTypeId;
         public readonly int? NumWorkers;

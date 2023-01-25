@@ -16,10 +16,12 @@ namespace Pulumi.Databricks.Outputs
         public readonly bool? ApplyPolicyDefaultValues;
         public readonly Outputs.PipelineClusterAutoscale? Autoscale;
         public readonly Outputs.PipelineClusterAwsAttributes? AwsAttributes;
+        public readonly Outputs.PipelineClusterAzureAttributes? AzureAttributes;
         public readonly Outputs.PipelineClusterClusterLogConf? ClusterLogConf;
         public readonly ImmutableDictionary<string, object>? CustomTags;
         public readonly string? DriverInstancePoolId;
         public readonly string? DriverNodeTypeId;
+        public readonly bool? EnableLocalDiskEncryption;
         public readonly Outputs.PipelineClusterGcpAttributes? GcpAttributes;
         public readonly ImmutableArray<Outputs.PipelineClusterInitScript> InitScripts;
         public readonly string? InstancePoolId;
@@ -39,6 +41,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.PipelineClusterAwsAttributes? awsAttributes,
 
+            Outputs.PipelineClusterAzureAttributes? azureAttributes,
+
             Outputs.PipelineClusterClusterLogConf? clusterLogConf,
 
             ImmutableDictionary<string, object>? customTags,
@@ -46,6 +50,8 @@ namespace Pulumi.Databricks.Outputs
             string? driverInstancePoolId,
 
             string? driverNodeTypeId,
+
+            bool? enableLocalDiskEncryption,
 
             Outputs.PipelineClusterGcpAttributes? gcpAttributes,
 
@@ -70,10 +76,12 @@ namespace Pulumi.Databricks.Outputs
             ApplyPolicyDefaultValues = applyPolicyDefaultValues;
             Autoscale = autoscale;
             AwsAttributes = awsAttributes;
+            AzureAttributes = azureAttributes;
             ClusterLogConf = clusterLogConf;
             CustomTags = customTags;
             DriverInstancePoolId = driverInstancePoolId;
             DriverNodeTypeId = driverNodeTypeId;
+            EnableLocalDiskEncryption = enableLocalDiskEncryption;
             GcpAttributes = gcpAttributes;
             InitScripts = initScripts;
             InstancePoolId = instancePoolId;

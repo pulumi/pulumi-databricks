@@ -53,7 +53,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admins, err := databricks.LookupGroup(ctx, &GetGroupArgs{
+//			admins, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "admins",
 //			}, nil)
 //			if err != nil {
@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGroupMember(ctx, "i-am-admin", &databricks.GroupMemberArgs{
-//				GroupId:  pulumi.String(admins.Id),
+//				GroupId:  *pulumi.String(admins.Id),
 //				MemberId: me.ID(),
 //			})
 //			if err != nil {
@@ -211,6 +211,10 @@ type User struct {
 	// ID of the user in an external identity provider.
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
 	Force      pulumi.BoolPtrOutput   `pulumi:"force"`
+	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+	Home pulumi.StringOutput `pulumi:"home"`
+	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+	Repos pulumi.StringOutput `pulumi:"repos"`
 	// This is the username of the given user and will be their form of access and identity.
 	UserName        pulumi.StringOutput  `pulumi:"userName"`
 	WorkspaceAccess pulumi.BoolPtrOutput `pulumi:"workspaceAccess"`
@@ -261,6 +265,10 @@ type userState struct {
 	// ID of the user in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
 	Force      *bool   `pulumi:"force"`
+	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+	Home *string `pulumi:"home"`
+	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+	Repos *string `pulumi:"repos"`
 	// This is the username of the given user and will be their form of access and identity.
 	UserName        *string `pulumi:"userName"`
 	WorkspaceAccess *bool   `pulumi:"workspaceAccess"`
@@ -280,6 +288,10 @@ type UserState struct {
 	// ID of the user in an external identity provider.
 	ExternalId pulumi.StringPtrInput
 	Force      pulumi.BoolPtrInput
+	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+	Home pulumi.StringPtrInput
+	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+	Repos pulumi.StringPtrInput
 	// This is the username of the given user and will be their form of access and identity.
 	UserName        pulumi.StringPtrInput
 	WorkspaceAccess pulumi.BoolPtrInput
@@ -303,6 +315,10 @@ type userArgs struct {
 	// ID of the user in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
 	Force      *bool   `pulumi:"force"`
+	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+	Home *string `pulumi:"home"`
+	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+	Repos *string `pulumi:"repos"`
 	// This is the username of the given user and will be their form of access and identity.
 	UserName        string `pulumi:"userName"`
 	WorkspaceAccess *bool  `pulumi:"workspaceAccess"`
@@ -323,6 +339,10 @@ type UserArgs struct {
 	// ID of the user in an external identity provider.
 	ExternalId pulumi.StringPtrInput
 	Force      pulumi.BoolPtrInput
+	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+	Home pulumi.StringPtrInput
+	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+	Repos pulumi.StringPtrInput
 	// This is the username of the given user and will be their form of access and identity.
 	UserName        pulumi.StringInput
 	WorkspaceAccess pulumi.BoolPtrInput
@@ -447,6 +467,16 @@ func (o UserOutput) ExternalId() pulumi.StringPtrOutput {
 
 func (o UserOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+func (o UserOutput) Home() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Home }).(pulumi.StringOutput)
+}
+
+// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+func (o UserOutput) Repos() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Repos }).(pulumi.StringOutput)
 }
 
 // This is the username of the given user and will be their form of access and identity.

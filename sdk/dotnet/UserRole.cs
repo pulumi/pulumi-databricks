@@ -83,7 +83,7 @@ namespace Pulumi.Databricks
     public partial class UserRole : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Either a role name or the id of the instance profile resource.
+        /// Either a role name or the ARN/ID of the instance profile resource.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Databricks
     public sealed class UserRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Either a role name or the id of the instance profile resource.
+        /// Either a role name or the ARN/ID of the instance profile resource.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.Databricks
     public sealed class UserRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Either a role name or the id of the instance profile resource.
+        /// Either a role name or the ARN/ID of the instance profile resource.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

@@ -17,12 +17,9 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<Outputs.JobTaskDependsOn> DependsOns;
         public readonly string? Description;
         /// <summary>
-        /// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+        /// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
         public readonly Outputs.JobTaskEmailNotifications? EmailNotifications;
-        /// <summary>
-        /// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `new_cluster` for greater reliability.
-        /// </summary>
         public readonly string? ExistingClusterId;
         /// <summary>
         /// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
@@ -33,7 +30,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskLibrary> Libraries;
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED result_state or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
         /// </summary>
         public readonly int? MaxRetries;
         /// <summary>

@@ -26,21 +26,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admins, err := databricks.LookupGroup(ctx, &GetGroupArgs{
+//			admins, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "admins",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			spn, err := databricks.LookupServicePrincipal(ctx, &GetServicePrincipalArgs{
+//			spn, err := databricks.LookupServicePrincipal(ctx, &databricks.LookupServicePrincipalArgs{
 //				ApplicationId: pulumi.StringRef("11111111-2222-3333-4444-555666777888"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewGroupMember(ctx, "myMemberA", &databricks.GroupMemberArgs{
-//				GroupId:  pulumi.String(admins.Id),
-//				MemberId: pulumi.String(spn.Id),
+//				GroupId:  *pulumi.String(admins.Id),
+//				MemberId: *pulumi.String(spn.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -83,10 +83,11 @@ type LookupServicePrincipalArgs struct {
 	ExternalId *string `pulumi:"externalId"`
 	// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
 	Home *string `pulumi:"home"`
+	// The id of the service principal.
+	Id *string `pulumi:"id"`
 	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
 	Repos *string `pulumi:"repos"`
-	// The id of the service principal.
-	SpId *string `pulumi:"spId"`
+	SpId  *string `pulumi:"spId"`
 }
 
 // A collection of values returned by getServicePrincipal.
@@ -100,12 +101,11 @@ type LookupServicePrincipalResult struct {
 	ExternalId string `pulumi:"externalId"`
 	// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
 	Home string `pulumi:"home"`
-	// The provider-assigned unique ID for this managed resource.
+	// The id of the service principal.
 	Id string `pulumi:"id"`
 	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
 	Repos string `pulumi:"repos"`
-	// The id of the service principal.
-	SpId string `pulumi:"spId"`
+	SpId  string `pulumi:"spId"`
 }
 
 func LookupServicePrincipalOutput(ctx *pulumi.Context, args LookupServicePrincipalOutputArgs, opts ...pulumi.InvokeOption) LookupServicePrincipalResultOutput {
@@ -133,10 +133,11 @@ type LookupServicePrincipalOutputArgs struct {
 	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
 	// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
 	Home pulumi.StringPtrInput `pulumi:"home"`
+	// The id of the service principal.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
 	Repos pulumi.StringPtrInput `pulumi:"repos"`
-	// The id of the service principal.
-	SpId pulumi.StringPtrInput `pulumi:"spId"`
+	SpId  pulumi.StringPtrInput `pulumi:"spId"`
 }
 
 func (LookupServicePrincipalOutputArgs) ElementType() reflect.Type {
@@ -182,7 +183,7 @@ func (o LookupServicePrincipalResultOutput) Home() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Home }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The id of the service principal.
 func (o LookupServicePrincipalResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -192,7 +193,6 @@ func (o LookupServicePrincipalResultOutput) Repos() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Repos }).(pulumi.StringOutput)
 }
 
-// The id of the service principal.
 func (o LookupServicePrincipalResultOutput) SpId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.SpId }).(pulumi.StringOutput)
 }

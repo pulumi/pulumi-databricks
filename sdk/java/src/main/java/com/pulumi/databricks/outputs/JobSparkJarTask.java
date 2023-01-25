@@ -19,7 +19,7 @@ public final class JobSparkJarTask {
      */
     private @Nullable String mainClassName;
     /**
-     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * @return (List) Parameters passed to the main method.
      * 
      */
     private @Nullable List<String> parameters;
@@ -36,7 +36,7 @@ public final class JobSparkJarTask {
         return Optional.ofNullable(this.mainClassName);
     }
     /**
-     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * @return (List) Parameters passed to the main method.
      * 
      */
     public List<String> parameters() {

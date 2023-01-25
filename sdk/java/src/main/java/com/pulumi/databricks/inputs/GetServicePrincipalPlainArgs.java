@@ -91,6 +91,21 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
+     * The id of the service principal.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable String id;
+
+    /**
+     * @return The id of the service principal.
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      * 
      */
@@ -105,17 +120,9 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.repos);
     }
 
-    /**
-     * The id of the service principal.
-     * 
-     */
     @Import(name="spId")
     private @Nullable String spId;
 
-    /**
-     * @return The id of the service principal.
-     * 
-     */
     public Optional<String> spId() {
         return Optional.ofNullable(this.spId);
     }
@@ -128,6 +135,7 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
         this.displayName = $.displayName;
         this.externalId = $.externalId;
         this.home = $.home;
+        this.id = $.id;
         this.repos = $.repos;
         this.spId = $.spId;
     }
@@ -206,6 +214,17 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
+         * @param id The id of the service principal.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable String id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
          * @param repos Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
          * 
          * @return builder
@@ -216,12 +235,6 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
             return this;
         }
 
-        /**
-         * @param spId The id of the service principal.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spId(@Nullable String spId) {
             $.spId = spId;
             return this;

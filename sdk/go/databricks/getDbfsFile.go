@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = databricks.LookupDbfsFile(ctx, &GetDbfsFileArgs{
+//			_, err := databricks.LookupDbfsFile(ctx, &databricks.LookupDbfsFileArgs{
 //				LimitFileSize: 10240,
 //				Path:          "dbfs:/reports/some.csv",
 //			}, nil)

@@ -321,6 +321,34 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
+     * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+     * 
+     */
+    @Export(name="home", type=String.class, parameters={})
+    private Output<String> home;
+
+    /**
+     * @return Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+     * 
+     */
+    public Output<String> home() {
+        return this.home;
+    }
+    /**
+     * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+     * 
+     */
+    @Export(name="repos", type=String.class, parameters={})
+    private Output<String> repos;
+
+    /**
+     * @return Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+     * 
+     */
+    public Output<String> repos() {
+        return this.repos;
+    }
+    /**
      * This is the username of the given user and will be their form of access and identity.
      * 
      */

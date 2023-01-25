@@ -48,6 +48,9 @@ namespace Pulumi.Databricks
         [Output("clusterLogConf")]
         public Output<Outputs.ClusterClusterLogConf?> ClusterLogConf { get; private set; } = null!;
 
+        [Output("clusterMountInfos")]
+        public Output<ImmutableArray<Outputs.ClusterClusterMountInfo>> ClusterMountInfos { get; private set; } = null!;
+
         /// <summary>
         /// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
         /// </summary>
@@ -55,19 +58,19 @@ namespace Pulumi.Databricks
         public Output<string?> ClusterName { get; private set; } = null!;
 
         /// <summary>
-        /// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`.
+        /// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
         /// </summary>
         [Output("customTags")]
         public Output<ImmutableDictionary<string, object>?> CustomTags { get; private set; } = null!;
 
         /// <summary>
-        /// Select the security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+        /// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
         /// </summary>
         [Output("dataSecurityMode")]
         public Output<string?> DataSecurityMode { get; private set; } = null!;
 
         /// <summary>
-        /// (map) Tags that are added by Databricks by default, regardless of any custom_tags that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;
+        /// (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
         /// </summary>
         [Output("defaultTags")]
         public Output<ImmutableDictionary<string, object>> DefaultTags { get; private set; } = null!;
@@ -112,7 +115,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.ClusterInitScript>> InitScripts { get; private set; } = null!;
 
         /// <summary>
-        /// - To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
+        /// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         /// </summary>
         [Output("instancePoolId")]
         public Output<string?> InstancePoolId { get; private set; } = null!;
@@ -132,6 +135,9 @@ namespace Pulumi.Databricks
         [Output("nodeTypeId")]
         public Output<string> NodeTypeId { get; private set; } = null!;
 
+        /// <summary>
+        /// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+        /// </summary>
         [Output("numWorkers")]
         public Output<int?> NumWorkers { get; private set; } = null!;
 
@@ -262,6 +268,14 @@ namespace Pulumi.Databricks
         [Input("clusterLogConf")]
         public Input<Inputs.ClusterClusterLogConfArgs>? ClusterLogConf { get; set; }
 
+        [Input("clusterMountInfos")]
+        private InputList<Inputs.ClusterClusterMountInfoArgs>? _clusterMountInfos;
+        public InputList<Inputs.ClusterClusterMountInfoArgs> ClusterMountInfos
+        {
+            get => _clusterMountInfos ?? (_clusterMountInfos = new InputList<Inputs.ClusterClusterMountInfoArgs>());
+            set => _clusterMountInfos = value;
+        }
+
         /// <summary>
         /// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
         /// </summary>
@@ -272,7 +286,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _customTags;
 
         /// <summary>
-        /// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`.
+        /// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
         /// </summary>
         public InputMap<object> CustomTags
         {
@@ -281,7 +295,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Select the security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+        /// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
         /// </summary>
         [Input("dataSecurityMode")]
         public Input<string>? DataSecurityMode { get; set; }
@@ -331,7 +345,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// - To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
+        /// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         /// </summary>
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }
@@ -356,6 +370,9 @@ namespace Pulumi.Databricks
         [Input("nodeTypeId")]
         public Input<string>? NodeTypeId { get; set; }
 
+        /// <summary>
+        /// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+        /// </summary>
         [Input("numWorkers")]
         public Input<int>? NumWorkers { get; set; }
 
@@ -457,6 +474,14 @@ namespace Pulumi.Databricks
         [Input("clusterLogConf")]
         public Input<Inputs.ClusterClusterLogConfGetArgs>? ClusterLogConf { get; set; }
 
+        [Input("clusterMountInfos")]
+        private InputList<Inputs.ClusterClusterMountInfoGetArgs>? _clusterMountInfos;
+        public InputList<Inputs.ClusterClusterMountInfoGetArgs> ClusterMountInfos
+        {
+            get => _clusterMountInfos ?? (_clusterMountInfos = new InputList<Inputs.ClusterClusterMountInfoGetArgs>());
+            set => _clusterMountInfos = value;
+        }
+
         /// <summary>
         /// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
         /// </summary>
@@ -467,7 +492,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _customTags;
 
         /// <summary>
-        /// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`.
+        /// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
         /// </summary>
         public InputMap<object> CustomTags
         {
@@ -476,7 +501,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Select the security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+        /// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
         /// </summary>
         [Input("dataSecurityMode")]
         public Input<string>? DataSecurityMode { get; set; }
@@ -485,7 +510,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _defaultTags;
 
         /// <summary>
-        /// (map) Tags that are added by Databricks by default, regardless of any custom_tags that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;
+        /// (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
         /// </summary>
         public InputMap<object> DefaultTags
         {
@@ -538,7 +563,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// - To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
+        /// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         /// </summary>
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }
@@ -563,6 +588,9 @@ namespace Pulumi.Databricks
         [Input("nodeTypeId")]
         public Input<string>? NodeTypeId { get; set; }
 
+        /// <summary>
+        /// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+        /// </summary>
         [Input("numWorkers")]
         public Input<int>? NumWorkers { get; set; }
 

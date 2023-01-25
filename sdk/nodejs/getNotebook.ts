@@ -11,18 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const features = pulumi.output(databricks.getNotebook({
+ * const features = databricks.getNotebook({
  *     format: "SOURCE",
  *     path: "/Production/Features",
- * }));
+ * });
  * ```
  */
 export function getNotebook(args: GetNotebookArgs, opts?: pulumi.InvokeOptions): Promise<GetNotebookResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNotebook:getNotebook", {
         "format": args.format,
         "language": args.language,
@@ -85,9 +82,21 @@ export interface GetNotebookResult {
     readonly objectType: string;
     readonly path: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const features = databricks.getNotebook({
+ *     format: "SOURCE",
+ *     path: "/Production/Features",
+ * });
+ * ```
+ */
 export function getNotebookOutput(args: GetNotebookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotebookResult> {
-    return pulumi.output(args).apply(a => getNotebook(a, opts))
+    return pulumi.output(args).apply((a: any) => getNotebook(a, opts))
 }
 
 /**

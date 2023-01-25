@@ -46,6 +46,17 @@ export interface ClusterClusterLogConfS3 {
     region?: pulumi.Input<string>;
 }
 
+export interface ClusterClusterMountInfo {
+    localMountDirPath: pulumi.Input<string>;
+    networkFilesystemInfo: pulumi.Input<inputs.ClusterClusterMountInfoNetworkFilesystemInfo>;
+    remoteMountDirPath?: pulumi.Input<string>;
+}
+
+export interface ClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: pulumi.Input<string>;
+    serverAddress: pulumi.Input<string>;
+}
+
 export interface ClusterDockerImage {
     basicAuth?: pulumi.Input<inputs.ClusterDockerImageBasicAuth>;
     url: pulumi.Input<string>;
@@ -65,10 +76,15 @@ export interface ClusterGcpAttributes {
 }
 
 export interface ClusterInitScript {
+    abfss?: pulumi.Input<inputs.ClusterInitScriptAbfss>;
     dbfs?: pulumi.Input<inputs.ClusterInitScriptDbfs>;
     file?: pulumi.Input<inputs.ClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.ClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.ClusterInitScriptS3>;
+}
+
+export interface ClusterInitScriptAbfss {
+    destination?: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptDbfs {
@@ -144,7 +160,7 @@ export interface GetClusterClusterInfo {
     clusterLogStatus?: inputs.GetClusterClusterInfoClusterLogStatus;
     clusterMemoryMb?: number;
     /**
-     * Cluster name, which doesn’t have to be unique.
+     * The exact name of the cluster to search
      */
     clusterName?: string;
     clusterSource?: string;
@@ -179,13 +195,15 @@ export interface GetClusterClusterInfo {
     executors?: inputs.GetClusterClusterInfoExecutor[];
     gcpAttributes?: inputs.GetClusterClusterInfoGcpAttributes;
     initScripts?: inputs.GetClusterClusterInfoInitScript[];
+    /**
+     * The pool of idle instances the cluster is attached to.
+     */
     instancePoolId?: string;
     jdbcPort?: number;
     lastActivityTime?: number;
     lastStateLossTime?: number;
     /**
      * Any supported databricks.getNodeType id.
-     * * `instancePoolId` The pool of idle instances the cluster is attached to.
      */
     nodeTypeId?: string;
     numWorkers?: number;
@@ -242,7 +260,7 @@ export interface GetClusterClusterInfoArgs {
     clusterLogStatus?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogStatusArgs>;
     clusterMemoryMb?: pulumi.Input<number>;
     /**
-     * Cluster name, which doesn’t have to be unique.
+     * The exact name of the cluster to search
      */
     clusterName?: pulumi.Input<string>;
     clusterSource?: pulumi.Input<string>;
@@ -277,13 +295,15 @@ export interface GetClusterClusterInfoArgs {
     executors?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoExecutorArgs>[]>;
     gcpAttributes?: pulumi.Input<inputs.GetClusterClusterInfoGcpAttributesArgs>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoInitScriptArgs>[]>;
+    /**
+     * The pool of idle instances the cluster is attached to.
+     */
     instancePoolId?: pulumi.Input<string>;
     jdbcPort?: pulumi.Input<number>;
     lastActivityTime?: pulumi.Input<number>;
     lastStateLossTime?: pulumi.Input<number>;
     /**
      * Any supported databricks.getNodeType id.
-     * * `instancePoolId` The pool of idle instances the cluster is attached to.
      */
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
@@ -557,12 +577,179 @@ export interface GetClusterClusterInfoTerminationReasonArgs {
     type?: pulumi.Input<string>;
 }
 
+export interface GetInstancePoolPoolInfo {
+    awsAttributes?: inputs.GetInstancePoolPoolInfoAwsAttributes;
+    azureAttributes?: inputs.GetInstancePoolPoolInfoAzureAttributes;
+    customTags?: {[key: string]: any};
+    defaultTags?: {[key: string]: any};
+    diskSpec?: inputs.GetInstancePoolPoolInfoDiskSpec;
+    enableElasticDisk?: boolean;
+    gcpAttributes?: inputs.GetInstancePoolPoolInfoGcpAttributes;
+    idleInstanceAutoterminationMinutes: number;
+    instancePoolFleetAttributes?: inputs.GetInstancePoolPoolInfoInstancePoolFleetAttribute[];
+    instancePoolId?: string;
+    instancePoolName: string;
+    maxCapacity?: number;
+    minIdleInstances?: number;
+    nodeTypeId?: string;
+    preloadedDockerImages?: inputs.GetInstancePoolPoolInfoPreloadedDockerImage[];
+    preloadedSparkVersions?: string[];
+    state?: string;
+    stats?: inputs.GetInstancePoolPoolInfoStats;
+}
+
+export interface GetInstancePoolPoolInfoArgs {
+    awsAttributes?: pulumi.Input<inputs.GetInstancePoolPoolInfoAwsAttributesArgs>;
+    azureAttributes?: pulumi.Input<inputs.GetInstancePoolPoolInfoAzureAttributesArgs>;
+    customTags?: pulumi.Input<{[key: string]: any}>;
+    defaultTags?: pulumi.Input<{[key: string]: any}>;
+    diskSpec?: pulumi.Input<inputs.GetInstancePoolPoolInfoDiskSpecArgs>;
+    enableElasticDisk?: pulumi.Input<boolean>;
+    gcpAttributes?: pulumi.Input<inputs.GetInstancePoolPoolInfoGcpAttributesArgs>;
+    idleInstanceAutoterminationMinutes: pulumi.Input<number>;
+    instancePoolFleetAttributes?: pulumi.Input<pulumi.Input<inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs>[]>;
+    instancePoolId?: pulumi.Input<string>;
+    instancePoolName: pulumi.Input<string>;
+    maxCapacity?: pulumi.Input<number>;
+    minIdleInstances?: pulumi.Input<number>;
+    nodeTypeId?: pulumi.Input<string>;
+    preloadedDockerImages?: pulumi.Input<pulumi.Input<inputs.GetInstancePoolPoolInfoPreloadedDockerImageArgs>[]>;
+    preloadedSparkVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    state?: pulumi.Input<string>;
+    stats?: pulumi.Input<inputs.GetInstancePoolPoolInfoStatsArgs>;
+}
+
+export interface GetInstancePoolPoolInfoAwsAttributes {
+    availability?: string;
+    spotBidPricePercent?: number;
+    zoneId?: string;
+}
+
+export interface GetInstancePoolPoolInfoAwsAttributesArgs {
+    availability?: pulumi.Input<string>;
+    spotBidPricePercent?: pulumi.Input<number>;
+    zoneId?: pulumi.Input<string>;
+}
+
+export interface GetInstancePoolPoolInfoAzureAttributes {
+    availability?: string;
+    spotBidMaxPrice?: number;
+}
+
+export interface GetInstancePoolPoolInfoAzureAttributesArgs {
+    availability?: pulumi.Input<string>;
+    spotBidMaxPrice?: pulumi.Input<number>;
+}
+
+export interface GetInstancePoolPoolInfoDiskSpec {
+    diskCount?: number;
+    diskSize?: number;
+    diskType?: inputs.GetInstancePoolPoolInfoDiskSpecDiskType;
+}
+
+export interface GetInstancePoolPoolInfoDiskSpecArgs {
+    diskCount?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number>;
+    diskType?: pulumi.Input<inputs.GetInstancePoolPoolInfoDiskSpecDiskTypeArgs>;
+}
+
+export interface GetInstancePoolPoolInfoDiskSpecDiskType {
+    azureDiskVolumeType?: string;
+    ebsVolumeType?: string;
+}
+
+export interface GetInstancePoolPoolInfoDiskSpecDiskTypeArgs {
+    azureDiskVolumeType?: pulumi.Input<string>;
+    ebsVolumeType?: pulumi.Input<string>;
+}
+
+export interface GetInstancePoolPoolInfoGcpAttributes {
+    gcpAvailability?: string;
+}
+
+export interface GetInstancePoolPoolInfoGcpAttributesArgs {
+    gcpAvailability?: pulumi.Input<string>;
+}
+
+export interface GetInstancePoolPoolInfoInstancePoolFleetAttribute {
+    fleetOnDemandOption?: inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption;
+    fleetSpotOption?: inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption;
+    launchTemplateOverrides: inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride[];
+}
+
+export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs {
+    fleetOnDemandOption?: pulumi.Input<inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs>;
+    fleetSpotOption?: pulumi.Input<inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs>;
+    launchTemplateOverrides: pulumi.Input<pulumi.Input<inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs>[]>;
+}
+
+export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption {
+    allocationStrategy: string;
+    instancePoolsToUseCount?: number;
+}
+
+export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs {
+    allocationStrategy: pulumi.Input<string>;
+    instancePoolsToUseCount?: pulumi.Input<number>;
+}
+
+export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption {
+    allocationStrategy: string;
+    instancePoolsToUseCount?: number;
+}
+
+export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs {
+    allocationStrategy: pulumi.Input<string>;
+    instancePoolsToUseCount?: pulumi.Input<number>;
+}
+
+export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride {
+    availabilityZone: string;
+    instanceType: string;
+}
+
+export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs {
+    availabilityZone: pulumi.Input<string>;
+    instanceType: pulumi.Input<string>;
+}
+
+export interface GetInstancePoolPoolInfoPreloadedDockerImage {
+    basicAuth?: inputs.GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth;
+    url: string;
+}
+
+export interface GetInstancePoolPoolInfoPreloadedDockerImageArgs {
+    basicAuth?: pulumi.Input<inputs.GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs>;
+    url: pulumi.Input<string>;
+}
+
+export interface GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth {
+    password: string;
+    username: string;
+}
+
+export interface GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs {
+    password: pulumi.Input<string>;
+    username: pulumi.Input<string>;
+}
+
+export interface GetInstancePoolPoolInfoStats {
+    idleCount?: number;
+    pendingIdleCount?: number;
+    pendingUsedCount?: number;
+    usedCount?: number;
+}
+
+export interface GetInstancePoolPoolInfoStatsArgs {
+    idleCount?: pulumi.Input<number>;
+    pendingIdleCount?: pulumi.Input<number>;
+    pendingUsedCount?: pulumi.Input<number>;
+    usedCount?: pulumi.Input<number>;
+}
+
 export interface GetJobJobSettings {
     createdTime?: number;
     creatorUserName?: string;
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     jobId?: number;
     settings?: inputs.GetJobJobSettingsSettings;
 }
@@ -570,9 +757,6 @@ export interface GetJobJobSettings {
 export interface GetJobJobSettingsArgs {
     createdTime?: pulumi.Input<number>;
     creatorUserName?: pulumi.Input<string>;
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     jobId?: pulumi.Input<number>;
     settings?: pulumi.Input<inputs.GetJobJobSettingsSettingsArgs>;
 }
@@ -588,6 +772,9 @@ export interface GetJobJobSettingsSettings {
     maxConcurrentRuns?: number;
     maxRetries?: number;
     minRetryIntervalMillis?: number;
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     */
     name?: string;
     newCluster?: inputs.GetJobJobSettingsSettingsNewCluster;
     notebookTask?: inputs.GetJobJobSettingsSettingsNotebookTask;
@@ -615,6 +802,9 @@ export interface GetJobJobSettingsSettingsArgs {
     maxConcurrentRuns?: pulumi.Input<number>;
     maxRetries?: pulumi.Input<number>;
     minRetryIntervalMillis?: pulumi.Input<number>;
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     */
     name?: pulumi.Input<string>;
     newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterArgs>;
     notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsNotebookTaskArgs>;
@@ -632,6 +822,7 @@ export interface GetJobJobSettingsSettingsArgs {
 }
 
 export interface GetJobJobSettingsSettingsDbtTask {
+    catalog?: string;
     commands: string[];
     profilesDirectory?: string;
     projectDirectory?: string;
@@ -640,6 +831,7 @@ export interface GetJobJobSettingsSettingsDbtTask {
 }
 
 export interface GetJobJobSettingsSettingsDbtTaskArgs {
+    catalog?: pulumi.Input<string>;
     commands: pulumi.Input<pulumi.Input<string>[]>;
     profilesDirectory?: pulumi.Input<string>;
     projectDirectory?: pulumi.Input<string>;
@@ -697,6 +889,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewCluster {
     azureAttributes?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributes;
     clusterId?: string;
     clusterLogConf?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf;
+    clusterMountInfos?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo[];
     clusterName?: string;
     customTags?: {[key: string]: any};
     dataSecurityMode?: string;
@@ -729,6 +922,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterArgs {
     azureAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesArgs>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfArgs>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgs>[]>;
     clusterName?: pulumi.Input<string>;
     customTags?: pulumi.Input<{[key: string]: any}>;
     dataSecurityMode?: pulumi.Input<string>;
@@ -835,6 +1029,28 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3Ar
     region?: pulumi.Input<string>;
 }
 
+export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgs {
+    localMountDirPath: pulumi.Input<string>;
+    networkFilesystemInfo: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgs>;
+    remoteMountDirPath?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgs {
+    mountOptions?: pulumi.Input<string>;
+    serverAddress: pulumi.Input<string>;
+}
+
 export interface GetJobJobSettingsSettingsJobClusterNewClusterDockerImage {
     basicAuth?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuth;
     url: string;
@@ -872,6 +1088,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgs 
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
+    abfss?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss;
     dbfs?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs;
     file?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile;
     gcs?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs;
@@ -879,10 +1096,19 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs {
+    abfss?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgs>;
     dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgs>;
     file?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs>;
     gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs>;
     s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args>;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgs {
+    destination?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs {
@@ -1005,6 +1231,7 @@ export interface GetJobJobSettingsSettingsNewCluster {
     azureAttributes?: inputs.GetJobJobSettingsSettingsNewClusterAzureAttributes;
     clusterId?: string;
     clusterLogConf?: inputs.GetJobJobSettingsSettingsNewClusterClusterLogConf;
+    clusterMountInfos?: inputs.GetJobJobSettingsSettingsNewClusterClusterMountInfo[];
     clusterName?: string;
     customTags?: {[key: string]: any};
     dataSecurityMode?: string;
@@ -1037,6 +1264,7 @@ export interface GetJobJobSettingsSettingsNewClusterArgs {
     azureAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterAzureAttributesArgs>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterLogConfArgs>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs>[]>;
     clusterName?: pulumi.Input<string>;
     customTags?: pulumi.Input<{[key: string]: any}>;
     dataSecurityMode?: pulumi.Input<string>;
@@ -1143,6 +1371,28 @@ export interface GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args {
     region?: pulumi.Input<string>;
 }
 
+export interface GetJobJobSettingsSettingsNewClusterClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: inputs.GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs {
+    localMountDirPath: pulumi.Input<string>;
+    networkFilesystemInfo: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgs>;
+    remoteMountDirPath?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgs {
+    mountOptions?: pulumi.Input<string>;
+    serverAddress: pulumi.Input<string>;
+}
+
 export interface GetJobJobSettingsSettingsNewClusterDockerImage {
     basicAuth?: inputs.GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth;
     url: string;
@@ -1180,6 +1430,7 @@ export interface GetJobJobSettingsSettingsNewClusterGcpAttributesArgs {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScript {
+    abfss?: inputs.GetJobJobSettingsSettingsNewClusterInitScriptAbfss;
     dbfs?: inputs.GetJobJobSettingsSettingsNewClusterInitScriptDbfs;
     file?: inputs.GetJobJobSettingsSettingsNewClusterInitScriptFile;
     gcs?: inputs.GetJobJobSettingsSettingsNewClusterInitScriptGcs;
@@ -1187,10 +1438,19 @@ export interface GetJobJobSettingsSettingsNewClusterInitScript {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptArgs {
+    abfss?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs>;
     dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs>;
     file?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptFileArgs>;
     gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs>;
     s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptS3Args>;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScriptAbfss {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs {
+    destination?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptDbfs {
@@ -1258,11 +1518,13 @@ export interface GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs {
 export interface GetJobJobSettingsSettingsNotebookTask {
     baseParameters?: {[key: string]: any};
     notebookPath: string;
+    source?: string;
 }
 
 export interface GetJobJobSettingsSettingsNotebookTaskArgs {
     baseParameters?: pulumi.Input<{[key: string]: any}>;
     notebookPath: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsPipelineTask {
@@ -1376,6 +1638,7 @@ export interface GetJobJobSettingsSettingsTaskArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskDbtTask {
+    catalog?: string;
     commands: string[];
     profilesDirectory?: string;
     projectDirectory?: string;
@@ -1384,6 +1647,7 @@ export interface GetJobJobSettingsSettingsTaskDbtTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskDbtTaskArgs {
+    catalog?: pulumi.Input<string>;
     commands: pulumi.Input<pulumi.Input<string>[]>;
     profilesDirectory?: pulumi.Input<string>;
     projectDirectory?: pulumi.Input<string>;
@@ -1473,6 +1737,7 @@ export interface GetJobJobSettingsSettingsTaskNewCluster {
     azureAttributes?: inputs.GetJobJobSettingsSettingsTaskNewClusterAzureAttributes;
     clusterId?: string;
     clusterLogConf?: inputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConf;
+    clusterMountInfos?: inputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo[];
     clusterName?: string;
     customTags?: {[key: string]: any};
     dataSecurityMode?: string;
@@ -1505,6 +1770,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterArgs {
     azureAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgs>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgs>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs>[]>;
     clusterName?: pulumi.Input<string>;
     customTags?: pulumi.Input<{[key: string]: any}>;
     dataSecurityMode?: pulumi.Input<string>;
@@ -1611,6 +1877,28 @@ export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3Args {
     region?: pulumi.Input<string>;
 }
 
+export interface GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: inputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs {
+    localMountDirPath: pulumi.Input<string>;
+    networkFilesystemInfo: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs>;
+    remoteMountDirPath?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs {
+    mountOptions?: pulumi.Input<string>;
+    serverAddress: pulumi.Input<string>;
+}
+
 export interface GetJobJobSettingsSettingsTaskNewClusterDockerImage {
     basicAuth?: inputs.GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth;
     url: string;
@@ -1648,6 +1936,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScript {
+    abfss?: inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss;
     dbfs?: inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs;
     file?: inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFile;
     gcs?: inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs;
@@ -1655,10 +1944,19 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScript {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs {
+    abfss?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgs>;
     dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsArgs>;
     file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs>;
     gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs>;
     s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args>;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgs {
+    destination?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs {
@@ -1726,11 +2024,13 @@ export interface GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgs 
 export interface GetJobJobSettingsSettingsTaskNotebookTask {
     baseParameters?: {[key: string]: any};
     notebookPath: string;
+    source?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNotebookTaskArgs {
     baseParameters?: pulumi.Input<{[key: string]: any}>;
     notebookPath: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskPipelineTask {
@@ -1838,26 +2138,44 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsArgs {
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStart {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
     id: pulumi.Input<string>;
 }
 
@@ -1952,7 +2270,7 @@ export interface GrantsGrant {
 
 export interface InstancePoolAwsAttributes {
     /**
-     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
      */
     availability?: pulumi.Input<string>;
     /**
@@ -2030,6 +2348,10 @@ export interface InstancePoolPreloadedDockerImageBasicAuth {
 
 export interface JobDbtTask {
     /**
+     * The name of the catalog to use inside Unity Catalog.
+     */
+    catalog?: pulumi.Input<string>;
+    /**
      * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
      */
     commands: pulumi.Input<pulumi.Input<string>[]>;
@@ -2046,7 +2368,7 @@ export interface JobDbtTask {
      */
     schema?: pulumi.Input<string>;
     /**
-     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * The ID of the SQL warehouse that dbt should execute against.
      */
     warehouseId?: pulumi.Input<string>;
 }
@@ -2054,19 +2376,19 @@ export interface JobDbtTask {
 export interface JobEmailNotifications {
     alertOnLastAttempt?: pulumi.Input<boolean>;
     /**
-     * (Bool) don't send alert for skipped runs
+     * (Bool) don't send alert for skipped runs.
      */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run fails.
      */
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run starts.
      */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run completes successfully.
      */
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -2089,7 +2411,7 @@ export interface JobGitSource {
      */
     tag?: pulumi.Input<string>;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url: pulumi.Input<string>;
 }
@@ -2113,6 +2435,7 @@ export interface JobJobClusterNewCluster {
     azureAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAzureAttributes>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConf>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterClusterMountInfo>[]>;
     clusterName?: pulumi.Input<string>;
     customTags?: pulumi.Input<{[key: string]: any}>;
     dataSecurityMode?: pulumi.Input<string>;
@@ -2178,10 +2501,21 @@ export interface JobJobClusterNewClusterClusterLogConfS3 {
     region?: pulumi.Input<string>;
 }
 
+export interface JobJobClusterNewClusterClusterMountInfo {
+    localMountDirPath: pulumi.Input<string>;
+    networkFilesystemInfo: pulumi.Input<inputs.JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo>;
+    remoteMountDirPath?: pulumi.Input<string>;
+}
+
+export interface JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: pulumi.Input<string>;
+    serverAddress: pulumi.Input<string>;
+}
+
 export interface JobJobClusterNewClusterDockerImage {
     basicAuth?: pulumi.Input<inputs.JobJobClusterNewClusterDockerImageBasicAuth>;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url: pulumi.Input<string>;
 }
@@ -2200,10 +2534,15 @@ export interface JobJobClusterNewClusterGcpAttributes {
 }
 
 export interface JobJobClusterNewClusterInitScript {
+    abfss?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptAbfss>;
     dbfs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptDbfs>;
     file?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptS3>;
+}
+
+export interface JobJobClusterNewClusterInitScriptAbfss {
+    destination?: pulumi.Input<string>;
 }
 
 export interface JobJobClusterNewClusterInitScriptDbfs {
@@ -2270,6 +2609,7 @@ export interface JobNewCluster {
     azureAttributes?: pulumi.Input<inputs.JobNewClusterAzureAttributes>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.JobNewClusterClusterLogConf>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobNewClusterClusterMountInfo>[]>;
     clusterName?: pulumi.Input<string>;
     customTags?: pulumi.Input<{[key: string]: any}>;
     dataSecurityMode?: pulumi.Input<string>;
@@ -2335,10 +2675,21 @@ export interface JobNewClusterClusterLogConfS3 {
     region?: pulumi.Input<string>;
 }
 
+export interface JobNewClusterClusterMountInfo {
+    localMountDirPath: pulumi.Input<string>;
+    networkFilesystemInfo: pulumi.Input<inputs.JobNewClusterClusterMountInfoNetworkFilesystemInfo>;
+    remoteMountDirPath?: pulumi.Input<string>;
+}
+
+export interface JobNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: pulumi.Input<string>;
+    serverAddress: pulumi.Input<string>;
+}
+
 export interface JobNewClusterDockerImage {
     basicAuth?: pulumi.Input<inputs.JobNewClusterDockerImageBasicAuth>;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url: pulumi.Input<string>;
 }
@@ -2357,10 +2708,15 @@ export interface JobNewClusterGcpAttributes {
 }
 
 export interface JobNewClusterInitScript {
+    abfss?: pulumi.Input<inputs.JobNewClusterInitScriptAbfss>;
     dbfs?: pulumi.Input<inputs.JobNewClusterInitScriptDbfs>;
     file?: pulumi.Input<inputs.JobNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobNewClusterInitScriptS3>;
+}
+
+export interface JobNewClusterInitScriptAbfss {
+    destination?: pulumi.Input<string>;
 }
 
 export interface JobNewClusterInitScriptDbfs {
@@ -2400,9 +2756,13 @@ export interface JobNotebookTask {
      */
     baseParameters?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The absolute path of the databricks.Notebook to be run in the Databricks workspace. This path must begin with a slash. This field is required.
+     * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      */
     notebookPath: pulumi.Input<string>;
+    /**
+     * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+     */
+    source?: pulumi.Input<string>;
 }
 
 export interface JobPipelineTask {
@@ -2426,7 +2786,7 @@ export interface JobPythonWheelTask {
      */
     packageName?: pulumi.Input<string>;
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * Parameters for the task
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -2453,25 +2813,25 @@ export interface JobSparkJarTask {
      */
     mainClassName?: pulumi.Input<string>;
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Parameters passed to the main method.
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobSparkPythonTask {
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Command line parameters passed to the Python file.
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The URI of the Python file to be executed. databricks.DbfsFile and S3 paths are supported. This field is required.
+     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
      */
     pythonFile: pulumi.Input<string>;
 }
 
 export interface JobSparkSubmitTask {
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Command-line parameters passed to spark submit.
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -2481,12 +2841,9 @@ export interface JobTask {
     dependsOns?: pulumi.Input<pulumi.Input<inputs.JobTaskDependsOn>[]>;
     description?: pulumi.Input<string>;
     /**
-     * (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobTaskEmailNotifications>;
-    /**
-     * If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
-     */
     existingClusterId?: pulumi.Input<string>;
     /**
      * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
@@ -2497,7 +2854,7 @@ export interface JobTask {
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskLibrary>[]>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED resultState or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
      */
     maxRetries?: pulumi.Input<number>;
     /**
@@ -2528,6 +2885,10 @@ export interface JobTask {
 
 export interface JobTaskDbtTask {
     /**
+     * The name of the catalog to use inside Unity Catalog.
+     */
+    catalog?: pulumi.Input<string>;
+    /**
      * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
      */
     commands: pulumi.Input<pulumi.Input<string>[]>;
@@ -2544,7 +2905,7 @@ export interface JobTaskDbtTask {
      */
     schema?: pulumi.Input<string>;
     /**
-     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * The ID of the SQL warehouse that dbt should execute against.
      */
     warehouseId?: pulumi.Input<string>;
 }
@@ -2556,19 +2917,19 @@ export interface JobTaskDependsOn {
 export interface JobTaskEmailNotifications {
     alertOnLastAttempt?: pulumi.Input<boolean>;
     /**
-     * (Bool) don't send alert for skipped runs
+     * (Bool) don't send alert for skipped runs.
      */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run fails.
      */
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run starts.
      */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run completes successfully.
      */
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -2606,6 +2967,7 @@ export interface JobTaskNewCluster {
     azureAttributes?: pulumi.Input<inputs.JobTaskNewClusterAzureAttributes>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConf>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterClusterMountInfo>[]>;
     clusterName?: pulumi.Input<string>;
     customTags?: pulumi.Input<{[key: string]: any}>;
     dataSecurityMode?: pulumi.Input<string>;
@@ -2671,10 +3033,21 @@ export interface JobTaskNewClusterClusterLogConfS3 {
     region?: pulumi.Input<string>;
 }
 
+export interface JobTaskNewClusterClusterMountInfo {
+    localMountDirPath: pulumi.Input<string>;
+    networkFilesystemInfo: pulumi.Input<inputs.JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo>;
+    remoteMountDirPath?: pulumi.Input<string>;
+}
+
+export interface JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: pulumi.Input<string>;
+    serverAddress: pulumi.Input<string>;
+}
+
 export interface JobTaskNewClusterDockerImage {
     basicAuth?: pulumi.Input<inputs.JobTaskNewClusterDockerImageBasicAuth>;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url: pulumi.Input<string>;
 }
@@ -2693,10 +3066,15 @@ export interface JobTaskNewClusterGcpAttributes {
 }
 
 export interface JobTaskNewClusterInitScript {
+    abfss?: pulumi.Input<inputs.JobTaskNewClusterInitScriptAbfss>;
     dbfs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptDbfs>;
     file?: pulumi.Input<inputs.JobTaskNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobTaskNewClusterInitScriptS3>;
+}
+
+export interface JobTaskNewClusterInitScriptAbfss {
+    destination?: pulumi.Input<string>;
 }
 
 export interface JobTaskNewClusterInitScriptDbfs {
@@ -2736,9 +3114,13 @@ export interface JobTaskNotebookTask {
      */
     baseParameters?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The absolute path of the databricks.Notebook to be run in the Databricks workspace. This path must begin with a slash. This field is required.
+     * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      */
     notebookPath: pulumi.Input<string>;
+    /**
+     * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+     */
+    source?: pulumi.Input<string>;
 }
 
 export interface JobTaskPipelineTask {
@@ -2762,7 +3144,7 @@ export interface JobTaskPythonWheelTask {
      */
     packageName?: pulumi.Input<string>;
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * Parameters for the task
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -2774,25 +3156,25 @@ export interface JobTaskSparkJarTask {
      */
     mainClassName?: pulumi.Input<string>;
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Parameters passed to the main method.
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTaskSparkPythonTask {
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Command line parameters passed to the Python file.
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The URI of the Python file to be executed. databricks.DbfsFile and S3 paths are supported. This field is required.
+     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
      */
     pythonFile: pulumi.Input<string>;
 }
 
 export interface JobTaskSparkSubmitTask {
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Command-line parameters passed to spark submit.
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -2834,28 +3216,37 @@ export interface JobTaskSqlTaskQuery {
 
 export interface JobWebhookNotifications {
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      */
     onFailures?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnFailure>[]>;
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
     onStarts?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnStart>[]>;
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      */
     onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnSuccess>[]>;
 }
 
 export interface JobWebhookNotificationsOnFailure {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     */
     id: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnStart {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     */
     id: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnSuccess {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     */
     id: pulumi.Input<string>;
 }
 
@@ -2902,6 +3293,12 @@ export interface MetastoreDataAccessAzureServicePrincipal {
      * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
      */
     directoryId: pulumi.Input<string>;
+}
+
+export interface MetastoreDataAccessGcpServiceAccountKey {
+    email: pulumi.Input<string>;
+    privateKey: pulumi.Input<string>;
+    privateKeyId: pulumi.Input<string>;
 }
 
 export interface MlflowModelTag {
@@ -3003,16 +3400,49 @@ export interface MwsNetworksErrorMessage {
     errorType?: pulumi.Input<string>;
 }
 
+export interface MwsNetworksGcpNetworkInfo {
+    /**
+     * The Google Cloud project ID of the VPC network.
+     */
+    networkProjectId: pulumi.Input<string>;
+    /**
+     * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
+     */
+    podIpRangeName: pulumi.Input<string>;
+    /**
+     * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
+     */
+    serviceIpRangeName: pulumi.Input<string>;
+    /**
+     * The ID of the subnet associated with this network.
+     */
+    subnetId: pulumi.Input<string>;
+    /**
+     * The Google Cloud region of the workspace data plane. For example, `us-east4`.
+     */
+    subnetRegion: pulumi.Input<string>;
+    /**
+     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     */
+    vpcId: pulumi.Input<string>;
+}
+
 export interface MwsNetworksVpcEndpoints {
     dataplaneRelays: pulumi.Input<pulumi.Input<string>[]>;
     restApis: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface MwsWorkspacesCloudResourceBucket {
-    gcp: pulumi.Input<inputs.MwsWorkspacesCloudResourceBucketGcp>;
+export interface MwsWorkspacesCloudResourceContainer {
+    /**
+     * A block that consists of the following field:
+     */
+    gcp: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainerGcp>;
 }
 
-export interface MwsWorkspacesCloudResourceBucketGcp {
+export interface MwsWorkspacesCloudResourceContainerGcp {
+    /**
+     * The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
+     */
     projectId: pulumi.Input<string>;
 }
 
@@ -3022,21 +3452,21 @@ export interface MwsWorkspacesExternalCustomerInfo {
     customerName: pulumi.Input<string>;
 }
 
-export interface MwsWorkspacesNetwork {
-    gcpCommonNetworkConfig: pulumi.Input<inputs.MwsWorkspacesNetworkGcpCommonNetworkConfig>;
-    gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesNetworkGcpManagedNetworkConfig>;
-    networkId?: pulumi.Input<string>;
-}
-
-export interface MwsWorkspacesNetworkGcpCommonNetworkConfig {
-    gkeClusterMasterIpRange: pulumi.Input<string>;
-    gkeConnectivityType: pulumi.Input<string>;
-}
-
-export interface MwsWorkspacesNetworkGcpManagedNetworkConfig {
+export interface MwsWorkspacesGcpManagedNetworkConfig {
     gkeClusterPodIpRange: pulumi.Input<string>;
     gkeClusterServiceIpRange: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
+}
+
+export interface MwsWorkspacesGkeConfig {
+    /**
+     * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+     */
+    connectivityType: pulumi.Input<string>;
+    /**
+     * The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
+     */
+    masterIpRange: pulumi.Input<string>;
 }
 
 export interface MwsWorkspacesToken {
@@ -3069,10 +3499,12 @@ export interface PipelineCluster {
     applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.PipelineClusterAutoscale>;
     awsAttributes?: pulumi.Input<inputs.PipelineClusterAwsAttributes>;
+    azureAttributes?: pulumi.Input<inputs.PipelineClusterAzureAttributes>;
     clusterLogConf?: pulumi.Input<inputs.PipelineClusterClusterLogConf>;
     customTags?: pulumi.Input<{[key: string]: any}>;
     driverInstancePoolId?: pulumi.Input<string>;
     driverNodeTypeId?: pulumi.Input<string>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean>;
     gcpAttributes?: pulumi.Input<inputs.PipelineClusterGcpAttributes>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.PipelineClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
@@ -3092,9 +3524,20 @@ export interface PipelineClusterAutoscale {
 }
 
 export interface PipelineClusterAwsAttributes {
+    availability?: pulumi.Input<string>;
+    ebsVolumeCount?: pulumi.Input<number>;
+    ebsVolumeSize?: pulumi.Input<number>;
+    ebsVolumeType?: pulumi.Input<string>;
     firstOnDemand?: pulumi.Input<number>;
     instanceProfileArn?: pulumi.Input<string>;
+    spotBidPricePercent?: pulumi.Input<number>;
     zoneId?: pulumi.Input<string>;
+}
+
+export interface PipelineClusterAzureAttributes {
+    availability?: pulumi.Input<string>;
+    firstOnDemand?: pulumi.Input<number>;
+    spotBidMaxPrice?: pulumi.Input<number>;
 }
 
 export interface PipelineClusterClusterLogConf {
@@ -3117,14 +3560,21 @@ export interface PipelineClusterClusterLogConfS3 {
 }
 
 export interface PipelineClusterGcpAttributes {
+    availability?: pulumi.Input<string>;
     googleServiceAccount?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 export interface PipelineClusterInitScript {
+    abfss?: pulumi.Input<inputs.PipelineClusterInitScriptAbfss>;
     dbfs?: pulumi.Input<inputs.PipelineClusterInitScriptDbfs>;
     file?: pulumi.Input<inputs.PipelineClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.PipelineClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.PipelineClusterInitScriptS3>;
+}
+
+export interface PipelineClusterInitScriptAbfss {
+    destination?: pulumi.Input<string>;
 }
 
 export interface PipelineClusterInitScriptDbfs {
@@ -3186,6 +3636,10 @@ export interface RecipientToken {
     id?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<number>;
     updatedBy?: pulumi.Input<string>;
+}
+
+export interface RepoSparseCheckout {
+    patterns: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface SecretScopeKeyvaultMetadata {
@@ -3266,7 +3720,13 @@ export interface SqlQueryParameterDate {
 }
 
 export interface SqlQueryParameterDateRange {
-    value: pulumi.Input<string>;
+    range?: pulumi.Input<inputs.SqlQueryParameterDateRangeRange>;
+    value?: pulumi.Input<string>;
+}
+
+export interface SqlQueryParameterDateRangeRange {
+    end: pulumi.Input<string>;
+    start: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterDatetime {
@@ -3274,7 +3734,13 @@ export interface SqlQueryParameterDatetime {
 }
 
 export interface SqlQueryParameterDatetimeRange {
-    value: pulumi.Input<string>;
+    range?: pulumi.Input<inputs.SqlQueryParameterDatetimeRangeRange>;
+    value?: pulumi.Input<string>;
+}
+
+export interface SqlQueryParameterDatetimeRangeRange {
+    end: pulumi.Input<string>;
+    start: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterDatetimesec {
@@ -3282,7 +3748,13 @@ export interface SqlQueryParameterDatetimesec {
 }
 
 export interface SqlQueryParameterDatetimesecRange {
-    value: pulumi.Input<string>;
+    range?: pulumi.Input<inputs.SqlQueryParameterDatetimesecRangeRange>;
+    value?: pulumi.Input<string>;
+}
+
+export interface SqlQueryParameterDatetimesecRangeRange {
+    end: pulumi.Input<string>;
+    start: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterEnum {
@@ -3389,49 +3861,22 @@ export interface StorageCredentialAzureServicePrincipal {
     directoryId: pulumi.Input<string>;
 }
 
+export interface StorageCredentialGcpServiceAccountKey {
+    email: pulumi.Input<string>;
+    privateKey: pulumi.Input<string>;
+    privateKeyId: pulumi.Input<string>;
+}
+
 export interface TableColumn {
-    /**
-     * User-supplied free-form text.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * User-visible name of column
-     */
     name: pulumi.Input<string>;
-    /**
-     * Whether field is nullable (Default: `true`)
-     */
     nullable?: pulumi.Input<boolean>;
-    /**
-     * Partition ID
-     */
     partitionIndex?: pulumi.Input<number>;
-    /**
-     * Ordinal position of column, starting at 0.
-     */
     position: pulumi.Input<number>;
-    /**
-     * Format of `INTERVAL` columns
-     */
     typeIntervalType?: pulumi.Input<string>;
-    /**
-     * Column type spec (with metadata) as JSON string
-     */
     typeJson?: pulumi.Input<string>;
-    /**
-     * Name of (outer) type
-     */
     typeName: pulumi.Input<string>;
-    /**
-     * Digits of precision; applies to `DECIMAL` columns
-     */
     typePrecision?: pulumi.Input<number>;
-    /**
-     * Digits to right of decimal; applies to `DECIMAL` columns
-     */
     typeScale?: pulumi.Input<number>;
-    /**
-     * Column type spec (with metadata) as SQL text
-     */
     typeText: pulumi.Input<string>;
 }

@@ -19,7 +19,7 @@ class GroupRoleArgs:
         """
         The set of arguments for constructing a GroupRole resource.
         :param pulumi.Input[str] group_id: This is the id of the group resource.
-        :param pulumi.Input[str] role: This is the AWS role ARN.
+        :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "role", role)
@@ -40,7 +40,7 @@ class GroupRoleArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
         """
-        This is the AWS role ARN.
+        Either a role name or the ARN/ID of the instance profile resource.
         """
         return pulumi.get(self, "role")
 
@@ -57,7 +57,7 @@ class _GroupRoleState:
         """
         Input properties used for looking up and filtering GroupRole resources.
         :param pulumi.Input[str] group_id: This is the id of the group resource.
-        :param pulumi.Input[str] role: This is the AWS role ARN.
+        :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
@@ -80,7 +80,7 @@ class _GroupRoleState:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        This is the AWS role ARN.
+        Either a role name or the ARN/ID of the instance profile resource.
         """
         return pulumi.get(self, "role")
 
@@ -98,18 +98,33 @@ class GroupRole(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to attach Role ARN (AWS) to databricks_group.
+        This resource allows you to attach a role to databricks_group. This role could be a pre-defined role such as account admin, or an instance profile ARN.
 
         ## Example Usage
+
+        Attach an instance profile to a group
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
+        my_group = databricks.Group("myGroup")
+        my_group_instance_profile = databricks.GroupInstanceProfile("myGroupInstanceProfile",
+            group_id=my_group.id,
+            instance_profile_id=instance_profile.id)
+        ```
+
+        Attach account admin role to an account-level group
 
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         my_group = databricks.Group("myGroup")
-        my_group_role = databricks.GroupRole("myGroupRole",
-            group_id=my_group.id,
-            role="arn:aws:iam::000000000000:role/my-role")
+        my_user_account_admin = databricks.UserRole("myUserAccountAdmin",
+            user_id=my_group.id,
+            role="account_admin")
         ```
         ## Related Resources
 
@@ -132,7 +147,7 @@ class GroupRole(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: This is the id of the group resource.
-        :param pulumi.Input[str] role: This is the AWS role ARN.
+        :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
         """
         ...
     @overload
@@ -141,18 +156,33 @@ class GroupRole(pulumi.CustomResource):
                  args: GroupRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to attach Role ARN (AWS) to databricks_group.
+        This resource allows you to attach a role to databricks_group. This role could be a pre-defined role such as account admin, or an instance profile ARN.
 
         ## Example Usage
+
+        Attach an instance profile to a group
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
+        my_group = databricks.Group("myGroup")
+        my_group_instance_profile = databricks.GroupInstanceProfile("myGroupInstanceProfile",
+            group_id=my_group.id,
+            instance_profile_id=instance_profile.id)
+        ```
+
+        Attach account admin role to an account-level group
 
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         my_group = databricks.Group("myGroup")
-        my_group_role = databricks.GroupRole("myGroupRole",
-            group_id=my_group.id,
-            role="arn:aws:iam::000000000000:role/my-role")
+        my_user_account_admin = databricks.UserRole("myUserAccountAdmin",
+            user_id=my_group.id,
+            role="account_admin")
         ```
         ## Related Resources
 
@@ -224,7 +254,7 @@ class GroupRole(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: This is the id of the group resource.
-        :param pulumi.Input[str] role: This is the AWS role ARN.
+        :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -246,7 +276,7 @@ class GroupRole(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
         """
-        This is the AWS role ARN.
+        Either a role name or the ARN/ID of the instance profile resource.
         """
         return pulumi.get(self, "role")
 

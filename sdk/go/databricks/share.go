@@ -28,7 +28,7 @@ type Share struct {
 	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
 	// The principal that created the share.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
-	// Full name of the object, e.g. `catalog.schema.name` for a table.
+	// Name of share. Change forces creation of a new resource.
 	Name    pulumi.StringOutput    `pulumi:"name"`
 	Objects ShareObjectArrayOutput `pulumi:"objects"`
 }
@@ -66,7 +66,7 @@ type shareState struct {
 	CreatedAt *int `pulumi:"createdAt"`
 	// The principal that created the share.
 	CreatedBy *string `pulumi:"createdBy"`
-	// Full name of the object, e.g. `catalog.schema.name` for a table.
+	// Name of share. Change forces creation of a new resource.
 	Name    *string       `pulumi:"name"`
 	Objects []ShareObject `pulumi:"objects"`
 }
@@ -76,7 +76,7 @@ type ShareState struct {
 	CreatedAt pulumi.IntPtrInput
 	// The principal that created the share.
 	CreatedBy pulumi.StringPtrInput
-	// Full name of the object, e.g. `catalog.schema.name` for a table.
+	// Name of share. Change forces creation of a new resource.
 	Name    pulumi.StringPtrInput
 	Objects ShareObjectArrayInput
 }
@@ -90,7 +90,7 @@ type shareArgs struct {
 	CreatedAt *int `pulumi:"createdAt"`
 	// The principal that created the share.
 	CreatedBy *string `pulumi:"createdBy"`
-	// Full name of the object, e.g. `catalog.schema.name` for a table.
+	// Name of share. Change forces creation of a new resource.
 	Name    *string       `pulumi:"name"`
 	Objects []ShareObject `pulumi:"objects"`
 }
@@ -101,7 +101,7 @@ type ShareArgs struct {
 	CreatedAt pulumi.IntPtrInput
 	// The principal that created the share.
 	CreatedBy pulumi.StringPtrInput
-	// Full name of the object, e.g. `catalog.schema.name` for a table.
+	// Name of share. Change forces creation of a new resource.
 	Name    pulumi.StringPtrInput
 	Objects ShareObjectArrayInput
 }
@@ -203,7 +203,7 @@ func (o ShareOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// Full name of the object, e.g. `catalog.schema.name` for a table.
+// Name of share. Change forces creation of a new resource.
 func (o ShareOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

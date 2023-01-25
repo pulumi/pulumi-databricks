@@ -23,6 +23,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("notebookPath", required: true)]
         public string NotebookPath { get; set; } = null!;
 
+        [Input("source")]
+        public string? Source { get; set; }
+
         public GetJobJobSettingsSettingsTaskNotebookTaskArgs()
         {
         }

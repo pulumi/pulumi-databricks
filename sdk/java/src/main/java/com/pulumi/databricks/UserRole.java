@@ -116,14 +116,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/userRole:UserRole")
 public class UserRole extends com.pulumi.resources.CustomResource {
     /**
-     * Either a role name or the id of the instance profile resource.
+     * Either a role name or the ARN/ID of the instance profile resource.
      * 
      */
     @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
-     * @return Either a role name or the id of the instance profile resource.
+     * @return Either a role name or the ARN/ID of the instance profile resource.
      * 
      */
     public Output<String> role() {

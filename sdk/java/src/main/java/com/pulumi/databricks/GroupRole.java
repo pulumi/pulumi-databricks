@@ -14,9 +14,51 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * This resource allows you to attach Role ARN (AWS) to databricks_group.
+ * This resource allows you to attach a role to databricks_group. This role could be a pre-defined role such as account admin, or an instance profile ARN.
  * 
  * ## Example Usage
+ * 
+ * Attach an instance profile to a group
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.InstanceProfile;
+ * import com.pulumi.databricks.InstanceProfileArgs;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupInstanceProfile;
+ * import com.pulumi.databricks.GroupInstanceProfileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instanceProfile = new InstanceProfile(&#34;instanceProfile&#34;, InstanceProfileArgs.builder()        
+ *             .instanceProfileArn(&#34;my_instance_profile_arn&#34;)
+ *             .build());
+ * 
+ *         var myGroup = new Group(&#34;myGroup&#34;);
+ * 
+ *         var myGroupInstanceProfile = new GroupInstanceProfile(&#34;myGroupInstanceProfile&#34;, GroupInstanceProfileArgs.builder()        
+ *             .groupId(myGroup.id())
+ *             .instanceProfileId(instanceProfile.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Attach account admin role to an account-level group
  * ```java
  * package generated_program;
  * 
@@ -24,8 +66,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.Group;
- * import com.pulumi.databricks.GroupRole;
- * import com.pulumi.databricks.GroupRoleArgs;
+ * import com.pulumi.databricks.UserRole;
+ * import com.pulumi.databricks.UserRoleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,9 +83,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var myGroup = new Group(&#34;myGroup&#34;);
  * 
- *         var myGroupRole = new GroupRole(&#34;myGroupRole&#34;, GroupRoleArgs.builder()        
- *             .groupId(myGroup.id())
- *             .role(&#34;arn:aws:iam::000000000000:role/my-role&#34;)
+ *         var myUserAccountAdmin = new UserRole(&#34;myUserAccountAdmin&#34;, UserRoleArgs.builder()        
+ *             .userId(myGroup.id())
+ *             .role(&#34;account_admin&#34;)
  *             .build());
  * 
  *     }
@@ -85,14 +127,14 @@ public class GroupRole extends com.pulumi.resources.CustomResource {
         return this.groupId;
     }
     /**
-     * This is the AWS role ARN.
+     * Either a role name or the ARN/ID of the instance profile resource.
      * 
      */
     @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
-     * @return This is the AWS role ARN.
+     * @return Either a role name or the ARN/ID of the instance profile resource.
      * 
      */
     public Output<String> role() {

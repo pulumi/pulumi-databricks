@@ -31,11 +31,19 @@ public final class GetJobJobSettingsSettingsTaskNotebookTaskArgs extends com.pul
         return this.notebookPath;
     }
 
+    @Import(name="source")
+    private @Nullable Output<String> source;
+
+    public Optional<Output<String>> source() {
+        return Optional.ofNullable(this.source);
+    }
+
     private GetJobJobSettingsSettingsTaskNotebookTaskArgs() {}
 
     private GetJobJobSettingsSettingsTaskNotebookTaskArgs(GetJobJobSettingsSettingsTaskNotebookTaskArgs $) {
         this.baseParameters = $.baseParameters;
         this.notebookPath = $.notebookPath;
+        this.source = $.source;
     }
 
     public static Builder builder() {
@@ -72,6 +80,15 @@ public final class GetJobJobSettingsSettingsTaskNotebookTaskArgs extends com.pul
 
         public Builder notebookPath(String notebookPath) {
             return notebookPath(Output.of(notebookPath));
+        }
+
+        public Builder source(@Nullable Output<String> source) {
+            $.source = source;
+            return this;
+        }
+
+        public Builder source(String source) {
+            return source(Output.of(source));
         }
 
         public GetJobJobSettingsSettingsTaskNotebookTaskArgs build() {

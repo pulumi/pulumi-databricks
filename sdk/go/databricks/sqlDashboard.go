@@ -23,6 +23,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -30,7 +32,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewSqlDashboard(ctx, "d1", &databricks.SqlDashboardArgs{
+//			sharedDir, err := databricks.NewDirectory(ctx, "sharedDir", &databricks.DirectoryArgs{
+//				Path: pulumi.String("/Shared/Dashboards"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSqlDashboard(ctx, "d1", &databricks.SqlDashboardArgs{
+//				Parent: sharedDir.ObjectId.ApplyT(func(objectId int) (string, error) {
+//					return fmt.Sprintf("folders/%v", objectId), nil
+//				}).(pulumi.StringOutput),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("some-tag"),
 //					pulumi.String("another-tag"),
@@ -61,8 +72,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewPermissions(ctx, "d1", &databricks.PermissionsArgs{
 //				SqlDashboardId: pulumi.Any(databricks_sql_dashboard.D1.Id),
-//				AccessControls: PermissionsAccessControlArray{
-//					&PermissionsAccessControlArgs{
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
 //						GroupName:       pulumi.Any(data.Databricks_group.Users.Display_name),
 //						PermissionLevel: pulumi.String("CAN_RUN"),
 //					},
@@ -97,8 +108,9 @@ import (
 type SqlDashboard struct {
 	pulumi.CustomResourceState
 
-	Name pulumi.StringOutput      `pulumi:"name"`
-	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	Name   pulumi.StringOutput      `pulumi:"name"`
+	Parent pulumi.StringPtrOutput   `pulumi:"parent"`
+	Tags   pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
 // NewSqlDashboard registers a new resource with the given unique name, arguments, and options.
@@ -130,13 +142,15 @@ func GetSqlDashboard(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlDashboard resources.
 type sqlDashboardState struct {
-	Name *string  `pulumi:"name"`
-	Tags []string `pulumi:"tags"`
+	Name   *string  `pulumi:"name"`
+	Parent *string  `pulumi:"parent"`
+	Tags   []string `pulumi:"tags"`
 }
 
 type SqlDashboardState struct {
-	Name pulumi.StringPtrInput
-	Tags pulumi.StringArrayInput
+	Name   pulumi.StringPtrInput
+	Parent pulumi.StringPtrInput
+	Tags   pulumi.StringArrayInput
 }
 
 func (SqlDashboardState) ElementType() reflect.Type {
@@ -144,14 +158,16 @@ func (SqlDashboardState) ElementType() reflect.Type {
 }
 
 type sqlDashboardArgs struct {
-	Name *string  `pulumi:"name"`
-	Tags []string `pulumi:"tags"`
+	Name   *string  `pulumi:"name"`
+	Parent *string  `pulumi:"parent"`
+	Tags   []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a SqlDashboard resource.
 type SqlDashboardArgs struct {
-	Name pulumi.StringPtrInput
-	Tags pulumi.StringArrayInput
+	Name   pulumi.StringPtrInput
+	Parent pulumi.StringPtrInput
+	Tags   pulumi.StringArrayInput
 }
 
 func (SqlDashboardArgs) ElementType() reflect.Type {
@@ -243,6 +259,10 @@ func (o SqlDashboardOutput) ToSqlDashboardOutputWithContext(ctx context.Context)
 
 func (o SqlDashboardOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlDashboard) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SqlDashboardOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDashboard) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
 func (o SqlDashboardOutput) Tags() pulumi.StringArrayOutput {

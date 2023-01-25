@@ -16,7 +16,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * These resources are invoked in the account context. Provider must have `account_id` attribute configured.
+ * These resources are invoked in the account context. Permission Assignment Account API endpoints are restricted to account admins. Provider must have `account_id` attribute configured. Account Id that could be found in the bottom left corner of Accounts Console
  * 
  * ## Example Usage
  * 
@@ -130,25 +130,69 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ## Related Resources
+ * 
+ * The following resources are used in the same context:
+ * 
+ * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+ * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+ * * databricks.GroupMember to attach users and groups as group members.
+ * * databricks.PermissionAssignment to manage permission assignment from a workspace context
+ * 
+ * ## Import
+ * 
+ * The resource `databricks_mws_permission_assignment` can be imported using the workspace id and principal id bash
+ * 
+ * ```sh
+ *  $ pulumi import databricks:index/mwsPermissionAssignment:MwsPermissionAssignment this &#34;workspace_id|principal_id&#34;
+ * ```
  * 
  */
 @ResourceType(type="databricks:index/mwsPermissionAssignment:MwsPermissionAssignment")
 public class MwsPermissionAssignment extends com.pulumi.resources.CustomResource {
+    /**
+     * The list of workspace permissions to assign to the principal:
+     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
+     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     * 
+     */
     @Export(name="permissions", type=List.class, parameters={String.class})
     private Output<List<String>> permissions;
 
+    /**
+     * @return The list of workspace permissions to assign to the principal:
+     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
+     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     * 
+     */
     public Output<List<String>> permissions() {
         return this.permissions;
     }
+    /**
+     * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
+     * 
+     */
     @Export(name="principalId", type=Integer.class, parameters={})
     private Output<Integer> principalId;
 
+    /**
+     * @return Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
+     * 
+     */
     public Output<Integer> principalId() {
         return this.principalId;
     }
+    /**
+     * Databricks workspace ID.
+     * 
+     */
     @Export(name="workspaceId", type=Integer.class, parameters={})
     private Output<Integer> workspaceId;
 
+    /**
+     * @return Databricks workspace ID.
+     * 
+     */
     public Output<Integer> workspaceId() {
         return this.workspaceId;
     }

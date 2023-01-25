@@ -13,6 +13,105 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// &gt; **Note** If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+    /// ### Customer-managed key for managed services
+    /// 
+    /// You must configure this during workspace creation
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     var current = Aws.GetCallerIdentity.Invoke();
+    /// 
+    ///     var databricksManagedServicesCmk = Aws.Iam.GetPolicyDocument.Invoke(new()
+    ///     {
+    ///         Version = "2012-10-17",
+    ///         Statements = new[]
+    ///         {
+    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+    ///             {
+    ///                 Sid = "Enable IAM User Permissions",
+    ///                 Effect = "Allow",
+    ///                 Principals = new[]
+    ///                 {
+    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+    ///                     {
+    ///                         Type = "AWS",
+    ///                         Identifiers = new[]
+    ///                         {
+    ///                             current.Apply(getCallerIdentityResult =&gt; getCallerIdentityResult.AccountId),
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Actions = new[]
+    ///                 {
+    ///                     "kms:*",
+    ///                 },
+    ///                 Resources = new[]
+    ///                 {
+    ///                     "*",
+    ///                 },
+    ///             },
+    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+    ///             {
+    ///                 Sid = "Allow Databricks to use KMS key for control plane managed services",
+    ///                 Effect = "Allow",
+    ///                 Principals = new[]
+    ///                 {
+    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+    ///                     {
+    ///                         Type = "AWS",
+    ///                         Identifiers = new[]
+    ///                         {
+    ///                             "arn:aws:iam::414351767826:root",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Actions = new[]
+    ///                 {
+    ///                     "kms:Encrypt",
+    ///                     "kms:Decrypt",
+    ///                 },
+    ///                 Resources = new[]
+    ///                 {
+    ///                     "*",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var managedServicesCustomerManagedKey = new Aws.Kms.Key("managedServicesCustomerManagedKey", new()
+    ///     {
+    ///         Policy = databricksManagedServicesCmk.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
+    ///     });
+    /// 
+    ///     var managedServicesCustomerManagedKeyAlias = new Aws.Kms.Alias("managedServicesCustomerManagedKeyAlias", new()
+    ///     {
+    ///         TargetKeyId = managedServicesCustomerManagedKey.KeyId,
+    ///     });
+    /// 
+    ///     var managedServices = new Databricks.MwsCustomerManagedKeys("managedServices", new()
+    ///     {
+    ///         AccountId = databricksAccountId,
+    ///         AwsKeyInfo = new Databricks.Inputs.MwsCustomerManagedKeysAwsKeyInfoArgs
+    ///         {
+    ///             KeyArn = managedServicesCustomerManagedKey.Arn,
+    ///             KeyAlias = managedServicesCustomerManagedKeyAlias.Name,
+    ///         },
+    ///         UseCases = new[]
+    ///         {
+    ///             "MANAGED_SERVICES",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Customer-managed key for workspace storage
     /// 
     /// ```csharp

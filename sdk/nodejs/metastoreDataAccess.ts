@@ -45,6 +45,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
     public readonly azureManagedIdentity!: pulumi.Output<outputs.MetastoreDataAccessAzureManagedIdentity | undefined>;
     public readonly azureServicePrincipal!: pulumi.Output<outputs.MetastoreDataAccessAzureServicePrincipal | undefined>;
     public readonly configurationType!: pulumi.Output<string>;
+    public readonly gcpServiceAccountKey!: pulumi.Output<outputs.MetastoreDataAccessGcpServiceAccountKey | undefined>;
     public readonly isDefault!: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier of the parent Metastore
@@ -72,6 +73,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
             resourceInputs["azureManagedIdentity"] = state ? state.azureManagedIdentity : undefined;
             resourceInputs["azureServicePrincipal"] = state ? state.azureServicePrincipal : undefined;
             resourceInputs["configurationType"] = state ? state.configurationType : undefined;
+            resourceInputs["gcpServiceAccountKey"] = state ? state.gcpServiceAccountKey : undefined;
             resourceInputs["isDefault"] = state ? state.isDefault : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -84,6 +86,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
             resourceInputs["azureManagedIdentity"] = args ? args.azureManagedIdentity : undefined;
             resourceInputs["azureServicePrincipal"] = args ? args.azureServicePrincipal : undefined;
             resourceInputs["configurationType"] = args ? args.configurationType : undefined;
+            resourceInputs["gcpServiceAccountKey"] = args ? args.gcpServiceAccountKey : undefined;
             resourceInputs["isDefault"] = args ? args.isDefault : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -101,6 +104,7 @@ export interface MetastoreDataAccessState {
     azureManagedIdentity?: pulumi.Input<inputs.MetastoreDataAccessAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal>;
     configurationType?: pulumi.Input<string>;
+    gcpServiceAccountKey?: pulumi.Input<inputs.MetastoreDataAccessGcpServiceAccountKey>;
     isDefault?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the parent Metastore
@@ -120,6 +124,7 @@ export interface MetastoreDataAccessArgs {
     azureManagedIdentity?: pulumi.Input<inputs.MetastoreDataAccessAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal>;
     configurationType?: pulumi.Input<string>;
+    gcpServiceAccountKey?: pulumi.Input<inputs.MetastoreDataAccessGcpServiceAccountKey>;
     isDefault?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the parent Metastore

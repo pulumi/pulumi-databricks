@@ -44,17 +44,15 @@ import * as utilities from "./utilities";
  */
 export function getNodeType(args?: GetNodeTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypeResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNodeType:getNodeType", {
         "category": args.category,
         "gbPerCore": args.gbPerCore,
         "graviton": args.graviton,
         "isIoCacheEnabled": args.isIoCacheEnabled,
         "localDisk": args.localDisk,
+        "localDiskMinSize": args.localDiskMinSize,
         "minCores": args.minCores,
         "minGpus": args.minGpus,
         "minMemoryGb": args.minMemoryGb,
@@ -97,6 +95,10 @@ export interface GetNodeTypeArgs {
      */
     localDisk?: boolean;
     /**
+     * Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+     */
+    localDiskMinSize?: number;
+    /**
      * Minimum number of CPU cores available on instance. Defaults to *0*.
      */
     minCores?: number;
@@ -136,6 +138,7 @@ export interface GetNodeTypeResult {
     readonly id: string;
     readonly isIoCacheEnabled?: boolean;
     readonly localDisk?: boolean;
+    readonly localDiskMinSize?: number;
     readonly minCores?: number;
     readonly minGpus?: number;
     readonly minMemoryGb?: number;
@@ -144,9 +147,46 @@ export interface GetNodeTypeResult {
     readonly supportPortForwarding?: boolean;
     readonly vcpu?: boolean;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const withGpu = databricks.getNodeType({
+ *     localDisk: true,
+ *     minCores: 16,
+ *     gbPerCore: 1,
+ *     minGpus: 1,
+ * });
+ * const gpuMl = databricks.getSparkVersion({
+ *     gpu: true,
+ *     ml: true,
+ * });
+ * const research = new databricks.Cluster("research", {
+ *     clusterName: "Research Cluster",
+ *     sparkVersion: gpuMl.then(gpuMl => gpuMl.id),
+ *     nodeTypeId: withGpu.then(withGpu => withGpu.id),
+ *     autoterminationMinutes: 20,
+ *     autoscale: {
+ *         minWorkers: 1,
+ *         maxWorkers: 50,
+ *     },
+ * });
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+ * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ */
 export function getNodeTypeOutput(args?: GetNodeTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTypeResult> {
-    return pulumi.output(args).apply(a => getNodeType(a, opts))
+    return pulumi.output(args).apply((a: any) => getNodeType(a, opts))
 }
 
 /**
@@ -180,6 +220,10 @@ export interface GetNodeTypeOutputArgs {
      * Pick only nodes with local storage. Defaults to *false*.
      */
     localDisk?: pulumi.Input<boolean>;
+    /**
+     * Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+     */
+    localDiskMinSize?: pulumi.Input<number>;
     /**
      * Minimum number of CPU cores available on instance. Defaults to *0*.
      */

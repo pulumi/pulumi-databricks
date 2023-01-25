@@ -20,6 +20,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.JobTaskNewClusterAzureAttributes? AzureAttributes;
         public readonly string? ClusterId;
         public readonly Outputs.JobTaskNewClusterClusterLogConf? ClusterLogConf;
+        public readonly ImmutableArray<Outputs.JobTaskNewClusterClusterMountInfo> ClusterMountInfos;
         public readonly string? ClusterName;
         public readonly ImmutableDictionary<string, object>? CustomTags;
         public readonly string? DataSecurityMode;
@@ -58,6 +59,8 @@ namespace Pulumi.Databricks.Outputs
             string? clusterId,
 
             Outputs.JobTaskNewClusterClusterLogConf? clusterLogConf,
+
+            ImmutableArray<Outputs.JobTaskNewClusterClusterMountInfo> clusterMountInfos,
 
             string? clusterName,
 
@@ -110,6 +113,7 @@ namespace Pulumi.Databricks.Outputs
             AzureAttributes = azureAttributes;
             ClusterId = clusterId;
             ClusterLogConf = clusterLogConf;
+            ClusterMountInfos = clusterMountInfos;
             ClusterName = clusterName;
             CustomTags = customTags;
             DataSecurityMode = dataSecurityMode;

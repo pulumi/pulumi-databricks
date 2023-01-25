@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstancePoolAwsAttributes {
     /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * @return (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
      * 
      */
     private @Nullable String availability;
@@ -30,7 +30,7 @@ public final class InstancePoolAwsAttributes {
 
     private InstancePoolAwsAttributes() {}
     /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * @return (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
      * 
      */
     public Optional<String> availability() {

@@ -46,6 +46,17 @@ export interface ClusterClusterLogConfS3 {
     region?: string;
 }
 
+export interface ClusterClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: outputs.ClusterClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface ClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
 export interface ClusterDockerImage {
     basicAuth?: outputs.ClusterDockerImageBasicAuth;
     url: string;
@@ -65,10 +76,15 @@ export interface ClusterGcpAttributes {
 }
 
 export interface ClusterInitScript {
+    abfss?: outputs.ClusterInitScriptAbfss;
     dbfs?: outputs.ClusterInitScriptDbfs;
     file?: outputs.ClusterInitScriptFile;
     gcs?: outputs.ClusterInitScriptGcs;
     s3?: outputs.ClusterInitScriptS3;
+}
+
+export interface ClusterInitScriptAbfss {
+    destination?: string;
 }
 
 export interface ClusterInitScriptDbfs {
@@ -144,7 +160,7 @@ export interface GetClusterClusterInfo {
     clusterLogStatus?: outputs.GetClusterClusterInfoClusterLogStatus;
     clusterMemoryMb?: number;
     /**
-     * Cluster name, which doesn’t have to be unique.
+     * The exact name of the cluster to search
      */
     clusterName?: string;
     clusterSource?: string;
@@ -179,13 +195,15 @@ export interface GetClusterClusterInfo {
     executors?: outputs.GetClusterClusterInfoExecutor[];
     gcpAttributes?: outputs.GetClusterClusterInfoGcpAttributes;
     initScripts?: outputs.GetClusterClusterInfoInitScript[];
+    /**
+     * The pool of idle instances the cluster is attached to.
+     */
     instancePoolId?: string;
     jdbcPort?: number;
     lastActivityTime?: number;
     lastStateLossTime?: number;
     /**
      * Any supported databricks.getNodeType id.
-     * * `instancePoolId` The pool of idle instances the cluster is attached to.
      */
     nodeTypeId?: string;
     numWorkers?: number;
@@ -350,12 +368,94 @@ export interface GetDbfsFilePathsPathList {
     path?: string;
 }
 
+export interface GetInstancePoolPoolInfo {
+    awsAttributes?: outputs.GetInstancePoolPoolInfoAwsAttributes;
+    azureAttributes?: outputs.GetInstancePoolPoolInfoAzureAttributes;
+    customTags?: {[key: string]: any};
+    defaultTags: {[key: string]: any};
+    diskSpec?: outputs.GetInstancePoolPoolInfoDiskSpec;
+    enableElasticDisk?: boolean;
+    gcpAttributes?: outputs.GetInstancePoolPoolInfoGcpAttributes;
+    idleInstanceAutoterminationMinutes: number;
+    instancePoolFleetAttributes?: outputs.GetInstancePoolPoolInfoInstancePoolFleetAttribute[];
+    instancePoolId: string;
+    instancePoolName: string;
+    maxCapacity?: number;
+    minIdleInstances?: number;
+    nodeTypeId?: string;
+    preloadedDockerImages?: outputs.GetInstancePoolPoolInfoPreloadedDockerImage[];
+    preloadedSparkVersions?: string[];
+    state?: string;
+    stats?: outputs.GetInstancePoolPoolInfoStats;
+}
+
+export interface GetInstancePoolPoolInfoAwsAttributes {
+    availability?: string;
+    spotBidPricePercent?: number;
+    zoneId: string;
+}
+
+export interface GetInstancePoolPoolInfoAzureAttributes {
+    availability?: string;
+    spotBidMaxPrice?: number;
+}
+
+export interface GetInstancePoolPoolInfoDiskSpec {
+    diskCount?: number;
+    diskSize?: number;
+    diskType?: outputs.GetInstancePoolPoolInfoDiskSpecDiskType;
+}
+
+export interface GetInstancePoolPoolInfoDiskSpecDiskType {
+    azureDiskVolumeType?: string;
+    ebsVolumeType?: string;
+}
+
+export interface GetInstancePoolPoolInfoGcpAttributes {
+    gcpAvailability?: string;
+}
+
+export interface GetInstancePoolPoolInfoInstancePoolFleetAttribute {
+    fleetOnDemandOption?: outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption;
+    fleetSpotOption?: outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption;
+    launchTemplateOverrides: outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride[];
+}
+
+export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption {
+    allocationStrategy: string;
+    instancePoolsToUseCount?: number;
+}
+
+export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption {
+    allocationStrategy: string;
+    instancePoolsToUseCount?: number;
+}
+
+export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride {
+    availabilityZone: string;
+    instanceType: string;
+}
+
+export interface GetInstancePoolPoolInfoPreloadedDockerImage {
+    basicAuth?: outputs.GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth;
+    url: string;
+}
+
+export interface GetInstancePoolPoolInfoPreloadedDockerImageBasicAuth {
+    password: string;
+    username: string;
+}
+
+export interface GetInstancePoolPoolInfoStats {
+    idleCount?: number;
+    pendingIdleCount?: number;
+    pendingUsedCount?: number;
+    usedCount?: number;
+}
+
 export interface GetJobJobSettings {
     createdTime?: number;
     creatorUserName?: string;
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     jobId?: number;
     settings?: outputs.GetJobJobSettingsSettings;
 }
@@ -371,6 +471,9 @@ export interface GetJobJobSettingsSettings {
     maxConcurrentRuns?: number;
     maxRetries?: number;
     minRetryIntervalMillis?: number;
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     */
     name?: string;
     newCluster?: outputs.GetJobJobSettingsSettingsNewCluster;
     notebookTask?: outputs.GetJobJobSettingsSettingsNotebookTask;
@@ -388,6 +491,7 @@ export interface GetJobJobSettingsSettings {
 }
 
 export interface GetJobJobSettingsSettingsDbtTask {
+    catalog?: string;
     commands: string[];
     profilesDirectory?: string;
     projectDirectory?: string;
@@ -424,6 +528,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewCluster {
     azureAttributes?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributes;
     clusterId?: string;
     clusterLogConf?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf;
+    clusterMountInfos?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo[];
     clusterName?: string;
     customTags?: {[key: string]: any};
     dataSecurityMode?: string;
@@ -489,6 +594,17 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3 {
     region?: string;
 }
 
+export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
 export interface GetJobJobSettingsSettingsJobClusterNewClusterDockerImage {
     basicAuth?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuth;
     url: string;
@@ -508,10 +624,15 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributes {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
+    abfss?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss;
     dbfs?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs;
     file?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile;
     gcs?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs;
     s3?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss {
+    destination?: string;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs {
@@ -578,6 +699,7 @@ export interface GetJobJobSettingsSettingsNewCluster {
     azureAttributes?: outputs.GetJobJobSettingsSettingsNewClusterAzureAttributes;
     clusterId?: string;
     clusterLogConf?: outputs.GetJobJobSettingsSettingsNewClusterClusterLogConf;
+    clusterMountInfos?: outputs.GetJobJobSettingsSettingsNewClusterClusterMountInfo[];
     clusterName?: string;
     customTags?: {[key: string]: any};
     dataSecurityMode?: string;
@@ -643,6 +765,17 @@ export interface GetJobJobSettingsSettingsNewClusterClusterLogConfS3 {
     region?: string;
 }
 
+export interface GetJobJobSettingsSettingsNewClusterClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: outputs.GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
 export interface GetJobJobSettingsSettingsNewClusterDockerImage {
     basicAuth?: outputs.GetJobJobSettingsSettingsNewClusterDockerImageBasicAuth;
     url: string;
@@ -662,10 +795,15 @@ export interface GetJobJobSettingsSettingsNewClusterGcpAttributes {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScript {
+    abfss?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptAbfss;
     dbfs?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptDbfs;
     file?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptFile;
     gcs?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptGcs;
     s3?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptS3;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScriptAbfss {
+    destination?: string;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptDbfs {
@@ -702,6 +840,7 @@ export interface GetJobJobSettingsSettingsNewClusterWorkloadTypeClients {
 export interface GetJobJobSettingsSettingsNotebookTask {
     baseParameters?: {[key: string]: any};
     notebookPath: string;
+    source?: string;
 }
 
 export interface GetJobJobSettingsSettingsPipelineTask {
@@ -760,6 +899,7 @@ export interface GetJobJobSettingsSettingsTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskDbtTask {
+    catalog?: string;
     commands: string[];
     profilesDirectory?: string;
     projectDirectory?: string;
@@ -812,6 +952,7 @@ export interface GetJobJobSettingsSettingsTaskNewCluster {
     azureAttributes?: outputs.GetJobJobSettingsSettingsTaskNewClusterAzureAttributes;
     clusterId?: string;
     clusterLogConf?: outputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConf;
+    clusterMountInfos?: outputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo[];
     clusterName?: string;
     customTags?: {[key: string]: any};
     dataSecurityMode?: string;
@@ -877,6 +1018,17 @@ export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3 {
     region?: string;
 }
 
+export interface GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: outputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
 export interface GetJobJobSettingsSettingsTaskNewClusterDockerImage {
     basicAuth?: outputs.GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth;
     url: string;
@@ -896,10 +1048,15 @@ export interface GetJobJobSettingsSettingsTaskNewClusterGcpAttributes {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScript {
+    abfss?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss;
     dbfs?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs;
     file?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFile;
     gcs?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs;
     s3?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss {
+    destination?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs {
@@ -936,6 +1093,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClients {
 export interface GetJobJobSettingsSettingsTaskNotebookTask {
     baseParameters?: {[key: string]: any};
     notebookPath: string;
+    source?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskPipelineTask {
@@ -991,14 +1149,23 @@ export interface GetJobJobSettingsSettingsWebhookNotifications {
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStart {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
     id: string;
 }
 
@@ -1059,7 +1226,7 @@ export interface GrantsGrant {
 
 export interface InstancePoolAwsAttributes {
     /**
-     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
      */
     availability?: string;
     /**
@@ -1137,6 +1304,10 @@ export interface InstancePoolPreloadedDockerImageBasicAuth {
 
 export interface JobDbtTask {
     /**
+     * The name of the catalog to use inside Unity Catalog.
+     */
+    catalog?: string;
+    /**
      * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
      */
     commands: string[];
@@ -1153,7 +1324,7 @@ export interface JobDbtTask {
      */
     schema?: string;
     /**
-     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * The ID of the SQL warehouse that dbt should execute against.
      */
     warehouseId?: string;
 }
@@ -1161,19 +1332,19 @@ export interface JobDbtTask {
 export interface JobEmailNotifications {
     alertOnLastAttempt?: boolean;
     /**
-     * (Bool) don't send alert for skipped runs
+     * (Bool) don't send alert for skipped runs.
      */
     noAlertForSkippedRuns?: boolean;
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run fails.
      */
     onFailures?: string[];
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run starts.
      */
     onStarts?: string[];
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run completes successfully.
      */
     onSuccesses?: string[];
 }
@@ -1196,7 +1367,7 @@ export interface JobGitSource {
      */
     tag?: string;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url: string;
 }
@@ -1220,6 +1391,7 @@ export interface JobJobClusterNewCluster {
     azureAttributes?: outputs.JobJobClusterNewClusterAzureAttributes;
     clusterId?: string;
     clusterLogConf?: outputs.JobJobClusterNewClusterClusterLogConf;
+    clusterMountInfos?: outputs.JobJobClusterNewClusterClusterMountInfo[];
     clusterName?: string;
     customTags?: {[key: string]: any};
     dataSecurityMode?: string;
@@ -1285,10 +1457,21 @@ export interface JobJobClusterNewClusterClusterLogConfS3 {
     region?: string;
 }
 
+export interface JobJobClusterNewClusterClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: outputs.JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
 export interface JobJobClusterNewClusterDockerImage {
     basicAuth?: outputs.JobJobClusterNewClusterDockerImageBasicAuth;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url: string;
 }
@@ -1307,10 +1490,15 @@ export interface JobJobClusterNewClusterGcpAttributes {
 }
 
 export interface JobJobClusterNewClusterInitScript {
+    abfss?: outputs.JobJobClusterNewClusterInitScriptAbfss;
     dbfs?: outputs.JobJobClusterNewClusterInitScriptDbfs;
     file?: outputs.JobJobClusterNewClusterInitScriptFile;
     gcs?: outputs.JobJobClusterNewClusterInitScriptGcs;
     s3?: outputs.JobJobClusterNewClusterInitScriptS3;
+}
+
+export interface JobJobClusterNewClusterInitScriptAbfss {
+    destination?: string;
 }
 
 export interface JobJobClusterNewClusterInitScriptDbfs {
@@ -1377,6 +1565,7 @@ export interface JobNewCluster {
     azureAttributes?: outputs.JobNewClusterAzureAttributes;
     clusterId?: string;
     clusterLogConf?: outputs.JobNewClusterClusterLogConf;
+    clusterMountInfos?: outputs.JobNewClusterClusterMountInfo[];
     clusterName?: string;
     customTags?: {[key: string]: any};
     dataSecurityMode?: string;
@@ -1442,10 +1631,21 @@ export interface JobNewClusterClusterLogConfS3 {
     region?: string;
 }
 
+export interface JobNewClusterClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: outputs.JobNewClusterClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface JobNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
 export interface JobNewClusterDockerImage {
     basicAuth?: outputs.JobNewClusterDockerImageBasicAuth;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url: string;
 }
@@ -1464,10 +1664,15 @@ export interface JobNewClusterGcpAttributes {
 }
 
 export interface JobNewClusterInitScript {
+    abfss?: outputs.JobNewClusterInitScriptAbfss;
     dbfs?: outputs.JobNewClusterInitScriptDbfs;
     file?: outputs.JobNewClusterInitScriptFile;
     gcs?: outputs.JobNewClusterInitScriptGcs;
     s3?: outputs.JobNewClusterInitScriptS3;
+}
+
+export interface JobNewClusterInitScriptAbfss {
+    destination?: string;
 }
 
 export interface JobNewClusterInitScriptDbfs {
@@ -1507,9 +1712,13 @@ export interface JobNotebookTask {
      */
     baseParameters?: {[key: string]: any};
     /**
-     * The absolute path of the databricks.Notebook to be run in the Databricks workspace. This path must begin with a slash. This field is required.
+     * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      */
     notebookPath: string;
+    /**
+     * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+     */
+    source?: string;
 }
 
 export interface JobPipelineTask {
@@ -1533,7 +1742,7 @@ export interface JobPythonWheelTask {
      */
     packageName?: string;
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * Parameters for the task
      */
     parameters?: string[];
 }
@@ -1560,25 +1769,25 @@ export interface JobSparkJarTask {
      */
     mainClassName?: string;
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Parameters passed to the main method.
      */
     parameters?: string[];
 }
 
 export interface JobSparkPythonTask {
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Command line parameters passed to the Python file.
      */
     parameters?: string[];
     /**
-     * The URI of the Python file to be executed. databricks.DbfsFile and S3 paths are supported. This field is required.
+     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
      */
     pythonFile: string;
 }
 
 export interface JobSparkSubmitTask {
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Command-line parameters passed to spark submit.
      */
     parameters?: string[];
 }
@@ -1588,12 +1797,9 @@ export interface JobTask {
     dependsOns?: outputs.JobTaskDependsOn[];
     description?: string;
     /**
-     * (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: outputs.JobTaskEmailNotifications;
-    /**
-     * If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `newCluster` for greater reliability.
-     */
     existingClusterId?: string;
     /**
      * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
@@ -1604,7 +1810,7 @@ export interface JobTask {
      */
     libraries?: outputs.JobTaskLibrary[];
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED resultState or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
      */
     maxRetries?: number;
     /**
@@ -1635,6 +1841,10 @@ export interface JobTask {
 
 export interface JobTaskDbtTask {
     /**
+     * The name of the catalog to use inside Unity Catalog.
+     */
+    catalog?: string;
+    /**
      * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
      */
     commands: string[];
@@ -1651,7 +1861,7 @@ export interface JobTaskDbtTask {
      */
     schema?: string;
     /**
-     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * The ID of the SQL warehouse that dbt should execute against.
      */
     warehouseId?: string;
 }
@@ -1663,19 +1873,19 @@ export interface JobTaskDependsOn {
 export interface JobTaskEmailNotifications {
     alertOnLastAttempt?: boolean;
     /**
-     * (Bool) don't send alert for skipped runs
+     * (Bool) don't send alert for skipped runs.
      */
     noAlertForSkippedRuns?: boolean;
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run fails.
      */
     onFailures?: string[];
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run starts.
      */
     onStarts?: string[];
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run completes successfully.
      */
     onSuccesses?: string[];
 }
@@ -1713,6 +1923,7 @@ export interface JobTaskNewCluster {
     azureAttributes?: outputs.JobTaskNewClusterAzureAttributes;
     clusterId?: string;
     clusterLogConf?: outputs.JobTaskNewClusterClusterLogConf;
+    clusterMountInfos?: outputs.JobTaskNewClusterClusterMountInfo[];
     clusterName?: string;
     customTags?: {[key: string]: any};
     dataSecurityMode?: string;
@@ -1778,10 +1989,21 @@ export interface JobTaskNewClusterClusterLogConfS3 {
     region?: string;
 }
 
+export interface JobTaskNewClusterClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: outputs.JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
 export interface JobTaskNewClusterDockerImage {
     basicAuth?: outputs.JobTaskNewClusterDockerImageBasicAuth;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url: string;
 }
@@ -1800,10 +2022,15 @@ export interface JobTaskNewClusterGcpAttributes {
 }
 
 export interface JobTaskNewClusterInitScript {
+    abfss?: outputs.JobTaskNewClusterInitScriptAbfss;
     dbfs?: outputs.JobTaskNewClusterInitScriptDbfs;
     file?: outputs.JobTaskNewClusterInitScriptFile;
     gcs?: outputs.JobTaskNewClusterInitScriptGcs;
     s3?: outputs.JobTaskNewClusterInitScriptS3;
+}
+
+export interface JobTaskNewClusterInitScriptAbfss {
+    destination?: string;
 }
 
 export interface JobTaskNewClusterInitScriptDbfs {
@@ -1843,9 +2070,13 @@ export interface JobTaskNotebookTask {
      */
     baseParameters?: {[key: string]: any};
     /**
-     * The absolute path of the databricks.Notebook to be run in the Databricks workspace. This path must begin with a slash. This field is required.
+     * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      */
     notebookPath: string;
+    /**
+     * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+     */
+    source?: string;
 }
 
 export interface JobTaskPipelineTask {
@@ -1869,7 +2100,7 @@ export interface JobTaskPythonWheelTask {
      */
     packageName?: string;
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * Parameters for the task
      */
     parameters?: string[];
 }
@@ -1881,25 +2112,25 @@ export interface JobTaskSparkJarTask {
      */
     mainClassName?: string;
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Parameters passed to the main method.
      */
     parameters?: string[];
 }
 
 export interface JobTaskSparkPythonTask {
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Command line parameters passed to the Python file.
      */
     parameters?: string[];
     /**
-     * The URI of the Python file to be executed. databricks.DbfsFile and S3 paths are supported. This field is required.
+     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
      */
     pythonFile: string;
 }
 
 export interface JobTaskSparkSubmitTask {
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Command-line parameters passed to spark submit.
      */
     parameters?: string[];
 }
@@ -1941,28 +2172,37 @@ export interface JobTaskSqlTaskQuery {
 
 export interface JobWebhookNotifications {
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      */
     onFailures?: outputs.JobWebhookNotificationsOnFailure[];
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
     onStarts?: outputs.JobWebhookNotificationsOnStart[];
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      */
     onSuccesses?: outputs.JobWebhookNotificationsOnSuccess[];
 }
 
 export interface JobWebhookNotificationsOnFailure {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     */
     id: string;
 }
 
 export interface JobWebhookNotificationsOnStart {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     */
     id: string;
 }
 
 export interface JobWebhookNotificationsOnSuccess {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     */
     id: string;
 }
 
@@ -2009,6 +2249,12 @@ export interface MetastoreDataAccessAzureServicePrincipal {
      * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
      */
     directoryId: string;
+}
+
+export interface MetastoreDataAccessGcpServiceAccountKey {
+    email: string;
+    privateKey: string;
+    privateKeyId: string;
 }
 
 export interface MlflowModelTag {
@@ -2110,16 +2356,49 @@ export interface MwsNetworksErrorMessage {
     errorType?: string;
 }
 
+export interface MwsNetworksGcpNetworkInfo {
+    /**
+     * The Google Cloud project ID of the VPC network.
+     */
+    networkProjectId: string;
+    /**
+     * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
+     */
+    podIpRangeName: string;
+    /**
+     * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
+     */
+    serviceIpRangeName: string;
+    /**
+     * The ID of the subnet associated with this network.
+     */
+    subnetId: string;
+    /**
+     * The Google Cloud region of the workspace data plane. For example, `us-east4`.
+     */
+    subnetRegion: string;
+    /**
+     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     */
+    vpcId: string;
+}
+
 export interface MwsNetworksVpcEndpoints {
     dataplaneRelays: string[];
     restApis: string[];
 }
 
-export interface MwsWorkspacesCloudResourceBucket {
-    gcp: outputs.MwsWorkspacesCloudResourceBucketGcp;
+export interface MwsWorkspacesCloudResourceContainer {
+    /**
+     * A block that consists of the following field:
+     */
+    gcp: outputs.MwsWorkspacesCloudResourceContainerGcp;
 }
 
-export interface MwsWorkspacesCloudResourceBucketGcp {
+export interface MwsWorkspacesCloudResourceContainerGcp {
+    /**
+     * The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
+     */
     projectId: string;
 }
 
@@ -2129,21 +2408,21 @@ export interface MwsWorkspacesExternalCustomerInfo {
     customerName: string;
 }
 
-export interface MwsWorkspacesNetwork {
-    gcpCommonNetworkConfig: outputs.MwsWorkspacesNetworkGcpCommonNetworkConfig;
-    gcpManagedNetworkConfig?: outputs.MwsWorkspacesNetworkGcpManagedNetworkConfig;
-    networkId?: string;
-}
-
-export interface MwsWorkspacesNetworkGcpCommonNetworkConfig {
-    gkeClusterMasterIpRange: string;
-    gkeConnectivityType: string;
-}
-
-export interface MwsWorkspacesNetworkGcpManagedNetworkConfig {
+export interface MwsWorkspacesGcpManagedNetworkConfig {
     gkeClusterPodIpRange: string;
     gkeClusterServiceIpRange: string;
     subnetCidr: string;
+}
+
+export interface MwsWorkspacesGkeConfig {
+    /**
+     * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+     */
+    connectivityType: string;
+    /**
+     * The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
+     */
+    masterIpRange: string;
 }
 
 export interface MwsWorkspacesToken {
@@ -2176,10 +2455,12 @@ export interface PipelineCluster {
     applyPolicyDefaultValues?: boolean;
     autoscale?: outputs.PipelineClusterAutoscale;
     awsAttributes?: outputs.PipelineClusterAwsAttributes;
+    azureAttributes?: outputs.PipelineClusterAzureAttributes;
     clusterLogConf?: outputs.PipelineClusterClusterLogConf;
     customTags?: {[key: string]: any};
     driverInstancePoolId?: string;
     driverNodeTypeId: string;
+    enableLocalDiskEncryption: boolean;
     gcpAttributes?: outputs.PipelineClusterGcpAttributes;
     initScripts?: outputs.PipelineClusterInitScript[];
     instancePoolId?: string;
@@ -2199,9 +2480,20 @@ export interface PipelineClusterAutoscale {
 }
 
 export interface PipelineClusterAwsAttributes {
+    availability?: string;
+    ebsVolumeCount?: number;
+    ebsVolumeSize?: number;
+    ebsVolumeType?: string;
     firstOnDemand?: number;
     instanceProfileArn?: string;
+    spotBidPricePercent?: number;
     zoneId?: string;
+}
+
+export interface PipelineClusterAzureAttributes {
+    availability?: string;
+    firstOnDemand?: number;
+    spotBidMaxPrice?: number;
 }
 
 export interface PipelineClusterClusterLogConf {
@@ -2224,14 +2516,21 @@ export interface PipelineClusterClusterLogConfS3 {
 }
 
 export interface PipelineClusterGcpAttributes {
+    availability?: string;
     googleServiceAccount?: string;
+    zoneId?: string;
 }
 
 export interface PipelineClusterInitScript {
+    abfss?: outputs.PipelineClusterInitScriptAbfss;
     dbfs?: outputs.PipelineClusterInitScriptDbfs;
     file?: outputs.PipelineClusterInitScriptFile;
     gcs?: outputs.PipelineClusterInitScriptGcs;
     s3?: outputs.PipelineClusterInitScriptS3;
+}
+
+export interface PipelineClusterInitScriptAbfss {
+    destination?: string;
 }
 
 export interface PipelineClusterInitScriptDbfs {
@@ -2293,6 +2592,10 @@ export interface RecipientToken {
     id: string;
     updatedAt: number;
     updatedBy: string;
+}
+
+export interface RepoSparseCheckout {
+    patterns: string[];
 }
 
 export interface SecretScopeKeyvaultMetadata {
@@ -2373,7 +2676,13 @@ export interface SqlQueryParameterDate {
 }
 
 export interface SqlQueryParameterDateRange {
-    value: string;
+    range?: outputs.SqlQueryParameterDateRangeRange;
+    value?: string;
+}
+
+export interface SqlQueryParameterDateRangeRange {
+    end: string;
+    start: string;
 }
 
 export interface SqlQueryParameterDatetime {
@@ -2381,7 +2690,13 @@ export interface SqlQueryParameterDatetime {
 }
 
 export interface SqlQueryParameterDatetimeRange {
-    value: string;
+    range?: outputs.SqlQueryParameterDatetimeRangeRange;
+    value?: string;
+}
+
+export interface SqlQueryParameterDatetimeRangeRange {
+    end: string;
+    start: string;
 }
 
 export interface SqlQueryParameterDatetimesec {
@@ -2389,7 +2704,13 @@ export interface SqlQueryParameterDatetimesec {
 }
 
 export interface SqlQueryParameterDatetimesecRange {
-    value: string;
+    range?: outputs.SqlQueryParameterDatetimesecRangeRange;
+    value?: string;
+}
+
+export interface SqlQueryParameterDatetimesecRangeRange {
+    end: string;
+    start: string;
 }
 
 export interface SqlQueryParameterEnum {
@@ -2496,50 +2817,23 @@ export interface StorageCredentialAzureServicePrincipal {
     directoryId: string;
 }
 
+export interface StorageCredentialGcpServiceAccountKey {
+    email: string;
+    privateKey: string;
+    privateKeyId: string;
+}
+
 export interface TableColumn {
-    /**
-     * User-supplied free-form text.
-     */
     comment?: string;
-    /**
-     * User-visible name of column
-     */
     name: string;
-    /**
-     * Whether field is nullable (Default: `true`)
-     */
     nullable?: boolean;
-    /**
-     * Partition ID
-     */
     partitionIndex?: number;
-    /**
-     * Ordinal position of column, starting at 0.
-     */
     position: number;
-    /**
-     * Format of `INTERVAL` columns
-     */
     typeIntervalType?: string;
-    /**
-     * Column type spec (with metadata) as JSON string
-     */
     typeJson?: string;
-    /**
-     * Name of (outer) type
-     */
     typeName: string;
-    /**
-     * Digits of precision; applies to `DECIMAL` columns
-     */
     typePrecision?: number;
-    /**
-     * Digits to right of decimal; applies to `DECIMAL` columns
-     */
     typeScale?: number;
-    /**
-     * Column type spec (with metadata) as SQL text
-     */
     typeText: string;
 }
 

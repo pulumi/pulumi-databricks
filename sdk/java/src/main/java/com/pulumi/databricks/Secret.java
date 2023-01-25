@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.SecretScope;
  * import com.pulumi.databricks.Secret;
  * import com.pulumi.databricks.SecretArgs;
+ * import com.pulumi.databricks.Cluster;
+ * import com.pulumi.databricks.ClusterArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,6 +49,10 @@ import javax.annotation.Nullable;
  *             .key(&#34;publishing_api&#34;)
  *             .stringValue(data.azurerm_key_vault_secret().example().value())
  *             .scope(app.id())
+ *             .build());
+ * 
+ *         var this_ = new Cluster(&#34;this&#34;, ClusterArgs.builder()        
+ *             .sparkConf(Map.of(&#34;fs.azure.account.oauth2.client.secret&#34;, publishingApi.configReference()))
  *             .build());
  * 
  *     }
@@ -74,6 +80,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/secret:Secret")
 public class Secret extends com.pulumi.resources.CustomResource {
+    /**
+     * (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
+     * 
+     */
+    @Export(name="configReference", type=String.class, parameters={})
+    private Output<String> configReference;
+
+    /**
+     * @return (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
+     * 
+     */
+    public Output<String> configReference() {
+        return this.configReference;
+    }
     /**
      * (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      * 

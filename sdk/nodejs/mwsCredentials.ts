@@ -7,8 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * > **Note** This resource has an evolving API, which may change in future versions of the provider.
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";

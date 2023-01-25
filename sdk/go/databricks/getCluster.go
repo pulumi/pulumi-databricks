@@ -33,15 +33,23 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 // A collection of arguments for invoking getCluster.
 type LookupClusterArgs struct {
 	// The id of the cluster
-	ClusterId   string                 `pulumi:"clusterId"`
+	ClusterId *string `pulumi:"clusterId"`
+	// block, consisting of following fields:
 	ClusterInfo *GetClusterClusterInfo `pulumi:"clusterInfo"`
+	// The exact name of the cluster to search
+	ClusterName *string `pulumi:"clusterName"`
+	// cluster ID
+	Id *string `pulumi:"id"`
 }
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
-	ClusterId   string                `pulumi:"clusterId"`
+	ClusterId string `pulumi:"clusterId"`
+	// block, consisting of following fields:
 	ClusterInfo GetClusterClusterInfo `pulumi:"clusterInfo"`
-	// The provider-assigned unique ID for this managed resource.
+	// Cluster name, which doesn’t have to be unique.
+	ClusterName string `pulumi:"clusterName"`
+	// cluster ID
 	Id string `pulumi:"id"`
 }
 
@@ -61,8 +69,13 @@ func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts
 // A collection of arguments for invoking getCluster.
 type LookupClusterOutputArgs struct {
 	// The id of the cluster
-	ClusterId   pulumi.StringInput            `pulumi:"clusterId"`
+	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
+	// block, consisting of following fields:
 	ClusterInfo GetClusterClusterInfoPtrInput `pulumi:"clusterInfo"`
+	// The exact name of the cluster to search
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// cluster ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (LookupClusterOutputArgs) ElementType() reflect.Type {
@@ -88,11 +101,17 @@ func (o LookupClusterResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// block, consisting of following fields:
 func (o LookupClusterResultOutput) ClusterInfo() GetClusterClusterInfoOutput {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterClusterInfo { return v.ClusterInfo }).(GetClusterClusterInfoOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Cluster name, which doesn’t have to be unique.
+func (o LookupClusterResultOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// cluster ID
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }

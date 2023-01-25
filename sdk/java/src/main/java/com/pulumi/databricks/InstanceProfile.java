@@ -212,6 +212,69 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ## Usage with Databricks SQL serverless
+ * 
+ * When the instance profile ARN and its associated IAM role ARN don&#39;t match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aws.iam.IamFunctions;
+ * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+ * import com.pulumi.aws.iam.Role;
+ * import com.pulumi.aws.iam.RoleArgs;
+ * import com.pulumi.aws.iam.InstanceProfile;
+ * import com.pulumi.aws.iam.InstanceProfileArgs;
+ * import com.pulumi.databricks.InstanceProfile;
+ * import com.pulumi.databricks.InstanceProfileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var sqlServerlessAssumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+ *             .statements(GetPolicyDocumentStatementArgs.builder()
+ *                 .actions(&#34;sts:AssumeRole&#34;)
+ *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+ *                     .type(&#34;AWS&#34;)
+ *                     .identifiers(&#34;arn:aws:iam::790110701330:role/serverless-customer-resource-role&#34;)
+ *                     .build())
+ *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+ *                     .test(&#34;StringEquals&#34;)
+ *                     .variable(&#34;sts:ExternalID&#34;)
+ *                     .values(                    
+ *                         &#34;databricks-serverless-&lt;YOUR_WORKSPACE_ID1&gt;&#34;,
+ *                         &#34;databricks-serverless-&lt;YOUR_WORKSPACE_ID2&gt;&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var thisRole = new Role(&#34;thisRole&#34;, RoleArgs.builder()        
+ *             .assumeRolePolicy(sqlServerlessAssumeRole.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
+ *             .build());
+ * 
+ *         var thisInstanceProfile = new InstanceProfile(&#34;thisInstanceProfile&#34;, InstanceProfileArgs.builder()        
+ *             .role(thisRole.name())
+ *             .build());
+ * 
+ *         var thisIndex_instanceProfileInstanceProfile = new InstanceProfile(&#34;thisIndex/instanceProfileInstanceProfile&#34;, InstanceProfileArgs.builder()        
+ *             .instanceProfileArn(thisInstanceProfile.arn())
+ *             .iamRoleArn(thisRole.arn())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -225,18 +288,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/instanceProfile:InstanceProfile")
 public class InstanceProfile extends com.pulumi.resources.CustomResource {
     /**
+     * The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+     * 
+     */
+    @Export(name="iamRoleArn", type=String.class, parameters={})
+    private Output</* @Nullable */ String> iamRoleArn;
+
+    /**
+     * @return The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+     * 
+     */
+    public Output<Optional<String>> iamRoleArn() {
+        return Codegen.optional(this.iamRoleArn);
+    }
+    /**
      * `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      * 
      */
     @Export(name="instanceProfileArn", type=String.class, parameters={})
-    private Output</* @Nullable */ String> instanceProfileArn;
+    private Output<String> instanceProfileArn;
 
     /**
      * @return `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      * 
      */
-    public Output<Optional<String>> instanceProfileArn() {
-        return Codegen.optional(this.instanceProfileArn);
+    public Output<String> instanceProfileArn() {
+        return this.instanceProfileArn;
     }
     /**
      * Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
@@ -279,7 +356,7 @@ public class InstanceProfile extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceProfile(String name, @Nullable InstanceProfileArgs args) {
+    public InstanceProfile(String name, InstanceProfileArgs args) {
         this(name, args, null);
     }
     /**
@@ -288,7 +365,7 @@ public class InstanceProfile extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceProfile(String name, @Nullable InstanceProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public InstanceProfile(String name, InstanceProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/instanceProfile:InstanceProfile", name, args == null ? InstanceProfileArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

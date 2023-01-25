@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.RepoArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.RepoState;
+import com.pulumi.databricks.outputs.RepoSparseCheckout;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -81,6 +82,12 @@ public class Repo extends com.pulumi.resources.CustomResource {
      */
     public Output<String> path() {
         return this.path;
+    }
+    @Export(name="sparseCheckout", type=RepoSparseCheckout.class, parameters={})
+    private Output</* @Nullable */ RepoSparseCheckout> sparseCheckout;
+
+    public Output<Optional<RepoSparseCheckout>> sparseCheckout() {
+        return Codegen.optional(this.sparseCheckout);
     }
     /**
      * name of the tag for initial checkout.  Conflicts with `branch`.

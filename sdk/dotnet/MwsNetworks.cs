@@ -30,7 +30,13 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.MwsNetworksErrorMessage>> ErrorMessages { get; private set; } = null!;
 
         /// <summary>
-        /// (String) id of network to be used for databricks_mws_workspace resource.
+        /// a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        /// </summary>
+        [Output("gcpNetworkInfo")]
+        public Output<Outputs.MwsNetworksGcpNetworkInfo?> GcpNetworkInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// (String) id of network to be used for databricks.MwsWorkspaces resource.
         /// </summary>
         [Output("networkId")]
         public Output<string> NetworkId { get; private set; } = null!;
@@ -53,8 +59,11 @@ namespace Pulumi.Databricks
         [Output("vpcEndpoints")]
         public Output<Outputs.MwsNetworksVpcEndpoints> VpcEndpoints { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        /// </summary>
         [Output("vpcId")]
-        public Output<string> VpcId { get; private set; } = null!;
+        public Output<string?> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// (String) VPC attachment status
@@ -146,7 +155,13 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// (String) id of network to be used for databricks_mws_workspace resource.
+        /// a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        /// </summary>
+        [Input("gcpNetworkInfo")]
+        public Input<Inputs.MwsNetworksGcpNetworkInfoArgs>? GcpNetworkInfo { get; set; }
+
+        /// <summary>
+        /// (String) id of network to be used for databricks.MwsWorkspaces resource.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
@@ -157,7 +172,7 @@ namespace Pulumi.Databricks
         [Input("networkName", required: true)]
         public Input<string> NetworkName { get; set; } = null!;
 
-        [Input("securityGroupIds", required: true)]
+        [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
         public InputList<string> SecurityGroupIds
         {
@@ -165,7 +180,7 @@ namespace Pulumi.Databricks
             set => _securityGroupIds = value;
         }
 
-        [Input("subnetIds", required: true)]
+        [Input("subnetIds")]
         private InputList<string>? _subnetIds;
         public InputList<string> SubnetIds
         {
@@ -179,8 +194,11 @@ namespace Pulumi.Databricks
         [Input("vpcEndpoints")]
         public Input<Inputs.MwsNetworksVpcEndpointsArgs>? VpcEndpoints { get; set; }
 
-        [Input("vpcId", required: true)]
-        public Input<string> VpcId { get; set; } = null!;
+        /// <summary>
+        /// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// (String) VPC attachment status
@@ -230,7 +248,13 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// (String) id of network to be used for databricks_mws_workspace resource.
+        /// a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        /// </summary>
+        [Input("gcpNetworkInfo")]
+        public Input<Inputs.MwsNetworksGcpNetworkInfoGetArgs>? GcpNetworkInfo { get; set; }
+
+        /// <summary>
+        /// (String) id of network to be used for databricks.MwsWorkspaces resource.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
@@ -263,6 +287,9 @@ namespace Pulumi.Databricks
         [Input("vpcEndpoints")]
         public Input<Inputs.MwsNetworksVpcEndpointsGetArgs>? VpcEndpoints { get; set; }
 
+        /// <summary>
+        /// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

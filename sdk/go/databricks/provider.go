@@ -46,19 +46,19 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.AzureClientSecret != nil {
-		args.AzureClientSecret = pulumi.ToSecret(args.AzureClientSecret).(pulumi.StringPtrOutput)
+		args.AzureClientSecret = pulumi.ToSecret(args.AzureClientSecret).(pulumi.StringPtrInput)
 	}
 	if args.ClientSecret != nil {
-		args.ClientSecret = pulumi.ToSecret(args.ClientSecret).(pulumi.StringPtrOutput)
+		args.ClientSecret = pulumi.ToSecret(args.ClientSecret).(pulumi.StringPtrInput)
 	}
 	if args.GoogleCredentials != nil {
-		args.GoogleCredentials = pulumi.ToSecret(args.GoogleCredentials).(pulumi.StringPtrOutput)
+		args.GoogleCredentials = pulumi.ToSecret(args.GoogleCredentials).(pulumi.StringPtrInput)
 	}
 	if args.Password != nil {
-		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrOutput)
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
 	if args.Token != nil {
-		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrOutput)
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"azureClientSecret",

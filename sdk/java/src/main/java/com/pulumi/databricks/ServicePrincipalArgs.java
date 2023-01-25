@@ -62,14 +62,14 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * This is the application id of the given service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
+     * This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
      * 
      */
     @Import(name="applicationId")
     private @Nullable Output<String> applicationId;
 
     /**
-     * @return This is the application id of the given service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
+     * @return This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
      * 
      */
     public Optional<Output<String>> applicationId() {
@@ -129,6 +129,36 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    @Import(name="home")
+    private @Nullable Output<String> home;
+
+    /**
+     * @return Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    public Optional<Output<String>> home() {
+        return Optional.ofNullable(this.home);
+    }
+
+    /**
+     * Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    @Import(name="repos")
+    private @Nullable Output<String> repos;
+
+    /**
+     * @return Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    public Optional<Output<String>> repos() {
+        return Optional.ofNullable(this.repos);
+    }
+
+    /**
      * This is a field to allow the group to have access to Databricks Workspace.
      * 
      */
@@ -154,6 +184,8 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
         this.displayName = $.displayName;
         this.externalId = $.externalId;
         this.force = $.force;
+        this.home = $.home;
+        this.repos = $.repos;
         this.workspaceAccess = $.workspaceAccess;
     }
 
@@ -239,7 +271,7 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param applicationId This is the application id of the given service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
+         * @param applicationId This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
          * 
          * @return builder
          * 
@@ -250,7 +282,7 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param applicationId This is the application id of the given service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
+         * @param applicationId This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
          * 
          * @return builder
          * 
@@ -329,6 +361,48 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
 
         public Builder force(Boolean force) {
             return force(Output.of(force));
+        }
+
+        /**
+         * @param home Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder home(@Nullable Output<String> home) {
+            $.home = home;
+            return this;
+        }
+
+        /**
+         * @param home Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder home(String home) {
+            return home(Output.of(home));
+        }
+
+        /**
+         * @param repos Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repos(@Nullable Output<String> repos) {
+            $.repos = repos;
+            return this;
+        }
+
+        /**
+         * @param repos Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repos(String repos) {
+            return repos(Output.of(repos));
         }
 
         /**

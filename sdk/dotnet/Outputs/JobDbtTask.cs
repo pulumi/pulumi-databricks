@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobDbtTask
     {
         /// <summary>
+        /// The name of the catalog to use inside Unity Catalog.
+        /// </summary>
+        public readonly string? Catalog;
+        /// <summary>
         /// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
         /// </summary>
         public readonly ImmutableArray<string> Commands;
@@ -30,12 +34,14 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Schema;
         /// <summary>
-        /// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        /// The ID of the SQL warehouse that dbt should execute against.
         /// </summary>
         public readonly string? WarehouseId;
 
         [OutputConstructor]
         private JobDbtTask(
+            string? catalog,
+
             ImmutableArray<string> commands,
 
             string? profilesDirectory,
@@ -46,6 +52,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? warehouseId)
         {
+            Catalog = catalog;
             Commands = commands;
             ProfilesDirectory = profilesDirectory;
             ProjectDirectory = projectDirectory;

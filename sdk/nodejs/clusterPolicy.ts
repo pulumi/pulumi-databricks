@@ -77,9 +77,13 @@ export class ClusterPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
      */
-    public readonly definition!: pulumi.Output<string | undefined>;
+    public readonly definition!: pulumi.Output<string>;
+    /**
+     * Maximum number of clusters allowed per user. When omitted, there is no limit.
+     */
+    public readonly maxClustersPerUser!: pulumi.Output<number | undefined>;
     /**
      * Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
      */
@@ -96,18 +100,23 @@ export class ClusterPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ClusterPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ClusterPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterPolicyArgs | ClusterPolicyState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterPolicyState | undefined;
             resourceInputs["definition"] = state ? state.definition : undefined;
+            resourceInputs["maxClustersPerUser"] = state ? state.maxClustersPerUser : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["policyId"] = state ? state.policyId : undefined;
         } else {
             const args = argsOrState as ClusterPolicyArgs | undefined;
+            if ((!args || args.definition === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'definition'");
+            }
             resourceInputs["definition"] = args ? args.definition : undefined;
+            resourceInputs["maxClustersPerUser"] = args ? args.maxClustersPerUser : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["policyId"] = undefined /*out*/;
         }
@@ -121,9 +130,13 @@ export class ClusterPolicy extends pulumi.CustomResource {
  */
 export interface ClusterPolicyState {
     /**
-     * Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
      */
     definition?: pulumi.Input<string>;
+    /**
+     * Maximum number of clusters allowed per user. When omitted, there is no limit.
+     */
+    maxClustersPerUser?: pulumi.Input<number>;
     /**
      * Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
      */
@@ -139,9 +152,13 @@ export interface ClusterPolicyState {
  */
 export interface ClusterPolicyArgs {
     /**
-     * Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
      */
-    definition?: pulumi.Input<string>;
+    definition: pulumi.Input<string>;
+    /**
+     * Maximum number of clusters allowed per user. When omitted, there is no limit.
+     */
+    maxClustersPerUser?: pulumi.Input<number>;
     /**
      * Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
      */

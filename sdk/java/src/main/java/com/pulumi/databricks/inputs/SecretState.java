@@ -17,6 +17,21 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     public static final SecretState Empty = new SecretState();
 
     /**
+     * (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
+     * 
+     */
+    @Import(name="configReference")
+    private @Nullable Output<String> configReference;
+
+    /**
+     * @return (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
+     * 
+     */
+    public Optional<Output<String>> configReference() {
+        return Optional.ofNullable(this.configReference);
+    }
+
+    /**
      * (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      * 
      */
@@ -79,6 +94,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     private SecretState() {}
 
     private SecretState(SecretState $) {
+        this.configReference = $.configReference;
         this.key = $.key;
         this.lastUpdatedTimestamp = $.lastUpdatedTimestamp;
         this.scope = $.scope;
@@ -101,6 +117,27 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SecretState defaults) {
             $ = new SecretState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param configReference (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configReference(@Nullable Output<String> configReference) {
+            $.configReference = configReference;
+            return this;
+        }
+
+        /**
+         * @param configReference (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configReference(String configReference) {
+            return configReference(Output.of(configReference));
         }
 
         /**

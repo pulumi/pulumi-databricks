@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sandbox, err := databricks.GetSchemas(ctx, &GetSchemasArgs{
+//			sandbox, err := databricks.GetSchemas(ctx, &databricks.GetSchemasArgs{
 //				CatalogName: "sandbox",
 //			}, nil)
 //			if err != nil {

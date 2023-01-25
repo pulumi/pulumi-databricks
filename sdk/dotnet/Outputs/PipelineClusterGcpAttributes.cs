@@ -13,12 +13,21 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineClusterGcpAttributes
     {
+        public readonly string? Availability;
         public readonly string? GoogleServiceAccount;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
-        private PipelineClusterGcpAttributes(string? googleServiceAccount)
+        private PipelineClusterGcpAttributes(
+            string? availability,
+
+            string? googleServiceAccount,
+
+            string? zoneId)
         {
+            Availability = availability;
             GoogleServiceAccount = googleServiceAccount;
+            ZoneId = zoneId;
         }
     }
 }

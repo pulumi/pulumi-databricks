@@ -47,6 +47,7 @@ export class SqlQuery extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly parameters!: pulumi.Output<outputs.SqlQueryParameter[] | undefined>;
+    public readonly parent!: pulumi.Output<string | undefined>;
     public readonly query!: pulumi.Output<string>;
     public readonly runAsRole!: pulumi.Output<string | undefined>;
     public readonly schedule!: pulumi.Output<outputs.SqlQuerySchedule | undefined>;
@@ -69,6 +70,7 @@ export class SqlQuery extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["query"] = state ? state.query : undefined;
             resourceInputs["runAsRole"] = state ? state.runAsRole : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
@@ -85,6 +87,7 @@ export class SqlQuery extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["query"] = args ? args.query : undefined;
             resourceInputs["runAsRole"] = args ? args.runAsRole : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
@@ -103,6 +106,7 @@ export interface SqlQueryState {
     description?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     parameters?: pulumi.Input<pulumi.Input<inputs.SqlQueryParameter>[]>;
+    parent?: pulumi.Input<string>;
     query?: pulumi.Input<string>;
     runAsRole?: pulumi.Input<string>;
     schedule?: pulumi.Input<inputs.SqlQuerySchedule>;
@@ -117,6 +121,7 @@ export interface SqlQueryArgs {
     description?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     parameters?: pulumi.Input<pulumi.Input<inputs.SqlQueryParameter>[]>;
+    parent?: pulumi.Input<string>;
     query: pulumi.Input<string>;
     runAsRole?: pulumi.Input<string>;
     schedule?: pulumi.Input<inputs.SqlQuerySchedule>;

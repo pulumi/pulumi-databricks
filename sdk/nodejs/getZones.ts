@@ -11,15 +11,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const zones = pulumi.output(databricks.getZones());
+ * const zones = databricks.getZones({});
  * ```
  */
 export function getZones(opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getZones:getZones", {
     }, opts);
 }

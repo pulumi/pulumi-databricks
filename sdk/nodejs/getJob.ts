@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * const this = databricks.getJob({
  *     jobName: "My job",
  * });
- * export const clusterId = _this.then(_this => _this.jobSettings?.settings?.newCluster?.numWorkers);
+ * export const jobNumWorkers = _this.then(_this => _this.jobSettings?.settings?.newCluster?.numWorkers);
  * ```
  * ## Related Resources
  *
@@ -29,15 +29,14 @@ import * as utilities from "./utilities";
  */
 export function getJob(args?: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetJobResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getJob:getJob", {
+        "id": args.id,
         "jobId": args.jobId,
         "jobName": args.jobName,
         "jobSettings": args.jobSettings,
+        "name": args.name,
     }, opts);
 }
 
@@ -48,15 +47,17 @@ export interface GetJobArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
+    id?: string;
     jobId?: string;
-    /**
-     * the job name of databricks.Job if the resource was matched by id.
-     */
     jobName?: string;
     /**
      * the same fields as in databricks_job.
      */
     jobSettings?: inputs.GetJobJobSettings;
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     */
+    name?: string;
 }
 
 /**
@@ -64,25 +65,43 @@ export interface GetJobArgs {
  */
 export interface GetJobResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * the id of databricks.Job if the resource was matched by name.
      */
+    readonly id: string;
     readonly jobId: string;
-    /**
-     * the job name of databricks.Job if the resource was matched by id.
-     */
     readonly jobName: string;
     /**
      * the same fields as in databricks_job.
      */
     readonly jobSettings: outputs.GetJobJobSettings;
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     */
+    readonly name: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * Getting the existing cluster id of specific databricks.Job by name or by id:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getJob({
+ *     jobName: "My job",
+ * });
+ * export const jobNumWorkers = _this.then(_this => _this.jobSettings?.settings?.newCluster?.numWorkers);
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.getJobs data to get all jobs and their names from a workspace.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ */
 export function getJobOutput(args?: GetJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobResult> {
-    return pulumi.output(args).apply(a => getJob(a, opts))
+    return pulumi.output(args).apply((a: any) => getJob(a, opts))
 }
 
 /**
@@ -92,13 +111,15 @@ export interface GetJobOutputArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
+    id?: pulumi.Input<string>;
     jobId?: pulumi.Input<string>;
-    /**
-     * the job name of databricks.Job if the resource was matched by id.
-     */
     jobName?: pulumi.Input<string>;
     /**
      * the same fields as in databricks_job.
      */
     jobSettings?: pulumi.Input<inputs.GetJobJobSettingsArgs>;
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     */
+    name?: pulumi.Input<string>;
 }

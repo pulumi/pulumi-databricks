@@ -12,8 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class SqlQueryParameterDatetimesecRangeArgs : global::Pulumi.ResourceArgs
     {
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("range")]
+        public Input<Inputs.SqlQueryParameterDatetimesecRangeRangeArgs>? Range { get; set; }
+
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public SqlQueryParameterDatetimesecRangeArgs()
         {

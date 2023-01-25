@@ -23,6 +23,7 @@ type MetastoreDataAccess struct {
 	AzureManagedIdentity  MetastoreDataAccessAzureManagedIdentityPtrOutput  `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal MetastoreDataAccessAzureServicePrincipalPtrOutput `pulumi:"azureServicePrincipal"`
 	ConfigurationType     pulumi.StringOutput                               `pulumi:"configurationType"`
+	GcpServiceAccountKey  MetastoreDataAccessGcpServiceAccountKeyPtrOutput  `pulumi:"gcpServiceAccountKey"`
 	IsDefault             pulumi.BoolPtrOutput                              `pulumi:"isDefault"`
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
@@ -66,6 +67,7 @@ type metastoreDataAccessState struct {
 	AzureManagedIdentity  *MetastoreDataAccessAzureManagedIdentity  `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal *MetastoreDataAccessAzureServicePrincipal `pulumi:"azureServicePrincipal"`
 	ConfigurationType     *string                                   `pulumi:"configurationType"`
+	GcpServiceAccountKey  *MetastoreDataAccessGcpServiceAccountKey  `pulumi:"gcpServiceAccountKey"`
 	IsDefault             *bool                                     `pulumi:"isDefault"`
 	// Unique identifier of the parent Metastore
 	MetastoreId *string `pulumi:"metastoreId"`
@@ -78,6 +80,7 @@ type MetastoreDataAccessState struct {
 	AzureManagedIdentity  MetastoreDataAccessAzureManagedIdentityPtrInput
 	AzureServicePrincipal MetastoreDataAccessAzureServicePrincipalPtrInput
 	ConfigurationType     pulumi.StringPtrInput
+	GcpServiceAccountKey  MetastoreDataAccessGcpServiceAccountKeyPtrInput
 	IsDefault             pulumi.BoolPtrInput
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringPtrInput
@@ -94,6 +97,7 @@ type metastoreDataAccessArgs struct {
 	AzureManagedIdentity  *MetastoreDataAccessAzureManagedIdentity  `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal *MetastoreDataAccessAzureServicePrincipal `pulumi:"azureServicePrincipal"`
 	ConfigurationType     *string                                   `pulumi:"configurationType"`
+	GcpServiceAccountKey  *MetastoreDataAccessGcpServiceAccountKey  `pulumi:"gcpServiceAccountKey"`
 	IsDefault             *bool                                     `pulumi:"isDefault"`
 	// Unique identifier of the parent Metastore
 	MetastoreId string `pulumi:"metastoreId"`
@@ -107,6 +111,7 @@ type MetastoreDataAccessArgs struct {
 	AzureManagedIdentity  MetastoreDataAccessAzureManagedIdentityPtrInput
 	AzureServicePrincipal MetastoreDataAccessAzureServicePrincipalPtrInput
 	ConfigurationType     pulumi.StringPtrInput
+	GcpServiceAccountKey  MetastoreDataAccessGcpServiceAccountKeyPtrInput
 	IsDefault             pulumi.BoolPtrInput
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringInput
@@ -219,6 +224,12 @@ func (o MetastoreDataAccessOutput) AzureServicePrincipal() MetastoreDataAccessAz
 
 func (o MetastoreDataAccessOutput) ConfigurationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.StringOutput { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+func (o MetastoreDataAccessOutput) GcpServiceAccountKey() MetastoreDataAccessGcpServiceAccountKeyPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) MetastoreDataAccessGcpServiceAccountKeyPtrOutput {
+		return v.GcpServiceAccountKey
+	}).(MetastoreDataAccessGcpServiceAccountKeyPtrOutput)
 }
 
 func (o MetastoreDataAccessOutput) IsDefault() pulumi.BoolPtrOutput {

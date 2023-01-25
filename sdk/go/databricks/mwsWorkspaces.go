@@ -19,26 +19,31 @@ type MwsWorkspaces struct {
 
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// AWS region of VPC
-	AwsRegion           pulumi.StringPtrOutput                    `pulumi:"awsRegion"`
-	Cloud               pulumi.StringOutput                       `pulumi:"cloud"`
-	CloudResourceBucket MwsWorkspacesCloudResourceBucketPtrOutput `pulumi:"cloudResourceBucket"`
+	// region of VPC
+	AwsRegion pulumi.StringPtrOutput `pulumi:"awsRegion"`
+	Cloud     pulumi.StringOutput    `pulumi:"cloud"`
+	// A block that specifies GCP workspace configurations, consisting of following blocks:
+	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrOutput `pulumi:"cloudResourceContainer"`
 	// (Integer) time when workspace was created
 	CreationTime  pulumi.IntOutput       `pulumi:"creationTime"`
 	CredentialsId pulumi.StringPtrOutput `pulumi:"credentialsId"`
 	// Deprecated: Use managed_services_customer_managed_key_id instead
 	CustomerManagedKeyId pulumi.StringPtrOutput `pulumi:"customerManagedKeyId"`
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-	DeploymentName       pulumi.StringPtrOutput                     `pulumi:"deploymentName"`
-	ExternalCustomerInfo MwsWorkspacesExternalCustomerInfoPtrOutput `pulumi:"externalCustomerInfo"`
-	IsNoPublicIpEnabled  pulumi.BoolPtrOutput                       `pulumi:"isNoPublicIpEnabled"`
-	Location             pulumi.StringPtrOutput                     `pulumi:"location"`
+	DeploymentName          pulumi.StringPtrOutput                        `pulumi:"deploymentName"`
+	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrOutput    `pulumi:"externalCustomerInfo"`
+	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrOutput `pulumi:"gcpManagedNetworkConfig"`
+	// A block that specifies GKE configuration for the Databricks workspace:
+	GkeConfig           MwsWorkspacesGkeConfigPtrOutput `pulumi:"gkeConfig"`
+	IsNoPublicIpEnabled pulumi.BoolPtrOutput            `pulumi:"isNoPublicIpEnabled"`
+	// region of the subnet
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-	ManagedServicesCustomerManagedKeyId pulumi.StringPtrOutput        `pulumi:"managedServicesCustomerManagedKeyId"`
-	Network                             MwsWorkspacesNetworkPtrOutput `pulumi:"network"`
-	NetworkId                           pulumi.StringPtrOutput        `pulumi:"networkId"`
-	PricingTier                         pulumi.StringOutput           `pulumi:"pricingTier"`
-	PrivateAccessSettingsId             pulumi.StringPtrOutput        `pulumi:"privateAccessSettingsId"`
+	ManagedServicesCustomerManagedKeyId pulumi.StringPtrOutput `pulumi:"managedServicesCustomerManagedKeyId"`
+	// `networkId` from networks.
+	NetworkId               pulumi.StringPtrOutput `pulumi:"networkId"`
+	PricingTier             pulumi.StringOutput    `pulumi:"pricingTier"`
+	PrivateAccessSettingsId pulumi.StringPtrOutput `pulumi:"privateAccessSettingsId"`
 	// `storageConfigurationId` from storage configuration
 	StorageConfigurationId      pulumi.StringPtrOutput      `pulumi:"storageConfigurationId"`
 	StorageCustomerManagedKeyId pulumi.StringPtrOutput      `pulumi:"storageCustomerManagedKeyId"`
@@ -68,7 +73,7 @@ func NewMwsWorkspaces(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
 	if args.AccountId != nil {
-		args.AccountId = pulumi.ToSecret(args.AccountId).(pulumi.StringOutput)
+		args.AccountId = pulumi.ToSecret(args.AccountId).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"accountId",
@@ -98,26 +103,31 @@ func GetMwsWorkspaces(ctx *pulumi.Context,
 type mwsWorkspacesState struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId *string `pulumi:"accountId"`
-	// AWS region of VPC
-	AwsRegion           *string                           `pulumi:"awsRegion"`
-	Cloud               *string                           `pulumi:"cloud"`
-	CloudResourceBucket *MwsWorkspacesCloudResourceBucket `pulumi:"cloudResourceBucket"`
+	// region of VPC
+	AwsRegion *string `pulumi:"awsRegion"`
+	Cloud     *string `pulumi:"cloud"`
+	// A block that specifies GCP workspace configurations, consisting of following blocks:
+	CloudResourceContainer *MwsWorkspacesCloudResourceContainer `pulumi:"cloudResourceContainer"`
 	// (Integer) time when workspace was created
 	CreationTime  *int    `pulumi:"creationTime"`
 	CredentialsId *string `pulumi:"credentialsId"`
 	// Deprecated: Use managed_services_customer_managed_key_id instead
 	CustomerManagedKeyId *string `pulumi:"customerManagedKeyId"`
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-	DeploymentName       *string                            `pulumi:"deploymentName"`
-	ExternalCustomerInfo *MwsWorkspacesExternalCustomerInfo `pulumi:"externalCustomerInfo"`
-	IsNoPublicIpEnabled  *bool                              `pulumi:"isNoPublicIpEnabled"`
-	Location             *string                            `pulumi:"location"`
+	DeploymentName          *string                               `pulumi:"deploymentName"`
+	ExternalCustomerInfo    *MwsWorkspacesExternalCustomerInfo    `pulumi:"externalCustomerInfo"`
+	GcpManagedNetworkConfig *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
+	// A block that specifies GKE configuration for the Databricks workspace:
+	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
+	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
+	// region of the subnet
+	Location *string `pulumi:"location"`
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-	ManagedServicesCustomerManagedKeyId *string               `pulumi:"managedServicesCustomerManagedKeyId"`
-	Network                             *MwsWorkspacesNetwork `pulumi:"network"`
-	NetworkId                           *string               `pulumi:"networkId"`
-	PricingTier                         *string               `pulumi:"pricingTier"`
-	PrivateAccessSettingsId             *string               `pulumi:"privateAccessSettingsId"`
+	ManagedServicesCustomerManagedKeyId *string `pulumi:"managedServicesCustomerManagedKeyId"`
+	// `networkId` from networks.
+	NetworkId               *string `pulumi:"networkId"`
+	PricingTier             *string `pulumi:"pricingTier"`
+	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
 	// `storageConfigurationId` from storage configuration
 	StorageConfigurationId      *string             `pulumi:"storageConfigurationId"`
 	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
@@ -136,26 +146,31 @@ type mwsWorkspacesState struct {
 type MwsWorkspacesState struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringPtrInput
-	// AWS region of VPC
-	AwsRegion           pulumi.StringPtrInput
-	Cloud               pulumi.StringPtrInput
-	CloudResourceBucket MwsWorkspacesCloudResourceBucketPtrInput
+	// region of VPC
+	AwsRegion pulumi.StringPtrInput
+	Cloud     pulumi.StringPtrInput
+	// A block that specifies GCP workspace configurations, consisting of following blocks:
+	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrInput
 	// (Integer) time when workspace was created
 	CreationTime  pulumi.IntPtrInput
 	CredentialsId pulumi.StringPtrInput
 	// Deprecated: Use managed_services_customer_managed_key_id instead
 	CustomerManagedKeyId pulumi.StringPtrInput
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-	DeploymentName       pulumi.StringPtrInput
-	ExternalCustomerInfo MwsWorkspacesExternalCustomerInfoPtrInput
-	IsNoPublicIpEnabled  pulumi.BoolPtrInput
-	Location             pulumi.StringPtrInput
+	DeploymentName          pulumi.StringPtrInput
+	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrInput
+	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrInput
+	// A block that specifies GKE configuration for the Databricks workspace:
+	GkeConfig           MwsWorkspacesGkeConfigPtrInput
+	IsNoPublicIpEnabled pulumi.BoolPtrInput
+	// region of the subnet
+	Location pulumi.StringPtrInput
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId pulumi.StringPtrInput
-	Network                             MwsWorkspacesNetworkPtrInput
-	NetworkId                           pulumi.StringPtrInput
-	PricingTier                         pulumi.StringPtrInput
-	PrivateAccessSettingsId             pulumi.StringPtrInput
+	// `networkId` from networks.
+	NetworkId               pulumi.StringPtrInput
+	PricingTier             pulumi.StringPtrInput
+	PrivateAccessSettingsId pulumi.StringPtrInput
 	// `storageConfigurationId` from storage configuration
 	StorageConfigurationId      pulumi.StringPtrInput
 	StorageCustomerManagedKeyId pulumi.StringPtrInput
@@ -178,26 +193,31 @@ func (MwsWorkspacesState) ElementType() reflect.Type {
 type mwsWorkspacesArgs struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId string `pulumi:"accountId"`
-	// AWS region of VPC
-	AwsRegion           *string                           `pulumi:"awsRegion"`
-	Cloud               *string                           `pulumi:"cloud"`
-	CloudResourceBucket *MwsWorkspacesCloudResourceBucket `pulumi:"cloudResourceBucket"`
+	// region of VPC
+	AwsRegion *string `pulumi:"awsRegion"`
+	Cloud     *string `pulumi:"cloud"`
+	// A block that specifies GCP workspace configurations, consisting of following blocks:
+	CloudResourceContainer *MwsWorkspacesCloudResourceContainer `pulumi:"cloudResourceContainer"`
 	// (Integer) time when workspace was created
 	CreationTime  *int    `pulumi:"creationTime"`
 	CredentialsId *string `pulumi:"credentialsId"`
 	// Deprecated: Use managed_services_customer_managed_key_id instead
 	CustomerManagedKeyId *string `pulumi:"customerManagedKeyId"`
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-	DeploymentName       *string                            `pulumi:"deploymentName"`
-	ExternalCustomerInfo *MwsWorkspacesExternalCustomerInfo `pulumi:"externalCustomerInfo"`
-	IsNoPublicIpEnabled  *bool                              `pulumi:"isNoPublicIpEnabled"`
-	Location             *string                            `pulumi:"location"`
+	DeploymentName          *string                               `pulumi:"deploymentName"`
+	ExternalCustomerInfo    *MwsWorkspacesExternalCustomerInfo    `pulumi:"externalCustomerInfo"`
+	GcpManagedNetworkConfig *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
+	// A block that specifies GKE configuration for the Databricks workspace:
+	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
+	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
+	// region of the subnet
+	Location *string `pulumi:"location"`
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-	ManagedServicesCustomerManagedKeyId *string               `pulumi:"managedServicesCustomerManagedKeyId"`
-	Network                             *MwsWorkspacesNetwork `pulumi:"network"`
-	NetworkId                           *string               `pulumi:"networkId"`
-	PricingTier                         *string               `pulumi:"pricingTier"`
-	PrivateAccessSettingsId             *string               `pulumi:"privateAccessSettingsId"`
+	ManagedServicesCustomerManagedKeyId *string `pulumi:"managedServicesCustomerManagedKeyId"`
+	// `networkId` from networks.
+	NetworkId               *string `pulumi:"networkId"`
+	PricingTier             *string `pulumi:"pricingTier"`
+	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
 	// `storageConfigurationId` from storage configuration
 	StorageConfigurationId      *string             `pulumi:"storageConfigurationId"`
 	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
@@ -217,26 +237,31 @@ type mwsWorkspacesArgs struct {
 type MwsWorkspacesArgs struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringInput
-	// AWS region of VPC
-	AwsRegion           pulumi.StringPtrInput
-	Cloud               pulumi.StringPtrInput
-	CloudResourceBucket MwsWorkspacesCloudResourceBucketPtrInput
+	// region of VPC
+	AwsRegion pulumi.StringPtrInput
+	Cloud     pulumi.StringPtrInput
+	// A block that specifies GCP workspace configurations, consisting of following blocks:
+	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrInput
 	// (Integer) time when workspace was created
 	CreationTime  pulumi.IntPtrInput
 	CredentialsId pulumi.StringPtrInput
 	// Deprecated: Use managed_services_customer_managed_key_id instead
 	CustomerManagedKeyId pulumi.StringPtrInput
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-	DeploymentName       pulumi.StringPtrInput
-	ExternalCustomerInfo MwsWorkspacesExternalCustomerInfoPtrInput
-	IsNoPublicIpEnabled  pulumi.BoolPtrInput
-	Location             pulumi.StringPtrInput
+	DeploymentName          pulumi.StringPtrInput
+	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrInput
+	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrInput
+	// A block that specifies GKE configuration for the Databricks workspace:
+	GkeConfig           MwsWorkspacesGkeConfigPtrInput
+	IsNoPublicIpEnabled pulumi.BoolPtrInput
+	// region of the subnet
+	Location pulumi.StringPtrInput
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId pulumi.StringPtrInput
-	Network                             MwsWorkspacesNetworkPtrInput
-	NetworkId                           pulumi.StringPtrInput
-	PricingTier                         pulumi.StringPtrInput
-	PrivateAccessSettingsId             pulumi.StringPtrInput
+	// `networkId` from networks.
+	NetworkId               pulumi.StringPtrInput
+	PricingTier             pulumi.StringPtrInput
+	PrivateAccessSettingsId pulumi.StringPtrInput
 	// `storageConfigurationId` from storage configuration
 	StorageConfigurationId      pulumi.StringPtrInput
 	StorageCustomerManagedKeyId pulumi.StringPtrInput
@@ -344,7 +369,7 @@ func (o MwsWorkspacesOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// AWS region of VPC
+// region of VPC
 func (o MwsWorkspacesOutput) AwsRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.AwsRegion }).(pulumi.StringPtrOutput)
 }
@@ -353,8 +378,9 @@ func (o MwsWorkspacesOutput) Cloud() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.Cloud }).(pulumi.StringOutput)
 }
 
-func (o MwsWorkspacesOutput) CloudResourceBucket() MwsWorkspacesCloudResourceBucketPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesCloudResourceBucketPtrOutput { return v.CloudResourceBucket }).(MwsWorkspacesCloudResourceBucketPtrOutput)
+// A block that specifies GCP workspace configurations, consisting of following blocks:
+func (o MwsWorkspacesOutput) CloudResourceContainer() MwsWorkspacesCloudResourceContainerPtrOutput {
+	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesCloudResourceContainerPtrOutput { return v.CloudResourceContainer }).(MwsWorkspacesCloudResourceContainerPtrOutput)
 }
 
 // (Integer) time when workspace was created
@@ -380,10 +406,20 @@ func (o MwsWorkspacesOutput) ExternalCustomerInfo() MwsWorkspacesExternalCustome
 	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesExternalCustomerInfoPtrOutput { return v.ExternalCustomerInfo }).(MwsWorkspacesExternalCustomerInfoPtrOutput)
 }
 
+func (o MwsWorkspacesOutput) GcpManagedNetworkConfig() MwsWorkspacesGcpManagedNetworkConfigPtrOutput {
+	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesGcpManagedNetworkConfigPtrOutput { return v.GcpManagedNetworkConfig }).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
+}
+
+// A block that specifies GKE configuration for the Databricks workspace:
+func (o MwsWorkspacesOutput) GkeConfig() MwsWorkspacesGkeConfigPtrOutput {
+	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesGkeConfigPtrOutput { return v.GkeConfig }).(MwsWorkspacesGkeConfigPtrOutput)
+}
+
 func (o MwsWorkspacesOutput) IsNoPublicIpEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.BoolPtrOutput { return v.IsNoPublicIpEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// region of the subnet
 func (o MwsWorkspacesOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -393,10 +429,7 @@ func (o MwsWorkspacesOutput) ManagedServicesCustomerManagedKeyId() pulumi.String
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.ManagedServicesCustomerManagedKeyId }).(pulumi.StringPtrOutput)
 }
 
-func (o MwsWorkspacesOutput) Network() MwsWorkspacesNetworkPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesNetworkPtrOutput { return v.Network }).(MwsWorkspacesNetworkPtrOutput)
-}
-
+// `networkId` from networks.
 func (o MwsWorkspacesOutput) NetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.NetworkId }).(pulumi.StringPtrOutput)
 }

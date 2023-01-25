@@ -57,10 +57,16 @@ namespace Pulumi.Databricks
     public partial class ClusterPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        /// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
         /// </summary>
         [Output("definition")]
-        public Output<string?> Definition { get; private set; } = null!;
+        public Output<string> Definition { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum number of clusters allowed per user. When omitted, there is no limit.
+        /// </summary>
+        [Output("maxClustersPerUser")]
+        public Output<int?> MaxClustersPerUser { get; private set; } = null!;
 
         /// <summary>
         /// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
@@ -82,7 +88,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ClusterPolicy(string name, ClusterPolicyArgs? args = null, CustomResourceOptions? options = null)
+        public ClusterPolicy(string name, ClusterPolicyArgs args, CustomResourceOptions? options = null)
             : base("databricks:index/clusterPolicy:ClusterPolicy", name, args ?? new ClusterPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -121,10 +127,16 @@ namespace Pulumi.Databricks
     public sealed class ClusterPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        /// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
         /// </summary>
-        [Input("definition")]
-        public Input<string>? Definition { get; set; }
+        [Input("definition", required: true)]
+        public Input<string> Definition { get; set; } = null!;
+
+        /// <summary>
+        /// Maximum number of clusters allowed per user. When omitted, there is no limit.
+        /// </summary>
+        [Input("maxClustersPerUser")]
+        public Input<int>? MaxClustersPerUser { get; set; }
 
         /// <summary>
         /// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
@@ -141,10 +153,16 @@ namespace Pulumi.Databricks
     public sealed class ClusterPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        /// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
         /// </summary>
         [Input("definition")]
         public Input<string>? Definition { get; set; }
+
+        /// <summary>
+        /// Maximum number of clusters allowed per user. When omitted, there is no limit.
+        /// </summary>
+        [Input("maxClustersPerUser")]
+        public Input<int>? MaxClustersPerUser { get; set; }
 
         /// <summary>
         /// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.

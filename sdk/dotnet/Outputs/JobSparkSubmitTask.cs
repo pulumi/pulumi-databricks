@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobSparkSubmitTask
     {
         /// <summary>
-        /// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        /// (List) Command-line parameters passed to spark submit.
         /// </summary>
         public readonly ImmutableArray<string> Parameters;
 

@@ -37,7 +37,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// URL of the job on the given workspace
+        /// URL of the Git repository to use.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

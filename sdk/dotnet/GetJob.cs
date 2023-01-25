@@ -32,7 +32,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["clusterId"] = @this.Apply(getJobResult =&gt; getJobResult).Apply(@this =&gt; @this.Apply(getJobResult =&gt; getJobResult.JobSettings?.Settings?.NewCluster?.NumWorkers)),
+        ///         ["jobNumWorkers"] = @this.Apply(getJobResult =&gt; getJobResult).Apply(@this =&gt; @this.Apply(getJobResult =&gt; getJobResult.JobSettings?.Settings?.NewCluster?.NumWorkers)),
         ///     };
         /// });
         /// ```
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["clusterId"] = @this.Apply(getJobResult =&gt; getJobResult).Apply(@this =&gt; @this.Apply(getJobResult =&gt; getJobResult.JobSettings?.Settings?.NewCluster?.NumWorkers)),
+        ///         ["jobNumWorkers"] = @this.Apply(getJobResult =&gt; getJobResult).Apply(@this =&gt; @this.Apply(getJobResult =&gt; getJobResult.JobSettings?.Settings?.NewCluster?.NumWorkers)),
         ///     };
         /// });
         /// ```
@@ -92,12 +92,12 @@ namespace Pulumi.Databricks
         /// <summary>
         /// the id of databricks.Job if the resource was matched by name.
         /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
+
         [Input("jobId")]
         public string? JobId { get; set; }
 
-        /// <summary>
-        /// the job name of databricks.Job if the resource was matched by id.
-        /// </summary>
         [Input("jobName")]
         public string? JobName { get; set; }
 
@@ -106,6 +106,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("jobSettings")]
         public Inputs.GetJobJobSettingsArgs? JobSettings { get; set; }
+
+        /// <summary>
+        /// the job name of databricks.Job if the resource was matched by id.
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
 
         public GetJobArgs()
         {
@@ -118,12 +124,12 @@ namespace Pulumi.Databricks
         /// <summary>
         /// the id of databricks.Job if the resource was matched by name.
         /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
         [Input("jobId")]
         public Input<string>? JobId { get; set; }
 
-        /// <summary>
-        /// the job name of databricks.Job if the resource was matched by id.
-        /// </summary>
         [Input("jobName")]
         public Input<string>? JobName { get; set; }
 
@@ -132,6 +138,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("jobSettings")]
         public Input<Inputs.GetJobJobSettingsInputArgs>? JobSettings { get; set; }
+
+        /// <summary>
+        /// the job name of databricks.Job if the resource was matched by id.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public GetJobInvokeArgs()
         {
@@ -144,21 +156,19 @@ namespace Pulumi.Databricks
     public sealed class GetJobResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// the id of databricks.Job if the resource was matched by name.
         /// </summary>
+        public readonly string Id;
         public readonly string JobId;
-        /// <summary>
-        /// the job name of databricks.Job if the resource was matched by id.
-        /// </summary>
         public readonly string JobName;
         /// <summary>
         /// the same fields as in databricks_job.
         /// </summary>
         public readonly Outputs.GetJobJobSettingsResult JobSettings;
+        /// <summary>
+        /// the job name of databricks.Job if the resource was matched by id.
+        /// </summary>
+        public readonly string Name;
 
         [OutputConstructor]
         private GetJobResult(
@@ -168,12 +178,15 @@ namespace Pulumi.Databricks
 
             string jobName,
 
-            Outputs.GetJobJobSettingsResult jobSettings)
+            Outputs.GetJobJobSettingsResult jobSettings,
+
+            string name)
         {
             Id = id;
             JobId = jobId;
             JobName = jobName;
             JobSettings = jobSettings;
+            Name = name;
         }
     }
 }

@@ -17,167 +17,79 @@ public final class TableColumnArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TableColumnArgs Empty = new TableColumnArgs();
 
-    /**
-     * User-supplied free-form text.
-     * 
-     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
-    /**
-     * @return User-supplied free-form text.
-     * 
-     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
-    /**
-     * User-visible name of column
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return User-visible name of column
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * Whether field is nullable (Default: `true`)
-     * 
-     */
     @Import(name="nullable")
     private @Nullable Output<Boolean> nullable;
 
-    /**
-     * @return Whether field is nullable (Default: `true`)
-     * 
-     */
     public Optional<Output<Boolean>> nullable() {
         return Optional.ofNullable(this.nullable);
     }
 
-    /**
-     * Partition ID
-     * 
-     */
     @Import(name="partitionIndex")
     private @Nullable Output<Integer> partitionIndex;
 
-    /**
-     * @return Partition ID
-     * 
-     */
     public Optional<Output<Integer>> partitionIndex() {
         return Optional.ofNullable(this.partitionIndex);
     }
 
-    /**
-     * Ordinal position of column, starting at 0.
-     * 
-     */
     @Import(name="position", required=true)
     private Output<Integer> position;
 
-    /**
-     * @return Ordinal position of column, starting at 0.
-     * 
-     */
     public Output<Integer> position() {
         return this.position;
     }
 
-    /**
-     * Format of `INTERVAL` columns
-     * 
-     */
     @Import(name="typeIntervalType")
     private @Nullable Output<String> typeIntervalType;
 
-    /**
-     * @return Format of `INTERVAL` columns
-     * 
-     */
     public Optional<Output<String>> typeIntervalType() {
         return Optional.ofNullable(this.typeIntervalType);
     }
 
-    /**
-     * Column type spec (with metadata) as JSON string
-     * 
-     */
     @Import(name="typeJson")
     private @Nullable Output<String> typeJson;
 
-    /**
-     * @return Column type spec (with metadata) as JSON string
-     * 
-     */
     public Optional<Output<String>> typeJson() {
         return Optional.ofNullable(this.typeJson);
     }
 
-    /**
-     * Name of (outer) type
-     * 
-     */
     @Import(name="typeName", required=true)
     private Output<String> typeName;
 
-    /**
-     * @return Name of (outer) type
-     * 
-     */
     public Output<String> typeName() {
         return this.typeName;
     }
 
-    /**
-     * Digits of precision; applies to `DECIMAL` columns
-     * 
-     */
     @Import(name="typePrecision")
     private @Nullable Output<Integer> typePrecision;
 
-    /**
-     * @return Digits of precision; applies to `DECIMAL` columns
-     * 
-     */
     public Optional<Output<Integer>> typePrecision() {
         return Optional.ofNullable(this.typePrecision);
     }
 
-    /**
-     * Digits to right of decimal; applies to `DECIMAL` columns
-     * 
-     */
     @Import(name="typeScale")
     private @Nullable Output<Integer> typeScale;
 
-    /**
-     * @return Digits to right of decimal; applies to `DECIMAL` columns
-     * 
-     */
     public Optional<Output<Integer>> typeScale() {
         return Optional.ofNullable(this.typeScale);
     }
 
-    /**
-     * Column type spec (with metadata) as SQL text
-     * 
-     */
     @Import(name="typeText", required=true)
     private Output<String> typeText;
 
-    /**
-     * @return Column type spec (with metadata) as SQL text
-     * 
-     */
     public Output<String> typeText() {
         return this.typeText;
     }
@@ -216,233 +128,101 @@ public final class TableColumnArgs extends com.pulumi.resources.ResourceArgs {
             $ = new TableColumnArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param comment User-supplied free-form text.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
-        /**
-         * @param comment User-supplied free-form text.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
-        /**
-         * @param name User-visible name of column
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name User-visible name of column
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param nullable Whether field is nullable (Default: `true`)
-         * 
-         * @return builder
-         * 
-         */
         public Builder nullable(@Nullable Output<Boolean> nullable) {
             $.nullable = nullable;
             return this;
         }
 
-        /**
-         * @param nullable Whether field is nullable (Default: `true`)
-         * 
-         * @return builder
-         * 
-         */
         public Builder nullable(Boolean nullable) {
             return nullable(Output.of(nullable));
         }
 
-        /**
-         * @param partitionIndex Partition ID
-         * 
-         * @return builder
-         * 
-         */
         public Builder partitionIndex(@Nullable Output<Integer> partitionIndex) {
             $.partitionIndex = partitionIndex;
             return this;
         }
 
-        /**
-         * @param partitionIndex Partition ID
-         * 
-         * @return builder
-         * 
-         */
         public Builder partitionIndex(Integer partitionIndex) {
             return partitionIndex(Output.of(partitionIndex));
         }
 
-        /**
-         * @param position Ordinal position of column, starting at 0.
-         * 
-         * @return builder
-         * 
-         */
         public Builder position(Output<Integer> position) {
             $.position = position;
             return this;
         }
 
-        /**
-         * @param position Ordinal position of column, starting at 0.
-         * 
-         * @return builder
-         * 
-         */
         public Builder position(Integer position) {
             return position(Output.of(position));
         }
 
-        /**
-         * @param typeIntervalType Format of `INTERVAL` columns
-         * 
-         * @return builder
-         * 
-         */
         public Builder typeIntervalType(@Nullable Output<String> typeIntervalType) {
             $.typeIntervalType = typeIntervalType;
             return this;
         }
 
-        /**
-         * @param typeIntervalType Format of `INTERVAL` columns
-         * 
-         * @return builder
-         * 
-         */
         public Builder typeIntervalType(String typeIntervalType) {
             return typeIntervalType(Output.of(typeIntervalType));
         }
 
-        /**
-         * @param typeJson Column type spec (with metadata) as JSON string
-         * 
-         * @return builder
-         * 
-         */
         public Builder typeJson(@Nullable Output<String> typeJson) {
             $.typeJson = typeJson;
             return this;
         }
 
-        /**
-         * @param typeJson Column type spec (with metadata) as JSON string
-         * 
-         * @return builder
-         * 
-         */
         public Builder typeJson(String typeJson) {
             return typeJson(Output.of(typeJson));
         }
 
-        /**
-         * @param typeName Name of (outer) type
-         * 
-         * @return builder
-         * 
-         */
         public Builder typeName(Output<String> typeName) {
             $.typeName = typeName;
             return this;
         }
 
-        /**
-         * @param typeName Name of (outer) type
-         * 
-         * @return builder
-         * 
-         */
         public Builder typeName(String typeName) {
             return typeName(Output.of(typeName));
         }
 
-        /**
-         * @param typePrecision Digits of precision; applies to `DECIMAL` columns
-         * 
-         * @return builder
-         * 
-         */
         public Builder typePrecision(@Nullable Output<Integer> typePrecision) {
             $.typePrecision = typePrecision;
             return this;
         }
 
-        /**
-         * @param typePrecision Digits of precision; applies to `DECIMAL` columns
-         * 
-         * @return builder
-         * 
-         */
         public Builder typePrecision(Integer typePrecision) {
             return typePrecision(Output.of(typePrecision));
         }
 
-        /**
-         * @param typeScale Digits to right of decimal; applies to `DECIMAL` columns
-         * 
-         * @return builder
-         * 
-         */
         public Builder typeScale(@Nullable Output<Integer> typeScale) {
             $.typeScale = typeScale;
             return this;
         }
 
-        /**
-         * @param typeScale Digits to right of decimal; applies to `DECIMAL` columns
-         * 
-         * @return builder
-         * 
-         */
         public Builder typeScale(Integer typeScale) {
             return typeScale(Output.of(typeScale));
         }
 
-        /**
-         * @param typeText Column type spec (with metadata) as SQL text
-         * 
-         * @return builder
-         * 
-         */
         public Builder typeText(Output<String> typeText) {
             $.typeText = typeText;
             return this;
         }
 
-        /**
-         * @param typeText Column type spec (with metadata) as SQL text
-         * 
-         * @return builder
-         * 
-         */
         public Builder typeText(String typeText) {
             return typeText(Output.of(typeText));
         }

@@ -26,11 +26,8 @@ import * as utilities from "./utilities";
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getSchemas(args: GetSchemasArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemasResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getSchemas:getSchemas", {
         "catalogName": args.catalogName,
         "ids": args.ids,
@@ -65,9 +62,29 @@ export interface GetSchemasResult {
      */
     readonly ids: string[];
 }
-
+/**
+ * ## Example Usage
+ *
+ * Listing all schemas in a _sandbox_ databricks_catalog:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const sandbox = databricks.getSchemas({
+ *     catalogName: "sandbox",
+ * });
+ * export const allSandboxSchemas = sandbox;
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Schema to manage schemas within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
+ */
 export function getSchemasOutput(args: GetSchemasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchemasResult> {
-    return pulumi.output(args).apply(a => getSchemas(a, opts))
+    return pulumi.output(args).apply((a: any) => getSchemas(a, opts))
 }
 
 /**

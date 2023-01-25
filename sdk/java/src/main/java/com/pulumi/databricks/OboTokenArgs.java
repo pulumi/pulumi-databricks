@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
@@ -33,30 +35,30 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
      * Comment that describes the purpose of the token.
      * 
      */
-    @Import(name="comment", required=true)
-    private Output<String> comment;
+    @Import(name="comment")
+    private @Nullable Output<String> comment;
 
     /**
      * @return Comment that describes the purpose of the token.
      * 
      */
-    public Output<String> comment() {
-        return this.comment;
+    public Optional<Output<String>> comment() {
+        return Optional.ofNullable(this.comment);
     }
 
     /**
-     * The number of seconds before the token expires. Token resource is re-created when it expires.
+     * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      * 
      */
-    @Import(name="lifetimeSeconds", required=true)
-    private Output<Integer> lifetimeSeconds;
+    @Import(name="lifetimeSeconds")
+    private @Nullable Output<Integer> lifetimeSeconds;
 
     /**
-     * @return The number of seconds before the token expires. Token resource is re-created when it expires.
+     * @return The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      * 
      */
-    public Output<Integer> lifetimeSeconds() {
-        return this.lifetimeSeconds;
+    public Optional<Output<Integer>> lifetimeSeconds() {
+        return Optional.ofNullable(this.lifetimeSeconds);
     }
 
     private OboTokenArgs() {}
@@ -112,7 +114,7 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder comment(Output<String> comment) {
+        public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
@@ -128,18 +130,18 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifetimeSeconds The number of seconds before the token expires. Token resource is re-created when it expires.
+         * @param lifetimeSeconds The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
          * 
          * @return builder
          * 
          */
-        public Builder lifetimeSeconds(Output<Integer> lifetimeSeconds) {
+        public Builder lifetimeSeconds(@Nullable Output<Integer> lifetimeSeconds) {
             $.lifetimeSeconds = lifetimeSeconds;
             return this;
         }
 
         /**
-         * @param lifetimeSeconds The number of seconds before the token expires. Token resource is re-created when it expires.
+         * @param lifetimeSeconds The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
          * 
          * @return builder
          * 
@@ -150,8 +152,6 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
 
         public OboTokenArgs build() {
             $.applicationId = Objects.requireNonNull($.applicationId, "expected parameter 'applicationId' to be non-null");
-            $.comment = Objects.requireNonNull($.comment, "expected parameter 'comment' to be non-null");
-            $.lifetimeSeconds = Objects.requireNonNull($.lifetimeSeconds, "expected parameter 'lifetimeSeconds' to be non-null");
             return $;
         }
     }

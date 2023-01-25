@@ -49,14 +49,14 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Full name of the object, e.g. `catalog.schema.name` for a table.
+     * Name of share. Change forces creation of a new resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Full name of the object, e.g. `catalog.schema.name` for a table.
+     * @return Name of share. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -140,7 +140,7 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Full name of the object, e.g. `catalog.schema.name` for a table.
+         * @param name Name of share. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Full name of the object, e.g. `catalog.schema.name` for a table.
+         * @param name Name of share. Change forces creation of a new resource.
          * 
          * @return builder
          * 

@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobDbtTask {
     /**
+     * @return The name of the catalog to use inside Unity Catalog.
+     * 
+     */
+    private @Nullable String catalog;
+    /**
      * @return (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
      * 
      */
@@ -33,12 +38,19 @@ public final class JobDbtTask {
      */
     private @Nullable String schema;
     /**
-     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * @return The ID of the SQL warehouse that dbt should execute against.
      * 
      */
     private @Nullable String warehouseId;
 
     private JobDbtTask() {}
+    /**
+     * @return The name of the catalog to use inside Unity Catalog.
+     * 
+     */
+    public Optional<String> catalog() {
+        return Optional.ofNullable(this.catalog);
+    }
     /**
      * @return (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
      * 
@@ -68,7 +80,7 @@ public final class JobDbtTask {
         return Optional.ofNullable(this.schema);
     }
     /**
-     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * @return The ID of the SQL warehouse that dbt should execute against.
      * 
      */
     public Optional<String> warehouseId() {
@@ -84,6 +96,7 @@ public final class JobDbtTask {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String catalog;
         private List<String> commands;
         private @Nullable String profilesDirectory;
         private @Nullable String projectDirectory;
@@ -92,6 +105,7 @@ public final class JobDbtTask {
         public Builder() {}
         public Builder(JobDbtTask defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.catalog = defaults.catalog;
     	      this.commands = defaults.commands;
     	      this.profilesDirectory = defaults.profilesDirectory;
     	      this.projectDirectory = defaults.projectDirectory;
@@ -99,6 +113,11 @@ public final class JobDbtTask {
     	      this.warehouseId = defaults.warehouseId;
         }
 
+        @CustomType.Setter
+        public Builder catalog(@Nullable String catalog) {
+            this.catalog = catalog;
+            return this;
+        }
         @CustomType.Setter
         public Builder commands(List<String> commands) {
             this.commands = Objects.requireNonNull(commands);
@@ -129,6 +148,7 @@ public final class JobDbtTask {
         }
         public JobDbtTask build() {
             final var o = new JobDbtTask();
+            o.catalog = catalog;
             o.commands = commands;
             o.profilesDirectory = profilesDirectory;
             o.projectDirectory = projectDirectory;

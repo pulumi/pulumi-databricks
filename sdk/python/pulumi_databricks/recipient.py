@@ -271,6 +271,28 @@ class Recipient(pulumi.CustomResource):
         A `Recipient` is contained within Metastore and can have permissions to `SELECT` from a list of shares.
 
         ## Example Usage
+        ### Databricks Sharing with non databricks recipient
+
+        Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
+        authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_random as random
+
+        db2opensharecode = random.RandomPassword("db2opensharecode",
+            length=16,
+            special=True)
+        current = databricks.get_current_user()
+        db2open = databricks.Recipient("db2open",
+            comment="made by terraform",
+            authentication_type="TOKEN",
+            sharing_code=db2opensharecode.result,
+            ip_access_list=databricks.RecipientIpAccessListArgs(
+                allowed_ip_addresses=[],
+            ))
+        ```
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -301,6 +323,28 @@ class Recipient(pulumi.CustomResource):
         A `Recipient` is contained within Metastore and can have permissions to `SELECT` from a list of shares.
 
         ## Example Usage
+        ### Databricks Sharing with non databricks recipient
+
+        Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
+        authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_random as random
+
+        db2opensharecode = random.RandomPassword("db2opensharecode",
+            length=16,
+            special=True)
+        current = databricks.get_current_user()
+        db2open = databricks.Recipient("db2open",
+            comment="made by terraform",
+            authentication_type="TOKEN",
+            sharing_code=db2opensharecode.result,
+            ip_access_list=databricks.RecipientIpAccessListArgs(
+                allowed_ip_addresses=[],
+            ))
+        ```
         ## Related Resources
 
         The following resources are often used in the same context:

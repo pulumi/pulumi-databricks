@@ -29,14 +29,14 @@ public final class GroupRoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is the AWS role ARN.
+     * Either a role name or the ARN/ID of the instance profile resource.
      * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
 
     /**
-     * @return This is the AWS role ARN.
+     * @return Either a role name or the ARN/ID of the instance profile resource.
      * 
      */
     public Output<String> role() {
@@ -90,7 +90,7 @@ public final class GroupRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param role This is the AWS role ARN.
+         * @param role Either a role name or the ARN/ID of the instance profile resource.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class GroupRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param role This is the AWS role ARN.
+         * @param role Either a role name or the ARN/ID of the instance profile resource.
          * 
          * @return builder
          * 

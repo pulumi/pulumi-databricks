@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.JobWebhookNotificationsOnFailureGetArgs>? _onFailures;
 
         /// <summary>
-        /// (List) list of emails to notify on failure
+        /// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
         /// </summary>
         public InputList<Inputs.JobWebhookNotificationsOnFailureGetArgs> OnFailures
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.JobWebhookNotificationsOnStartGetArgs>? _onStarts;
 
         /// <summary>
-        /// (List) list of emails to notify on failure
+        /// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
         /// </summary>
         public InputList<Inputs.JobWebhookNotificationsOnStartGetArgs> OnStarts
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.JobWebhookNotificationsOnSuccessGetArgs>? _onSuccesses;
 
         /// <summary>
-        /// (List) list of emails to notify on failure
+        /// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
         /// </summary>
         public InputList<Inputs.JobWebhookNotificationsOnSuccessGetArgs> OnSuccesses
         {

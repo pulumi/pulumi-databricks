@@ -20,6 +20,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "databricks:index/awsS3Mount:AwsS3Mount":
+		r = &AwsS3Mount{}
+	case "databricks:index/azureAdlsGen1Mount:AzureAdlsGen1Mount":
+		r = &AzureAdlsGen1Mount{}
+	case "databricks:index/azureAdlsGen2Mount:AzureAdlsGen2Mount":
+		r = &AzureAdlsGen2Mount{}
+	case "databricks:index/azureBlobMount:AzureBlobMount":
+		r = &AzureBlobMount{}
 	case "databricks:index/catalog:Catalog":
 		r = &Catalog{}
 	case "databricks:index/cluster:Cluster":
@@ -64,6 +72,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MetastoreAssignment{}
 	case "databricks:index/metastoreDataAccess:MetastoreDataAccess":
 		r = &MetastoreDataAccess{}
+	case "databricks:index/metastoreProvider:MetastoreProvider":
+		r = &MetastoreProvider{}
 	case "databricks:index/mlflowExperiment:MlflowExperiment":
 		r = &MlflowExperiment{}
 	case "databricks:index/mlflowModel:MlflowModel":
@@ -178,6 +188,26 @@ func init() {
 	version, _ := PkgVersion()
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/awsS3Mount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/azureAdlsGen1Mount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/azureAdlsGen2Mount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/azureBlobMount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/catalog",
 		&module{version},
 	)
@@ -284,6 +314,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/metastoreDataAccess",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/metastoreProvider",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

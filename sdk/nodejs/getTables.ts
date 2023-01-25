@@ -13,11 +13,8 @@ import * as utilities from "./utilities";
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getTables(args: GetTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetTablesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getTables:getTables", {
         "catalogName": args.catalogName,
         "ids": args.ids,
@@ -58,9 +55,16 @@ export interface GetTablesResult {
     readonly ids: string[];
     readonly schemaName: string;
 }
-
+/**
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Schema to manage schemas within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
+ */
 export function getTablesOutput(args: GetTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTablesResult> {
-    return pulumi.output(args).apply(a => getTables(a, opts))
+    return pulumi.output(args).apply((a: any) => getTables(a, opts))
 }
 
 /**

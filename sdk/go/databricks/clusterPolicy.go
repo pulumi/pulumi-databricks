@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,8 +58,10 @@ import (
 type ClusterPolicy struct {
 	pulumi.CustomResourceState
 
-	// Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-	Definition pulumi.StringPtrOutput `pulumi:"definition"`
+	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+	Definition pulumi.StringOutput `pulumi:"definition"`
+	// Maximum number of clusters allowed per user. When omitted, there is no limit.
+	MaxClustersPerUser pulumi.IntPtrOutput `pulumi:"maxClustersPerUser"`
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Canonical unique identifier for the cluster policy.
@@ -69,9 +72,12 @@ type ClusterPolicy struct {
 func NewClusterPolicy(ctx *pulumi.Context,
 	name string, args *ClusterPolicyArgs, opts ...pulumi.ResourceOption) (*ClusterPolicy, error) {
 	if args == nil {
-		args = &ClusterPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Definition == nil {
+		return nil, errors.New("invalid value for required argument 'Definition'")
+	}
 	var resource ClusterPolicy
 	err := ctx.RegisterResource("databricks:index/clusterPolicy:ClusterPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -94,8 +100,10 @@ func GetClusterPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClusterPolicy resources.
 type clusterPolicyState struct {
-	// Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
 	Definition *string `pulumi:"definition"`
+	// Maximum number of clusters allowed per user. When omitted, there is no limit.
+	MaxClustersPerUser *int `pulumi:"maxClustersPerUser"`
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name *string `pulumi:"name"`
 	// Canonical unique identifier for the cluster policy.
@@ -103,8 +111,10 @@ type clusterPolicyState struct {
 }
 
 type ClusterPolicyState struct {
-	// Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
 	Definition pulumi.StringPtrInput
+	// Maximum number of clusters allowed per user. When omitted, there is no limit.
+	MaxClustersPerUser pulumi.IntPtrInput
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name pulumi.StringPtrInput
 	// Canonical unique identifier for the cluster policy.
@@ -116,16 +126,20 @@ func (ClusterPolicyState) ElementType() reflect.Type {
 }
 
 type clusterPolicyArgs struct {
-	// Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-	Definition *string `pulumi:"definition"`
+	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+	Definition string `pulumi:"definition"`
+	// Maximum number of clusters allowed per user. When omitted, there is no limit.
+	MaxClustersPerUser *int `pulumi:"maxClustersPerUser"`
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a ClusterPolicy resource.
 type ClusterPolicyArgs struct {
-	// Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-	Definition pulumi.StringPtrInput
+	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+	Definition pulumi.StringInput
+	// Maximum number of clusters allowed per user. When omitted, there is no limit.
+	MaxClustersPerUser pulumi.IntPtrInput
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name pulumi.StringPtrInput
 }
@@ -217,9 +231,14 @@ func (o ClusterPolicyOutput) ToClusterPolicyOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-func (o ClusterPolicyOutput) Definition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterPolicy) pulumi.StringPtrOutput { return v.Definition }).(pulumi.StringPtrOutput)
+// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+func (o ClusterPolicyOutput) Definition() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterPolicy) pulumi.StringOutput { return v.Definition }).(pulumi.StringOutput)
+}
+
+// Maximum number of clusters allowed per user. When omitted, there is no limit.
+func (o ClusterPolicyOutput) MaxClustersPerUser() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterPolicy) pulumi.IntPtrOutput { return v.MaxClustersPerUser }).(pulumi.IntPtrOutput)
 }
 
 // Cluster policy name. This must be unique. Length must be between 1 and 100 characters.

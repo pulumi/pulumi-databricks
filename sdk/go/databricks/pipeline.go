@@ -36,15 +36,15 @@ import (
 //					"key1": pulumi.Any("value1"),
 //					"key2": pulumi.Any("value2"),
 //				},
-//				Clusters: PipelineClusterArray{
-//					&PipelineClusterArgs{
+//				Clusters: databricks.PipelineClusterArray{
+//					&databricks.PipelineClusterArgs{
 //						Label:      pulumi.String("default"),
 //						NumWorkers: pulumi.Int(2),
 //						CustomTags: pulumi.AnyMap{
 //							"cluster_type": pulumi.Any("default"),
 //						},
 //					},
-//					&PipelineClusterArgs{
+//					&databricks.PipelineClusterArgs{
 //						Label:      pulumi.String("maintenance"),
 //						NumWorkers: pulumi.Int(1),
 //						CustomTags: pulumi.AnyMap{
@@ -52,9 +52,9 @@ import (
 //						},
 //					},
 //				},
-//				Libraries: PipelineLibraryArray{
-//					&PipelineLibraryArgs{
-//						Notebook: &PipelineLibraryNotebookArgs{
+//				Libraries: databricks.PipelineLibraryArray{
+//					&databricks.PipelineLibraryArgs{
+//						Notebook: &databricks.PipelineLibraryNotebookArgs{
 //							Path: dltDemo.ID(),
 //						},
 //					},

@@ -52,7 +52,7 @@ namespace Pulumi.Databricks
     ///         {
     ///             { "spark.hadoop.fs.azure.account.auth.type", "OAuth" },
     ///             { "spark.hadoop.fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider" },
-    ///             { "spark.hadoop.fs.azure.account.oauth2.client.id", @var.Tenant_id },
+    ///             { "spark.hadoop.fs.azure.account.oauth2.client.id", @var.Application_id },
     ///             { "spark.hadoop.fs.azure.account.oauth2.client.secret", $"{{{{secrets/{local.Secret_scope}/{local.Secret_key}}}}}" },
     ///             { "spark.hadoop.fs.azure.account.oauth2.client.endpoint", $"https://login.microsoftonline.com/{@var.Tenant_id}/oauth2/token" },
     ///         },
@@ -86,31 +86,31 @@ namespace Pulumi.Databricks
     public partial class SqlGlobalConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        /// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         /// </summary>
         [Output("dataAccessConfig")]
         public Output<ImmutableDictionary<string, object>?> DataAccessConfig { get; private set; } = null!;
 
         /// <summary>
-        /// - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+        /// Allows the possibility to create Serverless SQL warehouses. Default value: false.
         /// </summary>
         [Output("enableServerlessCompute")]
         public Output<bool?> EnableServerlessCompute { get; private set; } = null!;
 
         /// <summary>
-        /// - databricks.InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
+        /// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         /// </summary>
         [Output("instanceProfileArn")]
         public Output<string?> InstanceProfileArn { get; private set; } = null!;
 
         /// <summary>
-        /// - The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
+        /// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         /// </summary>
         [Output("securityPolicy")]
         public Output<string?> SecurityPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// - SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
+        /// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         /// </summary>
         [Output("sqlConfigParams")]
         public Output<ImmutableDictionary<string, object>?> SqlConfigParams { get; private set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _dataAccessConfig;
 
         /// <summary>
-        /// - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        /// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         /// </summary>
         public InputMap<object> DataAccessConfig
         {
@@ -174,19 +174,19 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+        /// Allows the possibility to create Serverless SQL warehouses. Default value: false.
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
 
         /// <summary>
-        /// - databricks.InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
+        /// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         /// </summary>
         [Input("instanceProfileArn")]
         public Input<string>? InstanceProfileArn { get; set; }
 
         /// <summary>
-        /// - The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
+        /// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         /// </summary>
         [Input("securityPolicy")]
         public Input<string>? SecurityPolicy { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _sqlConfigParams;
 
         /// <summary>
-        /// - SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
+        /// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         /// </summary>
         public InputMap<object> SqlConfigParams
         {
@@ -215,7 +215,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _dataAccessConfig;
 
         /// <summary>
-        /// - Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
+        /// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         /// </summary>
         public InputMap<object> DataAccessConfig
         {
@@ -224,19 +224,19 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// - Allows the possibility to create Serverlell SQL warehouses. Default value: false.
+        /// Allows the possibility to create Serverless SQL warehouses. Default value: false.
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
 
         /// <summary>
-        /// - databricks.InstanceProfile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
+        /// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         /// </summary>
         [Input("instanceProfileArn")]
         public Input<string>? InstanceProfileArn { get; set; }
 
         /// <summary>
-        /// - The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
+        /// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         /// </summary>
         [Input("securityPolicy")]
         public Input<string>? SecurityPolicy { get; set; }
@@ -245,7 +245,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _sqlConfigParams;
 
         /// <summary>
-        /// - SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
+        /// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         /// </summary>
         public InputMap<object> SqlConfigParams
         {

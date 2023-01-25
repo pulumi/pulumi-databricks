@@ -33,7 +33,7 @@ import (
 //				Events: pulumi.StringArray{
 //					pulumi.String("TRANSITION_REQUEST_CREATED"),
 //				},
-//				HttpUrlSpec: &MlflowWebhookHttpUrlSpecArgs{
+//				HttpUrlSpec: &databricks.MlflowWebhookHttpUrlSpecArgs{
 //					Url: pulumi.String("https://my_cool_host/webhook"),
 //				},
 //			})

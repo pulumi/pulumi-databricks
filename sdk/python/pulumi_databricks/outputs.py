@@ -17,10 +17,13 @@ __all__ = [
     'ClusterClusterLogConf',
     'ClusterClusterLogConfDbfs',
     'ClusterClusterLogConfS3',
+    'ClusterClusterMountInfo',
+    'ClusterClusterMountInfoNetworkFilesystemInfo',
     'ClusterDockerImage',
     'ClusterDockerImageBasicAuth',
     'ClusterGcpAttributes',
     'ClusterInitScript',
+    'ClusterInitScriptAbfss',
     'ClusterInitScriptDbfs',
     'ClusterInitScriptFile',
     'ClusterInitScriptGcs',
@@ -54,10 +57,13 @@ __all__ = [
     'JobJobClusterNewClusterClusterLogConf',
     'JobJobClusterNewClusterClusterLogConfDbfs',
     'JobJobClusterNewClusterClusterLogConfS3',
+    'JobJobClusterNewClusterClusterMountInfo',
+    'JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo',
     'JobJobClusterNewClusterDockerImage',
     'JobJobClusterNewClusterDockerImageBasicAuth',
     'JobJobClusterNewClusterGcpAttributes',
     'JobJobClusterNewClusterInitScript',
+    'JobJobClusterNewClusterInitScriptAbfss',
     'JobJobClusterNewClusterInitScriptDbfs',
     'JobJobClusterNewClusterInitScriptFile',
     'JobJobClusterNewClusterInitScriptGcs',
@@ -75,10 +81,13 @@ __all__ = [
     'JobNewClusterClusterLogConf',
     'JobNewClusterClusterLogConfDbfs',
     'JobNewClusterClusterLogConfS3',
+    'JobNewClusterClusterMountInfo',
+    'JobNewClusterClusterMountInfoNetworkFilesystemInfo',
     'JobNewClusterDockerImage',
     'JobNewClusterDockerImageBasicAuth',
     'JobNewClusterGcpAttributes',
     'JobNewClusterInitScript',
+    'JobNewClusterInitScriptAbfss',
     'JobNewClusterInitScriptDbfs',
     'JobNewClusterInitScriptFile',
     'JobNewClusterInitScriptGcs',
@@ -107,10 +116,13 @@ __all__ = [
     'JobTaskNewClusterClusterLogConf',
     'JobTaskNewClusterClusterLogConfDbfs',
     'JobTaskNewClusterClusterLogConfS3',
+    'JobTaskNewClusterClusterMountInfo',
+    'JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo',
     'JobTaskNewClusterDockerImage',
     'JobTaskNewClusterDockerImageBasicAuth',
     'JobTaskNewClusterGcpAttributes',
     'JobTaskNewClusterInitScript',
+    'JobTaskNewClusterInitScriptAbfss',
     'JobTaskNewClusterInitScriptDbfs',
     'JobTaskNewClusterInitScriptFile',
     'JobTaskNewClusterInitScriptGcs',
@@ -137,6 +149,7 @@ __all__ = [
     'MetastoreDataAccessAwsIamRole',
     'MetastoreDataAccessAzureManagedIdentity',
     'MetastoreDataAccessAzureServicePrincipal',
+    'MetastoreDataAccessGcpServiceAccountKey',
     'MlflowModelTag',
     'MlflowWebhookHttpUrlSpec',
     'MlflowWebhookJobSpec',
@@ -147,23 +160,25 @@ __all__ = [
     'MountWasb',
     'MwsCustomerManagedKeysAwsKeyInfo',
     'MwsNetworksErrorMessage',
+    'MwsNetworksGcpNetworkInfo',
     'MwsNetworksVpcEndpoints',
-    'MwsWorkspacesCloudResourceBucket',
-    'MwsWorkspacesCloudResourceBucketGcp',
+    'MwsWorkspacesCloudResourceContainer',
+    'MwsWorkspacesCloudResourceContainerGcp',
     'MwsWorkspacesExternalCustomerInfo',
-    'MwsWorkspacesNetwork',
-    'MwsWorkspacesNetworkGcpCommonNetworkConfig',
-    'MwsWorkspacesNetworkGcpManagedNetworkConfig',
+    'MwsWorkspacesGcpManagedNetworkConfig',
+    'MwsWorkspacesGkeConfig',
     'MwsWorkspacesToken',
     'PermissionsAccessControl',
     'PipelineCluster',
     'PipelineClusterAutoscale',
     'PipelineClusterAwsAttributes',
+    'PipelineClusterAzureAttributes',
     'PipelineClusterClusterLogConf',
     'PipelineClusterClusterLogConfDbfs',
     'PipelineClusterClusterLogConfS3',
     'PipelineClusterGcpAttributes',
     'PipelineClusterInitScript',
+    'PipelineClusterInitScriptAbfss',
     'PipelineClusterInitScriptDbfs',
     'PipelineClusterInitScriptFile',
     'PipelineClusterInitScriptGcs',
@@ -174,6 +189,7 @@ __all__ = [
     'PipelineLibraryNotebook',
     'RecipientIpAccessList',
     'RecipientToken',
+    'RepoSparseCheckout',
     'SecretScopeKeyvaultMetadata',
     'ShareObject',
     'SqlEndpointChannel',
@@ -184,10 +200,13 @@ __all__ = [
     'SqlQueryParameter',
     'SqlQueryParameterDate',
     'SqlQueryParameterDateRange',
+    'SqlQueryParameterDateRangeRange',
     'SqlQueryParameterDatetime',
     'SqlQueryParameterDatetimeRange',
+    'SqlQueryParameterDatetimeRangeRange',
     'SqlQueryParameterDatetimesec',
     'SqlQueryParameterDatetimesecRange',
+    'SqlQueryParameterDatetimesecRangeRange',
     'SqlQueryParameterEnum',
     'SqlQueryParameterEnumMultiple',
     'SqlQueryParameterNumber',
@@ -203,6 +222,7 @@ __all__ = [
     'StorageCredentialAwsIamRole',
     'StorageCredentialAzureManagedIdentity',
     'StorageCredentialAzureServicePrincipal',
+    'StorageCredentialGcpServiceAccountKey',
     'TableColumn',
     'GetClusterClusterInfoResult',
     'GetClusterClusterInfoAutoscaleResult',
@@ -224,6 +244,19 @@ __all__ = [
     'GetClusterClusterInfoInitScriptS3Result',
     'GetClusterClusterInfoTerminationReasonResult',
     'GetDbfsFilePathsPathListResult',
+    'GetInstancePoolPoolInfoResult',
+    'GetInstancePoolPoolInfoAwsAttributesResult',
+    'GetInstancePoolPoolInfoAzureAttributesResult',
+    'GetInstancePoolPoolInfoDiskSpecResult',
+    'GetInstancePoolPoolInfoDiskSpecDiskTypeResult',
+    'GetInstancePoolPoolInfoGcpAttributesResult',
+    'GetInstancePoolPoolInfoInstancePoolFleetAttributeResult',
+    'GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionResult',
+    'GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionResult',
+    'GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideResult',
+    'GetInstancePoolPoolInfoPreloadedDockerImageResult',
+    'GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthResult',
+    'GetInstancePoolPoolInfoStatsResult',
     'GetJobJobSettingsResult',
     'GetJobJobSettingsSettingsResult',
     'GetJobJobSettingsSettingsDbtTaskResult',
@@ -237,10 +270,13 @@ __all__ = [
     'GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfResult',
     'GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfsResult',
     'GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3Result',
+    'GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoResult',
+    'GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoResult',
     'GetJobJobSettingsSettingsJobClusterNewClusterDockerImageResult',
     'GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuthResult',
     'GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesResult',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptResult',
+    'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssResult',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsResult',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileResult',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsResult',
@@ -258,10 +294,13 @@ __all__ = [
     'GetJobJobSettingsSettingsNewClusterClusterLogConfResult',
     'GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsResult',
     'GetJobJobSettingsSettingsNewClusterClusterLogConfS3Result',
+    'GetJobJobSettingsSettingsNewClusterClusterMountInfoResult',
+    'GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoResult',
     'GetJobJobSettingsSettingsNewClusterDockerImageResult',
     'GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthResult',
     'GetJobJobSettingsSettingsNewClusterGcpAttributesResult',
     'GetJobJobSettingsSettingsNewClusterInitScriptResult',
+    'GetJobJobSettingsSettingsNewClusterInitScriptAbfssResult',
     'GetJobJobSettingsSettingsNewClusterInitScriptDbfsResult',
     'GetJobJobSettingsSettingsNewClusterInitScriptFileResult',
     'GetJobJobSettingsSettingsNewClusterInitScriptGcsResult',
@@ -290,10 +329,13 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskNewClusterClusterLogConfResult',
     'GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfsResult',
     'GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3Result',
+    'GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoResult',
+    'GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoResult',
     'GetJobJobSettingsSettingsTaskNewClusterDockerImageResult',
     'GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthResult',
     'GetJobJobSettingsSettingsTaskNewClusterGcpAttributesResult',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptResult',
+    'GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssResult',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsResult',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptFileResult',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsResult',
@@ -625,6 +667,93 @@ class ClusterClusterLogConfS3(dict):
 
 
 @pulumi.output_type
+class ClusterClusterMountInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localMountDirPath":
+            suggest = "local_mount_dir_path"
+        elif key == "networkFilesystemInfo":
+            suggest = "network_filesystem_info"
+        elif key == "remoteMountDirPath":
+            suggest = "remote_mount_dir_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterMountInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterMountInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterMountInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_mount_dir_path: str,
+                 network_filesystem_info: 'outputs.ClusterClusterMountInfoNetworkFilesystemInfo',
+                 remote_mount_dir_path: Optional[str] = None):
+        pulumi.set(__self__, "local_mount_dir_path", local_mount_dir_path)
+        pulumi.set(__self__, "network_filesystem_info", network_filesystem_info)
+        if remote_mount_dir_path is not None:
+            pulumi.set(__self__, "remote_mount_dir_path", remote_mount_dir_path)
+
+    @property
+    @pulumi.getter(name="localMountDirPath")
+    def local_mount_dir_path(self) -> str:
+        return pulumi.get(self, "local_mount_dir_path")
+
+    @property
+    @pulumi.getter(name="networkFilesystemInfo")
+    def network_filesystem_info(self) -> 'outputs.ClusterClusterMountInfoNetworkFilesystemInfo':
+        return pulumi.get(self, "network_filesystem_info")
+
+    @property
+    @pulumi.getter(name="remoteMountDirPath")
+    def remote_mount_dir_path(self) -> Optional[str]:
+        return pulumi.get(self, "remote_mount_dir_path")
+
+
+@pulumi.output_type
+class ClusterClusterMountInfoNetworkFilesystemInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverAddress":
+            suggest = "server_address"
+        elif key == "mountOptions":
+            suggest = "mount_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterMountInfoNetworkFilesystemInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterMountInfoNetworkFilesystemInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterMountInfoNetworkFilesystemInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 server_address: str,
+                 mount_options: Optional[str] = None):
+        pulumi.set(__self__, "server_address", server_address)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> str:
+        return pulumi.get(self, "server_address")
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[str]:
+        return pulumi.get(self, "mount_options")
+
+
+@pulumi.output_type
 class ClusterDockerImage(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -751,10 +880,13 @@ class ClusterGcpAttributes(dict):
 @pulumi.output_type
 class ClusterInitScript(dict):
     def __init__(__self__, *,
+                 abfss: Optional['outputs.ClusterInitScriptAbfss'] = None,
                  dbfs: Optional['outputs.ClusterInitScriptDbfs'] = None,
                  file: Optional['outputs.ClusterInitScriptFile'] = None,
                  gcs: Optional['outputs.ClusterInitScriptGcs'] = None,
                  s3: Optional['outputs.ClusterInitScriptS3'] = None):
+        if abfss is not None:
+            pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
@@ -763,6 +895,11 @@ class ClusterInitScript(dict):
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+
+    @property
+    @pulumi.getter
+    def abfss(self) -> Optional['outputs.ClusterInitScriptAbfss']:
+        return pulumi.get(self, "abfss")
 
     @property
     @pulumi.getter
@@ -783,6 +920,19 @@ class ClusterInitScript(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.ClusterInitScriptS3']:
         return pulumi.get(self, "s3")
+
+
+@pulumi.output_type
+class ClusterInitScriptAbfss(dict):
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -1105,7 +1255,7 @@ class InstancePoolAwsAttributes(dict):
                  spot_bid_price_percent: Optional[int] = None,
                  zone_id: Optional[str] = None):
         """
-        :param str availability: Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+        :param str availability: (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
         :param int spot_bid_price_percent: (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
         :param str zone_id: (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
         """
@@ -1120,7 +1270,7 @@ class InstancePoolAwsAttributes(dict):
     @pulumi.getter
     def availability(self) -> Optional[str]:
         """
-        Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+        (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
         """
         return pulumi.get(self, "availability")
 
@@ -1565,18 +1715,22 @@ class JobDbtTask(dict):
 
     def __init__(__self__, *,
                  commands: Sequence[str],
+                 catalog: Optional[str] = None,
                  profiles_directory: Optional[str] = None,
                  project_directory: Optional[str] = None,
                  schema: Optional[str] = None,
                  warehouse_id: Optional[str] = None):
         """
         :param Sequence[str] commands: (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+        :param str catalog: The name of the catalog to use inside Unity Catalog.
         :param str profiles_directory: The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
         :param str project_directory: The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
         :param str schema: The name of the schema dbt should run in. Defaults to `default`.
-        :param str warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        :param str warehouse_id: The ID of the SQL warehouse that dbt should execute against.
         """
         pulumi.set(__self__, "commands", commands)
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
         if profiles_directory is not None:
             pulumi.set(__self__, "profiles_directory", profiles_directory)
         if project_directory is not None:
@@ -1593,6 +1747,14 @@ class JobDbtTask(dict):
         (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
         """
         return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> Optional[str]:
+        """
+        The name of the catalog to use inside Unity Catalog.
+        """
+        return pulumi.get(self, "catalog")
 
     @property
     @pulumi.getter(name="profilesDirectory")
@@ -1622,7 +1784,7 @@ class JobDbtTask(dict):
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[str]:
         """
-        ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        The ID of the SQL warehouse that dbt should execute against.
         """
         return pulumi.get(self, "warehouse_id")
 
@@ -1661,10 +1823,10 @@ class JobEmailNotifications(dict):
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
         """
-        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs
-        :param Sequence[str] on_failures: (List) list of emails to notify on failure
-        :param Sequence[str] on_starts: (List) list of emails to notify on failure
-        :param Sequence[str] on_successes: (List) list of emails to notify on failure
+        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs.
+        :param Sequence[str] on_failures: (List) list of emails to notify when the run fails.
+        :param Sequence[str] on_starts: (List) list of emails to notify when the run starts.
+        :param Sequence[str] on_successes: (List) list of emails to notify when the run completes successfully.
         """
         if alert_on_last_attempt is not None:
             pulumi.set(__self__, "alert_on_last_attempt", alert_on_last_attempt)
@@ -1686,7 +1848,7 @@ class JobEmailNotifications(dict):
     @pulumi.getter(name="noAlertForSkippedRuns")
     def no_alert_for_skipped_runs(self) -> Optional[bool]:
         """
-        (Bool) don't send alert for skipped runs
+        (Bool) don't send alert for skipped runs.
         """
         return pulumi.get(self, "no_alert_for_skipped_runs")
 
@@ -1694,7 +1856,7 @@ class JobEmailNotifications(dict):
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence[str]]:
         """
-        (List) list of emails to notify on failure
+        (List) list of emails to notify when the run fails.
         """
         return pulumi.get(self, "on_failures")
 
@@ -1702,7 +1864,7 @@ class JobEmailNotifications(dict):
     @pulumi.getter(name="onStarts")
     def on_starts(self) -> Optional[Sequence[str]]:
         """
-        (List) list of emails to notify on failure
+        (List) list of emails to notify when the run starts.
         """
         return pulumi.get(self, "on_starts")
 
@@ -1710,7 +1872,7 @@ class JobEmailNotifications(dict):
     @pulumi.getter(name="onSuccesses")
     def on_successes(self) -> Optional[Sequence[str]]:
         """
-        (List) list of emails to notify on failure
+        (List) list of emails to notify when the run completes successfully.
         """
         return pulumi.get(self, "on_successes")
 
@@ -1724,7 +1886,7 @@ class JobGitSource(dict):
                  provider: Optional[str] = None,
                  tag: Optional[str] = None):
         """
-        :param str url: URL of the job on the given workspace
+        :param str url: URL of the Git repository to use.
         :param str branch: name of the Git branch to use. Conflicts with `tag` and `commit`.
         :param str commit: hash of Git commit to use. Conflicts with `branch` and `tag`.
         :param str provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
@@ -1744,7 +1906,7 @@ class JobGitSource(dict):
     @pulumi.getter
     def url(self) -> str:
         """
-        URL of the job on the given workspace
+        URL of the Git repository to use.
         """
         return pulumi.get(self, "url")
 
@@ -1850,6 +2012,8 @@ class JobJobClusterNewCluster(dict):
             suggest = "cluster_id"
         elif key == "clusterLogConf":
             suggest = "cluster_log_conf"
+        elif key == "clusterMountInfos":
+            suggest = "cluster_mount_infos"
         elif key == "clusterName":
             suggest = "cluster_name"
         elif key == "customTags":
@@ -1913,6 +2077,7 @@ class JobJobClusterNewCluster(dict):
                  azure_attributes: Optional['outputs.JobJobClusterNewClusterAzureAttributes'] = None,
                  cluster_id: Optional[str] = None,
                  cluster_log_conf: Optional['outputs.JobJobClusterNewClusterClusterLogConf'] = None,
+                 cluster_mount_infos: Optional[Sequence['outputs.JobJobClusterNewClusterClusterMountInfo']] = None,
                  cluster_name: Optional[str] = None,
                  custom_tags: Optional[Mapping[str, Any]] = None,
                  data_security_mode: Optional[str] = None,
@@ -1949,6 +2114,8 @@ class JobJobClusterNewCluster(dict):
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
             pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
+        if cluster_mount_infos is not None:
+            pulumi.set(__self__, "cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
         if custom_tags is not None:
@@ -2031,6 +2198,11 @@ class JobJobClusterNewCluster(dict):
     @pulumi.getter(name="clusterLogConf")
     def cluster_log_conf(self) -> Optional['outputs.JobJobClusterNewClusterClusterLogConf']:
         return pulumi.get(self, "cluster_log_conf")
+
+    @property
+    @pulumi.getter(name="clusterMountInfos")
+    def cluster_mount_infos(self) -> Optional[Sequence['outputs.JobJobClusterNewClusterClusterMountInfo']]:
+        return pulumi.get(self, "cluster_mount_infos")
 
     @property
     @pulumi.getter(name="clusterName")
@@ -2441,6 +2613,93 @@ class JobJobClusterNewClusterClusterLogConfS3(dict):
 
 
 @pulumi.output_type
+class JobJobClusterNewClusterClusterMountInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localMountDirPath":
+            suggest = "local_mount_dir_path"
+        elif key == "networkFilesystemInfo":
+            suggest = "network_filesystem_info"
+        elif key == "remoteMountDirPath":
+            suggest = "remote_mount_dir_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobJobClusterNewClusterClusterMountInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobJobClusterNewClusterClusterMountInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobJobClusterNewClusterClusterMountInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_mount_dir_path: str,
+                 network_filesystem_info: 'outputs.JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo',
+                 remote_mount_dir_path: Optional[str] = None):
+        pulumi.set(__self__, "local_mount_dir_path", local_mount_dir_path)
+        pulumi.set(__self__, "network_filesystem_info", network_filesystem_info)
+        if remote_mount_dir_path is not None:
+            pulumi.set(__self__, "remote_mount_dir_path", remote_mount_dir_path)
+
+    @property
+    @pulumi.getter(name="localMountDirPath")
+    def local_mount_dir_path(self) -> str:
+        return pulumi.get(self, "local_mount_dir_path")
+
+    @property
+    @pulumi.getter(name="networkFilesystemInfo")
+    def network_filesystem_info(self) -> 'outputs.JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo':
+        return pulumi.get(self, "network_filesystem_info")
+
+    @property
+    @pulumi.getter(name="remoteMountDirPath")
+    def remote_mount_dir_path(self) -> Optional[str]:
+        return pulumi.get(self, "remote_mount_dir_path")
+
+
+@pulumi.output_type
+class JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverAddress":
+            suggest = "server_address"
+        elif key == "mountOptions":
+            suggest = "mount_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 server_address: str,
+                 mount_options: Optional[str] = None):
+        pulumi.set(__self__, "server_address", server_address)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> str:
+        return pulumi.get(self, "server_address")
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[str]:
+        return pulumi.get(self, "mount_options")
+
+
+@pulumi.output_type
 class JobJobClusterNewClusterDockerImage(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2463,7 +2722,7 @@ class JobJobClusterNewClusterDockerImage(dict):
                  url: str,
                  basic_auth: Optional['outputs.JobJobClusterNewClusterDockerImageBasicAuth'] = None):
         """
-        :param str url: URL of the job on the given workspace
+        :param str url: URL of the Git repository to use.
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -2473,7 +2732,7 @@ class JobJobClusterNewClusterDockerImage(dict):
     @pulumi.getter
     def url(self) -> str:
         """
-        URL of the job on the given workspace
+        URL of the Git repository to use.
         """
         return pulumi.get(self, "url")
 
@@ -2573,10 +2832,13 @@ class JobJobClusterNewClusterGcpAttributes(dict):
 @pulumi.output_type
 class JobJobClusterNewClusterInitScript(dict):
     def __init__(__self__, *,
+                 abfss: Optional['outputs.JobJobClusterNewClusterInitScriptAbfss'] = None,
                  dbfs: Optional['outputs.JobJobClusterNewClusterInitScriptDbfs'] = None,
                  file: Optional['outputs.JobJobClusterNewClusterInitScriptFile'] = None,
                  gcs: Optional['outputs.JobJobClusterNewClusterInitScriptGcs'] = None,
                  s3: Optional['outputs.JobJobClusterNewClusterInitScriptS3'] = None):
+        if abfss is not None:
+            pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
@@ -2585,6 +2847,11 @@ class JobJobClusterNewClusterInitScript(dict):
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+
+    @property
+    @pulumi.getter
+    def abfss(self) -> Optional['outputs.JobJobClusterNewClusterInitScriptAbfss']:
+        return pulumi.get(self, "abfss")
 
     @property
     @pulumi.getter
@@ -2605,6 +2872,19 @@ class JobJobClusterNewClusterInitScript(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.JobJobClusterNewClusterInitScriptS3']:
         return pulumi.get(self, "s3")
+
+
+@pulumi.output_type
+class JobJobClusterNewClusterInitScriptAbfss(dict):
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -2901,6 +3181,8 @@ class JobNewCluster(dict):
             suggest = "cluster_id"
         elif key == "clusterLogConf":
             suggest = "cluster_log_conf"
+        elif key == "clusterMountInfos":
+            suggest = "cluster_mount_infos"
         elif key == "clusterName":
             suggest = "cluster_name"
         elif key == "customTags":
@@ -2964,6 +3246,7 @@ class JobNewCluster(dict):
                  azure_attributes: Optional['outputs.JobNewClusterAzureAttributes'] = None,
                  cluster_id: Optional[str] = None,
                  cluster_log_conf: Optional['outputs.JobNewClusterClusterLogConf'] = None,
+                 cluster_mount_infos: Optional[Sequence['outputs.JobNewClusterClusterMountInfo']] = None,
                  cluster_name: Optional[str] = None,
                  custom_tags: Optional[Mapping[str, Any]] = None,
                  data_security_mode: Optional[str] = None,
@@ -3000,6 +3283,8 @@ class JobNewCluster(dict):
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
             pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
+        if cluster_mount_infos is not None:
+            pulumi.set(__self__, "cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
         if custom_tags is not None:
@@ -3082,6 +3367,11 @@ class JobNewCluster(dict):
     @pulumi.getter(name="clusterLogConf")
     def cluster_log_conf(self) -> Optional['outputs.JobNewClusterClusterLogConf']:
         return pulumi.get(self, "cluster_log_conf")
+
+    @property
+    @pulumi.getter(name="clusterMountInfos")
+    def cluster_mount_infos(self) -> Optional[Sequence['outputs.JobNewClusterClusterMountInfo']]:
+        return pulumi.get(self, "cluster_mount_infos")
 
     @property
     @pulumi.getter(name="clusterName")
@@ -3492,6 +3782,93 @@ class JobNewClusterClusterLogConfS3(dict):
 
 
 @pulumi.output_type
+class JobNewClusterClusterMountInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localMountDirPath":
+            suggest = "local_mount_dir_path"
+        elif key == "networkFilesystemInfo":
+            suggest = "network_filesystem_info"
+        elif key == "remoteMountDirPath":
+            suggest = "remote_mount_dir_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobNewClusterClusterMountInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobNewClusterClusterMountInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobNewClusterClusterMountInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_mount_dir_path: str,
+                 network_filesystem_info: 'outputs.JobNewClusterClusterMountInfoNetworkFilesystemInfo',
+                 remote_mount_dir_path: Optional[str] = None):
+        pulumi.set(__self__, "local_mount_dir_path", local_mount_dir_path)
+        pulumi.set(__self__, "network_filesystem_info", network_filesystem_info)
+        if remote_mount_dir_path is not None:
+            pulumi.set(__self__, "remote_mount_dir_path", remote_mount_dir_path)
+
+    @property
+    @pulumi.getter(name="localMountDirPath")
+    def local_mount_dir_path(self) -> str:
+        return pulumi.get(self, "local_mount_dir_path")
+
+    @property
+    @pulumi.getter(name="networkFilesystemInfo")
+    def network_filesystem_info(self) -> 'outputs.JobNewClusterClusterMountInfoNetworkFilesystemInfo':
+        return pulumi.get(self, "network_filesystem_info")
+
+    @property
+    @pulumi.getter(name="remoteMountDirPath")
+    def remote_mount_dir_path(self) -> Optional[str]:
+        return pulumi.get(self, "remote_mount_dir_path")
+
+
+@pulumi.output_type
+class JobNewClusterClusterMountInfoNetworkFilesystemInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverAddress":
+            suggest = "server_address"
+        elif key == "mountOptions":
+            suggest = "mount_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobNewClusterClusterMountInfoNetworkFilesystemInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobNewClusterClusterMountInfoNetworkFilesystemInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobNewClusterClusterMountInfoNetworkFilesystemInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 server_address: str,
+                 mount_options: Optional[str] = None):
+        pulumi.set(__self__, "server_address", server_address)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> str:
+        return pulumi.get(self, "server_address")
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[str]:
+        return pulumi.get(self, "mount_options")
+
+
+@pulumi.output_type
 class JobNewClusterDockerImage(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3514,7 +3891,7 @@ class JobNewClusterDockerImage(dict):
                  url: str,
                  basic_auth: Optional['outputs.JobNewClusterDockerImageBasicAuth'] = None):
         """
-        :param str url: URL of the job on the given workspace
+        :param str url: URL of the Git repository to use.
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -3524,7 +3901,7 @@ class JobNewClusterDockerImage(dict):
     @pulumi.getter
     def url(self) -> str:
         """
-        URL of the job on the given workspace
+        URL of the Git repository to use.
         """
         return pulumi.get(self, "url")
 
@@ -3624,10 +4001,13 @@ class JobNewClusterGcpAttributes(dict):
 @pulumi.output_type
 class JobNewClusterInitScript(dict):
     def __init__(__self__, *,
+                 abfss: Optional['outputs.JobNewClusterInitScriptAbfss'] = None,
                  dbfs: Optional['outputs.JobNewClusterInitScriptDbfs'] = None,
                  file: Optional['outputs.JobNewClusterInitScriptFile'] = None,
                  gcs: Optional['outputs.JobNewClusterInitScriptGcs'] = None,
                  s3: Optional['outputs.JobNewClusterInitScriptS3'] = None):
+        if abfss is not None:
+            pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
@@ -3636,6 +4016,11 @@ class JobNewClusterInitScript(dict):
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+
+    @property
+    @pulumi.getter
+    def abfss(self) -> Optional['outputs.JobNewClusterInitScriptAbfss']:
+        return pulumi.get(self, "abfss")
 
     @property
     @pulumi.getter
@@ -3656,6 +4041,19 @@ class JobNewClusterInitScript(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.JobNewClusterInitScriptS3']:
         return pulumi.get(self, "s3")
+
+
+@pulumi.output_type
+class JobNewClusterInitScriptAbfss(dict):
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -3835,20 +4233,24 @@ class JobNotebookTask(dict):
 
     def __init__(__self__, *,
                  notebook_path: str,
-                 base_parameters: Optional[Mapping[str, Any]] = None):
+                 base_parameters: Optional[Mapping[str, Any]] = None,
+                 source: Optional[str] = None):
         """
-        :param str notebook_path: The absolute path of the Notebook to be run in the Databricks workspace. This path must begin with a slash. This field is required.
+        :param str notebook_path: The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
         :param Mapping[str, Any] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        :param str source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         """
         pulumi.set(__self__, "notebook_path", notebook_path)
         if base_parameters is not None:
             pulumi.set(__self__, "base_parameters", base_parameters)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter(name="notebookPath")
     def notebook_path(self) -> str:
         """
-        The absolute path of the Notebook to be run in the Databricks workspace. This path must begin with a slash. This field is required.
+        The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
         """
         return pulumi.get(self, "notebook_path")
 
@@ -3859,6 +4261,14 @@ class JobNotebookTask(dict):
         (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         """
         return pulumi.get(self, "base_parameters")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        """
+        Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        """
+        return pulumi.get(self, "source")
 
 
 @pulumi.output_type
@@ -3928,7 +4338,7 @@ class JobPythonWheelTask(dict):
         :param str entry_point: Python function as entry point for the task
         :param Mapping[str, Any] named_parameters: Named parameters for the task
         :param str package_name: Name of Python package
-        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        :param Sequence[str] parameters: Parameters for the task
         """
         if entry_point is not None:
             pulumi.set(__self__, "entry_point", entry_point)
@@ -3967,7 +4377,7 @@ class JobPythonWheelTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        Parameters for the task
         """
         return pulumi.get(self, "parameters")
 
@@ -4061,7 +4471,7 @@ class JobSparkJarTask(dict):
                  parameters: Optional[Sequence[str]] = None):
         """
         :param str main_class_name: The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
-        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        :param Sequence[str] parameters: (List) Parameters passed to the main method.
         """
         if jar_uri is not None:
             pulumi.set(__self__, "jar_uri", jar_uri)
@@ -4087,7 +4497,7 @@ class JobSparkJarTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        (List) Parameters passed to the main method.
         """
         return pulumi.get(self, "parameters")
 
@@ -4115,8 +4525,8 @@ class JobSparkPythonTask(dict):
                  python_file: str,
                  parameters: Optional[Sequence[str]] = None):
         """
-        :param str python_file: The URI of the Python file to be executed. DbfsFile and S3 paths are supported. This field is required.
-        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        :param str python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+        :param Sequence[str] parameters: (List) Command line parameters passed to the Python file.
         """
         pulumi.set(__self__, "python_file", python_file)
         if parameters is not None:
@@ -4126,7 +4536,7 @@ class JobSparkPythonTask(dict):
     @pulumi.getter(name="pythonFile")
     def python_file(self) -> str:
         """
-        The URI of the Python file to be executed. DbfsFile and S3 paths are supported. This field is required.
+        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
         """
         return pulumi.get(self, "python_file")
 
@@ -4134,7 +4544,7 @@ class JobSparkPythonTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        (List) Command line parameters passed to the Python file.
         """
         return pulumi.get(self, "parameters")
 
@@ -4144,7 +4554,7 @@ class JobSparkSubmitTask(dict):
     def __init__(__self__, *,
                  parameters: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        :param Sequence[str] parameters: (List) Command-line parameters passed to spark submit.
         """
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
@@ -4153,7 +4563,7 @@ class JobSparkSubmitTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        (List) Command-line parameters passed to spark submit.
         """
         return pulumi.get(self, "parameters")
 
@@ -4233,11 +4643,10 @@ class JobTask(dict):
                  task_key: Optional[str] = None,
                  timeout_seconds: Optional[int] = None):
         """
-        :param 'JobTaskEmailNotificationsArgs' email_notifications: (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
-        :param str existing_cluster_id: If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `new_cluster` for greater reliability.
+        :param 'JobTaskEmailNotificationsArgs' email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param str job_cluster_key: Identifier that can be referenced in `task` block, so that cluster is shared between tasks
         :param Sequence['JobTaskLibraryArgs'] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
-        :param int max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED result_state or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        :param int max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
         :param int min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param 'JobTaskNewClusterArgs' new_cluster: Same set of parameters as for Cluster resource.
         :param bool retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
@@ -4303,16 +4712,13 @@ class JobTask(dict):
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> Optional['outputs.JobTaskEmailNotifications']:
         """
-        (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+        (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
         """
         return pulumi.get(self, "email_notifications")
 
     @property
     @pulumi.getter(name="existingClusterId")
     def existing_cluster_id(self) -> Optional[str]:
-        """
-        If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `new_cluster` for greater reliability.
-        """
         return pulumi.get(self, "existing_cluster_id")
 
     @property
@@ -4335,7 +4741,7 @@ class JobTask(dict):
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> Optional[int]:
         """
-        (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED result_state or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
         """
         return pulumi.get(self, "max_retries")
 
@@ -4437,18 +4843,22 @@ class JobTaskDbtTask(dict):
 
     def __init__(__self__, *,
                  commands: Sequence[str],
+                 catalog: Optional[str] = None,
                  profiles_directory: Optional[str] = None,
                  project_directory: Optional[str] = None,
                  schema: Optional[str] = None,
                  warehouse_id: Optional[str] = None):
         """
         :param Sequence[str] commands: (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+        :param str catalog: The name of the catalog to use inside Unity Catalog.
         :param str profiles_directory: The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
         :param str project_directory: The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
         :param str schema: The name of the schema dbt should run in. Defaults to `default`.
-        :param str warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        :param str warehouse_id: The ID of the SQL warehouse that dbt should execute against.
         """
         pulumi.set(__self__, "commands", commands)
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
         if profiles_directory is not None:
             pulumi.set(__self__, "profiles_directory", profiles_directory)
         if project_directory is not None:
@@ -4465,6 +4875,14 @@ class JobTaskDbtTask(dict):
         (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
         """
         return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> Optional[str]:
+        """
+        The name of the catalog to use inside Unity Catalog.
+        """
+        return pulumi.get(self, "catalog")
 
     @property
     @pulumi.getter(name="profilesDirectory")
@@ -4494,7 +4912,7 @@ class JobTaskDbtTask(dict):
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[str]:
         """
-        ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        The ID of the SQL warehouse that dbt should execute against.
         """
         return pulumi.get(self, "warehouse_id")
 
@@ -4563,10 +4981,10 @@ class JobTaskEmailNotifications(dict):
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
         """
-        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs
-        :param Sequence[str] on_failures: (List) list of emails to notify on failure
-        :param Sequence[str] on_starts: (List) list of emails to notify on failure
-        :param Sequence[str] on_successes: (List) list of emails to notify on failure
+        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs.
+        :param Sequence[str] on_failures: (List) list of emails to notify when the run fails.
+        :param Sequence[str] on_starts: (List) list of emails to notify when the run starts.
+        :param Sequence[str] on_successes: (List) list of emails to notify when the run completes successfully.
         """
         if alert_on_last_attempt is not None:
             pulumi.set(__self__, "alert_on_last_attempt", alert_on_last_attempt)
@@ -4588,7 +5006,7 @@ class JobTaskEmailNotifications(dict):
     @pulumi.getter(name="noAlertForSkippedRuns")
     def no_alert_for_skipped_runs(self) -> Optional[bool]:
         """
-        (Bool) don't send alert for skipped runs
+        (Bool) don't send alert for skipped runs.
         """
         return pulumi.get(self, "no_alert_for_skipped_runs")
 
@@ -4596,7 +5014,7 @@ class JobTaskEmailNotifications(dict):
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence[str]]:
         """
-        (List) list of emails to notify on failure
+        (List) list of emails to notify when the run fails.
         """
         return pulumi.get(self, "on_failures")
 
@@ -4604,7 +5022,7 @@ class JobTaskEmailNotifications(dict):
     @pulumi.getter(name="onStarts")
     def on_starts(self) -> Optional[Sequence[str]]:
         """
-        (List) list of emails to notify on failure
+        (List) list of emails to notify when the run starts.
         """
         return pulumi.get(self, "on_starts")
 
@@ -4612,7 +5030,7 @@ class JobTaskEmailNotifications(dict):
     @pulumi.getter(name="onSuccesses")
     def on_successes(self) -> Optional[Sequence[str]]:
         """
-        (List) list of emails to notify on failure
+        (List) list of emails to notify when the run completes successfully.
         """
         return pulumi.get(self, "on_successes")
 
@@ -4757,6 +5175,8 @@ class JobTaskNewCluster(dict):
             suggest = "cluster_id"
         elif key == "clusterLogConf":
             suggest = "cluster_log_conf"
+        elif key == "clusterMountInfos":
+            suggest = "cluster_mount_infos"
         elif key == "clusterName":
             suggest = "cluster_name"
         elif key == "customTags":
@@ -4820,6 +5240,7 @@ class JobTaskNewCluster(dict):
                  azure_attributes: Optional['outputs.JobTaskNewClusterAzureAttributes'] = None,
                  cluster_id: Optional[str] = None,
                  cluster_log_conf: Optional['outputs.JobTaskNewClusterClusterLogConf'] = None,
+                 cluster_mount_infos: Optional[Sequence['outputs.JobTaskNewClusterClusterMountInfo']] = None,
                  cluster_name: Optional[str] = None,
                  custom_tags: Optional[Mapping[str, Any]] = None,
                  data_security_mode: Optional[str] = None,
@@ -4856,6 +5277,8 @@ class JobTaskNewCluster(dict):
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
             pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
+        if cluster_mount_infos is not None:
+            pulumi.set(__self__, "cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
         if custom_tags is not None:
@@ -4938,6 +5361,11 @@ class JobTaskNewCluster(dict):
     @pulumi.getter(name="clusterLogConf")
     def cluster_log_conf(self) -> Optional['outputs.JobTaskNewClusterClusterLogConf']:
         return pulumi.get(self, "cluster_log_conf")
+
+    @property
+    @pulumi.getter(name="clusterMountInfos")
+    def cluster_mount_infos(self) -> Optional[Sequence['outputs.JobTaskNewClusterClusterMountInfo']]:
+        return pulumi.get(self, "cluster_mount_infos")
 
     @property
     @pulumi.getter(name="clusterName")
@@ -5348,6 +5776,93 @@ class JobTaskNewClusterClusterLogConfS3(dict):
 
 
 @pulumi.output_type
+class JobTaskNewClusterClusterMountInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localMountDirPath":
+            suggest = "local_mount_dir_path"
+        elif key == "networkFilesystemInfo":
+            suggest = "network_filesystem_info"
+        elif key == "remoteMountDirPath":
+            suggest = "remote_mount_dir_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskNewClusterClusterMountInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskNewClusterClusterMountInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskNewClusterClusterMountInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_mount_dir_path: str,
+                 network_filesystem_info: 'outputs.JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo',
+                 remote_mount_dir_path: Optional[str] = None):
+        pulumi.set(__self__, "local_mount_dir_path", local_mount_dir_path)
+        pulumi.set(__self__, "network_filesystem_info", network_filesystem_info)
+        if remote_mount_dir_path is not None:
+            pulumi.set(__self__, "remote_mount_dir_path", remote_mount_dir_path)
+
+    @property
+    @pulumi.getter(name="localMountDirPath")
+    def local_mount_dir_path(self) -> str:
+        return pulumi.get(self, "local_mount_dir_path")
+
+    @property
+    @pulumi.getter(name="networkFilesystemInfo")
+    def network_filesystem_info(self) -> 'outputs.JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo':
+        return pulumi.get(self, "network_filesystem_info")
+
+    @property
+    @pulumi.getter(name="remoteMountDirPath")
+    def remote_mount_dir_path(self) -> Optional[str]:
+        return pulumi.get(self, "remote_mount_dir_path")
+
+
+@pulumi.output_type
+class JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverAddress":
+            suggest = "server_address"
+        elif key == "mountOptions":
+            suggest = "mount_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 server_address: str,
+                 mount_options: Optional[str] = None):
+        pulumi.set(__self__, "server_address", server_address)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> str:
+        return pulumi.get(self, "server_address")
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[str]:
+        return pulumi.get(self, "mount_options")
+
+
+@pulumi.output_type
 class JobTaskNewClusterDockerImage(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5370,7 +5885,7 @@ class JobTaskNewClusterDockerImage(dict):
                  url: str,
                  basic_auth: Optional['outputs.JobTaskNewClusterDockerImageBasicAuth'] = None):
         """
-        :param str url: URL of the job on the given workspace
+        :param str url: URL of the Git repository to use.
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -5380,7 +5895,7 @@ class JobTaskNewClusterDockerImage(dict):
     @pulumi.getter
     def url(self) -> str:
         """
-        URL of the job on the given workspace
+        URL of the Git repository to use.
         """
         return pulumi.get(self, "url")
 
@@ -5480,10 +5995,13 @@ class JobTaskNewClusterGcpAttributes(dict):
 @pulumi.output_type
 class JobTaskNewClusterInitScript(dict):
     def __init__(__self__, *,
+                 abfss: Optional['outputs.JobTaskNewClusterInitScriptAbfss'] = None,
                  dbfs: Optional['outputs.JobTaskNewClusterInitScriptDbfs'] = None,
                  file: Optional['outputs.JobTaskNewClusterInitScriptFile'] = None,
                  gcs: Optional['outputs.JobTaskNewClusterInitScriptGcs'] = None,
                  s3: Optional['outputs.JobTaskNewClusterInitScriptS3'] = None):
+        if abfss is not None:
+            pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
@@ -5492,6 +6010,11 @@ class JobTaskNewClusterInitScript(dict):
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+
+    @property
+    @pulumi.getter
+    def abfss(self) -> Optional['outputs.JobTaskNewClusterInitScriptAbfss']:
+        return pulumi.get(self, "abfss")
 
     @property
     @pulumi.getter
@@ -5512,6 +6035,19 @@ class JobTaskNewClusterInitScript(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.JobTaskNewClusterInitScriptS3']:
         return pulumi.get(self, "s3")
+
+
+@pulumi.output_type
+class JobTaskNewClusterInitScriptAbfss(dict):
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -5691,20 +6227,24 @@ class JobTaskNotebookTask(dict):
 
     def __init__(__self__, *,
                  notebook_path: str,
-                 base_parameters: Optional[Mapping[str, Any]] = None):
+                 base_parameters: Optional[Mapping[str, Any]] = None,
+                 source: Optional[str] = None):
         """
-        :param str notebook_path: The absolute path of the Notebook to be run in the Databricks workspace. This path must begin with a slash. This field is required.
+        :param str notebook_path: The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
         :param Mapping[str, Any] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        :param str source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         """
         pulumi.set(__self__, "notebook_path", notebook_path)
         if base_parameters is not None:
             pulumi.set(__self__, "base_parameters", base_parameters)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter(name="notebookPath")
     def notebook_path(self) -> str:
         """
-        The absolute path of the Notebook to be run in the Databricks workspace. This path must begin with a slash. This field is required.
+        The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
         """
         return pulumi.get(self, "notebook_path")
 
@@ -5715,6 +6255,14 @@ class JobTaskNotebookTask(dict):
         (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         """
         return pulumi.get(self, "base_parameters")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        """
+        Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        """
+        return pulumi.get(self, "source")
 
 
 @pulumi.output_type
@@ -5784,7 +6332,7 @@ class JobTaskPythonWheelTask(dict):
         :param str entry_point: Python function as entry point for the task
         :param Mapping[str, Any] named_parameters: Named parameters for the task
         :param str package_name: Name of Python package
-        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        :param Sequence[str] parameters: Parameters for the task
         """
         if entry_point is not None:
             pulumi.set(__self__, "entry_point", entry_point)
@@ -5823,7 +6371,7 @@ class JobTaskPythonWheelTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        Parameters for the task
         """
         return pulumi.get(self, "parameters")
 
@@ -5855,7 +6403,7 @@ class JobTaskSparkJarTask(dict):
                  parameters: Optional[Sequence[str]] = None):
         """
         :param str main_class_name: The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
-        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        :param Sequence[str] parameters: (List) Parameters passed to the main method.
         """
         if jar_uri is not None:
             pulumi.set(__self__, "jar_uri", jar_uri)
@@ -5881,7 +6429,7 @@ class JobTaskSparkJarTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        (List) Parameters passed to the main method.
         """
         return pulumi.get(self, "parameters")
 
@@ -5909,8 +6457,8 @@ class JobTaskSparkPythonTask(dict):
                  python_file: str,
                  parameters: Optional[Sequence[str]] = None):
         """
-        :param str python_file: The URI of the Python file to be executed. DbfsFile and S3 paths are supported. This field is required.
-        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        :param str python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+        :param Sequence[str] parameters: (List) Command line parameters passed to the Python file.
         """
         pulumi.set(__self__, "python_file", python_file)
         if parameters is not None:
@@ -5920,7 +6468,7 @@ class JobTaskSparkPythonTask(dict):
     @pulumi.getter(name="pythonFile")
     def python_file(self) -> str:
         """
-        The URI of the Python file to be executed. DbfsFile and S3 paths are supported. This field is required.
+        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
         """
         return pulumi.get(self, "python_file")
 
@@ -5928,7 +6476,7 @@ class JobTaskSparkPythonTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        (List) Command line parameters passed to the Python file.
         """
         return pulumi.get(self, "parameters")
 
@@ -5938,7 +6486,7 @@ class JobTaskSparkSubmitTask(dict):
     def __init__(__self__, *,
                  parameters: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        :param Sequence[str] parameters: (List) Command-line parameters passed to spark submit.
         """
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
@@ -5947,7 +6495,7 @@ class JobTaskSparkSubmitTask(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         """
-        (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        (List) Command-line parameters passed to spark submit.
         """
         return pulumi.get(self, "parameters")
 
@@ -6151,9 +6699,9 @@ class JobWebhookNotifications(dict):
                  on_starts: Optional[Sequence['outputs.JobWebhookNotificationsOnStart']] = None,
                  on_successes: Optional[Sequence['outputs.JobWebhookNotificationsOnSuccess']] = None):
         """
-        :param Sequence['JobWebhookNotificationsOnFailureArgs'] on_failures: (List) list of emails to notify on failure
-        :param Sequence['JobWebhookNotificationsOnStartArgs'] on_starts: (List) list of emails to notify on failure
-        :param Sequence['JobWebhookNotificationsOnSuccessArgs'] on_successes: (List) list of emails to notify on failure
+        :param Sequence['JobWebhookNotificationsOnFailureArgs'] on_failures: (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+        :param Sequence['JobWebhookNotificationsOnStartArgs'] on_starts: (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+        :param Sequence['JobWebhookNotificationsOnSuccessArgs'] on_successes: (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
         """
         if on_failures is not None:
             pulumi.set(__self__, "on_failures", on_failures)
@@ -6166,7 +6714,7 @@ class JobWebhookNotifications(dict):
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence['outputs.JobWebhookNotificationsOnFailure']]:
         """
-        (List) list of emails to notify on failure
+        (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
         """
         return pulumi.get(self, "on_failures")
 
@@ -6174,7 +6722,7 @@ class JobWebhookNotifications(dict):
     @pulumi.getter(name="onStarts")
     def on_starts(self) -> Optional[Sequence['outputs.JobWebhookNotificationsOnStart']]:
         """
-        (List) list of emails to notify on failure
+        (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
         """
         return pulumi.get(self, "on_starts")
 
@@ -6182,7 +6730,7 @@ class JobWebhookNotifications(dict):
     @pulumi.getter(name="onSuccesses")
     def on_successes(self) -> Optional[Sequence['outputs.JobWebhookNotificationsOnSuccess']]:
         """
-        (List) list of emails to notify on failure
+        (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
         """
         return pulumi.get(self, "on_successes")
 
@@ -6191,11 +6739,17 @@ class JobWebhookNotifications(dict):
 class JobWebhookNotificationsOnFailure(dict):
     def __init__(__self__, *,
                  id: str):
+        """
+        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+        """
         pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+        """
         return pulumi.get(self, "id")
 
 
@@ -6203,11 +6757,17 @@ class JobWebhookNotificationsOnFailure(dict):
 class JobWebhookNotificationsOnStart(dict):
     def __init__(__self__, *,
                  id: str):
+        """
+        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+        """
         pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+        """
         return pulumi.get(self, "id")
 
 
@@ -6215,11 +6775,17 @@ class JobWebhookNotificationsOnStart(dict):
 class JobWebhookNotificationsOnSuccess(dict):
     def __init__(__self__, *,
                  id: str):
+        """
+        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+        """
         pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+        """
         return pulumi.get(self, "id")
 
 
@@ -6420,6 +6986,51 @@ class MetastoreDataAccessAzureServicePrincipal(dict):
         The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
         """
         return pulumi.get(self, "directory_id")
+
+
+@pulumi.output_type
+class MetastoreDataAccessGcpServiceAccountKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKey":
+            suggest = "private_key"
+        elif key == "privateKeyId":
+            suggest = "private_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetastoreDataAccessGcpServiceAccountKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetastoreDataAccessGcpServiceAccountKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetastoreDataAccessGcpServiceAccountKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email: str,
+                 private_key: str,
+                 private_key_id: str):
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "private_key", private_key)
+        pulumi.set(__self__, "private_key_id", private_key_id)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> str:
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> str:
+        return pulumi.get(self, "private_key_id")
 
 
 @pulumi.output_type
@@ -7009,6 +7620,106 @@ class MwsNetworksErrorMessage(dict):
 
 
 @pulumi.output_type
+class MwsNetworksGcpNetworkInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkProjectId":
+            suggest = "network_project_id"
+        elif key == "podIpRangeName":
+            suggest = "pod_ip_range_name"
+        elif key == "serviceIpRangeName":
+            suggest = "service_ip_range_name"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "subnetRegion":
+            suggest = "subnet_region"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MwsNetworksGcpNetworkInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MwsNetworksGcpNetworkInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MwsNetworksGcpNetworkInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_project_id: str,
+                 pod_ip_range_name: str,
+                 service_ip_range_name: str,
+                 subnet_id: str,
+                 subnet_region: str,
+                 vpc_id: str):
+        """
+        :param str network_project_id: The Google Cloud project ID of the VPC network.
+        :param str pod_ip_range_name: The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
+        :param str service_ip_range_name: The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
+        :param str subnet_id: The ID of the subnet associated with this network.
+        :param str subnet_region: The Google Cloud region of the workspace data plane. For example, `us-east4`.
+        :param str vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        """
+        pulumi.set(__self__, "network_project_id", network_project_id)
+        pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
+        pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "subnet_region", subnet_region)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="networkProjectId")
+    def network_project_id(self) -> str:
+        """
+        The Google Cloud project ID of the VPC network.
+        """
+        return pulumi.get(self, "network_project_id")
+
+    @property
+    @pulumi.getter(name="podIpRangeName")
+    def pod_ip_range_name(self) -> str:
+        """
+        The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
+        """
+        return pulumi.get(self, "pod_ip_range_name")
+
+    @property
+    @pulumi.getter(name="serviceIpRangeName")
+    def service_ip_range_name(self) -> str:
+        """
+        The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
+        """
+        return pulumi.get(self, "service_ip_range_name")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> str:
+        """
+        The ID of the subnet associated with this network.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="subnetRegion")
+    def subnet_region(self) -> str:
+        """
+        The Google Cloud region of the workspace data plane. For example, `us-east4`.
+        """
+        return pulumi.get(self, "subnet_region")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
 class MwsNetworksVpcEndpoints(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7047,19 +7758,25 @@ class MwsNetworksVpcEndpoints(dict):
 
 
 @pulumi.output_type
-class MwsWorkspacesCloudResourceBucket(dict):
+class MwsWorkspacesCloudResourceContainer(dict):
     def __init__(__self__, *,
-                 gcp: 'outputs.MwsWorkspacesCloudResourceBucketGcp'):
+                 gcp: 'outputs.MwsWorkspacesCloudResourceContainerGcp'):
+        """
+        :param 'MwsWorkspacesCloudResourceContainerGcpArgs' gcp: A block that consists of the following field:
+        """
         pulumi.set(__self__, "gcp", gcp)
 
     @property
     @pulumi.getter
-    def gcp(self) -> 'outputs.MwsWorkspacesCloudResourceBucketGcp':
+    def gcp(self) -> 'outputs.MwsWorkspacesCloudResourceContainerGcp':
+        """
+        A block that consists of the following field:
+        """
         return pulumi.get(self, "gcp")
 
 
 @pulumi.output_type
-class MwsWorkspacesCloudResourceBucketGcp(dict):
+class MwsWorkspacesCloudResourceContainerGcp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7067,23 +7784,29 @@ class MwsWorkspacesCloudResourceBucketGcp(dict):
             suggest = "project_id"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MwsWorkspacesCloudResourceBucketGcp. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in MwsWorkspacesCloudResourceContainerGcp. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        MwsWorkspacesCloudResourceBucketGcp.__key_warning(key)
+        MwsWorkspacesCloudResourceContainerGcp.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        MwsWorkspacesCloudResourceBucketGcp.__key_warning(key)
+        MwsWorkspacesCloudResourceContainerGcp.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  project_id: str):
+        """
+        :param str project_id: The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
+        """
         pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
+        """
         return pulumi.get(self, "project_id")
 
 
@@ -7135,94 +7858,7 @@ class MwsWorkspacesExternalCustomerInfo(dict):
 
 
 @pulumi.output_type
-class MwsWorkspacesNetwork(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "gcpCommonNetworkConfig":
-            suggest = "gcp_common_network_config"
-        elif key == "gcpManagedNetworkConfig":
-            suggest = "gcp_managed_network_config"
-        elif key == "networkId":
-            suggest = "network_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MwsWorkspacesNetwork. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MwsWorkspacesNetwork.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MwsWorkspacesNetwork.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 gcp_common_network_config: 'outputs.MwsWorkspacesNetworkGcpCommonNetworkConfig',
-                 gcp_managed_network_config: Optional['outputs.MwsWorkspacesNetworkGcpManagedNetworkConfig'] = None,
-                 network_id: Optional[str] = None):
-        pulumi.set(__self__, "gcp_common_network_config", gcp_common_network_config)
-        if gcp_managed_network_config is not None:
-            pulumi.set(__self__, "gcp_managed_network_config", gcp_managed_network_config)
-        if network_id is not None:
-            pulumi.set(__self__, "network_id", network_id)
-
-    @property
-    @pulumi.getter(name="gcpCommonNetworkConfig")
-    def gcp_common_network_config(self) -> 'outputs.MwsWorkspacesNetworkGcpCommonNetworkConfig':
-        return pulumi.get(self, "gcp_common_network_config")
-
-    @property
-    @pulumi.getter(name="gcpManagedNetworkConfig")
-    def gcp_managed_network_config(self) -> Optional['outputs.MwsWorkspacesNetworkGcpManagedNetworkConfig']:
-        return pulumi.get(self, "gcp_managed_network_config")
-
-    @property
-    @pulumi.getter(name="networkId")
-    def network_id(self) -> Optional[str]:
-        return pulumi.get(self, "network_id")
-
-
-@pulumi.output_type
-class MwsWorkspacesNetworkGcpCommonNetworkConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "gkeClusterMasterIpRange":
-            suggest = "gke_cluster_master_ip_range"
-        elif key == "gkeConnectivityType":
-            suggest = "gke_connectivity_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MwsWorkspacesNetworkGcpCommonNetworkConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MwsWorkspacesNetworkGcpCommonNetworkConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MwsWorkspacesNetworkGcpCommonNetworkConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 gke_cluster_master_ip_range: str,
-                 gke_connectivity_type: str):
-        pulumi.set(__self__, "gke_cluster_master_ip_range", gke_cluster_master_ip_range)
-        pulumi.set(__self__, "gke_connectivity_type", gke_connectivity_type)
-
-    @property
-    @pulumi.getter(name="gkeClusterMasterIpRange")
-    def gke_cluster_master_ip_range(self) -> str:
-        return pulumi.get(self, "gke_cluster_master_ip_range")
-
-    @property
-    @pulumi.getter(name="gkeConnectivityType")
-    def gke_connectivity_type(self) -> str:
-        return pulumi.get(self, "gke_connectivity_type")
-
-
-@pulumi.output_type
-class MwsWorkspacesNetworkGcpManagedNetworkConfig(dict):
+class MwsWorkspacesGcpManagedNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -7234,14 +7870,14 @@ class MwsWorkspacesNetworkGcpManagedNetworkConfig(dict):
             suggest = "subnet_cidr"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MwsWorkspacesNetworkGcpManagedNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in MwsWorkspacesGcpManagedNetworkConfig. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        MwsWorkspacesNetworkGcpManagedNetworkConfig.__key_warning(key)
+        MwsWorkspacesGcpManagedNetworkConfig.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        MwsWorkspacesNetworkGcpManagedNetworkConfig.__key_warning(key)
+        MwsWorkspacesGcpManagedNetworkConfig.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -7266,6 +7902,54 @@ class MwsWorkspacesNetworkGcpManagedNetworkConfig(dict):
     @pulumi.getter(name="subnetCidr")
     def subnet_cidr(self) -> str:
         return pulumi.get(self, "subnet_cidr")
+
+
+@pulumi.output_type
+class MwsWorkspacesGkeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectivityType":
+            suggest = "connectivity_type"
+        elif key == "masterIpRange":
+            suggest = "master_ip_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MwsWorkspacesGkeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MwsWorkspacesGkeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MwsWorkspacesGkeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connectivity_type: str,
+                 master_ip_range: str):
+        """
+        :param str connectivity_type: Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+        :param str master_ip_range: The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
+        """
+        pulumi.set(__self__, "connectivity_type", connectivity_type)
+        pulumi.set(__self__, "master_ip_range", master_ip_range)
+
+    @property
+    @pulumi.getter(name="connectivityType")
+    def connectivity_type(self) -> str:
+        """
+        Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+        """
+        return pulumi.get(self, "connectivity_type")
+
+    @property
+    @pulumi.getter(name="masterIpRange")
+    def master_ip_range(self) -> str:
+        """
+        The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
+        """
+        return pulumi.get(self, "master_ip_range")
 
 
 @pulumi.output_type
@@ -7412,6 +8096,8 @@ class PipelineCluster(dict):
             suggest = "apply_policy_default_values"
         elif key == "awsAttributes":
             suggest = "aws_attributes"
+        elif key == "azureAttributes":
+            suggest = "azure_attributes"
         elif key == "clusterLogConf":
             suggest = "cluster_log_conf"
         elif key == "customTags":
@@ -7420,6 +8106,8 @@ class PipelineCluster(dict):
             suggest = "driver_instance_pool_id"
         elif key == "driverNodeTypeId":
             suggest = "driver_node_type_id"
+        elif key == "enableLocalDiskEncryption":
+            suggest = "enable_local_disk_encryption"
         elif key == "gcpAttributes":
             suggest = "gcp_attributes"
         elif key == "initScripts":
@@ -7454,10 +8142,12 @@ class PipelineCluster(dict):
                  apply_policy_default_values: Optional[bool] = None,
                  autoscale: Optional['outputs.PipelineClusterAutoscale'] = None,
                  aws_attributes: Optional['outputs.PipelineClusterAwsAttributes'] = None,
+                 azure_attributes: Optional['outputs.PipelineClusterAzureAttributes'] = None,
                  cluster_log_conf: Optional['outputs.PipelineClusterClusterLogConf'] = None,
                  custom_tags: Optional[Mapping[str, Any]] = None,
                  driver_instance_pool_id: Optional[str] = None,
                  driver_node_type_id: Optional[str] = None,
+                 enable_local_disk_encryption: Optional[bool] = None,
                  gcp_attributes: Optional['outputs.PipelineClusterGcpAttributes'] = None,
                  init_scripts: Optional[Sequence['outputs.PipelineClusterInitScript']] = None,
                  instance_pool_id: Optional[str] = None,
@@ -7474,6 +8164,8 @@ class PipelineCluster(dict):
             pulumi.set(__self__, "autoscale", autoscale)
         if aws_attributes is not None:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
+        if azure_attributes is not None:
+            pulumi.set(__self__, "azure_attributes", azure_attributes)
         if cluster_log_conf is not None:
             pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
         if custom_tags is not None:
@@ -7482,6 +8174,8 @@ class PipelineCluster(dict):
             pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
         if driver_node_type_id is not None:
             pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
+        if enable_local_disk_encryption is not None:
+            pulumi.set(__self__, "enable_local_disk_encryption", enable_local_disk_encryption)
         if gcp_attributes is not None:
             pulumi.set(__self__, "gcp_attributes", gcp_attributes)
         if init_scripts is not None:
@@ -7519,6 +8213,11 @@ class PipelineCluster(dict):
         return pulumi.get(self, "aws_attributes")
 
     @property
+    @pulumi.getter(name="azureAttributes")
+    def azure_attributes(self) -> Optional['outputs.PipelineClusterAzureAttributes']:
+        return pulumi.get(self, "azure_attributes")
+
+    @property
     @pulumi.getter(name="clusterLogConf")
     def cluster_log_conf(self) -> Optional['outputs.PipelineClusterClusterLogConf']:
         return pulumi.get(self, "cluster_log_conf")
@@ -7537,6 +8236,11 @@ class PipelineCluster(dict):
     @pulumi.getter(name="driverNodeTypeId")
     def driver_node_type_id(self) -> Optional[str]:
         return pulumi.get(self, "driver_node_type_id")
+
+    @property
+    @pulumi.getter(name="enableLocalDiskEncryption")
+    def enable_local_disk_encryption(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_local_disk_encryption")
 
     @property
     @pulumi.getter(name="gcpAttributes")
@@ -7642,10 +8346,18 @@ class PipelineClusterAwsAttributes(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "firstOnDemand":
+        if key == "ebsVolumeCount":
+            suggest = "ebs_volume_count"
+        elif key == "ebsVolumeSize":
+            suggest = "ebs_volume_size"
+        elif key == "ebsVolumeType":
+            suggest = "ebs_volume_type"
+        elif key == "firstOnDemand":
             suggest = "first_on_demand"
         elif key == "instanceProfileArn":
             suggest = "instance_profile_arn"
+        elif key == "spotBidPricePercent":
+            suggest = "spot_bid_price_percent"
         elif key == "zoneId":
             suggest = "zone_id"
 
@@ -7661,15 +8373,50 @@ class PipelineClusterAwsAttributes(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 availability: Optional[str] = None,
+                 ebs_volume_count: Optional[int] = None,
+                 ebs_volume_size: Optional[int] = None,
+                 ebs_volume_type: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
                  instance_profile_arn: Optional[str] = None,
+                 spot_bid_price_percent: Optional[int] = None,
                  zone_id: Optional[str] = None):
+        if availability is not None:
+            pulumi.set(__self__, "availability", availability)
+        if ebs_volume_count is not None:
+            pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_size is not None:
+            pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_type is not None:
+            pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
         if instance_profile_arn is not None:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
+        if spot_bid_price_percent is not None:
+            pulumi.set(__self__, "spot_bid_price_percent", spot_bid_price_percent)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def availability(self) -> Optional[str]:
+        return pulumi.get(self, "availability")
+
+    @property
+    @pulumi.getter(name="ebsVolumeCount")
+    def ebs_volume_count(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_count")
+
+    @property
+    @pulumi.getter(name="ebsVolumeSize")
+    def ebs_volume_size(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_size")
+
+    @property
+    @pulumi.getter(name="ebsVolumeType")
+    def ebs_volume_type(self) -> Optional[str]:
+        return pulumi.get(self, "ebs_volume_type")
 
     @property
     @pulumi.getter(name="firstOnDemand")
@@ -7682,9 +8429,62 @@ class PipelineClusterAwsAttributes(dict):
         return pulumi.get(self, "instance_profile_arn")
 
     @property
+    @pulumi.getter(name="spotBidPricePercent")
+    def spot_bid_price_percent(self) -> Optional[int]:
+        return pulumi.get(self, "spot_bid_price_percent")
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[str]:
         return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class PipelineClusterAzureAttributes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "firstOnDemand":
+            suggest = "first_on_demand"
+        elif key == "spotBidMaxPrice":
+            suggest = "spot_bid_max_price"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineClusterAzureAttributes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineClusterAzureAttributes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineClusterAzureAttributes.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability: Optional[str] = None,
+                 first_on_demand: Optional[int] = None,
+                 spot_bid_max_price: Optional[float] = None):
+        if availability is not None:
+            pulumi.set(__self__, "availability", availability)
+        if first_on_demand is not None:
+            pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if spot_bid_max_price is not None:
+            pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
+
+    @property
+    @pulumi.getter
+    def availability(self) -> Optional[str]:
+        return pulumi.get(self, "availability")
+
+    @property
+    @pulumi.getter(name="firstOnDemand")
+    def first_on_demand(self) -> Optional[int]:
+        return pulumi.get(self, "first_on_demand")
+
+    @property
+    @pulumi.getter(name="spotBidMaxPrice")
+    def spot_bid_max_price(self) -> Optional[float]:
+        return pulumi.get(self, "spot_bid_max_price")
 
 
 @pulumi.output_type
@@ -7810,6 +8610,8 @@ class PipelineClusterGcpAttributes(dict):
         suggest = None
         if key == "googleServiceAccount":
             suggest = "google_service_account"
+        elif key == "zoneId":
+            suggest = "zone_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PipelineClusterGcpAttributes. Access the value via the '{suggest}' property getter instead.")
@@ -7823,23 +8625,42 @@ class PipelineClusterGcpAttributes(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 google_service_account: Optional[str] = None):
+                 availability: Optional[str] = None,
+                 google_service_account: Optional[str] = None,
+                 zone_id: Optional[str] = None):
+        if availability is not None:
+            pulumi.set(__self__, "availability", availability)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def availability(self) -> Optional[str]:
+        return pulumi.get(self, "availability")
 
     @property
     @pulumi.getter(name="googleServiceAccount")
     def google_service_account(self) -> Optional[str]:
         return pulumi.get(self, "google_service_account")
 
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[str]:
+        return pulumi.get(self, "zone_id")
+
 
 @pulumi.output_type
 class PipelineClusterInitScript(dict):
     def __init__(__self__, *,
+                 abfss: Optional['outputs.PipelineClusterInitScriptAbfss'] = None,
                  dbfs: Optional['outputs.PipelineClusterInitScriptDbfs'] = None,
                  file: Optional['outputs.PipelineClusterInitScriptFile'] = None,
                  gcs: Optional['outputs.PipelineClusterInitScriptGcs'] = None,
                  s3: Optional['outputs.PipelineClusterInitScriptS3'] = None):
+        if abfss is not None:
+            pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
@@ -7848,6 +8669,11 @@ class PipelineClusterInitScript(dict):
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+
+    @property
+    @pulumi.getter
+    def abfss(self) -> Optional['outputs.PipelineClusterInitScriptAbfss']:
+        return pulumi.get(self, "abfss")
 
     @property
     @pulumi.getter
@@ -7868,6 +8694,19 @@ class PipelineClusterInitScript(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.PipelineClusterInitScriptS3']:
         return pulumi.get(self, "s3")
+
+
+@pulumi.output_type
+class PipelineClusterInitScriptAbfss(dict):
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -8210,6 +9049,18 @@ class RecipientToken(dict):
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[str]:
         return pulumi.get(self, "updated_by")
+
+
+@pulumi.output_type
+class RepoSparseCheckout(dict):
+    def __init__(__self__, *,
+                 patterns: Sequence[str]):
+        pulumi.set(__self__, "patterns", patterns)
+
+    @property
+    @pulumi.getter
+    def patterns(self) -> Sequence[str]:
+        return pulumi.get(self, "patterns")
 
 
 @pulumi.output_type
@@ -8612,13 +9463,41 @@ class SqlQueryParameterDate(dict):
 @pulumi.output_type
 class SqlQueryParameterDateRange(dict):
     def __init__(__self__, *,
-                 value: str):
-        pulumi.set(__self__, "value", value)
+                 range: Optional['outputs.SqlQueryParameterDateRangeRange'] = None,
+                 value: Optional[str] = None):
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def range(self) -> Optional['outputs.SqlQueryParameterDateRangeRange']:
+        return pulumi.get(self, "range")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class SqlQueryParameterDateRangeRange(dict):
+    def __init__(__self__, *,
+                 end: str,
+                 start: str):
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> str:
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter
+    def start(self) -> str:
+        return pulumi.get(self, "start")
 
 
 @pulumi.output_type
@@ -8636,13 +9515,41 @@ class SqlQueryParameterDatetime(dict):
 @pulumi.output_type
 class SqlQueryParameterDatetimeRange(dict):
     def __init__(__self__, *,
-                 value: str):
-        pulumi.set(__self__, "value", value)
+                 range: Optional['outputs.SqlQueryParameterDatetimeRangeRange'] = None,
+                 value: Optional[str] = None):
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def range(self) -> Optional['outputs.SqlQueryParameterDatetimeRangeRange']:
+        return pulumi.get(self, "range")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class SqlQueryParameterDatetimeRangeRange(dict):
+    def __init__(__self__, *,
+                 end: str,
+                 start: str):
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> str:
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter
+    def start(self) -> str:
+        return pulumi.get(self, "start")
 
 
 @pulumi.output_type
@@ -8660,13 +9567,41 @@ class SqlQueryParameterDatetimesec(dict):
 @pulumi.output_type
 class SqlQueryParameterDatetimesecRange(dict):
     def __init__(__self__, *,
-                 value: str):
-        pulumi.set(__self__, "value", value)
+                 range: Optional['outputs.SqlQueryParameterDatetimesecRangeRange'] = None,
+                 value: Optional[str] = None):
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def range(self) -> Optional['outputs.SqlQueryParameterDatetimesecRangeRange']:
+        return pulumi.get(self, "range")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class SqlQueryParameterDatetimesecRangeRange(dict):
+    def __init__(__self__, *,
+                 end: str,
+                 start: str):
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> str:
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter
+    def start(self) -> str:
+        return pulumi.get(self, "start")
 
 
 @pulumi.output_type
@@ -9275,6 +10210,51 @@ class StorageCredentialAzureServicePrincipal(dict):
 
 
 @pulumi.output_type
+class StorageCredentialGcpServiceAccountKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKey":
+            suggest = "private_key"
+        elif key == "privateKeyId":
+            suggest = "private_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StorageCredentialGcpServiceAccountKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StorageCredentialGcpServiceAccountKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StorageCredentialGcpServiceAccountKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email: str,
+                 private_key: str,
+                 private_key_id: str):
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "private_key", private_key)
+        pulumi.set(__self__, "private_key_id", private_key_id)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> str:
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> str:
+        return pulumi.get(self, "private_key_id")
+
+
+@pulumi.output_type
 class TableColumn(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -9317,19 +10297,6 @@ class TableColumn(dict):
                  type_json: Optional[str] = None,
                  type_precision: Optional[int] = None,
                  type_scale: Optional[int] = None):
-        """
-        :param str name: User-visible name of column
-        :param int position: Ordinal position of column, starting at 0.
-        :param str type_name: Name of (outer) type
-        :param str type_text: Column type spec (with metadata) as SQL text
-        :param str comment: User-supplied free-form text.
-        :param bool nullable: Whether field is nullable (Default: `true`)
-        :param int partition_index: Partition ID
-        :param str type_interval_type: Format of `INTERVAL` columns
-        :param str type_json: Column type spec (with metadata) as JSON string
-        :param int type_precision: Digits of precision; applies to `DECIMAL` columns
-        :param int type_scale: Digits to right of decimal; applies to `DECIMAL` columns
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "position", position)
         pulumi.set(__self__, "type_name", type_name)
@@ -9352,89 +10319,56 @@ class TableColumn(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        User-visible name of column
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def position(self) -> int:
-        """
-        Ordinal position of column, starting at 0.
-        """
         return pulumi.get(self, "position")
 
     @property
     @pulumi.getter(name="typeName")
     def type_name(self) -> str:
-        """
-        Name of (outer) type
-        """
         return pulumi.get(self, "type_name")
 
     @property
     @pulumi.getter(name="typeText")
     def type_text(self) -> str:
-        """
-        Column type spec (with metadata) as SQL text
-        """
         return pulumi.get(self, "type_text")
 
     @property
     @pulumi.getter
     def comment(self) -> Optional[str]:
-        """
-        User-supplied free-form text.
-        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def nullable(self) -> Optional[bool]:
-        """
-        Whether field is nullable (Default: `true`)
-        """
         return pulumi.get(self, "nullable")
 
     @property
     @pulumi.getter(name="partitionIndex")
     def partition_index(self) -> Optional[int]:
-        """
-        Partition ID
-        """
         return pulumi.get(self, "partition_index")
 
     @property
     @pulumi.getter(name="typeIntervalType")
     def type_interval_type(self) -> Optional[str]:
-        """
-        Format of `INTERVAL` columns
-        """
         return pulumi.get(self, "type_interval_type")
 
     @property
     @pulumi.getter(name="typeJson")
     def type_json(self) -> Optional[str]:
-        """
-        Column type spec (with metadata) as JSON string
-        """
         return pulumi.get(self, "type_json")
 
     @property
     @pulumi.getter(name="typePrecision")
     def type_precision(self) -> Optional[int]:
-        """
-        Digits of precision; applies to `DECIMAL` columns
-        """
         return pulumi.get(self, "type_precision")
 
     @property
     @pulumi.getter(name="typeScale")
     def type_scale(self) -> Optional[int]:
-        """
-        Digits to right of decimal; applies to `DECIMAL` columns
-        """
         return pulumi.get(self, "type_scale")
 
 
@@ -9489,14 +10423,14 @@ class GetClusterClusterInfoResult(dict):
         :param str spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
         :param int autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
         :param str cluster_id: The id of the cluster
-        :param str cluster_name: Cluster name, which doesn’t have to be unique.
+        :param str cluster_name: The exact name of the cluster to search
         :param Mapping[str, Any] custom_tags: Additional tags for cluster resources.
         :param str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         :param str driver_node_type_id: The node type of the Spark driver.
         :param bool enable_elastic_disk: Use autoscaling local storage.
         :param bool enable_local_disk_encryption: Enable local disk encryption.
+        :param str instance_pool_id: The pool of idle instances the cluster is attached to.
         :param str node_type_id: Any supported get_node_type id.
-               * `instance_pool_id` The pool of idle instances the cluster is attached to.
         :param str policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults.
         :param str runtime_engine: The type of runtime of the cluster
         :param str single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -9668,7 +10602,7 @@ class GetClusterClusterInfoResult(dict):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> Optional[str]:
         """
-        Cluster name, which doesn’t have to be unique.
+        The exact name of the cluster to search
         """
         return pulumi.get(self, "cluster_name")
 
@@ -9750,6 +10684,9 @@ class GetClusterClusterInfoResult(dict):
     @property
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> Optional[str]:
+        """
+        The pool of idle instances the cluster is attached to.
+        """
         return pulumi.get(self, "instance_pool_id")
 
     @property
@@ -9772,7 +10709,6 @@ class GetClusterClusterInfoResult(dict):
     def node_type_id(self) -> Optional[str]:
         """
         Any supported get_node_type id.
-        * `instance_pool_id` The pool of idle instances the cluster is attached to.
         """
         return pulumi.get(self, "node_type_id")
 
@@ -10470,15 +11406,432 @@ class GetDbfsFilePathsPathListResult(dict):
 
 
 @pulumi.output_type
+class GetInstancePoolPoolInfoResult(dict):
+    def __init__(__self__, *,
+                 default_tags: Mapping[str, Any],
+                 idle_instance_autotermination_minutes: int,
+                 instance_pool_id: str,
+                 instance_pool_name: str,
+                 aws_attributes: Optional['outputs.GetInstancePoolPoolInfoAwsAttributesResult'] = None,
+                 azure_attributes: Optional['outputs.GetInstancePoolPoolInfoAzureAttributesResult'] = None,
+                 custom_tags: Optional[Mapping[str, Any]] = None,
+                 disk_spec: Optional['outputs.GetInstancePoolPoolInfoDiskSpecResult'] = None,
+                 enable_elastic_disk: Optional[bool] = None,
+                 gcp_attributes: Optional['outputs.GetInstancePoolPoolInfoGcpAttributesResult'] = None,
+                 instance_pool_fleet_attributes: Optional[Sequence['outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeResult']] = None,
+                 max_capacity: Optional[int] = None,
+                 min_idle_instances: Optional[int] = None,
+                 node_type_id: Optional[str] = None,
+                 preloaded_docker_images: Optional[Sequence['outputs.GetInstancePoolPoolInfoPreloadedDockerImageResult']] = None,
+                 preloaded_spark_versions: Optional[Sequence[str]] = None,
+                 state: Optional[str] = None,
+                 stats: Optional['outputs.GetInstancePoolPoolInfoStatsResult'] = None):
+        pulumi.set(__self__, "default_tags", default_tags)
+        pulumi.set(__self__, "idle_instance_autotermination_minutes", idle_instance_autotermination_minutes)
+        pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        pulumi.set(__self__, "instance_pool_name", instance_pool_name)
+        if aws_attributes is not None:
+            pulumi.set(__self__, "aws_attributes", aws_attributes)
+        if azure_attributes is not None:
+            pulumi.set(__self__, "azure_attributes", azure_attributes)
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
+        if disk_spec is not None:
+            pulumi.set(__self__, "disk_spec", disk_spec)
+        if enable_elastic_disk is not None:
+            pulumi.set(__self__, "enable_elastic_disk", enable_elastic_disk)
+        if gcp_attributes is not None:
+            pulumi.set(__self__, "gcp_attributes", gcp_attributes)
+        if instance_pool_fleet_attributes is not None:
+            pulumi.set(__self__, "instance_pool_fleet_attributes", instance_pool_fleet_attributes)
+        if max_capacity is not None:
+            pulumi.set(__self__, "max_capacity", max_capacity)
+        if min_idle_instances is not None:
+            pulumi.set(__self__, "min_idle_instances", min_idle_instances)
+        if node_type_id is not None:
+            pulumi.set(__self__, "node_type_id", node_type_id)
+        if preloaded_docker_images is not None:
+            pulumi.set(__self__, "preloaded_docker_images", preloaded_docker_images)
+        if preloaded_spark_versions is not None:
+            pulumi.set(__self__, "preloaded_spark_versions", preloaded_spark_versions)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if stats is not None:
+            pulumi.set(__self__, "stats", stats)
+
+    @property
+    @pulumi.getter(name="defaultTags")
+    def default_tags(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "default_tags")
+
+    @property
+    @pulumi.getter(name="idleInstanceAutoterminationMinutes")
+    def idle_instance_autotermination_minutes(self) -> int:
+        return pulumi.get(self, "idle_instance_autotermination_minutes")
+
+    @property
+    @pulumi.getter(name="instancePoolId")
+    def instance_pool_id(self) -> str:
+        return pulumi.get(self, "instance_pool_id")
+
+    @property
+    @pulumi.getter(name="instancePoolName")
+    def instance_pool_name(self) -> str:
+        return pulumi.get(self, "instance_pool_name")
+
+    @property
+    @pulumi.getter(name="awsAttributes")
+    def aws_attributes(self) -> Optional['outputs.GetInstancePoolPoolInfoAwsAttributesResult']:
+        return pulumi.get(self, "aws_attributes")
+
+    @property
+    @pulumi.getter(name="azureAttributes")
+    def azure_attributes(self) -> Optional['outputs.GetInstancePoolPoolInfoAzureAttributesResult']:
+        return pulumi.get(self, "azure_attributes")
+
+    @property
+    @pulumi.getter(name="customTags")
+    def custom_tags(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "custom_tags")
+
+    @property
+    @pulumi.getter(name="diskSpec")
+    def disk_spec(self) -> Optional['outputs.GetInstancePoolPoolInfoDiskSpecResult']:
+        return pulumi.get(self, "disk_spec")
+
+    @property
+    @pulumi.getter(name="enableElasticDisk")
+    def enable_elastic_disk(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_elastic_disk")
+
+    @property
+    @pulumi.getter(name="gcpAttributes")
+    def gcp_attributes(self) -> Optional['outputs.GetInstancePoolPoolInfoGcpAttributesResult']:
+        return pulumi.get(self, "gcp_attributes")
+
+    @property
+    @pulumi.getter(name="instancePoolFleetAttributes")
+    def instance_pool_fleet_attributes(self) -> Optional[Sequence['outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeResult']]:
+        return pulumi.get(self, "instance_pool_fleet_attributes")
+
+    @property
+    @pulumi.getter(name="maxCapacity")
+    def max_capacity(self) -> Optional[int]:
+        return pulumi.get(self, "max_capacity")
+
+    @property
+    @pulumi.getter(name="minIdleInstances")
+    def min_idle_instances(self) -> Optional[int]:
+        return pulumi.get(self, "min_idle_instances")
+
+    @property
+    @pulumi.getter(name="nodeTypeId")
+    def node_type_id(self) -> Optional[str]:
+        return pulumi.get(self, "node_type_id")
+
+    @property
+    @pulumi.getter(name="preloadedDockerImages")
+    def preloaded_docker_images(self) -> Optional[Sequence['outputs.GetInstancePoolPoolInfoPreloadedDockerImageResult']]:
+        return pulumi.get(self, "preloaded_docker_images")
+
+    @property
+    @pulumi.getter(name="preloadedSparkVersions")
+    def preloaded_spark_versions(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "preloaded_spark_versions")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def stats(self) -> Optional['outputs.GetInstancePoolPoolInfoStatsResult']:
+        return pulumi.get(self, "stats")
+
+
+@pulumi.output_type
+class GetInstancePoolPoolInfoAwsAttributesResult(dict):
+    def __init__(__self__, *,
+                 zone_id: str,
+                 availability: Optional[str] = None,
+                 spot_bid_price_percent: Optional[int] = None):
+        pulumi.set(__self__, "zone_id", zone_id)
+        if availability is not None:
+            pulumi.set(__self__, "availability", availability)
+        if spot_bid_price_percent is not None:
+            pulumi.set(__self__, "spot_bid_price_percent", spot_bid_price_percent)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter
+    def availability(self) -> Optional[str]:
+        return pulumi.get(self, "availability")
+
+    @property
+    @pulumi.getter(name="spotBidPricePercent")
+    def spot_bid_price_percent(self) -> Optional[int]:
+        return pulumi.get(self, "spot_bid_price_percent")
+
+
+@pulumi.output_type
+class GetInstancePoolPoolInfoAzureAttributesResult(dict):
+    def __init__(__self__, *,
+                 availability: Optional[str] = None,
+                 spot_bid_max_price: Optional[float] = None):
+        if availability is not None:
+            pulumi.set(__self__, "availability", availability)
+        if spot_bid_max_price is not None:
+            pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
+
+    @property
+    @pulumi.getter
+    def availability(self) -> Optional[str]:
+        return pulumi.get(self, "availability")
+
+    @property
+    @pulumi.getter(name="spotBidMaxPrice")
+    def spot_bid_max_price(self) -> Optional[float]:
+        return pulumi.get(self, "spot_bid_max_price")
+
+
+@pulumi.output_type
+class GetInstancePoolPoolInfoDiskSpecResult(dict):
+    def __init__(__self__, *,
+                 disk_count: Optional[int] = None,
+                 disk_size: Optional[int] = None,
+                 disk_type: Optional['outputs.GetInstancePoolPoolInfoDiskSpecDiskTypeResult'] = None):
+        if disk_count is not None:
+            pulumi.set(__self__, "disk_count", disk_count)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+
+    @property
+    @pulumi.getter(name="diskCount")
+    def disk_count(self) -> Optional[int]:
+        return pulumi.get(self, "disk_count")
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[int]:
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional['outputs.GetInstancePoolPoolInfoDiskSpecDiskTypeResult']:
+        return pulumi.get(self, "disk_type")
+
+
+@pulumi.output_type
+class GetInstancePoolPoolInfoDiskSpecDiskTypeResult(dict):
+    def __init__(__self__, *,
+                 azure_disk_volume_type: Optional[str] = None,
+                 ebs_volume_type: Optional[str] = None):
+        if azure_disk_volume_type is not None:
+            pulumi.set(__self__, "azure_disk_volume_type", azure_disk_volume_type)
+        if ebs_volume_type is not None:
+            pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
+
+    @property
+    @pulumi.getter(name="azureDiskVolumeType")
+    def azure_disk_volume_type(self) -> Optional[str]:
+        return pulumi.get(self, "azure_disk_volume_type")
+
+    @property
+    @pulumi.getter(name="ebsVolumeType")
+    def ebs_volume_type(self) -> Optional[str]:
+        return pulumi.get(self, "ebs_volume_type")
+
+
+@pulumi.output_type
+class GetInstancePoolPoolInfoGcpAttributesResult(dict):
+    def __init__(__self__, *,
+                 gcp_availability: Optional[str] = None):
+        if gcp_availability is not None:
+            pulumi.set(__self__, "gcp_availability", gcp_availability)
+
+    @property
+    @pulumi.getter(name="gcpAvailability")
+    def gcp_availability(self) -> Optional[str]:
+        return pulumi.get(self, "gcp_availability")
+
+
+@pulumi.output_type
+class GetInstancePoolPoolInfoInstancePoolFleetAttributeResult(dict):
+    def __init__(__self__, *,
+                 launch_template_overrides: Sequence['outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideResult'],
+                 fleet_on_demand_option: Optional['outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionResult'] = None,
+                 fleet_spot_option: Optional['outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionResult'] = None):
+        pulumi.set(__self__, "launch_template_overrides", launch_template_overrides)
+        if fleet_on_demand_option is not None:
+            pulumi.set(__self__, "fleet_on_demand_option", fleet_on_demand_option)
+        if fleet_spot_option is not None:
+            pulumi.set(__self__, "fleet_spot_option", fleet_spot_option)
+
+    @property
+    @pulumi.getter(name="launchTemplateOverrides")
+    def launch_template_overrides(self) -> Sequence['outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideResult']:
+        return pulumi.get(self, "launch_template_overrides")
+
+    @property
+    @pulumi.getter(name="fleetOnDemandOption")
+    def fleet_on_demand_option(self) -> Optional['outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionResult']:
+        return pulumi.get(self, "fleet_on_demand_option")
+
+    @property
+    @pulumi.getter(name="fleetSpotOption")
+    def fleet_spot_option(self) -> Optional['outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionResult']:
+        return pulumi.get(self, "fleet_spot_option")
+
+
+@pulumi.output_type
+class GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionResult(dict):
+    def __init__(__self__, *,
+                 allocation_strategy: str,
+                 instance_pools_to_use_count: Optional[int] = None):
+        pulumi.set(__self__, "allocation_strategy", allocation_strategy)
+        if instance_pools_to_use_count is not None:
+            pulumi.set(__self__, "instance_pools_to_use_count", instance_pools_to_use_count)
+
+    @property
+    @pulumi.getter(name="allocationStrategy")
+    def allocation_strategy(self) -> str:
+        return pulumi.get(self, "allocation_strategy")
+
+    @property
+    @pulumi.getter(name="instancePoolsToUseCount")
+    def instance_pools_to_use_count(self) -> Optional[int]:
+        return pulumi.get(self, "instance_pools_to_use_count")
+
+
+@pulumi.output_type
+class GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionResult(dict):
+    def __init__(__self__, *,
+                 allocation_strategy: str,
+                 instance_pools_to_use_count: Optional[int] = None):
+        pulumi.set(__self__, "allocation_strategy", allocation_strategy)
+        if instance_pools_to_use_count is not None:
+            pulumi.set(__self__, "instance_pools_to_use_count", instance_pools_to_use_count)
+
+    @property
+    @pulumi.getter(name="allocationStrategy")
+    def allocation_strategy(self) -> str:
+        return pulumi.get(self, "allocation_strategy")
+
+    @property
+    @pulumi.getter(name="instancePoolsToUseCount")
+    def instance_pools_to_use_count(self) -> Optional[int]:
+        return pulumi.get(self, "instance_pools_to_use_count")
+
+
+@pulumi.output_type
+class GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: str,
+                 instance_type: str):
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "instance_type", instance_type)
+
+    @property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> str:
+        return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        return pulumi.get(self, "instance_type")
+
+
+@pulumi.output_type
+class GetInstancePoolPoolInfoPreloadedDockerImageResult(dict):
+    def __init__(__self__, *,
+                 url: str,
+                 basic_auth: Optional['outputs.GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthResult'] = None):
+        pulumi.set(__self__, "url", url)
+        if basic_auth is not None:
+            pulumi.set(__self__, "basic_auth", basic_auth)
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> Optional['outputs.GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthResult']:
+        return pulumi.get(self, "basic_auth")
+
+
+@pulumi.output_type
+class GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthResult(dict):
+    def __init__(__self__, *,
+                 password: str,
+                 username: str):
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetInstancePoolPoolInfoStatsResult(dict):
+    def __init__(__self__, *,
+                 idle_count: Optional[int] = None,
+                 pending_idle_count: Optional[int] = None,
+                 pending_used_count: Optional[int] = None,
+                 used_count: Optional[int] = None):
+        if idle_count is not None:
+            pulumi.set(__self__, "idle_count", idle_count)
+        if pending_idle_count is not None:
+            pulumi.set(__self__, "pending_idle_count", pending_idle_count)
+        if pending_used_count is not None:
+            pulumi.set(__self__, "pending_used_count", pending_used_count)
+        if used_count is not None:
+            pulumi.set(__self__, "used_count", used_count)
+
+    @property
+    @pulumi.getter(name="idleCount")
+    def idle_count(self) -> Optional[int]:
+        return pulumi.get(self, "idle_count")
+
+    @property
+    @pulumi.getter(name="pendingIdleCount")
+    def pending_idle_count(self) -> Optional[int]:
+        return pulumi.get(self, "pending_idle_count")
+
+    @property
+    @pulumi.getter(name="pendingUsedCount")
+    def pending_used_count(self) -> Optional[int]:
+        return pulumi.get(self, "pending_used_count")
+
+    @property
+    @pulumi.getter(name="usedCount")
+    def used_count(self) -> Optional[int]:
+        return pulumi.get(self, "used_count")
+
+
+@pulumi.output_type
 class GetJobJobSettingsResult(dict):
     def __init__(__self__, *,
                  created_time: Optional[int] = None,
                  creator_user_name: Optional[str] = None,
                  job_id: Optional[int] = None,
                  settings: Optional['outputs.GetJobJobSettingsSettingsResult'] = None):
-        """
-        :param int job_id: the id of Job if the resource was matched by name.
-        """
         if created_time is not None:
             pulumi.set(__self__, "created_time", created_time)
         if creator_user_name is not None:
@@ -10501,9 +11854,6 @@ class GetJobJobSettingsResult(dict):
     @property
     @pulumi.getter(name="jobId")
     def job_id(self) -> Optional[int]:
-        """
-        the id of Job if the resource was matched by name.
-        """
         return pulumi.get(self, "job_id")
 
     @property
@@ -10539,6 +11889,9 @@ class GetJobJobSettingsSettingsResult(dict):
                  tasks: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskResult']] = None,
                  timeout_seconds: Optional[int] = None,
                  webhook_notifications: Optional['outputs.GetJobJobSettingsSettingsWebhookNotificationsResult'] = None):
+        """
+        :param str name: the job name of Job if the resource was matched by id.
+        """
         pulumi.set(__self__, "format", format)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
@@ -10640,6 +11993,9 @@ class GetJobJobSettingsSettingsResult(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        the job name of Job if the resource was matched by id.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -10712,11 +12068,14 @@ class GetJobJobSettingsSettingsResult(dict):
 class GetJobJobSettingsSettingsDbtTaskResult(dict):
     def __init__(__self__, *,
                  commands: Sequence[str],
+                 catalog: Optional[str] = None,
                  profiles_directory: Optional[str] = None,
                  project_directory: Optional[str] = None,
                  schema: Optional[str] = None,
                  warehouse_id: Optional[str] = None):
         pulumi.set(__self__, "commands", commands)
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
         if profiles_directory is not None:
             pulumi.set(__self__, "profiles_directory", profiles_directory)
         if project_directory is not None:
@@ -10730,6 +12089,11 @@ class GetJobJobSettingsSettingsDbtTaskResult(dict):
     @pulumi.getter
     def commands(self) -> Sequence[str]:
         return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> Optional[str]:
+        return pulumi.get(self, "catalog")
 
     @property
     @pulumi.getter(name="profilesDirectory")
@@ -10879,6 +12243,7 @@ class GetJobJobSettingsSettingsJobClusterNewClusterResult(dict):
                  azure_attributes: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesResult'] = None,
                  cluster_id: Optional[str] = None,
                  cluster_log_conf: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfResult'] = None,
+                 cluster_mount_infos: Optional[Sequence['outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoResult']] = None,
                  cluster_name: Optional[str] = None,
                  custom_tags: Optional[Mapping[str, Any]] = None,
                  data_security_mode: Optional[str] = None,
@@ -10915,6 +12280,8 @@ class GetJobJobSettingsSettingsJobClusterNewClusterResult(dict):
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
             pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
+        if cluster_mount_infos is not None:
+            pulumi.set(__self__, "cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
         if custom_tags is not None:
@@ -11015,6 +12382,11 @@ class GetJobJobSettingsSettingsJobClusterNewClusterResult(dict):
     @pulumi.getter(name="clusterLogConf")
     def cluster_log_conf(self) -> Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfResult']:
         return pulumi.get(self, "cluster_log_conf")
+
+    @property
+    @pulumi.getter(name="clusterMountInfos")
+    def cluster_mount_infos(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoResult']]:
+        return pulumi.get(self, "cluster_mount_infos")
 
     @property
     @pulumi.getter(name="clusterName")
@@ -11305,6 +12677,53 @@ class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3Result(dict):
 
 
 @pulumi.output_type
+class GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoResult(dict):
+    def __init__(__self__, *,
+                 local_mount_dir_path: str,
+                 network_filesystem_info: 'outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoResult',
+                 remote_mount_dir_path: Optional[str] = None):
+        pulumi.set(__self__, "local_mount_dir_path", local_mount_dir_path)
+        pulumi.set(__self__, "network_filesystem_info", network_filesystem_info)
+        if remote_mount_dir_path is not None:
+            pulumi.set(__self__, "remote_mount_dir_path", remote_mount_dir_path)
+
+    @property
+    @pulumi.getter(name="localMountDirPath")
+    def local_mount_dir_path(self) -> str:
+        return pulumi.get(self, "local_mount_dir_path")
+
+    @property
+    @pulumi.getter(name="networkFilesystemInfo")
+    def network_filesystem_info(self) -> 'outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoResult':
+        return pulumi.get(self, "network_filesystem_info")
+
+    @property
+    @pulumi.getter(name="remoteMountDirPath")
+    def remote_mount_dir_path(self) -> Optional[str]:
+        return pulumi.get(self, "remote_mount_dir_path")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoResult(dict):
+    def __init__(__self__, *,
+                 server_address: str,
+                 mount_options: Optional[str] = None):
+        pulumi.set(__self__, "server_address", server_address)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> str:
+        return pulumi.get(self, "server_address")
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[str]:
+        return pulumi.get(self, "mount_options")
+
+
+@pulumi.output_type
 class GetJobJobSettingsSettingsJobClusterNewClusterDockerImageResult(dict):
     def __init__(__self__, *,
                  url: str,
@@ -11391,10 +12810,13 @@ class GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesResult(dict):
 @pulumi.output_type
 class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptResult(dict):
     def __init__(__self__, *,
+                 abfss: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssResult'] = None,
                  dbfs: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsResult'] = None,
                  file: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileResult'] = None,
                  gcs: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsResult'] = None,
                  s3: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Result'] = None):
+        if abfss is not None:
+            pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
@@ -11403,6 +12825,11 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptResult(dict):
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+
+    @property
+    @pulumi.getter
+    def abfss(self) -> Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssResult']:
+        return pulumi.get(self, "abfss")
 
     @property
     @pulumi.getter
@@ -11423,6 +12850,19 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptResult(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Result']:
         return pulumi.get(self, "s3")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssResult(dict):
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -11694,6 +13134,7 @@ class GetJobJobSettingsSettingsNewClusterResult(dict):
                  azure_attributes: Optional['outputs.GetJobJobSettingsSettingsNewClusterAzureAttributesResult'] = None,
                  cluster_id: Optional[str] = None,
                  cluster_log_conf: Optional['outputs.GetJobJobSettingsSettingsNewClusterClusterLogConfResult'] = None,
+                 cluster_mount_infos: Optional[Sequence['outputs.GetJobJobSettingsSettingsNewClusterClusterMountInfoResult']] = None,
                  cluster_name: Optional[str] = None,
                  custom_tags: Optional[Mapping[str, Any]] = None,
                  data_security_mode: Optional[str] = None,
@@ -11730,6 +13171,8 @@ class GetJobJobSettingsSettingsNewClusterResult(dict):
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
             pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
+        if cluster_mount_infos is not None:
+            pulumi.set(__self__, "cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
         if custom_tags is not None:
@@ -11830,6 +13273,11 @@ class GetJobJobSettingsSettingsNewClusterResult(dict):
     @pulumi.getter(name="clusterLogConf")
     def cluster_log_conf(self) -> Optional['outputs.GetJobJobSettingsSettingsNewClusterClusterLogConfResult']:
         return pulumi.get(self, "cluster_log_conf")
+
+    @property
+    @pulumi.getter(name="clusterMountInfos")
+    def cluster_mount_infos(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsNewClusterClusterMountInfoResult']]:
+        return pulumi.get(self, "cluster_mount_infos")
 
     @property
     @pulumi.getter(name="clusterName")
@@ -12120,6 +13568,53 @@ class GetJobJobSettingsSettingsNewClusterClusterLogConfS3Result(dict):
 
 
 @pulumi.output_type
+class GetJobJobSettingsSettingsNewClusterClusterMountInfoResult(dict):
+    def __init__(__self__, *,
+                 local_mount_dir_path: str,
+                 network_filesystem_info: 'outputs.GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoResult',
+                 remote_mount_dir_path: Optional[str] = None):
+        pulumi.set(__self__, "local_mount_dir_path", local_mount_dir_path)
+        pulumi.set(__self__, "network_filesystem_info", network_filesystem_info)
+        if remote_mount_dir_path is not None:
+            pulumi.set(__self__, "remote_mount_dir_path", remote_mount_dir_path)
+
+    @property
+    @pulumi.getter(name="localMountDirPath")
+    def local_mount_dir_path(self) -> str:
+        return pulumi.get(self, "local_mount_dir_path")
+
+    @property
+    @pulumi.getter(name="networkFilesystemInfo")
+    def network_filesystem_info(self) -> 'outputs.GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoResult':
+        return pulumi.get(self, "network_filesystem_info")
+
+    @property
+    @pulumi.getter(name="remoteMountDirPath")
+    def remote_mount_dir_path(self) -> Optional[str]:
+        return pulumi.get(self, "remote_mount_dir_path")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoResult(dict):
+    def __init__(__self__, *,
+                 server_address: str,
+                 mount_options: Optional[str] = None):
+        pulumi.set(__self__, "server_address", server_address)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> str:
+        return pulumi.get(self, "server_address")
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[str]:
+        return pulumi.get(self, "mount_options")
+
+
+@pulumi.output_type
 class GetJobJobSettingsSettingsNewClusterDockerImageResult(dict):
     def __init__(__self__, *,
                  url: str,
@@ -12206,10 +13701,13 @@ class GetJobJobSettingsSettingsNewClusterGcpAttributesResult(dict):
 @pulumi.output_type
 class GetJobJobSettingsSettingsNewClusterInitScriptResult(dict):
     def __init__(__self__, *,
+                 abfss: Optional['outputs.GetJobJobSettingsSettingsNewClusterInitScriptAbfssResult'] = None,
                  dbfs: Optional['outputs.GetJobJobSettingsSettingsNewClusterInitScriptDbfsResult'] = None,
                  file: Optional['outputs.GetJobJobSettingsSettingsNewClusterInitScriptFileResult'] = None,
                  gcs: Optional['outputs.GetJobJobSettingsSettingsNewClusterInitScriptGcsResult'] = None,
                  s3: Optional['outputs.GetJobJobSettingsSettingsNewClusterInitScriptS3Result'] = None):
+        if abfss is not None:
+            pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
@@ -12218,6 +13716,11 @@ class GetJobJobSettingsSettingsNewClusterInitScriptResult(dict):
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+
+    @property
+    @pulumi.getter
+    def abfss(self) -> Optional['outputs.GetJobJobSettingsSettingsNewClusterInitScriptAbfssResult']:
+        return pulumi.get(self, "abfss")
 
     @property
     @pulumi.getter
@@ -12238,6 +13741,19 @@ class GetJobJobSettingsSettingsNewClusterInitScriptResult(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.GetJobJobSettingsSettingsNewClusterInitScriptS3Result']:
         return pulumi.get(self, "s3")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsNewClusterInitScriptAbfssResult(dict):
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -12375,10 +13891,13 @@ class GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsResult(dict):
 class GetJobJobSettingsSettingsNotebookTaskResult(dict):
     def __init__(__self__, *,
                  notebook_path: str,
-                 base_parameters: Optional[Mapping[str, Any]] = None):
+                 base_parameters: Optional[Mapping[str, Any]] = None,
+                 source: Optional[str] = None):
         pulumi.set(__self__, "notebook_path", notebook_path)
         if base_parameters is not None:
             pulumi.set(__self__, "base_parameters", base_parameters)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter(name="notebookPath")
@@ -12389,6 +13908,11 @@ class GetJobJobSettingsSettingsNotebookTaskResult(dict):
     @pulumi.getter(name="baseParameters")
     def base_parameters(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "base_parameters")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        return pulumi.get(self, "source")
 
 
 @pulumi.output_type
@@ -12696,11 +14220,14 @@ class GetJobJobSettingsSettingsTaskResult(dict):
 class GetJobJobSettingsSettingsTaskDbtTaskResult(dict):
     def __init__(__self__, *,
                  commands: Sequence[str],
+                 catalog: Optional[str] = None,
                  profiles_directory: Optional[str] = None,
                  project_directory: Optional[str] = None,
                  schema: Optional[str] = None,
                  warehouse_id: Optional[str] = None):
         pulumi.set(__self__, "commands", commands)
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
         if profiles_directory is not None:
             pulumi.set(__self__, "profiles_directory", profiles_directory)
         if project_directory is not None:
@@ -12714,6 +14241,11 @@ class GetJobJobSettingsSettingsTaskDbtTaskResult(dict):
     @pulumi.getter
     def commands(self) -> Sequence[str]:
         return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> Optional[str]:
+        return pulumi.get(self, "catalog")
 
     @property
     @pulumi.getter(name="profilesDirectory")
@@ -12932,6 +14464,7 @@ class GetJobJobSettingsSettingsTaskNewClusterResult(dict):
                  azure_attributes: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterAzureAttributesResult'] = None,
                  cluster_id: Optional[str] = None,
                  cluster_log_conf: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfResult'] = None,
+                 cluster_mount_infos: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoResult']] = None,
                  cluster_name: Optional[str] = None,
                  custom_tags: Optional[Mapping[str, Any]] = None,
                  data_security_mode: Optional[str] = None,
@@ -12968,6 +14501,8 @@ class GetJobJobSettingsSettingsTaskNewClusterResult(dict):
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
             pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
+        if cluster_mount_infos is not None:
+            pulumi.set(__self__, "cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
         if custom_tags is not None:
@@ -13068,6 +14603,11 @@ class GetJobJobSettingsSettingsTaskNewClusterResult(dict):
     @pulumi.getter(name="clusterLogConf")
     def cluster_log_conf(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfResult']:
         return pulumi.get(self, "cluster_log_conf")
+
+    @property
+    @pulumi.getter(name="clusterMountInfos")
+    def cluster_mount_infos(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoResult']]:
+        return pulumi.get(self, "cluster_mount_infos")
 
     @property
     @pulumi.getter(name="clusterName")
@@ -13358,6 +14898,53 @@ class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3Result(dict):
 
 
 @pulumi.output_type
+class GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoResult(dict):
+    def __init__(__self__, *,
+                 local_mount_dir_path: str,
+                 network_filesystem_info: 'outputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoResult',
+                 remote_mount_dir_path: Optional[str] = None):
+        pulumi.set(__self__, "local_mount_dir_path", local_mount_dir_path)
+        pulumi.set(__self__, "network_filesystem_info", network_filesystem_info)
+        if remote_mount_dir_path is not None:
+            pulumi.set(__self__, "remote_mount_dir_path", remote_mount_dir_path)
+
+    @property
+    @pulumi.getter(name="localMountDirPath")
+    def local_mount_dir_path(self) -> str:
+        return pulumi.get(self, "local_mount_dir_path")
+
+    @property
+    @pulumi.getter(name="networkFilesystemInfo")
+    def network_filesystem_info(self) -> 'outputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoResult':
+        return pulumi.get(self, "network_filesystem_info")
+
+    @property
+    @pulumi.getter(name="remoteMountDirPath")
+    def remote_mount_dir_path(self) -> Optional[str]:
+        return pulumi.get(self, "remote_mount_dir_path")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoResult(dict):
+    def __init__(__self__, *,
+                 server_address: str,
+                 mount_options: Optional[str] = None):
+        pulumi.set(__self__, "server_address", server_address)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> str:
+        return pulumi.get(self, "server_address")
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[str]:
+        return pulumi.get(self, "mount_options")
+
+
+@pulumi.output_type
 class GetJobJobSettingsSettingsTaskNewClusterDockerImageResult(dict):
     def __init__(__self__, *,
                  url: str,
@@ -13444,10 +15031,13 @@ class GetJobJobSettingsSettingsTaskNewClusterGcpAttributesResult(dict):
 @pulumi.output_type
 class GetJobJobSettingsSettingsTaskNewClusterInitScriptResult(dict):
     def __init__(__self__, *,
+                 abfss: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssResult'] = None,
                  dbfs: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsResult'] = None,
                  file: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFileResult'] = None,
                  gcs: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsResult'] = None,
                  s3: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Result'] = None):
+        if abfss is not None:
+            pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
@@ -13456,6 +15046,11 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptResult(dict):
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+
+    @property
+    @pulumi.getter
+    def abfss(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssResult']:
+        return pulumi.get(self, "abfss")
 
     @property
     @pulumi.getter
@@ -13476,6 +15071,19 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptResult(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Result']:
         return pulumi.get(self, "s3")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssResult(dict):
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -13613,10 +15221,13 @@ class GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsResult(dict):
 class GetJobJobSettingsSettingsTaskNotebookTaskResult(dict):
     def __init__(__self__, *,
                  notebook_path: str,
-                 base_parameters: Optional[Mapping[str, Any]] = None):
+                 base_parameters: Optional[Mapping[str, Any]] = None,
+                 source: Optional[str] = None):
         pulumi.set(__self__, "notebook_path", notebook_path)
         if base_parameters is not None:
             pulumi.set(__self__, "base_parameters", base_parameters)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter(name="notebookPath")
@@ -13627,6 +15238,11 @@ class GetJobJobSettingsSettingsTaskNotebookTaskResult(dict):
     @pulumi.getter(name="baseParameters")
     def base_parameters(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "base_parameters")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        return pulumi.get(self, "source")
 
 
 @pulumi.output_type
@@ -13854,11 +15470,17 @@ class GetJobJobSettingsSettingsWebhookNotificationsResult(dict):
 class GetJobJobSettingsSettingsWebhookNotificationsOnFailureResult(dict):
     def __init__(__self__, *,
                  id: str):
+        """
+        :param str id: the id of Job if the resource was matched by name.
+        """
         pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        the id of Job if the resource was matched by name.
+        """
         return pulumi.get(self, "id")
 
 
@@ -13866,11 +15488,17 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnFailureResult(dict):
 class GetJobJobSettingsSettingsWebhookNotificationsOnStartResult(dict):
     def __init__(__self__, *,
                  id: str):
+        """
+        :param str id: the id of Job if the resource was matched by name.
+        """
         pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        the id of Job if the resource was matched by name.
+        """
         return pulumi.get(self, "id")
 
 
@@ -13878,11 +15506,17 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnStartResult(dict):
 class GetJobJobSettingsSettingsWebhookNotificationsOnSuccessResult(dict):
     def __init__(__self__, *,
                  id: str):
+        """
+        :param str id: the id of Job if the resource was matched by name.
+        """
         pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        the id of Job if the resource was matched by name.
+        """
         return pulumi.get(self, "id")
 
 

@@ -25,14 +25,14 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Bool) don&#39;t send alert for skipped runs
+     * (Bool) don&#39;t send alert for skipped runs.
      * 
      */
     @Import(name="noAlertForSkippedRuns")
     private @Nullable Output<Boolean> noAlertForSkippedRuns;
 
     /**
-     * @return (Bool) don&#39;t send alert for skipped runs
+     * @return (Bool) don&#39;t send alert for skipped runs.
      * 
      */
     public Optional<Output<Boolean>> noAlertForSkippedRuns() {
@@ -40,14 +40,14 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run fails.
      * 
      */
     @Import(name="onFailures")
     private @Nullable Output<List<String>> onFailures;
 
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of emails to notify when the run fails.
      * 
      */
     public Optional<Output<List<String>>> onFailures() {
@@ -55,14 +55,14 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run starts.
      * 
      */
     @Import(name="onStarts")
     private @Nullable Output<List<String>> onStarts;
 
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of emails to notify when the run starts.
      * 
      */
     public Optional<Output<List<String>>> onStarts() {
@@ -70,14 +70,14 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (List) list of emails to notify on failure
+     * (List) list of emails to notify when the run completes successfully.
      * 
      */
     @Import(name="onSuccesses")
     private @Nullable Output<List<String>> onSuccesses;
 
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of emails to notify when the run completes successfully.
      * 
      */
     public Optional<Output<List<String>>> onSuccesses() {
@@ -122,7 +122,7 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs
+         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs
+         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param onFailures (List) list of emails to notify on failure
+         * @param onFailures (List) list of emails to notify when the run fails.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param onFailures (List) list of emails to notify on failure
+         * @param onFailures (List) list of emails to notify when the run fails.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param onFailures (List) list of emails to notify on failure
+         * @param onFailures (List) list of emails to notify when the run fails.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param onStarts (List) list of emails to notify on failure
+         * @param onStarts (List) list of emails to notify when the run starts.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param onStarts (List) list of emails to notify on failure
+         * @param onStarts (List) list of emails to notify when the run starts.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param onStarts (List) list of emails to notify on failure
+         * @param onStarts (List) list of emails to notify when the run starts.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param onSuccesses (List) list of emails to notify on failure
+         * @param onSuccesses (List) list of emails to notify when the run completes successfully.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param onSuccesses (List) list of emails to notify on failure
+         * @param onSuccesses (List) list of emails to notify when the run completes successfully.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param onSuccesses (List) list of emails to notify on failure
+         * @param onSuccesses (List) list of emails to notify when the run completes successfully.
          * 
          * @return builder
          * 

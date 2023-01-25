@@ -21,7 +21,7 @@ class GetNodeTypeResult:
     """
     A collection of values returned by getNodeType.
     """
-    def __init__(__self__, category=None, gb_per_core=None, graviton=None, id=None, is_io_cache_enabled=None, local_disk=None, min_cores=None, min_gpus=None, min_memory_gb=None, photon_driver_capable=None, photon_worker_capable=None, support_port_forwarding=None, vcpu=None):
+    def __init__(__self__, category=None, gb_per_core=None, graviton=None, id=None, is_io_cache_enabled=None, local_disk=None, local_disk_min_size=None, min_cores=None, min_gpus=None, min_memory_gb=None, photon_driver_capable=None, photon_worker_capable=None, support_port_forwarding=None, vcpu=None):
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
         pulumi.set(__self__, "category", category)
@@ -40,6 +40,9 @@ class GetNodeTypeResult:
         if local_disk and not isinstance(local_disk, bool):
             raise TypeError("Expected argument 'local_disk' to be a bool")
         pulumi.set(__self__, "local_disk", local_disk)
+        if local_disk_min_size and not isinstance(local_disk_min_size, int):
+            raise TypeError("Expected argument 'local_disk_min_size' to be a int")
+        pulumi.set(__self__, "local_disk_min_size", local_disk_min_size)
         if min_cores and not isinstance(min_cores, int):
             raise TypeError("Expected argument 'min_cores' to be a int")
         pulumi.set(__self__, "min_cores", min_cores)
@@ -96,6 +99,11 @@ class GetNodeTypeResult:
         return pulumi.get(self, "local_disk")
 
     @property
+    @pulumi.getter(name="localDiskMinSize")
+    def local_disk_min_size(self) -> Optional[int]:
+        return pulumi.get(self, "local_disk_min_size")
+
+    @property
     @pulumi.getter(name="minCores")
     def min_cores(self) -> Optional[int]:
         return pulumi.get(self, "min_cores")
@@ -143,6 +151,7 @@ class AwaitableGetNodeTypeResult(GetNodeTypeResult):
             id=self.id,
             is_io_cache_enabled=self.is_io_cache_enabled,
             local_disk=self.local_disk,
+            local_disk_min_size=self.local_disk_min_size,
             min_cores=self.min_cores,
             min_gpus=self.min_gpus,
             min_memory_gb=self.min_memory_gb,
@@ -157,6 +166,7 @@ def get_node_type(category: Optional[str] = None,
                   graviton: Optional[bool] = None,
                   is_io_cache_enabled: Optional[bool] = None,
                   local_disk: Optional[bool] = None,
+                  local_disk_min_size: Optional[int] = None,
                   min_cores: Optional[int] = None,
                   min_gpus: Optional[int] = None,
                   min_memory_gb: Optional[int] = None,
@@ -211,6 +221,7 @@ def get_node_type(category: Optional[str] = None,
     :param bool graviton: if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
     :param bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to *false*.
     :param bool local_disk: Pick only nodes with local storage. Defaults to *false*.
+    :param int local_disk_min_size: Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
     :param int min_cores: Minimum number of CPU cores available on instance. Defaults to *0*.
     :param int min_gpus: Minimum number of GPU's attached to instance. Defaults to *0*.
     :param int min_memory_gb: Minimum amount of memory per node in gigabytes. Defaults to *0*.
@@ -224,6 +235,7 @@ def get_node_type(category: Optional[str] = None,
     __args__['graviton'] = graviton
     __args__['isIoCacheEnabled'] = is_io_cache_enabled
     __args__['localDisk'] = local_disk
+    __args__['localDiskMinSize'] = local_disk_min_size
     __args__['minCores'] = min_cores
     __args__['minGpus'] = min_gpus
     __args__['minMemoryGb'] = min_memory_gb
@@ -241,6 +253,7 @@ def get_node_type(category: Optional[str] = None,
         id=__ret__.id,
         is_io_cache_enabled=__ret__.is_io_cache_enabled,
         local_disk=__ret__.local_disk,
+        local_disk_min_size=__ret__.local_disk_min_size,
         min_cores=__ret__.min_cores,
         min_gpus=__ret__.min_gpus,
         min_memory_gb=__ret__.min_memory_gb,
@@ -256,6 +269,7 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          graviton: Optional[pulumi.Input[Optional[bool]]] = None,
                          is_io_cache_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                          local_disk: Optional[pulumi.Input[Optional[bool]]] = None,
+                         local_disk_min_size: Optional[pulumi.Input[Optional[int]]] = None,
                          min_cores: Optional[pulumi.Input[Optional[int]]] = None,
                          min_gpus: Optional[pulumi.Input[Optional[int]]] = None,
                          min_memory_gb: Optional[pulumi.Input[Optional[int]]] = None,
@@ -310,6 +324,7 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     :param bool graviton: if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
     :param bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to *false*.
     :param bool local_disk: Pick only nodes with local storage. Defaults to *false*.
+    :param int local_disk_min_size: Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
     :param int min_cores: Minimum number of CPU cores available on instance. Defaults to *0*.
     :param int min_gpus: Minimum number of GPU's attached to instance. Defaults to *0*.
     :param int min_memory_gb: Minimum amount of memory per node in gigabytes. Defaults to *0*.

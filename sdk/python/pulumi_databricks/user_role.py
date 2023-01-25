@@ -18,7 +18,7 @@ class UserRoleArgs:
                  user_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a UserRole resource.
-        :param pulumi.Input[str] role: Either a role name or the id of the instance profile resource.
+        :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
         :param pulumi.Input[str] user_id: This is the id of the user resource.
         """
         pulumi.set(__self__, "role", role)
@@ -28,7 +28,7 @@ class UserRoleArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
         """
-        Either a role name or the id of the instance profile resource.
+        Either a role name or the ARN/ID of the instance profile resource.
         """
         return pulumi.get(self, "role")
 
@@ -56,7 +56,7 @@ class _UserRoleState:
                  user_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering UserRole resources.
-        :param pulumi.Input[str] role: Either a role name or the id of the instance profile resource.
+        :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
         :param pulumi.Input[str] user_id: This is the id of the user resource.
         """
         if role is not None:
@@ -68,7 +68,7 @@ class _UserRoleState:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        Either a role name or the id of the instance profile resource.
+        Either a role name or the ARN/ID of the instance profile resource.
         """
         return pulumi.get(self, "role")
 
@@ -143,7 +143,7 @@ class UserRole(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] role: Either a role name or the id of the instance profile resource.
+        :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
         :param pulumi.Input[str] user_id: This is the id of the user resource.
         """
         ...
@@ -247,7 +247,7 @@ class UserRole(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] role: Either a role name or the id of the instance profile resource.
+        :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
         :param pulumi.Input[str] user_id: This is the id of the user resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -262,7 +262,7 @@ class UserRole(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
         """
-        Either a role name or the id of the instance profile resource.
+        Either a role name or the ARN/ID of the instance profile resource.
         """
         return pulumi.get(self, "role")
 

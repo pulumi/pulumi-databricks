@@ -13,11 +13,8 @@ import * as utilities from "./utilities";
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getViews(args: GetViewsArgs, opts?: pulumi.InvokeOptions): Promise<GetViewsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getViews:getViews", {
         "catalogName": args.catalogName,
         "ids": args.ids,
@@ -58,9 +55,16 @@ export interface GetViewsResult {
     readonly ids: string[];
     readonly schemaName: string;
 }
-
+/**
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Schema to manage schemas within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
+ */
 export function getViewsOutput(args: GetViewsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetViewsResult> {
-    return pulumi.output(args).apply(a => getViews(a, opts))
+    return pulumi.output(args).apply((a: any) => getViews(a, opts))
 }
 
 /**
