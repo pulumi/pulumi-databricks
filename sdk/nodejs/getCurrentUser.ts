@@ -27,11 +27,8 @@ import * as utilities from "./utilities";
  * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
  */
 export function getCurrentUser(opts?: pulumi.InvokeOptions): Promise<GetCurrentUserResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCurrentUser:getCurrentUser", {
     }, opts);
 }

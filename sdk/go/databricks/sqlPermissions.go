@@ -32,15 +32,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewSqlPermissions(ctx, "fooTable", &databricks.SqlPermissionsArgs{
-//				PrivilegeAssignments: SqlPermissionsPrivilegeAssignmentArray{
-//					&SqlPermissionsPrivilegeAssignmentArgs{
+//				PrivilegeAssignments: databricks.SqlPermissionsPrivilegeAssignmentArray{
+//					&databricks.SqlPermissionsPrivilegeAssignmentArgs{
 //						Principal: pulumi.String("serge@example.com"),
 //						Privileges: pulumi.StringArray{
 //							pulumi.String("SELECT"),
 //							pulumi.String("MODIFY"),
 //						},
 //					},
-//					&SqlPermissionsPrivilegeAssignmentArgs{
+//					&databricks.SqlPermissionsPrivilegeAssignmentArgs{
 //						Principal: pulumi.String("special group"),
 //						Privileges: pulumi.StringArray{
 //							pulumi.String("SELECT"),

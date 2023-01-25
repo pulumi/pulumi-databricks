@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobNewClusterInitScriptAbfssArgs;
 import com.pulumi.databricks.inputs.JobNewClusterInitScriptDbfsArgs;
 import com.pulumi.databricks.inputs.JobNewClusterInitScriptFileArgs;
 import com.pulumi.databricks.inputs.JobNewClusterInitScriptGcsArgs;
@@ -17,6 +18,13 @@ import javax.annotation.Nullable;
 public final class JobNewClusterInitScriptArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobNewClusterInitScriptArgs Empty = new JobNewClusterInitScriptArgs();
+
+    @Import(name="abfss")
+    private @Nullable Output<JobNewClusterInitScriptAbfssArgs> abfss;
+
+    public Optional<Output<JobNewClusterInitScriptAbfssArgs>> abfss() {
+        return Optional.ofNullable(this.abfss);
+    }
 
     @Import(name="dbfs")
     private @Nullable Output<JobNewClusterInitScriptDbfsArgs> dbfs;
@@ -49,6 +57,7 @@ public final class JobNewClusterInitScriptArgs extends com.pulumi.resources.Reso
     private JobNewClusterInitScriptArgs() {}
 
     private JobNewClusterInitScriptArgs(JobNewClusterInitScriptArgs $) {
+        this.abfss = $.abfss;
         this.dbfs = $.dbfs;
         this.file = $.file;
         this.gcs = $.gcs;
@@ -71,6 +80,15 @@ public final class JobNewClusterInitScriptArgs extends com.pulumi.resources.Reso
 
         public Builder(JobNewClusterInitScriptArgs defaults) {
             $ = new JobNewClusterInitScriptArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder abfss(@Nullable Output<JobNewClusterInitScriptAbfssArgs> abfss) {
+            $.abfss = abfss;
+            return this;
+        }
+
+        public Builder abfss(JobNewClusterInitScriptAbfssArgs abfss) {
+            return abfss(Output.of(abfss));
         }
 
         public Builder dbfs(@Nullable Output<JobNewClusterInitScriptDbfsArgs> dbfs) {

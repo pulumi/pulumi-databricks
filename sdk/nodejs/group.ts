@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const thisGroup = new databricks.Group("this", {
+ * const _this = new databricks.Group("this", {
  *     allowClusterCreate: true,
  *     allowInstancePoolCreate: true,
  * });

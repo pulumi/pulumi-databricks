@@ -13,11 +13,16 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class SqlQueryParameterDatetimesecRange
     {
-        public readonly string Value;
+        public readonly Outputs.SqlQueryParameterDatetimesecRangeRange? Range;
+        public readonly string? Value;
 
         [OutputConstructor]
-        private SqlQueryParameterDatetimesecRange(string value)
+        private SqlQueryParameterDatetimesecRange(
+            Outputs.SqlQueryParameterDatetimesecRangeRange? range,
+
+            string? value)
         {
+            Range = range;
             Value = value;
         }
     }

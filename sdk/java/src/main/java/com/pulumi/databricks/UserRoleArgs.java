@@ -14,14 +14,14 @@ public final class UserRoleArgs extends com.pulumi.resources.ResourceArgs {
     public static final UserRoleArgs Empty = new UserRoleArgs();
 
     /**
-     * Either a role name or the id of the instance profile resource.
+     * Either a role name or the ARN/ID of the instance profile resource.
      * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
 
     /**
-     * @return Either a role name or the id of the instance profile resource.
+     * @return Either a role name or the ARN/ID of the instance profile resource.
      * 
      */
     public Output<String> role() {
@@ -69,7 +69,7 @@ public final class UserRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param role Either a role name or the id of the instance profile resource.
+         * @param role Either a role name or the ARN/ID of the instance profile resource.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class UserRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param role Either a role name or the id of the instance profile resource.
+         * @param role Either a role name or the ARN/ID of the instance profile resource.
          * 
          * @return builder
          * 

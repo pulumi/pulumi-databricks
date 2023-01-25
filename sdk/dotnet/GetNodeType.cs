@@ -165,6 +165,12 @@ namespace Pulumi.Databricks
         public bool? LocalDisk { get; set; }
 
         /// <summary>
+        /// Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+        /// </summary>
+        [Input("localDiskMinSize")]
+        public int? LocalDiskMinSize { get; set; }
+
+        /// <summary>
         /// Minimum number of CPU cores available on instance. Defaults to *0*.
         /// </summary>
         [Input("minCores")]
@@ -249,6 +255,12 @@ namespace Pulumi.Databricks
         public Input<bool>? LocalDisk { get; set; }
 
         /// <summary>
+        /// Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+        /// </summary>
+        [Input("localDiskMinSize")]
+        public Input<int>? LocalDiskMinSize { get; set; }
+
+        /// <summary>
         /// Minimum number of CPU cores available on instance. Defaults to *0*.
         /// </summary>
         [Input("minCores")]
@@ -306,6 +318,7 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly bool? IsIoCacheEnabled;
         public readonly bool? LocalDisk;
+        public readonly int? LocalDiskMinSize;
         public readonly int? MinCores;
         public readonly int? MinGpus;
         public readonly int? MinMemoryGb;
@@ -328,6 +341,8 @@ namespace Pulumi.Databricks
 
             bool? localDisk,
 
+            int? localDiskMinSize,
+
             int? minCores,
 
             int? minGpus,
@@ -348,6 +363,7 @@ namespace Pulumi.Databricks
             Id = id;
             IsIoCacheEnabled = isIoCacheEnabled;
             LocalDisk = localDisk;
+            LocalDiskMinSize = localDiskMinSize;
             MinCores = minCores;
             MinGpus = minGpus;
             MinMemoryGb = minMemoryGb;

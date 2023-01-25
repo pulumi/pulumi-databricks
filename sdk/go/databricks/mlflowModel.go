@@ -28,12 +28,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewMlflowModel(ctx, "test", &databricks.MlflowModelArgs{
 //				Description: pulumi.String("My MLflow model description"),
-//				Tags: MlflowModelTagArray{
-//					&MlflowModelTagArgs{
+//				Tags: databricks.MlflowModelTagArray{
+//					&databricks.MlflowModelTagArgs{
 //						Key:   pulumi.String("key1"),
 //						Value: pulumi.String("value1"),
 //					},
-//					&MlflowModelTagArgs{
+//					&databricks.MlflowModelTagArgs{
 //						Key:   pulumi.String("key2"),
 //						Value: pulumi.String("value2"),
 //					},

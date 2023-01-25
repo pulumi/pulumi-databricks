@@ -19,28 +19,27 @@ public final class GetJobPlainArgs extends com.pulumi.resources.InvokeArgs {
      * the id of databricks.Job if the resource was matched by name.
      * 
      */
-    @Import(name="jobId")
-    private @Nullable String jobId;
+    @Import(name="id")
+    private @Nullable String id;
 
     /**
      * @return the id of databricks.Job if the resource was matched by name.
      * 
      */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    @Import(name="jobId")
+    private @Nullable String jobId;
+
     public Optional<String> jobId() {
         return Optional.ofNullable(this.jobId);
     }
 
-    /**
-     * the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     @Import(name="jobName")
     private @Nullable String jobName;
 
-    /**
-     * @return the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     public Optional<String> jobName() {
         return Optional.ofNullable(this.jobName);
     }
@@ -60,12 +59,29 @@ public final class GetJobPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.jobSettings);
     }
 
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable String name;
+
+    /**
+     * @return the job name of databricks.Job if the resource was matched by id.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+
     private GetJobPlainArgs() {}
 
     private GetJobPlainArgs(GetJobPlainArgs $) {
+        this.id = $.id;
         this.jobId = $.jobId;
         this.jobName = $.jobName;
         this.jobSettings = $.jobSettings;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -87,22 +103,21 @@ public final class GetJobPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param jobId the id of databricks.Job if the resource was matched by name.
+         * @param id the id of databricks.Job if the resource was matched by name.
          * 
          * @return builder
          * 
          */
+        public Builder id(@Nullable String id) {
+            $.id = id;
+            return this;
+        }
+
         public Builder jobId(@Nullable String jobId) {
             $.jobId = jobId;
             return this;
         }
 
-        /**
-         * @param jobName the job name of databricks.Job if the resource was matched by id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobName(@Nullable String jobName) {
             $.jobName = jobName;
             return this;
@@ -116,6 +131,17 @@ public final class GetJobPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder jobSettings(@Nullable GetJobJobSettings jobSettings) {
             $.jobSettings = jobSettings;
+            return this;
+        }
+
+        /**
+         * @param name the job name of databricks.Job if the resource was matched by id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable String name) {
+            $.name = name;
             return this;
         }
 

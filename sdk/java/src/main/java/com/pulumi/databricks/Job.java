@@ -67,30 +67,22 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dbtTask);
     }
     /**
-     * (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
      */
     @Export(name="emailNotifications", type=JobEmailNotifications.class, parameters={})
     private Output</* @Nullable */ JobEmailNotifications> emailNotifications;
 
     /**
-     * @return (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+     * @return (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
      */
     public Output<Optional<JobEmailNotifications>> emailNotifications() {
         return Codegen.optional(this.emailNotifications);
     }
-    /**
-     * If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `new_cluster` for greater reliability.
-     * 
-     */
     @Export(name="existingClusterId", type=String.class, parameters={})
     private Output</* @Nullable */ String> existingClusterId;
 
-    /**
-     * @return If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `new_cluster` for greater reliability.
-     * 
-     */
     public Output<Optional<String>> existingClusterId() {
         return Codegen.optional(this.existingClusterId);
     }
@@ -141,14 +133,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxConcurrentRuns);
     }
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED result_state or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
      * 
      */
     @Export(name="maxRetries", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> maxRetries;
 
     /**
-     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED result_state or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
      * 
      */
     public Output<Optional<Integer>> maxRetries() {
@@ -295,22 +287,30 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeoutSeconds);
     }
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      * 
      */
     @Export(name="url", type=String.class, parameters={})
     private Output<String> url;
 
     /**
-     * @return URL of the job on the given workspace
+     * @return URL of the Git repository to use.
      * 
      */
     public Output<String> url() {
         return this.url;
     }
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * 
+     */
     @Export(name="webhookNotifications", type=JobWebhookNotifications.class, parameters={})
     private Output</* @Nullable */ JobWebhookNotifications> webhookNotifications;
 
+    /**
+     * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * 
+     */
     public Output<Optional<JobWebhookNotifications>> webhookNotifications() {
         return Codegen.optional(this.webhookNotifications);
     }

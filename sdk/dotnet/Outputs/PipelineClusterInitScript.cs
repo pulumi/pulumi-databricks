@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineClusterInitScript
     {
+        public readonly Outputs.PipelineClusterInitScriptAbfss? Abfss;
         public readonly Outputs.PipelineClusterInitScriptDbfs? Dbfs;
         public readonly Outputs.PipelineClusterInitScriptFile? File;
         public readonly Outputs.PipelineClusterInitScriptGcs? Gcs;
@@ -20,6 +21,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private PipelineClusterInitScript(
+            Outputs.PipelineClusterInitScriptAbfss? abfss,
+
             Outputs.PipelineClusterInitScriptDbfs? dbfs,
 
             Outputs.PipelineClusterInitScriptFile? file,
@@ -28,6 +31,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.PipelineClusterInitScriptS3? s3)
         {
+            Abfss = abfss;
             Dbfs = dbfs;
             File = file;
             Gcs = gcs;

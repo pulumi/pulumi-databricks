@@ -88,7 +88,7 @@ class GetServicePrincipalResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The id of the service principal.
         """
         return pulumi.get(self, "id")
 
@@ -103,9 +103,6 @@ class GetServicePrincipalResult:
     @property
     @pulumi.getter(name="spId")
     def sp_id(self) -> str:
-        """
-        The id of the service principal.
-        """
         return pulumi.get(self, "sp_id")
 
 
@@ -130,6 +127,7 @@ def get_service_principal(active: Optional[bool] = None,
                           display_name: Optional[str] = None,
                           external_id: Optional[str] = None,
                           home: Optional[str] = None,
+                          id: Optional[str] = None,
                           repos: Optional[str] = None,
                           sp_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalResult:
@@ -167,8 +165,8 @@ def get_service_principal(active: Optional[bool] = None,
     :param str display_name: Display name of the service principal, e.g. `Foo SPN`.
     :param str external_id: ID of the service principal in an external identity provider.
     :param str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+    :param str id: The id of the service principal.
     :param str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
-    :param str sp_id: The id of the service principal.
     """
     __args__ = dict()
     __args__['active'] = active
@@ -176,6 +174,7 @@ def get_service_principal(active: Optional[bool] = None,
     __args__['displayName'] = display_name
     __args__['externalId'] = external_id
     __args__['home'] = home
+    __args__['id'] = id
     __args__['repos'] = repos
     __args__['spId'] = sp_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -198,6 +197,7 @@ def get_service_principal_output(active: Optional[pulumi.Input[Optional[bool]]] 
                                  display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                  external_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  home: Optional[pulumi.Input[Optional[str]]] = None,
+                                 id: Optional[pulumi.Input[Optional[str]]] = None,
                                  repos: Optional[pulumi.Input[Optional[str]]] = None,
                                  sp_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePrincipalResult]:
@@ -235,7 +235,7 @@ def get_service_principal_output(active: Optional[pulumi.Input[Optional[bool]]] 
     :param str display_name: Display name of the service principal, e.g. `Foo SPN`.
     :param str external_id: ID of the service principal in an external identity provider.
     :param str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+    :param str id: The id of the service principal.
     :param str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
-    :param str sp_id: The id of the service principal.
     """
     ...

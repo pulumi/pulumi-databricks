@@ -103,6 +103,39 @@ import * as utilities from "./utilities";
  *     instanceProfileId: _this.id,
  * });
  * ```
+ * ## Usage with Databricks SQL serverless
+ *
+ * When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iamRoleArn` parameter can be specified
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const sqlServerlessAssumeRole = aws.iam.getPolicyDocument({
+ *     statements: [{
+ *         actions: ["sts:AssumeRole"],
+ *         principals: [{
+ *             type: "AWS",
+ *             identifiers: ["arn:aws:iam::790110701330:role/serverless-customer-resource-role"],
+ *         }],
+ *         conditions: [{
+ *             test: "StringEquals",
+ *             variable: "sts:ExternalID",
+ *             values: [
+ *                 "databricks-serverless-<YOUR_WORKSPACE_ID1>",
+ *                 "databricks-serverless-<YOUR_WORKSPACE_ID2>",
+ *             ],
+ *         }],
+ *     }],
+ * });
+ * const thisRole = new aws.iam.Role("thisRole", {assumeRolePolicy: sqlServerlessAssumeRole.then(sqlServerlessAssumeRole => sqlServerlessAssumeRole.json)});
+ * const thisInstanceProfile = new aws.iam.InstanceProfile("thisInstanceProfile", {role: thisRole.name});
+ * const thisIndex_instanceProfileInstanceProfile = new databricks.InstanceProfile("thisIndex/instanceProfileInstanceProfile", {
+ *     instanceProfileArn: thisInstanceProfile.arn,
+ *     iamRoleArn: thisRole.arn,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -141,9 +174,13 @@ export class InstanceProfile extends pulumi.CustomResource {
     }
 
     /**
+     * The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+     */
+    public readonly iamRoleArn!: pulumi.Output<string | undefined>;
+    /**
      * `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      */
-    public readonly instanceProfileArn!: pulumi.Output<string | undefined>;
+    public readonly instanceProfileArn!: pulumi.Output<string>;
     /**
      * Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
      */
@@ -160,17 +197,22 @@ export class InstanceProfile extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: InstanceProfileArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: InstanceProfileArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceProfileArgs | InstanceProfileState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceProfileState | undefined;
+            resourceInputs["iamRoleArn"] = state ? state.iamRoleArn : undefined;
             resourceInputs["instanceProfileArn"] = state ? state.instanceProfileArn : undefined;
             resourceInputs["isMetaInstanceProfile"] = state ? state.isMetaInstanceProfile : undefined;
             resourceInputs["skipValidation"] = state ? state.skipValidation : undefined;
         } else {
             const args = argsOrState as InstanceProfileArgs | undefined;
+            if ((!args || args.instanceProfileArn === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceProfileArn'");
+            }
+            resourceInputs["iamRoleArn"] = args ? args.iamRoleArn : undefined;
             resourceInputs["instanceProfileArn"] = args ? args.instanceProfileArn : undefined;
             resourceInputs["isMetaInstanceProfile"] = args ? args.isMetaInstanceProfile : undefined;
             resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
@@ -184,6 +226,10 @@ export class InstanceProfile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceProfile resources.
  */
 export interface InstanceProfileState {
+    /**
+     * The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+     */
+    iamRoleArn?: pulumi.Input<string>;
     /**
      * `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      */
@@ -203,9 +249,13 @@ export interface InstanceProfileState {
  */
 export interface InstanceProfileArgs {
     /**
+     * The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+     */
+    iamRoleArn?: pulumi.Input<string>;
+    /**
      * `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      */
-    instanceProfileArn?: pulumi.Input<string>;
+    instanceProfileArn: pulumi.Input<string>;
     /**
      * Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
      */

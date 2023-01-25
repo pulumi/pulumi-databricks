@@ -17,14 +17,14 @@ public final class JobSparkSubmitTaskArgs extends com.pulumi.resources.ResourceA
     public static final JobSparkSubmitTaskArgs Empty = new JobSparkSubmitTaskArgs();
 
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Command-line parameters passed to spark submit.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<String>> parameters;
 
     /**
-     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * @return (List) Command-line parameters passed to spark submit.
      * 
      */
     public Optional<Output<List<String>>> parameters() {
@@ -56,7 +56,7 @@ public final class JobSparkSubmitTaskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param parameters (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+         * @param parameters (List) Command-line parameters passed to spark submit.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class JobSparkSubmitTaskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param parameters (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+         * @param parameters (List) Command-line parameters passed to spark submit.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class JobSparkSubmitTaskArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param parameters (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+         * @param parameters (List) Command-line parameters passed to spark submit.
          * 
          * @return builder
          * 

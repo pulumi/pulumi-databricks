@@ -31,8 +31,9 @@ func GetSqlWarehouse(ctx *pulumi.Context, args *GetSqlWarehouseArgs, opts ...pul
 // A collection of arguments for invoking getSqlWarehouse.
 type GetSqlWarehouseArgs struct {
 	// Time in minutes until an idle SQL warehouse terminates all clusters and stops.
-	AutoStopMins *int                    `pulumi:"autoStopMins"`
-	Channel      *GetSqlWarehouseChannel `pulumi:"channel"`
+	AutoStopMins *int `pulumi:"autoStopMins"`
+	// block, consisting of following fields:
+	Channel *GetSqlWarehouseChannel `pulumi:"channel"`
 	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize *string `pulumi:"clusterSize"`
 	// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
@@ -40,7 +41,6 @@ type GetSqlWarehouseArgs struct {
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine).
 	EnablePhoton *bool `pulumi:"enablePhoton"`
 	// Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-	// * `channel` block, consisting of following fields:
 	EnableServerlessCompute *bool `pulumi:"enableServerlessCompute"`
 	// The id of the SQL warehouse
 	Id                 string  `pulumi:"id"`
@@ -66,8 +66,9 @@ type GetSqlWarehouseArgs struct {
 // A collection of values returned by getSqlWarehouse.
 type GetSqlWarehouseResult struct {
 	// Time in minutes until an idle SQL warehouse terminates all clusters and stops.
-	AutoStopMins int                    `pulumi:"autoStopMins"`
-	Channel      GetSqlWarehouseChannel `pulumi:"channel"`
+	AutoStopMins int `pulumi:"autoStopMins"`
+	// block, consisting of following fields:
+	Channel GetSqlWarehouseChannel `pulumi:"channel"`
 	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize string `pulumi:"clusterSize"`
 	// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
@@ -75,7 +76,6 @@ type GetSqlWarehouseResult struct {
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine).
 	EnablePhoton bool `pulumi:"enablePhoton"`
 	// Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-	// * `channel` block, consisting of following fields:
 	EnableServerlessCompute bool   `pulumi:"enableServerlessCompute"`
 	Id                      string `pulumi:"id"`
 	InstanceProfileArn      string `pulumi:"instanceProfileArn"`
@@ -113,8 +113,9 @@ func GetSqlWarehouseOutput(ctx *pulumi.Context, args GetSqlWarehouseOutputArgs, 
 // A collection of arguments for invoking getSqlWarehouse.
 type GetSqlWarehouseOutputArgs struct {
 	// Time in minutes until an idle SQL warehouse terminates all clusters and stops.
-	AutoStopMins pulumi.IntPtrInput             `pulumi:"autoStopMins"`
-	Channel      GetSqlWarehouseChannelPtrInput `pulumi:"channel"`
+	AutoStopMins pulumi.IntPtrInput `pulumi:"autoStopMins"`
+	// block, consisting of following fields:
+	Channel GetSqlWarehouseChannelPtrInput `pulumi:"channel"`
 	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize pulumi.StringPtrInput `pulumi:"clusterSize"`
 	// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
@@ -122,7 +123,6 @@ type GetSqlWarehouseOutputArgs struct {
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine).
 	EnablePhoton pulumi.BoolPtrInput `pulumi:"enablePhoton"`
 	// Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-	// * `channel` block, consisting of following fields:
 	EnableServerlessCompute pulumi.BoolPtrInput `pulumi:"enableServerlessCompute"`
 	// The id of the SQL warehouse
 	Id                 pulumi.StringInput    `pulumi:"id"`
@@ -169,6 +169,7 @@ func (o GetSqlWarehouseResultOutput) AutoStopMins() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) int { return v.AutoStopMins }).(pulumi.IntOutput)
 }
 
+// block, consisting of following fields:
 func (o GetSqlWarehouseResultOutput) Channel() GetSqlWarehouseChannelOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) GetSqlWarehouseChannel { return v.Channel }).(GetSqlWarehouseChannelOutput)
 }
@@ -189,7 +190,6 @@ func (o GetSqlWarehouseResultOutput) EnablePhoton() pulumi.BoolOutput {
 }
 
 // Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-// * `channel` block, consisting of following fields:
 func (o GetSqlWarehouseResultOutput) EnableServerlessCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) bool { return v.EnableServerlessCompute }).(pulumi.BoolOutput)
 }

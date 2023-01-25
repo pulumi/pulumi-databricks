@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.OboTokenState;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -42,28 +43,28 @@ public class OboToken extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="comment", type=String.class, parameters={})
-    private Output<String> comment;
+    private Output</* @Nullable */ String> comment;
 
     /**
      * @return Comment that describes the purpose of the token.
      * 
      */
-    public Output<String> comment() {
-        return this.comment;
+    public Output<Optional<String>> comment() {
+        return Codegen.optional(this.comment);
     }
     /**
-     * The number of seconds before the token expires. Token resource is re-created when it expires.
+     * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      * 
      */
     @Export(name="lifetimeSeconds", type=Integer.class, parameters={})
-    private Output<Integer> lifetimeSeconds;
+    private Output</* @Nullable */ Integer> lifetimeSeconds;
 
     /**
-     * @return The number of seconds before the token expires. Token resource is re-created when it expires.
+     * @return The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      * 
      */
-    public Output<Integer> lifetimeSeconds() {
-        return this.lifetimeSeconds;
+    public Output<Optional<Integer>> lifetimeSeconds() {
+        return Codegen.optional(this.lifetimeSeconds);
     }
     /**
      * **Sensitive** value of the newly-created token.

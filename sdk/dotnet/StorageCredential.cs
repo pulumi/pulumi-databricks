@@ -134,6 +134,9 @@ namespace Pulumi.Databricks
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
+        [Output("gcpServiceAccountKey")]
+        public Output<Outputs.StorageCredentialGcpServiceAccountKey?> GcpServiceAccountKey { get; private set; } = null!;
+
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
@@ -207,6 +210,9 @@ namespace Pulumi.Databricks
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        [Input("gcpServiceAccountKey")]
+        public Input<Inputs.StorageCredentialGcpServiceAccountKeyArgs>? GcpServiceAccountKey { get; set; }
+
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
@@ -241,6 +247,9 @@ namespace Pulumi.Databricks
 
         [Input("comment")]
         public Input<string>? Comment { get; set; }
+
+        [Input("gcpServiceAccountKey")]
+        public Input<Inputs.StorageCredentialGcpServiceAccountKeyGetArgs>? GcpServiceAccountKey { get; set; }
 
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }

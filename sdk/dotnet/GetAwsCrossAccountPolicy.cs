@@ -20,7 +20,7 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+        /// For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -56,7 +56,7 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+        /// For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

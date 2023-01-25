@@ -27,7 +27,7 @@ type MwsPrivateAccessSettings struct {
 	PrivateAccessSettingsId pulumi.StringOutput `pulumi:"privateAccessSettingsId"`
 	// Name of Private Access Settings in Databricks Account
 	PrivateAccessSettingsName pulumi.StringOutput `pulumi:"privateAccessSettingsName"`
-	// - If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
+	// If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
 	PublicAccessEnabled pulumi.BoolPtrOutput `pulumi:"publicAccessEnabled"`
 	// Region of AWS VPC
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -80,7 +80,7 @@ type mwsPrivateAccessSettingsState struct {
 	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
 	// Name of Private Access Settings in Databricks Account
 	PrivateAccessSettingsName *string `pulumi:"privateAccessSettingsName"`
-	// - If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
+	// If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
 	PublicAccessEnabled *bool `pulumi:"publicAccessEnabled"`
 	// Region of AWS VPC
 	Region *string `pulumi:"region"`
@@ -99,7 +99,7 @@ type MwsPrivateAccessSettingsState struct {
 	PrivateAccessSettingsId pulumi.StringPtrInput
 	// Name of Private Access Settings in Databricks Account
 	PrivateAccessSettingsName pulumi.StringPtrInput
-	// - If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
+	// If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
 	PublicAccessEnabled pulumi.BoolPtrInput
 	// Region of AWS VPC
 	Region pulumi.StringPtrInput
@@ -122,7 +122,7 @@ type mwsPrivateAccessSettingsArgs struct {
 	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
 	// Name of Private Access Settings in Databricks Account
 	PrivateAccessSettingsName string `pulumi:"privateAccessSettingsName"`
-	// - If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
+	// If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
 	PublicAccessEnabled *bool `pulumi:"publicAccessEnabled"`
 	// Region of AWS VPC
 	Region string `pulumi:"region"`
@@ -142,7 +142,7 @@ type MwsPrivateAccessSettingsArgs struct {
 	PrivateAccessSettingsId pulumi.StringPtrInput
 	// Name of Private Access Settings in Databricks Account
 	PrivateAccessSettingsName pulumi.StringInput
-	// - If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
+	// If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
 	PublicAccessEnabled pulumi.BoolPtrInput
 	// Region of AWS VPC
 	Region pulumi.StringInput
@@ -262,7 +262,7 @@ func (o MwsPrivateAccessSettingsOutput) PrivateAccessSettingsName() pulumi.Strin
 	return o.ApplyT(func(v *MwsPrivateAccessSettings) pulumi.StringOutput { return v.PrivateAccessSettingsName }).(pulumi.StringOutput)
 }
 
-// - If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
+// If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
 func (o MwsPrivateAccessSettingsOutput) PublicAccessEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MwsPrivateAccessSettings) pulumi.BoolPtrOutput { return v.PublicAccessEnabled }).(pulumi.BoolPtrOutput)
 }

@@ -15,19 +15,19 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly bool? AlertOnLastAttempt;
         /// <summary>
-        /// (Bool) don't send alert for skipped runs
+        /// (Bool) don't send alert for skipped runs.
         /// </summary>
         public readonly bool? NoAlertForSkippedRuns;
         /// <summary>
-        /// (List) list of emails to notify on failure
+        /// (List) list of emails to notify when the run fails.
         /// </summary>
         public readonly ImmutableArray<string> OnFailures;
         /// <summary>
-        /// (List) list of emails to notify on failure
+        /// (List) list of emails to notify when the run starts.
         /// </summary>
         public readonly ImmutableArray<string> OnStarts;
         /// <summary>
-        /// (List) list of emails to notify on failure
+        /// (List) list of emails to notify when the run completes successfully.
         /// </summary>
         public readonly ImmutableArray<string> OnSuccesses;
 

@@ -11,10 +11,12 @@ import com.pulumi.databricks.MwsNetworksArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MwsNetworksState;
 import com.pulumi.databricks.outputs.MwsNetworksErrorMessage;
+import com.pulumi.databricks.outputs.MwsNetworksGcpNetworkInfo;
 import com.pulumi.databricks.outputs.MwsNetworksVpcEndpoints;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -52,14 +54,28 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
         return this.errorMessages;
     }
     /**
-     * (String) id of network to be used for databricks_mws_workspace resource.
+     * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     * 
+     */
+    @Export(name="gcpNetworkInfo", type=MwsNetworksGcpNetworkInfo.class, parameters={})
+    private Output</* @Nullable */ MwsNetworksGcpNetworkInfo> gcpNetworkInfo;
+
+    /**
+     * @return a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     * 
+     */
+    public Output<Optional<MwsNetworksGcpNetworkInfo>> gcpNetworkInfo() {
+        return Codegen.optional(this.gcpNetworkInfo);
+    }
+    /**
+     * (String) id of network to be used for databricks.MwsWorkspaces resource.
      * 
      */
     @Export(name="networkId", type=String.class, parameters={})
     private Output<String> networkId;
 
     /**
-     * @return (String) id of network to be used for databricks_mws_workspace resource.
+     * @return (String) id of network to be used for databricks.MwsWorkspaces resource.
      * 
      */
     public Output<String> networkId() {
@@ -80,16 +96,16 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
         return this.networkName;
     }
     @Export(name="securityGroupIds", type=List.class, parameters={String.class})
-    private Output<List<String>> securityGroupIds;
+    private Output</* @Nullable */ List<String>> securityGroupIds;
 
-    public Output<List<String>> securityGroupIds() {
-        return this.securityGroupIds;
+    public Output<Optional<List<String>>> securityGroupIds() {
+        return Codegen.optional(this.securityGroupIds);
     }
     @Export(name="subnetIds", type=List.class, parameters={String.class})
-    private Output<List<String>> subnetIds;
+    private Output</* @Nullable */ List<String>> subnetIds;
 
-    public Output<List<String>> subnetIds() {
-        return this.subnetIds;
+    public Output<Optional<List<String>>> subnetIds() {
+        return Codegen.optional(this.subnetIds);
     }
     /**
      * mapping of databricks.MwsVpcEndpoint for PrivateLink connections
@@ -105,11 +121,19 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
     public Output<MwsNetworksVpcEndpoints> vpcEndpoints() {
         return this.vpcEndpoints;
     }
+    /**
+     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * 
+     */
     @Export(name="vpcId", type=String.class, parameters={})
-    private Output<String> vpcId;
+    private Output</* @Nullable */ String> vpcId;
 
-    public Output<String> vpcId() {
-        return this.vpcId;
+    /**
+     * @return The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * 
+     */
+    public Output<Optional<String>> vpcId() {
+        return Codegen.optional(this.vpcId);
     }
     /**
      * (String) VPC attachment status

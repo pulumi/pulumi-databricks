@@ -111,14 +111,14 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Cluster name, which doesn’t have to be unique.
+     * The exact name of the cluster to search
      * 
      */
     @Import(name="clusterName")
     private @Nullable String clusterName;
 
     /**
-     * @return Cluster name, which doesn’t have to be unique.
+     * @return The exact name of the cluster to search
      * 
      */
     public Optional<String> clusterName() {
@@ -271,9 +271,17 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.initScripts);
     }
 
+    /**
+     * The pool of idle instances the cluster is attached to.
+     * 
+     */
     @Import(name="instancePoolId")
     private @Nullable String instancePoolId;
 
+    /**
+     * @return The pool of idle instances the cluster is attached to.
+     * 
+     */
     public Optional<String> instancePoolId() {
         return Optional.ofNullable(this.instancePoolId);
     }
@@ -301,7 +309,6 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
 
     /**
      * Any supported databricks.getNodeType id.
-     * * `instance_pool_id` The pool of idle instances the cluster is attached to.
      * 
      */
     @Import(name="nodeTypeId")
@@ -309,7 +316,6 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
 
     /**
      * @return Any supported databricks.getNodeType id.
-     * * `instance_pool_id` The pool of idle instances the cluster is attached to.
      * 
      */
     public Optional<String> nodeTypeId() {
@@ -594,7 +600,7 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param clusterName Cluster name, which doesn’t have to be unique.
+         * @param clusterName The exact name of the cluster to search
          * 
          * @return builder
          * 
@@ -718,6 +724,12 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
             return initScripts(List.of(initScripts));
         }
 
+        /**
+         * @param instancePoolId The pool of idle instances the cluster is attached to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instancePoolId(@Nullable String instancePoolId) {
             $.instancePoolId = instancePoolId;
             return this;
@@ -740,7 +752,6 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param nodeTypeId Any supported databricks.getNodeType id.
-         * * `instance_pool_id` The pool of idle instances the cluster is attached to.
          * 
          * @return builder
          * 

@@ -20,6 +20,7 @@ class StorageCredentialArgs:
                  azure_managed_identity: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None):
@@ -36,6 +37,8 @@ class StorageCredentialArgs:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if gcp_service_account_key is not None:
+            pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -78,6 +81,15 @@ class StorageCredentialArgs:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountKey")
+    def gcp_service_account_key(self) -> Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']]:
+        return pulumi.get(self, "gcp_service_account_key")
+
+    @gcp_service_account_key.setter
+    def gcp_service_account_key(self, value: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']]):
+        pulumi.set(self, "gcp_service_account_key", value)
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -120,6 +132,7 @@ class _StorageCredentialState:
                  azure_managed_identity: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None):
@@ -136,6 +149,8 @@ class _StorageCredentialState:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if gcp_service_account_key is not None:
+            pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -178,6 +193,15 @@ class _StorageCredentialState:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountKey")
+    def gcp_service_account_key(self) -> Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']]:
+        return pulumi.get(self, "gcp_service_account_key")
+
+    @gcp_service_account_key.setter
+    def gcp_service_account_key(self, value: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']]):
+        pulumi.set(self, "gcp_service_account_key", value)
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -222,6 +246,7 @@ class StorageCredential(pulumi.CustomResource):
                  azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureManagedIdentityArgs']]] = None,
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureServicePrincipalArgs']]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -386,6 +411,7 @@ class StorageCredential(pulumi.CustomResource):
                  azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureManagedIdentityArgs']]] = None,
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureServicePrincipalArgs']]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -402,6 +428,7 @@ class StorageCredential(pulumi.CustomResource):
             __props__.__dict__["azure_managed_identity"] = azure_managed_identity
             __props__.__dict__["azure_service_principal"] = azure_service_principal
             __props__.__dict__["comment"] = comment
+            __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
@@ -419,6 +446,7 @@ class StorageCredential(pulumi.CustomResource):
             azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureManagedIdentityArgs']]] = None,
             azure_service_principal: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureServicePrincipalArgs']]] = None,
             comment: Optional[pulumi.Input[str]] = None,
+            gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None) -> 'StorageCredential':
@@ -440,6 +468,7 @@ class StorageCredential(pulumi.CustomResource):
         __props__.__dict__["azure_managed_identity"] = azure_managed_identity
         __props__.__dict__["azure_service_principal"] = azure_service_principal
         __props__.__dict__["comment"] = comment
+        __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
@@ -464,6 +493,11 @@ class StorageCredential(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountKey")
+    def gcp_service_account_key(self) -> pulumi.Output[Optional['outputs.StorageCredentialGcpServiceAccountKey']]:
+        return pulumi.get(self, "gcp_service_account_key")
 
     @property
     @pulumi.getter(name="metastoreId")

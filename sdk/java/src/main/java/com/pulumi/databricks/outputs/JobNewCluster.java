@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.JobNewClusterAutoscale;
 import com.pulumi.databricks.outputs.JobNewClusterAwsAttributes;
 import com.pulumi.databricks.outputs.JobNewClusterAzureAttributes;
 import com.pulumi.databricks.outputs.JobNewClusterClusterLogConf;
+import com.pulumi.databricks.outputs.JobNewClusterClusterMountInfo;
 import com.pulumi.databricks.outputs.JobNewClusterDockerImage;
 import com.pulumi.databricks.outputs.JobNewClusterGcpAttributes;
 import com.pulumi.databricks.outputs.JobNewClusterInitScript;
@@ -31,6 +32,7 @@ public final class JobNewCluster {
     private @Nullable JobNewClusterAzureAttributes azureAttributes;
     private @Nullable String clusterId;
     private @Nullable JobNewClusterClusterLogConf clusterLogConf;
+    private @Nullable List<JobNewClusterClusterMountInfo> clusterMountInfos;
     private @Nullable String clusterName;
     private @Nullable Map<String,Object> customTags;
     private @Nullable String dataSecurityMode;
@@ -75,6 +77,9 @@ public final class JobNewCluster {
     }
     public Optional<JobNewClusterClusterLogConf> clusterLogConf() {
         return Optional.ofNullable(this.clusterLogConf);
+    }
+    public List<JobNewClusterClusterMountInfo> clusterMountInfos() {
+        return this.clusterMountInfos == null ? List.of() : this.clusterMountInfos;
     }
     public Optional<String> clusterName() {
         return Optional.ofNullable(this.clusterName);
@@ -159,6 +164,7 @@ public final class JobNewCluster {
         private @Nullable JobNewClusterAzureAttributes azureAttributes;
         private @Nullable String clusterId;
         private @Nullable JobNewClusterClusterLogConf clusterLogConf;
+        private @Nullable List<JobNewClusterClusterMountInfo> clusterMountInfos;
         private @Nullable String clusterName;
         private @Nullable Map<String,Object> customTags;
         private @Nullable String dataSecurityMode;
@@ -191,6 +197,7 @@ public final class JobNewCluster {
     	      this.azureAttributes = defaults.azureAttributes;
     	      this.clusterId = defaults.clusterId;
     	      this.clusterLogConf = defaults.clusterLogConf;
+    	      this.clusterMountInfos = defaults.clusterMountInfos;
     	      this.clusterName = defaults.clusterName;
     	      this.customTags = defaults.customTags;
     	      this.dataSecurityMode = defaults.dataSecurityMode;
@@ -249,6 +256,14 @@ public final class JobNewCluster {
         public Builder clusterLogConf(@Nullable JobNewClusterClusterLogConf clusterLogConf) {
             this.clusterLogConf = clusterLogConf;
             return this;
+        }
+        @CustomType.Setter
+        public Builder clusterMountInfos(@Nullable List<JobNewClusterClusterMountInfo> clusterMountInfos) {
+            this.clusterMountInfos = clusterMountInfos;
+            return this;
+        }
+        public Builder clusterMountInfos(JobNewClusterClusterMountInfo... clusterMountInfos) {
+            return clusterMountInfos(List.of(clusterMountInfos));
         }
         @CustomType.Setter
         public Builder clusterName(@Nullable String clusterName) {
@@ -375,6 +390,7 @@ public final class JobNewCluster {
             o.azureAttributes = azureAttributes;
             o.clusterId = clusterId;
             o.clusterLogConf = clusterLogConf;
+            o.clusterMountInfos = clusterMountInfos;
             o.clusterName = clusterName;
             o.customTags = customTags;
             o.dataSecurityMode = dataSecurityMode;

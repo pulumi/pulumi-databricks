@@ -16,6 +16,51 @@ import (
 // A `Recipient` is contained within Metastore and can have permissions to `SELECT` from a list of shares.
 //
 // ## Example Usage
+// ### Databricks Sharing with non databricks recipient
+//
+// Setting `authenticationType` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
+// authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			db2opensharecode, err := random.NewRandomPassword(ctx, "db2opensharecode", &random.RandomPasswordArgs{
+//				Length:  pulumi.Int(16),
+//				Special: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.GetCurrentUser(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewRecipient(ctx, "db2open", &databricks.RecipientArgs{
+//				Comment:            pulumi.String("made by terraform"),
+//				AuthenticationType: pulumi.String("TOKEN"),
+//				SharingCode:        db2opensharecode.Result,
+//				IpAccessList: &databricks.RecipientIpAccessListArgs{
+//					AllowedIpAddresses: pulumi.StringArray{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -53,7 +98,7 @@ func NewRecipient(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'AuthenticationType'")
 	}
 	if args.SharingCode != nil {
-		args.SharingCode = pulumi.ToSecret(args.SharingCode).(pulumi.StringPtrOutput)
+		args.SharingCode = pulumi.ToSecret(args.SharingCode).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"sharingCode",

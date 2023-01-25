@@ -13,6 +13,44 @@ import (
 
 // This resource is used to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL endpoints](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your Group or databricks_user.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetCurrentUser(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSqlEndpoint(ctx, "this", &databricks.SqlEndpointArgs{
+//				ClusterSize:    pulumi.String("Small"),
+//				MaxNumClusters: pulumi.Int(1),
+//				Tags: &databricks.SqlEndpointTagsArgs{
+//					CustomTags: databricks.SqlEndpointTagsCustomTagArray{
+//						&databricks.SqlEndpointTagsCustomTagArgs{
+//							Key:   pulumi.String("City"),
+//							Value: pulumi.String("Amsterdam"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Access Control
 //
 // * Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL endpoints.

@@ -13,18 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const prod = pulumi.output(databricks.getNotebookPaths({
+ * const prod = databricks.getNotebookPaths({
  *     path: "/Production",
  *     recursive: true,
- * }));
+ * });
  * ```
  */
 export function getNotebookPaths(args: GetNotebookPathsArgs, opts?: pulumi.InvokeOptions): Promise<GetNotebookPathsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNotebookPaths:getNotebookPaths", {
         "path": args.path,
         "recursive": args.recursive,
@@ -60,9 +57,21 @@ export interface GetNotebookPathsResult {
     readonly path: string;
     readonly recursive: boolean;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const prod = databricks.getNotebookPaths({
+ *     path: "/Production",
+ *     recursive: true,
+ * });
+ * ```
+ */
 export function getNotebookPathsOutput(args: GetNotebookPathsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotebookPathsResult> {
-    return pulumi.output(args).apply(a => getNotebookPaths(a, opts))
+    return pulumi.output(args).apply((a: any) => getNotebookPaths(a, opts))
 }
 
 /**

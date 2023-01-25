@@ -13,137 +13,49 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TableColumn {
-    /**
-     * @return User-supplied free-form text.
-     * 
-     */
     private @Nullable String comment;
-    /**
-     * @return User-visible name of column
-     * 
-     */
     private String name;
-    /**
-     * @return Whether field is nullable (Default: `true`)
-     * 
-     */
     private @Nullable Boolean nullable;
-    /**
-     * @return Partition ID
-     * 
-     */
     private @Nullable Integer partitionIndex;
-    /**
-     * @return Ordinal position of column, starting at 0.
-     * 
-     */
     private Integer position;
-    /**
-     * @return Format of `INTERVAL` columns
-     * 
-     */
     private @Nullable String typeIntervalType;
-    /**
-     * @return Column type spec (with metadata) as JSON string
-     * 
-     */
     private @Nullable String typeJson;
-    /**
-     * @return Name of (outer) type
-     * 
-     */
     private String typeName;
-    /**
-     * @return Digits of precision; applies to `DECIMAL` columns
-     * 
-     */
     private @Nullable Integer typePrecision;
-    /**
-     * @return Digits to right of decimal; applies to `DECIMAL` columns
-     * 
-     */
     private @Nullable Integer typeScale;
-    /**
-     * @return Column type spec (with metadata) as SQL text
-     * 
-     */
     private String typeText;
 
     private TableColumn() {}
-    /**
-     * @return User-supplied free-form text.
-     * 
-     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
-    /**
-     * @return User-visible name of column
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return Whether field is nullable (Default: `true`)
-     * 
-     */
     public Optional<Boolean> nullable() {
         return Optional.ofNullable(this.nullable);
     }
-    /**
-     * @return Partition ID
-     * 
-     */
     public Optional<Integer> partitionIndex() {
         return Optional.ofNullable(this.partitionIndex);
     }
-    /**
-     * @return Ordinal position of column, starting at 0.
-     * 
-     */
     public Integer position() {
         return this.position;
     }
-    /**
-     * @return Format of `INTERVAL` columns
-     * 
-     */
     public Optional<String> typeIntervalType() {
         return Optional.ofNullable(this.typeIntervalType);
     }
-    /**
-     * @return Column type spec (with metadata) as JSON string
-     * 
-     */
     public Optional<String> typeJson() {
         return Optional.ofNullable(this.typeJson);
     }
-    /**
-     * @return Name of (outer) type
-     * 
-     */
     public String typeName() {
         return this.typeName;
     }
-    /**
-     * @return Digits of precision; applies to `DECIMAL` columns
-     * 
-     */
     public Optional<Integer> typePrecision() {
         return Optional.ofNullable(this.typePrecision);
     }
-    /**
-     * @return Digits to right of decimal; applies to `DECIMAL` columns
-     * 
-     */
     public Optional<Integer> typeScale() {
         return Optional.ofNullable(this.typeScale);
     }
-    /**
-     * @return Column type spec (with metadata) as SQL text
-     * 
-     */
     public String typeText() {
         return this.typeText;
     }

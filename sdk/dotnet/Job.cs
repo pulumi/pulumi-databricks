@@ -31,14 +31,11 @@ namespace Pulumi.Databricks
         public Output<Outputs.JobDbtTask?> DbtTask { get; private set; } = null!;
 
         /// <summary>
-        /// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+        /// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
         [Output("emailNotifications")]
         public Output<Outputs.JobEmailNotifications?> EmailNotifications { get; private set; } = null!;
 
-        /// <summary>
-        /// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `new_cluster` for greater reliability.
-        /// </summary>
         [Output("existingClusterId")]
         public Output<string?> ExistingClusterId { get; private set; } = null!;
 
@@ -64,7 +61,7 @@ namespace Pulumi.Databricks
         public Output<int?> MaxConcurrentRuns { get; private set; } = null!;
 
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED result_state or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
         /// </summary>
         [Output("maxRetries")]
         public Output<int?> MaxRetries { get; private set; } = null!;
@@ -133,11 +130,14 @@ namespace Pulumi.Databricks
         public Output<int?> TimeoutSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the job on the given workspace
+        /// URL of the Git repository to use.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
+        /// <summary>
+        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        /// </summary>
         [Output("webhookNotifications")]
         public Output<Outputs.JobWebhookNotifications?> WebhookNotifications { get; private set; } = null!;
 
@@ -197,14 +197,11 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobDbtTaskArgs>? DbtTask { get; set; }
 
         /// <summary>
-        /// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+        /// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
         [Input("emailNotifications")]
         public Input<Inputs.JobEmailNotificationsArgs>? EmailNotifications { get; set; }
 
-        /// <summary>
-        /// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `new_cluster` for greater reliability.
-        /// </summary>
         [Input("existingClusterId")]
         public Input<string>? ExistingClusterId { get; set; }
 
@@ -241,7 +238,7 @@ namespace Pulumi.Databricks
         public Input<int>? MaxConcurrentRuns { get; set; }
 
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED result_state or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
         /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }
@@ -320,6 +317,9 @@ namespace Pulumi.Databricks
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 
+        /// <summary>
+        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        /// </summary>
         [Input("webhookNotifications")]
         public Input<Inputs.JobWebhookNotificationsArgs>? WebhookNotifications { get; set; }
 
@@ -341,14 +341,11 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobDbtTaskGetArgs>? DbtTask { get; set; }
 
         /// <summary>
-        /// (List) An optional set of email addresses notified when runs of this job begin and complete and when this job is deleted. The default behavior is to not send any emails. This field is a block and is documented below.
+        /// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
         [Input("emailNotifications")]
         public Input<Inputs.JobEmailNotificationsGetArgs>? EmailNotifications { get; set; }
 
-        /// <summary>
-        /// If existing_cluster_id, the ID of an existing cluster that will be used for all runs of this job. When running jobs on an existing cluster, you may need to manually restart the cluster if it stops responding. We strongly suggest to use `new_cluster` for greater reliability.
-        /// </summary>
         [Input("existingClusterId")]
         public Input<string>? ExistingClusterId { get; set; }
 
@@ -385,7 +382,7 @@ namespace Pulumi.Databricks
         public Input<int>? MaxConcurrentRuns { get; set; }
 
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED result_state or INTERNAL_ERROR life_cycle_state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
         /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }
@@ -465,11 +462,14 @@ namespace Pulumi.Databricks
         public Input<int>? TimeoutSeconds { get; set; }
 
         /// <summary>
-        /// URL of the job on the given workspace
+        /// URL of the Git repository to use.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
+        /// <summary>
+        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        /// </summary>
         [Input("webhookNotifications")]
         public Input<Inputs.JobWebhookNotificationsGetArgs>? WebhookNotifications { get; set; }
 

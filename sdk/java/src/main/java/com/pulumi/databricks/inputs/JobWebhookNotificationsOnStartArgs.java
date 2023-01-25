@@ -13,9 +13,17 @@ public final class JobWebhookNotificationsOnStartArgs extends com.pulumi.resourc
 
     public static final JobWebhookNotificationsOnStartArgs Empty = new JobWebhookNotificationsOnStartArgs();
 
+    /**
+     * ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+     * 
+     */
     @Import(name="id", required=true)
     private Output<String> id;
 
+    /**
+     * @return ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+     * 
+     */
     public Output<String> id() {
         return this.id;
     }
@@ -44,11 +52,23 @@ public final class JobWebhookNotificationsOnStartArgs extends com.pulumi.resourc
             $ = new JobWebhookNotificationsOnStartArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }

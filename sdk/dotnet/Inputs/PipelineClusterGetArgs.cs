@@ -21,6 +21,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("awsAttributes")]
         public Input<Inputs.PipelineClusterAwsAttributesGetArgs>? AwsAttributes { get; set; }
 
+        [Input("azureAttributes")]
+        public Input<Inputs.PipelineClusterAzureAttributesGetArgs>? AzureAttributes { get; set; }
+
         [Input("clusterLogConf")]
         public Input<Inputs.PipelineClusterClusterLogConfGetArgs>? ClusterLogConf { get; set; }
 
@@ -37,6 +40,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("driverNodeTypeId")]
         public Input<string>? DriverNodeTypeId { get; set; }
+
+        [Input("enableLocalDiskEncryption")]
+        public Input<bool>? EnableLocalDiskEncryption { get; set; }
 
         [Input("gcpAttributes")]
         public Input<Inputs.PipelineClusterGcpAttributesGetArgs>? GcpAttributes { get; set; }

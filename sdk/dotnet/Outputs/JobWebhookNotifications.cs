@@ -14,15 +14,15 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobWebhookNotifications
     {
         /// <summary>
-        /// (List) list of emails to notify on failure
+        /// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobWebhookNotificationsOnFailure> OnFailures;
         /// <summary>
-        /// (List) list of emails to notify on failure
+        /// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobWebhookNotificationsOnStart> OnStarts;
         /// <summary>
-        /// (List) list of emails to notify on failure
+        /// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobWebhookNotificationsOnSuccess> OnSuccesses;
 

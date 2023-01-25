@@ -43,7 +43,7 @@ export class InstancePool extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstancePool.__pulumiType;
     }
 
-    public readonly awsAttributes!: pulumi.Output<outputs.InstancePoolAwsAttributes>;
+    public readonly awsAttributes!: pulumi.Output<outputs.InstancePoolAwsAttributes | undefined>;
     public readonly azureAttributes!: pulumi.Output<outputs.InstancePoolAzureAttributes | undefined>;
     /**
      * (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*

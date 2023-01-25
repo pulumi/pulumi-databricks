@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
         /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
         /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
         /// </summary>
-        public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
+        public static Task<GetClusterResult> InvokeAsync(GetClusterArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("databricks:index/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithDefaults());
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Pulumi.Databricks
         /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
         /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
         /// </summary>
-        public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("databricks:index/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());
     }
 
@@ -50,11 +50,26 @@ namespace Pulumi.Databricks
         /// <summary>
         /// The id of the cluster
         /// </summary>
-        [Input("clusterId", required: true)]
-        public string ClusterId { get; set; } = null!;
+        [Input("clusterId")]
+        public string? ClusterId { get; set; }
 
+        /// <summary>
+        /// block, consisting of following fields:
+        /// </summary>
         [Input("clusterInfo")]
         public Inputs.GetClusterClusterInfoArgs? ClusterInfo { get; set; }
+
+        /// <summary>
+        /// The exact name of the cluster to search
+        /// </summary>
+        [Input("clusterName")]
+        public string? ClusterName { get; set; }
+
+        /// <summary>
+        /// cluster ID
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
 
         public GetClusterArgs()
         {
@@ -67,11 +82,26 @@ namespace Pulumi.Databricks
         /// <summary>
         /// The id of the cluster
         /// </summary>
-        [Input("clusterId", required: true)]
-        public Input<string> ClusterId { get; set; } = null!;
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
 
+        /// <summary>
+        /// block, consisting of following fields:
+        /// </summary>
         [Input("clusterInfo")]
         public Input<Inputs.GetClusterClusterInfoInputArgs>? ClusterInfo { get; set; }
+
+        /// <summary>
+        /// The exact name of the cluster to search
+        /// </summary>
+        [Input("clusterName")]
+        public Input<string>? ClusterName { get; set; }
+
+        /// <summary>
+        /// cluster ID
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
 
         public GetClusterInvokeArgs()
         {
@@ -84,9 +114,16 @@ namespace Pulumi.Databricks
     public sealed class GetClusterResult
     {
         public readonly string ClusterId;
+        /// <summary>
+        /// block, consisting of following fields:
+        /// </summary>
         public readonly Outputs.GetClusterClusterInfoResult ClusterInfo;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Cluster name, which doesn’t have to be unique.
+        /// </summary>
+        public readonly string ClusterName;
+        /// <summary>
+        /// cluster ID
         /// </summary>
         public readonly string Id;
 
@@ -96,10 +133,13 @@ namespace Pulumi.Databricks
 
             Outputs.GetClusterClusterInfoResult clusterInfo,
 
+            string clusterName,
+
             string id)
         {
             ClusterId = clusterId;
             ClusterInfo = clusterInfo;
+            ClusterName = clusterName;
             Id = id;
         }
     }

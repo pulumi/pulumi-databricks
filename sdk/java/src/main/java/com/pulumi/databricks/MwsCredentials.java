@@ -17,8 +17,6 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * 
- * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider.
  * ```java
  * package generated_program;
  * 

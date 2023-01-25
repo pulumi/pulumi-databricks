@@ -38,7 +38,7 @@ namespace Pulumi.Databricks
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// Full name of the object, e.g. `catalog.schema.name` for a table.
+        /// Name of share. Change forces creation of a new resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.Databricks
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// Full name of the object, e.g. `catalog.schema.name` for a table.
+        /// Name of share. Change forces creation of a new resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -139,7 +139,7 @@ namespace Pulumi.Databricks
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// Full name of the object, e.g. `catalog.schema.name` for a table.
+        /// Name of share. Change forces creation of a new resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.MetastoreDataAccessState;
 import com.pulumi.databricks.outputs.MetastoreDataAccessAwsIamRole;
 import com.pulumi.databricks.outputs.MetastoreDataAccessAzureManagedIdentity;
 import com.pulumi.databricks.outputs.MetastoreDataAccessAzureServicePrincipal;
+import com.pulumi.databricks.outputs.MetastoreDataAccessGcpServiceAccountKey;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -51,6 +52,12 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
 
     public Output<String> configurationType() {
         return this.configurationType;
+    }
+    @Export(name="gcpServiceAccountKey", type=MetastoreDataAccessGcpServiceAccountKey.class, parameters={})
+    private Output</* @Nullable */ MetastoreDataAccessGcpServiceAccountKey> gcpServiceAccountKey;
+
+    public Output<Optional<MetastoreDataAccessGcpServiceAccountKey>> gcpServiceAccountKey() {
+        return Codegen.optional(this.gcpServiceAccountKey);
     }
     @Export(name="isDefault", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> isDefault;

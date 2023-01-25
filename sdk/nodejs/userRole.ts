@@ -79,7 +79,7 @@ export class UserRole extends pulumi.CustomResource {
     }
 
     /**
-     * Either a role name or the id of the instance profile resource.
+     * Either a role name or the ARN/ID of the instance profile resource.
      */
     public readonly role!: pulumi.Output<string>;
     /**
@@ -123,7 +123,7 @@ export class UserRole extends pulumi.CustomResource {
  */
 export interface UserRoleState {
     /**
-     * Either a role name or the id of the instance profile resource.
+     * Either a role name or the ARN/ID of the instance profile resource.
      */
     role?: pulumi.Input<string>;
     /**
@@ -137,7 +137,7 @@ export interface UserRoleState {
  */
 export interface UserRoleArgs {
     /**
-     * Either a role name or the id of the instance profile resource.
+     * Either a role name or the ARN/ID of the instance profile resource.
      */
     role: pulumi.Input<string>;
     /**

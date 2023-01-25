@@ -15,22 +15,22 @@ import javax.annotation.Nullable;
 public final class JobEmailNotifications {
     private @Nullable Boolean alertOnLastAttempt;
     /**
-     * @return (Bool) don&#39;t send alert for skipped runs
+     * @return (Bool) don&#39;t send alert for skipped runs.
      * 
      */
     private @Nullable Boolean noAlertForSkippedRuns;
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of emails to notify when the run fails.
      * 
      */
     private @Nullable List<String> onFailures;
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of emails to notify when the run starts.
      * 
      */
     private @Nullable List<String> onStarts;
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of emails to notify when the run completes successfully.
      * 
      */
     private @Nullable List<String> onSuccesses;
@@ -40,28 +40,28 @@ public final class JobEmailNotifications {
         return Optional.ofNullable(this.alertOnLastAttempt);
     }
     /**
-     * @return (Bool) don&#39;t send alert for skipped runs
+     * @return (Bool) don&#39;t send alert for skipped runs.
      * 
      */
     public Optional<Boolean> noAlertForSkippedRuns() {
         return Optional.ofNullable(this.noAlertForSkippedRuns);
     }
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of emails to notify when the run fails.
      * 
      */
     public List<String> onFailures() {
         return this.onFailures == null ? List.of() : this.onFailures;
     }
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of emails to notify when the run starts.
      * 
      */
     public List<String> onStarts() {
         return this.onStarts == null ? List.of() : this.onStarts;
     }
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of emails to notify when the run completes successfully.
      * 
      */
     public List<String> onSuccesses() {

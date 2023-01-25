@@ -110,6 +110,7 @@ export class StorageCredential extends pulumi.CustomResource {
     public readonly azureManagedIdentity!: pulumi.Output<outputs.StorageCredentialAzureManagedIdentity | undefined>;
     public readonly azureServicePrincipal!: pulumi.Output<outputs.StorageCredentialAzureServicePrincipal | undefined>;
     public readonly comment!: pulumi.Output<string | undefined>;
+    public readonly gcpServiceAccountKey!: pulumi.Output<outputs.StorageCredentialGcpServiceAccountKey | undefined>;
     public readonly metastoreId!: pulumi.Output<string>;
     /**
      * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -137,6 +138,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["azureManagedIdentity"] = state ? state.azureManagedIdentity : undefined;
             resourceInputs["azureServicePrincipal"] = state ? state.azureServicePrincipal : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["gcpServiceAccountKey"] = state ? state.gcpServiceAccountKey : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
@@ -146,6 +148,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["azureManagedIdentity"] = args ? args.azureManagedIdentity : undefined;
             resourceInputs["azureServicePrincipal"] = args ? args.azureServicePrincipal : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["gcpServiceAccountKey"] = args ? args.gcpServiceAccountKey : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
@@ -163,6 +166,7 @@ export interface StorageCredentialState {
     azureManagedIdentity?: pulumi.Input<inputs.StorageCredentialAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.StorageCredentialAzureServicePrincipal>;
     comment?: pulumi.Input<string>;
+    gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -182,6 +186,7 @@ export interface StorageCredentialArgs {
     azureManagedIdentity?: pulumi.Input<inputs.StorageCredentialAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.StorageCredentialAzureServicePrincipal>;
     comment?: pulumi.Input<string>;
+    gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.

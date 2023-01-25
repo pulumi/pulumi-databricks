@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.StorageCredentialState;
 import com.pulumi.databricks.outputs.StorageCredentialAwsIamRole;
 import com.pulumi.databricks.outputs.StorageCredentialAzureManagedIdentity;
 import com.pulumi.databricks.outputs.StorageCredentialAzureServicePrincipal;
+import com.pulumi.databricks.outputs.StorageCredentialGcpServiceAccountKey;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -78,7 +79,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.azure.core.CoreFunctions;
- * import com.pulumi.azure.consumption.inputs.GetBudgetResourceGroupArgs;
+ * import com.pulumi.azure.core.inputs.GetResourceGroupArgs;
  * import com.pulumi.azure.databricks.AccessConnector;
  * import com.pulumi.azure.databricks.AccessConnectorArgs;
  * import com.pulumi.azure.databricks.inputs.AccessConnectorIdentityArgs;
@@ -101,7 +102,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var this = CoreFunctions.getResourceGroup(GetBudgetResourceGroupArgs.builder()
+ *         final var this = CoreFunctions.getResourceGroup(GetResourceGroupArgs.builder()
  *             .name(&#34;example-rg&#34;)
  *             .build());
  * 
@@ -167,6 +168,12 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
+    }
+    @Export(name="gcpServiceAccountKey", type=StorageCredentialGcpServiceAccountKey.class, parameters={})
+    private Output</* @Nullable */ StorageCredentialGcpServiceAccountKey> gcpServiceAccountKey;
+
+    public Output<Optional<StorageCredentialGcpServiceAccountKey>> gcpServiceAccountKey() {
+        return Codegen.optional(this.gcpServiceAccountKey);
     }
     @Export(name="metastoreId", type=String.class, parameters={})
     private Output<String> metastoreId;

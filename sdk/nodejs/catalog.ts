@@ -84,6 +84,18 @@ export class Catalog extends pulumi.CustomResource {
      * Extensible Catalog properties.
      */
     public readonly properties!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+     */
+    public readonly providerName!: pulumi.Output<string | undefined>;
+    /**
+     * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+     */
+    public readonly shareName!: pulumi.Output<string | undefined>;
+    /**
+     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     */
+    public readonly storageRoot!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Catalog resource with the given unique name, arguments, and options.
@@ -104,6 +116,9 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
+            resourceInputs["providerName"] = state ? state.providerName : undefined;
+            resourceInputs["shareName"] = state ? state.shareName : undefined;
+            resourceInputs["storageRoot"] = state ? state.storageRoot : undefined;
         } else {
             const args = argsOrState as CatalogArgs | undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
@@ -112,6 +127,9 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["providerName"] = args ? args.providerName : undefined;
+            resourceInputs["shareName"] = args ? args.shareName : undefined;
+            resourceInputs["storageRoot"] = args ? args.storageRoot : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Catalog.__pulumiType, name, resourceInputs, opts);
@@ -143,6 +161,18 @@ export interface CatalogState {
      * Extensible Catalog properties.
      */
     properties?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+     */
+    providerName?: pulumi.Input<string>;
+    /**
+     * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+     */
+    shareName?: pulumi.Input<string>;
+    /**
+     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     */
+    storageRoot?: pulumi.Input<string>;
 }
 
 /**
@@ -170,4 +200,16 @@ export interface CatalogArgs {
      * Extensible Catalog properties.
      */
     properties?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+     */
+    providerName?: pulumi.Input<string>;
+    /**
+     * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+     */
+    shareName?: pulumi.Input<string>;
+    /**
+     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     */
+    storageRoot?: pulumi.Input<string>;
 }

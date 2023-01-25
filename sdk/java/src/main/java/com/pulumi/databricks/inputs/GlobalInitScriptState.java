@@ -47,14 +47,14 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * - the name of the script.  It should be unique
+     * the name of the script.  It should be unique
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return - the name of the script.  It should be unique
+     * @return the name of the script.  It should be unique
      * 
      */
     public Optional<Output<String>> name() {
@@ -62,14 +62,14 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      * 
      */
     @Import(name="position")
     private @Nullable Output<Integer> position;
 
     /**
-     * @return - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * @return the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      * 
      */
     public Optional<Output<Integer>> position() {
@@ -160,7 +160,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name - the name of the script.  It should be unique
+         * @param name the name of the script.  It should be unique
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name - the name of the script.  It should be unique
+         * @param name the name of the script.  It should be unique
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param position - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+         * @param position the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param position - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+         * @param position the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
          * 
          * @return builder
          * 

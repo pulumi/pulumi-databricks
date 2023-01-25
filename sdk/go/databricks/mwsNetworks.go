@@ -21,7 +21,9 @@ type MwsNetworks struct {
 	AccountId     pulumi.StringOutput                `pulumi:"accountId"`
 	CreationTime  pulumi.IntOutput                   `pulumi:"creationTime"`
 	ErrorMessages MwsNetworksErrorMessageArrayOutput `pulumi:"errorMessages"`
-	// (String) id of network to be used for databricksMwsWorkspace resource.
+	// a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+	GcpNetworkInfo MwsNetworksGcpNetworkInfoPtrOutput `pulumi:"gcpNetworkInfo"`
+	// (String) id of network to be used for MwsWorkspaces resource.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
 	// name under which this network is registered
 	NetworkName      pulumi.StringOutput      `pulumi:"networkName"`
@@ -29,7 +31,8 @@ type MwsNetworks struct {
 	SubnetIds        pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// mapping of MwsVpcEndpoint for PrivateLink connections
 	VpcEndpoints MwsNetworksVpcEndpointsOutput `pulumi:"vpcEndpoints"`
-	VpcId        pulumi.StringOutput           `pulumi:"vpcId"`
+	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 	// (String) VPC attachment status
 	VpcStatus pulumi.StringOutput `pulumi:"vpcStatus"`
 	// (Integer) id of associated workspace
@@ -49,17 +52,8 @@ func NewMwsNetworks(ctx *pulumi.Context,
 	if args.NetworkName == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkName'")
 	}
-	if args.SecurityGroupIds == nil {
-		return nil, errors.New("invalid value for required argument 'SecurityGroupIds'")
-	}
-	if args.SubnetIds == nil {
-		return nil, errors.New("invalid value for required argument 'SubnetIds'")
-	}
-	if args.VpcId == nil {
-		return nil, errors.New("invalid value for required argument 'VpcId'")
-	}
 	if args.AccountId != nil {
-		args.AccountId = pulumi.ToSecret(args.AccountId).(pulumi.StringOutput)
+		args.AccountId = pulumi.ToSecret(args.AccountId).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"accountId",
@@ -91,7 +85,9 @@ type mwsNetworksState struct {
 	AccountId     *string                   `pulumi:"accountId"`
 	CreationTime  *int                      `pulumi:"creationTime"`
 	ErrorMessages []MwsNetworksErrorMessage `pulumi:"errorMessages"`
-	// (String) id of network to be used for databricksMwsWorkspace resource.
+	// a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+	GcpNetworkInfo *MwsNetworksGcpNetworkInfo `pulumi:"gcpNetworkInfo"`
+	// (String) id of network to be used for MwsWorkspaces resource.
 	NetworkId *string `pulumi:"networkId"`
 	// name under which this network is registered
 	NetworkName      *string  `pulumi:"networkName"`
@@ -99,7 +95,8 @@ type mwsNetworksState struct {
 	SubnetIds        []string `pulumi:"subnetIds"`
 	// mapping of MwsVpcEndpoint for PrivateLink connections
 	VpcEndpoints *MwsNetworksVpcEndpoints `pulumi:"vpcEndpoints"`
-	VpcId        *string                  `pulumi:"vpcId"`
+	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+	VpcId *string `pulumi:"vpcId"`
 	// (String) VPC attachment status
 	VpcStatus *string `pulumi:"vpcStatus"`
 	// (Integer) id of associated workspace
@@ -111,7 +108,9 @@ type MwsNetworksState struct {
 	AccountId     pulumi.StringPtrInput
 	CreationTime  pulumi.IntPtrInput
 	ErrorMessages MwsNetworksErrorMessageArrayInput
-	// (String) id of network to be used for databricksMwsWorkspace resource.
+	// a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+	GcpNetworkInfo MwsNetworksGcpNetworkInfoPtrInput
+	// (String) id of network to be used for MwsWorkspaces resource.
 	NetworkId pulumi.StringPtrInput
 	// name under which this network is registered
 	NetworkName      pulumi.StringPtrInput
@@ -119,7 +118,8 @@ type MwsNetworksState struct {
 	SubnetIds        pulumi.StringArrayInput
 	// mapping of MwsVpcEndpoint for PrivateLink connections
 	VpcEndpoints MwsNetworksVpcEndpointsPtrInput
-	VpcId        pulumi.StringPtrInput
+	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+	VpcId pulumi.StringPtrInput
 	// (String) VPC attachment status
 	VpcStatus pulumi.StringPtrInput
 	// (Integer) id of associated workspace
@@ -135,7 +135,9 @@ type mwsNetworksArgs struct {
 	AccountId     string                    `pulumi:"accountId"`
 	CreationTime  *int                      `pulumi:"creationTime"`
 	ErrorMessages []MwsNetworksErrorMessage `pulumi:"errorMessages"`
-	// (String) id of network to be used for databricksMwsWorkspace resource.
+	// a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+	GcpNetworkInfo *MwsNetworksGcpNetworkInfo `pulumi:"gcpNetworkInfo"`
+	// (String) id of network to be used for MwsWorkspaces resource.
 	NetworkId *string `pulumi:"networkId"`
 	// name under which this network is registered
 	NetworkName      string   `pulumi:"networkName"`
@@ -143,7 +145,8 @@ type mwsNetworksArgs struct {
 	SubnetIds        []string `pulumi:"subnetIds"`
 	// mapping of MwsVpcEndpoint for PrivateLink connections
 	VpcEndpoints *MwsNetworksVpcEndpoints `pulumi:"vpcEndpoints"`
-	VpcId        string                   `pulumi:"vpcId"`
+	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+	VpcId *string `pulumi:"vpcId"`
 	// (String) VPC attachment status
 	VpcStatus *string `pulumi:"vpcStatus"`
 	// (Integer) id of associated workspace
@@ -156,7 +159,9 @@ type MwsNetworksArgs struct {
 	AccountId     pulumi.StringInput
 	CreationTime  pulumi.IntPtrInput
 	ErrorMessages MwsNetworksErrorMessageArrayInput
-	// (String) id of network to be used for databricksMwsWorkspace resource.
+	// a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+	GcpNetworkInfo MwsNetworksGcpNetworkInfoPtrInput
+	// (String) id of network to be used for MwsWorkspaces resource.
 	NetworkId pulumi.StringPtrInput
 	// name under which this network is registered
 	NetworkName      pulumi.StringInput
@@ -164,7 +169,8 @@ type MwsNetworksArgs struct {
 	SubnetIds        pulumi.StringArrayInput
 	// mapping of MwsVpcEndpoint for PrivateLink connections
 	VpcEndpoints MwsNetworksVpcEndpointsPtrInput
-	VpcId        pulumi.StringInput
+	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+	VpcId pulumi.StringPtrInput
 	// (String) VPC attachment status
 	VpcStatus pulumi.StringPtrInput
 	// (Integer) id of associated workspace
@@ -271,7 +277,12 @@ func (o MwsNetworksOutput) ErrorMessages() MwsNetworksErrorMessageArrayOutput {
 	return o.ApplyT(func(v *MwsNetworks) MwsNetworksErrorMessageArrayOutput { return v.ErrorMessages }).(MwsNetworksErrorMessageArrayOutput)
 }
 
-// (String) id of network to be used for databricksMwsWorkspace resource.
+// a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+func (o MwsNetworksOutput) GcpNetworkInfo() MwsNetworksGcpNetworkInfoPtrOutput {
+	return o.ApplyT(func(v *MwsNetworks) MwsNetworksGcpNetworkInfoPtrOutput { return v.GcpNetworkInfo }).(MwsNetworksGcpNetworkInfoPtrOutput)
+}
+
+// (String) id of network to be used for MwsWorkspaces resource.
 func (o MwsNetworksOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNetworks) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }
@@ -294,8 +305,9 @@ func (o MwsNetworksOutput) VpcEndpoints() MwsNetworksVpcEndpointsOutput {
 	return o.ApplyT(func(v *MwsNetworks) MwsNetworksVpcEndpointsOutput { return v.VpcEndpoints }).(MwsNetworksVpcEndpointsOutput)
 }
 
-func (o MwsNetworksOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func(v *MwsNetworks) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+func (o MwsNetworksOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsNetworks) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 // (String) VPC attachment status

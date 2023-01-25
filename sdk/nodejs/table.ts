@@ -6,77 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html). Contact your Databricks representative to request access.
- *
- * Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables / views.
- *
- * > **Note** This resource has an evolving API, which will change in the upcoming versions of the provider in order to simplify user experience.
- *
- * A `databricks.Table` is contained within databricks_schema.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sandbox = new databricks.Catalog("sandbox", {
- *     metastoreId: databricks_metastore["this"].id,
- *     comment: "this catalog is managed by terraform",
- *     properties: {
- *         purpose: "testing",
- *     },
- * });
- * const things = new databricks.Schema("things", {
- *     catalogName: sandbox.id,
- *     comment: "this database is managed by terraform",
- *     properties: {
- *         kind: "various",
- *     },
- * });
- * const thing = new databricks.Table("thing", {
- *     catalogName: sandbox.id,
- *     schemaName: things.name,
- *     tableType: "MANAGED",
- *     dataSourceFormat: "DELTA",
- *     columns: [
- *         {
- *             name: "id",
- *             position: 0,
- *             typeName: "INT",
- *             typeText: "int",
- *             typeJson: "{\"name\":\"id\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}",
- *         },
- *         {
- *             name: "name",
- *             position: 1,
- *             typeName: "STRING",
- *             typeText: "varchar(64)",
- *             typeJson: "{\"name\":\"name\",\"type\":\"varchar(64)\",\"nullable\":true,\"metadata\":{}}",
- *         },
- *     ],
- *     comment: "this table is managed by terraform",
- * }, {
- *     provider: databricks.workspace,
- * });
- * ```
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.Table data to list tables within Unity Catalog.
- * * databricks.Schema data to list schemas within Unity Catalog.
- * * databricks.Catalog data to list catalogs within Unity Catalog.
- *
- * ## Import
- *
- * This resource can be imported by full name*`catalog`.`schema`.`table`*bash
- *
- * ```sh
- *  $ pulumi import databricks:index/table:Table this <full-name>
- * ```
- */
 export class Table extends pulumi.CustomResource {
     /**
      * Get an existing Table resource's state with the given name, ID, and optional extra
@@ -105,50 +34,17 @@ export class Table extends pulumi.CustomResource {
         return obj['__pulumiType'] === Table.__pulumiType;
     }
 
-    /**
-     * Name of parent catalog
-     */
     public readonly catalogName!: pulumi.Output<string>;
     public readonly columns!: pulumi.Output<outputs.TableColumn[]>;
-    /**
-     * User-supplied free-form text.
-     */
     public readonly comment!: pulumi.Output<string | undefined>;
-    /**
-     * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-     */
     public readonly dataSourceFormat!: pulumi.Output<string>;
-    /**
-     * User-visible name of column
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Username/groupname/sp applicationId of the table owner.
-     */
     public readonly owner!: pulumi.Output<string>;
-    /**
-     * Extensible Table properties.
-     */
     public readonly properties!: pulumi.Output<{[key: string]: any} | undefined>;
-    /**
-     * Name of parent Schema relative to parent Catalog
-     */
     public readonly schemaName!: pulumi.Output<string>;
-    /**
-     * For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-     */
     public readonly storageCredentialName!: pulumi.Output<string | undefined>;
-    /**
-     * URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-     */
     public readonly storageLocation!: pulumi.Output<string | undefined>;
-    /**
-     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-     */
     public readonly tableType!: pulumi.Output<string>;
-    /**
-     * SQL text defining the view (for `tableType == "VIEW"`)
-     */
     public readonly viewDefinition!: pulumi.Output<string | undefined>;
 
     /**
@@ -215,50 +111,17 @@ export class Table extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Table resources.
  */
 export interface TableState {
-    /**
-     * Name of parent catalog
-     */
     catalogName?: pulumi.Input<string>;
     columns?: pulumi.Input<pulumi.Input<inputs.TableColumn>[]>;
-    /**
-     * User-supplied free-form text.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-     */
     dataSourceFormat?: pulumi.Input<string>;
-    /**
-     * User-visible name of column
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username/groupname/sp applicationId of the table owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Extensible Table properties.
-     */
     properties?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Name of parent Schema relative to parent Catalog
-     */
     schemaName?: pulumi.Input<string>;
-    /**
-     * For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-     */
     storageCredentialName?: pulumi.Input<string>;
-    /**
-     * URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-     */
     storageLocation?: pulumi.Input<string>;
-    /**
-     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-     */
     tableType?: pulumi.Input<string>;
-    /**
-     * SQL text defining the view (for `tableType == "VIEW"`)
-     */
     viewDefinition?: pulumi.Input<string>;
 }
 
@@ -266,49 +129,16 @@ export interface TableState {
  * The set of arguments for constructing a Table resource.
  */
 export interface TableArgs {
-    /**
-     * Name of parent catalog
-     */
     catalogName: pulumi.Input<string>;
     columns: pulumi.Input<pulumi.Input<inputs.TableColumn>[]>;
-    /**
-     * User-supplied free-form text.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-     */
     dataSourceFormat: pulumi.Input<string>;
-    /**
-     * User-visible name of column
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username/groupname/sp applicationId of the table owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Extensible Table properties.
-     */
     properties?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Name of parent Schema relative to parent Catalog
-     */
     schemaName: pulumi.Input<string>;
-    /**
-     * For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-     */
     storageCredentialName?: pulumi.Input<string>;
-    /**
-     * URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-     */
     storageLocation?: pulumi.Input<string>;
-    /**
-     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-     */
     tableType: pulumi.Input<string>;
-    /**
-     * SQL text defining the view (for `tableType == "VIEW"`)
-     */
     viewDefinition?: pulumi.Input<string>;
 }

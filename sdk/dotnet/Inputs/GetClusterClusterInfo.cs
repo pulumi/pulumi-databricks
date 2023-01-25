@@ -46,7 +46,7 @@ namespace Pulumi.Databricks.Inputs
         public int? ClusterMemoryMb { get; set; }
 
         /// <summary>
-        /// Cluster name, which doesn’t have to be unique.
+        /// The exact name of the cluster to search
         /// </summary>
         [Input("clusterName")]
         public string? ClusterName { get; set; }
@@ -132,6 +132,9 @@ namespace Pulumi.Databricks.Inputs
             set => _initScripts = value;
         }
 
+        /// <summary>
+        /// The pool of idle instances the cluster is attached to.
+        /// </summary>
         [Input("instancePoolId")]
         public string? InstancePoolId { get; set; }
 
@@ -146,7 +149,6 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// Any supported databricks.getNodeType id.
-        /// * `instance_pool_id` The pool of idle instances the cluster is attached to.
         /// </summary>
         [Input("nodeTypeId")]
         public string? NodeTypeId { get; set; }

@@ -13,9 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const me = new databricks.User("me", {
- *     userName: "me@example.com",
- * });
+ * const me = new databricks.User("me", {userName: "me@example.com"});
  * ```
  *
  * Creating user with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
@@ -159,6 +157,14 @@ export class User extends pulumi.CustomResource {
     public readonly externalId!: pulumi.Output<string | undefined>;
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
+     * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+     */
+    public readonly home!: pulumi.Output<string>;
+    /**
+     * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+     */
+    public readonly repos!: pulumi.Output<string>;
+    /**
      * This is the username of the given user and will be their form of access and identity.
      */
     public readonly userName!: pulumi.Output<string>;
@@ -184,6 +190,8 @@ export class User extends pulumi.CustomResource {
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["externalId"] = state ? state.externalId : undefined;
             resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["home"] = state ? state.home : undefined;
+            resourceInputs["repos"] = state ? state.repos : undefined;
             resourceInputs["userName"] = state ? state.userName : undefined;
             resourceInputs["workspaceAccess"] = state ? state.workspaceAccess : undefined;
         } else {
@@ -198,6 +206,8 @@ export class User extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["externalId"] = args ? args.externalId : undefined;
             resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["home"] = args ? args.home : undefined;
+            resourceInputs["repos"] = args ? args.repos : undefined;
             resourceInputs["userName"] = args ? args.userName : undefined;
             resourceInputs["workspaceAccess"] = args ? args.workspaceAccess : undefined;
         }
@@ -236,6 +246,14 @@ export interface UserState {
     externalId?: pulumi.Input<string>;
     force?: pulumi.Input<boolean>;
     /**
+     * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+     */
+    home?: pulumi.Input<string>;
+    /**
+     * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+     */
+    repos?: pulumi.Input<string>;
+    /**
      * This is the username of the given user and will be their form of access and identity.
      */
     userName?: pulumi.Input<string>;
@@ -271,6 +289,14 @@ export interface UserArgs {
      */
     externalId?: pulumi.Input<string>;
     force?: pulumi.Input<boolean>;
+    /**
+     * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+     */
+    home?: pulumi.Input<string>;
+    /**
+     * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+     */
+    repos?: pulumi.Input<string>;
     /**
      * This is the username of the given user and will be their form of access and identity.
      */

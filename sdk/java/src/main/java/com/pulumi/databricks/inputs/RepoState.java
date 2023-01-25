@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.RepoSparseCheckoutArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -75,6 +76,13 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.path);
     }
 
+    @Import(name="sparseCheckout")
+    private @Nullable Output<RepoSparseCheckoutArgs> sparseCheckout;
+
+    public Optional<Output<RepoSparseCheckoutArgs>> sparseCheckout() {
+        return Optional.ofNullable(this.sparseCheckout);
+    }
+
     /**
      * name of the tag for initial checkout.  Conflicts with `branch`.
      * 
@@ -112,6 +120,7 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
         this.commitHash = $.commitHash;
         this.gitProvider = $.gitProvider;
         this.path = $.path;
+        this.sparseCheckout = $.sparseCheckout;
         this.tag = $.tag;
         this.url = $.url;
     }
@@ -216,6 +225,15 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        public Builder sparseCheckout(@Nullable Output<RepoSparseCheckoutArgs> sparseCheckout) {
+            $.sparseCheckout = sparseCheckout;
+            return this;
+        }
+
+        public Builder sparseCheckout(RepoSparseCheckoutArgs sparseCheckout) {
+            return sparseCheckout(Output.of(sparseCheckout));
         }
 
         /**

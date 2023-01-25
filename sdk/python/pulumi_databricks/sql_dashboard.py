@@ -15,12 +15,15 @@ __all__ = ['SqlDashboardArgs', 'SqlDashboard']
 class SqlDashboardArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a SqlDashboard resource.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -32,6 +35,15 @@ class SqlDashboardArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
 
     @property
     @pulumi.getter
@@ -47,12 +59,15 @@ class SqlDashboardArgs:
 class _SqlDashboardState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering SqlDashboard resources.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -64,6 +79,15 @@ class _SqlDashboardState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
 
     @property
     @pulumi.getter
@@ -81,6 +105,7 @@ class SqlDashboard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -96,10 +121,13 @@ class SqlDashboard(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        d1 = databricks.SqlDashboard("d1", tags=[
-            "some-tag",
-            "another-tag",
-        ])
+        shared_dir = databricks.Directory("sharedDir", path="/Shared/Dashboards")
+        d1 = databricks.SqlDashboard("d1",
+            parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
+            tags=[
+                "some-tag",
+                "another-tag",
+            ])
         ```
 
         Example permission to share dashboard with all users:
@@ -154,10 +182,13 @@ class SqlDashboard(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        d1 = databricks.SqlDashboard("d1", tags=[
-            "some-tag",
-            "another-tag",
-        ])
+        shared_dir = databricks.Directory("sharedDir", path="/Shared/Dashboards")
+        d1 = databricks.SqlDashboard("d1",
+            parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
+            tags=[
+                "some-tag",
+                "another-tag",
+            ])
         ```
 
         Example permission to share dashboard with all users:
@@ -206,6 +237,7 @@ class SqlDashboard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -217,6 +249,7 @@ class SqlDashboard(pulumi.CustomResource):
             __props__ = SqlDashboardArgs.__new__(SqlDashboardArgs)
 
             __props__.__dict__["name"] = name
+            __props__.__dict__["parent"] = parent
             __props__.__dict__["tags"] = tags
         super(SqlDashboard, __self__).__init__(
             'databricks:index/sqlDashboard:SqlDashboard',
@@ -229,6 +262,7 @@ class SqlDashboard(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
+            parent: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'SqlDashboard':
         """
         Get an existing SqlDashboard resource's state with the given name, id, and optional extra
@@ -243,6 +277,7 @@ class SqlDashboard(pulumi.CustomResource):
         __props__ = _SqlDashboardState.__new__(_SqlDashboardState)
 
         __props__.__dict__["name"] = name
+        __props__.__dict__["parent"] = parent
         __props__.__dict__["tags"] = tags
         return SqlDashboard(resource_name, opts=opts, __props__=__props__)
 
@@ -250,6 +285,11 @@ class SqlDashboard(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "parent")
 
     @property
     @pulumi.getter

@@ -17,18 +17,33 @@ public final class InstanceProfileArgs extends com.pulumi.resources.ResourceArgs
     public static final InstanceProfileArgs Empty = new InstanceProfileArgs();
 
     /**
+     * The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+     * 
+     */
+    @Import(name="iamRoleArn")
+    private @Nullable Output<String> iamRoleArn;
+
+    /**
+     * @return The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+     * 
+     */
+    public Optional<Output<String>> iamRoleArn() {
+        return Optional.ofNullable(this.iamRoleArn);
+    }
+
+    /**
      * `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      * 
      */
-    @Import(name="instanceProfileArn")
-    private @Nullable Output<String> instanceProfileArn;
+    @Import(name="instanceProfileArn", required=true)
+    private Output<String> instanceProfileArn;
 
     /**
      * @return `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      * 
      */
-    public Optional<Output<String>> instanceProfileArn() {
-        return Optional.ofNullable(this.instanceProfileArn);
+    public Output<String> instanceProfileArn() {
+        return this.instanceProfileArn;
     }
 
     /**
@@ -64,6 +79,7 @@ public final class InstanceProfileArgs extends com.pulumi.resources.ResourceArgs
     private InstanceProfileArgs() {}
 
     private InstanceProfileArgs(InstanceProfileArgs $) {
+        this.iamRoleArn = $.iamRoleArn;
         this.instanceProfileArn = $.instanceProfileArn;
         this.isMetaInstanceProfile = $.isMetaInstanceProfile;
         this.skipValidation = $.skipValidation;
@@ -88,12 +104,33 @@ public final class InstanceProfileArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param iamRoleArn The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iamRoleArn(@Nullable Output<String> iamRoleArn) {
+            $.iamRoleArn = iamRoleArn;
+            return this;
+        }
+
+        /**
+         * @param iamRoleArn The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iamRoleArn(String iamRoleArn) {
+            return iamRoleArn(Output.of(iamRoleArn));
+        }
+
+        /**
          * @param instanceProfileArn `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
          * 
          * @return builder
          * 
          */
-        public Builder instanceProfileArn(@Nullable Output<String> instanceProfileArn) {
+        public Builder instanceProfileArn(Output<String> instanceProfileArn) {
             $.instanceProfileArn = instanceProfileArn;
             return this;
         }
@@ -151,6 +188,7 @@ public final class InstanceProfileArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public InstanceProfileArgs build() {
+            $.instanceProfileArn = Objects.requireNonNull($.instanceProfileArn, "expected parameter 'instanceProfileArn' to be non-null");
             return $;
         }
     }

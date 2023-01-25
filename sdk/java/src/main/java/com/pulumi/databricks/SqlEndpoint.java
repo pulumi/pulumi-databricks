@@ -23,6 +23,45 @@ import javax.annotation.Nullable;
  * This resource is used to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL endpoints](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.SqlEndpoint;
+ * import com.pulumi.databricks.SqlEndpointArgs;
+ * import com.pulumi.databricks.inputs.SqlEndpointTagsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var me = DatabricksFunctions.getCurrentUser();
+ * 
+ *         var this_ = new SqlEndpoint(&#34;this&#34;, SqlEndpointArgs.builder()        
+ *             .clusterSize(&#34;Small&#34;)
+ *             .maxNumClusters(1)
+ *             .tags(SqlEndpointTagsArgs.builder()
+ *                 .customTags(SqlEndpointTagsCustomTagArgs.builder()
+ *                     .key(&#34;City&#34;)
+ *                     .value(&#34;Amsterdam&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Access Control
  * 
  * * databricks.Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL endpoints.

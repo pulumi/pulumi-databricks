@@ -14,29 +14,44 @@ __all__ = ['ClusterPolicyArgs', 'ClusterPolicy']
 @pulumi.input_type
 class ClusterPolicyArgs:
     def __init__(__self__, *,
-                 definition: Optional[pulumi.Input[str]] = None,
+                 definition: pulumi.Input[str],
+                 max_clusters_per_user: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ClusterPolicy resource.
-        :param pulumi.Input[str] definition: Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         """
-        if definition is not None:
-            pulumi.set(__self__, "definition", definition)
+        pulumi.set(__self__, "definition", definition)
+        if max_clusters_per_user is not None:
+            pulumi.set(__self__, "max_clusters_per_user", max_clusters_per_user)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def definition(self) -> Optional[pulumi.Input[str]]:
+    def definition(self) -> pulumi.Input[str]:
         """
-        Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
         """
         return pulumi.get(self, "definition")
 
     @definition.setter
-    def definition(self, value: Optional[pulumi.Input[str]]):
+    def definition(self, value: pulumi.Input[str]):
         pulumi.set(self, "definition", value)
+
+    @property
+    @pulumi.getter(name="maxClustersPerUser")
+    def max_clusters_per_user(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of clusters allowed per user. When omitted, there is no limit.
+        """
+        return pulumi.get(self, "max_clusters_per_user")
+
+    @max_clusters_per_user.setter
+    def max_clusters_per_user(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_clusters_per_user", value)
 
     @property
     @pulumi.getter
@@ -55,16 +70,20 @@ class ClusterPolicyArgs:
 class _ClusterPolicyState:
     def __init__(__self__, *,
                  definition: Optional[pulumi.Input[str]] = None,
+                 max_clusters_per_user: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ClusterPolicy resources.
-        :param pulumi.Input[str] definition: Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         :param pulumi.Input[str] policy_id: Canonical unique identifier for the cluster policy.
         """
         if definition is not None:
             pulumi.set(__self__, "definition", definition)
+        if max_clusters_per_user is not None:
+            pulumi.set(__self__, "max_clusters_per_user", max_clusters_per_user)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if policy_id is not None:
@@ -74,13 +93,25 @@ class _ClusterPolicyState:
     @pulumi.getter
     def definition(self) -> Optional[pulumi.Input[str]]:
         """
-        Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
         """
         return pulumi.get(self, "definition")
 
     @definition.setter
     def definition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "definition", value)
+
+    @property
+    @pulumi.getter(name="maxClustersPerUser")
+    def max_clusters_per_user(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of clusters allowed per user. When omitted, there is no limit.
+        """
+        return pulumi.get(self, "max_clusters_per_user")
+
+    @max_clusters_per_user.setter
+    def max_clusters_per_user(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_clusters_per_user", value)
 
     @property
     @pulumi.getter
@@ -113,6 +144,7 @@ class ClusterPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  definition: Optional[pulumi.Input[str]] = None,
+                 max_clusters_per_user: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -161,14 +193,15 @@ class ClusterPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] definition: Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ClusterPolicyArgs] = None,
+                 args: ClusterPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource creates a cluster policy, which limits the ability to create clusters based on a set of rules. The policy rules limit the attributes or attribute values available for cluster creation. cluster policies have ACLs that limit their use to specific users and groups. Only admin users can create, edit, and delete policies. Admin users also have access to all policies.
@@ -230,6 +263,7 @@ class ClusterPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  definition: Optional[pulumi.Input[str]] = None,
+                 max_clusters_per_user: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -240,7 +274,10 @@ class ClusterPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterPolicyArgs.__new__(ClusterPolicyArgs)
 
+            if definition is None and not opts.urn:
+                raise TypeError("Missing required property 'definition'")
             __props__.__dict__["definition"] = definition
+            __props__.__dict__["max_clusters_per_user"] = max_clusters_per_user
             __props__.__dict__["name"] = name
             __props__.__dict__["policy_id"] = None
         super(ClusterPolicy, __self__).__init__(
@@ -254,6 +291,7 @@ class ClusterPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             definition: Optional[pulumi.Input[str]] = None,
+            max_clusters_per_user: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             policy_id: Optional[pulumi.Input[str]] = None) -> 'ClusterPolicy':
         """
@@ -263,7 +301,8 @@ class ClusterPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] definition: Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         :param pulumi.Input[str] policy_id: Canonical unique identifier for the cluster policy.
         """
@@ -272,17 +311,26 @@ class ClusterPolicy(pulumi.CustomResource):
         __props__ = _ClusterPolicyState.__new__(_ClusterPolicyState)
 
         __props__.__dict__["definition"] = definition
+        __props__.__dict__["max_clusters_per_user"] = max_clusters_per_user
         __props__.__dict__["name"] = name
         __props__.__dict__["policy_id"] = policy_id
         return ClusterPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def definition(self) -> pulumi.Output[Optional[str]]:
+    def definition(self) -> pulumi.Output[str]:
         """
-        Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
         """
         return pulumi.get(self, "definition")
+
+    @property
+    @pulumi.getter(name="maxClustersPerUser")
+    def max_clusters_per_user(self) -> pulumi.Output[Optional[int]]:
+        """
+        Maximum number of clusters allowed per user. When omitted, there is no limit.
+        """
+        return pulumi.get(self, "max_clusters_per_user")
 
     @property
     @pulumi.getter

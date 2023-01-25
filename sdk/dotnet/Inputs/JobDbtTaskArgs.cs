@@ -12,6 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobDbtTaskArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the catalog to use inside Unity Catalog.
+        /// </summary>
+        [Input("catalog")]
+        public Input<string>? Catalog { get; set; }
+
         [Input("commands", required: true)]
         private InputList<string>? _commands;
 
@@ -43,7 +49,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Schema { get; set; }
 
         /// <summary>
-        /// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        /// The ID of the SQL warehouse that dbt should execute against.
         /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }

@@ -34,7 +34,7 @@ import (
 //			_, err := databricks.NewSqlWidget(ctx, "d1w1", &databricks.SqlWidgetArgs{
 //				DashboardId: pulumi.Any(databricks_sql_dashboard.D1.Id),
 //				Text:        pulumi.String("Hello! I'm a **text widget**!"),
-//				Position: &SqlWidgetPositionArgs{
+//				Position: &databricks.SqlWidgetPositionArgs{
 //					SizeX: pulumi.Int(3),
 //					SizeY: pulumi.Int(4),
 //					PosX:  pulumi.Int(0),
@@ -47,7 +47,7 @@ import (
 //			_, err = databricks.NewSqlWidget(ctx, "d1w2", &databricks.SqlWidgetArgs{
 //				DashboardId:     pulumi.Any(databricks_sql_dashboard.D1.Id),
 //				VisualizationId: pulumi.Any(databricks_sql_visualization.Q1v1.Id),
-//				Position: &SqlWidgetPositionArgs{
+//				Position: &databricks.SqlWidgetPositionArgs{
 //					SizeX: pulumi.Int(3),
 //					SizeY: pulumi.Int(4),
 //					PosX:  pulumi.Int(3),

@@ -18,37 +18,45 @@ class MwsNetworksArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  network_name: pulumi.Input[str],
-                 security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 vpc_id: pulumi.Input[str],
                  creation_time: Optional[pulumi.Input[int]] = None,
                  error_messages: Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]] = None,
+                 gcp_network_info: Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vpc_endpoints: Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vpc_status: Optional[pulumi.Input[str]] = None,
                  workspace_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a MwsNetworks resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[str] network_name: name under which this network is registered
-        :param pulumi.Input[str] network_id: (String) id of network to be used for databricks_mws_workspace resource.
+        :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink connections
+        :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "network_name", network_name)
-        pulumi.set(__self__, "security_group_ids", security_group_ids)
-        pulumi.set(__self__, "subnet_ids", subnet_ids)
-        pulumi.set(__self__, "vpc_id", vpc_id)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
         if error_messages is not None:
             pulumi.set(__self__, "error_messages", error_messages)
+        if gcp_network_info is not None:
+            pulumi.set(__self__, "gcp_network_info", gcp_network_info)
         if network_id is not None:
             pulumi.set(__self__, "network_id", network_id)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if subnet_ids is not None:
+            pulumi.set(__self__, "subnet_ids", subnet_ids)
         if vpc_endpoints is not None:
             pulumi.set(__self__, "vpc_endpoints", vpc_endpoints)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vpc_status is not None:
             pulumi.set(__self__, "vpc_status", vpc_status)
         if workspace_id is not None:
@@ -79,33 +87,6 @@ class MwsNetworksArgs:
         pulumi.set(self, "network_name", value)
 
     @property
-    @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "security_group_ids")
-
-    @security_group_ids.setter
-    def security_group_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "security_group_ids", value)
-
-    @property
-    @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        return pulumi.get(self, "subnet_ids")
-
-    @subnet_ids.setter
-    def subnet_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "subnet_ids", value)
-
-    @property
-    @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "vpc_id")
-
-    @vpc_id.setter
-    def vpc_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "vpc_id", value)
-
-    @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "creation_time")
@@ -124,16 +105,46 @@ class MwsNetworksArgs:
         pulumi.set(self, "error_messages", value)
 
     @property
+    @pulumi.getter(name="gcpNetworkInfo")
+    def gcp_network_info(self) -> Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']]:
+        """
+        a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        """
+        return pulumi.get(self, "gcp_network_info")
+
+    @gcp_network_info.setter
+    def gcp_network_info(self, value: Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']]):
+        pulumi.set(self, "gcp_network_info", value)
+
+    @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
         """
-        (String) id of network to be used for databricks_mws_workspace resource.
+        (String) id of network to be used for MwsWorkspaces resource.
         """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
     def network_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_id", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter(name="subnetIds")
+    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "subnet_ids")
+
+    @subnet_ids.setter
+    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "subnet_ids", value)
 
     @property
     @pulumi.getter(name="vpcEndpoints")
@@ -146,6 +157,18 @@ class MwsNetworksArgs:
     @vpc_endpoints.setter
     def vpc_endpoints(self, value: Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']]):
         pulumi.set(self, "vpc_endpoints", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
 
     @property
     @pulumi.getter(name="vpcStatus")
@@ -178,6 +201,7 @@ class _MwsNetworksState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  error_messages: Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]] = None,
+                 gcp_network_info: Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  network_name: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -189,9 +213,11 @@ class _MwsNetworksState:
         """
         Input properties used for looking up and filtering MwsNetworks resources.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[str] network_id: (String) id of network to be used for databricks_mws_workspace resource.
+        :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
         :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink connections
+        :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
@@ -201,6 +227,8 @@ class _MwsNetworksState:
             pulumi.set(__self__, "creation_time", creation_time)
         if error_messages is not None:
             pulumi.set(__self__, "error_messages", error_messages)
+        if gcp_network_info is not None:
+            pulumi.set(__self__, "gcp_network_info", gcp_network_info)
         if network_id is not None:
             pulumi.set(__self__, "network_id", network_id)
         if network_name is not None:
@@ -249,10 +277,22 @@ class _MwsNetworksState:
         pulumi.set(self, "error_messages", value)
 
     @property
+    @pulumi.getter(name="gcpNetworkInfo")
+    def gcp_network_info(self) -> Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']]:
+        """
+        a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        """
+        return pulumi.get(self, "gcp_network_info")
+
+    @gcp_network_info.setter
+    def gcp_network_info(self, value: Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']]):
+        pulumi.set(self, "gcp_network_info", value)
+
+    @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
         """
-        (String) id of network to be used for databricks_mws_workspace resource.
+        (String) id of network to be used for MwsWorkspaces resource.
         """
         return pulumi.get(self, "network_id")
 
@@ -305,6 +345,9 @@ class _MwsNetworksState:
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -344,6 +387,7 @@ class MwsNetworks(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  error_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MwsNetworksErrorMessageArgs']]]]] = None,
+                 gcp_network_info: Optional[pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  network_name: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -361,9 +405,11 @@ class MwsNetworks(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[str] network_id: (String) id of network to be used for databricks_mws_workspace resource.
+        :param pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
         :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink connections
+        :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
@@ -396,6 +442,7 @@ class MwsNetworks(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  error_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MwsNetworksErrorMessageArgs']]]]] = None,
+                 gcp_network_info: Optional[pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  network_name: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -418,19 +465,14 @@ class MwsNetworks(pulumi.CustomResource):
             __props__.__dict__["account_id"] = None if account_id is None else pulumi.Output.secret(account_id)
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["error_messages"] = error_messages
+            __props__.__dict__["gcp_network_info"] = gcp_network_info
             __props__.__dict__["network_id"] = network_id
             if network_name is None and not opts.urn:
                 raise TypeError("Missing required property 'network_name'")
             __props__.__dict__["network_name"] = network_name
-            if security_group_ids is None and not opts.urn:
-                raise TypeError("Missing required property 'security_group_ids'")
             __props__.__dict__["security_group_ids"] = security_group_ids
-            if subnet_ids is None and not opts.urn:
-                raise TypeError("Missing required property 'subnet_ids'")
             __props__.__dict__["subnet_ids"] = subnet_ids
             __props__.__dict__["vpc_endpoints"] = vpc_endpoints
-            if vpc_id is None and not opts.urn:
-                raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vpc_status"] = vpc_status
             __props__.__dict__["workspace_id"] = workspace_id
@@ -449,6 +491,7 @@ class MwsNetworks(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             creation_time: Optional[pulumi.Input[int]] = None,
             error_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MwsNetworksErrorMessageArgs']]]]] = None,
+            gcp_network_info: Optional[pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']]] = None,
             network_id: Optional[pulumi.Input[str]] = None,
             network_name: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -465,9 +508,11 @@ class MwsNetworks(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[str] network_id: (String) id of network to be used for databricks_mws_workspace resource.
+        :param pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
         :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink connections
+        :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
@@ -478,6 +523,7 @@ class MwsNetworks(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["error_messages"] = error_messages
+        __props__.__dict__["gcp_network_info"] = gcp_network_info
         __props__.__dict__["network_id"] = network_id
         __props__.__dict__["network_name"] = network_name
         __props__.__dict__["security_group_ids"] = security_group_ids
@@ -507,10 +553,18 @@ class MwsNetworks(pulumi.CustomResource):
         return pulumi.get(self, "error_messages")
 
     @property
+    @pulumi.getter(name="gcpNetworkInfo")
+    def gcp_network_info(self) -> pulumi.Output[Optional['outputs.MwsNetworksGcpNetworkInfo']]:
+        """
+        a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        """
+        return pulumi.get(self, "gcp_network_info")
+
+    @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[str]:
         """
-        (String) id of network to be used for databricks_mws_workspace resource.
+        (String) id of network to be used for MwsWorkspaces resource.
         """
         return pulumi.get(self, "network_id")
 
@@ -524,12 +578,12 @@ class MwsNetworks(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
+    def security_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> pulumi.Output[Sequence[str]]:
+    def subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "subnet_ids")
 
     @property
@@ -542,7 +596,10 @@ class MwsNetworks(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> pulumi.Output[str]:
+    def vpc_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        """
         return pulumi.get(self, "vpc_id")
 
     @property

@@ -4,16 +4,23 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.SqlQueryParameterDatetimesecRangeRange;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlQueryParameterDatetimesecRange {
-    private String value;
+    private @Nullable SqlQueryParameterDatetimesecRangeRange range;
+    private @Nullable String value;
 
     private SqlQueryParameterDatetimesecRange() {}
-    public String value() {
-        return this.value;
+    public Optional<SqlQueryParameterDatetimesecRangeRange> range() {
+        return Optional.ofNullable(this.range);
+    }
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -25,20 +32,28 @@ public final class SqlQueryParameterDatetimesecRange {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String value;
+        private @Nullable SqlQueryParameterDatetimesecRangeRange range;
+        private @Nullable String value;
         public Builder() {}
         public Builder(SqlQueryParameterDatetimesecRange defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.range = defaults.range;
     	      this.value = defaults.value;
         }
 
         @CustomType.Setter
-        public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+        public Builder range(@Nullable SqlQueryParameterDatetimesecRangeRange range) {
+            this.range = range;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder value(@Nullable String value) {
+            this.value = value;
             return this;
         }
         public SqlQueryParameterDatetimesecRange build() {
             final var o = new SqlQueryParameterDatetimesecRange();
+            o.range = range;
             o.value = value;
             return o;
         }

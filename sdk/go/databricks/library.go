@@ -69,7 +69,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewLibrary(ctx, "deequ", &databricks.LibraryArgs{
 //				ClusterId: pulumi.Any(databricks_cluster.This.Id),
-//				Maven: &LibraryMavenArgs{
+//				Maven: &databricks.LibraryMavenArgs{
 //					Coordinates: pulumi.String("com.amazon.deequ:deequ:1.0.4"),
 //					Exclusions: pulumi.StringArray{
 //						pulumi.String("org.apache.avro:avro"),
@@ -141,7 +141,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewLibrary(ctx, "fbprophet", &databricks.LibraryArgs{
 //				ClusterId: pulumi.Any(databricks_cluster.This.Id),
-//				Pypi: &LibraryPypiArgs{
+//				Pypi: &databricks.LibraryPypiArgs{
 //					Package: pulumi.String("fbprophet==0.6"),
 //				},
 //			})
@@ -208,7 +208,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewLibrary(ctx, "rkeops", &databricks.LibraryArgs{
 //				ClusterId: pulumi.Any(databricks_cluster.This.Id),
-//				Cran: &LibraryCranArgs{
+//				Cran: &databricks.LibraryCranArgs{
 //					Package: pulumi.String("rkeops"),
 //				},
 //			})

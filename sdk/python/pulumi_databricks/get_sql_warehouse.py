@@ -87,6 +87,9 @@ class GetSqlWarehouseResult:
     @property
     @pulumi.getter
     def channel(self) -> 'outputs.GetSqlWarehouseChannelResult':
+        """
+        block, consisting of following fields:
+        """
         return pulumi.get(self, "channel")
 
     @property
@@ -118,7 +121,6 @@ class GetSqlWarehouseResult:
     def enable_serverless_compute(self) -> bool:
         """
         Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-        * `channel` block, consisting of following fields:
         """
         return pulumi.get(self, "enable_serverless_compute")
 
@@ -266,11 +268,11 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
 
 
     :param int auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops.
+    :param pulumi.InputType['GetSqlWarehouseChannelArgs'] channel: block, consisting of following fields:
     :param str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
     :param str data_source_id: ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
     :param bool enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine).
     :param bool enable_serverless_compute: Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-           * `channel` block, consisting of following fields:
     :param str id: The id of the SQL warehouse
     :param str jdbc_url: JDBC connection string.
     :param int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.
@@ -364,11 +366,11 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]
 
 
     :param int auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops.
+    :param pulumi.InputType['GetSqlWarehouseChannelArgs'] channel: block, consisting of following fields:
     :param str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
     :param str data_source_id: ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
     :param bool enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine).
     :param bool enable_serverless_compute: Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-           * `channel` block, consisting of following fields:
     :param str id: The id of the SQL warehouse
     :param str jdbc_url: JDBC connection string.
     :param int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.

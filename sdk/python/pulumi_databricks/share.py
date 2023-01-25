@@ -24,7 +24,7 @@ class ShareArgs:
         The set of arguments for constructing a Share resource.
         :param pulumi.Input[int] created_at: Time when the share was created.
         :param pulumi.Input[str] created_by: The principal that created the share.
-        :param pulumi.Input[str] name: Full name of the object, e.g. `catalog.schema.name` for a table.
+        :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -63,7 +63,7 @@ class ShareArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Full name of the object, e.g. `catalog.schema.name` for a table.
+        Name of share. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -92,7 +92,7 @@ class _ShareState:
         Input properties used for looking up and filtering Share resources.
         :param pulumi.Input[int] created_at: Time when the share was created.
         :param pulumi.Input[str] created_by: The principal that created the share.
-        :param pulumi.Input[str] name: Full name of the object, e.g. `catalog.schema.name` for a table.
+        :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -131,7 +131,7 @@ class _ShareState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Full name of the object, e.g. `catalog.schema.name` for a table.
+        Name of share. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -176,7 +176,7 @@ class Share(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] created_at: Time when the share was created.
         :param pulumi.Input[str] created_by: The principal that created the share.
-        :param pulumi.Input[str] name: Full name of the object, e.g. `catalog.schema.name` for a table.
+        :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
         """
         ...
     @overload
@@ -252,7 +252,7 @@ class Share(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] created_at: Time when the share was created.
         :param pulumi.Input[str] created_by: The principal that created the share.
-        :param pulumi.Input[str] name: Full name of the object, e.g. `catalog.schema.name` for a table.
+        :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -284,7 +284,7 @@ class Share(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Full name of the object, e.g. `catalog.schema.name` for a table.
+        Name of share. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 

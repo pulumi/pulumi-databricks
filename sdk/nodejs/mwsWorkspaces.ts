@@ -44,11 +44,14 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * AWS region of VPC
+     * region of VPC
      */
     public readonly awsRegion!: pulumi.Output<string | undefined>;
     public readonly cloud!: pulumi.Output<string>;
-    public readonly cloudResourceBucket!: pulumi.Output<outputs.MwsWorkspacesCloudResourceBucket | undefined>;
+    /**
+     * A block that specifies GCP workspace configurations, consisting of following blocks:
+     */
+    public readonly cloudResourceContainer!: pulumi.Output<outputs.MwsWorkspacesCloudResourceContainer | undefined>;
     /**
      * (Integer) time when workspace was created
      */
@@ -63,13 +66,23 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     public readonly deploymentName!: pulumi.Output<string | undefined>;
     public readonly externalCustomerInfo!: pulumi.Output<outputs.MwsWorkspacesExternalCustomerInfo | undefined>;
+    public readonly gcpManagedNetworkConfig!: pulumi.Output<outputs.MwsWorkspacesGcpManagedNetworkConfig | undefined>;
+    /**
+     * A block that specifies GKE configuration for the Databricks workspace:
+     */
+    public readonly gkeConfig!: pulumi.Output<outputs.MwsWorkspacesGkeConfig | undefined>;
     public readonly isNoPublicIpEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * region of the subnet
+     */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
      */
     public readonly managedServicesCustomerManagedKeyId!: pulumi.Output<string | undefined>;
-    public readonly network!: pulumi.Output<outputs.MwsWorkspacesNetwork | undefined>;
+    /**
+     * `networkId` from networks.
+     */
     public readonly networkId!: pulumi.Output<string | undefined>;
     public readonly pricingTier!: pulumi.Output<string>;
     public readonly privateAccessSettingsId!: pulumi.Output<string | undefined>;
@@ -113,16 +126,17 @@ export class MwsWorkspaces extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["awsRegion"] = state ? state.awsRegion : undefined;
             resourceInputs["cloud"] = state ? state.cloud : undefined;
-            resourceInputs["cloudResourceBucket"] = state ? state.cloudResourceBucket : undefined;
+            resourceInputs["cloudResourceContainer"] = state ? state.cloudResourceContainer : undefined;
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["credentialsId"] = state ? state.credentialsId : undefined;
             resourceInputs["customerManagedKeyId"] = state ? state.customerManagedKeyId : undefined;
             resourceInputs["deploymentName"] = state ? state.deploymentName : undefined;
             resourceInputs["externalCustomerInfo"] = state ? state.externalCustomerInfo : undefined;
+            resourceInputs["gcpManagedNetworkConfig"] = state ? state.gcpManagedNetworkConfig : undefined;
+            resourceInputs["gkeConfig"] = state ? state.gkeConfig : undefined;
             resourceInputs["isNoPublicIpEnabled"] = state ? state.isNoPublicIpEnabled : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["managedServicesCustomerManagedKeyId"] = state ? state.managedServicesCustomerManagedKeyId : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["networkId"] = state ? state.networkId : undefined;
             resourceInputs["pricingTier"] = state ? state.pricingTier : undefined;
             resourceInputs["privateAccessSettingsId"] = state ? state.privateAccessSettingsId : undefined;
@@ -145,16 +159,17 @@ export class MwsWorkspaces extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId ? pulumi.secret(args.accountId) : undefined;
             resourceInputs["awsRegion"] = args ? args.awsRegion : undefined;
             resourceInputs["cloud"] = args ? args.cloud : undefined;
-            resourceInputs["cloudResourceBucket"] = args ? args.cloudResourceBucket : undefined;
+            resourceInputs["cloudResourceContainer"] = args ? args.cloudResourceContainer : undefined;
             resourceInputs["creationTime"] = args ? args.creationTime : undefined;
             resourceInputs["credentialsId"] = args ? args.credentialsId : undefined;
             resourceInputs["customerManagedKeyId"] = args ? args.customerManagedKeyId : undefined;
             resourceInputs["deploymentName"] = args ? args.deploymentName : undefined;
             resourceInputs["externalCustomerInfo"] = args ? args.externalCustomerInfo : undefined;
+            resourceInputs["gcpManagedNetworkConfig"] = args ? args.gcpManagedNetworkConfig : undefined;
+            resourceInputs["gkeConfig"] = args ? args.gkeConfig : undefined;
             resourceInputs["isNoPublicIpEnabled"] = args ? args.isNoPublicIpEnabled : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["managedServicesCustomerManagedKeyId"] = args ? args.managedServicesCustomerManagedKeyId : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkId"] = args ? args.networkId : undefined;
             resourceInputs["pricingTier"] = args ? args.pricingTier : undefined;
             resourceInputs["privateAccessSettingsId"] = args ? args.privateAccessSettingsId : undefined;
@@ -183,11 +198,14 @@ export interface MwsWorkspacesState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * AWS region of VPC
+     * region of VPC
      */
     awsRegion?: pulumi.Input<string>;
     cloud?: pulumi.Input<string>;
-    cloudResourceBucket?: pulumi.Input<inputs.MwsWorkspacesCloudResourceBucket>;
+    /**
+     * A block that specifies GCP workspace configurations, consisting of following blocks:
+     */
+    cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer>;
     /**
      * (Integer) time when workspace was created
      */
@@ -202,13 +220,23 @@ export interface MwsWorkspacesState {
      */
     deploymentName?: pulumi.Input<string>;
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
+    gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
+    /**
+     * A block that specifies GKE configuration for the Databricks workspace:
+     */
+    gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;
+    /**
+     * region of the subnet
+     */
     location?: pulumi.Input<string>;
     /**
      * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
      */
     managedServicesCustomerManagedKeyId?: pulumi.Input<string>;
-    network?: pulumi.Input<inputs.MwsWorkspacesNetwork>;
+    /**
+     * `networkId` from networks.
+     */
     networkId?: pulumi.Input<string>;
     pricingTier?: pulumi.Input<string>;
     privateAccessSettingsId?: pulumi.Input<string>;
@@ -246,11 +274,14 @@ export interface MwsWorkspacesArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * AWS region of VPC
+     * region of VPC
      */
     awsRegion?: pulumi.Input<string>;
     cloud?: pulumi.Input<string>;
-    cloudResourceBucket?: pulumi.Input<inputs.MwsWorkspacesCloudResourceBucket>;
+    /**
+     * A block that specifies GCP workspace configurations, consisting of following blocks:
+     */
+    cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer>;
     /**
      * (Integer) time when workspace was created
      */
@@ -265,13 +296,23 @@ export interface MwsWorkspacesArgs {
      */
     deploymentName?: pulumi.Input<string>;
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
+    gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
+    /**
+     * A block that specifies GKE configuration for the Databricks workspace:
+     */
+    gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;
+    /**
+     * region of the subnet
+     */
     location?: pulumi.Input<string>;
     /**
      * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
      */
     managedServicesCustomerManagedKeyId?: pulumi.Input<string>;
-    network?: pulumi.Input<inputs.MwsWorkspacesNetwork>;
+    /**
+     * `networkId` from networks.
+     */
     networkId?: pulumi.Input<string>;
     pricingTier?: pulumi.Input<string>;
     privateAccessSettingsId?: pulumi.Input<string>;

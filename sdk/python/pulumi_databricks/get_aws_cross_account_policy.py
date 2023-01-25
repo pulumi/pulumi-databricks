@@ -74,7 +74,7 @@ def get_aws_cross_account_policy(pass_roles: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    For more detailed usage please see get_aws_assume_role_policy or databricks_aws_s3_mount pages.
+    For more detailed usage please see get_aws_assume_role_policy or AwsS3Mount pages.
 
     ```python
     import pulumi
@@ -115,7 +115,7 @@ def get_aws_cross_account_policy_output(pass_roles: Optional[pulumi.Input[Option
 
     ## Example Usage
 
-    For more detailed usage please see get_aws_assume_role_policy or databricks_aws_s3_mount pages.
+    For more detailed usage please see get_aws_assume_role_policy or AwsS3Mount pages.
 
     ```python
     import pulumi

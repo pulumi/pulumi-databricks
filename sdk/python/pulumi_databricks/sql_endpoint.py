@@ -574,6 +574,23 @@ class SqlEndpoint(pulumi.CustomResource):
         """
         This resource is used to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL endpoints](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        me = databricks.get_current_user()
+        this = databricks.SqlEndpoint("this",
+            cluster_size="Small",
+            max_num_clusters=1,
+            tags=databricks.SqlEndpointTagsArgs(
+                custom_tags=[databricks.SqlEndpointTagsCustomTagArgs(
+                    key="City",
+                    value="Amsterdam",
+                )],
+            ))
+        ```
         ## Access Control
 
         * Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL endpoints.
@@ -623,6 +640,23 @@ class SqlEndpoint(pulumi.CustomResource):
         """
         This resource is used to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL endpoints](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        me = databricks.get_current_user()
+        this = databricks.SqlEndpoint("this",
+            cluster_size="Small",
+            max_num_clusters=1,
+            tags=databricks.SqlEndpointTagsArgs(
+                custom_tags=[databricks.SqlEndpointTagsCustomTagArgs(
+                    key="City",
+                    value="Amsterdam",
+                )],
+            ))
+        ```
         ## Access Control
 
         * Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL endpoints.

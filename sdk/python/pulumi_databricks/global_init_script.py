@@ -23,8 +23,8 @@ class GlobalInitScriptArgs:
         """
         The set of arguments for constructing a GlobalInitScript resource.
         :param pulumi.Input[bool] enabled: specifies if the script is enabled for execution, or not
-        :param pulumi.Input[str] name: - the name of the script.  It should be unique
-        :param pulumi.Input[int] position: - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        :param pulumi.Input[str] name: the name of the script.  It should be unique
+        :param pulumi.Input[int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         :param pulumi.Input[str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         if content_base64 is not None:
@@ -74,7 +74,7 @@ class GlobalInitScriptArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        - the name of the script.  It should be unique
+        the name of the script.  It should be unique
         """
         return pulumi.get(self, "name")
 
@@ -86,7 +86,7 @@ class GlobalInitScriptArgs:
     @pulumi.getter
     def position(self) -> Optional[pulumi.Input[int]]:
         """
-        - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         """
         return pulumi.get(self, "position")
 
@@ -119,8 +119,8 @@ class _GlobalInitScriptState:
         """
         Input properties used for looking up and filtering GlobalInitScript resources.
         :param pulumi.Input[bool] enabled: specifies if the script is enabled for execution, or not
-        :param pulumi.Input[str] name: - the name of the script.  It should be unique
-        :param pulumi.Input[int] position: - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        :param pulumi.Input[str] name: the name of the script.  It should be unique
+        :param pulumi.Input[int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         :param pulumi.Input[str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         if content_base64 is not None:
@@ -170,7 +170,7 @@ class _GlobalInitScriptState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        - the name of the script.  It should be unique
+        the name of the script.  It should be unique
         """
         return pulumi.get(self, "name")
 
@@ -182,7 +182,7 @@ class _GlobalInitScriptState:
     @pulumi.getter
     def position(self) -> Optional[pulumi.Input[int]]:
         """
-        - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         """
         return pulumi.get(self, "position")
 
@@ -227,8 +227,8 @@ class GlobalInitScript(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: specifies if the script is enabled for execution, or not
-        :param pulumi.Input[str] name: - the name of the script.  It should be unique
-        :param pulumi.Input[int] position: - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        :param pulumi.Input[str] name: the name of the script.  It should be unique
+        :param pulumi.Input[int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         :param pulumi.Input[str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         ...
@@ -306,8 +306,8 @@ class GlobalInitScript(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: specifies if the script is enabled for execution, or not
-        :param pulumi.Input[str] name: - the name of the script.  It should be unique
-        :param pulumi.Input[int] position: - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        :param pulumi.Input[str] name: the name of the script.  It should be unique
+        :param pulumi.Input[int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         :param pulumi.Input[str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -344,7 +344,7 @@ class GlobalInitScript(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        - the name of the script.  It should be unique
+        the name of the script.  It should be unique
         """
         return pulumi.get(self, "name")
 
@@ -352,7 +352,7 @@ class GlobalInitScript(pulumi.CustomResource):
     @pulumi.getter
     def position(self) -> pulumi.Output[int]:
         """
-        - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         """
         return pulumi.get(self, "position")
 

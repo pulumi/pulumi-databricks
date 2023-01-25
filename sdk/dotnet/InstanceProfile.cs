@@ -184,6 +184,74 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// ## Usage with Databricks SQL serverless
+    /// 
+    /// When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sqlServerlessAssumeRole = Aws.Iam.GetPolicyDocument.Invoke(new()
+    ///     {
+    ///         Statements = new[]
+    ///         {
+    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+    ///             {
+    ///                 Actions = new[]
+    ///                 {
+    ///                     "sts:AssumeRole",
+    ///                 },
+    ///                 Principals = new[]
+    ///                 {
+    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+    ///                     {
+    ///                         Type = "AWS",
+    ///                         Identifiers = new[]
+    ///                         {
+    ///                             "arn:aws:iam::790110701330:role/serverless-customer-resource-role",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Conditions = new[]
+    ///                 {
+    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
+    ///                     {
+    ///                         Test = "StringEquals",
+    ///                         Variable = "sts:ExternalID",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "databricks-serverless-&lt;YOUR_WORKSPACE_ID1&gt;",
+    ///                             "databricks-serverless-&lt;YOUR_WORKSPACE_ID2&gt;",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var thisRole = new Aws.Iam.Role("thisRole", new()
+    ///     {
+    ///         AssumeRolePolicy = sqlServerlessAssumeRole.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
+    ///     });
+    /// 
+    ///     var thisInstanceProfile = new Aws.Iam.InstanceProfile("thisInstanceProfile", new()
+    ///     {
+    ///         Role = thisRole.Name,
+    ///     });
+    /// 
+    ///     var thisIndex_instanceProfileInstanceProfile = new Databricks.InstanceProfile("thisIndex/instanceProfileInstanceProfile", new()
+    ///     {
+    ///         InstanceProfileArn = thisInstanceProfile.Arn,
+    ///         IamRoleArn = thisRole.Arn,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -197,10 +265,16 @@ namespace Pulumi.Databricks
     public partial class InstanceProfile : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+        /// </summary>
+        [Output("iamRoleArn")]
+        public Output<string?> IamRoleArn { get; private set; } = null!;
+
+        /// <summary>
         /// `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         /// </summary>
         [Output("instanceProfileArn")]
-        public Output<string?> InstanceProfileArn { get; private set; } = null!;
+        public Output<string> InstanceProfileArn { get; private set; } = null!;
 
         /// <summary>
         /// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
@@ -222,7 +296,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public InstanceProfile(string name, InstanceProfileArgs? args = null, CustomResourceOptions? options = null)
+        public InstanceProfile(string name, InstanceProfileArgs args, CustomResourceOptions? options = null)
             : base("databricks:index/instanceProfile:InstanceProfile", name, args ?? new InstanceProfileArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -261,10 +335,16 @@ namespace Pulumi.Databricks
     public sealed class InstanceProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+        /// </summary>
+        [Input("iamRoleArn")]
+        public Input<string>? IamRoleArn { get; set; }
+
+        /// <summary>
         /// `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         /// </summary>
-        [Input("instanceProfileArn")]
-        public Input<string>? InstanceProfileArn { get; set; }
+        [Input("instanceProfileArn", required: true)]
+        public Input<string> InstanceProfileArn { get; set; } = null!;
 
         /// <summary>
         /// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
@@ -286,6 +366,12 @@ namespace Pulumi.Databricks
 
     public sealed class InstanceProfileState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+        /// </summary>
+        [Input("iamRoleArn")]
+        public Input<string>? IamRoleArn { get; set; }
+
         /// <summary>
         /// `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         /// </summary>

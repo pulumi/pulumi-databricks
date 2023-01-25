@@ -13,49 +13,16 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class TableColumn
     {
-        /// <summary>
-        /// User-supplied free-form text.
-        /// </summary>
         public readonly string? Comment;
-        /// <summary>
-        /// User-visible name of column
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Whether field is nullable (Default: `true`)
-        /// </summary>
         public readonly bool? Nullable;
-        /// <summary>
-        /// Partition ID
-        /// </summary>
         public readonly int? PartitionIndex;
-        /// <summary>
-        /// Ordinal position of column, starting at 0.
-        /// </summary>
         public readonly int Position;
-        /// <summary>
-        /// Format of `INTERVAL` columns
-        /// </summary>
         public readonly string? TypeIntervalType;
-        /// <summary>
-        /// Column type spec (with metadata) as JSON string
-        /// </summary>
         public readonly string? TypeJson;
-        /// <summary>
-        /// Name of (outer) type
-        /// </summary>
         public readonly string TypeName;
-        /// <summary>
-        /// Digits of precision; applies to `DECIMAL` columns
-        /// </summary>
         public readonly int? TypePrecision;
-        /// <summary>
-        /// Digits to right of decimal; applies to `DECIMAL` columns
-        /// </summary>
         public readonly int? TypeScale;
-        /// <summary>
-        /// Column type spec (with metadata) as SQL text
-        /// </summary>
         public readonly string TypeText;
 
         [OutputConstructor]

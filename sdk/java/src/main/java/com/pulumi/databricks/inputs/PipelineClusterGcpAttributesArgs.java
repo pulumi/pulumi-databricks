@@ -15,6 +15,13 @@ public final class PipelineClusterGcpAttributesArgs extends com.pulumi.resources
 
     public static final PipelineClusterGcpAttributesArgs Empty = new PipelineClusterGcpAttributesArgs();
 
+    @Import(name="availability")
+    private @Nullable Output<String> availability;
+
+    public Optional<Output<String>> availability() {
+        return Optional.ofNullable(this.availability);
+    }
+
     @Import(name="googleServiceAccount")
     private @Nullable Output<String> googleServiceAccount;
 
@@ -22,10 +29,19 @@ public final class PipelineClusterGcpAttributesArgs extends com.pulumi.resources
         return Optional.ofNullable(this.googleServiceAccount);
     }
 
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
+
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
+
     private PipelineClusterGcpAttributesArgs() {}
 
     private PipelineClusterGcpAttributesArgs(PipelineClusterGcpAttributesArgs $) {
+        this.availability = $.availability;
         this.googleServiceAccount = $.googleServiceAccount;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -46,6 +62,15 @@ public final class PipelineClusterGcpAttributesArgs extends com.pulumi.resources
             $ = new PipelineClusterGcpAttributesArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder availability(@Nullable Output<String> availability) {
+            $.availability = availability;
+            return this;
+        }
+
+        public Builder availability(String availability) {
+            return availability(Output.of(availability));
+        }
+
         public Builder googleServiceAccount(@Nullable Output<String> googleServiceAccount) {
             $.googleServiceAccount = googleServiceAccount;
             return this;
@@ -53,6 +78,15 @@ public final class PipelineClusterGcpAttributesArgs extends com.pulumi.resources
 
         public Builder googleServiceAccount(String googleServiceAccount) {
             return googleServiceAccount(Output.of(googleServiceAccount));
+        }
+
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
         }
 
         public PipelineClusterGcpAttributesArgs build() {

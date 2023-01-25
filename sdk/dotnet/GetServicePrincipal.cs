@@ -146,14 +146,17 @@ namespace Pulumi.Databricks
         public string? Home { get; set; }
 
         /// <summary>
+        /// The id of the service principal.
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
         /// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
         /// </summary>
         [Input("repos")]
         public string? Repos { get; set; }
 
-        /// <summary>
-        /// The id of the service principal.
-        /// </summary>
         [Input("spId")]
         public string? SpId { get; set; }
 
@@ -196,14 +199,17 @@ namespace Pulumi.Databricks
         public Input<string>? Home { get; set; }
 
         /// <summary>
+        /// The id of the service principal.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
         /// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
         /// </summary>
         [Input("repos")]
         public Input<string>? Repos { get; set; }
 
-        /// <summary>
-        /// The id of the service principal.
-        /// </summary>
         [Input("spId")]
         public Input<string>? SpId { get; set; }
 
@@ -235,16 +241,13 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Home;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The id of the service principal.
         /// </summary>
         public readonly string Id;
         /// <summary>
         /// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
         /// </summary>
         public readonly string Repos;
-        /// <summary>
-        /// The id of the service principal.
-        /// </summary>
         public readonly string SpId;
 
         [OutputConstructor]

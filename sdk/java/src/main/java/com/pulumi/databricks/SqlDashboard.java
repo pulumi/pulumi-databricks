@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Directory;
+ * import com.pulumi.databricks.DirectoryArgs;
  * import com.pulumi.databricks.SqlDashboard;
  * import com.pulumi.databricks.SqlDashboardArgs;
  * import java.util.List;
@@ -44,7 +46,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var sharedDir = new Directory(&#34;sharedDir&#34;, DirectoryArgs.builder()        
+ *             .path(&#34;/Shared/Dashboards&#34;)
+ *             .build());
+ * 
  *         var d1 = new SqlDashboard(&#34;d1&#34;, SqlDashboardArgs.builder()        
+ *             .parent(sharedDir.objectId().applyValue(objectId -&gt; String.format(&#34;folders/%s&#34;, objectId)))
  *             .tags(            
  *                 &#34;some-tag&#34;,
  *                 &#34;another-tag&#34;)
@@ -113,6 +120,12 @@ public class SqlDashboard extends com.pulumi.resources.CustomResource {
 
     public Output<String> name() {
         return this.name;
+    }
+    @Export(name="parent", type=String.class, parameters={})
+    private Output</* @Nullable */ String> parent;
+
+    public Output<Optional<String>> parent() {
+        return Codegen.optional(this.parent);
     }
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;

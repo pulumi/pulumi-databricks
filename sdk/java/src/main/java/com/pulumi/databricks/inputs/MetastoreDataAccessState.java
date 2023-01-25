@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MetastoreDataAccessAwsIamRoleArgs;
 import com.pulumi.databricks.inputs.MetastoreDataAccessAzureManagedIdentityArgs;
 import com.pulumi.databricks.inputs.MetastoreDataAccessAzureServicePrincipalArgs;
+import com.pulumi.databricks.inputs.MetastoreDataAccessGcpServiceAccountKeyArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -45,6 +46,13 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
 
     public Optional<Output<String>> configurationType() {
         return Optional.ofNullable(this.configurationType);
+    }
+
+    @Import(name="gcpServiceAccountKey")
+    private @Nullable Output<MetastoreDataAccessGcpServiceAccountKeyArgs> gcpServiceAccountKey;
+
+    public Optional<Output<MetastoreDataAccessGcpServiceAccountKeyArgs>> gcpServiceAccountKey() {
+        return Optional.ofNullable(this.gcpServiceAccountKey);
     }
 
     @Import(name="isDefault")
@@ -91,6 +99,7 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
         this.azureManagedIdentity = $.azureManagedIdentity;
         this.azureServicePrincipal = $.azureServicePrincipal;
         this.configurationType = $.configurationType;
+        this.gcpServiceAccountKey = $.gcpServiceAccountKey;
         this.isDefault = $.isDefault;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
@@ -148,6 +157,15 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
 
         public Builder configurationType(String configurationType) {
             return configurationType(Output.of(configurationType));
+        }
+
+        public Builder gcpServiceAccountKey(@Nullable Output<MetastoreDataAccessGcpServiceAccountKeyArgs> gcpServiceAccountKey) {
+            $.gcpServiceAccountKey = gcpServiceAccountKey;
+            return this;
+        }
+
+        public Builder gcpServiceAccountKey(MetastoreDataAccessGcpServiceAccountKeyArgs gcpServiceAccountKey) {
+            return gcpServiceAccountKey(Output.of(gcpServiceAccountKey));
         }
 
         public Builder isDefault(@Nullable Output<Boolean> isDefault) {

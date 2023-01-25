@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNewClusterAuto
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNewClusterAwsAttributes;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNewClusterAzureAttributes;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConf;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNewClusterDockerImage;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNewClusterGcpAttributes;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNewClusterInitScript;
@@ -31,6 +32,7 @@ public final class GetJobJobSettingsSettingsTaskNewCluster {
     private @Nullable GetJobJobSettingsSettingsTaskNewClusterAzureAttributes azureAttributes;
     private @Nullable String clusterId;
     private @Nullable GetJobJobSettingsSettingsTaskNewClusterClusterLogConf clusterLogConf;
+    private @Nullable List<GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo> clusterMountInfos;
     private @Nullable String clusterName;
     private @Nullable Map<String,Object> customTags;
     private @Nullable String dataSecurityMode;
@@ -75,6 +77,9 @@ public final class GetJobJobSettingsSettingsTaskNewCluster {
     }
     public Optional<GetJobJobSettingsSettingsTaskNewClusterClusterLogConf> clusterLogConf() {
         return Optional.ofNullable(this.clusterLogConf);
+    }
+    public List<GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo> clusterMountInfos() {
+        return this.clusterMountInfos == null ? List.of() : this.clusterMountInfos;
     }
     public Optional<String> clusterName() {
         return Optional.ofNullable(this.clusterName);
@@ -159,6 +164,7 @@ public final class GetJobJobSettingsSettingsTaskNewCluster {
         private @Nullable GetJobJobSettingsSettingsTaskNewClusterAzureAttributes azureAttributes;
         private @Nullable String clusterId;
         private @Nullable GetJobJobSettingsSettingsTaskNewClusterClusterLogConf clusterLogConf;
+        private @Nullable List<GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo> clusterMountInfos;
         private @Nullable String clusterName;
         private @Nullable Map<String,Object> customTags;
         private @Nullable String dataSecurityMode;
@@ -191,6 +197,7 @@ public final class GetJobJobSettingsSettingsTaskNewCluster {
     	      this.azureAttributes = defaults.azureAttributes;
     	      this.clusterId = defaults.clusterId;
     	      this.clusterLogConf = defaults.clusterLogConf;
+    	      this.clusterMountInfos = defaults.clusterMountInfos;
     	      this.clusterName = defaults.clusterName;
     	      this.customTags = defaults.customTags;
     	      this.dataSecurityMode = defaults.dataSecurityMode;
@@ -249,6 +256,14 @@ public final class GetJobJobSettingsSettingsTaskNewCluster {
         public Builder clusterLogConf(@Nullable GetJobJobSettingsSettingsTaskNewClusterClusterLogConf clusterLogConf) {
             this.clusterLogConf = clusterLogConf;
             return this;
+        }
+        @CustomType.Setter
+        public Builder clusterMountInfos(@Nullable List<GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo> clusterMountInfos) {
+            this.clusterMountInfos = clusterMountInfos;
+            return this;
+        }
+        public Builder clusterMountInfos(GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo... clusterMountInfos) {
+            return clusterMountInfos(List.of(clusterMountInfos));
         }
         @CustomType.Setter
         public Builder clusterName(@Nullable String clusterName) {
@@ -375,6 +390,7 @@ public final class GetJobJobSettingsSettingsTaskNewCluster {
             o.azureAttributes = azureAttributes;
             o.clusterId = clusterId;
             o.clusterLogConf = clusterLogConf;
+            o.clusterMountInfos = clusterMountInfos;
             o.clusterName = clusterName;
             o.customTags = customTags;
             o.dataSecurityMode = dataSecurityMode;

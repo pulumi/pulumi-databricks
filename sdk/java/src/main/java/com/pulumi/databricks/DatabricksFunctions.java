@@ -16,18 +16,26 @@ import com.pulumi.databricks.inputs.GetCatalogsArgs;
 import com.pulumi.databricks.inputs.GetCatalogsPlainArgs;
 import com.pulumi.databricks.inputs.GetClusterArgs;
 import com.pulumi.databricks.inputs.GetClusterPlainArgs;
+import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
+import com.pulumi.databricks.inputs.GetClusterPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetClustersArgs;
 import com.pulumi.databricks.inputs.GetClustersPlainArgs;
 import com.pulumi.databricks.inputs.GetDbfsFileArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePathsArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePathsPlainArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePlainArgs;
+import com.pulumi.databricks.inputs.GetDirectoryArgs;
+import com.pulumi.databricks.inputs.GetDirectoryPlainArgs;
 import com.pulumi.databricks.inputs.GetGroupArgs;
 import com.pulumi.databricks.inputs.GetGroupPlainArgs;
+import com.pulumi.databricks.inputs.GetInstancePoolArgs;
+import com.pulumi.databricks.inputs.GetInstancePoolPlainArgs;
 import com.pulumi.databricks.inputs.GetJobArgs;
 import com.pulumi.databricks.inputs.GetJobPlainArgs;
 import com.pulumi.databricks.inputs.GetJobsArgs;
 import com.pulumi.databricks.inputs.GetJobsPlainArgs;
+import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
+import com.pulumi.databricks.inputs.GetMwsCredentialsPlainArgs;
 import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
 import com.pulumi.databricks.inputs.GetMwsWorkspacesPlainArgs;
 import com.pulumi.databricks.inputs.GetNodeTypeArgs;
@@ -62,14 +70,18 @@ import com.pulumi.databricks.outputs.GetAwsAssumeRolePolicyResult;
 import com.pulumi.databricks.outputs.GetAwsBucketPolicyResult;
 import com.pulumi.databricks.outputs.GetAwsCrossAccountPolicyResult;
 import com.pulumi.databricks.outputs.GetCatalogsResult;
+import com.pulumi.databricks.outputs.GetClusterPolicyResult;
 import com.pulumi.databricks.outputs.GetClusterResult;
 import com.pulumi.databricks.outputs.GetClustersResult;
 import com.pulumi.databricks.outputs.GetCurrentUserResult;
 import com.pulumi.databricks.outputs.GetDbfsFilePathsResult;
 import com.pulumi.databricks.outputs.GetDbfsFileResult;
+import com.pulumi.databricks.outputs.GetDirectoryResult;
 import com.pulumi.databricks.outputs.GetGroupResult;
+import com.pulumi.databricks.outputs.GetInstancePoolResult;
 import com.pulumi.databricks.outputs.GetJobResult;
 import com.pulumi.databricks.outputs.GetJobsResult;
+import com.pulumi.databricks.outputs.GetMwsCredentialsResult;
 import com.pulumi.databricks.outputs.GetMwsWorkspacesResult;
 import com.pulumi.databricks.outputs.GetNodeTypeResult;
 import com.pulumi.databricks.outputs.GetNotebookPathsResult;
@@ -175,7 +187,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
      * ```java
      * package generated_program;
      * 
@@ -222,7 +234,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
      * ```java
      * package generated_program;
      * 
@@ -269,7 +281,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
      * ```java
      * package generated_program;
      * 
@@ -316,7 +328,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
      * ```java
      * package generated_program;
      * 
@@ -363,7 +375,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
      * ```java
      * package generated_program;
      * 
@@ -410,7 +422,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
      * ```java
      * package generated_program;
      * 
@@ -717,6 +729,42 @@ public final class DatabricksFunctions {
      * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
      * 
      */
+    public static Output<GetClusterResult> getCluster() {
+        return getCluster(GetClusterArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+     * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+     * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * 
+     */
+    public static CompletableFuture<GetClusterResult> getClusterPlain() {
+        return getClusterPlain(GetClusterPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+     * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+     * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * 
+     */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args) {
         return getCluster(args, InvokeOptions.Empty);
     }
@@ -773,6 +821,178 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Referring to a cluster policy by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var personal = DatabricksFunctions.getClusterPolicy(GetClusterPolicyArgs.builder()
+     *             .name(&#34;Personal Compute&#34;)
+     *             .build());
+     * 
+     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetClusterPolicyResult> getClusterPolicy(GetClusterPolicyArgs args) {
+        return getClusterPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Referring to a cluster policy by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var personal = DatabricksFunctions.getClusterPolicy(GetClusterPolicyArgs.builder()
+     *             .name(&#34;Personal Compute&#34;)
+     *             .build());
+     * 
+     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetClusterPolicyResult> getClusterPolicyPlain(GetClusterPolicyPlainArgs args) {
+        return getClusterPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Referring to a cluster policy by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var personal = DatabricksFunctions.getClusterPolicy(GetClusterPolicyArgs.builder()
+     *             .name(&#34;Personal Compute&#34;)
+     *             .build());
+     * 
+     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetClusterPolicyResult> getClusterPolicy(GetClusterPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getClusterPolicy:getClusterPolicy", TypeShape.of(GetClusterPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Referring to a cluster policy by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var personal = DatabricksFunctions.getClusterPolicy(GetClusterPolicyArgs.builder()
+     *             .name(&#34;Personal Compute&#34;)
+     *             .build());
+     * 
+     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetClusterPolicyResult> getClusterPolicyPlain(GetClusterPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getClusterPolicy:getClusterPolicy", TypeShape.of(GetClusterPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -1748,6 +1968,146 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDirectoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prod = DatabricksFunctions.getDirectory(GetDirectoryArgs.builder()
+     *             .path(&#34;/Production&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDirectoryResult> getDirectory(GetDirectoryArgs args) {
+        return getDirectory(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDirectoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prod = DatabricksFunctions.getDirectory(GetDirectoryArgs.builder()
+     *             .path(&#34;/Production&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDirectoryResult> getDirectoryPlain(GetDirectoryPlainArgs args) {
+        return getDirectoryPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDirectoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prod = DatabricksFunctions.getDirectory(GetDirectoryArgs.builder()
+     *             .path(&#34;/Production&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDirectoryResult> getDirectory(GetDirectoryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDirectoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var prod = DatabricksFunctions.getDirectory(GetDirectoryArgs.builder()
+     *             .path(&#34;/Production&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDirectoryResult> getDirectoryPlain(GetDirectoryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
      * 
      * Adding user to administrative group
      * ```java
@@ -1989,6 +2349,178 @@ public final class DatabricksFunctions {
     /**
      * ## Example Usage
      * 
+     * Referring to an instance pool by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetInstancePoolArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool = DatabricksFunctions.getInstancePool(GetInstancePoolArgs.builder()
+     *             .name(&#34;All spot&#34;)
+     *             .build());
+     * 
+     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *             .instancePoolId(data.databricks_instance_pool().pool().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstancePoolResult> getInstancePool(GetInstancePoolArgs args) {
+        return getInstancePool(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Referring to an instance pool by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetInstancePoolArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool = DatabricksFunctions.getInstancePool(GetInstancePoolArgs.builder()
+     *             .name(&#34;All spot&#34;)
+     *             .build());
+     * 
+     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *             .instancePoolId(data.databricks_instance_pool().pool().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstancePoolResult> getInstancePoolPlain(GetInstancePoolPlainArgs args) {
+        return getInstancePoolPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Referring to an instance pool by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetInstancePoolArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool = DatabricksFunctions.getInstancePool(GetInstancePoolArgs.builder()
+     *             .name(&#34;All spot&#34;)
+     *             .build());
+     * 
+     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *             .instancePoolId(data.databricks_instance_pool().pool().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstancePoolResult> getInstancePool(GetInstancePoolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getInstancePool:getInstancePool", TypeShape.of(GetInstancePoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Referring to an instance pool by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetInstancePoolArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool = DatabricksFunctions.getInstancePool(GetInstancePoolArgs.builder()
+     *             .name(&#34;All spot&#34;)
+     *             .build());
+     * 
+     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *             .instancePoolId(data.databricks_instance_pool().pool().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstancePoolResult> getInstancePoolPlain(GetInstancePoolPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getInstancePool:getInstancePool", TypeShape.of(GetInstancePoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
      * Getting the existing cluster id of specific databricks.Job by name or by id:
      * ```java
      * package generated_program;
@@ -2015,7 +2547,7 @@ public final class DatabricksFunctions {
      *             .jobName(&#34;My job&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *         ctx.export(&#34;jobNumWorkers&#34;, this_.jobSettings().settings().newCluster().numWorkers());
      *     }
      * }
      * ```
@@ -2059,7 +2591,7 @@ public final class DatabricksFunctions {
      *             .jobName(&#34;My job&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *         ctx.export(&#34;jobNumWorkers&#34;, this_.jobSettings().settings().newCluster().numWorkers());
      *     }
      * }
      * ```
@@ -2103,7 +2635,7 @@ public final class DatabricksFunctions {
      *             .jobName(&#34;My job&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *         ctx.export(&#34;jobNumWorkers&#34;, this_.jobSettings().settings().newCluster().numWorkers());
      *     }
      * }
      * ```
@@ -2147,7 +2679,7 @@ public final class DatabricksFunctions {
      *             .jobName(&#34;My job&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *         ctx.export(&#34;jobNumWorkers&#34;, this_.jobSettings().settings().newCluster().numWorkers());
      *     }
      * }
      * ```
@@ -2191,7 +2723,7 @@ public final class DatabricksFunctions {
      *             .jobName(&#34;My job&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *         ctx.export(&#34;jobNumWorkers&#34;, this_.jobSettings().settings().newCluster().numWorkers());
      *     }
      * }
      * ```
@@ -2235,7 +2767,7 @@ public final class DatabricksFunctions {
      *             .jobName(&#34;My job&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, this_.jobSettings().settings().newCluster().numWorkers());
+     *         ctx.export(&#34;jobNumWorkers&#34;, this_.jobSettings().settings().newCluster().numWorkers());
      *     }
      * }
      * ```
@@ -2315,6 +2847,318 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetJobsResult> getJobsPlain(GetJobsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getJobs:getJobs", TypeShape.of(GetJobsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
+     * Lists all databricks.MwsCredentials in Databricks Account.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+     * 
+     * ## Example Usage
+     * 
+     * Listing all workspaces in
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMwsCredentials();
+     * 
+     *         ctx.export(&#34;allMwsCredentials&#34;, all.applyValue(getMwsCredentialsResult -&gt; getMwsCredentialsResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * Provisioning Databricks on AWS guide.
+     * * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+     * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+     * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
+     * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+     * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+     * 
+     */
+    public static Output<GetMwsCredentialsResult> getMwsCredentials() {
+        return getMwsCredentials(GetMwsCredentialsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
+     * Lists all databricks.MwsCredentials in Databricks Account.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+     * 
+     * ## Example Usage
+     * 
+     * Listing all workspaces in
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMwsCredentials();
+     * 
+     *         ctx.export(&#34;allMwsCredentials&#34;, all.applyValue(getMwsCredentialsResult -&gt; getMwsCredentialsResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * Provisioning Databricks on AWS guide.
+     * * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+     * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+     * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
+     * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+     * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+     * 
+     */
+    public static CompletableFuture<GetMwsCredentialsResult> getMwsCredentialsPlain() {
+        return getMwsCredentialsPlain(GetMwsCredentialsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
+     * Lists all databricks.MwsCredentials in Databricks Account.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+     * 
+     * ## Example Usage
+     * 
+     * Listing all workspaces in
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMwsCredentials();
+     * 
+     *         ctx.export(&#34;allMwsCredentials&#34;, all.applyValue(getMwsCredentialsResult -&gt; getMwsCredentialsResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * Provisioning Databricks on AWS guide.
+     * * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+     * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+     * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
+     * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+     * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+     * 
+     */
+    public static Output<GetMwsCredentialsResult> getMwsCredentials(GetMwsCredentialsArgs args) {
+        return getMwsCredentials(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
+     * Lists all databricks.MwsCredentials in Databricks Account.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+     * 
+     * ## Example Usage
+     * 
+     * Listing all workspaces in
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMwsCredentials();
+     * 
+     *         ctx.export(&#34;allMwsCredentials&#34;, all.applyValue(getMwsCredentialsResult -&gt; getMwsCredentialsResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * Provisioning Databricks on AWS guide.
+     * * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+     * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+     * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
+     * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+     * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+     * 
+     */
+    public static CompletableFuture<GetMwsCredentialsResult> getMwsCredentialsPlain(GetMwsCredentialsPlainArgs args) {
+        return getMwsCredentialsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
+     * Lists all databricks.MwsCredentials in Databricks Account.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+     * 
+     * ## Example Usage
+     * 
+     * Listing all workspaces in
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMwsCredentials();
+     * 
+     *         ctx.export(&#34;allMwsCredentials&#34;, all.applyValue(getMwsCredentialsResult -&gt; getMwsCredentialsResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * Provisioning Databricks on AWS guide.
+     * * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+     * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+     * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
+     * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+     * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+     * 
+     */
+    public static Output<GetMwsCredentialsResult> getMwsCredentials(GetMwsCredentialsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMwsCredentials:getMwsCredentials", TypeShape.of(GetMwsCredentialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
+     * Lists all databricks.MwsCredentials in Databricks Account.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+     * 
+     * ## Example Usage
+     * 
+     * Listing all workspaces in
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMwsCredentials();
+     * 
+     *         ctx.export(&#34;allMwsCredentials&#34;, all.applyValue(getMwsCredentialsResult -&gt; getMwsCredentialsResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * Provisioning Databricks on AWS guide.
+     * * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+     * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+     * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
+     * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+     * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+     * 
+     */
+    public static CompletableFuture<GetMwsCredentialsResult> getMwsCredentialsPlain(GetMwsCredentialsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMwsCredentials:getMwsCredentials", TypeShape.of(GetMwsCredentialsResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetMwsWorkspacesResult> getMwsWorkspaces() {
         return getMwsWorkspaces(GetMwsWorkspacesArgs.Empty, InvokeOptions.Empty);
@@ -5582,6 +6426,31 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = DatabricksFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -5589,6 +6458,31 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = DatabricksFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -5596,6 +6490,31 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = DatabricksFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(InvokeArgs args) {
@@ -5603,6 +6522,31 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = DatabricksFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(InvokeArgs args) {
@@ -5610,6 +6554,31 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = DatabricksFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetZonesResult> getZones(InvokeArgs args, InvokeOptions options) {
@@ -5617,6 +6586,31 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = DatabricksFunctions.getZones();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(InvokeArgs args, InvokeOptions options) {

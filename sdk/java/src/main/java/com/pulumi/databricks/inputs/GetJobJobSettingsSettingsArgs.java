@@ -105,9 +105,17 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.minRetryIntervalMillis);
     }
 
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return the job name of databricks.Job if the resource was matched by id.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -348,11 +356,23 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
             return minRetryIntervalMillis(Output.of(minRetryIntervalMillis));
         }
 
+        /**
+         * @param name the job name of databricks.Job if the resource was matched by id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name the job name of databricks.Job if the resource was matched by id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

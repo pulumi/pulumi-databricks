@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			external, err := databricks.NewStorageCredential(ctx, "external", &databricks.StorageCredentialArgs{
-//				AwsIamRole: &StorageCredentialAwsIamRoleArgs{
+//				AwsIamRole: &databricks.StorageCredentialAwsIamRoleArgs{
 //					RoleArn: pulumi.Any(aws_iam_role.External_data_access.Arn),
 //				},
 //				Comment: pulumi.String("Managed by TF"),
@@ -42,8 +42,8 @@ import (
 //			}
 //			_, err = databricks.NewGrants(ctx, "externalCreds", &databricks.GrantsArgs{
 //				StorageCredential: external.ID(),
-//				Grants: GrantsGrantArray{
-//					&GrantsGrantArgs{
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
 //						Privileges: pulumi.StringArray{
 //							pulumi.String("CREATE_TABLE"),
@@ -76,7 +76,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = core.LookupResourceGroup(ctx, &core.LookupResourceGroupArgs{
+//			_, err := core.LookupResourceGroup(ctx, &core.LookupResourceGroupArgs{
 //				Name: "example-rg",
 //			}, nil)
 //			if err != nil {
@@ -96,7 +96,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewStorageCredential(ctx, "externalMi", &databricks.StorageCredentialArgs{
-//				AzureManagedIdentity: &StorageCredentialAzureManagedIdentityArgs{
+//				AzureManagedIdentity: &databricks.StorageCredentialAzureManagedIdentityArgs{
 //					AccessConnectorId: example.ID(),
 //				},
 //				Comment: pulumi.String("Managed identity credential managed by TF"),
@@ -106,8 +106,8 @@ import (
 //			}
 //			_, err = databricks.NewGrants(ctx, "externalCreds", &databricks.GrantsArgs{
 //				StorageCredential: pulumi.Any(databricks_storage_credential.External.Id),
-//				Grants: GrantsGrantArray{
-//					&GrantsGrantArgs{
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
 //						Privileges: pulumi.StringArray{
 //							pulumi.String("CREATE_TABLE"),
@@ -140,6 +140,7 @@ type StorageCredential struct {
 	AzureManagedIdentity  StorageCredentialAzureManagedIdentityPtrOutput  `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal StorageCredentialAzureServicePrincipalPtrOutput `pulumi:"azureServicePrincipal"`
 	Comment               pulumi.StringPtrOutput                          `pulumi:"comment"`
+	GcpServiceAccountKey  StorageCredentialGcpServiceAccountKeyPtrOutput  `pulumi:"gcpServiceAccountKey"`
 	MetastoreId           pulumi.StringOutput                             `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -180,6 +181,7 @@ type storageCredentialState struct {
 	AzureManagedIdentity  *StorageCredentialAzureManagedIdentity  `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal *StorageCredentialAzureServicePrincipal `pulumi:"azureServicePrincipal"`
 	Comment               *string                                 `pulumi:"comment"`
+	GcpServiceAccountKey  *StorageCredentialGcpServiceAccountKey  `pulumi:"gcpServiceAccountKey"`
 	MetastoreId           *string                                 `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
@@ -192,6 +194,7 @@ type StorageCredentialState struct {
 	AzureManagedIdentity  StorageCredentialAzureManagedIdentityPtrInput
 	AzureServicePrincipal StorageCredentialAzureServicePrincipalPtrInput
 	Comment               pulumi.StringPtrInput
+	GcpServiceAccountKey  StorageCredentialGcpServiceAccountKeyPtrInput
 	MetastoreId           pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
@@ -208,6 +211,7 @@ type storageCredentialArgs struct {
 	AzureManagedIdentity  *StorageCredentialAzureManagedIdentity  `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal *StorageCredentialAzureServicePrincipal `pulumi:"azureServicePrincipal"`
 	Comment               *string                                 `pulumi:"comment"`
+	GcpServiceAccountKey  *StorageCredentialGcpServiceAccountKey  `pulumi:"gcpServiceAccountKey"`
 	MetastoreId           *string                                 `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
@@ -221,6 +225,7 @@ type StorageCredentialArgs struct {
 	AzureManagedIdentity  StorageCredentialAzureManagedIdentityPtrInput
 	AzureServicePrincipal StorageCredentialAzureServicePrincipalPtrInput
 	Comment               pulumi.StringPtrInput
+	GcpServiceAccountKey  StorageCredentialGcpServiceAccountKeyPtrInput
 	MetastoreId           pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
@@ -333,6 +338,12 @@ func (o StorageCredentialOutput) AzureServicePrincipal() StorageCredentialAzureS
 
 func (o StorageCredentialOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+func (o StorageCredentialOutput) GcpServiceAccountKey() StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return o.ApplyT(func(v *StorageCredential) StorageCredentialGcpServiceAccountKeyPtrOutput {
+		return v.GcpServiceAccountKey
+	}).(StorageCredentialGcpServiceAccountKeyPtrOutput)
 }
 
 func (o StorageCredentialOutput) MetastoreId() pulumi.StringOutput {

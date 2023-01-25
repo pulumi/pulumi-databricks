@@ -30,6 +30,14 @@ namespace Pulumi.Databricks
     ///         Scope = app.Id,
     ///     });
     /// 
+    ///     var @this = new Databricks.Cluster("this", new()
+    ///     {
+    ///         SparkConf = 
+    ///         {
+    ///             { "fs.azure.account.oauth2.client.secret", publishingApi.ConfigReference },
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// ## Related Resources
@@ -54,6 +62,12 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/secret:Secret")]
     public partial class Secret : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
+        /// </summary>
+        [Output("configReference")]
+        public Output<string> ConfigReference { get; private set; } = null!;
+
         /// <summary>
         /// (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         /// </summary>
@@ -164,6 +178,12 @@ namespace Pulumi.Databricks
 
     public sealed class SecretState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
+        /// </summary>
+        [Input("configReference")]
+        public Input<string>? ConfigReference { get; set; }
+
         /// <summary>
         /// (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         /// </summary>

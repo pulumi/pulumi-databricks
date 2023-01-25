@@ -4,16 +4,23 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.SqlQueryParameterDateRangeRange;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlQueryParameterDateRange {
-    private String value;
+    private @Nullable SqlQueryParameterDateRangeRange range;
+    private @Nullable String value;
 
     private SqlQueryParameterDateRange() {}
-    public String value() {
-        return this.value;
+    public Optional<SqlQueryParameterDateRangeRange> range() {
+        return Optional.ofNullable(this.range);
+    }
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -25,20 +32,28 @@ public final class SqlQueryParameterDateRange {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String value;
+        private @Nullable SqlQueryParameterDateRangeRange range;
+        private @Nullable String value;
         public Builder() {}
         public Builder(SqlQueryParameterDateRange defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.range = defaults.range;
     	      this.value = defaults.value;
         }
 
         @CustomType.Setter
-        public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+        public Builder range(@Nullable SqlQueryParameterDateRangeRange range) {
+            this.range = range;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder value(@Nullable String value) {
+            this.value = value;
             return this;
         }
         public SqlQueryParameterDateRange build() {
             final var o = new SqlQueryParameterDateRange();
+            o.range = range;
             o.value = value;
             return o;
         }

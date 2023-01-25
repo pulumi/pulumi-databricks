@@ -17,14 +17,14 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
     public static final EntitlementsState Empty = new EntitlementsState();
 
     /**
-     * Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+     * Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      * 
      */
     @Import(name="allowClusterCreate")
     private @Nullable Output<Boolean> allowClusterCreate;
 
     /**
-     * @return Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+     * @return Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      * 
      */
     public Optional<Output<Boolean>> allowClusterCreate() {
@@ -32,14 +32,14 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+     * Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
      * 
      */
     @Import(name="allowInstancePoolCreate")
     private @Nullable Output<Boolean> allowInstancePoolCreate;
 
     /**
-     * @return Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+     * @return Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
      * 
      */
     public Optional<Output<Boolean>> allowInstancePoolCreate() {
@@ -47,14 +47,14 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      * 
      */
     @Import(name="databricksSqlAccess")
     private @Nullable Output<Boolean> databricksSqlAccess;
 
     /**
-     * @return This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * @return This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      * 
      */
     public Optional<Output<Boolean>> databricksSqlAccess() {
@@ -106,9 +106,17 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.userId);
     }
 
+    /**
+     * This is a field to allow the principal to have access to Databricks Workspace.
+     * 
+     */
     @Import(name="workspaceAccess")
     private @Nullable Output<Boolean> workspaceAccess;
 
+    /**
+     * @return This is a field to allow the principal to have access to Databricks Workspace.
+     * 
+     */
     public Optional<Output<Boolean>> workspaceAccess() {
         return Optional.ofNullable(this.workspaceAccess);
     }
@@ -144,7 +152,7 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowClusterCreate Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+         * @param allowClusterCreate Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
          * 
          * @return builder
          * 
@@ -155,7 +163,7 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowClusterCreate Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+         * @param allowClusterCreate Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
          * 
          * @return builder
          * 
@@ -165,7 +173,7 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowInstancePoolCreate Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+         * @param allowInstancePoolCreate Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
          * 
          * @return builder
          * 
@@ -176,7 +184,7 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowInstancePoolCreate Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+         * @param allowInstancePoolCreate Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
          * 
          * @return builder
          * 
@@ -186,7 +194,7 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databricksSqlAccess This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+         * @param databricksSqlAccess This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
          * 
          * @return builder
          * 
@@ -197,7 +205,7 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databricksSqlAccess This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+         * @param databricksSqlAccess This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
          * 
          * @return builder
          * 
@@ -269,11 +277,23 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
             return userId(Output.of(userId));
         }
 
+        /**
+         * @param workspaceAccess This is a field to allow the principal to have access to Databricks Workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceAccess(@Nullable Output<Boolean> workspaceAccess) {
             $.workspaceAccess = workspaceAccess;
             return this;
         }
 
+        /**
+         * @param workspaceAccess This is a field to allow the principal to have access to Databricks Workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceAccess(Boolean workspaceAccess) {
             return workspaceAccess(Output.of(workspaceAccess));
         }

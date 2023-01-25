@@ -30,11 +30,8 @@ import * as utilities from "./utilities";
  */
 export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getShare:getShare", {
         "createdAt": args.createdAt,
         "createdBy": args.createdBy,
@@ -90,9 +87,30 @@ export interface GetShareResult {
      */
     readonly objects: outputs.GetShareObject[];
 }
-
+/**
+ * ## Example Usage
+ *
+ * Getting details of an existing share in the metastore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getShare({
+ *     name: "this",
+ * });
+ * export const createdBy = _this.then(_this => _this.createdBy);
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Share to create Delta Sharing shares.
+ * * databricks.Recipient to create Delta Sharing recipients.
+ * * databricks.Grants to manage Delta Sharing permissions.
+ */
 export function getShareOutput(args?: GetShareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareResult> {
-    return pulumi.output(args).apply(a => getShare(a, opts))
+    return pulumi.output(args).apply((a: any) => getShare(a, opts))
 }
 
 /**

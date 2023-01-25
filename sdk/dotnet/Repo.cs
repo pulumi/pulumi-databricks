@@ -45,6 +45,9 @@ namespace Pulumi.Databricks
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
+        [Output("sparseCheckout")]
+        public Output<Outputs.RepoSparseCheckout?> SparseCheckout { get; private set; } = null!;
+
         /// <summary>
         /// name of the tag for initial checkout.  Conflicts with `branch`.
         /// </summary>
@@ -127,6 +130,9 @@ namespace Pulumi.Databricks
         [Input("path")]
         public Input<string>? Path { get; set; }
 
+        [Input("sparseCheckout")]
+        public Input<Inputs.RepoSparseCheckoutArgs>? SparseCheckout { get; set; }
+
         /// <summary>
         /// name of the tag for initial checkout.  Conflicts with `branch`.
         /// </summary>
@@ -170,6 +176,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        [Input("sparseCheckout")]
+        public Input<Inputs.RepoSparseCheckoutGetArgs>? SparseCheckout { get; set; }
 
         /// <summary>
         /// name of the tag for initial checkout.  Conflicts with `branch`.

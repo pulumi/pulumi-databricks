@@ -64,14 +64,14 @@ public final class JobTaskPythonWheelTaskArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * Parameters for the task
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<String>> parameters;
 
     /**
-     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * @return Parameters for the task
      * 
      */
     public Optional<Output<List<String>>> parameters() {
@@ -169,7 +169,7 @@ public final class JobTaskPythonWheelTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameters (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+         * @param parameters Parameters for the task
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class JobTaskPythonWheelTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameters (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+         * @param parameters Parameters for the task
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class JobTaskPythonWheelTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameters (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+         * @param parameters Parameters for the task
          * 
          * @return builder
          * 

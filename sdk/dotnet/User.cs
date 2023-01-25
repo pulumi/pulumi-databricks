@@ -195,6 +195,18 @@ namespace Pulumi.Databricks
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
+        /// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+        /// </summary>
+        [Output("home")]
+        public Output<string> Home { get; private set; } = null!;
+
+        /// <summary>
+        /// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+        /// </summary>
+        [Output("repos")]
+        public Output<string> Repos { get; private set; } = null!;
+
+        /// <summary>
         /// This is the username of the given user and will be their form of access and identity.
         /// </summary>
         [Output("userName")]
@@ -289,6 +301,18 @@ namespace Pulumi.Databricks
         public Input<bool>? Force { get; set; }
 
         /// <summary>
+        /// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+        /// </summary>
+        [Input("home")]
+        public Input<string>? Home { get; set; }
+
+        /// <summary>
+        /// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+        /// </summary>
+        [Input("repos")]
+        public Input<string>? Repos { get; set; }
+
+        /// <summary>
         /// This is the username of the given user and will be their form of access and identity.
         /// </summary>
         [Input("userName", required: true)]
@@ -343,6 +367,18 @@ namespace Pulumi.Databricks
 
         [Input("force")]
         public Input<bool>? Force { get; set; }
+
+        /// <summary>
+        /// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+        /// </summary>
+        [Input("home")]
+        public Input<string>? Home { get; set; }
+
+        /// <summary>
+        /// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+        /// </summary>
+        [Input("repos")]
+        public Input<string>? Repos { get; set; }
 
         /// <summary>
         /// This is the username of the given user and will be their form of access and identity.

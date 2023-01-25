@@ -31,6 +31,9 @@ namespace Pulumi.Databricks
         [Output("configurationType")]
         public Output<string> ConfigurationType { get; private set; } = null!;
 
+        [Output("gcpServiceAccountKey")]
+        public Output<Outputs.MetastoreDataAccessGcpServiceAccountKey?> GcpServiceAccountKey { get; private set; } = null!;
+
         [Output("isDefault")]
         public Output<bool?> IsDefault { get; private set; } = null!;
 
@@ -104,6 +107,9 @@ namespace Pulumi.Databricks
         [Input("configurationType")]
         public Input<string>? ConfigurationType { get; set; }
 
+        [Input("gcpServiceAccountKey")]
+        public Input<Inputs.MetastoreDataAccessGcpServiceAccountKeyArgs>? GcpServiceAccountKey { get; set; }
+
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
@@ -138,6 +144,9 @@ namespace Pulumi.Databricks
 
         [Input("configurationType")]
         public Input<string>? ConfigurationType { get; set; }
+
+        [Input("gcpServiceAccountKey")]
+        public Input<Inputs.MetastoreDataAccessGcpServiceAccountKeyGetArgs>? GcpServiceAccountKey { get; set; }
 
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }

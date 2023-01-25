@@ -19,17 +19,9 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TableArgs Empty = new TableArgs();
 
-    /**
-     * Name of parent catalog
-     * 
-     */
     @Import(name="catalogName", required=true)
     private Output<String> catalogName;
 
-    /**
-     * @return Name of parent catalog
-     * 
-     */
     public Output<String> catalogName() {
         return this.catalogName;
     }
@@ -41,152 +33,72 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         return this.columns;
     }
 
-    /**
-     * User-supplied free-form text.
-     * 
-     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
-    /**
-     * @return User-supplied free-form text.
-     * 
-     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
-    /**
-     * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-     * 
-     */
     @Import(name="dataSourceFormat", required=true)
     private Output<String> dataSourceFormat;
 
-    /**
-     * @return External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-     * 
-     */
     public Output<String> dataSourceFormat() {
         return this.dataSourceFormat;
     }
 
-    /**
-     * User-visible name of column
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return User-visible name of column
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Username/groupname/sp application_id of the table owner.
-     * 
-     */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
-    /**
-     * @return Username/groupname/sp application_id of the table owner.
-     * 
-     */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
     }
 
-    /**
-     * Extensible Table properties.
-     * 
-     */
     @Import(name="properties")
     private @Nullable Output<Map<String,Object>> properties;
 
-    /**
-     * @return Extensible Table properties.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
-    /**
-     * Name of parent Schema relative to parent Catalog
-     * 
-     */
     @Import(name="schemaName", required=true)
     private Output<String> schemaName;
 
-    /**
-     * @return Name of parent Schema relative to parent Catalog
-     * 
-     */
     public Output<String> schemaName() {
         return this.schemaName;
     }
 
-    /**
-     * For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-     * 
-     */
     @Import(name="storageCredentialName")
     private @Nullable Output<String> storageCredentialName;
 
-    /**
-     * @return For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-     * 
-     */
     public Optional<Output<String>> storageCredentialName() {
         return Optional.ofNullable(this.storageCredentialName);
     }
 
-    /**
-     * URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-     * 
-     */
     @Import(name="storageLocation")
     private @Nullable Output<String> storageLocation;
 
-    /**
-     * @return URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-     * 
-     */
     public Optional<Output<String>> storageLocation() {
         return Optional.ofNullable(this.storageLocation);
     }
 
-    /**
-     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-     * 
-     */
     @Import(name="tableType", required=true)
     private Output<String> tableType;
 
-    /**
-     * @return Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-     * 
-     */
     public Output<String> tableType() {
         return this.tableType;
     }
 
-    /**
-     * SQL text defining the view (for `table_type == &#34;VIEW&#34;`)
-     * 
-     */
     @Import(name="viewDefinition")
     private @Nullable Output<String> viewDefinition;
 
-    /**
-     * @return SQL text defining the view (for `table_type == &#34;VIEW&#34;`)
-     * 
-     */
     public Optional<Output<String>> viewDefinition() {
         return Optional.ofNullable(this.viewDefinition);
     }
@@ -226,23 +138,11 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
             $ = new TableArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param catalogName Name of parent catalog
-         * 
-         * @return builder
-         * 
-         */
         public Builder catalogName(Output<String> catalogName) {
             $.catalogName = catalogName;
             return this;
         }
 
-        /**
-         * @param catalogName Name of parent catalog
-         * 
-         * @return builder
-         * 
-         */
         public Builder catalogName(String catalogName) {
             return catalogName(Output.of(catalogName));
         }
@@ -260,212 +160,92 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
             return columns(List.of(columns));
         }
 
-        /**
-         * @param comment User-supplied free-form text.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
-        /**
-         * @param comment User-supplied free-form text.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
-        /**
-         * @param dataSourceFormat External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataSourceFormat(Output<String> dataSourceFormat) {
             $.dataSourceFormat = dataSourceFormat;
             return this;
         }
 
-        /**
-         * @param dataSourceFormat External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataSourceFormat(String dataSourceFormat) {
             return dataSourceFormat(Output.of(dataSourceFormat));
         }
 
-        /**
-         * @param name User-visible name of column
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name User-visible name of column
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param owner Username/groupname/sp application_id of the table owner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(@Nullable Output<String> owner) {
             $.owner = owner;
             return this;
         }
 
-        /**
-         * @param owner Username/groupname/sp application_id of the table owner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
         }
 
-        /**
-         * @param properties Extensible Table properties.
-         * 
-         * @return builder
-         * 
-         */
         public Builder properties(@Nullable Output<Map<String,Object>> properties) {
             $.properties = properties;
             return this;
         }
 
-        /**
-         * @param properties Extensible Table properties.
-         * 
-         * @return builder
-         * 
-         */
         public Builder properties(Map<String,Object> properties) {
             return properties(Output.of(properties));
         }
 
-        /**
-         * @param schemaName Name of parent Schema relative to parent Catalog
-         * 
-         * @return builder
-         * 
-         */
         public Builder schemaName(Output<String> schemaName) {
             $.schemaName = schemaName;
             return this;
         }
 
-        /**
-         * @param schemaName Name of parent Schema relative to parent Catalog
-         * 
-         * @return builder
-         * 
-         */
         public Builder schemaName(String schemaName) {
             return schemaName(Output.of(schemaName));
         }
 
-        /**
-         * @param storageCredentialName For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-         * 
-         * @return builder
-         * 
-         */
         public Builder storageCredentialName(@Nullable Output<String> storageCredentialName) {
             $.storageCredentialName = storageCredentialName;
             return this;
         }
 
-        /**
-         * @param storageCredentialName For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
-         * 
-         * @return builder
-         * 
-         */
         public Builder storageCredentialName(String storageCredentialName) {
             return storageCredentialName(Output.of(storageCredentialName));
         }
 
-        /**
-         * @param storageLocation URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-         * 
-         * @return builder
-         * 
-         */
         public Builder storageLocation(@Nullable Output<String> storageLocation) {
             $.storageLocation = storageLocation;
             return this;
         }
 
-        /**
-         * @param storageLocation URL of storage location for Table data (required for EXTERNAL Tables. For Managed Tables, if the path is provided it needs to be a Staging Table path that has been generated through the Staging Table API, otherwise should be empty)
-         * 
-         * @return builder
-         * 
-         */
         public Builder storageLocation(String storageLocation) {
             return storageLocation(Output.of(storageLocation));
         }
 
-        /**
-         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-         * 
-         * @return builder
-         * 
-         */
         public Builder tableType(Output<String> tableType) {
             $.tableType = tableType;
             return this;
         }
 
-        /**
-         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`
-         * 
-         * @return builder
-         * 
-         */
         public Builder tableType(String tableType) {
             return tableType(Output.of(tableType));
         }
 
-        /**
-         * @param viewDefinition SQL text defining the view (for `table_type == &#34;VIEW&#34;`)
-         * 
-         * @return builder
-         * 
-         */
         public Builder viewDefinition(@Nullable Output<String> viewDefinition) {
             $.viewDefinition = viewDefinition;
             return this;
         }
 
-        /**
-         * @param viewDefinition SQL text defining the view (for `table_type == &#34;VIEW&#34;`)
-         * 
-         * @return builder
-         * 
-         */
         public Builder viewDefinition(String viewDefinition) {
             return viewDefinition(Output.of(viewDefinition));
         }

@@ -13,20 +13,40 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineClusterAwsAttributes
     {
+        public readonly string? Availability;
+        public readonly int? EbsVolumeCount;
+        public readonly int? EbsVolumeSize;
+        public readonly string? EbsVolumeType;
         public readonly int? FirstOnDemand;
         public readonly string? InstanceProfileArn;
+        public readonly int? SpotBidPricePercent;
         public readonly string? ZoneId;
 
         [OutputConstructor]
         private PipelineClusterAwsAttributes(
+            string? availability,
+
+            int? ebsVolumeCount,
+
+            int? ebsVolumeSize,
+
+            string? ebsVolumeType,
+
             int? firstOnDemand,
 
             string? instanceProfileArn,
 
+            int? spotBidPricePercent,
+
             string? zoneId)
         {
+            Availability = availability;
+            EbsVolumeCount = ebsVolumeCount;
+            EbsVolumeSize = ebsVolumeSize;
+            EbsVolumeType = ebsVolumeType;
             FirstOnDemand = firstOnDemand;
             InstanceProfileArn = instanceProfileArn;
+            SpotBidPricePercent = spotBidPricePercent;
             ZoneId = zoneId;
         }
     }

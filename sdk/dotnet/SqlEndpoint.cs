@@ -12,6 +12,36 @@ namespace Pulumi.Databricks
     /// <summary>
     /// This resource is used to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL endpoints](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var me = Databricks.GetCurrentUser.Invoke();
+    /// 
+    ///     var @this = new Databricks.SqlEndpoint("this", new()
+    ///     {
+    ///         ClusterSize = "Small",
+    ///         MaxNumClusters = 1,
+    ///         Tags = new Databricks.Inputs.SqlEndpointTagsArgs
+    ///         {
+    ///             CustomTags = new[]
+    ///             {
+    ///                 new Databricks.Inputs.SqlEndpointTagsCustomTagArgs
+    ///                 {
+    ///                     Key = "City",
+    ///                     Value = "Amsterdam",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Access Control
     /// 
     /// * databricks.Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL endpoints.

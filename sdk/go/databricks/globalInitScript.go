@@ -26,9 +26,9 @@ type GlobalInitScript struct {
 	// specifies if the script is enabled for execution, or not
 	Enabled pulumi.BoolPtrOutput   `pulumi:"enabled"`
 	Md5     pulumi.StringPtrOutput `pulumi:"md5"`
-	// - the name of the script.  It should be unique
+	// the name of the script.  It should be unique
 	Name pulumi.StringOutput `pulumi:"name"`
-	// - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+	// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
 	Position pulumi.IntOutput `pulumi:"position"`
 	// Path to script's source code on local filesystem. Conflicts with `contentBase64`
 	Source pulumi.StringPtrOutput `pulumi:"source"`
@@ -67,9 +67,9 @@ type globalInitScriptState struct {
 	// specifies if the script is enabled for execution, or not
 	Enabled *bool   `pulumi:"enabled"`
 	Md5     *string `pulumi:"md5"`
-	// - the name of the script.  It should be unique
+	// the name of the script.  It should be unique
 	Name *string `pulumi:"name"`
-	// - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+	// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
 	Position *int `pulumi:"position"`
 	// Path to script's source code on local filesystem. Conflicts with `contentBase64`
 	Source *string `pulumi:"source"`
@@ -80,9 +80,9 @@ type GlobalInitScriptState struct {
 	// specifies if the script is enabled for execution, or not
 	Enabled pulumi.BoolPtrInput
 	Md5     pulumi.StringPtrInput
-	// - the name of the script.  It should be unique
+	// the name of the script.  It should be unique
 	Name pulumi.StringPtrInput
-	// - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+	// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
 	Position pulumi.IntPtrInput
 	// Path to script's source code on local filesystem. Conflicts with `contentBase64`
 	Source pulumi.StringPtrInput
@@ -97,9 +97,9 @@ type globalInitScriptArgs struct {
 	// specifies if the script is enabled for execution, or not
 	Enabled *bool   `pulumi:"enabled"`
 	Md5     *string `pulumi:"md5"`
-	// - the name of the script.  It should be unique
+	// the name of the script.  It should be unique
 	Name *string `pulumi:"name"`
-	// - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+	// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
 	Position *int `pulumi:"position"`
 	// Path to script's source code on local filesystem. Conflicts with `contentBase64`
 	Source *string `pulumi:"source"`
@@ -111,9 +111,9 @@ type GlobalInitScriptArgs struct {
 	// specifies if the script is enabled for execution, or not
 	Enabled pulumi.BoolPtrInput
 	Md5     pulumi.StringPtrInput
-	// - the name of the script.  It should be unique
+	// the name of the script.  It should be unique
 	Name pulumi.StringPtrInput
-	// - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+	// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
 	Position pulumi.IntPtrInput
 	// Path to script's source code on local filesystem. Conflicts with `contentBase64`
 	Source pulumi.StringPtrInput
@@ -219,12 +219,12 @@ func (o GlobalInitScriptOutput) Md5() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalInitScript) pulumi.StringPtrOutput { return v.Md5 }).(pulumi.StringPtrOutput)
 }
 
-// - the name of the script.  It should be unique
+// the name of the script.  It should be unique
 func (o GlobalInitScriptOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalInitScript) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
 func (o GlobalInitScriptOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *GlobalInitScript) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
 }

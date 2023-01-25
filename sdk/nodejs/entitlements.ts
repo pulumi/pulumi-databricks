@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to set entitlements to existing databricks_users, databricks.Group or databricks.ServicePrincipal
+ * This resource allows you to set entitlements to existing databricks_users, databricks.Group or databricks_service_principal.
+ *
+ * > **Note** You must define entitlements of a principal using either `databricks.Entitlements` or directly within one of databricks_users, databricks.Group or databricks_service_principal. Having entitlements defined in both resources will result in non-deterministic behaviour.
  *
  * ## Example Usage
  *
@@ -105,15 +107,15 @@ export class Entitlements extends pulumi.CustomResource {
     }
 
     /**
-     * Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+     * Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
     public readonly allowClusterCreate!: pulumi.Output<boolean | undefined>;
     /**
-     * Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
+     * Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
     public readonly allowInstancePoolCreate!: pulumi.Output<boolean | undefined>;
     /**
-     * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      */
     public readonly databricksSqlAccess!: pulumi.Output<boolean | undefined>;
     /**
@@ -128,6 +130,9 @@ export class Entitlements extends pulumi.CustomResource {
      * Canonical unique identifier for the user.
      */
     public readonly userId!: pulumi.Output<string | undefined>;
+    /**
+     * This is a field to allow the principal to have access to Databricks Workspace.
+     */
     public readonly workspaceAccess!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -170,15 +175,15 @@ export class Entitlements extends pulumi.CustomResource {
  */
 export interface EntitlementsState {
     /**
-     * Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+     * Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
     allowClusterCreate?: pulumi.Input<boolean>;
     /**
-     * Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
+     * Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      */
     databricksSqlAccess?: pulumi.Input<boolean>;
     /**
@@ -193,6 +198,9 @@ export interface EntitlementsState {
      * Canonical unique identifier for the user.
      */
     userId?: pulumi.Input<string>;
+    /**
+     * This is a field to allow the principal to have access to Databricks Workspace.
+     */
     workspaceAccess?: pulumi.Input<boolean>;
 }
 
@@ -201,15 +209,15 @@ export interface EntitlementsState {
  */
 export interface EntitlementsArgs {
     /**
-     * Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+     * Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
     allowClusterCreate?: pulumi.Input<boolean>;
     /**
-     * Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
+     * Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      */
     databricksSqlAccess?: pulumi.Input<boolean>;
     /**
@@ -224,5 +232,8 @@ export interface EntitlementsArgs {
      * Canonical unique identifier for the user.
      */
     userId?: pulumi.Input<string>;
+    /**
+     * This is a field to allow the principal to have access to Databricks Workspace.
+     */
     workspaceAccess?: pulumi.Input<boolean>;
 }

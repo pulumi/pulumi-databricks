@@ -38,11 +38,8 @@ import * as utilities from "./utilities";
  */
 export function getSqlWarehouses(args?: GetSqlWarehousesArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlWarehousesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getSqlWarehouses:getSqlWarehouses", {
         "ids": args.ids,
         "warehouseNameContains": args.warehouseNameContains,
@@ -77,9 +74,40 @@ export interface GetSqlWarehousesResult {
     readonly ids: string[];
     readonly warehouseNameContains?: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getSqlWarehouses({});
+ * ```
+ *
+ * Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const allShared = databricks.getSqlWarehouses({
+ *     warehouseNameContains: "shared",
+ * });
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+ * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
+ * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+ */
 export function getSqlWarehousesOutput(args?: GetSqlWarehousesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlWarehousesResult> {
-    return pulumi.output(args).apply(a => getSqlWarehouses(a, opts))
+    return pulumi.output(args).apply((a: any) => getSqlWarehouses(a, opts))
 }
 
 /**

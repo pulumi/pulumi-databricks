@@ -67,17 +67,21 @@ class SecretArgs:
 @pulumi.input_type
 class _SecretState:
     def __init__(__self__, *,
+                 config_reference: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  last_updated_timestamp: Optional[pulumi.Input[int]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  string_value: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Secret resources.
+        :param pulumi.Input[str] config_reference: (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
         :param pulumi.Input[str] key: (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[int] last_updated_timestamp: (Integer) time secret was updated
         :param pulumi.Input[str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[str] string_value: (String) super secret sensitive value.
         """
+        if config_reference is not None:
+            pulumi.set(__self__, "config_reference", config_reference)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if last_updated_timestamp is not None:
@@ -86,6 +90,18 @@ class _SecretState:
             pulumi.set(__self__, "scope", scope)
         if string_value is not None:
             pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter(name="configReference")
+    def config_reference(self) -> Optional[pulumi.Input[str]]:
+        """
+        (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
+        """
+        return pulumi.get(self, "config_reference")
+
+    @config_reference.setter
+    def config_reference(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_reference", value)
 
     @property
     @pulumi.getter
@@ -159,6 +175,9 @@ class Secret(pulumi.CustomResource):
             key="publishing_api",
             string_value=data["azurerm_key_vault_secret"]["example"]["value"],
             scope=app.id)
+        this = databricks.Cluster("this", spark_conf={
+            "fs.azure.account.oauth2.client.secret": publishing_api.config_reference,
+        })
         ```
         ## Related Resources
 
@@ -205,6 +224,9 @@ class Secret(pulumi.CustomResource):
             key="publishing_api",
             string_value=data["azurerm_key_vault_secret"]["example"]["value"],
             scope=app.id)
+        this = databricks.Cluster("this", spark_conf={
+            "fs.azure.account.oauth2.client.secret": publishing_api.config_reference,
+        })
         ```
         ## Related Resources
 
@@ -261,6 +283,7 @@ class Secret(pulumi.CustomResource):
             if string_value is None and not opts.urn:
                 raise TypeError("Missing required property 'string_value'")
             __props__.__dict__["string_value"] = None if string_value is None else pulumi.Output.secret(string_value)
+            __props__.__dict__["config_reference"] = None
             __props__.__dict__["last_updated_timestamp"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["stringValue"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -274,6 +297,7 @@ class Secret(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            config_reference: Optional[pulumi.Input[str]] = None,
             key: Optional[pulumi.Input[str]] = None,
             last_updated_timestamp: Optional[pulumi.Input[int]] = None,
             scope: Optional[pulumi.Input[str]] = None,
@@ -285,6 +309,7 @@ class Secret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] config_reference: (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
         :param pulumi.Input[str] key: (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[int] last_updated_timestamp: (Integer) time secret was updated
         :param pulumi.Input[str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
@@ -294,11 +319,20 @@ class Secret(pulumi.CustomResource):
 
         __props__ = _SecretState.__new__(_SecretState)
 
+        __props__.__dict__["config_reference"] = config_reference
         __props__.__dict__["key"] = key
         __props__.__dict__["last_updated_timestamp"] = last_updated_timestamp
         __props__.__dict__["scope"] = scope
         __props__.__dict__["string_value"] = string_value
         return Secret(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="configReference")
+    def config_reference(self) -> pulumi.Output[str]:
+        """
+        (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
+        """
+        return pulumi.get(self, "config_reference")
 
     @property
     @pulumi.getter

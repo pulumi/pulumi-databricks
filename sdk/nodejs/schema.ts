@@ -99,6 +99,10 @@ export class Schema extends pulumi.CustomResource {
      * Extensible Schema properties.
      */
     public readonly properties!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     */
+    public readonly storageRoot!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Schema resource with the given unique name, arguments, and options.
@@ -120,6 +124,7 @@ export class Schema extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
+            resourceInputs["storageRoot"] = state ? state.storageRoot : undefined;
         } else {
             const args = argsOrState as SchemaArgs | undefined;
             if ((!args || args.catalogName === undefined) && !opts.urn) {
@@ -132,6 +137,7 @@ export class Schema extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["storageRoot"] = args ? args.storageRoot : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Schema.__pulumiType, name, resourceInputs, opts);
@@ -167,6 +173,10 @@ export interface SchemaState {
      * Extensible Schema properties.
      */
     properties?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     */
+    storageRoot?: pulumi.Input<string>;
 }
 
 /**
@@ -198,4 +208,8 @@ export interface SchemaArgs {
      * Extensible Schema properties.
      */
     properties?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     */
+    storageRoot?: pulumi.Input<string>;
 }

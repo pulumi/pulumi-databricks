@@ -46,6 +46,13 @@ public final class SqlQueryArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parameters);
     }
 
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
     @Import(name="query", required=true)
     private Output<String> query;
 
@@ -81,6 +88,7 @@ public final class SqlQueryArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.name = $.name;
         this.parameters = $.parameters;
+        this.parent = $.parent;
         this.query = $.query;
         this.runAsRole = $.runAsRole;
         this.schedule = $.schedule;
@@ -143,6 +151,15 @@ public final class SqlQueryArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder parameters(SqlQueryParameterArgs... parameters) {
             return parameters(List.of(parameters));
+        }
+
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         public Builder query(Output<String> query) {

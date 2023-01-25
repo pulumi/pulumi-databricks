@@ -19,6 +19,9 @@ import * as utilities from "./utilities";
  *     stringValue: data.azurerm_key_vault_secret.example.value,
  *     scope: app.id,
  * });
+ * const _this = new databricks.Cluster("this", {sparkConf: {
+ *     "fs.azure.account.oauth2.client.secret": publishingApi.configReference,
+ * }});
  * ```
  * ## Related Resources
  *
@@ -68,6 +71,10 @@ export class Secret extends pulumi.CustomResource {
     }
 
     /**
+     * (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
+     */
+    public /*out*/ readonly configReference!: pulumi.Output<string>;
+    /**
      * (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
     public readonly key!: pulumi.Output<string>;
@@ -97,6 +104,7 @@ export class Secret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretState | undefined;
+            resourceInputs["configReference"] = state ? state.configReference : undefined;
             resourceInputs["key"] = state ? state.key : undefined;
             resourceInputs["lastUpdatedTimestamp"] = state ? state.lastUpdatedTimestamp : undefined;
             resourceInputs["scope"] = state ? state.scope : undefined;
@@ -115,6 +123,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["stringValue"] = args?.stringValue ? pulumi.secret(args.stringValue) : undefined;
+            resourceInputs["configReference"] = undefined /*out*/;
             resourceInputs["lastUpdatedTimestamp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -128,6 +137,10 @@ export class Secret extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Secret resources.
  */
 export interface SecretState {
+    /**
+     * (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
+     */
+    configReference?: pulumi.Input<string>;
     /**
      * (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */

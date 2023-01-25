@@ -5,24 +5,35 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.SqlQueryParameterDateRangeRangeArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SqlQueryParameterDateRangeArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SqlQueryParameterDateRangeArgs Empty = new SqlQueryParameterDateRangeArgs();
 
-    @Import(name="value", required=true)
-    private Output<String> value;
+    @Import(name="range")
+    private @Nullable Output<SqlQueryParameterDateRangeRangeArgs> range;
 
-    public Output<String> value() {
-        return this.value;
+    public Optional<Output<SqlQueryParameterDateRangeRangeArgs>> range() {
+        return Optional.ofNullable(this.range);
+    }
+
+    @Import(name="value")
+    private @Nullable Output<String> value;
+
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     private SqlQueryParameterDateRangeArgs() {}
 
     private SqlQueryParameterDateRangeArgs(SqlQueryParameterDateRangeArgs $) {
+        this.range = $.range;
         this.value = $.value;
     }
 
@@ -44,7 +55,16 @@ public final class SqlQueryParameterDateRangeArgs extends com.pulumi.resources.R
             $ = new SqlQueryParameterDateRangeArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder value(Output<String> value) {
+        public Builder range(@Nullable Output<SqlQueryParameterDateRangeRangeArgs> range) {
+            $.range = range;
+            return this;
+        }
+
+        public Builder range(SqlQueryParameterDateRangeRangeArgs range) {
+            return range(Output.of(range));
+        }
+
+        public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
@@ -54,7 +74,6 @@ public final class SqlQueryParameterDateRangeArgs extends com.pulumi.resources.R
         }
 
         public SqlQueryParameterDateRangeArgs build() {
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
             return $;
         }
     }

@@ -23,6 +23,7 @@ public final class GetNodeTypeResult {
     private String id;
     private @Nullable Boolean isIoCacheEnabled;
     private @Nullable Boolean localDisk;
+    private @Nullable Integer localDiskMinSize;
     private @Nullable Integer minCores;
     private @Nullable Integer minGpus;
     private @Nullable Integer minMemoryGb;
@@ -53,6 +54,9 @@ public final class GetNodeTypeResult {
     }
     public Optional<Boolean> localDisk() {
         return Optional.ofNullable(this.localDisk);
+    }
+    public Optional<Integer> localDiskMinSize() {
+        return Optional.ofNullable(this.localDiskMinSize);
     }
     public Optional<Integer> minCores() {
         return Optional.ofNullable(this.minCores);
@@ -91,6 +95,7 @@ public final class GetNodeTypeResult {
         private String id;
         private @Nullable Boolean isIoCacheEnabled;
         private @Nullable Boolean localDisk;
+        private @Nullable Integer localDiskMinSize;
         private @Nullable Integer minCores;
         private @Nullable Integer minGpus;
         private @Nullable Integer minMemoryGb;
@@ -107,6 +112,7 @@ public final class GetNodeTypeResult {
     	      this.id = defaults.id;
     	      this.isIoCacheEnabled = defaults.isIoCacheEnabled;
     	      this.localDisk = defaults.localDisk;
+    	      this.localDiskMinSize = defaults.localDiskMinSize;
     	      this.minCores = defaults.minCores;
     	      this.minGpus = defaults.minGpus;
     	      this.minMemoryGb = defaults.minMemoryGb;
@@ -144,6 +150,11 @@ public final class GetNodeTypeResult {
         @CustomType.Setter
         public Builder localDisk(@Nullable Boolean localDisk) {
             this.localDisk = localDisk;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder localDiskMinSize(@Nullable Integer localDiskMinSize) {
+            this.localDiskMinSize = localDiskMinSize;
             return this;
         }
         @CustomType.Setter
@@ -189,6 +200,7 @@ public final class GetNodeTypeResult {
             o.id = id;
             o.isIoCacheEnabled = isIoCacheEnabled;
             o.localDisk = localDisk;
+            o.localDiskMinSize = localDiskMinSize;
             o.minCores = minCores;
             o.minGpus = minGpus;
             o.minMemoryGb = minMemoryGb;

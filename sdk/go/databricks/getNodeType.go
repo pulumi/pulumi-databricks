@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			withGpu, err := databricks.GetNodeType(ctx, &GetNodeTypeArgs{
+//			withGpu, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
 //				LocalDisk: pulumi.BoolRef(true),
 //				MinCores:  pulumi.IntRef(16),
 //				GbPerCore: pulumi.IntRef(1),
@@ -33,7 +33,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			gpuMl, err := databricks.GetSparkVersion(ctx, &GetSparkVersionArgs{
+//			gpuMl, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
 //				Gpu: pulumi.BoolRef(true),
 //				Ml:  pulumi.BoolRef(true),
 //			}, nil)
@@ -42,10 +42,10 @@ import (
 //			}
 //			_, err = databricks.NewCluster(ctx, "research", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Research Cluster"),
-//				SparkVersion:           pulumi.String(gpuMl.Id),
-//				NodeTypeId:             pulumi.String(withGpu.Id),
+//				SparkVersion:           *pulumi.String(gpuMl.Id),
+//				NodeTypeId:             *pulumi.String(withGpu.Id),
 //				AutoterminationMinutes: pulumi.Int(20),
-//				Autoscale: &ClusterAutoscaleArgs{
+//				Autoscale: &databricks.ClusterAutoscaleArgs{
 //					MinWorkers: pulumi.Int(1),
 //					MaxWorkers: pulumi.Int(50),
 //				},
@@ -95,6 +95,8 @@ type GetNodeTypeArgs struct {
 	IsIoCacheEnabled *bool `pulumi:"isIoCacheEnabled"`
 	// Pick only nodes with local storage. Defaults to *false*.
 	LocalDisk *bool `pulumi:"localDisk"`
+	// Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+	LocalDiskMinSize *int `pulumi:"localDiskMinSize"`
 	// Minimum number of CPU cores available on instance. Defaults to *0*.
 	MinCores *int `pulumi:"minCores"`
 	// Minimum number of GPU's attached to instance. Defaults to *0*.
@@ -119,6 +121,7 @@ type GetNodeTypeResult struct {
 	Id                    string `pulumi:"id"`
 	IsIoCacheEnabled      *bool  `pulumi:"isIoCacheEnabled"`
 	LocalDisk             *bool  `pulumi:"localDisk"`
+	LocalDiskMinSize      *int   `pulumi:"localDiskMinSize"`
 	MinCores              *int   `pulumi:"minCores"`
 	MinGpus               *int   `pulumi:"minGpus"`
 	MinMemoryGb           *int   `pulumi:"minMemoryGb"`
@@ -160,6 +163,8 @@ type GetNodeTypeOutputArgs struct {
 	IsIoCacheEnabled pulumi.BoolPtrInput `pulumi:"isIoCacheEnabled"`
 	// Pick only nodes with local storage. Defaults to *false*.
 	LocalDisk pulumi.BoolPtrInput `pulumi:"localDisk"`
+	// Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+	LocalDiskMinSize pulumi.IntPtrInput `pulumi:"localDiskMinSize"`
 	// Minimum number of CPU cores available on instance. Defaults to *0*.
 	MinCores pulumi.IntPtrInput `pulumi:"minCores"`
 	// Minimum number of GPU's attached to instance. Defaults to *0*.
@@ -217,6 +222,10 @@ func (o GetNodeTypeResultOutput) IsIoCacheEnabled() pulumi.BoolPtrOutput {
 
 func (o GetNodeTypeResultOutput) LocalDisk() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetNodeTypeResult) *bool { return v.LocalDisk }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetNodeTypeResultOutput) LocalDiskMinSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetNodeTypeResult) *int { return v.LocalDiskMinSize }).(pulumi.IntPtrOutput)
 }
 
 func (o GetNodeTypeResultOutput) MinCores() pulumi.IntPtrOutput {

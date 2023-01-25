@@ -16,6 +16,13 @@ public final class GetJobJobSettingsSettingsTaskDbtTaskArgs extends com.pulumi.r
 
     public static final GetJobJobSettingsSettingsTaskDbtTaskArgs Empty = new GetJobJobSettingsSettingsTaskDbtTaskArgs();
 
+    @Import(name="catalog")
+    private @Nullable Output<String> catalog;
+
+    public Optional<Output<String>> catalog() {
+        return Optional.ofNullable(this.catalog);
+    }
+
     @Import(name="commands", required=true)
     private Output<List<String>> commands;
 
@@ -54,6 +61,7 @@ public final class GetJobJobSettingsSettingsTaskDbtTaskArgs extends com.pulumi.r
     private GetJobJobSettingsSettingsTaskDbtTaskArgs() {}
 
     private GetJobJobSettingsSettingsTaskDbtTaskArgs(GetJobJobSettingsSettingsTaskDbtTaskArgs $) {
+        this.catalog = $.catalog;
         this.commands = $.commands;
         this.profilesDirectory = $.profilesDirectory;
         this.projectDirectory = $.projectDirectory;
@@ -77,6 +85,15 @@ public final class GetJobJobSettingsSettingsTaskDbtTaskArgs extends com.pulumi.r
 
         public Builder(GetJobJobSettingsSettingsTaskDbtTaskArgs defaults) {
             $ = new GetJobJobSettingsSettingsTaskDbtTaskArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder catalog(@Nullable Output<String> catalog) {
+            $.catalog = catalog;
+            return this;
+        }
+
+        public Builder catalog(String catalog) {
+            return catalog(Output.of(catalog));
         }
 
         public Builder commands(Output<List<String>> commands) {

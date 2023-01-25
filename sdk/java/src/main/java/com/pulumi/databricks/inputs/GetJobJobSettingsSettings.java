@@ -104,9 +104,17 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.minRetryIntervalMillis);
     }
 
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return the job name of databricks.Job if the resource was matched by id.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -307,6 +315,12 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
             return this;
         }
 
+        /**
+         * @param name the job name of databricks.Job if the resource was matched by id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;

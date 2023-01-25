@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobJobClusterNewClusterInitScript
     {
+        public readonly Outputs.JobJobClusterNewClusterInitScriptAbfss? Abfss;
         public readonly Outputs.JobJobClusterNewClusterInitScriptDbfs? Dbfs;
         public readonly Outputs.JobJobClusterNewClusterInitScriptFile? File;
         public readonly Outputs.JobJobClusterNewClusterInitScriptGcs? Gcs;
@@ -20,6 +21,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobJobClusterNewClusterInitScript(
+            Outputs.JobJobClusterNewClusterInitScriptAbfss? abfss,
+
             Outputs.JobJobClusterNewClusterInitScriptDbfs? dbfs,
 
             Outputs.JobJobClusterNewClusterInitScriptFile? file,
@@ -28,6 +31,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobJobClusterNewClusterInitScriptS3? s3)
         {
+            Abfss = abfss;
             Dbfs = dbfs;
             File = file;
             Gcs = gcs;

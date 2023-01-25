@@ -106,6 +106,21 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+     * 
+     */
+    @Import(name="localDiskMinSize")
+    private @Nullable Integer localDiskMinSize;
+
+    /**
+     * @return Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+     * 
+     */
+    public Optional<Integer> localDiskMinSize() {
+        return Optional.ofNullable(this.localDiskMinSize);
+    }
+
+    /**
      * Minimum number of CPU cores available on instance. Defaults to *0*.
      * 
      */
@@ -210,6 +225,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         this.graviton = $.graviton;
         this.isIoCacheEnabled = $.isIoCacheEnabled;
         this.localDisk = $.localDisk;
+        this.localDiskMinSize = $.localDiskMinSize;
         this.minCores = $.minCores;
         this.minGpus = $.minGpus;
         this.minMemoryGb = $.minMemoryGb;
@@ -296,6 +312,17 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder localDisk(@Nullable Boolean localDisk) {
             $.localDisk = localDisk;
+            return this;
+        }
+
+        /**
+         * @param localDiskMinSize Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localDiskMinSize(@Nullable Integer localDiskMinSize) {
+            $.localDiskMinSize = localDiskMinSize;
             return this;
         }
 

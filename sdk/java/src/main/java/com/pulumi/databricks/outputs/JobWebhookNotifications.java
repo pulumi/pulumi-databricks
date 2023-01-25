@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobWebhookNotifications {
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      * 
      */
     private @Nullable List<JobWebhookNotificationsOnFailure> onFailures;
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      * 
      */
     private @Nullable List<JobWebhookNotificationsOnStart> onStarts;
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      * 
      */
     private @Nullable List<JobWebhookNotificationsOnSuccess> onSuccesses;
 
     private JobWebhookNotifications() {}
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      * 
      */
     public List<JobWebhookNotificationsOnFailure> onFailures() {
         return this.onFailures == null ? List.of() : this.onFailures;
     }
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      * 
      */
     public List<JobWebhookNotificationsOnStart> onStarts() {
         return this.onStarts == null ? List.of() : this.onStarts;
     }
     /**
-     * @return (List) list of emails to notify on failure
+     * @return (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      * 
      */
     public List<JobWebhookNotificationsOnSuccess> onSuccesses() {

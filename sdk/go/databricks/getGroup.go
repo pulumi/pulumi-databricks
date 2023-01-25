@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admins, err := databricks.LookupGroup(ctx, &GetGroupArgs{
+//			admins, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "admins",
 //			}, nil)
 //			if err != nil {
@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGroupMember(ctx, "myMemberA", &databricks.GroupMemberArgs{
-//				GroupId:  pulumi.String(admins.Id),
+//				GroupId:  *pulumi.String(admins.Id),
 //				MemberId: me.ID(),
 //			})
 //			if err != nil {

@@ -21,6 +21,7 @@ class SqlQueryArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlQueryParameterArgs']]]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  run_as_role: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -35,6 +36,8 @@ class SqlQueryArgs:
             pulumi.set(__self__, "name", name)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if run_as_role is not None:
             pulumi.set(__self__, "run_as_role", run_as_role)
         if schedule is not None:
@@ -88,6 +91,15 @@ class SqlQueryArgs:
         pulumi.set(self, "parameters", value)
 
     @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
+
+    @property
     @pulumi.getter(name="runAsRole")
     def run_as_role(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "run_as_role")
@@ -122,6 +134,7 @@ class _SqlQueryState:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlQueryParameterArgs']]]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
                  run_as_role: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
@@ -137,6 +150,8 @@ class _SqlQueryState:
             pulumi.set(__self__, "name", name)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if query is not None:
             pulumi.set(__self__, "query", query)
         if run_as_role is not None:
@@ -184,6 +199,15 @@ class _SqlQueryState:
 
     @property
     @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter
     def query(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "query")
 
@@ -228,6 +252,7 @@ class SqlQuery(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlQueryParameterArgs']]]]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
                  run_as_role: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['SqlQueryScheduleArgs']]] = None,
@@ -279,6 +304,7 @@ class SqlQuery(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlQueryParameterArgs']]]]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
                  run_as_role: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['SqlQueryScheduleArgs']]] = None,
@@ -298,6 +324,7 @@ class SqlQuery(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["parameters"] = parameters
+            __props__.__dict__["parent"] = parent
             if query is None and not opts.urn:
                 raise TypeError("Missing required property 'query'")
             __props__.__dict__["query"] = query
@@ -318,6 +345,7 @@ class SqlQuery(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlQueryParameterArgs']]]]] = None,
+            parent: Optional[pulumi.Input[str]] = None,
             query: Optional[pulumi.Input[str]] = None,
             run_as_role: Optional[pulumi.Input[str]] = None,
             schedule: Optional[pulumi.Input[pulumi.InputType['SqlQueryScheduleArgs']]] = None,
@@ -338,6 +366,7 @@ class SqlQuery(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["parameters"] = parameters
+        __props__.__dict__["parent"] = parent
         __props__.__dict__["query"] = query
         __props__.__dict__["run_as_role"] = run_as_role
         __props__.__dict__["schedule"] = schedule
@@ -363,6 +392,11 @@ class SqlQuery(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[Sequence['outputs.SqlQueryParameter']]]:
         return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "parent")
 
     @property
     @pulumi.getter

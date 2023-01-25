@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineClusterInitScriptAbfss;
 import com.pulumi.databricks.outputs.PipelineClusterInitScriptDbfs;
 import com.pulumi.databricks.outputs.PipelineClusterInitScriptFile;
 import com.pulumi.databricks.outputs.PipelineClusterInitScriptGcs;
@@ -14,12 +15,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineClusterInitScript {
+    private @Nullable PipelineClusterInitScriptAbfss abfss;
     private @Nullable PipelineClusterInitScriptDbfs dbfs;
     private @Nullable PipelineClusterInitScriptFile file;
     private @Nullable PipelineClusterInitScriptGcs gcs;
     private @Nullable PipelineClusterInitScriptS3 s3;
 
     private PipelineClusterInitScript() {}
+    public Optional<PipelineClusterInitScriptAbfss> abfss() {
+        return Optional.ofNullable(this.abfss);
+    }
     public Optional<PipelineClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -42,6 +47,7 @@ public final class PipelineClusterInitScript {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PipelineClusterInitScriptAbfss abfss;
         private @Nullable PipelineClusterInitScriptDbfs dbfs;
         private @Nullable PipelineClusterInitScriptFile file;
         private @Nullable PipelineClusterInitScriptGcs gcs;
@@ -49,12 +55,18 @@ public final class PipelineClusterInitScript {
         public Builder() {}
         public Builder(PipelineClusterInitScript defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.abfss = defaults.abfss;
     	      this.dbfs = defaults.dbfs;
     	      this.file = defaults.file;
     	      this.gcs = defaults.gcs;
     	      this.s3 = defaults.s3;
         }
 
+        @CustomType.Setter
+        public Builder abfss(@Nullable PipelineClusterInitScriptAbfss abfss) {
+            this.abfss = abfss;
+            return this;
+        }
         @CustomType.Setter
         public Builder dbfs(@Nullable PipelineClusterInitScriptDbfs dbfs) {
             this.dbfs = dbfs;
@@ -77,6 +89,7 @@ public final class PipelineClusterInitScript {
         }
         public PipelineClusterInitScript build() {
             final var o = new PipelineClusterInitScript();
+            o.abfss = abfss;
             o.dbfs = dbfs;
             o.file = file;
             o.gcs = gcs;

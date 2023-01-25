@@ -32,7 +32,7 @@ public final class JobGitSource {
      */
     private @Nullable String tag;
     /**
-     * @return URL of the job on the given workspace
+     * @return URL of the Git repository to use.
      * 
      */
     private String url;
@@ -67,7 +67,7 @@ public final class JobGitSource {
         return Optional.ofNullable(this.tag);
     }
     /**
-     * @return URL of the job on the given workspace
+     * @return URL of the Git repository to use.
      * 
      */
     public String url() {

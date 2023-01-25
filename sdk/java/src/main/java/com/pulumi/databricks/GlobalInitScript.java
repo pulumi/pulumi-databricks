@@ -55,28 +55,28 @@ public class GlobalInitScript extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.md5);
     }
     /**
-     * - the name of the script.  It should be unique
+     * the name of the script.  It should be unique
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return - the name of the script.  It should be unique
+     * @return the name of the script.  It should be unique
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      * 
      */
     @Export(name="position", type=Integer.class, parameters={})
     private Output<Integer> position;
 
     /**
-     * @return - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * @return the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      * 
      */
     public Output<Integer> position() {

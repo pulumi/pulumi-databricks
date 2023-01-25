@@ -38,10 +38,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/instancePool:InstancePool")
 public class InstancePool extends com.pulumi.resources.CustomResource {
     @Export(name="awsAttributes", type=InstancePoolAwsAttributes.class, parameters={})
-    private Output<InstancePoolAwsAttributes> awsAttributes;
+    private Output</* @Nullable */ InstancePoolAwsAttributes> awsAttributes;
 
-    public Output<InstancePoolAwsAttributes> awsAttributes() {
-        return this.awsAttributes;
+    public Output<Optional<InstancePoolAwsAttributes>> awsAttributes() {
+        return Codegen.optional(this.awsAttributes);
     }
     @Export(name="azureAttributes", type=InstancePoolAzureAttributes.class, parameters={})
     private Output</* @Nullable */ InstancePoolAzureAttributes> azureAttributes;

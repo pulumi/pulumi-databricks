@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsJobClusterNewClusterInitScript extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsJobClusterNewClusterInitScript Empty = new GetJobJobSettingsSettingsJobClusterNewClusterInitScript();
+
+    @Import(name="abfss")
+    private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss abfss;
+
+    public Optional<GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss> abfss() {
+        return Optional.ofNullable(this.abfss);
+    }
 
     @Import(name="dbfs")
     private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs dbfs;
@@ -48,6 +56,7 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterInitScript exten
     private GetJobJobSettingsSettingsJobClusterNewClusterInitScript() {}
 
     private GetJobJobSettingsSettingsJobClusterNewClusterInitScript(GetJobJobSettingsSettingsJobClusterNewClusterInitScript $) {
+        this.abfss = $.abfss;
         this.dbfs = $.dbfs;
         this.file = $.file;
         this.gcs = $.gcs;
@@ -70,6 +79,11 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterInitScript exten
 
         public Builder(GetJobJobSettingsSettingsJobClusterNewClusterInitScript defaults) {
             $ = new GetJobJobSettingsSettingsJobClusterNewClusterInitScript(Objects.requireNonNull(defaults));
+        }
+
+        public Builder abfss(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss abfss) {
+            $.abfss = abfss;
+            return this;
         }
 
         public Builder dbfs(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs dbfs) {

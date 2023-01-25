@@ -48,11 +48,11 @@ export class GlobalInitScript extends pulumi.CustomResource {
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public readonly md5!: pulumi.Output<string | undefined>;
     /**
-     * - the name of the script.  It should be unique
+     * the name of the script.  It should be unique
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      */
     public readonly position!: pulumi.Output<number>;
     /**
@@ -104,11 +104,11 @@ export interface GlobalInitScriptState {
     enabled?: pulumi.Input<boolean>;
     md5?: pulumi.Input<string>;
     /**
-     * - the name of the script.  It should be unique
+     * the name of the script.  It should be unique
      */
     name?: pulumi.Input<string>;
     /**
-     * - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      */
     position?: pulumi.Input<number>;
     /**
@@ -128,11 +128,11 @@ export interface GlobalInitScriptArgs {
     enabled?: pulumi.Input<boolean>;
     md5?: pulumi.Input<string>;
     /**
-     * - the name of the script.  It should be unique
+     * the name of the script.  It should be unique
      */
     name?: pulumi.Input<string>;
     /**
-     * - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      */
     position?: pulumi.Input<number>;
     /**

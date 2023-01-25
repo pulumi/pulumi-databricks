@@ -30,17 +30,9 @@ public final class GetJobJobSettings extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.creatorUserName);
     }
 
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     @Import(name="jobId")
     private @Nullable Integer jobId;
 
-    /**
-     * @return the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     public Optional<Integer> jobId() {
         return Optional.ofNullable(this.jobId);
     }
@@ -89,12 +81,6 @@ public final class GetJobJobSettings extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
-        /**
-         * @param jobId the id of databricks.Job if the resource was matched by name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobId(@Nullable Integer jobId) {
             $.jobId = jobId;
             return this;

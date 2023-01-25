@@ -13,8 +13,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const me = pulumi.output(databricks.getCurrentUser());
- * const thisMlflowExperiment = new databricks.MlflowExperiment("this", {
+ * const me = databricks.getCurrentUser({});
+ * const _this = new databricks.MlflowExperiment("this", {
  *     artifactLocation: "dbfs:/tmp/my-experiment",
  *     description: "My MLflow experiment description",
  * });

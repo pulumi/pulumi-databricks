@@ -49,6 +49,9 @@ namespace Pulumi.Databricks
         [Input("autoStopMins")]
         public int? AutoStopMins { get; set; }
 
+        /// <summary>
+        /// block, consisting of following fields:
+        /// </summary>
         [Input("channel")]
         public Inputs.GetSqlWarehouseChannelArgs? Channel { get; set; }
 
@@ -72,7 +75,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-        /// * `channel` block, consisting of following fields:
         /// </summary>
         [Input("enableServerlessCompute")]
         public bool? EnableServerlessCompute { get; set; }
@@ -148,6 +150,9 @@ namespace Pulumi.Databricks
         [Input("autoStopMins")]
         public Input<int>? AutoStopMins { get; set; }
 
+        /// <summary>
+        /// block, consisting of following fields:
+        /// </summary>
         [Input("channel")]
         public Input<Inputs.GetSqlWarehouseChannelInputArgs>? Channel { get; set; }
 
@@ -171,7 +176,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-        /// * `channel` block, consisting of following fields:
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
@@ -247,6 +251,9 @@ namespace Pulumi.Databricks
         /// Time in minutes until an idle SQL warehouse terminates all clusters and stops.
         /// </summary>
         public readonly int AutoStopMins;
+        /// <summary>
+        /// block, consisting of following fields:
+        /// </summary>
         public readonly Outputs.GetSqlWarehouseChannelResult Channel;
         /// <summary>
         /// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
@@ -262,7 +269,6 @@ namespace Pulumi.Databricks
         public readonly bool EnablePhoton;
         /// <summary>
         /// Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-        /// * `channel` block, consisting of following fields:
         /// </summary>
         public readonly bool EnableServerlessCompute;
         public readonly string Id;

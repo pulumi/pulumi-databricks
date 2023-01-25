@@ -629,7 +629,7 @@ class InstancePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="awsAttributes")
-    def aws_attributes(self) -> pulumi.Output['outputs.InstancePoolAwsAttributes']:
+    def aws_attributes(self) -> pulumi.Output[Optional['outputs.InstancePoolAwsAttributes']]:
         return pulumi.get(self, "aws_attributes")
 
     @property

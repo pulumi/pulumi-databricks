@@ -33,6 +33,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("clusterLogConf")]
         public Input<Inputs.JobTaskNewClusterClusterLogConfGetArgs>? ClusterLogConf { get; set; }
 
+        [Input("clusterMountInfos")]
+        private InputList<Inputs.JobTaskNewClusterClusterMountInfoGetArgs>? _clusterMountInfos;
+        public InputList<Inputs.JobTaskNewClusterClusterMountInfoGetArgs> ClusterMountInfos
+        {
+            get => _clusterMountInfos ?? (_clusterMountInfos = new InputList<Inputs.JobTaskNewClusterClusterMountInfoGetArgs>());
+            set => _clusterMountInfos = value;
+        }
+
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
 

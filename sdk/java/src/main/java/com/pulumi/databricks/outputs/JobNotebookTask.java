@@ -8,6 +8,7 @@ import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -18,10 +19,15 @@ public final class JobNotebookTask {
      */
     private @Nullable Map<String,Object> baseParameters;
     /**
-     * @return The absolute path of the databricks.Notebook to be run in the Databricks workspace. This path must begin with a slash. This field is required.
+     * @return The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      * 
      */
     private String notebookPath;
+    /**
+     * @return Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+     * 
+     */
+    private @Nullable String source;
 
     private JobNotebookTask() {}
     /**
@@ -32,11 +38,18 @@ public final class JobNotebookTask {
         return this.baseParameters == null ? Map.of() : this.baseParameters;
     }
     /**
-     * @return The absolute path of the databricks.Notebook to be run in the Databricks workspace. This path must begin with a slash. This field is required.
+     * @return The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      * 
      */
     public String notebookPath() {
         return this.notebookPath;
+    }
+    /**
+     * @return Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+     * 
+     */
+    public Optional<String> source() {
+        return Optional.ofNullable(this.source);
     }
 
     public static Builder builder() {
@@ -50,11 +63,13 @@ public final class JobNotebookTask {
     public static final class Builder {
         private @Nullable Map<String,Object> baseParameters;
         private String notebookPath;
+        private @Nullable String source;
         public Builder() {}
         public Builder(JobNotebookTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baseParameters = defaults.baseParameters;
     	      this.notebookPath = defaults.notebookPath;
+    	      this.source = defaults.source;
         }
 
         @CustomType.Setter
@@ -67,10 +82,16 @@ public final class JobNotebookTask {
             this.notebookPath = Objects.requireNonNull(notebookPath);
             return this;
         }
+        @CustomType.Setter
+        public Builder source(@Nullable String source) {
+            this.source = source;
+            return this;
+        }
         public JobNotebookTask build() {
             final var o = new JobNotebookTask();
             o.baseParameters = baseParameters;
             o.notebookPath = notebookPath;
+            o.source = source;
             return o;
         }
     }

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsTaskDbtTaskInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("catalog")]
+        public Input<string>? Catalog { get; set; }
+
         [Input("commands", required: true)]
         private InputList<string>? _commands;
         public InputList<string> Commands

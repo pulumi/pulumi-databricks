@@ -20,9 +20,9 @@ type OboToken struct {
 	// Application ID of ServicePrincipal to create a PAT token for.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// Comment that describes the purpose of the token.
-	Comment pulumi.StringOutput `pulumi:"comment"`
-	// The number of seconds before the token expires. Token resource is re-created when it expires.
-	LifetimeSeconds pulumi.IntOutput `pulumi:"lifetimeSeconds"`
+	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	// The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+	LifetimeSeconds pulumi.IntPtrOutput `pulumi:"lifetimeSeconds"`
 	// **Sensitive** value of the newly-created token.
 	TokenValue pulumi.StringOutput `pulumi:"tokenValue"`
 }
@@ -36,12 +36,6 @@ func NewOboToken(ctx *pulumi.Context,
 
 	if args.ApplicationId == nil {
 		return nil, errors.New("invalid value for required argument 'ApplicationId'")
-	}
-	if args.Comment == nil {
-		return nil, errors.New("invalid value for required argument 'Comment'")
-	}
-	if args.LifetimeSeconds == nil {
-		return nil, errors.New("invalid value for required argument 'LifetimeSeconds'")
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"tokenValue",
@@ -73,7 +67,7 @@ type oboTokenState struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// Comment that describes the purpose of the token.
 	Comment *string `pulumi:"comment"`
-	// The number of seconds before the token expires. Token resource is re-created when it expires.
+	// The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
 	LifetimeSeconds *int `pulumi:"lifetimeSeconds"`
 	// **Sensitive** value of the newly-created token.
 	TokenValue *string `pulumi:"tokenValue"`
@@ -84,7 +78,7 @@ type OboTokenState struct {
 	ApplicationId pulumi.StringPtrInput
 	// Comment that describes the purpose of the token.
 	Comment pulumi.StringPtrInput
-	// The number of seconds before the token expires. Token resource is re-created when it expires.
+	// The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
 	LifetimeSeconds pulumi.IntPtrInput
 	// **Sensitive** value of the newly-created token.
 	TokenValue pulumi.StringPtrInput
@@ -98,9 +92,9 @@ type oboTokenArgs struct {
 	// Application ID of ServicePrincipal to create a PAT token for.
 	ApplicationId string `pulumi:"applicationId"`
 	// Comment that describes the purpose of the token.
-	Comment string `pulumi:"comment"`
-	// The number of seconds before the token expires. Token resource is re-created when it expires.
-	LifetimeSeconds int `pulumi:"lifetimeSeconds"`
+	Comment *string `pulumi:"comment"`
+	// The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+	LifetimeSeconds *int `pulumi:"lifetimeSeconds"`
 }
 
 // The set of arguments for constructing a OboToken resource.
@@ -108,9 +102,9 @@ type OboTokenArgs struct {
 	// Application ID of ServicePrincipal to create a PAT token for.
 	ApplicationId pulumi.StringInput
 	// Comment that describes the purpose of the token.
-	Comment pulumi.StringInput
-	// The number of seconds before the token expires. Token resource is re-created when it expires.
-	LifetimeSeconds pulumi.IntInput
+	Comment pulumi.StringPtrInput
+	// The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+	LifetimeSeconds pulumi.IntPtrInput
 }
 
 func (OboTokenArgs) ElementType() reflect.Type {
@@ -206,13 +200,13 @@ func (o OboTokenOutput) ApplicationId() pulumi.StringOutput {
 }
 
 // Comment that describes the purpose of the token.
-func (o OboTokenOutput) Comment() pulumi.StringOutput {
-	return o.ApplyT(func(v *OboToken) pulumi.StringOutput { return v.Comment }).(pulumi.StringOutput)
+func (o OboTokenOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OboToken) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// The number of seconds before the token expires. Token resource is re-created when it expires.
-func (o OboTokenOutput) LifetimeSeconds() pulumi.IntOutput {
-	return o.ApplyT(func(v *OboToken) pulumi.IntOutput { return v.LifetimeSeconds }).(pulumi.IntOutput)
+// The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+func (o OboTokenOutput) LifetimeSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OboToken) pulumi.IntPtrOutput { return v.LifetimeSeconds }).(pulumi.IntPtrOutput)
 }
 
 // **Sensitive** value of the newly-created token.

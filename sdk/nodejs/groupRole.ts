@@ -5,18 +5,34 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to attach Role ARN (AWS) to databricks_group.
+ * This resource allows you to attach a role to databricks_group. This role could be a pre-defined role such as account admin, or an instance profile ARN.
  *
  * ## Example Usage
+ *
+ * Attach an instance profile to a group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const instanceProfile = new databricks.InstanceProfile("instanceProfile", {instanceProfileArn: "my_instance_profile_arn"});
+ * const myGroup = new databricks.Group("myGroup", {});
+ * const myGroupInstanceProfile = new databricks.GroupInstanceProfile("myGroupInstanceProfile", {
+ *     groupId: myGroup.id,
+ *     instanceProfileId: instanceProfile.id,
+ * });
+ * ```
+ *
+ * Attach account admin role to an account-level group
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const myGroup = new databricks.Group("myGroup", {});
- * const myGroupRole = new databricks.GroupRole("myGroupRole", {
- *     groupId: myGroup.id,
- *     role: "arn:aws:iam::000000000000:role/my-role",
+ * const myUserAccountAdmin = new databricks.UserRole("myUserAccountAdmin", {
+ *     userId: myGroup.id,
+ *     role: "account_admin",
  * });
  * ```
  * ## Related Resources
@@ -70,7 +86,7 @@ export class GroupRole extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * This is the AWS role ARN.
+     * Either a role name or the ARN/ID of the instance profile resource.
      */
     public readonly role!: pulumi.Output<string>;
 
@@ -114,7 +130,7 @@ export interface GroupRoleState {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * This is the AWS role ARN.
+     * Either a role name or the ARN/ID of the instance profile resource.
      */
     role?: pulumi.Input<string>;
 }
@@ -128,7 +144,7 @@ export interface GroupRoleArgs {
      */
     groupId: pulumi.Input<string>;
     /**
-     * This is the AWS role ARN.
+     * Either a role name or the ARN/ID of the instance profile resource.
      */
     role: pulumi.Input<string>;
 }

@@ -27,6 +27,7 @@ type SqlQuery struct {
 	Description  pulumi.StringPtrOutput       `pulumi:"description"`
 	Name         pulumi.StringOutput          `pulumi:"name"`
 	Parameters   SqlQueryParameterArrayOutput `pulumi:"parameters"`
+	Parent       pulumi.StringPtrOutput       `pulumi:"parent"`
 	Query        pulumi.StringOutput          `pulumi:"query"`
 	RunAsRole    pulumi.StringPtrOutput       `pulumi:"runAsRole"`
 	Schedule     SqlQuerySchedulePtrOutput    `pulumi:"schedule"`
@@ -72,6 +73,7 @@ type sqlQueryState struct {
 	Description  *string             `pulumi:"description"`
 	Name         *string             `pulumi:"name"`
 	Parameters   []SqlQueryParameter `pulumi:"parameters"`
+	Parent       *string             `pulumi:"parent"`
 	Query        *string             `pulumi:"query"`
 	RunAsRole    *string             `pulumi:"runAsRole"`
 	Schedule     *SqlQuerySchedule   `pulumi:"schedule"`
@@ -83,6 +85,7 @@ type SqlQueryState struct {
 	Description  pulumi.StringPtrInput
 	Name         pulumi.StringPtrInput
 	Parameters   SqlQueryParameterArrayInput
+	Parent       pulumi.StringPtrInput
 	Query        pulumi.StringPtrInput
 	RunAsRole    pulumi.StringPtrInput
 	Schedule     SqlQuerySchedulePtrInput
@@ -98,6 +101,7 @@ type sqlQueryArgs struct {
 	Description  *string             `pulumi:"description"`
 	Name         *string             `pulumi:"name"`
 	Parameters   []SqlQueryParameter `pulumi:"parameters"`
+	Parent       *string             `pulumi:"parent"`
 	Query        string              `pulumi:"query"`
 	RunAsRole    *string             `pulumi:"runAsRole"`
 	Schedule     *SqlQuerySchedule   `pulumi:"schedule"`
@@ -110,6 +114,7 @@ type SqlQueryArgs struct {
 	Description  pulumi.StringPtrInput
 	Name         pulumi.StringPtrInput
 	Parameters   SqlQueryParameterArrayInput
+	Parent       pulumi.StringPtrInput
 	Query        pulumi.StringInput
 	RunAsRole    pulumi.StringPtrInput
 	Schedule     SqlQuerySchedulePtrInput
@@ -217,6 +222,10 @@ func (o SqlQueryOutput) Name() pulumi.StringOutput {
 
 func (o SqlQueryOutput) Parameters() SqlQueryParameterArrayOutput {
 	return o.ApplyT(func(v *SqlQuery) SqlQueryParameterArrayOutput { return v.Parameters }).(SqlQueryParameterArrayOutput)
+}
+
+func (o SqlQueryOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlQuery) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
 func (o SqlQueryOutput) Query() pulumi.StringOutput {

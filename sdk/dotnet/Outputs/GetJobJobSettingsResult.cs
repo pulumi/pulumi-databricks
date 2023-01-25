@@ -15,9 +15,6 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly int? CreatedTime;
         public readonly string? CreatorUserName;
-        /// <summary>
-        /// the id of databricks.Job if the resource was matched by name.
-        /// </summary>
         public readonly int? JobId;
         public readonly Outputs.GetJobJobSettingsSettingsResult? Settings;
 

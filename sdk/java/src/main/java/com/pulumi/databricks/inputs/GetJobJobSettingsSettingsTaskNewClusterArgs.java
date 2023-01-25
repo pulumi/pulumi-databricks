@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterAutos
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterAwsAttributesArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterDockerImageArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs;
@@ -75,6 +76,13 @@ public final class GetJobJobSettingsSettingsTaskNewClusterArgs extends com.pulum
 
     public Optional<Output<GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgs>> clusterLogConf() {
         return Optional.ofNullable(this.clusterLogConf);
+    }
+
+    @Import(name="clusterMountInfos")
+    private @Nullable Output<List<GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs>> clusterMountInfos;
+
+    public Optional<Output<List<GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs>>> clusterMountInfos() {
+        return Optional.ofNullable(this.clusterMountInfos);
     }
 
     @Import(name="clusterName")
@@ -241,6 +249,7 @@ public final class GetJobJobSettingsSettingsTaskNewClusterArgs extends com.pulum
         this.azureAttributes = $.azureAttributes;
         this.clusterId = $.clusterId;
         this.clusterLogConf = $.clusterLogConf;
+        this.clusterMountInfos = $.clusterMountInfos;
         this.clusterName = $.clusterName;
         this.customTags = $.customTags;
         this.dataSecurityMode = $.dataSecurityMode;
@@ -344,6 +353,19 @@ public final class GetJobJobSettingsSettingsTaskNewClusterArgs extends com.pulum
 
         public Builder clusterLogConf(GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgs clusterLogConf) {
             return clusterLogConf(Output.of(clusterLogConf));
+        }
+
+        public Builder clusterMountInfos(@Nullable Output<List<GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs>> clusterMountInfos) {
+            $.clusterMountInfos = clusterMountInfos;
+            return this;
+        }
+
+        public Builder clusterMountInfos(List<GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs> clusterMountInfos) {
+            return clusterMountInfos(Output.of(clusterMountInfos));
+        }
+
+        public Builder clusterMountInfos(GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs... clusterMountInfos) {
+            return clusterMountInfos(List.of(clusterMountInfos));
         }
 
         public Builder clusterName(@Nullable Output<String> clusterName) {

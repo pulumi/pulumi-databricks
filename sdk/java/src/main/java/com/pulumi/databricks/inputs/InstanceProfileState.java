@@ -17,6 +17,21 @@ public final class InstanceProfileState extends com.pulumi.resources.ResourceArg
     public static final InstanceProfileState Empty = new InstanceProfileState();
 
     /**
+     * The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+     * 
+     */
+    @Import(name="iamRoleArn")
+    private @Nullable Output<String> iamRoleArn;
+
+    /**
+     * @return The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+     * 
+     */
+    public Optional<Output<String>> iamRoleArn() {
+        return Optional.ofNullable(this.iamRoleArn);
+    }
+
+    /**
      * `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      * 
      */
@@ -64,6 +79,7 @@ public final class InstanceProfileState extends com.pulumi.resources.ResourceArg
     private InstanceProfileState() {}
 
     private InstanceProfileState(InstanceProfileState $) {
+        this.iamRoleArn = $.iamRoleArn;
         this.instanceProfileArn = $.instanceProfileArn;
         this.isMetaInstanceProfile = $.isMetaInstanceProfile;
         this.skipValidation = $.skipValidation;
@@ -85,6 +101,27 @@ public final class InstanceProfileState extends com.pulumi.resources.ResourceArg
 
         public Builder(InstanceProfileState defaults) {
             $ = new InstanceProfileState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param iamRoleArn The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iamRoleArn(@Nullable Output<String> iamRoleArn) {
+            $.iamRoleArn = iamRoleArn;
+            return this;
+        }
+
+        /**
+         * @param iamRoleArn The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iamRoleArn(String iamRoleArn) {
+            return iamRoleArn(Output.of(iamRoleArn));
         }
 
         /**

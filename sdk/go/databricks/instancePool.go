@@ -23,7 +23,7 @@ import (
 type InstancePool struct {
 	pulumi.CustomResourceState
 
-	AwsAttributes   InstancePoolAwsAttributesOutput      `pulumi:"awsAttributes"`
+	AwsAttributes   InstancePoolAwsAttributesPtrOutput   `pulumi:"awsAttributes"`
 	AzureAttributes InstancePoolAzureAttributesPtrOutput `pulumi:"azureAttributes"`
 	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
 	CustomTags pulumi.MapOutput              `pulumi:"customTags"`
@@ -278,8 +278,8 @@ func (o InstancePoolOutput) ToInstancePoolOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o InstancePoolOutput) AwsAttributes() InstancePoolAwsAttributesOutput {
-	return o.ApplyT(func(v *InstancePool) InstancePoolAwsAttributesOutput { return v.AwsAttributes }).(InstancePoolAwsAttributesOutput)
+func (o InstancePoolOutput) AwsAttributes() InstancePoolAwsAttributesPtrOutput {
+	return o.ApplyT(func(v *InstancePool) InstancePoolAwsAttributesPtrOutput { return v.AwsAttributes }).(InstancePoolAwsAttributesPtrOutput)
 }
 
 func (o InstancePoolOutput) AzureAttributes() InstancePoolAzureAttributesPtrOutput {

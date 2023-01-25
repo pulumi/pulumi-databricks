@@ -30,11 +30,19 @@ public final class GetJobJobSettingsSettingsTaskNotebookTask extends com.pulumi.
         return this.notebookPath;
     }
 
+    @Import(name="source")
+    private @Nullable String source;
+
+    public Optional<String> source() {
+        return Optional.ofNullable(this.source);
+    }
+
     private GetJobJobSettingsSettingsTaskNotebookTask() {}
 
     private GetJobJobSettingsSettingsTaskNotebookTask(GetJobJobSettingsSettingsTaskNotebookTask $) {
         this.baseParameters = $.baseParameters;
         this.notebookPath = $.notebookPath;
+        this.source = $.source;
     }
 
     public static Builder builder() {
@@ -62,6 +70,11 @@ public final class GetJobJobSettingsSettingsTaskNotebookTask extends com.pulumi.
 
         public Builder notebookPath(String notebookPath) {
             $.notebookPath = notebookPath;
+            return this;
+        }
+
+        public Builder source(@Nullable String source) {
+            $.source = source;
             return this;
         }
 

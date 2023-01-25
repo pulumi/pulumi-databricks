@@ -31,11 +31,8 @@ import * as utilities from "./utilities";
  * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
  */
 export function getSqlWarehouse(args: GetSqlWarehouseArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlWarehouseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getSqlWarehouse:getSqlWarehouse", {
         "autoStopMins": args.autoStopMins,
         "channel": args.channel,
@@ -65,6 +62,9 @@ export interface GetSqlWarehouseArgs {
      * Time in minutes until an idle SQL warehouse terminates all clusters and stops.
      */
     autoStopMins?: number;
+    /**
+     * block, consisting of following fields:
+     */
     channel?: inputs.GetSqlWarehouseChannel;
     /**
      * The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
@@ -80,7 +80,6 @@ export interface GetSqlWarehouseArgs {
     enablePhoton?: boolean;
     /**
      * Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-     * * `channel` block, consisting of following fields:
      */
     enableServerlessCompute?: boolean;
     /**
@@ -128,6 +127,9 @@ export interface GetSqlWarehouseResult {
      * Time in minutes until an idle SQL warehouse terminates all clusters and stops.
      */
     readonly autoStopMins: number;
+    /**
+     * block, consisting of following fields:
+     */
     readonly channel: outputs.GetSqlWarehouseChannel;
     /**
      * The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
@@ -143,7 +145,6 @@ export interface GetSqlWarehouseResult {
     readonly enablePhoton: boolean;
     /**
      * Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-     * * `channel` block, consisting of following fields:
      */
     readonly enableServerlessCompute: boolean;
     readonly id: string;
@@ -179,9 +180,32 @@ export interface GetSqlWarehouseResult {
      */
     readonly tags: outputs.GetSqlWarehouseTags;
 }
-
+/**
+ * ## Example Usage
+ *
+ * Retrieve attributes of each SQL warehouses in a workspace
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const allSqlWarehouses = databricks.getSqlWarehouses({});
+ * const allSqlWarehouse = .map(([, ]) => databricks.getSqlWarehouse({
+ *     id: __value,
+ * }));
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+ * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
+ * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+ */
 export function getSqlWarehouseOutput(args: GetSqlWarehouseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlWarehouseResult> {
-    return pulumi.output(args).apply(a => getSqlWarehouse(a, opts))
+    return pulumi.output(args).apply((a: any) => getSqlWarehouse(a, opts))
 }
 
 /**
@@ -192,6 +216,9 @@ export interface GetSqlWarehouseOutputArgs {
      * Time in minutes until an idle SQL warehouse terminates all clusters and stops.
      */
     autoStopMins?: pulumi.Input<number>;
+    /**
+     * block, consisting of following fields:
+     */
     channel?: pulumi.Input<inputs.GetSqlWarehouseChannelArgs>;
     /**
      * The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
@@ -207,7 +234,6 @@ export interface GetSqlWarehouseOutputArgs {
     enablePhoton?: pulumi.Input<boolean>;
     /**
      * Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-     * * `channel` block, consisting of following fields:
      */
     enableServerlessCompute?: pulumi.Input<boolean>;
     /**

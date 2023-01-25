@@ -5,6 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AwsS3MountArgs, AwsS3MountState } from "./awsS3Mount";
+export type AwsS3Mount = import("./awsS3Mount").AwsS3Mount;
+export const AwsS3Mount: typeof import("./awsS3Mount").AwsS3Mount = null as any;
+utilities.lazyLoad(exports, ["AwsS3Mount"], () => require("./awsS3Mount"));
+
+export { AzureAdlsGen1MountArgs, AzureAdlsGen1MountState } from "./azureAdlsGen1Mount";
+export type AzureAdlsGen1Mount = import("./azureAdlsGen1Mount").AzureAdlsGen1Mount;
+export const AzureAdlsGen1Mount: typeof import("./azureAdlsGen1Mount").AzureAdlsGen1Mount = null as any;
+utilities.lazyLoad(exports, ["AzureAdlsGen1Mount"], () => require("./azureAdlsGen1Mount"));
+
+export { AzureAdlsGen2MountArgs, AzureAdlsGen2MountState } from "./azureAdlsGen2Mount";
+export type AzureAdlsGen2Mount = import("./azureAdlsGen2Mount").AzureAdlsGen2Mount;
+export const AzureAdlsGen2Mount: typeof import("./azureAdlsGen2Mount").AzureAdlsGen2Mount = null as any;
+utilities.lazyLoad(exports, ["AzureAdlsGen2Mount"], () => require("./azureAdlsGen2Mount"));
+
+export { AzureBlobMountArgs, AzureBlobMountState } from "./azureBlobMount";
+export type AzureBlobMount = import("./azureBlobMount").AzureBlobMount;
+export const AzureBlobMount: typeof import("./azureBlobMount").AzureBlobMount = null as any;
+utilities.lazyLoad(exports, ["AzureBlobMount"], () => require("./azureBlobMount"));
+
 export { CatalogArgs, CatalogState } from "./catalog";
 export type Catalog = import("./catalog").Catalog;
 export const Catalog: typeof import("./catalog").Catalog = null as any;
@@ -65,6 +85,11 @@ export const getCluster: typeof import("./getCluster").getCluster = null as any;
 export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
 
+export { GetClusterPolicyArgs, GetClusterPolicyResult, GetClusterPolicyOutputArgs } from "./getClusterPolicy";
+export const getClusterPolicy: typeof import("./getClusterPolicy").getClusterPolicy = null as any;
+export const getClusterPolicyOutput: typeof import("./getClusterPolicy").getClusterPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterPolicy","getClusterPolicyOutput"], () => require("./getClusterPolicy"));
+
 export { GetClustersArgs, GetClustersResult, GetClustersOutputArgs } from "./getClusters";
 export const getClusters: typeof import("./getClusters").getClusters = null as any;
 export const getClustersOutput: typeof import("./getClusters").getClustersOutput = null as any;
@@ -84,10 +109,20 @@ export const getDbfsFilePaths: typeof import("./getDbfsFilePaths").getDbfsFilePa
 export const getDbfsFilePathsOutput: typeof import("./getDbfsFilePaths").getDbfsFilePathsOutput = null as any;
 utilities.lazyLoad(exports, ["getDbfsFilePaths","getDbfsFilePathsOutput"], () => require("./getDbfsFilePaths"));
 
+export { GetDirectoryArgs, GetDirectoryResult, GetDirectoryOutputArgs } from "./getDirectory";
+export const getDirectory: typeof import("./getDirectory").getDirectory = null as any;
+export const getDirectoryOutput: typeof import("./getDirectory").getDirectoryOutput = null as any;
+utilities.lazyLoad(exports, ["getDirectory","getDirectoryOutput"], () => require("./getDirectory"));
+
 export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
 export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
+
+export { GetInstancePoolArgs, GetInstancePoolResult, GetInstancePoolOutputArgs } from "./getInstancePool";
+export const getInstancePool: typeof import("./getInstancePool").getInstancePool = null as any;
+export const getInstancePoolOutput: typeof import("./getInstancePool").getInstancePoolOutput = null as any;
+utilities.lazyLoad(exports, ["getInstancePool","getInstancePoolOutput"], () => require("./getInstancePool"));
 
 export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
 export const getJob: typeof import("./getJob").getJob = null as any;
@@ -98,6 +133,11 @@ export { GetJobsArgs, GetJobsResult, GetJobsOutputArgs } from "./getJobs";
 export const getJobs: typeof import("./getJobs").getJobs = null as any;
 export const getJobsOutput: typeof import("./getJobs").getJobsOutput = null as any;
 utilities.lazyLoad(exports, ["getJobs","getJobsOutput"], () => require("./getJobs"));
+
+export { GetMwsCredentialsArgs, GetMwsCredentialsResult, GetMwsCredentialsOutputArgs } from "./getMwsCredentials";
+export const getMwsCredentials: typeof import("./getMwsCredentials").getMwsCredentials = null as any;
+export const getMwsCredentialsOutput: typeof import("./getMwsCredentials").getMwsCredentialsOutput = null as any;
+utilities.lazyLoad(exports, ["getMwsCredentials","getMwsCredentialsOutput"], () => require("./getMwsCredentials"));
 
 export { GetMwsWorkspacesArgs, GetMwsWorkspacesResult, GetMwsWorkspacesOutputArgs } from "./getMwsWorkspaces";
 export const getMwsWorkspaces: typeof import("./getMwsWorkspaces").getMwsWorkspaces = null as any;
@@ -252,6 +292,11 @@ export { MetastoreDataAccessArgs, MetastoreDataAccessState } from "./metastoreDa
 export type MetastoreDataAccess = import("./metastoreDataAccess").MetastoreDataAccess;
 export const MetastoreDataAccess: typeof import("./metastoreDataAccess").MetastoreDataAccess = null as any;
 utilities.lazyLoad(exports, ["MetastoreDataAccess"], () => require("./metastoreDataAccess"));
+
+export { MetastoreProviderArgs, MetastoreProviderState } from "./metastoreProvider";
+export type MetastoreProvider = import("./metastoreProvider").MetastoreProvider;
+export const MetastoreProvider: typeof import("./metastoreProvider").MetastoreProvider = null as any;
+utilities.lazyLoad(exports, ["MetastoreProvider"], () => require("./metastoreProvider"));
 
 export { MlflowExperimentArgs, MlflowExperimentState } from "./mlflowExperiment";
 export type MlflowExperiment = import("./mlflowExperiment").MlflowExperiment;
@@ -482,6 +527,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "databricks:index/awsS3Mount:AwsS3Mount":
+                return new AwsS3Mount(name, <any>undefined, { urn })
+            case "databricks:index/azureAdlsGen1Mount:AzureAdlsGen1Mount":
+                return new AzureAdlsGen1Mount(name, <any>undefined, { urn })
+            case "databricks:index/azureAdlsGen2Mount:AzureAdlsGen2Mount":
+                return new AzureAdlsGen2Mount(name, <any>undefined, { urn })
+            case "databricks:index/azureBlobMount:AzureBlobMount":
+                return new AzureBlobMount(name, <any>undefined, { urn })
             case "databricks:index/catalog:Catalog":
                 return new Catalog(name, <any>undefined, { urn })
             case "databricks:index/cluster:Cluster":
@@ -526,6 +579,8 @@ const _module = {
                 return new MetastoreAssignment(name, <any>undefined, { urn })
             case "databricks:index/metastoreDataAccess:MetastoreDataAccess":
                 return new MetastoreDataAccess(name, <any>undefined, { urn })
+            case "databricks:index/metastoreProvider:MetastoreProvider":
+                return new MetastoreProvider(name, <any>undefined, { urn })
             case "databricks:index/mlflowExperiment:MlflowExperiment":
                 return new MlflowExperiment(name, <any>undefined, { urn })
             case "databricks:index/mlflowModel:MlflowModel":
@@ -615,6 +670,10 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("databricks", "index/awsS3Mount", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/azureAdlsGen1Mount", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/azureAdlsGen2Mount", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/azureBlobMount", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalog", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/clusterPolicy", _module)
@@ -637,6 +696,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/library", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/metastore", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/metastoreAssignment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/metastoreDataAccess", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/metastoreProvider", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mlflowExperiment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mlflowModel", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mlflowWebhook", _module)

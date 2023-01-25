@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsTaskDbtTaskResult
     {
+        public readonly string? Catalog;
         public readonly ImmutableArray<string> Commands;
         public readonly string? ProfilesDirectory;
         public readonly string? ProjectDirectory;
@@ -21,6 +22,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskDbtTaskResult(
+            string? catalog,
+
             ImmutableArray<string> commands,
 
             string? profilesDirectory,
@@ -31,6 +34,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? warehouseId)
         {
+            Catalog = catalog;
             Commands = commands;
             ProfilesDirectory = profilesDirectory;
             ProjectDirectory = projectDirectory;

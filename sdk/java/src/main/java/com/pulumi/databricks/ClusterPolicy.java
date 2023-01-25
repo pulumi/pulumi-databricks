@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.ClusterPolicyArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ClusterPolicyState;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -62,18 +63,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/clusterPolicy:ClusterPolicy")
 public class ClusterPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
      * 
      */
     @Export(name="definition", type=String.class, parameters={})
-    private Output</* @Nullable */ String> definition;
+    private Output<String> definition;
 
     /**
-     * @return Policy definition JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
      * 
      */
-    public Output<Optional<String>> definition() {
-        return Codegen.optional(this.definition);
+    public Output<String> definition() {
+        return this.definition;
+    }
+    /**
+     * Maximum number of clusters allowed per user. When omitted, there is no limit.
+     * 
+     */
+    @Export(name="maxClustersPerUser", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> maxClustersPerUser;
+
+    /**
+     * @return Maximum number of clusters allowed per user. When omitted, there is no limit.
+     * 
+     */
+    public Output<Optional<Integer>> maxClustersPerUser() {
+        return Codegen.optional(this.maxClustersPerUser);
     }
     /**
      * Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
@@ -116,7 +131,7 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClusterPolicy(String name, @Nullable ClusterPolicyArgs args) {
+    public ClusterPolicy(String name, ClusterPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -125,7 +140,7 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClusterPolicy(String name, @Nullable ClusterPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ClusterPolicy(String name, ClusterPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/clusterPolicy:ClusterPolicy", name, args == null ? ClusterPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

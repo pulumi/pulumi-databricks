@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const fooTable = new databricks.SqlPermissions("foo_table", {
+ * const fooTable = new databricks.SqlPermissions("fooTable", {
  *     privilegeAssignments: [
  *         {
  *             principal: "serge@example.com",

@@ -17,14 +17,14 @@ public final class JobTaskSparkPythonTaskArgs extends com.pulumi.resources.Resou
     public static final JobTaskSparkPythonTaskArgs Empty = new JobTaskSparkPythonTaskArgs();
 
     /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * (List) Command line parameters passed to the Python file.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<String>> parameters;
 
     /**
-     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * @return (List) Command line parameters passed to the Python file.
      * 
      */
     public Optional<Output<List<String>>> parameters() {
@@ -32,14 +32,14 @@ public final class JobTaskSparkPythonTaskArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The URI of the Python file to be executed. databricks.DbfsFile and S3 paths are supported. This field is required.
+     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
      * 
      */
     @Import(name="pythonFile", required=true)
     private Output<String> pythonFile;
 
     /**
-     * @return The URI of the Python file to be executed. databricks.DbfsFile and S3 paths are supported. This field is required.
+     * @return The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
      * 
      */
     public Output<String> pythonFile() {
@@ -72,7 +72,7 @@ public final class JobTaskSparkPythonTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameters (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+         * @param parameters (List) Command line parameters passed to the Python file.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class JobTaskSparkPythonTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameters (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+         * @param parameters (List) Command line parameters passed to the Python file.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class JobTaskSparkPythonTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameters (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+         * @param parameters (List) Command line parameters passed to the Python file.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class JobTaskSparkPythonTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param pythonFile The URI of the Python file to be executed. databricks.DbfsFile and S3 paths are supported. This field is required.
+         * @param pythonFile The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class JobTaskSparkPythonTaskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param pythonFile The URI of the Python file to be executed. databricks.DbfsFile and S3 paths are supported. This field is required.
+         * @param pythonFile The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
          * 
          * @return builder
          * 

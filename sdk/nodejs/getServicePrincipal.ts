@@ -39,17 +39,15 @@ import * as utilities from "./utilities";
  */
 export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getServicePrincipal:getServicePrincipal", {
         "active": args.active,
         "applicationId": args.applicationId,
         "displayName": args.displayName,
         "externalId": args.externalId,
         "home": args.home,
+        "id": args.id,
         "repos": args.repos,
         "spId": args.spId,
     }, opts);
@@ -80,12 +78,13 @@ export interface GetServicePrincipalArgs {
      */
     home?: string;
     /**
+     * The id of the service principal.
+     */
+    id?: string;
+    /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
     repos?: string;
-    /**
-     * The id of the service principal.
-     */
     spId?: string;
 }
 
@@ -111,21 +110,50 @@ export interface GetServicePrincipalResult {
      */
     readonly home: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The id of the service principal.
      */
     readonly id: string;
     /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
     readonly repos: string;
-    /**
-     * The id of the service principal.
-     */
     readonly spId: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const admins = databricks.getGroup({
+ *     displayName: "admins",
+ * });
+ * const spn = databricks.getServicePrincipal({
+ *     applicationId: "11111111-2222-3333-4444-555666777888",
+ * });
+ * const myMemberA = new databricks.GroupMember("myMemberA", {
+ *     groupId: admins.then(admins => admins.id),
+ *     memberId: spn.then(spn => spn.id),
+ * });
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide
+ * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+ * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+ * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+ * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+ * * databricks.GroupMember to attach users and groups as group members.
+ * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+ * * databricksService principal to manage service principals
+ */
 export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalResult> {
-    return pulumi.output(args).apply(a => getServicePrincipal(a, opts))
+    return pulumi.output(args).apply((a: any) => getServicePrincipal(a, opts))
 }
 
 /**
@@ -153,11 +181,12 @@ export interface GetServicePrincipalOutputArgs {
      */
     home?: pulumi.Input<string>;
     /**
+     * The id of the service principal.
+     */
+    id?: pulumi.Input<string>;
+    /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
     repos?: pulumi.Input<string>;
-    /**
-     * The id of the service principal.
-     */
     spId?: pulumi.Input<string>;
 }

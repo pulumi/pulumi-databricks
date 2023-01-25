@@ -9,9 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class JobWebhookNotificationsOnFailure {
+    /**
+     * @return ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+     * 
+     */
     private String id;
 
     private JobWebhookNotificationsOnFailure() {}
+    /**
+     * @return ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+     * 
+     */
     public String id() {
         return this.id;
     }

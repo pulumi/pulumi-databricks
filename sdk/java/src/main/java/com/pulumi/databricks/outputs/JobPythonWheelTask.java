@@ -30,7 +30,7 @@ public final class JobPythonWheelTask {
      */
     private @Nullable String packageName;
     /**
-     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * @return Parameters for the task
      * 
      */
     private @Nullable List<String> parameters;
@@ -58,7 +58,7 @@ public final class JobPythonWheelTask {
         return Optional.ofNullable(this.packageName);
     }
     /**
-     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * @return Parameters for the task
      * 
      */
     public List<String> parameters() {

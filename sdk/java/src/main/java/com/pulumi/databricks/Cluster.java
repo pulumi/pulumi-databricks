@@ -14,6 +14,7 @@ import com.pulumi.databricks.outputs.ClusterAutoscale;
 import com.pulumi.databricks.outputs.ClusterAwsAttributes;
 import com.pulumi.databricks.outputs.ClusterAzureAttributes;
 import com.pulumi.databricks.outputs.ClusterClusterLogConf;
+import com.pulumi.databricks.outputs.ClusterClusterMountInfo;
 import com.pulumi.databricks.outputs.ClusterDockerImage;
 import com.pulumi.databricks.outputs.ClusterGcpAttributes;
 import com.pulumi.databricks.outputs.ClusterInitScript;
@@ -98,6 +99,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<ClusterClusterLogConf>> clusterLogConf() {
         return Codegen.optional(this.clusterLogConf);
     }
+    @Export(name="clusterMountInfos", type=List.class, parameters={ClusterClusterMountInfo.class})
+    private Output</* @Nullable */ List<ClusterClusterMountInfo>> clusterMountInfos;
+
+    public Output<Optional<List<ClusterClusterMountInfo>>> clusterMountInfos() {
+        return Codegen.optional(this.clusterMountInfos);
+    }
     /**
      * Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
      * 
@@ -113,42 +120,42 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clusterName);
     }
     /**
-     * Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`.
+     * Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
      * 
      */
     @Export(name="customTags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> customTags;
 
     /**
-     * @return Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`.
+     * @return Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
      * 
      */
     public Output<Optional<Map<String,Object>>> customTags() {
         return Codegen.optional(this.customTags);
     }
     /**
-     * Select the security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+     * Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
      * 
      */
     @Export(name="dataSecurityMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> dataSecurityMode;
 
     /**
-     * @return Select the security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+     * @return Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
      * 
      */
     public Output<Optional<String>> dataSecurityMode() {
         return Codegen.optional(this.dataSecurityMode);
     }
     /**
-     * (map) Tags that are added by Databricks by default, regardless of any custom_tags that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;
+     * (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
      * 
      */
     @Export(name="defaultTags", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> defaultTags;
 
     /**
-     * @return (map) Tags that are added by Databricks by default, regardless of any custom_tags that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;
+     * @return (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
      * 
      */
     public Output<Map<String,Object>> defaultTags() {
@@ -243,14 +250,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.initScripts);
     }
     /**
-     * - To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
+     * To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
      * 
      */
     @Export(name="instancePoolId", type=String.class, parameters={})
     private Output</* @Nullable */ String> instancePoolId;
 
     /**
-     * @return - To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
+     * @return To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
      * 
      */
     public Output<Optional<String>> instancePoolId() {
@@ -290,9 +297,17 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<String> nodeTypeId() {
         return this.nodeTypeId;
     }
+    /**
+     * Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+     * 
+     */
     @Export(name="numWorkers", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> numWorkers;
 
+    /**
+     * @return Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+     * 
+     */
     public Output<Optional<Integer>> numWorkers() {
         return Codegen.optional(this.numWorkers);
     }

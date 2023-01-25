@@ -12,8 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineClusterGcpAttributesGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("availability")]
+        public Input<string>? Availability { get; set; }
+
         [Input("googleServiceAccount")]
         public Input<string>? GoogleServiceAccount { get; set; }
+
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public PipelineClusterGcpAttributesGetArgs()
         {

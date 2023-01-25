@@ -19,6 +19,38 @@ import javax.annotation.Nullable;
  * This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.MlflowExperiment;
+ * import com.pulumi.databricks.MlflowExperimentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var me = DatabricksFunctions.getCurrentUser();
+ * 
+ *         var this_ = new MlflowExperiment(&#34;this&#34;, MlflowExperimentArgs.builder()        
+ *             .artifactLocation(&#34;dbfs:/tmp/my-experiment&#34;)
+ *             .description(&#34;My MLflow experiment description&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Access Control
  * 
  * * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.

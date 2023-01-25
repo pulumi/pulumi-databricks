@@ -12,8 +12,6 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider.
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;

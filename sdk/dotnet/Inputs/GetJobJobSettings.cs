@@ -18,9 +18,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("creatorUserName")]
         public string? CreatorUserName { get; set; }
 
-        /// <summary>
-        /// the id of databricks.Job if the resource was matched by name.
-        /// </summary>
         [Input("jobId")]
         public int? JobId { get; set; }
 

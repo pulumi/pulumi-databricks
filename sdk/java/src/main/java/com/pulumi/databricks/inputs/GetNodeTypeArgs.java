@@ -107,6 +107,21 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+     * 
+     */
+    @Import(name="localDiskMinSize")
+    private @Nullable Output<Integer> localDiskMinSize;
+
+    /**
+     * @return Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+     * 
+     */
+    public Optional<Output<Integer>> localDiskMinSize() {
+        return Optional.ofNullable(this.localDiskMinSize);
+    }
+
+    /**
      * Minimum number of CPU cores available on instance. Defaults to *0*.
      * 
      */
@@ -211,6 +226,7 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
         this.graviton = $.graviton;
         this.isIoCacheEnabled = $.isIoCacheEnabled;
         this.localDisk = $.localDisk;
+        this.localDiskMinSize = $.localDiskMinSize;
         this.minCores = $.minCores;
         this.minGpus = $.minGpus;
         this.minMemoryGb = $.minMemoryGb;
@@ -355,6 +371,27 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder localDisk(Boolean localDisk) {
             return localDisk(Output.of(localDisk));
+        }
+
+        /**
+         * @param localDiskMinSize Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localDiskMinSize(@Nullable Output<Integer> localDiskMinSize) {
+            $.localDiskMinSize = localDiskMinSize;
+            return this;
+        }
+
+        /**
+         * @param localDiskMinSize Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localDiskMinSize(Integer localDiskMinSize) {
+            return localDiskMinSize(Output.of(localDiskMinSize));
         }
 
         /**

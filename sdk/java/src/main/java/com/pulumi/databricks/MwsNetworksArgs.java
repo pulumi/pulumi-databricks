@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MwsNetworksErrorMessageArgs;
+import com.pulumi.databricks.inputs.MwsNetworksGcpNetworkInfoArgs;
 import com.pulumi.databricks.inputs.MwsNetworksVpcEndpointsArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -49,14 +50,29 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (String) id of network to be used for databricks_mws_workspace resource.
+     * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     * 
+     */
+    @Import(name="gcpNetworkInfo")
+    private @Nullable Output<MwsNetworksGcpNetworkInfoArgs> gcpNetworkInfo;
+
+    /**
+     * @return a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     * 
+     */
+    public Optional<Output<MwsNetworksGcpNetworkInfoArgs>> gcpNetworkInfo() {
+        return Optional.ofNullable(this.gcpNetworkInfo);
+    }
+
+    /**
+     * (String) id of network to be used for databricks.MwsWorkspaces resource.
      * 
      */
     @Import(name="networkId")
     private @Nullable Output<String> networkId;
 
     /**
-     * @return (String) id of network to be used for databricks_mws_workspace resource.
+     * @return (String) id of network to be used for databricks.MwsWorkspaces resource.
      * 
      */
     public Optional<Output<String>> networkId() {
@@ -78,18 +94,18 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         return this.networkName;
     }
 
-    @Import(name="securityGroupIds", required=true)
-    private Output<List<String>> securityGroupIds;
+    @Import(name="securityGroupIds")
+    private @Nullable Output<List<String>> securityGroupIds;
 
-    public Output<List<String>> securityGroupIds() {
-        return this.securityGroupIds;
+    public Optional<Output<List<String>>> securityGroupIds() {
+        return Optional.ofNullable(this.securityGroupIds);
     }
 
-    @Import(name="subnetIds", required=true)
-    private Output<List<String>> subnetIds;
+    @Import(name="subnetIds")
+    private @Nullable Output<List<String>> subnetIds;
 
-    public Output<List<String>> subnetIds() {
-        return this.subnetIds;
+    public Optional<Output<List<String>>> subnetIds() {
+        return Optional.ofNullable(this.subnetIds);
     }
 
     /**
@@ -107,11 +123,19 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vpcEndpoints);
     }
 
-    @Import(name="vpcId", required=true)
-    private Output<String> vpcId;
+    /**
+     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
 
-    public Output<String> vpcId() {
-        return this.vpcId;
+    /**
+     * @return The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
     }
 
     /**
@@ -150,6 +174,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.creationTime = $.creationTime;
         this.errorMessages = $.errorMessages;
+        this.gcpNetworkInfo = $.gcpNetworkInfo;
         this.networkId = $.networkId;
         this.networkName = $.networkName;
         this.securityGroupIds = $.securityGroupIds;
@@ -222,7 +247,28 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkId (String) id of network to be used for databricks_mws_workspace resource.
+         * @param gcpNetworkInfo a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpNetworkInfo(@Nullable Output<MwsNetworksGcpNetworkInfoArgs> gcpNetworkInfo) {
+            $.gcpNetworkInfo = gcpNetworkInfo;
+            return this;
+        }
+
+        /**
+         * @param gcpNetworkInfo a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpNetworkInfo(MwsNetworksGcpNetworkInfoArgs gcpNetworkInfo) {
+            return gcpNetworkInfo(Output.of(gcpNetworkInfo));
+        }
+
+        /**
+         * @param networkId (String) id of network to be used for databricks.MwsWorkspaces resource.
          * 
          * @return builder
          * 
@@ -233,7 +279,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkId (String) id of network to be used for databricks_mws_workspace resource.
+         * @param networkId (String) id of network to be used for databricks.MwsWorkspaces resource.
          * 
          * @return builder
          * 
@@ -263,7 +309,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
             return networkName(Output.of(networkName));
         }
 
-        public Builder securityGroupIds(Output<List<String>> securityGroupIds) {
+        public Builder securityGroupIds(@Nullable Output<List<String>> securityGroupIds) {
             $.securityGroupIds = securityGroupIds;
             return this;
         }
@@ -276,7 +322,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
             return securityGroupIds(List.of(securityGroupIds));
         }
 
-        public Builder subnetIds(Output<List<String>> subnetIds) {
+        public Builder subnetIds(@Nullable Output<List<String>> subnetIds) {
             $.subnetIds = subnetIds;
             return this;
         }
@@ -310,11 +356,23 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
             return vpcEndpoints(Output.of(vpcEndpoints));
         }
 
-        public Builder vpcId(Output<String> vpcId) {
+        /**
+         * @param vpcId The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
+        /**
+         * @param vpcId The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }
@@ -364,9 +422,6 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         public MwsNetworksArgs build() {
             $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
             $.networkName = Objects.requireNonNull($.networkName, "expected parameter 'networkName' to be non-null");
-            $.securityGroupIds = Objects.requireNonNull($.securityGroupIds, "expected parameter 'securityGroupIds' to be non-null");
-            $.subnetIds = Objects.requireNonNull($.subnetIds, "expected parameter 'subnetIds' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
             return $;
         }
     }

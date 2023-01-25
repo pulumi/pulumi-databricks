@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +20,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws"
 //	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -33,13 +33,13 @@ import (
 //			crossaccountRoleName := cfg.Require("crossaccountRoleName")
 //			assumeRoleForEc2, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 //				Statements: []iam.GetPolicyDocumentStatement{
-//					iam.GetPolicyDocumentStatement{
+//					{
 //						Effect: pulumi.StringRef("Allow"),
 //						Actions: []string{
 //							"sts:AssumeRole",
 //						},
 //						Principals: []iam.GetPolicyDocumentStatementPrincipal{
-//							iam.GetPolicyDocumentStatementPrincipal{
+//							{
 //								Identifiers: []string{
 //									"ec2.amazonaws.com",
 //								},
@@ -54,7 +54,7 @@ import (
 //			}
 //			roleForS3Access, err := iam.NewRole(ctx, "roleForS3Access", &iam.RoleArgs{
 //				Description:      pulumi.String("Role for shared access"),
-//				AssumeRolePolicy: pulumi.String(assumeRoleForEc2.Json),
+//				AssumeRolePolicy: *pulumi.String(assumeRoleForEc2.Json),
 //			})
 //			if err != nil {
 //				return err
@@ -74,9 +74,9 @@ import (
 //			}, nil)
 //			passRoleForS3AccessPolicy, err := iam.NewPolicy(ctx, "passRoleForS3AccessPolicy", &iam.PolicyArgs{
 //				Path: pulumi.String("/"),
-//				Policy: passRoleForS3AccessPolicyDocument.ApplyT(func(passRoleForS3AccessPolicyDocument iam.GetPolicyDocumentResult) (string, error) {
-//					return passRoleForS3AccessPolicyDocument.Json, nil
-//				}).(pulumi.StringOutput),
+//				Policy: passRoleForS3AccessPolicyDocument.ApplyT(func(passRoleForS3AccessPolicyDocument iam.GetPolicyDocumentResult) (*string, error) {
+//					return &passRoleForS3AccessPolicyDocument.Json, nil
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -104,7 +104,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			smallest, err := databricks.GetNodeType(ctx, &GetNodeTypeArgs{
+//			smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
 //				LocalDisk: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -112,14 +112,14 @@ import (
 //			}
 //			_, err = databricks.NewCluster(ctx, "this", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Shared Autoscaling"),
-//				SparkVersion:           pulumi.String(latest.Id),
-//				NodeTypeId:             pulumi.String(smallest.Id),
+//				SparkVersion:           *pulumi.String(latest.Id),
+//				NodeTypeId:             *pulumi.String(smallest.Id),
 //				AutoterminationMinutes: pulumi.Int(20),
-//				Autoscale: &ClusterAutoscaleArgs{
+//				Autoscale: &databricks.ClusterAutoscaleArgs{
 //					MinWorkers: pulumi.Int(1),
 //					MaxWorkers: pulumi.Int(50),
 //				},
-//				AwsAttributes: &ClusterAwsAttributesArgs{
+//				AwsAttributes: &databricks.ClusterAwsAttributesArgs{
 //					InstanceProfileArn:  sharedIndex / instanceProfileInstanceProfile.Id,
 //					Availability:        pulumi.String("SPOT"),
 //					ZoneId:              pulumi.String("us-east-1"),
@@ -198,15 +198,86 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			users, err := databricks.LookupGroup(ctx, &GetGroupArgs{
+//			users, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "users",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewGroupInstanceProfile(ctx, "all", &databricks.GroupInstanceProfileArgs{
-//				GroupId:           pulumi.String(users.Id),
+//				GroupId:           *pulumi.String(users.Id),
 //				InstanceProfileId: this.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Usage with Databricks SQL serverless
+//
+// When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iamRoleArn` parameter can be specified
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sqlServerlessAssumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+//				Statements: []iam.GetPolicyDocumentStatement{
+//					{
+//						Actions: []string{
+//							"sts:AssumeRole",
+//						},
+//						Principals: []iam.GetPolicyDocumentStatementPrincipal{
+//							{
+//								Type: "AWS",
+//								Identifiers: []string{
+//									"arn:aws:iam::790110701330:role/serverless-customer-resource-role",
+//								},
+//							},
+//						},
+//						Conditions: []iam.GetPolicyDocumentStatementCondition{
+//							{
+//								Test:     "StringEquals",
+//								Variable: "sts:ExternalID",
+//								Values: []string{
+//									"databricks-serverless-<YOUR_WORKSPACE_ID1>",
+//									"databricks-serverless-<YOUR_WORKSPACE_ID2>",
+//								},
+//							},
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			thisRole, err := iam.NewRole(ctx, "thisRole", &iam.RoleArgs{
+//				AssumeRolePolicy: *pulumi.String(sqlServerlessAssumeRole.Json),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisInstanceProfile, err := iam.NewInstanceProfile(ctx, "thisInstanceProfile", &iam.InstanceProfileArgs{
+//				Role: thisRole.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewInstanceProfile(ctx, "thisIndex/instanceProfileInstanceProfile", &databricks.InstanceProfileArgs{
+//				InstanceProfileArn: thisInstanceProfile.Arn,
+//				IamRoleArn:         thisRole.Arn,
 //			})
 //			if err != nil {
 //				return err
@@ -229,8 +300,10 @@ import (
 type InstanceProfile struct {
 	pulumi.CustomResourceState
 
+	// The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+	IamRoleArn pulumi.StringPtrOutput `pulumi:"iamRoleArn"`
 	// `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
-	InstanceProfileArn pulumi.StringPtrOutput `pulumi:"instanceProfileArn"`
+	InstanceProfileArn pulumi.StringOutput `pulumi:"instanceProfileArn"`
 	// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
 	IsMetaInstanceProfile pulumi.BoolPtrOutput `pulumi:"isMetaInstanceProfile"`
 	// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
@@ -241,9 +314,12 @@ type InstanceProfile struct {
 func NewInstanceProfile(ctx *pulumi.Context,
 	name string, args *InstanceProfileArgs, opts ...pulumi.ResourceOption) (*InstanceProfile, error) {
 	if args == nil {
-		args = &InstanceProfileArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.InstanceProfileArn == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceProfileArn'")
+	}
 	var resource InstanceProfile
 	err := ctx.RegisterResource("databricks:index/instanceProfile:InstanceProfile", name, args, &resource, opts...)
 	if err != nil {
@@ -266,6 +342,8 @@ func GetInstanceProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceProfile resources.
 type instanceProfileState struct {
+	// The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+	IamRoleArn *string `pulumi:"iamRoleArn"`
 	// `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
 	// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
@@ -275,6 +353,8 @@ type instanceProfileState struct {
 }
 
 type InstanceProfileState struct {
+	// The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+	IamRoleArn pulumi.StringPtrInput
 	// `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
 	InstanceProfileArn pulumi.StringPtrInput
 	// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
@@ -288,8 +368,10 @@ func (InstanceProfileState) ElementType() reflect.Type {
 }
 
 type instanceProfileArgs struct {
+	// The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+	IamRoleArn *string `pulumi:"iamRoleArn"`
 	// `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
-	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
+	InstanceProfileArn string `pulumi:"instanceProfileArn"`
 	// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
 	IsMetaInstanceProfile *bool `pulumi:"isMetaInstanceProfile"`
 	// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
@@ -298,8 +380,10 @@ type instanceProfileArgs struct {
 
 // The set of arguments for constructing a InstanceProfile resource.
 type InstanceProfileArgs struct {
+	// The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+	IamRoleArn pulumi.StringPtrInput
 	// `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
-	InstanceProfileArn pulumi.StringPtrInput
+	InstanceProfileArn pulumi.StringInput
 	// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
 	IsMetaInstanceProfile pulumi.BoolPtrInput
 	// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
@@ -393,9 +477,14 @@ func (o InstanceProfileOutput) ToInstanceProfileOutputWithContext(ctx context.Co
 	return o
 }
 
+// The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+func (o InstanceProfileOutput) IamRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceProfile) pulumi.StringPtrOutput { return v.IamRoleArn }).(pulumi.StringPtrOutput)
+}
+
 // `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
-func (o InstanceProfileOutput) InstanceProfileArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceProfile) pulumi.StringPtrOutput { return v.InstanceProfileArn }).(pulumi.StringPtrOutput)
+func (o InstanceProfileOutput) InstanceProfileArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceProfile) pulumi.StringOutput { return v.InstanceProfileArn }).(pulumi.StringOutput)
 }
 
 // Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).

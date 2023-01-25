@@ -20,16 +20,17 @@ class MwsWorkspacesArgs:
                  workspace_name: pulumi.Input[str],
                  aws_region: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[str]] = None,
-                 cloud_resource_bucket: Optional[pulumi.Input['MwsWorkspacesCloudResourceBucketArgs']] = None,
+                 cloud_resource_container: Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  credentials_id: Optional[pulumi.Input[str]] = None,
                  customer_managed_key_id: Optional[pulumi.Input[str]] = None,
                  deployment_name: Optional[pulumi.Input[str]] = None,
                  external_customer_info: Optional[pulumi.Input['MwsWorkspacesExternalCustomerInfoArgs']] = None,
+                 gcp_managed_network_config: Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']] = None,
+                 gke_config: Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']] = None,
                  is_no_public_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  managed_services_customer_managed_key_id: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input['MwsWorkspacesNetworkArgs']] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  pricing_tier: Optional[pulumi.Input[str]] = None,
                  private_access_settings_id: Optional[pulumi.Input[str]] = None,
@@ -44,10 +45,14 @@ class MwsWorkspacesArgs:
         The set of arguments for constructing a MwsWorkspaces resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI
-        :param pulumi.Input[str] aws_region: AWS region of VPC
+        :param pulumi.Input[str] aws_region: region of VPC
+        :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+        :param pulumi.Input['MwsWorkspacesGkeConfigArgs'] gke_config: A block that specifies GKE configuration for the Databricks workspace:
+        :param pulumi.Input[str] location: region of the subnet
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
+        :param pulumi.Input[str] network_id: `network_id` from networks.
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration
         :param pulumi.Input[str] workspace_status: (String) workspace status
         :param pulumi.Input[str] workspace_status_message: (String) updates on workspace status
@@ -59,8 +64,8 @@ class MwsWorkspacesArgs:
             pulumi.set(__self__, "aws_region", aws_region)
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
-        if cloud_resource_bucket is not None:
-            pulumi.set(__self__, "cloud_resource_bucket", cloud_resource_bucket)
+        if cloud_resource_container is not None:
+            pulumi.set(__self__, "cloud_resource_container", cloud_resource_container)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
         if credentials_id is not None:
@@ -74,14 +79,16 @@ class MwsWorkspacesArgs:
             pulumi.set(__self__, "deployment_name", deployment_name)
         if external_customer_info is not None:
             pulumi.set(__self__, "external_customer_info", external_customer_info)
+        if gcp_managed_network_config is not None:
+            pulumi.set(__self__, "gcp_managed_network_config", gcp_managed_network_config)
+        if gke_config is not None:
+            pulumi.set(__self__, "gke_config", gke_config)
         if is_no_public_ip_enabled is not None:
             pulumi.set(__self__, "is_no_public_ip_enabled", is_no_public_ip_enabled)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if managed_services_customer_managed_key_id is not None:
             pulumi.set(__self__, "managed_services_customer_managed_key_id", managed_services_customer_managed_key_id)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
         if network_id is not None:
             pulumi.set(__self__, "network_id", network_id)
         if pricing_tier is not None:
@@ -131,7 +138,7 @@ class MwsWorkspacesArgs:
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS region of VPC
+        region of VPC
         """
         return pulumi.get(self, "aws_region")
 
@@ -149,13 +156,16 @@ class MwsWorkspacesArgs:
         pulumi.set(self, "cloud", value)
 
     @property
-    @pulumi.getter(name="cloudResourceBucket")
-    def cloud_resource_bucket(self) -> Optional[pulumi.Input['MwsWorkspacesCloudResourceBucketArgs']]:
-        return pulumi.get(self, "cloud_resource_bucket")
+    @pulumi.getter(name="cloudResourceContainer")
+    def cloud_resource_container(self) -> Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']]:
+        """
+        A block that specifies GCP workspace configurations, consisting of following blocks:
+        """
+        return pulumi.get(self, "cloud_resource_container")
 
-    @cloud_resource_bucket.setter
-    def cloud_resource_bucket(self, value: Optional[pulumi.Input['MwsWorkspacesCloudResourceBucketArgs']]):
-        pulumi.set(self, "cloud_resource_bucket", value)
+    @cloud_resource_container.setter
+    def cloud_resource_container(self, value: Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']]):
+        pulumi.set(self, "cloud_resource_container", value)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -209,6 +219,27 @@ class MwsWorkspacesArgs:
         pulumi.set(self, "external_customer_info", value)
 
     @property
+    @pulumi.getter(name="gcpManagedNetworkConfig")
+    def gcp_managed_network_config(self) -> Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']]:
+        return pulumi.get(self, "gcp_managed_network_config")
+
+    @gcp_managed_network_config.setter
+    def gcp_managed_network_config(self, value: Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']]):
+        pulumi.set(self, "gcp_managed_network_config", value)
+
+    @property
+    @pulumi.getter(name="gkeConfig")
+    def gke_config(self) -> Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]:
+        """
+        A block that specifies GKE configuration for the Databricks workspace:
+        """
+        return pulumi.get(self, "gke_config")
+
+    @gke_config.setter
+    def gke_config(self, value: Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]):
+        pulumi.set(self, "gke_config", value)
+
+    @property
     @pulumi.getter(name="isNoPublicIpEnabled")
     def is_no_public_ip_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "is_no_public_ip_enabled")
@@ -220,6 +251,9 @@ class MwsWorkspacesArgs:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        region of the subnet
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -239,17 +273,11 @@ class MwsWorkspacesArgs:
         pulumi.set(self, "managed_services_customer_managed_key_id", value)
 
     @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input['MwsWorkspacesNetworkArgs']]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input['MwsWorkspacesNetworkArgs']]):
-        pulumi.set(self, "network", value)
-
-    @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        `network_id` from networks.
+        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -356,16 +384,17 @@ class _MwsWorkspacesState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  aws_region: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[str]] = None,
-                 cloud_resource_bucket: Optional[pulumi.Input['MwsWorkspacesCloudResourceBucketArgs']] = None,
+                 cloud_resource_container: Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  credentials_id: Optional[pulumi.Input[str]] = None,
                  customer_managed_key_id: Optional[pulumi.Input[str]] = None,
                  deployment_name: Optional[pulumi.Input[str]] = None,
                  external_customer_info: Optional[pulumi.Input['MwsWorkspacesExternalCustomerInfoArgs']] = None,
+                 gcp_managed_network_config: Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']] = None,
+                 gke_config: Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']] = None,
                  is_no_public_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  managed_services_customer_managed_key_id: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input['MwsWorkspacesNetworkArgs']] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  pricing_tier: Optional[pulumi.Input[str]] = None,
                  private_access_settings_id: Optional[pulumi.Input[str]] = None,
@@ -380,10 +409,14 @@ class _MwsWorkspacesState:
         """
         Input properties used for looking up and filtering MwsWorkspaces resources.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-        :param pulumi.Input[str] aws_region: AWS region of VPC
+        :param pulumi.Input[str] aws_region: region of VPC
+        :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+        :param pulumi.Input['MwsWorkspacesGkeConfigArgs'] gke_config: A block that specifies GKE configuration for the Databricks workspace:
+        :param pulumi.Input[str] location: region of the subnet
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
+        :param pulumi.Input[str] network_id: `network_id` from networks.
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI
         :param pulumi.Input[str] workspace_status: (String) workspace status
@@ -396,8 +429,8 @@ class _MwsWorkspacesState:
             pulumi.set(__self__, "aws_region", aws_region)
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
-        if cloud_resource_bucket is not None:
-            pulumi.set(__self__, "cloud_resource_bucket", cloud_resource_bucket)
+        if cloud_resource_container is not None:
+            pulumi.set(__self__, "cloud_resource_container", cloud_resource_container)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
         if credentials_id is not None:
@@ -411,14 +444,16 @@ class _MwsWorkspacesState:
             pulumi.set(__self__, "deployment_name", deployment_name)
         if external_customer_info is not None:
             pulumi.set(__self__, "external_customer_info", external_customer_info)
+        if gcp_managed_network_config is not None:
+            pulumi.set(__self__, "gcp_managed_network_config", gcp_managed_network_config)
+        if gke_config is not None:
+            pulumi.set(__self__, "gke_config", gke_config)
         if is_no_public_ip_enabled is not None:
             pulumi.set(__self__, "is_no_public_ip_enabled", is_no_public_ip_enabled)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if managed_services_customer_managed_key_id is not None:
             pulumi.set(__self__, "managed_services_customer_managed_key_id", managed_services_customer_managed_key_id)
-        if network is not None:
-            pulumi.set(__self__, "network", network)
         if network_id is not None:
             pulumi.set(__self__, "network_id", network_id)
         if pricing_tier is not None:
@@ -458,7 +493,7 @@ class _MwsWorkspacesState:
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS region of VPC
+        region of VPC
         """
         return pulumi.get(self, "aws_region")
 
@@ -476,13 +511,16 @@ class _MwsWorkspacesState:
         pulumi.set(self, "cloud", value)
 
     @property
-    @pulumi.getter(name="cloudResourceBucket")
-    def cloud_resource_bucket(self) -> Optional[pulumi.Input['MwsWorkspacesCloudResourceBucketArgs']]:
-        return pulumi.get(self, "cloud_resource_bucket")
+    @pulumi.getter(name="cloudResourceContainer")
+    def cloud_resource_container(self) -> Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']]:
+        """
+        A block that specifies GCP workspace configurations, consisting of following blocks:
+        """
+        return pulumi.get(self, "cloud_resource_container")
 
-    @cloud_resource_bucket.setter
-    def cloud_resource_bucket(self, value: Optional[pulumi.Input['MwsWorkspacesCloudResourceBucketArgs']]):
-        pulumi.set(self, "cloud_resource_bucket", value)
+    @cloud_resource_container.setter
+    def cloud_resource_container(self, value: Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']]):
+        pulumi.set(self, "cloud_resource_container", value)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -536,6 +574,27 @@ class _MwsWorkspacesState:
         pulumi.set(self, "external_customer_info", value)
 
     @property
+    @pulumi.getter(name="gcpManagedNetworkConfig")
+    def gcp_managed_network_config(self) -> Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']]:
+        return pulumi.get(self, "gcp_managed_network_config")
+
+    @gcp_managed_network_config.setter
+    def gcp_managed_network_config(self, value: Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']]):
+        pulumi.set(self, "gcp_managed_network_config", value)
+
+    @property
+    @pulumi.getter(name="gkeConfig")
+    def gke_config(self) -> Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]:
+        """
+        A block that specifies GKE configuration for the Databricks workspace:
+        """
+        return pulumi.get(self, "gke_config")
+
+    @gke_config.setter
+    def gke_config(self, value: Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]):
+        pulumi.set(self, "gke_config", value)
+
+    @property
     @pulumi.getter(name="isNoPublicIpEnabled")
     def is_no_public_ip_enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "is_no_public_ip_enabled")
@@ -547,6 +606,9 @@ class _MwsWorkspacesState:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        region of the subnet
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -566,17 +628,11 @@ class _MwsWorkspacesState:
         pulumi.set(self, "managed_services_customer_managed_key_id", value)
 
     @property
-    @pulumi.getter
-    def network(self) -> Optional[pulumi.Input['MwsWorkspacesNetworkArgs']]:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: Optional[pulumi.Input['MwsWorkspacesNetworkArgs']]):
-        pulumi.set(self, "network", value)
-
-    @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        `network_id` from networks.
+        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -697,16 +753,17 @@ class MwsWorkspaces(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  aws_region: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[str]] = None,
-                 cloud_resource_bucket: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceBucketArgs']]] = None,
+                 cloud_resource_container: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceContainerArgs']]] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  credentials_id: Optional[pulumi.Input[str]] = None,
                  customer_managed_key_id: Optional[pulumi.Input[str]] = None,
                  deployment_name: Optional[pulumi.Input[str]] = None,
                  external_customer_info: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesExternalCustomerInfoArgs']]] = None,
+                 gcp_managed_network_config: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesGcpManagedNetworkConfigArgs']]] = None,
+                 gke_config: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesGkeConfigArgs']]] = None,
                  is_no_public_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  managed_services_customer_managed_key_id: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesNetworkArgs']]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  pricing_tier: Optional[pulumi.Input[str]] = None,
                  private_access_settings_id: Optional[pulumi.Input[str]] = None,
@@ -727,10 +784,14 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-        :param pulumi.Input[str] aws_region: AWS region of VPC
+        :param pulumi.Input[str] aws_region: region of VPC
+        :param pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceContainerArgs']] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+        :param pulumi.Input[pulumi.InputType['MwsWorkspacesGkeConfigArgs']] gke_config: A block that specifies GKE configuration for the Databricks workspace:
+        :param pulumi.Input[str] location: region of the subnet
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
+        :param pulumi.Input[str] network_id: `network_id` from networks.
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI
         :param pulumi.Input[str] workspace_status: (String) workspace status
@@ -766,16 +827,17 @@ class MwsWorkspaces(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  aws_region: Optional[pulumi.Input[str]] = None,
                  cloud: Optional[pulumi.Input[str]] = None,
-                 cloud_resource_bucket: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceBucketArgs']]] = None,
+                 cloud_resource_container: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceContainerArgs']]] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  credentials_id: Optional[pulumi.Input[str]] = None,
                  customer_managed_key_id: Optional[pulumi.Input[str]] = None,
                  deployment_name: Optional[pulumi.Input[str]] = None,
                  external_customer_info: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesExternalCustomerInfoArgs']]] = None,
+                 gcp_managed_network_config: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesGcpManagedNetworkConfigArgs']]] = None,
+                 gke_config: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesGkeConfigArgs']]] = None,
                  is_no_public_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  managed_services_customer_managed_key_id: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesNetworkArgs']]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
                  pricing_tier: Optional[pulumi.Input[str]] = None,
                  private_access_settings_id: Optional[pulumi.Input[str]] = None,
@@ -801,7 +863,7 @@ class MwsWorkspaces(pulumi.CustomResource):
             __props__.__dict__["account_id"] = None if account_id is None else pulumi.Output.secret(account_id)
             __props__.__dict__["aws_region"] = aws_region
             __props__.__dict__["cloud"] = cloud
-            __props__.__dict__["cloud_resource_bucket"] = cloud_resource_bucket
+            __props__.__dict__["cloud_resource_container"] = cloud_resource_container
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["credentials_id"] = credentials_id
             if customer_managed_key_id is not None and not opts.urn:
@@ -810,10 +872,11 @@ class MwsWorkspaces(pulumi.CustomResource):
             __props__.__dict__["customer_managed_key_id"] = customer_managed_key_id
             __props__.__dict__["deployment_name"] = deployment_name
             __props__.__dict__["external_customer_info"] = external_customer_info
+            __props__.__dict__["gcp_managed_network_config"] = gcp_managed_network_config
+            __props__.__dict__["gke_config"] = gke_config
             __props__.__dict__["is_no_public_ip_enabled"] = is_no_public_ip_enabled
             __props__.__dict__["location"] = location
             __props__.__dict__["managed_services_customer_managed_key_id"] = managed_services_customer_managed_key_id
-            __props__.__dict__["network"] = network
             __props__.__dict__["network_id"] = network_id
             __props__.__dict__["pricing_tier"] = pricing_tier
             __props__.__dict__["private_access_settings_id"] = private_access_settings_id
@@ -842,16 +905,17 @@ class MwsWorkspaces(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             aws_region: Optional[pulumi.Input[str]] = None,
             cloud: Optional[pulumi.Input[str]] = None,
-            cloud_resource_bucket: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceBucketArgs']]] = None,
+            cloud_resource_container: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceContainerArgs']]] = None,
             creation_time: Optional[pulumi.Input[int]] = None,
             credentials_id: Optional[pulumi.Input[str]] = None,
             customer_managed_key_id: Optional[pulumi.Input[str]] = None,
             deployment_name: Optional[pulumi.Input[str]] = None,
             external_customer_info: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesExternalCustomerInfoArgs']]] = None,
+            gcp_managed_network_config: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesGcpManagedNetworkConfigArgs']]] = None,
+            gke_config: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesGkeConfigArgs']]] = None,
             is_no_public_ip_enabled: Optional[pulumi.Input[bool]] = None,
             location: Optional[pulumi.Input[str]] = None,
             managed_services_customer_managed_key_id: Optional[pulumi.Input[str]] = None,
-            network: Optional[pulumi.Input[pulumi.InputType['MwsWorkspacesNetworkArgs']]] = None,
             network_id: Optional[pulumi.Input[str]] = None,
             pricing_tier: Optional[pulumi.Input[str]] = None,
             private_access_settings_id: Optional[pulumi.Input[str]] = None,
@@ -871,10 +935,14 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-        :param pulumi.Input[str] aws_region: AWS region of VPC
+        :param pulumi.Input[str] aws_region: region of VPC
+        :param pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceContainerArgs']] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+        :param pulumi.Input[pulumi.InputType['MwsWorkspacesGkeConfigArgs']] gke_config: A block that specifies GKE configuration for the Databricks workspace:
+        :param pulumi.Input[str] location: region of the subnet
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
+        :param pulumi.Input[str] network_id: `network_id` from networks.
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI
         :param pulumi.Input[str] workspace_status: (String) workspace status
@@ -888,16 +956,17 @@ class MwsWorkspaces(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["aws_region"] = aws_region
         __props__.__dict__["cloud"] = cloud
-        __props__.__dict__["cloud_resource_bucket"] = cloud_resource_bucket
+        __props__.__dict__["cloud_resource_container"] = cloud_resource_container
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["credentials_id"] = credentials_id
         __props__.__dict__["customer_managed_key_id"] = customer_managed_key_id
         __props__.__dict__["deployment_name"] = deployment_name
         __props__.__dict__["external_customer_info"] = external_customer_info
+        __props__.__dict__["gcp_managed_network_config"] = gcp_managed_network_config
+        __props__.__dict__["gke_config"] = gke_config
         __props__.__dict__["is_no_public_ip_enabled"] = is_no_public_ip_enabled
         __props__.__dict__["location"] = location
         __props__.__dict__["managed_services_customer_managed_key_id"] = managed_services_customer_managed_key_id
-        __props__.__dict__["network"] = network
         __props__.__dict__["network_id"] = network_id
         __props__.__dict__["pricing_tier"] = pricing_tier
         __props__.__dict__["private_access_settings_id"] = private_access_settings_id
@@ -923,7 +992,7 @@ class MwsWorkspaces(pulumi.CustomResource):
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> pulumi.Output[Optional[str]]:
         """
-        AWS region of VPC
+        region of VPC
         """
         return pulumi.get(self, "aws_region")
 
@@ -933,9 +1002,12 @@ class MwsWorkspaces(pulumi.CustomResource):
         return pulumi.get(self, "cloud")
 
     @property
-    @pulumi.getter(name="cloudResourceBucket")
-    def cloud_resource_bucket(self) -> pulumi.Output[Optional['outputs.MwsWorkspacesCloudResourceBucket']]:
-        return pulumi.get(self, "cloud_resource_bucket")
+    @pulumi.getter(name="cloudResourceContainer")
+    def cloud_resource_container(self) -> pulumi.Output[Optional['outputs.MwsWorkspacesCloudResourceContainer']]:
+        """
+        A block that specifies GCP workspace configurations, consisting of following blocks:
+        """
+        return pulumi.get(self, "cloud_resource_container")
 
     @property
     @pulumi.getter(name="creationTime")
@@ -969,6 +1041,19 @@ class MwsWorkspaces(pulumi.CustomResource):
         return pulumi.get(self, "external_customer_info")
 
     @property
+    @pulumi.getter(name="gcpManagedNetworkConfig")
+    def gcp_managed_network_config(self) -> pulumi.Output[Optional['outputs.MwsWorkspacesGcpManagedNetworkConfig']]:
+        return pulumi.get(self, "gcp_managed_network_config")
+
+    @property
+    @pulumi.getter(name="gkeConfig")
+    def gke_config(self) -> pulumi.Output[Optional['outputs.MwsWorkspacesGkeConfig']]:
+        """
+        A block that specifies GKE configuration for the Databricks workspace:
+        """
+        return pulumi.get(self, "gke_config")
+
+    @property
     @pulumi.getter(name="isNoPublicIpEnabled")
     def is_no_public_ip_enabled(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "is_no_public_ip_enabled")
@@ -976,6 +1061,9 @@ class MwsWorkspaces(pulumi.CustomResource):
     @property
     @pulumi.getter
     def location(self) -> pulumi.Output[Optional[str]]:
+        """
+        region of the subnet
+        """
         return pulumi.get(self, "location")
 
     @property
@@ -987,13 +1075,11 @@ class MwsWorkspaces(pulumi.CustomResource):
         return pulumi.get(self, "managed_services_customer_managed_key_id")
 
     @property
-    @pulumi.getter
-    def network(self) -> pulumi.Output[Optional['outputs.MwsWorkspacesNetwork']]:
-        return pulumi.get(self, "network")
-
-    @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        `network_id` from networks.
+        """
         return pulumi.get(self, "network_id")
 
     @property

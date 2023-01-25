@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTaskSparkPythonTask
     {
         /// <summary>
-        /// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        /// (List) Command line parameters passed to the Python file.
         /// </summary>
         public readonly ImmutableArray<string> Parameters;
         /// <summary>
-        /// The URI of the Python file to be executed. databricks.DbfsFile and S3 paths are supported. This field is required.
+        /// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
         /// </summary>
         public readonly string PythonFile;
 

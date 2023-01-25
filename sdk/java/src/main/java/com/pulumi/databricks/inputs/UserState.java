@@ -114,6 +114,36 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+     * 
+     */
+    @Import(name="home")
+    private @Nullable Output<String> home;
+
+    /**
+     * @return Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+     * 
+     */
+    public Optional<Output<String>> home() {
+        return Optional.ofNullable(this.home);
+    }
+
+    /**
+     * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+     * 
+     */
+    @Import(name="repos")
+    private @Nullable Output<String> repos;
+
+    /**
+     * @return Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+     * 
+     */
+    public Optional<Output<String>> repos() {
+        return Optional.ofNullable(this.repos);
+    }
+
+    /**
      * This is the username of the given user and will be their form of access and identity.
      * 
      */
@@ -145,6 +175,8 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.displayName = $.displayName;
         this.externalId = $.externalId;
         this.force = $.force;
+        this.home = $.home;
+        this.repos = $.repos;
         this.userName = $.userName;
         this.workspaceAccess = $.workspaceAccess;
     }
@@ -300,6 +332,48 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
         public Builder force(Boolean force) {
             return force(Output.of(force));
+        }
+
+        /**
+         * @param home Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder home(@Nullable Output<String> home) {
+            $.home = home;
+            return this;
+        }
+
+        /**
+         * @param home Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder home(String home) {
+            return home(Output.of(home));
+        }
+
+        /**
+         * @param repos Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repos(@Nullable Output<String> repos) {
+            $.repos = repos;
+            return this;
+        }
+
+        /**
+         * @param repos Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repos(String repos) {
+            return repos(Output.of(repos));
         }
 
         /**

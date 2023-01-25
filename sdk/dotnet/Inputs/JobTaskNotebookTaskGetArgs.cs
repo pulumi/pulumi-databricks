@@ -25,10 +25,16 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// The absolute path of the databricks.Notebook to be run in the Databricks workspace. This path must begin with a slash. This field is required.
+        /// The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
         /// </summary>
         [Input("notebookPath", required: true)]
         public Input<string> NotebookPath { get; set; } = null!;
+
+        /// <summary>
+        /// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
 
         public JobTaskNotebookTaskGetArgs()
         {

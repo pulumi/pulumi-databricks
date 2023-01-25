@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ClusterInitScriptGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("abfss")]
+        public Input<Inputs.ClusterInitScriptAbfssGetArgs>? Abfss { get; set; }
+
         [Input("dbfs")]
         public Input<Inputs.ClusterInitScriptDbfsGetArgs>? Dbfs { get; set; }
 

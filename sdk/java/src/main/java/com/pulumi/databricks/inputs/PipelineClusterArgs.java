@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineClusterAutoscaleArgs;
 import com.pulumi.databricks.inputs.PipelineClusterAwsAttributesArgs;
+import com.pulumi.databricks.inputs.PipelineClusterAzureAttributesArgs;
 import com.pulumi.databricks.inputs.PipelineClusterClusterLogConfArgs;
 import com.pulumi.databricks.inputs.PipelineClusterGcpAttributesArgs;
 import com.pulumi.databricks.inputs.PipelineClusterInitScriptArgs;
@@ -46,6 +47,13 @@ public final class PipelineClusterArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.awsAttributes);
     }
 
+    @Import(name="azureAttributes")
+    private @Nullable Output<PipelineClusterAzureAttributesArgs> azureAttributes;
+
+    public Optional<Output<PipelineClusterAzureAttributesArgs>> azureAttributes() {
+        return Optional.ofNullable(this.azureAttributes);
+    }
+
     @Import(name="clusterLogConf")
     private @Nullable Output<PipelineClusterClusterLogConfArgs> clusterLogConf;
 
@@ -72,6 +80,13 @@ public final class PipelineClusterArgs extends com.pulumi.resources.ResourceArgs
 
     public Optional<Output<String>> driverNodeTypeId() {
         return Optional.ofNullable(this.driverNodeTypeId);
+    }
+
+    @Import(name="enableLocalDiskEncryption")
+    private @Nullable Output<Boolean> enableLocalDiskEncryption;
+
+    public Optional<Output<Boolean>> enableLocalDiskEncryption() {
+        return Optional.ofNullable(this.enableLocalDiskEncryption);
     }
 
     @Import(name="gcpAttributes")
@@ -150,10 +165,12 @@ public final class PipelineClusterArgs extends com.pulumi.resources.ResourceArgs
         this.applyPolicyDefaultValues = $.applyPolicyDefaultValues;
         this.autoscale = $.autoscale;
         this.awsAttributes = $.awsAttributes;
+        this.azureAttributes = $.azureAttributes;
         this.clusterLogConf = $.clusterLogConf;
         this.customTags = $.customTags;
         this.driverInstancePoolId = $.driverInstancePoolId;
         this.driverNodeTypeId = $.driverNodeTypeId;
+        this.enableLocalDiskEncryption = $.enableLocalDiskEncryption;
         this.gcpAttributes = $.gcpAttributes;
         this.initScripts = $.initScripts;
         this.instancePoolId = $.instancePoolId;
@@ -211,6 +228,15 @@ public final class PipelineClusterArgs extends com.pulumi.resources.ResourceArgs
             return awsAttributes(Output.of(awsAttributes));
         }
 
+        public Builder azureAttributes(@Nullable Output<PipelineClusterAzureAttributesArgs> azureAttributes) {
+            $.azureAttributes = azureAttributes;
+            return this;
+        }
+
+        public Builder azureAttributes(PipelineClusterAzureAttributesArgs azureAttributes) {
+            return azureAttributes(Output.of(azureAttributes));
+        }
+
         public Builder clusterLogConf(@Nullable Output<PipelineClusterClusterLogConfArgs> clusterLogConf) {
             $.clusterLogConf = clusterLogConf;
             return this;
@@ -245,6 +271,15 @@ public final class PipelineClusterArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder driverNodeTypeId(String driverNodeTypeId) {
             return driverNodeTypeId(Output.of(driverNodeTypeId));
+        }
+
+        public Builder enableLocalDiskEncryption(@Nullable Output<Boolean> enableLocalDiskEncryption) {
+            $.enableLocalDiskEncryption = enableLocalDiskEncryption;
+            return this;
+        }
+
+        public Builder enableLocalDiskEncryption(Boolean enableLocalDiskEncryption) {
+            return enableLocalDiskEncryption(Output.of(enableLocalDiskEncryption));
         }
 
         public Builder gcpAttributes(@Nullable Output<PipelineClusterGcpAttributesArgs> gcpAttributes) {

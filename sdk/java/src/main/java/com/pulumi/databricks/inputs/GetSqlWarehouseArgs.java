@@ -35,9 +35,17 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.autoStopMins);
     }
 
+    /**
+     * block, consisting of following fields:
+     * 
+     */
     @Import(name="channel")
     private @Nullable Output<GetSqlWarehouseChannelArgs> channel;
 
+    /**
+     * @return block, consisting of following fields:
+     * 
+     */
     public Optional<Output<GetSqlWarehouseChannelArgs>> channel() {
         return Optional.ofNullable(this.channel);
     }
@@ -89,7 +97,6 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-     * * `channel` block, consisting of following fields:
      * 
      */
     @Import(name="enableServerlessCompute")
@@ -97,7 +104,6 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-     * * `channel` block, consisting of following fields:
      * 
      */
     public Optional<Output<Boolean>> enableServerlessCompute() {
@@ -306,11 +312,23 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
             return autoStopMins(Output.of(autoStopMins));
         }
 
+        /**
+         * @param channel block, consisting of following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder channel(@Nullable Output<GetSqlWarehouseChannelArgs> channel) {
             $.channel = channel;
             return this;
         }
 
+        /**
+         * @param channel block, consisting of following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder channel(GetSqlWarehouseChannelArgs channel) {
             return channel(Output.of(channel));
         }
@@ -380,7 +398,6 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param enableServerlessCompute Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-         * * `channel` block, consisting of following fields:
          * 
          * @return builder
          * 
@@ -392,7 +409,6 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param enableServerlessCompute Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
-         * * `channel` block, consisting of following fields:
          * 
          * @return builder
          * 

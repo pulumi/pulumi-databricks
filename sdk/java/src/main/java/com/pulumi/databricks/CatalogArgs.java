@@ -100,6 +100,51 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.properties);
     }
 
+    /**
+     * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+     * 
+     */
+    @Import(name="providerName")
+    private @Nullable Output<String> providerName;
+
+    /**
+     * @return For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+     * 
+     */
+    public Optional<Output<String>> providerName() {
+        return Optional.ofNullable(this.providerName);
+    }
+
+    /**
+     * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+     * 
+     */
+    @Import(name="shareName")
+    private @Nullable Output<String> shareName;
+
+    /**
+     * @return For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+     * 
+     */
+    public Optional<Output<String>> shareName() {
+        return Optional.ofNullable(this.shareName);
+    }
+
+    /**
+     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * 
+     */
+    @Import(name="storageRoot")
+    private @Nullable Output<String> storageRoot;
+
+    /**
+     * @return Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * 
+     */
+    public Optional<Output<String>> storageRoot() {
+        return Optional.ofNullable(this.storageRoot);
+    }
+
     private CatalogArgs() {}
 
     private CatalogArgs(CatalogArgs $) {
@@ -109,6 +154,9 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.owner = $.owner;
         this.properties = $.properties;
+        this.providerName = $.providerName;
+        this.shareName = $.shareName;
+        this.storageRoot = $.storageRoot;
     }
 
     public static Builder builder() {
@@ -241,6 +289,69 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder properties(Map<String,Object> properties) {
             return properties(Output.of(properties));
+        }
+
+        /**
+         * @param providerName For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerName(@Nullable Output<String> providerName) {
+            $.providerName = providerName;
+            return this;
+        }
+
+        /**
+         * @param providerName For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerName(String providerName) {
+            return providerName(Output.of(providerName));
+        }
+
+        /**
+         * @param shareName For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shareName(@Nullable Output<String> shareName) {
+            $.shareName = shareName;
+            return this;
+        }
+
+        /**
+         * @param shareName For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shareName(String shareName) {
+            return shareName(Output.of(shareName));
+        }
+
+        /**
+         * @param storageRoot Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageRoot(@Nullable Output<String> storageRoot) {
+            $.storageRoot = storageRoot;
+            return this;
+        }
+
+        /**
+         * @param storageRoot Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageRoot(String storageRoot) {
+            return storageRoot(Output.of(storageRoot));
         }
 
         public CatalogArgs build() {
