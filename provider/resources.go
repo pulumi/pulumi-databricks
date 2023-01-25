@@ -22,6 +22,7 @@ import (
 	"github.com/pulumi/pulumi-databricks/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the token components used below.
@@ -105,15 +106,24 @@ func Provider() tfbridge.ProviderInfo {
 					Markdown: docGroupMember,
 				},
 			},
-			"databricks_group_role":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupRole")},
-			"databricks_instance_pool":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstancePool")},
-			"databricks_instance_profile":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstanceProfile")},
-			"databricks_ip_access_list":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IpAccessList")},
-			"databricks_job":                         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Job")},
-			"databricks_library":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Library")},
-			"databricks_metastore":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Metastore")},
-			"databricks_metastore_assignment":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MetastoreAssignment")},
-			"databricks_metastore_data_access":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MetastoreDataAccess")},
+			"databricks_group_role":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupRole")},
+			"databricks_instance_pool":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstancePool")},
+			"databricks_instance_profile": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InstanceProfile")},
+			"databricks_ip_access_list":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IpAccessList")},
+			"databricks_job":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Job")},
+			"databricks_library":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Library")},
+
+			// The documentation for the `datastore_provider` resource describes:
+			//
+			// Within a metastore, Unity Catalog provides the ability to create a provider
+			// which contains a list of shares that have been shared with you.
+			//
+			// `databricks:index:Provider` is an illegal token, so `databricks_provider` is being mapped to `MetastoreProvider`.
+			"databricks_provider":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MetastoreProvider")},
+			"databricks_metastore":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Metastore")},
+			"databricks_metastore_assignment":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MetastoreAssignment")},
+			"databricks_metastore_data_access": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MetastoreDataAccess")},
+
 			"databricks_mlflow_experiment":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MlflowExperiment")},
 			"databricks_mlflow_model":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MlflowModel")},
 			"databricks_mlflow_webhook":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MlflowWebhook")},
@@ -221,6 +231,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 	}
+
+	err := prov.ComputeDefaults(tfbridge.TokensSingleModule("databricks_", mainMod,
+		func(module, name string) (string, error) {
+			return tfbridge.MakeDataSource(mainPkg, module, name).String(), nil
+		}))
+	contract.AssertNoError(err)
 
 	prov.SetAutonaming(255, "-")
 
