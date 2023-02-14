@@ -29,6 +29,13 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.allowDuplicateNames);
     }
 
+    @Import(name="catalog")
+    private @Nullable Output<String> catalog;
+
+    public Optional<Output<String>> catalog() {
+        return Optional.ofNullable(this.catalog);
+    }
+
     /**
      * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
      * 
@@ -127,14 +134,14 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
      * 
      */
     @Import(name="libraries")
     private @Nullable Output<List<PipelineLibraryArgs>> libraries;
 
     /**
-     * @return blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+     * @return blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
      * 
      */
     public Optional<Output<List<PipelineLibraryArgs>>> libraries() {
@@ -212,6 +219,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
     private PipelineState(PipelineState $) {
         this.allowDuplicateNames = $.allowDuplicateNames;
+        this.catalog = $.catalog;
         this.channel = $.channel;
         this.clusters = $.clusters;
         this.configuration = $.configuration;
@@ -252,6 +260,15 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
         public Builder allowDuplicateNames(Boolean allowDuplicateNames) {
             return allowDuplicateNames(Output.of(allowDuplicateNames));
+        }
+
+        public Builder catalog(@Nullable Output<String> catalog) {
+            $.catalog = catalog;
+            return this;
+        }
+
+        public Builder catalog(String catalog) {
+            return catalog(Output.of(catalog));
         }
 
         /**
@@ -400,7 +417,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param libraries blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+         * @param libraries blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
          * 
          * @return builder
          * 
@@ -411,7 +428,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param libraries blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+         * @param libraries blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
          * 
          * @return builder
          * 
@@ -421,7 +438,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param libraries blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+         * @param libraries blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
          * 
          * @return builder
          * 

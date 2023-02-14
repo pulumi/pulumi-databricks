@@ -32,7 +32,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["allSandboxSchemas"] = sandbox.Apply(getSchemasResult =&gt; getSchemasResult),
+        ///         ["allSandboxSchemas"] = sandbox,
         ///     };
         /// });
         /// ```
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["allSandboxSchemas"] = sandbox.Apply(getSchemasResult =&gt; getSchemasResult),
+        ///         ["allSandboxSchemas"] = sandbox,
         ///     };
         /// });
         /// ```

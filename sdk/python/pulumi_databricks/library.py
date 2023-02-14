@@ -309,11 +309,11 @@ class Library(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         * End to end workspace management guide.
-        * get_clusters data to retrieve a list of Cluster ids.
+          *_get_clusters_data to retrieve a list of Cluster ids.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
         * DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-        * get_dbfs_file_paths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+          *_get_dbfs_file_paths_data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
         * DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
         * GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
@@ -434,11 +434,11 @@ class Library(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         * End to end workspace management guide.
-        * get_clusters data to retrieve a list of Cluster ids.
+          *_get_clusters_data to retrieve a list of Cluster ids.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
         * DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-        * get_dbfs_file_paths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+          *_get_dbfs_file_paths_data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
         * DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
         * GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.

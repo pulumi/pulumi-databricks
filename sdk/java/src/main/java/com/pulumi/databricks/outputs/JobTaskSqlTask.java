@@ -37,7 +37,7 @@ public final class JobTaskSqlTask {
      */
     private @Nullable JobTaskSqlTaskQuery query;
     /**
-     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
      * 
      */
     private @Nullable String warehouseId;
@@ -72,7 +72,7 @@ public final class JobTaskSqlTask {
         return Optional.ofNullable(this.query);
     }
     /**
-     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
      * 
      */
     public Optional<String> warehouseId() {

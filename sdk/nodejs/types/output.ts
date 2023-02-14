@@ -2153,7 +2153,7 @@ export interface JobTaskSqlTask {
      */
     query?: outputs.JobTaskSqlTaskQuery;
     /**
-     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
      */
     warehouseId?: string;
 }
@@ -2561,10 +2561,15 @@ export interface PipelineFilters {
 }
 
 export interface PipelineLibrary {
+    file?: outputs.PipelineLibraryFile;
     jar?: string;
     maven?: outputs.PipelineLibraryMaven;
     notebook?: outputs.PipelineLibraryNotebook;
     whl?: string;
+}
+
+export interface PipelineLibraryFile {
+    path: string;
 }
 
 export interface PipelineLibraryMaven {

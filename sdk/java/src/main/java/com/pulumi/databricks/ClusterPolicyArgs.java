@@ -32,14 +32,14 @@ public final class ClusterPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum number of clusters allowed per user. When omitted, there is no limit.
+     * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
      * 
      */
     @Import(name="maxClustersPerUser")
     private @Nullable Output<Integer> maxClustersPerUser;
 
     /**
-     * @return Maximum number of clusters allowed per user. When omitted, there is no limit.
+     * @return Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
      * 
      */
     public Optional<Output<Integer>> maxClustersPerUser() {
@@ -109,7 +109,7 @@ public final class ClusterPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxClustersPerUser Maximum number of clusters allowed per user. When omitted, there is no limit.
+         * @param maxClustersPerUser Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxClustersPerUser Maximum number of clusters allowed per user. When omitted, there is no limit.
+         * @param maxClustersPerUser Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
          * 
          * @return builder
          * 

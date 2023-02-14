@@ -32,11 +32,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.Notebook;
+ * import com.pulumi.databricks.Repo;
  * import com.pulumi.databricks.Pipeline;
  * import com.pulumi.databricks.PipelineArgs;
  * import com.pulumi.databricks.inputs.PipelineClusterArgs;
  * import com.pulumi.databricks.inputs.PipelineLibraryArgs;
  * import com.pulumi.databricks.inputs.PipelineLibraryNotebookArgs;
+ * import com.pulumi.databricks.inputs.PipelineLibraryFileArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,7 +52,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dltDemo = new Notebook(&#34;dltDemo&#34;);
+ *         var dltDemoNotebook = new Notebook(&#34;dltDemoNotebook&#34;);
+ * 
+ *         var dltDemoRepo = new Repo(&#34;dltDemoRepo&#34;);
  * 
  *         var this_ = new Pipeline(&#34;this&#34;, PipelineArgs.builder()        
  *             .storage(&#34;/test/first-pipeline&#34;)
@@ -69,11 +73,17 @@ import javax.annotation.Nullable;
  *                     .numWorkers(1)
  *                     .customTags(Map.of(&#34;cluster_type&#34;, &#34;maintenance&#34;))
  *                     .build())
- *             .libraries(PipelineLibraryArgs.builder()
- *                 .notebook(PipelineLibraryNotebookArgs.builder()
- *                     .path(dltDemo.id())
+ *             .libraries(            
+ *                 PipelineLibraryArgs.builder()
+ *                     .notebook(PipelineLibraryNotebookArgs.builder()
+ *                         .path(dltDemoNotebook.id())
+ *                         .build())
+ *                     .build(),
+ *                 PipelineLibraryArgs.builder()
+ *                     .file(PipelineLibraryFileArgs.builder()
+ *                         .path(dltDemoRepo.path().applyValue(path -&gt; String.format(&#34;%s/pipeline.sql&#34;, path)))
+ *                         .build())
  *                     .build())
- *                 .build())
  *             .continuous(false)
  *             .build());
  * 
@@ -105,6 +115,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Boolean>> allowDuplicateNames() {
         return Codegen.optional(this.allowDuplicateNames);
+    }
+    @Export(name="catalog", type=String.class, parameters={})
+    private Output</* @Nullable */ String> catalog;
+
+    public Output<Optional<String>> catalog() {
+        return Codegen.optional(this.catalog);
     }
     /**
      * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
@@ -197,14 +213,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.filters);
     }
     /**
-     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
      * 
      */
     @Export(name="libraries", type=List.class, parameters={PipelineLibrary.class})
     private Output</* @Nullable */ List<PipelineLibrary>> libraries;
 
     /**
-     * @return blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+     * @return blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
      * 
      */
     public Output<Optional<List<PipelineLibrary>>> libraries() {

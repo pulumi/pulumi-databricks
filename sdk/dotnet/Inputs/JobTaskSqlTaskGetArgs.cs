@@ -43,7 +43,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.JobTaskSqlTaskQueryGetArgs>? Query { get; set; }
 
         /// <summary>
-        /// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        /// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
         /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }

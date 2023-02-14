@@ -184,6 +184,7 @@ __all__ = [
     'PipelineClusterInitScriptS3Args',
     'PipelineFiltersArgs',
     'PipelineLibraryArgs',
+    'PipelineLibraryFileArgs',
     'PipelineLibraryMavenArgs',
     'PipelineLibraryNotebookArgs',
     'RecipientIpAccessListArgs',
@@ -6785,7 +6786,7 @@ class JobTaskSqlTaskArgs:
         :param pulumi.Input['JobTaskSqlTaskDashboardArgs'] dashboard: block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
         :param pulumi.Input[Mapping[str, Any]] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         :param pulumi.Input['JobTaskSqlTaskQueryArgs'] query: block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
-        :param pulumi.Input[str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        :param pulumi.Input[str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
         """
         if alert is not None:
             pulumi.set(__self__, "alert", alert)
@@ -6850,7 +6851,7 @@ class JobTaskSqlTaskArgs:
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
         """
         return pulumi.get(self, "warehouse_id")
 
@@ -9049,10 +9050,13 @@ class PipelineFiltersArgs:
 @pulumi.input_type
 class PipelineLibraryArgs:
     def __init__(__self__, *,
+                 file: Optional[pulumi.Input['PipelineLibraryFileArgs']] = None,
                  jar: Optional[pulumi.Input[str]] = None,
                  maven: Optional[pulumi.Input['PipelineLibraryMavenArgs']] = None,
                  notebook: Optional[pulumi.Input['PipelineLibraryNotebookArgs']] = None,
                  whl: Optional[pulumi.Input[str]] = None):
+        if file is not None:
+            pulumi.set(__self__, "file", file)
         if jar is not None:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
@@ -9061,6 +9065,15 @@ class PipelineLibraryArgs:
             pulumi.set(__self__, "notebook", notebook)
         if whl is not None:
             pulumi.set(__self__, "whl", whl)
+
+    @property
+    @pulumi.getter
+    def file(self) -> Optional[pulumi.Input['PipelineLibraryFileArgs']]:
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: Optional[pulumi.Input['PipelineLibraryFileArgs']]):
+        pulumi.set(self, "file", value)
 
     @property
     @pulumi.getter
@@ -9097,6 +9110,22 @@ class PipelineLibraryArgs:
     @whl.setter
     def whl(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "whl", value)
+
+
+@pulumi.input_type
+class PipelineLibraryFileArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str]):
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
 
 
 @pulumi.input_type
@@ -10760,7 +10789,7 @@ class GetClusterClusterInfoArgs:
         :param bool enable_elastic_disk: Use autoscaling local storage.
         :param bool enable_local_disk_encryption: Enable local disk encryption.
         :param str instance_pool_id: The pool of idle instances the cluster is attached to.
-        :param str node_type_id: Any supported get_node_type id.
+        :param str node_type_id: Any supported_get_node_type_id.
         :param str policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults.
         :param str runtime_engine: The type of runtime of the cluster
         :param str single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -11158,7 +11187,7 @@ class GetClusterClusterInfoArgs:
     @pulumi.getter(name="nodeTypeId")
     def node_type_id(self) -> Optional[str]:
         """
-        Any supported get_node_type id.
+        Any supported_get_node_type_id.
         """
         return pulumi.get(self, "node_type_id")
 

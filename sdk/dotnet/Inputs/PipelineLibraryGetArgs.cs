@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineLibraryGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("file")]
+        public Input<Inputs.PipelineLibraryFileGetArgs>? File { get; set; }
+
         [Input("jar")]
         public Input<string>? Jar { get; set; }
 

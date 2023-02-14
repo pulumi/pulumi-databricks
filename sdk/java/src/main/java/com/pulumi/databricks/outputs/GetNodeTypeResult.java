@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetNodeTypeResult {
     private @Nullable String category;
+    private @Nullable Boolean fleet;
     private @Nullable Integer gbPerCore;
     private @Nullable Boolean graviton;
     /**
@@ -35,6 +36,9 @@ public final class GetNodeTypeResult {
     private GetNodeTypeResult() {}
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
+    }
+    public Optional<Boolean> fleet() {
+        return Optional.ofNullable(this.fleet);
     }
     public Optional<Integer> gbPerCore() {
         return Optional.ofNullable(this.gbPerCore);
@@ -90,6 +94,7 @@ public final class GetNodeTypeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String category;
+        private @Nullable Boolean fleet;
         private @Nullable Integer gbPerCore;
         private @Nullable Boolean graviton;
         private String id;
@@ -107,6 +112,7 @@ public final class GetNodeTypeResult {
         public Builder(GetNodeTypeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
+    	      this.fleet = defaults.fleet;
     	      this.gbPerCore = defaults.gbPerCore;
     	      this.graviton = defaults.graviton;
     	      this.id = defaults.id;
@@ -125,6 +131,11 @@ public final class GetNodeTypeResult {
         @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fleet(@Nullable Boolean fleet) {
+            this.fleet = fleet;
             return this;
         }
         @CustomType.Setter
@@ -195,6 +206,7 @@ public final class GetNodeTypeResult {
         public GetNodeTypeResult build() {
             final var o = new GetNodeTypeResult();
             o.category = category;
+            o.fleet = fleet;
             o.gbPerCore = gbPerCore;
             o.graviton = graviton;
             o.id = id;

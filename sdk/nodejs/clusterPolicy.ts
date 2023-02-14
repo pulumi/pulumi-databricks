@@ -81,7 +81,7 @@ export class ClusterPolicy extends pulumi.CustomResource {
      */
     public readonly definition!: pulumi.Output<string>;
     /**
-     * Maximum number of clusters allowed per user. When omitted, there is no limit.
+     * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
      */
     public readonly maxClustersPerUser!: pulumi.Output<number | undefined>;
     /**
@@ -134,7 +134,7 @@ export interface ClusterPolicyState {
      */
     definition?: pulumi.Input<string>;
     /**
-     * Maximum number of clusters allowed per user. When omitted, there is no limit.
+     * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
      */
     maxClustersPerUser?: pulumi.Input<number>;
     /**
@@ -156,7 +156,7 @@ export interface ClusterPolicyArgs {
      */
     definition: pulumi.Input<string>;
     /**
-     * Maximum number of clusters allowed per user. When omitted, there is no limit.
+     * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
      */
     maxClustersPerUser?: pulumi.Input<number>;
     /**

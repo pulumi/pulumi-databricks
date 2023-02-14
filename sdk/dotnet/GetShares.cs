@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["shareName"] = @this.Apply(getSharesResult =&gt; getSharesResult).Apply(@this =&gt; @this.Apply(getSharesResult =&gt; getSharesResult.Shares)),
+        ///         ["shareName"] = @this.Apply(@this =&gt; @this.Apply(getSharesResult =&gt; getSharesResult.Shares)),
         ///     };
         /// });
         /// ```
@@ -64,7 +64,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["shareName"] = @this.Apply(getSharesResult =&gt; getSharesResult).Apply(@this =&gt; @this.Apply(getSharesResult =&gt; getSharesResult.Shares)),
+        ///         ["shareName"] = @this.Apply(@this =&gt; @this.Apply(getSharesResult =&gt; getSharesResult.Shares)),
         ///     };
         /// });
         /// ```

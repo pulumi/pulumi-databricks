@@ -5,26 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export { AwsS3MountArgs, AwsS3MountState } from "./awsS3Mount";
-export type AwsS3Mount = import("./awsS3Mount").AwsS3Mount;
-export const AwsS3Mount: typeof import("./awsS3Mount").AwsS3Mount = null as any;
-utilities.lazyLoad(exports, ["AwsS3Mount"], () => require("./awsS3Mount"));
-
-export { AzureAdlsGen1MountArgs, AzureAdlsGen1MountState } from "./azureAdlsGen1Mount";
-export type AzureAdlsGen1Mount = import("./azureAdlsGen1Mount").AzureAdlsGen1Mount;
-export const AzureAdlsGen1Mount: typeof import("./azureAdlsGen1Mount").AzureAdlsGen1Mount = null as any;
-utilities.lazyLoad(exports, ["AzureAdlsGen1Mount"], () => require("./azureAdlsGen1Mount"));
-
-export { AzureAdlsGen2MountArgs, AzureAdlsGen2MountState } from "./azureAdlsGen2Mount";
-export type AzureAdlsGen2Mount = import("./azureAdlsGen2Mount").AzureAdlsGen2Mount;
-export const AzureAdlsGen2Mount: typeof import("./azureAdlsGen2Mount").AzureAdlsGen2Mount = null as any;
-utilities.lazyLoad(exports, ["AzureAdlsGen2Mount"], () => require("./azureAdlsGen2Mount"));
-
-export { AzureBlobMountArgs, AzureBlobMountState } from "./azureBlobMount";
-export type AzureBlobMount = import("./azureBlobMount").AzureBlobMount;
-export const AzureBlobMount: typeof import("./azureBlobMount").AzureBlobMount = null as any;
-utilities.lazyLoad(exports, ["AzureBlobMount"], () => require("./azureBlobMount"));
-
 export { CatalogArgs, CatalogState } from "./catalog";
 export type Catalog = import("./catalog").Catalog;
 export const Catalog: typeof import("./catalog").Catalog = null as any;
@@ -527,14 +507,6 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "databricks:index/awsS3Mount:AwsS3Mount":
-                return new AwsS3Mount(name, <any>undefined, { urn })
-            case "databricks:index/azureAdlsGen1Mount:AzureAdlsGen1Mount":
-                return new AzureAdlsGen1Mount(name, <any>undefined, { urn })
-            case "databricks:index/azureAdlsGen2Mount:AzureAdlsGen2Mount":
-                return new AzureAdlsGen2Mount(name, <any>undefined, { urn })
-            case "databricks:index/azureBlobMount:AzureBlobMount":
-                return new AzureBlobMount(name, <any>undefined, { urn })
             case "databricks:index/catalog:Catalog":
                 return new Catalog(name, <any>undefined, { urn })
             case "databricks:index/cluster:Cluster":
@@ -670,10 +642,6 @@ const _module = {
         }
     },
 };
-pulumi.runtime.registerResourceModule("databricks", "index/awsS3Mount", _module)
-pulumi.runtime.registerResourceModule("databricks", "index/azureAdlsGen1Mount", _module)
-pulumi.runtime.registerResourceModule("databricks", "index/azureAdlsGen2Mount", _module)
-pulumi.runtime.registerResourceModule("databricks", "index/azureBlobMount", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalog", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/clusterPolicy", _module)

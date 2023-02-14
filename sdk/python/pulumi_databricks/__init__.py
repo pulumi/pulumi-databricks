@@ -5,10 +5,6 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
-from .aws_s3_mount import *
-from .azure_adls_gen1_mount import *
-from .azure_adls_gen2_mount import *
-from .azure_blob_mount import *
 from .catalog import *
 from .cluster import *
 from .cluster_policy import *
@@ -120,38 +116,6 @@ else:
 _utilities.register(
     resource_modules="""
 [
- {
-  "pkg": "databricks",
-  "mod": "index/awsS3Mount",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/awsS3Mount:AwsS3Mount": "AwsS3Mount"
-  }
- },
- {
-  "pkg": "databricks",
-  "mod": "index/azureAdlsGen1Mount",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/azureAdlsGen1Mount:AzureAdlsGen1Mount": "AzureAdlsGen1Mount"
-  }
- },
- {
-  "pkg": "databricks",
-  "mod": "index/azureAdlsGen2Mount",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/azureAdlsGen2Mount:AzureAdlsGen2Mount": "AzureAdlsGen2Mount"
-  }
- },
- {
-  "pkg": "databricks",
-  "mod": "index/azureBlobMount",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/azureBlobMount:AzureBlobMount": "AzureBlobMount"
-  }
- },
  {
   "pkg": "databricks",
   "mod": "index/catalog",

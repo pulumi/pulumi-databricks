@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineLibraryFileArgs;
 import com.pulumi.databricks.inputs.PipelineLibraryMavenArgs;
 import com.pulumi.databricks.inputs.PipelineLibraryNotebookArgs;
 import java.lang.String;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class PipelineLibraryArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineLibraryArgs Empty = new PipelineLibraryArgs();
+
+    @Import(name="file")
+    private @Nullable Output<PipelineLibraryFileArgs> file;
+
+    public Optional<Output<PipelineLibraryFileArgs>> file() {
+        return Optional.ofNullable(this.file);
+    }
 
     @Import(name="jar")
     private @Nullable Output<String> jar;
@@ -48,6 +56,7 @@ public final class PipelineLibraryArgs extends com.pulumi.resources.ResourceArgs
     private PipelineLibraryArgs() {}
 
     private PipelineLibraryArgs(PipelineLibraryArgs $) {
+        this.file = $.file;
         this.jar = $.jar;
         this.maven = $.maven;
         this.notebook = $.notebook;
@@ -70,6 +79,15 @@ public final class PipelineLibraryArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(PipelineLibraryArgs defaults) {
             $ = new PipelineLibraryArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder file(@Nullable Output<PipelineLibraryFileArgs> file) {
+            $.file = file;
+            return this;
+        }
+
+        public Builder file(PipelineLibraryFileArgs file) {
+            return file(Output.of(file));
         }
 
         public Builder jar(@Nullable Output<String> jar) {

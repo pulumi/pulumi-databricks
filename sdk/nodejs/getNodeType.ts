@@ -48,6 +48,7 @@ export function getNodeType(args?: GetNodeTypeArgs, opts?: pulumi.InvokeOptions)
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNodeType:getNodeType", {
         "category": args.category,
+        "fleet": args.fleet,
         "gbPerCore": args.gbPerCore,
         "graviton": args.graviton,
         "isIoCacheEnabled": args.isIoCacheEnabled,
@@ -78,6 +79,7 @@ export interface GetNodeTypeArgs {
      * * `GPU Accelerated` (AWS, Azure)
      */
     category?: string;
+    fleet?: boolean;
     /**
      * Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.
      */
@@ -130,6 +132,7 @@ export interface GetNodeTypeArgs {
  */
 export interface GetNodeTypeResult {
     readonly category?: string;
+    readonly fleet?: boolean;
     readonly gbPerCore?: number;
     readonly graviton?: boolean;
     /**
@@ -204,6 +207,7 @@ export interface GetNodeTypeOutputArgs {
      * * `GPU Accelerated` (AWS, Azure)
      */
     category?: pulumi.Input<string>;
+    fleet?: pulumi.Input<boolean>;
     /**
      * Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.
      */

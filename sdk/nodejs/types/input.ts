@@ -3197,7 +3197,7 @@ export interface JobTaskSqlTask {
      */
     query?: pulumi.Input<inputs.JobTaskSqlTaskQuery>;
     /**
-     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
      */
     warehouseId?: pulumi.Input<string>;
 }
@@ -3605,10 +3605,15 @@ export interface PipelineFilters {
 }
 
 export interface PipelineLibrary {
+    file?: pulumi.Input<inputs.PipelineLibraryFile>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.PipelineLibraryMaven>;
     notebook?: pulumi.Input<inputs.PipelineLibraryNotebook>;
     whl?: pulumi.Input<string>;
+}
+
+export interface PipelineLibraryFile {
+    path: pulumi.Input<string>;
 }
 
 export interface PipelineLibraryMaven {

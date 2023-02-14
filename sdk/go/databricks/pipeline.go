@@ -19,6 +19,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -26,7 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dltDemo, err := databricks.NewNotebook(ctx, "dltDemo", nil)
+//			dltDemoNotebook, err := databricks.NewNotebook(ctx, "dltDemoNotebook", nil)
+//			if err != nil {
+//				return err
+//			}
+//			dltDemoRepo, err := databricks.NewRepo(ctx, "dltDemoRepo", nil)
 //			if err != nil {
 //				return err
 //			}
@@ -55,7 +61,14 @@ import (
 //				Libraries: databricks.PipelineLibraryArray{
 //					&databricks.PipelineLibraryArgs{
 //						Notebook: &databricks.PipelineLibraryNotebookArgs{
-//							Path: dltDemo.ID(),
+//							Path: dltDemoNotebook.ID(),
+//						},
+//					},
+//					&databricks.PipelineLibraryArgs{
+//						File: &databricks.PipelineLibraryFileArgs{
+//							Path: dltDemoRepo.Path.ApplyT(func(path string) (string, error) {
+//								return fmt.Sprintf("%v/pipeline.sql", path), nil
+//							}).(pulumi.StringOutput),
 //						},
 //					},
 //				},
@@ -90,7 +103,8 @@ import (
 type Pipeline struct {
 	pulumi.CustomResourceState
 
-	AllowDuplicateNames pulumi.BoolPtrOutput `pulumi:"allowDuplicateNames"`
+	AllowDuplicateNames pulumi.BoolPtrOutput   `pulumi:"allowDuplicateNames"`
+	Catalog             pulumi.StringPtrOutput `pulumi:"catalog"`
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel pulumi.StringPtrOutput `pulumi:"channel"`
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
@@ -104,7 +118,7 @@ type Pipeline struct {
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
 	Edition pulumi.StringPtrOutput   `pulumi:"edition"`
 	Filters PipelineFiltersPtrOutput `pulumi:"filters"`
-	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
 	Libraries PipelineLibraryArrayOutput `pulumi:"libraries"`
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -146,7 +160,8 @@ func GetPipeline(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Pipeline resources.
 type pipelineState struct {
-	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
+	AllowDuplicateNames *bool   `pulumi:"allowDuplicateNames"`
+	Catalog             *string `pulumi:"catalog"`
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel *string `pulumi:"channel"`
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
@@ -160,7 +175,7 @@ type pipelineState struct {
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
 	Edition *string          `pulumi:"edition"`
 	Filters *PipelineFilters `pulumi:"filters"`
-	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
 	Libraries []PipelineLibrary `pulumi:"libraries"`
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 	Name *string `pulumi:"name"`
@@ -175,6 +190,7 @@ type pipelineState struct {
 
 type PipelineState struct {
 	AllowDuplicateNames pulumi.BoolPtrInput
+	Catalog             pulumi.StringPtrInput
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel pulumi.StringPtrInput
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
@@ -188,7 +204,7 @@ type PipelineState struct {
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
 	Edition pulumi.StringPtrInput
 	Filters PipelineFiltersPtrInput
-	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
 	Libraries PipelineLibraryArrayInput
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 	Name pulumi.StringPtrInput
@@ -206,7 +222,8 @@ func (PipelineState) ElementType() reflect.Type {
 }
 
 type pipelineArgs struct {
-	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
+	AllowDuplicateNames *bool   `pulumi:"allowDuplicateNames"`
+	Catalog             *string `pulumi:"catalog"`
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel *string `pulumi:"channel"`
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
@@ -220,7 +237,7 @@ type pipelineArgs struct {
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
 	Edition *string          `pulumi:"edition"`
 	Filters *PipelineFilters `pulumi:"filters"`
-	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
 	Libraries []PipelineLibrary `pulumi:"libraries"`
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 	Name *string `pulumi:"name"`
@@ -235,6 +252,7 @@ type pipelineArgs struct {
 // The set of arguments for constructing a Pipeline resource.
 type PipelineArgs struct {
 	AllowDuplicateNames pulumi.BoolPtrInput
+	Catalog             pulumi.StringPtrInput
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel pulumi.StringPtrInput
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
@@ -248,7 +266,7 @@ type PipelineArgs struct {
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
 	Edition pulumi.StringPtrInput
 	Filters PipelineFiltersPtrInput
-	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
 	Libraries PipelineLibraryArrayInput
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 	Name pulumi.StringPtrInput
@@ -351,6 +369,10 @@ func (o PipelineOutput) AllowDuplicateNames() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.AllowDuplicateNames }).(pulumi.BoolPtrOutput)
 }
 
+func (o PipelineOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Catalog }).(pulumi.StringPtrOutput)
+}
+
 // optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 func (o PipelineOutput) Channel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Channel }).(pulumi.StringPtrOutput)
@@ -385,7 +407,7 @@ func (o PipelineOutput) Filters() PipelineFiltersPtrOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineFiltersPtrOutput { return v.Filters }).(PipelineFiltersPtrOutput)
 }
 
-// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
 func (o PipelineOutput) Libraries() PipelineLibraryArrayOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineLibraryArrayOutput { return v.Libraries }).(PipelineLibraryArrayOutput)
 }

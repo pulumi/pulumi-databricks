@@ -63,7 +63,7 @@ namespace Pulumi.Databricks
         public Output<string> Definition { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum number of clusters allowed per user. When omitted, there is no limit.
+        /// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         /// </summary>
         [Output("maxClustersPerUser")]
         public Output<int?> MaxClustersPerUser { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.Databricks
         public Input<string> Definition { get; set; } = null!;
 
         /// <summary>
-        /// Maximum number of clusters allowed per user. When omitted, there is no limit.
+        /// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         /// </summary>
         [Input("maxClustersPerUser")]
         public Input<int>? MaxClustersPerUser { get; set; }
@@ -159,7 +159,7 @@ namespace Pulumi.Databricks
         public Input<string>? Definition { get; set; }
 
         /// <summary>
-        /// Maximum number of clusters allowed per user. When omitted, there is no limit.
+        /// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         /// </summary>
         [Input("maxClustersPerUser")]
         public Input<int>? MaxClustersPerUser { get; set; }

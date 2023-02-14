@@ -140,6 +140,9 @@ namespace Pulumi.Databricks
         [Input("category")]
         public string? Category { get; set; }
 
+        [Input("fleet")]
+        public bool? Fleet { get; set; }
+
         /// <summary>
         /// Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
         /// </summary>
@@ -230,6 +233,9 @@ namespace Pulumi.Databricks
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        [Input("fleet")]
+        public Input<bool>? Fleet { get; set; }
+
         /// <summary>
         /// Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
         /// </summary>
@@ -310,6 +316,7 @@ namespace Pulumi.Databricks
     public sealed class GetNodeTypeResult
     {
         public readonly string? Category;
+        public readonly bool? Fleet;
         public readonly int? GbPerCore;
         public readonly bool? Graviton;
         /// <summary>
@@ -330,6 +337,8 @@ namespace Pulumi.Databricks
         [OutputConstructor]
         private GetNodeTypeResult(
             string? category,
+
+            bool? fleet,
 
             int? gbPerCore,
 
@@ -358,6 +367,7 @@ namespace Pulumi.Databricks
             bool? vcpu)
         {
             Category = category;
+            Fleet = fleet;
             GbPerCore = gbPerCore;
             Graviton = graviton;
             Id = id;
