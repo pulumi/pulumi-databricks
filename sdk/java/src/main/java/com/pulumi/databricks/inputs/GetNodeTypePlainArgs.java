@@ -45,6 +45,13 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.category);
     }
 
+    @Import(name="fleet")
+    private @Nullable Boolean fleet;
+
+    public Optional<Boolean> fleet() {
+        return Optional.ofNullable(this.fleet);
+    }
+
     /**
      * Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
      * 
@@ -221,6 +228,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
 
     private GetNodeTypePlainArgs(GetNodeTypePlainArgs $) {
         this.category = $.category;
+        this.fleet = $.fleet;
         this.gbPerCore = $.gbPerCore;
         this.graviton = $.graviton;
         this.isIoCacheEnabled = $.isIoCacheEnabled;
@@ -268,6 +276,11 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder category(@Nullable String category) {
             $.category = category;
+            return this;
+        }
+
+        public Builder fleet(@Nullable Boolean fleet) {
+            $.fleet = fleet;
             return this;
         }
 

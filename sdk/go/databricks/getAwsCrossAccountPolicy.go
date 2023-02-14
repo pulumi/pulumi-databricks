@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// For more detailed usage please see getAwsAssumeRolePolicy or AwsS3Mount pages.
+// For more detailed usage please see getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
 //
 // ```go
 // package main

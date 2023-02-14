@@ -299,7 +299,7 @@ class Recipient(pulumi.CustomResource):
 
         * Share to create Delta Sharing shares.
         * Grants to manage Delta Sharing permissions.
-        * get_shares to read existing Delta Sharing shares.
+          *_get_shares_to read existing Delta Sharing shares.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -351,7 +351,7 @@ class Recipient(pulumi.CustomResource):
 
         * Share to create Delta Sharing shares.
         * Grants to manage Delta Sharing permissions.
-        * get_shares to read existing Delta Sharing shares.
+          *_get_shares_to read existing Delta Sharing shares.
 
         :param str resource_name: The name of the resource.
         :param RecipientArgs args: The arguments to use to populate this resource's properties.

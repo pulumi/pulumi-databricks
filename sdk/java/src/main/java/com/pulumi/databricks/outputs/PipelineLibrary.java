@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineLibraryFile;
 import com.pulumi.databricks.outputs.PipelineLibraryMaven;
 import com.pulumi.databricks.outputs.PipelineLibraryNotebook;
 import java.lang.String;
@@ -13,12 +14,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineLibrary {
+    private @Nullable PipelineLibraryFile file;
     private @Nullable String jar;
     private @Nullable PipelineLibraryMaven maven;
     private @Nullable PipelineLibraryNotebook notebook;
     private @Nullable String whl;
 
     private PipelineLibrary() {}
+    public Optional<PipelineLibraryFile> file() {
+        return Optional.ofNullable(this.file);
+    }
     public Optional<String> jar() {
         return Optional.ofNullable(this.jar);
     }
@@ -41,6 +46,7 @@ public final class PipelineLibrary {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PipelineLibraryFile file;
         private @Nullable String jar;
         private @Nullable PipelineLibraryMaven maven;
         private @Nullable PipelineLibraryNotebook notebook;
@@ -48,12 +54,18 @@ public final class PipelineLibrary {
         public Builder() {}
         public Builder(PipelineLibrary defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.file = defaults.file;
     	      this.jar = defaults.jar;
     	      this.maven = defaults.maven;
     	      this.notebook = defaults.notebook;
     	      this.whl = defaults.whl;
         }
 
+        @CustomType.Setter
+        public Builder file(@Nullable PipelineLibraryFile file) {
+            this.file = file;
+            return this;
+        }
         @CustomType.Setter
         public Builder jar(@Nullable String jar) {
             this.jar = jar;
@@ -76,6 +88,7 @@ public final class PipelineLibrary {
         }
         public PipelineLibrary build() {
             final var o = new PipelineLibrary();
+            o.file = file;
             o.jar = jar;
             o.maven = maven;
             o.notebook = notebook;

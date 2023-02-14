@@ -21,7 +21,10 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dltDemo = new Databricks.Notebook("dltDemo");
+    ///     var dltDemoNotebook = new Databricks.Notebook("dltDemoNotebook");
+    /// 
+    ///     //...
+    ///     var dltDemoRepo = new Databricks.Repo("dltDemoRepo");
     /// 
     ///     //...
     ///     var @this = new Databricks.Pipeline("this", new()
@@ -59,7 +62,14 @@ namespace Pulumi.Databricks
     ///             {
     ///                 Notebook = new Databricks.Inputs.PipelineLibraryNotebookArgs
     ///                 {
-    ///                     Path = dltDemo.Id,
+    ///                     Path = dltDemoNotebook.Id,
+    ///                 },
+    ///             },
+    ///             new Databricks.Inputs.PipelineLibraryArgs
+    ///             {
+    ///                 File = new Databricks.Inputs.PipelineLibraryFileArgs
+    ///                 {
+    ///                     Path = dltDemoRepo.Path.Apply(path =&gt; $"{path}/pipeline.sql"),
     ///                 },
     ///             },
     ///         },
@@ -90,6 +100,9 @@ namespace Pulumi.Databricks
     {
         [Output("allowDuplicateNames")]
         public Output<bool?> AllowDuplicateNames { get; private set; } = null!;
+
+        [Output("catalog")]
+        public Output<string?> Catalog { get; private set; } = null!;
 
         /// <summary>
         /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
@@ -131,7 +144,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.PipelineFilters?> Filters { get; private set; } = null!;
 
         /// <summary>
-        /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+        /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
         /// </summary>
         [Output("libraries")]
         public Output<ImmutableArray<Outputs.PipelineLibrary>> Libraries { get; private set; } = null!;
@@ -212,6 +225,9 @@ namespace Pulumi.Databricks
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
 
+        [Input("catalog")]
+        public Input<string>? Catalog { get; set; }
+
         /// <summary>
         /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
         /// </summary>
@@ -267,7 +283,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.PipelineLibraryArgs>? _libraries;
 
         /// <summary>
-        /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+        /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
         /// </summary>
         public InputList<Inputs.PipelineLibraryArgs> Libraries
         {
@@ -309,6 +325,9 @@ namespace Pulumi.Databricks
     {
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
+
+        [Input("catalog")]
+        public Input<string>? Catalog { get; set; }
 
         /// <summary>
         /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
@@ -365,7 +384,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.PipelineLibraryGetArgs>? _libraries;
 
         /// <summary>
-        /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+        /// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
         /// </summary>
         public InputList<Inputs.PipelineLibraryGetArgs> Libraries
         {

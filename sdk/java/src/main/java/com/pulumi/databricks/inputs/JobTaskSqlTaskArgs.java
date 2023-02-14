@@ -81,14 +81,14 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
      * 
      */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
     /**
-     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
      * 
      */
     public Optional<Output<String>> warehouseId() {
@@ -208,7 +208,7 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param warehouseId ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+         * @param warehouseId ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param warehouseId ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+         * @param warehouseId ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
          * 
          * @return builder
          * 

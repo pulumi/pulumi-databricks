@@ -110,7 +110,7 @@ def get_job(id: Optional[str] = None,
 
     The following resources are used in the same context:
 
-    * get_jobs data to get all jobs and their names from a workspace.
+    *_get_jobs_data to get all jobs and their names from a workspace.
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 
 
@@ -158,7 +158,7 @@ def get_job_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     The following resources are used in the same context:
 
-    * get_jobs data to get all jobs and their names from a workspace.
+    *_get_jobs_data to get all jobs and their names from a workspace.
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 
 

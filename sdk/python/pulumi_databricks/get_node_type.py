@@ -21,10 +21,13 @@ class GetNodeTypeResult:
     """
     A collection of values returned by getNodeType.
     """
-    def __init__(__self__, category=None, gb_per_core=None, graviton=None, id=None, is_io_cache_enabled=None, local_disk=None, local_disk_min_size=None, min_cores=None, min_gpus=None, min_memory_gb=None, photon_driver_capable=None, photon_worker_capable=None, support_port_forwarding=None, vcpu=None):
+    def __init__(__self__, category=None, fleet=None, gb_per_core=None, graviton=None, id=None, is_io_cache_enabled=None, local_disk=None, local_disk_min_size=None, min_cores=None, min_gpus=None, min_memory_gb=None, photon_driver_capable=None, photon_worker_capable=None, support_port_forwarding=None, vcpu=None):
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
         pulumi.set(__self__, "category", category)
+        if fleet and not isinstance(fleet, bool):
+            raise TypeError("Expected argument 'fleet' to be a bool")
+        pulumi.set(__self__, "fleet", fleet)
         if gb_per_core and not isinstance(gb_per_core, int):
             raise TypeError("Expected argument 'gb_per_core' to be a int")
         pulumi.set(__self__, "gb_per_core", gb_per_core)
@@ -69,6 +72,11 @@ class GetNodeTypeResult:
     @pulumi.getter
     def category(self) -> Optional[str]:
         return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter
+    def fleet(self) -> Optional[bool]:
+        return pulumi.get(self, "fleet")
 
     @property
     @pulumi.getter(name="gbPerCore")
@@ -146,6 +154,7 @@ class AwaitableGetNodeTypeResult(GetNodeTypeResult):
             yield self
         return GetNodeTypeResult(
             category=self.category,
+            fleet=self.fleet,
             gb_per_core=self.gb_per_core,
             graviton=self.graviton,
             id=self.id,
@@ -162,6 +171,7 @@ class AwaitableGetNodeTypeResult(GetNodeTypeResult):
 
 
 def get_node_type(category: Optional[str] = None,
+                  fleet: Optional[bool] = None,
                   gb_per_core: Optional[int] = None,
                   graviton: Optional[bool] = None,
                   is_io_cache_enabled: Optional[bool] = None,
@@ -231,6 +241,7 @@ def get_node_type(category: Optional[str] = None,
     """
     __args__ = dict()
     __args__['category'] = category
+    __args__['fleet'] = fleet
     __args__['gbPerCore'] = gb_per_core
     __args__['graviton'] = graviton
     __args__['isIoCacheEnabled'] = is_io_cache_enabled
@@ -248,6 +259,7 @@ def get_node_type(category: Optional[str] = None,
 
     return AwaitableGetNodeTypeResult(
         category=__ret__.category,
+        fleet=__ret__.fleet,
         gb_per_core=__ret__.gb_per_core,
         graviton=__ret__.graviton,
         id=__ret__.id,
@@ -265,6 +277,7 @@ def get_node_type(category: Optional[str] = None,
 
 @_utilities.lift_output_func(get_node_type)
 def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
+                         fleet: Optional[pulumi.Input[Optional[bool]]] = None,
                          gb_per_core: Optional[pulumi.Input[Optional[int]]] = None,
                          graviton: Optional[pulumi.Input[Optional[bool]]] = None,
                          is_io_cache_enabled: Optional[pulumi.Input[Optional[bool]]] = None,

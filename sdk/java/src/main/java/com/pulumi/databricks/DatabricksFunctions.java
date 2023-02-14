@@ -187,7 +187,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
      * ```java
      * package generated_program;
      * 
@@ -234,7 +234,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
      * ```java
      * package generated_program;
      * 
@@ -281,7 +281,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
      * ```java
      * package generated_program;
      * 
@@ -328,7 +328,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
      * ```java
      * package generated_program;
      * 
@@ -375,7 +375,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
      * ```java
      * package generated_program;
      * 
@@ -422,7 +422,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
      * ```java
      * package generated_program;
      * 

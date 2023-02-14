@@ -32,7 +32,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["jobNumWorkers"] = @this.Apply(getJobResult =&gt; getJobResult).Apply(@this =&gt; @this.Apply(getJobResult =&gt; getJobResult.JobSettings?.Settings?.NewCluster?.NumWorkers)),
+        ///         ["jobNumWorkers"] = @this.Apply(@this =&gt; @this.Apply(getJobResult =&gt; getJobResult.JobSettings?.Settings?.NewCluster?.NumWorkers)),
         ///     };
         /// });
         /// ```
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["jobNumWorkers"] = @this.Apply(getJobResult =&gt; getJobResult).Apply(@this =&gt; @this.Apply(getJobResult =&gt; getJobResult.JobSettings?.Settings?.NewCluster?.NumWorkers)),
+        ///         ["jobNumWorkers"] = @this.Apply(@this =&gt; @this.Apply(getJobResult =&gt; getJobResult.JobSettings?.Settings?.NewCluster?.NumWorkers)),
         ///     };
         /// });
         /// ```

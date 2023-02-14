@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineLibrary
     {
+        public readonly Outputs.PipelineLibraryFile? File;
         public readonly string? Jar;
         public readonly Outputs.PipelineLibraryMaven? Maven;
         public readonly Outputs.PipelineLibraryNotebook? Notebook;
@@ -20,6 +21,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private PipelineLibrary(
+            Outputs.PipelineLibraryFile? file,
+
             string? jar,
 
             Outputs.PipelineLibraryMaven? maven,
@@ -28,6 +31,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? whl)
         {
+            File = file;
             Jar = jar;
             Maven = maven;
             Notebook = notebook;

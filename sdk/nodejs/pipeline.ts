@@ -15,7 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const dltDemo = new databricks.Notebook("dltDemo", {});
+ * const dltDemoNotebook = new databricks.Notebook("dltDemoNotebook", {});
+ * //...
+ * const dltDemoRepo = new databricks.Repo("dltDemoRepo", {});
  * //...
  * const _this = new databricks.Pipeline("this", {
  *     storage: "/test/first-pipeline",
@@ -39,11 +41,18 @@ import * as utilities from "./utilities";
  *             },
  *         },
  *     ],
- *     libraries: [{
- *         notebook: {
- *             path: dltDemo.id,
+ *     libraries: [
+ *         {
+ *             notebook: {
+ *                 path: dltDemoNotebook.id,
+ *             },
  *         },
- *     }],
+ *         {
+ *             file: {
+ *                 path: pulumi.interpolate`${dltDemoRepo.path}/pipeline.sql`,
+ *             },
+ *         },
+ *     ],
  *     continuous: false,
  * });
  * ```
@@ -93,6 +102,7 @@ export class Pipeline extends pulumi.CustomResource {
     }
 
     public readonly allowDuplicateNames!: pulumi.Output<boolean | undefined>;
+    public readonly catalog!: pulumi.Output<string | undefined>;
     /**
      * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
      */
@@ -119,7 +129,7 @@ export class Pipeline extends pulumi.CustomResource {
     public readonly edition!: pulumi.Output<string | undefined>;
     public readonly filters!: pulumi.Output<outputs.PipelineFilters | undefined>;
     /**
-     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
      */
     public readonly libraries!: pulumi.Output<outputs.PipelineLibrary[] | undefined>;
     /**
@@ -154,6 +164,7 @@ export class Pipeline extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PipelineState | undefined;
             resourceInputs["allowDuplicateNames"] = state ? state.allowDuplicateNames : undefined;
+            resourceInputs["catalog"] = state ? state.catalog : undefined;
             resourceInputs["channel"] = state ? state.channel : undefined;
             resourceInputs["clusters"] = state ? state.clusters : undefined;
             resourceInputs["configuration"] = state ? state.configuration : undefined;
@@ -170,6 +181,7 @@ export class Pipeline extends pulumi.CustomResource {
         } else {
             const args = argsOrState as PipelineArgs | undefined;
             resourceInputs["allowDuplicateNames"] = args ? args.allowDuplicateNames : undefined;
+            resourceInputs["catalog"] = args ? args.catalog : undefined;
             resourceInputs["channel"] = args ? args.channel : undefined;
             resourceInputs["clusters"] = args ? args.clusters : undefined;
             resourceInputs["configuration"] = args ? args.configuration : undefined;
@@ -194,6 +206,7 @@ export class Pipeline extends pulumi.CustomResource {
  */
 export interface PipelineState {
     allowDuplicateNames?: pulumi.Input<boolean>;
+    catalog?: pulumi.Input<string>;
     /**
      * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
      */
@@ -220,7 +233,7 @@ export interface PipelineState {
     edition?: pulumi.Input<string>;
     filters?: pulumi.Input<inputs.PipelineFilters>;
     /**
-     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.PipelineLibrary>[]>;
     /**
@@ -247,6 +260,7 @@ export interface PipelineState {
  */
 export interface PipelineArgs {
     allowDuplicateNames?: pulumi.Input<boolean>;
+    catalog?: pulumi.Input<string>;
     /**
      * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
      */
@@ -273,7 +287,7 @@ export interface PipelineArgs {
     edition?: pulumi.Input<string>;
     filters?: pulumi.Input<inputs.PipelineFilters>;
     /**
-     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.PipelineLibrary>[]>;
     /**

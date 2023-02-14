@@ -20270,7 +20270,7 @@ type JobTaskSqlTask struct {
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
 	Query *JobTaskSqlTaskQuery `pulumi:"query"`
-	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
 	WarehouseId *string `pulumi:"warehouseId"`
 }
 
@@ -20294,7 +20294,7 @@ type JobTaskSqlTaskArgs struct {
 	Parameters pulumi.MapInput `pulumi:"parameters"`
 	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
 	Query JobTaskSqlTaskQueryPtrInput `pulumi:"query"`
-	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+	// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
 	WarehouseId pulumi.StringPtrInput `pulumi:"warehouseId"`
 }
 
@@ -20395,7 +20395,7 @@ func (o JobTaskSqlTaskOutput) Query() JobTaskSqlTaskQueryPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTask) *JobTaskSqlTaskQuery { return v.Query }).(JobTaskSqlTaskQueryPtrOutput)
 }
 
-// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
 func (o JobTaskSqlTaskOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }
@@ -20464,7 +20464,7 @@ func (o JobTaskSqlTaskPtrOutput) Query() JobTaskSqlTaskQueryPtrOutput {
 	}).(JobTaskSqlTaskQueryPtrOutput)
 }
 
-// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only serverless warehouses are supported right now.
+// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
 func (o JobTaskSqlTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskSqlTask) *string {
 		if v == nil {
@@ -28012,6 +28012,7 @@ func (o PipelineFiltersPtrOutput) Includes() pulumi.StringArrayOutput {
 }
 
 type PipelineLibrary struct {
+	File     *PipelineLibraryFile     `pulumi:"file"`
 	Jar      *string                  `pulumi:"jar"`
 	Maven    *PipelineLibraryMaven    `pulumi:"maven"`
 	Notebook *PipelineLibraryNotebook `pulumi:"notebook"`
@@ -28030,6 +28031,7 @@ type PipelineLibraryInput interface {
 }
 
 type PipelineLibraryArgs struct {
+	File     PipelineLibraryFilePtrInput     `pulumi:"file"`
 	Jar      pulumi.StringPtrInput           `pulumi:"jar"`
 	Maven    PipelineLibraryMavenPtrInput    `pulumi:"maven"`
 	Notebook PipelineLibraryNotebookPtrInput `pulumi:"notebook"`
@@ -28087,6 +28089,10 @@ func (o PipelineLibraryOutput) ToPipelineLibraryOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o PipelineLibraryOutput) File() PipelineLibraryFilePtrOutput {
+	return o.ApplyT(func(v PipelineLibrary) *PipelineLibraryFile { return v.File }).(PipelineLibraryFilePtrOutput)
+}
+
 func (o PipelineLibraryOutput) Jar() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineLibrary) *string { return v.Jar }).(pulumi.StringPtrOutput)
 }
@@ -28121,6 +28127,139 @@ func (o PipelineLibraryArrayOutput) Index(i pulumi.IntInput) PipelineLibraryOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineLibrary {
 		return vs[0].([]PipelineLibrary)[vs[1].(int)]
 	}).(PipelineLibraryOutput)
+}
+
+type PipelineLibraryFile struct {
+	Path string `pulumi:"path"`
+}
+
+// PipelineLibraryFileInput is an input type that accepts PipelineLibraryFileArgs and PipelineLibraryFileOutput values.
+// You can construct a concrete instance of `PipelineLibraryFileInput` via:
+//
+//	PipelineLibraryFileArgs{...}
+type PipelineLibraryFileInput interface {
+	pulumi.Input
+
+	ToPipelineLibraryFileOutput() PipelineLibraryFileOutput
+	ToPipelineLibraryFileOutputWithContext(context.Context) PipelineLibraryFileOutput
+}
+
+type PipelineLibraryFileArgs struct {
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (PipelineLibraryFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineLibraryFile)(nil)).Elem()
+}
+
+func (i PipelineLibraryFileArgs) ToPipelineLibraryFileOutput() PipelineLibraryFileOutput {
+	return i.ToPipelineLibraryFileOutputWithContext(context.Background())
+}
+
+func (i PipelineLibraryFileArgs) ToPipelineLibraryFileOutputWithContext(ctx context.Context) PipelineLibraryFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineLibraryFileOutput)
+}
+
+func (i PipelineLibraryFileArgs) ToPipelineLibraryFilePtrOutput() PipelineLibraryFilePtrOutput {
+	return i.ToPipelineLibraryFilePtrOutputWithContext(context.Background())
+}
+
+func (i PipelineLibraryFileArgs) ToPipelineLibraryFilePtrOutputWithContext(ctx context.Context) PipelineLibraryFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineLibraryFileOutput).ToPipelineLibraryFilePtrOutputWithContext(ctx)
+}
+
+// PipelineLibraryFilePtrInput is an input type that accepts PipelineLibraryFileArgs, PipelineLibraryFilePtr and PipelineLibraryFilePtrOutput values.
+// You can construct a concrete instance of `PipelineLibraryFilePtrInput` via:
+//
+//	        PipelineLibraryFileArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineLibraryFilePtrInput interface {
+	pulumi.Input
+
+	ToPipelineLibraryFilePtrOutput() PipelineLibraryFilePtrOutput
+	ToPipelineLibraryFilePtrOutputWithContext(context.Context) PipelineLibraryFilePtrOutput
+}
+
+type pipelineLibraryFilePtrType PipelineLibraryFileArgs
+
+func PipelineLibraryFilePtr(v *PipelineLibraryFileArgs) PipelineLibraryFilePtrInput {
+	return (*pipelineLibraryFilePtrType)(v)
+}
+
+func (*pipelineLibraryFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineLibraryFile)(nil)).Elem()
+}
+
+func (i *pipelineLibraryFilePtrType) ToPipelineLibraryFilePtrOutput() PipelineLibraryFilePtrOutput {
+	return i.ToPipelineLibraryFilePtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineLibraryFilePtrType) ToPipelineLibraryFilePtrOutputWithContext(ctx context.Context) PipelineLibraryFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineLibraryFilePtrOutput)
+}
+
+type PipelineLibraryFileOutput struct{ *pulumi.OutputState }
+
+func (PipelineLibraryFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineLibraryFile)(nil)).Elem()
+}
+
+func (o PipelineLibraryFileOutput) ToPipelineLibraryFileOutput() PipelineLibraryFileOutput {
+	return o
+}
+
+func (o PipelineLibraryFileOutput) ToPipelineLibraryFileOutputWithContext(ctx context.Context) PipelineLibraryFileOutput {
+	return o
+}
+
+func (o PipelineLibraryFileOutput) ToPipelineLibraryFilePtrOutput() PipelineLibraryFilePtrOutput {
+	return o.ToPipelineLibraryFilePtrOutputWithContext(context.Background())
+}
+
+func (o PipelineLibraryFileOutput) ToPipelineLibraryFilePtrOutputWithContext(ctx context.Context) PipelineLibraryFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineLibraryFile) *PipelineLibraryFile {
+		return &v
+	}).(PipelineLibraryFilePtrOutput)
+}
+
+func (o PipelineLibraryFileOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineLibraryFile) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type PipelineLibraryFilePtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineLibraryFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineLibraryFile)(nil)).Elem()
+}
+
+func (o PipelineLibraryFilePtrOutput) ToPipelineLibraryFilePtrOutput() PipelineLibraryFilePtrOutput {
+	return o
+}
+
+func (o PipelineLibraryFilePtrOutput) ToPipelineLibraryFilePtrOutputWithContext(ctx context.Context) PipelineLibraryFilePtrOutput {
+	return o
+}
+
+func (o PipelineLibraryFilePtrOutput) Elem() PipelineLibraryFileOutput {
+	return o.ApplyT(func(v *PipelineLibraryFile) PipelineLibraryFile {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineLibraryFile
+		return ret
+	}).(PipelineLibraryFileOutput)
+}
+
+func (o PipelineLibraryFilePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineLibraryFile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
 }
 
 type PipelineLibraryMaven struct {
@@ -57725,6 +57864,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineFiltersPtrInput)(nil)).Elem(), PipelineFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLibraryInput)(nil)).Elem(), PipelineLibraryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLibraryArrayInput)(nil)).Elem(), PipelineLibraryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLibraryFileInput)(nil)).Elem(), PipelineLibraryFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLibraryFilePtrInput)(nil)).Elem(), PipelineLibraryFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLibraryMavenInput)(nil)).Elem(), PipelineLibraryMavenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLibraryMavenPtrInput)(nil)).Elem(), PipelineLibraryMavenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLibraryNotebookInput)(nil)).Elem(), PipelineLibraryNotebookArgs{})
@@ -58420,6 +58561,8 @@ func init() {
 	pulumi.RegisterOutputType(PipelineFiltersPtrOutput{})
 	pulumi.RegisterOutputType(PipelineLibraryOutput{})
 	pulumi.RegisterOutputType(PipelineLibraryArrayOutput{})
+	pulumi.RegisterOutputType(PipelineLibraryFileOutput{})
+	pulumi.RegisterOutputType(PipelineLibraryFilePtrOutput{})
 	pulumi.RegisterOutputType(PipelineLibraryMavenOutput{})
 	pulumi.RegisterOutputType(PipelineLibraryMavenPtrOutput{})
 	pulumi.RegisterOutputType(PipelineLibraryNotebookOutput{})

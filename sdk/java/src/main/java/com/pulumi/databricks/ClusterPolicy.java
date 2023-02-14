@@ -77,14 +77,14 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
         return this.definition;
     }
     /**
-     * Maximum number of clusters allowed per user. When omitted, there is no limit.
+     * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
      * 
      */
     @Export(name="maxClustersPerUser", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> maxClustersPerUser;
 
     /**
-     * @return Maximum number of clusters allowed per user. When omitted, there is no limit.
+     * @return Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
      * 
      */
     public Output<Optional<Integer>> maxClustersPerUser() {

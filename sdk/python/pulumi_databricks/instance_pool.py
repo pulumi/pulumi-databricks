@@ -40,7 +40,7 @@ class InstancePoolArgs:
         :param pulumi.Input[int] max_capacity: (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
         :param pulumi.Input[int] min_idle_instances: (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
         :param pulumi.Input[str] node_type_id: (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via_get_spark_version_data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
         """
         pulumi.set(__self__, "idle_instance_autotermination_minutes", idle_instance_autotermination_minutes)
         pulumi.set(__self__, "instance_pool_name", instance_pool_name)
@@ -222,7 +222,7 @@ class InstancePoolArgs:
     @pulumi.getter(name="preloadedSparkVersions")
     def preloaded_spark_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
+        (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via_get_spark_version_data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
         """
         return pulumi.get(self, "preloaded_spark_versions")
 
@@ -258,7 +258,7 @@ class _InstancePoolState:
         :param pulumi.Input[int] max_capacity: (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
         :param pulumi.Input[int] min_idle_instances: (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
         :param pulumi.Input[str] node_type_id: (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via_get_spark_version_data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
         """
         if aws_attributes is not None:
             pulumi.set(__self__, "aws_attributes", aws_attributes)
@@ -442,7 +442,7 @@ class _InstancePoolState:
     @pulumi.getter(name="preloadedSparkVersions")
     def preloaded_spark_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
+        (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via_get_spark_version_data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
         """
         return pulumi.get(self, "preloaded_spark_versions")
 
@@ -490,7 +490,7 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[int] max_capacity: (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
         :param pulumi.Input[int] min_idle_instances: (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
         :param pulumi.Input[str] node_type_id: (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via_get_spark_version_data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
         """
         ...
     @overload
@@ -604,7 +604,7 @@ class InstancePool(pulumi.CustomResource):
         :param pulumi.Input[int] max_capacity: (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
         :param pulumi.Input[int] min_idle_instances: (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
         :param pulumi.Input[str] node_type_id: (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via_get_spark_version_data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -722,7 +722,7 @@ class InstancePool(pulumi.CustomResource):
     @pulumi.getter(name="preloadedSparkVersions")
     def preloaded_spark_versions(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
+        (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via_get_spark_version_data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
         """
         return pulumi.get(self, "preloaded_spark_versions")
 

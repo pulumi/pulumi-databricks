@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["allCatalogs"] = all.Apply(getCatalogsResult =&gt; getCatalogsResult),
+        ///         ["allCatalogs"] = all,
         ///     };
         /// });
         /// ```
@@ -63,7 +63,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["allCatalogs"] = all.Apply(getCatalogsResult =&gt; getCatalogsResult),
+        ///         ["allCatalogs"] = all,
         ///     };
         /// });
         /// ```

@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
+ * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -68,7 +68,7 @@ export interface GetAwsCrossAccountPolicyResult {
  *
  * ## Example Usage
  *
- * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks.AwsS3Mount pages.
+ * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

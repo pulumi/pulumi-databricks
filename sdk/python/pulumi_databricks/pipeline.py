@@ -17,6 +17,7 @@ __all__ = ['PipelineArgs', 'Pipeline']
 class PipelineArgs:
     def __init__(__self__, *,
                  allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
+                 catalog: Optional[pulumi.Input[str]] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -37,7 +38,7 @@ class PipelineArgs:
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `true`.
         :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
-        :param pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+        :param pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
@@ -45,6 +46,8 @@ class PipelineArgs:
         """
         if allow_duplicate_names is not None:
             pulumi.set(__self__, "allow_duplicate_names", allow_duplicate_names)
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
         if channel is not None:
             pulumi.set(__self__, "channel", channel)
         if clusters is not None:
@@ -78,6 +81,15 @@ class PipelineArgs:
     @allow_duplicate_names.setter
     def allow_duplicate_names(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_duplicate_names", value)
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "catalog")
+
+    @catalog.setter
+    def catalog(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "catalog", value)
 
     @property
     @pulumi.getter
@@ -164,7 +176,7 @@ class PipelineArgs:
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]]:
         """
-        blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+        blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         """
         return pulumi.get(self, "libraries")
 
@@ -225,6 +237,7 @@ class PipelineArgs:
 class _PipelineState:
     def __init__(__self__, *,
                  allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
+                 catalog: Optional[pulumi.Input[str]] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -246,7 +259,7 @@ class _PipelineState:
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `true`.
         :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
-        :param pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+        :param pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
@@ -254,6 +267,8 @@ class _PipelineState:
         """
         if allow_duplicate_names is not None:
             pulumi.set(__self__, "allow_duplicate_names", allow_duplicate_names)
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
         if channel is not None:
             pulumi.set(__self__, "channel", channel)
         if clusters is not None:
@@ -289,6 +304,15 @@ class _PipelineState:
     @allow_duplicate_names.setter
     def allow_duplicate_names(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_duplicate_names", value)
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "catalog")
+
+    @catalog.setter
+    def catalog(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "catalog", value)
 
     @property
     @pulumi.getter
@@ -375,7 +399,7 @@ class _PipelineState:
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]]:
         """
-        blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+        blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         """
         return pulumi.get(self, "libraries")
 
@@ -447,6 +471,7 @@ class Pipeline(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
+                 catalog: Optional[pulumi.Input[str]] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -469,7 +494,9 @@ class Pipeline(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        dlt_demo = databricks.Notebook("dltDemo")
+        dlt_demo_notebook = databricks.Notebook("dltDemoNotebook")
+        #...
+        dlt_demo_repo = databricks.Repo("dltDemoRepo")
         #...
         this = databricks.Pipeline("this",
             storage="/test/first-pipeline",
@@ -493,11 +520,18 @@ class Pipeline(pulumi.CustomResource):
                     },
                 ),
             ],
-            libraries=[databricks.PipelineLibraryArgs(
-                notebook=databricks.PipelineLibraryNotebookArgs(
-                    path=dlt_demo.id,
+            libraries=[
+                databricks.PipelineLibraryArgs(
+                    notebook=databricks.PipelineLibraryNotebookArgs(
+                        path=dlt_demo_notebook.id,
+                    ),
                 ),
-            )],
+                databricks.PipelineLibraryArgs(
+                    file=databricks.PipelineLibraryFileArgs(
+                        path=dlt_demo_repo.path.apply(lambda path: f"{path}/pipeline.sql"),
+                    ),
+                ),
+            ],
             continuous=False)
         ```
         ## Related Resources
@@ -525,7 +559,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `true`.
         :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
@@ -546,7 +580,9 @@ class Pipeline(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        dlt_demo = databricks.Notebook("dltDemo")
+        dlt_demo_notebook = databricks.Notebook("dltDemoNotebook")
+        #...
+        dlt_demo_repo = databricks.Repo("dltDemoRepo")
         #...
         this = databricks.Pipeline("this",
             storage="/test/first-pipeline",
@@ -570,11 +606,18 @@ class Pipeline(pulumi.CustomResource):
                     },
                 ),
             ],
-            libraries=[databricks.PipelineLibraryArgs(
-                notebook=databricks.PipelineLibraryNotebookArgs(
-                    path=dlt_demo.id,
+            libraries=[
+                databricks.PipelineLibraryArgs(
+                    notebook=databricks.PipelineLibraryNotebookArgs(
+                        path=dlt_demo_notebook.id,
+                    ),
                 ),
-            )],
+                databricks.PipelineLibraryArgs(
+                    file=databricks.PipelineLibraryFileArgs(
+                        path=dlt_demo_repo.path.apply(lambda path: f"{path}/pipeline.sql"),
+                    ),
+                ),
+            ],
             continuous=False)
         ```
         ## Related Resources
@@ -610,6 +653,7 @@ class Pipeline(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
+                 catalog: Optional[pulumi.Input[str]] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -632,6 +676,7 @@ class Pipeline(pulumi.CustomResource):
             __props__ = PipelineArgs.__new__(PipelineArgs)
 
             __props__.__dict__["allow_duplicate_names"] = allow_duplicate_names
+            __props__.__dict__["catalog"] = catalog
             __props__.__dict__["channel"] = channel
             __props__.__dict__["clusters"] = clusters
             __props__.__dict__["configuration"] = configuration
@@ -656,6 +701,7 @@ class Pipeline(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
+            catalog: Optional[pulumi.Input[str]] = None,
             channel: Optional[pulumi.Input[str]] = None,
             clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]]] = None,
             configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -682,7 +728,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `true`.
         :param pulumi.Input[str] edition: optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
@@ -693,6 +739,7 @@ class Pipeline(pulumi.CustomResource):
         __props__ = _PipelineState.__new__(_PipelineState)
 
         __props__.__dict__["allow_duplicate_names"] = allow_duplicate_names
+        __props__.__dict__["catalog"] = catalog
         __props__.__dict__["channel"] = channel
         __props__.__dict__["clusters"] = clusters
         __props__.__dict__["configuration"] = configuration
@@ -712,6 +759,11 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter(name="allowDuplicateNames")
     def allow_duplicate_names(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "allow_duplicate_names")
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "catalog")
 
     @property
     @pulumi.getter
@@ -770,7 +822,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter
     def libraries(self) -> pulumi.Output[Optional[Sequence['outputs.PipelineLibrary']]]:
         """
-        blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` type of library that should have the `path` attribute. *Right now only the `notebook` type is supported.*
+        blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         """
         return pulumi.get(self, "libraries")
 

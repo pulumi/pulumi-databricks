@@ -60,7 +60,7 @@ type ClusterPolicy struct {
 
 	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
 	Definition pulumi.StringOutput `pulumi:"definition"`
-	// Maximum number of clusters allowed per user. When omitted, there is no limit.
+	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser pulumi.IntPtrOutput `pulumi:"maxClustersPerUser"`
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -102,7 +102,7 @@ func GetClusterPolicy(ctx *pulumi.Context,
 type clusterPolicyState struct {
 	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
 	Definition *string `pulumi:"definition"`
-	// Maximum number of clusters allowed per user. When omitted, there is no limit.
+	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser *int `pulumi:"maxClustersPerUser"`
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name *string `pulumi:"name"`
@@ -113,7 +113,7 @@ type clusterPolicyState struct {
 type ClusterPolicyState struct {
 	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
 	Definition pulumi.StringPtrInput
-	// Maximum number of clusters allowed per user. When omitted, there is no limit.
+	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser pulumi.IntPtrInput
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name pulumi.StringPtrInput
@@ -128,7 +128,7 @@ func (ClusterPolicyState) ElementType() reflect.Type {
 type clusterPolicyArgs struct {
 	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
 	Definition string `pulumi:"definition"`
-	// Maximum number of clusters allowed per user. When omitted, there is no limit.
+	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser *int `pulumi:"maxClustersPerUser"`
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name *string `pulumi:"name"`
@@ -138,7 +138,7 @@ type clusterPolicyArgs struct {
 type ClusterPolicyArgs struct {
 	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
 	Definition pulumi.StringInput
-	// Maximum number of clusters allowed per user. When omitted, there is no limit.
+	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser pulumi.IntPtrInput
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name pulumi.StringPtrInput
@@ -236,7 +236,7 @@ func (o ClusterPolicyOutput) Definition() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterPolicy) pulumi.StringOutput { return v.Definition }).(pulumi.StringOutput)
 }
 
-// Maximum number of clusters allowed per user. When omitted, there is no limit.
+// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 func (o ClusterPolicyOutput) MaxClustersPerUser() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterPolicy) pulumi.IntPtrOutput { return v.MaxClustersPerUser }).(pulumi.IntPtrOutput)
 }

@@ -74,7 +74,7 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
     The following resources are used in the same context:
 
     * End to end workspace management guide
-    * get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+      *_get_current_user_data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
     * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
     * Group data to retrieve information about Group members, entitlements and instance profiles.
     * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
@@ -108,7 +108,7 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     The following resources are used in the same context:
 
     * End to end workspace management guide
-    * get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+      *_get_current_user_data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
     * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
     * Group data to retrieve information about Group members, entitlements and instance profiles.
     * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.

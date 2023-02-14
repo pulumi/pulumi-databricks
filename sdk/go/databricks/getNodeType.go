@@ -87,6 +87,7 @@ type GetNodeTypeArgs struct {
 	// * `Storage Optimized` (AWS, Azure)
 	// * `GPU Accelerated` (AWS, Azure)
 	Category *string `pulumi:"category"`
+	Fleet    *bool   `pulumi:"fleet"`
 	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.
 	GbPerCore *int `pulumi:"gbPerCore"`
 	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
@@ -115,6 +116,7 @@ type GetNodeTypeArgs struct {
 // A collection of values returned by getNodeType.
 type GetNodeTypeResult struct {
 	Category  *string `pulumi:"category"`
+	Fleet     *bool   `pulumi:"fleet"`
 	GbPerCore *int    `pulumi:"gbPerCore"`
 	Graviton  *bool   `pulumi:"graviton"`
 	// The provider-assigned unique ID for this managed resource.
@@ -155,6 +157,7 @@ type GetNodeTypeOutputArgs struct {
 	// * `Storage Optimized` (AWS, Azure)
 	// * `GPU Accelerated` (AWS, Azure)
 	Category pulumi.StringPtrInput `pulumi:"category"`
+	Fleet    pulumi.BoolPtrInput   `pulumi:"fleet"`
 	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.
 	GbPerCore pulumi.IntPtrInput `pulumi:"gbPerCore"`
 	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
@@ -201,6 +204,10 @@ func (o GetNodeTypeResultOutput) ToGetNodeTypeResultOutputWithContext(ctx contex
 
 func (o GetNodeTypeResultOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodeTypeResult) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNodeTypeResultOutput) Fleet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetNodeTypeResult) *bool { return v.Fleet }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetNodeTypeResultOutput) GbPerCore() pulumi.IntPtrOutput {

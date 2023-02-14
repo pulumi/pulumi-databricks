@@ -20,7 +20,7 @@ class ClusterPolicyArgs:
         """
         The set of arguments for constructing a ClusterPolicy resource.
         :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit.
+        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         """
         pulumi.set(__self__, "definition", definition)
@@ -45,7 +45,7 @@ class ClusterPolicyArgs:
     @pulumi.getter(name="maxClustersPerUser")
     def max_clusters_per_user(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of clusters allowed per user. When omitted, there is no limit.
+        Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         """
         return pulumi.get(self, "max_clusters_per_user")
 
@@ -76,7 +76,7 @@ class _ClusterPolicyState:
         """
         Input properties used for looking up and filtering ClusterPolicy resources.
         :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit.
+        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         :param pulumi.Input[str] policy_id: Canonical unique identifier for the cluster policy.
         """
@@ -105,7 +105,7 @@ class _ClusterPolicyState:
     @pulumi.getter(name="maxClustersPerUser")
     def max_clusters_per_user(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of clusters allowed per user. When omitted, there is no limit.
+        Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         """
         return pulumi.get(self, "max_clusters_per_user")
 
@@ -169,17 +169,17 @@ class ClusterPolicy(pulumi.CustomResource):
 
         * Dynamic Passthrough Clusters for a Group guide
         * End to end workspace management guide
-        * get_clusters data to retrieve a list of Cluster ids.
+          *_get_clusters_data to retrieve a list of Cluster ids.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-        * get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+          *_get_current_user_data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
         * GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
         * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * IpAccessList to allow access from [predefined IP ranges](https://docs.databricks.com/security/network/ip-access-list.html).
         * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-        * get_node_type data to get the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores.
+          *_get_node_type_data to get the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores.
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        * get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
+          *_get_spark_version_data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
         * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
         * WorkspaceConf to manage workspace configuration for expert usage.
 
@@ -194,7 +194,7 @@ class ClusterPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit.
+        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         """
         ...
@@ -225,17 +225,17 @@ class ClusterPolicy(pulumi.CustomResource):
 
         * Dynamic Passthrough Clusters for a Group guide
         * End to end workspace management guide
-        * get_clusters data to retrieve a list of Cluster ids.
+          *_get_clusters_data to retrieve a list of Cluster ids.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-        * get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+          *_get_current_user_data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
         * GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
         * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * IpAccessList to allow access from [predefined IP ranges](https://docs.databricks.com/security/network/ip-access-list.html).
         * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-        * get_node_type data to get the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores.
+          *_get_node_type_data to get the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores.
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        * get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
+          *_get_spark_version_data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
         * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
         * WorkspaceConf to manage workspace configuration for expert usage.
 
@@ -302,7 +302,7 @@ class ClusterPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit.
+        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         :param pulumi.Input[str] policy_id: Canonical unique identifier for the cluster policy.
         """
@@ -328,7 +328,7 @@ class ClusterPolicy(pulumi.CustomResource):
     @pulumi.getter(name="maxClustersPerUser")
     def max_clusters_per_user(self) -> pulumi.Output[Optional[int]]:
         """
-        Maximum number of clusters allowed per user. When omitted, there is no limit.
+        Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         """
         return pulumi.get(self, "max_clusters_per_user")
 
