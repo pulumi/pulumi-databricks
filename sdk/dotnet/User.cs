@@ -127,7 +127,7 @@ namespace Pulumi.Databricks
     ///         DisplayName = "Example user",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = databricks.Mws,
+    ///         Provider = databricks.Azure_account,
     ///     });
     /// 
     /// });

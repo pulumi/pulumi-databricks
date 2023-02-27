@@ -11,9 +11,11 @@ import com.pulumi.databricks.MwsCustomerManagedKeysArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MwsCustomerManagedKeysState;
 import com.pulumi.databricks.outputs.MwsCustomerManagedKeysAwsKeyInfo;
+import com.pulumi.databricks.outputs.MwsCustomerManagedKeysGcpKeyInfo;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -259,14 +261,14 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="awsKeyInfo", type=MwsCustomerManagedKeysAwsKeyInfo.class, parameters={})
-    private Output<MwsCustomerManagedKeysAwsKeyInfo> awsKeyInfo;
+    private Output</* @Nullable */ MwsCustomerManagedKeysAwsKeyInfo> awsKeyInfo;
 
     /**
      * @return This field is a block and is documented below.
      * 
      */
-    public Output<MwsCustomerManagedKeysAwsKeyInfo> awsKeyInfo() {
-        return this.awsKeyInfo;
+    public Output<Optional<MwsCustomerManagedKeysAwsKeyInfo>> awsKeyInfo() {
+        return Codegen.optional(this.awsKeyInfo);
     }
     /**
      * (Integer) Time in epoch milliseconds when the customer key was created.
@@ -295,6 +297,12 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
      */
     public Output<String> customerManagedKeyId() {
         return this.customerManagedKeyId;
+    }
+    @Export(name="gcpKeyInfo", type=MwsCustomerManagedKeysGcpKeyInfo.class, parameters={})
+    private Output</* @Nullable */ MwsCustomerManagedKeysGcpKeyInfo> gcpKeyInfo;
+
+    public Output<Optional<MwsCustomerManagedKeysGcpKeyInfo>> gcpKeyInfo() {
+        return Codegen.optional(this.gcpKeyInfo);
     }
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:

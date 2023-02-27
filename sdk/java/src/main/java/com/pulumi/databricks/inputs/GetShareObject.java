@@ -4,8 +4,11 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetShareObjectPartition;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -27,6 +30,13 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
 
     public String addedBy() {
         return this.addedBy;
+    }
+
+    @Import(name="cdfEnabled")
+    private @Nullable Boolean cdfEnabled;
+
+    public Optional<Boolean> cdfEnabled() {
+        return Optional.ofNullable(this.cdfEnabled);
     }
 
     /**
@@ -59,6 +69,13 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
         return this.dataObjectType;
     }
 
+    @Import(name="historyDataSharingStatus")
+    private @Nullable String historyDataSharingStatus;
+
+    public Optional<String> historyDataSharingStatus() {
+        return Optional.ofNullable(this.historyDataSharingStatus);
+    }
+
     /**
      * The name of the share
      * 
@@ -74,11 +91,32 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
         return this.name;
     }
 
-    @Import(name="sharedAs", required=true)
-    private String sharedAs;
+    @Import(name="partitions")
+    private @Nullable List<GetShareObjectPartition> partitions;
 
-    public String sharedAs() {
-        return this.sharedAs;
+    public Optional<List<GetShareObjectPartition>> partitions() {
+        return Optional.ofNullable(this.partitions);
+    }
+
+    @Import(name="sharedAs")
+    private @Nullable String sharedAs;
+
+    public Optional<String> sharedAs() {
+        return Optional.ofNullable(this.sharedAs);
+    }
+
+    @Import(name="startVersion")
+    private @Nullable Integer startVersion;
+
+    public Optional<Integer> startVersion() {
+        return Optional.ofNullable(this.startVersion);
+    }
+
+    @Import(name="status", required=true)
+    private String status;
+
+    public String status() {
+        return this.status;
     }
 
     private GetShareObject() {}
@@ -86,10 +124,15 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
     private GetShareObject(GetShareObject $) {
         this.addedAt = $.addedAt;
         this.addedBy = $.addedBy;
+        this.cdfEnabled = $.cdfEnabled;
         this.comment = $.comment;
         this.dataObjectType = $.dataObjectType;
+        this.historyDataSharingStatus = $.historyDataSharingStatus;
         this.name = $.name;
+        this.partitions = $.partitions;
         this.sharedAs = $.sharedAs;
+        this.startVersion = $.startVersion;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -120,6 +163,11 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        public Builder cdfEnabled(@Nullable Boolean cdfEnabled) {
+            $.cdfEnabled = cdfEnabled;
+            return this;
+        }
+
         /**
          * @param comment Description about the object.
          * 
@@ -142,6 +190,11 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        public Builder historyDataSharingStatus(@Nullable String historyDataSharingStatus) {
+            $.historyDataSharingStatus = historyDataSharingStatus;
+            return this;
+        }
+
         /**
          * @param name The name of the share
          * 
@@ -153,8 +206,27 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
-        public Builder sharedAs(String sharedAs) {
+        public Builder partitions(@Nullable List<GetShareObjectPartition> partitions) {
+            $.partitions = partitions;
+            return this;
+        }
+
+        public Builder partitions(GetShareObjectPartition... partitions) {
+            return partitions(List.of(partitions));
+        }
+
+        public Builder sharedAs(@Nullable String sharedAs) {
             $.sharedAs = sharedAs;
+            return this;
+        }
+
+        public Builder startVersion(@Nullable Integer startVersion) {
+            $.startVersion = startVersion;
+            return this;
+        }
+
+        public Builder status(String status) {
+            $.status = status;
             return this;
         }
 
@@ -163,7 +235,7 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
             $.addedBy = Objects.requireNonNull($.addedBy, "expected parameter 'addedBy' to be non-null");
             $.dataObjectType = Objects.requireNonNull($.dataObjectType, "expected parameter 'dataObjectType' to be non-null");
             $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.sharedAs = Objects.requireNonNull($.sharedAs, "expected parameter 'sharedAs' to be non-null");
+            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
             return $;
         }
     }

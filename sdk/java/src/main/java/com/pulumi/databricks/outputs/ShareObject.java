@@ -4,8 +4,11 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.ShareObjectPartition;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +17,11 @@ import javax.annotation.Nullable;
 public final class ShareObject {
     private @Nullable Integer addedAt;
     private @Nullable String addedBy;
+    /**
+     * @return Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
+     * 
+     */
+    private @Nullable Boolean cdfEnabled;
     /**
      * @return Description about the object.
      * 
@@ -25,11 +33,31 @@ public final class ShareObject {
      */
     private String dataObjectType;
     /**
+     * @return Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+     * 
+     */
+    private @Nullable String historyDataSharingStatus;
+    /**
      * @return Full name of the object, e.g. `catalog.schema.name` for a table.
      * 
      */
     private String name;
+    private @Nullable List<ShareObjectPartition> partitions;
+    /**
+     * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+     * 
+     */
     private @Nullable String sharedAs;
+    /**
+     * @return The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+     * 
+     */
+    private @Nullable Integer startVersion;
+    /**
+     * @return Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+     * 
+     */
+    private @Nullable String status;
 
     private ShareObject() {}
     public Optional<Integer> addedAt() {
@@ -37,6 +65,13 @@ public final class ShareObject {
     }
     public Optional<String> addedBy() {
         return Optional.ofNullable(this.addedBy);
+    }
+    /**
+     * @return Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
+     * 
+     */
+    public Optional<Boolean> cdfEnabled() {
+        return Optional.ofNullable(this.cdfEnabled);
     }
     /**
      * @return Description about the object.
@@ -53,14 +88,42 @@ public final class ShareObject {
         return this.dataObjectType;
     }
     /**
+     * @return Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+     * 
+     */
+    public Optional<String> historyDataSharingStatus() {
+        return Optional.ofNullable(this.historyDataSharingStatus);
+    }
+    /**
      * @return Full name of the object, e.g. `catalog.schema.name` for a table.
      * 
      */
     public String name() {
         return this.name;
     }
+    public List<ShareObjectPartition> partitions() {
+        return this.partitions == null ? List.of() : this.partitions;
+    }
+    /**
+     * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+     * 
+     */
     public Optional<String> sharedAs() {
         return Optional.ofNullable(this.sharedAs);
+    }
+    /**
+     * @return The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+     * 
+     */
+    public Optional<Integer> startVersion() {
+        return Optional.ofNullable(this.startVersion);
+    }
+    /**
+     * @return Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
     }
 
     public static Builder builder() {
@@ -74,19 +137,29 @@ public final class ShareObject {
     public static final class Builder {
         private @Nullable Integer addedAt;
         private @Nullable String addedBy;
+        private @Nullable Boolean cdfEnabled;
         private @Nullable String comment;
         private String dataObjectType;
+        private @Nullable String historyDataSharingStatus;
         private String name;
+        private @Nullable List<ShareObjectPartition> partitions;
         private @Nullable String sharedAs;
+        private @Nullable Integer startVersion;
+        private @Nullable String status;
         public Builder() {}
         public Builder(ShareObject defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addedAt = defaults.addedAt;
     	      this.addedBy = defaults.addedBy;
+    	      this.cdfEnabled = defaults.cdfEnabled;
     	      this.comment = defaults.comment;
     	      this.dataObjectType = defaults.dataObjectType;
+    	      this.historyDataSharingStatus = defaults.historyDataSharingStatus;
     	      this.name = defaults.name;
+    	      this.partitions = defaults.partitions;
     	      this.sharedAs = defaults.sharedAs;
+    	      this.startVersion = defaults.startVersion;
+    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
@@ -100,6 +173,11 @@ public final class ShareObject {
             return this;
         }
         @CustomType.Setter
+        public Builder cdfEnabled(@Nullable Boolean cdfEnabled) {
+            this.cdfEnabled = cdfEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder comment(@Nullable String comment) {
             this.comment = comment;
             return this;
@@ -110,23 +188,51 @@ public final class ShareObject {
             return this;
         }
         @CustomType.Setter
+        public Builder historyDataSharingStatus(@Nullable String historyDataSharingStatus) {
+            this.historyDataSharingStatus = historyDataSharingStatus;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
+        }
+        @CustomType.Setter
+        public Builder partitions(@Nullable List<ShareObjectPartition> partitions) {
+            this.partitions = partitions;
+            return this;
+        }
+        public Builder partitions(ShareObjectPartition... partitions) {
+            return partitions(List.of(partitions));
         }
         @CustomType.Setter
         public Builder sharedAs(@Nullable String sharedAs) {
             this.sharedAs = sharedAs;
             return this;
         }
+        @CustomType.Setter
+        public Builder startVersion(@Nullable Integer startVersion) {
+            this.startVersion = startVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder status(@Nullable String status) {
+            this.status = status;
+            return this;
+        }
         public ShareObject build() {
             final var o = new ShareObject();
             o.addedAt = addedAt;
             o.addedBy = addedBy;
+            o.cdfEnabled = cdfEnabled;
             o.comment = comment;
             o.dataObjectType = dataObjectType;
+            o.historyDataSharingStatus = historyDataSharingStatus;
             o.name = name;
+            o.partitions = partitions;
             o.sharedAs = sharedAs;
+            o.startVersion = startVersion;
+            o.status = status;
             return o;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsContinuous;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsDbtTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsEmailNotifications;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsGitSource;
@@ -31,6 +32,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettings {
+    private @Nullable GetJobJobSettingsSettingsContinuous continuous;
     private @Nullable GetJobJobSettingsSettingsDbtTask dbtTask;
     private @Nullable GetJobJobSettingsSettingsEmailNotifications emailNotifications;
     private @Nullable String existingClusterId;
@@ -61,6 +63,9 @@ public final class GetJobJobSettingsSettings {
     private @Nullable GetJobJobSettingsSettingsWebhookNotifications webhookNotifications;
 
     private GetJobJobSettingsSettings() {}
+    public Optional<GetJobJobSettingsSettingsContinuous> continuous() {
+        return Optional.ofNullable(this.continuous);
+    }
     public Optional<GetJobJobSettingsSettingsDbtTask> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
     }
@@ -147,6 +152,7 @@ public final class GetJobJobSettingsSettings {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetJobJobSettingsSettingsContinuous continuous;
         private @Nullable GetJobJobSettingsSettingsDbtTask dbtTask;
         private @Nullable GetJobJobSettingsSettingsEmailNotifications emailNotifications;
         private @Nullable String existingClusterId;
@@ -174,6 +180,7 @@ public final class GetJobJobSettingsSettings {
         public Builder() {}
         public Builder(GetJobJobSettingsSettings defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.continuous = defaults.continuous;
     	      this.dbtTask = defaults.dbtTask;
     	      this.emailNotifications = defaults.emailNotifications;
     	      this.existingClusterId = defaults.existingClusterId;
@@ -200,6 +207,11 @@ public final class GetJobJobSettingsSettings {
     	      this.webhookNotifications = defaults.webhookNotifications;
         }
 
+        @CustomType.Setter
+        public Builder continuous(@Nullable GetJobJobSettingsSettingsContinuous continuous) {
+            this.continuous = continuous;
+            return this;
+        }
         @CustomType.Setter
         public Builder dbtTask(@Nullable GetJobJobSettingsSettingsDbtTask dbtTask) {
             this.dbtTask = dbtTask;
@@ -331,6 +343,7 @@ public final class GetJobJobSettingsSettings {
         }
         public GetJobJobSettingsSettings build() {
             final var o = new GetJobJobSettingsSettings();
+            o.continuous = continuous;
             o.dbtTask = dbtTask;
             o.emailNotifications = emailNotifications;
             o.existingClusterId = existingClusterId;

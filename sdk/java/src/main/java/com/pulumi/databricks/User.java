@@ -201,7 +201,7 @@ import javax.annotation.Nullable;
  *             .userName(&#34;me@example.com&#34;)
  *             .displayName(&#34;Example user&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
+ *                 .provider(databricks.azure_account())
  *                 .build());
  * 
  *     }

@@ -75,14 +75,14 @@ public final class Config {
     public Optional<Integer> rateLimit() {
         return Codegen.integerProp("rateLimit").config(config).get();
     }
+    public Optional<Integer> retryTimeoutSeconds() {
+        return Codegen.integerProp("retryTimeoutSeconds").config(config).get();
+    }
     public Optional<Boolean> skipVerify() {
         return Codegen.booleanProp("skipVerify").config(config).get();
     }
     public Optional<String> token() {
         return Codegen.stringProp("token").config(config).get();
-    }
-    public Optional<String> tokenEndpoint() {
-        return Codegen.stringProp("tokenEndpoint").config(config).get();
     }
     public Optional<String> username() {
         return Codegen.stringProp("username").config(config).get();

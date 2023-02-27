@@ -165,7 +165,7 @@ import (
 //			_, err = databricks.NewUser(ctx, "accountUser", &databricks.UserArgs{
 //				UserName:    pulumi.String("me@example.com"),
 //				DisplayName: pulumi.String("Example user"),
-//			}, pulumi.Provider(databricks.Mws))
+//			}, pulumi.Provider(databricks.Azure_account))
 //			if err != nil {
 //				return err
 //			}

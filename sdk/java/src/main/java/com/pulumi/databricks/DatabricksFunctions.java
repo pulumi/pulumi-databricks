@@ -1630,7 +1630,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
-     *             .limitFileSize(10240)
+     *             .limitFileSize(&#34;true&#34;)
      *             .path(&#34;dbfs:/reports/some.csv&#34;)
      *             .build());
      * 
@@ -1674,7 +1674,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
-     *             .limitFileSize(10240)
+     *             .limitFileSize(&#34;true&#34;)
      *             .path(&#34;dbfs:/reports/some.csv&#34;)
      *             .build());
      * 
@@ -1718,7 +1718,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
-     *             .limitFileSize(10240)
+     *             .limitFileSize(&#34;true&#34;)
      *             .path(&#34;dbfs:/reports/some.csv&#34;)
      *             .build());
      * 
@@ -1762,7 +1762,7 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
-     *             .limitFileSize(10240)
+     *             .limitFileSize(&#34;true&#34;)
      *             .path(&#34;dbfs:/reports/some.csv&#34;)
      *             .build());
      * 
@@ -2849,7 +2849,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getJobs:getJobs", TypeShape.of(GetJobsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsCredentials in Databricks Account.
      * 
@@ -2901,7 +2901,7 @@ public final class DatabricksFunctions {
         return getMwsCredentials(GetMwsCredentialsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsCredentials in Databricks Account.
      * 
@@ -2953,7 +2953,7 @@ public final class DatabricksFunctions {
         return getMwsCredentialsPlain(GetMwsCredentialsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsCredentials in Databricks Account.
      * 
@@ -3005,7 +3005,7 @@ public final class DatabricksFunctions {
         return getMwsCredentials(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsCredentials in Databricks Account.
      * 
@@ -3057,7 +3057,7 @@ public final class DatabricksFunctions {
         return getMwsCredentialsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsCredentials in Databricks Account.
      * 
@@ -3109,7 +3109,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getMwsCredentials:getMwsCredentials", TypeShape.of(GetMwsCredentialsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsCredentials in Databricks Account.
      * 

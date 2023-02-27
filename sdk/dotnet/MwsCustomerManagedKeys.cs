@@ -316,7 +316,7 @@ namespace Pulumi.Databricks
         /// This field is a block and is documented below.
         /// </summary>
         [Output("awsKeyInfo")]
-        public Output<Outputs.MwsCustomerManagedKeysAwsKeyInfo> AwsKeyInfo { get; private set; } = null!;
+        public Output<Outputs.MwsCustomerManagedKeysAwsKeyInfo?> AwsKeyInfo { get; private set; } = null!;
 
         /// <summary>
         /// (Integer) Time in epoch milliseconds when the customer key was created.
@@ -329,6 +329,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("customerManagedKeyId")]
         public Output<string> CustomerManagedKeyId { get; private set; } = null!;
+
+        [Output("gcpKeyInfo")]
+        public Output<Outputs.MwsCustomerManagedKeysGcpKeyInfo?> GcpKeyInfo { get; private set; } = null!;
 
         /// <summary>
         /// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
@@ -391,8 +394,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// This field is a block and is documented below.
         /// </summary>
-        [Input("awsKeyInfo", required: true)]
-        public Input<Inputs.MwsCustomerManagedKeysAwsKeyInfoArgs> AwsKeyInfo { get; set; } = null!;
+        [Input("awsKeyInfo")]
+        public Input<Inputs.MwsCustomerManagedKeysAwsKeyInfoArgs>? AwsKeyInfo { get; set; }
 
         /// <summary>
         /// (Integer) Time in epoch milliseconds when the customer key was created.
@@ -405,6 +408,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("customerManagedKeyId")]
         public Input<string>? CustomerManagedKeyId { get; set; }
+
+        [Input("gcpKeyInfo")]
+        public Input<Inputs.MwsCustomerManagedKeysGcpKeyInfoArgs>? GcpKeyInfo { get; set; }
 
         [Input("useCases", required: true)]
         private InputList<string>? _useCases;
@@ -449,6 +455,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("customerManagedKeyId")]
         public Input<string>? CustomerManagedKeyId { get; set; }
+
+        [Input("gcpKeyInfo")]
+        public Input<Inputs.MwsCustomerManagedKeysGcpKeyInfoGetArgs>? GcpKeyInfo { get; set; }
 
         [Input("useCases")]
         private InputList<string>? _useCases;

@@ -59,7 +59,7 @@ class AwaitableGetMwsCredentialsResult(GetMwsCredentialsResult):
 def get_mws_credentials(ids: Optional[Mapping[str, Any]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsCredentialsResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
     Lists all MwsCredentials in Databricks Account.
 
@@ -104,7 +104,7 @@ def get_mws_credentials(ids: Optional[Mapping[str, Any]] = None,
 def get_mws_credentials_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMwsCredentialsResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
     Lists all MwsCredentials in Databricks Account.
 

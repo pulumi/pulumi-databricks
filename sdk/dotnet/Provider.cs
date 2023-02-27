@@ -69,9 +69,6 @@ namespace Pulumi.Databricks
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
 
-        [Output("tokenEndpoint")]
-        public Output<string?> TokenEndpoint { get; private set; } = null!;
-
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
 
@@ -210,6 +207,9 @@ namespace Pulumi.Databricks
         [Input("rateLimit", json: true)]
         public Input<int>? RateLimit { get; set; }
 
+        [Input("retryTimeoutSeconds", json: true)]
+        public Input<int>? RetryTimeoutSeconds { get; set; }
+
         [Input("skipVerify", json: true)]
         public Input<bool>? SkipVerify { get; set; }
 
@@ -224,9 +224,6 @@ namespace Pulumi.Databricks
                 _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
-
-        [Input("tokenEndpoint")]
-        public Input<string>? TokenEndpoint { get; set; }
 
         [Input("username")]
         public Input<string>? Username { get; set; }

@@ -27,6 +27,9 @@ namespace Pulumi.Databricks
         [Output("alwaysRunning")]
         public Output<bool?> AlwaysRunning { get; private set; } = null!;
 
+        [Output("continuous")]
+        public Output<Outputs.JobContinuous?> Continuous { get; private set; } = null!;
+
         [Output("dbtTask")]
         public Output<Outputs.JobDbtTask?> DbtTask { get; private set; } = null!;
 
@@ -45,6 +48,9 @@ namespace Pulumi.Databricks
         [Output("gitSource")]
         public Output<Outputs.JobGitSource?> GitSource { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        /// </summary>
         [Output("jobClusters")]
         public Output<ImmutableArray<Outputs.JobJobCluster>> JobClusters { get; private set; } = null!;
 
@@ -193,6 +199,9 @@ namespace Pulumi.Databricks
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
 
+        [Input("continuous")]
+        public Input<Inputs.JobContinuousArgs>? Continuous { get; set; }
+
         [Input("dbtTask")]
         public Input<Inputs.JobDbtTaskArgs>? DbtTask { get; set; }
 
@@ -213,6 +222,10 @@ namespace Pulumi.Databricks
 
         [Input("jobClusters")]
         private InputList<Inputs.JobJobClusterArgs>? _jobClusters;
+
+        /// <summary>
+        /// A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        /// </summary>
         public InputList<Inputs.JobJobClusterArgs> JobClusters
         {
             get => _jobClusters ?? (_jobClusters = new InputList<Inputs.JobJobClusterArgs>());
@@ -337,6 +350,9 @@ namespace Pulumi.Databricks
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
 
+        [Input("continuous")]
+        public Input<Inputs.JobContinuousGetArgs>? Continuous { get; set; }
+
         [Input("dbtTask")]
         public Input<Inputs.JobDbtTaskGetArgs>? DbtTask { get; set; }
 
@@ -357,6 +373,10 @@ namespace Pulumi.Databricks
 
         [Input("jobClusters")]
         private InputList<Inputs.JobJobClusterGetArgs>? _jobClusters;
+
+        /// <summary>
+        /// A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        /// </summary>
         public InputList<Inputs.JobJobClusterGetArgs> JobClusters
         {
             get => _jobClusters ?? (_jobClusters = new InputList<Inputs.JobJobClusterGetArgs>());

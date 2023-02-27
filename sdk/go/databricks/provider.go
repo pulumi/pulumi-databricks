@@ -34,7 +34,6 @@ type Provider struct {
 	Password                 pulumi.StringPtrOutput `pulumi:"password"`
 	Profile                  pulumi.StringPtrOutput `pulumi:"profile"`
 	Token                    pulumi.StringPtrOutput `pulumi:"token"`
-	TokenEndpoint            pulumi.StringPtrOutput `pulumi:"tokenEndpoint"`
 	Username                 pulumi.StringPtrOutput `pulumi:"username"`
 }
 
@@ -98,9 +97,9 @@ type providerArgs struct {
 	Password                 *string `pulumi:"password"`
 	Profile                  *string `pulumi:"profile"`
 	RateLimit                *int    `pulumi:"rateLimit"`
+	RetryTimeoutSeconds      *int    `pulumi:"retryTimeoutSeconds"`
 	SkipVerify               *bool   `pulumi:"skipVerify"`
 	Token                    *string `pulumi:"token"`
-	TokenEndpoint            *string `pulumi:"tokenEndpoint"`
 	Username                 *string `pulumi:"username"`
 }
 
@@ -127,9 +126,9 @@ type ProviderArgs struct {
 	Password                 pulumi.StringPtrInput
 	Profile                  pulumi.StringPtrInput
 	RateLimit                pulumi.IntPtrInput
+	RetryTimeoutSeconds      pulumi.IntPtrInput
 	SkipVerify               pulumi.BoolPtrInput
 	Token                    pulumi.StringPtrInput
-	TokenEndpoint            pulumi.StringPtrInput
 	Username                 pulumi.StringPtrInput
 }
 
@@ -236,10 +235,6 @@ func (o ProviderOutput) Profile() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
-}
-
-func (o ProviderOutput) TokenEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Username() pulumi.StringPtrOutput {

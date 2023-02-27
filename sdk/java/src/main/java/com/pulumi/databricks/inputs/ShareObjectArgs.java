@@ -5,8 +5,11 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.ShareObjectPartitionArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,6 +31,21 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> addedBy() {
         return Optional.ofNullable(this.addedBy);
+    }
+
+    /**
+     * Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
+     * 
+     */
+    @Import(name="cdfEnabled")
+    private @Nullable Output<Boolean> cdfEnabled;
+
+    /**
+     * @return Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
+     * 
+     */
+    public Optional<Output<Boolean>> cdfEnabled() {
+        return Optional.ofNullable(this.cdfEnabled);
     }
 
     /**
@@ -61,6 +79,21 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+     * 
+     */
+    @Import(name="historyDataSharingStatus")
+    private @Nullable Output<String> historyDataSharingStatus;
+
+    /**
+     * @return Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+     * 
+     */
+    public Optional<Output<String>> historyDataSharingStatus() {
+        return Optional.ofNullable(this.historyDataSharingStatus);
+    }
+
+    /**
      * Full name of the object, e.g. `catalog.schema.name` for a table.
      * 
      */
@@ -75,11 +108,56 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         return this.name;
     }
 
+    @Import(name="partitions")
+    private @Nullable Output<List<ShareObjectPartitionArgs>> partitions;
+
+    public Optional<Output<List<ShareObjectPartitionArgs>>> partitions() {
+        return Optional.ofNullable(this.partitions);
+    }
+
+    /**
+     * A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+     * 
+     */
     @Import(name="sharedAs")
     private @Nullable Output<String> sharedAs;
 
+    /**
+     * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+     * 
+     */
     public Optional<Output<String>> sharedAs() {
         return Optional.ofNullable(this.sharedAs);
+    }
+
+    /**
+     * The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+     * 
+     */
+    @Import(name="startVersion")
+    private @Nullable Output<Integer> startVersion;
+
+    /**
+     * @return The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+     * 
+     */
+    public Optional<Output<Integer>> startVersion() {
+        return Optional.ofNullable(this.startVersion);
+    }
+
+    /**
+     * Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
     }
 
     private ShareObjectArgs() {}
@@ -87,10 +165,15 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
     private ShareObjectArgs(ShareObjectArgs $) {
         this.addedAt = $.addedAt;
         this.addedBy = $.addedBy;
+        this.cdfEnabled = $.cdfEnabled;
         this.comment = $.comment;
         this.dataObjectType = $.dataObjectType;
+        this.historyDataSharingStatus = $.historyDataSharingStatus;
         this.name = $.name;
+        this.partitions = $.partitions;
         this.sharedAs = $.sharedAs;
+        this.startVersion = $.startVersion;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -127,6 +210,27 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder addedBy(String addedBy) {
             return addedBy(Output.of(addedBy));
+        }
+
+        /**
+         * @param cdfEnabled Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cdfEnabled(@Nullable Output<Boolean> cdfEnabled) {
+            $.cdfEnabled = cdfEnabled;
+            return this;
+        }
+
+        /**
+         * @param cdfEnabled Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cdfEnabled(Boolean cdfEnabled) {
+            return cdfEnabled(Output.of(cdfEnabled));
         }
 
         /**
@@ -172,6 +276,27 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param historyDataSharingStatus Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder historyDataSharingStatus(@Nullable Output<String> historyDataSharingStatus) {
+            $.historyDataSharingStatus = historyDataSharingStatus;
+            return this;
+        }
+
+        /**
+         * @param historyDataSharingStatus Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder historyDataSharingStatus(String historyDataSharingStatus) {
+            return historyDataSharingStatus(Output.of(historyDataSharingStatus));
+        }
+
+        /**
          * @param name Full name of the object, e.g. `catalog.schema.name` for a table.
          * 
          * @return builder
@@ -192,13 +317,80 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        public Builder partitions(@Nullable Output<List<ShareObjectPartitionArgs>> partitions) {
+            $.partitions = partitions;
+            return this;
+        }
+
+        public Builder partitions(List<ShareObjectPartitionArgs> partitions) {
+            return partitions(Output.of(partitions));
+        }
+
+        public Builder partitions(ShareObjectPartitionArgs... partitions) {
+            return partitions(List.of(partitions));
+        }
+
+        /**
+         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sharedAs(@Nullable Output<String> sharedAs) {
             $.sharedAs = sharedAs;
             return this;
         }
 
+        /**
+         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sharedAs(String sharedAs) {
             return sharedAs(Output.of(sharedAs));
+        }
+
+        /**
+         * @param startVersion The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startVersion(@Nullable Output<Integer> startVersion) {
+            $.startVersion = startVersion;
+            return this;
+        }
+
+        /**
+         * @param startVersion The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startVersion(Integer startVersion) {
+            return startVersion(Output.of(startVersion));
+        }
+
+        /**
+         * @param status Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         public ShareObjectArgs build() {

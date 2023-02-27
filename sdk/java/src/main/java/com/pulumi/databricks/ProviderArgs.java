@@ -164,6 +164,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rateLimit);
     }
 
+    @Import(name="retryTimeoutSeconds", json=true)
+    private @Nullable Output<Integer> retryTimeoutSeconds;
+
+    public Optional<Output<Integer>> retryTimeoutSeconds() {
+        return Optional.ofNullable(this.retryTimeoutSeconds);
+    }
+
     @Import(name="skipVerify", json=true)
     private @Nullable Output<Boolean> skipVerify;
 
@@ -176,13 +183,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> token() {
         return Optional.ofNullable(this.token);
-    }
-
-    @Import(name="tokenEndpoint")
-    private @Nullable Output<String> tokenEndpoint;
-
-    public Optional<Output<String>> tokenEndpoint() {
-        return Optional.ofNullable(this.tokenEndpoint);
     }
 
     @Import(name="username")
@@ -216,9 +216,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.password = $.password;
         this.profile = $.profile;
         this.rateLimit = $.rateLimit;
+        this.retryTimeoutSeconds = $.retryTimeoutSeconds;
         this.skipVerify = $.skipVerify;
         this.token = $.token;
-        this.tokenEndpoint = $.tokenEndpoint;
         this.username = $.username;
     }
 
@@ -429,6 +429,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return rateLimit(Output.of(rateLimit));
         }
 
+        public Builder retryTimeoutSeconds(@Nullable Output<Integer> retryTimeoutSeconds) {
+            $.retryTimeoutSeconds = retryTimeoutSeconds;
+            return this;
+        }
+
+        public Builder retryTimeoutSeconds(Integer retryTimeoutSeconds) {
+            return retryTimeoutSeconds(Output.of(retryTimeoutSeconds));
+        }
+
         public Builder skipVerify(@Nullable Output<Boolean> skipVerify) {
             $.skipVerify = skipVerify;
             return this;
@@ -445,15 +454,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder token(String token) {
             return token(Output.of(token));
-        }
-
-        public Builder tokenEndpoint(@Nullable Output<String> tokenEndpoint) {
-            $.tokenEndpoint = tokenEndpoint;
-            return this;
-        }
-
-        public Builder tokenEndpoint(String tokenEndpoint) {
-            return tokenEndpoint(Output.of(tokenEndpoint));
         }
 
         public Builder username(@Nullable Output<String> username) {

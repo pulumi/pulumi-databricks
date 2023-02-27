@@ -30,8 +30,8 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const myGroup = new databricks.Group("myGroup", {});
- * const myUserAccountAdmin = new databricks.UserRole("myUserAccountAdmin", {
- *     userId: myGroup.id,
+ * const myGroupAccountAdmin = new databricks.GroupRole("myGroupAccountAdmin", {
+ *     groupId: myGroup.id,
  *     role: "account_admin",
  * });
  * ```

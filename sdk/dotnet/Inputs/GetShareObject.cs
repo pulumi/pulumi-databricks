@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("addedBy", required: true)]
         public string AddedBy { get; set; } = null!;
 
+        [Input("cdfEnabled")]
+        public bool? CdfEnabled { get; set; }
+
         /// <summary>
         /// Description about the object.
         /// </summary>
@@ -30,14 +33,31 @@ namespace Pulumi.Databricks.Inputs
         [Input("dataObjectType", required: true)]
         public string DataObjectType { get; set; } = null!;
 
+        [Input("historyDataSharingStatus")]
+        public string? HistoryDataSharingStatus { get; set; }
+
         /// <summary>
         /// The name of the share
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        [Input("sharedAs", required: true)]
-        public string SharedAs { get; set; } = null!;
+        [Input("partitions")]
+        private List<Inputs.GetShareObjectPartitionArgs>? _partitions;
+        public List<Inputs.GetShareObjectPartitionArgs> Partitions
+        {
+            get => _partitions ?? (_partitions = new List<Inputs.GetShareObjectPartitionArgs>());
+            set => _partitions = value;
+        }
+
+        [Input("sharedAs")]
+        public string? SharedAs { get; set; }
+
+        [Input("startVersion")]
+        public int? StartVersion { get; set; }
+
+        [Input("status", required: true)]
+        public string Status { get; set; } = null!;
 
         public GetShareObjectArgs()
         {

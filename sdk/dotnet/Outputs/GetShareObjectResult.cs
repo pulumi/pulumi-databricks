@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly int AddedAt;
         public readonly string AddedBy;
+        public readonly bool? CdfEnabled;
         /// <summary>
         /// Description about the object.
         /// </summary>
@@ -23,11 +24,15 @@ namespace Pulumi.Databricks.Outputs
         /// Type of the object.
         /// </summary>
         public readonly string DataObjectType;
+        public readonly string? HistoryDataSharingStatus;
         /// <summary>
         /// The name of the share
         /// </summary>
         public readonly string Name;
-        public readonly string SharedAs;
+        public readonly ImmutableArray<Outputs.GetShareObjectPartitionResult> Partitions;
+        public readonly string? SharedAs;
+        public readonly int? StartVersion;
+        public readonly string Status;
 
         [OutputConstructor]
         private GetShareObjectResult(
@@ -35,20 +40,35 @@ namespace Pulumi.Databricks.Outputs
 
             string addedBy,
 
+            bool? cdfEnabled,
+
             string? comment,
 
             string dataObjectType,
 
+            string? historyDataSharingStatus,
+
             string name,
 
-            string sharedAs)
+            ImmutableArray<Outputs.GetShareObjectPartitionResult> partitions,
+
+            string? sharedAs,
+
+            int? startVersion,
+
+            string status)
         {
             AddedAt = addedAt;
             AddedBy = addedBy;
+            CdfEnabled = cdfEnabled;
             Comment = comment;
             DataObjectType = dataObjectType;
+            HistoryDataSharingStatus = historyDataSharingStatus;
             Name = name;
+            Partitions = partitions;
             SharedAs = sharedAs;
+            StartVersion = startVersion;
+            Status = status;
         }
     }
 }

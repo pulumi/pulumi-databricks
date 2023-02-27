@@ -23,14 +23,16 @@ type Job struct {
 	pulumi.CustomResourceState
 
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
-	AlwaysRunning pulumi.BoolPtrOutput `pulumi:"alwaysRunning"`
-	DbtTask       JobDbtTaskPtrOutput  `pulumi:"dbtTask"`
+	AlwaysRunning pulumi.BoolPtrOutput   `pulumi:"alwaysRunning"`
+	Continuous    JobContinuousPtrOutput `pulumi:"continuous"`
+	DbtTask       JobDbtTaskPtrOutput    `pulumi:"dbtTask"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrOutput `pulumi:"emailNotifications"`
 	ExistingClusterId  pulumi.StringPtrOutput         `pulumi:"existingClusterId"`
 	Format             pulumi.StringOutput            `pulumi:"format"`
 	GitSource          JobGitSourcePtrOutput          `pulumi:"gitSource"`
-	JobClusters        JobJobClusterArrayOutput       `pulumi:"jobClusters"`
+	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+	JobClusters JobJobClusterArrayOutput `pulumi:"jobClusters"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries JobLibraryArrayOutput `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
@@ -94,14 +96,16 @@ func GetJob(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Job resources.
 type jobState struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
-	AlwaysRunning *bool       `pulumi:"alwaysRunning"`
-	DbtTask       *JobDbtTask `pulumi:"dbtTask"`
+	AlwaysRunning *bool          `pulumi:"alwaysRunning"`
+	Continuous    *JobContinuous `pulumi:"continuous"`
+	DbtTask       *JobDbtTask    `pulumi:"dbtTask"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
 	ExistingClusterId  *string                `pulumi:"existingClusterId"`
 	Format             *string                `pulumi:"format"`
 	GitSource          *JobGitSource          `pulumi:"gitSource"`
-	JobClusters        []JobJobCluster        `pulumi:"jobClusters"`
+	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+	JobClusters []JobJobCluster `pulumi:"jobClusters"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries []JobLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
@@ -138,13 +142,15 @@ type jobState struct {
 type JobState struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning pulumi.BoolPtrInput
+	Continuous    JobContinuousPtrInput
 	DbtTask       JobDbtTaskPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrInput
 	ExistingClusterId  pulumi.StringPtrInput
 	Format             pulumi.StringPtrInput
 	GitSource          JobGitSourcePtrInput
-	JobClusters        JobJobClusterArrayInput
+	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+	JobClusters JobJobClusterArrayInput
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries JobLibraryArrayInput
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
@@ -184,14 +190,16 @@ func (JobState) ElementType() reflect.Type {
 
 type jobArgs struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
-	AlwaysRunning *bool       `pulumi:"alwaysRunning"`
-	DbtTask       *JobDbtTask `pulumi:"dbtTask"`
+	AlwaysRunning *bool          `pulumi:"alwaysRunning"`
+	Continuous    *JobContinuous `pulumi:"continuous"`
+	DbtTask       *JobDbtTask    `pulumi:"dbtTask"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
 	ExistingClusterId  *string                `pulumi:"existingClusterId"`
 	Format             *string                `pulumi:"format"`
 	GitSource          *JobGitSource          `pulumi:"gitSource"`
-	JobClusters        []JobJobCluster        `pulumi:"jobClusters"`
+	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+	JobClusters []JobJobCluster `pulumi:"jobClusters"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries []JobLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
@@ -227,13 +235,15 @@ type jobArgs struct {
 type JobArgs struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning pulumi.BoolPtrInput
+	Continuous    JobContinuousPtrInput
 	DbtTask       JobDbtTaskPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrInput
 	ExistingClusterId  pulumi.StringPtrInput
 	Format             pulumi.StringPtrInput
 	GitSource          JobGitSourcePtrInput
-	JobClusters        JobJobClusterArrayInput
+	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+	JobClusters JobJobClusterArrayInput
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries JobLibraryArrayInput
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
@@ -357,6 +367,10 @@ func (o JobOutput) AlwaysRunning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.AlwaysRunning }).(pulumi.BoolPtrOutput)
 }
 
+func (o JobOutput) Continuous() JobContinuousPtrOutput {
+	return o.ApplyT(func(v *Job) JobContinuousPtrOutput { return v.Continuous }).(JobContinuousPtrOutput)
+}
+
 func (o JobOutput) DbtTask() JobDbtTaskPtrOutput {
 	return o.ApplyT(func(v *Job) JobDbtTaskPtrOutput { return v.DbtTask }).(JobDbtTaskPtrOutput)
 }
@@ -378,6 +392,7 @@ func (o JobOutput) GitSource() JobGitSourcePtrOutput {
 	return o.ApplyT(func(v *Job) JobGitSourcePtrOutput { return v.GitSource }).(JobGitSourcePtrOutput)
 }
 
+// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 func (o JobOutput) JobClusters() JobJobClusterArrayOutput {
 	return o.ApplyT(func(v *Job) JobJobClusterArrayOutput { return v.JobClusters }).(JobJobClusterArrayOutput)
 }

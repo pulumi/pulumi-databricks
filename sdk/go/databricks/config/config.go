@@ -71,14 +71,14 @@ func GetProfile(ctx *pulumi.Context) string {
 func GetRateLimit(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "databricks:rateLimit")
 }
+func GetRetryTimeoutSeconds(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "databricks:retryTimeoutSeconds")
+}
 func GetSkipVerify(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "databricks:skipVerify")
 }
 func GetToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:token")
-}
-func GetTokenEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "databricks:tokenEndpoint")
 }
 func GetUsername(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:username")

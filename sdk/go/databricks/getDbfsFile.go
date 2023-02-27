@@ -25,7 +25,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.LookupDbfsFile(ctx, &databricks.LookupDbfsFileArgs{
-//				LimitFileSize: 10240,
+//				LimitFileSize: true,
 //				Path:          "dbfs:/reports/some.csv",
 //			}, nil)
 //			if err != nil {
@@ -55,9 +55,9 @@ func LookupDbfsFile(ctx *pulumi.Context, args *LookupDbfsFileArgs, opts ...pulum
 
 // A collection of arguments for invoking getDbfsFile.
 type LookupDbfsFileArgs struct {
-	// Do lot load content for files smaller than this in bytes
+	// Do not load content for files larger than 4MB.
 	LimitFileSize bool `pulumi:"limitFileSize"`
-	// Path on DBFS for the file to get content of
+	// Path on DBFS for the file from which to get content.
 	Path string `pulumi:"path"`
 }
 
@@ -88,9 +88,9 @@ func LookupDbfsFileOutput(ctx *pulumi.Context, args LookupDbfsFileOutputArgs, op
 
 // A collection of arguments for invoking getDbfsFile.
 type LookupDbfsFileOutputArgs struct {
-	// Do lot load content for files smaller than this in bytes
+	// Do not load content for files larger than 4MB.
 	LimitFileSize pulumi.BoolInput `pulumi:"limitFileSize"`
-	// Path on DBFS for the file to get content of
+	// Path on DBFS for the file from which to get content.
 	Path pulumi.StringInput `pulumi:"path"`
 }
 

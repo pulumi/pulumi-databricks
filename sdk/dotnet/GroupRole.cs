@@ -50,9 +50,9 @@ namespace Pulumi.Databricks
     /// {
     ///     var myGroup = new Databricks.Group("myGroup");
     /// 
-    ///     var myUserAccountAdmin = new Databricks.UserRole("myUserAccountAdmin", new()
+    ///     var myGroupAccountAdmin = new Databricks.GroupRole("myGroupAccountAdmin", new()
     ///     {
-    ///         UserId = myGroup.Id,
+    ///         GroupId = myGroup.Id,
     ///         Role = "account_admin",
     ///     });
     /// 

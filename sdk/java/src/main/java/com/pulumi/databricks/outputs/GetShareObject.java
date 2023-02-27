@@ -4,8 +4,11 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetShareObjectPartition;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +17,7 @@ import javax.annotation.Nullable;
 public final class GetShareObject {
     private Integer addedAt;
     private String addedBy;
+    private @Nullable Boolean cdfEnabled;
     /**
      * @return Description about the object.
      * 
@@ -24,12 +28,16 @@ public final class GetShareObject {
      * 
      */
     private String dataObjectType;
+    private @Nullable String historyDataSharingStatus;
     /**
      * @return The name of the share
      * 
      */
     private String name;
-    private String sharedAs;
+    private @Nullable List<GetShareObjectPartition> partitions;
+    private @Nullable String sharedAs;
+    private @Nullable Integer startVersion;
+    private String status;
 
     private GetShareObject() {}
     public Integer addedAt() {
@@ -37,6 +45,9 @@ public final class GetShareObject {
     }
     public String addedBy() {
         return this.addedBy;
+    }
+    public Optional<Boolean> cdfEnabled() {
+        return Optional.ofNullable(this.cdfEnabled);
     }
     /**
      * @return Description about the object.
@@ -52,6 +63,9 @@ public final class GetShareObject {
     public String dataObjectType() {
         return this.dataObjectType;
     }
+    public Optional<String> historyDataSharingStatus() {
+        return Optional.ofNullable(this.historyDataSharingStatus);
+    }
     /**
      * @return The name of the share
      * 
@@ -59,8 +73,17 @@ public final class GetShareObject {
     public String name() {
         return this.name;
     }
-    public String sharedAs() {
-        return this.sharedAs;
+    public List<GetShareObjectPartition> partitions() {
+        return this.partitions == null ? List.of() : this.partitions;
+    }
+    public Optional<String> sharedAs() {
+        return Optional.ofNullable(this.sharedAs);
+    }
+    public Optional<Integer> startVersion() {
+        return Optional.ofNullable(this.startVersion);
+    }
+    public String status() {
+        return this.status;
     }
 
     public static Builder builder() {
@@ -74,19 +97,29 @@ public final class GetShareObject {
     public static final class Builder {
         private Integer addedAt;
         private String addedBy;
+        private @Nullable Boolean cdfEnabled;
         private @Nullable String comment;
         private String dataObjectType;
+        private @Nullable String historyDataSharingStatus;
         private String name;
-        private String sharedAs;
+        private @Nullable List<GetShareObjectPartition> partitions;
+        private @Nullable String sharedAs;
+        private @Nullable Integer startVersion;
+        private String status;
         public Builder() {}
         public Builder(GetShareObject defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addedAt = defaults.addedAt;
     	      this.addedBy = defaults.addedBy;
+    	      this.cdfEnabled = defaults.cdfEnabled;
     	      this.comment = defaults.comment;
     	      this.dataObjectType = defaults.dataObjectType;
+    	      this.historyDataSharingStatus = defaults.historyDataSharingStatus;
     	      this.name = defaults.name;
+    	      this.partitions = defaults.partitions;
     	      this.sharedAs = defaults.sharedAs;
+    	      this.startVersion = defaults.startVersion;
+    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
@@ -100,6 +133,11 @@ public final class GetShareObject {
             return this;
         }
         @CustomType.Setter
+        public Builder cdfEnabled(@Nullable Boolean cdfEnabled) {
+            this.cdfEnabled = cdfEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder comment(@Nullable String comment) {
             this.comment = comment;
             return this;
@@ -110,23 +148,51 @@ public final class GetShareObject {
             return this;
         }
         @CustomType.Setter
+        public Builder historyDataSharingStatus(@Nullable String historyDataSharingStatus) {
+            this.historyDataSharingStatus = historyDataSharingStatus;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
         @CustomType.Setter
-        public Builder sharedAs(String sharedAs) {
-            this.sharedAs = Objects.requireNonNull(sharedAs);
+        public Builder partitions(@Nullable List<GetShareObjectPartition> partitions) {
+            this.partitions = partitions;
+            return this;
+        }
+        public Builder partitions(GetShareObjectPartition... partitions) {
+            return partitions(List.of(partitions));
+        }
+        @CustomType.Setter
+        public Builder sharedAs(@Nullable String sharedAs) {
+            this.sharedAs = sharedAs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder startVersion(@Nullable Integer startVersion) {
+            this.startVersion = startVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder status(String status) {
+            this.status = Objects.requireNonNull(status);
             return this;
         }
         public GetShareObject build() {
             final var o = new GetShareObject();
             o.addedAt = addedAt;
             o.addedBy = addedBy;
+            o.cdfEnabled = cdfEnabled;
             o.comment = comment;
             o.dataObjectType = dataObjectType;
+            o.historyDataSharingStatus = historyDataSharingStatus;
             o.name = name;
+            o.partitions = partitions;
             o.sharedAs = sharedAs;
+            o.startVersion = startVersion;
+            o.status = status;
             return o;
         }
     }

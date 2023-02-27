@@ -16,6 +16,10 @@ namespace Pulumi.Databricks.Outputs
         public readonly int? AddedAt;
         public readonly string? AddedBy;
         /// <summary>
+        /// Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
+        /// </summary>
+        public readonly bool? CdfEnabled;
+        /// <summary>
         /// Description about the object.
         /// </summary>
         public readonly string? Comment;
@@ -24,10 +28,26 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string DataObjectType;
         /// <summary>
+        /// Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+        /// </summary>
+        public readonly string? HistoryDataSharingStatus;
+        /// <summary>
         /// Full name of the object, e.g. `catalog.schema.name` for a table.
         /// </summary>
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.ShareObjectPartition> Partitions;
+        /// <summary>
+        /// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+        /// </summary>
         public readonly string? SharedAs;
+        /// <summary>
+        /// The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+        /// </summary>
+        public readonly int? StartVersion;
+        /// <summary>
+        /// Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+        /// </summary>
+        public readonly string? Status;
 
         [OutputConstructor]
         private ShareObject(
@@ -35,20 +55,35 @@ namespace Pulumi.Databricks.Outputs
 
             string? addedBy,
 
+            bool? cdfEnabled,
+
             string? comment,
 
             string dataObjectType,
 
+            string? historyDataSharingStatus,
+
             string name,
 
-            string? sharedAs)
+            ImmutableArray<Outputs.ShareObjectPartition> partitions,
+
+            string? sharedAs,
+
+            int? startVersion,
+
+            string? status)
         {
             AddedAt = addedAt;
             AddedBy = addedBy;
+            CdfEnabled = cdfEnabled;
             Comment = comment;
             DataObjectType = dataObjectType;
+            HistoryDataSharingStatus = historyDataSharingStatus;
             Name = name;
+            Partitions = partitions;
             SharedAs = sharedAs;
+            StartVersion = startVersion;
+            Status = status;
         }
     }
 }
