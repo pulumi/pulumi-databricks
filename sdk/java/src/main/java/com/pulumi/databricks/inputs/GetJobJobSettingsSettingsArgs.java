@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsContinuousArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsDbtTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsEmailNotificationsArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsGitSourceArgs;
@@ -34,6 +35,13 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsArgs Empty = new GetJobJobSettingsSettingsArgs();
+
+    @Import(name="continuous")
+    private @Nullable Output<GetJobJobSettingsSettingsContinuousArgs> continuous;
+
+    public Optional<Output<GetJobJobSettingsSettingsContinuousArgs>> continuous() {
+        return Optional.ofNullable(this.continuous);
+    }
 
     @Import(name="dbtTask")
     private @Nullable Output<GetJobJobSettingsSettingsDbtTaskArgs> dbtTask;
@@ -214,6 +222,7 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
     private GetJobJobSettingsSettingsArgs() {}
 
     private GetJobJobSettingsSettingsArgs(GetJobJobSettingsSettingsArgs $) {
+        this.continuous = $.continuous;
         this.dbtTask = $.dbtTask;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
@@ -256,6 +265,15 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
         public Builder(GetJobJobSettingsSettingsArgs defaults) {
             $ = new GetJobJobSettingsSettingsArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder continuous(@Nullable Output<GetJobJobSettingsSettingsContinuousArgs> continuous) {
+            $.continuous = continuous;
+            return this;
+        }
+
+        public Builder continuous(GetJobJobSettingsSettingsContinuousArgs continuous) {
+            return continuous(Output.of(continuous));
         }
 
         public Builder dbtTask(@Nullable Output<GetJobJobSettingsSettingsDbtTaskArgs> dbtTask) {

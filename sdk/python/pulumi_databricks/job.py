@@ -17,6 +17,7 @@ __all__ = ['JobArgs', 'Job']
 class JobArgs:
     def __init__(__self__, *,
                  always_running: Optional[pulumi.Input[bool]] = None,
+                 continuous: Optional[pulumi.Input['JobContinuousArgs']] = None,
                  dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
                  email_notifications: Optional[pulumi.Input['JobEmailNotificationsArgs']] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -45,6 +46,7 @@ class JobArgs:
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
         :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
@@ -59,6 +61,8 @@ class JobArgs:
         """
         if always_running is not None:
             pulumi.set(__self__, "always_running", always_running)
+        if continuous is not None:
+            pulumi.set(__self__, "continuous", continuous)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if email_notifications is not None:
@@ -121,6 +125,15 @@ class JobArgs:
         pulumi.set(self, "always_running", value)
 
     @property
+    @pulumi.getter
+    def continuous(self) -> Optional[pulumi.Input['JobContinuousArgs']]:
+        return pulumi.get(self, "continuous")
+
+    @continuous.setter
+    def continuous(self, value: Optional[pulumi.Input['JobContinuousArgs']]):
+        pulumi.set(self, "continuous", value)
+
+    @property
     @pulumi.getter(name="dbtTask")
     def dbt_task(self) -> Optional[pulumi.Input['JobDbtTaskArgs']]:
         return pulumi.get(self, "dbt_task")
@@ -171,6 +184,9 @@ class JobArgs:
     @property
     @pulumi.getter(name="jobClusters")
     def job_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]]]:
+        """
+        A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        """
         return pulumi.get(self, "job_clusters")
 
     @job_clusters.setter
@@ -377,6 +393,7 @@ class JobArgs:
 class _JobState:
     def __init__(__self__, *,
                  always_running: Optional[pulumi.Input[bool]] = None,
+                 continuous: Optional[pulumi.Input['JobContinuousArgs']] = None,
                  dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
                  email_notifications: Optional[pulumi.Input['JobEmailNotificationsArgs']] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -406,6 +423,7 @@ class _JobState:
         Input properties used for looking up and filtering Job resources.
         :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
         :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
@@ -421,6 +439,8 @@ class _JobState:
         """
         if always_running is not None:
             pulumi.set(__self__, "always_running", always_running)
+        if continuous is not None:
+            pulumi.set(__self__, "continuous", continuous)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if email_notifications is not None:
@@ -485,6 +505,15 @@ class _JobState:
         pulumi.set(self, "always_running", value)
 
     @property
+    @pulumi.getter
+    def continuous(self) -> Optional[pulumi.Input['JobContinuousArgs']]:
+        return pulumi.get(self, "continuous")
+
+    @continuous.setter
+    def continuous(self, value: Optional[pulumi.Input['JobContinuousArgs']]):
+        pulumi.set(self, "continuous", value)
+
+    @property
     @pulumi.getter(name="dbtTask")
     def dbt_task(self) -> Optional[pulumi.Input['JobDbtTaskArgs']]:
         return pulumi.get(self, "dbt_task")
@@ -535,6 +564,9 @@ class _JobState:
     @property
     @pulumi.getter(name="jobClusters")
     def job_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]]]:
+        """
+        A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        """
         return pulumi.get(self, "job_clusters")
 
     @job_clusters.setter
@@ -755,6 +787,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_running: Optional[pulumi.Input[bool]] = None,
+                 continuous: Optional[pulumi.Input[pulumi.InputType['JobContinuousArgs']]] = None,
                  dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
                  email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -793,6 +826,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
         :param pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobJobClusterArgs']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLibraryArgs']]]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
@@ -836,6 +870,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_running: Optional[pulumi.Input[bool]] = None,
+                 continuous: Optional[pulumi.Input[pulumi.InputType['JobContinuousArgs']]] = None,
                  dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
                  email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -870,6 +905,7 @@ class Job(pulumi.CustomResource):
             __props__ = JobArgs.__new__(JobArgs)
 
             __props__.__dict__["always_running"] = always_running
+            __props__.__dict__["continuous"] = continuous
             __props__.__dict__["dbt_task"] = dbt_task
             __props__.__dict__["email_notifications"] = email_notifications
             __props__.__dict__["existing_cluster_id"] = existing_cluster_id
@@ -906,6 +942,7 @@ class Job(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             always_running: Optional[pulumi.Input[bool]] = None,
+            continuous: Optional[pulumi.Input[pulumi.InputType['JobContinuousArgs']]] = None,
             dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
             email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
             existing_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -940,6 +977,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
         :param pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobJobClusterArgs']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLibraryArgs']]]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
@@ -958,6 +996,7 @@ class Job(pulumi.CustomResource):
         __props__ = _JobState.__new__(_JobState)
 
         __props__.__dict__["always_running"] = always_running
+        __props__.__dict__["continuous"] = continuous
         __props__.__dict__["dbt_task"] = dbt_task
         __props__.__dict__["email_notifications"] = email_notifications
         __props__.__dict__["existing_cluster_id"] = existing_cluster_id
@@ -994,6 +1033,11 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "always_running")
 
     @property
+    @pulumi.getter
+    def continuous(self) -> pulumi.Output[Optional['outputs.JobContinuous']]:
+        return pulumi.get(self, "continuous")
+
+    @property
     @pulumi.getter(name="dbtTask")
     def dbt_task(self) -> pulumi.Output[Optional['outputs.JobDbtTask']]:
         return pulumi.get(self, "dbt_task")
@@ -1024,6 +1068,9 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter(name="jobClusters")
     def job_clusters(self) -> pulumi.Output[Optional[Sequence['outputs.JobJobCluster']]]:
+        """
+        A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        """
         return pulumi.get(self, "job_clusters")
 
     @property

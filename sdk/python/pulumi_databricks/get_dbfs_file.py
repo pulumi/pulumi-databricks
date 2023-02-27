@@ -96,7 +96,7 @@ def get_dbfs_file(limit_file_size: Optional[bool] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    report = databricks.get_dbfs_file(limit_file_size=10240,
+    report = databricks.get_dbfs_file(limit_file_size=True,
         path="dbfs:/reports/some.csv")
     ```
     ## Related Resources
@@ -109,8 +109,8 @@ def get_dbfs_file(limit_file_size: Optional[bool] = None,
     * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
 
 
-    :param bool limit_file_size: Do lot load content for files smaller than this in bytes
-    :param str path: Path on DBFS for the file to get content of
+    :param bool limit_file_size: Do not load content for files larger than 4MB.
+    :param str path: Path on DBFS for the file from which to get content.
     """
     __args__ = dict()
     __args__['limitFileSize'] = limit_file_size
@@ -137,7 +137,7 @@ def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[bool]] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    report = databricks.get_dbfs_file(limit_file_size=10240,
+    report = databricks.get_dbfs_file(limit_file_size=True,
         path="dbfs:/reports/some.csv")
     ```
     ## Related Resources
@@ -150,7 +150,7 @@ def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[bool]] = None,
     * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
 
 
-    :param bool limit_file_size: Do lot load content for files smaller than this in bytes
-    :param str path: Path on DBFS for the file to get content of
+    :param bool limit_file_size: Do not load content for files larger than 4MB.
+    :param str path: Path on DBFS for the file from which to get content.
     """
     ...

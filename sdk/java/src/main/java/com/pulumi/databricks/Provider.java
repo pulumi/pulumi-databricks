@@ -125,12 +125,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> token() {
         return Codegen.optional(this.token);
     }
-    @Export(name="tokenEndpoint", type=String.class, parameters={})
-    private Output</* @Nullable */ String> tokenEndpoint;
-
-    public Output<Optional<String>> tokenEndpoint() {
-        return Codegen.optional(this.tokenEndpoint);
-    }
     @Export(name="username", type=String.class, parameters={})
     private Output</* @Nullable */ String> username;
 

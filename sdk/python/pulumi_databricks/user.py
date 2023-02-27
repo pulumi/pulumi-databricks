@@ -446,7 +446,7 @@ class User(pulumi.CustomResource):
         account_user = databricks.User("accountUser",
             user_name="me@example.com",
             display_name="Example user",
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
         ```
         ## Related Resources
 
@@ -553,7 +553,7 @@ class User(pulumi.CustomResource):
         account_user = databricks.User("accountUser",
             user_name="me@example.com",
             display_name="Example user",
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
         ```
         ## Related Resources
 

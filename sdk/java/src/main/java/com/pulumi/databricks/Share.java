@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Within a metastore, Unity Catalog provides the ability to create a share, which is a named object that contains a collection of tables in a metastore that you want to share as a group. A share can contain tables from only a single metastore. You can add or remove tables from a share at any time.
  * 
- * A `databricks.Share` is contained within databricks.Metastore and can contain a list of shares.
+ * A `databricks.Share` is contained within databricks.Metastore and can contain a list of tables.
  * 
  * ## Example Usage
  * 
@@ -56,6 +56,51 @@ import javax.annotation.Nullable;
  * 
  *         var some = new Share(&#34;some&#34;, ShareArgs.builder()        
  *             .dynamic(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Creating a Delta Sharing share and share a table with partitions spec and history
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Share;
+ * import com.pulumi.databricks.ShareArgs;
+ * import com.pulumi.databricks.inputs.ShareObjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var some = new Share(&#34;some&#34;, ShareArgs.builder()        
+ *             .objects(ShareObjectArgs.builder()
+ *                 .dataObjectType(&#34;TABLE&#34;)
+ *                 .historyDataSharingStatus(&#34;ENABLED&#34;)
+ *                 .name(&#34;my_catalog.my_schema.my_table&#34;)
+ *                 .partitions(                
+ *                     ShareObjectPartitionArgs.builder()
+ *                         .value(                        
+ *                             %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                             %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .build(),
+ *                     ShareObjectPartitionArgs.builder()
+ *                         .value(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .build())
+ *                 .build())
  *             .build());
  * 
  *     }

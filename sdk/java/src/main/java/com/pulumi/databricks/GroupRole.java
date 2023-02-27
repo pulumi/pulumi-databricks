@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.Group;
- * import com.pulumi.databricks.UserRole;
- * import com.pulumi.databricks.UserRoleArgs;
+ * import com.pulumi.databricks.GroupRole;
+ * import com.pulumi.databricks.GroupRoleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -83,8 +83,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var myGroup = new Group(&#34;myGroup&#34;);
  * 
- *         var myUserAccountAdmin = new UserRole(&#34;myUserAccountAdmin&#34;, UserRoleArgs.builder()        
- *             .userId(myGroup.id())
+ *         var myGroupAccountAdmin = new GroupRole(&#34;myGroupAccountAdmin&#34;, GroupRoleArgs.builder()        
+ *             .groupId(myGroup.id())
  *             .role(&#34;account_admin&#34;)
  *             .build());
  * 

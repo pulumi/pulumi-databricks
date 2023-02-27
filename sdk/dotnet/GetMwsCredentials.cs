@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetMwsCredentials
     {
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 
         /// Lists all databricks.MwsCredentials in Databricks Account.
         /// 
@@ -56,7 +56,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMwsCredentialsResult>("databricks:index/getMwsCredentials:getMwsCredentials", args ?? new GetMwsCredentialsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
         /// 
         /// Lists all databricks.MwsCredentials in Databricks Account.
         /// 

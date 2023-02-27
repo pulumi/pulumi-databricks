@@ -25,7 +25,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var report = Databricks.GetDbfsFile.Invoke(new()
         ///     {
-        ///         LimitFileSize = 10240,
+        ///         LimitFileSize = true,
         ///         Path = "dbfs:/reports/some.csv",
         ///     });
         /// 
@@ -59,7 +59,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var report = Databricks.GetDbfsFile.Invoke(new()
         ///     {
-        ///         LimitFileSize = 10240,
+        ///         LimitFileSize = true,
         ///         Path = "dbfs:/reports/some.csv",
         ///     });
         /// 
@@ -84,13 +84,13 @@ namespace Pulumi.Databricks
     public sealed class GetDbfsFileArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Do lot load content for files smaller than this in bytes
+        /// Do not load content for files larger than 4MB.
         /// </summary>
         [Input("limitFileSize", required: true)]
         public bool LimitFileSize { get; set; }
 
         /// <summary>
-        /// Path on DBFS for the file to get content of
+        /// Path on DBFS for the file from which to get content.
         /// </summary>
         [Input("path", required: true)]
         public string Path { get; set; } = null!;
@@ -104,13 +104,13 @@ namespace Pulumi.Databricks
     public sealed class GetDbfsFileInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Do lot load content for files smaller than this in bytes
+        /// Do not load content for files larger than 4MB.
         /// </summary>
         [Input("limitFileSize", required: true)]
         public Input<bool> LimitFileSize { get; set; } = null!;
 
         /// <summary>
-        /// Path on DBFS for the file to get content of
+        /// Path on DBFS for the file from which to get content.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;

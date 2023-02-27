@@ -202,7 +202,7 @@ export class MwsCustomerManagedKeys extends pulumi.CustomResource {
     /**
      * This field is a block and is documented below.
      */
-    public readonly awsKeyInfo!: pulumi.Output<outputs.MwsCustomerManagedKeysAwsKeyInfo>;
+    public readonly awsKeyInfo!: pulumi.Output<outputs.MwsCustomerManagedKeysAwsKeyInfo | undefined>;
     /**
      * (Integer) Time in epoch milliseconds when the customer key was created.
      */
@@ -211,6 +211,7 @@ export class MwsCustomerManagedKeys extends pulumi.CustomResource {
      * (String) ID of the encryption key configuration object.
      */
     public readonly customerManagedKeyId!: pulumi.Output<string>;
+    public readonly gcpKeyInfo!: pulumi.Output<outputs.MwsCustomerManagedKeysGcpKeyInfo | undefined>;
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
      */
@@ -233,14 +234,12 @@ export class MwsCustomerManagedKeys extends pulumi.CustomResource {
             resourceInputs["awsKeyInfo"] = state ? state.awsKeyInfo : undefined;
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["customerManagedKeyId"] = state ? state.customerManagedKeyId : undefined;
+            resourceInputs["gcpKeyInfo"] = state ? state.gcpKeyInfo : undefined;
             resourceInputs["useCases"] = state ? state.useCases : undefined;
         } else {
             const args = argsOrState as MwsCustomerManagedKeysArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
-            }
-            if ((!args || args.awsKeyInfo === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'awsKeyInfo'");
             }
             if ((!args || args.useCases === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'useCases'");
@@ -249,6 +248,7 @@ export class MwsCustomerManagedKeys extends pulumi.CustomResource {
             resourceInputs["awsKeyInfo"] = args ? args.awsKeyInfo : undefined;
             resourceInputs["creationTime"] = args ? args.creationTime : undefined;
             resourceInputs["customerManagedKeyId"] = args ? args.customerManagedKeyId : undefined;
+            resourceInputs["gcpKeyInfo"] = args ? args.gcpKeyInfo : undefined;
             resourceInputs["useCases"] = args ? args.useCases : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -276,6 +276,7 @@ export interface MwsCustomerManagedKeysState {
      * (String) ID of the encryption key configuration object.
      */
     customerManagedKeyId?: pulumi.Input<string>;
+    gcpKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysGcpKeyInfo>;
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
      */
@@ -293,7 +294,7 @@ export interface MwsCustomerManagedKeysArgs {
     /**
      * This field is a block and is documented below.
      */
-    awsKeyInfo: pulumi.Input<inputs.MwsCustomerManagedKeysAwsKeyInfo>;
+    awsKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysAwsKeyInfo>;
     /**
      * (Integer) Time in epoch milliseconds when the customer key was created.
      */
@@ -302,6 +303,7 @@ export interface MwsCustomerManagedKeysArgs {
      * (String) ID of the encryption key configuration object.
      */
     customerManagedKeyId?: pulumi.Input<string>;
+    gcpKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysGcpKeyInfo>;
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
      */

@@ -100,16 +100,16 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_int('rateLimit')
 
     @property
+    def retry_timeout_seconds(self) -> Optional[int]:
+        return __config__.get_int('retryTimeoutSeconds')
+
+    @property
     def skip_verify(self) -> Optional[bool]:
         return __config__.get_bool('skipVerify')
 
     @property
     def token(self) -> Optional[str]:
         return __config__.get('token')
-
-    @property
-    def token_endpoint(self) -> Optional[str]:
-        return __config__.get('tokenEndpoint')
 
     @property
     def username(self) -> Optional[str]:

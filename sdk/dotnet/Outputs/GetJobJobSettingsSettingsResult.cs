@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsResult
     {
+        public readonly Outputs.GetJobJobSettingsSettingsContinuousResult? Continuous;
         public readonly Outputs.GetJobJobSettingsSettingsDbtTaskResult? DbtTask;
         public readonly Outputs.GetJobJobSettingsSettingsEmailNotificationsResult? EmailNotifications;
         public readonly string? ExistingClusterId;
@@ -43,6 +44,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsResult(
+            Outputs.GetJobJobSettingsSettingsContinuousResult? continuous,
+
             Outputs.GetJobJobSettingsSettingsDbtTaskResult? dbtTask,
 
             Outputs.GetJobJobSettingsSettingsEmailNotificationsResult? emailNotifications,
@@ -91,6 +94,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsWebhookNotificationsResult? webhookNotifications)
         {
+            Continuous = continuous;
             DbtTask = dbtTask;
             EmailNotifications = emailNotifications;
             ExistingClusterId = existingClusterId;

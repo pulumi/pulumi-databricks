@@ -175,6 +175,14 @@ Object.defineProperty(exports, "rateLimit", {
     enumerable: true,
 });
 
+export declare const retryTimeoutSeconds: number | undefined;
+Object.defineProperty(exports, "retryTimeoutSeconds", {
+    get() {
+        return __config.getObject<number>("retryTimeoutSeconds");
+    },
+    enumerable: true,
+});
+
 export declare const skipVerify: boolean | undefined;
 Object.defineProperty(exports, "skipVerify", {
     get() {
@@ -187,14 +195,6 @@ export declare const token: string | undefined;
 Object.defineProperty(exports, "token", {
     get() {
         return __config.get("token");
-    },
-    enumerable: true,
-});
-
-export declare const tokenEndpoint: string | undefined;
-Object.defineProperty(exports, "tokenEndpoint", {
-    get() {
-        return __config.get("tokenEndpoint");
     },
     enumerable: true,
 });

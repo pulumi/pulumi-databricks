@@ -15,14 +15,14 @@ public final class GetDbfsFileArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDbfsFileArgs Empty = new GetDbfsFileArgs();
 
     /**
-     * Do lot load content for files smaller than this in bytes
+     * Do not load content for files larger than 4MB.
      * 
      */
     @Import(name="limitFileSize", required=true)
     private Output<Boolean> limitFileSize;
 
     /**
-     * @return Do lot load content for files smaller than this in bytes
+     * @return Do not load content for files larger than 4MB.
      * 
      */
     public Output<Boolean> limitFileSize() {
@@ -30,14 +30,14 @@ public final class GetDbfsFileArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Path on DBFS for the file to get content of
+     * Path on DBFS for the file from which to get content.
      * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
 
     /**
-     * @return Path on DBFS for the file to get content of
+     * @return Path on DBFS for the file from which to get content.
      * 
      */
     public Output<String> path() {
@@ -70,7 +70,7 @@ public final class GetDbfsFileArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param limitFileSize Do lot load content for files smaller than this in bytes
+         * @param limitFileSize Do not load content for files larger than 4MB.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetDbfsFileArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param limitFileSize Do lot load content for files smaller than this in bytes
+         * @param limitFileSize Do not load content for files larger than 4MB.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetDbfsFileArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param path Path on DBFS for the file to get content of
+         * @param path Path on DBFS for the file from which to get content.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetDbfsFileArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param path Path on DBFS for the file to get content of
+         * @param path Path on DBFS for the file from which to get content.
          * 
          * @return builder
          * 

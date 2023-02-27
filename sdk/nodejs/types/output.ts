@@ -461,6 +461,7 @@ export interface GetJobJobSettings {
 }
 
 export interface GetJobJobSettingsSettings {
+    continuous?: outputs.GetJobJobSettingsSettingsContinuous;
     dbtTask?: outputs.GetJobJobSettingsSettingsDbtTask;
     emailNotifications?: outputs.GetJobJobSettingsSettingsEmailNotifications;
     existingClusterId?: string;
@@ -488,6 +489,10 @@ export interface GetJobJobSettingsSettings {
     tasks?: outputs.GetJobJobSettingsSettingsTask[];
     timeoutSeconds?: number;
     webhookNotifications?: outputs.GetJobJobSettingsSettingsWebhookNotifications;
+}
+
+export interface GetJobJobSettingsSettingsContinuous {
+    pauseStatus: string;
 }
 
 export interface GetJobJobSettingsSettingsDbtTask {
@@ -1180,6 +1185,7 @@ export interface GetNotebookPathsNotebookPathList {
 export interface GetShareObject {
     addedAt: number;
     addedBy: string;
+    cdfEnabled?: boolean;
     /**
      * Description about the object.
      */
@@ -1188,11 +1194,29 @@ export interface GetShareObject {
      * Type of the object.
      */
     dataObjectType: string;
+    historyDataSharingStatus?: string;
     /**
      * The name of the share
      */
     name: string;
-    sharedAs: string;
+    partitions?: outputs.GetShareObjectPartition[];
+    sharedAs?: string;
+    startVersion?: number;
+    status: string;
+}
+
+export interface GetShareObjectPartition {
+    values: outputs.GetShareObjectPartitionValue[];
+}
+
+export interface GetShareObjectPartitionValue {
+    /**
+     * The name of the share
+     */
+    name: string;
+    op: string;
+    recipientPropertyKey?: string;
+    value?: string;
 }
 
 export interface GetSqlWarehouseChannel {
@@ -1300,6 +1324,13 @@ export interface InstancePoolPreloadedDockerImage {
 export interface InstancePoolPreloadedDockerImageBasicAuth {
     password: string;
     username: string;
+}
+
+export interface JobContinuous {
+    /**
+     * Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+     */
+    pauseStatus: string;
 }
 
 export interface JobDbtTask {
@@ -2351,6 +2382,10 @@ export interface MwsCustomerManagedKeysAwsKeyInfo {
     keyRegion: string;
 }
 
+export interface MwsCustomerManagedKeysGcpKeyInfo {
+    kmsKeyId: string;
+}
+
 export interface MwsNetworksErrorMessage {
     errorMessage?: string;
     errorType?: string;
@@ -2612,6 +2647,10 @@ export interface ShareObject {
     addedAt: number;
     addedBy: string;
     /**
+     * Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `historyDataSharingStatus` can not be set.
+     */
+    cdfEnabled?: boolean;
+    /**
      * Description about the object.
      */
     comment?: string;
@@ -2620,10 +2659,49 @@ export interface ShareObject {
      */
     dataObjectType: string;
     /**
+     * Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
+     */
+    historyDataSharingStatus?: string;
+    /**
      * Full name of the object, e.g. `catalog.schema.name` for a table.
      */
     name: string;
-    sharedAs: string;
+    partitions?: outputs.ShareObjectPartition[];
+    /**
+     * A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share.
+     */
+    sharedAs?: string;
+    /**
+     * The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+     */
+    startVersion?: number;
+    /**
+     * Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+     */
+    status: string;
+}
+
+export interface ShareObjectPartition {
+    values: outputs.ShareObjectPartitionValue[];
+}
+
+export interface ShareObjectPartitionValue {
+    /**
+     * The name of the partition column.
+     */
+    name: string;
+    /**
+     * The operator to apply for the value, one of: `EQUAL`, `LIKE`
+     */
+    op: string;
+    /**
+     * The key of a Delta Sharing recipient's property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+     */
+    recipientPropertyKey?: string;
+    /**
+     * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
+     */
+    value?: string;
 }
 
 export interface SqlEndpointChannel {

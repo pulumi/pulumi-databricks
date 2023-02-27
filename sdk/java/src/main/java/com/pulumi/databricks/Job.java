@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.JobArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.JobState;
+import com.pulumi.databricks.outputs.JobContinuous;
 import com.pulumi.databricks.outputs.JobDbtTask;
 import com.pulumi.databricks.outputs.JobEmailNotifications;
 import com.pulumi.databricks.outputs.JobGitSource;
@@ -60,6 +61,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> alwaysRunning() {
         return Codegen.optional(this.alwaysRunning);
     }
+    @Export(name="continuous", type=JobContinuous.class, parameters={})
+    private Output</* @Nullable */ JobContinuous> continuous;
+
+    public Output<Optional<JobContinuous>> continuous() {
+        return Codegen.optional(this.continuous);
+    }
     @Export(name="dbtTask", type=JobDbtTask.class, parameters={})
     private Output</* @Nullable */ JobDbtTask> dbtTask;
 
@@ -98,9 +105,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobGitSource>> gitSource() {
         return Codegen.optional(this.gitSource);
     }
+    /**
+     * A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+     * 
+     */
     @Export(name="jobClusters", type=List.class, parameters={JobJobCluster.class})
     private Output</* @Nullable */ List<JobJobCluster>> jobClusters;
 
+    /**
+     * @return A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+     * 
+     */
     public Output<Optional<List<JobJobCluster>>> jobClusters() {
         return Codegen.optional(this.jobClusters);
     }

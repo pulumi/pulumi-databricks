@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _authentication is not configured for provider_ errors.
+ * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
  *
  * Lists all databricks.MwsCredentials in Databricks Account.
  *
@@ -66,7 +66,7 @@ export interface GetMwsCredentialsResult {
     readonly ids: {[key: string]: any};
 }
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _authentication is not configured for provider_ errors.
+ * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
  *
  * Lists all databricks.MwsCredentials in Databricks Account.
  *

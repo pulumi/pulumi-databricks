@@ -70,9 +70,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewUserRole(ctx, "myUserAccountAdmin", &databricks.UserRoleArgs{
-//				UserId: myGroup.ID(),
-//				Role:   pulumi.String("account_admin"),
+//			_, err = databricks.NewGroupRole(ctx, "myGroupAccountAdmin", &databricks.GroupRoleArgs{
+//				GroupId: myGroup.ID(),
+//				Role:    pulumi.String("account_admin"),
 //			})
 //			if err != nil {
 //				return err

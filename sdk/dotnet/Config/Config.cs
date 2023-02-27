@@ -179,6 +179,13 @@ namespace Pulumi.Databricks
             set => _rateLimit.Set(value);
         }
 
+        private static readonly __Value<int?> _retryTimeoutSeconds = new __Value<int?>(() => __config.GetInt32("retryTimeoutSeconds"));
+        public static int? RetryTimeoutSeconds
+        {
+            get => _retryTimeoutSeconds.Get();
+            set => _retryTimeoutSeconds.Set(value);
+        }
+
         private static readonly __Value<bool?> _skipVerify = new __Value<bool?>(() => __config.GetBoolean("skipVerify"));
         public static bool? SkipVerify
         {
@@ -191,13 +198,6 @@ namespace Pulumi.Databricks
         {
             get => _token.Get();
             set => _token.Set(value);
-        }
-
-        private static readonly __Value<string?> _tokenEndpoint = new __Value<string?>(() => __config.Get("tokenEndpoint"));
-        public static string? TokenEndpoint
-        {
-            get => _tokenEndpoint.Get();
-            set => _tokenEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _username = new __Value<string?>(() => __config.Get("username"));

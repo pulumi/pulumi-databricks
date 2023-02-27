@@ -80,7 +80,7 @@ import * as utilities from "./utilities";
  *     userName: "me@example.com",
  *     displayName: "Example user",
  * }, {
- *     provider: databricks.mws,
+ *     provider: databricks.azure_account,
  * });
  * ```
  * ## Related Resources

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("continuous")]
+        public Input<Inputs.GetJobJobSettingsSettingsContinuousInputArgs>? Continuous { get; set; }
+
         [Input("dbtTask")]
         public Input<Inputs.GetJobJobSettingsSettingsDbtTaskInputArgs>? DbtTask { get; set; }
 

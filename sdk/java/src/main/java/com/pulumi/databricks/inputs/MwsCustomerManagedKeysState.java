@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MwsCustomerManagedKeysAwsKeyInfoArgs;
+import com.pulumi.databricks.inputs.MwsCustomerManagedKeysGcpKeyInfoArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -78,6 +79,13 @@ public final class MwsCustomerManagedKeysState extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.customerManagedKeyId);
     }
 
+    @Import(name="gcpKeyInfo")
+    private @Nullable Output<MwsCustomerManagedKeysGcpKeyInfoArgs> gcpKeyInfo;
+
+    public Optional<Output<MwsCustomerManagedKeysGcpKeyInfoArgs>> gcpKeyInfo() {
+        return Optional.ofNullable(this.gcpKeyInfo);
+    }
+
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
      * 
@@ -100,6 +108,7 @@ public final class MwsCustomerManagedKeysState extends com.pulumi.resources.Reso
         this.awsKeyInfo = $.awsKeyInfo;
         this.creationTime = $.creationTime;
         this.customerManagedKeyId = $.customerManagedKeyId;
+        this.gcpKeyInfo = $.gcpKeyInfo;
         this.useCases = $.useCases;
     }
 
@@ -203,6 +212,15 @@ public final class MwsCustomerManagedKeysState extends com.pulumi.resources.Reso
          */
         public Builder customerManagedKeyId(String customerManagedKeyId) {
             return customerManagedKeyId(Output.of(customerManagedKeyId));
+        }
+
+        public Builder gcpKeyInfo(@Nullable Output<MwsCustomerManagedKeysGcpKeyInfoArgs> gcpKeyInfo) {
+            $.gcpKeyInfo = gcpKeyInfo;
+            return this;
+        }
+
+        public Builder gcpKeyInfo(MwsCustomerManagedKeysGcpKeyInfoArgs gcpKeyInfo) {
+            return gcpKeyInfo(Output.of(gcpKeyInfo));
         }
 
         /**

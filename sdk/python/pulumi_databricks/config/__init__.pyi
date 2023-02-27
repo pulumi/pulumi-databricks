@@ -51,11 +51,11 @@ profile: Optional[str]
 
 rateLimit: Optional[int]
 
+retryTimeoutSeconds: Optional[int]
+
 skipVerify: Optional[bool]
 
 token: Optional[str]
-
-tokenEndpoint: Optional[str]
 
 username: Optional[str]
 

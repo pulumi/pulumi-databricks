@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsContinuous;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsDbtTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsEmailNotifications;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsGitSource;
@@ -33,6 +34,13 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettings extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettings Empty = new GetJobJobSettingsSettings();
+
+    @Import(name="continuous")
+    private @Nullable GetJobJobSettingsSettingsContinuous continuous;
+
+    public Optional<GetJobJobSettingsSettingsContinuous> continuous() {
+        return Optional.ofNullable(this.continuous);
+    }
 
     @Import(name="dbtTask")
     private @Nullable GetJobJobSettingsSettingsDbtTask dbtTask;
@@ -213,6 +221,7 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
     private GetJobJobSettingsSettings() {}
 
     private GetJobJobSettingsSettings(GetJobJobSettingsSettings $) {
+        this.continuous = $.continuous;
         this.dbtTask = $.dbtTask;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
@@ -255,6 +264,11 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
 
         public Builder(GetJobJobSettingsSettings defaults) {
             $ = new GetJobJobSettingsSettings(Objects.requireNonNull(defaults));
+        }
+
+        public Builder continuous(@Nullable GetJobJobSettingsSettingsContinuous continuous) {
+            $.continuous = continuous;
+            return this;
         }
 
         public Builder dbtTask(@Nullable GetJobJobSettingsSettingsDbtTask dbtTask) {

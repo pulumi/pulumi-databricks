@@ -5154,6 +5154,143 @@ func (o InstancePoolPreloadedDockerImageBasicAuthPtrOutput) Username() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobContinuous struct {
+	// Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+	PauseStatus *string `pulumi:"pauseStatus"`
+}
+
+// JobContinuousInput is an input type that accepts JobContinuousArgs and JobContinuousOutput values.
+// You can construct a concrete instance of `JobContinuousInput` via:
+//
+//	JobContinuousArgs{...}
+type JobContinuousInput interface {
+	pulumi.Input
+
+	ToJobContinuousOutput() JobContinuousOutput
+	ToJobContinuousOutputWithContext(context.Context) JobContinuousOutput
+}
+
+type JobContinuousArgs struct {
+	// Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+	PauseStatus pulumi.StringPtrInput `pulumi:"pauseStatus"`
+}
+
+func (JobContinuousArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobContinuous)(nil)).Elem()
+}
+
+func (i JobContinuousArgs) ToJobContinuousOutput() JobContinuousOutput {
+	return i.ToJobContinuousOutputWithContext(context.Background())
+}
+
+func (i JobContinuousArgs) ToJobContinuousOutputWithContext(ctx context.Context) JobContinuousOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobContinuousOutput)
+}
+
+func (i JobContinuousArgs) ToJobContinuousPtrOutput() JobContinuousPtrOutput {
+	return i.ToJobContinuousPtrOutputWithContext(context.Background())
+}
+
+func (i JobContinuousArgs) ToJobContinuousPtrOutputWithContext(ctx context.Context) JobContinuousPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobContinuousOutput).ToJobContinuousPtrOutputWithContext(ctx)
+}
+
+// JobContinuousPtrInput is an input type that accepts JobContinuousArgs, JobContinuousPtr and JobContinuousPtrOutput values.
+// You can construct a concrete instance of `JobContinuousPtrInput` via:
+//
+//	        JobContinuousArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobContinuousPtrInput interface {
+	pulumi.Input
+
+	ToJobContinuousPtrOutput() JobContinuousPtrOutput
+	ToJobContinuousPtrOutputWithContext(context.Context) JobContinuousPtrOutput
+}
+
+type jobContinuousPtrType JobContinuousArgs
+
+func JobContinuousPtr(v *JobContinuousArgs) JobContinuousPtrInput {
+	return (*jobContinuousPtrType)(v)
+}
+
+func (*jobContinuousPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobContinuous)(nil)).Elem()
+}
+
+func (i *jobContinuousPtrType) ToJobContinuousPtrOutput() JobContinuousPtrOutput {
+	return i.ToJobContinuousPtrOutputWithContext(context.Background())
+}
+
+func (i *jobContinuousPtrType) ToJobContinuousPtrOutputWithContext(ctx context.Context) JobContinuousPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobContinuousPtrOutput)
+}
+
+type JobContinuousOutput struct{ *pulumi.OutputState }
+
+func (JobContinuousOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobContinuous)(nil)).Elem()
+}
+
+func (o JobContinuousOutput) ToJobContinuousOutput() JobContinuousOutput {
+	return o
+}
+
+func (o JobContinuousOutput) ToJobContinuousOutputWithContext(ctx context.Context) JobContinuousOutput {
+	return o
+}
+
+func (o JobContinuousOutput) ToJobContinuousPtrOutput() JobContinuousPtrOutput {
+	return o.ToJobContinuousPtrOutputWithContext(context.Background())
+}
+
+func (o JobContinuousOutput) ToJobContinuousPtrOutputWithContext(ctx context.Context) JobContinuousPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobContinuous) *JobContinuous {
+		return &v
+	}).(JobContinuousPtrOutput)
+}
+
+// Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+func (o JobContinuousOutput) PauseStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobContinuous) *string { return v.PauseStatus }).(pulumi.StringPtrOutput)
+}
+
+type JobContinuousPtrOutput struct{ *pulumi.OutputState }
+
+func (JobContinuousPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobContinuous)(nil)).Elem()
+}
+
+func (o JobContinuousPtrOutput) ToJobContinuousPtrOutput() JobContinuousPtrOutput {
+	return o
+}
+
+func (o JobContinuousPtrOutput) ToJobContinuousPtrOutputWithContext(ctx context.Context) JobContinuousPtrOutput {
+	return o
+}
+
+func (o JobContinuousPtrOutput) Elem() JobContinuousOutput {
+	return o.ApplyT(func(v *JobContinuous) JobContinuous {
+		if v != nil {
+			return *v
+		}
+		var ret JobContinuous
+		return ret
+	}).(JobContinuousOutput)
+}
+
+// Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+func (o JobContinuousPtrOutput) PauseStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobContinuous) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PauseStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 type JobDbtTask struct {
 	// The name of the catalog to use inside Unity Catalog.
 	Catalog *string `pulumi:"catalog"`
@@ -24019,6 +24156,139 @@ func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) KeyRegion() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type MwsCustomerManagedKeysGcpKeyInfo struct {
+	KmsKeyId string `pulumi:"kmsKeyId"`
+}
+
+// MwsCustomerManagedKeysGcpKeyInfoInput is an input type that accepts MwsCustomerManagedKeysGcpKeyInfoArgs and MwsCustomerManagedKeysGcpKeyInfoOutput values.
+// You can construct a concrete instance of `MwsCustomerManagedKeysGcpKeyInfoInput` via:
+//
+//	MwsCustomerManagedKeysGcpKeyInfoArgs{...}
+type MwsCustomerManagedKeysGcpKeyInfoInput interface {
+	pulumi.Input
+
+	ToMwsCustomerManagedKeysGcpKeyInfoOutput() MwsCustomerManagedKeysGcpKeyInfoOutput
+	ToMwsCustomerManagedKeysGcpKeyInfoOutputWithContext(context.Context) MwsCustomerManagedKeysGcpKeyInfoOutput
+}
+
+type MwsCustomerManagedKeysGcpKeyInfoArgs struct {
+	KmsKeyId pulumi.StringInput `pulumi:"kmsKeyId"`
+}
+
+func (MwsCustomerManagedKeysGcpKeyInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsCustomerManagedKeysGcpKeyInfo)(nil)).Elem()
+}
+
+func (i MwsCustomerManagedKeysGcpKeyInfoArgs) ToMwsCustomerManagedKeysGcpKeyInfoOutput() MwsCustomerManagedKeysGcpKeyInfoOutput {
+	return i.ToMwsCustomerManagedKeysGcpKeyInfoOutputWithContext(context.Background())
+}
+
+func (i MwsCustomerManagedKeysGcpKeyInfoArgs) ToMwsCustomerManagedKeysGcpKeyInfoOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysGcpKeyInfoOutput)
+}
+
+func (i MwsCustomerManagedKeysGcpKeyInfoArgs) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return i.ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(context.Background())
+}
+
+func (i MwsCustomerManagedKeysGcpKeyInfoArgs) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysGcpKeyInfoOutput).ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx)
+}
+
+// MwsCustomerManagedKeysGcpKeyInfoPtrInput is an input type that accepts MwsCustomerManagedKeysGcpKeyInfoArgs, MwsCustomerManagedKeysGcpKeyInfoPtr and MwsCustomerManagedKeysGcpKeyInfoPtrOutput values.
+// You can construct a concrete instance of `MwsCustomerManagedKeysGcpKeyInfoPtrInput` via:
+//
+//	        MwsCustomerManagedKeysGcpKeyInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type MwsCustomerManagedKeysGcpKeyInfoPtrInput interface {
+	pulumi.Input
+
+	ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput
+	ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput
+}
+
+type mwsCustomerManagedKeysGcpKeyInfoPtrType MwsCustomerManagedKeysGcpKeyInfoArgs
+
+func MwsCustomerManagedKeysGcpKeyInfoPtr(v *MwsCustomerManagedKeysGcpKeyInfoArgs) MwsCustomerManagedKeysGcpKeyInfoPtrInput {
+	return (*mwsCustomerManagedKeysGcpKeyInfoPtrType)(v)
+}
+
+func (*mwsCustomerManagedKeysGcpKeyInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsCustomerManagedKeysGcpKeyInfo)(nil)).Elem()
+}
+
+func (i *mwsCustomerManagedKeysGcpKeyInfoPtrType) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return i.ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *mwsCustomerManagedKeysGcpKeyInfoPtrType) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysGcpKeyInfoPtrOutput)
+}
+
+type MwsCustomerManagedKeysGcpKeyInfoOutput struct{ *pulumi.OutputState }
+
+func (MwsCustomerManagedKeysGcpKeyInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsCustomerManagedKeysGcpKeyInfo)(nil)).Elem()
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoOutput) ToMwsCustomerManagedKeysGcpKeyInfoOutput() MwsCustomerManagedKeysGcpKeyInfoOutput {
+	return o
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoOutput) ToMwsCustomerManagedKeysGcpKeyInfoOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoOutput {
+	return o
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoOutput) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return o.ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(context.Background())
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoOutput) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsCustomerManagedKeysGcpKeyInfo) *MwsCustomerManagedKeysGcpKeyInfo {
+		return &v
+	}).(MwsCustomerManagedKeysGcpKeyInfoPtrOutput)
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v MwsCustomerManagedKeysGcpKeyInfo) string { return v.KmsKeyId }).(pulumi.StringOutput)
+}
+
+type MwsCustomerManagedKeysGcpKeyInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (MwsCustomerManagedKeysGcpKeyInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsCustomerManagedKeysGcpKeyInfo)(nil)).Elem()
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutput() MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return o
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) ToMwsCustomerManagedKeysGcpKeyInfoPtrOutputWithContext(ctx context.Context) MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
+	return o
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) Elem() MwsCustomerManagedKeysGcpKeyInfoOutput {
+	return o.ApplyT(func(v *MwsCustomerManagedKeysGcpKeyInfo) MwsCustomerManagedKeysGcpKeyInfo {
+		if v != nil {
+			return *v
+		}
+		var ret MwsCustomerManagedKeysGcpKeyInfo
+		return ret
+	}).(MwsCustomerManagedKeysGcpKeyInfoOutput)
+}
+
+func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsCustomerManagedKeysGcpKeyInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
 type MwsNetworksErrorMessage struct {
 	ErrorMessage *string `pulumi:"errorMessage"`
 	ErrorType    *string `pulumi:"errorType"`
@@ -29109,13 +29379,23 @@ func (o SecretScopeKeyvaultMetadataPtrOutput) ResourceId() pulumi.StringPtrOutpu
 type ShareObject struct {
 	AddedAt *int    `pulumi:"addedAt"`
 	AddedBy *string `pulumi:"addedBy"`
+	// Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `historyDataSharingStatus` can not be set.
+	CdfEnabled *bool `pulumi:"cdfEnabled"`
 	// Description about the object.
 	Comment *string `pulumi:"comment"`
 	// Type of the object, currently only `TABLE` is allowed.
 	DataObjectType string `pulumi:"dataObjectType"`
+	// Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
+	HistoryDataSharingStatus *string `pulumi:"historyDataSharingStatus"`
 	// Full name of the object, e.g. `catalog.schema.name` for a table.
-	Name     string  `pulumi:"name"`
+	Name       string                 `pulumi:"name"`
+	Partitions []ShareObjectPartition `pulumi:"partitions"`
+	// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share.
 	SharedAs *string `pulumi:"sharedAs"`
+	// The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+	StartVersion *int `pulumi:"startVersion"`
+	// Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+	Status *string `pulumi:"status"`
 }
 
 // ShareObjectInput is an input type that accepts ShareObjectArgs and ShareObjectOutput values.
@@ -29132,13 +29412,23 @@ type ShareObjectInput interface {
 type ShareObjectArgs struct {
 	AddedAt pulumi.IntPtrInput    `pulumi:"addedAt"`
 	AddedBy pulumi.StringPtrInput `pulumi:"addedBy"`
+	// Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `historyDataSharingStatus` can not be set.
+	CdfEnabled pulumi.BoolPtrInput `pulumi:"cdfEnabled"`
 	// Description about the object.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
 	// Type of the object, currently only `TABLE` is allowed.
 	DataObjectType pulumi.StringInput `pulumi:"dataObjectType"`
+	// Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
+	HistoryDataSharingStatus pulumi.StringPtrInput `pulumi:"historyDataSharingStatus"`
 	// Full name of the object, e.g. `catalog.schema.name` for a table.
-	Name     pulumi.StringInput    `pulumi:"name"`
+	Name       pulumi.StringInput             `pulumi:"name"`
+	Partitions ShareObjectPartitionArrayInput `pulumi:"partitions"`
+	// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share.
 	SharedAs pulumi.StringPtrInput `pulumi:"sharedAs"`
+	// The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+	StartVersion pulumi.IntPtrInput `pulumi:"startVersion"`
+	// Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (ShareObjectArgs) ElementType() reflect.Type {
@@ -29200,6 +29490,11 @@ func (o ShareObjectOutput) AddedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShareObject) *string { return v.AddedBy }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `historyDataSharingStatus` can not be set.
+func (o ShareObjectOutput) CdfEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ShareObject) *bool { return v.CdfEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Description about the object.
 func (o ShareObjectOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShareObject) *string { return v.Comment }).(pulumi.StringPtrOutput)
@@ -29210,13 +29505,33 @@ func (o ShareObjectOutput) DataObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v ShareObject) string { return v.DataObjectType }).(pulumi.StringOutput)
 }
 
+// Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
+func (o ShareObjectOutput) HistoryDataSharingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShareObject) *string { return v.HistoryDataSharingStatus }).(pulumi.StringPtrOutput)
+}
+
 // Full name of the object, e.g. `catalog.schema.name` for a table.
 func (o ShareObjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ShareObject) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o ShareObjectOutput) Partitions() ShareObjectPartitionArrayOutput {
+	return o.ApplyT(func(v ShareObject) []ShareObjectPartition { return v.Partitions }).(ShareObjectPartitionArrayOutput)
+}
+
+// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share.
 func (o ShareObjectOutput) SharedAs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShareObject) *string { return v.SharedAs }).(pulumi.StringPtrOutput)
+}
+
+// The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+func (o ShareObjectOutput) StartVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ShareObject) *int { return v.StartVersion }).(pulumi.IntPtrOutput)
+}
+
+// Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+func (o ShareObjectOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShareObject) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 type ShareObjectArrayOutput struct{ *pulumi.OutputState }
@@ -29237,6 +29552,224 @@ func (o ShareObjectArrayOutput) Index(i pulumi.IntInput) ShareObjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShareObject {
 		return vs[0].([]ShareObject)[vs[1].(int)]
 	}).(ShareObjectOutput)
+}
+
+type ShareObjectPartition struct {
+	Values []ShareObjectPartitionValue `pulumi:"values"`
+}
+
+// ShareObjectPartitionInput is an input type that accepts ShareObjectPartitionArgs and ShareObjectPartitionOutput values.
+// You can construct a concrete instance of `ShareObjectPartitionInput` via:
+//
+//	ShareObjectPartitionArgs{...}
+type ShareObjectPartitionInput interface {
+	pulumi.Input
+
+	ToShareObjectPartitionOutput() ShareObjectPartitionOutput
+	ToShareObjectPartitionOutputWithContext(context.Context) ShareObjectPartitionOutput
+}
+
+type ShareObjectPartitionArgs struct {
+	Values ShareObjectPartitionValueArrayInput `pulumi:"values"`
+}
+
+func (ShareObjectPartitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareObjectPartition)(nil)).Elem()
+}
+
+func (i ShareObjectPartitionArgs) ToShareObjectPartitionOutput() ShareObjectPartitionOutput {
+	return i.ToShareObjectPartitionOutputWithContext(context.Background())
+}
+
+func (i ShareObjectPartitionArgs) ToShareObjectPartitionOutputWithContext(ctx context.Context) ShareObjectPartitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareObjectPartitionOutput)
+}
+
+// ShareObjectPartitionArrayInput is an input type that accepts ShareObjectPartitionArray and ShareObjectPartitionArrayOutput values.
+// You can construct a concrete instance of `ShareObjectPartitionArrayInput` via:
+//
+//	ShareObjectPartitionArray{ ShareObjectPartitionArgs{...} }
+type ShareObjectPartitionArrayInput interface {
+	pulumi.Input
+
+	ToShareObjectPartitionArrayOutput() ShareObjectPartitionArrayOutput
+	ToShareObjectPartitionArrayOutputWithContext(context.Context) ShareObjectPartitionArrayOutput
+}
+
+type ShareObjectPartitionArray []ShareObjectPartitionInput
+
+func (ShareObjectPartitionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShareObjectPartition)(nil)).Elem()
+}
+
+func (i ShareObjectPartitionArray) ToShareObjectPartitionArrayOutput() ShareObjectPartitionArrayOutput {
+	return i.ToShareObjectPartitionArrayOutputWithContext(context.Background())
+}
+
+func (i ShareObjectPartitionArray) ToShareObjectPartitionArrayOutputWithContext(ctx context.Context) ShareObjectPartitionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareObjectPartitionArrayOutput)
+}
+
+type ShareObjectPartitionOutput struct{ *pulumi.OutputState }
+
+func (ShareObjectPartitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareObjectPartition)(nil)).Elem()
+}
+
+func (o ShareObjectPartitionOutput) ToShareObjectPartitionOutput() ShareObjectPartitionOutput {
+	return o
+}
+
+func (o ShareObjectPartitionOutput) ToShareObjectPartitionOutputWithContext(ctx context.Context) ShareObjectPartitionOutput {
+	return o
+}
+
+func (o ShareObjectPartitionOutput) Values() ShareObjectPartitionValueArrayOutput {
+	return o.ApplyT(func(v ShareObjectPartition) []ShareObjectPartitionValue { return v.Values }).(ShareObjectPartitionValueArrayOutput)
+}
+
+type ShareObjectPartitionArrayOutput struct{ *pulumi.OutputState }
+
+func (ShareObjectPartitionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShareObjectPartition)(nil)).Elem()
+}
+
+func (o ShareObjectPartitionArrayOutput) ToShareObjectPartitionArrayOutput() ShareObjectPartitionArrayOutput {
+	return o
+}
+
+func (o ShareObjectPartitionArrayOutput) ToShareObjectPartitionArrayOutputWithContext(ctx context.Context) ShareObjectPartitionArrayOutput {
+	return o
+}
+
+func (o ShareObjectPartitionArrayOutput) Index(i pulumi.IntInput) ShareObjectPartitionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShareObjectPartition {
+		return vs[0].([]ShareObjectPartition)[vs[1].(int)]
+	}).(ShareObjectPartitionOutput)
+}
+
+type ShareObjectPartitionValue struct {
+	// The name of the partition column.
+	Name string `pulumi:"name"`
+	// The operator to apply for the value, one of: `EQUAL`, `LIKE`
+	Op string `pulumi:"op"`
+	// The key of a Delta Sharing recipient's property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+	RecipientPropertyKey *string `pulumi:"recipientPropertyKey"`
+	// The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
+	Value *string `pulumi:"value"`
+}
+
+// ShareObjectPartitionValueInput is an input type that accepts ShareObjectPartitionValueArgs and ShareObjectPartitionValueOutput values.
+// You can construct a concrete instance of `ShareObjectPartitionValueInput` via:
+//
+//	ShareObjectPartitionValueArgs{...}
+type ShareObjectPartitionValueInput interface {
+	pulumi.Input
+
+	ToShareObjectPartitionValueOutput() ShareObjectPartitionValueOutput
+	ToShareObjectPartitionValueOutputWithContext(context.Context) ShareObjectPartitionValueOutput
+}
+
+type ShareObjectPartitionValueArgs struct {
+	// The name of the partition column.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The operator to apply for the value, one of: `EQUAL`, `LIKE`
+	Op pulumi.StringInput `pulumi:"op"`
+	// The key of a Delta Sharing recipient's property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+	RecipientPropertyKey pulumi.StringPtrInput `pulumi:"recipientPropertyKey"`
+	// The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ShareObjectPartitionValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareObjectPartitionValue)(nil)).Elem()
+}
+
+func (i ShareObjectPartitionValueArgs) ToShareObjectPartitionValueOutput() ShareObjectPartitionValueOutput {
+	return i.ToShareObjectPartitionValueOutputWithContext(context.Background())
+}
+
+func (i ShareObjectPartitionValueArgs) ToShareObjectPartitionValueOutputWithContext(ctx context.Context) ShareObjectPartitionValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareObjectPartitionValueOutput)
+}
+
+// ShareObjectPartitionValueArrayInput is an input type that accepts ShareObjectPartitionValueArray and ShareObjectPartitionValueArrayOutput values.
+// You can construct a concrete instance of `ShareObjectPartitionValueArrayInput` via:
+//
+//	ShareObjectPartitionValueArray{ ShareObjectPartitionValueArgs{...} }
+type ShareObjectPartitionValueArrayInput interface {
+	pulumi.Input
+
+	ToShareObjectPartitionValueArrayOutput() ShareObjectPartitionValueArrayOutput
+	ToShareObjectPartitionValueArrayOutputWithContext(context.Context) ShareObjectPartitionValueArrayOutput
+}
+
+type ShareObjectPartitionValueArray []ShareObjectPartitionValueInput
+
+func (ShareObjectPartitionValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShareObjectPartitionValue)(nil)).Elem()
+}
+
+func (i ShareObjectPartitionValueArray) ToShareObjectPartitionValueArrayOutput() ShareObjectPartitionValueArrayOutput {
+	return i.ToShareObjectPartitionValueArrayOutputWithContext(context.Background())
+}
+
+func (i ShareObjectPartitionValueArray) ToShareObjectPartitionValueArrayOutputWithContext(ctx context.Context) ShareObjectPartitionValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareObjectPartitionValueArrayOutput)
+}
+
+type ShareObjectPartitionValueOutput struct{ *pulumi.OutputState }
+
+func (ShareObjectPartitionValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareObjectPartitionValue)(nil)).Elem()
+}
+
+func (o ShareObjectPartitionValueOutput) ToShareObjectPartitionValueOutput() ShareObjectPartitionValueOutput {
+	return o
+}
+
+func (o ShareObjectPartitionValueOutput) ToShareObjectPartitionValueOutputWithContext(ctx context.Context) ShareObjectPartitionValueOutput {
+	return o
+}
+
+// The name of the partition column.
+func (o ShareObjectPartitionValueOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ShareObjectPartitionValue) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The operator to apply for the value, one of: `EQUAL`, `LIKE`
+func (o ShareObjectPartitionValueOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v ShareObjectPartitionValue) string { return v.Op }).(pulumi.StringOutput)
+}
+
+// The key of a Delta Sharing recipient's property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+func (o ShareObjectPartitionValueOutput) RecipientPropertyKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShareObjectPartitionValue) *string { return v.RecipientPropertyKey }).(pulumi.StringPtrOutput)
+}
+
+// The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
+func (o ShareObjectPartitionValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShareObjectPartitionValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ShareObjectPartitionValueArrayOutput struct{ *pulumi.OutputState }
+
+func (ShareObjectPartitionValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShareObjectPartitionValue)(nil)).Elem()
+}
+
+func (o ShareObjectPartitionValueArrayOutput) ToShareObjectPartitionValueArrayOutput() ShareObjectPartitionValueArrayOutput {
+	return o
+}
+
+func (o ShareObjectPartitionValueArrayOutput) ToShareObjectPartitionValueArrayOutputWithContext(ctx context.Context) ShareObjectPartitionValueArrayOutput {
+	return o
+}
+
+func (o ShareObjectPartitionValueArrayOutput) Index(i pulumi.IntInput) ShareObjectPartitionValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShareObjectPartitionValue {
+		return vs[0].([]ShareObjectPartitionValue)[vs[1].(int)]
+	}).(ShareObjectPartitionValueOutput)
 }
 
 type SqlEndpointChannel struct {
@@ -40184,6 +40717,7 @@ func (o GetJobJobSettingsPtrOutput) Settings() GetJobJobSettingsSettingsPtrOutpu
 }
 
 type GetJobJobSettingsSettings struct {
+	Continuous             *GetJobJobSettingsSettingsContinuous         `pulumi:"continuous"`
 	DbtTask                *GetJobJobSettingsSettingsDbtTask            `pulumi:"dbtTask"`
 	EmailNotifications     *GetJobJobSettingsSettingsEmailNotifications `pulumi:"emailNotifications"`
 	ExistingClusterId      *string                                      `pulumi:"existingClusterId"`
@@ -40223,6 +40757,7 @@ type GetJobJobSettingsSettingsInput interface {
 }
 
 type GetJobJobSettingsSettingsArgs struct {
+	Continuous             GetJobJobSettingsSettingsContinuousPtrInput         `pulumi:"continuous"`
 	DbtTask                GetJobJobSettingsSettingsDbtTaskPtrInput            `pulumi:"dbtTask"`
 	EmailNotifications     GetJobJobSettingsSettingsEmailNotificationsPtrInput `pulumi:"emailNotifications"`
 	ExistingClusterId      pulumi.StringPtrInput                               `pulumi:"existingClusterId"`
@@ -40325,6 +40860,10 @@ func (o GetJobJobSettingsSettingsOutput) ToGetJobJobSettingsSettingsPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettings) *GetJobJobSettingsSettings {
 		return &v
 	}).(GetJobJobSettingsSettingsPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsOutput) Continuous() GetJobJobSettingsSettingsContinuousPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsContinuous { return v.Continuous }).(GetJobJobSettingsSettingsContinuousPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsOutput) DbtTask() GetJobJobSettingsSettingsDbtTaskPtrOutput {
@@ -40450,6 +40989,15 @@ func (o GetJobJobSettingsSettingsPtrOutput) Elem() GetJobJobSettingsSettingsOutp
 		var ret GetJobJobSettingsSettings
 		return ret
 	}).(GetJobJobSettingsSettingsOutput)
+}
+
+func (o GetJobJobSettingsSettingsPtrOutput) Continuous() GetJobJobSettingsSettingsContinuousPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettings) *GetJobJobSettingsSettingsContinuous {
+		if v == nil {
+			return nil
+		}
+		return v.Continuous
+	}).(GetJobJobSettingsSettingsContinuousPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsPtrOutput) DbtTask() GetJobJobSettingsSettingsDbtTaskPtrOutput {
@@ -40667,6 +41215,139 @@ func (o GetJobJobSettingsSettingsPtrOutput) WebhookNotifications() GetJobJobSett
 		}
 		return v.WebhookNotifications
 	}).(GetJobJobSettingsSettingsWebhookNotificationsPtrOutput)
+}
+
+type GetJobJobSettingsSettingsContinuous struct {
+	PauseStatus string `pulumi:"pauseStatus"`
+}
+
+// GetJobJobSettingsSettingsContinuousInput is an input type that accepts GetJobJobSettingsSettingsContinuousArgs and GetJobJobSettingsSettingsContinuousOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsContinuousInput` via:
+//
+//	GetJobJobSettingsSettingsContinuousArgs{...}
+type GetJobJobSettingsSettingsContinuousInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsContinuousOutput() GetJobJobSettingsSettingsContinuousOutput
+	ToGetJobJobSettingsSettingsContinuousOutputWithContext(context.Context) GetJobJobSettingsSettingsContinuousOutput
+}
+
+type GetJobJobSettingsSettingsContinuousArgs struct {
+	PauseStatus pulumi.StringInput `pulumi:"pauseStatus"`
+}
+
+func (GetJobJobSettingsSettingsContinuousArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsContinuous)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsContinuousArgs) ToGetJobJobSettingsSettingsContinuousOutput() GetJobJobSettingsSettingsContinuousOutput {
+	return i.ToGetJobJobSettingsSettingsContinuousOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsContinuousArgs) ToGetJobJobSettingsSettingsContinuousOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsContinuousOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsContinuousOutput)
+}
+
+func (i GetJobJobSettingsSettingsContinuousArgs) ToGetJobJobSettingsSettingsContinuousPtrOutput() GetJobJobSettingsSettingsContinuousPtrOutput {
+	return i.ToGetJobJobSettingsSettingsContinuousPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsContinuousArgs) ToGetJobJobSettingsSettingsContinuousPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsContinuousPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsContinuousOutput).ToGetJobJobSettingsSettingsContinuousPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsContinuousPtrInput is an input type that accepts GetJobJobSettingsSettingsContinuousArgs, GetJobJobSettingsSettingsContinuousPtr and GetJobJobSettingsSettingsContinuousPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsContinuousPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsContinuousArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsContinuousPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsContinuousPtrOutput() GetJobJobSettingsSettingsContinuousPtrOutput
+	ToGetJobJobSettingsSettingsContinuousPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsContinuousPtrOutput
+}
+
+type getJobJobSettingsSettingsContinuousPtrType GetJobJobSettingsSettingsContinuousArgs
+
+func GetJobJobSettingsSettingsContinuousPtr(v *GetJobJobSettingsSettingsContinuousArgs) GetJobJobSettingsSettingsContinuousPtrInput {
+	return (*getJobJobSettingsSettingsContinuousPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsContinuousPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsContinuous)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsContinuousPtrType) ToGetJobJobSettingsSettingsContinuousPtrOutput() GetJobJobSettingsSettingsContinuousPtrOutput {
+	return i.ToGetJobJobSettingsSettingsContinuousPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsContinuousPtrType) ToGetJobJobSettingsSettingsContinuousPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsContinuousPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsContinuousPtrOutput)
+}
+
+type GetJobJobSettingsSettingsContinuousOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsContinuousOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsContinuous)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsContinuousOutput) ToGetJobJobSettingsSettingsContinuousOutput() GetJobJobSettingsSettingsContinuousOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsContinuousOutput) ToGetJobJobSettingsSettingsContinuousOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsContinuousOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsContinuousOutput) ToGetJobJobSettingsSettingsContinuousPtrOutput() GetJobJobSettingsSettingsContinuousPtrOutput {
+	return o.ToGetJobJobSettingsSettingsContinuousPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsContinuousOutput) ToGetJobJobSettingsSettingsContinuousPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsContinuousPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsContinuous) *GetJobJobSettingsSettingsContinuous {
+		return &v
+	}).(GetJobJobSettingsSettingsContinuousPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsContinuousOutput) PauseStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsContinuous) string { return v.PauseStatus }).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsContinuousPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsContinuousPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsContinuous)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsContinuousPtrOutput) ToGetJobJobSettingsSettingsContinuousPtrOutput() GetJobJobSettingsSettingsContinuousPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsContinuousPtrOutput) ToGetJobJobSettingsSettingsContinuousPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsContinuousPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsContinuousPtrOutput) Elem() GetJobJobSettingsSettingsContinuousOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsContinuous) GetJobJobSettingsSettingsContinuous {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsContinuous
+		return ret
+	}).(GetJobJobSettingsSettingsContinuousOutput)
+}
+
+func (o GetJobJobSettingsSettingsContinuousPtrOutput) PauseStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsContinuous) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PauseStatus
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetJobJobSettingsSettingsDbtTask struct {
@@ -56824,15 +57505,20 @@ func (o GetNotebookPathsNotebookPathListArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetShareObject struct {
-	AddedAt int    `pulumi:"addedAt"`
-	AddedBy string `pulumi:"addedBy"`
+	AddedAt    int    `pulumi:"addedAt"`
+	AddedBy    string `pulumi:"addedBy"`
+	CdfEnabled *bool  `pulumi:"cdfEnabled"`
 	// Description about the object.
 	Comment *string `pulumi:"comment"`
 	// Type of the object.
-	DataObjectType string `pulumi:"dataObjectType"`
+	DataObjectType           string  `pulumi:"dataObjectType"`
+	HistoryDataSharingStatus *string `pulumi:"historyDataSharingStatus"`
 	// The name of the share
-	Name     string `pulumi:"name"`
-	SharedAs string `pulumi:"sharedAs"`
+	Name         string                    `pulumi:"name"`
+	Partitions   []GetShareObjectPartition `pulumi:"partitions"`
+	SharedAs     *string                   `pulumi:"sharedAs"`
+	StartVersion *int                      `pulumi:"startVersion"`
+	Status       string                    `pulumi:"status"`
 }
 
 // GetShareObjectInput is an input type that accepts GetShareObjectArgs and GetShareObjectOutput values.
@@ -56847,15 +57533,20 @@ type GetShareObjectInput interface {
 }
 
 type GetShareObjectArgs struct {
-	AddedAt pulumi.IntInput    `pulumi:"addedAt"`
-	AddedBy pulumi.StringInput `pulumi:"addedBy"`
+	AddedAt    pulumi.IntInput     `pulumi:"addedAt"`
+	AddedBy    pulumi.StringInput  `pulumi:"addedBy"`
+	CdfEnabled pulumi.BoolPtrInput `pulumi:"cdfEnabled"`
 	// Description about the object.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
 	// Type of the object.
-	DataObjectType pulumi.StringInput `pulumi:"dataObjectType"`
+	DataObjectType           pulumi.StringInput    `pulumi:"dataObjectType"`
+	HistoryDataSharingStatus pulumi.StringPtrInput `pulumi:"historyDataSharingStatus"`
 	// The name of the share
-	Name     pulumi.StringInput `pulumi:"name"`
-	SharedAs pulumi.StringInput `pulumi:"sharedAs"`
+	Name         pulumi.StringInput                `pulumi:"name"`
+	Partitions   GetShareObjectPartitionArrayInput `pulumi:"partitions"`
+	SharedAs     pulumi.StringPtrInput             `pulumi:"sharedAs"`
+	StartVersion pulumi.IntPtrInput                `pulumi:"startVersion"`
+	Status       pulumi.StringInput                `pulumi:"status"`
 }
 
 func (GetShareObjectArgs) ElementType() reflect.Type {
@@ -56917,6 +57608,10 @@ func (o GetShareObjectOutput) AddedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetShareObject) string { return v.AddedBy }).(pulumi.StringOutput)
 }
 
+func (o GetShareObjectOutput) CdfEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetShareObject) *bool { return v.CdfEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Description about the object.
 func (o GetShareObjectOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetShareObject) *string { return v.Comment }).(pulumi.StringPtrOutput)
@@ -56927,13 +57622,29 @@ func (o GetShareObjectOutput) DataObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetShareObject) string { return v.DataObjectType }).(pulumi.StringOutput)
 }
 
+func (o GetShareObjectOutput) HistoryDataSharingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetShareObject) *string { return v.HistoryDataSharingStatus }).(pulumi.StringPtrOutput)
+}
+
 // The name of the share
 func (o GetShareObjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetShareObject) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetShareObjectOutput) SharedAs() pulumi.StringOutput {
-	return o.ApplyT(func(v GetShareObject) string { return v.SharedAs }).(pulumi.StringOutput)
+func (o GetShareObjectOutput) Partitions() GetShareObjectPartitionArrayOutput {
+	return o.ApplyT(func(v GetShareObject) []GetShareObjectPartition { return v.Partitions }).(GetShareObjectPartitionArrayOutput)
+}
+
+func (o GetShareObjectOutput) SharedAs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetShareObject) *string { return v.SharedAs }).(pulumi.StringPtrOutput)
+}
+
+func (o GetShareObjectOutput) StartVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetShareObject) *int { return v.StartVersion }).(pulumi.IntPtrOutput)
+}
+
+func (o GetShareObjectOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShareObject) string { return v.Status }).(pulumi.StringOutput)
 }
 
 type GetShareObjectArrayOutput struct{ *pulumi.OutputState }
@@ -56954,6 +57665,215 @@ func (o GetShareObjectArrayOutput) Index(i pulumi.IntInput) GetShareObjectOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetShareObject {
 		return vs[0].([]GetShareObject)[vs[1].(int)]
 	}).(GetShareObjectOutput)
+}
+
+type GetShareObjectPartition struct {
+	Values []GetShareObjectPartitionValue `pulumi:"values"`
+}
+
+// GetShareObjectPartitionInput is an input type that accepts GetShareObjectPartitionArgs and GetShareObjectPartitionOutput values.
+// You can construct a concrete instance of `GetShareObjectPartitionInput` via:
+//
+//	GetShareObjectPartitionArgs{...}
+type GetShareObjectPartitionInput interface {
+	pulumi.Input
+
+	ToGetShareObjectPartitionOutput() GetShareObjectPartitionOutput
+	ToGetShareObjectPartitionOutputWithContext(context.Context) GetShareObjectPartitionOutput
+}
+
+type GetShareObjectPartitionArgs struct {
+	Values GetShareObjectPartitionValueArrayInput `pulumi:"values"`
+}
+
+func (GetShareObjectPartitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShareObjectPartition)(nil)).Elem()
+}
+
+func (i GetShareObjectPartitionArgs) ToGetShareObjectPartitionOutput() GetShareObjectPartitionOutput {
+	return i.ToGetShareObjectPartitionOutputWithContext(context.Background())
+}
+
+func (i GetShareObjectPartitionArgs) ToGetShareObjectPartitionOutputWithContext(ctx context.Context) GetShareObjectPartitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShareObjectPartitionOutput)
+}
+
+// GetShareObjectPartitionArrayInput is an input type that accepts GetShareObjectPartitionArray and GetShareObjectPartitionArrayOutput values.
+// You can construct a concrete instance of `GetShareObjectPartitionArrayInput` via:
+//
+//	GetShareObjectPartitionArray{ GetShareObjectPartitionArgs{...} }
+type GetShareObjectPartitionArrayInput interface {
+	pulumi.Input
+
+	ToGetShareObjectPartitionArrayOutput() GetShareObjectPartitionArrayOutput
+	ToGetShareObjectPartitionArrayOutputWithContext(context.Context) GetShareObjectPartitionArrayOutput
+}
+
+type GetShareObjectPartitionArray []GetShareObjectPartitionInput
+
+func (GetShareObjectPartitionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShareObjectPartition)(nil)).Elem()
+}
+
+func (i GetShareObjectPartitionArray) ToGetShareObjectPartitionArrayOutput() GetShareObjectPartitionArrayOutput {
+	return i.ToGetShareObjectPartitionArrayOutputWithContext(context.Background())
+}
+
+func (i GetShareObjectPartitionArray) ToGetShareObjectPartitionArrayOutputWithContext(ctx context.Context) GetShareObjectPartitionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShareObjectPartitionArrayOutput)
+}
+
+type GetShareObjectPartitionOutput struct{ *pulumi.OutputState }
+
+func (GetShareObjectPartitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShareObjectPartition)(nil)).Elem()
+}
+
+func (o GetShareObjectPartitionOutput) ToGetShareObjectPartitionOutput() GetShareObjectPartitionOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionOutput) ToGetShareObjectPartitionOutputWithContext(ctx context.Context) GetShareObjectPartitionOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionOutput) Values() GetShareObjectPartitionValueArrayOutput {
+	return o.ApplyT(func(v GetShareObjectPartition) []GetShareObjectPartitionValue { return v.Values }).(GetShareObjectPartitionValueArrayOutput)
+}
+
+type GetShareObjectPartitionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetShareObjectPartitionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShareObjectPartition)(nil)).Elem()
+}
+
+func (o GetShareObjectPartitionArrayOutput) ToGetShareObjectPartitionArrayOutput() GetShareObjectPartitionArrayOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionArrayOutput) ToGetShareObjectPartitionArrayOutputWithContext(ctx context.Context) GetShareObjectPartitionArrayOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionArrayOutput) Index(i pulumi.IntInput) GetShareObjectPartitionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetShareObjectPartition {
+		return vs[0].([]GetShareObjectPartition)[vs[1].(int)]
+	}).(GetShareObjectPartitionOutput)
+}
+
+type GetShareObjectPartitionValue struct {
+	// The name of the share
+	Name                 string  `pulumi:"name"`
+	Op                   string  `pulumi:"op"`
+	RecipientPropertyKey *string `pulumi:"recipientPropertyKey"`
+	Value                *string `pulumi:"value"`
+}
+
+// GetShareObjectPartitionValueInput is an input type that accepts GetShareObjectPartitionValueArgs and GetShareObjectPartitionValueOutput values.
+// You can construct a concrete instance of `GetShareObjectPartitionValueInput` via:
+//
+//	GetShareObjectPartitionValueArgs{...}
+type GetShareObjectPartitionValueInput interface {
+	pulumi.Input
+
+	ToGetShareObjectPartitionValueOutput() GetShareObjectPartitionValueOutput
+	ToGetShareObjectPartitionValueOutputWithContext(context.Context) GetShareObjectPartitionValueOutput
+}
+
+type GetShareObjectPartitionValueArgs struct {
+	// The name of the share
+	Name                 pulumi.StringInput    `pulumi:"name"`
+	Op                   pulumi.StringInput    `pulumi:"op"`
+	RecipientPropertyKey pulumi.StringPtrInput `pulumi:"recipientPropertyKey"`
+	Value                pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetShareObjectPartitionValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShareObjectPartitionValue)(nil)).Elem()
+}
+
+func (i GetShareObjectPartitionValueArgs) ToGetShareObjectPartitionValueOutput() GetShareObjectPartitionValueOutput {
+	return i.ToGetShareObjectPartitionValueOutputWithContext(context.Background())
+}
+
+func (i GetShareObjectPartitionValueArgs) ToGetShareObjectPartitionValueOutputWithContext(ctx context.Context) GetShareObjectPartitionValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShareObjectPartitionValueOutput)
+}
+
+// GetShareObjectPartitionValueArrayInput is an input type that accepts GetShareObjectPartitionValueArray and GetShareObjectPartitionValueArrayOutput values.
+// You can construct a concrete instance of `GetShareObjectPartitionValueArrayInput` via:
+//
+//	GetShareObjectPartitionValueArray{ GetShareObjectPartitionValueArgs{...} }
+type GetShareObjectPartitionValueArrayInput interface {
+	pulumi.Input
+
+	ToGetShareObjectPartitionValueArrayOutput() GetShareObjectPartitionValueArrayOutput
+	ToGetShareObjectPartitionValueArrayOutputWithContext(context.Context) GetShareObjectPartitionValueArrayOutput
+}
+
+type GetShareObjectPartitionValueArray []GetShareObjectPartitionValueInput
+
+func (GetShareObjectPartitionValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShareObjectPartitionValue)(nil)).Elem()
+}
+
+func (i GetShareObjectPartitionValueArray) ToGetShareObjectPartitionValueArrayOutput() GetShareObjectPartitionValueArrayOutput {
+	return i.ToGetShareObjectPartitionValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetShareObjectPartitionValueArray) ToGetShareObjectPartitionValueArrayOutputWithContext(ctx context.Context) GetShareObjectPartitionValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShareObjectPartitionValueArrayOutput)
+}
+
+type GetShareObjectPartitionValueOutput struct{ *pulumi.OutputState }
+
+func (GetShareObjectPartitionValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShareObjectPartitionValue)(nil)).Elem()
+}
+
+func (o GetShareObjectPartitionValueOutput) ToGetShareObjectPartitionValueOutput() GetShareObjectPartitionValueOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionValueOutput) ToGetShareObjectPartitionValueOutputWithContext(ctx context.Context) GetShareObjectPartitionValueOutput {
+	return o
+}
+
+// The name of the share
+func (o GetShareObjectPartitionValueOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShareObjectPartitionValue) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetShareObjectPartitionValueOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShareObjectPartitionValue) string { return v.Op }).(pulumi.StringOutput)
+}
+
+func (o GetShareObjectPartitionValueOutput) RecipientPropertyKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetShareObjectPartitionValue) *string { return v.RecipientPropertyKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetShareObjectPartitionValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetShareObjectPartitionValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetShareObjectPartitionValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetShareObjectPartitionValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShareObjectPartitionValue)(nil)).Elem()
+}
+
+func (o GetShareObjectPartitionValueArrayOutput) ToGetShareObjectPartitionValueArrayOutput() GetShareObjectPartitionValueArrayOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionValueArrayOutput) ToGetShareObjectPartitionValueArrayOutputWithContext(ctx context.Context) GetShareObjectPartitionValueArrayOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionValueArrayOutput) Index(i pulumi.IntInput) GetShareObjectPartitionValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetShareObjectPartitionValue {
+		return vs[0].([]GetShareObjectPartitionValue)[vs[1].(int)]
+	}).(GetShareObjectPartitionValueOutput)
 }
 
 type GetSqlWarehouseChannel struct {
@@ -57589,6 +58509,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolPreloadedDockerImageArrayInput)(nil)).Elem(), InstancePoolPreloadedDockerImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolPreloadedDockerImageBasicAuthInput)(nil)).Elem(), InstancePoolPreloadedDockerImageBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolPreloadedDockerImageBasicAuthPtrInput)(nil)).Elem(), InstancePoolPreloadedDockerImageBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobContinuousInput)(nil)).Elem(), JobContinuousArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobContinuousPtrInput)(nil)).Elem(), JobContinuousArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobDbtTaskInput)(nil)).Elem(), JobDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobDbtTaskPtrInput)(nil)).Elem(), JobDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobEmailNotificationsInput)(nil)).Elem(), JobEmailNotificationsArgs{})
@@ -57812,6 +58734,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MountWasbPtrInput)(nil)).Elem(), MountWasbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsCustomerManagedKeysAwsKeyInfoInput)(nil)).Elem(), MwsCustomerManagedKeysAwsKeyInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsCustomerManagedKeysAwsKeyInfoPtrInput)(nil)).Elem(), MwsCustomerManagedKeysAwsKeyInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsCustomerManagedKeysGcpKeyInfoInput)(nil)).Elem(), MwsCustomerManagedKeysGcpKeyInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsCustomerManagedKeysGcpKeyInfoPtrInput)(nil)).Elem(), MwsCustomerManagedKeysGcpKeyInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksErrorMessageInput)(nil)).Elem(), MwsNetworksErrorMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksErrorMessageArrayInput)(nil)).Elem(), MwsNetworksErrorMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksGcpNetworkInfoInput)(nil)).Elem(), MwsNetworksGcpNetworkInfoArgs{})
@@ -57880,6 +58804,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretScopeKeyvaultMetadataPtrInput)(nil)).Elem(), SecretScopeKeyvaultMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareObjectInput)(nil)).Elem(), ShareObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareObjectArrayInput)(nil)).Elem(), ShareObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShareObjectPartitionInput)(nil)).Elem(), ShareObjectPartitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShareObjectPartitionArrayInput)(nil)).Elem(), ShareObjectPartitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShareObjectPartitionValueInput)(nil)).Elem(), ShareObjectPartitionValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShareObjectPartitionValueArrayInput)(nil)).Elem(), ShareObjectPartitionValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointChannelInput)(nil)).Elem(), SqlEndpointChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointChannelPtrInput)(nil)).Elem(), SqlEndpointChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointOdbcParamsInput)(nil)).Elem(), SqlEndpointOdbcParamsArgs{})
@@ -58014,6 +58942,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsPtrInput)(nil)).Elem(), GetJobJobSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsInput)(nil)).Elem(), GetJobJobSettingsSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsContinuousInput)(nil)).Elem(), GetJobJobSettingsSettingsContinuousArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsContinuousPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsContinuousArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsDbtTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsDbtTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsEmailNotificationsInput)(nil)).Elem(), GetJobJobSettingsSettingsEmailNotificationsArgs{})
@@ -58209,6 +59139,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotebookPathsNotebookPathListArrayInput)(nil)).Elem(), GetNotebookPathsNotebookPathListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectInput)(nil)).Elem(), GetShareObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectArrayInput)(nil)).Elem(), GetShareObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectPartitionInput)(nil)).Elem(), GetShareObjectPartitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectPartitionArrayInput)(nil)).Elem(), GetShareObjectPartitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectPartitionValueInput)(nil)).Elem(), GetShareObjectPartitionValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectPartitionValueArrayInput)(nil)).Elem(), GetShareObjectPartitionValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseChannelInput)(nil)).Elem(), GetSqlWarehouseChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseChannelPtrInput)(nil)).Elem(), GetSqlWarehouseChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseOdbcParamsInput)(nil)).Elem(), GetSqlWarehouseOdbcParamsArgs{})
@@ -58286,6 +59220,8 @@ func init() {
 	pulumi.RegisterOutputType(InstancePoolPreloadedDockerImageArrayOutput{})
 	pulumi.RegisterOutputType(InstancePoolPreloadedDockerImageBasicAuthOutput{})
 	pulumi.RegisterOutputType(InstancePoolPreloadedDockerImageBasicAuthPtrOutput{})
+	pulumi.RegisterOutputType(JobContinuousOutput{})
+	pulumi.RegisterOutputType(JobContinuousPtrOutput{})
 	pulumi.RegisterOutputType(JobDbtTaskOutput{})
 	pulumi.RegisterOutputType(JobDbtTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobEmailNotificationsOutput{})
@@ -58509,6 +59445,8 @@ func init() {
 	pulumi.RegisterOutputType(MountWasbPtrOutput{})
 	pulumi.RegisterOutputType(MwsCustomerManagedKeysAwsKeyInfoOutput{})
 	pulumi.RegisterOutputType(MwsCustomerManagedKeysAwsKeyInfoPtrOutput{})
+	pulumi.RegisterOutputType(MwsCustomerManagedKeysGcpKeyInfoOutput{})
+	pulumi.RegisterOutputType(MwsCustomerManagedKeysGcpKeyInfoPtrOutput{})
 	pulumi.RegisterOutputType(MwsNetworksErrorMessageOutput{})
 	pulumi.RegisterOutputType(MwsNetworksErrorMessageArrayOutput{})
 	pulumi.RegisterOutputType(MwsNetworksGcpNetworkInfoOutput{})
@@ -58577,6 +59515,10 @@ func init() {
 	pulumi.RegisterOutputType(SecretScopeKeyvaultMetadataPtrOutput{})
 	pulumi.RegisterOutputType(ShareObjectOutput{})
 	pulumi.RegisterOutputType(ShareObjectArrayOutput{})
+	pulumi.RegisterOutputType(ShareObjectPartitionOutput{})
+	pulumi.RegisterOutputType(ShareObjectPartitionArrayOutput{})
+	pulumi.RegisterOutputType(ShareObjectPartitionValueOutput{})
+	pulumi.RegisterOutputType(ShareObjectPartitionValueArrayOutput{})
 	pulumi.RegisterOutputType(SqlEndpointChannelOutput{})
 	pulumi.RegisterOutputType(SqlEndpointChannelPtrOutput{})
 	pulumi.RegisterOutputType(SqlEndpointOdbcParamsOutput{})
@@ -58711,6 +59653,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsContinuousOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsContinuousPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsDbtTaskOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsDbtTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsEmailNotificationsOutput{})
@@ -58906,6 +59850,10 @@ func init() {
 	pulumi.RegisterOutputType(GetNotebookPathsNotebookPathListArrayOutput{})
 	pulumi.RegisterOutputType(GetShareObjectOutput{})
 	pulumi.RegisterOutputType(GetShareObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetShareObjectPartitionOutput{})
+	pulumi.RegisterOutputType(GetShareObjectPartitionArrayOutput{})
+	pulumi.RegisterOutputType(GetShareObjectPartitionValueOutput{})
+	pulumi.RegisterOutputType(GetShareObjectPartitionValueArrayOutput{})
 	pulumi.RegisterOutputType(GetSqlWarehouseChannelOutput{})
 	pulumi.RegisterOutputType(GetSqlWarehouseChannelPtrOutput{})
 	pulumi.RegisterOutputType(GetSqlWarehouseOdbcParamsOutput{})

@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const report = databricks.getDbfsFile({
- *     limitFileSize: 10240,
+ *     limitFileSize: true,
  *     path: "dbfs:/reports/some.csv",
  * });
  * ```
@@ -39,11 +39,11 @@ export function getDbfsFile(args: GetDbfsFileArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetDbfsFileArgs {
     /**
-     * Do lot load content for files smaller than this in bytes
+     * Do not load content for files larger than 4MB.
      */
     limitFileSize: boolean;
     /**
-     * Path on DBFS for the file to get content of
+     * Path on DBFS for the file from which to get content.
      */
     path: string;
 }
@@ -75,7 +75,7 @@ export interface GetDbfsFileResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const report = databricks.getDbfsFile({
- *     limitFileSize: 10240,
+ *     limitFileSize: true,
  *     path: "dbfs:/reports/some.csv",
  * });
  * ```
@@ -97,11 +97,11 @@ export function getDbfsFileOutput(args: GetDbfsFileOutputArgs, opts?: pulumi.Inv
  */
 export interface GetDbfsFileOutputArgs {
     /**
-     * Do lot load content for files smaller than this in bytes
+     * Do not load content for files larger than 4MB.
      */
     limitFileSize: pulumi.Input<boolean>;
     /**
-     * Path on DBFS for the file to get content of
+     * Path on DBFS for the file from which to get content.
      */
     path: pulumi.Input<string>;
 }

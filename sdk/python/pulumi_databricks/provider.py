@@ -35,9 +35,9 @@ class ProviderArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  rate_limit: Optional[pulumi.Input[int]] = None,
+                 retry_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  skip_verify: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
-                 token_endpoint: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
@@ -84,12 +84,12 @@ class ProviderArgs:
             pulumi.set(__self__, "profile", profile)
         if rate_limit is not None:
             pulumi.set(__self__, "rate_limit", rate_limit)
+        if retry_timeout_seconds is not None:
+            pulumi.set(__self__, "retry_timeout_seconds", retry_timeout_seconds)
         if skip_verify is not None:
             pulumi.set(__self__, "skip_verify", skip_verify)
         if token is not None:
             pulumi.set(__self__, "token", token)
-        if token_endpoint is not None:
-            pulumi.set(__self__, "token_endpoint", token_endpoint)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -283,6 +283,15 @@ class ProviderArgs:
         pulumi.set(self, "rate_limit", value)
 
     @property
+    @pulumi.getter(name="retryTimeoutSeconds")
+    def retry_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "retry_timeout_seconds")
+
+    @retry_timeout_seconds.setter
+    def retry_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retry_timeout_seconds", value)
+
+    @property
     @pulumi.getter(name="skipVerify")
     def skip_verify(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "skip_verify")
@@ -299,15 +308,6 @@ class ProviderArgs:
     @token.setter
     def token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "token", value)
-
-    @property
-    @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "token_endpoint")
-
-    @token_endpoint.setter
-    def token_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "token_endpoint", value)
 
     @property
     @pulumi.getter
@@ -345,9 +345,9 @@ class Provider(pulumi.ProviderResource):
                  password: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  rate_limit: Optional[pulumi.Input[int]] = None,
+                 retry_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  skip_verify: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
-                 token_endpoint: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -407,9 +407,9 @@ class Provider(pulumi.ProviderResource):
                  password: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  rate_limit: Optional[pulumi.Input[int]] = None,
+                 retry_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  skip_verify: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
-                 token_endpoint: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -441,9 +441,9 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["profile"] = profile
             __props__.__dict__["rate_limit"] = pulumi.Output.from_input(rate_limit).apply(pulumi.runtime.to_json) if rate_limit is not None else None
+            __props__.__dict__["retry_timeout_seconds"] = pulumi.Output.from_input(retry_timeout_seconds).apply(pulumi.runtime.to_json) if retry_timeout_seconds is not None else None
             __props__.__dict__["skip_verify"] = pulumi.Output.from_input(skip_verify).apply(pulumi.runtime.to_json) if skip_verify is not None else None
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
-            __props__.__dict__["token_endpoint"] = token_endpoint
             __props__.__dict__["username"] = username
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["azureClientSecret", "clientSecret", "googleCredentials", "password", "token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -537,11 +537,6 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "token")
-
-    @property
-    @pulumi.getter(name="tokenEndpoint")
-    def token_endpoint(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "token_endpoint")
 
     @property
     @pulumi.getter

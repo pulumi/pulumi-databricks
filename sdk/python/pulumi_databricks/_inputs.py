@@ -45,6 +45,7 @@ __all__ = [
     'InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs',
     'InstancePoolPreloadedDockerImageArgs',
     'InstancePoolPreloadedDockerImageBasicAuthArgs',
+    'JobContinuousArgs',
     'JobDbtTaskArgs',
     'JobEmailNotificationsArgs',
     'JobGitSourceArgs',
@@ -158,6 +159,7 @@ __all__ = [
     'MountS3Args',
     'MountWasbArgs',
     'MwsCustomerManagedKeysAwsKeyInfoArgs',
+    'MwsCustomerManagedKeysGcpKeyInfoArgs',
     'MwsNetworksErrorMessageArgs',
     'MwsNetworksGcpNetworkInfoArgs',
     'MwsNetworksVpcEndpointsArgs',
@@ -192,6 +194,8 @@ __all__ = [
     'RepoSparseCheckoutArgs',
     'SecretScopeKeyvaultMetadataArgs',
     'ShareObjectArgs',
+    'ShareObjectPartitionArgs',
+    'ShareObjectPartitionValueArgs',
     'SqlEndpointChannelArgs',
     'SqlEndpointOdbcParamsArgs',
     'SqlEndpointTagsArgs',
@@ -258,6 +262,7 @@ __all__ = [
     'GetInstancePoolPoolInfoStatsArgs',
     'GetJobJobSettingsArgs',
     'GetJobJobSettingsSettingsArgs',
+    'GetJobJobSettingsSettingsContinuousArgs',
     'GetJobJobSettingsSettingsDbtTaskArgs',
     'GetJobJobSettingsSettingsEmailNotificationsArgs',
     'GetJobJobSettingsSettingsGitSourceArgs',
@@ -356,6 +361,8 @@ __all__ = [
     'GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs',
     'GetShareObjectArgs',
+    'GetShareObjectPartitionArgs',
+    'GetShareObjectPartitionValueArgs',
     'GetSqlWarehouseChannelArgs',
     'GetSqlWarehouseOdbcParamsArgs',
     'GetSqlWarehouseTagsArgs',
@@ -1685,6 +1692,29 @@ class InstancePoolPreloadedDockerImageBasicAuthArgs:
     @username.setter
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class JobContinuousArgs:
+    def __init__(__self__, *,
+                 pause_status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] pause_status: Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+        """
+        if pause_status is not None:
+            pulumi.set(__self__, "pause_status", pause_status)
+
+    @property
+    @pulumi.getter(name="pauseStatus")
+    def pause_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+        """
+        return pulumi.get(self, "pause_status")
+
+    @pause_status.setter
+    def pause_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pause_status", value)
 
 
 @pulumi.input_type
@@ -7776,6 +7806,22 @@ class MwsCustomerManagedKeysAwsKeyInfoArgs:
 
 
 @pulumi.input_type
+class MwsCustomerManagedKeysGcpKeyInfoArgs:
+    def __init__(__self__, *,
+                 kms_key_id: pulumi.Input[str]):
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key_id", value)
+
+
+@pulumi.input_type
 class MwsNetworksErrorMessageArgs:
     def __init__(__self__, *,
                  error_message: Optional[pulumi.Input[str]] = None,
@@ -9345,12 +9391,22 @@ class ShareObjectArgs:
                  name: pulumi.Input[str],
                  added_at: Optional[pulumi.Input[int]] = None,
                  added_by: Optional[pulumi.Input[str]] = None,
+                 cdf_enabled: Optional[pulumi.Input[bool]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
-                 shared_as: Optional[pulumi.Input[str]] = None):
+                 history_data_sharing_status: Optional[pulumi.Input[str]] = None,
+                 partitions: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionArgs']]]] = None,
+                 shared_as: Optional[pulumi.Input[str]] = None,
+                 start_version: Optional[pulumi.Input[int]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] data_object_type: Type of the object, currently only `TABLE` is allowed.
         :param pulumi.Input[str] name: Full name of the object, e.g. `catalog.schema.name` for a table.
+        :param pulumi.Input[bool] cdf_enabled: Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
         :param pulumi.Input[str] comment: Description about the object.
+        :param pulumi.Input[str] history_data_sharing_status: Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+        :param pulumi.Input[str] shared_as: A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+        :param pulumi.Input[int] start_version: The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+        :param pulumi.Input[str] status: Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
         """
         pulumi.set(__self__, "data_object_type", data_object_type)
         pulumi.set(__self__, "name", name)
@@ -9358,10 +9414,20 @@ class ShareObjectArgs:
             pulumi.set(__self__, "added_at", added_at)
         if added_by is not None:
             pulumi.set(__self__, "added_by", added_by)
+        if cdf_enabled is not None:
+            pulumi.set(__self__, "cdf_enabled", cdf_enabled)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if history_data_sharing_status is not None:
+            pulumi.set(__self__, "history_data_sharing_status", history_data_sharing_status)
+        if partitions is not None:
+            pulumi.set(__self__, "partitions", partitions)
         if shared_as is not None:
             pulumi.set(__self__, "shared_as", shared_as)
+        if start_version is not None:
+            pulumi.set(__self__, "start_version", start_version)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="dataObjectType")
@@ -9406,6 +9472,18 @@ class ShareObjectArgs:
         pulumi.set(self, "added_by", value)
 
     @property
+    @pulumi.getter(name="cdfEnabled")
+    def cdf_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
+        """
+        return pulumi.get(self, "cdf_enabled")
+
+    @cdf_enabled.setter
+    def cdf_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cdf_enabled", value)
+
+    @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
@@ -9418,13 +9496,146 @@ class ShareObjectArgs:
         pulumi.set(self, "comment", value)
 
     @property
+    @pulumi.getter(name="historyDataSharingStatus")
+    def history_data_sharing_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+        """
+        return pulumi.get(self, "history_data_sharing_status")
+
+    @history_data_sharing_status.setter
+    def history_data_sharing_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "history_data_sharing_status", value)
+
+    @property
+    @pulumi.getter
+    def partitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionArgs']]]]:
+        return pulumi.get(self, "partitions")
+
+    @partitions.setter
+    def partitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionArgs']]]]):
+        pulumi.set(self, "partitions", value)
+
+    @property
     @pulumi.getter(name="sharedAs")
     def shared_as(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+        """
         return pulumi.get(self, "shared_as")
 
     @shared_as.setter
     def shared_as(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shared_as", value)
+
+    @property
+    @pulumi.getter(name="startVersion")
+    def start_version(self) -> Optional[pulumi.Input[int]]:
+        """
+        The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+        """
+        return pulumi.get(self, "start_version")
+
+    @start_version.setter
+    def start_version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "start_version", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class ShareObjectPartitionArgs:
+    def __init__(__self__, *,
+                 values: pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionValueArgs']]]):
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionValueArgs']]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionValueArgs']]]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class ShareObjectPartitionValueArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 op: pulumi.Input[str],
+                 recipient_property_key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the partition column.
+        :param pulumi.Input[str] op: The operator to apply for the value, one of: `EQUAL`, `LIKE`
+        :param pulumi.Input[str] recipient_property_key: The key of a Delta Sharing recipient's property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+        :param pulumi.Input[str] value: The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "op", op)
+        if recipient_property_key is not None:
+            pulumi.set(__self__, "recipient_property_key", recipient_property_key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the partition column.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def op(self) -> pulumi.Input[str]:
+        """
+        The operator to apply for the value, one of: `EQUAL`, `LIKE`
+        """
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: pulumi.Input[str]):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter(name="recipientPropertyKey")
+    def recipient_property_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of a Delta Sharing recipient's property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+        """
+        return pulumi.get(self, "recipient_property_key")
+
+    @recipient_property_key.setter
+    def recipient_property_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recipient_property_key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -12822,6 +13033,7 @@ class GetJobJobSettingsArgs:
 class GetJobJobSettingsSettingsArgs:
     def __init__(__self__, *,
                  format: str,
+                 continuous: Optional['GetJobJobSettingsSettingsContinuousArgs'] = None,
                  dbt_task: Optional['GetJobJobSettingsSettingsDbtTaskArgs'] = None,
                  email_notifications: Optional['GetJobJobSettingsSettingsEmailNotificationsArgs'] = None,
                  existing_cluster_id: Optional[str] = None,
@@ -12849,6 +13061,8 @@ class GetJobJobSettingsSettingsArgs:
         :param str name: the job name of Job if the resource was matched by id.
         """
         pulumi.set(__self__, "format", format)
+        if continuous is not None:
+            pulumi.set(__self__, "continuous", continuous)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if email_notifications is not None:
@@ -12904,6 +13118,15 @@ class GetJobJobSettingsSettingsArgs:
     @format.setter
     def format(self, value: str):
         pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def continuous(self) -> Optional['GetJobJobSettingsSettingsContinuousArgs']:
+        return pulumi.get(self, "continuous")
+
+    @continuous.setter
+    def continuous(self, value: Optional['GetJobJobSettingsSettingsContinuousArgs']):
+        pulumi.set(self, "continuous", value)
 
     @property
     @pulumi.getter(name="dbtTask")
@@ -13114,6 +13337,22 @@ class GetJobJobSettingsSettingsArgs:
     @webhook_notifications.setter
     def webhook_notifications(self, value: Optional['GetJobJobSettingsSettingsWebhookNotificationsArgs']):
         pulumi.set(self, "webhook_notifications", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsContinuousArgs:
+    def __init__(__self__, *,
+                 pause_status: str):
+        pulumi.set(__self__, "pause_status", pause_status)
+
+    @property
+    @pulumi.getter(name="pauseStatus")
+    def pause_status(self) -> str:
+        return pulumi.get(self, "pause_status")
+
+    @pause_status.setter
+    def pause_status(self, value: str):
+        pulumi.set(self, "pause_status", value)
 
 
 @pulumi.input_type
@@ -18095,8 +18334,13 @@ class GetShareObjectArgs:
                  added_by: str,
                  data_object_type: str,
                  name: str,
-                 shared_as: str,
-                 comment: Optional[str] = None):
+                 status: str,
+                 cdf_enabled: Optional[bool] = None,
+                 comment: Optional[str] = None,
+                 history_data_sharing_status: Optional[str] = None,
+                 partitions: Optional[Sequence['GetShareObjectPartitionArgs']] = None,
+                 shared_as: Optional[str] = None,
+                 start_version: Optional[int] = None):
         """
         :param str data_object_type: Type of the object.
         :param str name: The name of the share
@@ -18106,9 +18350,19 @@ class GetShareObjectArgs:
         pulumi.set(__self__, "added_by", added_by)
         pulumi.set(__self__, "data_object_type", data_object_type)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "shared_as", shared_as)
+        pulumi.set(__self__, "status", status)
+        if cdf_enabled is not None:
+            pulumi.set(__self__, "cdf_enabled", cdf_enabled)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if history_data_sharing_status is not None:
+            pulumi.set(__self__, "history_data_sharing_status", history_data_sharing_status)
+        if partitions is not None:
+            pulumi.set(__self__, "partitions", partitions)
+        if shared_as is not None:
+            pulumi.set(__self__, "shared_as", shared_as)
+        if start_version is not None:
+            pulumi.set(__self__, "start_version", start_version)
 
     @property
     @pulumi.getter(name="addedAt")
@@ -18153,13 +18407,22 @@ class GetShareObjectArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="sharedAs")
-    def shared_as(self) -> str:
-        return pulumi.get(self, "shared_as")
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
 
-    @shared_as.setter
-    def shared_as(self, value: str):
-        pulumi.set(self, "shared_as", value)
+    @status.setter
+    def status(self, value: str):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="cdfEnabled")
+    def cdf_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "cdf_enabled")
+
+    @cdf_enabled.setter
+    def cdf_enabled(self, value: Optional[bool]):
+        pulumi.set(self, "cdf_enabled", value)
 
     @property
     @pulumi.getter
@@ -18172,6 +18435,115 @@ class GetShareObjectArgs:
     @comment.setter
     def comment(self, value: Optional[str]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="historyDataSharingStatus")
+    def history_data_sharing_status(self) -> Optional[str]:
+        return pulumi.get(self, "history_data_sharing_status")
+
+    @history_data_sharing_status.setter
+    def history_data_sharing_status(self, value: Optional[str]):
+        pulumi.set(self, "history_data_sharing_status", value)
+
+    @property
+    @pulumi.getter
+    def partitions(self) -> Optional[Sequence['GetShareObjectPartitionArgs']]:
+        return pulumi.get(self, "partitions")
+
+    @partitions.setter
+    def partitions(self, value: Optional[Sequence['GetShareObjectPartitionArgs']]):
+        pulumi.set(self, "partitions", value)
+
+    @property
+    @pulumi.getter(name="sharedAs")
+    def shared_as(self) -> Optional[str]:
+        return pulumi.get(self, "shared_as")
+
+    @shared_as.setter
+    def shared_as(self, value: Optional[str]):
+        pulumi.set(self, "shared_as", value)
+
+    @property
+    @pulumi.getter(name="startVersion")
+    def start_version(self) -> Optional[int]:
+        return pulumi.get(self, "start_version")
+
+    @start_version.setter
+    def start_version(self, value: Optional[int]):
+        pulumi.set(self, "start_version", value)
+
+
+@pulumi.input_type
+class GetShareObjectPartitionArgs:
+    def __init__(__self__, *,
+                 values: Sequence['GetShareObjectPartitionValueArgs']):
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence['GetShareObjectPartitionValueArgs']:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence['GetShareObjectPartitionValueArgs']):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class GetShareObjectPartitionValueArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 op: str,
+                 recipient_property_key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: The name of the share
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "op", op)
+        if recipient_property_key is not None:
+            pulumi.set(__self__, "recipient_property_key", recipient_property_key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the share
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def op(self) -> str:
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: str):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter(name="recipientPropertyKey")
+    def recipient_property_key(self) -> Optional[str]:
+        return pulumi.get(self, "recipient_property_key")
+
+    @recipient_property_key.setter
+    def recipient_property_key(self, value: Optional[str]):
+        pulumi.set(self, "recipient_property_key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[str]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

@@ -42,7 +42,6 @@ export class Provider extends pulumi.ProviderResource {
     public readonly password!: pulumi.Output<string | undefined>;
     public readonly profile!: pulumi.Output<string | undefined>;
     public readonly token!: pulumi.Output<string | undefined>;
-    public readonly tokenEndpoint!: pulumi.Output<string | undefined>;
     public readonly username!: pulumi.Output<string | undefined>;
 
     /**
@@ -77,9 +76,9 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["profile"] = args ? args.profile : undefined;
             resourceInputs["rateLimit"] = pulumi.output(args ? args.rateLimit : undefined).apply(JSON.stringify);
+            resourceInputs["retryTimeoutSeconds"] = pulumi.output(args ? args.retryTimeoutSeconds : undefined).apply(JSON.stringify);
             resourceInputs["skipVerify"] = pulumi.output(args ? args.skipVerify : undefined).apply(JSON.stringify);
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
-            resourceInputs["tokenEndpoint"] = args ? args.tokenEndpoint : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -114,8 +113,8 @@ export interface ProviderArgs {
     password?: pulumi.Input<string>;
     profile?: pulumi.Input<string>;
     rateLimit?: pulumi.Input<number>;
+    retryTimeoutSeconds?: pulumi.Input<number>;
     skipVerify?: pulumi.Input<boolean>;
     token?: pulumi.Input<string>;
-    tokenEndpoint?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }

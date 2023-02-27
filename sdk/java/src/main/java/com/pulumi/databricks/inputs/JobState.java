@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobContinuousArgs;
 import com.pulumi.databricks.inputs.JobDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobEmailNotificationsArgs;
 import com.pulumi.databricks.inputs.JobGitSourceArgs;
@@ -50,6 +51,13 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.alwaysRunning);
     }
 
+    @Import(name="continuous")
+    private @Nullable Output<JobContinuousArgs> continuous;
+
+    public Optional<Output<JobContinuousArgs>> continuous() {
+        return Optional.ofNullable(this.continuous);
+    }
+
     @Import(name="dbtTask")
     private @Nullable Output<JobDbtTaskArgs> dbtTask;
 
@@ -93,9 +101,17 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.gitSource);
     }
 
+    /**
+     * A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+     * 
+     */
     @Import(name="jobClusters")
     private @Nullable Output<List<JobJobClusterArgs>> jobClusters;
 
+    /**
+     * @return A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+     * 
+     */
     public Optional<Output<List<JobJobClusterArgs>>> jobClusters() {
         return Optional.ofNullable(this.jobClusters);
     }
@@ -333,6 +349,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     private JobState(JobState $) {
         this.alwaysRunning = $.alwaysRunning;
+        this.continuous = $.continuous;
         this.dbtTask = $.dbtTask;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
@@ -399,6 +416,15 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return alwaysRunning(Output.of(alwaysRunning));
         }
 
+        public Builder continuous(@Nullable Output<JobContinuousArgs> continuous) {
+            $.continuous = continuous;
+            return this;
+        }
+
+        public Builder continuous(JobContinuousArgs continuous) {
+            return continuous(Output.of(continuous));
+        }
+
         public Builder dbtTask(@Nullable Output<JobDbtTaskArgs> dbtTask) {
             $.dbtTask = dbtTask;
             return this;
@@ -456,15 +482,33 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return gitSource(Output.of(gitSource));
         }
 
+        /**
+         * @param jobClusters A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobClusters(@Nullable Output<List<JobJobClusterArgs>> jobClusters) {
             $.jobClusters = jobClusters;
             return this;
         }
 
+        /**
+         * @param jobClusters A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobClusters(List<JobJobClusterArgs> jobClusters) {
             return jobClusters(Output.of(jobClusters));
         }
 
+        /**
+         * @param jobClusters A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobClusters(JobJobClusterArgs... jobClusters) {
             return jobClusters(List.of(jobClusters));
         }

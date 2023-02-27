@@ -762,6 +762,7 @@ export interface GetJobJobSettingsArgs {
 }
 
 export interface GetJobJobSettingsSettings {
+    continuous?: inputs.GetJobJobSettingsSettingsContinuous;
     dbtTask?: inputs.GetJobJobSettingsSettingsDbtTask;
     emailNotifications?: inputs.GetJobJobSettingsSettingsEmailNotifications;
     existingClusterId?: string;
@@ -792,6 +793,7 @@ export interface GetJobJobSettingsSettings {
 }
 
 export interface GetJobJobSettingsSettingsArgs {
+    continuous?: pulumi.Input<inputs.GetJobJobSettingsSettingsContinuousArgs>;
     dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsDbtTaskArgs>;
     emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsEmailNotificationsArgs>;
     existingClusterId?: pulumi.Input<string>;
@@ -819,6 +821,14 @@ export interface GetJobJobSettingsSettingsArgs {
     tasks?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskArgs>[]>;
     timeoutSeconds?: pulumi.Input<number>;
     webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsArgs>;
+}
+
+export interface GetJobJobSettingsSettingsContinuous {
+    pauseStatus?: string;
+}
+
+export interface GetJobJobSettingsSettingsContinuousArgs {
+    pauseStatus?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsDbtTask {
@@ -2182,6 +2192,7 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs {
 export interface GetShareObject {
     addedAt?: number;
     addedBy?: string;
+    cdfEnabled?: boolean;
     /**
      * Description about the object.
      */
@@ -2190,16 +2201,21 @@ export interface GetShareObject {
      * Type of the object.
      */
     dataObjectType: string;
+    historyDataSharingStatus?: string;
     /**
      * The name of the share
      */
     name: string;
+    partitions?: inputs.GetShareObjectPartition[];
     sharedAs?: string;
+    startVersion?: number;
+    status?: string;
 }
 
 export interface GetShareObjectArgs {
     addedAt?: pulumi.Input<number>;
     addedBy?: pulumi.Input<string>;
+    cdfEnabled?: pulumi.Input<boolean>;
     /**
      * Description about the object.
      */
@@ -2208,11 +2224,43 @@ export interface GetShareObjectArgs {
      * Type of the object.
      */
     dataObjectType: pulumi.Input<string>;
+    historyDataSharingStatus?: pulumi.Input<string>;
     /**
      * The name of the share
      */
     name: pulumi.Input<string>;
+    partitions?: pulumi.Input<pulumi.Input<inputs.GetShareObjectPartitionArgs>[]>;
     sharedAs?: pulumi.Input<string>;
+    startVersion?: pulumi.Input<number>;
+    status?: pulumi.Input<string>;
+}
+
+export interface GetShareObjectPartition {
+    values: inputs.GetShareObjectPartitionValue[];
+}
+
+export interface GetShareObjectPartitionArgs {
+    values: pulumi.Input<pulumi.Input<inputs.GetShareObjectPartitionValueArgs>[]>;
+}
+
+export interface GetShareObjectPartitionValue {
+    /**
+     * The name of the share
+     */
+    name: string;
+    op: string;
+    recipientPropertyKey?: string;
+    value?: string;
+}
+
+export interface GetShareObjectPartitionValueArgs {
+    /**
+     * The name of the share
+     */
+    name: pulumi.Input<string>;
+    op: pulumi.Input<string>;
+    recipientPropertyKey?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface GetSqlWarehouseChannel {
@@ -2344,6 +2392,13 @@ export interface InstancePoolPreloadedDockerImage {
 export interface InstancePoolPreloadedDockerImageBasicAuth {
     password: pulumi.Input<string>;
     username: pulumi.Input<string>;
+}
+
+export interface JobContinuous {
+    /**
+     * Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+     */
+    pauseStatus?: pulumi.Input<string>;
 }
 
 export interface JobDbtTask {
@@ -3395,6 +3450,10 @@ export interface MwsCustomerManagedKeysAwsKeyInfo {
     keyRegion?: pulumi.Input<string>;
 }
 
+export interface MwsCustomerManagedKeysGcpKeyInfo {
+    kmsKeyId: pulumi.Input<string>;
+}
+
 export interface MwsNetworksErrorMessage {
     errorMessage?: pulumi.Input<string>;
     errorType?: pulumi.Input<string>;
@@ -3656,6 +3715,10 @@ export interface ShareObject {
     addedAt?: pulumi.Input<number>;
     addedBy?: pulumi.Input<string>;
     /**
+     * Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `historyDataSharingStatus` can not be set.
+     */
+    cdfEnabled?: pulumi.Input<boolean>;
+    /**
      * Description about the object.
      */
     comment?: pulumi.Input<string>;
@@ -3664,10 +3727,49 @@ export interface ShareObject {
      */
     dataObjectType: pulumi.Input<string>;
     /**
+     * Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
+     */
+    historyDataSharingStatus?: pulumi.Input<string>;
+    /**
      * Full name of the object, e.g. `catalog.schema.name` for a table.
      */
     name: pulumi.Input<string>;
+    partitions?: pulumi.Input<pulumi.Input<inputs.ShareObjectPartition>[]>;
+    /**
+     * A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share.
+     */
     sharedAs?: pulumi.Input<string>;
+    /**
+     * The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
+     */
+    startVersion?: pulumi.Input<number>;
+    /**
+     * Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+     */
+    status?: pulumi.Input<string>;
+}
+
+export interface ShareObjectPartition {
+    values: pulumi.Input<pulumi.Input<inputs.ShareObjectPartitionValue>[]>;
+}
+
+export interface ShareObjectPartitionValue {
+    /**
+     * The name of the partition column.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The operator to apply for the value, one of: `EQUAL`, `LIKE`
+     */
+    op: pulumi.Input<string>;
+    /**
+     * The key of a Delta Sharing recipient's property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+     */
+    recipientPropertyKey?: pulumi.Input<string>;
+    /**
+     * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
+     */
+    value?: pulumi.Input<string>;
 }
 
 export interface SqlEndpointChannel {
