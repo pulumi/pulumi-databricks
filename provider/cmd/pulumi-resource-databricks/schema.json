@@ -120,15 +120,15 @@
             "rateLimit": {
                 "type": "integer"
             },
+            "retryTimeoutSeconds": {
+                "type": "integer"
+            },
             "skipVerify": {
                 "type": "boolean"
             },
             "token": {
                 "type": "string",
                 "secret": true
-            },
-            "tokenEndpoint": {
-                "type": "string"
             },
             "username": {
                 "type": "string"
@@ -1176,6 +1176,27 @@
                 "password",
                 "username"
             ]
+        },
+        "databricks:index/JobContinuous:JobContinuous": {
+            "properties": {
+                "pauseStatus": {
+                    "type": "string",
+                    "description": "Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using \"UNPAUSED\" as a value for pause_status.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "pauseStatus"
+                    ]
+                }
+            }
         },
         "databricks:index/JobDbtTask:JobDbtTask": {
             "properties": {
@@ -5797,6 +5818,23 @@
                 }
             }
         },
+        "databricks:index/MwsCustomerManagedKeysGcpKeyInfo:MwsCustomerManagedKeysGcpKeyInfo": {
+            "properties": {
+                "kmsKeyId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "kmsKeyId"
+            ]
+        },
         "databricks:index/MwsNetworksErrorMessage:MwsNetworksErrorMessage": {
             "properties": {
                 "errorMessage": {
@@ -7045,6 +7083,15 @@
                         }
                     }
                 },
+                "cdfEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "comment": {
                     "type": "string",
                     "description": "Description about the object.\n",
@@ -7063,6 +7110,15 @@
                         }
                     }
                 },
+                "historyDataSharingStatus": {
+                    "type": "string",
+                    "description": "Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "Full name of the object, e.g. `catalog.schema.name` for a table.\n",
@@ -7072,8 +7128,38 @@
                         }
                     }
                 },
+                "partitions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/ShareObjectPartition:ShareObjectPartition"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "sharedAs": {
                     "type": "string",
+                    "description": "A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "startVersion": {
+                    "type": "integer",
+                    "description": "The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -7093,10 +7179,74 @@
                         "addedBy",
                         "dataObjectType",
                         "name",
-                        "sharedAs"
+                        "status"
                     ]
                 }
             }
+        },
+        "databricks:index/ShareObjectPartition:ShareObjectPartition": {
+            "properties": {
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/ShareObjectPartitionValue:ShareObjectPartitionValue"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "values"
+            ]
+        },
+        "databricks:index/ShareObjectPartitionValue:ShareObjectPartitionValue": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the partition column.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "op": {
+                    "type": "string",
+                    "description": "The operator to apply for the value, one of: `EQUAL`, `LIKE`\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "recipientPropertyKey": {
+                    "type": "string",
+                    "description": "The key of a Delta Sharing recipient's property. For example `databricks-account-id`. When this field is set, field `value` can not be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "op"
+            ]
         },
         "databricks:index/SqlEndpointChannel:SqlEndpointChannel": {
             "properties": {
@@ -9733,6 +9883,14 @@
         },
         "databricks:index/getJobJobSettingsSettings:getJobJobSettingsSettings": {
             "properties": {
+                "continuous": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsContinuous:getJobJobSettingsSettingsContinuous",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "dbtTask": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsDbtTask:getJobJobSettingsSettingsDbtTask",
                     "language": {
@@ -9942,6 +10100,27 @@
             "type": "object",
             "required": [
                 "format"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "databricks:index/getJobJobSettingsSettingsContinuous:getJobJobSettingsSettingsContinuous": {
+            "properties": {
+                "pauseStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "pauseStatus"
             ],
             "language": {
                 "nodejs": {
@@ -13872,6 +14051,14 @@
                         }
                     }
                 },
+                "cdfEnabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "comment": {
                     "type": "string",
                     "description": "Description about the object.\n",
@@ -13890,6 +14077,14 @@
                         }
                     }
                 },
+                "historyDataSharingStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the share\n",
@@ -13899,7 +14094,34 @@
                         }
                     }
                 },
+                "partitions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getShareObjectPartition:getShareObjectPartition"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "sharedAs": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "startVersion": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -13914,7 +14136,7 @@
                 "addedBy",
                 "dataObjectType",
                 "name",
-                "sharedAs"
+                "status"
             ],
             "language": {
                 "nodejs": {
@@ -13924,6 +14146,67 @@
                     ]
                 }
             }
+        },
+        "databricks:index/getShareObjectPartition:getShareObjectPartition": {
+            "properties": {
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getShareObjectPartitionValue:getShareObjectPartitionValue"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "values"
+            ]
+        },
+        "databricks:index/getShareObjectPartitionValue:getShareObjectPartitionValue": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the share\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "op": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "recipientPropertyKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "op"
+            ]
         },
         "databricks:index/getSqlWarehouseChannel:getSqlWarehouseChannel": {
             "properties": {
@@ -14104,15 +14387,15 @@
             "rateLimit": {
                 "type": "integer"
             },
+            "retryTimeoutSeconds": {
+                "type": "integer"
+            },
             "skipVerify": {
                 "type": "boolean"
             },
             "token": {
                 "type": "string",
                 "secret": true
-            },
-            "tokenEndpoint": {
-                "type": "string"
             },
             "username": {
                 "type": "string"
@@ -14186,15 +14469,15 @@
             "rateLimit": {
                 "type": "integer"
             },
+            "retryTimeoutSeconds": {
+                "type": "integer"
+            },
             "skipVerify": {
                 "type": "boolean"
             },
             "token": {
                 "type": "string",
                 "secret": true
-            },
-            "tokenEndpoint": {
-                "type": "string"
             },
             "username": {
                 "type": "string"
@@ -15756,7 +16039,7 @@
             }
         },
         "databricks:index/groupRole:GroupRole": {
-            "description": "This resource allows you to attach a role to databricks_group. This role could be a pre-defined role such as account admin, or an instance profile ARN.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nAttach an instance profile to a group\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst instanceProfile = new databricks.InstanceProfile(\"instanceProfile\", {instanceProfileArn: \"my_instance_profile_arn\"});\nconst myGroup = new databricks.Group(\"myGroup\", {});\nconst myGroupInstanceProfile = new databricks.GroupInstanceProfile(\"myGroupInstanceProfile\", {\n    groupId: myGroup.id,\n    instanceProfileId: instanceProfile.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ninstance_profile = databricks.InstanceProfile(\"instanceProfile\", instance_profile_arn=\"my_instance_profile_arn\")\nmy_group = databricks.Group(\"myGroup\")\nmy_group_instance_profile = databricks.GroupInstanceProfile(\"myGroupInstanceProfile\",\n    group_id=my_group.id,\n    instance_profile_id=instance_profile.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var instanceProfile = new Databricks.InstanceProfile(\"instanceProfile\", new()\n    {\n        InstanceProfileArn = \"my_instance_profile_arn\",\n    });\n\n    var myGroup = new Databricks.Group(\"myGroup\");\n\n    var myGroupInstanceProfile = new Databricks.GroupInstanceProfile(\"myGroupInstanceProfile\", new()\n    {\n        GroupId = myGroup.Id,\n        InstanceProfileId = instanceProfile.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinstanceProfile, err := databricks.NewInstanceProfile(ctx, \"instanceProfile\", \u0026databricks.InstanceProfileArgs{\n\t\t\tInstanceProfileArn: pulumi.String(\"my_instance_profile_arn\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyGroup, err := databricks.NewGroup(ctx, \"myGroup\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupInstanceProfile(ctx, \"myGroupInstanceProfile\", \u0026databricks.GroupInstanceProfileArgs{\n\t\t\tGroupId:           myGroup.ID(),\n\t\t\tInstanceProfileId: instanceProfile.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.InstanceProfile;\nimport com.pulumi.databricks.InstanceProfileArgs;\nimport com.pulumi.databricks.Group;\nimport com.pulumi.databricks.GroupInstanceProfile;\nimport com.pulumi.databricks.GroupInstanceProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var instanceProfile = new InstanceProfile(\"instanceProfile\", InstanceProfileArgs.builder()        \n            .instanceProfileArn(\"my_instance_profile_arn\")\n            .build());\n\n        var myGroup = new Group(\"myGroup\");\n\n        var myGroupInstanceProfile = new GroupInstanceProfile(\"myGroupInstanceProfile\", GroupInstanceProfileArgs.builder()        \n            .groupId(myGroup.id())\n            .instanceProfileId(instanceProfile.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  instanceProfile:\n    type: databricks:InstanceProfile\n    properties:\n      instanceProfileArn: my_instance_profile_arn\n  myGroup:\n    type: databricks:Group\n  myGroupInstanceProfile:\n    type: databricks:GroupInstanceProfile\n    properties:\n      groupId: ${myGroup.id}\n      instanceProfileId: ${instanceProfile.id}\n```\n\nAttach account admin role to an account-level group\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst myGroup = new databricks.Group(\"myGroup\", {});\nconst myUserAccountAdmin = new databricks.UserRole(\"myUserAccountAdmin\", {\n    userId: myGroup.id,\n    role: \"account_admin\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nmy_group = databricks.Group(\"myGroup\")\nmy_user_account_admin = databricks.UserRole(\"myUserAccountAdmin\",\n    user_id=my_group.id,\n    role=\"account_admin\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myGroup = new Databricks.Group(\"myGroup\");\n\n    var myUserAccountAdmin = new Databricks.UserRole(\"myUserAccountAdmin\", new()\n    {\n        UserId = myGroup.Id,\n        Role = \"account_admin\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyGroup, err := databricks.NewGroup(ctx, \"myGroup\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewUserRole(ctx, \"myUserAccountAdmin\", \u0026databricks.UserRoleArgs{\n\t\t\tUserId: myGroup.ID(),\n\t\t\tRole:   pulumi.String(\"account_admin\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Group;\nimport com.pulumi.databricks.UserRole;\nimport com.pulumi.databricks.UserRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myGroup = new Group(\"myGroup\");\n\n        var myUserAccountAdmin = new UserRole(\"myUserAccountAdmin\", UserRoleArgs.builder()        \n            .userId(myGroup.id())\n            .role(\"account_admin\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myGroup:\n    type: databricks:Group\n  myUserAccountAdmin:\n    type: databricks:UserRole\n    properties:\n      userId: ${myGroup.id}\n      role: account_admin\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupMember to attach users and groups as group members.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.\n\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported. ",
+            "description": "This resource allows you to attach a role to databricks_group. This role could be a pre-defined role such as account admin, or an instance profile ARN.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nAttach an instance profile to a group\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst instanceProfile = new databricks.InstanceProfile(\"instanceProfile\", {instanceProfileArn: \"my_instance_profile_arn\"});\nconst myGroup = new databricks.Group(\"myGroup\", {});\nconst myGroupInstanceProfile = new databricks.GroupInstanceProfile(\"myGroupInstanceProfile\", {\n    groupId: myGroup.id,\n    instanceProfileId: instanceProfile.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ninstance_profile = databricks.InstanceProfile(\"instanceProfile\", instance_profile_arn=\"my_instance_profile_arn\")\nmy_group = databricks.Group(\"myGroup\")\nmy_group_instance_profile = databricks.GroupInstanceProfile(\"myGroupInstanceProfile\",\n    group_id=my_group.id,\n    instance_profile_id=instance_profile.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var instanceProfile = new Databricks.InstanceProfile(\"instanceProfile\", new()\n    {\n        InstanceProfileArn = \"my_instance_profile_arn\",\n    });\n\n    var myGroup = new Databricks.Group(\"myGroup\");\n\n    var myGroupInstanceProfile = new Databricks.GroupInstanceProfile(\"myGroupInstanceProfile\", new()\n    {\n        GroupId = myGroup.Id,\n        InstanceProfileId = instanceProfile.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinstanceProfile, err := databricks.NewInstanceProfile(ctx, \"instanceProfile\", \u0026databricks.InstanceProfileArgs{\n\t\t\tInstanceProfileArn: pulumi.String(\"my_instance_profile_arn\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyGroup, err := databricks.NewGroup(ctx, \"myGroup\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupInstanceProfile(ctx, \"myGroupInstanceProfile\", \u0026databricks.GroupInstanceProfileArgs{\n\t\t\tGroupId:           myGroup.ID(),\n\t\t\tInstanceProfileId: instanceProfile.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.InstanceProfile;\nimport com.pulumi.databricks.InstanceProfileArgs;\nimport com.pulumi.databricks.Group;\nimport com.pulumi.databricks.GroupInstanceProfile;\nimport com.pulumi.databricks.GroupInstanceProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var instanceProfile = new InstanceProfile(\"instanceProfile\", InstanceProfileArgs.builder()        \n            .instanceProfileArn(\"my_instance_profile_arn\")\n            .build());\n\n        var myGroup = new Group(\"myGroup\");\n\n        var myGroupInstanceProfile = new GroupInstanceProfile(\"myGroupInstanceProfile\", GroupInstanceProfileArgs.builder()        \n            .groupId(myGroup.id())\n            .instanceProfileId(instanceProfile.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  instanceProfile:\n    type: databricks:InstanceProfile\n    properties:\n      instanceProfileArn: my_instance_profile_arn\n  myGroup:\n    type: databricks:Group\n  myGroupInstanceProfile:\n    type: databricks:GroupInstanceProfile\n    properties:\n      groupId: ${myGroup.id}\n      instanceProfileId: ${instanceProfile.id}\n```\n\nAttach account admin role to an account-level group\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst myGroup = new databricks.Group(\"myGroup\", {});\nconst myGroupAccountAdmin = new databricks.GroupRole(\"myGroupAccountAdmin\", {\n    groupId: myGroup.id,\n    role: \"account_admin\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nmy_group = databricks.Group(\"myGroup\")\nmy_group_account_admin = databricks.GroupRole(\"myGroupAccountAdmin\",\n    group_id=my_group.id,\n    role=\"account_admin\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myGroup = new Databricks.Group(\"myGroup\");\n\n    var myGroupAccountAdmin = new Databricks.GroupRole(\"myGroupAccountAdmin\", new()\n    {\n        GroupId = myGroup.Id,\n        Role = \"account_admin\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyGroup, err := databricks.NewGroup(ctx, \"myGroup\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupRole(ctx, \"myGroupAccountAdmin\", \u0026databricks.GroupRoleArgs{\n\t\t\tGroupId: myGroup.ID(),\n\t\t\tRole:    pulumi.String(\"account_admin\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Group;\nimport com.pulumi.databricks.GroupRole;\nimport com.pulumi.databricks.GroupRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myGroup = new Group(\"myGroup\");\n\n        var myGroupAccountAdmin = new GroupRole(\"myGroupAccountAdmin\", GroupRoleArgs.builder()        \n            .groupId(myGroup.id())\n            .role(\"account_admin\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myGroup:\n    type: databricks:Group\n  myGroupAccountAdmin:\n    type: databricks:GroupRole\n    properties:\n      groupId: ${myGroup.id}\n      role: account_admin\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupMember to attach users and groups as group members.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.\n\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported. ",
             "properties": {
                 "groupId": {
                     "type": "string",
@@ -16187,6 +16470,9 @@
                     "type": "boolean",
                     "description": "(Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.\n"
                 },
+                "continuous": {
+                    "$ref": "#/types/databricks:index/JobContinuous:JobContinuous"
+                },
                 "dbtTask": {
                     "$ref": "#/types/databricks:index/JobDbtTask:JobDbtTask"
                 },
@@ -16207,7 +16493,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/databricks:index/JobJobCluster:JobJobCluster"
-                    }
+                    },
+                    "description": "A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*\n"
                 },
                 "libraries": {
                     "type": "array",
@@ -16298,6 +16585,9 @@
                     "type": "boolean",
                     "description": "(Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.\n"
                 },
+                "continuous": {
+                    "$ref": "#/types/databricks:index/JobContinuous:JobContinuous"
+                },
                 "dbtTask": {
                     "$ref": "#/types/databricks:index/JobDbtTask:JobDbtTask"
                 },
@@ -16318,7 +16608,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/databricks:index/JobJobCluster:JobJobCluster"
-                    }
+                    },
+                    "description": "A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*\n"
                 },
                 "libraries": {
                     "type": "array",
@@ -16402,6 +16693,9 @@
                         "type": "boolean",
                         "description": "(Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.\n"
                     },
+                    "continuous": {
+                        "$ref": "#/types/databricks:index/JobContinuous:JobContinuous"
+                    },
                     "dbtTask": {
                         "$ref": "#/types/databricks:index/JobDbtTask:JobDbtTask"
                     },
@@ -16422,7 +16716,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/databricks:index/JobJobCluster:JobJobCluster"
-                        }
+                        },
+                        "description": "A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*\n"
                     },
                     "libraries": {
                         "type": "array",
@@ -17596,6 +17891,9 @@
                     "type": "string",
                     "description": "(String) ID of the encryption key configuration object.\n"
                 },
+                "gcpKeyInfo": {
+                    "$ref": "#/types/databricks:index/MwsCustomerManagedKeysGcpKeyInfo:MwsCustomerManagedKeysGcpKeyInfo"
+                },
                 "useCases": {
                     "type": "array",
                     "items": {
@@ -17606,7 +17904,6 @@
             },
             "required": [
                 "accountId",
-                "awsKeyInfo",
                 "creationTime",
                 "customerManagedKeyId",
                 "useCases"
@@ -17630,6 +17927,10 @@
                     "type": "string",
                     "description": "(String) ID of the encryption key configuration object.\n"
                 },
+                "gcpKeyInfo": {
+                    "$ref": "#/types/databricks:index/MwsCustomerManagedKeysGcpKeyInfo:MwsCustomerManagedKeysGcpKeyInfo",
+                    "willReplaceOnChanges": true
+                },
                 "useCases": {
                     "type": "array",
                     "items": {
@@ -17641,7 +17942,6 @@
             },
             "requiredInputs": [
                 "accountId",
-                "awsKeyInfo",
                 "useCases"
             ],
             "stateInputs": {
@@ -17664,6 +17964,10 @@
                     "customerManagedKeyId": {
                         "type": "string",
                         "description": "(String) ID of the encryption key configuration object.\n"
+                    },
+                    "gcpKeyInfo": {
+                        "$ref": "#/types/databricks:index/MwsCustomerManagedKeysGcpKeyInfo:MwsCustomerManagedKeysGcpKeyInfo",
+                        "willReplaceOnChanges": true
                     },
                     "useCases": {
                         "type": "array",
@@ -20415,7 +20719,7 @@
             }
         },
         "databricks:index/share:Share": {
-            "description": "Within a metastore, Unity Catalog provides the ability to create a share, which is a named object that contains a collection of tables in a metastore that you want to share as a group. A share can contain tables from only a single metastore. You can add or remove tables from a share at any time.\n\nA `databricks.Share` is contained within databricks.Metastore and can contain a list of shares.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreating a Delta Sharing share and add some existing tables to it\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetTablesArgs;\nimport com.pulumi.databricks.Share;\nimport com.pulumi.databricks.ShareArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var things = DatabricksFunctions.getTables(GetTablesArgs.builder()\n            .catalogName(\"sandbox\")\n            .schemaName(\"things\")\n            .build());\n\n        var some = new Share(\"some\", ShareArgs.builder()        \n            .dynamic(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  some:\n    type: databricks:Share\n    properties:\n      dynamic:\n        - forEach: ${things.ids}\n          content:\n            - name: ${object.value}\n              dataObjectType: TABLE\nvariables:\n  things:\n    fn::invoke:\n      Function: databricks:getTables\n      Arguments:\n        catalogName: sandbox\n        schemaName: things\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* databricks.Recipient to create Delta Sharing recipients.\n* databricks.Grants to manage Delta Sharing permissions.\n* databricks.getShares to read existing Delta Sharing shares.\n",
+            "description": "Within a metastore, Unity Catalog provides the ability to create a share, which is a named object that contains a collection of tables in a metastore that you want to share as a group. A share can contain tables from only a single metastore. You can add or remove tables from a share at any time.\n\nA `databricks.Share` is contained within databricks.Metastore and can contain a list of tables.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreating a Delta Sharing share and add some existing tables to it\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetTablesArgs;\nimport com.pulumi.databricks.Share;\nimport com.pulumi.databricks.ShareArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var things = DatabricksFunctions.getTables(GetTablesArgs.builder()\n            .catalogName(\"sandbox\")\n            .schemaName(\"things\")\n            .build());\n\n        var some = new Share(\"some\", ShareArgs.builder()        \n            .dynamic(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  some:\n    type: databricks:Share\n    properties:\n      dynamic:\n        - forEach: ${things.ids}\n          content:\n            - name: ${object.value}\n              dataObjectType: TABLE\nvariables:\n  things:\n    fn::invoke:\n      Function: databricks:getTables\n      Arguments:\n        catalogName: sandbox\n        schemaName: things\n```\n\nCreating a Delta Sharing share and share a table with partitions spec and history\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Share;\nimport com.pulumi.databricks.ShareArgs;\nimport com.pulumi.databricks.inputs.ShareObjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var some = new Share(\"some\", ShareArgs.builder()        \n            .objects(ShareObjectArgs.builder()\n                .dataObjectType(\"TABLE\")\n                .historyDataSharingStatus(\"ENABLED\")\n                .name(\"my_catalog.my_schema.my_table\")\n                .partitions(                \n                    ShareObjectPartitionArgs.builder()\n                        .value(                        \n                            %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                            %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                        .build(),\n                    ShareObjectPartitionArgs.builder()\n                        .value(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                        .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  some:\n    type: databricks:Share\n    properties:\n      objects:\n        - dataObjectType: TABLE\n          historyDataSharingStatus: ENABLED\n          name: my_catalog.my_schema.my_table\n          partitions:\n            - value:\n                - name: year\n                  op: EQUAL\n                  value: '2009'\n                - name: month\n                  op: EQUAL\n                  value: '12'\n            - value:\n                - name: year\n                  op: EQUAL\n                  value: '2010'\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* databricks.Recipient to create Delta Sharing recipients.\n* databricks.Grants to manage Delta Sharing permissions.\n* databricks.getShares to read existing Delta Sharing shares.\n",
             "properties": {
                 "createdAt": {
                     "type": "integer",
@@ -21646,7 +21950,7 @@
             }
         },
         "databricks:index/user:User": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreating regular user:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst me = new databricks.User(\"me\", {userName: \"me@example.com\"});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nme = databricks.User(\"me\", user_name=\"me@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var me = new Databricks.User(\"me\", new()\n    {\n        UserName = \"me@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewUser(ctx, \"me\", \u0026databricks.UserArgs{\n\t\t\tUserName: pulumi.String(\"me@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var me = new User(\"me\", UserArgs.builder()        \n            .userName(\"me@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  me:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n```\n\nCreating user with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst admins = databricks.getGroup({\n    displayName: \"admins\",\n});\nconst me = new databricks.User(\"me\", {userName: \"me@example.com\"});\nconst i_am_admin = new databricks.GroupMember(\"i-am-admin\", {\n    groupId: admins.then(admins =\u003e admins.id),\n    memberId: me.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nadmins = databricks.get_group(display_name=\"admins\")\nme = databricks.User(\"me\", user_name=\"me@example.com\")\ni_am_admin = databricks.GroupMember(\"i-am-admin\",\n    group_id=admins.id,\n    member_id=me.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var admins = Databricks.GetGroup.Invoke(new()\n    {\n        DisplayName = \"admins\",\n    });\n\n    var me = new Databricks.User(\"me\", new()\n    {\n        UserName = \"me@example.com\",\n    });\n\n    var i_am_admin = new Databricks.GroupMember(\"i-am-admin\", new()\n    {\n        GroupId = admins.Apply(getGroupResult =\u003e getGroupResult.Id),\n        MemberId = me.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tadmins, err := databricks.LookupGroup(ctx, \u0026databricks.LookupGroupArgs{\n\t\t\tDisplayName: \"admins\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tme, err := databricks.NewUser(ctx, \"me\", \u0026databricks.UserArgs{\n\t\t\tUserName: pulumi.String(\"me@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupMember(ctx, \"i-am-admin\", \u0026databricks.GroupMemberArgs{\n\t\t\tGroupId:  *pulumi.String(admins.Id),\n\t\t\tMemberId: me.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetGroupArgs;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport com.pulumi.databricks.GroupMember;\nimport com.pulumi.databricks.GroupMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()\n            .displayName(\"admins\")\n            .build());\n\n        var me = new User(\"me\", UserArgs.builder()        \n            .userName(\"me@example.com\")\n            .build());\n\n        var i_am_admin = new GroupMember(\"i-am-admin\", GroupMemberArgs.builder()        \n            .groupId(admins.applyValue(getGroupResult -\u003e getGroupResult.id()))\n            .memberId(me.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  me:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n  i-am-admin:\n    type: databricks:GroupMember\n    properties:\n      groupId: ${admins.id}\n      memberId: ${me.id}\nvariables:\n  admins:\n    fn::invoke:\n      Function: databricks:getGroup\n      Arguments:\n        displayName: admins\n```\n\nCreating user with cluster create permissions:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst me = new databricks.User(\"me\", {\n    allowClusterCreate: true,\n    displayName: \"Example user\",\n    userName: \"me@example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nme = databricks.User(\"me\",\n    allow_cluster_create=True,\n    display_name=\"Example user\",\n    user_name=\"me@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var me = new Databricks.User(\"me\", new()\n    {\n        AllowClusterCreate = true,\n        DisplayName = \"Example user\",\n        UserName = \"me@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewUser(ctx, \"me\", \u0026databricks.UserArgs{\n\t\t\tAllowClusterCreate: pulumi.Bool(true),\n\t\t\tDisplayName:        pulumi.String(\"Example user\"),\n\t\t\tUserName:           pulumi.String(\"me@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var me = new User(\"me\", UserArgs.builder()        \n            .allowClusterCreate(true)\n            .displayName(\"Example user\")\n            .userName(\"me@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  me:\n    type: databricks:User\n    properties:\n      allowClusterCreate: true\n      displayName: Example user\n      userName: me@example.com\n```\n\nCreating user in AWS Databricks account:\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\n// initialize provider at account-level\nconst mws = new databricks.Provider(\"mws\", {\n    host: \"https://accounts.cloud.databricks.com\",\n    accountId: \"00000000-0000-0000-0000-000000000000\",\n    username: _var.databricks_account_username,\n    password: _var.databricks_account_password,\n});\nconst accountUser = new databricks.User(\"accountUser\", {\n    userName: \"me@example.com\",\n    displayName: \"Example user\",\n}, {\n    provider: databricks.mws,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\n# initialize provider at account-level\nmws = databricks.Provider(\"mws\",\n    host=\"https://accounts.cloud.databricks.com\",\n    account_id=\"00000000-0000-0000-0000-000000000000\",\n    username=var[\"databricks_account_username\"],\n    password=var[\"databricks_account_password\"])\naccount_user = databricks.User(\"accountUser\",\n    user_name=\"me@example.com\",\n    display_name=\"Example user\",\n    opts=pulumi.ResourceOptions(provider=databricks[\"mws\"]))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // initialize provider at account-level\n    var mws = new Databricks.Provider(\"mws\", new()\n    {\n        Host = \"https://accounts.cloud.databricks.com\",\n        AccountId = \"00000000-0000-0000-0000-000000000000\",\n        Username = @var.Databricks_account_username,\n        Password = @var.Databricks_account_password,\n    });\n\n    var accountUser = new Databricks.User(\"accountUser\", new()\n    {\n        UserName = \"me@example.com\",\n        DisplayName = \"Example user\",\n    }, new CustomResourceOptions\n    {\n        Provider = databricks.Mws,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewProvider(ctx, \"mws\", \u0026databricks.ProviderArgs{\n\t\t\tHost:      pulumi.String(\"https://accounts.cloud.databricks.com\"),\n\t\t\tAccountId: pulumi.String(\"00000000-0000-0000-0000-000000000000\"),\n\t\t\tUsername:  pulumi.Any(_var.Databricks_account_username),\n\t\t\tPassword:  pulumi.Any(_var.Databricks_account_password),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewUser(ctx, \"accountUser\", \u0026databricks.UserArgs{\n\t\t\tUserName:    pulumi.String(\"me@example.com\"),\n\t\t\tDisplayName: pulumi.String(\"Example user\"),\n\t\t}, pulumi.Provider(databricks.Mws))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Provider;\nimport com.pulumi.databricks.ProviderArgs;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mws = new Provider(\"mws\", ProviderArgs.builder()        \n            .host(\"https://accounts.cloud.databricks.com\")\n            .accountId(\"00000000-0000-0000-0000-000000000000\")\n            .username(var_.databricks_account_username())\n            .password(var_.databricks_account_password())\n            .build());\n\n        var accountUser = new User(\"accountUser\", UserArgs.builder()        \n            .userName(\"me@example.com\")\n            .displayName(\"Example user\")\n            .build(), CustomResourceOptions.builder()\n                .provider(databricks.mws())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # initialize provider at account-level\n  mws:\n    type: pulumi:providers:databricks\n    properties:\n      host: https://accounts.cloud.databricks.com\n      accountId: 00000000-0000-0000-0000-000000000000\n      username: ${var.databricks_account_username}\n      password: ${var.databricks_account_password}\n  accountUser:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n      displayName: Example user\n    options:\n      provider: ${databricks.mws}\n```\n\nCreating user in Azure Databricks account:\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\n// initialize provider at Azure account-level\nconst azureAccount = new databricks.Provider(\"azureAccount\", {\n    host: \"https://accounts.azuredatabricks.net\",\n    accountId: \"00000000-0000-0000-0000-000000000000\",\n    authType: \"azure-cli\",\n});\nconst accountUser = new databricks.User(\"accountUser\", {\n    userName: \"me@example.com\",\n    displayName: \"Example user\",\n}, {\n    provider: databricks.mws,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\n# initialize provider at Azure account-level\nazure_account = databricks.Provider(\"azureAccount\",\n    host=\"https://accounts.azuredatabricks.net\",\n    account_id=\"00000000-0000-0000-0000-000000000000\",\n    auth_type=\"azure-cli\")\naccount_user = databricks.User(\"accountUser\",\n    user_name=\"me@example.com\",\n    display_name=\"Example user\",\n    opts=pulumi.ResourceOptions(provider=databricks[\"mws\"]))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // initialize provider at Azure account-level\n    var azureAccount = new Databricks.Provider(\"azureAccount\", new()\n    {\n        Host = \"https://accounts.azuredatabricks.net\",\n        AccountId = \"00000000-0000-0000-0000-000000000000\",\n        AuthType = \"azure-cli\",\n    });\n\n    var accountUser = new Databricks.User(\"accountUser\", new()\n    {\n        UserName = \"me@example.com\",\n        DisplayName = \"Example user\",\n    }, new CustomResourceOptions\n    {\n        Provider = databricks.Mws,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewProvider(ctx, \"azureAccount\", \u0026databricks.ProviderArgs{\n\t\t\tHost:      pulumi.String(\"https://accounts.azuredatabricks.net\"),\n\t\t\tAccountId: pulumi.String(\"00000000-0000-0000-0000-000000000000\"),\n\t\t\tAuthType:  pulumi.String(\"azure-cli\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewUser(ctx, \"accountUser\", \u0026databricks.UserArgs{\n\t\t\tUserName:    pulumi.String(\"me@example.com\"),\n\t\t\tDisplayName: pulumi.String(\"Example user\"),\n\t\t}, pulumi.Provider(databricks.Mws))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Provider;\nimport com.pulumi.databricks.ProviderArgs;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var azureAccount = new Provider(\"azureAccount\", ProviderArgs.builder()        \n            .host(\"https://accounts.azuredatabricks.net\")\n            .accountId(\"00000000-0000-0000-0000-000000000000\")\n            .authType(\"azure-cli\")\n            .build());\n\n        var accountUser = new User(\"accountUser\", UserArgs.builder()        \n            .userName(\"me@example.com\")\n            .displayName(\"Example user\")\n            .build(), CustomResourceOptions.builder()\n                .provider(databricks.mws())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # initialize provider at Azure account-level\n  azureAccount:\n    type: pulumi:providers:databricks\n    properties:\n      host: https://accounts.azuredatabricks.net\n      accountId: 00000000-0000-0000-0000-000000000000\n      authType: azure-cli\n  accountUser:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n      displayName: Example user\n    options:\n      provider: ${databricks.mws}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.\n* databricks.GroupMember to attach users and groups as group members.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.User data to retrieve information about databricks_user.\n\n\n## Import\n\nThe resource scim user can be imported using idbash\n\n```sh\n $ pulumi import databricks:index/user:User me \u003cuser-id\u003e\n```\n\n ",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreating regular user:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst me = new databricks.User(\"me\", {userName: \"me@example.com\"});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nme = databricks.User(\"me\", user_name=\"me@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var me = new Databricks.User(\"me\", new()\n    {\n        UserName = \"me@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewUser(ctx, \"me\", \u0026databricks.UserArgs{\n\t\t\tUserName: pulumi.String(\"me@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var me = new User(\"me\", UserArgs.builder()        \n            .userName(\"me@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  me:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n```\n\nCreating user with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst admins = databricks.getGroup({\n    displayName: \"admins\",\n});\nconst me = new databricks.User(\"me\", {userName: \"me@example.com\"});\nconst i_am_admin = new databricks.GroupMember(\"i-am-admin\", {\n    groupId: admins.then(admins =\u003e admins.id),\n    memberId: me.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nadmins = databricks.get_group(display_name=\"admins\")\nme = databricks.User(\"me\", user_name=\"me@example.com\")\ni_am_admin = databricks.GroupMember(\"i-am-admin\",\n    group_id=admins.id,\n    member_id=me.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var admins = Databricks.GetGroup.Invoke(new()\n    {\n        DisplayName = \"admins\",\n    });\n\n    var me = new Databricks.User(\"me\", new()\n    {\n        UserName = \"me@example.com\",\n    });\n\n    var i_am_admin = new Databricks.GroupMember(\"i-am-admin\", new()\n    {\n        GroupId = admins.Apply(getGroupResult =\u003e getGroupResult.Id),\n        MemberId = me.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tadmins, err := databricks.LookupGroup(ctx, \u0026databricks.LookupGroupArgs{\n\t\t\tDisplayName: \"admins\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tme, err := databricks.NewUser(ctx, \"me\", \u0026databricks.UserArgs{\n\t\t\tUserName: pulumi.String(\"me@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupMember(ctx, \"i-am-admin\", \u0026databricks.GroupMemberArgs{\n\t\t\tGroupId:  *pulumi.String(admins.Id),\n\t\t\tMemberId: me.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetGroupArgs;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport com.pulumi.databricks.GroupMember;\nimport com.pulumi.databricks.GroupMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()\n            .displayName(\"admins\")\n            .build());\n\n        var me = new User(\"me\", UserArgs.builder()        \n            .userName(\"me@example.com\")\n            .build());\n\n        var i_am_admin = new GroupMember(\"i-am-admin\", GroupMemberArgs.builder()        \n            .groupId(admins.applyValue(getGroupResult -\u003e getGroupResult.id()))\n            .memberId(me.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  me:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n  i-am-admin:\n    type: databricks:GroupMember\n    properties:\n      groupId: ${admins.id}\n      memberId: ${me.id}\nvariables:\n  admins:\n    fn::invoke:\n      Function: databricks:getGroup\n      Arguments:\n        displayName: admins\n```\n\nCreating user with cluster create permissions:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst me = new databricks.User(\"me\", {\n    allowClusterCreate: true,\n    displayName: \"Example user\",\n    userName: \"me@example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nme = databricks.User(\"me\",\n    allow_cluster_create=True,\n    display_name=\"Example user\",\n    user_name=\"me@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var me = new Databricks.User(\"me\", new()\n    {\n        AllowClusterCreate = true,\n        DisplayName = \"Example user\",\n        UserName = \"me@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewUser(ctx, \"me\", \u0026databricks.UserArgs{\n\t\t\tAllowClusterCreate: pulumi.Bool(true),\n\t\t\tDisplayName:        pulumi.String(\"Example user\"),\n\t\t\tUserName:           pulumi.String(\"me@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var me = new User(\"me\", UserArgs.builder()        \n            .allowClusterCreate(true)\n            .displayName(\"Example user\")\n            .userName(\"me@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  me:\n    type: databricks:User\n    properties:\n      allowClusterCreate: true\n      displayName: Example user\n      userName: me@example.com\n```\n\nCreating user in AWS Databricks account:\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\n// initialize provider at account-level\nconst mws = new databricks.Provider(\"mws\", {\n    host: \"https://accounts.cloud.databricks.com\",\n    accountId: \"00000000-0000-0000-0000-000000000000\",\n    username: _var.databricks_account_username,\n    password: _var.databricks_account_password,\n});\nconst accountUser = new databricks.User(\"accountUser\", {\n    userName: \"me@example.com\",\n    displayName: \"Example user\",\n}, {\n    provider: databricks.mws,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\n# initialize provider at account-level\nmws = databricks.Provider(\"mws\",\n    host=\"https://accounts.cloud.databricks.com\",\n    account_id=\"00000000-0000-0000-0000-000000000000\",\n    username=var[\"databricks_account_username\"],\n    password=var[\"databricks_account_password\"])\naccount_user = databricks.User(\"accountUser\",\n    user_name=\"me@example.com\",\n    display_name=\"Example user\",\n    opts=pulumi.ResourceOptions(provider=databricks[\"mws\"]))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // initialize provider at account-level\n    var mws = new Databricks.Provider(\"mws\", new()\n    {\n        Host = \"https://accounts.cloud.databricks.com\",\n        AccountId = \"00000000-0000-0000-0000-000000000000\",\n        Username = @var.Databricks_account_username,\n        Password = @var.Databricks_account_password,\n    });\n\n    var accountUser = new Databricks.User(\"accountUser\", new()\n    {\n        UserName = \"me@example.com\",\n        DisplayName = \"Example user\",\n    }, new CustomResourceOptions\n    {\n        Provider = databricks.Mws,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewProvider(ctx, \"mws\", \u0026databricks.ProviderArgs{\n\t\t\tHost:      pulumi.String(\"https://accounts.cloud.databricks.com\"),\n\t\t\tAccountId: pulumi.String(\"00000000-0000-0000-0000-000000000000\"),\n\t\t\tUsername:  pulumi.Any(_var.Databricks_account_username),\n\t\t\tPassword:  pulumi.Any(_var.Databricks_account_password),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewUser(ctx, \"accountUser\", \u0026databricks.UserArgs{\n\t\t\tUserName:    pulumi.String(\"me@example.com\"),\n\t\t\tDisplayName: pulumi.String(\"Example user\"),\n\t\t}, pulumi.Provider(databricks.Mws))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Provider;\nimport com.pulumi.databricks.ProviderArgs;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mws = new Provider(\"mws\", ProviderArgs.builder()        \n            .host(\"https://accounts.cloud.databricks.com\")\n            .accountId(\"00000000-0000-0000-0000-000000000000\")\n            .username(var_.databricks_account_username())\n            .password(var_.databricks_account_password())\n            .build());\n\n        var accountUser = new User(\"accountUser\", UserArgs.builder()        \n            .userName(\"me@example.com\")\n            .displayName(\"Example user\")\n            .build(), CustomResourceOptions.builder()\n                .provider(databricks.mws())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # initialize provider at account-level\n  mws:\n    type: pulumi:providers:databricks\n    properties:\n      host: https://accounts.cloud.databricks.com\n      accountId: 00000000-0000-0000-0000-000000000000\n      username: ${var.databricks_account_username}\n      password: ${var.databricks_account_password}\n  accountUser:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n      displayName: Example user\n    options:\n      provider: ${databricks.mws}\n```\n\nCreating user in Azure Databricks account:\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\n// initialize provider at Azure account-level\nconst azureAccount = new databricks.Provider(\"azureAccount\", {\n    host: \"https://accounts.azuredatabricks.net\",\n    accountId: \"00000000-0000-0000-0000-000000000000\",\n    authType: \"azure-cli\",\n});\nconst accountUser = new databricks.User(\"accountUser\", {\n    userName: \"me@example.com\",\n    displayName: \"Example user\",\n}, {\n    provider: databricks.azure_account,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\n# initialize provider at Azure account-level\nazure_account = databricks.Provider(\"azureAccount\",\n    host=\"https://accounts.azuredatabricks.net\",\n    account_id=\"00000000-0000-0000-0000-000000000000\",\n    auth_type=\"azure-cli\")\naccount_user = databricks.User(\"accountUser\",\n    user_name=\"me@example.com\",\n    display_name=\"Example user\",\n    opts=pulumi.ResourceOptions(provider=databricks[\"azure_account\"]))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // initialize provider at Azure account-level\n    var azureAccount = new Databricks.Provider(\"azureAccount\", new()\n    {\n        Host = \"https://accounts.azuredatabricks.net\",\n        AccountId = \"00000000-0000-0000-0000-000000000000\",\n        AuthType = \"azure-cli\",\n    });\n\n    var accountUser = new Databricks.User(\"accountUser\", new()\n    {\n        UserName = \"me@example.com\",\n        DisplayName = \"Example user\",\n    }, new CustomResourceOptions\n    {\n        Provider = databricks.Azure_account,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewProvider(ctx, \"azureAccount\", \u0026databricks.ProviderArgs{\n\t\t\tHost:      pulumi.String(\"https://accounts.azuredatabricks.net\"),\n\t\t\tAccountId: pulumi.String(\"00000000-0000-0000-0000-000000000000\"),\n\t\t\tAuthType:  pulumi.String(\"azure-cli\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewUser(ctx, \"accountUser\", \u0026databricks.UserArgs{\n\t\t\tUserName:    pulumi.String(\"me@example.com\"),\n\t\t\tDisplayName: pulumi.String(\"Example user\"),\n\t\t}, pulumi.Provider(databricks.Azure_account))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Provider;\nimport com.pulumi.databricks.ProviderArgs;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var azureAccount = new Provider(\"azureAccount\", ProviderArgs.builder()        \n            .host(\"https://accounts.azuredatabricks.net\")\n            .accountId(\"00000000-0000-0000-0000-000000000000\")\n            .authType(\"azure-cli\")\n            .build());\n\n        var accountUser = new User(\"accountUser\", UserArgs.builder()        \n            .userName(\"me@example.com\")\n            .displayName(\"Example user\")\n            .build(), CustomResourceOptions.builder()\n                .provider(databricks.azure_account())\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # initialize provider at Azure account-level\n  azureAccount:\n    type: pulumi:providers:databricks\n    properties:\n      host: https://accounts.azuredatabricks.net\n      accountId: 00000000-0000-0000-0000-000000000000\n      authType: azure-cli\n  accountUser:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n      displayName: Example user\n    options:\n      provider: ${databricks.azure_account}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.\n* databricks.GroupMember to attach users and groups as group members.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.User data to retrieve information about databricks_user.\n\n\n## Import\n\nThe resource scim user can be imported using idbash\n\n```sh\n $ pulumi import databricks:index/user:User me \u003cuser-id\u003e\n```\n\n ",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -22286,18 +22590,18 @@
             }
         },
         "databricks:index/getDbfsFile:getDbfsFile": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst report = databricks.getDbfsFile({\n    limitFileSize: 10240,\n    path: \"dbfs:/reports/some.csv\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nreport = databricks.get_dbfs_file(limit_file_size=10240,\n    path=\"dbfs:/reports/some.csv\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var report = Databricks.GetDbfsFile.Invoke(new()\n    {\n        LimitFileSize = 10240,\n        Path = \"dbfs:/reports/some.csv\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.LookupDbfsFile(ctx, \u0026databricks.LookupDbfsFileArgs{\n\t\t\tLimitFileSize: 10240,\n\t\t\tPath:          \"dbfs:/reports/some.csv\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetDbfsFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()\n            .limitFileSize(10240)\n            .path(\"dbfs:/reports/some.csv\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  report:\n    fn::invoke:\n      Function: databricks:getDbfsFile\n      Arguments:\n        limitFileSize: 10240\n        path: dbfs:/reports/some.csv\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide\n* databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.\n",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst report = databricks.getDbfsFile({\n    limitFileSize: true,\n    path: \"dbfs:/reports/some.csv\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nreport = databricks.get_dbfs_file(limit_file_size=True,\n    path=\"dbfs:/reports/some.csv\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var report = Databricks.GetDbfsFile.Invoke(new()\n    {\n        LimitFileSize = true,\n        Path = \"dbfs:/reports/some.csv\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.LookupDbfsFile(ctx, \u0026databricks.LookupDbfsFileArgs{\n\t\t\tLimitFileSize: true,\n\t\t\tPath:          \"dbfs:/reports/some.csv\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetDbfsFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()\n            .limitFileSize(\"true\")\n            .path(\"dbfs:/reports/some.csv\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  report:\n    fn::invoke:\n      Function: databricks:getDbfsFile\n      Arguments:\n        limitFileSize: 'true'\n        path: dbfs:/reports/some.csv\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide\n* databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDbfsFile.\n",
                 "properties": {
                     "limitFileSize": {
                         "type": "boolean",
-                        "description": "Do lot load content for files smaller than this in bytes\n",
+                        "description": "Do not load content for files larger than 4MB.\n",
                         "willReplaceOnChanges": true
                     },
                     "path": {
                         "type": "string",
-                        "description": "Path on DBFS for the file to get content of\n",
+                        "description": "Path on DBFS for the file from which to get content.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -22739,7 +23043,7 @@
             }
         },
         "databricks:index/getMwsCredentials:getMwsCredentials": {
-            "description": "\u003e **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.\n\nLists all databricks.MwsCredentials in Databricks Account.\n\n\u003e **Note** `account_id` provider configuration property is required for this resource to work.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nListing all workspaces in \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getMwsCredentials({});\nexport const allMwsCredentials = all.then(all =\u003e all.ids);\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_mws_credentials()\npulumi.export(\"allMwsCredentials\", all.ids)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetMwsCredentials.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allMwsCredentials\"] = all.Apply(getMwsCredentialsResult =\u003e getMwsCredentialsResult.Ids),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := databricks.LookupMwsCredentials(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allMwsCredentials\", all.Ids)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetMwsCredentialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getMwsCredentials();\n\n        ctx.export(\"allMwsCredentials\", all.applyValue(getMwsCredentialsResult -\u003e getMwsCredentialsResult.ids()));\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getMwsCredentials\n      Arguments: {}\noutputs:\n  allMwsCredentials: ${all.ids}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* Provisioning Databricks on AWS guide.\n* databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.\n* databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).\n* databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) \u0026 subnets for new workspaces within AWS.\n* databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.\n* databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).\n",
+            "description": "\u003e **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.\n\nLists all databricks.MwsCredentials in Databricks Account.\n\n\u003e **Note** `account_id` provider configuration property is required for this resource to work.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nListing all workspaces in \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getMwsCredentials({});\nexport const allMwsCredentials = all.then(all =\u003e all.ids);\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_mws_credentials()\npulumi.export(\"allMwsCredentials\", all.ids)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetMwsCredentials.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allMwsCredentials\"] = all.Apply(getMwsCredentialsResult =\u003e getMwsCredentialsResult.Ids),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := databricks.LookupMwsCredentials(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allMwsCredentials\", all.Ids)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetMwsCredentialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getMwsCredentials();\n\n        ctx.export(\"allMwsCredentials\", all.applyValue(getMwsCredentialsResult -\u003e getMwsCredentialsResult.ids()));\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getMwsCredentials\n      Arguments: {}\noutputs:\n  allMwsCredentials: ${all.ids}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* Provisioning Databricks on AWS guide.\n* databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.\n* databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).\n* databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) \u0026 subnets for new workspaces within AWS.\n* databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.\n* databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getMwsCredentials.\n",
                 "properties": {

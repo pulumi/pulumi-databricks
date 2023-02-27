@@ -21,6 +21,7 @@ import (
 	databricksProv "github.com/databricks/terraform-provider-databricks/provider"
 	"github.com/pulumi/pulumi-databricks/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
@@ -146,31 +147,23 @@ func Provider() tfbridge.ProviderInfo {
 					Markdown: []byte(" "),
 				},
 			},
-			"databricks_pipeline":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Pipeline")},
-			"databricks_recipient":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Recipient")},
-			"databricks_repo":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Repo")},
-			"databricks_schema":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Schema")},
-			"databricks_secret":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Secret")},
-			"databricks_secret_acl":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretAcl")},
-			"databricks_secret_scope":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretScope")},
-			"databricks_service_principal":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServicePrincipal")},
-			"databricks_service_principal_role":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServicePrincipalRole")},
-			"databricks_service_principal_secret": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServicePrincipalSecret")},
-			"databricks_share":                    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Share")},
-			"databricks_sql_dashboard":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlDashboard")},
-			"databricks_sql_endpoint":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlEndpoint")},
-			"databricks_sql_global_config":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlGlobalConfig")},
-			"databricks_sql_permissions":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlPermissions")},
-			"databricks_sql_query":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlQuery")},
-			"databricks_sql_visualization":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlVisualization")},
-			"databricks_sql_widget":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SqlWidget")},
-			"databricks_storage_credential":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "StorageCredential")},
-			"databricks_table":                    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Table")},
-			"databricks_token":                    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Token")},
-			"databricks_user":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
-			"databricks_user_instance_profile":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "UserInstanceProfile")},
-			"databricks_user_role":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "UserRole")},
-			"databricks_workspace_conf":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkspaceConf")},
+			"databricks_pipeline":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Pipeline")},
+			"databricks_recipient":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Recipient")},
+			"databricks_repo":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Repo")},
+			"databricks_schema":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Schema")},
+			"databricks_secret":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Secret")},
+			"databricks_secret_acl":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretAcl")},
+			"databricks_secret_scope":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretScope")},
+			"databricks_service_principal":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServicePrincipal")},
+			"databricks_service_principal_role": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ServicePrincipalRole")},
+			"databricks_service_principal_secret": {
+				Tok:  tfbridge.MakeResource(mainPkg, mainMod, "ServicePrincipalSecret"),
+				Docs: &tfbridge.DocInfo{Markdown: []byte{' '}},
+			},
+			"databricks_table": {
+				Tok:  tfbridge.MakeResource(mainPkg, mainMod, "Table"),
+				Docs: &tfbridge.DocInfo{Markdown: []byte{' '}},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"databricks_aws_assume_role_policy":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAwsAssumeRolePolicy")},
@@ -232,10 +225,8 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	err := prov.ComputeDefaults(tfbridge.TokensSingleModule("databricks_", mainMod,
-		func(module, name string) (string, error) {
-			return tfbridge.MakeDataSource(mainPkg, module, name).String(), nil
-		}))
+	err := x.ComputeDefaults(&prov, x.TokensSingleModule("databricks_",
+		mainMod, x.MakeStandardToken(mainPkg)))
 	contract.AssertNoError(err)
 
 	prov.SetAutonaming(255, "-")
