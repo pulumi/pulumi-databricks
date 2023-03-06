@@ -1181,7 +1181,7 @@
             "properties": {
                 "pauseStatus": {
                     "type": "string",
-                    "description": "Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using \"UNPAUSED\" as a value for pause_status.\n",
+                    "description": "Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3345,7 +3345,7 @@
             "properties": {
                 "pauseStatus": {
                     "type": "string",
-                    "description": "Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using \"UNPAUSED\" as a value for pause_status.\n",
+                    "description": "Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pause_status`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -16332,7 +16332,7 @@
                 },
                 "skipValidation": {
                     "type": "boolean",
-                    "description": "**For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.\n"
+                    "description": "**For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. \"Your requested instance type is not supported in your requested availability zone\"), you can pass this flag to skip the validation and forcibly add the instance profile.\n"
                 }
             },
             "required": [
@@ -16354,7 +16354,7 @@
                 },
                 "skipValidation": {
                     "type": "boolean",
-                    "description": "**For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.\n"
+                    "description": "**For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. \"Your requested instance type is not supported in your requested availability zone\"), you can pass this flag to skip the validation and forcibly add the instance profile.\n"
                 }
             },
             "requiredInputs": [
@@ -16377,7 +16377,7 @@
                     },
                     "skipValidation": {
                         "type": "boolean",
-                        "description": "**For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.\n"
+                        "description": "**For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. \"Your requested instance type is not supported in your requested availability zone\"), you can pass this flag to skip the validation and forcibly add the instance profile.\n"
                     }
                 },
                 "type": "object"
@@ -20499,6 +20499,14 @@
                 "force": {
                     "type": "boolean"
                 },
+                "forceDeleteHomeDir": {
+                    "type": "boolean",
+                    "description": "This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.\n"
+                },
+                "forceDeleteRepos": {
+                    "type": "boolean",
+                    "description": "This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.\n"
+                },
                 "home": {
                     "type": "string",
                     "description": "Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.\n"
@@ -20552,6 +20560,14 @@
                 "force": {
                     "type": "boolean"
                 },
+                "forceDeleteHomeDir": {
+                    "type": "boolean",
+                    "description": "This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.\n"
+                },
+                "forceDeleteRepos": {
+                    "type": "boolean",
+                    "description": "This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.\n"
+                },
                 "home": {
                     "type": "string",
                     "description": "Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.\n"
@@ -20600,6 +20616,14 @@
                     },
                     "force": {
                         "type": "boolean"
+                    },
+                    "forceDeleteHomeDir": {
+                        "type": "boolean",
+                        "description": "This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.\n"
+                    },
+                    "forceDeleteRepos": {
+                        "type": "boolean",
+                        "description": "This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.\n"
                     },
                     "home": {
                         "type": "string",
@@ -21979,6 +22003,14 @@
                 "force": {
                     "type": "boolean"
                 },
+                "forceDeleteHomeDir": {
+                    "type": "boolean",
+                    "description": "This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.\n"
+                },
+                "forceDeleteRepos": {
+                    "type": "boolean",
+                    "description": "This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.\n"
+                },
                 "home": {
                     "type": "string",
                     "description": "Home folder of the user, e.g. `/Users/mr.foo@example.com`.\n"
@@ -22029,6 +22061,14 @@
                 "force": {
                     "type": "boolean"
                 },
+                "forceDeleteHomeDir": {
+                    "type": "boolean",
+                    "description": "This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.\n"
+                },
+                "forceDeleteRepos": {
+                    "type": "boolean",
+                    "description": "This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.\n"
+                },
                 "home": {
                     "type": "string",
                     "description": "Home folder of the user, e.g. `/Users/mr.foo@example.com`.\n"
@@ -22078,6 +22118,14 @@
                     },
                     "force": {
                         "type": "boolean"
+                    },
+                    "forceDeleteHomeDir": {
+                        "type": "boolean",
+                        "description": "This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.\n"
+                    },
+                    "forceDeleteRepos": {
+                        "type": "boolean",
+                        "description": "This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.\n"
                     },
                     "home": {
                         "type": "string",
