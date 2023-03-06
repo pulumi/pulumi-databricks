@@ -5,7 +5,7 @@ go 1.19
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220927231159-9ccf93a70751
 
 require (
-	github.com/databricks/terraform-provider-databricks v1.10.1
+	github.com/databricks/terraform-provider-databricks v1.11.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.41.0
 	github.com/pulumi/pulumi/sdk/v3 v3.53.1
 )
@@ -195,7 +195,7 @@ require (
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/cobra v1.6.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/stretchr/testify v1.8.1 // indirect
+	github.com/stretchr/testify v1.8.2 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/tweekmonster/luser v0.0.0-20161003172636-3fa38070dbd7 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect

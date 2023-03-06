@@ -2396,7 +2396,7 @@ export interface InstancePoolPreloadedDockerImageBasicAuth {
 
 export interface JobContinuous {
     /**
-     * Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+     * Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
     pauseStatus?: pulumi.Input<string>;
 }
@@ -2848,7 +2848,7 @@ export interface JobPythonWheelTask {
 
 export interface JobSchedule {
     /**
-     * Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+     * Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
     pauseStatus?: pulumi.Input<string>;
     /**

@@ -321,6 +321,34 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
+     * This flag determines whether the user&#39;s home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+     * 
+     */
+    @Export(name="forceDeleteHomeDir", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> forceDeleteHomeDir;
+
+    /**
+     * @return This flag determines whether the user&#39;s home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDeleteHomeDir() {
+        return Codegen.optional(this.forceDeleteHomeDir);
+    }
+    /**
+     * This flag determines whether the user&#39;s repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+     * 
+     */
+    @Export(name="forceDeleteRepos", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> forceDeleteRepos;
+
+    /**
+     * @return This flag determines whether the user&#39;s repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDeleteRepos() {
+        return Codegen.optional(this.forceDeleteRepos);
+    }
+    /**
      * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      * 
      */

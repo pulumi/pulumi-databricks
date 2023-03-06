@@ -283,7 +283,7 @@ namespace Pulumi.Databricks
         public Output<bool?> IsMetaInstanceProfile { get; private set; } = null!;
 
         /// <summary>
-        /// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+        /// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         /// </summary>
         [Output("skipValidation")]
         public Output<bool> SkipValidation { get; private set; } = null!;
@@ -353,7 +353,7 @@ namespace Pulumi.Databricks
         public Input<bool>? IsMetaInstanceProfile { get; set; }
 
         /// <summary>
-        /// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+        /// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         /// </summary>
         [Input("skipValidation")]
         public Input<bool>? SkipValidation { get; set; }
@@ -385,7 +385,7 @@ namespace Pulumi.Databricks
         public Input<bool>? IsMetaInstanceProfile { get; set; }
 
         /// <summary>
-        /// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+        /// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         /// </summary>
         [Input("skipValidation")]
         public Input<bool>? SkipValidation { get; set; }

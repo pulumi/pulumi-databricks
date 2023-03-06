@@ -5155,7 +5155,7 @@ func (o InstancePoolPreloadedDockerImageBasicAuthPtrOutput) Username() pulumi.St
 }
 
 type JobContinuous struct {
-	// Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+	// Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
 	PauseStatus *string `pulumi:"pauseStatus"`
 }
 
@@ -5171,7 +5171,7 @@ type JobContinuousInput interface {
 }
 
 type JobContinuousArgs struct {
-	// Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+	// Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
 	PauseStatus pulumi.StringPtrInput `pulumi:"pauseStatus"`
 }
 
@@ -5252,7 +5252,7 @@ func (o JobContinuousOutput) ToJobContinuousPtrOutputWithContext(ctx context.Con
 	}).(JobContinuousPtrOutput)
 }
 
-// Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+// Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
 func (o JobContinuousOutput) PauseStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobContinuous) *string { return v.PauseStatus }).(pulumi.StringPtrOutput)
 }
@@ -5281,7 +5281,7 @@ func (o JobContinuousPtrOutput) Elem() JobContinuousOutput {
 	}).(JobContinuousOutput)
 }
 
-// Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+// Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
 func (o JobContinuousPtrOutput) PauseStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobContinuous) *string {
 		if v == nil {
@@ -14009,7 +14009,7 @@ func (o JobPythonWheelTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 }
 
 type JobSchedule struct {
-	// Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+	// Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
 	PauseStatus *string `pulumi:"pauseStatus"`
 	// A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
 	QuartzCronExpression string `pulumi:"quartzCronExpression"`
@@ -14029,7 +14029,7 @@ type JobScheduleInput interface {
 }
 
 type JobScheduleArgs struct {
-	// Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+	// Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
 	PauseStatus pulumi.StringPtrInput `pulumi:"pauseStatus"`
 	// A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
 	QuartzCronExpression pulumi.StringInput `pulumi:"quartzCronExpression"`
@@ -14114,7 +14114,7 @@ func (o JobScheduleOutput) ToJobSchedulePtrOutputWithContext(ctx context.Context
 	}).(JobSchedulePtrOutput)
 }
 
-// Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+// Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
 func (o JobScheduleOutput) PauseStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobSchedule) *string { return v.PauseStatus }).(pulumi.StringPtrOutput)
 }
@@ -14153,7 +14153,7 @@ func (o JobSchedulePtrOutput) Elem() JobScheduleOutput {
 	}).(JobScheduleOutput)
 }
 
-// Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pauseStatus field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+// Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
 func (o JobSchedulePtrOutput) PauseStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSchedule) *string {
 		if v == nil {

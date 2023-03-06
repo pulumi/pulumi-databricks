@@ -211,6 +211,10 @@ type User struct {
 	// ID of the user in an external identity provider.
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
 	Force      pulumi.BoolPtrOutput   `pulumi:"force"`
+	// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+	ForceDeleteHomeDir pulumi.BoolPtrOutput `pulumi:"forceDeleteHomeDir"`
+	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteRepos pulumi.BoolPtrOutput `pulumi:"forceDeleteRepos"`
 	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
 	Home pulumi.StringOutput `pulumi:"home"`
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
@@ -265,6 +269,10 @@ type userState struct {
 	// ID of the user in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
 	Force      *bool   `pulumi:"force"`
+	// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+	ForceDeleteHomeDir *bool `pulumi:"forceDeleteHomeDir"`
+	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteRepos *bool `pulumi:"forceDeleteRepos"`
 	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
 	Home *string `pulumi:"home"`
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
@@ -288,6 +296,10 @@ type UserState struct {
 	// ID of the user in an external identity provider.
 	ExternalId pulumi.StringPtrInput
 	Force      pulumi.BoolPtrInput
+	// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+	ForceDeleteHomeDir pulumi.BoolPtrInput
+	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteRepos pulumi.BoolPtrInput
 	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
 	Home pulumi.StringPtrInput
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
@@ -315,6 +327,10 @@ type userArgs struct {
 	// ID of the user in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
 	Force      *bool   `pulumi:"force"`
+	// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+	ForceDeleteHomeDir *bool `pulumi:"forceDeleteHomeDir"`
+	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteRepos *bool `pulumi:"forceDeleteRepos"`
 	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
 	Home *string `pulumi:"home"`
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
@@ -339,6 +355,10 @@ type UserArgs struct {
 	// ID of the user in an external identity provider.
 	ExternalId pulumi.StringPtrInput
 	Force      pulumi.BoolPtrInput
+	// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+	ForceDeleteHomeDir pulumi.BoolPtrInput
+	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteRepos pulumi.BoolPtrInput
 	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
 	Home pulumi.StringPtrInput
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
@@ -467,6 +487,16 @@ func (o UserOutput) ExternalId() pulumi.StringPtrOutput {
 
 func (o UserOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+func (o UserOutput) ForceDeleteHomeDir() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.ForceDeleteHomeDir }).(pulumi.BoolPtrOutput)
+}
+
+// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+func (o UserOutput) ForceDeleteRepos() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.ForceDeleteRepos }).(pulumi.BoolPtrOutput)
 }
 
 // Home folder of the user, e.g. `/Users/mr.foo@example.com`.

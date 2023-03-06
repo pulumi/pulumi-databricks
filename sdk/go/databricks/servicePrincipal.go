@@ -211,6 +211,10 @@ type ServicePrincipal struct {
 	// ID of the service principal in an external identity provider.
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
 	Force      pulumi.BoolPtrOutput   `pulumi:"force"`
+	// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteHomeDir pulumi.BoolPtrOutput `pulumi:"forceDeleteHomeDir"`
+	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteRepos pulumi.BoolPtrOutput `pulumi:"forceDeleteRepos"`
 	// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
 	Home pulumi.StringOutput `pulumi:"home"`
 	// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
@@ -263,6 +267,10 @@ type servicePrincipalState struct {
 	// ID of the service principal in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
 	Force      *bool   `pulumi:"force"`
+	// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteHomeDir *bool `pulumi:"forceDeleteHomeDir"`
+	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteRepos *bool `pulumi:"forceDeleteRepos"`
 	// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
 	Home *string `pulumi:"home"`
 	// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
@@ -287,6 +295,10 @@ type ServicePrincipalState struct {
 	// ID of the service principal in an external identity provider.
 	ExternalId pulumi.StringPtrInput
 	Force      pulumi.BoolPtrInput
+	// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteHomeDir pulumi.BoolPtrInput
+	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteRepos pulumi.BoolPtrInput
 	// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
 	Home pulumi.StringPtrInput
 	// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
@@ -315,6 +327,10 @@ type servicePrincipalArgs struct {
 	// ID of the service principal in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
 	Force      *bool   `pulumi:"force"`
+	// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteHomeDir *bool `pulumi:"forceDeleteHomeDir"`
+	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteRepos *bool `pulumi:"forceDeleteRepos"`
 	// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
 	Home *string `pulumi:"home"`
 	// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
@@ -340,6 +356,10 @@ type ServicePrincipalArgs struct {
 	// ID of the service principal in an external identity provider.
 	ExternalId pulumi.StringPtrInput
 	Force      pulumi.BoolPtrInput
+	// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteHomeDir pulumi.BoolPtrInput
+	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+	ForceDeleteRepos pulumi.BoolPtrInput
 	// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
 	Home pulumi.StringPtrInput
 	// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
@@ -472,6 +492,16 @@ func (o ServicePrincipalOutput) ExternalId() pulumi.StringPtrOutput {
 
 func (o ServicePrincipalOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+func (o ServicePrincipalOutput) ForceDeleteHomeDir() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.ForceDeleteHomeDir }).(pulumi.BoolPtrOutput)
+}
+
+// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+func (o ServicePrincipalOutput) ForceDeleteRepos() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.ForceDeleteRepos }).(pulumi.BoolPtrOutput)
 }
 
 // Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.

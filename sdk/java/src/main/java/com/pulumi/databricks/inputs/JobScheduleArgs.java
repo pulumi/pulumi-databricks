@@ -16,14 +16,14 @@ public final class JobScheduleArgs extends com.pulumi.resources.ResourceArgs {
     public static final JobScheduleArgs Empty = new JobScheduleArgs();
 
     /**
-     * Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using &#34;UNPAUSED&#34; as a value for pause_status.
+     * Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pause_status`.
      * 
      */
     @Import(name="pauseStatus")
     private @Nullable Output<String> pauseStatus;
 
     /**
-     * @return Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using &#34;UNPAUSED&#34; as a value for pause_status.
+     * @return Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pause_status`.
      * 
      */
     public Optional<Output<String>> pauseStatus() {
@@ -87,7 +87,7 @@ public final class JobScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pauseStatus Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using &#34;UNPAUSED&#34; as a value for pause_status.
+         * @param pauseStatus Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pause_status`.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class JobScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pauseStatus Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using &#34;UNPAUSED&#34; as a value for pause_status.
+         * @param pauseStatus Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pause_status`.
          * 
          * @return builder
          * 

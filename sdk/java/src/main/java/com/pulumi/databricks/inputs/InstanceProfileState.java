@@ -62,14 +62,14 @@ public final class InstanceProfileState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+     * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. &#34;Your requested instance type is not supported in your requested availability zone&#34;), you can pass this flag to skip the validation and forcibly add the instance profile.
      * 
      */
     @Import(name="skipValidation")
     private @Nullable Output<Boolean> skipValidation;
 
     /**
-     * @return **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+     * @return **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. &#34;Your requested instance type is not supported in your requested availability zone&#34;), you can pass this flag to skip the validation and forcibly add the instance profile.
      * 
      */
     public Optional<Output<Boolean>> skipValidation() {
@@ -167,7 +167,7 @@ public final class InstanceProfileState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param skipValidation **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+         * @param skipValidation **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. &#34;Your requested instance type is not supported in your requested availability zone&#34;), you can pass this flag to skip the validation and forcibly add the instance profile.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class InstanceProfileState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param skipValidation **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+         * @param skipValidation **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. &#34;Your requested instance type is not supported in your requested availability zone&#34;), you can pass this flag to skip the validation and forcibly add the instance profile.
          * 
          * @return builder
          * 

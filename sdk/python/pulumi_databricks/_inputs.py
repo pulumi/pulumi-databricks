@@ -1699,7 +1699,7 @@ class JobContinuousArgs:
     def __init__(__self__, *,
                  pause_status: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] pause_status: Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+        :param pulumi.Input[str] pause_status: Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
         """
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
@@ -1708,7 +1708,7 @@ class JobContinuousArgs:
     @pulumi.getter(name="pauseStatus")
     def pause_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+        Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
         """
         return pulumi.get(self, "pause_status")
 
@@ -4608,7 +4608,7 @@ class JobScheduleArgs:
         """
         :param pulumi.Input[str] quartz_cron_expression: A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
         :param pulumi.Input[str] timezone_id: A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
-        :param pulumi.Input[str] pause_status: Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+        :param pulumi.Input[str] pause_status: Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pause_status`.
         """
         pulumi.set(__self__, "quartz_cron_expression", quartz_cron_expression)
         pulumi.set(__self__, "timezone_id", timezone_id)
@@ -4643,7 +4643,7 @@ class JobScheduleArgs:
     @pulumi.getter(name="pauseStatus")
     def pause_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicate whether this schedule is paused or not. Either “PAUSED” or “UNPAUSED”. When the pause_status field is omitted and a schedule is provided, the server will default to using "UNPAUSED" as a value for pause_status.
+        Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pause_status`.
         """
         return pulumi.get(self, "pause_status")
 
