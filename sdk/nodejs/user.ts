@@ -157,6 +157,14 @@ export class User extends pulumi.CustomResource {
     public readonly externalId!: pulumi.Output<string | undefined>;
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
+     * This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+     */
+    public readonly forceDeleteHomeDir!: pulumi.Output<boolean | undefined>;
+    /**
+     * This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+     */
+    public readonly forceDeleteRepos!: pulumi.Output<boolean | undefined>;
+    /**
      * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      */
     public readonly home!: pulumi.Output<string>;
@@ -190,6 +198,8 @@ export class User extends pulumi.CustomResource {
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["externalId"] = state ? state.externalId : undefined;
             resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["forceDeleteHomeDir"] = state ? state.forceDeleteHomeDir : undefined;
+            resourceInputs["forceDeleteRepos"] = state ? state.forceDeleteRepos : undefined;
             resourceInputs["home"] = state ? state.home : undefined;
             resourceInputs["repos"] = state ? state.repos : undefined;
             resourceInputs["userName"] = state ? state.userName : undefined;
@@ -206,6 +216,8 @@ export class User extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["externalId"] = args ? args.externalId : undefined;
             resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["forceDeleteHomeDir"] = args ? args.forceDeleteHomeDir : undefined;
+            resourceInputs["forceDeleteRepos"] = args ? args.forceDeleteRepos : undefined;
             resourceInputs["home"] = args ? args.home : undefined;
             resourceInputs["repos"] = args ? args.repos : undefined;
             resourceInputs["userName"] = args ? args.userName : undefined;
@@ -245,6 +257,14 @@ export interface UserState {
      */
     externalId?: pulumi.Input<string>;
     force?: pulumi.Input<boolean>;
+    /**
+     * This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+     */
+    forceDeleteHomeDir?: pulumi.Input<boolean>;
+    /**
+     * This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+     */
+    forceDeleteRepos?: pulumi.Input<boolean>;
     /**
      * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      */
@@ -289,6 +309,14 @@ export interface UserArgs {
      */
     externalId?: pulumi.Input<string>;
     force?: pulumi.Input<boolean>;
+    /**
+     * This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+     */
+    forceDeleteHomeDir?: pulumi.Input<boolean>;
+    /**
+     * This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+     */
+    forceDeleteRepos?: pulumi.Input<boolean>;
     /**
      * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      */

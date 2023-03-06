@@ -186,7 +186,7 @@ export class InstanceProfile extends pulumi.CustomResource {
      */
     public readonly isMetaInstanceProfile!: pulumi.Output<boolean | undefined>;
     /**
-     * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+     * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
      */
     public readonly skipValidation!: pulumi.Output<boolean>;
 
@@ -239,7 +239,7 @@ export interface InstanceProfileState {
      */
     isMetaInstanceProfile?: pulumi.Input<boolean>;
     /**
-     * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+     * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
      */
     skipValidation?: pulumi.Input<boolean>;
 }
@@ -261,7 +261,7 @@ export interface InstanceProfileArgs {
      */
     isMetaInstanceProfile?: pulumi.Input<boolean>;
     /**
-     * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+     * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
      */
     skipValidation?: pulumi.Input<boolean>;
 }

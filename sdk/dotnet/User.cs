@@ -195,6 +195,18 @@ namespace Pulumi.Databricks
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
+        /// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+        /// </summary>
+        [Output("forceDeleteHomeDir")]
+        public Output<bool?> ForceDeleteHomeDir { get; private set; } = null!;
+
+        /// <summary>
+        /// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+        /// </summary>
+        [Output("forceDeleteRepos")]
+        public Output<bool?> ForceDeleteRepos { get; private set; } = null!;
+
+        /// <summary>
         /// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
         /// </summary>
         [Output("home")]
@@ -301,6 +313,18 @@ namespace Pulumi.Databricks
         public Input<bool>? Force { get; set; }
 
         /// <summary>
+        /// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+        /// </summary>
+        [Input("forceDeleteHomeDir")]
+        public Input<bool>? ForceDeleteHomeDir { get; set; }
+
+        /// <summary>
+        /// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+        /// </summary>
+        [Input("forceDeleteRepos")]
+        public Input<bool>? ForceDeleteRepos { get; set; }
+
+        /// <summary>
         /// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
         /// </summary>
         [Input("home")]
@@ -367,6 +391,18 @@ namespace Pulumi.Databricks
 
         [Input("force")]
         public Input<bool>? Force { get; set; }
+
+        /// <summary>
+        /// This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+        /// </summary>
+        [Input("forceDeleteHomeDir")]
+        public Input<bool>? ForceDeleteHomeDir { get; set; }
+
+        /// <summary>
+        /// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+        /// </summary>
+        [Input("forceDeleteRepos")]
+        public Input<bool>? ForceDeleteRepos { get; set; }
 
         /// <summary>
         /// Home folder of the user, e.g. `/Users/mr.foo@example.com`.

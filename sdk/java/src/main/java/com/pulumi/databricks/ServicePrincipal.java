@@ -332,6 +332,34 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
+     * This flag determines whether the service principal&#39;s home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+     * 
+     */
+    @Export(name="forceDeleteHomeDir", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> forceDeleteHomeDir;
+
+    /**
+     * @return This flag determines whether the service principal&#39;s home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDeleteHomeDir() {
+        return Codegen.optional(this.forceDeleteHomeDir);
+    }
+    /**
+     * This flag determines whether the service principal&#39;s repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+     * 
+     */
+    @Export(name="forceDeleteRepos", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> forceDeleteRepos;
+
+    /**
+     * @return This flag determines whether the service principal&#39;s repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDeleteRepos() {
+        return Codegen.optional(this.forceDeleteRepos);
+    }
+    /**
      * Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
      * 
      */

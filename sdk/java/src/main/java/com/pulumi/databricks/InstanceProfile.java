@@ -330,14 +330,14 @@ public class InstanceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isMetaInstanceProfile);
     }
     /**
-     * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+     * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. &#34;Your requested instance type is not supported in your requested availability zone&#34;), you can pass this flag to skip the validation and forcibly add the instance profile.
      * 
      */
     @Export(name="skipValidation", type=Boolean.class, parameters={})
     private Output<Boolean> skipValidation;
 
     /**
-     * @return **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+     * @return **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. &#34;Your requested instance type is not supported in your requested availability zone&#34;), you can pass this flag to skip the validation and forcibly add the instance profile.
      * 
      */
     public Output<Boolean> skipValidation() {

@@ -114,6 +114,36 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * This flag determines whether the user&#39;s home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+     * 
+     */
+    @Import(name="forceDeleteHomeDir")
+    private @Nullable Output<Boolean> forceDeleteHomeDir;
+
+    /**
+     * @return This flag determines whether the user&#39;s home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDeleteHomeDir() {
+        return Optional.ofNullable(this.forceDeleteHomeDir);
+    }
+
+    /**
+     * This flag determines whether the user&#39;s repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+     * 
+     */
+    @Import(name="forceDeleteRepos")
+    private @Nullable Output<Boolean> forceDeleteRepos;
+
+    /**
+     * @return This flag determines whether the user&#39;s repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDeleteRepos() {
+        return Optional.ofNullable(this.forceDeleteRepos);
+    }
+
+    /**
      * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      * 
      */
@@ -175,6 +205,8 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.displayName = $.displayName;
         this.externalId = $.externalId;
         this.force = $.force;
+        this.forceDeleteHomeDir = $.forceDeleteHomeDir;
+        this.forceDeleteRepos = $.forceDeleteRepos;
         this.home = $.home;
         this.repos = $.repos;
         this.userName = $.userName;
@@ -332,6 +364,48 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
         public Builder force(Boolean force) {
             return force(Output.of(force));
+        }
+
+        /**
+         * @param forceDeleteHomeDir This flag determines whether the user&#39;s home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDeleteHomeDir(@Nullable Output<Boolean> forceDeleteHomeDir) {
+            $.forceDeleteHomeDir = forceDeleteHomeDir;
+            return this;
+        }
+
+        /**
+         * @param forceDeleteHomeDir This flag determines whether the user&#39;s home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDeleteHomeDir(Boolean forceDeleteHomeDir) {
+            return forceDeleteHomeDir(Output.of(forceDeleteHomeDir));
+        }
+
+        /**
+         * @param forceDeleteRepos This flag determines whether the user&#39;s repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDeleteRepos(@Nullable Output<Boolean> forceDeleteRepos) {
+            $.forceDeleteRepos = forceDeleteRepos;
+            return this;
+        }
+
+        /**
+         * @param forceDeleteRepos This flag determines whether the user&#39;s repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDeleteRepos(Boolean forceDeleteRepos) {
+            return forceDeleteRepos(Output.of(forceDeleteRepos));
         }
 
         /**

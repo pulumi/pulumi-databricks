@@ -23,7 +23,7 @@ class InstanceProfileArgs:
         :param pulumi.Input[str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
-        :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+        :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
         pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
         if iam_role_arn is not None:
@@ -73,7 +73,7 @@ class InstanceProfileArgs:
     @pulumi.getter(name="skipValidation")
     def skip_validation(self) -> Optional[pulumi.Input[bool]]:
         """
-        **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+        **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
         return pulumi.get(self, "skip_validation")
 
@@ -94,7 +94,7 @@ class _InstanceProfileState:
         :param pulumi.Input[str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
-        :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+        :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
         if iam_role_arn is not None:
             pulumi.set(__self__, "iam_role_arn", iam_role_arn)
@@ -145,7 +145,7 @@ class _InstanceProfileState:
     @pulumi.getter(name="skipValidation")
     def skip_validation(self) -> Optional[pulumi.Input[bool]]:
         """
-        **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+        **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
         return pulumi.get(self, "skip_validation")
 
@@ -295,7 +295,7 @@ class InstanceProfile(pulumi.CustomResource):
         :param pulumi.Input[str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
-        :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+        :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
         ...
     @overload
@@ -487,7 +487,7 @@ class InstanceProfile(pulumi.CustomResource):
         :param pulumi.Input[str] iam_role_arn: The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
         :param pulumi.Input[str] instance_profile_arn: `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         :param pulumi.Input[bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
-        :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+        :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -527,7 +527,7 @@ class InstanceProfile(pulumi.CustomResource):
     @pulumi.getter(name="skipValidation")
     def skip_validation(self) -> pulumi.Output[bool]:
         """
-        **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. “Your requested instance type is not supported in your requested availability zone”), you can pass this flag to skip the validation and forcibly add the instance profile.
+        **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
         return pulumi.get(self, "skip_validation")
 

@@ -22,6 +22,8 @@ class ServicePrincipalArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 force_delete_home_dir: Optional[pulumi.Input[bool]] = None,
+                 force_delete_repos: Optional[pulumi.Input[bool]] = None,
                  home: Optional[pulumi.Input[str]] = None,
                  repos: Optional[pulumi.Input[str]] = None,
                  workspace_access: Optional[pulumi.Input[bool]] = None):
@@ -34,6 +36,8 @@ class ServicePrincipalArgs:
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
+        :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+        :param pulumi.Input[bool] force_delete_repos: This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
@@ -54,6 +58,10 @@ class ServicePrincipalArgs:
             pulumi.set(__self__, "external_id", external_id)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if force_delete_home_dir is not None:
+            pulumi.set(__self__, "force_delete_home_dir", force_delete_home_dir)
+        if force_delete_repos is not None:
+            pulumi.set(__self__, "force_delete_repos", force_delete_repos)
         if home is not None:
             pulumi.set(__self__, "home", home)
         if repos is not None:
@@ -153,6 +161,30 @@ class ServicePrincipalArgs:
     @force.setter
     def force(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="forceDeleteHomeDir")
+    def force_delete_home_dir(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+        """
+        return pulumi.get(self, "force_delete_home_dir")
+
+    @force_delete_home_dir.setter
+    def force_delete_home_dir(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete_home_dir", value)
+
+    @property
+    @pulumi.getter(name="forceDeleteRepos")
+    def force_delete_repos(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+        """
+        return pulumi.get(self, "force_delete_repos")
+
+    @force_delete_repos.setter
+    def force_delete_repos(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete_repos", value)
 
     @property
     @pulumi.getter
@@ -202,6 +234,8 @@ class _ServicePrincipalState:
                  display_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 force_delete_home_dir: Optional[pulumi.Input[bool]] = None,
+                 force_delete_repos: Optional[pulumi.Input[bool]] = None,
                  home: Optional[pulumi.Input[str]] = None,
                  repos: Optional[pulumi.Input[str]] = None,
                  workspace_access: Optional[pulumi.Input[bool]] = None):
@@ -214,6 +248,8 @@ class _ServicePrincipalState:
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
+        :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+        :param pulumi.Input[bool] force_delete_repos: This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
@@ -234,6 +270,10 @@ class _ServicePrincipalState:
             pulumi.set(__self__, "external_id", external_id)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if force_delete_home_dir is not None:
+            pulumi.set(__self__, "force_delete_home_dir", force_delete_home_dir)
+        if force_delete_repos is not None:
+            pulumi.set(__self__, "force_delete_repos", force_delete_repos)
         if home is not None:
             pulumi.set(__self__, "home", home)
         if repos is not None:
@@ -333,6 +373,30 @@ class _ServicePrincipalState:
     @force.setter
     def force(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="forceDeleteHomeDir")
+    def force_delete_home_dir(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+        """
+        return pulumi.get(self, "force_delete_home_dir")
+
+    @force_delete_home_dir.setter
+    def force_delete_home_dir(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete_home_dir", value)
+
+    @property
+    @pulumi.getter(name="forceDeleteRepos")
+    def force_delete_repos(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+        """
+        return pulumi.get(self, "force_delete_repos")
+
+    @force_delete_repos.setter
+    def force_delete_repos(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete_repos", value)
 
     @property
     @pulumi.getter
@@ -384,6 +448,8 @@ class ServicePrincipal(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 force_delete_home_dir: Optional[pulumi.Input[bool]] = None,
+                 force_delete_repos: Optional[pulumi.Input[bool]] = None,
                  home: Optional[pulumi.Input[str]] = None,
                  repos: Optional[pulumi.Input[str]] = None,
                  workspace_access: Optional[pulumi.Input[bool]] = None,
@@ -483,6 +549,8 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
+        :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+        :param pulumi.Input[bool] force_delete_repos: This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
@@ -602,6 +670,8 @@ class ServicePrincipal(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 force_delete_home_dir: Optional[pulumi.Input[bool]] = None,
+                 force_delete_repos: Optional[pulumi.Input[bool]] = None,
                  home: Optional[pulumi.Input[str]] = None,
                  repos: Optional[pulumi.Input[str]] = None,
                  workspace_access: Optional[pulumi.Input[bool]] = None,
@@ -622,6 +692,8 @@ class ServicePrincipal(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["external_id"] = external_id
             __props__.__dict__["force"] = force
+            __props__.__dict__["force_delete_home_dir"] = force_delete_home_dir
+            __props__.__dict__["force_delete_repos"] = force_delete_repos
             __props__.__dict__["home"] = home
             __props__.__dict__["repos"] = repos
             __props__.__dict__["workspace_access"] = workspace_access
@@ -643,6 +715,8 @@ class ServicePrincipal(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             external_id: Optional[pulumi.Input[str]] = None,
             force: Optional[pulumi.Input[bool]] = None,
+            force_delete_home_dir: Optional[pulumi.Input[bool]] = None,
+            force_delete_repos: Optional[pulumi.Input[bool]] = None,
             home: Optional[pulumi.Input[str]] = None,
             repos: Optional[pulumi.Input[str]] = None,
             workspace_access: Optional[pulumi.Input[bool]] = None) -> 'ServicePrincipal':
@@ -660,6 +734,8 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
+        :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+        :param pulumi.Input[bool] force_delete_repos: This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
@@ -676,6 +752,8 @@ class ServicePrincipal(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["external_id"] = external_id
         __props__.__dict__["force"] = force
+        __props__.__dict__["force_delete_home_dir"] = force_delete_home_dir
+        __props__.__dict__["force_delete_repos"] = force_delete_repos
         __props__.__dict__["home"] = home
         __props__.__dict__["repos"] = repos
         __props__.__dict__["workspace_access"] = workspace_access
@@ -741,6 +819,22 @@ class ServicePrincipal(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter(name="forceDeleteHomeDir")
+    def force_delete_home_dir(self) -> pulumi.Output[Optional[bool]]:
+        """
+        This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+        """
+        return pulumi.get(self, "force_delete_home_dir")
+
+    @property
+    @pulumi.getter(name="forceDeleteRepos")
+    def force_delete_repos(self) -> pulumi.Output[Optional[bool]]:
+        """
+        This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
+        """
+        return pulumi.get(self, "force_delete_repos")
 
     @property
     @pulumi.getter
