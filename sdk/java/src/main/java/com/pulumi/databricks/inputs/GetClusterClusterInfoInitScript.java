@@ -4,7 +4,10 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptAbfss;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptDbfs;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptFile;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptGcs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptS3;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,11 +18,32 @@ public final class GetClusterClusterInfoInitScript extends com.pulumi.resources.
 
     public static final GetClusterClusterInfoInitScript Empty = new GetClusterClusterInfoInitScript();
 
+    @Import(name="abfss")
+    private @Nullable GetClusterClusterInfoInitScriptAbfss abfss;
+
+    public Optional<GetClusterClusterInfoInitScriptAbfss> abfss() {
+        return Optional.ofNullable(this.abfss);
+    }
+
     @Import(name="dbfs")
     private @Nullable GetClusterClusterInfoInitScriptDbfs dbfs;
 
     public Optional<GetClusterClusterInfoInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
+    }
+
+    @Import(name="file")
+    private @Nullable GetClusterClusterInfoInitScriptFile file;
+
+    public Optional<GetClusterClusterInfoInitScriptFile> file() {
+        return Optional.ofNullable(this.file);
+    }
+
+    @Import(name="gcs")
+    private @Nullable GetClusterClusterInfoInitScriptGcs gcs;
+
+    public Optional<GetClusterClusterInfoInitScriptGcs> gcs() {
+        return Optional.ofNullable(this.gcs);
     }
 
     @Import(name="s3")
@@ -32,7 +56,10 @@ public final class GetClusterClusterInfoInitScript extends com.pulumi.resources.
     private GetClusterClusterInfoInitScript() {}
 
     private GetClusterClusterInfoInitScript(GetClusterClusterInfoInitScript $) {
+        this.abfss = $.abfss;
         this.dbfs = $.dbfs;
+        this.file = $.file;
+        this.gcs = $.gcs;
         this.s3 = $.s3;
     }
 
@@ -54,8 +81,23 @@ public final class GetClusterClusterInfoInitScript extends com.pulumi.resources.
             $ = new GetClusterClusterInfoInitScript(Objects.requireNonNull(defaults));
         }
 
+        public Builder abfss(@Nullable GetClusterClusterInfoInitScriptAbfss abfss) {
+            $.abfss = abfss;
+            return this;
+        }
+
         public Builder dbfs(@Nullable GetClusterClusterInfoInitScriptDbfs dbfs) {
             $.dbfs = dbfs;
+            return this;
+        }
+
+        public Builder file(@Nullable GetClusterClusterInfoInitScriptFile file) {
+            $.file = file;
+            return this;
+        }
+
+        public Builder gcs(@Nullable GetClusterClusterInfoInitScriptGcs gcs) {
+            $.gcs = gcs;
             return this;
         }
 

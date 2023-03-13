@@ -60,7 +60,7 @@ namespace Pulumi.Databricks
         public Output<bool?> SkipValidation { get; private set; } = null!;
 
         /// <summary>
-        /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+        /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.Databricks
         public Input<bool>? SkipValidation { get; set; }
 
         /// <summary>
-        /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+        /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.Databricks
         public Input<bool>? SkipValidation { get; set; }
 
         /// <summary>
-        /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+        /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

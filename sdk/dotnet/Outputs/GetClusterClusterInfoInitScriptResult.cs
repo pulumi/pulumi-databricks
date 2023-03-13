@@ -13,16 +13,28 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetClusterClusterInfoInitScriptResult
     {
+        public readonly Outputs.GetClusterClusterInfoInitScriptAbfssResult? Abfss;
         public readonly Outputs.GetClusterClusterInfoInitScriptDbfsResult? Dbfs;
+        public readonly Outputs.GetClusterClusterInfoInitScriptFileResult? File;
+        public readonly Outputs.GetClusterClusterInfoInitScriptGcsResult? Gcs;
         public readonly Outputs.GetClusterClusterInfoInitScriptS3Result? S3;
 
         [OutputConstructor]
         private GetClusterClusterInfoInitScriptResult(
+            Outputs.GetClusterClusterInfoInitScriptAbfssResult? abfss,
+
             Outputs.GetClusterClusterInfoInitScriptDbfsResult? dbfs,
+
+            Outputs.GetClusterClusterInfoInitScriptFileResult? file,
+
+            Outputs.GetClusterClusterInfoInitScriptGcsResult? gcs,
 
             Outputs.GetClusterClusterInfoInitScriptS3Result? s3)
         {
+            Abfss = abfss;
             Dbfs = dbfs;
+            File = file;
+            Gcs = gcs;
             S3 = s3;
         }
     }

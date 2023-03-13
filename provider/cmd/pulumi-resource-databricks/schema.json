@@ -5319,10 +5319,32 @@
                 "directoryId"
             ]
         },
+        "databricks:index/MetastoreDataAccessDatabricksGcpServiceAccount:MetastoreDataAccessDatabricksGcpServiceAccount": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "The email of the GCP service account created, to be granted access to relevant buckets.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "email"
+                    ]
+                }
+            }
+        },
         "databricks:index/MetastoreDataAccessGcpServiceAccountKey:MetastoreDataAccessGcpServiceAccountKey": {
             "properties": {
                 "email": {
                     "type": "string",
+                    "description": "The email of the GCP service account created, to be granted access to relevant buckets.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5462,6 +5484,144 @@
             "required": [
                 "accessToken",
                 "jobId"
+            ]
+        },
+        "databricks:index/ModelServingConfig:ModelServingConfig": {
+            "properties": {
+                "servedModels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/ModelServingConfigServedModel:ModelServingConfigServedModel"
+                    },
+                    "description": "Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "trafficConfig": {
+                    "$ref": "#/types/databricks:index/ModelServingConfigTrafficConfig:ModelServingConfigTrafficConfig",
+                    "description": "A single block represents the traffic split configuration amongst the served models.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "servedModels"
+            ]
+        },
+        "databricks:index/ModelServingConfigServedModel:ModelServingConfigServedModel": {
+            "properties": {
+                "modelName": {
+                    "type": "string",
+                    "description": "The name of the model in Databricks Model Registry to be served.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "modelVersion": {
+                    "type": "string",
+                    "description": "The version of the model in Databricks Model Registry to be served.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scaleToZeroEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "workloadSize": {
+                    "type": "string",
+                    "description": "The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are \"Small\" (4 - 4 provisioned concurrency), \"Medium\" (8 - 16 provisioned concurrency), and \"Large\" (16 - 64 provisioned concurrency).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "modelName",
+                "modelVersion",
+                "workloadSize"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "modelName",
+                        "modelVersion",
+                        "name",
+                        "workloadSize"
+                    ]
+                }
+            }
+        },
+        "databricks:index/ModelServingConfigTrafficConfig:ModelServingConfigTrafficConfig": {
+            "properties": {
+                "routes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/ModelServingConfigTrafficConfigRoute:ModelServingConfigTrafficConfigRoute"
+                    },
+                    "description": "Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/ModelServingConfigTrafficConfigRoute:ModelServingConfigTrafficConfigRoute": {
+            "properties": {
+                "servedModelName": {
+                    "type": "string",
+                    "description": "The name of the served model this route configures traffic for. This needs to match the name of a `served_models` block\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "trafficPercentage": {
+                    "type": "integer",
+                    "description": "The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "servedModelName",
+                "trafficPercentage"
             ]
         },
         "databricks:index/MountAbfs:MountAbfs": {
@@ -8174,10 +8334,32 @@
                 "directoryId"
             ]
         },
+        "databricks:index/StorageCredentialDatabricksGcpServiceAccount:StorageCredentialDatabricksGcpServiceAccount": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "The email of the GCP service account created, to be granted access to relevant buckets.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "email"
+                    ]
+                }
+            }
+        },
         "databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey": {
             "properties": {
                 "email": {
                     "type": "string",
+                    "description": "The email of the GCP service account created, to be granted access to relevant buckets.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9197,6 +9379,14 @@
         },
         "databricks:index/getClusterClusterInfoInitScript:getClusterClusterInfoInitScript": {
             "properties": {
+                "abfss": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoInitScriptAbfss:getClusterClusterInfoInitScriptAbfss",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "dbfs": {
                     "$ref": "#/types/databricks:index/getClusterClusterInfoInitScriptDbfs:getClusterClusterInfoInitScriptDbfs",
                     "language": {
@@ -9205,8 +9395,37 @@
                         }
                     }
                 },
+                "file": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoInitScriptFile:getClusterClusterInfoInitScriptFile",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gcs": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoInitScriptGcs:getClusterClusterInfoInitScriptGcs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "s3": {
                     "$ref": "#/types/databricks:index/getClusterClusterInfoInitScriptS3:getClusterClusterInfoInitScriptS3",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getClusterClusterInfoInitScriptAbfss:getClusterClusterInfoInitScriptAbfss": {
+            "properties": {
+                "destination": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9231,6 +9450,32 @@
             "required": [
                 "destination"
             ]
+        },
+        "databricks:index/getClusterClusterInfoInitScriptFile:getClusterClusterInfoInitScriptFile": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getClusterClusterInfoInitScriptGcs:getClusterClusterInfoInitScriptGcs": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "databricks:index/getClusterClusterInfoInitScriptS3:getClusterClusterInfoInitScriptS3": {
             "properties": {
@@ -15435,7 +15680,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).\n"
+                    "description": "Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).\n"
                 }
             },
             "required": [
@@ -15472,7 +15717,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).\n"
+                    "description": "Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).\n"
                 }
             },
             "requiredInputs": [
@@ -15508,7 +15753,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).\n"
+                        "description": "Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).\n"
                     }
                 },
                 "type": "object"
@@ -15530,14 +15775,11 @@
                     "description": "user name at Git provider.\n"
                 },
                 "personalAccessToken": {
-                    "type": "string",
-                    "secret": true
+                    "type": "string"
                 }
             },
             "required": [
-                "gitProvider",
-                "gitUsername",
-                "personalAccessToken"
+                "gitProvider"
             ],
             "inputProperties": {
                 "force": {
@@ -15553,14 +15795,11 @@
                     "description": "user name at Git provider.\n"
                 },
                 "personalAccessToken": {
-                    "type": "string",
-                    "secret": true
+                    "type": "string"
                 }
             },
             "requiredInputs": [
-                "gitProvider",
-                "gitUsername",
-                "personalAccessToken"
+                "gitProvider"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering GitCredential resources.\n",
@@ -15578,8 +15817,7 @@
                         "description": "user name at Git provider.\n"
                     },
                     "personalAccessToken": {
-                        "type": "string",
-                        "secret": true
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -17157,6 +17395,9 @@
                 "configurationType": {
                     "type": "string"
                 },
+                "databricksGcpServiceAccount": {
+                    "$ref": "#/types/databricks:index/MetastoreDataAccessDatabricksGcpServiceAccount:MetastoreDataAccessDatabricksGcpServiceAccount"
+                },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/MetastoreDataAccessGcpServiceAccountKey:MetastoreDataAccessGcpServiceAccountKey"
                 },
@@ -17192,6 +17433,10 @@
                 },
                 "configurationType": {
                     "type": "string"
+                },
+                "databricksGcpServiceAccount": {
+                    "$ref": "#/types/databricks:index/MetastoreDataAccessDatabricksGcpServiceAccount:MetastoreDataAccessDatabricksGcpServiceAccount",
+                    "willReplaceOnChanges": true
                 },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/MetastoreDataAccessGcpServiceAccountKey:MetastoreDataAccessGcpServiceAccountKey",
@@ -17232,6 +17477,10 @@
                     },
                     "configurationType": {
                         "type": "string"
+                    },
+                    "databricksGcpServiceAccount": {
+                        "$ref": "#/types/databricks:index/MetastoreDataAccessDatabricksGcpServiceAccount:MetastoreDataAccessDatabricksGcpServiceAccount",
+                        "willReplaceOnChanges": true
                     },
                     "gcpServiceAccountKey": {
                         "$ref": "#/types/databricks:index/MetastoreDataAccessGcpServiceAccountKey:MetastoreDataAccessGcpServiceAccountKey",
@@ -17425,7 +17674,7 @@
             }
         },
         "databricks:index/mlflowModel:MlflowModel": {
-            "description": "This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst test = new databricks.MlflowModel(\"test\", {\n    description: \"My MLflow model description\",\n    tags: [\n        {\n            key: \"key1\",\n            value: \"value1\",\n        },\n        {\n            key: \"key2\",\n            value: \"value2\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ntest = databricks.MlflowModel(\"test\",\n    description=\"My MLflow model description\",\n    tags=[\n        databricks.MlflowModelTagArgs(\n            key=\"key1\",\n            value=\"value1\",\n        ),\n        databricks.MlflowModelTagArgs(\n            key=\"key2\",\n            value=\"value2\",\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Databricks.MlflowModel(\"test\", new()\n    {\n        Description = \"My MLflow model description\",\n        Tags = new[]\n        {\n            new Databricks.Inputs.MlflowModelTagArgs\n            {\n                Key = \"key1\",\n                Value = \"value1\",\n            },\n            new Databricks.Inputs.MlflowModelTagArgs\n            {\n                Key = \"key2\",\n                Value = \"value2\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewMlflowModel(ctx, \"test\", \u0026databricks.MlflowModelArgs{\n\t\t\tDescription: pulumi.String(\"My MLflow model description\"),\n\t\t\tTags: databricks.MlflowModelTagArray{\n\t\t\t\t\u0026databricks.MlflowModelTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"key1\"),\n\t\t\t\t\tValue: pulumi.String(\"value1\"),\n\t\t\t\t},\n\t\t\t\t\u0026databricks.MlflowModelTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"key2\"),\n\t\t\t\t\tValue: pulumi.String(\"value2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.MlflowModel;\nimport com.pulumi.databricks.MlflowModelArgs;\nimport com.pulumi.databricks.inputs.MlflowModelTagArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new MlflowModel(\"test\", MlflowModelArgs.builder()        \n            .description(\"My MLflow model description\")\n            .tags(            \n                MlflowModelTagArgs.builder()\n                    .key(\"key1\")\n                    .value(\"value1\")\n                    .build(),\n                MlflowModelTagArgs.builder()\n                    .key(\"key2\")\n                    .value(\"value2\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: databricks:MlflowModel\n    properties:\n      description: My MLflow model description\n      tags:\n        - key: key1\n          value: value1\n        - key: key2\n          value: value2\n```\n{{% /example %}}\n{{% /examples %}}\n## Access Control\n\n* databricks.Permissions can control which groups or individual users can *Read*, *Edit*, *Manage Staging Versions*, *Manage Production Versions*, and *Manage* individual models.\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).\n* databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.\n* databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).\n* databricks.Notebook data to export a notebook from Databricks Workspace.\n* databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).\n\n\n## Import\n\nThe model resource can be imported using the name bash\n\n```sh\n $ pulumi import databricks:index/mlflowModel:MlflowModel this \u003cname\u003e\n```\n\n ",
+            "description": "This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst test = new databricks.MlflowModel(\"test\", {\n    description: \"My MLflow model description\",\n    tags: [\n        {\n            key: \"key1\",\n            value: \"value1\",\n        },\n        {\n            key: \"key2\",\n            value: \"value2\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ntest = databricks.MlflowModel(\"test\",\n    description=\"My MLflow model description\",\n    tags=[\n        databricks.MlflowModelTagArgs(\n            key=\"key1\",\n            value=\"value1\",\n        ),\n        databricks.MlflowModelTagArgs(\n            key=\"key2\",\n            value=\"value2\",\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Databricks.MlflowModel(\"test\", new()\n    {\n        Description = \"My MLflow model description\",\n        Tags = new[]\n        {\n            new Databricks.Inputs.MlflowModelTagArgs\n            {\n                Key = \"key1\",\n                Value = \"value1\",\n            },\n            new Databricks.Inputs.MlflowModelTagArgs\n            {\n                Key = \"key2\",\n                Value = \"value2\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewMlflowModel(ctx, \"test\", \u0026databricks.MlflowModelArgs{\n\t\t\tDescription: pulumi.String(\"My MLflow model description\"),\n\t\t\tTags: databricks.MlflowModelTagArray{\n\t\t\t\t\u0026databricks.MlflowModelTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"key1\"),\n\t\t\t\t\tValue: pulumi.String(\"value1\"),\n\t\t\t\t},\n\t\t\t\t\u0026databricks.MlflowModelTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"key2\"),\n\t\t\t\t\tValue: pulumi.String(\"value2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.MlflowModel;\nimport com.pulumi.databricks.MlflowModelArgs;\nimport com.pulumi.databricks.inputs.MlflowModelTagArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new MlflowModel(\"test\", MlflowModelArgs.builder()        \n            .description(\"My MLflow model description\")\n            .tags(            \n                MlflowModelTagArgs.builder()\n                    .key(\"key1\")\n                    .value(\"value1\")\n                    .build(),\n                MlflowModelTagArgs.builder()\n                    .key(\"key2\")\n                    .value(\"value2\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: databricks:MlflowModel\n    properties:\n      description: My MLflow model description\n      tags:\n        - key: key1\n          value: value1\n        - key: key2\n          value: value2\n```\n{{% /example %}}\n{{% /examples %}}\n## Access Control\n\n* databricks.Permissions can control which groups or individual users can *Read*, *Edit*, *Manage Staging Versions*, *Manage Production Versions*, and *Manage* individual models.\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.ModelServing to serve this model on a Databricks serving endpoint.\n* databricks.Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).\n* databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.\n* databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).\n* databricks.Notebook data to export a notebook from Databricks Workspace.\n* databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).\n\n\n## Import\n\nThe model resource can be imported using the name bash\n\n```sh\n $ pulumi import databricks:index/mlflowModel:MlflowModel this \u003cname\u003e\n```\n\n ",
             "properties": {
                 "creationTimestamp": {
                     "type": "integer"
@@ -17618,6 +17867,52 @@
                     "status": {
                         "type": "string",
                         "description": "Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "databricks:index/modelServing:ModelServing": {
+            "description": "This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst _this = new databricks.ModelServing(\"this\", {config: {\n    servedModels: [\n        {\n            modelName: \"ads-model\",\n            modelVersion: \"2\",\n            name: \"prod_model\",\n            scaleToZeroEnabled: true,\n            workloadSize: \"Small\",\n        },\n        {\n            modelName: \"ads-model\",\n            modelVersion: \"4\",\n            name: \"candidate_model\",\n            scaleToZeroEnabled: false,\n            workloadSize: \"Small\",\n        },\n    ],\n    trafficConfig: {\n        routes: [\n            {\n                servedModelName: \"prod_model\",\n                trafficPercentage: 90,\n            },\n            {\n                servedModelName: \"candidate_model\",\n                trafficPercentage: 10,\n            },\n        ],\n    },\n}});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.ModelServing(\"this\", config=databricks.ModelServingConfigArgs(\n    served_models=[\n        databricks.ModelServingConfigServedModelArgs(\n            model_name=\"ads-model\",\n            model_version=\"2\",\n            name=\"prod_model\",\n            scale_to_zero_enabled=True,\n            workload_size=\"Small\",\n        ),\n        databricks.ModelServingConfigServedModelArgs(\n            model_name=\"ads-model\",\n            model_version=\"4\",\n            name=\"candidate_model\",\n            scale_to_zero_enabled=False,\n            workload_size=\"Small\",\n        ),\n    ],\n    traffic_config=databricks.ModelServingConfigTrafficConfigArgs(\n        routes=[\n            databricks.ModelServingConfigTrafficConfigRouteArgs(\n                served_model_name=\"prod_model\",\n                traffic_percentage=90,\n            ),\n            databricks.ModelServingConfigTrafficConfigRouteArgs(\n                served_model_name=\"candidate_model\",\n                traffic_percentage=10,\n            ),\n        ],\n    ),\n))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = new Databricks.ModelServing(\"this\", new()\n    {\n        Config = new Databricks.Inputs.ModelServingConfigArgs\n        {\n            ServedModels = new[]\n            {\n                new Databricks.Inputs.ModelServingConfigServedModelArgs\n                {\n                    ModelName = \"ads-model\",\n                    ModelVersion = \"2\",\n                    Name = \"prod_model\",\n                    ScaleToZeroEnabled = true,\n                    WorkloadSize = \"Small\",\n                },\n                new Databricks.Inputs.ModelServingConfigServedModelArgs\n                {\n                    ModelName = \"ads-model\",\n                    ModelVersion = \"4\",\n                    Name = \"candidate_model\",\n                    ScaleToZeroEnabled = false,\n                    WorkloadSize = \"Small\",\n                },\n            },\n            TrafficConfig = new Databricks.Inputs.ModelServingConfigTrafficConfigArgs\n            {\n                Routes = new[]\n                {\n                    new Databricks.Inputs.ModelServingConfigTrafficConfigRouteArgs\n                    {\n                        ServedModelName = \"prod_model\",\n                        TrafficPercentage = 90,\n                    },\n                    new Databricks.Inputs.ModelServingConfigTrafficConfigRouteArgs\n                    {\n                        ServedModelName = \"candidate_model\",\n                        TrafficPercentage = 10,\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewModelServing(ctx, \"this\", \u0026databricks.ModelServingArgs{\n\t\t\tConfig: \u0026databricks.ModelServingConfigArgs{\n\t\t\t\tServedModels: databricks.ModelServingConfigServedModelArray{\n\t\t\t\t\t\u0026databricks.ModelServingConfigServedModelArgs{\n\t\t\t\t\t\tModelName:          pulumi.String(\"ads-model\"),\n\t\t\t\t\t\tModelVersion:       pulumi.String(\"2\"),\n\t\t\t\t\t\tName:               pulumi.String(\"prod_model\"),\n\t\t\t\t\t\tScaleToZeroEnabled: pulumi.Bool(true),\n\t\t\t\t\t\tWorkloadSize:       pulumi.String(\"Small\"),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026databricks.ModelServingConfigServedModelArgs{\n\t\t\t\t\t\tModelName:          pulumi.String(\"ads-model\"),\n\t\t\t\t\t\tModelVersion:       pulumi.String(\"4\"),\n\t\t\t\t\t\tName:               pulumi.String(\"candidate_model\"),\n\t\t\t\t\t\tScaleToZeroEnabled: pulumi.Bool(false),\n\t\t\t\t\t\tWorkloadSize:       pulumi.String(\"Small\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tTrafficConfig: \u0026databricks.ModelServingConfigTrafficConfigArgs{\n\t\t\t\t\tRoutes: databricks.ModelServingConfigTrafficConfigRouteArray{\n\t\t\t\t\t\t\u0026databricks.ModelServingConfigTrafficConfigRouteArgs{\n\t\t\t\t\t\t\tServedModelName:   pulumi.String(\"prod_model\"),\n\t\t\t\t\t\t\tTrafficPercentage: pulumi.Int(90),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026databricks.ModelServingConfigTrafficConfigRouteArgs{\n\t\t\t\t\t\t\tServedModelName:   pulumi.String(\"candidate_model\"),\n\t\t\t\t\t\t\tTrafficPercentage: pulumi.Int(10),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.ModelServing;\nimport com.pulumi.databricks.ModelServingArgs;\nimport com.pulumi.databricks.inputs.ModelServingConfigArgs;\nimport com.pulumi.databricks.inputs.ModelServingConfigTrafficConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var this_ = new ModelServing(\"this\", ModelServingArgs.builder()        \n            .config(ModelServingConfigArgs.builder()\n                .servedModels(                \n                    ModelServingConfigServedModelArgs.builder()\n                        .modelName(\"ads-model\")\n                        .modelVersion(\"2\")\n                        .name(\"prod_model\")\n                        .scaleToZeroEnabled(true)\n                        .workloadSize(\"Small\")\n                        .build(),\n                    ModelServingConfigServedModelArgs.builder()\n                        .modelName(\"ads-model\")\n                        .modelVersion(\"4\")\n                        .name(\"candidate_model\")\n                        .scaleToZeroEnabled(false)\n                        .workloadSize(\"Small\")\n                        .build())\n                .trafficConfig(ModelServingConfigTrafficConfigArgs.builder()\n                    .routes(                    \n                        ModelServingConfigTrafficConfigRouteArgs.builder()\n                            .servedModelName(\"prod_model\")\n                            .trafficPercentage(90)\n                            .build(),\n                        ModelServingConfigTrafficConfigRouteArgs.builder()\n                            .servedModelName(\"candidate_model\")\n                            .trafficPercentage(10)\n                            .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  this:\n    type: databricks:ModelServing\n    properties:\n      config:\n        servedModels:\n          - modelName: ads-model\n            modelVersion: '2'\n            name: prod_model\n            scaleToZeroEnabled: true\n            workloadSize: Small\n          - modelName: ads-model\n            modelVersion: '4'\n            name: candidate_model\n            scaleToZeroEnabled: false\n            workloadSize: Small\n        trafficConfig:\n          routes:\n            - servedModelName: prod_model\n              trafficPercentage: 90\n            - servedModelName: candidate_model\n              trafficPercentage: 10\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).\n* databricks.MlflowModel to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.\n* databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).\n* databricks.Notebook data to export a notebook from Databricks Workspace.\n* databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).\n\n\n## Import\n\nThe model serving resource can be imported using the name of the endpoint. bash\n\n```sh\n $ pulumi import databricks:index/modelServing:ModelServing this \u003cmodel-serving-endpoint-name\u003e\n```\n\n ",
+            "properties": {
+                "config": {
+                    "$ref": "#/types/databricks:index/ModelServingConfig:ModelServingConfig",
+                    "description": "The model serving endpoint configuration.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.\n"
+                }
+            },
+            "required": [
+                "config",
+                "name"
+            ],
+            "inputProperties": {
+                "config": {
+                    "$ref": "#/types/databricks:index/ModelServingConfig:ModelServingConfig",
+                    "description": "The model serving endpoint configuration.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "config"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ModelServing resources.\n",
+                "properties": {
+                    "config": {
+                        "$ref": "#/types/databricks:index/ModelServingConfig:ModelServingConfig",
+                        "description": "The model serving endpoint configuration.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -21335,7 +21630,8 @@
                     "type": "string"
                 },
                 "schedule": {
-                    "$ref": "#/types/databricks:index/SqlQuerySchedule:SqlQuerySchedule"
+                    "$ref": "#/types/databricks:index/SqlQuerySchedule:SqlQuerySchedule",
+                    "deprecationMessage": "Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`."
                 },
                 "tags": {
                     "type": "array",
@@ -21376,7 +21672,8 @@
                     "type": "string"
                 },
                 "schedule": {
-                    "$ref": "#/types/databricks:index/SqlQuerySchedule:SqlQuerySchedule"
+                    "$ref": "#/types/databricks:index/SqlQuerySchedule:SqlQuerySchedule",
+                    "deprecationMessage": "Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`."
                 },
                 "tags": {
                     "type": "array",
@@ -21418,7 +21715,8 @@
                         "type": "string"
                     },
                     "schedule": {
-                        "$ref": "#/types/databricks:index/SqlQuerySchedule:SqlQuerySchedule"
+                        "$ref": "#/types/databricks:index/SqlQuerySchedule:SqlQuerySchedule",
+                        "deprecationMessage": "Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`."
                     },
                     "tags": {
                         "type": "array",
@@ -21630,7 +21928,7 @@
             }
         },
         "databricks:index/storageCredential:StorageCredential": {
-            "description": "To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:\n\n- `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.\n- databricks.ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nFor AWS\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst external = new databricks.StorageCredential(\"external\", {\n    awsIamRole: {\n        roleArn: aws_iam_role.external_data_access.arn,\n    },\n    comment: \"Managed by TF\",\n});\nconst externalCreds = new databricks.Grants(\"externalCreds\", {\n    storageCredential: external.id,\n    grants: [{\n        principal: \"Data Engineers\",\n        privileges: [\"CREATE_TABLE\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nexternal = databricks.StorageCredential(\"external\",\n    aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(\n        role_arn=aws_iam_role[\"external_data_access\"][\"arn\"],\n    ),\n    comment=\"Managed by TF\")\nexternal_creds = databricks.Grants(\"externalCreds\",\n    storage_credential=external.id,\n    grants=[databricks.GrantsGrantArgs(\n        principal=\"Data Engineers\",\n        privileges=[\"CREATE_TABLE\"],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var external = new Databricks.StorageCredential(\"external\", new()\n    {\n        AwsIamRole = new Databricks.Inputs.StorageCredentialAwsIamRoleArgs\n        {\n            RoleArn = aws_iam_role.External_data_access.Arn,\n        },\n        Comment = \"Managed by TF\",\n    });\n\n    var externalCreds = new Databricks.Grants(\"externalCreds\", new()\n    {\n        StorageCredential = external.Id,\n        GrantDetails = new[]\n        {\n            new Databricks.Inputs.GrantsGrantArgs\n            {\n                Principal = \"Data Engineers\",\n                Privileges = new[]\n                {\n                    \"CREATE_TABLE\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texternal, err := databricks.NewStorageCredential(ctx, \"external\", \u0026databricks.StorageCredentialArgs{\n\t\t\tAwsIamRole: \u0026databricks.StorageCredentialAwsIamRoleArgs{\n\t\t\t\tRoleArn: pulumi.Any(aws_iam_role.External_data_access.Arn),\n\t\t\t},\n\t\t\tComment: pulumi.String(\"Managed by TF\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGrants(ctx, \"externalCreds\", \u0026databricks.GrantsArgs{\n\t\t\tStorageCredential: external.ID(),\n\t\t\tGrants: databricks.GrantsGrantArray{\n\t\t\t\t\u0026databricks.GrantsGrantArgs{\n\t\t\t\t\tPrincipal: pulumi.String(\"Data Engineers\"),\n\t\t\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"CREATE_TABLE\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.StorageCredential;\nimport com.pulumi.databricks.StorageCredentialArgs;\nimport com.pulumi.databricks.inputs.StorageCredentialAwsIamRoleArgs;\nimport com.pulumi.databricks.Grants;\nimport com.pulumi.databricks.GrantsArgs;\nimport com.pulumi.databricks.inputs.GrantsGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var external = new StorageCredential(\"external\", StorageCredentialArgs.builder()        \n            .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()\n                .roleArn(aws_iam_role.external_data_access().arn())\n                .build())\n            .comment(\"Managed by TF\")\n            .build());\n\n        var externalCreds = new Grants(\"externalCreds\", GrantsArgs.builder()        \n            .storageCredential(external.id())\n            .grants(GrantsGrantArgs.builder()\n                .principal(\"Data Engineers\")\n                .privileges(\"CREATE_TABLE\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  external:\n    type: databricks:StorageCredential\n    properties:\n      awsIamRole:\n        roleArn: ${aws_iam_role.external_data_access.arn}\n      comment: Managed by TF\n  externalCreds:\n    type: databricks:Grants\n    properties:\n      storageCredential: ${external.id}\n      grants:\n        - principal: Data Engineers\n          privileges:\n            - CREATE_TABLE\n```\n\nFor Azure\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azure from \"@pulumi/azure\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst this = azure.core.getResourceGroup({\n    name: \"example-rg\",\n});\nconst example = new azure.databricks.AccessConnector(\"example\", {\n    resourceGroupName: azurerm_resource_group[\"this\"].name,\n    location: azurerm_resource_group[\"this\"].location,\n    identity: {\n        type: \"SystemAssigned\",\n    },\n    tags: {\n        Environment: \"Production\",\n    },\n});\nconst externalMi = new databricks.StorageCredential(\"externalMi\", {\n    azureManagedIdentity: {\n        accessConnectorId: example.id,\n    },\n    comment: \"Managed identity credential managed by TF\",\n});\nconst externalCreds = new databricks.Grants(\"externalCreds\", {\n    storageCredential: databricks_storage_credential.external.id,\n    grants: [{\n        principal: \"Data Engineers\",\n        privileges: [\"CREATE_TABLE\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_azure as azure\nimport pulumi_databricks as databricks\n\nthis = azure.core.get_resource_group(name=\"example-rg\")\nexample = azure.databricks.AccessConnector(\"example\",\n    resource_group_name=azurerm_resource_group[\"this\"][\"name\"],\n    location=azurerm_resource_group[\"this\"][\"location\"],\n    identity=azure.databricks.AccessConnectorIdentityArgs(\n        type=\"SystemAssigned\",\n    ),\n    tags={\n        \"Environment\": \"Production\",\n    })\nexternal_mi = databricks.StorageCredential(\"externalMi\",\n    azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(\n        access_connector_id=example.id,\n    ),\n    comment=\"Managed identity credential managed by TF\")\nexternal_creds = databricks.Grants(\"externalCreds\",\n    storage_credential=databricks_storage_credential[\"external\"][\"id\"],\n    grants=[databricks.GrantsGrantArgs(\n        principal=\"Data Engineers\",\n        privileges=[\"CREATE_TABLE\"],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Azure = Pulumi.Azure;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Azure.Core.GetResourceGroup.Invoke(new()\n    {\n        Name = \"example-rg\",\n    });\n\n    var example = new Azure.DataBricks.AccessConnector(\"example\", new()\n    {\n        ResourceGroupName = azurerm_resource_group.This.Name,\n        Location = azurerm_resource_group.This.Location,\n        Identity = new Azure.DataBricks.Inputs.AccessConnectorIdentityArgs\n        {\n            Type = \"SystemAssigned\",\n        },\n        Tags = \n        {\n            { \"Environment\", \"Production\" },\n        },\n    });\n\n    var externalMi = new Databricks.StorageCredential(\"externalMi\", new()\n    {\n        AzureManagedIdentity = new Databricks.Inputs.StorageCredentialAzureManagedIdentityArgs\n        {\n            AccessConnectorId = example.Id,\n        },\n        Comment = \"Managed identity credential managed by TF\",\n    });\n\n    var externalCreds = new Databricks.Grants(\"externalCreds\", new()\n    {\n        StorageCredential = databricks_storage_credential.External.Id,\n        GrantDetails = new[]\n        {\n            new Databricks.Inputs.GrantsGrantArgs\n            {\n                Principal = \"Data Engineers\",\n                Privileges = new[]\n                {\n                    \"CREATE_TABLE\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azure/sdk/v5/go/azure/core\"\n\t\"github.com/pulumi/pulumi-azure/sdk/v5/go/azure/databricks\"\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := core.LookupResourceGroup(ctx, \u0026core.LookupResourceGroupArgs{\n\t\t\tName: \"example-rg\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texample, err := databricks.NewAccessConnector(ctx, \"example\", \u0026databricks.AccessConnectorArgs{\n\t\t\tResourceGroupName: pulumi.Any(azurerm_resource_group.This.Name),\n\t\t\tLocation:          pulumi.Any(azurerm_resource_group.This.Location),\n\t\t\tIdentity: \u0026databricks.AccessConnectorIdentityArgs{\n\t\t\t\tType: pulumi.String(\"SystemAssigned\"),\n\t\t\t},\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"Environment\": pulumi.String(\"Production\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewStorageCredential(ctx, \"externalMi\", \u0026databricks.StorageCredentialArgs{\n\t\t\tAzureManagedIdentity: \u0026databricks.StorageCredentialAzureManagedIdentityArgs{\n\t\t\t\tAccessConnectorId: example.ID(),\n\t\t\t},\n\t\t\tComment: pulumi.String(\"Managed identity credential managed by TF\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGrants(ctx, \"externalCreds\", \u0026databricks.GrantsArgs{\n\t\t\tStorageCredential: pulumi.Any(databricks_storage_credential.External.Id),\n\t\t\tGrants: databricks.GrantsGrantArray{\n\t\t\t\t\u0026databricks.GrantsGrantArgs{\n\t\t\t\t\tPrincipal: pulumi.String(\"Data Engineers\"),\n\t\t\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"CREATE_TABLE\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azure.core.CoreFunctions;\nimport com.pulumi.azure.core.inputs.GetResourceGroupArgs;\nimport com.pulumi.azure.databricks.AccessConnector;\nimport com.pulumi.azure.databricks.AccessConnectorArgs;\nimport com.pulumi.azure.databricks.inputs.AccessConnectorIdentityArgs;\nimport com.pulumi.databricks.StorageCredential;\nimport com.pulumi.databricks.StorageCredentialArgs;\nimport com.pulumi.databricks.inputs.StorageCredentialAzureManagedIdentityArgs;\nimport com.pulumi.databricks.Grants;\nimport com.pulumi.databricks.GrantsArgs;\nimport com.pulumi.databricks.inputs.GrantsGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = CoreFunctions.getResourceGroup(GetResourceGroupArgs.builder()\n            .name(\"example-rg\")\n            .build());\n\n        var example = new AccessConnector(\"example\", AccessConnectorArgs.builder()        \n            .resourceGroupName(azurerm_resource_group.this().name())\n            .location(azurerm_resource_group.this().location())\n            .identity(AccessConnectorIdentityArgs.builder()\n                .type(\"SystemAssigned\")\n                .build())\n            .tags(Map.of(\"Environment\", \"Production\"))\n            .build());\n\n        var externalMi = new StorageCredential(\"externalMi\", StorageCredentialArgs.builder()        \n            .azureManagedIdentity(StorageCredentialAzureManagedIdentityArgs.builder()\n                .accessConnectorId(example.id())\n                .build())\n            .comment(\"Managed identity credential managed by TF\")\n            .build());\n\n        var externalCreds = new Grants(\"externalCreds\", GrantsArgs.builder()        \n            .storageCredential(databricks_storage_credential.external().id())\n            .grants(GrantsGrantArgs.builder()\n                .principal(\"Data Engineers\")\n                .privileges(\"CREATE_TABLE\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azure:databricks:AccessConnector\n    properties:\n      resourceGroupName: ${azurerm_resource_group.this.name}\n      location: ${azurerm_resource_group.this.location}\n      identity:\n        type: SystemAssigned\n      tags:\n        Environment: Production\n  externalMi:\n    type: databricks:StorageCredential\n    properties:\n      azureManagedIdentity:\n        accessConnectorId: ${example.id}\n      comment: Managed identity credential managed by TF\n  externalCreds:\n    type: databricks:Grants\n    properties:\n      storageCredential: ${databricks_storage_credential.external.id}\n      grants:\n        - principal: Data Engineers\n          privileges:\n            - CREATE_TABLE\nvariables:\n  this:\n    fn::invoke:\n      Function: azure:core:getResourceGroup\n      Arguments:\n        name: example-rg\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThis resource can be imported by namebash\n\n```sh\n $ pulumi import databricks:index/storageCredential:StorageCredential this \u003cname\u003e\n```\n\n ",
+            "description": "To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:\n\n- `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.\n- databricks.ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nFor AWS\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst external = new databricks.StorageCredential(\"external\", {\n    awsIamRole: {\n        roleArn: aws_iam_role.external_data_access.arn,\n    },\n    comment: \"Managed by TF\",\n});\nconst externalCreds = new databricks.Grants(\"externalCreds\", {\n    storageCredential: external.id,\n    grants: [{\n        principal: \"Data Engineers\",\n        privileges: [\"CREATE_TABLE\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nexternal = databricks.StorageCredential(\"external\",\n    aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(\n        role_arn=aws_iam_role[\"external_data_access\"][\"arn\"],\n    ),\n    comment=\"Managed by TF\")\nexternal_creds = databricks.Grants(\"externalCreds\",\n    storage_credential=external.id,\n    grants=[databricks.GrantsGrantArgs(\n        principal=\"Data Engineers\",\n        privileges=[\"CREATE_TABLE\"],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var external = new Databricks.StorageCredential(\"external\", new()\n    {\n        AwsIamRole = new Databricks.Inputs.StorageCredentialAwsIamRoleArgs\n        {\n            RoleArn = aws_iam_role.External_data_access.Arn,\n        },\n        Comment = \"Managed by TF\",\n    });\n\n    var externalCreds = new Databricks.Grants(\"externalCreds\", new()\n    {\n        StorageCredential = external.Id,\n        GrantDetails = new[]\n        {\n            new Databricks.Inputs.GrantsGrantArgs\n            {\n                Principal = \"Data Engineers\",\n                Privileges = new[]\n                {\n                    \"CREATE_TABLE\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texternal, err := databricks.NewStorageCredential(ctx, \"external\", \u0026databricks.StorageCredentialArgs{\n\t\t\tAwsIamRole: \u0026databricks.StorageCredentialAwsIamRoleArgs{\n\t\t\t\tRoleArn: pulumi.Any(aws_iam_role.External_data_access.Arn),\n\t\t\t},\n\t\t\tComment: pulumi.String(\"Managed by TF\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGrants(ctx, \"externalCreds\", \u0026databricks.GrantsArgs{\n\t\t\tStorageCredential: external.ID(),\n\t\t\tGrants: databricks.GrantsGrantArray{\n\t\t\t\t\u0026databricks.GrantsGrantArgs{\n\t\t\t\t\tPrincipal: pulumi.String(\"Data Engineers\"),\n\t\t\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"CREATE_TABLE\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.StorageCredential;\nimport com.pulumi.databricks.StorageCredentialArgs;\nimport com.pulumi.databricks.inputs.StorageCredentialAwsIamRoleArgs;\nimport com.pulumi.databricks.Grants;\nimport com.pulumi.databricks.GrantsArgs;\nimport com.pulumi.databricks.inputs.GrantsGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var external = new StorageCredential(\"external\", StorageCredentialArgs.builder()        \n            .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()\n                .roleArn(aws_iam_role.external_data_access().arn())\n                .build())\n            .comment(\"Managed by TF\")\n            .build());\n\n        var externalCreds = new Grants(\"externalCreds\", GrantsArgs.builder()        \n            .storageCredential(external.id())\n            .grants(GrantsGrantArgs.builder()\n                .principal(\"Data Engineers\")\n                .privileges(\"CREATE_TABLE\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  external:\n    type: databricks:StorageCredential\n    properties:\n      awsIamRole:\n        roleArn: ${aws_iam_role.external_data_access.arn}\n      comment: Managed by TF\n  externalCreds:\n    type: databricks:Grants\n    properties:\n      storageCredential: ${external.id}\n      grants:\n        - principal: Data Engineers\n          privileges:\n            - CREATE_TABLE\n```\n\nFor Azure\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst externalMi = new databricks.StorageCredential(\"externalMi\", {\n    azureManagedIdentity: {\n        accessConnectorId: azurerm_databricks_access_connector.example.id,\n    },\n    comment: \"Managed identity credential managed by TF\",\n});\nconst externalCreds = new databricks.Grants(\"externalCreds\", {\n    storageCredential: databricks_storage_credential.external.id,\n    grants: [{\n        principal: \"Data Engineers\",\n        privileges: [\"CREATE_TABLE\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nexternal_mi = databricks.StorageCredential(\"externalMi\",\n    azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(\n        access_connector_id=azurerm_databricks_access_connector[\"example\"][\"id\"],\n    ),\n    comment=\"Managed identity credential managed by TF\")\nexternal_creds = databricks.Grants(\"externalCreds\",\n    storage_credential=databricks_storage_credential[\"external\"][\"id\"],\n    grants=[databricks.GrantsGrantArgs(\n        principal=\"Data Engineers\",\n        privileges=[\"CREATE_TABLE\"],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var externalMi = new Databricks.StorageCredential(\"externalMi\", new()\n    {\n        AzureManagedIdentity = new Databricks.Inputs.StorageCredentialAzureManagedIdentityArgs\n        {\n            AccessConnectorId = azurerm_databricks_access_connector.Example.Id,\n        },\n        Comment = \"Managed identity credential managed by TF\",\n    });\n\n    var externalCreds = new Databricks.Grants(\"externalCreds\", new()\n    {\n        StorageCredential = databricks_storage_credential.External.Id,\n        GrantDetails = new[]\n        {\n            new Databricks.Inputs.GrantsGrantArgs\n            {\n                Principal = \"Data Engineers\",\n                Privileges = new[]\n                {\n                    \"CREATE_TABLE\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewStorageCredential(ctx, \"externalMi\", \u0026databricks.StorageCredentialArgs{\n\t\t\tAzureManagedIdentity: \u0026databricks.StorageCredentialAzureManagedIdentityArgs{\n\t\t\t\tAccessConnectorId: pulumi.Any(azurerm_databricks_access_connector.Example.Id),\n\t\t\t},\n\t\t\tComment: pulumi.String(\"Managed identity credential managed by TF\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGrants(ctx, \"externalCreds\", \u0026databricks.GrantsArgs{\n\t\t\tStorageCredential: pulumi.Any(databricks_storage_credential.External.Id),\n\t\t\tGrants: databricks.GrantsGrantArray{\n\t\t\t\t\u0026databricks.GrantsGrantArgs{\n\t\t\t\t\tPrincipal: pulumi.String(\"Data Engineers\"),\n\t\t\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"CREATE_TABLE\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.StorageCredential;\nimport com.pulumi.databricks.StorageCredentialArgs;\nimport com.pulumi.databricks.inputs.StorageCredentialAzureManagedIdentityArgs;\nimport com.pulumi.databricks.Grants;\nimport com.pulumi.databricks.GrantsArgs;\nimport com.pulumi.databricks.inputs.GrantsGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var externalMi = new StorageCredential(\"externalMi\", StorageCredentialArgs.builder()        \n            .azureManagedIdentity(StorageCredentialAzureManagedIdentityArgs.builder()\n                .accessConnectorId(azurerm_databricks_access_connector.example().id())\n                .build())\n            .comment(\"Managed identity credential managed by TF\")\n            .build());\n\n        var externalCreds = new Grants(\"externalCreds\", GrantsArgs.builder()        \n            .storageCredential(databricks_storage_credential.external().id())\n            .grants(GrantsGrantArgs.builder()\n                .principal(\"Data Engineers\")\n                .privileges(\"CREATE_TABLE\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  externalMi:\n    type: databricks:StorageCredential\n    properties:\n      azureManagedIdentity:\n        accessConnectorId: ${azurerm_databricks_access_connector.example.id}\n      comment: Managed identity credential managed by TF\n  externalCreds:\n    type: databricks:Grants\n    properties:\n      storageCredential: ${databricks_storage_credential.external.id}\n      grants:\n        - principal: Data Engineers\n          privileges:\n            - CREATE_TABLE\n```\n\nFor GCP\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst external = new databricks.StorageCredential(\"external\", {databricksGcpServiceAccount: {}});\nconst externalCreds = new databricks.Grants(\"externalCreds\", {\n    storageCredential: external.id,\n    grants: [{\n        principal: \"Data Engineers\",\n        privileges: [\"CREATE_TABLE\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nexternal = databricks.StorageCredential(\"external\", databricks_gcp_service_account=databricks.StorageCredentialDatabricksGcpServiceAccountArgs())\nexternal_creds = databricks.Grants(\"externalCreds\",\n    storage_credential=external.id,\n    grants=[databricks.GrantsGrantArgs(\n        principal=\"Data Engineers\",\n        privileges=[\"CREATE_TABLE\"],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var external = new Databricks.StorageCredential(\"external\", new()\n    {\n        DatabricksGcpServiceAccount = null,\n    });\n\n    var externalCreds = new Databricks.Grants(\"externalCreds\", new()\n    {\n        StorageCredential = external.Id,\n        GrantDetails = new[]\n        {\n            new Databricks.Inputs.GrantsGrantArgs\n            {\n                Principal = \"Data Engineers\",\n                Privileges = new[]\n                {\n                    \"CREATE_TABLE\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texternal, err := databricks.NewStorageCredential(ctx, \"external\", \u0026databricks.StorageCredentialArgs{\n\t\t\tDatabricksGcpServiceAccount: nil,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGrants(ctx, \"externalCreds\", \u0026databricks.GrantsArgs{\n\t\t\tStorageCredential: external.ID(),\n\t\t\tGrants: databricks.GrantsGrantArray{\n\t\t\t\t\u0026databricks.GrantsGrantArgs{\n\t\t\t\t\tPrincipal: pulumi.String(\"Data Engineers\"),\n\t\t\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"CREATE_TABLE\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.StorageCredential;\nimport com.pulumi.databricks.StorageCredentialArgs;\nimport com.pulumi.databricks.inputs.StorageCredentialDatabricksGcpServiceAccountArgs;\nimport com.pulumi.databricks.Grants;\nimport com.pulumi.databricks.GrantsArgs;\nimport com.pulumi.databricks.inputs.GrantsGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var external = new StorageCredential(\"external\", StorageCredentialArgs.builder()        \n            .databricksGcpServiceAccount()\n            .build());\n\n        var externalCreds = new Grants(\"externalCreds\", GrantsArgs.builder()        \n            .storageCredential(external.id())\n            .grants(GrantsGrantArgs.builder()\n                .principal(\"Data Engineers\")\n                .privileges(\"CREATE_TABLE\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  external:\n    type: databricks:StorageCredential\n    properties:\n      databricksGcpServiceAccount: {}\n  externalCreds:\n    type: databricks:Grants\n    properties:\n      storageCredential: ${external.id}\n      grants:\n        - principal: Data Engineers\n          privileges:\n            - CREATE_TABLE\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThis resource can be imported by namebash\n\n```sh\n $ pulumi import databricks:index/storageCredential:StorageCredential this \u003cname\u003e\n```\n\n ",
             "properties": {
                 "awsIamRole": {
                     "$ref": "#/types/databricks:index/StorageCredentialAwsIamRole:StorageCredentialAwsIamRole"
@@ -21643,6 +21941,9 @@
                 },
                 "comment": {
                     "type": "string"
+                },
+                "databricksGcpServiceAccount": {
+                    "$ref": "#/types/databricks:index/StorageCredentialDatabricksGcpServiceAccount:StorageCredentialDatabricksGcpServiceAccount"
                 },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
@@ -21660,6 +21961,7 @@
                 }
             },
             "required": [
+                "databricksGcpServiceAccount",
                 "metastoreId",
                 "name",
                 "owner"
@@ -21676,6 +21978,9 @@
                 },
                 "comment": {
                     "type": "string"
+                },
+                "databricksGcpServiceAccount": {
+                    "$ref": "#/types/databricks:index/StorageCredentialDatabricksGcpServiceAccount:StorageCredentialDatabricksGcpServiceAccount"
                 },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
@@ -21707,6 +22012,9 @@
                     },
                     "comment": {
                         "type": "string"
+                    },
+                    "databricksGcpServiceAccount": {
+                        "$ref": "#/types/databricks:index/StorageCredentialDatabricksGcpServiceAccount:StorageCredentialDatabricksGcpServiceAccount"
                     },
                     "gcpServiceAccountKey": {
                         "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
@@ -23183,6 +23491,10 @@
                         "type": "boolean",
                         "description": "if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.\n"
                     },
+                    "id": {
+                        "type": "string",
+                        "description": "node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.\n"
+                    },
                     "isIoCacheEnabled": {
                         "type": "boolean",
                         "description": ". Pick only nodes that have IO Cache. Defaults to *false*.\n"
@@ -23218,9 +23530,6 @@
                     "supportPortForwarding": {
                         "type": "boolean",
                         "description": "Pick only nodes that support port forwarding. Defaults to *false*.\n"
-                    },
-                    "vcpu": {
-                        "type": "boolean"
                     }
                 },
                 "type": "object"
@@ -23242,7 +23551,7 @@
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.\n"
                     },
                     "isIoCacheEnabled": {
                         "type": "boolean"
@@ -23269,9 +23578,6 @@
                         "type": "boolean"
                     },
                     "supportPortForwarding": {
-                        "type": "boolean"
-                    },
-                    "vcpu": {
                         "type": "boolean"
                     }
                 },

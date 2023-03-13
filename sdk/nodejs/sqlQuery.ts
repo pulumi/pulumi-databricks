@@ -50,6 +50,9 @@ export class SqlQuery extends pulumi.CustomResource {
     public readonly parent!: pulumi.Output<string | undefined>;
     public readonly query!: pulumi.Output<string>;
     public readonly runAsRole!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
+     */
     public readonly schedule!: pulumi.Output<outputs.SqlQuerySchedule | undefined>;
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -109,6 +112,9 @@ export interface SqlQueryState {
     parent?: pulumi.Input<string>;
     query?: pulumi.Input<string>;
     runAsRole?: pulumi.Input<string>;
+    /**
+     * @deprecated Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
+     */
     schedule?: pulumi.Input<inputs.SqlQuerySchedule>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -124,6 +130,9 @@ export interface SqlQueryArgs {
     parent?: pulumi.Input<string>;
     query: pulumi.Input<string>;
     runAsRole?: pulumi.Input<string>;
+    /**
+     * @deprecated Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
+     */
     schedule?: pulumi.Input<inputs.SqlQuerySchedule>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

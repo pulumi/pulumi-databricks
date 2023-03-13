@@ -39,30 +39,32 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = azure.core.getResourceGroup({
- *     name: "example-rg",
- * });
- * const example = new azure.databricks.AccessConnector("example", {
- *     resourceGroupName: azurerm_resource_group["this"].name,
- *     location: azurerm_resource_group["this"].location,
- *     identity: {
- *         type: "SystemAssigned",
- *     },
- *     tags: {
- *         Environment: "Production",
- *     },
- * });
  * const externalMi = new databricks.StorageCredential("externalMi", {
  *     azureManagedIdentity: {
- *         accessConnectorId: example.id,
+ *         accessConnectorId: azurerm_databricks_access_connector.example.id,
  *     },
  *     comment: "Managed identity credential managed by TF",
  * });
  * const externalCreds = new databricks.Grants("externalCreds", {
  *     storageCredential: databricks_storage_credential.external.id,
+ *     grants: [{
+ *         principal: "Data Engineers",
+ *         privileges: ["CREATE_TABLE"],
+ *     }],
+ * });
+ * ```
+ *
+ * For GCP
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const external = new databricks.StorageCredential("external", {databricksGcpServiceAccount: {}});
+ * const externalCreds = new databricks.Grants("externalCreds", {
+ *     storageCredential: external.id,
  *     grants: [{
  *         principal: "Data Engineers",
  *         privileges: ["CREATE_TABLE"],
@@ -110,6 +112,7 @@ export class StorageCredential extends pulumi.CustomResource {
     public readonly azureManagedIdentity!: pulumi.Output<outputs.StorageCredentialAzureManagedIdentity | undefined>;
     public readonly azureServicePrincipal!: pulumi.Output<outputs.StorageCredentialAzureServicePrincipal | undefined>;
     public readonly comment!: pulumi.Output<string | undefined>;
+    public readonly databricksGcpServiceAccount!: pulumi.Output<outputs.StorageCredentialDatabricksGcpServiceAccount>;
     public readonly gcpServiceAccountKey!: pulumi.Output<outputs.StorageCredentialGcpServiceAccountKey | undefined>;
     public readonly metastoreId!: pulumi.Output<string>;
     /**
@@ -138,6 +141,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["azureManagedIdentity"] = state ? state.azureManagedIdentity : undefined;
             resourceInputs["azureServicePrincipal"] = state ? state.azureServicePrincipal : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["databricksGcpServiceAccount"] = state ? state.databricksGcpServiceAccount : undefined;
             resourceInputs["gcpServiceAccountKey"] = state ? state.gcpServiceAccountKey : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -148,6 +152,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["azureManagedIdentity"] = args ? args.azureManagedIdentity : undefined;
             resourceInputs["azureServicePrincipal"] = args ? args.azureServicePrincipal : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["databricksGcpServiceAccount"] = args ? args.databricksGcpServiceAccount : undefined;
             resourceInputs["gcpServiceAccountKey"] = args ? args.gcpServiceAccountKey : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -166,6 +171,7 @@ export interface StorageCredentialState {
     azureManagedIdentity?: pulumi.Input<inputs.StorageCredentialAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.StorageCredentialAzureServicePrincipal>;
     comment?: pulumi.Input<string>;
+    databricksGcpServiceAccount?: pulumi.Input<inputs.StorageCredentialDatabricksGcpServiceAccount>;
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
     metastoreId?: pulumi.Input<string>;
     /**
@@ -186,6 +192,7 @@ export interface StorageCredentialArgs {
     azureManagedIdentity?: pulumi.Input<inputs.StorageCredentialAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.StorageCredentialAzureServicePrincipal>;
     comment?: pulumi.Input<string>;
+    databricksGcpServiceAccount?: pulumi.Input<inputs.StorageCredentialDatabricksGcpServiceAccount>;
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
     metastoreId?: pulumi.Input<string>;
     /**

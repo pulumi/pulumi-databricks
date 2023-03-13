@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,12 +19,13 @@ import (
 type MetastoreDataAccess struct {
 	pulumi.CustomResourceState
 
-	AwsIamRole            MetastoreDataAccessAwsIamRolePtrOutput            `pulumi:"awsIamRole"`
-	AzureManagedIdentity  MetastoreDataAccessAzureManagedIdentityPtrOutput  `pulumi:"azureManagedIdentity"`
-	AzureServicePrincipal MetastoreDataAccessAzureServicePrincipalPtrOutput `pulumi:"azureServicePrincipal"`
-	ConfigurationType     pulumi.StringOutput                               `pulumi:"configurationType"`
-	GcpServiceAccountKey  MetastoreDataAccessGcpServiceAccountKeyPtrOutput  `pulumi:"gcpServiceAccountKey"`
-	IsDefault             pulumi.BoolPtrOutput                              `pulumi:"isDefault"`
+	AwsIamRole                  MetastoreDataAccessAwsIamRolePtrOutput                  `pulumi:"awsIamRole"`
+	AzureManagedIdentity        MetastoreDataAccessAzureManagedIdentityPtrOutput        `pulumi:"azureManagedIdentity"`
+	AzureServicePrincipal       MetastoreDataAccessAzureServicePrincipalPtrOutput       `pulumi:"azureServicePrincipal"`
+	ConfigurationType           pulumi.StringOutput                                     `pulumi:"configurationType"`
+	DatabricksGcpServiceAccount MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput `pulumi:"databricksGcpServiceAccount"`
+	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrOutput        `pulumi:"gcpServiceAccountKey"`
+	IsDefault                   pulumi.BoolPtrOutput                                    `pulumi:"isDefault"`
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -63,12 +64,13 @@ func GetMetastoreDataAccess(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MetastoreDataAccess resources.
 type metastoreDataAccessState struct {
-	AwsIamRole            *MetastoreDataAccessAwsIamRole            `pulumi:"awsIamRole"`
-	AzureManagedIdentity  *MetastoreDataAccessAzureManagedIdentity  `pulumi:"azureManagedIdentity"`
-	AzureServicePrincipal *MetastoreDataAccessAzureServicePrincipal `pulumi:"azureServicePrincipal"`
-	ConfigurationType     *string                                   `pulumi:"configurationType"`
-	GcpServiceAccountKey  *MetastoreDataAccessGcpServiceAccountKey  `pulumi:"gcpServiceAccountKey"`
-	IsDefault             *bool                                     `pulumi:"isDefault"`
+	AwsIamRole                  *MetastoreDataAccessAwsIamRole                  `pulumi:"awsIamRole"`
+	AzureManagedIdentity        *MetastoreDataAccessAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
+	AzureServicePrincipal       *MetastoreDataAccessAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
+	ConfigurationType           *string                                         `pulumi:"configurationType"`
+	DatabricksGcpServiceAccount *MetastoreDataAccessDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
+	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
+	IsDefault                   *bool                                           `pulumi:"isDefault"`
 	// Unique identifier of the parent Metastore
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -76,12 +78,13 @@ type metastoreDataAccessState struct {
 }
 
 type MetastoreDataAccessState struct {
-	AwsIamRole            MetastoreDataAccessAwsIamRolePtrInput
-	AzureManagedIdentity  MetastoreDataAccessAzureManagedIdentityPtrInput
-	AzureServicePrincipal MetastoreDataAccessAzureServicePrincipalPtrInput
-	ConfigurationType     pulumi.StringPtrInput
-	GcpServiceAccountKey  MetastoreDataAccessGcpServiceAccountKeyPtrInput
-	IsDefault             pulumi.BoolPtrInput
+	AwsIamRole                  MetastoreDataAccessAwsIamRolePtrInput
+	AzureManagedIdentity        MetastoreDataAccessAzureManagedIdentityPtrInput
+	AzureServicePrincipal       MetastoreDataAccessAzureServicePrincipalPtrInput
+	ConfigurationType           pulumi.StringPtrInput
+	DatabricksGcpServiceAccount MetastoreDataAccessDatabricksGcpServiceAccountPtrInput
+	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
+	IsDefault                   pulumi.BoolPtrInput
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringPtrInput
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -93,12 +96,13 @@ func (MetastoreDataAccessState) ElementType() reflect.Type {
 }
 
 type metastoreDataAccessArgs struct {
-	AwsIamRole            *MetastoreDataAccessAwsIamRole            `pulumi:"awsIamRole"`
-	AzureManagedIdentity  *MetastoreDataAccessAzureManagedIdentity  `pulumi:"azureManagedIdentity"`
-	AzureServicePrincipal *MetastoreDataAccessAzureServicePrincipal `pulumi:"azureServicePrincipal"`
-	ConfigurationType     *string                                   `pulumi:"configurationType"`
-	GcpServiceAccountKey  *MetastoreDataAccessGcpServiceAccountKey  `pulumi:"gcpServiceAccountKey"`
-	IsDefault             *bool                                     `pulumi:"isDefault"`
+	AwsIamRole                  *MetastoreDataAccessAwsIamRole                  `pulumi:"awsIamRole"`
+	AzureManagedIdentity        *MetastoreDataAccessAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
+	AzureServicePrincipal       *MetastoreDataAccessAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
+	ConfigurationType           *string                                         `pulumi:"configurationType"`
+	DatabricksGcpServiceAccount *MetastoreDataAccessDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
+	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
+	IsDefault                   *bool                                           `pulumi:"isDefault"`
 	// Unique identifier of the parent Metastore
 	MetastoreId string `pulumi:"metastoreId"`
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -107,12 +111,13 @@ type metastoreDataAccessArgs struct {
 
 // The set of arguments for constructing a MetastoreDataAccess resource.
 type MetastoreDataAccessArgs struct {
-	AwsIamRole            MetastoreDataAccessAwsIamRolePtrInput
-	AzureManagedIdentity  MetastoreDataAccessAzureManagedIdentityPtrInput
-	AzureServicePrincipal MetastoreDataAccessAzureServicePrincipalPtrInput
-	ConfigurationType     pulumi.StringPtrInput
-	GcpServiceAccountKey  MetastoreDataAccessGcpServiceAccountKeyPtrInput
-	IsDefault             pulumi.BoolPtrInput
+	AwsIamRole                  MetastoreDataAccessAwsIamRolePtrInput
+	AzureManagedIdentity        MetastoreDataAccessAzureManagedIdentityPtrInput
+	AzureServicePrincipal       MetastoreDataAccessAzureServicePrincipalPtrInput
+	ConfigurationType           pulumi.StringPtrInput
+	DatabricksGcpServiceAccount MetastoreDataAccessDatabricksGcpServiceAccountPtrInput
+	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
+	IsDefault                   pulumi.BoolPtrInput
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringInput
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -224,6 +229,12 @@ func (o MetastoreDataAccessOutput) AzureServicePrincipal() MetastoreDataAccessAz
 
 func (o MetastoreDataAccessOutput) ConfigurationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.StringOutput { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+func (o MetastoreDataAccessOutput) DatabricksGcpServiceAccount() MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput {
+		return v.DatabricksGcpServiceAccount
+	}).(MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput)
 }
 
 func (o MetastoreDataAccessOutput) GcpServiceAccountKey() MetastoreDataAccessGcpServiceAccountKeyPtrOutput {

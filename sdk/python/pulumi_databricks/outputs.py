@@ -150,10 +150,15 @@ __all__ = [
     'MetastoreDataAccessAwsIamRole',
     'MetastoreDataAccessAzureManagedIdentity',
     'MetastoreDataAccessAzureServicePrincipal',
+    'MetastoreDataAccessDatabricksGcpServiceAccount',
     'MetastoreDataAccessGcpServiceAccountKey',
     'MlflowModelTag',
     'MlflowWebhookHttpUrlSpec',
     'MlflowWebhookJobSpec',
+    'ModelServingConfig',
+    'ModelServingConfigServedModel',
+    'ModelServingConfigTrafficConfig',
+    'ModelServingConfigTrafficConfigRoute',
     'MountAbfs',
     'MountAdl',
     'MountGs',
@@ -227,6 +232,7 @@ __all__ = [
     'StorageCredentialAwsIamRole',
     'StorageCredentialAzureManagedIdentity',
     'StorageCredentialAzureServicePrincipal',
+    'StorageCredentialDatabricksGcpServiceAccount',
     'StorageCredentialGcpServiceAccountKey',
     'TableColumn',
     'GetClusterClusterInfoResult',
@@ -245,7 +251,10 @@ __all__ = [
     'GetClusterClusterInfoExecutorNodeAwsAttributesResult',
     'GetClusterClusterInfoGcpAttributesResult',
     'GetClusterClusterInfoInitScriptResult',
+    'GetClusterClusterInfoInitScriptAbfssResult',
     'GetClusterClusterInfoInitScriptDbfsResult',
+    'GetClusterClusterInfoInitScriptFileResult',
+    'GetClusterClusterInfoInitScriptGcsResult',
     'GetClusterClusterInfoInitScriptS3Result',
     'GetClusterClusterInfoTerminationReasonResult',
     'GetDbfsFilePathsPathListResult',
@@ -7033,6 +7042,25 @@ class MetastoreDataAccessAzureServicePrincipal(dict):
 
 
 @pulumi.output_type
+class MetastoreDataAccessDatabricksGcpServiceAccount(dict):
+    def __init__(__self__, *,
+                 email: Optional[str] = None):
+        """
+        :param str email: The email of the GCP service account created, to be granted access to relevant buckets.
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[str]:
+        """
+        The email of the GCP service account created, to be granted access to relevant buckets.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
 class MetastoreDataAccessGcpServiceAccountKey(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7057,6 +7085,9 @@ class MetastoreDataAccessGcpServiceAccountKey(dict):
                  email: str,
                  private_key: str,
                  private_key_id: str):
+        """
+        :param str email: The email of the GCP service account created, to be granted access to relevant buckets.
+        """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "private_key", private_key)
         pulumi.set(__self__, "private_key_id", private_key_id)
@@ -7064,6 +7095,9 @@ class MetastoreDataAccessGcpServiceAccountKey(dict):
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        The email of the GCP service account created, to be granted access to relevant buckets.
+        """
         return pulumi.get(self, "email")
 
     @property
@@ -7227,6 +7261,209 @@ class MlflowWebhookJobSpec(dict):
         URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
         """
         return pulumi.get(self, "workspace_url")
+
+
+@pulumi.output_type
+class ModelServingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "servedModels":
+            suggest = "served_models"
+        elif key == "trafficConfig":
+            suggest = "traffic_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelServingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelServingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelServingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 served_models: Sequence['outputs.ModelServingConfigServedModel'],
+                 traffic_config: Optional['outputs.ModelServingConfigTrafficConfig'] = None):
+        """
+        :param Sequence['ModelServingConfigServedModelArgs'] served_models: Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+        :param 'ModelServingConfigTrafficConfigArgs' traffic_config: A single block represents the traffic split configuration amongst the served models.
+        """
+        pulumi.set(__self__, "served_models", served_models)
+        if traffic_config is not None:
+            pulumi.set(__self__, "traffic_config", traffic_config)
+
+    @property
+    @pulumi.getter(name="servedModels")
+    def served_models(self) -> Sequence['outputs.ModelServingConfigServedModel']:
+        """
+        Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+        """
+        return pulumi.get(self, "served_models")
+
+    @property
+    @pulumi.getter(name="trafficConfig")
+    def traffic_config(self) -> Optional['outputs.ModelServingConfigTrafficConfig']:
+        """
+        A single block represents the traffic split configuration amongst the served models.
+        """
+        return pulumi.get(self, "traffic_config")
+
+
+@pulumi.output_type
+class ModelServingConfigServedModel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "modelName":
+            suggest = "model_name"
+        elif key == "modelVersion":
+            suggest = "model_version"
+        elif key == "workloadSize":
+            suggest = "workload_size"
+        elif key == "scaleToZeroEnabled":
+            suggest = "scale_to_zero_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigServedModel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelServingConfigServedModel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelServingConfigServedModel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 model_name: str,
+                 model_version: str,
+                 workload_size: str,
+                 name: Optional[str] = None,
+                 scale_to_zero_enabled: Optional[bool] = None):
+        """
+        :param str model_name: The name of the model in Databricks Model Registry to be served.
+        :param str model_version: The version of the model in Databricks Model Registry to be served.
+        :param str workload_size: The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
+        :param str name: The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
+        :param bool scale_to_zero_enabled: Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+        """
+        pulumi.set(__self__, "model_name", model_name)
+        pulumi.set(__self__, "model_version", model_version)
+        pulumi.set(__self__, "workload_size", workload_size)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if scale_to_zero_enabled is not None:
+            pulumi.set(__self__, "scale_to_zero_enabled", scale_to_zero_enabled)
+
+    @property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> str:
+        """
+        The name of the model in Databricks Model Registry to be served.
+        """
+        return pulumi.get(self, "model_name")
+
+    @property
+    @pulumi.getter(name="modelVersion")
+    def model_version(self) -> str:
+        """
+        The version of the model in Databricks Model Registry to be served.
+        """
+        return pulumi.get(self, "model_version")
+
+    @property
+    @pulumi.getter(name="workloadSize")
+    def workload_size(self) -> str:
+        """
+        The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
+        """
+        return pulumi.get(self, "workload_size")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="scaleToZeroEnabled")
+    def scale_to_zero_enabled(self) -> Optional[bool]:
+        """
+        Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+        """
+        return pulumi.get(self, "scale_to_zero_enabled")
+
+
+@pulumi.output_type
+class ModelServingConfigTrafficConfig(dict):
+    def __init__(__self__, *,
+                 routes: Optional[Sequence['outputs.ModelServingConfigTrafficConfigRoute']] = None):
+        """
+        :param Sequence['ModelServingConfigTrafficConfigRouteArgs'] routes: Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block
+        """
+        if routes is not None:
+            pulumi.set(__self__, "routes", routes)
+
+    @property
+    @pulumi.getter
+    def routes(self) -> Optional[Sequence['outputs.ModelServingConfigTrafficConfigRoute']]:
+        """
+        Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block
+        """
+        return pulumi.get(self, "routes")
+
+
+@pulumi.output_type
+class ModelServingConfigTrafficConfigRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "servedModelName":
+            suggest = "served_model_name"
+        elif key == "trafficPercentage":
+            suggest = "traffic_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigTrafficConfigRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelServingConfigTrafficConfigRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelServingConfigTrafficConfigRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 served_model_name: str,
+                 traffic_percentage: int):
+        """
+        :param str served_model_name: The name of the served model this route configures traffic for. This needs to match the name of a `served_models` block
+        :param int traffic_percentage: The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+        """
+        pulumi.set(__self__, "served_model_name", served_model_name)
+        pulumi.set(__self__, "traffic_percentage", traffic_percentage)
+
+    @property
+    @pulumi.getter(name="servedModelName")
+    def served_model_name(self) -> str:
+        """
+        The name of the served model this route configures traffic for. This needs to match the name of a `served_models` block
+        """
+        return pulumi.get(self, "served_model_name")
+
+    @property
+    @pulumi.getter(name="trafficPercentage")
+    def traffic_percentage(self) -> int:
+        """
+        The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+        """
+        return pulumi.get(self, "traffic_percentage")
 
 
 @pulumi.output_type
@@ -10451,6 +10688,25 @@ class StorageCredentialAzureServicePrincipal(dict):
 
 
 @pulumi.output_type
+class StorageCredentialDatabricksGcpServiceAccount(dict):
+    def __init__(__self__, *,
+                 email: Optional[str] = None):
+        """
+        :param str email: The email of the GCP service account created, to be granted access to relevant buckets.
+        """
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[str]:
+        """
+        The email of the GCP service account created, to be granted access to relevant buckets.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
 class StorageCredentialGcpServiceAccountKey(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -10475,6 +10731,9 @@ class StorageCredentialGcpServiceAccountKey(dict):
                  email: str,
                  private_key: str,
                  private_key_id: str):
+        """
+        :param str email: The email of the GCP service account created, to be granted access to relevant buckets.
+        """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "private_key", private_key)
         pulumi.set(__self__, "private_key_id", private_key_id)
@@ -10482,6 +10741,9 @@ class StorageCredentialGcpServiceAccountKey(dict):
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        The email of the GCP service account created, to be granted access to relevant buckets.
+        """
         return pulumi.get(self, "email")
 
     @property
@@ -11500,12 +11762,26 @@ class GetClusterClusterInfoGcpAttributesResult(dict):
 @pulumi.output_type
 class GetClusterClusterInfoInitScriptResult(dict):
     def __init__(__self__, *,
+                 abfss: Optional['outputs.GetClusterClusterInfoInitScriptAbfssResult'] = None,
                  dbfs: Optional['outputs.GetClusterClusterInfoInitScriptDbfsResult'] = None,
+                 file: Optional['outputs.GetClusterClusterInfoInitScriptFileResult'] = None,
+                 gcs: Optional['outputs.GetClusterClusterInfoInitScriptGcsResult'] = None,
                  s3: Optional['outputs.GetClusterClusterInfoInitScriptS3Result'] = None):
+        if abfss is not None:
+            pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+
+    @property
+    @pulumi.getter
+    def abfss(self) -> Optional['outputs.GetClusterClusterInfoInitScriptAbfssResult']:
+        return pulumi.get(self, "abfss")
 
     @property
     @pulumi.getter
@@ -11514,8 +11790,31 @@ class GetClusterClusterInfoInitScriptResult(dict):
 
     @property
     @pulumi.getter
+    def file(self) -> Optional['outputs.GetClusterClusterInfoInitScriptFileResult']:
+        return pulumi.get(self, "file")
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional['outputs.GetClusterClusterInfoInitScriptGcsResult']:
+        return pulumi.get(self, "gcs")
+
+    @property
+    @pulumi.getter
     def s3(self) -> Optional['outputs.GetClusterClusterInfoInitScriptS3Result']:
         return pulumi.get(self, "s3")
+
+
+@pulumi.output_type
+class GetClusterClusterInfoInitScriptAbfssResult(dict):
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -11527,6 +11826,32 @@ class GetClusterClusterInfoInitScriptDbfsResult(dict):
     @property
     @pulumi.getter
     def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+
+@pulumi.output_type
+class GetClusterClusterInfoInitScriptFileResult(dict):
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
+
+
+@pulumi.output_type
+class GetClusterClusterInfoInitScriptGcsResult(dict):
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
         return pulumi.get(self, "destination")
 
 

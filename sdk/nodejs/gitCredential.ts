@@ -52,8 +52,8 @@ export class GitCredential extends pulumi.CustomResource {
     /**
      * user name at Git provider.
      */
-    public readonly gitUsername!: pulumi.Output<string>;
-    public readonly personalAccessToken!: pulumi.Output<string>;
+    public readonly gitUsername!: pulumi.Output<string | undefined>;
+    public readonly personalAccessToken!: pulumi.Output<string | undefined>;
 
     /**
      * Create a GitCredential resource with the given unique name, arguments, and options.
@@ -77,20 +77,12 @@ export class GitCredential extends pulumi.CustomResource {
             if ((!args || args.gitProvider === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gitProvider'");
             }
-            if ((!args || args.gitUsername === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'gitUsername'");
-            }
-            if ((!args || args.personalAccessToken === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'personalAccessToken'");
-            }
             resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["gitProvider"] = args ? args.gitProvider : undefined;
             resourceInputs["gitUsername"] = args ? args.gitUsername : undefined;
-            resourceInputs["personalAccessToken"] = args?.personalAccessToken ? pulumi.secret(args.personalAccessToken) : undefined;
+            resourceInputs["personalAccessToken"] = args ? args.personalAccessToken : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["personalAccessToken"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(GitCredential.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -129,6 +121,6 @@ export interface GitCredentialArgs {
     /**
      * user name at Git provider.
      */
-    gitUsername: pulumi.Input<string>;
-    personalAccessToken: pulumi.Input<string>;
+    gitUsername?: pulumi.Input<string>;
+    personalAccessToken?: pulumi.Input<string>;
 }

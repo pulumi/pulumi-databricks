@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class StorageCredentialGcpServiceAccountKey
     {
+        /// <summary>
+        /// The email of the GCP service account created, to be granted access to relevant buckets.
+        /// </summary>
         public readonly string Email;
         public readonly string PrivateKey;
         public readonly string PrivateKeyId;

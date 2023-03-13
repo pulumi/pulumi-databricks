@@ -56,7 +56,8 @@ import (
 // The following resources are often used in the same context:
 //
 // * End to end workspace management guide.
-// * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+// * ModelServing to serve this model on a Databricks serving endpoint.
+// * Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
 // * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
 // * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
 // * Notebook data to export a notebook from Databricks Workspace.

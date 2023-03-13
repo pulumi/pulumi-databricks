@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,7 +39,7 @@ type ExternalLocation struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
-	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -89,7 +89,7 @@ type externalLocationState struct {
 	Owner *string `pulumi:"owner"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation *bool `pulumi:"skipValidation"`
-	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
 	Url *string `pulumi:"url"`
 }
 
@@ -105,7 +105,7 @@ type ExternalLocationState struct {
 	Owner pulumi.StringPtrInput
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrInput
-	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
 	Url pulumi.StringPtrInput
 }
 
@@ -125,7 +125,7 @@ type externalLocationArgs struct {
 	Owner *string `pulumi:"owner"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation *bool `pulumi:"skipValidation"`
-	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
 	Url string `pulumi:"url"`
 }
 
@@ -142,7 +142,7 @@ type ExternalLocationArgs struct {
 	Owner pulumi.StringPtrInput
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrInput
-	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
 	Url pulumi.StringInput
 }
 
@@ -262,7 +262,7 @@ func (o ExternalLocationOutput) SkipValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.SkipValidation }).(pulumi.BoolPtrOutput)
 }
 
-// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
 func (o ExternalLocationOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

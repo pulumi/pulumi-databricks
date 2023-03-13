@@ -67,9 +67,21 @@ public final class SqlQueryArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.runAsRole);
     }
 
+    /**
+     * @deprecated
+     * Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
+     * 
+     */
+    @Deprecated /* Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`. */
     @Import(name="schedule")
     private @Nullable Output<SqlQueryScheduleArgs> schedule;
 
+    /**
+     * @deprecated
+     * Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
+     * 
+     */
+    @Deprecated /* Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`. */
     public Optional<Output<SqlQueryScheduleArgs>> schedule() {
         return Optional.ofNullable(this.schedule);
     }
@@ -180,11 +192,27 @@ public final class SqlQueryArgs extends com.pulumi.resources.ResourceArgs {
             return runAsRole(Output.of(runAsRole));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
+         * 
+         */
+        @Deprecated /* Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`. */
         public Builder schedule(@Nullable Output<SqlQueryScheduleArgs> schedule) {
             $.schedule = schedule;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
+         * 
+         */
+        @Deprecated /* Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`. */
         public Builder schedule(SqlQueryScheduleArgs schedule) {
             return schedule(Output.of(schedule));
         }

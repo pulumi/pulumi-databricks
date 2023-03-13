@@ -13,9 +13,17 @@ public final class MetastoreDataAccessGcpServiceAccountKeyArgs extends com.pulum
 
     public static final MetastoreDataAccessGcpServiceAccountKeyArgs Empty = new MetastoreDataAccessGcpServiceAccountKeyArgs();
 
+    /**
+     * The email of the GCP service account created, to be granted access to relevant buckets.
+     * 
+     */
     @Import(name="email", required=true)
     private Output<String> email;
 
+    /**
+     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * 
+     */
     public Output<String> email() {
         return this.email;
     }
@@ -60,11 +68,23 @@ public final class MetastoreDataAccessGcpServiceAccountKeyArgs extends com.pulum
             $ = new MetastoreDataAccessGcpServiceAccountKeyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(Output<String> email) {
             $.email = email;
             return this;
         }
 
+        /**
+         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(String email) {
             return email(Output.of(email));
         }

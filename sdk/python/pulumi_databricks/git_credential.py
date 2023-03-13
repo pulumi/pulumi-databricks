@@ -15,20 +15,22 @@ __all__ = ['GitCredentialArgs', 'GitCredential']
 class GitCredentialArgs:
     def __init__(__self__, *,
                  git_provider: pulumi.Input[str],
-                 git_username: pulumi.Input[str],
-                 personal_access_token: pulumi.Input[str],
-                 force: Optional[pulumi.Input[bool]] = None):
+                 force: Optional[pulumi.Input[bool]] = None,
+                 git_username: Optional[pulumi.Input[str]] = None,
+                 personal_access_token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GitCredential resource.
         :param pulumi.Input[str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-        :param pulumi.Input[str] git_username: user name at Git provider.
         :param pulumi.Input[bool] force: specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+        :param pulumi.Input[str] git_username: user name at Git provider.
         """
         pulumi.set(__self__, "git_provider", git_provider)
-        pulumi.set(__self__, "git_username", git_username)
-        pulumi.set(__self__, "personal_access_token", personal_access_token)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if git_username is not None:
+            pulumi.set(__self__, "git_username", git_username)
+        if personal_access_token is not None:
+            pulumi.set(__self__, "personal_access_token", personal_access_token)
 
     @property
     @pulumi.getter(name="gitProvider")
@@ -43,27 +45,6 @@ class GitCredentialArgs:
         pulumi.set(self, "git_provider", value)
 
     @property
-    @pulumi.getter(name="gitUsername")
-    def git_username(self) -> pulumi.Input[str]:
-        """
-        user name at Git provider.
-        """
-        return pulumi.get(self, "git_username")
-
-    @git_username.setter
-    def git_username(self, value: pulumi.Input[str]):
-        pulumi.set(self, "git_username", value)
-
-    @property
-    @pulumi.getter(name="personalAccessToken")
-    def personal_access_token(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "personal_access_token")
-
-    @personal_access_token.setter
-    def personal_access_token(self, value: pulumi.Input[str]):
-        pulumi.set(self, "personal_access_token", value)
-
-    @property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -74,6 +55,27 @@ class GitCredentialArgs:
     @force.setter
     def force(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="gitUsername")
+    def git_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        user name at Git provider.
+        """
+        return pulumi.get(self, "git_username")
+
+    @git_username.setter
+    def git_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "git_username", value)
+
+    @property
+    @pulumi.getter(name="personalAccessToken")
+    def personal_access_token(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "personal_access_token")
+
+    @personal_access_token.setter
+    def personal_access_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "personal_access_token", value)
 
 
 @pulumi.input_type
@@ -216,14 +218,8 @@ class GitCredential(pulumi.CustomResource):
             if git_provider is None and not opts.urn:
                 raise TypeError("Missing required property 'git_provider'")
             __props__.__dict__["git_provider"] = git_provider
-            if git_username is None and not opts.urn:
-                raise TypeError("Missing required property 'git_username'")
             __props__.__dict__["git_username"] = git_username
-            if personal_access_token is None and not opts.urn:
-                raise TypeError("Missing required property 'personal_access_token'")
-            __props__.__dict__["personal_access_token"] = None if personal_access_token is None else pulumi.Output.secret(personal_access_token)
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["personalAccessToken"])
-        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
+            __props__.__dict__["personal_access_token"] = personal_access_token
         super(GitCredential, __self__).__init__(
             'databricks:index/gitCredential:GitCredential',
             resource_name,
@@ -277,7 +273,7 @@ class GitCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gitUsername")
-    def git_username(self) -> pulumi.Output[str]:
+    def git_username(self) -> pulumi.Output[Optional[str]]:
         """
         user name at Git provider.
         """
@@ -285,6 +281,6 @@ class GitCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="personalAccessToken")
-    def personal_access_token(self) -> pulumi.Output[str]:
+    def personal_access_token(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "personal_access_token")
 

@@ -50,7 +50,8 @@ namespace Pulumi.Databricks
     /// The following resources are often used in the same context:
     /// 
     /// * End to end workspace management guide.
-    /// * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+    /// * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+    /// * databricks.Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
     /// * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
     /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
     /// * databricks.Notebook data to export a notebook from Databricks Workspace.

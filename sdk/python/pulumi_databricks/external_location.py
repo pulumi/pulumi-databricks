@@ -24,7 +24,7 @@ class ExternalLocationArgs:
         """
         The set of arguments for constructing a ExternalLocation resource.
         :param pulumi.Input[str] credential_name: Name of the StorageCredential to use with this External Location.
-        :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+        :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external Location owner.
@@ -59,7 +59,7 @@ class ExternalLocationArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
         return pulumi.get(self, "url")
 
@@ -142,7 +142,7 @@ class _ExternalLocationState:
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external Location owner.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
-        :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+        :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -232,7 +232,7 @@ class _ExternalLocationState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
         return pulumi.get(self, "url")
 
@@ -275,7 +275,7 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external Location owner.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
-        :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+        :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
         ...
     @overload
@@ -368,7 +368,7 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external Location owner.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
-        :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+        :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -432,7 +432,7 @@ class ExternalLocation(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
         return pulumi.get(self, "url")
 

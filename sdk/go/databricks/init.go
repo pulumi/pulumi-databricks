@@ -72,6 +72,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MlflowModel{}
 	case "databricks:index/mlflowWebhook:MlflowWebhook":
 		r = &MlflowWebhook{}
+	case "databricks:index/modelServing:ModelServing":
+		r = &ModelServing{}
 	case "databricks:index/mount:Mount":
 		r = &Mount{}
 	case "databricks:index/mwsCredentials:MwsCredentials":
@@ -306,6 +308,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/mlflowWebhook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/modelServing",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MetastoreDataAccessAwsIamRoleArgs;
 import com.pulumi.databricks.inputs.MetastoreDataAccessAzureManagedIdentityArgs;
 import com.pulumi.databricks.inputs.MetastoreDataAccessAzureServicePrincipalArgs;
+import com.pulumi.databricks.inputs.MetastoreDataAccessDatabricksGcpServiceAccountArgs;
 import com.pulumi.databricks.inputs.MetastoreDataAccessGcpServiceAccountKeyArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -46,6 +47,13 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
 
     public Optional<Output<String>> configurationType() {
         return Optional.ofNullable(this.configurationType);
+    }
+
+    @Import(name="databricksGcpServiceAccount")
+    private @Nullable Output<MetastoreDataAccessDatabricksGcpServiceAccountArgs> databricksGcpServiceAccount;
+
+    public Optional<Output<MetastoreDataAccessDatabricksGcpServiceAccountArgs>> databricksGcpServiceAccount() {
+        return Optional.ofNullable(this.databricksGcpServiceAccount);
     }
 
     @Import(name="gcpServiceAccountKey")
@@ -99,6 +107,7 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
         this.azureManagedIdentity = $.azureManagedIdentity;
         this.azureServicePrincipal = $.azureServicePrincipal;
         this.configurationType = $.configurationType;
+        this.databricksGcpServiceAccount = $.databricksGcpServiceAccount;
         this.gcpServiceAccountKey = $.gcpServiceAccountKey;
         this.isDefault = $.isDefault;
         this.metastoreId = $.metastoreId;
@@ -157,6 +166,15 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
 
         public Builder configurationType(String configurationType) {
             return configurationType(Output.of(configurationType));
+        }
+
+        public Builder databricksGcpServiceAccount(@Nullable Output<MetastoreDataAccessDatabricksGcpServiceAccountArgs> databricksGcpServiceAccount) {
+            $.databricksGcpServiceAccount = databricksGcpServiceAccount;
+            return this;
+        }
+
+        public Builder databricksGcpServiceAccount(MetastoreDataAccessDatabricksGcpServiceAccountArgs databricksGcpServiceAccount) {
+            return databricksGcpServiceAccount(Output.of(databricksGcpServiceAccount));
         }
 
         public Builder gcpServiceAccountKey(@Nullable Output<MetastoreDataAccessGcpServiceAccountKeyArgs> gcpServiceAccountKey) {

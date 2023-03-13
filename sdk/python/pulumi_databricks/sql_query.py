@@ -41,6 +41,9 @@ class SqlQueryArgs:
         if run_as_role is not None:
             pulumi.set(__self__, "run_as_role", run_as_role)
         if schedule is not None:
+            warnings.warn("""Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.""", DeprecationWarning)
+            pulumi.log.warn("""schedule is deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.""")
+        if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
@@ -156,6 +159,9 @@ class _SqlQueryState:
             pulumi.set(__self__, "query", query)
         if run_as_role is not None:
             pulumi.set(__self__, "run_as_role", run_as_role)
+        if schedule is not None:
+            warnings.warn("""Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.""", DeprecationWarning)
+            pulumi.log.warn("""schedule is deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.""")
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if tags is not None:
@@ -329,6 +335,9 @@ class SqlQuery(pulumi.CustomResource):
                 raise TypeError("Missing required property 'query'")
             __props__.__dict__["query"] = query
             __props__.__dict__["run_as_role"] = run_as_role
+            if schedule is not None and not opts.urn:
+                warnings.warn("""Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.""", DeprecationWarning)
+                pulumi.log.warn("""schedule is deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.""")
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["tags"] = tags
         super(SqlQuery, __self__).__init__(

@@ -21,6 +21,7 @@ class MetastoreDataAccessArgs:
                  azure_managed_identity: Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']] = None,
                  configuration_type: Optional[pulumi.Input[str]] = None,
+                 databricks_gcp_service_account: Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']] = None,
                  gcp_service_account_key: Optional[pulumi.Input['MetastoreDataAccessGcpServiceAccountKeyArgs']] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -38,6 +39,8 @@ class MetastoreDataAccessArgs:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
         if configuration_type is not None:
             pulumi.set(__self__, "configuration_type", configuration_type)
+        if databricks_gcp_service_account is not None:
+            pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
         if gcp_service_account_key is not None:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if is_default is not None:
@@ -94,6 +97,15 @@ class MetastoreDataAccessArgs:
         pulumi.set(self, "configuration_type", value)
 
     @property
+    @pulumi.getter(name="databricksGcpServiceAccount")
+    def databricks_gcp_service_account(self) -> Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]:
+        return pulumi.get(self, "databricks_gcp_service_account")
+
+    @databricks_gcp_service_account.setter
+    def databricks_gcp_service_account(self, value: Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]):
+        pulumi.set(self, "databricks_gcp_service_account", value)
+
+    @property
     @pulumi.getter(name="gcpServiceAccountKey")
     def gcp_service_account_key(self) -> Optional[pulumi.Input['MetastoreDataAccessGcpServiceAccountKeyArgs']]:
         return pulumi.get(self, "gcp_service_account_key")
@@ -131,6 +143,7 @@ class _MetastoreDataAccessState:
                  azure_managed_identity: Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']] = None,
                  configuration_type: Optional[pulumi.Input[str]] = None,
+                 databricks_gcp_service_account: Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']] = None,
                  gcp_service_account_key: Optional[pulumi.Input['MetastoreDataAccessGcpServiceAccountKeyArgs']] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -148,6 +161,8 @@ class _MetastoreDataAccessState:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
         if configuration_type is not None:
             pulumi.set(__self__, "configuration_type", configuration_type)
+        if databricks_gcp_service_account is not None:
+            pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
         if gcp_service_account_key is not None:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if is_default is not None:
@@ -192,6 +207,15 @@ class _MetastoreDataAccessState:
     @configuration_type.setter
     def configuration_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "configuration_type", value)
+
+    @property
+    @pulumi.getter(name="databricksGcpServiceAccount")
+    def databricks_gcp_service_account(self) -> Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]:
+        return pulumi.get(self, "databricks_gcp_service_account")
+
+    @databricks_gcp_service_account.setter
+    def databricks_gcp_service_account(self, value: Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]):
+        pulumi.set(self, "databricks_gcp_service_account", value)
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")
@@ -245,6 +269,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureManagedIdentityArgs']]] = None,
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureServicePrincipalArgs']]] = None,
                  configuration_type: Optional[pulumi.Input[str]] = None,
+                 databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessGcpServiceAccountKeyArgs']]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -294,6 +319,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureManagedIdentityArgs']]] = None,
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureServicePrincipalArgs']]] = None,
                  configuration_type: Optional[pulumi.Input[str]] = None,
+                 databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessGcpServiceAccountKeyArgs']]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -311,6 +337,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             __props__.__dict__["azure_managed_identity"] = azure_managed_identity
             __props__.__dict__["azure_service_principal"] = azure_service_principal
             __props__.__dict__["configuration_type"] = configuration_type
+            __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
             __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
             __props__.__dict__["is_default"] = is_default
             if metastore_id is None and not opts.urn:
@@ -331,6 +358,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureManagedIdentityArgs']]] = None,
             azure_service_principal: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureServicePrincipalArgs']]] = None,
             configuration_type: Optional[pulumi.Input[str]] = None,
+            databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]] = None,
             gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessGcpServiceAccountKeyArgs']]] = None,
             is_default: Optional[pulumi.Input[bool]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
@@ -353,6 +381,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
         __props__.__dict__["azure_managed_identity"] = azure_managed_identity
         __props__.__dict__["azure_service_principal"] = azure_service_principal
         __props__.__dict__["configuration_type"] = configuration_type
+        __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
         __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
         __props__.__dict__["is_default"] = is_default
         __props__.__dict__["metastore_id"] = metastore_id
@@ -378,6 +407,11 @@ class MetastoreDataAccess(pulumi.CustomResource):
     @pulumi.getter(name="configurationType")
     def configuration_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "configuration_type")
+
+    @property
+    @pulumi.getter(name="databricksGcpServiceAccount")
+    def databricks_gcp_service_account(self) -> pulumi.Output[Optional['outputs.MetastoreDataAccessDatabricksGcpServiceAccount']]:
+        return pulumi.get(self, "databricks_gcp_service_account")
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")

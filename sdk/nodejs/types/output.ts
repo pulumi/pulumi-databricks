@@ -336,12 +336,27 @@ export interface GetClusterClusterInfoGcpAttributes {
 }
 
 export interface GetClusterClusterInfoInitScript {
+    abfss?: outputs.GetClusterClusterInfoInitScriptAbfss;
     dbfs?: outputs.GetClusterClusterInfoInitScriptDbfs;
+    file?: outputs.GetClusterClusterInfoInitScriptFile;
+    gcs?: outputs.GetClusterClusterInfoInitScriptGcs;
     s3?: outputs.GetClusterClusterInfoInitScriptS3;
+}
+
+export interface GetClusterClusterInfoInitScriptAbfss {
+    destination?: string;
 }
 
 export interface GetClusterClusterInfoInitScriptDbfs {
     destination: string;
+}
+
+export interface GetClusterClusterInfoInitScriptFile {
+    destination?: string;
+}
+
+export interface GetClusterClusterInfoInitScriptGcs {
+    destination?: string;
 }
 
 export interface GetClusterClusterInfoInitScriptS3 {
@@ -2282,7 +2297,17 @@ export interface MetastoreDataAccessAzureServicePrincipal {
     directoryId: string;
 }
 
+export interface MetastoreDataAccessDatabricksGcpServiceAccount {
+    /**
+     * The email of the GCP service account created, to be granted access to relevant buckets.
+     */
+    email: string;
+}
+
 export interface MetastoreDataAccessGcpServiceAccountKey {
+    /**
+     * The email of the GCP service account created, to be granted access to relevant buckets.
+     */
     email: string;
     privateKey: string;
     privateKeyId: string;
@@ -2325,6 +2350,58 @@ export interface MlflowWebhookJobSpec {
      * URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
      */
     workspaceUrl?: string;
+}
+
+export interface ModelServingConfig {
+    /**
+     * Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+     */
+    servedModels: outputs.ModelServingConfigServedModel[];
+    /**
+     * A single block represents the traffic split configuration amongst the served models.
+     */
+    trafficConfig?: outputs.ModelServingConfigTrafficConfig;
+}
+
+export interface ModelServingConfigServedModel {
+    /**
+     * The name of the model in Databricks Model Registry to be served.
+     */
+    modelName: string;
+    /**
+     * The version of the model in Databricks Model Registry to be served.
+     */
+    modelVersion: string;
+    /**
+     * The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
+     */
+    name: string;
+    /**
+     * Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+     */
+    scaleToZeroEnabled?: boolean;
+    /**
+     * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
+     */
+    workloadSize: string;
+}
+
+export interface ModelServingConfigTrafficConfig {
+    /**
+     * Each block represents a route that defines traffic to each served model. Each `servedModels` block needs to have a corresponding `routes` block
+     */
+    routes?: outputs.ModelServingConfigTrafficConfigRoute[];
+}
+
+export interface ModelServingConfigTrafficConfigRoute {
+    /**
+     * The name of the served model this route configures traffic for. This needs to match the name of a `servedModels` block
+     */
+    servedModelName: string;
+    /**
+     * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+     */
+    trafficPercentage: number;
 }
 
 export interface MountAbfs {
@@ -2900,7 +2977,17 @@ export interface StorageCredentialAzureServicePrincipal {
     directoryId: string;
 }
 
+export interface StorageCredentialDatabricksGcpServiceAccount {
+    /**
+     * The email of the GCP service account created, to be granted access to relevant buckets.
+     */
+    email: string;
+}
+
 export interface StorageCredentialGcpServiceAccountKey {
+    /**
+     * The email of the GCP service account created, to be granted access to relevant buckets.
+     */
     email: string;
     privateKey: string;
     privateKeyId: string;

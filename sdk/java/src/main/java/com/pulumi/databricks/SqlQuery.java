@@ -71,6 +71,12 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> runAsRole() {
         return Codegen.optional(this.runAsRole);
     }
+    /**
+     * @deprecated
+     * Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
+     * 
+     */
+    @Deprecated /* Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`. */
     @Export(name="schedule", type=SqlQuerySchedule.class, parameters={})
     private Output</* @Nullable */ SqlQuerySchedule> schedule;
 

@@ -20,6 +20,7 @@ class StorageCredentialArgs:
                  azure_managed_identity: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 databricks_gcp_service_account: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']] = None,
                  gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -37,6 +38,8 @@ class StorageCredentialArgs:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if databricks_gcp_service_account is not None:
+            pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
         if gcp_service_account_key is not None:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if metastore_id is not None:
@@ -81,6 +84,15 @@ class StorageCredentialArgs:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="databricksGcpServiceAccount")
+    def databricks_gcp_service_account(self) -> Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']]:
+        return pulumi.get(self, "databricks_gcp_service_account")
+
+    @databricks_gcp_service_account.setter
+    def databricks_gcp_service_account(self, value: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']]):
+        pulumi.set(self, "databricks_gcp_service_account", value)
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")
@@ -132,6 +144,7 @@ class _StorageCredentialState:
                  azure_managed_identity: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 databricks_gcp_service_account: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']] = None,
                  gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -149,6 +162,8 @@ class _StorageCredentialState:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if databricks_gcp_service_account is not None:
+            pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
         if gcp_service_account_key is not None:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if metastore_id is not None:
@@ -193,6 +208,15 @@ class _StorageCredentialState:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="databricksGcpServiceAccount")
+    def databricks_gcp_service_account(self) -> Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']]:
+        return pulumi.get(self, "databricks_gcp_service_account")
+
+    @databricks_gcp_service_account.setter
+    def databricks_gcp_service_account(self, value: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']]):
+        pulumi.set(self, "databricks_gcp_service_account", value)
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")
@@ -246,6 +270,7 @@ class StorageCredential(pulumi.CustomResource):
                  azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureManagedIdentityArgs']]] = None,
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureServicePrincipalArgs']]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['StorageCredentialDatabricksGcpServiceAccountArgs']]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -282,26 +307,30 @@ class StorageCredential(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_azure as azure
         import pulumi_databricks as databricks
 
-        this = azure.core.get_resource_group(name="example-rg")
-        example = azure.databricks.AccessConnector("example",
-            resource_group_name=azurerm_resource_group["this"]["name"],
-            location=azurerm_resource_group["this"]["location"],
-            identity=azure.databricks.AccessConnectorIdentityArgs(
-                type="SystemAssigned",
-            ),
-            tags={
-                "Environment": "Production",
-            })
         external_mi = databricks.StorageCredential("externalMi",
             azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(
-                access_connector_id=example.id,
+                access_connector_id=azurerm_databricks_access_connector["example"]["id"],
             ),
             comment="Managed identity credential managed by TF")
         external_creds = databricks.Grants("externalCreds",
             storage_credential=databricks_storage_credential["external"]["id"],
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=["CREATE_TABLE"],
+            )])
+        ```
+
+        For GCP
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external = databricks.StorageCredential("external", databricks_gcp_service_account=databricks.StorageCredentialDatabricksGcpServiceAccountArgs())
+        external_creds = databricks.Grants("externalCreds",
+            storage_credential=external.id,
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
                 privileges=["CREATE_TABLE"],
@@ -358,26 +387,30 @@ class StorageCredential(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_azure as azure
         import pulumi_databricks as databricks
 
-        this = azure.core.get_resource_group(name="example-rg")
-        example = azure.databricks.AccessConnector("example",
-            resource_group_name=azurerm_resource_group["this"]["name"],
-            location=azurerm_resource_group["this"]["location"],
-            identity=azure.databricks.AccessConnectorIdentityArgs(
-                type="SystemAssigned",
-            ),
-            tags={
-                "Environment": "Production",
-            })
         external_mi = databricks.StorageCredential("externalMi",
             azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(
-                access_connector_id=example.id,
+                access_connector_id=azurerm_databricks_access_connector["example"]["id"],
             ),
             comment="Managed identity credential managed by TF")
         external_creds = databricks.Grants("externalCreds",
             storage_credential=databricks_storage_credential["external"]["id"],
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=["CREATE_TABLE"],
+            )])
+        ```
+
+        For GCP
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external = databricks.StorageCredential("external", databricks_gcp_service_account=databricks.StorageCredentialDatabricksGcpServiceAccountArgs())
+        external_creds = databricks.Grants("externalCreds",
+            storage_credential=external.id,
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
                 privileges=["CREATE_TABLE"],
@@ -411,6 +444,7 @@ class StorageCredential(pulumi.CustomResource):
                  azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureManagedIdentityArgs']]] = None,
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureServicePrincipalArgs']]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['StorageCredentialDatabricksGcpServiceAccountArgs']]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -428,6 +462,7 @@ class StorageCredential(pulumi.CustomResource):
             __props__.__dict__["azure_managed_identity"] = azure_managed_identity
             __props__.__dict__["azure_service_principal"] = azure_service_principal
             __props__.__dict__["comment"] = comment
+            __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
             __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
@@ -446,6 +481,7 @@ class StorageCredential(pulumi.CustomResource):
             azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureManagedIdentityArgs']]] = None,
             azure_service_principal: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureServicePrincipalArgs']]] = None,
             comment: Optional[pulumi.Input[str]] = None,
+            databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['StorageCredentialDatabricksGcpServiceAccountArgs']]] = None,
             gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -468,6 +504,7 @@ class StorageCredential(pulumi.CustomResource):
         __props__.__dict__["azure_managed_identity"] = azure_managed_identity
         __props__.__dict__["azure_service_principal"] = azure_service_principal
         __props__.__dict__["comment"] = comment
+        __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
         __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
@@ -493,6 +530,11 @@ class StorageCredential(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="databricksGcpServiceAccount")
+    def databricks_gcp_service_account(self) -> pulumi.Output['outputs.StorageCredentialDatabricksGcpServiceAccount']:
+        return pulumi.get(self, "databricks_gcp_service_account")
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")
