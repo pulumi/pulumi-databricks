@@ -83,6 +83,21 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable String id;
+
+    /**
+     * @return node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
      * . Pick only nodes that have IO Cache. Defaults to *false*.
      * 
      */
@@ -217,13 +232,6 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.supportPortForwarding);
     }
 
-    @Import(name="vcpu")
-    private @Nullable Boolean vcpu;
-
-    public Optional<Boolean> vcpu() {
-        return Optional.ofNullable(this.vcpu);
-    }
-
     private GetNodeTypePlainArgs() {}
 
     private GetNodeTypePlainArgs(GetNodeTypePlainArgs $) {
@@ -231,6 +239,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         this.fleet = $.fleet;
         this.gbPerCore = $.gbPerCore;
         this.graviton = $.graviton;
+        this.id = $.id;
         this.isIoCacheEnabled = $.isIoCacheEnabled;
         this.localDisk = $.localDisk;
         this.localDiskMinSize = $.localDiskMinSize;
@@ -240,7 +249,6 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         this.photonDriverCapable = $.photonDriverCapable;
         this.photonWorkerCapable = $.photonWorkerCapable;
         this.supportPortForwarding = $.supportPortForwarding;
-        this.vcpu = $.vcpu;
     }
 
     public static Builder builder() {
@@ -303,6 +311,17 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder graviton(@Nullable Boolean graviton) {
             $.graviton = graviton;
+            return this;
+        }
+
+        /**
+         * @param id node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable String id) {
+            $.id = id;
             return this;
         }
 
@@ -402,11 +421,6 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder supportPortForwarding(@Nullable Boolean supportPortForwarding) {
             $.supportPortForwarding = supportPortForwarding;
-            return this;
-        }
-
-        public Builder vcpu(@Nullable Boolean vcpu) {
-            $.vcpu = vcpu;
             return this;
         }
 

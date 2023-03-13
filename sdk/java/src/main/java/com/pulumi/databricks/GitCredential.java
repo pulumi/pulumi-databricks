@@ -12,7 +12,6 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.GitCredentialState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -61,20 +60,20 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="gitUsername", type=String.class, parameters={})
-    private Output<String> gitUsername;
+    private Output</* @Nullable */ String> gitUsername;
 
     /**
      * @return user name at Git provider.
      * 
      */
-    public Output<String> gitUsername() {
-        return this.gitUsername;
+    public Output<Optional<String>> gitUsername() {
+        return Codegen.optional(this.gitUsername);
     }
     @Export(name="personalAccessToken", type=String.class, parameters={})
-    private Output<String> personalAccessToken;
+    private Output</* @Nullable */ String> personalAccessToken;
 
-    public Output<String> personalAccessToken() {
-        return this.personalAccessToken;
+    public Output<Optional<String>> personalAccessToken() {
+        return Codegen.optional(this.personalAccessToken);
     }
 
     /**
@@ -109,9 +108,6 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "personalAccessToken"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

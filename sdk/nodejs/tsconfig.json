@@ -74,6 +74,7 @@
         "mlflowExperiment.ts",
         "mlflowModel.ts",
         "mlflowWebhook.ts",
+        "modelServing.ts",
         "mount.ts",
         "mwsCredentials.ts",
         "mwsCustomerManagedKeys.ts",

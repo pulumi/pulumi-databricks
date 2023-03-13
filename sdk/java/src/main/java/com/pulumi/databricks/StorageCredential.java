@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.StorageCredentialState;
 import com.pulumi.databricks.outputs.StorageCredentialAwsIamRole;
 import com.pulumi.databricks.outputs.StorageCredentialAzureManagedIdentity;
 import com.pulumi.databricks.outputs.StorageCredentialAzureServicePrincipal;
+import com.pulumi.databricks.outputs.StorageCredentialDatabricksGcpServiceAccount;
 import com.pulumi.databricks.outputs.StorageCredentialGcpServiceAccountKey;
 import java.lang.String;
 import java.util.Optional;
@@ -78,11 +79,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.azure.core.CoreFunctions;
- * import com.pulumi.azure.core.inputs.GetResourceGroupArgs;
- * import com.pulumi.azure.databricks.AccessConnector;
- * import com.pulumi.azure.databricks.AccessConnectorArgs;
- * import com.pulumi.azure.databricks.inputs.AccessConnectorIdentityArgs;
  * import com.pulumi.databricks.StorageCredential;
  * import com.pulumi.databricks.StorageCredentialArgs;
  * import com.pulumi.databricks.inputs.StorageCredentialAzureManagedIdentityArgs;
@@ -102,28 +98,57 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var this = CoreFunctions.getResourceGroup(GetResourceGroupArgs.builder()
- *             .name(&#34;example-rg&#34;)
- *             .build());
- * 
- *         var example = new AccessConnector(&#34;example&#34;, AccessConnectorArgs.builder()        
- *             .resourceGroupName(azurerm_resource_group.this().name())
- *             .location(azurerm_resource_group.this().location())
- *             .identity(AccessConnectorIdentityArgs.builder()
- *                 .type(&#34;SystemAssigned&#34;)
- *                 .build())
- *             .tags(Map.of(&#34;Environment&#34;, &#34;Production&#34;))
- *             .build());
- * 
  *         var externalMi = new StorageCredential(&#34;externalMi&#34;, StorageCredentialArgs.builder()        
  *             .azureManagedIdentity(StorageCredentialAzureManagedIdentityArgs.builder()
- *                 .accessConnectorId(example.id())
+ *                 .accessConnectorId(azurerm_databricks_access_connector.example().id())
  *                 .build())
  *             .comment(&#34;Managed identity credential managed by TF&#34;)
  *             .build());
  * 
  *         var externalCreds = new Grants(&#34;externalCreds&#34;, GrantsArgs.builder()        
  *             .storageCredential(databricks_storage_credential.external().id())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal(&#34;Data Engineers&#34;)
+ *                 .privileges(&#34;CREATE_TABLE&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * For GCP
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.StorageCredential;
+ * import com.pulumi.databricks.StorageCredentialArgs;
+ * import com.pulumi.databricks.inputs.StorageCredentialDatabricksGcpServiceAccountArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+ *             .databricksGcpServiceAccount()
+ *             .build());
+ * 
+ *         var externalCreds = new Grants(&#34;externalCreds&#34;, GrantsArgs.builder()        
+ *             .storageCredential(external.id())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal(&#34;Data Engineers&#34;)
  *                 .privileges(&#34;CREATE_TABLE&#34;)
@@ -168,6 +193,12 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
+    }
+    @Export(name="databricksGcpServiceAccount", type=StorageCredentialDatabricksGcpServiceAccount.class, parameters={})
+    private Output<StorageCredentialDatabricksGcpServiceAccount> databricksGcpServiceAccount;
+
+    public Output<StorageCredentialDatabricksGcpServiceAccount> databricksGcpServiceAccount() {
+        return this.databricksGcpServiceAccount;
     }
     @Export(name="gcpServiceAccountKey", type=StorageCredentialGcpServiceAccountKey.class, parameters={})
     private Output</* @Nullable */ StorageCredentialGcpServiceAccountKey> gcpServiceAccountKey;

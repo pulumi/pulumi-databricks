@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.StorageCredentialAwsIamRoleArgs;
 import com.pulumi.databricks.inputs.StorageCredentialAzureManagedIdentityArgs;
 import com.pulumi.databricks.inputs.StorageCredentialAzureServicePrincipalArgs;
+import com.pulumi.databricks.inputs.StorageCredentialDatabricksGcpServiceAccountArgs;
 import com.pulumi.databricks.inputs.StorageCredentialGcpServiceAccountKeyArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -45,6 +46,13 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
+    }
+
+    @Import(name="databricksGcpServiceAccount")
+    private @Nullable Output<StorageCredentialDatabricksGcpServiceAccountArgs> databricksGcpServiceAccount;
+
+    public Optional<Output<StorageCredentialDatabricksGcpServiceAccountArgs>> databricksGcpServiceAccount() {
+        return Optional.ofNullable(this.databricksGcpServiceAccount);
     }
 
     @Import(name="gcpServiceAccountKey")
@@ -98,6 +106,7 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
         this.azureManagedIdentity = $.azureManagedIdentity;
         this.azureServicePrincipal = $.azureServicePrincipal;
         this.comment = $.comment;
+        this.databricksGcpServiceAccount = $.databricksGcpServiceAccount;
         this.gcpServiceAccountKey = $.gcpServiceAccountKey;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
@@ -156,6 +165,15 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
 
         public Builder comment(String comment) {
             return comment(Output.of(comment));
+        }
+
+        public Builder databricksGcpServiceAccount(@Nullable Output<StorageCredentialDatabricksGcpServiceAccountArgs> databricksGcpServiceAccount) {
+            $.databricksGcpServiceAccount = databricksGcpServiceAccount;
+            return this;
+        }
+
+        public Builder databricksGcpServiceAccount(StorageCredentialDatabricksGcpServiceAccountArgs databricksGcpServiceAccount) {
+            return databricksGcpServiceAccount(Output.of(databricksGcpServiceAccount));
         }
 
         public Builder gcpServiceAccountKey(@Nullable Output<StorageCredentialGcpServiceAccountKeyArgs> gcpServiceAccountKey) {

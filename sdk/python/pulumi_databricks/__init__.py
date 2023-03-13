@@ -63,6 +63,7 @@ from .metastore_provider import *
 from .mlflow_experiment import *
 from .mlflow_model import *
 from .mlflow_webhook import *
+from .model_serving import *
 from .mount import *
 from .mws_credentials import *
 from .mws_customer_managed_keys import *
@@ -322,6 +323,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/mlflowWebhook:MlflowWebhook": "MlflowWebhook"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/modelServing",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/modelServing:ModelServing": "ModelServing"
   }
  },
  {

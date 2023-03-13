@@ -68,7 +68,7 @@ export class ExternalLocation extends pulumi.CustomResource {
      */
     public readonly skipValidation!: pulumi.Output<boolean | undefined>;
     /**
-     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      */
     public readonly url!: pulumi.Output<string>;
 
@@ -139,7 +139,7 @@ export interface ExternalLocationState {
      */
     skipValidation?: pulumi.Input<boolean>;
     /**
-     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      */
     url?: pulumi.Input<string>;
 }
@@ -170,7 +170,7 @@ export interface ExternalLocationArgs {
      */
     skipValidation?: pulumi.Input<boolean>;
     /**
-     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure).
+     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      */
     url: pulumi.Input<string>;
 }

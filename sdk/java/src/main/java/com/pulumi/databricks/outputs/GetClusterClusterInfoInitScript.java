@@ -4,7 +4,10 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetClusterClusterInfoInitScriptAbfss;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoInitScriptDbfs;
+import com.pulumi.databricks.outputs.GetClusterClusterInfoInitScriptFile;
+import com.pulumi.databricks.outputs.GetClusterClusterInfoInitScriptGcs;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoInitScriptS3;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,12 +15,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterClusterInfoInitScript {
+    private @Nullable GetClusterClusterInfoInitScriptAbfss abfss;
     private @Nullable GetClusterClusterInfoInitScriptDbfs dbfs;
+    private @Nullable GetClusterClusterInfoInitScriptFile file;
+    private @Nullable GetClusterClusterInfoInitScriptGcs gcs;
     private @Nullable GetClusterClusterInfoInitScriptS3 s3;
 
     private GetClusterClusterInfoInitScript() {}
+    public Optional<GetClusterClusterInfoInitScriptAbfss> abfss() {
+        return Optional.ofNullable(this.abfss);
+    }
     public Optional<GetClusterClusterInfoInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
+    }
+    public Optional<GetClusterClusterInfoInitScriptFile> file() {
+        return Optional.ofNullable(this.file);
+    }
+    public Optional<GetClusterClusterInfoInitScriptGcs> gcs() {
+        return Optional.ofNullable(this.gcs);
     }
     public Optional<GetClusterClusterInfoInitScriptS3> s3() {
         return Optional.ofNullable(this.s3);
@@ -32,18 +47,39 @@ public final class GetClusterClusterInfoInitScript {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetClusterClusterInfoInitScriptAbfss abfss;
         private @Nullable GetClusterClusterInfoInitScriptDbfs dbfs;
+        private @Nullable GetClusterClusterInfoInitScriptFile file;
+        private @Nullable GetClusterClusterInfoInitScriptGcs gcs;
         private @Nullable GetClusterClusterInfoInitScriptS3 s3;
         public Builder() {}
         public Builder(GetClusterClusterInfoInitScript defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.abfss = defaults.abfss;
     	      this.dbfs = defaults.dbfs;
+    	      this.file = defaults.file;
+    	      this.gcs = defaults.gcs;
     	      this.s3 = defaults.s3;
         }
 
         @CustomType.Setter
+        public Builder abfss(@Nullable GetClusterClusterInfoInitScriptAbfss abfss) {
+            this.abfss = abfss;
+            return this;
+        }
+        @CustomType.Setter
         public Builder dbfs(@Nullable GetClusterClusterInfoInitScriptDbfs dbfs) {
             this.dbfs = dbfs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder file(@Nullable GetClusterClusterInfoInitScriptFile file) {
+            this.file = file;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gcs(@Nullable GetClusterClusterInfoInitScriptGcs gcs) {
+            this.gcs = gcs;
             return this;
         }
         @CustomType.Setter
@@ -53,7 +89,10 @@ public final class GetClusterClusterInfoInitScript {
         }
         public GetClusterClusterInfoInitScript build() {
             final var o = new GetClusterClusterInfoInitScript();
+            o.abfss = abfss;
             o.dbfs = dbfs;
+            o.file = file;
+            o.gcs = gcs;
             o.s3 = s3;
             return o;
         }

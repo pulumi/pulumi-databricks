@@ -50,22 +50,22 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
      * user name at Git provider.
      * 
      */
-    @Import(name="gitUsername", required=true)
-    private Output<String> gitUsername;
+    @Import(name="gitUsername")
+    private @Nullable Output<String> gitUsername;
 
     /**
      * @return user name at Git provider.
      * 
      */
-    public Output<String> gitUsername() {
-        return this.gitUsername;
+    public Optional<Output<String>> gitUsername() {
+        return Optional.ofNullable(this.gitUsername);
     }
 
-    @Import(name="personalAccessToken", required=true)
-    private Output<String> personalAccessToken;
+    @Import(name="personalAccessToken")
+    private @Nullable Output<String> personalAccessToken;
 
-    public Output<String> personalAccessToken() {
-        return this.personalAccessToken;
+    public Optional<Output<String>> personalAccessToken() {
+        return Optional.ofNullable(this.personalAccessToken);
     }
 
     private GitCredentialArgs() {}
@@ -143,7 +143,7 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder gitUsername(Output<String> gitUsername) {
+        public Builder gitUsername(@Nullable Output<String> gitUsername) {
             $.gitUsername = gitUsername;
             return this;
         }
@@ -158,7 +158,7 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
             return gitUsername(Output.of(gitUsername));
         }
 
-        public Builder personalAccessToken(Output<String> personalAccessToken) {
+        public Builder personalAccessToken(@Nullable Output<String> personalAccessToken) {
             $.personalAccessToken = personalAccessToken;
             return this;
         }
@@ -169,8 +169,6 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
 
         public GitCredentialArgs build() {
             $.gitProvider = Objects.requireNonNull($.gitProvider, "expected parameter 'gitProvider' to be non-null");
-            $.gitUsername = Objects.requireNonNull($.gitUsername, "expected parameter 'gitUsername' to be non-null");
-            $.personalAccessToken = Objects.requireNonNull($.personalAccessToken, "expected parameter 'personalAccessToken' to be non-null");
             return $;
         }
     }

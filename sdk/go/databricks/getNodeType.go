@@ -92,6 +92,8 @@ type GetNodeTypeArgs struct {
 	GbPerCore *int `pulumi:"gbPerCore"`
 	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
 	Graviton *bool `pulumi:"graviton"`
+	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+	Id *string `pulumi:"id"`
 	// . Pick only nodes that have IO Cache. Defaults to *false*.
 	IsIoCacheEnabled *bool `pulumi:"isIoCacheEnabled"`
 	// Pick only nodes with local storage. Defaults to *false*.
@@ -110,7 +112,6 @@ type GetNodeTypeArgs struct {
 	PhotonWorkerCapable *bool `pulumi:"photonWorkerCapable"`
 	// Pick only nodes that support port forwarding. Defaults to *false*.
 	SupportPortForwarding *bool `pulumi:"supportPortForwarding"`
-	Vcpu                  *bool `pulumi:"vcpu"`
 }
 
 // A collection of values returned by getNodeType.
@@ -119,7 +120,7 @@ type GetNodeTypeResult struct {
 	Fleet     *bool   `pulumi:"fleet"`
 	GbPerCore *int    `pulumi:"gbPerCore"`
 	Graviton  *bool   `pulumi:"graviton"`
-	// The provider-assigned unique ID for this managed resource.
+	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
 	Id                    string `pulumi:"id"`
 	IsIoCacheEnabled      *bool  `pulumi:"isIoCacheEnabled"`
 	LocalDisk             *bool  `pulumi:"localDisk"`
@@ -130,7 +131,6 @@ type GetNodeTypeResult struct {
 	PhotonDriverCapable   *bool  `pulumi:"photonDriverCapable"`
 	PhotonWorkerCapable   *bool  `pulumi:"photonWorkerCapable"`
 	SupportPortForwarding *bool  `pulumi:"supportPortForwarding"`
-	Vcpu                  *bool  `pulumi:"vcpu"`
 }
 
 func GetNodeTypeOutput(ctx *pulumi.Context, args GetNodeTypeOutputArgs, opts ...pulumi.InvokeOption) GetNodeTypeResultOutput {
@@ -162,6 +162,8 @@ type GetNodeTypeOutputArgs struct {
 	GbPerCore pulumi.IntPtrInput `pulumi:"gbPerCore"`
 	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
 	Graviton pulumi.BoolPtrInput `pulumi:"graviton"`
+	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// . Pick only nodes that have IO Cache. Defaults to *false*.
 	IsIoCacheEnabled pulumi.BoolPtrInput `pulumi:"isIoCacheEnabled"`
 	// Pick only nodes with local storage. Defaults to *false*.
@@ -180,7 +182,6 @@ type GetNodeTypeOutputArgs struct {
 	PhotonWorkerCapable pulumi.BoolPtrInput `pulumi:"photonWorkerCapable"`
 	// Pick only nodes that support port forwarding. Defaults to *false*.
 	SupportPortForwarding pulumi.BoolPtrInput `pulumi:"supportPortForwarding"`
-	Vcpu                  pulumi.BoolPtrInput `pulumi:"vcpu"`
 }
 
 func (GetNodeTypeOutputArgs) ElementType() reflect.Type {
@@ -218,7 +219,7 @@ func (o GetNodeTypeResultOutput) Graviton() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetNodeTypeResult) *bool { return v.Graviton }).(pulumi.BoolPtrOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
 func (o GetNodeTypeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodeTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -257,10 +258,6 @@ func (o GetNodeTypeResultOutput) PhotonWorkerCapable() pulumi.BoolPtrOutput {
 
 func (o GetNodeTypeResultOutput) SupportPortForwarding() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetNodeTypeResult) *bool { return v.SupportPortForwarding }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetNodeTypeResultOutput) Vcpu() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetNodeTypeResult) *bool { return v.Vcpu }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

@@ -37,10 +37,10 @@ namespace Pulumi.Databricks
         /// user name at Git provider.
         /// </summary>
         [Output("gitUsername")]
-        public Output<string> GitUsername { get; private set; } = null!;
+        public Output<string?> GitUsername { get; private set; } = null!;
 
         [Output("personalAccessToken")]
-        public Output<string> PersonalAccessToken { get; private set; } = null!;
+        public Output<string?> PersonalAccessToken { get; private set; } = null!;
 
 
         /// <summary>
@@ -65,10 +65,6 @@ namespace Pulumi.Databricks
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "personalAccessToken",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -107,20 +103,11 @@ namespace Pulumi.Databricks
         /// <summary>
         /// user name at Git provider.
         /// </summary>
-        [Input("gitUsername", required: true)]
-        public Input<string> GitUsername { get; set; } = null!;
+        [Input("gitUsername")]
+        public Input<string>? GitUsername { get; set; }
 
-        [Input("personalAccessToken", required: true)]
-        private Input<string>? _personalAccessToken;
-        public Input<string>? PersonalAccessToken
-        {
-            get => _personalAccessToken;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _personalAccessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("personalAccessToken")]
+        public Input<string>? PersonalAccessToken { get; set; }
 
         public GitCredentialArgs()
         {
@@ -149,16 +136,7 @@ namespace Pulumi.Databricks
         public Input<string>? GitUsername { get; set; }
 
         [Input("personalAccessToken")]
-        private Input<string>? _personalAccessToken;
-        public Input<string>? PersonalAccessToken
-        {
-            get => _personalAccessToken;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _personalAccessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? PersonalAccessToken { get; set; }
 
         public GitCredentialState()
         {

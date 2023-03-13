@@ -59,35 +59,15 @@ namespace Pulumi.Databricks
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
     /// using Databricks = Pulumi.Databricks;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = Azure.Core.GetResourceGroup.Invoke(new()
-    ///     {
-    ///         Name = "example-rg",
-    ///     });
-    /// 
-    ///     var example = new Azure.DataBricks.AccessConnector("example", new()
-    ///     {
-    ///         ResourceGroupName = azurerm_resource_group.This.Name,
-    ///         Location = azurerm_resource_group.This.Location,
-    ///         Identity = new Azure.DataBricks.Inputs.AccessConnectorIdentityArgs
-    ///         {
-    ///             Type = "SystemAssigned",
-    ///         },
-    ///         Tags = 
-    ///         {
-    ///             { "Environment", "Production" },
-    ///         },
-    ///     });
-    /// 
     ///     var externalMi = new Databricks.StorageCredential("externalMi", new()
     ///     {
     ///         AzureManagedIdentity = new Databricks.Inputs.StorageCredentialAzureManagedIdentityArgs
     ///         {
-    ///             AccessConnectorId = example.Id,
+    ///             AccessConnectorId = azurerm_databricks_access_connector.Example.Id,
     ///         },
     ///         Comment = "Managed identity credential managed by TF",
     ///     });
@@ -95,6 +75,39 @@ namespace Pulumi.Databricks
     ///     var externalCreds = new Databricks.Grants("externalCreds", new()
     ///     {
     ///         StorageCredential = databricks_storage_credential.External.Id,
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "Data Engineers",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "CREATE_TABLE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// For GCP
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var external = new Databricks.StorageCredential("external", new()
+    ///     {
+    ///         DatabricksGcpServiceAccount = null,
+    ///     });
+    /// 
+    ///     var externalCreds = new Databricks.Grants("externalCreds", new()
+    ///     {
+    ///         StorageCredential = external.Id,
     ///         GrantDetails = new[]
     ///         {
     ///             new Databricks.Inputs.GrantsGrantArgs
@@ -133,6 +146,9 @@ namespace Pulumi.Databricks
 
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
+
+        [Output("databricksGcpServiceAccount")]
+        public Output<Outputs.StorageCredentialDatabricksGcpServiceAccount> DatabricksGcpServiceAccount { get; private set; } = null!;
 
         [Output("gcpServiceAccountKey")]
         public Output<Outputs.StorageCredentialGcpServiceAccountKey?> GcpServiceAccountKey { get; private set; } = null!;
@@ -210,6 +226,9 @@ namespace Pulumi.Databricks
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        [Input("databricksGcpServiceAccount")]
+        public Input<Inputs.StorageCredentialDatabricksGcpServiceAccountArgs>? DatabricksGcpServiceAccount { get; set; }
+
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.StorageCredentialGcpServiceAccountKeyArgs>? GcpServiceAccountKey { get; set; }
 
@@ -247,6 +266,9 @@ namespace Pulumi.Databricks
 
         [Input("comment")]
         public Input<string>? Comment { get; set; }
+
+        [Input("databricksGcpServiceAccount")]
+        public Input<Inputs.StorageCredentialDatabricksGcpServiceAccountGetArgs>? DatabricksGcpServiceAccount { get; set; }
 
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.StorageCredentialGcpServiceAccountKeyGetArgs>? GcpServiceAccountKey { get; set; }

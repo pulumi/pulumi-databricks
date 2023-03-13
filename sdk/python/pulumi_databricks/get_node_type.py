@@ -21,7 +21,7 @@ class GetNodeTypeResult:
     """
     A collection of values returned by getNodeType.
     """
-    def __init__(__self__, category=None, fleet=None, gb_per_core=None, graviton=None, id=None, is_io_cache_enabled=None, local_disk=None, local_disk_min_size=None, min_cores=None, min_gpus=None, min_memory_gb=None, photon_driver_capable=None, photon_worker_capable=None, support_port_forwarding=None, vcpu=None):
+    def __init__(__self__, category=None, fleet=None, gb_per_core=None, graviton=None, id=None, is_io_cache_enabled=None, local_disk=None, local_disk_min_size=None, min_cores=None, min_gpus=None, min_memory_gb=None, photon_driver_capable=None, photon_worker_capable=None, support_port_forwarding=None):
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
         pulumi.set(__self__, "category", category)
@@ -64,9 +64,6 @@ class GetNodeTypeResult:
         if support_port_forwarding and not isinstance(support_port_forwarding, bool):
             raise TypeError("Expected argument 'support_port_forwarding' to be a bool")
         pulumi.set(__self__, "support_port_forwarding", support_port_forwarding)
-        if vcpu and not isinstance(vcpu, bool):
-            raise TypeError("Expected argument 'vcpu' to be a bool")
-        pulumi.set(__self__, "vcpu", vcpu)
 
     @property
     @pulumi.getter
@@ -92,7 +89,7 @@ class GetNodeTypeResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
         """
         return pulumi.get(self, "id")
 
@@ -141,11 +138,6 @@ class GetNodeTypeResult:
     def support_port_forwarding(self) -> Optional[bool]:
         return pulumi.get(self, "support_port_forwarding")
 
-    @property
-    @pulumi.getter
-    def vcpu(self) -> Optional[bool]:
-        return pulumi.get(self, "vcpu")
-
 
 class AwaitableGetNodeTypeResult(GetNodeTypeResult):
     # pylint: disable=using-constant-test
@@ -166,14 +158,14 @@ class AwaitableGetNodeTypeResult(GetNodeTypeResult):
             min_memory_gb=self.min_memory_gb,
             photon_driver_capable=self.photon_driver_capable,
             photon_worker_capable=self.photon_worker_capable,
-            support_port_forwarding=self.support_port_forwarding,
-            vcpu=self.vcpu)
+            support_port_forwarding=self.support_port_forwarding)
 
 
 def get_node_type(category: Optional[str] = None,
                   fleet: Optional[bool] = None,
                   gb_per_core: Optional[int] = None,
                   graviton: Optional[bool] = None,
+                  id: Optional[str] = None,
                   is_io_cache_enabled: Optional[bool] = None,
                   local_disk: Optional[bool] = None,
                   local_disk_min_size: Optional[int] = None,
@@ -183,7 +175,6 @@ def get_node_type(category: Optional[str] = None,
                   photon_driver_capable: Optional[bool] = None,
                   photon_worker_capable: Optional[bool] = None,
                   support_port_forwarding: Optional[bool] = None,
-                  vcpu: Optional[bool] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeTypeResult:
     """
     ## Example Usage
@@ -229,6 +220,7 @@ def get_node_type(category: Optional[str] = None,
            * `GPU Accelerated` (AWS, Azure)
     :param int gb_per_core: Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
     :param bool graviton: if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+    :param str id: node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
     :param bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to *false*.
     :param bool local_disk: Pick only nodes with local storage. Defaults to *false*.
     :param int local_disk_min_size: Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
@@ -244,6 +236,7 @@ def get_node_type(category: Optional[str] = None,
     __args__['fleet'] = fleet
     __args__['gbPerCore'] = gb_per_core
     __args__['graviton'] = graviton
+    __args__['id'] = id
     __args__['isIoCacheEnabled'] = is_io_cache_enabled
     __args__['localDisk'] = local_disk
     __args__['localDiskMinSize'] = local_disk_min_size
@@ -253,7 +246,6 @@ def get_node_type(category: Optional[str] = None,
     __args__['photonDriverCapable'] = photon_driver_capable
     __args__['photonWorkerCapable'] = photon_worker_capable
     __args__['supportPortForwarding'] = support_port_forwarding
-    __args__['vcpu'] = vcpu
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getNodeType:getNodeType', __args__, opts=opts, typ=GetNodeTypeResult).value
 
@@ -271,8 +263,7 @@ def get_node_type(category: Optional[str] = None,
         min_memory_gb=__ret__.min_memory_gb,
         photon_driver_capable=__ret__.photon_driver_capable,
         photon_worker_capable=__ret__.photon_worker_capable,
-        support_port_forwarding=__ret__.support_port_forwarding,
-        vcpu=__ret__.vcpu)
+        support_port_forwarding=__ret__.support_port_forwarding)
 
 
 @_utilities.lift_output_func(get_node_type)
@@ -280,6 +271,7 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          fleet: Optional[pulumi.Input[Optional[bool]]] = None,
                          gb_per_core: Optional[pulumi.Input[Optional[int]]] = None,
                          graviton: Optional[pulumi.Input[Optional[bool]]] = None,
+                         id: Optional[pulumi.Input[Optional[str]]] = None,
                          is_io_cache_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                          local_disk: Optional[pulumi.Input[Optional[bool]]] = None,
                          local_disk_min_size: Optional[pulumi.Input[Optional[int]]] = None,
@@ -289,7 +281,6 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          photon_driver_capable: Optional[pulumi.Input[Optional[bool]]] = None,
                          photon_worker_capable: Optional[pulumi.Input[Optional[bool]]] = None,
                          support_port_forwarding: Optional[pulumi.Input[Optional[bool]]] = None,
-                         vcpu: Optional[pulumi.Input[Optional[bool]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeTypeResult]:
     """
     ## Example Usage
@@ -335,6 +326,7 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
            * `GPU Accelerated` (AWS, Azure)
     :param int gb_per_core: Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
     :param bool graviton: if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+    :param str id: node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
     :param bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to *false*.
     :param bool local_disk: Pick only nodes with local storage. Defaults to *false*.
     :param int local_disk_min_size: Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.

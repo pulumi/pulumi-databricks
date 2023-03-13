@@ -5,7 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptAbfssArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptDbfsArgs;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptFileArgs;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptGcsArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptS3Args;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,11 +19,32 @@ public final class GetClusterClusterInfoInitScriptArgs extends com.pulumi.resour
 
     public static final GetClusterClusterInfoInitScriptArgs Empty = new GetClusterClusterInfoInitScriptArgs();
 
+    @Import(name="abfss")
+    private @Nullable Output<GetClusterClusterInfoInitScriptAbfssArgs> abfss;
+
+    public Optional<Output<GetClusterClusterInfoInitScriptAbfssArgs>> abfss() {
+        return Optional.ofNullable(this.abfss);
+    }
+
     @Import(name="dbfs")
     private @Nullable Output<GetClusterClusterInfoInitScriptDbfsArgs> dbfs;
 
     public Optional<Output<GetClusterClusterInfoInitScriptDbfsArgs>> dbfs() {
         return Optional.ofNullable(this.dbfs);
+    }
+
+    @Import(name="file")
+    private @Nullable Output<GetClusterClusterInfoInitScriptFileArgs> file;
+
+    public Optional<Output<GetClusterClusterInfoInitScriptFileArgs>> file() {
+        return Optional.ofNullable(this.file);
+    }
+
+    @Import(name="gcs")
+    private @Nullable Output<GetClusterClusterInfoInitScriptGcsArgs> gcs;
+
+    public Optional<Output<GetClusterClusterInfoInitScriptGcsArgs>> gcs() {
+        return Optional.ofNullable(this.gcs);
     }
 
     @Import(name="s3")
@@ -33,7 +57,10 @@ public final class GetClusterClusterInfoInitScriptArgs extends com.pulumi.resour
     private GetClusterClusterInfoInitScriptArgs() {}
 
     private GetClusterClusterInfoInitScriptArgs(GetClusterClusterInfoInitScriptArgs $) {
+        this.abfss = $.abfss;
         this.dbfs = $.dbfs;
+        this.file = $.file;
+        this.gcs = $.gcs;
         this.s3 = $.s3;
     }
 
@@ -55,6 +82,15 @@ public final class GetClusterClusterInfoInitScriptArgs extends com.pulumi.resour
             $ = new GetClusterClusterInfoInitScriptArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder abfss(@Nullable Output<GetClusterClusterInfoInitScriptAbfssArgs> abfss) {
+            $.abfss = abfss;
+            return this;
+        }
+
+        public Builder abfss(GetClusterClusterInfoInitScriptAbfssArgs abfss) {
+            return abfss(Output.of(abfss));
+        }
+
         public Builder dbfs(@Nullable Output<GetClusterClusterInfoInitScriptDbfsArgs> dbfs) {
             $.dbfs = dbfs;
             return this;
@@ -62,6 +98,24 @@ public final class GetClusterClusterInfoInitScriptArgs extends com.pulumi.resour
 
         public Builder dbfs(GetClusterClusterInfoInitScriptDbfsArgs dbfs) {
             return dbfs(Output.of(dbfs));
+        }
+
+        public Builder file(@Nullable Output<GetClusterClusterInfoInitScriptFileArgs> file) {
+            $.file = file;
+            return this;
+        }
+
+        public Builder file(GetClusterClusterInfoInitScriptFileArgs file) {
+            return file(Output.of(file));
+        }
+
+        public Builder gcs(@Nullable Output<GetClusterClusterInfoInitScriptGcsArgs> gcs) {
+            $.gcs = gcs;
+            return this;
+        }
+
+        public Builder gcs(GetClusterClusterInfoInitScriptGcsArgs gcs) {
+            return gcs(Output.of(gcs));
         }
 
         public Builder s3(@Nullable Output<GetClusterClusterInfoInitScriptS3Args> s3) {

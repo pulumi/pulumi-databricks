@@ -22384,7 +22384,145 @@ func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) DirectoryId() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type MetastoreDataAccessDatabricksGcpServiceAccount struct {
+	// The email of the GCP service account created, to be granted access to relevant buckets.
+	Email *string `pulumi:"email"`
+}
+
+// MetastoreDataAccessDatabricksGcpServiceAccountInput is an input type that accepts MetastoreDataAccessDatabricksGcpServiceAccountArgs and MetastoreDataAccessDatabricksGcpServiceAccountOutput values.
+// You can construct a concrete instance of `MetastoreDataAccessDatabricksGcpServiceAccountInput` via:
+//
+//	MetastoreDataAccessDatabricksGcpServiceAccountArgs{...}
+type MetastoreDataAccessDatabricksGcpServiceAccountInput interface {
+	pulumi.Input
+
+	ToMetastoreDataAccessDatabricksGcpServiceAccountOutput() MetastoreDataAccessDatabricksGcpServiceAccountOutput
+	ToMetastoreDataAccessDatabricksGcpServiceAccountOutputWithContext(context.Context) MetastoreDataAccessDatabricksGcpServiceAccountOutput
+}
+
+type MetastoreDataAccessDatabricksGcpServiceAccountArgs struct {
+	// The email of the GCP service account created, to be granted access to relevant buckets.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+}
+
+func (MetastoreDataAccessDatabricksGcpServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreDataAccessDatabricksGcpServiceAccount)(nil)).Elem()
+}
+
+func (i MetastoreDataAccessDatabricksGcpServiceAccountArgs) ToMetastoreDataAccessDatabricksGcpServiceAccountOutput() MetastoreDataAccessDatabricksGcpServiceAccountOutput {
+	return i.ToMetastoreDataAccessDatabricksGcpServiceAccountOutputWithContext(context.Background())
+}
+
+func (i MetastoreDataAccessDatabricksGcpServiceAccountArgs) ToMetastoreDataAccessDatabricksGcpServiceAccountOutputWithContext(ctx context.Context) MetastoreDataAccessDatabricksGcpServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDataAccessDatabricksGcpServiceAccountOutput)
+}
+
+func (i MetastoreDataAccessDatabricksGcpServiceAccountArgs) ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutput() MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput {
+	return i.ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreDataAccessDatabricksGcpServiceAccountArgs) ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDataAccessDatabricksGcpServiceAccountOutput).ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutputWithContext(ctx)
+}
+
+// MetastoreDataAccessDatabricksGcpServiceAccountPtrInput is an input type that accepts MetastoreDataAccessDatabricksGcpServiceAccountArgs, MetastoreDataAccessDatabricksGcpServiceAccountPtr and MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput values.
+// You can construct a concrete instance of `MetastoreDataAccessDatabricksGcpServiceAccountPtrInput` via:
+//
+//	        MetastoreDataAccessDatabricksGcpServiceAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetastoreDataAccessDatabricksGcpServiceAccountPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutput() MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput
+	ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutputWithContext(context.Context) MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput
+}
+
+type metastoreDataAccessDatabricksGcpServiceAccountPtrType MetastoreDataAccessDatabricksGcpServiceAccountArgs
+
+func MetastoreDataAccessDatabricksGcpServiceAccountPtr(v *MetastoreDataAccessDatabricksGcpServiceAccountArgs) MetastoreDataAccessDatabricksGcpServiceAccountPtrInput {
+	return (*metastoreDataAccessDatabricksGcpServiceAccountPtrType)(v)
+}
+
+func (*metastoreDataAccessDatabricksGcpServiceAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreDataAccessDatabricksGcpServiceAccount)(nil)).Elem()
+}
+
+func (i *metastoreDataAccessDatabricksGcpServiceAccountPtrType) ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutput() MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput {
+	return i.ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreDataAccessDatabricksGcpServiceAccountPtrType) ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput)
+}
+
+type MetastoreDataAccessDatabricksGcpServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (MetastoreDataAccessDatabricksGcpServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreDataAccessDatabricksGcpServiceAccount)(nil)).Elem()
+}
+
+func (o MetastoreDataAccessDatabricksGcpServiceAccountOutput) ToMetastoreDataAccessDatabricksGcpServiceAccountOutput() MetastoreDataAccessDatabricksGcpServiceAccountOutput {
+	return o
+}
+
+func (o MetastoreDataAccessDatabricksGcpServiceAccountOutput) ToMetastoreDataAccessDatabricksGcpServiceAccountOutputWithContext(ctx context.Context) MetastoreDataAccessDatabricksGcpServiceAccountOutput {
+	return o
+}
+
+func (o MetastoreDataAccessDatabricksGcpServiceAccountOutput) ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutput() MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput {
+	return o.ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreDataAccessDatabricksGcpServiceAccountOutput) ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreDataAccessDatabricksGcpServiceAccount) *MetastoreDataAccessDatabricksGcpServiceAccount {
+		return &v
+	}).(MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput)
+}
+
+// The email of the GCP service account created, to be granted access to relevant buckets.
+func (o MetastoreDataAccessDatabricksGcpServiceAccountOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreDataAccessDatabricksGcpServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+type MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreDataAccessDatabricksGcpServiceAccount)(nil)).Elem()
+}
+
+func (o MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput) ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutput() MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput {
+	return o
+}
+
+func (o MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput) ToMetastoreDataAccessDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput {
+	return o
+}
+
+func (o MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput) Elem() MetastoreDataAccessDatabricksGcpServiceAccountOutput {
+	return o.ApplyT(func(v *MetastoreDataAccessDatabricksGcpServiceAccount) MetastoreDataAccessDatabricksGcpServiceAccount {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreDataAccessDatabricksGcpServiceAccount
+		return ret
+	}).(MetastoreDataAccessDatabricksGcpServiceAccountOutput)
+}
+
+// The email of the GCP service account created, to be granted access to relevant buckets.
+func (o MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccessDatabricksGcpServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
 type MetastoreDataAccessGcpServiceAccountKey struct {
+	// The email of the GCP service account created, to be granted access to relevant buckets.
 	Email        string `pulumi:"email"`
 	PrivateKey   string `pulumi:"privateKey"`
 	PrivateKeyId string `pulumi:"privateKeyId"`
@@ -22402,6 +22540,7 @@ type MetastoreDataAccessGcpServiceAccountKeyInput interface {
 }
 
 type MetastoreDataAccessGcpServiceAccountKeyArgs struct {
+	// The email of the GCP service account created, to be granted access to relevant buckets.
 	Email        pulumi.StringInput `pulumi:"email"`
 	PrivateKey   pulumi.StringInput `pulumi:"privateKey"`
 	PrivateKeyId pulumi.StringInput `pulumi:"privateKeyId"`
@@ -22484,6 +22623,7 @@ func (o MetastoreDataAccessGcpServiceAccountKeyOutput) ToMetastoreDataAccessGcpS
 	}).(MetastoreDataAccessGcpServiceAccountKeyPtrOutput)
 }
 
+// The email of the GCP service account created, to be granted access to relevant buckets.
 func (o MetastoreDataAccessGcpServiceAccountKeyOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreDataAccessGcpServiceAccountKey) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -22520,6 +22660,7 @@ func (o MetastoreDataAccessGcpServiceAccountKeyPtrOutput) Elem() MetastoreDataAc
 	}).(MetastoreDataAccessGcpServiceAccountKeyOutput)
 }
 
+// The email of the GCP service account created, to be granted access to relevant buckets.
 func (o MetastoreDataAccessGcpServiceAccountKeyPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessGcpServiceAccountKey) *string {
 		if v == nil {
@@ -23014,6 +23155,538 @@ func (o MlflowWebhookJobSpecPtrOutput) WorkspaceUrl() pulumi.StringPtrOutput {
 		}
 		return v.WorkspaceUrl
 	}).(pulumi.StringPtrOutput)
+}
+
+type ModelServingConfig struct {
+	// Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+	ServedModels []ModelServingConfigServedModel `pulumi:"servedModels"`
+	// A single block represents the traffic split configuration amongst the served models.
+	TrafficConfig *ModelServingConfigTrafficConfig `pulumi:"trafficConfig"`
+}
+
+// ModelServingConfigInput is an input type that accepts ModelServingConfigArgs and ModelServingConfigOutput values.
+// You can construct a concrete instance of `ModelServingConfigInput` via:
+//
+//	ModelServingConfigArgs{...}
+type ModelServingConfigInput interface {
+	pulumi.Input
+
+	ToModelServingConfigOutput() ModelServingConfigOutput
+	ToModelServingConfigOutputWithContext(context.Context) ModelServingConfigOutput
+}
+
+type ModelServingConfigArgs struct {
+	// Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+	ServedModels ModelServingConfigServedModelArrayInput `pulumi:"servedModels"`
+	// A single block represents the traffic split configuration amongst the served models.
+	TrafficConfig ModelServingConfigTrafficConfigPtrInput `pulumi:"trafficConfig"`
+}
+
+func (ModelServingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfig)(nil)).Elem()
+}
+
+func (i ModelServingConfigArgs) ToModelServingConfigOutput() ModelServingConfigOutput {
+	return i.ToModelServingConfigOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigArgs) ToModelServingConfigOutputWithContext(ctx context.Context) ModelServingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigOutput)
+}
+
+func (i ModelServingConfigArgs) ToModelServingConfigPtrOutput() ModelServingConfigPtrOutput {
+	return i.ToModelServingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigArgs) ToModelServingConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigOutput).ToModelServingConfigPtrOutputWithContext(ctx)
+}
+
+// ModelServingConfigPtrInput is an input type that accepts ModelServingConfigArgs, ModelServingConfigPtr and ModelServingConfigPtrOutput values.
+// You can construct a concrete instance of `ModelServingConfigPtrInput` via:
+//
+//	        ModelServingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ModelServingConfigPtrInput interface {
+	pulumi.Input
+
+	ToModelServingConfigPtrOutput() ModelServingConfigPtrOutput
+	ToModelServingConfigPtrOutputWithContext(context.Context) ModelServingConfigPtrOutput
+}
+
+type modelServingConfigPtrType ModelServingConfigArgs
+
+func ModelServingConfigPtr(v *ModelServingConfigArgs) ModelServingConfigPtrInput {
+	return (*modelServingConfigPtrType)(v)
+}
+
+func (*modelServingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingConfig)(nil)).Elem()
+}
+
+func (i *modelServingConfigPtrType) ToModelServingConfigPtrOutput() ModelServingConfigPtrOutput {
+	return i.ToModelServingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *modelServingConfigPtrType) ToModelServingConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigPtrOutput)
+}
+
+type ModelServingConfigOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfig)(nil)).Elem()
+}
+
+func (o ModelServingConfigOutput) ToModelServingConfigOutput() ModelServingConfigOutput {
+	return o
+}
+
+func (o ModelServingConfigOutput) ToModelServingConfigOutputWithContext(ctx context.Context) ModelServingConfigOutput {
+	return o
+}
+
+func (o ModelServingConfigOutput) ToModelServingConfigPtrOutput() ModelServingConfigPtrOutput {
+	return o.ToModelServingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ModelServingConfigOutput) ToModelServingConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfig) *ModelServingConfig {
+		return &v
+	}).(ModelServingConfigPtrOutput)
+}
+
+// Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+func (o ModelServingConfigOutput) ServedModels() ModelServingConfigServedModelArrayOutput {
+	return o.ApplyT(func(v ModelServingConfig) []ModelServingConfigServedModel { return v.ServedModels }).(ModelServingConfigServedModelArrayOutput)
+}
+
+// A single block represents the traffic split configuration amongst the served models.
+func (o ModelServingConfigOutput) TrafficConfig() ModelServingConfigTrafficConfigPtrOutput {
+	return o.ApplyT(func(v ModelServingConfig) *ModelServingConfigTrafficConfig { return v.TrafficConfig }).(ModelServingConfigTrafficConfigPtrOutput)
+}
+
+type ModelServingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingConfig)(nil)).Elem()
+}
+
+func (o ModelServingConfigPtrOutput) ToModelServingConfigPtrOutput() ModelServingConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingConfigPtrOutput) ToModelServingConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingConfigPtrOutput) Elem() ModelServingConfigOutput {
+	return o.ApplyT(func(v *ModelServingConfig) ModelServingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ModelServingConfig
+		return ret
+	}).(ModelServingConfigOutput)
+}
+
+// Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+func (o ModelServingConfigPtrOutput) ServedModels() ModelServingConfigServedModelArrayOutput {
+	return o.ApplyT(func(v *ModelServingConfig) []ModelServingConfigServedModel {
+		if v == nil {
+			return nil
+		}
+		return v.ServedModels
+	}).(ModelServingConfigServedModelArrayOutput)
+}
+
+// A single block represents the traffic split configuration amongst the served models.
+func (o ModelServingConfigPtrOutput) TrafficConfig() ModelServingConfigTrafficConfigPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfig) *ModelServingConfigTrafficConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TrafficConfig
+	}).(ModelServingConfigTrafficConfigPtrOutput)
+}
+
+type ModelServingConfigServedModel struct {
+	// The name of the model in Databricks Model Registry to be served.
+	ModelName string `pulumi:"modelName"`
+	// The version of the model in Databricks Model Registry to be served.
+	ModelVersion string `pulumi:"modelVersion"`
+	// The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
+	Name *string `pulumi:"name"`
+	// Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+	ScaleToZeroEnabled *bool `pulumi:"scaleToZeroEnabled"`
+	// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
+	WorkloadSize string `pulumi:"workloadSize"`
+}
+
+// ModelServingConfigServedModelInput is an input type that accepts ModelServingConfigServedModelArgs and ModelServingConfigServedModelOutput values.
+// You can construct a concrete instance of `ModelServingConfigServedModelInput` via:
+//
+//	ModelServingConfigServedModelArgs{...}
+type ModelServingConfigServedModelInput interface {
+	pulumi.Input
+
+	ToModelServingConfigServedModelOutput() ModelServingConfigServedModelOutput
+	ToModelServingConfigServedModelOutputWithContext(context.Context) ModelServingConfigServedModelOutput
+}
+
+type ModelServingConfigServedModelArgs struct {
+	// The name of the model in Databricks Model Registry to be served.
+	ModelName pulumi.StringInput `pulumi:"modelName"`
+	// The version of the model in Databricks Model Registry to be served.
+	ModelVersion pulumi.StringInput `pulumi:"modelVersion"`
+	// The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+	ScaleToZeroEnabled pulumi.BoolPtrInput `pulumi:"scaleToZeroEnabled"`
+	// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
+	WorkloadSize pulumi.StringInput `pulumi:"workloadSize"`
+}
+
+func (ModelServingConfigServedModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigServedModel)(nil)).Elem()
+}
+
+func (i ModelServingConfigServedModelArgs) ToModelServingConfigServedModelOutput() ModelServingConfigServedModelOutput {
+	return i.ToModelServingConfigServedModelOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigServedModelArgs) ToModelServingConfigServedModelOutputWithContext(ctx context.Context) ModelServingConfigServedModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedModelOutput)
+}
+
+// ModelServingConfigServedModelArrayInput is an input type that accepts ModelServingConfigServedModelArray and ModelServingConfigServedModelArrayOutput values.
+// You can construct a concrete instance of `ModelServingConfigServedModelArrayInput` via:
+//
+//	ModelServingConfigServedModelArray{ ModelServingConfigServedModelArgs{...} }
+type ModelServingConfigServedModelArrayInput interface {
+	pulumi.Input
+
+	ToModelServingConfigServedModelArrayOutput() ModelServingConfigServedModelArrayOutput
+	ToModelServingConfigServedModelArrayOutputWithContext(context.Context) ModelServingConfigServedModelArrayOutput
+}
+
+type ModelServingConfigServedModelArray []ModelServingConfigServedModelInput
+
+func (ModelServingConfigServedModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingConfigServedModel)(nil)).Elem()
+}
+
+func (i ModelServingConfigServedModelArray) ToModelServingConfigServedModelArrayOutput() ModelServingConfigServedModelArrayOutput {
+	return i.ToModelServingConfigServedModelArrayOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigServedModelArray) ToModelServingConfigServedModelArrayOutputWithContext(ctx context.Context) ModelServingConfigServedModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedModelArrayOutput)
+}
+
+type ModelServingConfigServedModelOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigServedModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigServedModel)(nil)).Elem()
+}
+
+func (o ModelServingConfigServedModelOutput) ToModelServingConfigServedModelOutput() ModelServingConfigServedModelOutput {
+	return o
+}
+
+func (o ModelServingConfigServedModelOutput) ToModelServingConfigServedModelOutputWithContext(ctx context.Context) ModelServingConfigServedModelOutput {
+	return o
+}
+
+// The name of the model in Databricks Model Registry to be served.
+func (o ModelServingConfigServedModelOutput) ModelName() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelServingConfigServedModel) string { return v.ModelName }).(pulumi.StringOutput)
+}
+
+// The version of the model in Databricks Model Registry to be served.
+func (o ModelServingConfigServedModelOutput) ModelVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelServingConfigServedModel) string { return v.ModelVersion }).(pulumi.StringOutput)
+}
+
+// The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
+func (o ModelServingConfigServedModelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedModel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+func (o ModelServingConfigServedModelOutput) ScaleToZeroEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedModel) *bool { return v.ScaleToZeroEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
+func (o ModelServingConfigServedModelOutput) WorkloadSize() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelServingConfigServedModel) string { return v.WorkloadSize }).(pulumi.StringOutput)
+}
+
+type ModelServingConfigServedModelArrayOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigServedModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingConfigServedModel)(nil)).Elem()
+}
+
+func (o ModelServingConfigServedModelArrayOutput) ToModelServingConfigServedModelArrayOutput() ModelServingConfigServedModelArrayOutput {
+	return o
+}
+
+func (o ModelServingConfigServedModelArrayOutput) ToModelServingConfigServedModelArrayOutputWithContext(ctx context.Context) ModelServingConfigServedModelArrayOutput {
+	return o
+}
+
+func (o ModelServingConfigServedModelArrayOutput) Index(i pulumi.IntInput) ModelServingConfigServedModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingConfigServedModel {
+		return vs[0].([]ModelServingConfigServedModel)[vs[1].(int)]
+	}).(ModelServingConfigServedModelOutput)
+}
+
+type ModelServingConfigTrafficConfig struct {
+	// Each block represents a route that defines traffic to each served model. Each `servedModels` block needs to have a corresponding `routes` block
+	Routes []ModelServingConfigTrafficConfigRoute `pulumi:"routes"`
+}
+
+// ModelServingConfigTrafficConfigInput is an input type that accepts ModelServingConfigTrafficConfigArgs and ModelServingConfigTrafficConfigOutput values.
+// You can construct a concrete instance of `ModelServingConfigTrafficConfigInput` via:
+//
+//	ModelServingConfigTrafficConfigArgs{...}
+type ModelServingConfigTrafficConfigInput interface {
+	pulumi.Input
+
+	ToModelServingConfigTrafficConfigOutput() ModelServingConfigTrafficConfigOutput
+	ToModelServingConfigTrafficConfigOutputWithContext(context.Context) ModelServingConfigTrafficConfigOutput
+}
+
+type ModelServingConfigTrafficConfigArgs struct {
+	// Each block represents a route that defines traffic to each served model. Each `servedModels` block needs to have a corresponding `routes` block
+	Routes ModelServingConfigTrafficConfigRouteArrayInput `pulumi:"routes"`
+}
+
+func (ModelServingConfigTrafficConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigTrafficConfig)(nil)).Elem()
+}
+
+func (i ModelServingConfigTrafficConfigArgs) ToModelServingConfigTrafficConfigOutput() ModelServingConfigTrafficConfigOutput {
+	return i.ToModelServingConfigTrafficConfigOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigTrafficConfigArgs) ToModelServingConfigTrafficConfigOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigTrafficConfigOutput)
+}
+
+func (i ModelServingConfigTrafficConfigArgs) ToModelServingConfigTrafficConfigPtrOutput() ModelServingConfigTrafficConfigPtrOutput {
+	return i.ToModelServingConfigTrafficConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigTrafficConfigArgs) ToModelServingConfigTrafficConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigTrafficConfigOutput).ToModelServingConfigTrafficConfigPtrOutputWithContext(ctx)
+}
+
+// ModelServingConfigTrafficConfigPtrInput is an input type that accepts ModelServingConfigTrafficConfigArgs, ModelServingConfigTrafficConfigPtr and ModelServingConfigTrafficConfigPtrOutput values.
+// You can construct a concrete instance of `ModelServingConfigTrafficConfigPtrInput` via:
+//
+//	        ModelServingConfigTrafficConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ModelServingConfigTrafficConfigPtrInput interface {
+	pulumi.Input
+
+	ToModelServingConfigTrafficConfigPtrOutput() ModelServingConfigTrafficConfigPtrOutput
+	ToModelServingConfigTrafficConfigPtrOutputWithContext(context.Context) ModelServingConfigTrafficConfigPtrOutput
+}
+
+type modelServingConfigTrafficConfigPtrType ModelServingConfigTrafficConfigArgs
+
+func ModelServingConfigTrafficConfigPtr(v *ModelServingConfigTrafficConfigArgs) ModelServingConfigTrafficConfigPtrInput {
+	return (*modelServingConfigTrafficConfigPtrType)(v)
+}
+
+func (*modelServingConfigTrafficConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingConfigTrafficConfig)(nil)).Elem()
+}
+
+func (i *modelServingConfigTrafficConfigPtrType) ToModelServingConfigTrafficConfigPtrOutput() ModelServingConfigTrafficConfigPtrOutput {
+	return i.ToModelServingConfigTrafficConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *modelServingConfigTrafficConfigPtrType) ToModelServingConfigTrafficConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigTrafficConfigPtrOutput)
+}
+
+type ModelServingConfigTrafficConfigOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigTrafficConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigTrafficConfig)(nil)).Elem()
+}
+
+func (o ModelServingConfigTrafficConfigOutput) ToModelServingConfigTrafficConfigOutput() ModelServingConfigTrafficConfigOutput {
+	return o
+}
+
+func (o ModelServingConfigTrafficConfigOutput) ToModelServingConfigTrafficConfigOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigOutput {
+	return o
+}
+
+func (o ModelServingConfigTrafficConfigOutput) ToModelServingConfigTrafficConfigPtrOutput() ModelServingConfigTrafficConfigPtrOutput {
+	return o.ToModelServingConfigTrafficConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ModelServingConfigTrafficConfigOutput) ToModelServingConfigTrafficConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigTrafficConfig) *ModelServingConfigTrafficConfig {
+		return &v
+	}).(ModelServingConfigTrafficConfigPtrOutput)
+}
+
+// Each block represents a route that defines traffic to each served model. Each `servedModels` block needs to have a corresponding `routes` block
+func (o ModelServingConfigTrafficConfigOutput) Routes() ModelServingConfigTrafficConfigRouteArrayOutput {
+	return o.ApplyT(func(v ModelServingConfigTrafficConfig) []ModelServingConfigTrafficConfigRoute { return v.Routes }).(ModelServingConfigTrafficConfigRouteArrayOutput)
+}
+
+type ModelServingConfigTrafficConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigTrafficConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingConfigTrafficConfig)(nil)).Elem()
+}
+
+func (o ModelServingConfigTrafficConfigPtrOutput) ToModelServingConfigTrafficConfigPtrOutput() ModelServingConfigTrafficConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingConfigTrafficConfigPtrOutput) ToModelServingConfigTrafficConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingConfigTrafficConfigPtrOutput) Elem() ModelServingConfigTrafficConfigOutput {
+	return o.ApplyT(func(v *ModelServingConfigTrafficConfig) ModelServingConfigTrafficConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ModelServingConfigTrafficConfig
+		return ret
+	}).(ModelServingConfigTrafficConfigOutput)
+}
+
+// Each block represents a route that defines traffic to each served model. Each `servedModels` block needs to have a corresponding `routes` block
+func (o ModelServingConfigTrafficConfigPtrOutput) Routes() ModelServingConfigTrafficConfigRouteArrayOutput {
+	return o.ApplyT(func(v *ModelServingConfigTrafficConfig) []ModelServingConfigTrafficConfigRoute {
+		if v == nil {
+			return nil
+		}
+		return v.Routes
+	}).(ModelServingConfigTrafficConfigRouteArrayOutput)
+}
+
+type ModelServingConfigTrafficConfigRoute struct {
+	// The name of the served model this route configures traffic for. This needs to match the name of a `servedModels` block
+	ServedModelName string `pulumi:"servedModelName"`
+	// The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+	TrafficPercentage int `pulumi:"trafficPercentage"`
+}
+
+// ModelServingConfigTrafficConfigRouteInput is an input type that accepts ModelServingConfigTrafficConfigRouteArgs and ModelServingConfigTrafficConfigRouteOutput values.
+// You can construct a concrete instance of `ModelServingConfigTrafficConfigRouteInput` via:
+//
+//	ModelServingConfigTrafficConfigRouteArgs{...}
+type ModelServingConfigTrafficConfigRouteInput interface {
+	pulumi.Input
+
+	ToModelServingConfigTrafficConfigRouteOutput() ModelServingConfigTrafficConfigRouteOutput
+	ToModelServingConfigTrafficConfigRouteOutputWithContext(context.Context) ModelServingConfigTrafficConfigRouteOutput
+}
+
+type ModelServingConfigTrafficConfigRouteArgs struct {
+	// The name of the served model this route configures traffic for. This needs to match the name of a `servedModels` block
+	ServedModelName pulumi.StringInput `pulumi:"servedModelName"`
+	// The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+	TrafficPercentage pulumi.IntInput `pulumi:"trafficPercentage"`
+}
+
+func (ModelServingConfigTrafficConfigRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigTrafficConfigRoute)(nil)).Elem()
+}
+
+func (i ModelServingConfigTrafficConfigRouteArgs) ToModelServingConfigTrafficConfigRouteOutput() ModelServingConfigTrafficConfigRouteOutput {
+	return i.ToModelServingConfigTrafficConfigRouteOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigTrafficConfigRouteArgs) ToModelServingConfigTrafficConfigRouteOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigTrafficConfigRouteOutput)
+}
+
+// ModelServingConfigTrafficConfigRouteArrayInput is an input type that accepts ModelServingConfigTrafficConfigRouteArray and ModelServingConfigTrafficConfigRouteArrayOutput values.
+// You can construct a concrete instance of `ModelServingConfigTrafficConfigRouteArrayInput` via:
+//
+//	ModelServingConfigTrafficConfigRouteArray{ ModelServingConfigTrafficConfigRouteArgs{...} }
+type ModelServingConfigTrafficConfigRouteArrayInput interface {
+	pulumi.Input
+
+	ToModelServingConfigTrafficConfigRouteArrayOutput() ModelServingConfigTrafficConfigRouteArrayOutput
+	ToModelServingConfigTrafficConfigRouteArrayOutputWithContext(context.Context) ModelServingConfigTrafficConfigRouteArrayOutput
+}
+
+type ModelServingConfigTrafficConfigRouteArray []ModelServingConfigTrafficConfigRouteInput
+
+func (ModelServingConfigTrafficConfigRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingConfigTrafficConfigRoute)(nil)).Elem()
+}
+
+func (i ModelServingConfigTrafficConfigRouteArray) ToModelServingConfigTrafficConfigRouteArrayOutput() ModelServingConfigTrafficConfigRouteArrayOutput {
+	return i.ToModelServingConfigTrafficConfigRouteArrayOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigTrafficConfigRouteArray) ToModelServingConfigTrafficConfigRouteArrayOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigTrafficConfigRouteArrayOutput)
+}
+
+type ModelServingConfigTrafficConfigRouteOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigTrafficConfigRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigTrafficConfigRoute)(nil)).Elem()
+}
+
+func (o ModelServingConfigTrafficConfigRouteOutput) ToModelServingConfigTrafficConfigRouteOutput() ModelServingConfigTrafficConfigRouteOutput {
+	return o
+}
+
+func (o ModelServingConfigTrafficConfigRouteOutput) ToModelServingConfigTrafficConfigRouteOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigRouteOutput {
+	return o
+}
+
+// The name of the served model this route configures traffic for. This needs to match the name of a `servedModels` block
+func (o ModelServingConfigTrafficConfigRouteOutput) ServedModelName() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelServingConfigTrafficConfigRoute) string { return v.ServedModelName }).(pulumi.StringOutput)
+}
+
+// The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+func (o ModelServingConfigTrafficConfigRouteOutput) TrafficPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v ModelServingConfigTrafficConfigRoute) int { return v.TrafficPercentage }).(pulumi.IntOutput)
+}
+
+type ModelServingConfigTrafficConfigRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigTrafficConfigRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingConfigTrafficConfigRoute)(nil)).Elem()
+}
+
+func (o ModelServingConfigTrafficConfigRouteArrayOutput) ToModelServingConfigTrafficConfigRouteArrayOutput() ModelServingConfigTrafficConfigRouteArrayOutput {
+	return o
+}
+
+func (o ModelServingConfigTrafficConfigRouteArrayOutput) ToModelServingConfigTrafficConfigRouteArrayOutputWithContext(ctx context.Context) ModelServingConfigTrafficConfigRouteArrayOutput {
+	return o
+}
+
+func (o ModelServingConfigTrafficConfigRouteArrayOutput) Index(i pulumi.IntInput) ModelServingConfigTrafficConfigRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingConfigTrafficConfigRoute {
+		return vs[0].([]ModelServingConfigTrafficConfigRoute)[vs[1].(int)]
+	}).(ModelServingConfigTrafficConfigRouteOutput)
 }
 
 type MountAbfs struct {
@@ -34254,7 +34927,145 @@ func (o StorageCredentialAzureServicePrincipalPtrOutput) DirectoryId() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+type StorageCredentialDatabricksGcpServiceAccount struct {
+	// The email of the GCP service account created, to be granted access to relevant buckets.
+	Email *string `pulumi:"email"`
+}
+
+// StorageCredentialDatabricksGcpServiceAccountInput is an input type that accepts StorageCredentialDatabricksGcpServiceAccountArgs and StorageCredentialDatabricksGcpServiceAccountOutput values.
+// You can construct a concrete instance of `StorageCredentialDatabricksGcpServiceAccountInput` via:
+//
+//	StorageCredentialDatabricksGcpServiceAccountArgs{...}
+type StorageCredentialDatabricksGcpServiceAccountInput interface {
+	pulumi.Input
+
+	ToStorageCredentialDatabricksGcpServiceAccountOutput() StorageCredentialDatabricksGcpServiceAccountOutput
+	ToStorageCredentialDatabricksGcpServiceAccountOutputWithContext(context.Context) StorageCredentialDatabricksGcpServiceAccountOutput
+}
+
+type StorageCredentialDatabricksGcpServiceAccountArgs struct {
+	// The email of the GCP service account created, to be granted access to relevant buckets.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+}
+
+func (StorageCredentialDatabricksGcpServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccount)(nil)).Elem()
+}
+
+func (i StorageCredentialDatabricksGcpServiceAccountArgs) ToStorageCredentialDatabricksGcpServiceAccountOutput() StorageCredentialDatabricksGcpServiceAccountOutput {
+	return i.ToStorageCredentialDatabricksGcpServiceAccountOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialDatabricksGcpServiceAccountArgs) ToStorageCredentialDatabricksGcpServiceAccountOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialDatabricksGcpServiceAccountOutput)
+}
+
+func (i StorageCredentialDatabricksGcpServiceAccountArgs) ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return i.ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialDatabricksGcpServiceAccountArgs) ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialDatabricksGcpServiceAccountOutput).ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx)
+}
+
+// StorageCredentialDatabricksGcpServiceAccountPtrInput is an input type that accepts StorageCredentialDatabricksGcpServiceAccountArgs, StorageCredentialDatabricksGcpServiceAccountPtr and StorageCredentialDatabricksGcpServiceAccountPtrOutput values.
+// You can construct a concrete instance of `StorageCredentialDatabricksGcpServiceAccountPtrInput` via:
+//
+//	        StorageCredentialDatabricksGcpServiceAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageCredentialDatabricksGcpServiceAccountPtrInput interface {
+	pulumi.Input
+
+	ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput
+	ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput
+}
+
+type storageCredentialDatabricksGcpServiceAccountPtrType StorageCredentialDatabricksGcpServiceAccountArgs
+
+func StorageCredentialDatabricksGcpServiceAccountPtr(v *StorageCredentialDatabricksGcpServiceAccountArgs) StorageCredentialDatabricksGcpServiceAccountPtrInput {
+	return (*storageCredentialDatabricksGcpServiceAccountPtrType)(v)
+}
+
+func (*storageCredentialDatabricksGcpServiceAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialDatabricksGcpServiceAccount)(nil)).Elem()
+}
+
+func (i *storageCredentialDatabricksGcpServiceAccountPtrType) ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return i.ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *storageCredentialDatabricksGcpServiceAccountPtrType) ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialDatabricksGcpServiceAccountPtrOutput)
+}
+
+type StorageCredentialDatabricksGcpServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialDatabricksGcpServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccount)(nil)).Elem()
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountOutput) ToStorageCredentialDatabricksGcpServiceAccountOutput() StorageCredentialDatabricksGcpServiceAccountOutput {
+	return o
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountOutput) ToStorageCredentialDatabricksGcpServiceAccountOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountOutput {
+	return o
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountOutput) ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return o.ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountOutput) ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialDatabricksGcpServiceAccount) *StorageCredentialDatabricksGcpServiceAccount {
+		return &v
+	}).(StorageCredentialDatabricksGcpServiceAccountPtrOutput)
+}
+
+// The email of the GCP service account created, to be granted access to relevant buckets.
+func (o StorageCredentialDatabricksGcpServiceAccountOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageCredentialDatabricksGcpServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+type StorageCredentialDatabricksGcpServiceAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialDatabricksGcpServiceAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialDatabricksGcpServiceAccount)(nil)).Elem()
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return o
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return o
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) Elem() StorageCredentialDatabricksGcpServiceAccountOutput {
+	return o.ApplyT(func(v *StorageCredentialDatabricksGcpServiceAccount) StorageCredentialDatabricksGcpServiceAccount {
+		if v != nil {
+			return *v
+		}
+		var ret StorageCredentialDatabricksGcpServiceAccount
+		return ret
+	}).(StorageCredentialDatabricksGcpServiceAccountOutput)
+}
+
+// The email of the GCP service account created, to be granted access to relevant buckets.
+func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialDatabricksGcpServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
 type StorageCredentialGcpServiceAccountKey struct {
+	// The email of the GCP service account created, to be granted access to relevant buckets.
 	Email        string `pulumi:"email"`
 	PrivateKey   string `pulumi:"privateKey"`
 	PrivateKeyId string `pulumi:"privateKeyId"`
@@ -34272,6 +35083,7 @@ type StorageCredentialGcpServiceAccountKeyInput interface {
 }
 
 type StorageCredentialGcpServiceAccountKeyArgs struct {
+	// The email of the GCP service account created, to be granted access to relevant buckets.
 	Email        pulumi.StringInput `pulumi:"email"`
 	PrivateKey   pulumi.StringInput `pulumi:"privateKey"`
 	PrivateKeyId pulumi.StringInput `pulumi:"privateKeyId"`
@@ -34354,6 +35166,7 @@ func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServi
 	}).(StorageCredentialGcpServiceAccountKeyPtrOutput)
 }
 
+// The email of the GCP service account created, to be granted access to relevant buckets.
 func (o StorageCredentialGcpServiceAccountKeyOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -34390,6 +35203,7 @@ func (o StorageCredentialGcpServiceAccountKeyPtrOutput) Elem() StorageCredential
 	}).(StorageCredentialGcpServiceAccountKeyOutput)
 }
 
+// The email of the GCP service account created, to be granted access to relevant buckets.
 func (o StorageCredentialGcpServiceAccountKeyPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
 		if v == nil {
@@ -37722,8 +38536,11 @@ func (o GetClusterClusterInfoGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOu
 }
 
 type GetClusterClusterInfoInitScript struct {
-	Dbfs *GetClusterClusterInfoInitScriptDbfs `pulumi:"dbfs"`
-	S3   *GetClusterClusterInfoInitScriptS3   `pulumi:"s3"`
+	Abfss *GetClusterClusterInfoInitScriptAbfss `pulumi:"abfss"`
+	Dbfs  *GetClusterClusterInfoInitScriptDbfs  `pulumi:"dbfs"`
+	File  *GetClusterClusterInfoInitScriptFile  `pulumi:"file"`
+	Gcs   *GetClusterClusterInfoInitScriptGcs   `pulumi:"gcs"`
+	S3    *GetClusterClusterInfoInitScriptS3    `pulumi:"s3"`
 }
 
 // GetClusterClusterInfoInitScriptInput is an input type that accepts GetClusterClusterInfoInitScriptArgs and GetClusterClusterInfoInitScriptOutput values.
@@ -37738,8 +38555,11 @@ type GetClusterClusterInfoInitScriptInput interface {
 }
 
 type GetClusterClusterInfoInitScriptArgs struct {
-	Dbfs GetClusterClusterInfoInitScriptDbfsPtrInput `pulumi:"dbfs"`
-	S3   GetClusterClusterInfoInitScriptS3PtrInput   `pulumi:"s3"`
+	Abfss GetClusterClusterInfoInitScriptAbfssPtrInput `pulumi:"abfss"`
+	Dbfs  GetClusterClusterInfoInitScriptDbfsPtrInput  `pulumi:"dbfs"`
+	File  GetClusterClusterInfoInitScriptFilePtrInput  `pulumi:"file"`
+	Gcs   GetClusterClusterInfoInitScriptGcsPtrInput   `pulumi:"gcs"`
+	S3    GetClusterClusterInfoInitScriptS3PtrInput    `pulumi:"s3"`
 }
 
 func (GetClusterClusterInfoInitScriptArgs) ElementType() reflect.Type {
@@ -37793,8 +38613,20 @@ func (o GetClusterClusterInfoInitScriptOutput) ToGetClusterClusterInfoInitScript
 	return o
 }
 
+func (o GetClusterClusterInfoInitScriptOutput) Abfss() GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptAbfss { return v.Abfss }).(GetClusterClusterInfoInitScriptAbfssPtrOutput)
+}
+
 func (o GetClusterClusterInfoInitScriptOutput) Dbfs() GetClusterClusterInfoInitScriptDbfsPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptDbfs { return v.Dbfs }).(GetClusterClusterInfoInitScriptDbfsPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptOutput) File() GetClusterClusterInfoInitScriptFilePtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptFile { return v.File }).(GetClusterClusterInfoInitScriptFilePtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptOutput) Gcs() GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptGcs { return v.Gcs }).(GetClusterClusterInfoInitScriptGcsPtrOutput)
 }
 
 func (o GetClusterClusterInfoInitScriptOutput) S3() GetClusterClusterInfoInitScriptS3PtrOutput {
@@ -37819,6 +38651,139 @@ func (o GetClusterClusterInfoInitScriptArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterClusterInfoInitScript {
 		return vs[0].([]GetClusterClusterInfoInitScript)[vs[1].(int)]
 	}).(GetClusterClusterInfoInitScriptOutput)
+}
+
+type GetClusterClusterInfoInitScriptAbfss struct {
+	Destination *string `pulumi:"destination"`
+}
+
+// GetClusterClusterInfoInitScriptAbfssInput is an input type that accepts GetClusterClusterInfoInitScriptAbfssArgs and GetClusterClusterInfoInitScriptAbfssOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptAbfssInput` via:
+//
+//	GetClusterClusterInfoInitScriptAbfssArgs{...}
+type GetClusterClusterInfoInitScriptAbfssInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptAbfssOutput() GetClusterClusterInfoInitScriptAbfssOutput
+	ToGetClusterClusterInfoInitScriptAbfssOutputWithContext(context.Context) GetClusterClusterInfoInitScriptAbfssOutput
+}
+
+type GetClusterClusterInfoInitScriptAbfssArgs struct {
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (GetClusterClusterInfoInitScriptAbfssArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptAbfss)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoInitScriptAbfssArgs) ToGetClusterClusterInfoInitScriptAbfssOutput() GetClusterClusterInfoInitScriptAbfssOutput {
+	return i.ToGetClusterClusterInfoInitScriptAbfssOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptAbfssArgs) ToGetClusterClusterInfoInitScriptAbfssOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptAbfssOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptAbfssOutput)
+}
+
+func (i GetClusterClusterInfoInitScriptAbfssArgs) ToGetClusterClusterInfoInitScriptAbfssPtrOutput() GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptAbfssArgs) ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptAbfssOutput).ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoInitScriptAbfssPtrInput is an input type that accepts GetClusterClusterInfoInitScriptAbfssArgs, GetClusterClusterInfoInitScriptAbfssPtr and GetClusterClusterInfoInitScriptAbfssPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptAbfssPtrInput` via:
+//
+//	        GetClusterClusterInfoInitScriptAbfssArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoInitScriptAbfssPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptAbfssPtrOutput() GetClusterClusterInfoInitScriptAbfssPtrOutput
+	ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(context.Context) GetClusterClusterInfoInitScriptAbfssPtrOutput
+}
+
+type getClusterClusterInfoInitScriptAbfssPtrType GetClusterClusterInfoInitScriptAbfssArgs
+
+func GetClusterClusterInfoInitScriptAbfssPtr(v *GetClusterClusterInfoInitScriptAbfssArgs) GetClusterClusterInfoInitScriptAbfssPtrInput {
+	return (*getClusterClusterInfoInitScriptAbfssPtrType)(v)
+}
+
+func (*getClusterClusterInfoInitScriptAbfssPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptAbfss)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoInitScriptAbfssPtrType) ToGetClusterClusterInfoInitScriptAbfssPtrOutput() GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoInitScriptAbfssPtrType) ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptAbfssPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptAbfssOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptAbfssOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptAbfss)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssOutput) ToGetClusterClusterInfoInitScriptAbfssOutput() GetClusterClusterInfoInitScriptAbfssOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssOutput) ToGetClusterClusterInfoInitScriptAbfssOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptAbfssOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssOutput) ToGetClusterClusterInfoInitScriptAbfssPtrOutput() GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return o.ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssOutput) ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoInitScriptAbfss) *GetClusterClusterInfoInitScriptAbfss {
+		return &v
+	}).(GetClusterClusterInfoInitScriptAbfssPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptAbfss) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptAbfssPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptAbfssPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptAbfss)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssPtrOutput) ToGetClusterClusterInfoInitScriptAbfssPtrOutput() GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssPtrOutput) ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssPtrOutput) Elem() GetClusterClusterInfoInitScriptAbfssOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptAbfss) GetClusterClusterInfoInitScriptAbfss {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoInitScriptAbfss
+		return ret
+	}).(GetClusterClusterInfoInitScriptAbfssOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptAbfss) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetClusterClusterInfoInitScriptDbfs struct {
@@ -37951,6 +38916,272 @@ func (o GetClusterClusterInfoInitScriptDbfsPtrOutput) Destination() pulumi.Strin
 			return nil
 		}
 		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptFile struct {
+	Destination *string `pulumi:"destination"`
+}
+
+// GetClusterClusterInfoInitScriptFileInput is an input type that accepts GetClusterClusterInfoInitScriptFileArgs and GetClusterClusterInfoInitScriptFileOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptFileInput` via:
+//
+//	GetClusterClusterInfoInitScriptFileArgs{...}
+type GetClusterClusterInfoInitScriptFileInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptFileOutput() GetClusterClusterInfoInitScriptFileOutput
+	ToGetClusterClusterInfoInitScriptFileOutputWithContext(context.Context) GetClusterClusterInfoInitScriptFileOutput
+}
+
+type GetClusterClusterInfoInitScriptFileArgs struct {
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (GetClusterClusterInfoInitScriptFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptFile)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoInitScriptFileArgs) ToGetClusterClusterInfoInitScriptFileOutput() GetClusterClusterInfoInitScriptFileOutput {
+	return i.ToGetClusterClusterInfoInitScriptFileOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptFileArgs) ToGetClusterClusterInfoInitScriptFileOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptFileOutput)
+}
+
+func (i GetClusterClusterInfoInitScriptFileArgs) ToGetClusterClusterInfoInitScriptFilePtrOutput() GetClusterClusterInfoInitScriptFilePtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptFileArgs) ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptFileOutput).ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoInitScriptFilePtrInput is an input type that accepts GetClusterClusterInfoInitScriptFileArgs, GetClusterClusterInfoInitScriptFilePtr and GetClusterClusterInfoInitScriptFilePtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptFilePtrInput` via:
+//
+//	        GetClusterClusterInfoInitScriptFileArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoInitScriptFilePtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptFilePtrOutput() GetClusterClusterInfoInitScriptFilePtrOutput
+	ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(context.Context) GetClusterClusterInfoInitScriptFilePtrOutput
+}
+
+type getClusterClusterInfoInitScriptFilePtrType GetClusterClusterInfoInitScriptFileArgs
+
+func GetClusterClusterInfoInitScriptFilePtr(v *GetClusterClusterInfoInitScriptFileArgs) GetClusterClusterInfoInitScriptFilePtrInput {
+	return (*getClusterClusterInfoInitScriptFilePtrType)(v)
+}
+
+func (*getClusterClusterInfoInitScriptFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptFile)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoInitScriptFilePtrType) ToGetClusterClusterInfoInitScriptFilePtrOutput() GetClusterClusterInfoInitScriptFilePtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoInitScriptFilePtrType) ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptFilePtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptFileOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptFile)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptFileOutput) ToGetClusterClusterInfoInitScriptFileOutput() GetClusterClusterInfoInitScriptFileOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptFileOutput) ToGetClusterClusterInfoInitScriptFileOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptFileOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptFileOutput) ToGetClusterClusterInfoInitScriptFilePtrOutput() GetClusterClusterInfoInitScriptFilePtrOutput {
+	return o.ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoInitScriptFileOutput) ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoInitScriptFile) *GetClusterClusterInfoInitScriptFile {
+		return &v
+	}).(GetClusterClusterInfoInitScriptFilePtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptFileOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptFile) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptFilePtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptFile)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptFilePtrOutput) ToGetClusterClusterInfoInitScriptFilePtrOutput() GetClusterClusterInfoInitScriptFilePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptFilePtrOutput) ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptFilePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptFilePtrOutput) Elem() GetClusterClusterInfoInitScriptFileOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptFile) GetClusterClusterInfoInitScriptFile {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoInitScriptFile
+		return ret
+	}).(GetClusterClusterInfoInitScriptFileOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptFilePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptGcs struct {
+	Destination *string `pulumi:"destination"`
+}
+
+// GetClusterClusterInfoInitScriptGcsInput is an input type that accepts GetClusterClusterInfoInitScriptGcsArgs and GetClusterClusterInfoInitScriptGcsOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptGcsInput` via:
+//
+//	GetClusterClusterInfoInitScriptGcsArgs{...}
+type GetClusterClusterInfoInitScriptGcsInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptGcsOutput() GetClusterClusterInfoInitScriptGcsOutput
+	ToGetClusterClusterInfoInitScriptGcsOutputWithContext(context.Context) GetClusterClusterInfoInitScriptGcsOutput
+}
+
+type GetClusterClusterInfoInitScriptGcsArgs struct {
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (GetClusterClusterInfoInitScriptGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptGcs)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoInitScriptGcsArgs) ToGetClusterClusterInfoInitScriptGcsOutput() GetClusterClusterInfoInitScriptGcsOutput {
+	return i.ToGetClusterClusterInfoInitScriptGcsOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptGcsArgs) ToGetClusterClusterInfoInitScriptGcsOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptGcsOutput)
+}
+
+func (i GetClusterClusterInfoInitScriptGcsArgs) ToGetClusterClusterInfoInitScriptGcsPtrOutput() GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptGcsArgs) ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptGcsOutput).ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoInitScriptGcsPtrInput is an input type that accepts GetClusterClusterInfoInitScriptGcsArgs, GetClusterClusterInfoInitScriptGcsPtr and GetClusterClusterInfoInitScriptGcsPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptGcsPtrInput` via:
+//
+//	        GetClusterClusterInfoInitScriptGcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoInitScriptGcsPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptGcsPtrOutput() GetClusterClusterInfoInitScriptGcsPtrOutput
+	ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(context.Context) GetClusterClusterInfoInitScriptGcsPtrOutput
+}
+
+type getClusterClusterInfoInitScriptGcsPtrType GetClusterClusterInfoInitScriptGcsArgs
+
+func GetClusterClusterInfoInitScriptGcsPtr(v *GetClusterClusterInfoInitScriptGcsArgs) GetClusterClusterInfoInitScriptGcsPtrInput {
+	return (*getClusterClusterInfoInitScriptGcsPtrType)(v)
+}
+
+func (*getClusterClusterInfoInitScriptGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptGcs)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoInitScriptGcsPtrType) ToGetClusterClusterInfoInitScriptGcsPtrOutput() GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoInitScriptGcsPtrType) ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptGcsPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptGcsOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptGcs)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptGcsOutput) ToGetClusterClusterInfoInitScriptGcsOutput() GetClusterClusterInfoInitScriptGcsOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptGcsOutput) ToGetClusterClusterInfoInitScriptGcsOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptGcsOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptGcsOutput) ToGetClusterClusterInfoInitScriptGcsPtrOutput() GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return o.ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoInitScriptGcsOutput) ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoInitScriptGcs) *GetClusterClusterInfoInitScriptGcs {
+		return &v
+	}).(GetClusterClusterInfoInitScriptGcsPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptGcsOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptGcs) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptGcs)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptGcsPtrOutput) ToGetClusterClusterInfoInitScriptGcsPtrOutput() GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptGcsPtrOutput) ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptGcsPtrOutput) Elem() GetClusterClusterInfoInitScriptGcsOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptGcs) GetClusterClusterInfoInitScriptGcs {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoInitScriptGcs
+		return ret
+	}).(GetClusterClusterInfoInitScriptGcsOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptGcsPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -58714,6 +59945,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessAzureManagedIdentityPtrInput)(nil)).Elem(), MetastoreDataAccessAzureManagedIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessAzureServicePrincipalInput)(nil)).Elem(), MetastoreDataAccessAzureServicePrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessAzureServicePrincipalPtrInput)(nil)).Elem(), MetastoreDataAccessAzureServicePrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessDatabricksGcpServiceAccountInput)(nil)).Elem(), MetastoreDataAccessDatabricksGcpServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessDatabricksGcpServiceAccountPtrInput)(nil)).Elem(), MetastoreDataAccessDatabricksGcpServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessGcpServiceAccountKeyInput)(nil)).Elem(), MetastoreDataAccessGcpServiceAccountKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessGcpServiceAccountKeyPtrInput)(nil)).Elem(), MetastoreDataAccessGcpServiceAccountKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MlflowModelTagInput)(nil)).Elem(), MlflowModelTagArgs{})
@@ -58722,6 +59955,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MlflowWebhookHttpUrlSpecPtrInput)(nil)).Elem(), MlflowWebhookHttpUrlSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MlflowWebhookJobSpecInput)(nil)).Elem(), MlflowWebhookJobSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MlflowWebhookJobSpecPtrInput)(nil)).Elem(), MlflowWebhookJobSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigInput)(nil)).Elem(), ModelServingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigPtrInput)(nil)).Elem(), ModelServingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedModelInput)(nil)).Elem(), ModelServingConfigServedModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedModelArrayInput)(nil)).Elem(), ModelServingConfigServedModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigInput)(nil)).Elem(), ModelServingConfigTrafficConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigPtrInput)(nil)).Elem(), ModelServingConfigTrafficConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigRouteInput)(nil)).Elem(), ModelServingConfigTrafficConfigRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigRouteArrayInput)(nil)).Elem(), ModelServingConfigTrafficConfigRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MountAbfsInput)(nil)).Elem(), MountAbfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MountAbfsPtrInput)(nil)).Elem(), MountAbfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MountAdlInput)(nil)).Elem(), MountAdlArgs{})
@@ -58868,6 +60109,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureManagedIdentityPtrInput)(nil)).Elem(), StorageCredentialAzureManagedIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureServicePrincipalInput)(nil)).Elem(), StorageCredentialAzureServicePrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureServicePrincipalPtrInput)(nil)).Elem(), StorageCredentialAzureServicePrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccountInput)(nil)).Elem(), StorageCredentialDatabricksGcpServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccountPtrInput)(nil)).Elem(), StorageCredentialDatabricksGcpServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialGcpServiceAccountKeyInput)(nil)).Elem(), StorageCredentialGcpServiceAccountKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialGcpServiceAccountKeyPtrInput)(nil)).Elem(), StorageCredentialGcpServiceAccountKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableColumnInput)(nil)).Elem(), TableColumnArgs{})
@@ -58904,8 +60147,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoGcpAttributesPtrInput)(nil)).Elem(), GetClusterClusterInfoGcpAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptInput)(nil)).Elem(), GetClusterClusterInfoInitScriptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptArrayInput)(nil)).Elem(), GetClusterClusterInfoInitScriptArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptAbfssInput)(nil)).Elem(), GetClusterClusterInfoInitScriptAbfssArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptAbfssPtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptAbfssArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptDbfsInput)(nil)).Elem(), GetClusterClusterInfoInitScriptDbfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptDbfsPtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptDbfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptFileInput)(nil)).Elem(), GetClusterClusterInfoInitScriptFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptFilePtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptGcsInput)(nil)).Elem(), GetClusterClusterInfoInitScriptGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptGcsPtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptGcsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptS3Input)(nil)).Elem(), GetClusterClusterInfoInitScriptS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptS3PtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoTerminationReasonInput)(nil)).Elem(), GetClusterClusterInfoTerminationReasonArgs{})
@@ -59425,6 +60674,8 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreDataAccessAzureManagedIdentityPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreDataAccessAzureServicePrincipalOutput{})
 	pulumi.RegisterOutputType(MetastoreDataAccessAzureServicePrincipalPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreDataAccessDatabricksGcpServiceAccountOutput{})
+	pulumi.RegisterOutputType(MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreDataAccessGcpServiceAccountKeyOutput{})
 	pulumi.RegisterOutputType(MetastoreDataAccessGcpServiceAccountKeyPtrOutput{})
 	pulumi.RegisterOutputType(MlflowModelTagOutput{})
@@ -59433,6 +60684,14 @@ func init() {
 	pulumi.RegisterOutputType(MlflowWebhookHttpUrlSpecPtrOutput{})
 	pulumi.RegisterOutputType(MlflowWebhookJobSpecOutput{})
 	pulumi.RegisterOutputType(MlflowWebhookJobSpecPtrOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigServedModelOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigServedModelArrayOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigPtrOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigRouteOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigRouteArrayOutput{})
 	pulumi.RegisterOutputType(MountAbfsOutput{})
 	pulumi.RegisterOutputType(MountAbfsPtrOutput{})
 	pulumi.RegisterOutputType(MountAdlOutput{})
@@ -59579,6 +60838,8 @@ func init() {
 	pulumi.RegisterOutputType(StorageCredentialAzureManagedIdentityPtrOutput{})
 	pulumi.RegisterOutputType(StorageCredentialAzureServicePrincipalOutput{})
 	pulumi.RegisterOutputType(StorageCredentialAzureServicePrincipalPtrOutput{})
+	pulumi.RegisterOutputType(StorageCredentialDatabricksGcpServiceAccountOutput{})
+	pulumi.RegisterOutputType(StorageCredentialDatabricksGcpServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(StorageCredentialGcpServiceAccountKeyOutput{})
 	pulumi.RegisterOutputType(StorageCredentialGcpServiceAccountKeyPtrOutput{})
 	pulumi.RegisterOutputType(TableColumnOutput{})
@@ -59615,8 +60876,14 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterInfoGcpAttributesPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptAbfssOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptAbfssPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptDbfsOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptDbfsPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptFileOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptFilePtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptGcsOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptGcsPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptS3Output{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptS3PtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoTerminationReasonOutput{})

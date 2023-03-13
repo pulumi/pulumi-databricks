@@ -156,6 +156,12 @@ namespace Pulumi.Databricks
         public bool? Graviton { get; set; }
 
         /// <summary>
+        /// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
         /// . Pick only nodes that have IO Cache. Defaults to *false*.
         /// </summary>
         [Input("isIoCacheEnabled")]
@@ -209,9 +215,6 @@ namespace Pulumi.Databricks
         [Input("supportPortForwarding")]
         public bool? SupportPortForwarding { get; set; }
 
-        [Input("vcpu")]
-        public bool? Vcpu { get; set; }
-
         public GetNodeTypeArgs()
         {
         }
@@ -247,6 +250,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("graviton")]
         public Input<bool>? Graviton { get; set; }
+
+        /// <summary>
+        /// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// . Pick only nodes that have IO Cache. Defaults to *false*.
@@ -302,9 +311,6 @@ namespace Pulumi.Databricks
         [Input("supportPortForwarding")]
         public Input<bool>? SupportPortForwarding { get; set; }
 
-        [Input("vcpu")]
-        public Input<bool>? Vcpu { get; set; }
-
         public GetNodeTypeInvokeArgs()
         {
         }
@@ -320,7 +326,7 @@ namespace Pulumi.Databricks
         public readonly int? GbPerCore;
         public readonly bool? Graviton;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
         /// </summary>
         public readonly string Id;
         public readonly bool? IsIoCacheEnabled;
@@ -332,7 +338,6 @@ namespace Pulumi.Databricks
         public readonly bool? PhotonDriverCapable;
         public readonly bool? PhotonWorkerCapable;
         public readonly bool? SupportPortForwarding;
-        public readonly bool? Vcpu;
 
         [OutputConstructor]
         private GetNodeTypeResult(
@@ -362,9 +367,7 @@ namespace Pulumi.Databricks
 
             bool? photonWorkerCapable,
 
-            bool? supportPortForwarding,
-
-            bool? vcpu)
+            bool? supportPortForwarding)
         {
             Category = category;
             Fleet = fleet;
@@ -380,7 +383,6 @@ namespace Pulumi.Databricks
             PhotonDriverCapable = photonDriverCapable;
             PhotonWorkerCapable = photonWorkerCapable;
             SupportPortForwarding = supportPortForwarding;
-            Vcpu = vcpu;
         }
     }
 }

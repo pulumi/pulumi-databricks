@@ -9,11 +9,19 @@ import java.util.Objects;
 
 @CustomType
 public final class MetastoreDataAccessGcpServiceAccountKey {
+    /**
+     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * 
+     */
     private String email;
     private String privateKey;
     private String privateKeyId;
 
     private MetastoreDataAccessGcpServiceAccountKey() {}
+    /**
+     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * 
+     */
     public String email() {
         return this.email;
     }

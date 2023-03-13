@@ -51,6 +51,7 @@ export function getNodeType(args?: GetNodeTypeArgs, opts?: pulumi.InvokeOptions)
         "fleet": args.fleet,
         "gbPerCore": args.gbPerCore,
         "graviton": args.graviton,
+        "id": args.id,
         "isIoCacheEnabled": args.isIoCacheEnabled,
         "localDisk": args.localDisk,
         "localDiskMinSize": args.localDiskMinSize,
@@ -60,7 +61,6 @@ export function getNodeType(args?: GetNodeTypeArgs, opts?: pulumi.InvokeOptions)
         "photonDriverCapable": args.photonDriverCapable,
         "photonWorkerCapable": args.photonWorkerCapable,
         "supportPortForwarding": args.supportPortForwarding,
-        "vcpu": args.vcpu,
     }, opts);
 }
 
@@ -88,6 +88,10 @@ export interface GetNodeTypeArgs {
      * if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
      */
     graviton?: boolean;
+    /**
+     * node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+     */
+    id?: string;
     /**
      * . Pick only nodes that have IO Cache. Defaults to *false*.
      */
@@ -124,7 +128,6 @@ export interface GetNodeTypeArgs {
      * Pick only nodes that support port forwarding. Defaults to *false*.
      */
     supportPortForwarding?: boolean;
-    vcpu?: boolean;
 }
 
 /**
@@ -136,7 +139,7 @@ export interface GetNodeTypeResult {
     readonly gbPerCore?: number;
     readonly graviton?: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
      */
     readonly id: string;
     readonly isIoCacheEnabled?: boolean;
@@ -148,7 +151,6 @@ export interface GetNodeTypeResult {
     readonly photonDriverCapable?: boolean;
     readonly photonWorkerCapable?: boolean;
     readonly supportPortForwarding?: boolean;
-    readonly vcpu?: boolean;
 }
 /**
  * ## Example Usage
@@ -217,6 +219,10 @@ export interface GetNodeTypeOutputArgs {
      */
     graviton?: pulumi.Input<boolean>;
     /**
+     * node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+     */
+    id?: pulumi.Input<string>;
+    /**
      * . Pick only nodes that have IO Cache. Defaults to *false*.
      */
     isIoCacheEnabled?: pulumi.Input<boolean>;
@@ -252,5 +258,4 @@ export interface GetNodeTypeOutputArgs {
      * Pick only nodes that support port forwarding. Defaults to *false*.
      */
     supportPortForwarding?: pulumi.Input<boolean>;
-    vcpu?: pulumi.Input<boolean>;
 }

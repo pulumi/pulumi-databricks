@@ -18,7 +18,7 @@ public final class GetNodeTypeResult {
     private @Nullable Integer gbPerCore;
     private @Nullable Boolean graviton;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
      * 
      */
     private String id;
@@ -31,7 +31,6 @@ public final class GetNodeTypeResult {
     private @Nullable Boolean photonDriverCapable;
     private @Nullable Boolean photonWorkerCapable;
     private @Nullable Boolean supportPortForwarding;
-    private @Nullable Boolean vcpu;
 
     private GetNodeTypeResult() {}
     public Optional<String> category() {
@@ -47,7 +46,7 @@ public final class GetNodeTypeResult {
         return Optional.ofNullable(this.graviton);
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
      * 
      */
     public String id() {
@@ -80,9 +79,6 @@ public final class GetNodeTypeResult {
     public Optional<Boolean> supportPortForwarding() {
         return Optional.ofNullable(this.supportPortForwarding);
     }
-    public Optional<Boolean> vcpu() {
-        return Optional.ofNullable(this.vcpu);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -107,7 +103,6 @@ public final class GetNodeTypeResult {
         private @Nullable Boolean photonDriverCapable;
         private @Nullable Boolean photonWorkerCapable;
         private @Nullable Boolean supportPortForwarding;
-        private @Nullable Boolean vcpu;
         public Builder() {}
         public Builder(GetNodeTypeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -125,7 +120,6 @@ public final class GetNodeTypeResult {
     	      this.photonDriverCapable = defaults.photonDriverCapable;
     	      this.photonWorkerCapable = defaults.photonWorkerCapable;
     	      this.supportPortForwarding = defaults.supportPortForwarding;
-    	      this.vcpu = defaults.vcpu;
         }
 
         @CustomType.Setter
@@ -198,11 +192,6 @@ public final class GetNodeTypeResult {
             this.supportPortForwarding = supportPortForwarding;
             return this;
         }
-        @CustomType.Setter
-        public Builder vcpu(@Nullable Boolean vcpu) {
-            this.vcpu = vcpu;
-            return this;
-        }
         public GetNodeTypeResult build() {
             final var o = new GetNodeTypeResult();
             o.category = category;
@@ -219,7 +208,6 @@ public final class GetNodeTypeResult {
             o.photonDriverCapable = photonDriverCapable;
             o.photonWorkerCapable = photonWorkerCapable;
             o.supportPortForwarding = supportPortForwarding;
-            o.vcpu = vcpu;
             return o;
         }
     }

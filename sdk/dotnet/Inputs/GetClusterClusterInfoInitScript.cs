@@ -12,8 +12,17 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetClusterClusterInfoInitScriptArgs : global::Pulumi.InvokeArgs
     {
+        [Input("abfss")]
+        public Inputs.GetClusterClusterInfoInitScriptAbfssArgs? Abfss { get; set; }
+
         [Input("dbfs")]
         public Inputs.GetClusterClusterInfoInitScriptDbfsArgs? Dbfs { get; set; }
+
+        [Input("file")]
+        public Inputs.GetClusterClusterInfoInitScriptFileArgs? File { get; set; }
+
+        [Input("gcs")]
+        public Inputs.GetClusterClusterInfoInitScriptGcsArgs? Gcs { get; set; }
 
         [Input("s3")]
         public Inputs.GetClusterClusterInfoInitScriptS3Args? S3 { get; set; }

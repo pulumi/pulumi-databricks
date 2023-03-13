@@ -293,6 +293,11 @@ export type MlflowWebhook = import("./mlflowWebhook").MlflowWebhook;
 export const MlflowWebhook: typeof import("./mlflowWebhook").MlflowWebhook = null as any;
 utilities.lazyLoad(exports, ["MlflowWebhook"], () => require("./mlflowWebhook"));
 
+export { ModelServingArgs, ModelServingState } from "./modelServing";
+export type ModelServing = import("./modelServing").ModelServing;
+export const ModelServing: typeof import("./modelServing").ModelServing = null as any;
+utilities.lazyLoad(exports, ["ModelServing"], () => require("./modelServing"));
+
 export { MountArgs, MountState } from "./mount";
 export type Mount = import("./mount").Mount;
 export const Mount: typeof import("./mount").Mount = null as any;
@@ -559,6 +564,8 @@ const _module = {
                 return new MlflowModel(name, <any>undefined, { urn })
             case "databricks:index/mlflowWebhook:MlflowWebhook":
                 return new MlflowWebhook(name, <any>undefined, { urn })
+            case "databricks:index/modelServing:ModelServing":
+                return new ModelServing(name, <any>undefined, { urn })
             case "databricks:index/mount:Mount":
                 return new Mount(name, <any>undefined, { urn })
             case "databricks:index/mwsCredentials:MwsCredentials":
@@ -668,6 +675,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/metastoreProvider", _
 pulumi.runtime.registerResourceModule("databricks", "index/mlflowExperiment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mlflowModel", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mlflowWebhook", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/modelServing", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mount", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsCredentials", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsCustomerManagedKeys", _module)
