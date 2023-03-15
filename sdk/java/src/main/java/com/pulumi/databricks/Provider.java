@@ -71,6 +71,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> azureWorkspaceResourceId() {
         return Codegen.optional(this.azureWorkspaceResourceId);
     }
+    @Export(name="bricksCliPath", type=String.class, parameters={})
+    private Output</* @Nullable */ String> bricksCliPath;
+
+    public Output<Optional<String>> bricksCliPath() {
+        return Codegen.optional(this.bricksCliPath);
+    }
     @Export(name="clientId", type=String.class, parameters={})
     private Output</* @Nullable */ String> clientId;
 

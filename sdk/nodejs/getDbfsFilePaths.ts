@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *
  * The following resources are used in the same context:
  *
- * * End to end workspace management guide
+ * * End to end workspace management guide.
  * * databricks.DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
  * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
  * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
@@ -83,7 +83,7 @@ export interface GetDbfsFilePathsResult {
  *
  * The following resources are used in the same context:
  *
- * * End to end workspace management guide
+ * * End to end workspace management guide.
  * * databricks.DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
  * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
  * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).

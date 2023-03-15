@@ -150,7 +150,7 @@ def get_service_principal(active: Optional[bool] = None,
 
     The following resources are used in the same context:
 
-    * End to end workspace management guide
+    * End to end workspace management guide.
       *_get_current_user_data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
     * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
     * Group data to retrieve information about Group members, entitlements and instance profiles.
@@ -220,7 +220,7 @@ def get_service_principal_output(active: Optional[pulumi.Input[Optional[bool]]] 
 
     The following resources are used in the same context:
 
-    * End to end workspace management guide
+    * End to end workspace management guide.
       *_get_current_user_data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
     * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
     * Group data to retrieve information about Group members, entitlements and instance profiles.

@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Import
     /// 
-    /// The resource dbfs file can be imported using the path of the file bash
+    /// The resource dbfs file can be imported using the path of the filebash
     /// 
     /// ```sh
     ///  $ pulumi import databricks:index/dbfsFile:DbfsFile this &lt;path&gt;
@@ -25,7 +25,7 @@ namespace Pulumi.Databricks
         public Output<string?> ContentBase64 { get; private set; } = null!;
 
         /// <summary>
-        /// Path, but with `dbfs:` prefix
+        /// Path, but with `dbfs:` prefix.
         /// </summary>
         [Output("dbfsPath")]
         public Output<string> DbfsPath { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.Databricks
         public Input<string>? ContentBase64 { get; set; }
 
         /// <summary>
-        /// Path, but with `dbfs:` prefix
+        /// Path, but with `dbfs:` prefix.
         /// </summary>
         [Input("dbfsPath")]
         public Input<string>? DbfsPath { get; set; }

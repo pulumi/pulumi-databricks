@@ -81,6 +81,9 @@
             "azureWorkspaceResourceId": {
                 "type": "string"
             },
+            "bricksCliPath": {
+                "type": "string"
+            },
             "clientId": {
                 "type": "string"
             },
@@ -6120,6 +6123,75 @@
                 "restApis"
             ]
         },
+        "databricks:index/MwsVpcEndpointGcpVpcEndpointInfo:MwsVpcEndpointGcpVpcEndpointInfo": {
+            "properties": {
+                "endpointRegion": {
+                    "type": "string",
+                    "description": "Region of the PSC endpoint.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The Google Cloud project ID of the VPC network where the PSC connection resides.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "pscConnectionId": {
+                    "type": "string",
+                    "description": "The unique ID of this PSC connection.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pscEndpointName": {
+                    "type": "string",
+                    "description": "The name of the PSC endpoint in the Google Cloud project.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "serviceAttachmentId": {
+                    "type": "string",
+                    "description": "The service attachment this PSC connection connects to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpointRegion",
+                "projectId",
+                "pscEndpointName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "endpointRegion",
+                        "projectId",
+                        "pscConnectionId",
+                        "pscEndpointName",
+                        "serviceAttachmentId"
+                    ]
+                }
+            }
+        },
         "databricks:index/MwsWorkspacesCloudResourceContainer:MwsWorkspacesCloudResourceContainer": {
             "properties": {
                 "gcp": {
@@ -6229,7 +6301,7 @@
             "properties": {
                 "connectivityType": {
                     "type": "string",
-                    "description": "Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`\n",
+                    "description": "Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -7406,6 +7478,70 @@
             "required": [
                 "name",
                 "op"
+            ]
+        },
+        "databricks:index/SqlAlertOptions:SqlAlertOptions": {
+            "properties": {
+                "column": {
+                    "type": "string",
+                    "description": "Name of column in the query result to compare in alert evaluation.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "customBody": {
+                    "type": "string",
+                    "description": "Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "customSubject": {
+                    "type": "string",
+                    "description": "Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "muted": {
+                    "type": "boolean",
+                    "description": "Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "op": {
+                    "type": "string",
+                    "description": "Operator used to compare in alert evaluation. (Enum: `\u003e`, `\u003e=`, `\u003c`, `\u003c=`, `==`, `!=`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value used to compare in alert evaluation.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "column",
+                "op",
+                "value"
             ]
         },
         "databricks:index/SqlEndpointChannel:SqlEndpointChannel": {
@@ -14593,6 +14729,9 @@
             "azureWorkspaceResourceId": {
                 "type": "string"
             },
+            "bricksCliPath": {
+                "type": "string"
+            },
             "clientId": {
                 "type": "string"
             },
@@ -14673,6 +14812,9 @@
                 "type": "boolean"
             },
             "azureWorkspaceResourceId": {
+                "type": "string"
+            },
+            "bricksCliPath": {
                 "type": "string"
             },
             "clientId": {
@@ -15343,7 +15485,7 @@
             }
         },
         "databricks:index/clusterPolicy:ClusterPolicy": {
-            "description": "This resource creates a cluster policy, which limits the ability to create clusters based on a set of rules. The policy rules limit the attributes or attribute values available for cluster creation. cluster policies have ACLs that limit their use to specific users and groups. Only admin users can create, edit, and delete policies. Admin users also have access to all policies.\n\nCluster policies let you:\n\n* Limit users to create clusters with prescribed settings.\n* Simplify the user interface and enable more users to create their own clusters (by fixing and hiding some values).\n* Control cost by limiting per cluster maximum cost (by setting limits on attributes whose values contribute to hourly price).\n\nCluster policy permissions limit which policies a user can select in the Policy drop-down when the user creates a cluster:\n\n* If no policies have been created in the workspace, the Policy drop-down does not display.\n* A user who has cluster create permission can select the `Free form` policy and create fully-configurable clusters.\n* A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.\n* A user that has access to only cluster policies, can select the policies they have access to.\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* Dynamic Passthrough Clusters for a Group guide\n* End to end workspace management guide\n* databricks.getClusters data to retrieve a list of databricks.Cluster ids.\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.\n* databricks.GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.IpAccessList to allow access from [predefined IP ranges](https://docs.databricks.com/security/network/ip-access-list.html).\n* databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.\n* databricks.getNodeType data to get the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores.\n* databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.\n* databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources.\n* databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.\n* databricks.WorkspaceConf to manage workspace configuration for expert usage.\n\n\n## Import\n\nThe resource cluster policy can be imported using the policy idbash\n\n```sh\n $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this \u003ccluster-policy-id\u003e\n```\n\n ",
+            "description": "This resource creates a cluster policy, which limits the ability to create clusters based on a set of rules. The policy rules limit the attributes or attribute values available for cluster creation. cluster policies have ACLs that limit their use to specific users and groups. Only admin users can create, edit, and delete policies. Admin users also have access to all policies.\n\nCluster policies let you:\n\n* Limit users to create clusters with prescribed settings.\n* Simplify the user interface and enable more users to create their own clusters (by fixing and hiding some values).\n* Control cost by limiting per cluster maximum cost (by setting limits on attributes whose values contribute to hourly price).\n\nCluster policy permissions limit which policies a user can select in the Policy drop-down when the user creates a cluster:\n\n* If no policies have been created in the workspace, the Policy drop-down does not display.\n* A user who has cluster create permission can select the `Free form` policy and create fully-configurable clusters.\n* A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.\n* A user that has access to only cluster policies, can select the policies they have access to.\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* Dynamic Passthrough Clusters for a Group guide.\n* End to end workspace management guide.\n* databricks.getClusters data to retrieve a list of databricks.Cluster ids.\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.\n* databricks.GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.IpAccessList to allow access from [predefined IP ranges](https://docs.databricks.com/security/network/ip-access-list.html).\n* databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.\n* databricks.getNodeType data to get the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores.\n* databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.\n* databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources.\n* databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.\n* databricks.WorkspaceConf to manage workspace configuration for expert usage.\n\n\n## Import\n\nThe resource cluster policy can be imported using the policy idbash\n\n```sh\n $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this \u003ccluster-policy-id\u003e\n```\n\n ",
             "properties": {
                 "definition": {
                     "type": "string",
@@ -15408,14 +15550,14 @@
             }
         },
         "databricks:index/dbfsFile:DbfsFile": {
-            "description": "\n\n\n## Import\n\nThe resource dbfs file can be imported using the path of the file bash\n\n```sh\n $ pulumi import databricks:index/dbfsFile:DbfsFile this \u003cpath\u003e\n```\n\n ",
+            "description": "\n\n\n## Import\n\nThe resource dbfs file can be imported using the path of the filebash\n\n```sh\n $ pulumi import databricks:index/dbfsFile:DbfsFile this \u003cpath\u003e\n```\n\n ",
             "properties": {
                 "contentBase64": {
                     "type": "string"
                 },
                 "dbfsPath": {
                     "type": "string",
-                    "description": "Path, but with `dbfs:` prefix\n"
+                    "description": "Path, but with `dbfs:` prefix.\n"
                 },
                 "fileSize": {
                     "type": "integer",
@@ -15470,7 +15612,7 @@
                     },
                     "dbfsPath": {
                         "type": "string",
-                        "description": "Path, but with `dbfs:` prefix\n"
+                        "description": "Path, but with `dbfs:` prefix.\n"
                     },
                     "fileSize": {
                         "type": "integer",
@@ -15495,7 +15637,7 @@
             }
         },
         "databricks:index/directory:Directory": {
-            "description": "\n\n\n## Import\n\nThe resource directory can be imported using directory path bash\n\n```sh\n $ pulumi import databricks:index/directory:Directory this /path/to/directory\n```\n\n ",
+            "description": "\n\n\n## Import\n\nThe resource directory can be imported using directory pathbash\n\n```sh\n $ pulumi import databricks:index/directory:Directory this /path/to/directory\n```\n\n ",
             "properties": {
                 "deleteRecursive": {
                     "type": "boolean"
@@ -18510,7 +18652,7 @@
                 },
                 "vpcEndpoints": {
                     "$ref": "#/types/databricks:index/MwsNetworksVpcEndpoints:MwsNetworksVpcEndpoints",
-                    "description": "mapping of databricks.MwsVpcEndpoint for PrivateLink connections\n"
+                    "description": "mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections\n"
                 },
                 "vpcId": {
                     "type": "string",
@@ -18581,7 +18723,7 @@
                 },
                 "vpcEndpoints": {
                     "$ref": "#/types/databricks:index/MwsNetworksVpcEndpoints:MwsNetworksVpcEndpoints",
-                    "description": "mapping of databricks.MwsVpcEndpoint for PrivateLink connections\n",
+                    "description": "mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections\n",
                     "willReplaceOnChanges": true
                 },
                 "vpcId": {
@@ -18650,7 +18792,7 @@
                     },
                     "vpcEndpoints": {
                         "$ref": "#/types/databricks:index/MwsNetworksVpcEndpoints:MwsNetworksVpcEndpoints",
-                        "description": "mapping of databricks.MwsVpcEndpoint for PrivateLink connections\n",
+                        "description": "mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections\n",
                         "willReplaceOnChanges": true
                     },
                     "vpcId": {
@@ -18749,7 +18891,7 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)\n"
+                    "description": "Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)\n"
                 },
                 "allowedVpcEndpointIds": {
                     "type": "array",
@@ -18772,15 +18914,15 @@
                 },
                 "publicAccessEnabled": {
                     "type": "boolean",
-                    "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
+                    "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
                 },
                 "region": {
                     "type": "string",
-                    "description": "Region of AWS VPC\n"
+                    "description": "Region of AWS VPC or the Google Cloud VPC network\n"
                 },
                 "status": {
                     "type": "string",
-                    "description": "Status of Private Access Settings\n"
+                    "description": "(AWS only) Status of Private Access Settings\n"
                 }
             },
             "required": [
@@ -18792,7 +18934,7 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)\n"
+                    "description": "Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)\n"
                 },
                 "allowedVpcEndpointIds": {
                     "type": "array",
@@ -18815,15 +18957,15 @@
                 },
                 "publicAccessEnabled": {
                     "type": "boolean",
-                    "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
+                    "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
                 },
                 "region": {
                     "type": "string",
-                    "description": "Region of AWS VPC\n"
+                    "description": "Region of AWS VPC or the Google Cloud VPC network\n"
                 },
                 "status": {
                     "type": "string",
-                    "description": "Status of Private Access Settings\n"
+                    "description": "(AWS only) Status of Private Access Settings\n"
                 }
             },
             "requiredInputs": [
@@ -18835,7 +18977,7 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)\n"
+                        "description": "Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)\n"
                     },
                     "allowedVpcEndpointIds": {
                         "type": "array",
@@ -18858,15 +19000,15 @@
                     },
                     "publicAccessEnabled": {
                         "type": "boolean",
-                        "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
+                        "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
                     },
                     "region": {
                         "type": "string",
-                        "description": "Region of AWS VPC\n"
+                        "description": "Region of AWS VPC or the Google Cloud VPC network\n"
                     },
                     "status": {
                         "type": "string",
-                        "description": "Status of Private Access Settings\n"
+                        "description": "(AWS only) Status of Private Access Settings\n"
                     }
                 },
                 "type": "object"
@@ -18961,17 +19103,21 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)\n"
+                    "description": "Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)\n"
                 },
                 "awsAccountId": {
                     "type": "string"
                 },
                 "awsEndpointServiceId": {
                     "type": "string",
-                    "description": "The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)\n"
+                    "description": "(AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)\n"
                 },
                 "awsVpcEndpointId": {
                     "type": "string"
+                },
+                "gcpVpcEndpointInfo": {
+                    "$ref": "#/types/databricks:index/MwsVpcEndpointGcpVpcEndpointInfo:MwsVpcEndpointGcpVpcEndpointInfo",
+                    "description": "a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:\n"
                 },
                 "region": {
                     "type": "string",
@@ -18979,7 +19125,7 @@
                 },
                 "state": {
                     "type": "string",
-                    "description": "State of VPC Endpoint\n"
+                    "description": "(AWS Only) State of VPC Endpoint\n"
                 },
                 "useCase": {
                     "type": "string"
@@ -18996,8 +19142,6 @@
             "required": [
                 "awsAccountId",
                 "awsEndpointServiceId",
-                "awsVpcEndpointId",
-                "region",
                 "state",
                 "useCase",
                 "vpcEndpointId",
@@ -19006,7 +19150,7 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)\n",
+                    "description": "Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)\n",
                     "willReplaceOnChanges": true
                 },
                 "awsAccountId": {
@@ -19014,10 +19158,15 @@
                 },
                 "awsEndpointServiceId": {
                     "type": "string",
-                    "description": "The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)\n"
+                    "description": "(AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)\n"
                 },
                 "awsVpcEndpointId": {
                     "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "gcpVpcEndpointInfo": {
+                    "$ref": "#/types/databricks:index/MwsVpcEndpointGcpVpcEndpointInfo:MwsVpcEndpointGcpVpcEndpointInfo",
+                    "description": "a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:\n",
                     "willReplaceOnChanges": true
                 },
                 "region": {
@@ -19027,7 +19176,7 @@
                 },
                 "state": {
                     "type": "string",
-                    "description": "State of VPC Endpoint\n"
+                    "description": "(AWS Only) State of VPC Endpoint\n"
                 },
                 "useCase": {
                     "type": "string"
@@ -19043,8 +19192,6 @@
                 }
             },
             "requiredInputs": [
-                "awsVpcEndpointId",
-                "region",
                 "vpcEndpointName"
             ],
             "stateInputs": {
@@ -19052,7 +19199,7 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)\n",
+                        "description": "Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)\n",
                         "willReplaceOnChanges": true
                     },
                     "awsAccountId": {
@@ -19060,10 +19207,15 @@
                     },
                     "awsEndpointServiceId": {
                         "type": "string",
-                        "description": "The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)\n"
+                        "description": "(AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)\n"
                     },
                     "awsVpcEndpointId": {
                         "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "gcpVpcEndpointInfo": {
+                        "$ref": "#/types/databricks:index/MwsVpcEndpointGcpVpcEndpointInfo:MwsVpcEndpointGcpVpcEndpointInfo",
+                        "description": "a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:\n",
                         "willReplaceOnChanges": true
                     },
                     "region": {
@@ -19073,7 +19225,7 @@
                     },
                     "state": {
                         "type": "string",
-                        "description": "State of VPC Endpoint\n"
+                        "description": "(AWS Only) State of VPC Endpoint\n"
                     },
                     "useCase": {
                         "type": "string"
@@ -19101,7 +19253,7 @@
                 },
                 "awsRegion": {
                     "type": "string",
-                    "description": "region of VPC\n"
+                    "description": "region of VPC.\n"
                 },
                 "cloud": {
                     "type": "string"
@@ -19140,7 +19292,7 @@
                 },
                 "location": {
                     "type": "string",
-                    "description": "region of the subnet\n"
+                    "description": "region of the subnet.\n"
                 },
                 "managedServicesCustomerManagedKeyId": {
                     "type": "string",
@@ -19154,11 +19306,12 @@
                     "type": "string"
                 },
                 "privateAccessSettingsId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.\n"
                 },
                 "storageConfigurationId": {
                     "type": "string",
-                    "description": "`storage_configuration_id` from storage configuration\n"
+                    "description": "`storage_configuration_id` from storage configuration.\n"
                 },
                 "storageCustomerManagedKeyId": {
                     "type": "string"
@@ -19171,7 +19324,7 @@
                 },
                 "workspaceName": {
                     "type": "string",
-                    "description": "name of the workspace, will appear on UI\n"
+                    "description": "name of the workspace, will appear on UI.\n"
                 },
                 "workspaceStatus": {
                     "type": "string",
@@ -19206,7 +19359,7 @@
                 },
                 "awsRegion": {
                     "type": "string",
-                    "description": "region of VPC\n",
+                    "description": "region of VPC.\n",
                     "willReplaceOnChanges": true
                 },
                 "cloud": {
@@ -19253,7 +19406,7 @@
                 },
                 "location": {
                     "type": "string",
-                    "description": "region of the subnet\n",
+                    "description": "region of the subnet.\n",
                     "willReplaceOnChanges": true
                 },
                 "managedServicesCustomerManagedKeyId": {
@@ -19268,11 +19421,12 @@
                     "type": "string"
                 },
                 "privateAccessSettingsId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.\n"
                 },
                 "storageConfigurationId": {
                     "type": "string",
-                    "description": "`storage_configuration_id` from storage configuration\n",
+                    "description": "`storage_configuration_id` from storage configuration.\n",
                     "willReplaceOnChanges": true
                 },
                 "storageCustomerManagedKeyId": {
@@ -19286,7 +19440,7 @@
                 },
                 "workspaceName": {
                     "type": "string",
-                    "description": "name of the workspace, will appear on UI\n",
+                    "description": "name of the workspace, will appear on UI.\n",
                     "willReplaceOnChanges": true
                 },
                 "workspaceStatus": {
@@ -19317,7 +19471,7 @@
                     },
                     "awsRegion": {
                         "type": "string",
-                        "description": "region of VPC\n",
+                        "description": "region of VPC.\n",
                         "willReplaceOnChanges": true
                     },
                     "cloud": {
@@ -19364,7 +19518,7 @@
                     },
                     "location": {
                         "type": "string",
-                        "description": "region of the subnet\n",
+                        "description": "region of the subnet.\n",
                         "willReplaceOnChanges": true
                     },
                     "managedServicesCustomerManagedKeyId": {
@@ -19379,11 +19533,12 @@
                         "type": "string"
                     },
                     "privateAccessSettingsId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.\n"
                     },
                     "storageConfigurationId": {
                         "type": "string",
-                        "description": "`storage_configuration_id` from storage configuration\n",
+                        "description": "`storage_configuration_id` from storage configuration.\n",
                         "willReplaceOnChanges": true
                     },
                     "storageCustomerManagedKeyId": {
@@ -19397,7 +19552,7 @@
                     },
                     "workspaceName": {
                         "type": "string",
-                        "description": "name of the workspace, will appear on UI\n",
+                        "description": "name of the workspace, will appear on UI.\n",
                         "willReplaceOnChanges": true
                     },
                     "workspaceStatus": {
@@ -20314,7 +20469,7 @@
                 },
                 "gitProvider": {
                     "type": "string",
-                    "description": "case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.\n"
+                    "description": "case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.\n"
                 },
                 "path": {
                     "type": "string",
@@ -20350,7 +20505,7 @@
                 },
                 "gitProvider": {
                     "type": "string",
-                    "description": "case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.\n",
+                    "description": "case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.\n",
                     "willReplaceOnChanges": true
                 },
                 "path": {
@@ -20388,7 +20543,7 @@
                     },
                     "gitProvider": {
                         "type": "string",
-                        "description": "case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, , `awsCodeCommit`.\n",
+                        "description": "case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.\n",
                         "willReplaceOnChanges": true
                     },
                     "path": {
@@ -21106,6 +21261,90 @@
                         "items": {
                             "$ref": "#/types/databricks:index/ShareObject:ShareObject"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "databricks:index/sqlAlert:SqlAlert": {
+            "description": "This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).\n\n**Note:** To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).\n* databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).\n* databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).\n",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the alert.\n"
+                },
+                "options": {
+                    "$ref": "#/types/databricks:index/SqlAlertOptions:SqlAlertOptions",
+                    "description": "Alert configuration options.\n"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/\u003cfolder_id\u003e`.\n"
+                },
+                "queryId": {
+                    "type": "string",
+                    "description": "ID of the query evaluated by the alert.\n"
+                },
+                "rearm": {
+                    "type": "integer",
+                    "description": "Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.\n"
+                }
+            },
+            "required": [
+                "name",
+                "options",
+                "queryId"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the alert.\n"
+                },
+                "options": {
+                    "$ref": "#/types/databricks:index/SqlAlertOptions:SqlAlertOptions",
+                    "description": "Alert configuration options.\n"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/\u003cfolder_id\u003e`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "queryId": {
+                    "type": "string",
+                    "description": "ID of the query evaluated by the alert.\n"
+                },
+                "rearm": {
+                    "type": "integer",
+                    "description": "Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.\n"
+                }
+            },
+            "requiredInputs": [
+                "options",
+                "queryId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SqlAlert resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the alert.\n"
+                    },
+                    "options": {
+                        "$ref": "#/types/databricks:index/SqlAlertOptions:SqlAlertOptions",
+                        "description": "Alert configuration options.\n"
+                    },
+                    "parent": {
+                        "type": "string",
+                        "description": "The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/\u003cfolder_id\u003e`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "queryId": {
+                        "type": "string",
+                        "description": "ID of the query evaluated by the alert.\n"
+                    },
+                    "rearm": {
+                        "type": "integer",
+                        "description": "Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.\n"
                     }
                 },
                 "type": "object"
@@ -22640,7 +22879,7 @@
             }
         },
         "databricks:index/getAwsBucketPolicy:getAwsBucketPolicy": {
-            "description": "This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it. \n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* Provisioning AWS Databricks E2 with a Hub \u0026 Spoke firewall for data exfiltration protection guide\n* End to end workspace management guide\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.\n",
+            "description": "This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it. \n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* Provisioning AWS Databricks E2 with a Hub \u0026 Spoke firewall for data exfiltration protection guide.\n* End to end workspace management guide\n* databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.\n* databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getAwsBucketPolicy.\n",
                 "properties": {
@@ -22775,7 +23014,7 @@
             }
         },
         "databricks:index/getCluster:getCluster": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nRetrieve attributes of each SQL warehouses in a workspace\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst allClusters = databricks.getClusters({});\nconst allCluster = .map(([, ]) =\u003e databricks.getCluster({\n    clusterId: __value,\n}));\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall_clusters = databricks.get_clusters()\nall_cluster = [databricks.get_cluster(cluster_id=__value) for __key, __value in data[\"databricks_clusters\"][\"ids\"]]\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n* databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.\n* databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).\n",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nRetrieve attributes of each SQL warehouses in a workspace\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst allClusters = databricks.getClusters({});\nconst allCluster = .map(([, ]) =\u003e databricks.getCluster({\n    clusterId: __value,\n}));\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall_clusters = databricks.get_clusters()\nall_cluster = [databricks.get_cluster(cluster_id=__value) for __key, __value in data[\"databricks_clusters\"][\"ids\"]]\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n* databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.\n* databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getCluster.\n",
                 "properties": {
@@ -22869,7 +23108,7 @@
             }
         },
         "databricks:index/getClusters:getClusters": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nRetrieve all clusters on this workspace on AWS or GCP:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getClusters({});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_clusters()\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetClusters.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetClusters(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetClustersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getClusters();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getClusters\n      Arguments: {}\n```\n\nRetrieve all clusters with \"Shared\" in their cluster name on this Azure Databricks workspace:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst allShared = databricks.getClusters({\n    clusterNameContains: \"shared\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall_shared = databricks.get_clusters(cluster_name_contains=\"shared\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var allShared = Databricks.GetClusters.Invoke(new()\n    {\n        ClusterNameContains = \"shared\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetClusters(ctx, \u0026databricks.GetClustersArgs{\n\t\t\tClusterNameContains: pulumi.StringRef(\"shared\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetClustersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var allShared = DatabricksFunctions.getClusters(GetClustersArgs.builder()\n            .clusterNameContains(\"shared\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  allShared:\n    fn::invoke:\n      Function: databricks:getClusters\n      Arguments:\n        clusterNameContains: shared\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n* databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.\n* databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).\n",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nRetrieve all clusters on this workspace on AWS or GCP:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getClusters({});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_clusters()\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetClusters.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetClusters(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetClustersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getClusters();\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getClusters\n      Arguments: {}\n```\n\nRetrieve all clusters with \"Shared\" in their cluster name on this Azure Databricks workspace:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst allShared = databricks.getClusters({\n    clusterNameContains: \"shared\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall_shared = databricks.get_clusters(cluster_name_contains=\"shared\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var allShared = Databricks.GetClusters.Invoke(new()\n    {\n        ClusterNameContains = \"shared\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetClusters(ctx, \u0026databricks.GetClustersArgs{\n\t\t\tClusterNameContains: pulumi.StringRef(\"shared\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetClustersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var allShared = DatabricksFunctions.getClusters(GetClustersArgs.builder()\n            .clusterNameContains(\"shared\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  allShared:\n    fn::invoke:\n      Function: databricks:getClusters\n      Arguments:\n        clusterNameContains: shared\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide.\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n* databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.\n* databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getClusters.\n",
                 "properties": {
@@ -22946,7 +23185,7 @@
             }
         },
         "databricks:index/getDbfsFile:getDbfsFile": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst report = databricks.getDbfsFile({\n    limitFileSize: true,\n    path: \"dbfs:/reports/some.csv\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nreport = databricks.get_dbfs_file(limit_file_size=True,\n    path=\"dbfs:/reports/some.csv\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var report = Databricks.GetDbfsFile.Invoke(new()\n    {\n        LimitFileSize = true,\n        Path = \"dbfs:/reports/some.csv\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.LookupDbfsFile(ctx, \u0026databricks.LookupDbfsFileArgs{\n\t\t\tLimitFileSize: true,\n\t\t\tPath:          \"dbfs:/reports/some.csv\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetDbfsFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()\n            .limitFileSize(\"true\")\n            .path(\"dbfs:/reports/some.csv\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  report:\n    fn::invoke:\n      Function: databricks:getDbfsFile\n      Arguments:\n        limitFileSize: 'true'\n        path: dbfs:/reports/some.csv\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide\n* databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.\n",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst report = databricks.getDbfsFile({\n    limitFileSize: true,\n    path: \"dbfs:/reports/some.csv\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nreport = databricks.get_dbfs_file(limit_file_size=True,\n    path=\"dbfs:/reports/some.csv\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var report = Databricks.GetDbfsFile.Invoke(new()\n    {\n        LimitFileSize = true,\n        Path = \"dbfs:/reports/some.csv\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.LookupDbfsFile(ctx, \u0026databricks.LookupDbfsFileArgs{\n\t\t\tLimitFileSize: true,\n\t\t\tPath:          \"dbfs:/reports/some.csv\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetDbfsFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()\n            .limitFileSize(\"true\")\n            .path(\"dbfs:/reports/some.csv\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  report:\n    fn::invoke:\n      Function: databricks:getDbfsFile\n      Arguments:\n        limitFileSize: 'true'\n        path: dbfs:/reports/some.csv\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide.\n* databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDbfsFile.\n",
                 "properties": {
@@ -23000,7 +23239,7 @@
             }
         },
         "databricks:index/getDbfsFilePaths:getDbfsFilePaths": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst partitions = databricks.getDbfsFilePaths({\n    path: \"dbfs:/user/hive/default.db/table\",\n    recursive: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\npartitions = databricks.get_dbfs_file_paths(path=\"dbfs:/user/hive/default.db/table\",\n    recursive=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var partitions = Databricks.GetDbfsFilePaths.Invoke(new()\n    {\n        Path = \"dbfs:/user/hive/default.db/table\",\n        Recursive = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetDbfsFilePaths(ctx, \u0026databricks.GetDbfsFilePathsArgs{\n\t\t\tPath:      \"dbfs:/user/hive/default.db/table\",\n\t\t\tRecursive: false,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetDbfsFilePathsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var partitions = DatabricksFunctions.getDbfsFilePaths(GetDbfsFilePathsArgs.builder()\n            .path(\"dbfs:/user/hive/default.db/table\")\n            .recursive(false)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  partitions:\n    fn::invoke:\n      Function: databricks:getDbfsFilePaths\n      Arguments:\n        path: dbfs:/user/hive/default.db/table\n        recursive: false\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide\n* databricks.DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.\n* databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.\n",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst partitions = databricks.getDbfsFilePaths({\n    path: \"dbfs:/user/hive/default.db/table\",\n    recursive: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\npartitions = databricks.get_dbfs_file_paths(path=\"dbfs:/user/hive/default.db/table\",\n    recursive=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var partitions = Databricks.GetDbfsFilePaths.Invoke(new()\n    {\n        Path = \"dbfs:/user/hive/default.db/table\",\n        Recursive = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.GetDbfsFilePaths(ctx, \u0026databricks.GetDbfsFilePathsArgs{\n\t\t\tPath:      \"dbfs:/user/hive/default.db/table\",\n\t\t\tRecursive: false,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetDbfsFilePathsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var partitions = DatabricksFunctions.getDbfsFilePaths(GetDbfsFilePathsArgs.builder()\n            .path(\"dbfs:/user/hive/default.db/table\")\n            .recursive(false)\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  partitions:\n    fn::invoke:\n      Function: databricks:getDbfsFilePaths\n      Arguments:\n        path: dbfs:/user/hive/default.db/table\n        recursive: false\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide.\n* databricks.DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.\n* databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDbfsFilePaths.\n",
                 "properties": {
@@ -23472,7 +23711,7 @@
             }
         },
         "databricks:index/getNodeType:getNodeType": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst withGpu = databricks.getNodeType({\n    localDisk: true,\n    minCores: 16,\n    gbPerCore: 1,\n    minGpus: 1,\n});\nconst gpuMl = databricks.getSparkVersion({\n    gpu: true,\n    ml: true,\n});\nconst research = new databricks.Cluster(\"research\", {\n    clusterName: \"Research Cluster\",\n    sparkVersion: gpuMl.then(gpuMl =\u003e gpuMl.id),\n    nodeTypeId: withGpu.then(withGpu =\u003e withGpu.id),\n    autoterminationMinutes: 20,\n    autoscale: {\n        minWorkers: 1,\n        maxWorkers: 50,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nwith_gpu = databricks.get_node_type(local_disk=True,\n    min_cores=16,\n    gb_per_core=1,\n    min_gpus=1)\ngpu_ml = databricks.get_spark_version(gpu=True,\n    ml=True)\nresearch = databricks.Cluster(\"research\",\n    cluster_name=\"Research Cluster\",\n    spark_version=gpu_ml.id,\n    node_type_id=with_gpu.id,\n    autotermination_minutes=20,\n    autoscale=databricks.ClusterAutoscaleArgs(\n        min_workers=1,\n        max_workers=50,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var withGpu = Databricks.GetNodeType.Invoke(new()\n    {\n        LocalDisk = true,\n        MinCores = 16,\n        GbPerCore = 1,\n        MinGpus = 1,\n    });\n\n    var gpuMl = Databricks.GetSparkVersion.Invoke(new()\n    {\n        Gpu = true,\n        Ml = true,\n    });\n\n    var research = new Databricks.Cluster(\"research\", new()\n    {\n        ClusterName = \"Research Cluster\",\n        SparkVersion = gpuMl.Apply(getSparkVersionResult =\u003e getSparkVersionResult.Id),\n        NodeTypeId = withGpu.Apply(getNodeTypeResult =\u003e getNodeTypeResult.Id),\n        AutoterminationMinutes = 20,\n        Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs\n        {\n            MinWorkers = 1,\n            MaxWorkers = 50,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\twithGpu, err := databricks.GetNodeType(ctx, \u0026databricks.GetNodeTypeArgs{\n\t\t\tLocalDisk: pulumi.BoolRef(true),\n\t\t\tMinCores:  pulumi.IntRef(16),\n\t\t\tGbPerCore: pulumi.IntRef(1),\n\t\t\tMinGpus:   pulumi.IntRef(1),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgpuMl, err := databricks.GetSparkVersion(ctx, \u0026databricks.GetSparkVersionArgs{\n\t\t\tGpu: pulumi.BoolRef(true),\n\t\t\tMl:  pulumi.BoolRef(true),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewCluster(ctx, \"research\", \u0026databricks.ClusterArgs{\n\t\t\tClusterName:            pulumi.String(\"Research Cluster\"),\n\t\t\tSparkVersion:           *pulumi.String(gpuMl.Id),\n\t\t\tNodeTypeId:             *pulumi.String(withGpu.Id),\n\t\t\tAutoterminationMinutes: pulumi.Int(20),\n\t\t\tAutoscale: \u0026databricks.ClusterAutoscaleArgs{\n\t\t\t\tMinWorkers: pulumi.Int(1),\n\t\t\t\tMaxWorkers: pulumi.Int(50),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetNodeTypeArgs;\nimport com.pulumi.databricks.inputs.GetSparkVersionArgs;\nimport com.pulumi.databricks.Cluster;\nimport com.pulumi.databricks.ClusterArgs;\nimport com.pulumi.databricks.inputs.ClusterAutoscaleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var withGpu = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()\n            .localDisk(true)\n            .minCores(16)\n            .gbPerCore(1)\n            .minGpus(1)\n            .build());\n\n        final var gpuMl = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()\n            .gpu(true)\n            .ml(true)\n            .build());\n\n        var research = new Cluster(\"research\", ClusterArgs.builder()        \n            .clusterName(\"Research Cluster\")\n            .sparkVersion(gpuMl.applyValue(getSparkVersionResult -\u003e getSparkVersionResult.id()))\n            .nodeTypeId(withGpu.applyValue(getNodeTypeResult -\u003e getNodeTypeResult.id()))\n            .autoterminationMinutes(20)\n            .autoscale(ClusterAutoscaleArgs.builder()\n                .minWorkers(1)\n                .maxWorkers(50)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  research:\n    type: databricks:Cluster\n    properties:\n      clusterName: Research Cluster\n      sparkVersion: ${gpuMl.id}\n      nodeTypeId: ${withGpu.id}\n      autoterminationMinutes: 20\n      autoscale:\n        minWorkers: 1\n        maxWorkers: 50\nvariables:\n  withGpu:\n    fn::invoke:\n      Function: databricks:getNodeType\n      Arguments:\n        localDisk: true\n        minCores: 16\n        gbPerCore: 1\n        minGpus: 1\n  gpuMl:\n    fn::invoke:\n      Function: databricks:getSparkVersion\n      Arguments:\n        gpu: true\n        ml: true\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst withGpu = databricks.getNodeType({\n    localDisk: true,\n    minCores: 16,\n    gbPerCore: 1,\n    minGpus: 1,\n});\nconst gpuMl = databricks.getSparkVersion({\n    gpu: true,\n    ml: true,\n});\nconst research = new databricks.Cluster(\"research\", {\n    clusterName: \"Research Cluster\",\n    sparkVersion: gpuMl.then(gpuMl =\u003e gpuMl.id),\n    nodeTypeId: withGpu.then(withGpu =\u003e withGpu.id),\n    autoterminationMinutes: 20,\n    autoscale: {\n        minWorkers: 1,\n        maxWorkers: 50,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nwith_gpu = databricks.get_node_type(local_disk=True,\n    min_cores=16,\n    gb_per_core=1,\n    min_gpus=1)\ngpu_ml = databricks.get_spark_version(gpu=True,\n    ml=True)\nresearch = databricks.Cluster(\"research\",\n    cluster_name=\"Research Cluster\",\n    spark_version=gpu_ml.id,\n    node_type_id=with_gpu.id,\n    autotermination_minutes=20,\n    autoscale=databricks.ClusterAutoscaleArgs(\n        min_workers=1,\n        max_workers=50,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var withGpu = Databricks.GetNodeType.Invoke(new()\n    {\n        LocalDisk = true,\n        MinCores = 16,\n        GbPerCore = 1,\n        MinGpus = 1,\n    });\n\n    var gpuMl = Databricks.GetSparkVersion.Invoke(new()\n    {\n        Gpu = true,\n        Ml = true,\n    });\n\n    var research = new Databricks.Cluster(\"research\", new()\n    {\n        ClusterName = \"Research Cluster\",\n        SparkVersion = gpuMl.Apply(getSparkVersionResult =\u003e getSparkVersionResult.Id),\n        NodeTypeId = withGpu.Apply(getNodeTypeResult =\u003e getNodeTypeResult.Id),\n        AutoterminationMinutes = 20,\n        Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs\n        {\n            MinWorkers = 1,\n            MaxWorkers = 50,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\twithGpu, err := databricks.GetNodeType(ctx, \u0026databricks.GetNodeTypeArgs{\n\t\t\tLocalDisk: pulumi.BoolRef(true),\n\t\t\tMinCores:  pulumi.IntRef(16),\n\t\t\tGbPerCore: pulumi.IntRef(1),\n\t\t\tMinGpus:   pulumi.IntRef(1),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgpuMl, err := databricks.GetSparkVersion(ctx, \u0026databricks.GetSparkVersionArgs{\n\t\t\tGpu: pulumi.BoolRef(true),\n\t\t\tMl:  pulumi.BoolRef(true),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewCluster(ctx, \"research\", \u0026databricks.ClusterArgs{\n\t\t\tClusterName:            pulumi.String(\"Research Cluster\"),\n\t\t\tSparkVersion:           *pulumi.String(gpuMl.Id),\n\t\t\tNodeTypeId:             *pulumi.String(withGpu.Id),\n\t\t\tAutoterminationMinutes: pulumi.Int(20),\n\t\t\tAutoscale: \u0026databricks.ClusterAutoscaleArgs{\n\t\t\t\tMinWorkers: pulumi.Int(1),\n\t\t\t\tMaxWorkers: pulumi.Int(50),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetNodeTypeArgs;\nimport com.pulumi.databricks.inputs.GetSparkVersionArgs;\nimport com.pulumi.databricks.Cluster;\nimport com.pulumi.databricks.ClusterArgs;\nimport com.pulumi.databricks.inputs.ClusterAutoscaleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var withGpu = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()\n            .localDisk(true)\n            .minCores(16)\n            .gbPerCore(1)\n            .minGpus(1)\n            .build());\n\n        final var gpuMl = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()\n            .gpu(true)\n            .ml(true)\n            .build());\n\n        var research = new Cluster(\"research\", ClusterArgs.builder()        \n            .clusterName(\"Research Cluster\")\n            .sparkVersion(gpuMl.applyValue(getSparkVersionResult -\u003e getSparkVersionResult.id()))\n            .nodeTypeId(withGpu.applyValue(getNodeTypeResult -\u003e getNodeTypeResult.id()))\n            .autoterminationMinutes(20)\n            .autoscale(ClusterAutoscaleArgs.builder()\n                .minWorkers(1)\n                .maxWorkers(50)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  research:\n    type: databricks:Cluster\n    properties:\n      clusterName: Research Cluster\n      sparkVersion: ${gpuMl.id}\n      nodeTypeId: ${withGpu.id}\n      autoterminationMinutes: 20\n      autoscale:\n        minWorkers: 1\n        maxWorkers: 50\nvariables:\n  withGpu:\n    fn::invoke:\n      Function: databricks:getNodeType\n      Arguments:\n        localDisk: true\n        minCores: 16\n        gbPerCore: 1\n        minGpus: 1\n  gpuMl:\n    fn::invoke:\n      Function: databricks:getSparkVersion\n      Arguments:\n        gpu: true\n        ml: true\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide.\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getNodeType.\n",
                 "properties": {
@@ -23764,7 +24003,7 @@
             }
         },
         "databricks:index/getServicePrincipal:getServicePrincipal": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nAdding service principal `11111111-2222-3333-4444-555666777888` to administrative group\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst admins = databricks.getGroup({\n    displayName: \"admins\",\n});\nconst spn = databricks.getServicePrincipal({\n    applicationId: \"11111111-2222-3333-4444-555666777888\",\n});\nconst myMemberA = new databricks.GroupMember(\"myMemberA\", {\n    groupId: admins.then(admins =\u003e admins.id),\n    memberId: spn.then(spn =\u003e spn.id),\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nadmins = databricks.get_group(display_name=\"admins\")\nspn = databricks.get_service_principal(application_id=\"11111111-2222-3333-4444-555666777888\")\nmy_member_a = databricks.GroupMember(\"myMemberA\",\n    group_id=admins.id,\n    member_id=spn.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var admins = Databricks.GetGroup.Invoke(new()\n    {\n        DisplayName = \"admins\",\n    });\n\n    var spn = Databricks.GetServicePrincipal.Invoke(new()\n    {\n        ApplicationId = \"11111111-2222-3333-4444-555666777888\",\n    });\n\n    var myMemberA = new Databricks.GroupMember(\"myMemberA\", new()\n    {\n        GroupId = admins.Apply(getGroupResult =\u003e getGroupResult.Id),\n        MemberId = spn.Apply(getServicePrincipalResult =\u003e getServicePrincipalResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tadmins, err := databricks.LookupGroup(ctx, \u0026databricks.LookupGroupArgs{\n\t\t\tDisplayName: \"admins\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tspn, err := databricks.LookupServicePrincipal(ctx, \u0026databricks.LookupServicePrincipalArgs{\n\t\t\tApplicationId: pulumi.StringRef(\"11111111-2222-3333-4444-555666777888\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupMember(ctx, \"myMemberA\", \u0026databricks.GroupMemberArgs{\n\t\t\tGroupId:  *pulumi.String(admins.Id),\n\t\t\tMemberId: *pulumi.String(spn.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetGroupArgs;\nimport com.pulumi.databricks.inputs.GetServicePrincipalArgs;\nimport com.pulumi.databricks.GroupMember;\nimport com.pulumi.databricks.GroupMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()\n            .displayName(\"admins\")\n            .build());\n\n        final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()\n            .applicationId(\"11111111-2222-3333-4444-555666777888\")\n            .build());\n\n        var myMemberA = new GroupMember(\"myMemberA\", GroupMemberArgs.builder()        \n            .groupId(admins.applyValue(getGroupResult -\u003e getGroupResult.id()))\n            .memberId(spn.applyValue(getServicePrincipalResult -\u003e getServicePrincipalResult.id()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myMemberA:\n    type: databricks:GroupMember\n    properties:\n      groupId: ${admins.id}\n      memberId: ${spn.id}\nvariables:\n  admins:\n    fn::invoke:\n      Function: databricks:getGroup\n      Arguments:\n        displayName: admins\n  spn:\n    fn::invoke:\n      Function: databricks:getServicePrincipal\n      Arguments:\n        applicationId: 11111111-2222-3333-4444-555666777888\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide\n* databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.\n* databricks.GroupMember to attach users and groups as group members.\n* databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.\n* databricks_service principal to manage service principals\n",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nAdding service principal `11111111-2222-3333-4444-555666777888` to administrative group\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst admins = databricks.getGroup({\n    displayName: \"admins\",\n});\nconst spn = databricks.getServicePrincipal({\n    applicationId: \"11111111-2222-3333-4444-555666777888\",\n});\nconst myMemberA = new databricks.GroupMember(\"myMemberA\", {\n    groupId: admins.then(admins =\u003e admins.id),\n    memberId: spn.then(spn =\u003e spn.id),\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nadmins = databricks.get_group(display_name=\"admins\")\nspn = databricks.get_service_principal(application_id=\"11111111-2222-3333-4444-555666777888\")\nmy_member_a = databricks.GroupMember(\"myMemberA\",\n    group_id=admins.id,\n    member_id=spn.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var admins = Databricks.GetGroup.Invoke(new()\n    {\n        DisplayName = \"admins\",\n    });\n\n    var spn = Databricks.GetServicePrincipal.Invoke(new()\n    {\n        ApplicationId = \"11111111-2222-3333-4444-555666777888\",\n    });\n\n    var myMemberA = new Databricks.GroupMember(\"myMemberA\", new()\n    {\n        GroupId = admins.Apply(getGroupResult =\u003e getGroupResult.Id),\n        MemberId = spn.Apply(getServicePrincipalResult =\u003e getServicePrincipalResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tadmins, err := databricks.LookupGroup(ctx, \u0026databricks.LookupGroupArgs{\n\t\t\tDisplayName: \"admins\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tspn, err := databricks.LookupServicePrincipal(ctx, \u0026databricks.LookupServicePrincipalArgs{\n\t\t\tApplicationId: pulumi.StringRef(\"11111111-2222-3333-4444-555666777888\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupMember(ctx, \"myMemberA\", \u0026databricks.GroupMemberArgs{\n\t\t\tGroupId:  *pulumi.String(admins.Id),\n\t\t\tMemberId: *pulumi.String(spn.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetGroupArgs;\nimport com.pulumi.databricks.inputs.GetServicePrincipalArgs;\nimport com.pulumi.databricks.GroupMember;\nimport com.pulumi.databricks.GroupMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()\n            .displayName(\"admins\")\n            .build());\n\n        final var spn = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()\n            .applicationId(\"11111111-2222-3333-4444-555666777888\")\n            .build());\n\n        var myMemberA = new GroupMember(\"myMemberA\", GroupMemberArgs.builder()        \n            .groupId(admins.applyValue(getGroupResult -\u003e getGroupResult.id()))\n            .memberId(spn.applyValue(getServicePrincipalResult -\u003e getServicePrincipalResult.id()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myMemberA:\n    type: databricks:GroupMember\n    properties:\n      groupId: ${admins.id}\n      memberId: ${spn.id}\nvariables:\n  admins:\n    fn::invoke:\n      Function: databricks:getGroup\n      Arguments:\n        displayName: admins\n  spn:\n    fn::invoke:\n      Function: databricks:getServicePrincipal\n      Arguments:\n        applicationId: 11111111-2222-3333-4444-555666777888\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide.\n* databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.\n* databricks.GroupMember to attach users and groups as group members.\n* databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.\n* databricks_service principal to manage service principals\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getServicePrincipal.\n",
                 "properties": {
@@ -23850,7 +24089,7 @@
             }
         },
         "databricks:index/getServicePrincipals:getServicePrincipals": {
-            "description": "## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide\n* databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.\n* databricks.GroupMember to attach users and groups as group members.\n* databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.\n* databricks_service principal to manage service principals\n",
+            "description": "## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide.\n* databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.\n* databricks.GroupMember to attach users and groups as group members.\n* databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.\n* databricks_service principal to manage service principals\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getServicePrincipals.\n",
                 "properties": {
@@ -23996,7 +24235,7 @@
             }
         },
         "databricks:index/getSparkVersion:getSparkVersion": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst withGpu = databricks.getNodeType({\n    localDisk: true,\n    minCores: 16,\n    gbPerCore: 1,\n    minGpus: 1,\n});\nconst gpuMl = databricks.getSparkVersion({\n    gpu: true,\n    ml: true,\n});\nconst research = new databricks.Cluster(\"research\", {\n    clusterName: \"Research Cluster\",\n    sparkVersion: gpuMl.then(gpuMl =\u003e gpuMl.id),\n    nodeTypeId: withGpu.then(withGpu =\u003e withGpu.id),\n    autoterminationMinutes: 20,\n    autoscale: {\n        minWorkers: 1,\n        maxWorkers: 50,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nwith_gpu = databricks.get_node_type(local_disk=True,\n    min_cores=16,\n    gb_per_core=1,\n    min_gpus=1)\ngpu_ml = databricks.get_spark_version(gpu=True,\n    ml=True)\nresearch = databricks.Cluster(\"research\",\n    cluster_name=\"Research Cluster\",\n    spark_version=gpu_ml.id,\n    node_type_id=with_gpu.id,\n    autotermination_minutes=20,\n    autoscale=databricks.ClusterAutoscaleArgs(\n        min_workers=1,\n        max_workers=50,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var withGpu = Databricks.GetNodeType.Invoke(new()\n    {\n        LocalDisk = true,\n        MinCores = 16,\n        GbPerCore = 1,\n        MinGpus = 1,\n    });\n\n    var gpuMl = Databricks.GetSparkVersion.Invoke(new()\n    {\n        Gpu = true,\n        Ml = true,\n    });\n\n    var research = new Databricks.Cluster(\"research\", new()\n    {\n        ClusterName = \"Research Cluster\",\n        SparkVersion = gpuMl.Apply(getSparkVersionResult =\u003e getSparkVersionResult.Id),\n        NodeTypeId = withGpu.Apply(getNodeTypeResult =\u003e getNodeTypeResult.Id),\n        AutoterminationMinutes = 20,\n        Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs\n        {\n            MinWorkers = 1,\n            MaxWorkers = 50,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\twithGpu, err := databricks.GetNodeType(ctx, \u0026databricks.GetNodeTypeArgs{\n\t\t\tLocalDisk: pulumi.BoolRef(true),\n\t\t\tMinCores:  pulumi.IntRef(16),\n\t\t\tGbPerCore: pulumi.IntRef(1),\n\t\t\tMinGpus:   pulumi.IntRef(1),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgpuMl, err := databricks.GetSparkVersion(ctx, \u0026databricks.GetSparkVersionArgs{\n\t\t\tGpu: pulumi.BoolRef(true),\n\t\t\tMl:  pulumi.BoolRef(true),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewCluster(ctx, \"research\", \u0026databricks.ClusterArgs{\n\t\t\tClusterName:            pulumi.String(\"Research Cluster\"),\n\t\t\tSparkVersion:           *pulumi.String(gpuMl.Id),\n\t\t\tNodeTypeId:             *pulumi.String(withGpu.Id),\n\t\t\tAutoterminationMinutes: pulumi.Int(20),\n\t\t\tAutoscale: \u0026databricks.ClusterAutoscaleArgs{\n\t\t\t\tMinWorkers: pulumi.Int(1),\n\t\t\t\tMaxWorkers: pulumi.Int(50),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetNodeTypeArgs;\nimport com.pulumi.databricks.inputs.GetSparkVersionArgs;\nimport com.pulumi.databricks.Cluster;\nimport com.pulumi.databricks.ClusterArgs;\nimport com.pulumi.databricks.inputs.ClusterAutoscaleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var withGpu = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()\n            .localDisk(true)\n            .minCores(16)\n            .gbPerCore(1)\n            .minGpus(1)\n            .build());\n\n        final var gpuMl = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()\n            .gpu(true)\n            .ml(true)\n            .build());\n\n        var research = new Cluster(\"research\", ClusterArgs.builder()        \n            .clusterName(\"Research Cluster\")\n            .sparkVersion(gpuMl.applyValue(getSparkVersionResult -\u003e getSparkVersionResult.id()))\n            .nodeTypeId(withGpu.applyValue(getNodeTypeResult -\u003e getNodeTypeResult.id()))\n            .autoterminationMinutes(20)\n            .autoscale(ClusterAutoscaleArgs.builder()\n                .minWorkers(1)\n                .maxWorkers(50)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  research:\n    type: databricks:Cluster\n    properties:\n      clusterName: Research Cluster\n      sparkVersion: ${gpuMl.id}\n      nodeTypeId: ${withGpu.id}\n      autoterminationMinutes: 20\n      autoscale:\n        minWorkers: 1\n        maxWorkers: 50\nvariables:\n  withGpu:\n    fn::invoke:\n      Function: databricks:getNodeType\n      Arguments:\n        localDisk: true\n        minCores: 16\n        gbPerCore: 1\n        minGpus: 1\n  gpuMl:\n    fn::invoke:\n      Function: databricks:getSparkVersion\n      Arguments:\n        gpu: true\n        ml: true\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst withGpu = databricks.getNodeType({\n    localDisk: true,\n    minCores: 16,\n    gbPerCore: 1,\n    minGpus: 1,\n});\nconst gpuMl = databricks.getSparkVersion({\n    gpu: true,\n    ml: true,\n});\nconst research = new databricks.Cluster(\"research\", {\n    clusterName: \"Research Cluster\",\n    sparkVersion: gpuMl.then(gpuMl =\u003e gpuMl.id),\n    nodeTypeId: withGpu.then(withGpu =\u003e withGpu.id),\n    autoterminationMinutes: 20,\n    autoscale: {\n        minWorkers: 1,\n        maxWorkers: 50,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nwith_gpu = databricks.get_node_type(local_disk=True,\n    min_cores=16,\n    gb_per_core=1,\n    min_gpus=1)\ngpu_ml = databricks.get_spark_version(gpu=True,\n    ml=True)\nresearch = databricks.Cluster(\"research\",\n    cluster_name=\"Research Cluster\",\n    spark_version=gpu_ml.id,\n    node_type_id=with_gpu.id,\n    autotermination_minutes=20,\n    autoscale=databricks.ClusterAutoscaleArgs(\n        min_workers=1,\n        max_workers=50,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var withGpu = Databricks.GetNodeType.Invoke(new()\n    {\n        LocalDisk = true,\n        MinCores = 16,\n        GbPerCore = 1,\n        MinGpus = 1,\n    });\n\n    var gpuMl = Databricks.GetSparkVersion.Invoke(new()\n    {\n        Gpu = true,\n        Ml = true,\n    });\n\n    var research = new Databricks.Cluster(\"research\", new()\n    {\n        ClusterName = \"Research Cluster\",\n        SparkVersion = gpuMl.Apply(getSparkVersionResult =\u003e getSparkVersionResult.Id),\n        NodeTypeId = withGpu.Apply(getNodeTypeResult =\u003e getNodeTypeResult.Id),\n        AutoterminationMinutes = 20,\n        Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs\n        {\n            MinWorkers = 1,\n            MaxWorkers = 50,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\twithGpu, err := databricks.GetNodeType(ctx, \u0026databricks.GetNodeTypeArgs{\n\t\t\tLocalDisk: pulumi.BoolRef(true),\n\t\t\tMinCores:  pulumi.IntRef(16),\n\t\t\tGbPerCore: pulumi.IntRef(1),\n\t\t\tMinGpus:   pulumi.IntRef(1),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgpuMl, err := databricks.GetSparkVersion(ctx, \u0026databricks.GetSparkVersionArgs{\n\t\t\tGpu: pulumi.BoolRef(true),\n\t\t\tMl:  pulumi.BoolRef(true),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewCluster(ctx, \"research\", \u0026databricks.ClusterArgs{\n\t\t\tClusterName:            pulumi.String(\"Research Cluster\"),\n\t\t\tSparkVersion:           *pulumi.String(gpuMl.Id),\n\t\t\tNodeTypeId:             *pulumi.String(withGpu.Id),\n\t\t\tAutoterminationMinutes: pulumi.Int(20),\n\t\t\tAutoscale: \u0026databricks.ClusterAutoscaleArgs{\n\t\t\t\tMinWorkers: pulumi.Int(1),\n\t\t\t\tMaxWorkers: pulumi.Int(50),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetNodeTypeArgs;\nimport com.pulumi.databricks.inputs.GetSparkVersionArgs;\nimport com.pulumi.databricks.Cluster;\nimport com.pulumi.databricks.ClusterArgs;\nimport com.pulumi.databricks.inputs.ClusterAutoscaleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var withGpu = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()\n            .localDisk(true)\n            .minCores(16)\n            .gbPerCore(1)\n            .minGpus(1)\n            .build());\n\n        final var gpuMl = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()\n            .gpu(true)\n            .ml(true)\n            .build());\n\n        var research = new Cluster(\"research\", ClusterArgs.builder()        \n            .clusterName(\"Research Cluster\")\n            .sparkVersion(gpuMl.applyValue(getSparkVersionResult -\u003e getSparkVersionResult.id()))\n            .nodeTypeId(withGpu.applyValue(getNodeTypeResult -\u003e getNodeTypeResult.id()))\n            .autoterminationMinutes(20)\n            .autoscale(ClusterAutoscaleArgs.builder()\n                .minWorkers(1)\n                .maxWorkers(50)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  research:\n    type: databricks:Cluster\n    properties:\n      clusterName: Research Cluster\n      sparkVersion: ${gpuMl.id}\n      nodeTypeId: ${withGpu.id}\n      autoterminationMinutes: 20\n      autoscale:\n        minWorkers: 1\n        maxWorkers: 50\nvariables:\n  withGpu:\n    fn::invoke:\n      Function: databricks:getNodeType\n      Arguments:\n        localDisk: true\n        minCores: 16\n        gbPerCore: 1\n        minGpus: 1\n  gpuMl:\n    fn::invoke:\n      Function: databricks:getSparkVersion\n      Arguments:\n        gpu: true\n        ml: true\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide.\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSparkVersion.\n",
                 "properties": {
@@ -24355,7 +24594,7 @@
             }
         },
         "databricks:index/getUser:getUser": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nAdding user to administrative group\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst admins = databricks.getGroup({\n    displayName: \"admins\",\n});\nconst me = databricks.getUser({\n    userName: \"me@example.com\",\n});\nconst myMemberA = new databricks.GroupMember(\"myMemberA\", {\n    groupId: admins.then(admins =\u003e admins.id),\n    memberId: me.then(me =\u003e me.id),\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nadmins = databricks.get_group(display_name=\"admins\")\nme = databricks.get_user(user_name=\"me@example.com\")\nmy_member_a = databricks.GroupMember(\"myMemberA\",\n    group_id=admins.id,\n    member_id=me.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var admins = Databricks.GetGroup.Invoke(new()\n    {\n        DisplayName = \"admins\",\n    });\n\n    var me = Databricks.GetUser.Invoke(new()\n    {\n        UserName = \"me@example.com\",\n    });\n\n    var myMemberA = new Databricks.GroupMember(\"myMemberA\", new()\n    {\n        GroupId = admins.Apply(getGroupResult =\u003e getGroupResult.Id),\n        MemberId = me.Apply(getUserResult =\u003e getUserResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tadmins, err := databricks.LookupGroup(ctx, \u0026databricks.LookupGroupArgs{\n\t\t\tDisplayName: \"admins\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tme, err := databricks.LookupUser(ctx, \u0026databricks.LookupUserArgs{\n\t\t\tUserName: pulumi.StringRef(\"me@example.com\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupMember(ctx, \"myMemberA\", \u0026databricks.GroupMemberArgs{\n\t\t\tGroupId:  *pulumi.String(admins.Id),\n\t\t\tMemberId: *pulumi.String(me.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetGroupArgs;\nimport com.pulumi.databricks.inputs.GetUserArgs;\nimport com.pulumi.databricks.GroupMember;\nimport com.pulumi.databricks.GroupMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()\n            .displayName(\"admins\")\n            .build());\n\n        final var me = DatabricksFunctions.getUser(GetUserArgs.builder()\n            .userName(\"me@example.com\")\n            .build());\n\n        var myMemberA = new GroupMember(\"myMemberA\", GroupMemberArgs.builder()        \n            .groupId(admins.applyValue(getGroupResult -\u003e getGroupResult.id()))\n            .memberId(me.applyValue(getUserResult -\u003e getUserResult.id()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myMemberA:\n    type: databricks:GroupMember\n    properties:\n      groupId: ${admins.id}\n      memberId: ${me.id}\nvariables:\n  admins:\n    fn::invoke:\n      Function: databricks:getGroup\n      Arguments:\n        displayName: admins\n  me:\n    fn::invoke:\n      Function: databricks:getUser\n      Arguments:\n        userName: me@example.com\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide\n* databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.\n* databricks.GroupMember to attach users and groups as group members.\n* databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.\n* databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.\n* databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.\n",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nAdding user to administrative group\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst admins = databricks.getGroup({\n    displayName: \"admins\",\n});\nconst me = databricks.getUser({\n    userName: \"me@example.com\",\n});\nconst myMemberA = new databricks.GroupMember(\"myMemberA\", {\n    groupId: admins.then(admins =\u003e admins.id),\n    memberId: me.then(me =\u003e me.id),\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nadmins = databricks.get_group(display_name=\"admins\")\nme = databricks.get_user(user_name=\"me@example.com\")\nmy_member_a = databricks.GroupMember(\"myMemberA\",\n    group_id=admins.id,\n    member_id=me.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var admins = Databricks.GetGroup.Invoke(new()\n    {\n        DisplayName = \"admins\",\n    });\n\n    var me = Databricks.GetUser.Invoke(new()\n    {\n        UserName = \"me@example.com\",\n    });\n\n    var myMemberA = new Databricks.GroupMember(\"myMemberA\", new()\n    {\n        GroupId = admins.Apply(getGroupResult =\u003e getGroupResult.Id),\n        MemberId = me.Apply(getUserResult =\u003e getUserResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tadmins, err := databricks.LookupGroup(ctx, \u0026databricks.LookupGroupArgs{\n\t\t\tDisplayName: \"admins\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tme, err := databricks.LookupUser(ctx, \u0026databricks.LookupUserArgs{\n\t\t\tUserName: pulumi.StringRef(\"me@example.com\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupMember(ctx, \"myMemberA\", \u0026databricks.GroupMemberArgs{\n\t\t\tGroupId:  *pulumi.String(admins.Id),\n\t\t\tMemberId: *pulumi.String(me.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetGroupArgs;\nimport com.pulumi.databricks.inputs.GetUserArgs;\nimport com.pulumi.databricks.GroupMember;\nimport com.pulumi.databricks.GroupMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()\n            .displayName(\"admins\")\n            .build());\n\n        final var me = DatabricksFunctions.getUser(GetUserArgs.builder()\n            .userName(\"me@example.com\")\n            .build());\n\n        var myMemberA = new GroupMember(\"myMemberA\", GroupMemberArgs.builder()        \n            .groupId(admins.applyValue(getGroupResult -\u003e getGroupResult.id()))\n            .memberId(me.applyValue(getUserResult -\u003e getUserResult.id()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myMemberA:\n    type: databricks:GroupMember\n    properties:\n      groupId: ${admins.id}\n      memberId: ${me.id}\nvariables:\n  admins:\n    fn::invoke:\n      Function: databricks:getGroup\n      Arguments:\n        displayName: admins\n  me:\n    fn::invoke:\n      Function: databricks:getUser\n      Arguments:\n        userName: me@example.com\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide.\n* databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.\n* databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).\n* databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.\n* databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.\n* databricks.GroupMember to attach users and groups as group members.\n* databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.\n* databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.\n* databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getUser.\n",
                 "properties": {

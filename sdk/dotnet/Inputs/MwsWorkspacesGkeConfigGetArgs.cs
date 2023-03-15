@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class MwsWorkspacesGkeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+        /// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
         /// </summary>
         [Input("connectivityType", required: true)]
         public Input<string> ConnectivityType { get; set; } = null!;

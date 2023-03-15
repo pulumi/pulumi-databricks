@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class MwsWorkspacesGkeConfig
     {
         /// <summary>
-        /// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+        /// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
         /// </summary>
         public readonly string ConnectivityType;
         /// <summary>

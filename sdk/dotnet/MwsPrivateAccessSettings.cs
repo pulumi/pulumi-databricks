@@ -18,7 +18,7 @@ namespace Pulumi.Databricks
     public partial class MwsPrivateAccessSettings : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -48,19 +48,19 @@ namespace Pulumi.Databricks
         public Output<string> PrivateAccessSettingsName { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
+        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.
         /// </summary>
         [Output("publicAccessEnabled")]
         public Output<bool?> PublicAccessEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Region of AWS VPC
+        /// Region of AWS VPC or the Google Cloud VPC network
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Status of Private Access Settings
+        /// (AWS only) Status of Private Access Settings
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.Databricks
     public sealed class MwsPrivateAccessSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -148,19 +148,19 @@ namespace Pulumi.Databricks
         public Input<string> PrivateAccessSettingsName { get; set; } = null!;
 
         /// <summary>
-        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
+        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.
         /// </summary>
         [Input("publicAccessEnabled")]
         public Input<bool>? PublicAccessEnabled { get; set; }
 
         /// <summary>
-        /// Region of AWS VPC
+        /// Region of AWS VPC or the Google Cloud VPC network
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Status of Private Access Settings
+        /// (AWS only) Status of Private Access Settings
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.Databricks
     public sealed class MwsPrivateAccessSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -210,19 +210,19 @@ namespace Pulumi.Databricks
         public Input<string>? PrivateAccessSettingsName { get; set; }
 
         /// <summary>
-        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
+        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.
         /// </summary>
         [Input("publicAccessEnabled")]
         public Input<bool>? PublicAccessEnabled { get; set; }
 
         /// <summary>
-        /// Region of AWS VPC
+        /// Region of AWS VPC or the Google Cloud VPC network
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Status of Private Access Settings
+        /// (AWS only) Status of Private Access Settings
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

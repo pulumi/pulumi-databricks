@@ -123,7 +123,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide.
      * * End to end workspace management guide
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
@@ -139,7 +139,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide.
      * * End to end workspace management guide
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
@@ -155,7 +155,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide.
      * * End to end workspace management guide
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
@@ -171,7 +171,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide.
      * * End to end workspace management guide
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
@@ -720,7 +720,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are often used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -738,7 +738,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are often used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -756,7 +756,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are often used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -774,7 +774,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are often used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -792,7 +792,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are often used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -810,7 +810,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are often used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -1058,7 +1058,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -1134,7 +1134,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -1210,7 +1210,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -1286,7 +1286,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -1362,7 +1362,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -1438,7 +1438,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -1641,7 +1641,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
@@ -1685,7 +1685,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
@@ -1729,7 +1729,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
@@ -1773,7 +1773,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
@@ -1817,7 +1817,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
@@ -1863,7 +1863,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
@@ -1909,7 +1909,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
@@ -1955,7 +1955,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
@@ -3235,7 +3235,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -3302,7 +3302,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -3369,7 +3369,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -3436,7 +3436,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -3503,7 +3503,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -3570,7 +3570,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -4092,7 +4092,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -4153,7 +4153,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -4214,7 +4214,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -4275,7 +4275,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -4336,7 +4336,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -4397,7 +4397,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -4415,7 +4415,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -4433,7 +4433,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -4451,7 +4451,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -4469,7 +4469,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -4487,7 +4487,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -4505,7 +4505,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -5103,7 +5103,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -5170,7 +5170,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -5237,7 +5237,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -5304,7 +5304,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -5371,7 +5371,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -5438,7 +5438,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -6052,7 +6052,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -6114,7 +6114,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -6176,7 +6176,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -6238,7 +6238,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -6300,7 +6300,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -6362,7 +6362,7 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide
+     * * End to end workspace management guide.
      * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
      * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
      * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.

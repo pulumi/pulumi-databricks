@@ -60,7 +60,7 @@ export class MwsNetworks extends pulumi.CustomResource {
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
     public readonly subnetIds!: pulumi.Output<string[] | undefined>;
     /**
-     * mapping of databricks.MwsVpcEndpoint for PrivateLink connections
+     * mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
      */
     public readonly vpcEndpoints!: pulumi.Output<outputs.MwsNetworksVpcEndpoints>;
     /**
@@ -154,7 +154,7 @@ export interface MwsNetworksState {
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * mapping of databricks.MwsVpcEndpoint for PrivateLink connections
+     * mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
      */
     vpcEndpoints?: pulumi.Input<inputs.MwsNetworksVpcEndpoints>;
     /**
@@ -196,7 +196,7 @@ export interface MwsNetworksArgs {
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * mapping of databricks.MwsVpcEndpoint for PrivateLink connections
+     * mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
      */
     vpcEndpoints?: pulumi.Input<inputs.MwsNetworksVpcEndpoints>;
     /**

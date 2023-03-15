@@ -52,6 +52,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('azureWorkspaceResourceId')
 
     @property
+    def bricks_cli_path(self) -> Optional[str]:
+        return __config__.get('bricksCliPath')
+
+    @property
     def client_id(self) -> Optional[str]:
         return __config__.get('clientId')
 

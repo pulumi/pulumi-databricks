@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  *
  * The following resources are used in the same context:
  *
- * * End to end workspace management guide
+ * * End to end workspace management guide.
  * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
  * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
  * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -184,7 +184,7 @@ export interface GetNodeTypeResult {
  *
  * The following resources are used in the same context:
  *
- * * End to end workspace management guide
+ * * End to end workspace management guide.
  * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
  * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
  * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.

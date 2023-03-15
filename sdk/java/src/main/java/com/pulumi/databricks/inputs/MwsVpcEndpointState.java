@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.MwsVpcEndpointGcpVpcEndpointInfoArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,14 @@ public final class MwsVpcEndpointState extends com.pulumi.resources.ResourceArgs
     public static final MwsVpcEndpointState Empty = new MwsVpcEndpointState();
 
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * @return Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -38,14 +39,14 @@ public final class MwsVpcEndpointState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+     * (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      * 
      */
     @Import(name="awsEndpointServiceId")
     private @Nullable Output<String> awsEndpointServiceId;
 
     /**
-     * @return The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+     * @return (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      * 
      */
     public Optional<Output<String>> awsEndpointServiceId() {
@@ -57,6 +58,21 @@ public final class MwsVpcEndpointState extends com.pulumi.resources.ResourceArgs
 
     public Optional<Output<String>> awsVpcEndpointId() {
         return Optional.ofNullable(this.awsVpcEndpointId);
+    }
+
+    /**
+     * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     * 
+     */
+    @Import(name="gcpVpcEndpointInfo")
+    private @Nullable Output<MwsVpcEndpointGcpVpcEndpointInfoArgs> gcpVpcEndpointInfo;
+
+    /**
+     * @return a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     * 
+     */
+    public Optional<Output<MwsVpcEndpointGcpVpcEndpointInfoArgs>> gcpVpcEndpointInfo() {
+        return Optional.ofNullable(this.gcpVpcEndpointInfo);
     }
 
     /**
@@ -75,14 +91,14 @@ public final class MwsVpcEndpointState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * State of VPC Endpoint
+     * (AWS Only) State of VPC Endpoint
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State of VPC Endpoint
+     * @return (AWS Only) State of VPC Endpoint
      * 
      */
     public Optional<Output<String>> state() {
@@ -133,6 +149,7 @@ public final class MwsVpcEndpointState extends com.pulumi.resources.ResourceArgs
         this.awsAccountId = $.awsAccountId;
         this.awsEndpointServiceId = $.awsEndpointServiceId;
         this.awsVpcEndpointId = $.awsVpcEndpointId;
+        this.gcpVpcEndpointInfo = $.gcpVpcEndpointInfo;
         this.region = $.region;
         this.state = $.state;
         this.useCase = $.useCase;
@@ -159,7 +176,7 @@ public final class MwsVpcEndpointState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * @param accountId Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
          * 
          * @return builder
          * 
@@ -170,7 +187,7 @@ public final class MwsVpcEndpointState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * @param accountId Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
          * 
          * @return builder
          * 
@@ -189,7 +206,7 @@ public final class MwsVpcEndpointState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param awsEndpointServiceId The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+         * @param awsEndpointServiceId (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
          * 
          * @return builder
          * 
@@ -200,7 +217,7 @@ public final class MwsVpcEndpointState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param awsEndpointServiceId The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+         * @param awsEndpointServiceId (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
          * 
          * @return builder
          * 
@@ -216,6 +233,27 @@ public final class MwsVpcEndpointState extends com.pulumi.resources.ResourceArgs
 
         public Builder awsVpcEndpointId(String awsVpcEndpointId) {
             return awsVpcEndpointId(Output.of(awsVpcEndpointId));
+        }
+
+        /**
+         * @param gcpVpcEndpointInfo a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpVpcEndpointInfo(@Nullable Output<MwsVpcEndpointGcpVpcEndpointInfoArgs> gcpVpcEndpointInfo) {
+            $.gcpVpcEndpointInfo = gcpVpcEndpointInfo;
+            return this;
+        }
+
+        /**
+         * @param gcpVpcEndpointInfo a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpVpcEndpointInfo(MwsVpcEndpointGcpVpcEndpointInfoArgs gcpVpcEndpointInfo) {
+            return gcpVpcEndpointInfo(Output.of(gcpVpcEndpointInfo));
         }
 
         /**
@@ -240,7 +278,7 @@ public final class MwsVpcEndpointState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param state State of VPC Endpoint
+         * @param state (AWS Only) State of VPC Endpoint
          * 
          * @return builder
          * 
@@ -251,7 +289,7 @@ public final class MwsVpcEndpointState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param state State of VPC Endpoint
+         * @param state (AWS Only) State of VPC Endpoint
          * 
          * @return builder
          * 

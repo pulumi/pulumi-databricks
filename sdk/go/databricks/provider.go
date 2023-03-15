@@ -25,6 +25,7 @@ type Provider struct {
 	AzureLoginAppId          pulumi.StringPtrOutput `pulumi:"azureLoginAppId"`
 	AzureTenantId            pulumi.StringPtrOutput `pulumi:"azureTenantId"`
 	AzureWorkspaceResourceId pulumi.StringPtrOutput `pulumi:"azureWorkspaceResourceId"`
+	BricksCliPath            pulumi.StringPtrOutput `pulumi:"bricksCliPath"`
 	ClientId                 pulumi.StringPtrOutput `pulumi:"clientId"`
 	ClientSecret             pulumi.StringPtrOutput `pulumi:"clientSecret"`
 	ConfigFile               pulumi.StringPtrOutput `pulumi:"configFile"`
@@ -85,6 +86,7 @@ type providerArgs struct {
 	AzureTenantId            *string `pulumi:"azureTenantId"`
 	AzureUseMsi              *bool   `pulumi:"azureUseMsi"`
 	AzureWorkspaceResourceId *string `pulumi:"azureWorkspaceResourceId"`
+	BricksCliPath            *string `pulumi:"bricksCliPath"`
 	ClientId                 *string `pulumi:"clientId"`
 	ClientSecret             *string `pulumi:"clientSecret"`
 	ConfigFile               *string `pulumi:"configFile"`
@@ -114,6 +116,7 @@ type ProviderArgs struct {
 	AzureTenantId            pulumi.StringPtrInput
 	AzureUseMsi              pulumi.BoolPtrInput
 	AzureWorkspaceResourceId pulumi.StringPtrInput
+	BricksCliPath            pulumi.StringPtrInput
 	ClientId                 pulumi.StringPtrInput
 	ClientSecret             pulumi.StringPtrInput
 	ConfigFile               pulumi.StringPtrInput
@@ -199,6 +202,10 @@ func (o ProviderOutput) AzureTenantId() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) AzureWorkspaceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AzureWorkspaceResourceId }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) BricksCliPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BricksCliPath }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) ClientId() pulumi.StringPtrOutput {

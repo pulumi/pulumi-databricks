@@ -101,6 +101,7 @@
         "servicePrincipalRole.ts",
         "servicePrincipalSecret.ts",
         "share.ts",
+        "sqlAlert.ts",
         "sqlDashboard.ts",
         "sqlEndpoint.ts",
         "sqlGlobalConfig.ts",

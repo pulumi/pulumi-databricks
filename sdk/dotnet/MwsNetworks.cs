@@ -54,7 +54,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
 
         /// <summary>
-        /// mapping of databricks.MwsVpcEndpoint for PrivateLink connections
+        /// mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         /// </summary>
         [Output("vpcEndpoints")]
         public Output<Outputs.MwsNetworksVpcEndpoints> VpcEndpoints { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// mapping of databricks.MwsVpcEndpoint for PrivateLink connections
+        /// mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         /// </summary>
         [Input("vpcEndpoints")]
         public Input<Inputs.MwsNetworksVpcEndpointsArgs>? VpcEndpoints { get; set; }
@@ -282,7 +282,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// mapping of databricks.MwsVpcEndpoint for PrivateLink connections
+        /// mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         /// </summary>
         [Input("vpcEndpoints")]
         public Input<Inputs.MwsNetworksVpcEndpointsGetArgs>? VpcEndpoints { get; set; }

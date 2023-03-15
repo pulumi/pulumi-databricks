@@ -167,8 +167,8 @@ class ClusterPolicy(pulumi.CustomResource):
 
         The following resources are often used in the same context:
 
-        * Dynamic Passthrough Clusters for a Group guide
-        * End to end workspace management guide
+        * Dynamic Passthrough Clusters for a Group guide.
+        * End to end workspace management guide.
           *_get_clusters_data to retrieve a list of Cluster ids.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
           *_get_current_user_data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
@@ -223,8 +223,8 @@ class ClusterPolicy(pulumi.CustomResource):
 
         The following resources are often used in the same context:
 
-        * Dynamic Passthrough Clusters for a Group guide
-        * End to end workspace management guide
+        * Dynamic Passthrough Clusters for a Group guide.
+        * End to end workspace management guide.
           *_get_clusters_data to retrieve a list of Cluster ids.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
           *_get_current_user_data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.

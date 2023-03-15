@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// region of VPC
+        /// region of VPC.
         /// </summary>
         [Output("awsRegion")]
         public Output<string?> AwsRegion { get; private set; } = null!;
@@ -72,7 +72,7 @@ namespace Pulumi.Databricks
         public Output<bool?> IsNoPublicIpEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// region of the subnet
+        /// region of the subnet.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
@@ -92,11 +92,14 @@ namespace Pulumi.Databricks
         [Output("pricingTier")]
         public Output<string> PricingTier { get; private set; } = null!;
 
+        /// <summary>
+        /// Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+        /// </summary>
         [Output("privateAccessSettingsId")]
         public Output<string?> PrivateAccessSettingsId { get; private set; } = null!;
 
         /// <summary>
-        /// `storage_configuration_id` from storage configuration
+        /// `storage_configuration_id` from storage configuration.
         /// </summary>
         [Output("storageConfigurationId")]
         public Output<string?> StorageConfigurationId { get; private set; } = null!;
@@ -111,7 +114,7 @@ namespace Pulumi.Databricks
         public Output<int> WorkspaceId { get; private set; } = null!;
 
         /// <summary>
-        /// name of the workspace, will appear on UI
+        /// name of the workspace, will appear on UI.
         /// </summary>
         [Output("workspaceName")]
         public Output<string> WorkspaceName { get; private set; } = null!;
@@ -201,7 +204,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// region of VPC
+        /// region of VPC.
         /// </summary>
         [Input("awsRegion")]
         public Input<string>? AwsRegion { get; set; }
@@ -249,7 +252,7 @@ namespace Pulumi.Databricks
         public Input<bool>? IsNoPublicIpEnabled { get; set; }
 
         /// <summary>
-        /// region of the subnet
+        /// region of the subnet.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -269,11 +272,14 @@ namespace Pulumi.Databricks
         [Input("pricingTier")]
         public Input<string>? PricingTier { get; set; }
 
+        /// <summary>
+        /// Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+        /// </summary>
         [Input("privateAccessSettingsId")]
         public Input<string>? PrivateAccessSettingsId { get; set; }
 
         /// <summary>
-        /// `storage_configuration_id` from storage configuration
+        /// `storage_configuration_id` from storage configuration.
         /// </summary>
         [Input("storageConfigurationId")]
         public Input<string>? StorageConfigurationId { get; set; }
@@ -288,7 +294,7 @@ namespace Pulumi.Databricks
         public Input<int>? WorkspaceId { get; set; }
 
         /// <summary>
-        /// name of the workspace, will appear on UI
+        /// name of the workspace, will appear on UI.
         /// </summary>
         [Input("workspaceName", required: true)]
         public Input<string> WorkspaceName { get; set; } = null!;
@@ -336,7 +342,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// region of VPC
+        /// region of VPC.
         /// </summary>
         [Input("awsRegion")]
         public Input<string>? AwsRegion { get; set; }
@@ -384,7 +390,7 @@ namespace Pulumi.Databricks
         public Input<bool>? IsNoPublicIpEnabled { get; set; }
 
         /// <summary>
-        /// region of the subnet
+        /// region of the subnet.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -404,11 +410,14 @@ namespace Pulumi.Databricks
         [Input("pricingTier")]
         public Input<string>? PricingTier { get; set; }
 
+        /// <summary>
+        /// Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+        /// </summary>
         [Input("privateAccessSettingsId")]
         public Input<string>? PrivateAccessSettingsId { get; set; }
 
         /// <summary>
-        /// `storage_configuration_id` from storage configuration
+        /// `storage_configuration_id` from storage configuration.
         /// </summary>
         [Input("storageConfigurationId")]
         public Input<string>? StorageConfigurationId { get; set; }
@@ -423,7 +432,7 @@ namespace Pulumi.Databricks
         public Input<int>? WorkspaceId { get; set; }
 
         /// <summary>
-        /// name of the workspace, will appear on UI
+        /// name of the workspace, will appear on UI.
         /// </summary>
         [Input("workspaceName")]
         public Input<string>? WorkspaceName { get; set; }

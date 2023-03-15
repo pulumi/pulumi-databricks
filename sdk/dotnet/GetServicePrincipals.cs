@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
         /// 
         /// The following resources are used in the same context:
         /// 
-        /// * End to end workspace management guide
+        /// * End to end workspace management guide.
         /// * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
         /// * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
         /// * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
@@ -33,7 +33,7 @@ namespace Pulumi.Databricks
         /// 
         /// The following resources are used in the same context:
         /// 
-        /// * End to end workspace management guide
+        /// * End to end workspace management guide.
         /// * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
         /// * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
         /// * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.

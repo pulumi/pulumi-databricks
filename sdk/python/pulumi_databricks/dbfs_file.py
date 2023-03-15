@@ -85,7 +85,7 @@ class _DbfsFileState:
                  source: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DbfsFile resources.
-        :param pulumi.Input[str] dbfs_path: Path, but with `dbfs:` prefix
+        :param pulumi.Input[str] dbfs_path: Path, but with `dbfs:` prefix.
         :param pulumi.Input[int] file_size: The file size of the file that is being tracked by this resource in bytes.
         :param pulumi.Input[str] path: The path of the file in which you wish to save.
         :param pulumi.Input[str] source: The full absolute path to the file. Conflicts with `content_base64`.
@@ -116,7 +116,7 @@ class _DbfsFileState:
     @pulumi.getter(name="dbfsPath")
     def dbfs_path(self) -> Optional[pulumi.Input[str]]:
         """
-        Path, but with `dbfs:` prefix
+        Path, but with `dbfs:` prefix.
         """
         return pulumi.get(self, "dbfs_path")
 
@@ -183,7 +183,7 @@ class DbfsFile(pulumi.CustomResource):
         """
         ## Import
 
-        The resource dbfs file can be imported using the path of the file bash
+        The resource dbfs file can be imported using the path of the filebash
 
         ```sh
          $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
@@ -203,7 +203,7 @@ class DbfsFile(pulumi.CustomResource):
         """
         ## Import
 
-        The resource dbfs file can be imported using the path of the file bash
+        The resource dbfs file can be imported using the path of the filebash
 
         ```sh
          $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
@@ -268,7 +268,7 @@ class DbfsFile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] dbfs_path: Path, but with `dbfs:` prefix
+        :param pulumi.Input[str] dbfs_path: Path, but with `dbfs:` prefix.
         :param pulumi.Input[int] file_size: The file size of the file that is being tracked by this resource in bytes.
         :param pulumi.Input[str] path: The path of the file in which you wish to save.
         :param pulumi.Input[str] source: The full absolute path to the file. Conflicts with `content_base64`.
@@ -294,7 +294,7 @@ class DbfsFile(pulumi.CustomResource):
     @pulumi.getter(name="dbfsPath")
     def dbfs_path(self) -> pulumi.Output[str]:
         """
-        Path, but with `dbfs:` prefix
+        Path, but with `dbfs:` prefix.
         """
         return pulumi.get(self, "dbfs_path")
 

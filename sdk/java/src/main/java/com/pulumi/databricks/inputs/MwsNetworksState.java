@@ -109,14 +109,14 @@ public final class MwsNetworksState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * mapping of databricks.MwsVpcEndpoint for PrivateLink connections
+     * mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
      * 
      */
     @Import(name="vpcEndpoints")
     private @Nullable Output<MwsNetworksVpcEndpointsArgs> vpcEndpoints;
 
     /**
-     * @return mapping of databricks.MwsVpcEndpoint for PrivateLink connections
+     * @return mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
      * 
      */
     public Optional<Output<MwsNetworksVpcEndpointsArgs>> vpcEndpoints() {
@@ -336,7 +336,7 @@ public final class MwsNetworksState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcEndpoints mapping of databricks.MwsVpcEndpoint for PrivateLink connections
+         * @param vpcEndpoints mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class MwsNetworksState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcEndpoints mapping of databricks.MwsVpcEndpoint for PrivateLink connections
+         * @param vpcEndpoints mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
          * 
          * @return builder
          * 

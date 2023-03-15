@@ -13,7 +13,7 @@ import (
 
 // ## Import
 //
-// # The resource dbfs file can be imported using the path of the file bash
+// # The resource dbfs file can be imported using the path of the filebash
 //
 // ```sh
 //
@@ -24,7 +24,7 @@ type DbfsFile struct {
 	pulumi.CustomResourceState
 
 	ContentBase64 pulumi.StringPtrOutput `pulumi:"contentBase64"`
-	// Path, but with `dbfs:` prefix
+	// Path, but with `dbfs:` prefix.
 	DbfsPath pulumi.StringOutput `pulumi:"dbfsPath"`
 	// The file size of the file that is being tracked by this resource in bytes.
 	FileSize pulumi.IntOutput       `pulumi:"fileSize"`
@@ -68,7 +68,7 @@ func GetDbfsFile(ctx *pulumi.Context,
 // Input properties used for looking up and filtering DbfsFile resources.
 type dbfsFileState struct {
 	ContentBase64 *string `pulumi:"contentBase64"`
-	// Path, but with `dbfs:` prefix
+	// Path, but with `dbfs:` prefix.
 	DbfsPath *string `pulumi:"dbfsPath"`
 	// The file size of the file that is being tracked by this resource in bytes.
 	FileSize *int    `pulumi:"fileSize"`
@@ -81,7 +81,7 @@ type dbfsFileState struct {
 
 type DbfsFileState struct {
 	ContentBase64 pulumi.StringPtrInput
-	// Path, but with `dbfs:` prefix
+	// Path, but with `dbfs:` prefix.
 	DbfsPath pulumi.StringPtrInput
 	// The file size of the file that is being tracked by this resource in bytes.
 	FileSize pulumi.IntPtrInput
@@ -206,7 +206,7 @@ func (o DbfsFileOutput) ContentBase64() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbfsFile) pulumi.StringPtrOutput { return v.ContentBase64 }).(pulumi.StringPtrOutput)
 }
 
-// Path, but with `dbfs:` prefix
+// Path, but with `dbfs:` prefix.
 func (o DbfsFileOutput) DbfsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbfsFile) pulumi.StringOutput { return v.DbfsPath }).(pulumi.StringOutput)
 }

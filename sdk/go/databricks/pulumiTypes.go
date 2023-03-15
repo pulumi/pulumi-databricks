@@ -25442,6 +25442,219 @@ func (o MwsNetworksVpcEndpointsPtrOutput) RestApis() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+type MwsVpcEndpointGcpVpcEndpointInfo struct {
+	// Region of the PSC endpoint.
+	EndpointRegion string `pulumi:"endpointRegion"`
+	// The Google Cloud project ID of the VPC network where the PSC connection resides.
+	ProjectId string `pulumi:"projectId"`
+	// The unique ID of this PSC connection.
+	PscConnectionId *string `pulumi:"pscConnectionId"`
+	// The name of the PSC endpoint in the Google Cloud project.
+	PscEndpointName string `pulumi:"pscEndpointName"`
+	// The service attachment this PSC connection connects to.
+	ServiceAttachmentId *string `pulumi:"serviceAttachmentId"`
+}
+
+// MwsVpcEndpointGcpVpcEndpointInfoInput is an input type that accepts MwsVpcEndpointGcpVpcEndpointInfoArgs and MwsVpcEndpointGcpVpcEndpointInfoOutput values.
+// You can construct a concrete instance of `MwsVpcEndpointGcpVpcEndpointInfoInput` via:
+//
+//	MwsVpcEndpointGcpVpcEndpointInfoArgs{...}
+type MwsVpcEndpointGcpVpcEndpointInfoInput interface {
+	pulumi.Input
+
+	ToMwsVpcEndpointGcpVpcEndpointInfoOutput() MwsVpcEndpointGcpVpcEndpointInfoOutput
+	ToMwsVpcEndpointGcpVpcEndpointInfoOutputWithContext(context.Context) MwsVpcEndpointGcpVpcEndpointInfoOutput
+}
+
+type MwsVpcEndpointGcpVpcEndpointInfoArgs struct {
+	// Region of the PSC endpoint.
+	EndpointRegion pulumi.StringInput `pulumi:"endpointRegion"`
+	// The Google Cloud project ID of the VPC network where the PSC connection resides.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The unique ID of this PSC connection.
+	PscConnectionId pulumi.StringPtrInput `pulumi:"pscConnectionId"`
+	// The name of the PSC endpoint in the Google Cloud project.
+	PscEndpointName pulumi.StringInput `pulumi:"pscEndpointName"`
+	// The service attachment this PSC connection connects to.
+	ServiceAttachmentId pulumi.StringPtrInput `pulumi:"serviceAttachmentId"`
+}
+
+func (MwsVpcEndpointGcpVpcEndpointInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsVpcEndpointGcpVpcEndpointInfo)(nil)).Elem()
+}
+
+func (i MwsVpcEndpointGcpVpcEndpointInfoArgs) ToMwsVpcEndpointGcpVpcEndpointInfoOutput() MwsVpcEndpointGcpVpcEndpointInfoOutput {
+	return i.ToMwsVpcEndpointGcpVpcEndpointInfoOutputWithContext(context.Background())
+}
+
+func (i MwsVpcEndpointGcpVpcEndpointInfoArgs) ToMwsVpcEndpointGcpVpcEndpointInfoOutputWithContext(ctx context.Context) MwsVpcEndpointGcpVpcEndpointInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsVpcEndpointGcpVpcEndpointInfoOutput)
+}
+
+func (i MwsVpcEndpointGcpVpcEndpointInfoArgs) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutput() MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
+	return i.ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(context.Background())
+}
+
+func (i MwsVpcEndpointGcpVpcEndpointInfoArgs) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(ctx context.Context) MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsVpcEndpointGcpVpcEndpointInfoOutput).ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(ctx)
+}
+
+// MwsVpcEndpointGcpVpcEndpointInfoPtrInput is an input type that accepts MwsVpcEndpointGcpVpcEndpointInfoArgs, MwsVpcEndpointGcpVpcEndpointInfoPtr and MwsVpcEndpointGcpVpcEndpointInfoPtrOutput values.
+// You can construct a concrete instance of `MwsVpcEndpointGcpVpcEndpointInfoPtrInput` via:
+//
+//	        MwsVpcEndpointGcpVpcEndpointInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type MwsVpcEndpointGcpVpcEndpointInfoPtrInput interface {
+	pulumi.Input
+
+	ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutput() MwsVpcEndpointGcpVpcEndpointInfoPtrOutput
+	ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(context.Context) MwsVpcEndpointGcpVpcEndpointInfoPtrOutput
+}
+
+type mwsVpcEndpointGcpVpcEndpointInfoPtrType MwsVpcEndpointGcpVpcEndpointInfoArgs
+
+func MwsVpcEndpointGcpVpcEndpointInfoPtr(v *MwsVpcEndpointGcpVpcEndpointInfoArgs) MwsVpcEndpointGcpVpcEndpointInfoPtrInput {
+	return (*mwsVpcEndpointGcpVpcEndpointInfoPtrType)(v)
+}
+
+func (*mwsVpcEndpointGcpVpcEndpointInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsVpcEndpointGcpVpcEndpointInfo)(nil)).Elem()
+}
+
+func (i *mwsVpcEndpointGcpVpcEndpointInfoPtrType) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutput() MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
+	return i.ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *mwsVpcEndpointGcpVpcEndpointInfoPtrType) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(ctx context.Context) MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsVpcEndpointGcpVpcEndpointInfoPtrOutput)
+}
+
+type MwsVpcEndpointGcpVpcEndpointInfoOutput struct{ *pulumi.OutputState }
+
+func (MwsVpcEndpointGcpVpcEndpointInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsVpcEndpointGcpVpcEndpointInfo)(nil)).Elem()
+}
+
+func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) ToMwsVpcEndpointGcpVpcEndpointInfoOutput() MwsVpcEndpointGcpVpcEndpointInfoOutput {
+	return o
+}
+
+func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) ToMwsVpcEndpointGcpVpcEndpointInfoOutputWithContext(ctx context.Context) MwsVpcEndpointGcpVpcEndpointInfoOutput {
+	return o
+}
+
+func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutput() MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
+	return o.ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(context.Background())
+}
+
+func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(ctx context.Context) MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsVpcEndpointGcpVpcEndpointInfo) *MwsVpcEndpointGcpVpcEndpointInfo {
+		return &v
+	}).(MwsVpcEndpointGcpVpcEndpointInfoPtrOutput)
+}
+
+// Region of the PSC endpoint.
+func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) EndpointRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v MwsVpcEndpointGcpVpcEndpointInfo) string { return v.EndpointRegion }).(pulumi.StringOutput)
+}
+
+// The Google Cloud project ID of the VPC network where the PSC connection resides.
+func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v MwsVpcEndpointGcpVpcEndpointInfo) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The unique ID of this PSC connection.
+func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsVpcEndpointGcpVpcEndpointInfo) *string { return v.PscConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the PSC endpoint in the Google Cloud project.
+func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) PscEndpointName() pulumi.StringOutput {
+	return o.ApplyT(func(v MwsVpcEndpointGcpVpcEndpointInfo) string { return v.PscEndpointName }).(pulumi.StringOutput)
+}
+
+// The service attachment this PSC connection connects to.
+func (o MwsVpcEndpointGcpVpcEndpointInfoOutput) ServiceAttachmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsVpcEndpointGcpVpcEndpointInfo) *string { return v.ServiceAttachmentId }).(pulumi.StringPtrOutput)
+}
+
+type MwsVpcEndpointGcpVpcEndpointInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsVpcEndpointGcpVpcEndpointInfo)(nil)).Elem()
+}
+
+func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutput() MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
+	return o
+}
+
+func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) ToMwsVpcEndpointGcpVpcEndpointInfoPtrOutputWithContext(ctx context.Context) MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
+	return o
+}
+
+func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) Elem() MwsVpcEndpointGcpVpcEndpointInfoOutput {
+	return o.ApplyT(func(v *MwsVpcEndpointGcpVpcEndpointInfo) MwsVpcEndpointGcpVpcEndpointInfo {
+		if v != nil {
+			return *v
+		}
+		var ret MwsVpcEndpointGcpVpcEndpointInfo
+		return ret
+	}).(MwsVpcEndpointGcpVpcEndpointInfoOutput)
+}
+
+// Region of the PSC endpoint.
+func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) EndpointRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsVpcEndpointGcpVpcEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Google Cloud project ID of the VPC network where the PSC connection resides.
+func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsVpcEndpointGcpVpcEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique ID of this PSC connection.
+func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsVpcEndpointGcpVpcEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PscConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the PSC endpoint in the Google Cloud project.
+func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) PscEndpointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsVpcEndpointGcpVpcEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PscEndpointName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service attachment this PSC connection connects to.
+func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) ServiceAttachmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsVpcEndpointGcpVpcEndpointInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAttachmentId
+	}).(pulumi.StringPtrOutput)
+}
+
 type MwsWorkspacesCloudResourceContainer struct {
 	// A block that consists of the following field:
 	Gcp MwsWorkspacesCloudResourceContainerGcp `pulumi:"gcp"`
@@ -26043,7 +26256,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) SubnetCidr() pulumi.Strin
 }
 
 type MwsWorkspacesGkeConfig struct {
-	// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+	// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
 	ConnectivityType string `pulumi:"connectivityType"`
 	// The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
 	MasterIpRange string `pulumi:"masterIpRange"`
@@ -26061,7 +26274,7 @@ type MwsWorkspacesGkeConfigInput interface {
 }
 
 type MwsWorkspacesGkeConfigArgs struct {
-	// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+	// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
 	ConnectivityType pulumi.StringInput `pulumi:"connectivityType"`
 	// The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
 	MasterIpRange pulumi.StringInput `pulumi:"masterIpRange"`
@@ -26144,7 +26357,7 @@ func (o MwsWorkspacesGkeConfigOutput) ToMwsWorkspacesGkeConfigPtrOutputWithConte
 	}).(MwsWorkspacesGkeConfigPtrOutput)
 }
 
-// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
 func (o MwsWorkspacesGkeConfigOutput) ConnectivityType() pulumi.StringOutput {
 	return o.ApplyT(func(v MwsWorkspacesGkeConfig) string { return v.ConnectivityType }).(pulumi.StringOutput)
 }
@@ -26178,7 +26391,7 @@ func (o MwsWorkspacesGkeConfigPtrOutput) Elem() MwsWorkspacesGkeConfigOutput {
 	}).(MwsWorkspacesGkeConfigOutput)
 }
 
-// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
 func (o MwsWorkspacesGkeConfigPtrOutput) ConnectivityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGkeConfig) *string {
 		if v == nil {
@@ -30443,6 +30656,238 @@ func (o ShareObjectPartitionValueArrayOutput) Index(i pulumi.IntInput) ShareObje
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShareObjectPartitionValue {
 		return vs[0].([]ShareObjectPartitionValue)[vs[1].(int)]
 	}).(ShareObjectPartitionValueOutput)
+}
+
+type SqlAlertOptions struct {
+	// Name of column in the query result to compare in alert evaluation.
+	Column string `pulumi:"column"`
+	// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+	CustomBody *string `pulumi:"customBody"`
+	// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+	CustomSubject *string `pulumi:"customSubject"`
+	// Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+	Muted *bool `pulumi:"muted"`
+	// Operator used to compare in alert evaluation. (Enum: `>`, `>=`, `<`, `<=`, `==`, `!=`)
+	Op string `pulumi:"op"`
+	// Value used to compare in alert evaluation.
+	Value string `pulumi:"value"`
+}
+
+// SqlAlertOptionsInput is an input type that accepts SqlAlertOptionsArgs and SqlAlertOptionsOutput values.
+// You can construct a concrete instance of `SqlAlertOptionsInput` via:
+//
+//	SqlAlertOptionsArgs{...}
+type SqlAlertOptionsInput interface {
+	pulumi.Input
+
+	ToSqlAlertOptionsOutput() SqlAlertOptionsOutput
+	ToSqlAlertOptionsOutputWithContext(context.Context) SqlAlertOptionsOutput
+}
+
+type SqlAlertOptionsArgs struct {
+	// Name of column in the query result to compare in alert evaluation.
+	Column pulumi.StringInput `pulumi:"column"`
+	// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+	CustomBody pulumi.StringPtrInput `pulumi:"customBody"`
+	// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+	CustomSubject pulumi.StringPtrInput `pulumi:"customSubject"`
+	// Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+	Muted pulumi.BoolPtrInput `pulumi:"muted"`
+	// Operator used to compare in alert evaluation. (Enum: `>`, `>=`, `<`, `<=`, `==`, `!=`)
+	Op pulumi.StringInput `pulumi:"op"`
+	// Value used to compare in alert evaluation.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (SqlAlertOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAlertOptions)(nil)).Elem()
+}
+
+func (i SqlAlertOptionsArgs) ToSqlAlertOptionsOutput() SqlAlertOptionsOutput {
+	return i.ToSqlAlertOptionsOutputWithContext(context.Background())
+}
+
+func (i SqlAlertOptionsArgs) ToSqlAlertOptionsOutputWithContext(ctx context.Context) SqlAlertOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAlertOptionsOutput)
+}
+
+func (i SqlAlertOptionsArgs) ToSqlAlertOptionsPtrOutput() SqlAlertOptionsPtrOutput {
+	return i.ToSqlAlertOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SqlAlertOptionsArgs) ToSqlAlertOptionsPtrOutputWithContext(ctx context.Context) SqlAlertOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAlertOptionsOutput).ToSqlAlertOptionsPtrOutputWithContext(ctx)
+}
+
+// SqlAlertOptionsPtrInput is an input type that accepts SqlAlertOptionsArgs, SqlAlertOptionsPtr and SqlAlertOptionsPtrOutput values.
+// You can construct a concrete instance of `SqlAlertOptionsPtrInput` via:
+//
+//	        SqlAlertOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlAlertOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSqlAlertOptionsPtrOutput() SqlAlertOptionsPtrOutput
+	ToSqlAlertOptionsPtrOutputWithContext(context.Context) SqlAlertOptionsPtrOutput
+}
+
+type sqlAlertOptionsPtrType SqlAlertOptionsArgs
+
+func SqlAlertOptionsPtr(v *SqlAlertOptionsArgs) SqlAlertOptionsPtrInput {
+	return (*sqlAlertOptionsPtrType)(v)
+}
+
+func (*sqlAlertOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlAlertOptions)(nil)).Elem()
+}
+
+func (i *sqlAlertOptionsPtrType) ToSqlAlertOptionsPtrOutput() SqlAlertOptionsPtrOutput {
+	return i.ToSqlAlertOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlAlertOptionsPtrType) ToSqlAlertOptionsPtrOutputWithContext(ctx context.Context) SqlAlertOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAlertOptionsPtrOutput)
+}
+
+type SqlAlertOptionsOutput struct{ *pulumi.OutputState }
+
+func (SqlAlertOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAlertOptions)(nil)).Elem()
+}
+
+func (o SqlAlertOptionsOutput) ToSqlAlertOptionsOutput() SqlAlertOptionsOutput {
+	return o
+}
+
+func (o SqlAlertOptionsOutput) ToSqlAlertOptionsOutputWithContext(ctx context.Context) SqlAlertOptionsOutput {
+	return o
+}
+
+func (o SqlAlertOptionsOutput) ToSqlAlertOptionsPtrOutput() SqlAlertOptionsPtrOutput {
+	return o.ToSqlAlertOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SqlAlertOptionsOutput) ToSqlAlertOptionsPtrOutputWithContext(ctx context.Context) SqlAlertOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlAlertOptions) *SqlAlertOptions {
+		return &v
+	}).(SqlAlertOptionsPtrOutput)
+}
+
+// Name of column in the query result to compare in alert evaluation.
+func (o SqlAlertOptionsOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAlertOptions) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+func (o SqlAlertOptionsOutput) CustomBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAlertOptions) *string { return v.CustomBody }).(pulumi.StringPtrOutput)
+}
+
+// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+func (o SqlAlertOptionsOutput) CustomSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAlertOptions) *string { return v.CustomSubject }).(pulumi.StringPtrOutput)
+}
+
+// Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+func (o SqlAlertOptionsOutput) Muted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlAlertOptions) *bool { return v.Muted }).(pulumi.BoolPtrOutput)
+}
+
+// Operator used to compare in alert evaluation. (Enum: `>`, `>=`, `<`, `<=`, `==`, `!=`)
+func (o SqlAlertOptionsOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAlertOptions) string { return v.Op }).(pulumi.StringOutput)
+}
+
+// Value used to compare in alert evaluation.
+func (o SqlAlertOptionsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAlertOptions) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SqlAlertOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlAlertOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlAlertOptions)(nil)).Elem()
+}
+
+func (o SqlAlertOptionsPtrOutput) ToSqlAlertOptionsPtrOutput() SqlAlertOptionsPtrOutput {
+	return o
+}
+
+func (o SqlAlertOptionsPtrOutput) ToSqlAlertOptionsPtrOutputWithContext(ctx context.Context) SqlAlertOptionsPtrOutput {
+	return o
+}
+
+func (o SqlAlertOptionsPtrOutput) Elem() SqlAlertOptionsOutput {
+	return o.ApplyT(func(v *SqlAlertOptions) SqlAlertOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SqlAlertOptions
+		return ret
+	}).(SqlAlertOptionsOutput)
+}
+
+// Name of column in the query result to compare in alert evaluation.
+func (o SqlAlertOptionsPtrOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAlertOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+func (o SqlAlertOptionsPtrOutput) CustomBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAlertOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomBody
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+func (o SqlAlertOptionsPtrOutput) CustomSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAlertOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomSubject
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+func (o SqlAlertOptionsPtrOutput) Muted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlAlertOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Muted
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Operator used to compare in alert evaluation. (Enum: `>`, `>=`, `<`, `<=`, `==`, `!=`)
+func (o SqlAlertOptionsPtrOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAlertOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Op
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value used to compare in alert evaluation.
+func (o SqlAlertOptionsPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAlertOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 type SqlEndpointChannel struct {
@@ -59983,6 +60428,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksGcpNetworkInfoPtrInput)(nil)).Elem(), MwsNetworksGcpNetworkInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksVpcEndpointsInput)(nil)).Elem(), MwsNetworksVpcEndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksVpcEndpointsPtrInput)(nil)).Elem(), MwsNetworksVpcEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsVpcEndpointGcpVpcEndpointInfoInput)(nil)).Elem(), MwsVpcEndpointGcpVpcEndpointInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsVpcEndpointGcpVpcEndpointInfoPtrInput)(nil)).Elem(), MwsVpcEndpointGcpVpcEndpointInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesCloudResourceContainerInput)(nil)).Elem(), MwsWorkspacesCloudResourceContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesCloudResourceContainerPtrInput)(nil)).Elem(), MwsWorkspacesCloudResourceContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesCloudResourceContainerGcpInput)(nil)).Elem(), MwsWorkspacesCloudResourceContainerGcpArgs{})
@@ -60049,6 +60496,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareObjectPartitionArrayInput)(nil)).Elem(), ShareObjectPartitionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareObjectPartitionValueInput)(nil)).Elem(), ShareObjectPartitionValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareObjectPartitionValueArrayInput)(nil)).Elem(), ShareObjectPartitionValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlAlertOptionsInput)(nil)).Elem(), SqlAlertOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlAlertOptionsPtrInput)(nil)).Elem(), SqlAlertOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointChannelInput)(nil)).Elem(), SqlEndpointChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointChannelPtrInput)(nil)).Elem(), SqlEndpointChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointOdbcParamsInput)(nil)).Elem(), SqlEndpointOdbcParamsArgs{})
@@ -60712,6 +61161,8 @@ func init() {
 	pulumi.RegisterOutputType(MwsNetworksGcpNetworkInfoPtrOutput{})
 	pulumi.RegisterOutputType(MwsNetworksVpcEndpointsOutput{})
 	pulumi.RegisterOutputType(MwsNetworksVpcEndpointsPtrOutput{})
+	pulumi.RegisterOutputType(MwsVpcEndpointGcpVpcEndpointInfoOutput{})
+	pulumi.RegisterOutputType(MwsVpcEndpointGcpVpcEndpointInfoPtrOutput{})
 	pulumi.RegisterOutputType(MwsWorkspacesCloudResourceContainerOutput{})
 	pulumi.RegisterOutputType(MwsWorkspacesCloudResourceContainerPtrOutput{})
 	pulumi.RegisterOutputType(MwsWorkspacesCloudResourceContainerGcpOutput{})
@@ -60778,6 +61229,8 @@ func init() {
 	pulumi.RegisterOutputType(ShareObjectPartitionArrayOutput{})
 	pulumi.RegisterOutputType(ShareObjectPartitionValueOutput{})
 	pulumi.RegisterOutputType(ShareObjectPartitionValueArrayOutput{})
+	pulumi.RegisterOutputType(SqlAlertOptionsOutput{})
+	pulumi.RegisterOutputType(SqlAlertOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SqlEndpointChannelOutput{})
 	pulumi.RegisterOutputType(SqlEndpointChannelPtrOutput{})
 	pulumi.RegisterOutputType(SqlEndpointOdbcParamsOutput{})

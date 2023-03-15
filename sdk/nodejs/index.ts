@@ -428,6 +428,11 @@ export type Share = import("./share").Share;
 export const Share: typeof import("./share").Share = null as any;
 utilities.lazyLoad(exports, ["Share"], () => require("./share"));
 
+export { SqlAlertArgs, SqlAlertState } from "./sqlAlert";
+export type SqlAlert = import("./sqlAlert").SqlAlert;
+export const SqlAlert: typeof import("./sqlAlert").SqlAlert = null as any;
+utilities.lazyLoad(exports, ["SqlAlert"], () => require("./sqlAlert"));
+
 export { SqlDashboardArgs, SqlDashboardState } from "./sqlDashboard";
 export type SqlDashboard = import("./sqlDashboard").SqlDashboard;
 export const SqlDashboard: typeof import("./sqlDashboard").SqlDashboard = null as any;
@@ -616,6 +621,8 @@ const _module = {
                 return new ServicePrincipalSecret(name, <any>undefined, { urn })
             case "databricks:index/share:Share":
                 return new Share(name, <any>undefined, { urn })
+            case "databricks:index/sqlAlert:SqlAlert":
+                return new SqlAlert(name, <any>undefined, { urn })
             case "databricks:index/sqlDashboard:SqlDashboard":
                 return new SqlDashboard(name, <any>undefined, { urn })
             case "databricks:index/sqlEndpoint:SqlEndpoint":
@@ -701,6 +708,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipal", _m
 pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipalRole", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipalSecret", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/share", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/sqlAlert", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlDashboard", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlGlobalConfig", _module)

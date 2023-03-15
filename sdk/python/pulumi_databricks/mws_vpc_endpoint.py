@@ -8,32 +8,34 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['MwsVpcEndpointArgs', 'MwsVpcEndpoint']
 
 @pulumi.input_type
 class MwsVpcEndpointArgs:
     def __init__(__self__, *,
-                 aws_vpc_endpoint_id: pulumi.Input[str],
-                 region: pulumi.Input[str],
                  vpc_endpoint_name: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
                  aws_account_id: Optional[pulumi.Input[str]] = None,
                  aws_endpoint_service_id: Optional[pulumi.Input[str]] = None,
+                 aws_vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
+                 gcp_vpc_endpoint_info: Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  use_case: Optional[pulumi.Input[str]] = None,
                  vpc_endpoint_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MwsVpcEndpoint resource.
-        :param pulumi.Input[str] region: Region of AWS VPC
         :param pulumi.Input[str] vpc_endpoint_name: Name of VPC Endpoint in Databricks Account
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[str] aws_endpoint_service_id: The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
-        :param pulumi.Input[str] state: State of VPC Endpoint
+        :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
+        :param pulumi.Input[str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+        :param pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs'] gcp_vpc_endpoint_info: a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        :param pulumi.Input[str] region: Region of AWS VPC
+        :param pulumi.Input[str] state: (AWS Only) State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
         """
-        pulumi.set(__self__, "aws_vpc_endpoint_id", aws_vpc_endpoint_id)
-        pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "vpc_endpoint_name", vpc_endpoint_name)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -41,33 +43,18 @@ class MwsVpcEndpointArgs:
             pulumi.set(__self__, "aws_account_id", aws_account_id)
         if aws_endpoint_service_id is not None:
             pulumi.set(__self__, "aws_endpoint_service_id", aws_endpoint_service_id)
+        if aws_vpc_endpoint_id is not None:
+            pulumi.set(__self__, "aws_vpc_endpoint_id", aws_vpc_endpoint_id)
+        if gcp_vpc_endpoint_info is not None:
+            pulumi.set(__self__, "gcp_vpc_endpoint_info", gcp_vpc_endpoint_info)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if use_case is not None:
             pulumi.set(__self__, "use_case", use_case)
         if vpc_endpoint_id is not None:
             pulumi.set(__self__, "vpc_endpoint_id", vpc_endpoint_id)
-
-    @property
-    @pulumi.getter(name="awsVpcEndpointId")
-    def aws_vpc_endpoint_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "aws_vpc_endpoint_id")
-
-    @aws_vpc_endpoint_id.setter
-    def aws_vpc_endpoint_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "aws_vpc_endpoint_id", value)
-
-    @property
-    @pulumi.getter
-    def region(self) -> pulumi.Input[str]:
-        """
-        Region of AWS VPC
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: pulumi.Input[str]):
-        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="vpcEndpointName")
@@ -85,7 +72,7 @@ class MwsVpcEndpointArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
@@ -106,7 +93,7 @@ class MwsVpcEndpointArgs:
     @pulumi.getter(name="awsEndpointServiceId")
     def aws_endpoint_service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+        (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         """
         return pulumi.get(self, "aws_endpoint_service_id")
 
@@ -115,10 +102,43 @@ class MwsVpcEndpointArgs:
         pulumi.set(self, "aws_endpoint_service_id", value)
 
     @property
+    @pulumi.getter(name="awsVpcEndpointId")
+    def aws_vpc_endpoint_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "aws_vpc_endpoint_id")
+
+    @aws_vpc_endpoint_id.setter
+    def aws_vpc_endpoint_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_vpc_endpoint_id", value)
+
+    @property
+    @pulumi.getter(name="gcpVpcEndpointInfo")
+    def gcp_vpc_endpoint_info(self) -> Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']]:
+        """
+        a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        """
+        return pulumi.get(self, "gcp_vpc_endpoint_info")
+
+    @gcp_vpc_endpoint_info.setter
+    def gcp_vpc_endpoint_info(self, value: Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']]):
+        pulumi.set(self, "gcp_vpc_endpoint_info", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Region of AWS VPC
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        State of VPC Endpoint
+        (AWS Only) State of VPC Endpoint
         """
         return pulumi.get(self, "state")
 
@@ -155,6 +175,7 @@ class _MwsVpcEndpointState:
                  aws_account_id: Optional[pulumi.Input[str]] = None,
                  aws_endpoint_service_id: Optional[pulumi.Input[str]] = None,
                  aws_vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
+                 gcp_vpc_endpoint_info: Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  use_case: Optional[pulumi.Input[str]] = None,
@@ -162,10 +183,11 @@ class _MwsVpcEndpointState:
                  vpc_endpoint_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MwsVpcEndpoint resources.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[str] aws_endpoint_service_id: The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
+        :param pulumi.Input[str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+        :param pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs'] gcp_vpc_endpoint_info: a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
         :param pulumi.Input[str] region: Region of AWS VPC
-        :param pulumi.Input[str] state: State of VPC Endpoint
+        :param pulumi.Input[str] state: (AWS Only) State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
         :param pulumi.Input[str] vpc_endpoint_name: Name of VPC Endpoint in Databricks Account
         """
@@ -177,6 +199,8 @@ class _MwsVpcEndpointState:
             pulumi.set(__self__, "aws_endpoint_service_id", aws_endpoint_service_id)
         if aws_vpc_endpoint_id is not None:
             pulumi.set(__self__, "aws_vpc_endpoint_id", aws_vpc_endpoint_id)
+        if gcp_vpc_endpoint_info is not None:
+            pulumi.set(__self__, "gcp_vpc_endpoint_info", gcp_vpc_endpoint_info)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if state is not None:
@@ -192,7 +216,7 @@ class _MwsVpcEndpointState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
@@ -213,7 +237,7 @@ class _MwsVpcEndpointState:
     @pulumi.getter(name="awsEndpointServiceId")
     def aws_endpoint_service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+        (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         """
         return pulumi.get(self, "aws_endpoint_service_id")
 
@@ -231,6 +255,18 @@ class _MwsVpcEndpointState:
         pulumi.set(self, "aws_vpc_endpoint_id", value)
 
     @property
+    @pulumi.getter(name="gcpVpcEndpointInfo")
+    def gcp_vpc_endpoint_info(self) -> Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']]:
+        """
+        a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        """
+        return pulumi.get(self, "gcp_vpc_endpoint_info")
+
+    @gcp_vpc_endpoint_info.setter
+    def gcp_vpc_endpoint_info(self, value: Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']]):
+        pulumi.set(self, "gcp_vpc_endpoint_info", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -246,7 +282,7 @@ class _MwsVpcEndpointState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        State of VPC Endpoint
+        (AWS Only) State of VPC Endpoint
         """
         return pulumi.get(self, "state")
 
@@ -297,6 +333,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
                  aws_account_id: Optional[pulumi.Input[str]] = None,
                  aws_endpoint_service_id: Optional[pulumi.Input[str]] = None,
                  aws_vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
+                 gcp_vpc_endpoint_info: Optional[pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  use_case: Optional[pulumi.Input[str]] = None,
@@ -310,10 +347,11 @@ class MwsVpcEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[str] aws_endpoint_service_id: The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
+        :param pulumi.Input[str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+        :param pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']] gcp_vpc_endpoint_info: a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
         :param pulumi.Input[str] region: Region of AWS VPC
-        :param pulumi.Input[str] state: State of VPC Endpoint
+        :param pulumi.Input[str] state: (AWS Only) State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
         :param pulumi.Input[str] vpc_endpoint_name: Name of VPC Endpoint in Databricks Account
         """
@@ -347,6 +385,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
                  aws_account_id: Optional[pulumi.Input[str]] = None,
                  aws_endpoint_service_id: Optional[pulumi.Input[str]] = None,
                  aws_vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
+                 gcp_vpc_endpoint_info: Optional[pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  use_case: Optional[pulumi.Input[str]] = None,
@@ -364,11 +403,8 @@ class MwsVpcEndpoint(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["aws_account_id"] = aws_account_id
             __props__.__dict__["aws_endpoint_service_id"] = aws_endpoint_service_id
-            if aws_vpc_endpoint_id is None and not opts.urn:
-                raise TypeError("Missing required property 'aws_vpc_endpoint_id'")
             __props__.__dict__["aws_vpc_endpoint_id"] = aws_vpc_endpoint_id
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
+            __props__.__dict__["gcp_vpc_endpoint_info"] = gcp_vpc_endpoint_info
             __props__.__dict__["region"] = region
             __props__.__dict__["state"] = state
             __props__.__dict__["use_case"] = use_case
@@ -390,6 +426,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
             aws_account_id: Optional[pulumi.Input[str]] = None,
             aws_endpoint_service_id: Optional[pulumi.Input[str]] = None,
             aws_vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
+            gcp_vpc_endpoint_info: Optional[pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']]] = None,
             region: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             use_case: Optional[pulumi.Input[str]] = None,
@@ -402,10 +439,11 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[str] aws_endpoint_service_id: The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
+        :param pulumi.Input[str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+        :param pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']] gcp_vpc_endpoint_info: a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
         :param pulumi.Input[str] region: Region of AWS VPC
-        :param pulumi.Input[str] state: State of VPC Endpoint
+        :param pulumi.Input[str] state: (AWS Only) State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
         :param pulumi.Input[str] vpc_endpoint_name: Name of VPC Endpoint in Databricks Account
         """
@@ -417,6 +455,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         __props__.__dict__["aws_account_id"] = aws_account_id
         __props__.__dict__["aws_endpoint_service_id"] = aws_endpoint_service_id
         __props__.__dict__["aws_vpc_endpoint_id"] = aws_vpc_endpoint_id
+        __props__.__dict__["gcp_vpc_endpoint_info"] = gcp_vpc_endpoint_info
         __props__.__dict__["region"] = region
         __props__.__dict__["state"] = state
         __props__.__dict__["use_case"] = use_case
@@ -428,7 +467,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
@@ -441,18 +480,26 @@ class MwsVpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="awsEndpointServiceId")
     def aws_endpoint_service_id(self) -> pulumi.Output[str]:
         """
-        The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+        (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         """
         return pulumi.get(self, "aws_endpoint_service_id")
 
     @property
     @pulumi.getter(name="awsVpcEndpointId")
-    def aws_vpc_endpoint_id(self) -> pulumi.Output[str]:
+    def aws_vpc_endpoint_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "aws_vpc_endpoint_id")
 
     @property
+    @pulumi.getter(name="gcpVpcEndpointInfo")
+    def gcp_vpc_endpoint_info(self) -> pulumi.Output[Optional['outputs.MwsVpcEndpointGcpVpcEndpointInfo']]:
+        """
+        a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        """
+        return pulumi.get(self, "gcp_vpc_endpoint_info")
+
+    @property
     @pulumi.getter
-    def region(self) -> pulumi.Output[str]:
+    def region(self) -> pulumi.Output[Optional[str]]:
         """
         Region of AWS VPC
         """
@@ -462,7 +509,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        State of VPC Endpoint
+        (AWS Only) State of VPC Endpoint
         """
         return pulumi.get(self, "state")
 

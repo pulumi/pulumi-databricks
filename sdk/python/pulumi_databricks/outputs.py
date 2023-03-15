@@ -169,6 +169,7 @@ __all__ = [
     'MwsNetworksErrorMessage',
     'MwsNetworksGcpNetworkInfo',
     'MwsNetworksVpcEndpoints',
+    'MwsVpcEndpointGcpVpcEndpointInfo',
     'MwsWorkspacesCloudResourceContainer',
     'MwsWorkspacesCloudResourceContainerGcp',
     'MwsWorkspacesExternalCustomerInfo',
@@ -202,6 +203,7 @@ __all__ = [
     'ShareObject',
     'ShareObjectPartition',
     'ShareObjectPartitionValue',
+    'SqlAlertOptions',
     'SqlEndpointChannel',
     'SqlEndpointOdbcParams',
     'SqlEndpointTags',
@@ -8068,6 +8070,95 @@ class MwsNetworksVpcEndpoints(dict):
 
 
 @pulumi.output_type
+class MwsVpcEndpointGcpVpcEndpointInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointRegion":
+            suggest = "endpoint_region"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "pscEndpointName":
+            suggest = "psc_endpoint_name"
+        elif key == "pscConnectionId":
+            suggest = "psc_connection_id"
+        elif key == "serviceAttachmentId":
+            suggest = "service_attachment_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MwsVpcEndpointGcpVpcEndpointInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MwsVpcEndpointGcpVpcEndpointInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MwsVpcEndpointGcpVpcEndpointInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint_region: str,
+                 project_id: str,
+                 psc_endpoint_name: str,
+                 psc_connection_id: Optional[str] = None,
+                 service_attachment_id: Optional[str] = None):
+        """
+        :param str endpoint_region: Region of the PSC endpoint.
+        :param str project_id: The Google Cloud project ID of the VPC network where the PSC connection resides.
+        :param str psc_endpoint_name: The name of the PSC endpoint in the Google Cloud project.
+        :param str psc_connection_id: The unique ID of this PSC connection.
+        :param str service_attachment_id: The service attachment this PSC connection connects to.
+        """
+        pulumi.set(__self__, "endpoint_region", endpoint_region)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "psc_endpoint_name", psc_endpoint_name)
+        if psc_connection_id is not None:
+            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        if service_attachment_id is not None:
+            pulumi.set(__self__, "service_attachment_id", service_attachment_id)
+
+    @property
+    @pulumi.getter(name="endpointRegion")
+    def endpoint_region(self) -> str:
+        """
+        Region of the PSC endpoint.
+        """
+        return pulumi.get(self, "endpoint_region")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The Google Cloud project ID of the VPC network where the PSC connection resides.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="pscEndpointName")
+    def psc_endpoint_name(self) -> str:
+        """
+        The name of the PSC endpoint in the Google Cloud project.
+        """
+        return pulumi.get(self, "psc_endpoint_name")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> Optional[str]:
+        """
+        The unique ID of this PSC connection.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter(name="serviceAttachmentId")
+    def service_attachment_id(self) -> Optional[str]:
+        """
+        The service attachment this PSC connection connects to.
+        """
+        return pulumi.get(self, "service_attachment_id")
+
+
+@pulumi.output_type
 class MwsWorkspacesCloudResourceContainer(dict):
     def __init__(__self__, *,
                  gcp: 'outputs.MwsWorkspacesCloudResourceContainerGcp'):
@@ -8239,7 +8330,7 @@ class MwsWorkspacesGkeConfig(dict):
                  connectivity_type: str,
                  master_ip_range: str):
         """
-        :param str connectivity_type: Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+        :param str connectivity_type: Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
         :param str master_ip_range: The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
         """
         pulumi.set(__self__, "connectivity_type", connectivity_type)
@@ -8249,7 +8340,7 @@ class MwsWorkspacesGkeConfig(dict):
     @pulumi.getter(name="connectivityType")
     def connectivity_type(self) -> str:
         """
-        Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+        Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
         """
         return pulumi.get(self, "connectivity_type")
 
@@ -9665,6 +9756,101 @@ class ShareObjectPartitionValue(dict):
         The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class SqlAlertOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customBody":
+            suggest = "custom_body"
+        elif key == "customSubject":
+            suggest = "custom_subject"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlAlertOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlAlertOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlAlertOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: str,
+                 op: str,
+                 value: str,
+                 custom_body: Optional[str] = None,
+                 custom_subject: Optional[str] = None,
+                 muted: Optional[bool] = None):
+        """
+        :param str column: Name of column in the query result to compare in alert evaluation.
+        :param str op: Operator used to compare in alert evaluation. (Enum: `>`, `>=`, `<`, `<=`, `==`, `!=`)
+        :param str value: Value used to compare in alert evaluation.
+        :param str custom_body: Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+        :param str custom_subject: Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+        :param bool muted: Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+        """
+        pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "value", value)
+        if custom_body is not None:
+            pulumi.set(__self__, "custom_body", custom_body)
+        if custom_subject is not None:
+            pulumi.set(__self__, "custom_subject", custom_subject)
+        if muted is not None:
+            pulumi.set(__self__, "muted", muted)
+
+    @property
+    @pulumi.getter
+    def column(self) -> str:
+        """
+        Name of column in the query result to compare in alert evaluation.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter
+    def op(self) -> str:
+        """
+        Operator used to compare in alert evaluation. (Enum: `>`, `>=`, `<`, `<=`, `==`, `!=`)
+        """
+        return pulumi.get(self, "op")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value used to compare in alert evaluation.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="customBody")
+    def custom_body(self) -> Optional[str]:
+        """
+        Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+        """
+        return pulumi.get(self, "custom_body")
+
+    @property
+    @pulumi.getter(name="customSubject")
+    def custom_subject(self) -> Optional[str]:
+        """
+        Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+        """
+        return pulumi.get(self, "custom_subject")
+
+    @property
+    @pulumi.getter
+    def muted(self) -> Optional[bool]:
+        """
+        Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+        """
+        return pulumi.get(self, "muted")
 
 
 @pulumi.output_type

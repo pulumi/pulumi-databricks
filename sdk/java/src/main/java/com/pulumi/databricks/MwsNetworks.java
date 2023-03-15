@@ -108,14 +108,14 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.subnetIds);
     }
     /**
-     * mapping of databricks.MwsVpcEndpoint for PrivateLink connections
+     * mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
      * 
      */
     @Export(name="vpcEndpoints", type=MwsNetworksVpcEndpoints.class, parameters={})
     private Output<MwsNetworksVpcEndpoints> vpcEndpoints;
 
     /**
-     * @return mapping of databricks.MwsVpcEndpoint for PrivateLink connections
+     * @return mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
      * 
      */
     public Output<MwsNetworksVpcEndpoints> vpcEndpoints() {

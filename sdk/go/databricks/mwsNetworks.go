@@ -29,7 +29,7 @@ type MwsNetworks struct {
 	NetworkName      pulumi.StringOutput      `pulumi:"networkName"`
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	SubnetIds        pulumi.StringArrayOutput `pulumi:"subnetIds"`
-	// mapping of MwsVpcEndpoint for PrivateLink connections
+	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints MwsNetworksVpcEndpointsOutput `pulumi:"vpcEndpoints"`
 	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
@@ -93,7 +93,7 @@ type mwsNetworksState struct {
 	NetworkName      *string  `pulumi:"networkName"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	SubnetIds        []string `pulumi:"subnetIds"`
-	// mapping of MwsVpcEndpoint for PrivateLink connections
+	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints *MwsNetworksVpcEndpoints `pulumi:"vpcEndpoints"`
 	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
 	VpcId *string `pulumi:"vpcId"`
@@ -116,7 +116,7 @@ type MwsNetworksState struct {
 	NetworkName      pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
 	SubnetIds        pulumi.StringArrayInput
-	// mapping of MwsVpcEndpoint for PrivateLink connections
+	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints MwsNetworksVpcEndpointsPtrInput
 	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
 	VpcId pulumi.StringPtrInput
@@ -143,7 +143,7 @@ type mwsNetworksArgs struct {
 	NetworkName      string   `pulumi:"networkName"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	SubnetIds        []string `pulumi:"subnetIds"`
-	// mapping of MwsVpcEndpoint for PrivateLink connections
+	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints *MwsNetworksVpcEndpoints `pulumi:"vpcEndpoints"`
 	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
 	VpcId *string `pulumi:"vpcId"`
@@ -167,7 +167,7 @@ type MwsNetworksArgs struct {
 	NetworkName      pulumi.StringInput
 	SecurityGroupIds pulumi.StringArrayInput
 	SubnetIds        pulumi.StringArrayInput
-	// mapping of MwsVpcEndpoint for PrivateLink connections
+	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints MwsNetworksVpcEndpointsPtrInput
 	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
 	VpcId pulumi.StringPtrInput
@@ -300,7 +300,7 @@ func (o MwsNetworksOutput) SubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MwsNetworks) pulumi.StringArrayOutput { return v.SubnetIds }).(pulumi.StringArrayOutput)
 }
 
-// mapping of MwsVpcEndpoint for PrivateLink connections
+// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 func (o MwsNetworksOutput) VpcEndpoints() MwsNetworksVpcEndpointsOutput {
 	return o.ApplyT(func(v *MwsNetworks) MwsNetworksVpcEndpointsOutput { return v.VpcEndpoints }).(MwsNetworksVpcEndpointsOutput)
 }
