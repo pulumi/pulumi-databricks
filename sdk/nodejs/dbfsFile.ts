@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * The resource dbfs file can be imported using the path of the file bash
+ * The resource dbfs file can be imported using the path of the filebash
  *
  * ```sh
  *  $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
@@ -43,7 +43,7 @@ export class DbfsFile extends pulumi.CustomResource {
 
     public readonly contentBase64!: pulumi.Output<string | undefined>;
     /**
-     * Path, but with `dbfs:` prefix
+     * Path, but with `dbfs:` prefix.
      */
     public /*out*/ readonly dbfsPath!: pulumi.Output<string>;
     /**
@@ -102,7 +102,7 @@ export class DbfsFile extends pulumi.CustomResource {
 export interface DbfsFileState {
     contentBase64?: pulumi.Input<string>;
     /**
-     * Path, but with `dbfs:` prefix
+     * Path, but with `dbfs:` prefix.
      */
     dbfsPath?: pulumi.Input<string>;
     /**

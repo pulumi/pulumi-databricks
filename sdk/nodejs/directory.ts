@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * The resource directory can be imported using directory path bash
+ * The resource directory can be imported using directory pathbash
  *
  * ```sh
  *  $ pulumi import databricks:index/directory:Directory this /path/to/directory

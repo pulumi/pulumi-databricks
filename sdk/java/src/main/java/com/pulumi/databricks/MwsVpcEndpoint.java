@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.MwsVpcEndpointArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MwsVpcEndpointState;
+import com.pulumi.databricks.outputs.MwsVpcEndpointGcpVpcEndpointInfo;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -23,14 +24,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/mwsVpcEndpoint:MwsVpcEndpoint")
 public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * @return Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      * 
      */
     public Output<Optional<String>> accountId() {
@@ -43,48 +44,62 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
         return this.awsAccountId;
     }
     /**
-     * The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+     * (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      * 
      */
     @Export(name="awsEndpointServiceId", type=String.class, parameters={})
     private Output<String> awsEndpointServiceId;
 
     /**
-     * @return The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+     * @return (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      * 
      */
     public Output<String> awsEndpointServiceId() {
         return this.awsEndpointServiceId;
     }
     @Export(name="awsVpcEndpointId", type=String.class, parameters={})
-    private Output<String> awsVpcEndpointId;
+    private Output</* @Nullable */ String> awsVpcEndpointId;
 
-    public Output<String> awsVpcEndpointId() {
-        return this.awsVpcEndpointId;
+    public Output<Optional<String>> awsVpcEndpointId() {
+        return Codegen.optional(this.awsVpcEndpointId);
+    }
+    /**
+     * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     * 
+     */
+    @Export(name="gcpVpcEndpointInfo", type=MwsVpcEndpointGcpVpcEndpointInfo.class, parameters={})
+    private Output</* @Nullable */ MwsVpcEndpointGcpVpcEndpointInfo> gcpVpcEndpointInfo;
+
+    /**
+     * @return a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     * 
+     */
+    public Output<Optional<MwsVpcEndpointGcpVpcEndpointInfo>> gcpVpcEndpointInfo() {
+        return Codegen.optional(this.gcpVpcEndpointInfo);
     }
     /**
      * Region of AWS VPC
      * 
      */
     @Export(name="region", type=String.class, parameters={})
-    private Output<String> region;
+    private Output</* @Nullable */ String> region;
 
     /**
      * @return Region of AWS VPC
      * 
      */
-    public Output<String> region() {
-        return this.region;
+    public Output<Optional<String>> region() {
+        return Codegen.optional(this.region);
     }
     /**
-     * State of VPC Endpoint
+     * (AWS Only) State of VPC Endpoint
      * 
      */
     @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
-     * @return State of VPC Endpoint
+     * @return (AWS Only) State of VPC Endpoint
      * 
      */
     public Output<String> state() {

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -38,21 +40,25 @@ export class MwsVpcEndpoint extends pulumi.CustomResource {
     }
 
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     public readonly awsAccountId!: pulumi.Output<string>;
     /**
-     * The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+     * (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      */
     public readonly awsEndpointServiceId!: pulumi.Output<string>;
-    public readonly awsVpcEndpointId!: pulumi.Output<string>;
+    public readonly awsVpcEndpointId!: pulumi.Output<string | undefined>;
+    /**
+     * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     */
+    public readonly gcpVpcEndpointInfo!: pulumi.Output<outputs.MwsVpcEndpointGcpVpcEndpointInfo | undefined>;
     /**
      * Region of AWS VPC
      */
-    public readonly region!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string | undefined>;
     /**
-     * State of VPC Endpoint
+     * (AWS Only) State of VPC Endpoint
      */
     public readonly state!: pulumi.Output<string>;
     public readonly useCase!: pulumi.Output<string>;
@@ -82,6 +88,7 @@ export class MwsVpcEndpoint extends pulumi.CustomResource {
             resourceInputs["awsAccountId"] = state ? state.awsAccountId : undefined;
             resourceInputs["awsEndpointServiceId"] = state ? state.awsEndpointServiceId : undefined;
             resourceInputs["awsVpcEndpointId"] = state ? state.awsVpcEndpointId : undefined;
+            resourceInputs["gcpVpcEndpointInfo"] = state ? state.gcpVpcEndpointInfo : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["useCase"] = state ? state.useCase : undefined;
@@ -89,12 +96,6 @@ export class MwsVpcEndpoint extends pulumi.CustomResource {
             resourceInputs["vpcEndpointName"] = state ? state.vpcEndpointName : undefined;
         } else {
             const args = argsOrState as MwsVpcEndpointArgs | undefined;
-            if ((!args || args.awsVpcEndpointId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'awsVpcEndpointId'");
-            }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
-            }
             if ((!args || args.vpcEndpointName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcEndpointName'");
             }
@@ -102,6 +103,7 @@ export class MwsVpcEndpoint extends pulumi.CustomResource {
             resourceInputs["awsAccountId"] = args ? args.awsAccountId : undefined;
             resourceInputs["awsEndpointServiceId"] = args ? args.awsEndpointServiceId : undefined;
             resourceInputs["awsVpcEndpointId"] = args ? args.awsVpcEndpointId : undefined;
+            resourceInputs["gcpVpcEndpointInfo"] = args ? args.gcpVpcEndpointInfo : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["useCase"] = args ? args.useCase : undefined;
@@ -118,21 +120,25 @@ export class MwsVpcEndpoint extends pulumi.CustomResource {
  */
 export interface MwsVpcEndpointState {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      */
     accountId?: pulumi.Input<string>;
     awsAccountId?: pulumi.Input<string>;
     /**
-     * The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+     * (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      */
     awsEndpointServiceId?: pulumi.Input<string>;
     awsVpcEndpointId?: pulumi.Input<string>;
+    /**
+     * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     */
+    gcpVpcEndpointInfo?: pulumi.Input<inputs.MwsVpcEndpointGcpVpcEndpointInfo>;
     /**
      * Region of AWS VPC
      */
     region?: pulumi.Input<string>;
     /**
-     * State of VPC Endpoint
+     * (AWS Only) State of VPC Endpoint
      */
     state?: pulumi.Input<string>;
     useCase?: pulumi.Input<string>;
@@ -151,21 +157,25 @@ export interface MwsVpcEndpointState {
  */
 export interface MwsVpcEndpointArgs {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      */
     accountId?: pulumi.Input<string>;
     awsAccountId?: pulumi.Input<string>;
     /**
-     * The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+     * (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      */
     awsEndpointServiceId?: pulumi.Input<string>;
-    awsVpcEndpointId: pulumi.Input<string>;
+    awsVpcEndpointId?: pulumi.Input<string>;
+    /**
+     * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     */
+    gcpVpcEndpointInfo?: pulumi.Input<inputs.MwsVpcEndpointGcpVpcEndpointInfo>;
     /**
      * Region of AWS VPC
      */
-    region: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
-     * State of VPC Endpoint
+     * (AWS Only) State of VPC Endpoint
      */
     state?: pulumi.Input<string>;
     useCase?: pulumi.Input<string>;

@@ -95,6 +95,13 @@ namespace Pulumi.Databricks
             set => _azureWorkspaceResourceId.Set(value);
         }
 
+        private static readonly __Value<string?> _bricksCliPath = new __Value<string?>(() => __config.Get("bricksCliPath"));
+        public static string? BricksCliPath
+        {
+            get => _bricksCliPath.Get();
+            set => _bricksCliPath.Set(value);
+        }
+
         private static readonly __Value<string?> _clientId = new __Value<string?>(() => __config.Get("clientId"));
         public static string? ClientId
         {

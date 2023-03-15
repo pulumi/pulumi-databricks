@@ -38,14 +38,14 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * region of VPC
+     * region of VPC.
      * 
      */
     @Import(name="awsRegion")
     private @Nullable Output<String> awsRegion;
 
     /**
-     * @return region of VPC
+     * @return region of VPC.
      * 
      */
     public Optional<Output<String>> awsRegion() {
@@ -167,14 +167,14 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * region of the subnet
+     * region of the subnet.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return region of the subnet
+     * @return region of the subnet.
      * 
      */
     public Optional<Output<String>> location() {
@@ -218,22 +218,30 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.pricingTier);
     }
 
+    /**
+     * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+     * 
+     */
     @Import(name="privateAccessSettingsId")
     private @Nullable Output<String> privateAccessSettingsId;
 
+    /**
+     * @return Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+     * 
+     */
     public Optional<Output<String>> privateAccessSettingsId() {
         return Optional.ofNullable(this.privateAccessSettingsId);
     }
 
     /**
-     * `storage_configuration_id` from storage configuration
+     * `storage_configuration_id` from storage configuration.
      * 
      */
     @Import(name="storageConfigurationId")
     private @Nullable Output<String> storageConfigurationId;
 
     /**
-     * @return `storage_configuration_id` from storage configuration
+     * @return `storage_configuration_id` from storage configuration.
      * 
      */
     public Optional<Output<String>> storageConfigurationId() {
@@ -262,14 +270,14 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * name of the workspace, will appear on UI
+     * name of the workspace, will appear on UI.
      * 
      */
     @Import(name="workspaceName")
     private @Nullable Output<String> workspaceName;
 
     /**
-     * @return name of the workspace, will appear on UI
+     * @return name of the workspace, will appear on UI.
      * 
      */
     public Optional<Output<String>> workspaceName() {
@@ -391,7 +399,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param awsRegion region of VPC
+         * @param awsRegion region of VPC.
          * 
          * @return builder
          * 
@@ -402,7 +410,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param awsRegion region of VPC
+         * @param awsRegion region of VPC.
          * 
          * @return builder
          * 
@@ -566,7 +574,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param location region of the subnet
+         * @param location region of the subnet.
          * 
          * @return builder
          * 
@@ -577,7 +585,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param location region of the subnet
+         * @param location region of the subnet.
          * 
          * @return builder
          * 
@@ -637,17 +645,29 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return pricingTier(Output.of(pricingTier));
         }
 
+        /**
+         * @param privateAccessSettingsId Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccessSettingsId(@Nullable Output<String> privateAccessSettingsId) {
             $.privateAccessSettingsId = privateAccessSettingsId;
             return this;
         }
 
+        /**
+         * @param privateAccessSettingsId Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccessSettingsId(String privateAccessSettingsId) {
             return privateAccessSettingsId(Output.of(privateAccessSettingsId));
         }
 
         /**
-         * @param storageConfigurationId `storage_configuration_id` from storage configuration
+         * @param storageConfigurationId `storage_configuration_id` from storage configuration.
          * 
          * @return builder
          * 
@@ -658,7 +678,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param storageConfigurationId `storage_configuration_id` from storage configuration
+         * @param storageConfigurationId `storage_configuration_id` from storage configuration.
          * 
          * @return builder
          * 
@@ -695,7 +715,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param workspaceName name of the workspace, will appear on UI
+         * @param workspaceName name of the workspace, will appear on UI.
          * 
          * @return builder
          * 
@@ -706,7 +726,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param workspaceName name of the workspace, will appear on UI
+         * @param workspaceName name of the workspace, will appear on UI.
          * 
          * @return builder
          * 

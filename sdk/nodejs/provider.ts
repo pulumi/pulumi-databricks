@@ -33,6 +33,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly azureLoginAppId!: pulumi.Output<string | undefined>;
     public readonly azureTenantId!: pulumi.Output<string | undefined>;
     public readonly azureWorkspaceResourceId!: pulumi.Output<string | undefined>;
+    public readonly bricksCliPath!: pulumi.Output<string | undefined>;
     public readonly clientId!: pulumi.Output<string | undefined>;
     public readonly clientSecret!: pulumi.Output<string | undefined>;
     public readonly configFile!: pulumi.Output<string | undefined>;
@@ -64,6 +65,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["azureTenantId"] = args ? args.azureTenantId : undefined;
             resourceInputs["azureUseMsi"] = pulumi.output(args ? args.azureUseMsi : undefined).apply(JSON.stringify);
             resourceInputs["azureWorkspaceResourceId"] = args ? args.azureWorkspaceResourceId : undefined;
+            resourceInputs["bricksCliPath"] = args ? args.bricksCliPath : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["clientSecret"] = args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined;
             resourceInputs["configFile"] = args ? args.configFile : undefined;
@@ -101,6 +103,7 @@ export interface ProviderArgs {
     azureTenantId?: pulumi.Input<string>;
     azureUseMsi?: pulumi.Input<boolean>;
     azureWorkspaceResourceId?: pulumi.Input<string>;
+    bricksCliPath?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
     clientSecret?: pulumi.Input<string>;
     configFile?: pulumi.Input<string>;

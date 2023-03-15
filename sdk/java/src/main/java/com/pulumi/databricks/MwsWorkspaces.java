@@ -45,14 +45,14 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * region of VPC
+     * region of VPC.
      * 
      */
     @Export(name="awsRegion", type=String.class, parameters={})
     private Output</* @Nullable */ String> awsRegion;
 
     /**
-     * @return region of VPC
+     * @return region of VPC.
      * 
      */
     public Output<Optional<String>> awsRegion() {
@@ -157,14 +157,14 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isNoPublicIpEnabled);
     }
     /**
-     * region of the subnet
+     * region of the subnet.
      * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
-     * @return region of the subnet
+     * @return region of the subnet.
      * 
      */
     public Output<Optional<String>> location() {
@@ -204,21 +204,29 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<String> pricingTier() {
         return this.pricingTier;
     }
+    /**
+     * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+     * 
+     */
     @Export(name="privateAccessSettingsId", type=String.class, parameters={})
     private Output</* @Nullable */ String> privateAccessSettingsId;
 
+    /**
+     * @return Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+     * 
+     */
     public Output<Optional<String>> privateAccessSettingsId() {
         return Codegen.optional(this.privateAccessSettingsId);
     }
     /**
-     * `storage_configuration_id` from storage configuration
+     * `storage_configuration_id` from storage configuration.
      * 
      */
     @Export(name="storageConfigurationId", type=String.class, parameters={})
     private Output</* @Nullable */ String> storageConfigurationId;
 
     /**
-     * @return `storage_configuration_id` from storage configuration
+     * @return `storage_configuration_id` from storage configuration.
      * 
      */
     public Output<Optional<String>> storageConfigurationId() {
@@ -243,14 +251,14 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return this.workspaceId;
     }
     /**
-     * name of the workspace, will appear on UI
+     * name of the workspace, will appear on UI.
      * 
      */
     @Export(name="workspaceName", type=String.class, parameters={})
     private Output<String> workspaceName;
 
     /**
-     * @return name of the workspace, will appear on UI
+     * @return name of the workspace, will appear on UI.
      * 
      */
     public Output<String> workspaceName() {

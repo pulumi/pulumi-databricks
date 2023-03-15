@@ -30,8 +30,8 @@ import (
 //
 // The following resources are often used in the same context:
 //
-// * Dynamic Passthrough Clusters for a Group guide
-// * End to end workspace management guide
+// * Dynamic Passthrough Clusters for a Group guide.
+// * End to end workspace management guide.
 // * getClusters data to retrieve a list of Cluster ids.
 // * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
 // * getCurrentUser data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.

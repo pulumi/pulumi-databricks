@@ -35,6 +35,9 @@ func GetAzureUseMsi(ctx *pulumi.Context) bool {
 func GetAzureWorkspaceResourceId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:azureWorkspaceResourceId")
 }
+func GetBricksCliPath(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:bricksCliPath")
+}
 func GetClientId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:clientId")
 }

@@ -25,14 +25,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings")
 public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResource {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      * 
      */
     @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * @return Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      * 
      */
     public Output<Optional<String>> accountId() {
@@ -95,42 +95,42 @@ public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResourc
         return this.privateAccessSettingsName;
     }
     /**
-     * If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
+     * If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.
      * 
      */
     @Export(name="publicAccessEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> publicAccessEnabled;
 
     /**
-     * @return If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false` (default), the workspace can be accessed only over VPC endpoints, and not over the public network.
+     * @return If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.
      * 
      */
     public Output<Optional<Boolean>> publicAccessEnabled() {
         return Codegen.optional(this.publicAccessEnabled);
     }
     /**
-     * Region of AWS VPC
+     * Region of AWS VPC or the Google Cloud VPC network
      * 
      */
     @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
-     * @return Region of AWS VPC
+     * @return Region of AWS VPC or the Google Cloud VPC network
      * 
      */
     public Output<String> region() {
         return this.region;
     }
     /**
-     * Status of Private Access Settings
+     * (AWS only) Status of Private Access Settings
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return Status of Private Access Settings
+     * @return (AWS only) Status of Private Access Settings
      * 
      */
     public Output<String> status() {

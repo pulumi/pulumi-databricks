@@ -23,6 +23,7 @@ class ProviderArgs:
                  azure_tenant_id: Optional[pulumi.Input[str]] = None,
                  azure_use_msi: Optional[pulumi.Input[bool]] = None,
                  azure_workspace_resource_id: Optional[pulumi.Input[str]] = None,
+                 bricks_cli_path: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  config_file: Optional[pulumi.Input[str]] = None,
@@ -60,6 +61,8 @@ class ProviderArgs:
             pulumi.set(__self__, "azure_use_msi", azure_use_msi)
         if azure_workspace_resource_id is not None:
             pulumi.set(__self__, "azure_workspace_resource_id", azure_workspace_resource_id)
+        if bricks_cli_path is not None:
+            pulumi.set(__self__, "bricks_cli_path", bricks_cli_path)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
@@ -173,6 +176,15 @@ class ProviderArgs:
     @azure_workspace_resource_id.setter
     def azure_workspace_resource_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "azure_workspace_resource_id", value)
+
+    @property
+    @pulumi.getter(name="bricksCliPath")
+    def bricks_cli_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bricks_cli_path")
+
+    @bricks_cli_path.setter
+    def bricks_cli_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bricks_cli_path", value)
 
     @property
     @pulumi.getter(name="clientId")
@@ -333,6 +345,7 @@ class Provider(pulumi.ProviderResource):
                  azure_tenant_id: Optional[pulumi.Input[str]] = None,
                  azure_use_msi: Optional[pulumi.Input[bool]] = None,
                  azure_workspace_resource_id: Optional[pulumi.Input[str]] = None,
+                 bricks_cli_path: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  config_file: Optional[pulumi.Input[str]] = None,
@@ -395,6 +408,7 @@ class Provider(pulumi.ProviderResource):
                  azure_tenant_id: Optional[pulumi.Input[str]] = None,
                  azure_use_msi: Optional[pulumi.Input[bool]] = None,
                  azure_workspace_resource_id: Optional[pulumi.Input[str]] = None,
+                 bricks_cli_path: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  config_file: Optional[pulumi.Input[str]] = None,
@@ -429,6 +443,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["azure_tenant_id"] = azure_tenant_id
             __props__.__dict__["azure_use_msi"] = pulumi.Output.from_input(azure_use_msi).apply(pulumi.runtime.to_json) if azure_use_msi is not None else None
             __props__.__dict__["azure_workspace_resource_id"] = azure_workspace_resource_id
+            __props__.__dict__["bricks_cli_path"] = bricks_cli_path
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_secret"] = None if client_secret is None else pulumi.Output.secret(client_secret)
             __props__.__dict__["config_file"] = config_file
@@ -492,6 +507,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="azureWorkspaceResourceId")
     def azure_workspace_resource_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "azure_workspace_resource_id")
+
+    @property
+    @pulumi.getter(name="bricksCliPath")
+    def bricks_cli_path(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "bricks_cli_path")
 
     @property
     @pulumi.getter(name="clientId")

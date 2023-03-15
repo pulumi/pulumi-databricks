@@ -18,7 +18,7 @@ namespace Pulumi.Databricks
     public partial class MwsVpcEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -27,22 +27,28 @@ namespace Pulumi.Databricks
         public Output<string> AwsAccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+        /// (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         /// </summary>
         [Output("awsEndpointServiceId")]
         public Output<string> AwsEndpointServiceId { get; private set; } = null!;
 
         [Output("awsVpcEndpointId")]
-        public Output<string> AwsVpcEndpointId { get; private set; } = null!;
+        public Output<string?> AwsVpcEndpointId { get; private set; } = null!;
+
+        /// <summary>
+        /// a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        /// </summary>
+        [Output("gcpVpcEndpointInfo")]
+        public Output<Outputs.MwsVpcEndpointGcpVpcEndpointInfo?> GcpVpcEndpointInfo { get; private set; } = null!;
 
         /// <summary>
         /// Region of AWS VPC
         /// </summary>
         [Output("region")]
-        public Output<string> Region { get; private set; } = null!;
+        public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
-        /// State of VPC Endpoint
+        /// (AWS Only) State of VPC Endpoint
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -109,7 +115,7 @@ namespace Pulumi.Databricks
     public sealed class MwsVpcEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -118,22 +124,28 @@ namespace Pulumi.Databricks
         public Input<string>? AwsAccountId { get; set; }
 
         /// <summary>
-        /// The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+        /// (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         /// </summary>
         [Input("awsEndpointServiceId")]
         public Input<string>? AwsEndpointServiceId { get; set; }
 
-        [Input("awsVpcEndpointId", required: true)]
-        public Input<string> AwsVpcEndpointId { get; set; } = null!;
+        [Input("awsVpcEndpointId")]
+        public Input<string>? AwsVpcEndpointId { get; set; }
+
+        /// <summary>
+        /// a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        /// </summary>
+        [Input("gcpVpcEndpointInfo")]
+        public Input<Inputs.MwsVpcEndpointGcpVpcEndpointInfoArgs>? GcpVpcEndpointInfo { get; set; }
 
         /// <summary>
         /// Region of AWS VPC
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// State of VPC Endpoint
+        /// (AWS Only) State of VPC Endpoint
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -162,7 +174,7 @@ namespace Pulumi.Databricks
     public sealed class MwsVpcEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -171,7 +183,7 @@ namespace Pulumi.Databricks
         public Input<string>? AwsAccountId { get; set; }
 
         /// <summary>
-        /// The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+        /// (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         /// </summary>
         [Input("awsEndpointServiceId")]
         public Input<string>? AwsEndpointServiceId { get; set; }
@@ -180,13 +192,19 @@ namespace Pulumi.Databricks
         public Input<string>? AwsVpcEndpointId { get; set; }
 
         /// <summary>
+        /// a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        /// </summary>
+        [Input("gcpVpcEndpointInfo")]
+        public Input<Inputs.MwsVpcEndpointGcpVpcEndpointInfoGetArgs>? GcpVpcEndpointInfo { get; set; }
+
+        /// <summary>
         /// Region of AWS VPC
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// State of VPC Endpoint
+        /// (AWS Only) State of VPC Endpoint
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

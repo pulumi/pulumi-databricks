@@ -44,7 +44,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * region of VPC
+     * region of VPC.
      */
     public readonly awsRegion!: pulumi.Output<string | undefined>;
     public readonly cloud!: pulumi.Output<string>;
@@ -73,7 +73,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
     public readonly gkeConfig!: pulumi.Output<outputs.MwsWorkspacesGkeConfig | undefined>;
     public readonly isNoPublicIpEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * region of the subnet
+     * region of the subnet.
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
@@ -85,16 +85,19 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     public readonly networkId!: pulumi.Output<string | undefined>;
     public readonly pricingTier!: pulumi.Output<string>;
+    /**
+     * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+     */
     public readonly privateAccessSettingsId!: pulumi.Output<string | undefined>;
     /**
-     * `storageConfigurationId` from storage configuration
+     * `storageConfigurationId` from storage configuration.
      */
     public readonly storageConfigurationId!: pulumi.Output<string | undefined>;
     public readonly storageCustomerManagedKeyId!: pulumi.Output<string | undefined>;
     public readonly token!: pulumi.Output<outputs.MwsWorkspacesToken | undefined>;
     public readonly workspaceId!: pulumi.Output<number>;
     /**
-     * name of the workspace, will appear on UI
+     * name of the workspace, will appear on UI.
      */
     public readonly workspaceName!: pulumi.Output<string>;
     /**
@@ -198,7 +201,7 @@ export interface MwsWorkspacesState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * region of VPC
+     * region of VPC.
      */
     awsRegion?: pulumi.Input<string>;
     cloud?: pulumi.Input<string>;
@@ -227,7 +230,7 @@ export interface MwsWorkspacesState {
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;
     /**
-     * region of the subnet
+     * region of the subnet.
      */
     location?: pulumi.Input<string>;
     /**
@@ -239,16 +242,19 @@ export interface MwsWorkspacesState {
      */
     networkId?: pulumi.Input<string>;
     pricingTier?: pulumi.Input<string>;
+    /**
+     * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+     */
     privateAccessSettingsId?: pulumi.Input<string>;
     /**
-     * `storageConfigurationId` from storage configuration
+     * `storageConfigurationId` from storage configuration.
      */
     storageConfigurationId?: pulumi.Input<string>;
     storageCustomerManagedKeyId?: pulumi.Input<string>;
     token?: pulumi.Input<inputs.MwsWorkspacesToken>;
     workspaceId?: pulumi.Input<number>;
     /**
-     * name of the workspace, will appear on UI
+     * name of the workspace, will appear on UI.
      */
     workspaceName?: pulumi.Input<string>;
     /**
@@ -274,7 +280,7 @@ export interface MwsWorkspacesArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * region of VPC
+     * region of VPC.
      */
     awsRegion?: pulumi.Input<string>;
     cloud?: pulumi.Input<string>;
@@ -303,7 +309,7 @@ export interface MwsWorkspacesArgs {
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;
     /**
-     * region of the subnet
+     * region of the subnet.
      */
     location?: pulumi.Input<string>;
     /**
@@ -315,16 +321,19 @@ export interface MwsWorkspacesArgs {
      */
     networkId?: pulumi.Input<string>;
     pricingTier?: pulumi.Input<string>;
+    /**
+     * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+     */
     privateAccessSettingsId?: pulumi.Input<string>;
     /**
-     * `storageConfigurationId` from storage configuration
+     * `storageConfigurationId` from storage configuration.
      */
     storageConfigurationId?: pulumi.Input<string>;
     storageCustomerManagedKeyId?: pulumi.Input<string>;
     token?: pulumi.Input<inputs.MwsWorkspacesToken>;
     workspaceId?: pulumi.Input<number>;
     /**
-     * name of the workspace, will appear on UI
+     * name of the workspace, will appear on UI.
      */
     workspaceName: pulumi.Input<string>;
     /**

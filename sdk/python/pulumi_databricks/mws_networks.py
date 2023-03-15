@@ -34,7 +34,7 @@ class MwsNetworksArgs:
         :param pulumi.Input[str] network_name: name under which this network is registered
         :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
-        :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink connections
+        :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
@@ -150,7 +150,7 @@ class MwsNetworksArgs:
     @pulumi.getter(name="vpcEndpoints")
     def vpc_endpoints(self) -> Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']]:
         """
-        mapping of MwsVpcEndpoint for PrivateLink connections
+        mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         """
         return pulumi.get(self, "vpc_endpoints")
 
@@ -216,7 +216,7 @@ class _MwsNetworksState:
         :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
-        :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink connections
+        :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
@@ -334,7 +334,7 @@ class _MwsNetworksState:
     @pulumi.getter(name="vpcEndpoints")
     def vpc_endpoints(self) -> Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']]:
         """
-        mapping of MwsVpcEndpoint for PrivateLink connections
+        mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         """
         return pulumi.get(self, "vpc_endpoints")
 
@@ -408,7 +408,7 @@ class MwsNetworks(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
-        :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink connections
+        :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
@@ -511,7 +511,7 @@ class MwsNetworks(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
-        :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink connections
+        :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
@@ -590,7 +590,7 @@ class MwsNetworks(pulumi.CustomResource):
     @pulumi.getter(name="vpcEndpoints")
     def vpc_endpoints(self) -> pulumi.Output['outputs.MwsNetworksVpcEndpoints']:
         """
-        mapping of MwsVpcEndpoint for PrivateLink connections
+        mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         """
         return pulumi.get(self, "vpc_endpoints")
 

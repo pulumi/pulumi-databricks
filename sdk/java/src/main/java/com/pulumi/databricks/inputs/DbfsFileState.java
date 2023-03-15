@@ -24,14 +24,14 @@ public final class DbfsFileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Path, but with `dbfs:` prefix
+     * Path, but with `dbfs:` prefix.
      * 
      */
     @Import(name="dbfsPath")
     private @Nullable Output<String> dbfsPath;
 
     /**
-     * @return Path, but with `dbfs:` prefix
+     * @return Path, but with `dbfs:` prefix.
      * 
      */
     public Optional<Output<String>> dbfsPath() {
@@ -129,7 +129,7 @@ public final class DbfsFileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbfsPath Path, but with `dbfs:` prefix
+         * @param dbfsPath Path, but with `dbfs:` prefix.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class DbfsFileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbfsPath Path, but with `dbfs:` prefix
+         * @param dbfsPath Path, but with `dbfs:` prefix.
          * 
          * @return builder
          * 

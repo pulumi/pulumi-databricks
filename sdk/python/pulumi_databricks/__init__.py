@@ -90,6 +90,7 @@ from .service_principal import *
 from .service_principal_role import *
 from .service_principal_secret import *
 from .share import *
+from .sql_alert import *
 from .sql_dashboard import *
 from .sql_endpoint import *
 from .sql_global_config import *
@@ -531,6 +532,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/share:Share": "Share"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/sqlAlert",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/sqlAlert:SqlAlert": "SqlAlert"
   }
  },
  {

@@ -3583,6 +3583,29 @@ export interface MwsNetworksVpcEndpoints {
     restApis: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface MwsVpcEndpointGcpVpcEndpointInfo {
+    /**
+     * Region of the PSC endpoint.
+     */
+    endpointRegion: pulumi.Input<string>;
+    /**
+     * The Google Cloud project ID of the VPC network where the PSC connection resides.
+     */
+    projectId: pulumi.Input<string>;
+    /**
+     * The unique ID of this PSC connection.
+     */
+    pscConnectionId?: pulumi.Input<string>;
+    /**
+     * The name of the PSC endpoint in the Google Cloud project.
+     */
+    pscEndpointName: pulumi.Input<string>;
+    /**
+     * The service attachment this PSC connection connects to.
+     */
+    serviceAttachmentId?: pulumi.Input<string>;
+}
+
 export interface MwsWorkspacesCloudResourceContainer {
     /**
      * A block that consists of the following field:
@@ -3611,7 +3634,7 @@ export interface MwsWorkspacesGcpManagedNetworkConfig {
 
 export interface MwsWorkspacesGkeConfig {
     /**
-     * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+     * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
      */
     connectivityType: pulumi.Input<string>;
     /**
@@ -3862,6 +3885,33 @@ export interface ShareObjectPartitionValue {
      * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
      */
     value?: pulumi.Input<string>;
+}
+
+export interface SqlAlertOptions {
+    /**
+     * Name of column in the query result to compare in alert evaluation.
+     */
+    column: pulumi.Input<string>;
+    /**
+     * Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+     */
+    customBody?: pulumi.Input<string>;
+    /**
+     * Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+     */
+    customSubject?: pulumi.Input<string>;
+    /**
+     * Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+     */
+    muted?: pulumi.Input<boolean>;
+    /**
+     * Operator used to compare in alert evaluation. (Enum: `>`, `>=`, `<`, `<=`, `==`, `!=`)
+     */
+    op: pulumi.Input<string>;
+    /**
+     * Value used to compare in alert evaluation.
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface SqlEndpointChannel {

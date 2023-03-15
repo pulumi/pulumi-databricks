@@ -14,14 +14,14 @@ public final class MwsWorkspacesGkeConfigArgs extends com.pulumi.resources.Resou
     public static final MwsWorkspacesGkeConfigArgs Empty = new MwsWorkspacesGkeConfigArgs();
 
     /**
-     * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+     * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
      * 
      */
     @Import(name="connectivityType", required=true)
     private Output<String> connectivityType;
 
     /**
-     * @return Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+     * @return Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
      * 
      */
     public Output<String> connectivityType() {
@@ -69,7 +69,7 @@ public final class MwsWorkspacesGkeConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param connectivityType Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+         * @param connectivityType Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class MwsWorkspacesGkeConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param connectivityType Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+         * @param connectivityType Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
          * 
          * @return builder
          * 

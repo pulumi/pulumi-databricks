@@ -19,7 +19,7 @@ type MwsWorkspaces struct {
 
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// region of VPC
+	// region of VPC.
 	AwsRegion pulumi.StringPtrOutput `pulumi:"awsRegion"`
 	Cloud     pulumi.StringOutput    `pulumi:"cloud"`
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
@@ -36,20 +36,21 @@ type MwsWorkspaces struct {
 	// A block that specifies GKE configuration for the Databricks workspace:
 	GkeConfig           MwsWorkspacesGkeConfigPtrOutput `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled pulumi.BoolPtrOutput            `pulumi:"isNoPublicIpEnabled"`
-	// region of the subnet
+	// region of the subnet.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId pulumi.StringPtrOutput `pulumi:"managedServicesCustomerManagedKeyId"`
 	// `networkId` from networks.
-	NetworkId               pulumi.StringPtrOutput `pulumi:"networkId"`
-	PricingTier             pulumi.StringOutput    `pulumi:"pricingTier"`
+	NetworkId   pulumi.StringPtrOutput `pulumi:"networkId"`
+	PricingTier pulumi.StringOutput    `pulumi:"pricingTier"`
+	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId pulumi.StringPtrOutput `pulumi:"privateAccessSettingsId"`
-	// `storageConfigurationId` from storage configuration
+	// `storageConfigurationId` from storage configuration.
 	StorageConfigurationId      pulumi.StringPtrOutput      `pulumi:"storageConfigurationId"`
 	StorageCustomerManagedKeyId pulumi.StringPtrOutput      `pulumi:"storageCustomerManagedKeyId"`
 	Token                       MwsWorkspacesTokenPtrOutput `pulumi:"token"`
 	WorkspaceId                 pulumi.IntOutput            `pulumi:"workspaceId"`
-	// name of the workspace, will appear on UI
+	// name of the workspace, will appear on UI.
 	WorkspaceName pulumi.StringOutput `pulumi:"workspaceName"`
 	// (String) workspace status
 	WorkspaceStatus pulumi.StringOutput `pulumi:"workspaceStatus"`
@@ -103,7 +104,7 @@ func GetMwsWorkspaces(ctx *pulumi.Context,
 type mwsWorkspacesState struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId *string `pulumi:"accountId"`
-	// region of VPC
+	// region of VPC.
 	AwsRegion *string `pulumi:"awsRegion"`
 	Cloud     *string `pulumi:"cloud"`
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
@@ -120,20 +121,21 @@ type mwsWorkspacesState struct {
 	// A block that specifies GKE configuration for the Databricks workspace:
 	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
-	// region of the subnet
+	// region of the subnet.
 	Location *string `pulumi:"location"`
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId *string `pulumi:"managedServicesCustomerManagedKeyId"`
 	// `networkId` from networks.
-	NetworkId               *string `pulumi:"networkId"`
-	PricingTier             *string `pulumi:"pricingTier"`
+	NetworkId   *string `pulumi:"networkId"`
+	PricingTier *string `pulumi:"pricingTier"`
+	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
-	// `storageConfigurationId` from storage configuration
+	// `storageConfigurationId` from storage configuration.
 	StorageConfigurationId      *string             `pulumi:"storageConfigurationId"`
 	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
 	Token                       *MwsWorkspacesToken `pulumi:"token"`
 	WorkspaceId                 *int                `pulumi:"workspaceId"`
-	// name of the workspace, will appear on UI
+	// name of the workspace, will appear on UI.
 	WorkspaceName *string `pulumi:"workspaceName"`
 	// (String) workspace status
 	WorkspaceStatus *string `pulumi:"workspaceStatus"`
@@ -146,7 +148,7 @@ type mwsWorkspacesState struct {
 type MwsWorkspacesState struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringPtrInput
-	// region of VPC
+	// region of VPC.
 	AwsRegion pulumi.StringPtrInput
 	Cloud     pulumi.StringPtrInput
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
@@ -163,20 +165,21 @@ type MwsWorkspacesState struct {
 	// A block that specifies GKE configuration for the Databricks workspace:
 	GkeConfig           MwsWorkspacesGkeConfigPtrInput
 	IsNoPublicIpEnabled pulumi.BoolPtrInput
-	// region of the subnet
+	// region of the subnet.
 	Location pulumi.StringPtrInput
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId pulumi.StringPtrInput
 	// `networkId` from networks.
-	NetworkId               pulumi.StringPtrInput
-	PricingTier             pulumi.StringPtrInput
+	NetworkId   pulumi.StringPtrInput
+	PricingTier pulumi.StringPtrInput
+	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId pulumi.StringPtrInput
-	// `storageConfigurationId` from storage configuration
+	// `storageConfigurationId` from storage configuration.
 	StorageConfigurationId      pulumi.StringPtrInput
 	StorageCustomerManagedKeyId pulumi.StringPtrInput
 	Token                       MwsWorkspacesTokenPtrInput
 	WorkspaceId                 pulumi.IntPtrInput
-	// name of the workspace, will appear on UI
+	// name of the workspace, will appear on UI.
 	WorkspaceName pulumi.StringPtrInput
 	// (String) workspace status
 	WorkspaceStatus pulumi.StringPtrInput
@@ -193,7 +196,7 @@ func (MwsWorkspacesState) ElementType() reflect.Type {
 type mwsWorkspacesArgs struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId string `pulumi:"accountId"`
-	// region of VPC
+	// region of VPC.
 	AwsRegion *string `pulumi:"awsRegion"`
 	Cloud     *string `pulumi:"cloud"`
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
@@ -210,20 +213,21 @@ type mwsWorkspacesArgs struct {
 	// A block that specifies GKE configuration for the Databricks workspace:
 	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
-	// region of the subnet
+	// region of the subnet.
 	Location *string `pulumi:"location"`
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId *string `pulumi:"managedServicesCustomerManagedKeyId"`
 	// `networkId` from networks.
-	NetworkId               *string `pulumi:"networkId"`
-	PricingTier             *string `pulumi:"pricingTier"`
+	NetworkId   *string `pulumi:"networkId"`
+	PricingTier *string `pulumi:"pricingTier"`
+	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
-	// `storageConfigurationId` from storage configuration
+	// `storageConfigurationId` from storage configuration.
 	StorageConfigurationId      *string             `pulumi:"storageConfigurationId"`
 	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
 	Token                       *MwsWorkspacesToken `pulumi:"token"`
 	WorkspaceId                 *int                `pulumi:"workspaceId"`
-	// name of the workspace, will appear on UI
+	// name of the workspace, will appear on UI.
 	WorkspaceName string `pulumi:"workspaceName"`
 	// (String) workspace status
 	WorkspaceStatus *string `pulumi:"workspaceStatus"`
@@ -237,7 +241,7 @@ type mwsWorkspacesArgs struct {
 type MwsWorkspacesArgs struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringInput
-	// region of VPC
+	// region of VPC.
 	AwsRegion pulumi.StringPtrInput
 	Cloud     pulumi.StringPtrInput
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
@@ -254,20 +258,21 @@ type MwsWorkspacesArgs struct {
 	// A block that specifies GKE configuration for the Databricks workspace:
 	GkeConfig           MwsWorkspacesGkeConfigPtrInput
 	IsNoPublicIpEnabled pulumi.BoolPtrInput
-	// region of the subnet
+	// region of the subnet.
 	Location pulumi.StringPtrInput
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId pulumi.StringPtrInput
 	// `networkId` from networks.
-	NetworkId               pulumi.StringPtrInput
-	PricingTier             pulumi.StringPtrInput
+	NetworkId   pulumi.StringPtrInput
+	PricingTier pulumi.StringPtrInput
+	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId pulumi.StringPtrInput
-	// `storageConfigurationId` from storage configuration
+	// `storageConfigurationId` from storage configuration.
 	StorageConfigurationId      pulumi.StringPtrInput
 	StorageCustomerManagedKeyId pulumi.StringPtrInput
 	Token                       MwsWorkspacesTokenPtrInput
 	WorkspaceId                 pulumi.IntPtrInput
-	// name of the workspace, will appear on UI
+	// name of the workspace, will appear on UI.
 	WorkspaceName pulumi.StringInput
 	// (String) workspace status
 	WorkspaceStatus pulumi.StringPtrInput
@@ -369,7 +374,7 @@ func (o MwsWorkspacesOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// region of VPC
+// region of VPC.
 func (o MwsWorkspacesOutput) AwsRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.AwsRegion }).(pulumi.StringPtrOutput)
 }
@@ -419,7 +424,7 @@ func (o MwsWorkspacesOutput) IsNoPublicIpEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.BoolPtrOutput { return v.IsNoPublicIpEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// region of the subnet
+// region of the subnet.
 func (o MwsWorkspacesOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -438,11 +443,12 @@ func (o MwsWorkspacesOutput) PricingTier() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.PricingTier }).(pulumi.StringOutput)
 }
 
+// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 func (o MwsWorkspacesOutput) PrivateAccessSettingsId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.PrivateAccessSettingsId }).(pulumi.StringPtrOutput)
 }
 
-// `storageConfigurationId` from storage configuration
+// `storageConfigurationId` from storage configuration.
 func (o MwsWorkspacesOutput) StorageConfigurationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.StorageConfigurationId }).(pulumi.StringPtrOutput)
 }
@@ -459,7 +465,7 @@ func (o MwsWorkspacesOutput) WorkspaceId() pulumi.IntOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.IntOutput { return v.WorkspaceId }).(pulumi.IntOutput)
 }
 
-// name of the workspace, will appear on UI
+// name of the workspace, will appear on UI.
 func (o MwsWorkspacesOutput) WorkspaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.WorkspaceName }).(pulumi.StringOutput)
 }

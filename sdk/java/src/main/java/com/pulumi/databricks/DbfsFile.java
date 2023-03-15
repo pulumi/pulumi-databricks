@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * The resource dbfs file can be imported using the path of the file bash
+ * The resource dbfs file can be imported using the path of the filebash
  * 
  * ```sh
  *  $ pulumi import databricks:index/dbfsFile:DbfsFile this &lt;path&gt;
@@ -34,14 +34,14 @@ public class DbfsFile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.contentBase64);
     }
     /**
-     * Path, but with `dbfs:` prefix
+     * Path, but with `dbfs:` prefix.
      * 
      */
     @Export(name="dbfsPath", type=String.class, parameters={})
     private Output<String> dbfsPath;
 
     /**
-     * @return Path, but with `dbfs:` prefix
+     * @return Path, but with `dbfs:` prefix.
      * 
      */
     public Output<String> dbfsPath() {

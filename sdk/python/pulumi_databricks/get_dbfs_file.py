@@ -103,7 +103,7 @@ def get_dbfs_file(limit_file_size: Optional[bool] = None,
 
     The following resources are used in the same context:
 
-    * End to end workspace management guide
+    * End to end workspace management guide.
       *_get_dbfs_file_paths_data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
     * DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
     * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
@@ -144,7 +144,7 @@ def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[bool]] = None,
 
     The following resources are used in the same context:
 
-    * End to end workspace management guide
+    * End to end workspace management guide.
       *_get_dbfs_file_paths_data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
     * DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
     * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.

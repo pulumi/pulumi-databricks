@@ -14,7 +14,7 @@ import (
 //
 // The following resources are used in the same context:
 //
-// * End to end workspace management guide
+// * End to end workspace management guide.
 // * getCurrentUser data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
 // * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
 // * Group data to retrieve information about Group members, entitlements and instance profiles.

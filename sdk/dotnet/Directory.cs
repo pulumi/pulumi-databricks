@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Import
     /// 
-    /// The resource directory can be imported using directory path bash
+    /// The resource directory can be imported using directory pathbash
     /// 
     /// ```sh
     ///  $ pulumi import databricks:index/directory:Directory this /path/to/directory

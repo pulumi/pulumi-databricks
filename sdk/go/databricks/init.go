@@ -124,6 +124,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServicePrincipalSecret{}
 	case "databricks:index/share:Share":
 		r = &Share{}
+	case "databricks:index/sqlAlert:SqlAlert":
+		r = &SqlAlert{}
 	case "databricks:index/sqlDashboard:SqlDashboard":
 		r = &SqlDashboard{}
 	case "databricks:index/sqlEndpoint:SqlEndpoint":
@@ -438,6 +440,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/share",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/sqlAlert",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

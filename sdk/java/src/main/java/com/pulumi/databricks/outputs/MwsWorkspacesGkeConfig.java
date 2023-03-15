@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class MwsWorkspacesGkeConfig {
     /**
-     * @return Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+     * @return Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
      * 
      */
     private String connectivityType;
@@ -22,7 +22,7 @@ public final class MwsWorkspacesGkeConfig {
 
     private MwsWorkspacesGkeConfig() {}
     /**
-     * @return Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+     * @return Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
      * 
      */
     public String connectivityType() {

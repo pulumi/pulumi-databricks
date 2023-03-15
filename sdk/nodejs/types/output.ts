@@ -2500,6 +2500,29 @@ export interface MwsNetworksVpcEndpoints {
     restApis: string[];
 }
 
+export interface MwsVpcEndpointGcpVpcEndpointInfo {
+    /**
+     * Region of the PSC endpoint.
+     */
+    endpointRegion: string;
+    /**
+     * The Google Cloud project ID of the VPC network where the PSC connection resides.
+     */
+    projectId: string;
+    /**
+     * The unique ID of this PSC connection.
+     */
+    pscConnectionId: string;
+    /**
+     * The name of the PSC endpoint in the Google Cloud project.
+     */
+    pscEndpointName: string;
+    /**
+     * The service attachment this PSC connection connects to.
+     */
+    serviceAttachmentId: string;
+}
+
 export interface MwsWorkspacesCloudResourceContainer {
     /**
      * A block that consists of the following field:
@@ -2528,7 +2551,7 @@ export interface MwsWorkspacesGcpManagedNetworkConfig {
 
 export interface MwsWorkspacesGkeConfig {
     /**
-     * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`
+     * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
      */
     connectivityType: string;
     /**
@@ -2779,6 +2802,33 @@ export interface ShareObjectPartitionValue {
      * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
      */
     value?: string;
+}
+
+export interface SqlAlertOptions {
+    /**
+     * Name of column in the query result to compare in alert evaluation.
+     */
+    column: string;
+    /**
+     * Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+     */
+    customBody?: string;
+    /**
+     * Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+     */
+    customSubject?: string;
+    /**
+     * Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+     */
+    muted?: boolean;
+    /**
+     * Operator used to compare in alert evaluation. (Enum: `>`, `>=`, `<`, `<=`, `==`, `!=`)
+     */
+    op: string;
+    /**
+     * Value used to compare in alert evaluation.
+     */
+    value: string;
 }
 
 export interface SqlEndpointChannel {

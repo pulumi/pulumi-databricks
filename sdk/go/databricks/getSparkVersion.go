@@ -62,7 +62,7 @@ import (
 //
 // The following resources are used in the same context:
 //
-// * End to end workspace management guide
+// * End to end workspace management guide.
 // * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
 // * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
 // * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
