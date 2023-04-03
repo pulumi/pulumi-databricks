@@ -15,6 +15,8 @@
 package databricks
 
 import (
+	// embed package is not used directly
+	_ "embed"
 	"fmt"
 	"path/filepath"
 
@@ -25,6 +27,9 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
+
+//go:embed cmd/pulumi-resource-databricks/bridge-metadata.json
+var metadata []byte
 
 // all of the token components used below.
 const (
@@ -42,8 +47,9 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:    p,
-		Name: "databricks",
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		P:            p,
+		Name:         "databricks",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
 		DisplayName: "Databricks",
@@ -229,6 +235,8 @@ func Provider() tfbridge.ProviderInfo {
 		mainMod, x.MakeStandardToken(mainPkg)))
 	contract.AssertNoError(err)
 
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "auto aliasing failed")
 	prov.SetAutonaming(255, "-")
 
 	return prov
