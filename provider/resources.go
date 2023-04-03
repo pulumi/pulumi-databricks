@@ -233,7 +233,7 @@ func Provider() tfbridge.ProviderInfo {
 
 	err := x.ComputeDefaults(&prov, x.TokensSingleModule("databricks_",
 		mainMod, x.MakeStandardToken(mainPkg)))
-	contract.AssertNoError(err)
+	contract.AssertNoErrorf(err, "auto token mapping failed")
 
 	err = x.AutoAliasing(&prov, prov.GetMetadata())
 	contract.AssertNoErrorf(err, "auto aliasing failed")
