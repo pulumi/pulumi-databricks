@@ -74,7 +74,7 @@ def get_aws_cross_account_policy(pass_roles: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    For more detailed usage please see_get_aws_assume_role_policy_or databricks_aws_s3_mount pages.
+    For more detailed usage please see get_aws_assume_role_policy or databricks_aws_s3_mount pages.
 
     ```python
     import pulumi
@@ -87,8 +87,8 @@ def get_aws_cross_account_policy(pass_roles: Optional[Sequence[str]] = None,
     The following resources are used in the same context:
 
     * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
-      *_get_aws_assume_role_policy_data to construct the necessary AWS STS assume role policy.
-      *_get_aws_bucket_policy_data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+    * get_aws_assume_role_policy data to construct the necessary AWS STS assume role policy.
+    * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
     * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
 
 
@@ -115,7 +115,7 @@ def get_aws_cross_account_policy_output(pass_roles: Optional[pulumi.Input[Option
 
     ## Example Usage
 
-    For more detailed usage please see_get_aws_assume_role_policy_or databricks_aws_s3_mount pages.
+    For more detailed usage please see get_aws_assume_role_policy or databricks_aws_s3_mount pages.
 
     ```python
     import pulumi
@@ -128,8 +128,8 @@ def get_aws_cross_account_policy_output(pass_roles: Optional[pulumi.Input[Option
     The following resources are used in the same context:
 
     * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
-      *_get_aws_assume_role_policy_data to construct the necessary AWS STS assume role policy.
-      *_get_aws_bucket_policy_data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+    * get_aws_assume_role_policy data to construct the necessary AWS STS assume role policy.
+    * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
     * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
 
 

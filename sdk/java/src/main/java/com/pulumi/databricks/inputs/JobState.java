@@ -15,11 +15,13 @@ import com.pulumi.databricks.inputs.JobNewClusterArgs;
 import com.pulumi.databricks.inputs.JobNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobPipelineTaskArgs;
 import com.pulumi.databricks.inputs.JobPythonWheelTaskArgs;
+import com.pulumi.databricks.inputs.JobQueueArgs;
 import com.pulumi.databricks.inputs.JobScheduleArgs;
 import com.pulumi.databricks.inputs.JobSparkJarTaskArgs;
 import com.pulumi.databricks.inputs.JobSparkPythonTaskArgs;
 import com.pulumi.databricks.inputs.JobSparkSubmitTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskArgs;
+import com.pulumi.databricks.inputs.JobTriggerArgs;
 import com.pulumi.databricks.inputs.JobWebhookNotificationsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -227,6 +229,13 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pythonWheelTask);
     }
 
+    @Import(name="queue")
+    private @Nullable Output<JobQueueArgs> queue;
+
+    public Optional<Output<JobQueueArgs>> queue() {
+        return Optional.ofNullable(this.queue);
+    }
+
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      * 
@@ -315,15 +324,22 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.timeoutSeconds);
     }
 
+    @Import(name="trigger")
+    private @Nullable Output<JobTriggerArgs> trigger;
+
+    public Optional<Output<JobTriggerArgs>> trigger() {
+        return Optional.ofNullable(this.trigger);
+    }
+
     /**
-     * URL of the Git repository to use.
+     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return URL of the Git repository to use.
+     * @return string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      * 
      */
     public Optional<Output<String>> url() {
@@ -365,6 +381,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.notebookTask = $.notebookTask;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
+        this.queue = $.queue;
         this.retryOnTimeout = $.retryOnTimeout;
         this.schedule = $.schedule;
         this.sparkJarTask = $.sparkJarTask;
@@ -373,6 +390,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.tags = $.tags;
         this.tasks = $.tasks;
         this.timeoutSeconds = $.timeoutSeconds;
+        this.trigger = $.trigger;
         this.url = $.url;
         this.webhookNotifications = $.webhookNotifications;
     }
@@ -676,6 +694,15 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return pythonWheelTask(Output.of(pythonWheelTask));
         }
 
+        public Builder queue(@Nullable Output<JobQueueArgs> queue) {
+            $.queue = queue;
+            return this;
+        }
+
+        public Builder queue(JobQueueArgs queue) {
+            return queue(Output.of(queue));
+        }
+
         /**
          * @param retryOnTimeout (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
          * 
@@ -800,8 +827,17 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return timeoutSeconds(Output.of(timeoutSeconds));
         }
 
+        public Builder trigger(@Nullable Output<JobTriggerArgs> trigger) {
+            $.trigger = trigger;
+            return this;
+        }
+
+        public Builder trigger(JobTriggerArgs trigger) {
+            return trigger(Output.of(trigger));
+        }
+
         /**
-         * @param url URL of the Git repository to use.
+         * @param url string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
          * 
          * @return builder
          * 
@@ -812,7 +848,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL of the Git repository to use.
+         * @param url string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
          * 
          * @return builder
          * 

@@ -244,9 +244,17 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<MwsWorkspacesToken>> token() {
         return Codegen.optional(this.token);
     }
+    /**
+     * (String) workspace id
+     * 
+     */
     @Export(name="workspaceId", type=Integer.class, parameters={})
     private Output<Integer> workspaceId;
 
+    /**
+     * @return (String) workspace id
+     * 
+     */
     public Output<Integer> workspaceId() {
         return this.workspaceId;
     }

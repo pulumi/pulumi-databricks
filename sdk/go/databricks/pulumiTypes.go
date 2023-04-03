@@ -7839,7 +7839,7 @@ func (o JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoOutput) Serv
 
 type JobJobClusterNewClusterDockerImage struct {
 	BasicAuth *JobJobClusterNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 	Url string `pulumi:"url"`
 }
 
@@ -7856,7 +7856,7 @@ type JobJobClusterNewClusterDockerImageInput interface {
 
 type JobJobClusterNewClusterDockerImageArgs struct {
 	BasicAuth JobJobClusterNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -7943,7 +7943,7 @@ func (o JobJobClusterNewClusterDockerImageOutput) BasicAuth() JobJobClusterNewCl
 	}).(JobJobClusterNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 func (o JobJobClusterNewClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobJobClusterNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -7981,7 +7981,7 @@ func (o JobJobClusterNewClusterDockerImagePtrOutput) BasicAuth() JobJobClusterNe
 	}).(JobJobClusterNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 func (o JobJobClusterNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobJobClusterNewClusterDockerImage) *string {
 		if v == nil {
@@ -11857,7 +11857,7 @@ func (o JobNewClusterClusterMountInfoNetworkFilesystemInfoOutput) ServerAddress(
 
 type JobNewClusterDockerImage struct {
 	BasicAuth *JobNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 	Url string `pulumi:"url"`
 }
 
@@ -11874,7 +11874,7 @@ type JobNewClusterDockerImageInput interface {
 
 type JobNewClusterDockerImageArgs struct {
 	BasicAuth JobNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -11959,7 +11959,7 @@ func (o JobNewClusterDockerImageOutput) BasicAuth() JobNewClusterDockerImageBasi
 	return o.ApplyT(func(v JobNewClusterDockerImage) *JobNewClusterDockerImageBasicAuth { return v.BasicAuth }).(JobNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 func (o JobNewClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -11997,7 +11997,7 @@ func (o JobNewClusterDockerImagePtrOutput) BasicAuth() JobNewClusterDockerImageB
 	}).(JobNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 func (o JobNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobNewClusterDockerImage) *string {
 		if v == nil {
@@ -13507,7 +13507,7 @@ type JobNotebookTask struct {
 	BaseParameters map[string]interface{} `pulumi:"baseParameters"`
 	// The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath string `pulumi:"notebookPath"`
-	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
 	Source *string `pulumi:"source"`
 }
 
@@ -13527,7 +13527,7 @@ type JobNotebookTaskArgs struct {
 	BaseParameters pulumi.MapInput `pulumi:"baseParameters"`
 	// The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath pulumi.StringInput `pulumi:"notebookPath"`
-	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
@@ -13618,7 +13618,7 @@ func (o JobNotebookTaskOutput) NotebookPath() pulumi.StringOutput {
 	return o.ApplyT(func(v JobNotebookTask) string { return v.NotebookPath }).(pulumi.StringOutput)
 }
 
-// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
 func (o JobNotebookTaskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobNotebookTask) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -13667,7 +13667,7 @@ func (o JobNotebookTaskPtrOutput) NotebookPath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
 func (o JobNotebookTaskPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobNotebookTask) *string {
 		if v == nil {
@@ -14006,6 +14006,124 @@ func (o JobPythonWheelTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 		}
 		return v.Parameters
 	}).(pulumi.StringArrayOutput)
+}
+
+type JobQueue struct {
+}
+
+// JobQueueInput is an input type that accepts JobQueueArgs and JobQueueOutput values.
+// You can construct a concrete instance of `JobQueueInput` via:
+//
+//	JobQueueArgs{...}
+type JobQueueInput interface {
+	pulumi.Input
+
+	ToJobQueueOutput() JobQueueOutput
+	ToJobQueueOutputWithContext(context.Context) JobQueueOutput
+}
+
+type JobQueueArgs struct {
+}
+
+func (JobQueueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueue)(nil)).Elem()
+}
+
+func (i JobQueueArgs) ToJobQueueOutput() JobQueueOutput {
+	return i.ToJobQueueOutputWithContext(context.Background())
+}
+
+func (i JobQueueArgs) ToJobQueueOutputWithContext(ctx context.Context) JobQueueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueueOutput)
+}
+
+func (i JobQueueArgs) ToJobQueuePtrOutput() JobQueuePtrOutput {
+	return i.ToJobQueuePtrOutputWithContext(context.Background())
+}
+
+func (i JobQueueArgs) ToJobQueuePtrOutputWithContext(ctx context.Context) JobQueuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueueOutput).ToJobQueuePtrOutputWithContext(ctx)
+}
+
+// JobQueuePtrInput is an input type that accepts JobQueueArgs, JobQueuePtr and JobQueuePtrOutput values.
+// You can construct a concrete instance of `JobQueuePtrInput` via:
+//
+//	        JobQueueArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobQueuePtrInput interface {
+	pulumi.Input
+
+	ToJobQueuePtrOutput() JobQueuePtrOutput
+	ToJobQueuePtrOutputWithContext(context.Context) JobQueuePtrOutput
+}
+
+type jobQueuePtrType JobQueueArgs
+
+func JobQueuePtr(v *JobQueueArgs) JobQueuePtrInput {
+	return (*jobQueuePtrType)(v)
+}
+
+func (*jobQueuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobQueue)(nil)).Elem()
+}
+
+func (i *jobQueuePtrType) ToJobQueuePtrOutput() JobQueuePtrOutput {
+	return i.ToJobQueuePtrOutputWithContext(context.Background())
+}
+
+func (i *jobQueuePtrType) ToJobQueuePtrOutputWithContext(ctx context.Context) JobQueuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueuePtrOutput)
+}
+
+type JobQueueOutput struct{ *pulumi.OutputState }
+
+func (JobQueueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueue)(nil)).Elem()
+}
+
+func (o JobQueueOutput) ToJobQueueOutput() JobQueueOutput {
+	return o
+}
+
+func (o JobQueueOutput) ToJobQueueOutputWithContext(ctx context.Context) JobQueueOutput {
+	return o
+}
+
+func (o JobQueueOutput) ToJobQueuePtrOutput() JobQueuePtrOutput {
+	return o.ToJobQueuePtrOutputWithContext(context.Background())
+}
+
+func (o JobQueueOutput) ToJobQueuePtrOutputWithContext(ctx context.Context) JobQueuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobQueue) *JobQueue {
+		return &v
+	}).(JobQueuePtrOutput)
+}
+
+type JobQueuePtrOutput struct{ *pulumi.OutputState }
+
+func (JobQueuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobQueue)(nil)).Elem()
+}
+
+func (o JobQueuePtrOutput) ToJobQueuePtrOutput() JobQueuePtrOutput {
+	return o
+}
+
+func (o JobQueuePtrOutput) ToJobQueuePtrOutputWithContext(ctx context.Context) JobQueuePtrOutput {
+	return o
+}
+
+func (o JobQueuePtrOutput) Elem() JobQueueOutput {
+	return o.ApplyT(func(v *JobQueue) JobQueue {
+		if v != nil {
+			return *v
+		}
+		var ret JobQueue
+		return ret
+	}).(JobQueueOutput)
 }
 
 type JobSchedule struct {
@@ -14357,8 +14475,10 @@ func (o JobSparkJarTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 type JobSparkPythonTask struct {
 	// (List) Command line parameters passed to the Python file.
 	Parameters []string `pulumi:"parameters"`
-	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile string `pulumi:"pythonFile"`
+	// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	Source *string `pulumi:"source"`
 }
 
 // JobSparkPythonTaskInput is an input type that accepts JobSparkPythonTaskArgs and JobSparkPythonTaskOutput values.
@@ -14375,8 +14495,10 @@ type JobSparkPythonTaskInput interface {
 type JobSparkPythonTaskArgs struct {
 	// (List) Command line parameters passed to the Python file.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
-	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile pulumi.StringInput `pulumi:"pythonFile"`
+	// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
 func (JobSparkPythonTaskArgs) ElementType() reflect.Type {
@@ -14461,9 +14583,14 @@ func (o JobSparkPythonTaskOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobSparkPythonTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
 
-// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
 func (o JobSparkPythonTaskOutput) PythonFile() pulumi.StringOutput {
 	return o.ApplyT(func(v JobSparkPythonTask) string { return v.PythonFile }).(pulumi.StringOutput)
+}
+
+// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+func (o JobSparkPythonTaskOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobSparkPythonTask) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
 type JobSparkPythonTaskPtrOutput struct{ *pulumi.OutputState }
@@ -14500,13 +14627,23 @@ func (o JobSparkPythonTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
 func (o JobSparkPythonTaskPtrOutput) PythonFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSparkPythonTask) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.PythonFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+func (o JobSparkPythonTaskPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobSparkPythonTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14669,6 +14806,7 @@ type JobTask struct {
 	PythonWheelTask *JobTaskPythonWheelTask `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout  *bool                   `pulumi:"retryOnTimeout"`
+	RunIf           *string                 `pulumi:"runIf"`
 	SparkJarTask    *JobTaskSparkJarTask    `pulumi:"sparkJarTask"`
 	SparkPythonTask *JobTaskSparkPythonTask `pulumi:"sparkPythonTask"`
 	SparkSubmitTask *JobTaskSparkSubmitTask `pulumi:"sparkSubmitTask"`
@@ -14711,6 +14849,7 @@ type JobTaskArgs struct {
 	PythonWheelTask JobTaskPythonWheelTaskPtrInput `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout  pulumi.BoolPtrInput            `pulumi:"retryOnTimeout"`
+	RunIf           pulumi.StringPtrInput          `pulumi:"runIf"`
 	SparkJarTask    JobTaskSparkJarTaskPtrInput    `pulumi:"sparkJarTask"`
 	SparkPythonTask JobTaskSparkPythonTaskPtrInput `pulumi:"sparkPythonTask"`
 	SparkSubmitTask JobTaskSparkSubmitTaskPtrInput `pulumi:"sparkSubmitTask"`
@@ -14832,6 +14971,10 @@ func (o JobTaskOutput) PythonWheelTask() JobTaskPythonWheelTaskPtrOutput {
 // (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 func (o JobTaskOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTask) *bool { return v.RetryOnTimeout }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskOutput) RunIf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTask) *string { return v.RunIf }).(pulumi.StringPtrOutput)
 }
 
 func (o JobTaskOutput) SparkJarTask() JobTaskSparkJarTaskPtrOutput {
@@ -17783,7 +17926,7 @@ func (o JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoOutput) ServerAddr
 
 type JobTaskNewClusterDockerImage struct {
 	BasicAuth *JobTaskNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 	Url string `pulumi:"url"`
 }
 
@@ -17800,7 +17943,7 @@ type JobTaskNewClusterDockerImageInput interface {
 
 type JobTaskNewClusterDockerImageArgs struct {
 	BasicAuth JobTaskNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	// URL of the Git repository to use.
+	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -17885,7 +18028,7 @@ func (o JobTaskNewClusterDockerImageOutput) BasicAuth() JobTaskNewClusterDockerI
 	return o.ApplyT(func(v JobTaskNewClusterDockerImage) *JobTaskNewClusterDockerImageBasicAuth { return v.BasicAuth }).(JobTaskNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 func (o JobTaskNewClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -17923,7 +18066,7 @@ func (o JobTaskNewClusterDockerImagePtrOutput) BasicAuth() JobTaskNewClusterDock
 	}).(JobTaskNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the Git repository to use.
+// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 func (o JobTaskNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskNewClusterDockerImage) *string {
 		if v == nil {
@@ -19433,7 +19576,7 @@ type JobTaskNotebookTask struct {
 	BaseParameters map[string]interface{} `pulumi:"baseParameters"`
 	// The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath string `pulumi:"notebookPath"`
-	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
 	Source *string `pulumi:"source"`
 }
 
@@ -19453,7 +19596,7 @@ type JobTaskNotebookTaskArgs struct {
 	BaseParameters pulumi.MapInput `pulumi:"baseParameters"`
 	// The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
 	NotebookPath pulumi.StringInput `pulumi:"notebookPath"`
-	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+	// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
@@ -19544,7 +19687,7 @@ func (o JobTaskNotebookTaskOutput) NotebookPath() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskNotebookTask) string { return v.NotebookPath }).(pulumi.StringOutput)
 }
 
-// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
 func (o JobTaskNotebookTaskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskNotebookTask) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -19593,7 +19736,7 @@ func (o JobTaskNotebookTaskPtrOutput) NotebookPath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
 func (o JobTaskNotebookTaskPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskNotebookTask) *string {
 		if v == nil {
@@ -20108,8 +20251,10 @@ func (o JobTaskSparkJarTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 type JobTaskSparkPythonTask struct {
 	// (List) Command line parameters passed to the Python file.
 	Parameters []string `pulumi:"parameters"`
-	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile string `pulumi:"pythonFile"`
+	// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	Source *string `pulumi:"source"`
 }
 
 // JobTaskSparkPythonTaskInput is an input type that accepts JobTaskSparkPythonTaskArgs and JobTaskSparkPythonTaskOutput values.
@@ -20126,8 +20271,10 @@ type JobTaskSparkPythonTaskInput interface {
 type JobTaskSparkPythonTaskArgs struct {
 	// (List) Command line parameters passed to the Python file.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
-	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile pulumi.StringInput `pulumi:"pythonFile"`
+	// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
 func (JobTaskSparkPythonTaskArgs) ElementType() reflect.Type {
@@ -20212,9 +20359,14 @@ func (o JobTaskSparkPythonTaskOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskSparkPythonTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
 
-// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
 func (o JobTaskSparkPythonTaskOutput) PythonFile() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskSparkPythonTask) string { return v.PythonFile }).(pulumi.StringOutput)
+}
+
+// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+func (o JobTaskSparkPythonTaskOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskSparkPythonTask) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
 type JobTaskSparkPythonTaskPtrOutput struct{ *pulumi.OutputState }
@@ -20251,13 +20403,23 @@ func (o JobTaskSparkPythonTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
 func (o JobTaskSparkPythonTaskPtrOutput) PythonFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskSparkPythonTask) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.PythonFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+func (o JobTaskSparkPythonTaskPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskSparkPythonTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21008,6 +21170,337 @@ func (o JobTaskSqlTaskQueryPtrOutput) QueryId() pulumi.StringPtrOutput {
 		}
 		return &v.QueryId
 	}).(pulumi.StringPtrOutput)
+}
+
+type JobTrigger struct {
+	// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
+	FileArrival JobTriggerFileArrival `pulumi:"fileArrival"`
+	// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
+	PauseStatus *string `pulumi:"pauseStatus"`
+}
+
+// JobTriggerInput is an input type that accepts JobTriggerArgs and JobTriggerOutput values.
+// You can construct a concrete instance of `JobTriggerInput` via:
+//
+//	JobTriggerArgs{...}
+type JobTriggerInput interface {
+	pulumi.Input
+
+	ToJobTriggerOutput() JobTriggerOutput
+	ToJobTriggerOutputWithContext(context.Context) JobTriggerOutput
+}
+
+type JobTriggerArgs struct {
+	// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
+	FileArrival JobTriggerFileArrivalInput `pulumi:"fileArrival"`
+	// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
+	PauseStatus pulumi.StringPtrInput `pulumi:"pauseStatus"`
+}
+
+func (JobTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTrigger)(nil)).Elem()
+}
+
+func (i JobTriggerArgs) ToJobTriggerOutput() JobTriggerOutput {
+	return i.ToJobTriggerOutputWithContext(context.Background())
+}
+
+func (i JobTriggerArgs) ToJobTriggerOutputWithContext(ctx context.Context) JobTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerOutput)
+}
+
+func (i JobTriggerArgs) ToJobTriggerPtrOutput() JobTriggerPtrOutput {
+	return i.ToJobTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i JobTriggerArgs) ToJobTriggerPtrOutputWithContext(ctx context.Context) JobTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerOutput).ToJobTriggerPtrOutputWithContext(ctx)
+}
+
+// JobTriggerPtrInput is an input type that accepts JobTriggerArgs, JobTriggerPtr and JobTriggerPtrOutput values.
+// You can construct a concrete instance of `JobTriggerPtrInput` via:
+//
+//	        JobTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTriggerPtrInput interface {
+	pulumi.Input
+
+	ToJobTriggerPtrOutput() JobTriggerPtrOutput
+	ToJobTriggerPtrOutputWithContext(context.Context) JobTriggerPtrOutput
+}
+
+type jobTriggerPtrType JobTriggerArgs
+
+func JobTriggerPtr(v *JobTriggerArgs) JobTriggerPtrInput {
+	return (*jobTriggerPtrType)(v)
+}
+
+func (*jobTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTrigger)(nil)).Elem()
+}
+
+func (i *jobTriggerPtrType) ToJobTriggerPtrOutput() JobTriggerPtrOutput {
+	return i.ToJobTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTriggerPtrType) ToJobTriggerPtrOutputWithContext(ctx context.Context) JobTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerPtrOutput)
+}
+
+type JobTriggerOutput struct{ *pulumi.OutputState }
+
+func (JobTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTrigger)(nil)).Elem()
+}
+
+func (o JobTriggerOutput) ToJobTriggerOutput() JobTriggerOutput {
+	return o
+}
+
+func (o JobTriggerOutput) ToJobTriggerOutputWithContext(ctx context.Context) JobTriggerOutput {
+	return o
+}
+
+func (o JobTriggerOutput) ToJobTriggerPtrOutput() JobTriggerPtrOutput {
+	return o.ToJobTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o JobTriggerOutput) ToJobTriggerPtrOutputWithContext(ctx context.Context) JobTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTrigger) *JobTrigger {
+		return &v
+	}).(JobTriggerPtrOutput)
+}
+
+// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
+func (o JobTriggerOutput) FileArrival() JobTriggerFileArrivalOutput {
+	return o.ApplyT(func(v JobTrigger) JobTriggerFileArrival { return v.FileArrival }).(JobTriggerFileArrivalOutput)
+}
+
+// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
+func (o JobTriggerOutput) PauseStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTrigger) *string { return v.PauseStatus }).(pulumi.StringPtrOutput)
+}
+
+type JobTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTrigger)(nil)).Elem()
+}
+
+func (o JobTriggerPtrOutput) ToJobTriggerPtrOutput() JobTriggerPtrOutput {
+	return o
+}
+
+func (o JobTriggerPtrOutput) ToJobTriggerPtrOutputWithContext(ctx context.Context) JobTriggerPtrOutput {
+	return o
+}
+
+func (o JobTriggerPtrOutput) Elem() JobTriggerOutput {
+	return o.ApplyT(func(v *JobTrigger) JobTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret JobTrigger
+		return ret
+	}).(JobTriggerOutput)
+}
+
+// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
+func (o JobTriggerPtrOutput) FileArrival() JobTriggerFileArrivalPtrOutput {
+	return o.ApplyT(func(v *JobTrigger) *JobTriggerFileArrival {
+		if v == nil {
+			return nil
+		}
+		return &v.FileArrival
+	}).(JobTriggerFileArrivalPtrOutput)
+}
+
+// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
+func (o JobTriggerPtrOutput) PauseStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PauseStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTriggerFileArrival struct {
+	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+	MinTimeBetweenTriggerSeconds *int `pulumi:"minTimeBetweenTriggerSeconds"`
+	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+	Url string `pulumi:"url"`
+	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+	WaitAfterLastChangeSeconds *int `pulumi:"waitAfterLastChangeSeconds"`
+}
+
+// JobTriggerFileArrivalInput is an input type that accepts JobTriggerFileArrivalArgs and JobTriggerFileArrivalOutput values.
+// You can construct a concrete instance of `JobTriggerFileArrivalInput` via:
+//
+//	JobTriggerFileArrivalArgs{...}
+type JobTriggerFileArrivalInput interface {
+	pulumi.Input
+
+	ToJobTriggerFileArrivalOutput() JobTriggerFileArrivalOutput
+	ToJobTriggerFileArrivalOutputWithContext(context.Context) JobTriggerFileArrivalOutput
+}
+
+type JobTriggerFileArrivalArgs struct {
+	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+	MinTimeBetweenTriggerSeconds pulumi.IntPtrInput `pulumi:"minTimeBetweenTriggerSeconds"`
+	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+	Url pulumi.StringInput `pulumi:"url"`
+	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+	WaitAfterLastChangeSeconds pulumi.IntPtrInput `pulumi:"waitAfterLastChangeSeconds"`
+}
+
+func (JobTriggerFileArrivalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTriggerFileArrival)(nil)).Elem()
+}
+
+func (i JobTriggerFileArrivalArgs) ToJobTriggerFileArrivalOutput() JobTriggerFileArrivalOutput {
+	return i.ToJobTriggerFileArrivalOutputWithContext(context.Background())
+}
+
+func (i JobTriggerFileArrivalArgs) ToJobTriggerFileArrivalOutputWithContext(ctx context.Context) JobTriggerFileArrivalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerFileArrivalOutput)
+}
+
+func (i JobTriggerFileArrivalArgs) ToJobTriggerFileArrivalPtrOutput() JobTriggerFileArrivalPtrOutput {
+	return i.ToJobTriggerFileArrivalPtrOutputWithContext(context.Background())
+}
+
+func (i JobTriggerFileArrivalArgs) ToJobTriggerFileArrivalPtrOutputWithContext(ctx context.Context) JobTriggerFileArrivalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerFileArrivalOutput).ToJobTriggerFileArrivalPtrOutputWithContext(ctx)
+}
+
+// JobTriggerFileArrivalPtrInput is an input type that accepts JobTriggerFileArrivalArgs, JobTriggerFileArrivalPtr and JobTriggerFileArrivalPtrOutput values.
+// You can construct a concrete instance of `JobTriggerFileArrivalPtrInput` via:
+//
+//	        JobTriggerFileArrivalArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTriggerFileArrivalPtrInput interface {
+	pulumi.Input
+
+	ToJobTriggerFileArrivalPtrOutput() JobTriggerFileArrivalPtrOutput
+	ToJobTriggerFileArrivalPtrOutputWithContext(context.Context) JobTriggerFileArrivalPtrOutput
+}
+
+type jobTriggerFileArrivalPtrType JobTriggerFileArrivalArgs
+
+func JobTriggerFileArrivalPtr(v *JobTriggerFileArrivalArgs) JobTriggerFileArrivalPtrInput {
+	return (*jobTriggerFileArrivalPtrType)(v)
+}
+
+func (*jobTriggerFileArrivalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTriggerFileArrival)(nil)).Elem()
+}
+
+func (i *jobTriggerFileArrivalPtrType) ToJobTriggerFileArrivalPtrOutput() JobTriggerFileArrivalPtrOutput {
+	return i.ToJobTriggerFileArrivalPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTriggerFileArrivalPtrType) ToJobTriggerFileArrivalPtrOutputWithContext(ctx context.Context) JobTriggerFileArrivalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTriggerFileArrivalPtrOutput)
+}
+
+type JobTriggerFileArrivalOutput struct{ *pulumi.OutputState }
+
+func (JobTriggerFileArrivalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTriggerFileArrival)(nil)).Elem()
+}
+
+func (o JobTriggerFileArrivalOutput) ToJobTriggerFileArrivalOutput() JobTriggerFileArrivalOutput {
+	return o
+}
+
+func (o JobTriggerFileArrivalOutput) ToJobTriggerFileArrivalOutputWithContext(ctx context.Context) JobTriggerFileArrivalOutput {
+	return o
+}
+
+func (o JobTriggerFileArrivalOutput) ToJobTriggerFileArrivalPtrOutput() JobTriggerFileArrivalPtrOutput {
+	return o.ToJobTriggerFileArrivalPtrOutputWithContext(context.Background())
+}
+
+func (o JobTriggerFileArrivalOutput) ToJobTriggerFileArrivalPtrOutputWithContext(ctx context.Context) JobTriggerFileArrivalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTriggerFileArrival) *JobTriggerFileArrival {
+		return &v
+	}).(JobTriggerFileArrivalPtrOutput)
+}
+
+// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+func (o JobTriggerFileArrivalOutput) MinTimeBetweenTriggerSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTriggerFileArrival) *int { return v.MinTimeBetweenTriggerSeconds }).(pulumi.IntPtrOutput)
+}
+
+// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+func (o JobTriggerFileArrivalOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTriggerFileArrival) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+func (o JobTriggerFileArrivalOutput) WaitAfterLastChangeSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTriggerFileArrival) *int { return v.WaitAfterLastChangeSeconds }).(pulumi.IntPtrOutput)
+}
+
+type JobTriggerFileArrivalPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTriggerFileArrivalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTriggerFileArrival)(nil)).Elem()
+}
+
+func (o JobTriggerFileArrivalPtrOutput) ToJobTriggerFileArrivalPtrOutput() JobTriggerFileArrivalPtrOutput {
+	return o
+}
+
+func (o JobTriggerFileArrivalPtrOutput) ToJobTriggerFileArrivalPtrOutputWithContext(ctx context.Context) JobTriggerFileArrivalPtrOutput {
+	return o
+}
+
+func (o JobTriggerFileArrivalPtrOutput) Elem() JobTriggerFileArrivalOutput {
+	return o.ApplyT(func(v *JobTriggerFileArrival) JobTriggerFileArrival {
+		if v != nil {
+			return *v
+		}
+		var ret JobTriggerFileArrival
+		return ret
+	}).(JobTriggerFileArrivalOutput)
+}
+
+// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+func (o JobTriggerFileArrivalPtrOutput) MinTimeBetweenTriggerSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTriggerFileArrival) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinTimeBetweenTriggerSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+func (o JobTriggerFileArrivalPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTriggerFileArrival) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+func (o JobTriggerFileArrivalPtrOutput) WaitAfterLastChangeSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTriggerFileArrival) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WaitAfterLastChangeSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type JobWebhookNotifications struct {
@@ -42410,6 +42903,7 @@ type GetJobJobSettingsSettings struct {
 	NotebookTask         *GetJobJobSettingsSettingsNotebookTask         `pulumi:"notebookTask"`
 	PipelineTask         *GetJobJobSettingsSettingsPipelineTask         `pulumi:"pipelineTask"`
 	PythonWheelTask      *GetJobJobSettingsSettingsPythonWheelTask      `pulumi:"pythonWheelTask"`
+	Queue                *GetJobJobSettingsSettingsQueue                `pulumi:"queue"`
 	RetryOnTimeout       *bool                                          `pulumi:"retryOnTimeout"`
 	Schedule             *GetJobJobSettingsSettingsSchedule             `pulumi:"schedule"`
 	SparkJarTask         *GetJobJobSettingsSettingsSparkJarTask         `pulumi:"sparkJarTask"`
@@ -42418,6 +42912,7 @@ type GetJobJobSettingsSettings struct {
 	Tags                 map[string]interface{}                         `pulumi:"tags"`
 	Tasks                []GetJobJobSettingsSettingsTask                `pulumi:"tasks"`
 	TimeoutSeconds       *int                                           `pulumi:"timeoutSeconds"`
+	Trigger              *GetJobJobSettingsSettingsTrigger              `pulumi:"trigger"`
 	WebhookNotifications *GetJobJobSettingsSettingsWebhookNotifications `pulumi:"webhookNotifications"`
 }
 
@@ -42450,6 +42945,7 @@ type GetJobJobSettingsSettingsArgs struct {
 	NotebookTask         GetJobJobSettingsSettingsNotebookTaskPtrInput         `pulumi:"notebookTask"`
 	PipelineTask         GetJobJobSettingsSettingsPipelineTaskPtrInput         `pulumi:"pipelineTask"`
 	PythonWheelTask      GetJobJobSettingsSettingsPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
+	Queue                GetJobJobSettingsSettingsQueuePtrInput                `pulumi:"queue"`
 	RetryOnTimeout       pulumi.BoolPtrInput                                   `pulumi:"retryOnTimeout"`
 	Schedule             GetJobJobSettingsSettingsSchedulePtrInput             `pulumi:"schedule"`
 	SparkJarTask         GetJobJobSettingsSettingsSparkJarTaskPtrInput         `pulumi:"sparkJarTask"`
@@ -42458,6 +42954,7 @@ type GetJobJobSettingsSettingsArgs struct {
 	Tags                 pulumi.MapInput                                       `pulumi:"tags"`
 	Tasks                GetJobJobSettingsSettingsTaskArrayInput               `pulumi:"tasks"`
 	TimeoutSeconds       pulumi.IntPtrInput                                    `pulumi:"timeoutSeconds"`
+	Trigger              GetJobJobSettingsSettingsTriggerPtrInput              `pulumi:"trigger"`
 	WebhookNotifications GetJobJobSettingsSettingsWebhookNotificationsPtrInput `pulumi:"webhookNotifications"`
 }
 
@@ -42605,6 +43102,10 @@ func (o GetJobJobSettingsSettingsOutput) PythonWheelTask() GetJobJobSettingsSett
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsPythonWheelTask { return v.PythonWheelTask }).(GetJobJobSettingsSettingsPythonWheelTaskPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsOutput) Queue() GetJobJobSettingsSettingsQueuePtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsQueue { return v.Queue }).(GetJobJobSettingsSettingsQueuePtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *bool { return v.RetryOnTimeout }).(pulumi.BoolPtrOutput)
 }
@@ -42635,6 +43136,10 @@ func (o GetJobJobSettingsSettingsOutput) Tasks() GetJobJobSettingsSettingsTaskAr
 
 func (o GetJobJobSettingsSettingsOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsOutput) Trigger() GetJobJobSettingsSettingsTriggerPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsTrigger { return v.Trigger }).(GetJobJobSettingsSettingsTriggerPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsOutput) WebhookNotifications() GetJobJobSettingsSettingsWebhookNotificationsPtrOutput {
@@ -42812,6 +43317,15 @@ func (o GetJobJobSettingsSettingsPtrOutput) PythonWheelTask() GetJobJobSettingsS
 	}).(GetJobJobSettingsSettingsPythonWheelTaskPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsPtrOutput) Queue() GetJobJobSettingsSettingsQueuePtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettings) *GetJobJobSettingsSettingsQueue {
+		if v == nil {
+			return nil
+		}
+		return v.Queue
+	}).(GetJobJobSettingsSettingsQueuePtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsPtrOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetJobJobSettingsSettings) *bool {
 		if v == nil {
@@ -42882,6 +43396,15 @@ func (o GetJobJobSettingsSettingsPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput
 		}
 		return v.TimeoutSeconds
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsPtrOutput) Trigger() GetJobJobSettingsSettingsTriggerPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettings) *GetJobJobSettingsSettingsTrigger {
+		if v == nil {
+			return nil
+		}
+		return v.Trigger
+	}).(GetJobJobSettingsSettingsTriggerPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsPtrOutput) WebhookNotifications() GetJobJobSettingsSettingsWebhookNotificationsPtrOutput {
@@ -51725,6 +52248,124 @@ func (o GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) Parameters() pulumi.S
 	}).(pulumi.StringArrayOutput)
 }
 
+type GetJobJobSettingsSettingsQueue struct {
+}
+
+// GetJobJobSettingsSettingsQueueInput is an input type that accepts GetJobJobSettingsSettingsQueueArgs and GetJobJobSettingsSettingsQueueOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsQueueInput` via:
+//
+//	GetJobJobSettingsSettingsQueueArgs{...}
+type GetJobJobSettingsSettingsQueueInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsQueueOutput() GetJobJobSettingsSettingsQueueOutput
+	ToGetJobJobSettingsSettingsQueueOutputWithContext(context.Context) GetJobJobSettingsSettingsQueueOutput
+}
+
+type GetJobJobSettingsSettingsQueueArgs struct {
+}
+
+func (GetJobJobSettingsSettingsQueueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsQueue)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsQueueArgs) ToGetJobJobSettingsSettingsQueueOutput() GetJobJobSettingsSettingsQueueOutput {
+	return i.ToGetJobJobSettingsSettingsQueueOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsQueueArgs) ToGetJobJobSettingsSettingsQueueOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsQueueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsQueueOutput)
+}
+
+func (i GetJobJobSettingsSettingsQueueArgs) ToGetJobJobSettingsSettingsQueuePtrOutput() GetJobJobSettingsSettingsQueuePtrOutput {
+	return i.ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsQueueArgs) ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsQueuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsQueueOutput).ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsQueuePtrInput is an input type that accepts GetJobJobSettingsSettingsQueueArgs, GetJobJobSettingsSettingsQueuePtr and GetJobJobSettingsSettingsQueuePtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsQueuePtrInput` via:
+//
+//	        GetJobJobSettingsSettingsQueueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsQueuePtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsQueuePtrOutput() GetJobJobSettingsSettingsQueuePtrOutput
+	ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsQueuePtrOutput
+}
+
+type getJobJobSettingsSettingsQueuePtrType GetJobJobSettingsSettingsQueueArgs
+
+func GetJobJobSettingsSettingsQueuePtr(v *GetJobJobSettingsSettingsQueueArgs) GetJobJobSettingsSettingsQueuePtrInput {
+	return (*getJobJobSettingsSettingsQueuePtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsQueuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsQueue)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsQueuePtrType) ToGetJobJobSettingsSettingsQueuePtrOutput() GetJobJobSettingsSettingsQueuePtrOutput {
+	return i.ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsQueuePtrType) ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsQueuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsQueuePtrOutput)
+}
+
+type GetJobJobSettingsSettingsQueueOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsQueueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsQueue)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsQueueOutput) ToGetJobJobSettingsSettingsQueueOutput() GetJobJobSettingsSettingsQueueOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsQueueOutput) ToGetJobJobSettingsSettingsQueueOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsQueueOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsQueueOutput) ToGetJobJobSettingsSettingsQueuePtrOutput() GetJobJobSettingsSettingsQueuePtrOutput {
+	return o.ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsQueueOutput) ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsQueuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsQueue) *GetJobJobSettingsSettingsQueue {
+		return &v
+	}).(GetJobJobSettingsSettingsQueuePtrOutput)
+}
+
+type GetJobJobSettingsSettingsQueuePtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsQueuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsQueue)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsQueuePtrOutput) ToGetJobJobSettingsSettingsQueuePtrOutput() GetJobJobSettingsSettingsQueuePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsQueuePtrOutput) ToGetJobJobSettingsSettingsQueuePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsQueuePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsQueuePtrOutput) Elem() GetJobJobSettingsSettingsQueueOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsQueue) GetJobJobSettingsSettingsQueue {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsQueue
+		return ret
+	}).(GetJobJobSettingsSettingsQueueOutput)
+}
+
 type GetJobJobSettingsSettingsSchedule struct {
 	PauseStatus          string `pulumi:"pauseStatus"`
 	QuartzCronExpression string `pulumi:"quartzCronExpression"`
@@ -52054,6 +52695,7 @@ func (o GetJobJobSettingsSettingsSparkJarTaskPtrOutput) Parameters() pulumi.Stri
 type GetJobJobSettingsSettingsSparkPythonTask struct {
 	Parameters []string `pulumi:"parameters"`
 	PythonFile string   `pulumi:"pythonFile"`
+	Source     *string  `pulumi:"source"`
 }
 
 // GetJobJobSettingsSettingsSparkPythonTaskInput is an input type that accepts GetJobJobSettingsSettingsSparkPythonTaskArgs and GetJobJobSettingsSettingsSparkPythonTaskOutput values.
@@ -52070,6 +52712,7 @@ type GetJobJobSettingsSettingsSparkPythonTaskInput interface {
 type GetJobJobSettingsSettingsSparkPythonTaskArgs struct {
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
 	PythonFile pulumi.StringInput      `pulumi:"pythonFile"`
+	Source     pulumi.StringPtrInput   `pulumi:"source"`
 }
 
 func (GetJobJobSettingsSettingsSparkPythonTaskArgs) ElementType() reflect.Type {
@@ -52157,6 +52800,10 @@ func (o GetJobJobSettingsSettingsSparkPythonTaskOutput) PythonFile() pulumi.Stri
 	return o.ApplyT(func(v GetJobJobSettingsSettingsSparkPythonTask) string { return v.PythonFile }).(pulumi.StringOutput)
 }
 
+func (o GetJobJobSettingsSettingsSparkPythonTaskOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsSparkPythonTask) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
 type GetJobJobSettingsSettingsSparkPythonTaskPtrOutput struct{ *pulumi.OutputState }
 
 func (GetJobJobSettingsSettingsSparkPythonTaskPtrOutput) ElementType() reflect.Type {
@@ -52196,6 +52843,15 @@ func (o GetJobJobSettingsSettingsSparkPythonTaskPtrOutput) PythonFile() pulumi.S
 			return nil
 		}
 		return &v.PythonFile
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsSparkPythonTaskPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsSparkPythonTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -52347,6 +53003,7 @@ type GetJobJobSettingsSettingsTask struct {
 	PipelineTask           *GetJobJobSettingsSettingsTaskPipelineTask       `pulumi:"pipelineTask"`
 	PythonWheelTask        *GetJobJobSettingsSettingsTaskPythonWheelTask    `pulumi:"pythonWheelTask"`
 	RetryOnTimeout         bool                                             `pulumi:"retryOnTimeout"`
+	RunIf                  *string                                          `pulumi:"runIf"`
 	SparkJarTask           *GetJobJobSettingsSettingsTaskSparkJarTask       `pulumi:"sparkJarTask"`
 	SparkPythonTask        *GetJobJobSettingsSettingsTaskSparkPythonTask    `pulumi:"sparkPythonTask"`
 	SparkSubmitTask        *GetJobJobSettingsSettingsTaskSparkSubmitTask    `pulumi:"sparkSubmitTask"`
@@ -52381,6 +53038,7 @@ type GetJobJobSettingsSettingsTaskArgs struct {
 	PipelineTask           GetJobJobSettingsSettingsTaskPipelineTaskPtrInput       `pulumi:"pipelineTask"`
 	PythonWheelTask        GetJobJobSettingsSettingsTaskPythonWheelTaskPtrInput    `pulumi:"pythonWheelTask"`
 	RetryOnTimeout         pulumi.BoolInput                                        `pulumi:"retryOnTimeout"`
+	RunIf                  pulumi.StringPtrInput                                   `pulumi:"runIf"`
 	SparkJarTask           GetJobJobSettingsSettingsTaskSparkJarTaskPtrInput       `pulumi:"sparkJarTask"`
 	SparkPythonTask        GetJobJobSettingsSettingsTaskSparkPythonTaskPtrInput    `pulumi:"sparkPythonTask"`
 	SparkSubmitTask        GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrInput    `pulumi:"sparkSubmitTask"`
@@ -52502,6 +53160,10 @@ func (o GetJobJobSettingsSettingsTaskOutput) PythonWheelTask() GetJobJobSettings
 
 func (o GetJobJobSettingsSettingsTaskOutput) RetryOnTimeout() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) bool { return v.RetryOnTimeout }).(pulumi.BoolOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskOutput) RunIf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *string { return v.RunIf }).(pulumi.StringPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskOutput) SparkJarTask() GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput {
@@ -57741,6 +58403,7 @@ func (o GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput) Parameters() pulumi.
 type GetJobJobSettingsSettingsTaskSparkPythonTask struct {
 	Parameters []string `pulumi:"parameters"`
 	PythonFile string   `pulumi:"pythonFile"`
+	Source     *string  `pulumi:"source"`
 }
 
 // GetJobJobSettingsSettingsTaskSparkPythonTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskSparkPythonTaskArgs and GetJobJobSettingsSettingsTaskSparkPythonTaskOutput values.
@@ -57757,6 +58420,7 @@ type GetJobJobSettingsSettingsTaskSparkPythonTaskInput interface {
 type GetJobJobSettingsSettingsTaskSparkPythonTaskArgs struct {
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
 	PythonFile pulumi.StringInput      `pulumi:"pythonFile"`
+	Source     pulumi.StringPtrInput   `pulumi:"source"`
 }
 
 func (GetJobJobSettingsSettingsTaskSparkPythonTaskArgs) ElementType() reflect.Type {
@@ -57844,6 +58508,10 @@ func (o GetJobJobSettingsSettingsTaskSparkPythonTaskOutput) PythonFile() pulumi.
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSparkPythonTask) string { return v.PythonFile }).(pulumi.StringOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSparkPythonTask) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
 type GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput struct{ *pulumi.OutputState }
 
 func (GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput) ElementType() reflect.Type {
@@ -57883,6 +58551,15 @@ func (o GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput) PythonFile() pulu
 			return nil
 		}
 		return &v.PythonFile
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSparkPythonTaskPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSparkPythonTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -58615,6 +59292,319 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskQueryPtrOutput) QueryId() pulumi.Str
 		}
 		return &v.QueryId
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTrigger struct {
+	FileArrival GetJobJobSettingsSettingsTriggerFileArrival `pulumi:"fileArrival"`
+	PauseStatus string                                      `pulumi:"pauseStatus"`
+}
+
+// GetJobJobSettingsSettingsTriggerInput is an input type that accepts GetJobJobSettingsSettingsTriggerArgs and GetJobJobSettingsSettingsTriggerOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTriggerInput` via:
+//
+//	GetJobJobSettingsSettingsTriggerArgs{...}
+type GetJobJobSettingsSettingsTriggerInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTriggerOutput() GetJobJobSettingsSettingsTriggerOutput
+	ToGetJobJobSettingsSettingsTriggerOutputWithContext(context.Context) GetJobJobSettingsSettingsTriggerOutput
+}
+
+type GetJobJobSettingsSettingsTriggerArgs struct {
+	FileArrival GetJobJobSettingsSettingsTriggerFileArrivalInput `pulumi:"fileArrival"`
+	PauseStatus pulumi.StringInput                               `pulumi:"pauseStatus"`
+}
+
+func (GetJobJobSettingsSettingsTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTrigger)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTriggerArgs) ToGetJobJobSettingsSettingsTriggerOutput() GetJobJobSettingsSettingsTriggerOutput {
+	return i.ToGetJobJobSettingsSettingsTriggerOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTriggerArgs) ToGetJobJobSettingsSettingsTriggerOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTriggerOutput)
+}
+
+func (i GetJobJobSettingsSettingsTriggerArgs) ToGetJobJobSettingsSettingsTriggerPtrOutput() GetJobJobSettingsSettingsTriggerPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTriggerArgs) ToGetJobJobSettingsSettingsTriggerPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTriggerOutput).ToGetJobJobSettingsSettingsTriggerPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTriggerPtrInput is an input type that accepts GetJobJobSettingsSettingsTriggerArgs, GetJobJobSettingsSettingsTriggerPtr and GetJobJobSettingsSettingsTriggerPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTriggerPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTriggerPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTriggerPtrOutput() GetJobJobSettingsSettingsTriggerPtrOutput
+	ToGetJobJobSettingsSettingsTriggerPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTriggerPtrOutput
+}
+
+type getJobJobSettingsSettingsTriggerPtrType GetJobJobSettingsSettingsTriggerArgs
+
+func GetJobJobSettingsSettingsTriggerPtr(v *GetJobJobSettingsSettingsTriggerArgs) GetJobJobSettingsSettingsTriggerPtrInput {
+	return (*getJobJobSettingsSettingsTriggerPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTrigger)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTriggerPtrType) ToGetJobJobSettingsSettingsTriggerPtrOutput() GetJobJobSettingsSettingsTriggerPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTriggerPtrType) ToGetJobJobSettingsSettingsTriggerPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTriggerPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTriggerOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTrigger)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTriggerOutput) ToGetJobJobSettingsSettingsTriggerOutput() GetJobJobSettingsSettingsTriggerOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTriggerOutput) ToGetJobJobSettingsSettingsTriggerOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTriggerOutput) ToGetJobJobSettingsSettingsTriggerPtrOutput() GetJobJobSettingsSettingsTriggerPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTriggerOutput) ToGetJobJobSettingsSettingsTriggerPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTrigger) *GetJobJobSettingsSettingsTrigger {
+		return &v
+	}).(GetJobJobSettingsSettingsTriggerPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerOutput) FileArrival() GetJobJobSettingsSettingsTriggerFileArrivalOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTrigger) GetJobJobSettingsSettingsTriggerFileArrival {
+		return v.FileArrival
+	}).(GetJobJobSettingsSettingsTriggerFileArrivalOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerOutput) PauseStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTrigger) string { return v.PauseStatus }).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTrigger)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTriggerPtrOutput) ToGetJobJobSettingsSettingsTriggerPtrOutput() GetJobJobSettingsSettingsTriggerPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTriggerPtrOutput) ToGetJobJobSettingsSettingsTriggerPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTriggerPtrOutput) Elem() GetJobJobSettingsSettingsTriggerOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTrigger) GetJobJobSettingsSettingsTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTrigger
+		return ret
+	}).(GetJobJobSettingsSettingsTriggerOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerPtrOutput) FileArrival() GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTrigger) *GetJobJobSettingsSettingsTriggerFileArrival {
+		if v == nil {
+			return nil
+		}
+		return &v.FileArrival
+	}).(GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerPtrOutput) PauseStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PauseStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTriggerFileArrival struct {
+	MinTimeBetweenTriggerSeconds *int   `pulumi:"minTimeBetweenTriggerSeconds"`
+	Url                          string `pulumi:"url"`
+	WaitAfterLastChangeSeconds   *int   `pulumi:"waitAfterLastChangeSeconds"`
+}
+
+// GetJobJobSettingsSettingsTriggerFileArrivalInput is an input type that accepts GetJobJobSettingsSettingsTriggerFileArrivalArgs and GetJobJobSettingsSettingsTriggerFileArrivalOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTriggerFileArrivalInput` via:
+//
+//	GetJobJobSettingsSettingsTriggerFileArrivalArgs{...}
+type GetJobJobSettingsSettingsTriggerFileArrivalInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTriggerFileArrivalOutput() GetJobJobSettingsSettingsTriggerFileArrivalOutput
+	ToGetJobJobSettingsSettingsTriggerFileArrivalOutputWithContext(context.Context) GetJobJobSettingsSettingsTriggerFileArrivalOutput
+}
+
+type GetJobJobSettingsSettingsTriggerFileArrivalArgs struct {
+	MinTimeBetweenTriggerSeconds pulumi.IntPtrInput `pulumi:"minTimeBetweenTriggerSeconds"`
+	Url                          pulumi.StringInput `pulumi:"url"`
+	WaitAfterLastChangeSeconds   pulumi.IntPtrInput `pulumi:"waitAfterLastChangeSeconds"`
+}
+
+func (GetJobJobSettingsSettingsTriggerFileArrivalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTriggerFileArrival)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTriggerFileArrivalArgs) ToGetJobJobSettingsSettingsTriggerFileArrivalOutput() GetJobJobSettingsSettingsTriggerFileArrivalOutput {
+	return i.ToGetJobJobSettingsSettingsTriggerFileArrivalOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTriggerFileArrivalArgs) ToGetJobJobSettingsSettingsTriggerFileArrivalOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerFileArrivalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTriggerFileArrivalOutput)
+}
+
+func (i GetJobJobSettingsSettingsTriggerFileArrivalArgs) ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutput() GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTriggerFileArrivalArgs) ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTriggerFileArrivalOutput).ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTriggerFileArrivalPtrInput is an input type that accepts GetJobJobSettingsSettingsTriggerFileArrivalArgs, GetJobJobSettingsSettingsTriggerFileArrivalPtr and GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTriggerFileArrivalPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTriggerFileArrivalArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTriggerFileArrivalPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutput() GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput
+	ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput
+}
+
+type getJobJobSettingsSettingsTriggerFileArrivalPtrType GetJobJobSettingsSettingsTriggerFileArrivalArgs
+
+func GetJobJobSettingsSettingsTriggerFileArrivalPtr(v *GetJobJobSettingsSettingsTriggerFileArrivalArgs) GetJobJobSettingsSettingsTriggerFileArrivalPtrInput {
+	return (*getJobJobSettingsSettingsTriggerFileArrivalPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTriggerFileArrivalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTriggerFileArrival)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTriggerFileArrivalPtrType) ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutput() GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTriggerFileArrivalPtrType) ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTriggerFileArrivalOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTriggerFileArrivalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTriggerFileArrival)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTriggerFileArrivalOutput) ToGetJobJobSettingsSettingsTriggerFileArrivalOutput() GetJobJobSettingsSettingsTriggerFileArrivalOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTriggerFileArrivalOutput) ToGetJobJobSettingsSettingsTriggerFileArrivalOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerFileArrivalOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTriggerFileArrivalOutput) ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutput() GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTriggerFileArrivalOutput) ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTriggerFileArrival) *GetJobJobSettingsSettingsTriggerFileArrival {
+		return &v
+	}).(GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerFileArrivalOutput) MinTimeBetweenTriggerSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTriggerFileArrival) *int { return v.MinTimeBetweenTriggerSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerFileArrivalOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTriggerFileArrival) string { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerFileArrivalOutput) WaitAfterLastChangeSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTriggerFileArrival) *int { return v.WaitAfterLastChangeSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTriggerFileArrival)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput) ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutput() GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput) ToGetJobJobSettingsSettingsTriggerFileArrivalPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput) Elem() GetJobJobSettingsSettingsTriggerFileArrivalOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTriggerFileArrival) GetJobJobSettingsSettingsTriggerFileArrival {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTriggerFileArrival
+		return ret
+	}).(GetJobJobSettingsSettingsTriggerFileArrivalOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput) MinTimeBetweenTriggerSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTriggerFileArrival) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinTimeBetweenTriggerSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTriggerFileArrival) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput) WaitAfterLastChangeSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTriggerFileArrival) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WaitAfterLastChangeSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetJobJobSettingsSettingsWebhookNotifications struct {
@@ -60287,6 +61277,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPipelineTaskPtrInput)(nil)).Elem(), JobPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPythonWheelTaskInput)(nil)).Elem(), JobPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPythonWheelTaskPtrInput)(nil)).Elem(), JobPythonWheelTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobQueueInput)(nil)).Elem(), JobQueueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobQueuePtrInput)(nil)).Elem(), JobQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobScheduleInput)(nil)).Elem(), JobScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSchedulePtrInput)(nil)).Elem(), JobScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSparkJarTaskInput)(nil)).Elem(), JobSparkJarTaskArgs{})
@@ -60370,6 +61362,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskDashboardPtrInput)(nil)).Elem(), JobTaskSqlTaskDashboardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskQueryInput)(nil)).Elem(), JobTaskSqlTaskQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskQueryPtrInput)(nil)).Elem(), JobTaskSqlTaskQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerInput)(nil)).Elem(), JobTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerPtrInput)(nil)).Elem(), JobTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerFileArrivalInput)(nil)).Elem(), JobTriggerFileArrivalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerFileArrivalPtrInput)(nil)).Elem(), JobTriggerFileArrivalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobWebhookNotificationsInput)(nil)).Elem(), JobWebhookNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobWebhookNotificationsPtrInput)(nil)).Elem(), JobWebhookNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobWebhookNotificationsOnFailureInput)(nil)).Elem(), JobWebhookNotificationsOnFailureArgs{})
@@ -60742,6 +61738,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPipelineTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPythonWheelTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPythonWheelTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsPythonWheelTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsQueueInput)(nil)).Elem(), GetJobJobSettingsSettingsQueueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsQueuePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsScheduleInput)(nil)).Elem(), GetJobJobSettingsSettingsScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSchedulePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSparkJarTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsSparkJarTaskArgs{})
@@ -60825,6 +61823,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskQueryInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskQueryPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerFileArrivalInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerFileArrivalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerFileArrivalPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerFileArrivalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnFailureInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs{})
@@ -61020,6 +62022,8 @@ func init() {
 	pulumi.RegisterOutputType(JobPipelineTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobPythonWheelTaskOutput{})
 	pulumi.RegisterOutputType(JobPythonWheelTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobQueueOutput{})
+	pulumi.RegisterOutputType(JobQueuePtrOutput{})
 	pulumi.RegisterOutputType(JobScheduleOutput{})
 	pulumi.RegisterOutputType(JobSchedulePtrOutput{})
 	pulumi.RegisterOutputType(JobSparkJarTaskOutput{})
@@ -61103,6 +62107,10 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskSqlTaskDashboardPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskQueryOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskQueryPtrOutput{})
+	pulumi.RegisterOutputType(JobTriggerOutput{})
+	pulumi.RegisterOutputType(JobTriggerPtrOutput{})
+	pulumi.RegisterOutputType(JobTriggerFileArrivalOutput{})
+	pulumi.RegisterOutputType(JobTriggerFileArrivalPtrOutput{})
 	pulumi.RegisterOutputType(JobWebhookNotificationsOutput{})
 	pulumi.RegisterOutputType(JobWebhookNotificationsPtrOutput{})
 	pulumi.RegisterOutputType(JobWebhookNotificationsOnFailureOutput{})
@@ -61475,6 +62483,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPipelineTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPythonWheelTaskOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPythonWheelTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsQueueOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsQueuePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsScheduleOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSchedulePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSparkJarTaskOutput{})
@@ -61558,6 +62568,10 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskQueryOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskQueryPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerFileArrivalOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnFailureOutput{})

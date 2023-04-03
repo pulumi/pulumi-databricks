@@ -15,11 +15,13 @@ import com.pulumi.databricks.inputs.JobNewClusterArgs;
 import com.pulumi.databricks.inputs.JobNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobPipelineTaskArgs;
 import com.pulumi.databricks.inputs.JobPythonWheelTaskArgs;
+import com.pulumi.databricks.inputs.JobQueueArgs;
 import com.pulumi.databricks.inputs.JobScheduleArgs;
 import com.pulumi.databricks.inputs.JobSparkJarTaskArgs;
 import com.pulumi.databricks.inputs.JobSparkPythonTaskArgs;
 import com.pulumi.databricks.inputs.JobSparkSubmitTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskArgs;
+import com.pulumi.databricks.inputs.JobTriggerArgs;
 import com.pulumi.databricks.inputs.JobWebhookNotificationsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -227,6 +229,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pythonWheelTask);
     }
 
+    @Import(name="queue")
+    private @Nullable Output<JobQueueArgs> queue;
+
+    public Optional<Output<JobQueueArgs>> queue() {
+        return Optional.ofNullable(this.queue);
+    }
+
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      * 
@@ -315,6 +324,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.timeoutSeconds);
     }
 
+    @Import(name="trigger")
+    private @Nullable Output<JobTriggerArgs> trigger;
+
+    public Optional<Output<JobTriggerArgs>> trigger() {
+        return Optional.ofNullable(this.trigger);
+    }
+
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
@@ -350,6 +366,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.notebookTask = $.notebookTask;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
+        this.queue = $.queue;
         this.retryOnTimeout = $.retryOnTimeout;
         this.schedule = $.schedule;
         this.sparkJarTask = $.sparkJarTask;
@@ -358,6 +375,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.tags = $.tags;
         this.tasks = $.tasks;
         this.timeoutSeconds = $.timeoutSeconds;
+        this.trigger = $.trigger;
         this.webhookNotifications = $.webhookNotifications;
     }
 
@@ -660,6 +678,15 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
             return pythonWheelTask(Output.of(pythonWheelTask));
         }
 
+        public Builder queue(@Nullable Output<JobQueueArgs> queue) {
+            $.queue = queue;
+            return this;
+        }
+
+        public Builder queue(JobQueueArgs queue) {
+            return queue(Output.of(queue));
+        }
+
         /**
          * @param retryOnTimeout (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
          * 
@@ -782,6 +809,15 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder timeoutSeconds(Integer timeoutSeconds) {
             return timeoutSeconds(Output.of(timeoutSeconds));
+        }
+
+        public Builder trigger(@Nullable Output<JobTriggerArgs> trigger) {
+            $.trigger = trigger;
+            return this;
+        }
+
+        public Builder trigger(JobTriggerArgs trigger) {
+            return trigger(Output.of(trigger));
         }
 
         /**

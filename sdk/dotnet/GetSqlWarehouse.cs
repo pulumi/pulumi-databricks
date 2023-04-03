@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetSqlWarehouse
     {
         /// <summary>
-        /// ## Related Resources
+        /// ## Related resources
         /// 
         /// The following resources are often used in the same context:
         /// 
@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSqlWarehouseResult>("databricks:index/getSqlWarehouse:getSqlWarehouse", args ?? new GetSqlWarehouseArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## Related Resources
+        /// ## Related resources
         /// 
         /// The following resources are often used in the same context:
         /// 
@@ -74,13 +74,13 @@ namespace Pulumi.Databricks
         public bool? EnablePhoton { get; set; }
 
         /// <summary>
-        /// Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+        /// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
         /// </summary>
         [Input("enableServerlessCompute")]
         public bool? EnableServerlessCompute { get; set; }
 
         /// <summary>
-        /// The id of the SQL warehouse
+        /// The ID of the SQL warehouse
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
@@ -175,13 +175,13 @@ namespace Pulumi.Databricks
         public Input<bool>? EnablePhoton { get; set; }
 
         /// <summary>
-        /// Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+        /// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
 
         /// <summary>
-        /// The id of the SQL warehouse
+        /// The ID of the SQL warehouse
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -268,7 +268,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly bool EnablePhoton;
         /// <summary>
-        /// Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+        /// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
         /// </summary>
         public readonly bool EnableServerlessCompute;
         public readonly string Id;

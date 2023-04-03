@@ -280,14 +280,14 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SQL endpoint id
+     * SQL warehouse id
      * 
      */
     @Import(name="sqlEndpointId")
     private @Nullable Output<String> sqlEndpointId;
 
     /**
-     * @return SQL endpoint id
+     * @return SQL warehouse id
      * 
      */
     public Optional<Output<String>> sqlEndpointId() {
@@ -723,7 +723,7 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sqlEndpointId SQL endpoint id
+         * @param sqlEndpointId SQL warehouse id
          * 
          * @return builder
          * 
@@ -734,7 +734,7 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sqlEndpointId SQL endpoint id
+         * @param sqlEndpointId SQL warehouse id
          * 
          * @return builder
          * 

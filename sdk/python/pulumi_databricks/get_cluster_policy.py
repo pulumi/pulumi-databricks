@@ -47,13 +47,16 @@ class GetClusterPolicyResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The id of the cluster policy.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="maxClustersPerUser")
     def max_clusters_per_user(self) -> int:
+        """
+        Max number of clusters per user that can be active using this policy
+        """
         return pulumi.get(self, "max_clusters_per_user")
 
     @property
@@ -74,7 +77,10 @@ class AwaitableGetClusterPolicyResult(GetClusterPolicyResult):
             name=self.name)
 
 
-def get_cluster_policy(name: Optional[str] = None,
+def get_cluster_policy(definition: Optional[str] = None,
+                       id: Optional[str] = None,
+                       max_clusters_per_user: Optional[int] = None,
+                       name: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterPolicyResult:
     """
     ## Example Usage
@@ -91,9 +97,15 @@ def get_cluster_policy(name: Optional[str] = None,
     ```
 
 
+    :param str definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+    :param str id: The id of the cluster policy.
+    :param int max_clusters_per_user: Max number of clusters per user that can be active using this policy
     :param str name: Name of the cluster policy. The cluster policy must exist before this resource can be planned.
     """
     __args__ = dict()
+    __args__['definition'] = definition
+    __args__['id'] = id
+    __args__['maxClustersPerUser'] = max_clusters_per_user
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getClusterPolicy:getClusterPolicy', __args__, opts=opts, typ=GetClusterPolicyResult).value
@@ -106,7 +118,10 @@ def get_cluster_policy(name: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_cluster_policy)
-def get_cluster_policy_output(name: Optional[pulumi.Input[str]] = None,
+def get_cluster_policy_output(definition: Optional[pulumi.Input[Optional[str]]] = None,
+                              id: Optional[pulumi.Input[Optional[str]]] = None,
+                              max_clusters_per_user: Optional[pulumi.Input[Optional[int]]] = None,
+                              name: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterPolicyResult]:
     """
     ## Example Usage
@@ -123,6 +138,9 @@ def get_cluster_policy_output(name: Optional[pulumi.Input[str]] = None,
     ```
 
 
+    :param str definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+    :param str id: The id of the cluster policy.
+    :param int max_clusters_per_user: Max number of clusters per user that can be active using this policy
     :param str name: Name of the cluster policy. The cluster policy must exist before this resource can be planned.
     """
     ...

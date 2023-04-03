@@ -97,6 +97,7 @@ __all__ = [
     'JobNotebookTaskArgs',
     'JobPipelineTaskArgs',
     'JobPythonWheelTaskArgs',
+    'JobQueueArgs',
     'JobScheduleArgs',
     'JobSparkJarTaskArgs',
     'JobSparkPythonTaskArgs',
@@ -139,6 +140,8 @@ __all__ = [
     'JobTaskSqlTaskAlertArgs',
     'JobTaskSqlTaskDashboardArgs',
     'JobTaskSqlTaskQueryArgs',
+    'JobTriggerArgs',
+    'JobTriggerFileArrivalArgs',
     'JobWebhookNotificationsArgs',
     'JobWebhookNotificationsOnFailureArgs',
     'JobWebhookNotificationsOnStartArgs',
@@ -325,6 +328,7 @@ __all__ = [
     'GetJobJobSettingsSettingsNotebookTaskArgs',
     'GetJobJobSettingsSettingsPipelineTaskArgs',
     'GetJobJobSettingsSettingsPythonWheelTaskArgs',
+    'GetJobJobSettingsSettingsQueueArgs',
     'GetJobJobSettingsSettingsScheduleArgs',
     'GetJobJobSettingsSettingsSparkJarTaskArgs',
     'GetJobJobSettingsSettingsSparkPythonTaskArgs',
@@ -367,6 +371,8 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskSqlTaskAlertArgs',
     'GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs',
     'GetJobJobSettingsSettingsTaskSqlTaskQueryArgs',
+    'GetJobJobSettingsSettingsTriggerArgs',
+    'GetJobJobSettingsSettingsTriggerFileArrivalArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs',
@@ -2779,7 +2785,7 @@ class JobJobClusterNewClusterDockerImageArgs:
                  url: pulumi.Input[str],
                  basic_auth: Optional[pulumi.Input['JobJobClusterNewClusterDockerImageBasicAuthArgs']] = None):
         """
-        :param pulumi.Input[str] url: URL of the Git repository to use.
+        :param pulumi.Input[str] url: string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -2789,7 +2795,7 @@ class JobJobClusterNewClusterDockerImageArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        URL of the Git repository to use.
+        string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         """
         return pulumi.get(self, "url")
 
@@ -4078,7 +4084,7 @@ class JobNewClusterDockerImageArgs:
                  url: pulumi.Input[str],
                  basic_auth: Optional[pulumi.Input['JobNewClusterDockerImageBasicAuthArgs']] = None):
         """
-        :param pulumi.Input[str] url: URL of the Git repository to use.
+        :param pulumi.Input[str] url: string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -4088,7 +4094,7 @@ class JobNewClusterDockerImageArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        URL of the Git repository to use.
+        string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         """
         return pulumi.get(self, "url")
 
@@ -4472,7 +4478,7 @@ class JobNotebookTaskArgs:
         """
         :param pulumi.Input[str] notebook_path: The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
         :param pulumi.Input[Mapping[str, Any]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-        :param pulumi.Input[str] source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        :param pulumi.Input[str] source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         """
         pulumi.set(__self__, "notebook_path", notebook_path)
         if base_parameters is not None:
@@ -4508,7 +4514,7 @@ class JobNotebookTaskArgs:
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
         """
-        Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         """
         return pulumi.get(self, "source")
 
@@ -4608,6 +4614,12 @@ class JobPythonWheelTaskArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
+
+
+@pulumi.input_type
+class JobQueueArgs:
+    def __init__(__self__):
+        pass
 
 
 @pulumi.input_type
@@ -4718,20 +4730,24 @@ class JobSparkJarTaskArgs:
 class JobSparkPythonTaskArgs:
     def __init__(__self__, *,
                  python_file: pulumi.Input[str],
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+        :param pulumi.Input[str] python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] parameters: (List) Command line parameters passed to the Python file.
+        :param pulumi.Input[str] source: Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
         """
         pulumi.set(__self__, "python_file", python_file)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter(name="pythonFile")
     def python_file(self) -> pulumi.Input[str]:
         """
-        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
         """
         return pulumi.get(self, "python_file")
 
@@ -4750,6 +4766,18 @@ class JobSparkPythonTaskArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
@@ -4792,6 +4820,7 @@ class JobTaskArgs:
                  pipeline_task: Optional[pulumi.Input['JobTaskPipelineTaskArgs']] = None,
                  python_wheel_task: Optional[pulumi.Input['JobTaskPythonWheelTaskArgs']] = None,
                  retry_on_timeout: Optional[pulumi.Input[bool]] = None,
+                 run_if: Optional[pulumi.Input[str]] = None,
                  spark_jar_task: Optional[pulumi.Input['JobTaskSparkJarTaskArgs']] = None,
                  spark_python_task: Optional[pulumi.Input['JobTaskSparkPythonTaskArgs']] = None,
                  spark_submit_task: Optional[pulumi.Input['JobTaskSparkSubmitTaskArgs']] = None,
@@ -4836,6 +4865,8 @@ class JobTaskArgs:
             pulumi.set(__self__, "python_wheel_task", python_wheel_task)
         if retry_on_timeout is not None:
             pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
+        if run_if is not None:
+            pulumi.set(__self__, "run_if", run_if)
         if spark_jar_task is not None:
             pulumi.set(__self__, "spark_jar_task", spark_jar_task)
         if spark_python_task is not None:
@@ -4995,6 +5026,15 @@ class JobTaskArgs:
     @retry_on_timeout.setter
     def retry_on_timeout(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "retry_on_timeout", value)
+
+    @property
+    @pulumi.getter(name="runIf")
+    def run_if(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "run_if")
+
+    @run_if.setter
+    def run_if(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_if", value)
 
     @property
     @pulumi.getter(name="sparkJarTask")
@@ -6170,7 +6210,7 @@ class JobTaskNewClusterDockerImageArgs:
                  url: pulumi.Input[str],
                  basic_auth: Optional[pulumi.Input['JobTaskNewClusterDockerImageBasicAuthArgs']] = None):
         """
-        :param pulumi.Input[str] url: URL of the Git repository to use.
+        :param pulumi.Input[str] url: string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -6180,7 +6220,7 @@ class JobTaskNewClusterDockerImageArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        URL of the Git repository to use.
+        string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         """
         return pulumi.get(self, "url")
 
@@ -6564,7 +6604,7 @@ class JobTaskNotebookTaskArgs:
         """
         :param pulumi.Input[str] notebook_path: The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
         :param pulumi.Input[Mapping[str, Any]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-        :param pulumi.Input[str] source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        :param pulumi.Input[str] source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         """
         pulumi.set(__self__, "notebook_path", notebook_path)
         if base_parameters is not None:
@@ -6600,7 +6640,7 @@ class JobTaskNotebookTaskArgs:
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
         """
-        Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         """
         return pulumi.get(self, "source")
 
@@ -6757,20 +6797,24 @@ class JobTaskSparkJarTaskArgs:
 class JobTaskSparkPythonTaskArgs:
     def __init__(__self__, *,
                  python_file: pulumi.Input[str],
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+        :param pulumi.Input[str] python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] parameters: (List) Command line parameters passed to the Python file.
+        :param pulumi.Input[str] source: Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
         """
         pulumi.set(__self__, "python_file", python_file)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter(name="pythonFile")
     def python_file(self) -> pulumi.Input[str]:
         """
-        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
         """
         return pulumi.get(self, "python_file")
 
@@ -6789,6 +6833,18 @@ class JobTaskSparkPythonTaskArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
@@ -6947,6 +7003,98 @@ class JobTaskSqlTaskQueryArgs:
     @query_id.setter
     def query_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "query_id", value)
+
+
+@pulumi.input_type
+class JobTriggerArgs:
+    def __init__(__self__, *,
+                 file_arrival: pulumi.Input['JobTriggerFileArrivalArgs'],
+                 pause_status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['JobTriggerFileArrivalArgs'] file_arrival: configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
+        :param pulumi.Input[str] pause_status: Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+        """
+        pulumi.set(__self__, "file_arrival", file_arrival)
+        if pause_status is not None:
+            pulumi.set(__self__, "pause_status", pause_status)
+
+    @property
+    @pulumi.getter(name="fileArrival")
+    def file_arrival(self) -> pulumi.Input['JobTriggerFileArrivalArgs']:
+        """
+        configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
+        """
+        return pulumi.get(self, "file_arrival")
+
+    @file_arrival.setter
+    def file_arrival(self, value: pulumi.Input['JobTriggerFileArrivalArgs']):
+        pulumi.set(self, "file_arrival", value)
+
+    @property
+    @pulumi.getter(name="pauseStatus")
+    def pause_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+        """
+        return pulumi.get(self, "pause_status")
+
+    @pause_status.setter
+    def pause_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pause_status", value)
+
+
+@pulumi.input_type
+class JobTriggerFileArrivalArgs:
+    def __init__(__self__, *,
+                 url: pulumi.Input[str],
+                 min_time_between_trigger_seconds: Optional[pulumi.Input[int]] = None,
+                 wait_after_last_change_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] url: string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+        :param pulumi.Input[int] min_time_between_trigger_seconds: If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+        :param pulumi.Input[int] wait_after_last_change_seconds: If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+        """
+        pulumi.set(__self__, "url", url)
+        if min_time_between_trigger_seconds is not None:
+            pulumi.set(__self__, "min_time_between_trigger_seconds", min_time_between_trigger_seconds)
+        if wait_after_last_change_seconds is not None:
+            pulumi.set(__self__, "wait_after_last_change_seconds", wait_after_last_change_seconds)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="minTimeBetweenTriggerSeconds")
+    def min_time_between_trigger_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+        """
+        return pulumi.get(self, "min_time_between_trigger_seconds")
+
+    @min_time_between_trigger_seconds.setter
+    def min_time_between_trigger_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_time_between_trigger_seconds", value)
+
+    @property
+    @pulumi.getter(name="waitAfterLastChangeSeconds")
+    def wait_after_last_change_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+        """
+        return pulumi.get(self, "wait_after_last_change_seconds")
+
+    @wait_after_last_change_seconds.setter
+    def wait_after_last_change_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "wait_after_last_change_seconds", value)
 
 
 @pulumi.input_type
@@ -11435,7 +11583,7 @@ class GetClusterClusterInfoArgs:
         :param bool enable_elastic_disk: Use autoscaling local storage.
         :param bool enable_local_disk_encryption: Enable local disk encryption.
         :param str instance_pool_id: The pool of idle instances the cluster is attached to.
-        :param str node_type_id: Any supported_get_node_type_id.
+        :param str node_type_id: Any supported get_node_type id.
         :param str policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults.
         :param str runtime_engine: The type of runtime of the cluster
         :param str single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -11833,7 +11981,7 @@ class GetClusterClusterInfoArgs:
     @pulumi.getter(name="nodeTypeId")
     def node_type_id(self) -> Optional[str]:
         """
-        Any supported_get_node_type_id.
+        Any supported get_node_type id.
         """
         return pulumi.get(self, "node_type_id")
 
@@ -13570,6 +13718,7 @@ class GetJobJobSettingsSettingsArgs:
                  notebook_task: Optional['GetJobJobSettingsSettingsNotebookTaskArgs'] = None,
                  pipeline_task: Optional['GetJobJobSettingsSettingsPipelineTaskArgs'] = None,
                  python_wheel_task: Optional['GetJobJobSettingsSettingsPythonWheelTaskArgs'] = None,
+                 queue: Optional['GetJobJobSettingsSettingsQueueArgs'] = None,
                  retry_on_timeout: Optional[bool] = None,
                  schedule: Optional['GetJobJobSettingsSettingsScheduleArgs'] = None,
                  spark_jar_task: Optional['GetJobJobSettingsSettingsSparkJarTaskArgs'] = None,
@@ -13578,6 +13727,7 @@ class GetJobJobSettingsSettingsArgs:
                  tags: Optional[Mapping[str, Any]] = None,
                  tasks: Optional[Sequence['GetJobJobSettingsSettingsTaskArgs']] = None,
                  timeout_seconds: Optional[int] = None,
+                 trigger: Optional['GetJobJobSettingsSettingsTriggerArgs'] = None,
                  webhook_notifications: Optional['GetJobJobSettingsSettingsWebhookNotificationsArgs'] = None):
         """
         :param str name: the job name of Job if the resource was matched by id.
@@ -13613,6 +13763,8 @@ class GetJobJobSettingsSettingsArgs:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
         if python_wheel_task is not None:
             pulumi.set(__self__, "python_wheel_task", python_wheel_task)
+        if queue is not None:
+            pulumi.set(__self__, "queue", queue)
         if retry_on_timeout is not None:
             pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
         if schedule is not None:
@@ -13629,6 +13781,8 @@ class GetJobJobSettingsSettingsArgs:
             pulumi.set(__self__, "tasks", tasks)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        if trigger is not None:
+            pulumi.set(__self__, "trigger", trigger)
         if webhook_notifications is not None:
             pulumi.set(__self__, "webhook_notifications", webhook_notifications)
 
@@ -13780,6 +13934,15 @@ class GetJobJobSettingsSettingsArgs:
         pulumi.set(self, "python_wheel_task", value)
 
     @property
+    @pulumi.getter
+    def queue(self) -> Optional['GetJobJobSettingsSettingsQueueArgs']:
+        return pulumi.get(self, "queue")
+
+    @queue.setter
+    def queue(self, value: Optional['GetJobJobSettingsSettingsQueueArgs']):
+        pulumi.set(self, "queue", value)
+
+    @property
     @pulumi.getter(name="retryOnTimeout")
     def retry_on_timeout(self) -> Optional[bool]:
         return pulumi.get(self, "retry_on_timeout")
@@ -13850,6 +14013,15 @@ class GetJobJobSettingsSettingsArgs:
     @timeout_seconds.setter
     def timeout_seconds(self, value: Optional[int]):
         pulumi.set(self, "timeout_seconds", value)
+
+    @property
+    @pulumi.getter
+    def trigger(self) -> Optional['GetJobJobSettingsSettingsTriggerArgs']:
+        return pulumi.get(self, "trigger")
+
+    @trigger.setter
+    def trigger(self, value: Optional['GetJobJobSettingsSettingsTriggerArgs']):
+        pulumi.set(self, "trigger", value)
 
     @property
     @pulumi.getter(name="webhookNotifications")
@@ -16622,6 +16794,12 @@ class GetJobJobSettingsSettingsPythonWheelTaskArgs:
 
 
 @pulumi.input_type
+class GetJobJobSettingsSettingsQueueArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
 class GetJobJobSettingsSettingsScheduleArgs:
     def __init__(__self__, *,
                  pause_status: str,
@@ -16704,10 +16882,13 @@ class GetJobJobSettingsSettingsSparkJarTaskArgs:
 class GetJobJobSettingsSettingsSparkPythonTaskArgs:
     def __init__(__self__, *,
                  python_file: str,
-                 parameters: Optional[Sequence[str]] = None):
+                 parameters: Optional[Sequence[str]] = None,
+                 source: Optional[str] = None):
         pulumi.set(__self__, "python_file", python_file)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter(name="pythonFile")
@@ -16726,6 +16907,15 @@ class GetJobJobSettingsSettingsSparkPythonTaskArgs:
     @parameters.setter
     def parameters(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[str]):
+        pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
@@ -16762,6 +16952,7 @@ class GetJobJobSettingsSettingsTaskArgs:
                  notebook_task: Optional['GetJobJobSettingsSettingsTaskNotebookTaskArgs'] = None,
                  pipeline_task: Optional['GetJobJobSettingsSettingsTaskPipelineTaskArgs'] = None,
                  python_wheel_task: Optional['GetJobJobSettingsSettingsTaskPythonWheelTaskArgs'] = None,
+                 run_if: Optional[str] = None,
                  spark_jar_task: Optional['GetJobJobSettingsSettingsTaskSparkJarTaskArgs'] = None,
                  spark_python_task: Optional['GetJobJobSettingsSettingsTaskSparkPythonTaskArgs'] = None,
                  spark_submit_task: Optional['GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs'] = None,
@@ -16795,6 +16986,8 @@ class GetJobJobSettingsSettingsTaskArgs:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
         if python_wheel_task is not None:
             pulumi.set(__self__, "python_wheel_task", python_wheel_task)
+        if run_if is not None:
+            pulumi.set(__self__, "run_if", run_if)
         if spark_jar_task is not None:
             pulumi.set(__self__, "spark_jar_task", spark_jar_task)
         if spark_python_task is not None:
@@ -16933,6 +17126,15 @@ class GetJobJobSettingsSettingsTaskArgs:
     @python_wheel_task.setter
     def python_wheel_task(self, value: Optional['GetJobJobSettingsSettingsTaskPythonWheelTaskArgs']):
         pulumi.set(self, "python_wheel_task", value)
+
+    @property
+    @pulumi.getter(name="runIf")
+    def run_if(self) -> Optional[str]:
+        return pulumi.get(self, "run_if")
+
+    @run_if.setter
+    def run_if(self, value: Optional[str]):
+        pulumi.set(self, "run_if", value)
 
     @property
     @pulumi.getter(name="sparkJarTask")
@@ -18588,10 +18790,13 @@ class GetJobJobSettingsSettingsTaskSparkJarTaskArgs:
 class GetJobJobSettingsSettingsTaskSparkPythonTaskArgs:
     def __init__(__self__, *,
                  python_file: str,
-                 parameters: Optional[Sequence[str]] = None):
+                 parameters: Optional[Sequence[str]] = None,
+                 source: Optional[str] = None):
         pulumi.set(__self__, "python_file", python_file)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter(name="pythonFile")
@@ -18610,6 +18815,15 @@ class GetJobJobSettingsSettingsTaskSparkPythonTaskArgs:
     @parameters.setter
     def parameters(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[str]):
+        pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
@@ -18740,6 +18954,73 @@ class GetJobJobSettingsSettingsTaskSqlTaskQueryArgs:
     @query_id.setter
     def query_id(self, value: str):
         pulumi.set(self, "query_id", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTriggerArgs:
+    def __init__(__self__, *,
+                 file_arrival: 'GetJobJobSettingsSettingsTriggerFileArrivalArgs',
+                 pause_status: str):
+        pulumi.set(__self__, "file_arrival", file_arrival)
+        pulumi.set(__self__, "pause_status", pause_status)
+
+    @property
+    @pulumi.getter(name="fileArrival")
+    def file_arrival(self) -> 'GetJobJobSettingsSettingsTriggerFileArrivalArgs':
+        return pulumi.get(self, "file_arrival")
+
+    @file_arrival.setter
+    def file_arrival(self, value: 'GetJobJobSettingsSettingsTriggerFileArrivalArgs'):
+        pulumi.set(self, "file_arrival", value)
+
+    @property
+    @pulumi.getter(name="pauseStatus")
+    def pause_status(self) -> str:
+        return pulumi.get(self, "pause_status")
+
+    @pause_status.setter
+    def pause_status(self, value: str):
+        pulumi.set(self, "pause_status", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTriggerFileArrivalArgs:
+    def __init__(__self__, *,
+                 url: str,
+                 min_time_between_trigger_seconds: Optional[int] = None,
+                 wait_after_last_change_seconds: Optional[int] = None):
+        pulumi.set(__self__, "url", url)
+        if min_time_between_trigger_seconds is not None:
+            pulumi.set(__self__, "min_time_between_trigger_seconds", min_time_between_trigger_seconds)
+        if wait_after_last_change_seconds is not None:
+            pulumi.set(__self__, "wait_after_last_change_seconds", wait_after_last_change_seconds)
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: str):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="minTimeBetweenTriggerSeconds")
+    def min_time_between_trigger_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "min_time_between_trigger_seconds")
+
+    @min_time_between_trigger_seconds.setter
+    def min_time_between_trigger_seconds(self, value: Optional[int]):
+        pulumi.set(self, "min_time_between_trigger_seconds", value)
+
+    @property
+    @pulumi.getter(name="waitAfterLastChangeSeconds")
+    def wait_after_last_change_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "wait_after_last_change_seconds")
+
+    @wait_after_last_change_seconds.setter
+    def wait_after_last_change_seconds(self, value: Optional[int]):
+        pulumi.set(self, "wait_after_last_change_seconds", value)
 
 
 @pulumi.input_type

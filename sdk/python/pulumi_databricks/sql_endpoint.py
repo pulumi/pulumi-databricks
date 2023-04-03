@@ -36,19 +36,19 @@ class SqlEndpointArgs:
         """
         The set of arguments for constructing a SqlEndpoint resource.
         :param pulumi.Input[str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
-        :param pulumi.Input[int] auto_stop_mins: Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+        :param pulumi.Input[int] auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         :param pulumi.Input['SqlEndpointChannelArgs'] channel: block, consisting of following fields:
         :param pulumi.Input[str] data_source_id: ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         :param pulumi.Input[bool] enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
-        :param pulumi.Input[bool] enable_serverless_compute: Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
+        :param pulumi.Input[bool] enable_serverless_compute: Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
         :param pulumi.Input[str] jdbc_url: JDBC connection string.
-        :param pulumi.Input[int] max_num_clusters: Maximum number of clusters available when a SQL endpoint is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
-        :param pulumi.Input[int] min_num_clusters: Minimum number of clusters available when a SQL endpoint is running. The default is `1`.
+        :param pulumi.Input[int] max_num_clusters: Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+        :param pulumi.Input[int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         :param pulumi.Input[str] name: Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
         :param pulumi.Input['SqlEndpointOdbcParamsArgs'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
         :param pulumi.Input[str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input['SqlEndpointTagsArgs'] tags: Databricks tags all endpoint resources with these tags.
-        :param pulumi.Input[str] warehouse_type: [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+        :param pulumi.Input[str] warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
         """
         pulumi.set(__self__, "cluster_size", cluster_size)
         if auto_stop_mins is not None:
@@ -100,7 +100,7 @@ class SqlEndpointArgs:
     @pulumi.getter(name="autoStopMins")
     def auto_stop_mins(self) -> Optional[pulumi.Input[int]]:
         """
-        Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+        Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         """
         return pulumi.get(self, "auto_stop_mins")
 
@@ -148,7 +148,7 @@ class SqlEndpointArgs:
     @pulumi.getter(name="enableServerlessCompute")
     def enable_serverless_compute(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
+        Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
         """
         return pulumi.get(self, "enable_serverless_compute")
 
@@ -181,7 +181,7 @@ class SqlEndpointArgs:
     @pulumi.getter(name="maxNumClusters")
     def max_num_clusters(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of clusters available when a SQL endpoint is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+        Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
         """
         return pulumi.get(self, "max_num_clusters")
 
@@ -193,7 +193,7 @@ class SqlEndpointArgs:
     @pulumi.getter(name="minNumClusters")
     def min_num_clusters(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum number of clusters available when a SQL endpoint is running. The default is `1`.
+        Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         """
         return pulumi.get(self, "min_num_clusters")
 
@@ -271,7 +271,7 @@ class SqlEndpointArgs:
     @pulumi.getter(name="warehouseType")
     def warehouse_type(self) -> Optional[pulumi.Input[str]]:
         """
-        [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+        SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
         """
         return pulumi.get(self, "warehouse_type")
 
@@ -302,20 +302,20 @@ class _SqlEndpointState:
                  warehouse_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SqlEndpoint resources.
-        :param pulumi.Input[int] auto_stop_mins: Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+        :param pulumi.Input[int] auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         :param pulumi.Input['SqlEndpointChannelArgs'] channel: block, consisting of following fields:
         :param pulumi.Input[str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
         :param pulumi.Input[str] data_source_id: ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         :param pulumi.Input[bool] enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
-        :param pulumi.Input[bool] enable_serverless_compute: Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
+        :param pulumi.Input[bool] enable_serverless_compute: Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
         :param pulumi.Input[str] jdbc_url: JDBC connection string.
-        :param pulumi.Input[int] max_num_clusters: Maximum number of clusters available when a SQL endpoint is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
-        :param pulumi.Input[int] min_num_clusters: Minimum number of clusters available when a SQL endpoint is running. The default is `1`.
+        :param pulumi.Input[int] max_num_clusters: Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+        :param pulumi.Input[int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         :param pulumi.Input[str] name: Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
         :param pulumi.Input['SqlEndpointOdbcParamsArgs'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
         :param pulumi.Input[str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input['SqlEndpointTagsArgs'] tags: Databricks tags all endpoint resources with these tags.
-        :param pulumi.Input[str] warehouse_type: [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+        :param pulumi.Input[str] warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
         """
         if auto_stop_mins is not None:
             pulumi.set(__self__, "auto_stop_mins", auto_stop_mins)
@@ -356,7 +356,7 @@ class _SqlEndpointState:
     @pulumi.getter(name="autoStopMins")
     def auto_stop_mins(self) -> Optional[pulumi.Input[int]]:
         """
-        Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+        Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         """
         return pulumi.get(self, "auto_stop_mins")
 
@@ -416,7 +416,7 @@ class _SqlEndpointState:
     @pulumi.getter(name="enableServerlessCompute")
     def enable_serverless_compute(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
+        Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
         """
         return pulumi.get(self, "enable_serverless_compute")
 
@@ -449,7 +449,7 @@ class _SqlEndpointState:
     @pulumi.getter(name="maxNumClusters")
     def max_num_clusters(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of clusters available when a SQL endpoint is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+        Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
         """
         return pulumi.get(self, "max_num_clusters")
 
@@ -461,7 +461,7 @@ class _SqlEndpointState:
     @pulumi.getter(name="minNumClusters")
     def min_num_clusters(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum number of clusters available when a SQL endpoint is running. The default is `1`.
+        Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         """
         return pulumi.get(self, "min_num_clusters")
 
@@ -539,7 +539,7 @@ class _SqlEndpointState:
     @pulumi.getter(name="warehouseType")
     def warehouse_type(self) -> Optional[pulumi.Input[str]]:
         """
-        [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+        SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
         """
         return pulumi.get(self, "warehouse_type")
 
@@ -572,7 +572,7 @@ class SqlEndpoint(pulumi.CustomResource):
                  warehouse_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource is used to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL endpoints](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
+        This resource is used to manage [Databricks SQL warehouses](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL warehouses](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
 
         ## Example Usage
 
@@ -591,12 +591,12 @@ class SqlEndpoint(pulumi.CustomResource):
                 )],
             ))
         ```
-        ## Access Control
+        ## Access control
 
-        * Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL endpoints.
+        * Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL warehouses.
         * `databricks_sql_access` on Group or databricks_user.
 
-        ## Related Resources
+        ## Related resources
 
         The following resources are often used in the same context:
 
@@ -616,20 +616,20 @@ class SqlEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] auto_stop_mins: Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+        :param pulumi.Input[int] auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         :param pulumi.Input[pulumi.InputType['SqlEndpointChannelArgs']] channel: block, consisting of following fields:
         :param pulumi.Input[str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
         :param pulumi.Input[str] data_source_id: ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         :param pulumi.Input[bool] enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
-        :param pulumi.Input[bool] enable_serverless_compute: Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
+        :param pulumi.Input[bool] enable_serverless_compute: Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
         :param pulumi.Input[str] jdbc_url: JDBC connection string.
-        :param pulumi.Input[int] max_num_clusters: Maximum number of clusters available when a SQL endpoint is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
-        :param pulumi.Input[int] min_num_clusters: Minimum number of clusters available when a SQL endpoint is running. The default is `1`.
+        :param pulumi.Input[int] max_num_clusters: Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+        :param pulumi.Input[int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         :param pulumi.Input[str] name: Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
         :param pulumi.Input[pulumi.InputType['SqlEndpointOdbcParamsArgs']] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
         :param pulumi.Input[str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input[pulumi.InputType['SqlEndpointTagsArgs']] tags: Databricks tags all endpoint resources with these tags.
-        :param pulumi.Input[str] warehouse_type: [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+        :param pulumi.Input[str] warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
         """
         ...
     @overload
@@ -638,7 +638,7 @@ class SqlEndpoint(pulumi.CustomResource):
                  args: SqlEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource is used to manage [Databricks SQL Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL endpoints](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
+        This resource is used to manage [Databricks SQL warehouses](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL warehouses](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
 
         ## Example Usage
 
@@ -657,12 +657,12 @@ class SqlEndpoint(pulumi.CustomResource):
                 )],
             ))
         ```
-        ## Access Control
+        ## Access control
 
-        * Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL endpoints.
+        * Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL warehouses.
         * `databricks_sql_access` on Group or databricks_user.
 
-        ## Related Resources
+        ## Related resources
 
         The following resources are often used in the same context:
 
@@ -774,20 +774,20 @@ class SqlEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] auto_stop_mins: Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+        :param pulumi.Input[int] auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         :param pulumi.Input[pulumi.InputType['SqlEndpointChannelArgs']] channel: block, consisting of following fields:
         :param pulumi.Input[str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
         :param pulumi.Input[str] data_source_id: ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         :param pulumi.Input[bool] enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
-        :param pulumi.Input[bool] enable_serverless_compute: Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
+        :param pulumi.Input[bool] enable_serverless_compute: Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
         :param pulumi.Input[str] jdbc_url: JDBC connection string.
-        :param pulumi.Input[int] max_num_clusters: Maximum number of clusters available when a SQL endpoint is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
-        :param pulumi.Input[int] min_num_clusters: Minimum number of clusters available when a SQL endpoint is running. The default is `1`.
+        :param pulumi.Input[int] max_num_clusters: Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+        :param pulumi.Input[int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         :param pulumi.Input[str] name: Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
         :param pulumi.Input[pulumi.InputType['SqlEndpointOdbcParamsArgs']] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
         :param pulumi.Input[str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input[pulumi.InputType['SqlEndpointTagsArgs']] tags: Databricks tags all endpoint resources with these tags.
-        :param pulumi.Input[str] warehouse_type: [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+        :param pulumi.Input[str] warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -816,7 +816,7 @@ class SqlEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="autoStopMins")
     def auto_stop_mins(self) -> pulumi.Output[Optional[int]]:
         """
-        Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+        Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         """
         return pulumi.get(self, "auto_stop_mins")
 
@@ -856,7 +856,7 @@ class SqlEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="enableServerlessCompute")
     def enable_serverless_compute(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
+        Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
         """
         return pulumi.get(self, "enable_serverless_compute")
 
@@ -877,7 +877,7 @@ class SqlEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="maxNumClusters")
     def max_num_clusters(self) -> pulumi.Output[Optional[int]]:
         """
-        Maximum number of clusters available when a SQL endpoint is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+        Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
         """
         return pulumi.get(self, "max_num_clusters")
 
@@ -885,7 +885,7 @@ class SqlEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="minNumClusters")
     def min_num_clusters(self) -> pulumi.Output[Optional[int]]:
         """
-        Minimum number of clusters available when a SQL endpoint is running. The default is `1`.
+        Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         """
         return pulumi.get(self, "min_num_clusters")
 
@@ -935,7 +935,7 @@ class SqlEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="warehouseType")
     def warehouse_type(self) -> pulumi.Output[Optional[str]]:
         """
-        [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+        SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
         """
         return pulumi.get(self, "warehouse_type")
 

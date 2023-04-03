@@ -15,15 +15,19 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly ImmutableArray<string> Parameters;
         public readonly string PythonFile;
+        public readonly string? Source;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsSparkPythonTaskResult(
             ImmutableArray<string> parameters,
 
-            string pythonFile)
+            string pythonFile,
+
+            string? source)
         {
             Parameters = parameters;
             PythonFile = pythonFile;
+            Source = source;
         }
     }
 }

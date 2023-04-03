@@ -127,16 +127,14 @@ public class SqlGlobalConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dataAccessConfig);
     }
     /**
-     * Allows the possibility to create Serverless SQL warehouses. Default value: false.
+     * @deprecated
+     * This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      * 
      */
+    @Deprecated /* This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future */
     @Export(name="enableServerlessCompute", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableServerlessCompute;
 
-    /**
-     * @return Allows the possibility to create Serverless SQL warehouses. Default value: false.
-     * 
-     */
     public Output<Optional<Boolean>> enableServerlessCompute() {
         return Codegen.optional(this.enableServerlessCompute);
     }

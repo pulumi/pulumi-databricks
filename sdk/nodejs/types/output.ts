@@ -495,6 +495,7 @@ export interface GetJobJobSettingsSettings {
     notebookTask?: outputs.GetJobJobSettingsSettingsNotebookTask;
     pipelineTask?: outputs.GetJobJobSettingsSettingsPipelineTask;
     pythonWheelTask?: outputs.GetJobJobSettingsSettingsPythonWheelTask;
+    queue?: outputs.GetJobJobSettingsSettingsQueue;
     retryOnTimeout?: boolean;
     schedule?: outputs.GetJobJobSettingsSettingsSchedule;
     sparkJarTask?: outputs.GetJobJobSettingsSettingsSparkJarTask;
@@ -503,6 +504,7 @@ export interface GetJobJobSettingsSettings {
     tags?: {[key: string]: any};
     tasks?: outputs.GetJobJobSettingsSettingsTask[];
     timeoutSeconds?: number;
+    trigger?: outputs.GetJobJobSettingsSettingsTrigger;
     webhookNotifications?: outputs.GetJobJobSettingsSettingsWebhookNotifications;
 }
 
@@ -874,6 +876,9 @@ export interface GetJobJobSettingsSettingsPythonWheelTask {
     parameters?: string[];
 }
 
+export interface GetJobJobSettingsSettingsQueue {
+}
+
 export interface GetJobJobSettingsSettingsSchedule {
     pauseStatus: string;
     quartzCronExpression: string;
@@ -889,6 +894,7 @@ export interface GetJobJobSettingsSettingsSparkJarTask {
 export interface GetJobJobSettingsSettingsSparkPythonTask {
     parameters?: string[];
     pythonFile: string;
+    source?: string;
 }
 
 export interface GetJobJobSettingsSettingsSparkSubmitTask {
@@ -910,6 +916,7 @@ export interface GetJobJobSettingsSettingsTask {
     pipelineTask?: outputs.GetJobJobSettingsSettingsTaskPipelineTask;
     pythonWheelTask?: outputs.GetJobJobSettingsSettingsTaskPythonWheelTask;
     retryOnTimeout: boolean;
+    runIf?: string;
     sparkJarTask?: outputs.GetJobJobSettingsSettingsTaskSparkJarTask;
     sparkPythonTask?: outputs.GetJobJobSettingsSettingsTaskSparkPythonTask;
     sparkSubmitTask?: outputs.GetJobJobSettingsSettingsTaskSparkSubmitTask;
@@ -1136,6 +1143,7 @@ export interface GetJobJobSettingsSettingsTaskSparkJarTask {
 export interface GetJobJobSettingsSettingsTaskSparkPythonTask {
     parameters?: string[];
     pythonFile: string;
+    source?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskSparkSubmitTask {
@@ -1160,6 +1168,17 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskDashboard {
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskQuery {
     queryId: string;
+}
+
+export interface GetJobJobSettingsSettingsTrigger {
+    fileArrival: outputs.GetJobJobSettingsSettingsTriggerFileArrival;
+    pauseStatus: string;
+}
+
+export interface GetJobJobSettingsSettingsTriggerFileArrival {
+    minTimeBetweenTriggerSeconds?: number;
+    url: string;
+    waitAfterLastChangeSeconds?: number;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotifications {
@@ -1517,7 +1536,7 @@ export interface JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo {
 export interface JobJobClusterNewClusterDockerImage {
     basicAuth?: outputs.JobJobClusterNewClusterDockerImageBasicAuth;
     /**
-     * URL of the Git repository to use.
+     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      */
     url: string;
 }
@@ -1691,7 +1710,7 @@ export interface JobNewClusterClusterMountInfoNetworkFilesystemInfo {
 export interface JobNewClusterDockerImage {
     basicAuth?: outputs.JobNewClusterDockerImageBasicAuth;
     /**
-     * URL of the Git repository to use.
+     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      */
     url: string;
 }
@@ -1762,7 +1781,7 @@ export interface JobNotebookTask {
      */
     notebookPath: string;
     /**
-     * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+     * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
      */
     source?: string;
 }
@@ -1791,6 +1810,9 @@ export interface JobPythonWheelTask {
      * Parameters for the task
      */
     parameters?: string[];
+}
+
+export interface JobQueue {
 }
 
 export interface JobSchedule {
@@ -1826,9 +1848,13 @@ export interface JobSparkPythonTask {
      */
     parameters?: string[];
     /**
-     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
      */
     pythonFile: string;
+    /**
+     * Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+     */
+    source?: string;
 }
 
 export interface JobSparkSubmitTask {
@@ -1874,6 +1900,7 @@ export interface JobTask {
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      */
     retryOnTimeout: boolean;
+    runIf?: string;
     sparkJarTask?: outputs.JobTaskSparkJarTask;
     sparkPythonTask?: outputs.JobTaskSparkPythonTask;
     sparkSubmitTask?: outputs.JobTaskSparkSubmitTask;
@@ -2049,7 +2076,7 @@ export interface JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
 export interface JobTaskNewClusterDockerImage {
     basicAuth?: outputs.JobTaskNewClusterDockerImageBasicAuth;
     /**
-     * URL of the Git repository to use.
+     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      */
     url: string;
 }
@@ -2120,7 +2147,7 @@ export interface JobTaskNotebookTask {
      */
     notebookPath: string;
     /**
-     * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in git_source. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+     * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
      */
     source?: string;
 }
@@ -2169,9 +2196,13 @@ export interface JobTaskSparkPythonTask {
      */
     parameters?: string[];
     /**
-     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
      */
     pythonFile: string;
+    /**
+     * Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+     */
+    source?: string;
 }
 
 export interface JobTaskSparkSubmitTask {
@@ -2214,6 +2245,32 @@ export interface JobTaskSqlTaskDashboard {
 
 export interface JobTaskSqlTaskQuery {
     queryId: string;
+}
+
+export interface JobTrigger {
+    /**
+     * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
+     */
+    fileArrival: outputs.JobTriggerFileArrival;
+    /**
+     * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
+     */
+    pauseStatus: string;
+}
+
+export interface JobTriggerFileArrival {
+    /**
+     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+     */
+    minTimeBetweenTriggerSeconds?: number;
+    /**
+     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     */
+    url: string;
+    /**
+     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+     */
+    waitAfterLastChangeSeconds?: number;
 }
 
 export interface JobWebhookNotifications {

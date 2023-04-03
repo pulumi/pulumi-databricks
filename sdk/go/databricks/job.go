@@ -48,6 +48,7 @@ type Job struct {
 	NotebookTask    JobNotebookTaskPtrOutput    `pulumi:"notebookTask"`
 	PipelineTask    JobPipelineTaskPtrOutput    `pulumi:"pipelineTask"`
 	PythonWheelTask JobPythonWheelTaskPtrOutput `pulumi:"pythonWheelTask"`
+	Queue           JobQueuePtrOutput           `pulumi:"queue"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrOutput `pulumi:"retryOnTimeout"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -60,7 +61,8 @@ type Job struct {
 	Tasks JobTaskArrayOutput `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrOutput `pulumi:"timeoutSeconds"`
-	// URL of the Git repository to use.
+	Trigger        JobTriggerPtrOutput `pulumi:"trigger"`
+	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 	Url pulumi.StringOutput `pulumi:"url"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications JobWebhookNotificationsPtrOutput `pulumi:"webhookNotifications"`
@@ -121,6 +123,7 @@ type jobState struct {
 	NotebookTask    *JobNotebookTask    `pulumi:"notebookTask"`
 	PipelineTask    *JobPipelineTask    `pulumi:"pipelineTask"`
 	PythonWheelTask *JobPythonWheelTask `pulumi:"pythonWheelTask"`
+	Queue           *JobQueue           `pulumi:"queue"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -132,8 +135,9 @@ type jobState struct {
 	Tags  map[string]interface{} `pulumi:"tags"`
 	Tasks []JobTask              `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
-	// URL of the Git repository to use.
+	TimeoutSeconds *int        `pulumi:"timeoutSeconds"`
+	Trigger        *JobTrigger `pulumi:"trigger"`
+	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 	Url *string `pulumi:"url"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications *JobWebhookNotifications `pulumi:"webhookNotifications"`
@@ -166,6 +170,7 @@ type JobState struct {
 	NotebookTask    JobNotebookTaskPtrInput
 	PipelineTask    JobPipelineTaskPtrInput
 	PythonWheelTask JobPythonWheelTaskPtrInput
+	Queue           JobQueuePtrInput
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrInput
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -178,7 +183,8 @@ type JobState struct {
 	Tasks JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
-	// URL of the Git repository to use.
+	Trigger        JobTriggerPtrInput
+	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 	Url pulumi.StringPtrInput
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications JobWebhookNotificationsPtrInput
@@ -215,6 +221,7 @@ type jobArgs struct {
 	NotebookTask    *JobNotebookTask    `pulumi:"notebookTask"`
 	PipelineTask    *JobPipelineTask    `pulumi:"pipelineTask"`
 	PythonWheelTask *JobPythonWheelTask `pulumi:"pythonWheelTask"`
+	Queue           *JobQueue           `pulumi:"queue"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -226,7 +233,8 @@ type jobArgs struct {
 	Tags  map[string]interface{} `pulumi:"tags"`
 	Tasks []JobTask              `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+	TimeoutSeconds *int        `pulumi:"timeoutSeconds"`
+	Trigger        *JobTrigger `pulumi:"trigger"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications *JobWebhookNotifications `pulumi:"webhookNotifications"`
 }
@@ -259,6 +267,7 @@ type JobArgs struct {
 	NotebookTask    JobNotebookTaskPtrInput
 	PipelineTask    JobPipelineTaskPtrInput
 	PythonWheelTask JobPythonWheelTaskPtrInput
+	Queue           JobQueuePtrInput
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrInput
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -271,6 +280,7 @@ type JobArgs struct {
 	Tasks JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
+	Trigger        JobTriggerPtrInput
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications JobWebhookNotificationsPtrInput
 }
@@ -439,6 +449,10 @@ func (o JobOutput) PythonWheelTask() JobPythonWheelTaskPtrOutput {
 	return o.ApplyT(func(v *Job) JobPythonWheelTaskPtrOutput { return v.PythonWheelTask }).(JobPythonWheelTaskPtrOutput)
 }
 
+func (o JobOutput) Queue() JobQueuePtrOutput {
+	return o.ApplyT(func(v *Job) JobQueuePtrOutput { return v.Queue }).(JobQueuePtrOutput)
+}
+
 // (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 func (o JobOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.RetryOnTimeout }).(pulumi.BoolPtrOutput)
@@ -475,7 +489,11 @@ func (o JobOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntPtrOutput { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
-// URL of the Git repository to use.
+func (o JobOutput) Trigger() JobTriggerPtrOutput {
+	return o.ApplyT(func(v *Job) JobTriggerPtrOutput { return v.Trigger }).(JobTriggerPtrOutput)
+}
+
+// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 func (o JobOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

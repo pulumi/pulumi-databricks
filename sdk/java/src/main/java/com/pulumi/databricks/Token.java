@@ -19,47 +19,6 @@ import javax.annotation.Nullable;
 /**
  * This resource creates [Personal Access Tokens](https://docs.databricks.com/sql/user/security/personal-access-tokens.html) for the same user that is authenticated with the provider. Most likely you should use databricks.OboToken to create [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a databricks.ServicePrincipal in Databricks workspaces on AWS. Databricks workspaces on other clouds use their own native OAuth token flows.
  * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Provider;
- * import com.pulumi.databricks.ProviderArgs;
- * import com.pulumi.databricks.Token;
- * import com.pulumi.databricks.TokenArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var createdWorkspace = new Provider(&#34;createdWorkspace&#34;, ProviderArgs.builder()        
- *             .host(databricks_mws_workspaces.this().workspace_url())
- *             .build());
- * 
- *         var pat = new Token(&#34;pat&#34;, TokenArgs.builder()        
- *             .comment(&#34;Terraform Provisioning&#34;)
- *             .lifetimeSeconds(8640000)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.created_workspace())
- *                 .build());
- * 
- *         ctx.export(&#34;databricksToken&#34;, pat.tokenValue());
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * -&gt; **Note** Importing this resource is not currently supported.

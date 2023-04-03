@@ -20,10 +20,14 @@ import * as utilities from "./utilities";
  * // ...
  * ```
  */
-export function getClusterPolicy(args: GetClusterPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterPolicyResult> {
+export function getClusterPolicy(args?: GetClusterPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterPolicyResult> {
+    args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getClusterPolicy:getClusterPolicy", {
+        "definition": args.definition,
+        "id": args.id,
+        "maxClustersPerUser": args.maxClustersPerUser,
         "name": args.name,
     }, opts);
 }
@@ -33,9 +37,21 @@ export function getClusterPolicy(args: GetClusterPolicyArgs, opts?: pulumi.Invok
  */
 export interface GetClusterPolicyArgs {
     /**
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     */
+    definition?: string;
+    /**
+     * The id of the cluster policy.
+     */
+    id?: string;
+    /**
+     * Max number of clusters per user that can be active using this policy
+     */
+    maxClustersPerUser?: number;
+    /**
      * Name of the cluster policy. The cluster policy must exist before this resource can be planned.
      */
-    name: string;
+    name?: string;
 }
 
 /**
@@ -47,9 +63,12 @@ export interface GetClusterPolicyResult {
      */
     readonly definition: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The id of the cluster policy.
      */
     readonly id: string;
+    /**
+     * Max number of clusters per user that can be active using this policy
+     */
     readonly maxClustersPerUser: number;
     readonly name: string;
 }
@@ -69,7 +88,7 @@ export interface GetClusterPolicyResult {
  * // ...
  * ```
  */
-export function getClusterPolicyOutput(args: GetClusterPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterPolicyResult> {
+export function getClusterPolicyOutput(args?: GetClusterPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterPolicyResult> {
     return pulumi.output(args).apply((a: any) => getClusterPolicy(a, opts))
 }
 
@@ -78,7 +97,19 @@ export function getClusterPolicyOutput(args: GetClusterPolicyOutputArgs, opts?: 
  */
 export interface GetClusterPolicyOutputArgs {
     /**
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     */
+    definition?: pulumi.Input<string>;
+    /**
+     * The id of the cluster policy.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Max number of clusters per user that can be active using this policy
+     */
+    maxClustersPerUser?: pulumi.Input<number>;
+    /**
      * Name of the cluster policy. The cluster policy must exist before this resource can be planned.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

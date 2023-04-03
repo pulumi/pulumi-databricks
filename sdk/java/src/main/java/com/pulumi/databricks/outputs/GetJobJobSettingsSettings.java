@@ -14,11 +14,13 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNewCluster;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNotebookTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsPipelineTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsPythonWheelTask;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsQueue;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsSchedule;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsSparkJarTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsSparkPythonTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsSparkSubmitTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTask;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTrigger;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsWebhookNotifications;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -52,6 +54,7 @@ public final class GetJobJobSettingsSettings {
     private @Nullable GetJobJobSettingsSettingsNotebookTask notebookTask;
     private @Nullable GetJobJobSettingsSettingsPipelineTask pipelineTask;
     private @Nullable GetJobJobSettingsSettingsPythonWheelTask pythonWheelTask;
+    private @Nullable GetJobJobSettingsSettingsQueue queue;
     private @Nullable Boolean retryOnTimeout;
     private @Nullable GetJobJobSettingsSettingsSchedule schedule;
     private @Nullable GetJobJobSettingsSettingsSparkJarTask sparkJarTask;
@@ -60,6 +63,7 @@ public final class GetJobJobSettingsSettings {
     private @Nullable Map<String,Object> tags;
     private @Nullable List<GetJobJobSettingsSettingsTask> tasks;
     private @Nullable Integer timeoutSeconds;
+    private @Nullable GetJobJobSettingsSettingsTrigger trigger;
     private @Nullable GetJobJobSettingsSettingsWebhookNotifications webhookNotifications;
 
     private GetJobJobSettingsSettings() {}
@@ -115,6 +119,9 @@ public final class GetJobJobSettingsSettings {
     public Optional<GetJobJobSettingsSettingsPythonWheelTask> pythonWheelTask() {
         return Optional.ofNullable(this.pythonWheelTask);
     }
+    public Optional<GetJobJobSettingsSettingsQueue> queue() {
+        return Optional.ofNullable(this.queue);
+    }
     public Optional<Boolean> retryOnTimeout() {
         return Optional.ofNullable(this.retryOnTimeout);
     }
@@ -138,6 +145,9 @@ public final class GetJobJobSettingsSettings {
     }
     public Optional<Integer> timeoutSeconds() {
         return Optional.ofNullable(this.timeoutSeconds);
+    }
+    public Optional<GetJobJobSettingsSettingsTrigger> trigger() {
+        return Optional.ofNullable(this.trigger);
     }
     public Optional<GetJobJobSettingsSettingsWebhookNotifications> webhookNotifications() {
         return Optional.ofNullable(this.webhookNotifications);
@@ -168,6 +178,7 @@ public final class GetJobJobSettingsSettings {
         private @Nullable GetJobJobSettingsSettingsNotebookTask notebookTask;
         private @Nullable GetJobJobSettingsSettingsPipelineTask pipelineTask;
         private @Nullable GetJobJobSettingsSettingsPythonWheelTask pythonWheelTask;
+        private @Nullable GetJobJobSettingsSettingsQueue queue;
         private @Nullable Boolean retryOnTimeout;
         private @Nullable GetJobJobSettingsSettingsSchedule schedule;
         private @Nullable GetJobJobSettingsSettingsSparkJarTask sparkJarTask;
@@ -176,6 +187,7 @@ public final class GetJobJobSettingsSettings {
         private @Nullable Map<String,Object> tags;
         private @Nullable List<GetJobJobSettingsSettingsTask> tasks;
         private @Nullable Integer timeoutSeconds;
+        private @Nullable GetJobJobSettingsSettingsTrigger trigger;
         private @Nullable GetJobJobSettingsSettingsWebhookNotifications webhookNotifications;
         public Builder() {}
         public Builder(GetJobJobSettingsSettings defaults) {
@@ -196,6 +208,7 @@ public final class GetJobJobSettingsSettings {
     	      this.notebookTask = defaults.notebookTask;
     	      this.pipelineTask = defaults.pipelineTask;
     	      this.pythonWheelTask = defaults.pythonWheelTask;
+    	      this.queue = defaults.queue;
     	      this.retryOnTimeout = defaults.retryOnTimeout;
     	      this.schedule = defaults.schedule;
     	      this.sparkJarTask = defaults.sparkJarTask;
@@ -204,6 +217,7 @@ public final class GetJobJobSettingsSettings {
     	      this.tags = defaults.tags;
     	      this.tasks = defaults.tasks;
     	      this.timeoutSeconds = defaults.timeoutSeconds;
+    	      this.trigger = defaults.trigger;
     	      this.webhookNotifications = defaults.webhookNotifications;
         }
 
@@ -294,6 +308,11 @@ public final class GetJobJobSettingsSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder queue(@Nullable GetJobJobSettingsSettingsQueue queue) {
+            this.queue = queue;
+            return this;
+        }
+        @CustomType.Setter
         public Builder retryOnTimeout(@Nullable Boolean retryOnTimeout) {
             this.retryOnTimeout = retryOnTimeout;
             return this;
@@ -337,6 +356,11 @@ public final class GetJobJobSettingsSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder trigger(@Nullable GetJobJobSettingsSettingsTrigger trigger) {
+            this.trigger = trigger;
+            return this;
+        }
+        @CustomType.Setter
         public Builder webhookNotifications(@Nullable GetJobJobSettingsSettingsWebhookNotifications webhookNotifications) {
             this.webhookNotifications = webhookNotifications;
             return this;
@@ -359,6 +383,7 @@ public final class GetJobJobSettingsSettings {
             o.notebookTask = notebookTask;
             o.pipelineTask = pipelineTask;
             o.pythonWheelTask = pythonWheelTask;
+            o.queue = queue;
             o.retryOnTimeout = retryOnTimeout;
             o.schedule = schedule;
             o.sparkJarTask = sparkJarTask;
@@ -367,6 +392,7 @@ public final class GetJobJobSettingsSettings {
             o.tags = tags;
             o.tasks = tasks;
             o.timeoutSeconds = timeoutSeconds;
+            o.trigger = trigger;
             o.webhookNotifications = webhookNotifications;
             return o;
         }

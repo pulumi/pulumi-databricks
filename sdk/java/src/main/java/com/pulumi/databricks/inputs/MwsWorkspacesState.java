@@ -262,9 +262,17 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.token);
     }
 
+    /**
+     * (String) workspace id
+     * 
+     */
     @Import(name="workspaceId")
     private @Nullable Output<Integer> workspaceId;
 
+    /**
+     * @return (String) workspace id
+     * 
+     */
     public Optional<Output<Integer>> workspaceId() {
         return Optional.ofNullable(this.workspaceId);
     }
@@ -705,11 +713,23 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return token(Output.of(token));
         }
 
+        /**
+         * @param workspaceId (String) workspace id
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceId(@Nullable Output<Integer> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
 
+        /**
+         * @param workspaceId (String) workspace id
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceId(Integer workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -17,10 +18,15 @@ public final class JobTaskSparkPythonTask {
      */
     private @Nullable List<String> parameters;
     /**
-     * @return The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+     * @return The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
      * 
      */
     private String pythonFile;
+    /**
+     * @return Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+     * 
+     */
+    private @Nullable String source;
 
     private JobTaskSparkPythonTask() {}
     /**
@@ -31,11 +37,18 @@ public final class JobTaskSparkPythonTask {
         return this.parameters == null ? List.of() : this.parameters;
     }
     /**
-     * @return The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+     * @return The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
      * 
      */
     public String pythonFile() {
         return this.pythonFile;
+    }
+    /**
+     * @return Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+     * 
+     */
+    public Optional<String> source() {
+        return Optional.ofNullable(this.source);
     }
 
     public static Builder builder() {
@@ -49,11 +62,13 @@ public final class JobTaskSparkPythonTask {
     public static final class Builder {
         private @Nullable List<String> parameters;
         private String pythonFile;
+        private @Nullable String source;
         public Builder() {}
         public Builder(JobTaskSparkPythonTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameters = defaults.parameters;
     	      this.pythonFile = defaults.pythonFile;
+    	      this.source = defaults.source;
         }
 
         @CustomType.Setter
@@ -69,10 +84,16 @@ public final class JobTaskSparkPythonTask {
             this.pythonFile = Objects.requireNonNull(pythonFile);
             return this;
         }
+        @CustomType.Setter
+        public Builder source(@Nullable String source) {
+            this.source = source;
+            return this;
+        }
         public JobTaskSparkPythonTask build() {
             final var o = new JobTaskSparkPythonTask();
             o.parameters = parameters;
             o.pythonFile = pythonFile;
+            o.source = source;
             return o;
         }
     }

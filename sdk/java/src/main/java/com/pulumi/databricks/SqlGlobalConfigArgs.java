@@ -34,16 +34,20 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Allows the possibility to create Serverless SQL warehouses. Default value: false.
+     * @deprecated
+     * This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      * 
      */
+    @Deprecated /* This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future */
     @Import(name="enableServerlessCompute")
     private @Nullable Output<Boolean> enableServerlessCompute;
 
     /**
-     * @return Allows the possibility to create Serverless SQL warehouses. Default value: false.
+     * @deprecated
+     * This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      * 
      */
+    @Deprecated /* This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future */
     public Optional<Output<Boolean>> enableServerlessCompute() {
         return Optional.ofNullable(this.enableServerlessCompute);
     }
@@ -143,22 +147,26 @@ public final class SqlGlobalConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enableServerlessCompute Allows the possibility to create Serverless SQL warehouses. Default value: false.
-         * 
          * @return builder
          * 
+         * @deprecated
+         * This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
+         * 
          */
+        @Deprecated /* This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future */
         public Builder enableServerlessCompute(@Nullable Output<Boolean> enableServerlessCompute) {
             $.enableServerlessCompute = enableServerlessCompute;
             return this;
         }
 
         /**
-         * @param enableServerlessCompute Allows the possibility to create Serverless SQL warehouses. Default value: false.
-         * 
          * @return builder
          * 
+         * @deprecated
+         * This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
+         * 
          */
+        @Deprecated /* This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future */
         public Builder enableServerlessCompute(Boolean enableServerlessCompute) {
             return enableServerlessCompute(Output.of(enableServerlessCompute));
         }

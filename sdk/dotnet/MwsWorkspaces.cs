@@ -110,6 +110,9 @@ namespace Pulumi.Databricks
         [Output("token")]
         public Output<Outputs.MwsWorkspacesToken?> Token { get; private set; } = null!;
 
+        /// <summary>
+        /// (String) workspace id
+        /// </summary>
         [Output("workspaceId")]
         public Output<int> WorkspaceId { get; private set; } = null!;
 
@@ -290,6 +293,9 @@ namespace Pulumi.Databricks
         [Input("token")]
         public Input<Inputs.MwsWorkspacesTokenArgs>? Token { get; set; }
 
+        /// <summary>
+        /// (String) workspace id
+        /// </summary>
         [Input("workspaceId")]
         public Input<int>? WorkspaceId { get; set; }
 
@@ -428,6 +434,9 @@ namespace Pulumi.Databricks
         [Input("token")]
         public Input<Inputs.MwsWorkspacesTokenGetArgs>? Token { get; set; }
 
+        /// <summary>
+        /// (String) workspace id
+        /// </summary>
         [Input("workspaceId")]
         public Input<int>? WorkspaceId { get; set; }
 

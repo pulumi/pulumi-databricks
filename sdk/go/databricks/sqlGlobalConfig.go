@@ -105,7 +105,7 @@ type SqlGlobalConfig struct {
 
 	// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
 	DataAccessConfig pulumi.MapOutput `pulumi:"dataAccessConfig"`
-	// Allows the possibility to create Serverless SQL warehouses. Default value: false.
+	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 	EnableServerlessCompute pulumi.BoolPtrOutput `pulumi:"enableServerlessCompute"`
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn pulumi.StringPtrOutput `pulumi:"instanceProfileArn"`
@@ -146,7 +146,7 @@ func GetSqlGlobalConfig(ctx *pulumi.Context,
 type sqlGlobalConfigState struct {
 	// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
 	DataAccessConfig map[string]interface{} `pulumi:"dataAccessConfig"`
-	// Allows the possibility to create Serverless SQL warehouses. Default value: false.
+	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 	EnableServerlessCompute *bool `pulumi:"enableServerlessCompute"`
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
@@ -159,7 +159,7 @@ type sqlGlobalConfigState struct {
 type SqlGlobalConfigState struct {
 	// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
 	DataAccessConfig pulumi.MapInput
-	// Allows the possibility to create Serverless SQL warehouses. Default value: false.
+	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 	EnableServerlessCompute pulumi.BoolPtrInput
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn pulumi.StringPtrInput
@@ -176,7 +176,7 @@ func (SqlGlobalConfigState) ElementType() reflect.Type {
 type sqlGlobalConfigArgs struct {
 	// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
 	DataAccessConfig map[string]interface{} `pulumi:"dataAccessConfig"`
-	// Allows the possibility to create Serverless SQL warehouses. Default value: false.
+	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 	EnableServerlessCompute *bool `pulumi:"enableServerlessCompute"`
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
@@ -190,7 +190,7 @@ type sqlGlobalConfigArgs struct {
 type SqlGlobalConfigArgs struct {
 	// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
 	DataAccessConfig pulumi.MapInput
-	// Allows the possibility to create Serverless SQL warehouses. Default value: false.
+	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 	EnableServerlessCompute pulumi.BoolPtrInput
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn pulumi.StringPtrInput
@@ -292,7 +292,7 @@ func (o SqlGlobalConfigOutput) DataAccessConfig() pulumi.MapOutput {
 	return o.ApplyT(func(v *SqlGlobalConfig) pulumi.MapOutput { return v.DataAccessConfig }).(pulumi.MapOutput)
 }
 
-// Allows the possibility to create Serverless SQL warehouses. Default value: false.
+// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 func (o SqlGlobalConfigOutput) EnableServerlessCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlGlobalConfig) pulumi.BoolPtrOutput { return v.EnableServerlessCompute }).(pulumi.BoolPtrOutput)
 }

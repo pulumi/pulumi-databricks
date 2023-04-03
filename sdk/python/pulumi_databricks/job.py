@@ -33,6 +33,7 @@ class JobArgs:
                  notebook_task: Optional[pulumi.Input['JobNotebookTaskArgs']] = None,
                  pipeline_task: Optional[pulumi.Input['JobPipelineTaskArgs']] = None,
                  python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
+                 queue: Optional[pulumi.Input['JobQueueArgs']] = None,
                  retry_on_timeout: Optional[pulumi.Input[bool]] = None,
                  schedule: Optional[pulumi.Input['JobScheduleArgs']] = None,
                  spark_jar_task: Optional[pulumi.Input['JobSparkJarTaskArgs']] = None,
@@ -41,6 +42,7 @@ class JobArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 trigger: Optional[pulumi.Input['JobTriggerArgs']] = None,
                  webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None):
         """
         The set of arguments for constructing a Job resource.
@@ -93,6 +95,8 @@ class JobArgs:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
         if python_wheel_task is not None:
             pulumi.set(__self__, "python_wheel_task", python_wheel_task)
+        if queue is not None:
+            pulumi.set(__self__, "queue", queue)
         if retry_on_timeout is not None:
             pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
         if schedule is not None:
@@ -109,6 +113,8 @@ class JobArgs:
             pulumi.set(__self__, "tasks", tasks)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        if trigger is not None:
+            pulumi.set(__self__, "trigger", trigger)
         if webhook_notifications is not None:
             pulumi.set(__self__, "webhook_notifications", webhook_notifications)
 
@@ -293,6 +299,15 @@ class JobArgs:
         pulumi.set(self, "python_wheel_task", value)
 
     @property
+    @pulumi.getter
+    def queue(self) -> Optional[pulumi.Input['JobQueueArgs']]:
+        return pulumi.get(self, "queue")
+
+    @queue.setter
+    def queue(self, value: Optional[pulumi.Input['JobQueueArgs']]):
+        pulumi.set(self, "queue", value)
+
+    @property
     @pulumi.getter(name="retryOnTimeout")
     def retry_on_timeout(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -377,6 +392,15 @@ class JobArgs:
         pulumi.set(self, "timeout_seconds", value)
 
     @property
+    @pulumi.getter
+    def trigger(self) -> Optional[pulumi.Input['JobTriggerArgs']]:
+        return pulumi.get(self, "trigger")
+
+    @trigger.setter
+    def trigger(self, value: Optional[pulumi.Input['JobTriggerArgs']]):
+        pulumi.set(self, "trigger", value)
+
+    @property
     @pulumi.getter(name="webhookNotifications")
     def webhook_notifications(self) -> Optional[pulumi.Input['JobWebhookNotificationsArgs']]:
         """
@@ -409,6 +433,7 @@ class _JobState:
                  notebook_task: Optional[pulumi.Input['JobNotebookTaskArgs']] = None,
                  pipeline_task: Optional[pulumi.Input['JobPipelineTaskArgs']] = None,
                  python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
+                 queue: Optional[pulumi.Input['JobQueueArgs']] = None,
                  retry_on_timeout: Optional[pulumi.Input[bool]] = None,
                  schedule: Optional[pulumi.Input['JobScheduleArgs']] = None,
                  spark_jar_task: Optional[pulumi.Input['JobSparkJarTaskArgs']] = None,
@@ -417,6 +442,7 @@ class _JobState:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 trigger: Optional[pulumi.Input['JobTriggerArgs']] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None):
         """
@@ -434,7 +460,7 @@ class _JobState:
         :param pulumi.Input['JobScheduleArgs'] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
         :param pulumi.Input[Mapping[str, Any]] tags: (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-        :param pulumi.Input[str] url: URL of the Git repository to use.
+        :param pulumi.Input[str] url: string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         if always_running is not None:
@@ -471,6 +497,8 @@ class _JobState:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
         if python_wheel_task is not None:
             pulumi.set(__self__, "python_wheel_task", python_wheel_task)
+        if queue is not None:
+            pulumi.set(__self__, "queue", queue)
         if retry_on_timeout is not None:
             pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
         if schedule is not None:
@@ -487,6 +515,8 @@ class _JobState:
             pulumi.set(__self__, "tasks", tasks)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        if trigger is not None:
+            pulumi.set(__self__, "trigger", trigger)
         if url is not None:
             pulumi.set(__self__, "url", url)
         if webhook_notifications is not None:
@@ -673,6 +703,15 @@ class _JobState:
         pulumi.set(self, "python_wheel_task", value)
 
     @property
+    @pulumi.getter
+    def queue(self) -> Optional[pulumi.Input['JobQueueArgs']]:
+        return pulumi.get(self, "queue")
+
+    @queue.setter
+    def queue(self, value: Optional[pulumi.Input['JobQueueArgs']]):
+        pulumi.set(self, "queue", value)
+
+    @property
     @pulumi.getter(name="retryOnTimeout")
     def retry_on_timeout(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -758,9 +797,18 @@ class _JobState:
 
     @property
     @pulumi.getter
+    def trigger(self) -> Optional[pulumi.Input['JobTriggerArgs']]:
+        return pulumi.get(self, "trigger")
+
+    @trigger.setter
+    def trigger(self, value: Optional[pulumi.Input['JobTriggerArgs']]):
+        pulumi.set(self, "trigger", value)
+
+    @property
+    @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the Git repository to use.
+        string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         """
         return pulumi.get(self, "url")
 
@@ -803,6 +851,7 @@ class Job(pulumi.CustomResource):
                  notebook_task: Optional[pulumi.Input[pulumi.InputType['JobNotebookTaskArgs']]] = None,
                  pipeline_task: Optional[pulumi.Input[pulumi.InputType['JobPipelineTaskArgs']]] = None,
                  python_wheel_task: Optional[pulumi.Input[pulumi.InputType['JobPythonWheelTaskArgs']]] = None,
+                 queue: Optional[pulumi.Input[pulumi.InputType['JobQueueArgs']]] = None,
                  retry_on_timeout: Optional[pulumi.Input[bool]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['JobScheduleArgs']]] = None,
                  spark_jar_task: Optional[pulumi.Input[pulumi.InputType['JobSparkJarTaskArgs']]] = None,
@@ -811,6 +860,7 @@ class Job(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 trigger: Optional[pulumi.Input[pulumi.InputType['JobTriggerArgs']]] = None,
                  webhook_notifications: Optional[pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']]] = None,
                  __props__=None):
         """
@@ -886,6 +936,7 @@ class Job(pulumi.CustomResource):
                  notebook_task: Optional[pulumi.Input[pulumi.InputType['JobNotebookTaskArgs']]] = None,
                  pipeline_task: Optional[pulumi.Input[pulumi.InputType['JobPipelineTaskArgs']]] = None,
                  python_wheel_task: Optional[pulumi.Input[pulumi.InputType['JobPythonWheelTaskArgs']]] = None,
+                 queue: Optional[pulumi.Input[pulumi.InputType['JobQueueArgs']]] = None,
                  retry_on_timeout: Optional[pulumi.Input[bool]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['JobScheduleArgs']]] = None,
                  spark_jar_task: Optional[pulumi.Input[pulumi.InputType['JobSparkJarTaskArgs']]] = None,
@@ -894,6 +945,7 @@ class Job(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 trigger: Optional[pulumi.Input[pulumi.InputType['JobTriggerArgs']]] = None,
                  webhook_notifications: Optional[pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -921,6 +973,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["notebook_task"] = notebook_task
             __props__.__dict__["pipeline_task"] = pipeline_task
             __props__.__dict__["python_wheel_task"] = python_wheel_task
+            __props__.__dict__["queue"] = queue
             __props__.__dict__["retry_on_timeout"] = retry_on_timeout
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["spark_jar_task"] = spark_jar_task
@@ -929,6 +982,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tasks"] = tasks
             __props__.__dict__["timeout_seconds"] = timeout_seconds
+            __props__.__dict__["trigger"] = trigger
             __props__.__dict__["webhook_notifications"] = webhook_notifications
             __props__.__dict__["url"] = None
         super(Job, __self__).__init__(
@@ -958,6 +1012,7 @@ class Job(pulumi.CustomResource):
             notebook_task: Optional[pulumi.Input[pulumi.InputType['JobNotebookTaskArgs']]] = None,
             pipeline_task: Optional[pulumi.Input[pulumi.InputType['JobPipelineTaskArgs']]] = None,
             python_wheel_task: Optional[pulumi.Input[pulumi.InputType['JobPythonWheelTaskArgs']]] = None,
+            queue: Optional[pulumi.Input[pulumi.InputType['JobQueueArgs']]] = None,
             retry_on_timeout: Optional[pulumi.Input[bool]] = None,
             schedule: Optional[pulumi.Input[pulumi.InputType['JobScheduleArgs']]] = None,
             spark_jar_task: Optional[pulumi.Input[pulumi.InputType['JobSparkJarTaskArgs']]] = None,
@@ -966,6 +1021,7 @@ class Job(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]]] = None,
             timeout_seconds: Optional[pulumi.Input[int]] = None,
+            trigger: Optional[pulumi.Input[pulumi.InputType['JobTriggerArgs']]] = None,
             url: Optional[pulumi.Input[str]] = None,
             webhook_notifications: Optional[pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']]] = None) -> 'Job':
         """
@@ -988,7 +1044,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
         :param pulumi.Input[Mapping[str, Any]] tags: (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-        :param pulumi.Input[str] url: URL of the Git repository to use.
+        :param pulumi.Input[str] url: string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         :param pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1012,6 +1068,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["notebook_task"] = notebook_task
         __props__.__dict__["pipeline_task"] = pipeline_task
         __props__.__dict__["python_wheel_task"] = python_wheel_task
+        __props__.__dict__["queue"] = queue
         __props__.__dict__["retry_on_timeout"] = retry_on_timeout
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["spark_jar_task"] = spark_jar_task
@@ -1020,6 +1077,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tasks"] = tasks
         __props__.__dict__["timeout_seconds"] = timeout_seconds
+        __props__.__dict__["trigger"] = trigger
         __props__.__dict__["url"] = url
         __props__.__dict__["webhook_notifications"] = webhook_notifications
         return Job(resource_name, opts=opts, __props__=__props__)
@@ -1137,6 +1195,11 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "python_wheel_task")
 
     @property
+    @pulumi.getter
+    def queue(self) -> pulumi.Output[Optional['outputs.JobQueue']]:
+        return pulumi.get(self, "queue")
+
+    @property
     @pulumi.getter(name="retryOnTimeout")
     def retry_on_timeout(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1190,9 +1253,14 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def trigger(self) -> pulumi.Output[Optional['outputs.JobTrigger']]:
+        return pulumi.get(self, "trigger")
+
+    @property
+    @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        URL of the Git repository to use.
+        string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         """
         return pulumi.get(self, "url")
 

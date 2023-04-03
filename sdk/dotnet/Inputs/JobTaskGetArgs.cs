@@ -86,6 +86,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("retryOnTimeout")]
         public Input<bool>? RetryOnTimeout { get; set; }
 
+        [Input("runIf")]
+        public Input<string>? RunIf { get; set; }
+
         [Input("sparkJarTask")]
         public Input<Inputs.JobTaskSparkJarTaskGetArgs>? SparkJarTask { get; set; }
 

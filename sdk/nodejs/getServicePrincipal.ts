@@ -28,14 +28,14 @@ import * as utilities from "./utilities";
  *
  * The following resources are used in the same context:
  *
- * * End to end workspace management guide.
- * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
- * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
- * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
- * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
- * * databricks.GroupMember to attach users and groups as group members.
- * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
- * * databricksService principal to manage service principals
+ * - End to end workspace management guide.
+ * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+ * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+ * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+ * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+ * - databricks.GroupMember to attach users and groups as group members.
+ * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+ * - databricksService principal to manage service principals
  */
 export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalResult> {
     args = args || {};
@@ -143,14 +143,14 @@ export interface GetServicePrincipalResult {
  *
  * The following resources are used in the same context:
  *
- * * End to end workspace management guide.
- * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
- * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
- * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
- * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
- * * databricks.GroupMember to attach users and groups as group members.
- * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
- * * databricksService principal to manage service principals
+ * - End to end workspace management guide.
+ * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+ * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+ * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+ * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+ * - databricks.GroupMember to attach users and groups as group members.
+ * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+ * - databricksService principal to manage service principals
  */
 export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalResult> {
     return pulumi.output(args).apply((a: any) => getServicePrincipal(a, opts))

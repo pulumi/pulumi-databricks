@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *     id: __value,
  * }));
  * ```
- * ## Related Resources
+ * ## Related resources
  *
  * The following resources are often used in the same context:
  *
@@ -79,11 +79,11 @@ export interface GetSqlWarehouseArgs {
      */
     enablePhoton?: boolean;
     /**
-     * Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
      */
     enableServerlessCompute?: boolean;
     /**
-     * The id of the SQL warehouse
+     * The ID of the SQL warehouse
      */
     id: string;
     instanceProfileArn?: string;
@@ -144,7 +144,7 @@ export interface GetSqlWarehouseResult {
      */
     readonly enablePhoton: boolean;
     /**
-     * Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
      */
     readonly enableServerlessCompute: boolean;
     readonly id: string;
@@ -194,7 +194,7 @@ export interface GetSqlWarehouseResult {
  *     id: __value,
  * }));
  * ```
- * ## Related Resources
+ * ## Related resources
  *
  * The following resources are often used in the same context:
  *
@@ -233,11 +233,11 @@ export interface GetSqlWarehouseOutputArgs {
      */
     enablePhoton?: pulumi.Input<boolean>;
     /**
-     * Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
      */
     enableServerlessCompute?: pulumi.Input<boolean>;
     /**
-     * The id of the SQL warehouse
+     * The ID of the SQL warehouse
      */
     id: pulumi.Input<string>;
     instanceProfileArn?: pulumi.Input<string>;

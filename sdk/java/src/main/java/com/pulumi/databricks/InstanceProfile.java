@@ -212,9 +212,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * 
  * ## Usage with Databricks SQL serverless
  * 
- * When the instance profile ARN and its associated IAM role ARN don&#39;t match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified
+ * When the instance profile ARN and its associated IAM role ARN don&#39;t match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified.
  * ```java
  * package generated_program;
  * 

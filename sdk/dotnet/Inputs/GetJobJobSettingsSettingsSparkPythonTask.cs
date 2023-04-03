@@ -23,6 +23,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("pythonFile", required: true)]
         public string PythonFile { get; set; } = null!;
 
+        [Input("source")]
+        public string? Source { get; set; }
+
         public GetJobJobSettingsSettingsSparkPythonTaskArgs()
         {
         }

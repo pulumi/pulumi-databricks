@@ -184,6 +184,13 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.retryOnTimeout);
     }
 
+    @Import(name="runIf")
+    private @Nullable Output<String> runIf;
+
+    public Optional<Output<String>> runIf() {
+        return Optional.ofNullable(this.runIf);
+    }
+
     @Import(name="sparkJarTask")
     private @Nullable Output<JobTaskSparkJarTaskArgs> sparkJarTask;
 
@@ -251,6 +258,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.retryOnTimeout = $.retryOnTimeout;
+        this.runIf = $.runIf;
         this.sparkJarTask = $.sparkJarTask;
         this.sparkPythonTask = $.sparkPythonTask;
         this.sparkSubmitTask = $.sparkSubmitTask;
@@ -499,6 +507,15 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder retryOnTimeout(Boolean retryOnTimeout) {
             return retryOnTimeout(Output.of(retryOnTimeout));
+        }
+
+        public Builder runIf(@Nullable Output<String> runIf) {
+            $.runIf = runIf;
+            return this;
+        }
+
+        public Builder runIf(String runIf) {
+            return runIf(Output.of(runIf));
         }
 
         public Builder sparkJarTask(@Nullable Output<JobTaskSparkJarTaskArgs> sparkJarTask) {

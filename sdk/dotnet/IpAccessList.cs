@@ -37,6 +37,7 @@ namespace Pulumi.Databricks
     ///         ListType = "ALLOW",
     ///         IpAddresses = new[]
     ///         {
+    ///             "1.1.1.1",
     ///             "1.2.3.0/24",
     ///             "1.2.5.0/24",
     ///         },
@@ -79,7 +80,7 @@ namespace Pulumi.Databricks
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the group to have instance pool create privileges.
+        /// A string list of IP addresses and CIDR ranges.
         /// </summary>
         [Output("ipAddresses")]
         public Output<ImmutableArray<string>> IpAddresses { get; private set; } = null!;
@@ -91,7 +92,7 @@ namespace Pulumi.Databricks
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
-        /// Can only be "ALLOW" or "BLOCK"
+        /// Can only be "ALLOW" or "BLOCK".
         /// </summary>
         [Output("listType")]
         public Output<string> ListType { get; private set; } = null!;
@@ -152,7 +153,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _ipAddresses;
 
         /// <summary>
-        /// This is a field to allow the group to have instance pool create privileges.
+        /// A string list of IP addresses and CIDR ranges.
         /// </summary>
         public InputList<string> IpAddresses
         {
@@ -167,7 +168,7 @@ namespace Pulumi.Databricks
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// Can only be "ALLOW" or "BLOCK"
+        /// Can only be "ALLOW" or "BLOCK".
         /// </summary>
         [Input("listType", required: true)]
         public Input<string> ListType { get; set; } = null!;
@@ -190,7 +191,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _ipAddresses;
 
         /// <summary>
-        /// This is a field to allow the group to have instance pool create privileges.
+        /// A string list of IP addresses and CIDR ranges.
         /// </summary>
         public InputList<string> IpAddresses
         {
@@ -205,7 +206,7 @@ namespace Pulumi.Databricks
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// Can only be "ALLOW" or "BLOCK"
+        /// Can only be "ALLOW" or "BLOCK".
         /// </summary>
         [Input("listType")]
         public Input<string>? ListType { get; set; }

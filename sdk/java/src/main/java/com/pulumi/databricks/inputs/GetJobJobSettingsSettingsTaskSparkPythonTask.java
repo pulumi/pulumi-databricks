@@ -29,11 +29,19 @@ public final class GetJobJobSettingsSettingsTaskSparkPythonTask extends com.pulu
         return this.pythonFile;
     }
 
+    @Import(name="source")
+    private @Nullable String source;
+
+    public Optional<String> source() {
+        return Optional.ofNullable(this.source);
+    }
+
     private GetJobJobSettingsSettingsTaskSparkPythonTask() {}
 
     private GetJobJobSettingsSettingsTaskSparkPythonTask(GetJobJobSettingsSettingsTaskSparkPythonTask $) {
         this.parameters = $.parameters;
         this.pythonFile = $.pythonFile;
+        this.source = $.source;
     }
 
     public static Builder builder() {
@@ -65,6 +73,11 @@ public final class GetJobJobSettingsSettingsTaskSparkPythonTask extends com.pulu
 
         public Builder pythonFile(String pythonFile) {
             $.pythonFile = pythonFile;
+            return this;
+        }
+
+        public Builder source(@Nullable String source) {
+            $.source = source;
             return this;
         }
 

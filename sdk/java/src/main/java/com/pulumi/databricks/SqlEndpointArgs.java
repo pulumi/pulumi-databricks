@@ -21,14 +21,14 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
     public static final SqlEndpointArgs Empty = new SqlEndpointArgs();
 
     /**
-     * Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+     * Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
      * 
      */
     @Import(name="autoStopMins")
     private @Nullable Output<Integer> autoStopMins;
 
     /**
-     * @return Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+     * @return Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
      * 
      */
     public Optional<Output<Integer>> autoStopMins() {
@@ -96,14 +96,14 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
+     * Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
      * 
      */
     @Import(name="enableServerlessCompute")
     private @Nullable Output<Boolean> enableServerlessCompute;
 
     /**
-     * @return Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
+     * @return Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
      * 
      */
     public Optional<Output<Boolean>> enableServerlessCompute() {
@@ -133,14 +133,14 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum number of clusters available when a SQL endpoint is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+     * Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
      * 
      */
     @Import(name="maxNumClusters")
     private @Nullable Output<Integer> maxNumClusters;
 
     /**
-     * @return Maximum number of clusters available when a SQL endpoint is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+     * @return Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
      * 
      */
     public Optional<Output<Integer>> maxNumClusters() {
@@ -148,14 +148,14 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Minimum number of clusters available when a SQL endpoint is running. The default is `1`.
+     * Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
      * 
      */
     @Import(name="minNumClusters")
     private @Nullable Output<Integer> minNumClusters;
 
     /**
-     * @return Minimum number of clusters available when a SQL endpoint is running. The default is `1`.
+     * @return Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
      * 
      */
     public Optional<Output<Integer>> minNumClusters() {
@@ -237,14 +237,14 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+     * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
      * 
      */
     @Import(name="warehouseType")
     private @Nullable Output<String> warehouseType;
 
     /**
-     * @return [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
      * 
      */
     public Optional<Output<String>> warehouseType() {
@@ -292,7 +292,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoStopMins Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+         * @param autoStopMins Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoStopMins Time in minutes until an idle SQL endpoint terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
+         * @param autoStopMins Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableServerlessCompute Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
+         * @param enableServerlessCompute Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableServerlessCompute Whether this SQL endpoint is a Serverless endpoint. To use a Serverless SQL endpoint, you must enable Serverless SQL endpoints for the workspace.
+         * @param enableServerlessCompute Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxNumClusters Maximum number of clusters available when a SQL endpoint is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+         * @param maxNumClusters Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxNumClusters Maximum number of clusters available when a SQL endpoint is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
+         * @param maxNumClusters Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minNumClusters Minimum number of clusters available when a SQL endpoint is running. The default is `1`.
+         * @param minNumClusters Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minNumClusters Minimum number of clusters available when a SQL endpoint is running. The default is `1`.
+         * @param minNumClusters Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
          * 
          * @return builder
          * 
@@ -592,7 +592,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warehouseType [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+         * @param warehouseType SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
          * 
          * @return builder
          * 
@@ -603,7 +603,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warehouseType [SQL Warehouse Type](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless): `PRO` or `CLASSIC` (default).  If Serverless SQL is enabled, you can only specify `PRO`.
+         * @param warehouseType SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
          * 
          * @return builder
          * 

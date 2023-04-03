@@ -7,12 +7,14 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsTaskSparkPythonTask {
     private @Nullable List<String> parameters;
     private String pythonFile;
+    private @Nullable String source;
 
     private GetJobJobSettingsSettingsTaskSparkPythonTask() {}
     public List<String> parameters() {
@@ -20,6 +22,9 @@ public final class GetJobJobSettingsSettingsTaskSparkPythonTask {
     }
     public String pythonFile() {
         return this.pythonFile;
+    }
+    public Optional<String> source() {
+        return Optional.ofNullable(this.source);
     }
 
     public static Builder builder() {
@@ -33,11 +38,13 @@ public final class GetJobJobSettingsSettingsTaskSparkPythonTask {
     public static final class Builder {
         private @Nullable List<String> parameters;
         private String pythonFile;
+        private @Nullable String source;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskSparkPythonTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameters = defaults.parameters;
     	      this.pythonFile = defaults.pythonFile;
+    	      this.source = defaults.source;
         }
 
         @CustomType.Setter
@@ -53,10 +60,16 @@ public final class GetJobJobSettingsSettingsTaskSparkPythonTask {
             this.pythonFile = Objects.requireNonNull(pythonFile);
             return this;
         }
+        @CustomType.Setter
+        public Builder source(@Nullable String source) {
+            this.source = source;
+            return this;
+        }
         public GetJobJobSettingsSettingsTaskSparkPythonTask build() {
             final var o = new GetJobJobSettingsSettingsTaskSparkPythonTask();
             o.parameters = parameters;
             o.pythonFile = pythonFile;
+            o.source = source;
             return o;
         }
     }

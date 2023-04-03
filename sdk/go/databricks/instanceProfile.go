@@ -216,9 +216,10 @@ import (
 //	}
 //
 // ```
+//
 // ## Usage with Databricks SQL serverless
 //
-// When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iamRoleArn` parameter can be specified
+// When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iamRoleArn` parameter can be specified.
 //
 // ```go
 // package main

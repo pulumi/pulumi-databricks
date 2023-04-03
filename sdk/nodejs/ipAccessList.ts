@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  *     label: "allow_in",
  *     listType: "ALLOW",
  *     ipAddresses: [
+ *         "1.1.1.1",
  *         "1.2.3.0/24",
  *         "1.2.5.0/24",
  *     ],
@@ -81,7 +82,7 @@ export class IpAccessList extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * This is a field to allow the group to have instance pool create privileges.
+     * A string list of IP addresses and CIDR ranges.
      */
     public readonly ipAddresses!: pulumi.Output<string[]>;
     /**
@@ -89,7 +90,7 @@ export class IpAccessList extends pulumi.CustomResource {
      */
     public readonly label!: pulumi.Output<string>;
     /**
-     * Can only be "ALLOW" or "BLOCK"
+     * Can only be "ALLOW" or "BLOCK".
      */
     public readonly listType!: pulumi.Output<string>;
 
@@ -140,7 +141,7 @@ export interface IpAccessListState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the group to have instance pool create privileges.
+     * A string list of IP addresses and CIDR ranges.
      */
     ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -148,7 +149,7 @@ export interface IpAccessListState {
      */
     label?: pulumi.Input<string>;
     /**
-     * Can only be "ALLOW" or "BLOCK"
+     * Can only be "ALLOW" or "BLOCK".
      */
     listType?: pulumi.Input<string>;
 }
@@ -162,7 +163,7 @@ export interface IpAccessListArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the group to have instance pool create privileges.
+     * A string list of IP addresses and CIDR ranges.
      */
     ipAddresses: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -170,7 +171,7 @@ export interface IpAccessListArgs {
      */
     label: pulumi.Input<string>;
     /**
-     * Can only be "ALLOW" or "BLOCK"
+     * Can only be "ALLOW" or "BLOCK".
      */
     listType: pulumi.Input<string>;
 }

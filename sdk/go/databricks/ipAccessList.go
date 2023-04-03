@@ -41,6 +41,7 @@ import (
 //				Label:    pulumi.String("allow_in"),
 //				ListType: pulumi.String("ALLOW"),
 //				IpAddresses: pulumi.StringArray{
+//					pulumi.String("1.1.1.1"),
 //					pulumi.String("1.2.3.0/24"),
 //					pulumi.String("1.2.5.0/24"),
 //				},
@@ -80,11 +81,11 @@ type IpAccessList struct {
 
 	// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// This is a field to allow the group to have instance pool create privileges.
+	// A string list of IP addresses and CIDR ranges.
 	IpAddresses pulumi.StringArrayOutput `pulumi:"ipAddresses"`
 	// This is the display name for the given IP ACL List.
 	Label pulumi.StringOutput `pulumi:"label"`
-	// Can only be "ALLOW" or "BLOCK"
+	// Can only be "ALLOW" or "BLOCK".
 	ListType pulumi.StringOutput `pulumi:"listType"`
 }
 
@@ -128,22 +129,22 @@ func GetIpAccessList(ctx *pulumi.Context,
 type ipAccessListState struct {
 	// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
 	Enabled *bool `pulumi:"enabled"`
-	// This is a field to allow the group to have instance pool create privileges.
+	// A string list of IP addresses and CIDR ranges.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// This is the display name for the given IP ACL List.
 	Label *string `pulumi:"label"`
-	// Can only be "ALLOW" or "BLOCK"
+	// Can only be "ALLOW" or "BLOCK".
 	ListType *string `pulumi:"listType"`
 }
 
 type IpAccessListState struct {
 	// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
 	Enabled pulumi.BoolPtrInput
-	// This is a field to allow the group to have instance pool create privileges.
+	// A string list of IP addresses and CIDR ranges.
 	IpAddresses pulumi.StringArrayInput
 	// This is the display name for the given IP ACL List.
 	Label pulumi.StringPtrInput
-	// Can only be "ALLOW" or "BLOCK"
+	// Can only be "ALLOW" or "BLOCK".
 	ListType pulumi.StringPtrInput
 }
 
@@ -154,11 +155,11 @@ func (IpAccessListState) ElementType() reflect.Type {
 type ipAccessListArgs struct {
 	// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
 	Enabled *bool `pulumi:"enabled"`
-	// This is a field to allow the group to have instance pool create privileges.
+	// A string list of IP addresses and CIDR ranges.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// This is the display name for the given IP ACL List.
 	Label string `pulumi:"label"`
-	// Can only be "ALLOW" or "BLOCK"
+	// Can only be "ALLOW" or "BLOCK".
 	ListType string `pulumi:"listType"`
 }
 
@@ -166,11 +167,11 @@ type ipAccessListArgs struct {
 type IpAccessListArgs struct {
 	// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
 	Enabled pulumi.BoolPtrInput
-	// This is a field to allow the group to have instance pool create privileges.
+	// A string list of IP addresses and CIDR ranges.
 	IpAddresses pulumi.StringArrayInput
 	// This is the display name for the given IP ACL List.
 	Label pulumi.StringInput
-	// Can only be "ALLOW" or "BLOCK"
+	// Can only be "ALLOW" or "BLOCK".
 	ListType pulumi.StringInput
 }
 
@@ -266,7 +267,7 @@ func (o IpAccessListOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IpAccessList) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// This is a field to allow the group to have instance pool create privileges.
+// A string list of IP addresses and CIDR ranges.
 func (o IpAccessListOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IpAccessList) pulumi.StringArrayOutput { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }
@@ -276,7 +277,7 @@ func (o IpAccessListOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpAccessList) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
 }
 
-// Can only be "ALLOW" or "BLOCK"
+// Can only be "ALLOW" or "BLOCK".
 func (o IpAccessListOutput) ListType() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpAccessList) pulumi.StringOutput { return v.ListType }).(pulumi.StringOutput)
 }

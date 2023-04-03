@@ -68,6 +68,7 @@ public final class JobTask {
      * 
      */
     private @Nullable Boolean retryOnTimeout;
+    private @Nullable String runIf;
     private @Nullable JobTaskSparkJarTask sparkJarTask;
     private @Nullable JobTaskSparkPythonTask sparkPythonTask;
     private @Nullable JobTaskSparkSubmitTask sparkSubmitTask;
@@ -150,6 +151,9 @@ public final class JobTask {
     public Optional<Boolean> retryOnTimeout() {
         return Optional.ofNullable(this.retryOnTimeout);
     }
+    public Optional<String> runIf() {
+        return Optional.ofNullable(this.runIf);
+    }
     public Optional<JobTaskSparkJarTask> sparkJarTask() {
         return Optional.ofNullable(this.sparkJarTask);
     }
@@ -196,6 +200,7 @@ public final class JobTask {
         private @Nullable JobTaskPipelineTask pipelineTask;
         private @Nullable JobTaskPythonWheelTask pythonWheelTask;
         private @Nullable Boolean retryOnTimeout;
+        private @Nullable String runIf;
         private @Nullable JobTaskSparkJarTask sparkJarTask;
         private @Nullable JobTaskSparkPythonTask sparkPythonTask;
         private @Nullable JobTaskSparkSubmitTask sparkSubmitTask;
@@ -219,6 +224,7 @@ public final class JobTask {
     	      this.pipelineTask = defaults.pipelineTask;
     	      this.pythonWheelTask = defaults.pythonWheelTask;
     	      this.retryOnTimeout = defaults.retryOnTimeout;
+    	      this.runIf = defaults.runIf;
     	      this.sparkJarTask = defaults.sparkJarTask;
     	      this.sparkPythonTask = defaults.sparkPythonTask;
     	      this.sparkSubmitTask = defaults.sparkSubmitTask;
@@ -304,6 +310,11 @@ public final class JobTask {
             return this;
         }
         @CustomType.Setter
+        public Builder runIf(@Nullable String runIf) {
+            this.runIf = runIf;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sparkJarTask(@Nullable JobTaskSparkJarTask sparkJarTask) {
             this.sparkJarTask = sparkJarTask;
             return this;
@@ -349,6 +360,7 @@ public final class JobTask {
             o.pipelineTask = pipelineTask;
             o.pythonWheelTask = pythonWheelTask;
             o.retryOnTimeout = retryOnTimeout;
+            o.runIf = runIf;
             o.sparkJarTask = sparkJarTask;
             o.sparkPythonTask = sparkPythonTask;
             o.sparkSubmitTask = sparkSubmitTask;

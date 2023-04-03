@@ -20,9 +20,9 @@ class IpAccessListArgs:
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a IpAccessList resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: This is a field to allow the group to have instance pool create privileges.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: A string list of IP addresses and CIDR ranges.
         :param pulumi.Input[str] label: This is the display name for the given IP ACL List.
-        :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK"
+        :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK".
         :param pulumi.Input[bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
         """
         pulumi.set(__self__, "ip_addresses", ip_addresses)
@@ -35,7 +35,7 @@ class IpAccessListArgs:
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        This is a field to allow the group to have instance pool create privileges.
+        A string list of IP addresses and CIDR ranges.
         """
         return pulumi.get(self, "ip_addresses")
 
@@ -59,7 +59,7 @@ class IpAccessListArgs:
     @pulumi.getter(name="listType")
     def list_type(self) -> pulumi.Input[str]:
         """
-        Can only be "ALLOW" or "BLOCK"
+        Can only be "ALLOW" or "BLOCK".
         """
         return pulumi.get(self, "list_type")
 
@@ -90,9 +90,9 @@ class _IpAccessListState:
         """
         Input properties used for looking up and filtering IpAccessList resources.
         :param pulumi.Input[bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: This is a field to allow the group to have instance pool create privileges.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: A string list of IP addresses and CIDR ranges.
         :param pulumi.Input[str] label: This is the display name for the given IP ACL List.
-        :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK"
+        :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK".
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -119,7 +119,7 @@ class _IpAccessListState:
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        This is a field to allow the group to have instance pool create privileges.
+        A string list of IP addresses and CIDR ranges.
         """
         return pulumi.get(self, "ip_addresses")
 
@@ -143,7 +143,7 @@ class _IpAccessListState:
     @pulumi.getter(name="listType")
     def list_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Can only be "ALLOW" or "BLOCK"
+        Can only be "ALLOW" or "BLOCK".
         """
         return pulumi.get(self, "list_type")
 
@@ -180,6 +180,7 @@ class IpAccessList(pulumi.CustomResource):
             label="allow_in",
             list_type="ALLOW",
             ip_addresses=[
+                "1.1.1.1",
                 "1.2.3.0/24",
                 "1.2.5.0/24",
             ],
@@ -207,9 +208,9 @@ class IpAccessList(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: This is a field to allow the group to have instance pool create privileges.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: A string list of IP addresses and CIDR ranges.
         :param pulumi.Input[str] label: This is the display name for the given IP ACL List.
-        :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK"
+        :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK".
         """
         ...
     @overload
@@ -235,6 +236,7 @@ class IpAccessList(pulumi.CustomResource):
             label="allow_in",
             list_type="ALLOW",
             ip_addresses=[
+                "1.1.1.1",
                 "1.2.3.0/24",
                 "1.2.5.0/24",
             ],
@@ -319,9 +321,9 @@ class IpAccessList(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: This is a field to allow the group to have instance pool create privileges.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: A string list of IP addresses and CIDR ranges.
         :param pulumi.Input[str] label: This is the display name for the given IP ACL List.
-        :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK"
+        :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -345,7 +347,7 @@ class IpAccessList(pulumi.CustomResource):
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> pulumi.Output[Sequence[str]]:
         """
-        This is a field to allow the group to have instance pool create privileges.
+        A string list of IP addresses and CIDR ranges.
         """
         return pulumi.get(self, "ip_addresses")
 
@@ -361,7 +363,7 @@ class IpAccessList(pulumi.CustomResource):
     @pulumi.getter(name="listType")
     def list_type(self) -> pulumi.Output[str]:
         """
-        Can only be "ALLOW" or "BLOCK"
+        Can only be "ALLOW" or "BLOCK".
         """
         return pulumi.get(self, "list_type")
 

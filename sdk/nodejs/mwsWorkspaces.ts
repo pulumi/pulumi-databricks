@@ -95,6 +95,9 @@ export class MwsWorkspaces extends pulumi.CustomResource {
     public readonly storageConfigurationId!: pulumi.Output<string | undefined>;
     public readonly storageCustomerManagedKeyId!: pulumi.Output<string | undefined>;
     public readonly token!: pulumi.Output<outputs.MwsWorkspacesToken | undefined>;
+    /**
+     * (String) workspace id
+     */
     public readonly workspaceId!: pulumi.Output<number>;
     /**
      * name of the workspace, will appear on UI.
@@ -252,6 +255,9 @@ export interface MwsWorkspacesState {
     storageConfigurationId?: pulumi.Input<string>;
     storageCustomerManagedKeyId?: pulumi.Input<string>;
     token?: pulumi.Input<inputs.MwsWorkspacesToken>;
+    /**
+     * (String) workspace id
+     */
     workspaceId?: pulumi.Input<number>;
     /**
      * name of the workspace, will appear on UI.
@@ -331,6 +337,9 @@ export interface MwsWorkspacesArgs {
     storageConfigurationId?: pulumi.Input<string>;
     storageCustomerManagedKeyId?: pulumi.Input<string>;
     token?: pulumi.Input<inputs.MwsWorkspacesToken>;
+    /**
+     * (String) workspace id
+     */
     workspaceId?: pulumi.Input<number>;
     /**
      * name of the workspace, will appear on UI.

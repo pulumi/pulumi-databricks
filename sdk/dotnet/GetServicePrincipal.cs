@@ -49,14 +49,14 @@ namespace Pulumi.Databricks
         /// 
         /// The following resources are used in the same context:
         /// 
-        /// * End to end workspace management guide.
-        /// * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-        /// * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-        /// * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-        /// * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-        /// * databricks.GroupMember to attach users and groups as group members.
-        /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        /// * databricks_service principal to manage service principals
+        /// - End to end workspace management guide.
+        /// - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+        /// - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        /// - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+        /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+        /// - databricks.GroupMember to attach users and groups as group members.
+        /// - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+        /// - databricks_service principal to manage service principals
         /// </summary>
         public static Task<GetServicePrincipalResult> InvokeAsync(GetServicePrincipalArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicePrincipalResult>("databricks:index/getServicePrincipal:getServicePrincipal", args ?? new GetServicePrincipalArgs(), options.WithDefaults());
@@ -99,14 +99,14 @@ namespace Pulumi.Databricks
         /// 
         /// The following resources are used in the same context:
         /// 
-        /// * End to end workspace management guide.
-        /// * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-        /// * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-        /// * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-        /// * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-        /// * databricks.GroupMember to attach users and groups as group members.
-        /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        /// * databricks_service principal to manage service principals
+        /// - End to end workspace management guide.
+        /// - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+        /// - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        /// - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+        /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+        /// - databricks.GroupMember to attach users and groups as group members.
+        /// - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+        /// - databricks_service principal to manage service principals
         /// </summary>
         public static Output<GetServicePrincipalResult> Invoke(GetServicePrincipalInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalResult>("databricks:index/getServicePrincipal:getServicePrincipal", args ?? new GetServicePrincipalInvokeArgs(), options.WithDefaults());

@@ -18,18 +18,25 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Parameters;
         /// <summary>
-        /// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`) and workspace paths are supported. For python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. This field is required.
+        /// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
         /// </summary>
         public readonly string PythonFile;
+        /// <summary>
+        /// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        /// </summary>
+        public readonly string? Source;
 
         [OutputConstructor]
         private JobTaskSparkPythonTask(
             ImmutableArray<string> parameters,
 
-            string pythonFile)
+            string pythonFile,
+
+            string? source)
         {
             Parameters = parameters;
             PythonFile = pythonFile;
+            Source = source;
         }
     }
 }

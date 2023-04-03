@@ -40,7 +40,7 @@ public final class GetSqlWarehouseResult {
      */
     private Boolean enablePhoton;
     /**
-     * @return Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+     * @return Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
      * 
      */
     private Boolean enableServerlessCompute;
@@ -121,7 +121,7 @@ public final class GetSqlWarehouseResult {
         return this.enablePhoton;
     }
     /**
-     * @return Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+     * @return Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
      * 
      */
     public Boolean enableServerlessCompute() {

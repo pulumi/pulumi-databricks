@@ -95,7 +95,7 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
      */
     public readonly dataAccessConfig!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * Allows the possibility to create Serverless SQL warehouses. Default value: false.
+     * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      */
     public readonly enableServerlessCompute!: pulumi.Output<boolean | undefined>;
     /**
@@ -151,7 +151,7 @@ export interface SqlGlobalConfigState {
      */
     dataAccessConfig?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Allows the possibility to create Serverless SQL warehouses. Default value: false.
+     * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      */
     enableServerlessCompute?: pulumi.Input<boolean>;
     /**
@@ -177,7 +177,7 @@ export interface SqlGlobalConfigArgs {
      */
     dataAccessConfig?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Allows the possibility to create Serverless SQL warehouses. Default value: false.
+     * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      */
     enableServerlessCompute?: pulumi.Input<boolean>;
     /**
