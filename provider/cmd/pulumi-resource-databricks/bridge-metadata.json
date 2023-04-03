@@ -1,0 +1,305 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "databricks_catalog": {
+                "current": "databricks:index/catalog:Catalog"
+            },
+            "databricks_cluster": {
+                "current": "databricks:index/cluster:Cluster"
+            },
+            "databricks_cluster_policy": {
+                "current": "databricks:index/clusterPolicy:ClusterPolicy"
+            },
+            "databricks_dbfs_file": {
+                "current": "databricks:index/dbfsFile:DbfsFile"
+            },
+            "databricks_directory": {
+                "current": "databricks:index/directory:Directory"
+            },
+            "databricks_entitlements": {
+                "current": "databricks:index/entitlements:Entitlements"
+            },
+            "databricks_external_location": {
+                "current": "databricks:index/externalLocation:ExternalLocation"
+            },
+            "databricks_git_credential": {
+                "current": "databricks:index/gitCredential:GitCredential"
+            },
+            "databricks_global_init_script": {
+                "current": "databricks:index/globalInitScript:GlobalInitScript"
+            },
+            "databricks_grants": {
+                "current": "databricks:index/grants:Grants"
+            },
+            "databricks_group": {
+                "current": "databricks:index/group:Group"
+            },
+            "databricks_group_instance_profile": {
+                "current": "databricks:index/groupInstanceProfile:GroupInstanceProfile"
+            },
+            "databricks_group_member": {
+                "current": "databricks:index/groupMember:GroupMember"
+            },
+            "databricks_group_role": {
+                "current": "databricks:index/groupRole:GroupRole"
+            },
+            "databricks_instance_pool": {
+                "current": "databricks:index/instancePool:InstancePool"
+            },
+            "databricks_instance_profile": {
+                "current": "databricks:index/instanceProfile:InstanceProfile"
+            },
+            "databricks_ip_access_list": {
+                "current": "databricks:index/ipAccessList:IpAccessList"
+            },
+            "databricks_job": {
+                "current": "databricks:index/job:Job"
+            },
+            "databricks_library": {
+                "current": "databricks:index/library:Library"
+            },
+            "databricks_metastore": {
+                "current": "databricks:index/metastore:Metastore"
+            },
+            "databricks_metastore_assignment": {
+                "current": "databricks:index/metastoreAssignment:MetastoreAssignment"
+            },
+            "databricks_metastore_data_access": {
+                "current": "databricks:index/metastoreDataAccess:MetastoreDataAccess"
+            },
+            "databricks_mlflow_experiment": {
+                "current": "databricks:index/mlflowExperiment:MlflowExperiment"
+            },
+            "databricks_mlflow_model": {
+                "current": "databricks:index/mlflowModel:MlflowModel"
+            },
+            "databricks_mlflow_webhook": {
+                "current": "databricks:index/mlflowWebhook:MlflowWebhook"
+            },
+            "databricks_model_serving": {
+                "current": "databricks:index/modelServing:ModelServing"
+            },
+            "databricks_mount": {
+                "current": "databricks:index/mount:Mount"
+            },
+            "databricks_mws_credentials": {
+                "current": "databricks:index/mwsCredentials:MwsCredentials"
+            },
+            "databricks_mws_customer_managed_keys": {
+                "current": "databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys"
+            },
+            "databricks_mws_log_delivery": {
+                "current": "databricks:index/mwsLogDelivery:MwsLogDelivery"
+            },
+            "databricks_mws_networks": {
+                "current": "databricks:index/mwsNetworks:MwsNetworks"
+            },
+            "databricks_mws_permission_assignment": {
+                "current": "databricks:index/mwsPermissionAssignment:MwsPermissionAssignment"
+            },
+            "databricks_mws_private_access_settings": {
+                "current": "databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings"
+            },
+            "databricks_mws_storage_configurations": {
+                "current": "databricks:index/mwsStorageConfigurations:MwsStorageConfigurations"
+            },
+            "databricks_mws_vpc_endpoint": {
+                "current": "databricks:index/mwsVpcEndpoint:MwsVpcEndpoint"
+            },
+            "databricks_mws_workspaces": {
+                "current": "databricks:index/mwsWorkspaces:MwsWorkspaces"
+            },
+            "databricks_notebook": {
+                "current": "databricks:index/notebook:Notebook"
+            },
+            "databricks_obo_token": {
+                "current": "databricks:index/oboToken:OboToken"
+            },
+            "databricks_permission_assignment": {
+                "current": "databricks:index/permissionAssignment:PermissionAssignment"
+            },
+            "databricks_permissions": {
+                "current": "databricks:index/permissions:Permissions"
+            },
+            "databricks_pipeline": {
+                "current": "databricks:index/pipeline:Pipeline"
+            },
+            "databricks_provider": {
+                "current": "databricks:index/metastoreProvider:MetastoreProvider"
+            },
+            "databricks_recipient": {
+                "current": "databricks:index/recipient:Recipient"
+            },
+            "databricks_repo": {
+                "current": "databricks:index/repo:Repo"
+            },
+            "databricks_schema": {
+                "current": "databricks:index/schema:Schema"
+            },
+            "databricks_secret": {
+                "current": "databricks:index/secret:Secret"
+            },
+            "databricks_secret_acl": {
+                "current": "databricks:index/secretAcl:SecretAcl"
+            },
+            "databricks_secret_scope": {
+                "current": "databricks:index/secretScope:SecretScope"
+            },
+            "databricks_service_principal": {
+                "current": "databricks:index/servicePrincipal:ServicePrincipal"
+            },
+            "databricks_service_principal_role": {
+                "current": "databricks:index/servicePrincipalRole:ServicePrincipalRole"
+            },
+            "databricks_service_principal_secret": {
+                "current": "databricks:index/servicePrincipalSecret:ServicePrincipalSecret"
+            },
+            "databricks_share": {
+                "current": "databricks:index/share:Share"
+            },
+            "databricks_sql_alert": {
+                "current": "databricks:index/sqlAlert:SqlAlert"
+            },
+            "databricks_sql_dashboard": {
+                "current": "databricks:index/sqlDashboard:SqlDashboard"
+            },
+            "databricks_sql_endpoint": {
+                "current": "databricks:index/sqlEndpoint:SqlEndpoint"
+            },
+            "databricks_sql_global_config": {
+                "current": "databricks:index/sqlGlobalConfig:SqlGlobalConfig"
+            },
+            "databricks_sql_permissions": {
+                "current": "databricks:index/sqlPermissions:SqlPermissions"
+            },
+            "databricks_sql_query": {
+                "current": "databricks:index/sqlQuery:SqlQuery"
+            },
+            "databricks_sql_visualization": {
+                "current": "databricks:index/sqlVisualization:SqlVisualization"
+            },
+            "databricks_sql_widget": {
+                "current": "databricks:index/sqlWidget:SqlWidget"
+            },
+            "databricks_storage_credential": {
+                "current": "databricks:index/storageCredential:StorageCredential"
+            },
+            "databricks_table": {
+                "current": "databricks:index/table:Table"
+            },
+            "databricks_token": {
+                "current": "databricks:index/token:Token"
+            },
+            "databricks_user": {
+                "current": "databricks:index/user:User"
+            },
+            "databricks_user_instance_profile": {
+                "current": "databricks:index/userInstanceProfile:UserInstanceProfile"
+            },
+            "databricks_user_role": {
+                "current": "databricks:index/userRole:UserRole"
+            },
+            "databricks_workspace_conf": {
+                "current": "databricks:index/workspaceConf:WorkspaceConf"
+            }
+        },
+        "datasources": {
+            "databricks_aws_assume_role_policy": {
+                "current": "databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy"
+            },
+            "databricks_aws_bucket_policy": {
+                "current": "databricks:index/getAwsBucketPolicy:getAwsBucketPolicy"
+            },
+            "databricks_aws_crossaccount_policy": {
+                "current": "databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy"
+            },
+            "databricks_catalogs": {
+                "current": "databricks:index/getCatalogs:getCatalogs"
+            },
+            "databricks_cluster": {
+                "current": "databricks:index/getCluster:getCluster"
+            },
+            "databricks_cluster_policy": {
+                "current": "databricks:index/getClusterPolicy:getClusterPolicy"
+            },
+            "databricks_clusters": {
+                "current": "databricks:index/getClusters:getClusters"
+            },
+            "databricks_current_user": {
+                "current": "databricks:index/getCurrentUser:getCurrentUser"
+            },
+            "databricks_dbfs_file": {
+                "current": "databricks:index/getDbfsFile:getDbfsFile"
+            },
+            "databricks_dbfs_file_paths": {
+                "current": "databricks:index/getDbfsFilePaths:getDbfsFilePaths"
+            },
+            "databricks_directory": {
+                "current": "databricks:index/getDirectory:getDirectory"
+            },
+            "databricks_group": {
+                "current": "databricks:index/getGroup:getGroup"
+            },
+            "databricks_instance_pool": {
+                "current": "databricks:index/getInstancePool:getInstancePool"
+            },
+            "databricks_job": {
+                "current": "databricks:index/getJob:getJob"
+            },
+            "databricks_jobs": {
+                "current": "databricks:index/getJobs:getJobs"
+            },
+            "databricks_mws_credentials": {
+                "current": "databricks:index/getMwsCredentials:getMwsCredentials"
+            },
+            "databricks_mws_workspaces": {
+                "current": "databricks:index/getMwsWorkspaces:getMwsWorkspaces"
+            },
+            "databricks_node_type": {
+                "current": "databricks:index/getNodeType:getNodeType"
+            },
+            "databricks_notebook": {
+                "current": "databricks:index/getNotebook:getNotebook"
+            },
+            "databricks_notebook_paths": {
+                "current": "databricks:index/getNotebookPaths:getNotebookPaths"
+            },
+            "databricks_schemas": {
+                "current": "databricks:index/getSchemas:getSchemas"
+            },
+            "databricks_service_principal": {
+                "current": "databricks:index/getServicePrincipal:getServicePrincipal"
+            },
+            "databricks_service_principals": {
+                "current": "databricks:index/getServicePrincipals:getServicePrincipals"
+            },
+            "databricks_share": {
+                "current": "databricks:index/getShare:getShare"
+            },
+            "databricks_shares": {
+                "current": "databricks:index/getShares:getShares"
+            },
+            "databricks_spark_version": {
+                "current": "databricks:index/getSparkVersion:getSparkVersion"
+            },
+            "databricks_sql_warehouse": {
+                "current": "databricks:index/getSqlWarehouse:getSqlWarehouse"
+            },
+            "databricks_sql_warehouses": {
+                "current": "databricks:index/getSqlWarehouses:getSqlWarehouses"
+            },
+            "databricks_tables": {
+                "current": "databricks:index/getTables:getTables"
+            },
+            "databricks_user": {
+                "current": "databricks:index/getUser:getUser"
+            },
+            "databricks_views": {
+                "current": "databricks:index/getViews:getViews"
+            },
+            "databricks_zones": {
+                "current": "databricks:index/getZones:getZones"
+            }
+        }
+    }
+}
