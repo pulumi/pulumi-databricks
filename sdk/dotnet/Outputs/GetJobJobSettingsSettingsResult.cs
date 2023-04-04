@@ -32,6 +32,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetJobJobSettingsSettingsNotebookTaskResult? NotebookTask;
         public readonly Outputs.GetJobJobSettingsSettingsPipelineTaskResult? PipelineTask;
         public readonly Outputs.GetJobJobSettingsSettingsPythonWheelTaskResult? PythonWheelTask;
+        public readonly Outputs.GetJobJobSettingsSettingsQueueResult? Queue;
         public readonly bool? RetryOnTimeout;
         public readonly Outputs.GetJobJobSettingsSettingsScheduleResult? Schedule;
         public readonly Outputs.GetJobJobSettingsSettingsSparkJarTaskResult? SparkJarTask;
@@ -40,6 +41,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableDictionary<string, object>? Tags;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskResult> Tasks;
         public readonly int? TimeoutSeconds;
+        public readonly Outputs.GetJobJobSettingsSettingsTriggerResult? Trigger;
         public readonly Outputs.GetJobJobSettingsSettingsWebhookNotificationsResult? WebhookNotifications;
 
         [OutputConstructor]
@@ -76,6 +78,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsPythonWheelTaskResult? pythonWheelTask,
 
+            Outputs.GetJobJobSettingsSettingsQueueResult? queue,
+
             bool? retryOnTimeout,
 
             Outputs.GetJobJobSettingsSettingsScheduleResult? schedule,
@@ -91,6 +95,8 @@ namespace Pulumi.Databricks.Outputs
             ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskResult> tasks,
 
             int? timeoutSeconds,
+
+            Outputs.GetJobJobSettingsSettingsTriggerResult? trigger,
 
             Outputs.GetJobJobSettingsSettingsWebhookNotificationsResult? webhookNotifications)
         {
@@ -110,6 +116,7 @@ namespace Pulumi.Databricks.Outputs
             NotebookTask = notebookTask;
             PipelineTask = pipelineTask;
             PythonWheelTask = pythonWheelTask;
+            Queue = queue;
             RetryOnTimeout = retryOnTimeout;
             Schedule = schedule;
             SparkJarTask = sparkJarTask;
@@ -118,6 +125,7 @@ namespace Pulumi.Databricks.Outputs
             Tags = tags;
             Tasks = tasks;
             TimeoutSeconds = timeoutSeconds;
+            Trigger = trigger;
             WebhookNotifications = webhookNotifications;
         }
     }

@@ -119,7 +119,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         * End to end workspace management guide.
-          *_get_aws_bucket_policy_data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+        * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
         * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
         * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
         * Group data to retrieve information about Group members, entitlements and instance profiles.
@@ -165,7 +165,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         * End to end workspace management guide.
-          *_get_aws_bucket_policy_data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+        * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
         * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
         * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
         * Group data to retrieve information about Group members, entitlements and instance profiles.

@@ -73,6 +73,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("pythonWheelTask")]
         public Inputs.GetJobJobSettingsSettingsPythonWheelTaskArgs? PythonWheelTask { get; set; }
 
+        [Input("queue")]
+        public Inputs.GetJobJobSettingsSettingsQueueArgs? Queue { get; set; }
+
         [Input("retryOnTimeout")]
         public bool? RetryOnTimeout { get; set; }
 
@@ -106,6 +109,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("timeoutSeconds")]
         public int? TimeoutSeconds { get; set; }
+
+        [Input("trigger")]
+        public Inputs.GetJobJobSettingsSettingsTriggerArgs? Trigger { get; set; }
 
         [Input("webhookNotifications")]
         public Inputs.GetJobJobSettingsSettingsWebhookNotificationsArgs? WebhookNotifications { get; set; }

@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *             .label(&#34;allow_in&#34;)
  *             .listType(&#34;ALLOW&#34;)
  *             .ipAddresses(            
+ *                 &#34;1.1.1.1&#34;,
  *                 &#34;1.2.3.0/24&#34;,
  *                 &#34;1.2.5.0/24&#34;)
  *             .build(), CustomResourceOptions.builder()
@@ -100,14 +101,14 @@ public class IpAccessList extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabled);
     }
     /**
-     * This is a field to allow the group to have instance pool create privileges.
+     * A string list of IP addresses and CIDR ranges.
      * 
      */
     @Export(name="ipAddresses", type=List.class, parameters={String.class})
     private Output<List<String>> ipAddresses;
 
     /**
-     * @return This is a field to allow the group to have instance pool create privileges.
+     * @return A string list of IP addresses and CIDR ranges.
      * 
      */
     public Output<List<String>> ipAddresses() {
@@ -128,14 +129,14 @@ public class IpAccessList extends com.pulumi.resources.CustomResource {
         return this.label;
     }
     /**
-     * Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;
+     * Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;.
      * 
      */
     @Export(name="listType", type=String.class, parameters={})
     private Output<String> listType;
 
     /**
-     * @return Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;
+     * @return Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;.
      * 
      */
     public Output<String> listType() {

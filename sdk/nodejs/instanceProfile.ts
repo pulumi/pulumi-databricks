@@ -103,9 +103,10 @@ import * as utilities from "./utilities";
  *     instanceProfileId: _this.id,
  * });
  * ```
+ *
  * ## Usage with Databricks SQL serverless
  *
- * When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iamRoleArn` parameter can be specified
+ * When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iamRoleArn` parameter can be specified.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

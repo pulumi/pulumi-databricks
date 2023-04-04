@@ -169,17 +169,17 @@ class ClusterPolicy(pulumi.CustomResource):
 
         * Dynamic Passthrough Clusters for a Group guide.
         * End to end workspace management guide.
-          *_get_clusters_data to retrieve a list of Cluster ids.
+        * get_clusters data to retrieve a list of Cluster ids.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-          *_get_current_user_data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+        * get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
         * GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
         * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * IpAccessList to allow access from [predefined IP ranges](https://docs.databricks.com/security/network/ip-access-list.html).
         * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-          *_get_node_type_data to get the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores.
+        * get_node_type data to get the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores.
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-          *_get_spark_version_data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
+        * get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
         * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
         * WorkspaceConf to manage workspace configuration for expert usage.
 
@@ -225,17 +225,17 @@ class ClusterPolicy(pulumi.CustomResource):
 
         * Dynamic Passthrough Clusters for a Group guide.
         * End to end workspace management guide.
-          *_get_clusters_data to retrieve a list of Cluster ids.
+        * get_clusters data to retrieve a list of Cluster ids.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-          *_get_current_user_data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+        * get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
         * GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
         * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * IpAccessList to allow access from [predefined IP ranges](https://docs.databricks.com/security/network/ip-access-list.html).
         * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-          *_get_node_type_data to get the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores.
+        * get_node_type data to get the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores.
         * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-          *_get_spark_version_data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
+        * get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
         * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
         * WorkspaceConf to manage workspace configuration for expert usage.
 

@@ -87,6 +87,7 @@ export class Job extends pulumi.CustomResource {
     public readonly notebookTask!: pulumi.Output<outputs.JobNotebookTask | undefined>;
     public readonly pipelineTask!: pulumi.Output<outputs.JobPipelineTask | undefined>;
     public readonly pythonWheelTask!: pulumi.Output<outputs.JobPythonWheelTask | undefined>;
+    public readonly queue!: pulumi.Output<outputs.JobQueue | undefined>;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      */
@@ -107,8 +108,9 @@ export class Job extends pulumi.CustomResource {
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
     public readonly timeoutSeconds!: pulumi.Output<number | undefined>;
+    public readonly trigger!: pulumi.Output<outputs.JobTrigger | undefined>;
     /**
-     * URL of the Git repository to use.
+     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
@@ -146,6 +148,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["notebookTask"] = state ? state.notebookTask : undefined;
             resourceInputs["pipelineTask"] = state ? state.pipelineTask : undefined;
             resourceInputs["pythonWheelTask"] = state ? state.pythonWheelTask : undefined;
+            resourceInputs["queue"] = state ? state.queue : undefined;
             resourceInputs["retryOnTimeout"] = state ? state.retryOnTimeout : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
             resourceInputs["sparkJarTask"] = state ? state.sparkJarTask : undefined;
@@ -154,6 +157,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tasks"] = state ? state.tasks : undefined;
             resourceInputs["timeoutSeconds"] = state ? state.timeoutSeconds : undefined;
+            resourceInputs["trigger"] = state ? state.trigger : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
             resourceInputs["webhookNotifications"] = state ? state.webhookNotifications : undefined;
         } else {
@@ -175,6 +179,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["notebookTask"] = args ? args.notebookTask : undefined;
             resourceInputs["pipelineTask"] = args ? args.pipelineTask : undefined;
             resourceInputs["pythonWheelTask"] = args ? args.pythonWheelTask : undefined;
+            resourceInputs["queue"] = args ? args.queue : undefined;
             resourceInputs["retryOnTimeout"] = args ? args.retryOnTimeout : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["sparkJarTask"] = args ? args.sparkJarTask : undefined;
@@ -183,6 +188,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tasks"] = args ? args.tasks : undefined;
             resourceInputs["timeoutSeconds"] = args ? args.timeoutSeconds : undefined;
+            resourceInputs["trigger"] = args ? args.trigger : undefined;
             resourceInputs["webhookNotifications"] = args ? args.webhookNotifications : undefined;
             resourceInputs["url"] = undefined /*out*/;
         }
@@ -239,6 +245,7 @@ export interface JobState {
     notebookTask?: pulumi.Input<inputs.JobNotebookTask>;
     pipelineTask?: pulumi.Input<inputs.JobPipelineTask>;
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
+    queue?: pulumi.Input<inputs.JobQueue>;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      */
@@ -259,8 +266,9 @@ export interface JobState {
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
     timeoutSeconds?: pulumi.Input<number>;
+    trigger?: pulumi.Input<inputs.JobTrigger>;
     /**
-     * URL of the Git repository to use.
+     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      */
     url?: pulumi.Input<string>;
     /**
@@ -317,6 +325,7 @@ export interface JobArgs {
     notebookTask?: pulumi.Input<inputs.JobNotebookTask>;
     pipelineTask?: pulumi.Input<inputs.JobPipelineTask>;
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
+    queue?: pulumi.Input<inputs.JobQueue>;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      */
@@ -337,6 +346,7 @@ export interface JobArgs {
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
     timeoutSeconds?: pulumi.Input<number>;
+    trigger?: pulumi.Input<inputs.JobTrigger>;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */

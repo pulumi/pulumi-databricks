@@ -91,9 +91,6 @@ namespace Pulumi.Databricks
         [Output("dataAccessConfig")]
         public Output<ImmutableDictionary<string, object>?> DataAccessConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// Allows the possibility to create Serverless SQL warehouses. Default value: false.
-        /// </summary>
         [Output("enableServerlessCompute")]
         public Output<bool?> EnableServerlessCompute { get; private set; } = null!;
 
@@ -173,9 +170,6 @@ namespace Pulumi.Databricks
             set => _dataAccessConfig = value;
         }
 
-        /// <summary>
-        /// Allows the possibility to create Serverless SQL warehouses. Default value: false.
-        /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
 
@@ -223,9 +217,6 @@ namespace Pulumi.Databricks
             set => _dataAccessConfig = value;
         }
 
-        /// <summary>
-        /// Allows the possibility to create Serverless SQL warehouses. Default value: false.
-        /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
 

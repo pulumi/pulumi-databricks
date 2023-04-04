@@ -22,13 +22,15 @@ class SqlGlobalConfigArgs:
         """
         The set of arguments for constructing a SqlGlobalConfig resource.
         :param pulumi.Input[Mapping[str, Any]] data_access_config: Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
-        :param pulumi.Input[bool] enable_serverless_compute: Allows the possibility to create Serverless SQL warehouses. Default value: false.
         :param pulumi.Input[str] instance_profile_arn: databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         :param pulumi.Input[str] security_policy: The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         :param pulumi.Input[Mapping[str, Any]] sql_config_params: SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         """
         if data_access_config is not None:
             pulumi.set(__self__, "data_access_config", data_access_config)
+        if enable_serverless_compute is not None:
+            warnings.warn("""This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""", DeprecationWarning)
+            pulumi.log.warn("""enable_serverless_compute is deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""")
         if enable_serverless_compute is not None:
             pulumi.set(__self__, "enable_serverless_compute", enable_serverless_compute)
         if instance_profile_arn is not None:
@@ -53,9 +55,6 @@ class SqlGlobalConfigArgs:
     @property
     @pulumi.getter(name="enableServerlessCompute")
     def enable_serverless_compute(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allows the possibility to create Serverless SQL warehouses. Default value: false.
-        """
         return pulumi.get(self, "enable_serverless_compute")
 
     @enable_serverless_compute.setter
@@ -110,13 +109,15 @@ class _SqlGlobalConfigState:
         """
         Input properties used for looking up and filtering SqlGlobalConfig resources.
         :param pulumi.Input[Mapping[str, Any]] data_access_config: Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
-        :param pulumi.Input[bool] enable_serverless_compute: Allows the possibility to create Serverless SQL warehouses. Default value: false.
         :param pulumi.Input[str] instance_profile_arn: databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         :param pulumi.Input[str] security_policy: The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         :param pulumi.Input[Mapping[str, Any]] sql_config_params: SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         """
         if data_access_config is not None:
             pulumi.set(__self__, "data_access_config", data_access_config)
+        if enable_serverless_compute is not None:
+            warnings.warn("""This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""", DeprecationWarning)
+            pulumi.log.warn("""enable_serverless_compute is deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""")
         if enable_serverless_compute is not None:
             pulumi.set(__self__, "enable_serverless_compute", enable_serverless_compute)
         if instance_profile_arn is not None:
@@ -141,9 +142,6 @@ class _SqlGlobalConfigState:
     @property
     @pulumi.getter(name="enableServerlessCompute")
     def enable_serverless_compute(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allows the possibility to create Serverless SQL warehouses. Default value: false.
-        """
         return pulumi.get(self, "enable_serverless_compute")
 
     @enable_serverless_compute.setter
@@ -257,7 +255,6 @@ class SqlGlobalConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] data_access_config: Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
-        :param pulumi.Input[bool] enable_serverless_compute: Allows the possibility to create Serverless SQL warehouses. Default value: false.
         :param pulumi.Input[str] instance_profile_arn: databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         :param pulumi.Input[str] security_policy: The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         :param pulumi.Input[Mapping[str, Any]] sql_config_params: SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
@@ -354,6 +351,9 @@ class SqlGlobalConfig(pulumi.CustomResource):
             __props__ = SqlGlobalConfigArgs.__new__(SqlGlobalConfigArgs)
 
             __props__.__dict__["data_access_config"] = data_access_config
+            if enable_serverless_compute is not None and not opts.urn:
+                warnings.warn("""This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""", DeprecationWarning)
+                pulumi.log.warn("""enable_serverless_compute is deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""")
             __props__.__dict__["enable_serverless_compute"] = enable_serverless_compute
             __props__.__dict__["instance_profile_arn"] = instance_profile_arn
             __props__.__dict__["security_policy"] = security_policy
@@ -381,7 +381,6 @@ class SqlGlobalConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] data_access_config: Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
-        :param pulumi.Input[bool] enable_serverless_compute: Allows the possibility to create Serverless SQL warehouses. Default value: false.
         :param pulumi.Input[str] instance_profile_arn: databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         :param pulumi.Input[str] security_policy: The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         :param pulumi.Input[Mapping[str, Any]] sql_config_params: SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
@@ -408,9 +407,6 @@ class SqlGlobalConfig(pulumi.CustomResource):
     @property
     @pulumi.getter(name="enableServerlessCompute")
     def enable_serverless_compute(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Allows the possibility to create Serverless SQL warehouses. Default value: false.
-        """
         return pulumi.get(self, "enable_serverless_compute")
 
     @property

@@ -20,11 +20,13 @@ import com.pulumi.databricks.outputs.JobNewCluster;
 import com.pulumi.databricks.outputs.JobNotebookTask;
 import com.pulumi.databricks.outputs.JobPipelineTask;
 import com.pulumi.databricks.outputs.JobPythonWheelTask;
+import com.pulumi.databricks.outputs.JobQueue;
 import com.pulumi.databricks.outputs.JobSchedule;
 import com.pulumi.databricks.outputs.JobSparkJarTask;
 import com.pulumi.databricks.outputs.JobSparkPythonTask;
 import com.pulumi.databricks.outputs.JobSparkSubmitTask;
 import com.pulumi.databricks.outputs.JobTask;
+import com.pulumi.databricks.outputs.JobTrigger;
 import com.pulumi.databricks.outputs.JobWebhookNotifications;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -221,6 +223,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobPythonWheelTask>> pythonWheelTask() {
         return Codegen.optional(this.pythonWheelTask);
     }
+    @Export(name="queue", type=JobQueue.class, parameters={})
+    private Output</* @Nullable */ JobQueue> queue;
+
+    public Output<Optional<JobQueue>> queue() {
+        return Codegen.optional(this.queue);
+    }
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      * 
@@ -301,15 +309,21 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> timeoutSeconds() {
         return Codegen.optional(this.timeoutSeconds);
     }
+    @Export(name="trigger", type=JobTrigger.class, parameters={})
+    private Output</* @Nullable */ JobTrigger> trigger;
+
+    public Output<Optional<JobTrigger>> trigger() {
+        return Codegen.optional(this.trigger);
+    }
     /**
-     * URL of the Git repository to use.
+     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      * 
      */
     @Export(name="url", type=String.class, parameters={})
     private Output<String> url;
 
     /**
-     * @return URL of the Git repository to use.
+     * @return string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      * 
      */
     public Output<String> url() {

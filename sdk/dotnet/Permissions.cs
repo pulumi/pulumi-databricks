@@ -145,7 +145,7 @@ namespace Pulumi.Databricks
         public Output<string?> SqlDashboardId { get; private set; } = null!;
 
         /// <summary>
-        /// SQL endpoint id
+        /// SQL warehouse id
         /// </summary>
         [Output("sqlEndpointId")]
         public Output<string?> SqlEndpointId { get; private set; } = null!;
@@ -313,7 +313,7 @@ namespace Pulumi.Databricks
         public Input<string>? SqlDashboardId { get; set; }
 
         /// <summary>
-        /// SQL endpoint id
+        /// SQL warehouse id
         /// </summary>
         [Input("sqlEndpointId")]
         public Input<string>? SqlEndpointId { get; set; }
@@ -443,7 +443,7 @@ namespace Pulumi.Databricks
         public Input<string>? SqlDashboardId { get; set; }
 
         /// <summary>
-        /// SQL endpoint id
+        /// SQL warehouse id
         /// </summary>
         [Input("sqlEndpointId")]
         public Input<string>? SqlEndpointId { get; set; }

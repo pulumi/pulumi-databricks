@@ -24,14 +24,14 @@ public final class JobTaskNewClusterDockerImageArgs extends com.pulumi.resources
     }
 
     /**
-     * URL of the Git repository to use.
+     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return URL of the Git repository to use.
+     * @return string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      * 
      */
     public Output<String> url() {
@@ -73,7 +73,7 @@ public final class JobTaskNewClusterDockerImageArgs extends com.pulumi.resources
         }
 
         /**
-         * @param url URL of the Git repository to use.
+         * @param url string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class JobTaskNewClusterDockerImageArgs extends com.pulumi.resources
         }
 
         /**
-         * @param url URL of the Git repository to use.
+         * @param url string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
          * 
          * @return builder
          * 

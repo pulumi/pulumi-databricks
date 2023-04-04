@@ -291,14 +291,14 @@ public class Permissions extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sqlDashboardId);
     }
     /**
-     * SQL endpoint id
+     * SQL warehouse id
      * 
      */
     @Export(name="sqlEndpointId", type=String.class, parameters={})
     private Output</* @Nullable */ String> sqlEndpointId;
 
     /**
-     * @return SQL endpoint id
+     * @return SQL warehouse id
      * 
      */
     public Output<Optional<String>> sqlEndpointId() {

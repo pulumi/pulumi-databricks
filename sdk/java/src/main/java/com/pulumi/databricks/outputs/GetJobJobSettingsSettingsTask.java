@@ -40,6 +40,7 @@ public final class GetJobJobSettingsSettingsTask {
     private @Nullable GetJobJobSettingsSettingsTaskPipelineTask pipelineTask;
     private @Nullable GetJobJobSettingsSettingsTaskPythonWheelTask pythonWheelTask;
     private Boolean retryOnTimeout;
+    private @Nullable String runIf;
     private @Nullable GetJobJobSettingsSettingsTaskSparkJarTask sparkJarTask;
     private @Nullable GetJobJobSettingsSettingsTaskSparkPythonTask sparkPythonTask;
     private @Nullable GetJobJobSettingsSettingsTaskSparkSubmitTask sparkSubmitTask;
@@ -90,6 +91,9 @@ public final class GetJobJobSettingsSettingsTask {
     public Boolean retryOnTimeout() {
         return this.retryOnTimeout;
     }
+    public Optional<String> runIf() {
+        return Optional.ofNullable(this.runIf);
+    }
     public Optional<GetJobJobSettingsSettingsTaskSparkJarTask> sparkJarTask() {
         return Optional.ofNullable(this.sparkJarTask);
     }
@@ -132,6 +136,7 @@ public final class GetJobJobSettingsSettingsTask {
         private @Nullable GetJobJobSettingsSettingsTaskPipelineTask pipelineTask;
         private @Nullable GetJobJobSettingsSettingsTaskPythonWheelTask pythonWheelTask;
         private Boolean retryOnTimeout;
+        private @Nullable String runIf;
         private @Nullable GetJobJobSettingsSettingsTaskSparkJarTask sparkJarTask;
         private @Nullable GetJobJobSettingsSettingsTaskSparkPythonTask sparkPythonTask;
         private @Nullable GetJobJobSettingsSettingsTaskSparkSubmitTask sparkSubmitTask;
@@ -155,6 +160,7 @@ public final class GetJobJobSettingsSettingsTask {
     	      this.pipelineTask = defaults.pipelineTask;
     	      this.pythonWheelTask = defaults.pythonWheelTask;
     	      this.retryOnTimeout = defaults.retryOnTimeout;
+    	      this.runIf = defaults.runIf;
     	      this.sparkJarTask = defaults.sparkJarTask;
     	      this.sparkPythonTask = defaults.sparkPythonTask;
     	      this.sparkSubmitTask = defaults.sparkSubmitTask;
@@ -240,6 +246,11 @@ public final class GetJobJobSettingsSettingsTask {
             return this;
         }
         @CustomType.Setter
+        public Builder runIf(@Nullable String runIf) {
+            this.runIf = runIf;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sparkJarTask(@Nullable GetJobJobSettingsSettingsTaskSparkJarTask sparkJarTask) {
             this.sparkJarTask = sparkJarTask;
             return this;
@@ -285,6 +296,7 @@ public final class GetJobJobSettingsSettingsTask {
             o.pipelineTask = pipelineTask;
             o.pythonWheelTask = pythonWheelTask;
             o.retryOnTimeout = retryOnTimeout;
+            o.runIf = runIf;
             o.sparkJarTask = sparkJarTask;
             o.sparkPythonTask = sparkPythonTask;
             o.sparkSubmitTask = sparkSubmitTask;

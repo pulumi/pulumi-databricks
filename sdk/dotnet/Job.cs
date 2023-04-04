@@ -99,6 +99,9 @@ namespace Pulumi.Databricks
         [Output("pythonWheelTask")]
         public Output<Outputs.JobPythonWheelTask?> PythonWheelTask { get; private set; } = null!;
 
+        [Output("queue")]
+        public Output<Outputs.JobQueue?> Queue { get; private set; } = null!;
+
         /// <summary>
         /// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         /// </summary>
@@ -135,8 +138,11 @@ namespace Pulumi.Databricks
         [Output("timeoutSeconds")]
         public Output<int?> TimeoutSeconds { get; private set; } = null!;
 
+        [Output("trigger")]
+        public Output<Outputs.JobTrigger?> Trigger { get; private set; } = null!;
+
         /// <summary>
-        /// URL of the Git repository to use.
+        /// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -283,6 +289,9 @@ namespace Pulumi.Databricks
         [Input("pythonWheelTask")]
         public Input<Inputs.JobPythonWheelTaskArgs>? PythonWheelTask { get; set; }
 
+        [Input("queue")]
+        public Input<Inputs.JobQueueArgs>? Queue { get; set; }
+
         /// <summary>
         /// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         /// </summary>
@@ -329,6 +338,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
+
+        [Input("trigger")]
+        public Input<Inputs.JobTriggerArgs>? Trigger { get; set; }
 
         /// <summary>
         /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -434,6 +446,9 @@ namespace Pulumi.Databricks
         [Input("pythonWheelTask")]
         public Input<Inputs.JobPythonWheelTaskGetArgs>? PythonWheelTask { get; set; }
 
+        [Input("queue")]
+        public Input<Inputs.JobQueueGetArgs>? Queue { get; set; }
+
         /// <summary>
         /// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         /// </summary>
@@ -481,8 +496,11 @@ namespace Pulumi.Databricks
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 
+        [Input("trigger")]
+        public Input<Inputs.JobTriggerGetArgs>? Trigger { get; set; }
+
         /// <summary>
-        /// URL of the Git repository to use.
+        /// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

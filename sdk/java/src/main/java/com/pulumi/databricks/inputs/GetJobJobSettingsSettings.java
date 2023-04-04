@@ -14,11 +14,13 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewCluster;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNotebookTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPipelineTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPythonWheelTask;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsQueue;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSchedule;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkJarTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkPythonTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkSubmitTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTask;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTrigger;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsWebhookNotifications;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -155,6 +157,13 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.pythonWheelTask);
     }
 
+    @Import(name="queue")
+    private @Nullable GetJobJobSettingsSettingsQueue queue;
+
+    public Optional<GetJobJobSettingsSettingsQueue> queue() {
+        return Optional.ofNullable(this.queue);
+    }
+
     @Import(name="retryOnTimeout")
     private @Nullable Boolean retryOnTimeout;
 
@@ -211,6 +220,13 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.timeoutSeconds);
     }
 
+    @Import(name="trigger")
+    private @Nullable GetJobJobSettingsSettingsTrigger trigger;
+
+    public Optional<GetJobJobSettingsSettingsTrigger> trigger() {
+        return Optional.ofNullable(this.trigger);
+    }
+
     @Import(name="webhookNotifications")
     private @Nullable GetJobJobSettingsSettingsWebhookNotifications webhookNotifications;
 
@@ -237,6 +253,7 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         this.notebookTask = $.notebookTask;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
+        this.queue = $.queue;
         this.retryOnTimeout = $.retryOnTimeout;
         this.schedule = $.schedule;
         this.sparkJarTask = $.sparkJarTask;
@@ -245,6 +262,7 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         this.tags = $.tags;
         this.tasks = $.tasks;
         this.timeoutSeconds = $.timeoutSeconds;
+        this.trigger = $.trigger;
         this.webhookNotifications = $.webhookNotifications;
     }
 
@@ -360,6 +378,11 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
             return this;
         }
 
+        public Builder queue(@Nullable GetJobJobSettingsSettingsQueue queue) {
+            $.queue = queue;
+            return this;
+        }
+
         public Builder retryOnTimeout(@Nullable Boolean retryOnTimeout) {
             $.retryOnTimeout = retryOnTimeout;
             return this;
@@ -401,6 +424,11 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
 
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
             $.timeoutSeconds = timeoutSeconds;
+            return this;
+        }
+
+        public Builder trigger(@Nullable GetJobJobSettingsSettingsTrigger trigger) {
+            $.trigger = trigger;
             return this;
         }
 

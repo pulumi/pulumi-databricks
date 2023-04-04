@@ -12,38 +12,6 @@ namespace Pulumi.Databricks
     /// <summary>
     /// This resource creates [Personal Access Tokens](https://docs.databricks.com/sql/user/security/personal-access-tokens.html) for the same user that is authenticated with the provider. Most likely you should use databricks.OboToken to create [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a databricks.ServicePrincipal in Databricks workspaces on AWS. Databricks workspaces on other clouds use their own native OAuth token flows.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // initialize provider in normal mode
-    ///     var createdWorkspace = new Databricks.Provider("createdWorkspace", new()
-    ///     {
-    ///         Host = databricks_mws_workspaces.This.Workspace_url,
-    ///     });
-    /// 
-    ///     // create PAT token to provision entities within workspace
-    ///     var pat = new Databricks.Token("pat", new()
-    ///     {
-    ///         Comment = "Terraform Provisioning",
-    ///         LifetimeSeconds = 8640000,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Created_workspace,
-    ///     });
-    /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["databricksToken"] = pat.TokenValue,
-    ///     };
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// -&gt; **Note** Importing this resource is not currently supported.

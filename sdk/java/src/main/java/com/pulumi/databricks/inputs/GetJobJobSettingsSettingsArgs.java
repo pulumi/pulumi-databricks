@@ -15,11 +15,13 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNotebookTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPipelineTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPythonWheelTaskArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsQueueArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsScheduleArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkJarTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkPythonTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkSubmitTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTriggerArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsWebhookNotificationsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -156,6 +158,13 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.pythonWheelTask);
     }
 
+    @Import(name="queue")
+    private @Nullable Output<GetJobJobSettingsSettingsQueueArgs> queue;
+
+    public Optional<Output<GetJobJobSettingsSettingsQueueArgs>> queue() {
+        return Optional.ofNullable(this.queue);
+    }
+
     @Import(name="retryOnTimeout")
     private @Nullable Output<Boolean> retryOnTimeout;
 
@@ -212,6 +221,13 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.timeoutSeconds);
     }
 
+    @Import(name="trigger")
+    private @Nullable Output<GetJobJobSettingsSettingsTriggerArgs> trigger;
+
+    public Optional<Output<GetJobJobSettingsSettingsTriggerArgs>> trigger() {
+        return Optional.ofNullable(this.trigger);
+    }
+
     @Import(name="webhookNotifications")
     private @Nullable Output<GetJobJobSettingsSettingsWebhookNotificationsArgs> webhookNotifications;
 
@@ -238,6 +254,7 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         this.notebookTask = $.notebookTask;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
+        this.queue = $.queue;
         this.retryOnTimeout = $.retryOnTimeout;
         this.schedule = $.schedule;
         this.sparkJarTask = $.sparkJarTask;
@@ -246,6 +263,7 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         this.tags = $.tags;
         this.tasks = $.tasks;
         this.timeoutSeconds = $.timeoutSeconds;
+        this.trigger = $.trigger;
         this.webhookNotifications = $.webhookNotifications;
     }
 
@@ -431,6 +449,15 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
             return pythonWheelTask(Output.of(pythonWheelTask));
         }
 
+        public Builder queue(@Nullable Output<GetJobJobSettingsSettingsQueueArgs> queue) {
+            $.queue = queue;
+            return this;
+        }
+
+        public Builder queue(GetJobJobSettingsSettingsQueueArgs queue) {
+            return queue(Output.of(queue));
+        }
+
         public Builder retryOnTimeout(@Nullable Output<Boolean> retryOnTimeout) {
             $.retryOnTimeout = retryOnTimeout;
             return this;
@@ -505,6 +532,15 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
         public Builder timeoutSeconds(Integer timeoutSeconds) {
             return timeoutSeconds(Output.of(timeoutSeconds));
+        }
+
+        public Builder trigger(@Nullable Output<GetJobJobSettingsSettingsTriggerArgs> trigger) {
+            $.trigger = trigger;
+            return this;
+        }
+
+        public Builder trigger(GetJobJobSettingsSettingsTriggerArgs trigger) {
+            return trigger(Output.of(trigger));
         }
 
         public Builder webhookNotifications(@Nullable Output<GetJobJobSettingsSettingsWebhookNotificationsArgs> webhookNotifications) {

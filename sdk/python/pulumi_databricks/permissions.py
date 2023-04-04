@@ -55,7 +55,7 @@ class PermissionsArgs:
         :param pulumi.Input[str] repo_path: path of databricks repo directory(`/Repos/<username>/...`)
         :param pulumi.Input[str] sql_alert_id: [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
         :param pulumi.Input[str] sql_dashboard_id: SQL dashboard id
-        :param pulumi.Input[str] sql_endpoint_id: SQL endpoint id
+        :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
         :param pulumi.Input[str] sql_query_id: SQL query id
         """
         pulumi.set(__self__, "access_controls", access_controls)
@@ -315,7 +315,7 @@ class PermissionsArgs:
     @pulumi.getter(name="sqlEndpointId")
     def sql_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
-        SQL endpoint id
+        SQL warehouse id
         """
         return pulumi.get(self, "sql_endpoint_id")
 
@@ -378,7 +378,7 @@ class _PermissionsState:
         :param pulumi.Input[str] repo_path: path of databricks repo directory(`/Repos/<username>/...`)
         :param pulumi.Input[str] sql_alert_id: [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
         :param pulumi.Input[str] sql_dashboard_id: SQL dashboard id
-        :param pulumi.Input[str] sql_endpoint_id: SQL endpoint id
+        :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
         :param pulumi.Input[str] sql_query_id: SQL query id
         """
         if access_controls is not None:
@@ -639,7 +639,7 @@ class _PermissionsState:
     @pulumi.getter(name="sqlEndpointId")
     def sql_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
-        SQL endpoint id
+        SQL warehouse id
         """
         return pulumi.get(self, "sql_endpoint_id")
 
@@ -732,7 +732,7 @@ class Permissions(pulumi.CustomResource):
         :param pulumi.Input[str] repo_path: path of databricks repo directory(`/Repos/<username>/...`)
         :param pulumi.Input[str] sql_alert_id: [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
         :param pulumi.Input[str] sql_dashboard_id: SQL dashboard id
-        :param pulumi.Input[str] sql_endpoint_id: SQL endpoint id
+        :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
         :param pulumi.Input[str] sql_query_id: SQL query id
         """
         ...
@@ -888,7 +888,7 @@ class Permissions(pulumi.CustomResource):
         :param pulumi.Input[str] repo_path: path of databricks repo directory(`/Repos/<username>/...`)
         :param pulumi.Input[str] sql_alert_id: [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
         :param pulumi.Input[str] sql_dashboard_id: SQL dashboard id
-        :param pulumi.Input[str] sql_endpoint_id: SQL endpoint id
+        :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
         :param pulumi.Input[str] sql_query_id: SQL query id
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1062,7 +1062,7 @@ class Permissions(pulumi.CustomResource):
     @pulumi.getter(name="sqlEndpointId")
     def sql_endpoint_id(self) -> pulumi.Output[Optional[str]]:
         """
-        SQL endpoint id
+        SQL warehouse id
         """
         return pulumi.get(self, "sql_endpoint_id")
 

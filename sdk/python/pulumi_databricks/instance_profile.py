@@ -251,9 +251,10 @@ class InstanceProfile(pulumi.CustomResource):
             group_id=users.id,
             instance_profile_id=this.id)
         ```
+
         ## Usage with Databricks SQL serverless
 
-        When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified
+        When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified.
 
         ```python
         import pulumi
@@ -390,9 +391,10 @@ class InstanceProfile(pulumi.CustomResource):
             group_id=users.id,
             instance_profile_id=this.id)
         ```
+
         ## Usage with Databricks SQL serverless
 
-        When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified
+        When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified.
 
         ```python
         import pulumi

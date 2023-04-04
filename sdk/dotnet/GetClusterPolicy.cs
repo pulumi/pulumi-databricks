@@ -41,7 +41,7 @@ namespace Pulumi.Databricks
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetClusterPolicyResult> InvokeAsync(GetClusterPolicyArgs args, InvokeOptions? options = null)
+        public static Task<GetClusterPolicyResult> InvokeAsync(GetClusterPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterPolicyResult>("databricks:index/getClusterPolicy:getClusterPolicy", args ?? new GetClusterPolicyArgs(), options.WithDefaults());
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.Databricks
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetClusterPolicyResult> Invoke(GetClusterPolicyInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetClusterPolicyResult> Invoke(GetClusterPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterPolicyResult>("databricks:index/getClusterPolicy:getClusterPolicy", args ?? new GetClusterPolicyInvokeArgs(), options.WithDefaults());
     }
 
@@ -82,10 +82,28 @@ namespace Pulumi.Databricks
     public sealed class GetClusterPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        /// </summary>
+        [Input("definition")]
+        public string? Definition { get; set; }
+
+        /// <summary>
+        /// The id of the cluster policy.
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// Max number of clusters per user that can be active using this policy
+        /// </summary>
+        [Input("maxClustersPerUser")]
+        public int? MaxClustersPerUser { get; set; }
+
+        /// <summary>
         /// Name of the cluster policy. The cluster policy must exist before this resource can be planned.
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("name")]
+        public string? Name { get; set; }
 
         public GetClusterPolicyArgs()
         {
@@ -96,10 +114,28 @@ namespace Pulumi.Databricks
     public sealed class GetClusterPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        /// </summary>
+        [Input("definition")]
+        public Input<string>? Definition { get; set; }
+
+        /// <summary>
+        /// The id of the cluster policy.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// Max number of clusters per user that can be active using this policy
+        /// </summary>
+        [Input("maxClustersPerUser")]
+        public Input<int>? MaxClustersPerUser { get; set; }
+
+        /// <summary>
         /// Name of the cluster policy. The cluster policy must exist before this resource can be planned.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public GetClusterPolicyInvokeArgs()
         {
@@ -116,9 +152,12 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Definition;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The id of the cluster policy.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Max number of clusters per user that can be active using this policy
+        /// </summary>
         public readonly int MaxClustersPerUser;
         public readonly string Name;
 

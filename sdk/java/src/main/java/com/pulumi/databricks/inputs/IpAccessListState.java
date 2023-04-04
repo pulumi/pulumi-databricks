@@ -33,14 +33,14 @@ public final class IpAccessListState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is a field to allow the group to have instance pool create privileges.
+     * A string list of IP addresses and CIDR ranges.
      * 
      */
     @Import(name="ipAddresses")
     private @Nullable Output<List<String>> ipAddresses;
 
     /**
-     * @return This is a field to allow the group to have instance pool create privileges.
+     * @return A string list of IP addresses and CIDR ranges.
      * 
      */
     public Optional<Output<List<String>>> ipAddresses() {
@@ -63,14 +63,14 @@ public final class IpAccessListState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;
+     * Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;.
      * 
      */
     @Import(name="listType")
     private @Nullable Output<String> listType;
 
     /**
-     * @return Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;
+     * @return Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;.
      * 
      */
     public Optional<Output<String>> listType() {
@@ -126,7 +126,7 @@ public final class IpAccessListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddresses This is a field to allow the group to have instance pool create privileges.
+         * @param ipAddresses A string list of IP addresses and CIDR ranges.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class IpAccessListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddresses This is a field to allow the group to have instance pool create privileges.
+         * @param ipAddresses A string list of IP addresses and CIDR ranges.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class IpAccessListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddresses This is a field to allow the group to have instance pool create privileges.
+         * @param ipAddresses A string list of IP addresses and CIDR ranges.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class IpAccessListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listType Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;
+         * @param listType Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class IpAccessListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listType Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;
+         * @param listType Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;.
          * 
          * @return builder
          * 

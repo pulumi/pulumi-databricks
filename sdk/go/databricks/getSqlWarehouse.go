@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Related Resources
+// ## Related resources
 //
 // The following resources are often used in the same context:
 //
@@ -40,9 +40,9 @@ type GetSqlWarehouseArgs struct {
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine).
 	EnablePhoton *bool `pulumi:"enablePhoton"`
-	// Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+	// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
 	EnableServerlessCompute *bool `pulumi:"enableServerlessCompute"`
-	// The id of the SQL warehouse
+	// The ID of the SQL warehouse
 	Id                 string  `pulumi:"id"`
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
@@ -75,7 +75,7 @@ type GetSqlWarehouseResult struct {
 	DataSourceId string `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine).
 	EnablePhoton bool `pulumi:"enablePhoton"`
-	// Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+	// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
 	EnableServerlessCompute bool   `pulumi:"enableServerlessCompute"`
 	Id                      string `pulumi:"id"`
 	InstanceProfileArn      string `pulumi:"instanceProfileArn"`
@@ -122,9 +122,9 @@ type GetSqlWarehouseOutputArgs struct {
 	DataSourceId pulumi.StringPtrInput `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine).
 	EnablePhoton pulumi.BoolPtrInput `pulumi:"enablePhoton"`
-	// Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+	// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
 	EnableServerlessCompute pulumi.BoolPtrInput `pulumi:"enableServerlessCompute"`
-	// The id of the SQL warehouse
+	// The ID of the SQL warehouse
 	Id                 pulumi.StringInput    `pulumi:"id"`
 	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
@@ -189,7 +189,7 @@ func (o GetSqlWarehouseResultOutput) EnablePhoton() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) bool { return v.EnablePhoton }).(pulumi.BoolOutput)
 }
 
-// Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
 func (o GetSqlWarehouseResultOutput) EnableServerlessCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) bool { return v.EnableServerlessCompute }).(pulumi.BoolOutput)
 }

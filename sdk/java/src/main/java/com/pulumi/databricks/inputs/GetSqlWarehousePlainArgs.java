@@ -95,14 +95,14 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
      * 
      */
     @Import(name="enableServerlessCompute")
     private @Nullable Boolean enableServerlessCompute;
 
     /**
-     * @return Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+     * @return Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
      * 
      */
     public Optional<Boolean> enableServerlessCompute() {
@@ -110,14 +110,14 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The id of the SQL warehouse
+     * The ID of the SQL warehouse
      * 
      */
     @Import(name="id", required=true)
     private String id;
 
     /**
-     * @return The id of the SQL warehouse
+     * @return The ID of the SQL warehouse
      * 
      */
     public String id() {
@@ -346,7 +346,7 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param enableServerlessCompute Whether this SQL warehouse is a Serverless warehouse. To use a Serverless SQL warehouse, you must enable Serverless SQL warehouses for the workspace.
+         * @param enableServerlessCompute Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param id The id of the SQL warehouse
+         * @param id The ID of the SQL warehouse
          * 
          * @return builder
          * 

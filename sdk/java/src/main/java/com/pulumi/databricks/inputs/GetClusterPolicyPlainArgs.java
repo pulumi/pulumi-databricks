@@ -4,8 +4,11 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetClusterPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -13,23 +16,71 @@ public final class GetClusterPolicyPlainArgs extends com.pulumi.resources.Invoke
     public static final GetClusterPolicyPlainArgs Empty = new GetClusterPolicyPlainArgs();
 
     /**
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * 
+     */
+    @Import(name="definition")
+    private @Nullable String definition;
+
+    /**
+     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * 
+     */
+    public Optional<String> definition() {
+        return Optional.ofNullable(this.definition);
+    }
+
+    /**
+     * The id of the cluster policy.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable String id;
+
+    /**
+     * @return The id of the cluster policy.
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
+     * Max number of clusters per user that can be active using this policy
+     * 
+     */
+    @Import(name="maxClustersPerUser")
+    private @Nullable Integer maxClustersPerUser;
+
+    /**
+     * @return Max number of clusters per user that can be active using this policy
+     * 
+     */
+    public Optional<Integer> maxClustersPerUser() {
+        return Optional.ofNullable(this.maxClustersPerUser);
+    }
+
+    /**
      * Name of the cluster policy. The cluster policy must exist before this resource can be planned.
      * 
      */
-    @Import(name="name", required=true)
-    private String name;
+    @Import(name="name")
+    private @Nullable String name;
 
     /**
      * @return Name of the cluster policy. The cluster policy must exist before this resource can be planned.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private GetClusterPolicyPlainArgs() {}
 
     private GetClusterPolicyPlainArgs(GetClusterPolicyPlainArgs $) {
+        this.definition = $.definition;
+        this.id = $.id;
+        this.maxClustersPerUser = $.maxClustersPerUser;
         this.name = $.name;
     }
 
@@ -52,18 +103,50 @@ public final class GetClusterPolicyPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
+         * @param definition Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder definition(@Nullable String definition) {
+            $.definition = definition;
+            return this;
+        }
+
+        /**
+         * @param id The id of the cluster policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable String id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param maxClustersPerUser Max number of clusters per user that can be active using this policy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxClustersPerUser(@Nullable Integer maxClustersPerUser) {
+            $.maxClustersPerUser = maxClustersPerUser;
+            return this;
+        }
+
+        /**
          * @param name Name of the cluster policy. The cluster policy must exist before this resource can be planned.
          * 
          * @return builder
          * 
          */
-        public Builder name(String name) {
+        public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
         public GetClusterPolicyPlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }
     }

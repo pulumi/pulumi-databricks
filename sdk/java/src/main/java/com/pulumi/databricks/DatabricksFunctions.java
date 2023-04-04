@@ -862,6 +862,92 @@ public final class DatabricksFunctions {
      * ```
      * 
      */
+    public static Output<GetClusterPolicyResult> getClusterPolicy() {
+        return getClusterPolicy(GetClusterPolicyArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Referring to a cluster policy by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var personal = DatabricksFunctions.getClusterPolicy(GetClusterPolicyArgs.builder()
+     *             .name(&#34;Personal Compute&#34;)
+     *             .build());
+     * 
+     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetClusterPolicyResult> getClusterPolicyPlain() {
+        return getClusterPolicyPlain(GetClusterPolicyPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Referring to a cluster policy by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var personal = DatabricksFunctions.getClusterPolicy(GetClusterPolicyArgs.builder()
+     *             .name(&#34;Personal Compute&#34;)
+     *             .build());
+     * 
+     *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
+     *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetClusterPolicyResult> getClusterPolicy(GetClusterPolicyArgs args) {
         return getClusterPolicy(args, InvokeOptions.Empty);
     }
@@ -4092,14 +4178,14 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide.
-     * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-     * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-     * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-     * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks.GroupMember to attach users and groups as group members.
-     * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * * databricks_service principal to manage service principals
+     * - End to end workspace management guide.
+     * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+     * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+     * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+     * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+     * - databricks.GroupMember to attach users and groups as group members.
+     * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+     * - databricks_service principal to manage service principals
      * 
      */
     public static Output<GetServicePrincipalResult> getServicePrincipal() {
@@ -4153,14 +4239,14 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide.
-     * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-     * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-     * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-     * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks.GroupMember to attach users and groups as group members.
-     * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * * databricks_service principal to manage service principals
+     * - End to end workspace management guide.
+     * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+     * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+     * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+     * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+     * - databricks.GroupMember to attach users and groups as group members.
+     * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+     * - databricks_service principal to manage service principals
      * 
      */
     public static CompletableFuture<GetServicePrincipalResult> getServicePrincipalPlain() {
@@ -4214,14 +4300,14 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide.
-     * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-     * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-     * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-     * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks.GroupMember to attach users and groups as group members.
-     * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * * databricks_service principal to manage service principals
+     * - End to end workspace management guide.
+     * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+     * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+     * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+     * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+     * - databricks.GroupMember to attach users and groups as group members.
+     * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+     * - databricks_service principal to manage service principals
      * 
      */
     public static Output<GetServicePrincipalResult> getServicePrincipal(GetServicePrincipalArgs args) {
@@ -4275,14 +4361,14 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide.
-     * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-     * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-     * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-     * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks.GroupMember to attach users and groups as group members.
-     * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * * databricks_service principal to manage service principals
+     * - End to end workspace management guide.
+     * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+     * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+     * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+     * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+     * - databricks.GroupMember to attach users and groups as group members.
+     * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+     * - databricks_service principal to manage service principals
      * 
      */
     public static CompletableFuture<GetServicePrincipalResult> getServicePrincipalPlain(GetServicePrincipalPlainArgs args) {
@@ -4336,14 +4422,14 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide.
-     * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-     * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-     * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-     * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks.GroupMember to attach users and groups as group members.
-     * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * * databricks_service principal to manage service principals
+     * - End to end workspace management guide.
+     * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+     * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+     * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+     * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+     * - databricks.GroupMember to attach users and groups as group members.
+     * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+     * - databricks_service principal to manage service principals
      * 
      */
     public static Output<GetServicePrincipalResult> getServicePrincipal(GetServicePrincipalArgs args, InvokeOptions options) {
@@ -4397,14 +4483,14 @@ public final class DatabricksFunctions {
      * 
      * The following resources are used in the same context:
      * 
-     * * End to end workspace management guide.
-     * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-     * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-     * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-     * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * * databricks.GroupMember to attach users and groups as group members.
-     * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * * databricks_service principal to manage service principals
+     * - End to end workspace management guide.
+     * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+     * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+     * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+     * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+     * - databricks.GroupMember to attach users and groups as group members.
+     * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+     * - databricks_service principal to manage service principals
      * 
      */
     public static CompletableFuture<GetServicePrincipalResult> getServicePrincipalPlain(GetServicePrincipalPlainArgs args, InvokeOptions options) {
@@ -5450,7 +5536,7 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
-     * ## Related Resources
+     * ## Related resources
      * 
      * The following resources are often used in the same context:
      * 
@@ -5466,7 +5552,7 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
-     * ## Related Resources
+     * ## Related resources
      * 
      * The following resources are often used in the same context:
      * 
@@ -5482,7 +5568,7 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
-     * ## Related Resources
+     * ## Related resources
      * 
      * The following resources are often used in the same context:
      * 
@@ -5498,7 +5584,7 @@ public final class DatabricksFunctions {
     }
     /**
      * ## Example Usage
-     * ## Related Resources
+     * ## Related resources
      * 
      * The following resources are often used in the same context:
      * 

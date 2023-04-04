@@ -48,6 +48,7 @@ namespace Pulumi.Databricks.Outputs
         /// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         /// </summary>
         public readonly bool? RetryOnTimeout;
+        public readonly string? RunIf;
         public readonly Outputs.JobTaskSparkJarTask? SparkJarTask;
         public readonly Outputs.JobTaskSparkPythonTask? SparkPythonTask;
         public readonly Outputs.JobTaskSparkSubmitTask? SparkSubmitTask;
@@ -88,6 +89,8 @@ namespace Pulumi.Databricks.Outputs
 
             bool? retryOnTimeout,
 
+            string? runIf,
+
             Outputs.JobTaskSparkJarTask? sparkJarTask,
 
             Outputs.JobTaskSparkPythonTask? sparkPythonTask,
@@ -114,6 +117,7 @@ namespace Pulumi.Databricks.Outputs
             PipelineTask = pipelineTask;
             PythonWheelTask = pythonWheelTask;
             RetryOnTimeout = retryOnTimeout;
+            RunIf = runIf;
             SparkJarTask = sparkJarTask;
             SparkPythonTask = sparkPythonTask;
             SparkSubmitTask = sparkSubmitTask;

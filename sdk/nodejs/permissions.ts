@@ -131,7 +131,7 @@ export class Permissions extends pulumi.CustomResource {
      */
     public readonly sqlDashboardId!: pulumi.Output<string | undefined>;
     /**
-     * SQL endpoint id
+     * SQL warehouse id
      */
     public readonly sqlEndpointId!: pulumi.Output<string | undefined>;
     /**
@@ -277,7 +277,7 @@ export interface PermissionsState {
      */
     sqlDashboardId?: pulumi.Input<string>;
     /**
-     * SQL endpoint id
+     * SQL warehouse id
      */
     sqlEndpointId?: pulumi.Input<string>;
     /**
@@ -360,7 +360,7 @@ export interface PermissionsArgs {
      */
     sqlDashboardId?: pulumi.Input<string>;
     /**
-     * SQL endpoint id
+     * SQL warehouse id
      */
     sqlEndpointId?: pulumi.Input<string>;
     /**

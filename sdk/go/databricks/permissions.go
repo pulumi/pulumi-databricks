@@ -76,7 +76,7 @@ type Permissions struct {
 	SqlAlertId pulumi.StringPtrOutput `pulumi:"sqlAlertId"`
 	// SQL dashboard id
 	SqlDashboardId pulumi.StringPtrOutput `pulumi:"sqlDashboardId"`
-	// SQL endpoint id
+	// SQL warehouse id
 	SqlEndpointId pulumi.StringPtrOutput `pulumi:"sqlEndpointId"`
 	// SQL query id
 	SqlQueryId pulumi.StringPtrOutput `pulumi:"sqlQueryId"`
@@ -149,7 +149,7 @@ type permissionsState struct {
 	SqlAlertId *string `pulumi:"sqlAlertId"`
 	// SQL dashboard id
 	SqlDashboardId *string `pulumi:"sqlDashboardId"`
-	// SQL endpoint id
+	// SQL warehouse id
 	SqlEndpointId *string `pulumi:"sqlEndpointId"`
 	// SQL query id
 	SqlQueryId *string `pulumi:"sqlQueryId"`
@@ -191,7 +191,7 @@ type PermissionsState struct {
 	SqlAlertId pulumi.StringPtrInput
 	// SQL dashboard id
 	SqlDashboardId pulumi.StringPtrInput
-	// SQL endpoint id
+	// SQL warehouse id
 	SqlEndpointId pulumi.StringPtrInput
 	// SQL query id
 	SqlQueryId pulumi.StringPtrInput
@@ -237,7 +237,7 @@ type permissionsArgs struct {
 	SqlAlertId *string `pulumi:"sqlAlertId"`
 	// SQL dashboard id
 	SqlDashboardId *string `pulumi:"sqlDashboardId"`
-	// SQL endpoint id
+	// SQL warehouse id
 	SqlEndpointId *string `pulumi:"sqlEndpointId"`
 	// SQL query id
 	SqlQueryId *string `pulumi:"sqlQueryId"`
@@ -280,7 +280,7 @@ type PermissionsArgs struct {
 	SqlAlertId pulumi.StringPtrInput
 	// SQL dashboard id
 	SqlDashboardId pulumi.StringPtrInput
-	// SQL endpoint id
+	// SQL warehouse id
 	SqlEndpointId pulumi.StringPtrInput
 	// SQL query id
 	SqlQueryId pulumi.StringPtrInput
@@ -462,7 +462,7 @@ func (o PermissionsOutput) SqlDashboardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlDashboardId }).(pulumi.StringPtrOutput)
 }
 
-// SQL endpoint id
+// SQL warehouse id
 func (o PermissionsOutput) SqlEndpointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlEndpointId }).(pulumi.StringPtrOutput)
 }

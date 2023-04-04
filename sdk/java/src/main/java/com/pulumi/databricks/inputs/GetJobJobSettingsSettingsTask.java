@@ -127,6 +127,13 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
         return this.retryOnTimeout;
     }
 
+    @Import(name="runIf")
+    private @Nullable String runIf;
+
+    public Optional<String> runIf() {
+        return Optional.ofNullable(this.runIf);
+    }
+
     @Import(name="sparkJarTask")
     private @Nullable GetJobJobSettingsSettingsTaskSparkJarTask sparkJarTask;
 
@@ -186,6 +193,7 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.retryOnTimeout = $.retryOnTimeout;
+        this.runIf = $.runIf;
         this.sparkJarTask = $.sparkJarTask;
         this.sparkPythonTask = $.sparkPythonTask;
         this.sparkSubmitTask = $.sparkSubmitTask;
@@ -287,6 +295,11 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
 
         public Builder retryOnTimeout(Boolean retryOnTimeout) {
             $.retryOnTimeout = retryOnTimeout;
+            return this;
+        }
+
+        public Builder runIf(@Nullable String runIf) {
+            $.runIf = runIf;
             return this;
         }
 

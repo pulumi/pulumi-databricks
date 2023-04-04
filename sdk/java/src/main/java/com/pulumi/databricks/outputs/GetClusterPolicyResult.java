@@ -16,10 +16,14 @@ public final class GetClusterPolicyResult {
      */
     private String definition;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The id of the cluster policy.
      * 
      */
     private String id;
+    /**
+     * @return Max number of clusters per user that can be active using this policy
+     * 
+     */
     private Integer maxClustersPerUser;
     private String name;
 
@@ -32,12 +36,16 @@ public final class GetClusterPolicyResult {
         return this.definition;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The id of the cluster policy.
      * 
      */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Max number of clusters per user that can be active using this policy
+     * 
+     */
     public Integer maxClustersPerUser() {
         return this.maxClustersPerUser;
     }
