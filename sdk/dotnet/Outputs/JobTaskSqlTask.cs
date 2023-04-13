@@ -22,6 +22,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.JobTaskSqlTaskDashboard? Dashboard;
         /// <summary>
+        /// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+        /// </summary>
+        public readonly Outputs.JobTaskSqlTaskFile? File;
+        /// <summary>
         /// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Parameters;
@@ -40,6 +44,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskSqlTaskDashboard? dashboard,
 
+            Outputs.JobTaskSqlTaskFile? file,
+
             ImmutableDictionary<string, object>? parameters,
 
             Outputs.JobTaskSqlTaskQuery? query,
@@ -48,6 +54,7 @@ namespace Pulumi.Databricks.Outputs
         {
             Alert = alert;
             Dashboard = dashboard;
+            File = file;
             Parameters = parameters;
             Query = query;
             WarehouseId = warehouseId;

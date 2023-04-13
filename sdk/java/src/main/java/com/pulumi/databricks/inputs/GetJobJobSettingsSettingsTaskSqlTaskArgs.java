@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskFileArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskQueryArgs;
 import java.lang.Object;
 import java.lang.String;
@@ -32,6 +33,13 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskArgs extends com.pulumi.r
 
     public Optional<Output<GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs>> dashboard() {
         return Optional.ofNullable(this.dashboard);
+    }
+
+    @Import(name="file")
+    private @Nullable Output<GetJobJobSettingsSettingsTaskSqlTaskFileArgs> file;
+
+    public Optional<Output<GetJobJobSettingsSettingsTaskSqlTaskFileArgs>> file() {
+        return Optional.ofNullable(this.file);
     }
 
     @Import(name="parameters")
@@ -60,6 +68,7 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskArgs extends com.pulumi.r
     private GetJobJobSettingsSettingsTaskSqlTaskArgs(GetJobJobSettingsSettingsTaskSqlTaskArgs $) {
         this.alert = $.alert;
         this.dashboard = $.dashboard;
+        this.file = $.file;
         this.parameters = $.parameters;
         this.query = $.query;
         this.warehouseId = $.warehouseId;
@@ -99,6 +108,15 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskArgs extends com.pulumi.r
 
         public Builder dashboard(GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs dashboard) {
             return dashboard(Output.of(dashboard));
+        }
+
+        public Builder file(@Nullable Output<GetJobJobSettingsSettingsTaskSqlTaskFileArgs> file) {
+            $.file = file;
+            return this;
+        }
+
+        public Builder file(GetJobJobSettingsSettingsTaskSqlTaskFileArgs file) {
+            return file(Output.of(file));
         }
 
         public Builder parameters(@Nullable Output<Map<String,Object>> parameters) {

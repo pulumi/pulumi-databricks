@@ -113,6 +113,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> host() {
         return Codegen.optional(this.host);
     }
+    @Export(name="metadataServiceUrl", type=String.class, parameters={})
+    private Output</* @Nullable */ String> metadataServiceUrl;
+
+    public Output<Optional<String>> metadataServiceUrl() {
+        return Codegen.optional(this.metadataServiceUrl);
+    }
     @Export(name="password", type=String.class, parameters={})
     private Output</* @Nullable */ String> password;
 
@@ -170,6 +176,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
                 "azureClientSecret",
                 "clientSecret",
                 "googleCredentials",
+                "metadataServiceUrl",
                 "password",
                 "token"
             ))

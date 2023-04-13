@@ -65,6 +65,9 @@ func GetHost(ctx *pulumi.Context) string {
 func GetHttpTimeoutSeconds(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "databricks:httpTimeoutSeconds")
 }
+func GetMetadataServiceUrl(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:metadataServiceUrl")
+}
 func GetPassword(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:password")
 }

@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.JobNewClusterInitScriptAbfss? Abfss;
         public readonly Outputs.JobNewClusterInitScriptDbfs? Dbfs;
+        /// <summary>
+        /// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+        /// </summary>
         public readonly Outputs.JobNewClusterInitScriptFile? File;
         public readonly Outputs.JobNewClusterInitScriptGcs? Gcs;
         public readonly Outputs.JobNewClusterInitScriptS3? S3;

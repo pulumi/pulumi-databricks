@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSqlTaskAlert;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSqlTaskDashboard;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSqlTaskFile;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSqlTaskQuery;
 import java.lang.Object;
 import java.lang.String;
@@ -18,6 +19,7 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsTaskSqlTask {
     private @Nullable GetJobJobSettingsSettingsTaskSqlTaskAlert alert;
     private @Nullable GetJobJobSettingsSettingsTaskSqlTaskDashboard dashboard;
+    private @Nullable GetJobJobSettingsSettingsTaskSqlTaskFile file;
     private @Nullable Map<String,Object> parameters;
     private @Nullable GetJobJobSettingsSettingsTaskSqlTaskQuery query;
     private @Nullable String warehouseId;
@@ -28,6 +30,9 @@ public final class GetJobJobSettingsSettingsTaskSqlTask {
     }
     public Optional<GetJobJobSettingsSettingsTaskSqlTaskDashboard> dashboard() {
         return Optional.ofNullable(this.dashboard);
+    }
+    public Optional<GetJobJobSettingsSettingsTaskSqlTaskFile> file() {
+        return Optional.ofNullable(this.file);
     }
     public Map<String,Object> parameters() {
         return this.parameters == null ? Map.of() : this.parameters;
@@ -50,6 +55,7 @@ public final class GetJobJobSettingsSettingsTaskSqlTask {
     public static final class Builder {
         private @Nullable GetJobJobSettingsSettingsTaskSqlTaskAlert alert;
         private @Nullable GetJobJobSettingsSettingsTaskSqlTaskDashboard dashboard;
+        private @Nullable GetJobJobSettingsSettingsTaskSqlTaskFile file;
         private @Nullable Map<String,Object> parameters;
         private @Nullable GetJobJobSettingsSettingsTaskSqlTaskQuery query;
         private @Nullable String warehouseId;
@@ -58,6 +64,7 @@ public final class GetJobJobSettingsSettingsTaskSqlTask {
     	      Objects.requireNonNull(defaults);
     	      this.alert = defaults.alert;
     	      this.dashboard = defaults.dashboard;
+    	      this.file = defaults.file;
     	      this.parameters = defaults.parameters;
     	      this.query = defaults.query;
     	      this.warehouseId = defaults.warehouseId;
@@ -71,6 +78,11 @@ public final class GetJobJobSettingsSettingsTaskSqlTask {
         @CustomType.Setter
         public Builder dashboard(@Nullable GetJobJobSettingsSettingsTaskSqlTaskDashboard dashboard) {
             this.dashboard = dashboard;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder file(@Nullable GetJobJobSettingsSettingsTaskSqlTaskFile file) {
+            this.file = file;
             return this;
         }
         @CustomType.Setter
@@ -92,6 +104,7 @@ public final class GetJobJobSettingsSettingsTaskSqlTask {
             final var o = new GetJobJobSettingsSettingsTaskSqlTask();
             o.alert = alert;
             o.dashboard = dashboard;
+            o.file = file;
             o.parameters = parameters;
             o.query = query;
             o.warehouseId = warehouseId;

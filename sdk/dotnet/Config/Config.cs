@@ -165,6 +165,13 @@ namespace Pulumi.Databricks
             set => _httpTimeoutSeconds.Set(value);
         }
 
+        private static readonly __Value<string?> _metadataServiceUrl = new __Value<string?>(() => __config.Get("metadataServiceUrl"));
+        public static string? MetadataServiceUrl
+        {
+            get => _metadataServiceUrl.Get();
+            set => _metadataServiceUrl.Set(value);
+        }
+
         private static readonly __Value<string?> _password = new __Value<string?>(() => __config.Get("password"));
         public static string? Password
         {

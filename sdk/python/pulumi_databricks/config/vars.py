@@ -92,6 +92,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_int('httpTimeoutSeconds')
 
     @property
+    def metadata_service_url(self) -> Optional[str]:
+        return __config__.get('metadataServiceUrl')
+
+    @property
     def password(self) -> Optional[str]:
         return __config__.get('password')
 

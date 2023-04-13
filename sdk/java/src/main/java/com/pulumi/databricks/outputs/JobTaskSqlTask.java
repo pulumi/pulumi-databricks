@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskSqlTaskAlert;
 import com.pulumi.databricks.outputs.JobTaskSqlTaskDashboard;
+import com.pulumi.databricks.outputs.JobTaskSqlTaskFile;
 import com.pulumi.databricks.outputs.JobTaskSqlTaskQuery;
 import java.lang.Object;
 import java.lang.String;
@@ -26,6 +27,11 @@ public final class JobTaskSqlTask {
      * 
      */
     private @Nullable JobTaskSqlTaskDashboard dashboard;
+    /**
+     * @return block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+     * 
+     */
+    private @Nullable JobTaskSqlTaskFile file;
     /**
      * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      * 
@@ -56,6 +62,13 @@ public final class JobTaskSqlTask {
      */
     public Optional<JobTaskSqlTaskDashboard> dashboard() {
         return Optional.ofNullable(this.dashboard);
+    }
+    /**
+     * @return block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+     * 
+     */
+    public Optional<JobTaskSqlTaskFile> file() {
+        return Optional.ofNullable(this.file);
     }
     /**
      * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
@@ -90,6 +103,7 @@ public final class JobTaskSqlTask {
     public static final class Builder {
         private @Nullable JobTaskSqlTaskAlert alert;
         private @Nullable JobTaskSqlTaskDashboard dashboard;
+        private @Nullable JobTaskSqlTaskFile file;
         private @Nullable Map<String,Object> parameters;
         private @Nullable JobTaskSqlTaskQuery query;
         private @Nullable String warehouseId;
@@ -98,6 +112,7 @@ public final class JobTaskSqlTask {
     	      Objects.requireNonNull(defaults);
     	      this.alert = defaults.alert;
     	      this.dashboard = defaults.dashboard;
+    	      this.file = defaults.file;
     	      this.parameters = defaults.parameters;
     	      this.query = defaults.query;
     	      this.warehouseId = defaults.warehouseId;
@@ -111,6 +126,11 @@ public final class JobTaskSqlTask {
         @CustomType.Setter
         public Builder dashboard(@Nullable JobTaskSqlTaskDashboard dashboard) {
             this.dashboard = dashboard;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder file(@Nullable JobTaskSqlTaskFile file) {
+            this.file = file;
             return this;
         }
         @CustomType.Setter
@@ -132,6 +152,7 @@ public final class JobTaskSqlTask {
             final var o = new JobTaskSqlTask();
             o.alert = alert;
             o.dashboard = dashboard;
+            o.file = file;
             o.parameters = parameters;
             o.query = query;
             o.warehouseId = warehouseId;

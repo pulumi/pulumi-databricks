@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("dashboard")]
         public Input<Inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardInputArgs>? Dashboard { get; set; }
 
+        [Input("file")]
+        public Input<Inputs.GetJobJobSettingsSettingsTaskSqlTaskFileInputArgs>? File { get; set; }
+
         [Input("parameters")]
         private InputMap<object>? _parameters;
         public InputMap<object> Parameters
