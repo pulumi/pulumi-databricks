@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskAlert;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboard;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskFile;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskQuery;
 import java.lang.Object;
 import java.lang.String;
@@ -31,6 +32,13 @@ public final class GetJobJobSettingsSettingsTaskSqlTask extends com.pulumi.resou
 
     public Optional<GetJobJobSettingsSettingsTaskSqlTaskDashboard> dashboard() {
         return Optional.ofNullable(this.dashboard);
+    }
+
+    @Import(name="file")
+    private @Nullable GetJobJobSettingsSettingsTaskSqlTaskFile file;
+
+    public Optional<GetJobJobSettingsSettingsTaskSqlTaskFile> file() {
+        return Optional.ofNullable(this.file);
     }
 
     @Import(name="parameters")
@@ -59,6 +67,7 @@ public final class GetJobJobSettingsSettingsTaskSqlTask extends com.pulumi.resou
     private GetJobJobSettingsSettingsTaskSqlTask(GetJobJobSettingsSettingsTaskSqlTask $) {
         this.alert = $.alert;
         this.dashboard = $.dashboard;
+        this.file = $.file;
         this.parameters = $.parameters;
         this.query = $.query;
         this.warehouseId = $.warehouseId;
@@ -89,6 +98,11 @@ public final class GetJobJobSettingsSettingsTaskSqlTask extends com.pulumi.resou
 
         public Builder dashboard(@Nullable GetJobJobSettingsSettingsTaskSqlTaskDashboard dashboard) {
             $.dashboard = dashboard;
+            return this;
+        }
+
+        public Builder file(@Nullable GetJobJobSettingsSettingsTaskSqlTaskFile file) {
+            $.file = file;
             return this;
         }
 

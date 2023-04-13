@@ -32,6 +32,7 @@ type Provider struct {
 	GoogleCredentials        pulumi.StringPtrOutput `pulumi:"googleCredentials"`
 	GoogleServiceAccount     pulumi.StringPtrOutput `pulumi:"googleServiceAccount"`
 	Host                     pulumi.StringPtrOutput `pulumi:"host"`
+	MetadataServiceUrl       pulumi.StringPtrOutput `pulumi:"metadataServiceUrl"`
 	Password                 pulumi.StringPtrOutput `pulumi:"password"`
 	Profile                  pulumi.StringPtrOutput `pulumi:"profile"`
 	Token                    pulumi.StringPtrOutput `pulumi:"token"`
@@ -54,6 +55,9 @@ func NewProvider(ctx *pulumi.Context,
 	if args.GoogleCredentials != nil {
 		args.GoogleCredentials = pulumi.ToSecret(args.GoogleCredentials).(pulumi.StringPtrInput)
 	}
+	if args.MetadataServiceUrl != nil {
+		args.MetadataServiceUrl = pulumi.ToSecret(args.MetadataServiceUrl).(pulumi.StringPtrInput)
+	}
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
@@ -64,6 +68,7 @@ func NewProvider(ctx *pulumi.Context,
 		"azureClientSecret",
 		"clientSecret",
 		"googleCredentials",
+		"metadataServiceUrl",
 		"password",
 		"token",
 	})
@@ -96,6 +101,7 @@ type providerArgs struct {
 	GoogleServiceAccount     *string `pulumi:"googleServiceAccount"`
 	Host                     *string `pulumi:"host"`
 	HttpTimeoutSeconds       *int    `pulumi:"httpTimeoutSeconds"`
+	MetadataServiceUrl       *string `pulumi:"metadataServiceUrl"`
 	Password                 *string `pulumi:"password"`
 	Profile                  *string `pulumi:"profile"`
 	RateLimit                *int    `pulumi:"rateLimit"`
@@ -126,6 +132,7 @@ type ProviderArgs struct {
 	GoogleServiceAccount     pulumi.StringPtrInput
 	Host                     pulumi.StringPtrInput
 	HttpTimeoutSeconds       pulumi.IntPtrInput
+	MetadataServiceUrl       pulumi.StringPtrInput
 	Password                 pulumi.StringPtrInput
 	Profile                  pulumi.StringPtrInput
 	RateLimit                pulumi.IntPtrInput
@@ -230,6 +237,10 @@ func (o ProviderOutput) GoogleServiceAccount() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) MetadataServiceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MetadataServiceUrl }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Password() pulumi.StringPtrOutput {

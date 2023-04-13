@@ -1153,6 +1153,7 @@ export interface GetJobJobSettingsSettingsTaskSparkSubmitTask {
 export interface GetJobJobSettingsSettingsTaskSqlTask {
     alert?: outputs.GetJobJobSettingsSettingsTaskSqlTaskAlert;
     dashboard?: outputs.GetJobJobSettingsSettingsTaskSqlTaskDashboard;
+    file?: outputs.GetJobJobSettingsSettingsTaskSqlTaskFile;
     parameters?: {[key: string]: any};
     query?: outputs.GetJobJobSettingsSettingsTaskSqlTaskQuery;
     warehouseId?: string;
@@ -1164,6 +1165,10 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskAlert {
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskDashboard {
     dashboardId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskSqlTaskFile {
+    path: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskQuery {
@@ -1557,6 +1562,9 @@ export interface JobJobClusterNewClusterGcpAttributes {
 export interface JobJobClusterNewClusterInitScript {
     abfss?: outputs.JobJobClusterNewClusterInitScriptAbfss;
     dbfs?: outputs.JobJobClusterNewClusterInitScriptDbfs;
+    /**
+     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+     */
     file?: outputs.JobJobClusterNewClusterInitScriptFile;
     gcs?: outputs.JobJobClusterNewClusterInitScriptGcs;
     s3?: outputs.JobJobClusterNewClusterInitScriptS3;
@@ -1731,6 +1739,9 @@ export interface JobNewClusterGcpAttributes {
 export interface JobNewClusterInitScript {
     abfss?: outputs.JobNewClusterInitScriptAbfss;
     dbfs?: outputs.JobNewClusterInitScriptDbfs;
+    /**
+     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+     */
     file?: outputs.JobNewClusterInitScriptFile;
     gcs?: outputs.JobNewClusterInitScriptGcs;
     s3?: outputs.JobNewClusterInitScriptS3;
@@ -2097,6 +2108,9 @@ export interface JobTaskNewClusterGcpAttributes {
 export interface JobTaskNewClusterInitScript {
     abfss?: outputs.JobTaskNewClusterInitScriptAbfss;
     dbfs?: outputs.JobTaskNewClusterInitScriptDbfs;
+    /**
+     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+     */
     file?: outputs.JobTaskNewClusterInitScriptFile;
     gcs?: outputs.JobTaskNewClusterInitScriptGcs;
     s3?: outputs.JobTaskNewClusterInitScriptS3;
@@ -2222,6 +2236,10 @@ export interface JobTaskSqlTask {
      */
     dashboard?: outputs.JobTaskSqlTaskDashboard;
     /**
+     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+     */
+    file?: outputs.JobTaskSqlTaskFile;
+    /**
      * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: {[key: string]: any};
@@ -2241,6 +2259,10 @@ export interface JobTaskSqlTaskAlert {
 
 export interface JobTaskSqlTaskDashboard {
     dashboardId: string;
+}
+
+export interface JobTaskSqlTaskFile {
+    path: string;
 }
 
 export interface JobTaskSqlTaskQuery {

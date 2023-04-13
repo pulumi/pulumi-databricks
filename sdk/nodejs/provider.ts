@@ -40,6 +40,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly googleCredentials!: pulumi.Output<string | undefined>;
     public readonly googleServiceAccount!: pulumi.Output<string | undefined>;
     public readonly host!: pulumi.Output<string | undefined>;
+    public readonly metadataServiceUrl!: pulumi.Output<string | undefined>;
     public readonly password!: pulumi.Output<string | undefined>;
     public readonly profile!: pulumi.Output<string | undefined>;
     public readonly token!: pulumi.Output<string | undefined>;
@@ -75,6 +76,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["googleServiceAccount"] = args ? args.googleServiceAccount : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["httpTimeoutSeconds"] = pulumi.output(args ? args.httpTimeoutSeconds : undefined).apply(JSON.stringify);
+            resourceInputs["metadataServiceUrl"] = args?.metadataServiceUrl ? pulumi.secret(args.metadataServiceUrl) : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["profile"] = args ? args.profile : undefined;
             resourceInputs["rateLimit"] = pulumi.output(args ? args.rateLimit : undefined).apply(JSON.stringify);
@@ -84,7 +86,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["azureClientSecret", "clientSecret", "googleCredentials", "password", "token"] };
+        const secretOpts = { additionalSecretOutputs: ["azureClientSecret", "clientSecret", "googleCredentials", "metadataServiceUrl", "password", "token"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
@@ -113,6 +115,7 @@ export interface ProviderArgs {
     googleServiceAccount?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     httpTimeoutSeconds?: pulumi.Input<number>;
+    metadataServiceUrl?: pulumi.Input<string>;
     password?: pulumi.Input<string>;
     profile?: pulumi.Input<string>;
     rateLimit?: pulumi.Input<number>;

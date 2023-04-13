@@ -2144,6 +2144,7 @@ export interface GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs {
 export interface GetJobJobSettingsSettingsTaskSqlTask {
     alert?: inputs.GetJobJobSettingsSettingsTaskSqlTaskAlert;
     dashboard?: inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboard;
+    file?: inputs.GetJobJobSettingsSettingsTaskSqlTaskFile;
     parameters?: {[key: string]: any};
     query?: inputs.GetJobJobSettingsSettingsTaskSqlTaskQuery;
     warehouseId?: string;
@@ -2152,6 +2153,7 @@ export interface GetJobJobSettingsSettingsTaskSqlTask {
 export interface GetJobJobSettingsSettingsTaskSqlTaskArgs {
     alert?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertArgs>;
     dashboard?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs>;
+    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskFileArgs>;
     parameters?: pulumi.Input<{[key: string]: any}>;
     query?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskQueryArgs>;
     warehouseId?: pulumi.Input<string>;
@@ -2171,6 +2173,14 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskDashboard {
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs {
     dashboardId: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskSqlTaskFile {
+    path: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskSqlTaskFileArgs {
+    path: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskQuery {
@@ -2659,6 +2669,9 @@ export interface JobJobClusterNewClusterGcpAttributes {
 export interface JobJobClusterNewClusterInitScript {
     abfss?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptAbfss>;
     dbfs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptDbfs>;
+    /**
+     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+     */
     file?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptS3>;
@@ -2833,6 +2846,9 @@ export interface JobNewClusterGcpAttributes {
 export interface JobNewClusterInitScript {
     abfss?: pulumi.Input<inputs.JobNewClusterInitScriptAbfss>;
     dbfs?: pulumi.Input<inputs.JobNewClusterInitScriptDbfs>;
+    /**
+     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+     */
     file?: pulumi.Input<inputs.JobNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobNewClusterInitScriptS3>;
@@ -3199,6 +3215,9 @@ export interface JobTaskNewClusterGcpAttributes {
 export interface JobTaskNewClusterInitScript {
     abfss?: pulumi.Input<inputs.JobTaskNewClusterInitScriptAbfss>;
     dbfs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptDbfs>;
+    /**
+     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+     */
     file?: pulumi.Input<inputs.JobTaskNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobTaskNewClusterInitScriptS3>;
@@ -3324,6 +3343,10 @@ export interface JobTaskSqlTask {
      */
     dashboard?: pulumi.Input<inputs.JobTaskSqlTaskDashboard>;
     /**
+     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+     */
+    file?: pulumi.Input<inputs.JobTaskSqlTaskFile>;
+    /**
      * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
     parameters?: pulumi.Input<{[key: string]: any}>;
@@ -3343,6 +3366,10 @@ export interface JobTaskSqlTaskAlert {
 
 export interface JobTaskSqlTaskDashboard {
     dashboardId: pulumi.Input<string>;
+}
+
+export interface JobTaskSqlTaskFile {
+    path: pulumi.Input<string>;
 }
 
 export interface JobTaskSqlTaskQuery {

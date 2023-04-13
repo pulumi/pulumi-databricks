@@ -159,6 +159,14 @@ Object.defineProperty(exports, "httpTimeoutSeconds", {
     enumerable: true,
 });
 
+export declare const metadataServiceUrl: string | undefined;
+Object.defineProperty(exports, "metadataServiceUrl", {
+    get() {
+        return __config.get("metadataServiceUrl");
+    },
+    enumerable: true,
+});
+
 export declare const password: string | undefined;
 Object.defineProperty(exports, "password", {
     get() {

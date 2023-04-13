@@ -24,6 +24,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("dashboard")]
         public Input<Inputs.JobTaskSqlTaskDashboardArgs>? Dashboard { get; set; }
 
+        /// <summary>
+        /// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+        /// </summary>
+        [Input("file")]
+        public Input<Inputs.JobTaskSqlTaskFileArgs>? File { get; set; }
+
         [Input("parameters")]
         private InputMap<object>? _parameters;
 

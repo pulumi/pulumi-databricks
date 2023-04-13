@@ -150,6 +150,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.httpTimeoutSeconds);
     }
 
+    @Import(name="metadataServiceUrl")
+    private @Nullable Output<String> metadataServiceUrl;
+
+    public Optional<Output<String>> metadataServiceUrl() {
+        return Optional.ofNullable(this.metadataServiceUrl);
+    }
+
     @Import(name="password")
     private @Nullable Output<String> password;
 
@@ -221,6 +228,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.googleServiceAccount = $.googleServiceAccount;
         this.host = $.host;
         this.httpTimeoutSeconds = $.httpTimeoutSeconds;
+        this.metadataServiceUrl = $.metadataServiceUrl;
         this.password = $.password;
         this.profile = $.profile;
         this.rateLimit = $.rateLimit;
@@ -417,6 +425,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder httpTimeoutSeconds(Integer httpTimeoutSeconds) {
             return httpTimeoutSeconds(Output.of(httpTimeoutSeconds));
+        }
+
+        public Builder metadataServiceUrl(@Nullable Output<String> metadataServiceUrl) {
+            $.metadataServiceUrl = metadataServiceUrl;
+            return this;
+        }
+
+        public Builder metadataServiceUrl(String metadataServiceUrl) {
+            return metadataServiceUrl(Output.of(metadataServiceUrl));
         }
 
         public Builder password(@Nullable Output<String> password) {

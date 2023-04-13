@@ -47,6 +47,8 @@ host: Optional[str]
 
 httpTimeoutSeconds: Optional[int]
 
+metadataServiceUrl: Optional[str]
+
 password: Optional[str]
 
 profile: Optional[str]

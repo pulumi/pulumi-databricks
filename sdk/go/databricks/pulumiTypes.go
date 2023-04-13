@@ -8335,9 +8335,10 @@ func (o JobJobClusterNewClusterGcpAttributesPtrOutput) ZoneId() pulumi.StringPtr
 type JobJobClusterNewClusterInitScript struct {
 	Abfss *JobJobClusterNewClusterInitScriptAbfss `pulumi:"abfss"`
 	Dbfs  *JobJobClusterNewClusterInitScriptDbfs  `pulumi:"dbfs"`
-	File  *JobJobClusterNewClusterInitScriptFile  `pulumi:"file"`
-	Gcs   *JobJobClusterNewClusterInitScriptGcs   `pulumi:"gcs"`
-	S3    *JobJobClusterNewClusterInitScriptS3    `pulumi:"s3"`
+	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	File *JobJobClusterNewClusterInitScriptFile `pulumi:"file"`
+	Gcs  *JobJobClusterNewClusterInitScriptGcs  `pulumi:"gcs"`
+	S3   *JobJobClusterNewClusterInitScriptS3   `pulumi:"s3"`
 }
 
 // JobJobClusterNewClusterInitScriptInput is an input type that accepts JobJobClusterNewClusterInitScriptArgs and JobJobClusterNewClusterInitScriptOutput values.
@@ -8354,9 +8355,10 @@ type JobJobClusterNewClusterInitScriptInput interface {
 type JobJobClusterNewClusterInitScriptArgs struct {
 	Abfss JobJobClusterNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
 	Dbfs  JobJobClusterNewClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
-	File  JobJobClusterNewClusterInitScriptFilePtrInput  `pulumi:"file"`
-	Gcs   JobJobClusterNewClusterInitScriptGcsPtrInput   `pulumi:"gcs"`
-	S3    JobJobClusterNewClusterInitScriptS3PtrInput    `pulumi:"s3"`
+	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	File JobJobClusterNewClusterInitScriptFilePtrInput `pulumi:"file"`
+	Gcs  JobJobClusterNewClusterInitScriptGcsPtrInput  `pulumi:"gcs"`
+	S3   JobJobClusterNewClusterInitScriptS3PtrInput   `pulumi:"s3"`
 }
 
 func (JobJobClusterNewClusterInitScriptArgs) ElementType() reflect.Type {
@@ -8418,6 +8420,7 @@ func (o JobJobClusterNewClusterInitScriptOutput) Dbfs() JobJobClusterNewClusterI
 	return o.ApplyT(func(v JobJobClusterNewClusterInitScript) *JobJobClusterNewClusterInitScriptDbfs { return v.Dbfs }).(JobJobClusterNewClusterInitScriptDbfsPtrOutput)
 }
 
+// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
 func (o JobJobClusterNewClusterInitScriptOutput) File() JobJobClusterNewClusterInitScriptFilePtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewClusterInitScript) *JobJobClusterNewClusterInitScriptFile { return v.File }).(JobJobClusterNewClusterInitScriptFilePtrOutput)
 }
@@ -12351,9 +12354,10 @@ func (o JobNewClusterGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 type JobNewClusterInitScript struct {
 	Abfss *JobNewClusterInitScriptAbfss `pulumi:"abfss"`
 	Dbfs  *JobNewClusterInitScriptDbfs  `pulumi:"dbfs"`
-	File  *JobNewClusterInitScriptFile  `pulumi:"file"`
-	Gcs   *JobNewClusterInitScriptGcs   `pulumi:"gcs"`
-	S3    *JobNewClusterInitScriptS3    `pulumi:"s3"`
+	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	File *JobNewClusterInitScriptFile `pulumi:"file"`
+	Gcs  *JobNewClusterInitScriptGcs  `pulumi:"gcs"`
+	S3   *JobNewClusterInitScriptS3   `pulumi:"s3"`
 }
 
 // JobNewClusterInitScriptInput is an input type that accepts JobNewClusterInitScriptArgs and JobNewClusterInitScriptOutput values.
@@ -12370,9 +12374,10 @@ type JobNewClusterInitScriptInput interface {
 type JobNewClusterInitScriptArgs struct {
 	Abfss JobNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
 	Dbfs  JobNewClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
-	File  JobNewClusterInitScriptFilePtrInput  `pulumi:"file"`
-	Gcs   JobNewClusterInitScriptGcsPtrInput   `pulumi:"gcs"`
-	S3    JobNewClusterInitScriptS3PtrInput    `pulumi:"s3"`
+	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	File JobNewClusterInitScriptFilePtrInput `pulumi:"file"`
+	Gcs  JobNewClusterInitScriptGcsPtrInput  `pulumi:"gcs"`
+	S3   JobNewClusterInitScriptS3PtrInput   `pulumi:"s3"`
 }
 
 func (JobNewClusterInitScriptArgs) ElementType() reflect.Type {
@@ -12434,6 +12439,7 @@ func (o JobNewClusterInitScriptOutput) Dbfs() JobNewClusterInitScriptDbfsPtrOutp
 	return o.ApplyT(func(v JobNewClusterInitScript) *JobNewClusterInitScriptDbfs { return v.Dbfs }).(JobNewClusterInitScriptDbfsPtrOutput)
 }
 
+// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
 func (o JobNewClusterInitScriptOutput) File() JobNewClusterInitScriptFilePtrOutput {
 	return o.ApplyT(func(v JobNewClusterInitScript) *JobNewClusterInitScriptFile { return v.File }).(JobNewClusterInitScriptFilePtrOutput)
 }
@@ -18420,9 +18426,10 @@ func (o JobTaskNewClusterGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput
 type JobTaskNewClusterInitScript struct {
 	Abfss *JobTaskNewClusterInitScriptAbfss `pulumi:"abfss"`
 	Dbfs  *JobTaskNewClusterInitScriptDbfs  `pulumi:"dbfs"`
-	File  *JobTaskNewClusterInitScriptFile  `pulumi:"file"`
-	Gcs   *JobTaskNewClusterInitScriptGcs   `pulumi:"gcs"`
-	S3    *JobTaskNewClusterInitScriptS3    `pulumi:"s3"`
+	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	File *JobTaskNewClusterInitScriptFile `pulumi:"file"`
+	Gcs  *JobTaskNewClusterInitScriptGcs  `pulumi:"gcs"`
+	S3   *JobTaskNewClusterInitScriptS3   `pulumi:"s3"`
 }
 
 // JobTaskNewClusterInitScriptInput is an input type that accepts JobTaskNewClusterInitScriptArgs and JobTaskNewClusterInitScriptOutput values.
@@ -18439,9 +18446,10 @@ type JobTaskNewClusterInitScriptInput interface {
 type JobTaskNewClusterInitScriptArgs struct {
 	Abfss JobTaskNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
 	Dbfs  JobTaskNewClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
-	File  JobTaskNewClusterInitScriptFilePtrInput  `pulumi:"file"`
-	Gcs   JobTaskNewClusterInitScriptGcsPtrInput   `pulumi:"gcs"`
-	S3    JobTaskNewClusterInitScriptS3PtrInput    `pulumi:"s3"`
+	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	File JobTaskNewClusterInitScriptFilePtrInput `pulumi:"file"`
+	Gcs  JobTaskNewClusterInitScriptGcsPtrInput  `pulumi:"gcs"`
+	S3   JobTaskNewClusterInitScriptS3PtrInput   `pulumi:"s3"`
 }
 
 func (JobTaskNewClusterInitScriptArgs) ElementType() reflect.Type {
@@ -18503,6 +18511,7 @@ func (o JobTaskNewClusterInitScriptOutput) Dbfs() JobTaskNewClusterInitScriptDbf
 	return o.ApplyT(func(v JobTaskNewClusterInitScript) *JobTaskNewClusterInitScriptDbfs { return v.Dbfs }).(JobTaskNewClusterInitScriptDbfsPtrOutput)
 }
 
+// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
 func (o JobTaskNewClusterInitScriptOutput) File() JobTaskNewClusterInitScriptFilePtrOutput {
 	return o.ApplyT(func(v JobTaskNewClusterInitScript) *JobTaskNewClusterInitScriptFile { return v.File }).(JobTaskNewClusterInitScriptFilePtrOutput)
 }
@@ -20565,6 +20574,8 @@ type JobTaskSqlTask struct {
 	Alert *JobTaskSqlTaskAlert `pulumi:"alert"`
 	// block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	Dashboard *JobTaskSqlTaskDashboard `pulumi:"dashboard"`
+	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	File *JobTaskSqlTaskFile `pulumi:"file"`
 	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
@@ -20589,6 +20600,8 @@ type JobTaskSqlTaskArgs struct {
 	Alert JobTaskSqlTaskAlertPtrInput `pulumi:"alert"`
 	// block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	Dashboard JobTaskSqlTaskDashboardPtrInput `pulumi:"dashboard"`
+	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	File JobTaskSqlTaskFilePtrInput `pulumi:"file"`
 	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters pulumi.MapInput `pulumi:"parameters"`
 	// block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
@@ -20684,6 +20697,11 @@ func (o JobTaskSqlTaskOutput) Dashboard() JobTaskSqlTaskDashboardPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTask) *JobTaskSqlTaskDashboard { return v.Dashboard }).(JobTaskSqlTaskDashboardPtrOutput)
 }
 
+// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+func (o JobTaskSqlTaskOutput) File() JobTaskSqlTaskFilePtrOutput {
+	return o.ApplyT(func(v JobTaskSqlTask) *JobTaskSqlTaskFile { return v.File }).(JobTaskSqlTaskFilePtrOutput)
+}
+
 // (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 func (o JobTaskSqlTaskOutput) Parameters() pulumi.MapOutput {
 	return o.ApplyT(func(v JobTaskSqlTask) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
@@ -20741,6 +20759,16 @@ func (o JobTaskSqlTaskPtrOutput) Dashboard() JobTaskSqlTaskDashboardPtrOutput {
 		}
 		return v.Dashboard
 	}).(JobTaskSqlTaskDashboardPtrOutput)
+}
+
+// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+func (o JobTaskSqlTaskPtrOutput) File() JobTaskSqlTaskFilePtrOutput {
+	return o.ApplyT(func(v *JobTaskSqlTask) *JobTaskSqlTaskFile {
+		if v == nil {
+			return nil
+		}
+		return v.File
+	}).(JobTaskSqlTaskFilePtrOutput)
 }
 
 // (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
@@ -21036,6 +21064,139 @@ func (o JobTaskSqlTaskDashboardPtrOutput) DashboardId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.DashboardId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskSqlTaskFile struct {
+	Path string `pulumi:"path"`
+}
+
+// JobTaskSqlTaskFileInput is an input type that accepts JobTaskSqlTaskFileArgs and JobTaskSqlTaskFileOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskFileInput` via:
+//
+//	JobTaskSqlTaskFileArgs{...}
+type JobTaskSqlTaskFileInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskFileOutput() JobTaskSqlTaskFileOutput
+	ToJobTaskSqlTaskFileOutputWithContext(context.Context) JobTaskSqlTaskFileOutput
+}
+
+type JobTaskSqlTaskFileArgs struct {
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (JobTaskSqlTaskFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTaskFile)(nil)).Elem()
+}
+
+func (i JobTaskSqlTaskFileArgs) ToJobTaskSqlTaskFileOutput() JobTaskSqlTaskFileOutput {
+	return i.ToJobTaskSqlTaskFileOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskFileArgs) ToJobTaskSqlTaskFileOutputWithContext(ctx context.Context) JobTaskSqlTaskFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskFileOutput)
+}
+
+func (i JobTaskSqlTaskFileArgs) ToJobTaskSqlTaskFilePtrOutput() JobTaskSqlTaskFilePtrOutput {
+	return i.ToJobTaskSqlTaskFilePtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskFileArgs) ToJobTaskSqlTaskFilePtrOutputWithContext(ctx context.Context) JobTaskSqlTaskFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskFileOutput).ToJobTaskSqlTaskFilePtrOutputWithContext(ctx)
+}
+
+// JobTaskSqlTaskFilePtrInput is an input type that accepts JobTaskSqlTaskFileArgs, JobTaskSqlTaskFilePtr and JobTaskSqlTaskFilePtrOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskFilePtrInput` via:
+//
+//	        JobTaskSqlTaskFileArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskSqlTaskFilePtrInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskFilePtrOutput() JobTaskSqlTaskFilePtrOutput
+	ToJobTaskSqlTaskFilePtrOutputWithContext(context.Context) JobTaskSqlTaskFilePtrOutput
+}
+
+type jobTaskSqlTaskFilePtrType JobTaskSqlTaskFileArgs
+
+func JobTaskSqlTaskFilePtr(v *JobTaskSqlTaskFileArgs) JobTaskSqlTaskFilePtrInput {
+	return (*jobTaskSqlTaskFilePtrType)(v)
+}
+
+func (*jobTaskSqlTaskFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskSqlTaskFile)(nil)).Elem()
+}
+
+func (i *jobTaskSqlTaskFilePtrType) ToJobTaskSqlTaskFilePtrOutput() JobTaskSqlTaskFilePtrOutput {
+	return i.ToJobTaskSqlTaskFilePtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskSqlTaskFilePtrType) ToJobTaskSqlTaskFilePtrOutputWithContext(ctx context.Context) JobTaskSqlTaskFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskFilePtrOutput)
+}
+
+type JobTaskSqlTaskFileOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTaskFile)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskFileOutput) ToJobTaskSqlTaskFileOutput() JobTaskSqlTaskFileOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskFileOutput) ToJobTaskSqlTaskFileOutputWithContext(ctx context.Context) JobTaskSqlTaskFileOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskFileOutput) ToJobTaskSqlTaskFilePtrOutput() JobTaskSqlTaskFilePtrOutput {
+	return o.ToJobTaskSqlTaskFilePtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskSqlTaskFileOutput) ToJobTaskSqlTaskFilePtrOutputWithContext(ctx context.Context) JobTaskSqlTaskFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskSqlTaskFile) *JobTaskSqlTaskFile {
+		return &v
+	}).(JobTaskSqlTaskFilePtrOutput)
+}
+
+func (o JobTaskSqlTaskFileOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskSqlTaskFile) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type JobTaskSqlTaskFilePtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskSqlTaskFile)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskFilePtrOutput) ToJobTaskSqlTaskFilePtrOutput() JobTaskSqlTaskFilePtrOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskFilePtrOutput) ToJobTaskSqlTaskFilePtrOutputWithContext(ctx context.Context) JobTaskSqlTaskFilePtrOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskFilePtrOutput) Elem() JobTaskSqlTaskFileOutput {
+	return o.ApplyT(func(v *JobTaskSqlTaskFile) JobTaskSqlTaskFile {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskSqlTaskFile
+		return ret
+	}).(JobTaskSqlTaskFileOutput)
+}
+
+func (o JobTaskSqlTaskFilePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskSqlTaskFile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -58699,6 +58860,7 @@ func (o GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrOutput) Parameters() pulu
 type GetJobJobSettingsSettingsTaskSqlTask struct {
 	Alert       *GetJobJobSettingsSettingsTaskSqlTaskAlert     `pulumi:"alert"`
 	Dashboard   *GetJobJobSettingsSettingsTaskSqlTaskDashboard `pulumi:"dashboard"`
+	File        *GetJobJobSettingsSettingsTaskSqlTaskFile      `pulumi:"file"`
 	Parameters  map[string]interface{}                         `pulumi:"parameters"`
 	Query       *GetJobJobSettingsSettingsTaskSqlTaskQuery     `pulumi:"query"`
 	WarehouseId *string                                        `pulumi:"warehouseId"`
@@ -58718,6 +58880,7 @@ type GetJobJobSettingsSettingsTaskSqlTaskInput interface {
 type GetJobJobSettingsSettingsTaskSqlTaskArgs struct {
 	Alert       GetJobJobSettingsSettingsTaskSqlTaskAlertPtrInput     `pulumi:"alert"`
 	Dashboard   GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrInput `pulumi:"dashboard"`
+	File        GetJobJobSettingsSettingsTaskSqlTaskFilePtrInput      `pulumi:"file"`
 	Parameters  pulumi.MapInput                                       `pulumi:"parameters"`
 	Query       GetJobJobSettingsSettingsTaskSqlTaskQueryPtrInput     `pulumi:"query"`
 	WarehouseId pulumi.StringPtrInput                                 `pulumi:"warehouseId"`
@@ -58812,6 +58975,10 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) Dashboard() GetJobJobSetting
 	}).(GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) File() GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTask) *GetJobJobSettingsSettingsTaskSqlTaskFile { return v.File }).(GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsTaskSqlTaskOutput) Parameters() pulumi.MapOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTask) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
 }
@@ -58866,6 +59033,15 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) Dashboard() GetJobJobSett
 		}
 		return v.Dashboard
 	}).(GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) File() GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTask) *GetJobJobSettingsSettingsTaskSqlTaskFile {
+		if v == nil {
+			return nil
+		}
+		return v.File
+	}).(GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) Parameters() pulumi.MapOutput {
@@ -59158,6 +59334,139 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput) DashboardId() pu
 			return nil
 		}
 		return &v.DashboardId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskFile struct {
+	Path string `pulumi:"path"`
+}
+
+// GetJobJobSettingsSettingsTaskSqlTaskFileInput is an input type that accepts GetJobJobSettingsSettingsTaskSqlTaskFileArgs and GetJobJobSettingsSettingsTaskSqlTaskFileOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSqlTaskFileInput` via:
+//
+//	GetJobJobSettingsSettingsTaskSqlTaskFileArgs{...}
+type GetJobJobSettingsSettingsTaskSqlTaskFileInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSqlTaskFileOutput() GetJobJobSettingsSettingsTaskSqlTaskFileOutput
+	ToGetJobJobSettingsSettingsTaskSqlTaskFileOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSqlTaskFileOutput
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskFileArgs struct {
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GetJobJobSettingsSettingsTaskSqlTaskFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskFile)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskFileArgs) ToGetJobJobSettingsSettingsTaskSqlTaskFileOutput() GetJobJobSettingsSettingsTaskSqlTaskFileOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSqlTaskFileOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskFileArgs) ToGetJobJobSettingsSettingsTaskSqlTaskFileOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSqlTaskFileOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskFileArgs) ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput() GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskFileArgs) ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSqlTaskFileOutput).ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskSqlTaskFilePtrInput is an input type that accepts GetJobJobSettingsSettingsTaskSqlTaskFileArgs, GetJobJobSettingsSettingsTaskSqlTaskFilePtr and GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSqlTaskFilePtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskSqlTaskFileArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskSqlTaskFilePtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput() GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput
+	ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput
+}
+
+type getJobJobSettingsSettingsTaskSqlTaskFilePtrType GetJobJobSettingsSettingsTaskSqlTaskFileArgs
+
+func GetJobJobSettingsSettingsTaskSqlTaskFilePtr(v *GetJobJobSettingsSettingsTaskSqlTaskFileArgs) GetJobJobSettingsSettingsTaskSqlTaskFilePtrInput {
+	return (*getJobJobSettingsSettingsTaskSqlTaskFilePtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskSqlTaskFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskSqlTaskFile)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskSqlTaskFilePtrType) ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput() GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskSqlTaskFilePtrType) ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskFileOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSqlTaskFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskFile)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskFileOutput) ToGetJobJobSettingsSettingsTaskSqlTaskFileOutput() GetJobJobSettingsSettingsTaskSqlTaskFileOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskFileOutput) ToGetJobJobSettingsSettingsTaskSqlTaskFileOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskFileOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskFileOutput) ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput() GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskFileOutput) ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskSqlTaskFile) *GetJobJobSettingsSettingsTaskSqlTaskFile {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskFileOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskFile) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskSqlTaskFile)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput) ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput() GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput) ToGetJobJobSettingsSettingsTaskSqlTaskFilePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput) Elem() GetJobJobSettingsSettingsTaskSqlTaskFileOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTaskFile) GetJobJobSettingsSettingsTaskSqlTaskFile {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskSqlTaskFile
+		return ret
+	}).(GetJobJobSettingsSettingsTaskSqlTaskFileOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTaskFile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -61360,6 +61669,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskAlertPtrInput)(nil)).Elem(), JobTaskSqlTaskAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskDashboardInput)(nil)).Elem(), JobTaskSqlTaskDashboardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskDashboardPtrInput)(nil)).Elem(), JobTaskSqlTaskDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskFileInput)(nil)).Elem(), JobTaskSqlTaskFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskFilePtrInput)(nil)).Elem(), JobTaskSqlTaskFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskQueryInput)(nil)).Elem(), JobTaskSqlTaskQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskQueryPtrInput)(nil)).Elem(), JobTaskSqlTaskQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerInput)(nil)).Elem(), JobTriggerArgs{})
@@ -61821,6 +62132,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlertPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskDashboardInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskFileInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskFilePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskQueryInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskQueryPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerArgs{})
@@ -62105,6 +62418,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskSqlTaskAlertPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskDashboardOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskDashboardPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskFileOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskFilePtrOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskQueryOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskQueryPtrOutput{})
 	pulumi.RegisterOutputType(JobTriggerOutput{})
@@ -62566,6 +62881,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskDashboardOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskFileOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskQueryOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskQueryPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerOutput{})

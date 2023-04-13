@@ -17,6 +17,10 @@ import javax.annotation.Nullable;
 public final class JobTaskNewClusterInitScript {
     private @Nullable JobTaskNewClusterInitScriptAbfss abfss;
     private @Nullable JobTaskNewClusterInitScriptDbfs dbfs;
+    /**
+     * @return block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+     * 
+     */
     private @Nullable JobTaskNewClusterInitScriptFile file;
     private @Nullable JobTaskNewClusterInitScriptGcs gcs;
     private @Nullable JobTaskNewClusterInitScriptS3 s3;
@@ -28,6 +32,10 @@ public final class JobTaskNewClusterInitScript {
     public Optional<JobTaskNewClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
+    /**
+     * @return block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+     * 
+     */
     public Optional<JobTaskNewClusterInitScriptFile> file() {
         return Optional.ofNullable(this.file);
     }

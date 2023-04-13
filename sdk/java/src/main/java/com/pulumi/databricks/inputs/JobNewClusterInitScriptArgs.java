@@ -33,9 +33,17 @@ public final class JobNewClusterInitScriptArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.dbfs);
     }
 
+    /**
+     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+     * 
+     */
     @Import(name="file")
     private @Nullable Output<JobNewClusterInitScriptFileArgs> file;
 
+    /**
+     * @return block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+     * 
+     */
     public Optional<Output<JobNewClusterInitScriptFileArgs>> file() {
         return Optional.ofNullable(this.file);
     }
@@ -100,11 +108,23 @@ public final class JobNewClusterInitScriptArgs extends com.pulumi.resources.Reso
             return dbfs(Output.of(dbfs));
         }
 
+        /**
+         * @param file block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+         * 
+         * @return builder
+         * 
+         */
         public Builder file(@Nullable Output<JobNewClusterInitScriptFileArgs> file) {
             $.file = file;
             return this;
         }
 
+        /**
+         * @param file block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+         * 
+         * @return builder
+         * 
+         */
         public Builder file(JobNewClusterInitScriptFileArgs file) {
             return file(Output.of(file));
         }

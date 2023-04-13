@@ -63,6 +63,9 @@ namespace Pulumi.Databricks
         [Output("host")]
         public Output<string?> Host { get; private set; } = null!;
 
+        [Output("metadataServiceUrl")]
+        public Output<string?> MetadataServiceUrl { get; private set; } = null!;
+
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
@@ -98,6 +101,7 @@ namespace Pulumi.Databricks
                     "azureClientSecret",
                     "clientSecret",
                     "googleCredentials",
+                    "metadataServiceUrl",
                     "password",
                     "token",
                 },
@@ -194,6 +198,18 @@ namespace Pulumi.Databricks
 
         [Input("httpTimeoutSeconds", json: true)]
         public Input<int>? HttpTimeoutSeconds { get; set; }
+
+        [Input("metadataServiceUrl")]
+        private Input<string>? _metadataServiceUrl;
+        public Input<string>? MetadataServiceUrl
+        {
+            get => _metadataServiceUrl;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _metadataServiceUrl = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("password")]
         private Input<string>? _password;

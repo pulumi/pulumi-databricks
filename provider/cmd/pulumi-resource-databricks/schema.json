@@ -113,6 +113,10 @@
             "httpTimeoutSeconds": {
                 "type": "integer"
             },
+            "metadataServiceUrl": {
+                "type": "string",
+                "secret": true
+            },
             "password": {
                 "type": "string",
                 "secret": true
@@ -1156,7 +1160,8 @@
                     "$ref": "#/types/databricks:index/JobJobClusterNewClusterInitScriptDbfs:JobJobClusterNewClusterInitScriptDbfs"
                 },
                 "file": {
-                    "$ref": "#/types/databricks:index/JobJobClusterNewClusterInitScriptFile:JobJobClusterNewClusterInitScriptFile"
+                    "$ref": "#/types/databricks:index/JobJobClusterNewClusterInitScriptFile:JobJobClusterNewClusterInitScriptFile",
+                    "description": "block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.\n"
                 },
                 "gcs": {
                     "$ref": "#/types/databricks:index/JobJobClusterNewClusterInitScriptGcs:JobJobClusterNewClusterInitScriptGcs"
@@ -1650,7 +1655,8 @@
                     "$ref": "#/types/databricks:index/JobNewClusterInitScriptDbfs:JobNewClusterInitScriptDbfs"
                 },
                 "file": {
-                    "$ref": "#/types/databricks:index/JobNewClusterInitScriptFile:JobNewClusterInitScriptFile"
+                    "$ref": "#/types/databricks:index/JobNewClusterInitScriptFile:JobNewClusterInitScriptFile",
+                    "description": "block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.\n"
                 },
                 "gcs": {
                     "$ref": "#/types/databricks:index/JobNewClusterInitScriptGcs:JobNewClusterInitScriptGcs"
@@ -2458,7 +2464,8 @@
                     "$ref": "#/types/databricks:index/JobTaskNewClusterInitScriptDbfs:JobTaskNewClusterInitScriptDbfs"
                 },
                 "file": {
-                    "$ref": "#/types/databricks:index/JobTaskNewClusterInitScriptFile:JobTaskNewClusterInitScriptFile"
+                    "$ref": "#/types/databricks:index/JobTaskNewClusterInitScriptFile:JobTaskNewClusterInitScriptFile",
+                    "description": "block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.\n"
                 },
                 "gcs": {
                     "$ref": "#/types/databricks:index/JobTaskNewClusterInitScriptGcs:JobTaskNewClusterInitScriptGcs"
@@ -2681,6 +2688,10 @@
                     "$ref": "#/types/databricks:index/JobTaskSqlTaskDashboard:JobTaskSqlTaskDashboard",
                     "description": "block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.\n"
                 },
+                "file": {
+                    "$ref": "#/types/databricks:index/JobTaskSqlTaskFile:JobTaskSqlTaskFile",
+                    "description": "block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.\n"
+                },
                 "parameters": {
                     "type": "object",
                     "additionalProperties": {
@@ -2719,6 +2730,17 @@
             "type": "object",
             "required": [
                 "dashboardId"
+            ]
+        },
+        "databricks:index/JobTaskSqlTaskFile:JobTaskSqlTaskFile": {
+            "properties": {
+                "path": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "path"
             ]
         },
         "databricks:index/JobTaskSqlTaskQuery:JobTaskSqlTaskQuery": {
@@ -7636,6 +7658,9 @@
                 "dashboard": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskSqlTaskDashboard:getJobJobSettingsSettingsTaskSqlTaskDashboard"
                 },
+                "file": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskSqlTaskFile:getJobJobSettingsSettingsTaskSqlTaskFile"
+                },
                 "parameters": {
                     "type": "object",
                     "additionalProperties": {
@@ -7671,6 +7696,17 @@
             "type": "object",
             "required": [
                 "dashboardId"
+            ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskSqlTaskFile:getJobJobSettingsSettingsTaskSqlTaskFile": {
+            "properties": {
+                "path": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "path"
             ]
         },
         "databricks:index/getJobJobSettingsSettingsTaskSqlTaskQuery:getJobJobSettingsSettingsTaskSqlTaskQuery": {
@@ -8016,6 +8052,10 @@
             "httpTimeoutSeconds": {
                 "type": "integer"
             },
+            "metadataServiceUrl": {
+                "type": "string",
+                "secret": true
+            },
             "password": {
                 "type": "string",
                 "secret": true
@@ -8100,6 +8140,10 @@
             },
             "httpTimeoutSeconds": {
                 "type": "integer"
+            },
+            "metadataServiceUrl": {
+                "type": "string",
+                "secret": true
             },
             "password": {
                 "type": "string",

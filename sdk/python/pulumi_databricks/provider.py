@@ -33,6 +33,7 @@ class ProviderArgs:
                  google_service_account: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  http_timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 metadata_service_url: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  rate_limit: Optional[pulumi.Input[int]] = None,
@@ -81,6 +82,8 @@ class ProviderArgs:
             pulumi.set(__self__, "host", host)
         if http_timeout_seconds is not None:
             pulumi.set(__self__, "http_timeout_seconds", http_timeout_seconds)
+        if metadata_service_url is not None:
+            pulumi.set(__self__, "metadata_service_url", metadata_service_url)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if profile is not None:
@@ -268,6 +271,15 @@ class ProviderArgs:
         pulumi.set(self, "http_timeout_seconds", value)
 
     @property
+    @pulumi.getter(name="metadataServiceUrl")
+    def metadata_service_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "metadata_service_url")
+
+    @metadata_service_url.setter
+    def metadata_service_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata_service_url", value)
+
+    @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "password")
@@ -355,6 +367,7 @@ class Provider(pulumi.ProviderResource):
                  google_service_account: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  http_timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 metadata_service_url: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  rate_limit: Optional[pulumi.Input[int]] = None,
@@ -418,6 +431,7 @@ class Provider(pulumi.ProviderResource):
                  google_service_account: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  http_timeout_seconds: Optional[pulumi.Input[int]] = None,
+                 metadata_service_url: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  rate_limit: Optional[pulumi.Input[int]] = None,
@@ -453,6 +467,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["google_service_account"] = google_service_account
             __props__.__dict__["host"] = host
             __props__.__dict__["http_timeout_seconds"] = pulumi.Output.from_input(http_timeout_seconds).apply(pulumi.runtime.to_json) if http_timeout_seconds is not None else None
+            __props__.__dict__["metadata_service_url"] = None if metadata_service_url is None else pulumi.Output.secret(metadata_service_url)
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["profile"] = profile
             __props__.__dict__["rate_limit"] = pulumi.Output.from_input(rate_limit).apply(pulumi.runtime.to_json) if rate_limit is not None else None
@@ -460,7 +475,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["skip_verify"] = pulumi.Output.from_input(skip_verify).apply(pulumi.runtime.to_json) if skip_verify is not None else None
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
             __props__.__dict__["username"] = username
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["azureClientSecret", "clientSecret", "googleCredentials", "password", "token"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["azureClientSecret", "clientSecret", "googleCredentials", "metadataServiceUrl", "password", "token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'databricks',
@@ -542,6 +557,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def host(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="metadataServiceUrl")
+    def metadata_service_url(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "metadata_service_url")
 
     @property
     @pulumi.getter

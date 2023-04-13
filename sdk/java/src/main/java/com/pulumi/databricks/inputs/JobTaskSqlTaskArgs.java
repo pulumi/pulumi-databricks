@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
 import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
+import com.pulumi.databricks.inputs.JobTaskSqlTaskFileArgs;
 import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
 import java.lang.Object;
 import java.lang.String;
@@ -48,6 +49,21 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<JobTaskSqlTaskDashboardArgs>> dashboard() {
         return Optional.ofNullable(this.dashboard);
+    }
+
+    /**
+     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+     * 
+     */
+    @Import(name="file")
+    private @Nullable Output<JobTaskSqlTaskFileArgs> file;
+
+    /**
+     * @return block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+     * 
+     */
+    public Optional<Output<JobTaskSqlTaskFileArgs>> file() {
+        return Optional.ofNullable(this.file);
     }
 
     /**
@@ -100,6 +116,7 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
     private JobTaskSqlTaskArgs(JobTaskSqlTaskArgs $) {
         this.alert = $.alert;
         this.dashboard = $.dashboard;
+        this.file = $.file;
         this.parameters = $.parameters;
         this.query = $.query;
         this.warehouseId = $.warehouseId;
@@ -163,6 +180,27 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder dashboard(JobTaskSqlTaskDashboardArgs dashboard) {
             return dashboard(Output.of(dashboard));
+        }
+
+        /**
+         * @param file block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder file(@Nullable Output<JobTaskSqlTaskFileArgs> file) {
+            $.file = file;
+            return this;
+        }
+
+        /**
+         * @param file block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder file(JobTaskSqlTaskFileArgs file) {
+            return file(Output.of(file));
         }
 
         /**

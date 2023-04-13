@@ -139,6 +139,7 @@ __all__ = [
     'JobTaskSqlTaskArgs',
     'JobTaskSqlTaskAlertArgs',
     'JobTaskSqlTaskDashboardArgs',
+    'JobTaskSqlTaskFileArgs',
     'JobTaskSqlTaskQueryArgs',
     'JobTriggerArgs',
     'JobTriggerFileArrivalArgs',
@@ -370,6 +371,7 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskSqlTaskArgs',
     'GetJobJobSettingsSettingsTaskSqlTaskAlertArgs',
     'GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs',
+    'GetJobJobSettingsSettingsTaskSqlTaskFileArgs',
     'GetJobJobSettingsSettingsTaskSqlTaskQueryArgs',
     'GetJobJobSettingsSettingsTriggerArgs',
     'GetJobJobSettingsSettingsTriggerFileArrivalArgs',
@@ -2913,6 +2915,9 @@ class JobJobClusterNewClusterInitScriptArgs:
                  file: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptFileArgs']] = None,
                  gcs: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptGcsArgs']] = None,
                  s3: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptS3Args']] = None):
+        """
+        :param pulumi.Input['JobJobClusterNewClusterInitScriptFileArgs'] file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+        """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -2945,6 +2950,9 @@ class JobJobClusterNewClusterInitScriptArgs:
     @property
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input['JobJobClusterNewClusterInitScriptFileArgs']]:
+        """
+        block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+        """
         return pulumi.get(self, "file")
 
     @file.setter
@@ -4212,6 +4220,9 @@ class JobNewClusterInitScriptArgs:
                  file: Optional[pulumi.Input['JobNewClusterInitScriptFileArgs']] = None,
                  gcs: Optional[pulumi.Input['JobNewClusterInitScriptGcsArgs']] = None,
                  s3: Optional[pulumi.Input['JobNewClusterInitScriptS3Args']] = None):
+        """
+        :param pulumi.Input['JobNewClusterInitScriptFileArgs'] file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+        """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -4244,6 +4255,9 @@ class JobNewClusterInitScriptArgs:
     @property
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input['JobNewClusterInitScriptFileArgs']]:
+        """
+        block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+        """
         return pulumi.get(self, "file")
 
     @file.setter
@@ -6338,6 +6352,9 @@ class JobTaskNewClusterInitScriptArgs:
                  file: Optional[pulumi.Input['JobTaskNewClusterInitScriptFileArgs']] = None,
                  gcs: Optional[pulumi.Input['JobTaskNewClusterInitScriptGcsArgs']] = None,
                  s3: Optional[pulumi.Input['JobTaskNewClusterInitScriptS3Args']] = None):
+        """
+        :param pulumi.Input['JobTaskNewClusterInitScriptFileArgs'] file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+        """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -6370,6 +6387,9 @@ class JobTaskNewClusterInitScriptArgs:
     @property
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input['JobTaskNewClusterInitScriptFileArgs']]:
+        """
+        block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+        """
         return pulumi.get(self, "file")
 
     @file.setter
@@ -6875,12 +6895,14 @@ class JobTaskSqlTaskArgs:
     def __init__(__self__, *,
                  alert: Optional[pulumi.Input['JobTaskSqlTaskAlertArgs']] = None,
                  dashboard: Optional[pulumi.Input['JobTaskSqlTaskDashboardArgs']] = None,
+                 file: Optional[pulumi.Input['JobTaskSqlTaskFileArgs']] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  query: Optional[pulumi.Input['JobTaskSqlTaskQueryArgs']] = None,
                  warehouse_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['JobTaskSqlTaskAlertArgs'] alert: block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.
         :param pulumi.Input['JobTaskSqlTaskDashboardArgs'] dashboard: block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        :param pulumi.Input['JobTaskSqlTaskFileArgs'] file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
         :param pulumi.Input[Mapping[str, Any]] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         :param pulumi.Input['JobTaskSqlTaskQueryArgs'] query: block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
         :param pulumi.Input[str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
@@ -6889,6 +6911,8 @@ class JobTaskSqlTaskArgs:
             pulumi.set(__self__, "alert", alert)
         if dashboard is not None:
             pulumi.set(__self__, "dashboard", dashboard)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if query is not None:
@@ -6919,6 +6943,18 @@ class JobTaskSqlTaskArgs:
     @dashboard.setter
     def dashboard(self, value: Optional[pulumi.Input['JobTaskSqlTaskDashboardArgs']]):
         pulumi.set(self, "dashboard", value)
+
+    @property
+    @pulumi.getter
+    def file(self) -> Optional[pulumi.Input['JobTaskSqlTaskFileArgs']]:
+        """
+        block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+        """
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: Optional[pulumi.Input['JobTaskSqlTaskFileArgs']]):
+        pulumi.set(self, "file", value)
 
     @property
     @pulumi.getter
@@ -6987,6 +7023,22 @@ class JobTaskSqlTaskDashboardArgs:
     @dashboard_id.setter
     def dashboard_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dashboard_id", value)
+
+
+@pulumi.input_type
+class JobTaskSqlTaskFileArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str]):
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
 
 
 @pulumi.input_type
@@ -18848,6 +18900,7 @@ class GetJobJobSettingsSettingsTaskSqlTaskArgs:
     def __init__(__self__, *,
                  alert: Optional['GetJobJobSettingsSettingsTaskSqlTaskAlertArgs'] = None,
                  dashboard: Optional['GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs'] = None,
+                 file: Optional['GetJobJobSettingsSettingsTaskSqlTaskFileArgs'] = None,
                  parameters: Optional[Mapping[str, Any]] = None,
                  query: Optional['GetJobJobSettingsSettingsTaskSqlTaskQueryArgs'] = None,
                  warehouse_id: Optional[str] = None):
@@ -18855,6 +18908,8 @@ class GetJobJobSettingsSettingsTaskSqlTaskArgs:
             pulumi.set(__self__, "alert", alert)
         if dashboard is not None:
             pulumi.set(__self__, "dashboard", dashboard)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if query is not None:
@@ -18879,6 +18934,15 @@ class GetJobJobSettingsSettingsTaskSqlTaskArgs:
     @dashboard.setter
     def dashboard(self, value: Optional['GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs']):
         pulumi.set(self, "dashboard", value)
+
+    @property
+    @pulumi.getter
+    def file(self) -> Optional['GetJobJobSettingsSettingsTaskSqlTaskFileArgs']:
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: Optional['GetJobJobSettingsSettingsTaskSqlTaskFileArgs']):
+        pulumi.set(self, "file", value)
 
     @property
     @pulumi.getter
@@ -18938,6 +19002,22 @@ class GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs:
     @dashboard_id.setter
     def dashboard_id(self, value: str):
         pulumi.set(self, "dashboard_id", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskSqlTaskFileArgs:
+    def __init__(__self__, *,
+                 path: str):
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: str):
+        pulumi.set(self, "path", value)
 
 
 @pulumi.input_type

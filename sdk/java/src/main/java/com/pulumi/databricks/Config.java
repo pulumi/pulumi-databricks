@@ -69,6 +69,9 @@ public final class Config {
     public Optional<Integer> httpTimeoutSeconds() {
         return Codegen.integerProp("httpTimeoutSeconds").config(config).get();
     }
+    public Optional<String> metadataServiceUrl() {
+        return Codegen.stringProp("metadataServiceUrl").config(config).get();
+    }
     public Optional<String> password() {
         return Codegen.stringProp("password").config(config).get();
     }
