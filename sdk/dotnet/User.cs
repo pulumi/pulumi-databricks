@@ -16,6 +16,7 @@ namespace Pulumi.Databricks
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
@@ -33,6 +34,7 @@ namespace Pulumi.Databricks
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
@@ -61,6 +63,7 @@ namespace Pulumi.Databricks
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
@@ -79,6 +82,7 @@ namespace Pulumi.Databricks
     /// Creating user in AWS Databricks account:
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
@@ -108,6 +112,7 @@ namespace Pulumi.Databricks
     /// Creating user in Azure Databricks account:
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 

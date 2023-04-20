@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineClusterArgs;
 import com.pulumi.databricks.inputs.PipelineFiltersArgs;
 import com.pulumi.databricks.inputs.PipelineLibraryArgs;
+import com.pulumi.databricks.inputs.PipelineNotificationArgs;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -163,6 +164,13 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="notifications")
+    private @Nullable Output<List<PipelineNotificationArgs>> notifications;
+
+    public Optional<Output<List<PipelineNotificationArgs>>> notifications() {
+        return Optional.ofNullable(this.notifications);
+    }
+
     /**
      * A flag indicating whether to use Photon engine. The default value is `false`.
      * 
@@ -222,6 +230,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         this.filters = $.filters;
         this.libraries = $.libraries;
         this.name = $.name;
+        this.notifications = $.notifications;
         this.photon = $.photon;
         this.storage = $.storage;
         this.target = $.target;
@@ -458,6 +467,19 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder notifications(@Nullable Output<List<PipelineNotificationArgs>> notifications) {
+            $.notifications = notifications;
+            return this;
+        }
+
+        public Builder notifications(List<PipelineNotificationArgs> notifications) {
+            return notifications(Output.of(notifications));
+        }
+
+        public Builder notifications(PipelineNotificationArgs... notifications) {
+            return notifications(List.of(notifications));
         }
 
         /**

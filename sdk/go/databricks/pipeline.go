@@ -73,6 +73,20 @@ import (
 //					},
 //				},
 //				Continuous: pulumi.Bool(false),
+//				Notifications: databricks.PipelineNotificationArray{
+//					&databricks.PipelineNotificationArgs{
+//						EmailRecipients: pulumi.StringArray{
+//							pulumi.String("user@domain.com"),
+//							pulumi.String("user1@domain.com"),
+//						},
+//						Alerts: pulumi.StringArray{
+//							pulumi.String("on-update-failure"),
+//							pulumi.String("on-update-fatal-failure"),
+//							pulumi.String("on-update-success"),
+//							pulumi.String("on-flow-failure"),
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -121,7 +135,8 @@ type Pipeline struct {
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
 	Libraries PipelineLibraryArrayOutput `pulumi:"libraries"`
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name          pulumi.StringOutput             `pulumi:"name"`
+	Notifications PipelineNotificationArrayOutput `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon pulumi.BoolPtrOutput `pulumi:"photon"`
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
@@ -178,7 +193,8 @@ type pipelineState struct {
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
 	Libraries []PipelineLibrary `pulumi:"libraries"`
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
-	Name *string `pulumi:"name"`
+	Name          *string                `pulumi:"name"`
+	Notifications []PipelineNotification `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon *bool `pulumi:"photon"`
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
@@ -207,7 +223,8 @@ type PipelineState struct {
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
 	Libraries PipelineLibraryArrayInput
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
-	Name pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
+	Notifications PipelineNotificationArrayInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon pulumi.BoolPtrInput
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
@@ -240,7 +257,8 @@ type pipelineArgs struct {
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
 	Libraries []PipelineLibrary `pulumi:"libraries"`
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
-	Name *string `pulumi:"name"`
+	Name          *string                `pulumi:"name"`
+	Notifications []PipelineNotification `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon *bool `pulumi:"photon"`
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
@@ -269,7 +287,8 @@ type PipelineArgs struct {
 	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
 	Libraries PipelineLibraryArrayInput
 	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
-	Name pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
+	Notifications PipelineNotificationArrayInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon pulumi.BoolPtrInput
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
@@ -415,6 +434,10 @@ func (o PipelineOutput) Libraries() PipelineLibraryArrayOutput {
 // A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 func (o PipelineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o PipelineOutput) Notifications() PipelineNotificationArrayOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineNotificationArrayOutput { return v.Notifications }).(PipelineNotificationArrayOutput)
 }
 
 // A flag indicating whether to use Photon engine. The default value is `false`.
