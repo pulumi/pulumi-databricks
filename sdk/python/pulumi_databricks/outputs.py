@@ -200,6 +200,7 @@ __all__ = [
     'PipelineLibraryFile',
     'PipelineLibraryMaven',
     'PipelineLibraryNotebook',
+    'PipelineNotification',
     'RecipientIpAccessList',
     'RecipientToken',
     'RepoSparseCheckout',
@@ -9547,6 +9548,60 @@ class PipelineLibraryNotebook(dict):
     @pulumi.getter
     def path(self) -> str:
         return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class PipelineNotification(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailRecipients":
+            suggest = "email_recipients"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineNotification. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineNotification.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineNotification.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alerts: Sequence[str],
+                 email_recipients: Sequence[str]):
+        """
+        :param Sequence[str] alerts: non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+               * `on-update-success` - a pipeline update completes successfully.
+               * `on-update-failure` - a pipeline update fails with a retryable error.
+               * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+               * `on-flow-failure` - a single data flow fails.
+        :param Sequence[str] email_recipients: non-empty list of emails to notify.
+        """
+        pulumi.set(__self__, "alerts", alerts)
+        pulumi.set(__self__, "email_recipients", email_recipients)
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> Sequence[str]:
+        """
+        non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+        * `on-update-success` - a pipeline update completes successfully.
+        * `on-update-failure` - a pipeline update fails with a retryable error.
+        * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+        * `on-flow-failure` - a single data flow fails.
+        """
+        return pulumi.get(self, "alerts")
+
+    @property
+    @pulumi.getter(name="emailRecipients")
+    def email_recipients(self) -> Sequence[str]:
+        """
+        non-empty list of emails to notify.
+        """
+        return pulumi.get(self, "email_recipients")
 
 
 @pulumi.output_type

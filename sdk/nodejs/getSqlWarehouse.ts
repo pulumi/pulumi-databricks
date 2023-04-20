@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const allSqlWarehouses = databricks.getSqlWarehouses({});
- * const allSqlWarehouse = .map(([, ]) => databricks.getSqlWarehouse({
+ * const allSqlWarehouse = .map(([, ]) => (databricks.getSqlWarehouse({
  *     id: __value,
- * }));
+ * })));
  * ```
  * ## Related resources
  *
@@ -190,9 +190,9 @@ export interface GetSqlWarehouseResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const allSqlWarehouses = databricks.getSqlWarehouses({});
- * const allSqlWarehouse = .map(([, ]) => databricks.getSqlWarehouse({
+ * const allSqlWarehouse = .map(([, ]) => (databricks.getSqlWarehouse({
  *     id: __value,
- * }));
+ * })));
  * ```
  * ## Related resources
  *

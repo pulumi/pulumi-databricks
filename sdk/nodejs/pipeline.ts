@@ -54,6 +54,18 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     continuous: false,
+ *     notifications: [{
+ *         emailRecipients: [
+ *             "user@domain.com",
+ *             "user1@domain.com",
+ *         ],
+ *         alerts: [
+ *             "on-update-failure",
+ *             "on-update-fatal-failure",
+ *             "on-update-success",
+ *             "on-flow-failure",
+ *         ],
+ *     }],
  * });
  * ```
  * ## Related Resources
@@ -136,6 +148,7 @@ export class Pipeline extends pulumi.CustomResource {
      * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly notifications!: pulumi.Output<outputs.PipelineNotification[] | undefined>;
     /**
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
@@ -174,6 +187,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["libraries"] = state ? state.libraries : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notifications"] = state ? state.notifications : undefined;
             resourceInputs["photon"] = state ? state.photon : undefined;
             resourceInputs["storage"] = state ? state.storage : undefined;
             resourceInputs["target"] = state ? state.target : undefined;
@@ -191,6 +205,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["libraries"] = args ? args.libraries : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["photon"] = args ? args.photon : undefined;
             resourceInputs["storage"] = args ? args.storage : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
@@ -240,6 +255,7 @@ export interface PipelineState {
      * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
      */
     name?: pulumi.Input<string>;
+    notifications?: pulumi.Input<pulumi.Input<inputs.PipelineNotification>[]>;
     /**
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
@@ -294,6 +310,7 @@ export interface PipelineArgs {
      * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
      */
     name?: pulumi.Input<string>;
+    notifications?: pulumi.Input<pulumi.Input<inputs.PipelineNotification>[]>;
     /**
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */

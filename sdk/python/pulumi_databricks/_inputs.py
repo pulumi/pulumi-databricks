@@ -199,6 +199,7 @@ __all__ = [
     'PipelineLibraryFileArgs',
     'PipelineLibraryMavenArgs',
     'PipelineLibraryNotebookArgs',
+    'PipelineNotificationArgs',
     'RecipientIpAccessListArgs',
     'RecipientTokenArgs',
     'RepoSparseCheckoutArgs',
@@ -9734,6 +9735,51 @@ class PipelineLibraryNotebookArgs:
     @path.setter
     def path(self, value: pulumi.Input[str]):
         pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class PipelineNotificationArgs:
+    def __init__(__self__, *,
+                 alerts: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 email_recipients: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alerts: non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+               * `on-update-success` - a pipeline update completes successfully.
+               * `on-update-failure` - a pipeline update fails with a retryable error.
+               * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+               * `on-flow-failure` - a single data flow fails.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_recipients: non-empty list of emails to notify.
+        """
+        pulumi.set(__self__, "alerts", alerts)
+        pulumi.set(__self__, "email_recipients", email_recipients)
+
+    @property
+    @pulumi.getter
+    def alerts(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+        * `on-update-success` - a pipeline update completes successfully.
+        * `on-update-failure` - a pipeline update fails with a retryable error.
+        * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+        * `on-flow-failure` - a single data flow fails.
+        """
+        return pulumi.get(self, "alerts")
+
+    @alerts.setter
+    def alerts(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "alerts", value)
+
+    @property
+    @pulumi.getter(name="emailRecipients")
+    def email_recipients(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        non-empty list of emails to notify.
+        """
+        return pulumi.get(self, "email_recipients")
+
+    @email_recipients.setter
+    def email_recipients(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "email_recipients", value)
 
 
 @pulumi.input_type

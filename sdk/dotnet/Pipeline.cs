@@ -16,6 +16,7 @@ namespace Pulumi.Databricks
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Databricks = Pulumi.Databricks;
     /// 
@@ -74,6 +75,24 @@ namespace Pulumi.Databricks
     ///             },
     ///         },
     ///         Continuous = false,
+    ///         Notifications = new[]
+    ///         {
+    ///             new Databricks.Inputs.PipelineNotificationArgs
+    ///             {
+    ///                 EmailRecipients = new[]
+    ///                 {
+    ///                     "user@domain.com",
+    ///                     "user1@domain.com",
+    ///                 },
+    ///                 Alerts = new[]
+    ///                 {
+    ///                     "on-update-failure",
+    ///                     "on-update-fatal-failure",
+    ///                     "on-update-success",
+    ///                     "on-flow-failure",
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -154,6 +173,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("notifications")]
+        public Output<ImmutableArray<Outputs.PipelineNotification>> Notifications { get; private set; } = null!;
 
         /// <summary>
         /// A flag indicating whether to use Photon engine. The default value is `false`.
@@ -297,6 +319,14 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("notifications")]
+        private InputList<Inputs.PipelineNotificationArgs>? _notifications;
+        public InputList<Inputs.PipelineNotificationArgs> Notifications
+        {
+            get => _notifications ?? (_notifications = new InputList<Inputs.PipelineNotificationArgs>());
+            set => _notifications = value;
+        }
+
         /// <summary>
         /// A flag indicating whether to use Photon engine. The default value is `false`.
         /// </summary>
@@ -397,6 +427,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("notifications")]
+        private InputList<Inputs.PipelineNotificationGetArgs>? _notifications;
+        public InputList<Inputs.PipelineNotificationGetArgs> Notifications
+        {
+            get => _notifications ?? (_notifications = new InputList<Inputs.PipelineNotificationGetArgs>());
+            set => _notifications = value;
+        }
 
         /// <summary>
         /// A flag indicating whether to use Photon engine. The default value is `false`.

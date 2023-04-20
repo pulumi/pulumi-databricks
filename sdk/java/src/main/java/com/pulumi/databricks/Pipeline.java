@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.PipelineState;
 import com.pulumi.databricks.outputs.PipelineCluster;
 import com.pulumi.databricks.outputs.PipelineFilters;
 import com.pulumi.databricks.outputs.PipelineLibrary;
+import com.pulumi.databricks.outputs.PipelineNotification;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -39,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.inputs.PipelineLibraryArgs;
  * import com.pulumi.databricks.inputs.PipelineLibraryNotebookArgs;
  * import com.pulumi.databricks.inputs.PipelineLibraryFileArgs;
+ * import com.pulumi.databricks.inputs.PipelineNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -85,6 +87,16 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *             .continuous(false)
+ *             .notifications(PipelineNotificationArgs.builder()
+ *                 .emailRecipients(                
+ *                     &#34;user@domain.com&#34;,
+ *                     &#34;user1@domain.com&#34;)
+ *                 .alerts(                
+ *                     &#34;on-update-failure&#34;,
+ *                     &#34;on-update-fatal-failure&#34;,
+ *                     &#34;on-update-success&#34;,
+ *                     &#34;on-flow-failure&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -239,6 +251,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    @Export(name="notifications", type=List.class, parameters={PipelineNotification.class})
+    private Output</* @Nullable */ List<PipelineNotification>> notifications;
+
+    public Output<Optional<List<PipelineNotification>>> notifications() {
+        return Codegen.optional(this.notifications);
     }
     /**
      * A flag indicating whether to use Photon engine. The default value is `false`.

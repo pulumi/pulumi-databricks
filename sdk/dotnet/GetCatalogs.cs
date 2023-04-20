@@ -20,6 +20,7 @@ namespace Pulumi.Databricks
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 
@@ -54,6 +55,7 @@ namespace Pulumi.Databricks
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Databricks = Pulumi.Databricks;
         /// 

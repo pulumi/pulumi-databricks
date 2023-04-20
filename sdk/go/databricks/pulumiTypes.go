@@ -30368,6 +30368,124 @@ func (o PipelineLibraryNotebookPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type PipelineNotification struct {
+	// non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+	// * `on-update-success` - a pipeline update completes successfully.
+	// * `on-update-failure` - a pipeline update fails with a retryable error.
+	// * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+	// * `on-flow-failure` - a single data flow fails.
+	Alerts []string `pulumi:"alerts"`
+	// non-empty list of emails to notify.
+	EmailRecipients []string `pulumi:"emailRecipients"`
+}
+
+// PipelineNotificationInput is an input type that accepts PipelineNotificationArgs and PipelineNotificationOutput values.
+// You can construct a concrete instance of `PipelineNotificationInput` via:
+//
+//	PipelineNotificationArgs{...}
+type PipelineNotificationInput interface {
+	pulumi.Input
+
+	ToPipelineNotificationOutput() PipelineNotificationOutput
+	ToPipelineNotificationOutputWithContext(context.Context) PipelineNotificationOutput
+}
+
+type PipelineNotificationArgs struct {
+	// non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+	// * `on-update-success` - a pipeline update completes successfully.
+	// * `on-update-failure` - a pipeline update fails with a retryable error.
+	// * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+	// * `on-flow-failure` - a single data flow fails.
+	Alerts pulumi.StringArrayInput `pulumi:"alerts"`
+	// non-empty list of emails to notify.
+	EmailRecipients pulumi.StringArrayInput `pulumi:"emailRecipients"`
+}
+
+func (PipelineNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineNotification)(nil)).Elem()
+}
+
+func (i PipelineNotificationArgs) ToPipelineNotificationOutput() PipelineNotificationOutput {
+	return i.ToPipelineNotificationOutputWithContext(context.Background())
+}
+
+func (i PipelineNotificationArgs) ToPipelineNotificationOutputWithContext(ctx context.Context) PipelineNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineNotificationOutput)
+}
+
+// PipelineNotificationArrayInput is an input type that accepts PipelineNotificationArray and PipelineNotificationArrayOutput values.
+// You can construct a concrete instance of `PipelineNotificationArrayInput` via:
+//
+//	PipelineNotificationArray{ PipelineNotificationArgs{...} }
+type PipelineNotificationArrayInput interface {
+	pulumi.Input
+
+	ToPipelineNotificationArrayOutput() PipelineNotificationArrayOutput
+	ToPipelineNotificationArrayOutputWithContext(context.Context) PipelineNotificationArrayOutput
+}
+
+type PipelineNotificationArray []PipelineNotificationInput
+
+func (PipelineNotificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineNotification)(nil)).Elem()
+}
+
+func (i PipelineNotificationArray) ToPipelineNotificationArrayOutput() PipelineNotificationArrayOutput {
+	return i.ToPipelineNotificationArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineNotificationArray) ToPipelineNotificationArrayOutputWithContext(ctx context.Context) PipelineNotificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineNotificationArrayOutput)
+}
+
+type PipelineNotificationOutput struct{ *pulumi.OutputState }
+
+func (PipelineNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineNotification)(nil)).Elem()
+}
+
+func (o PipelineNotificationOutput) ToPipelineNotificationOutput() PipelineNotificationOutput {
+	return o
+}
+
+func (o PipelineNotificationOutput) ToPipelineNotificationOutputWithContext(ctx context.Context) PipelineNotificationOutput {
+	return o
+}
+
+// non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+// * `on-update-success` - a pipeline update completes successfully.
+// * `on-update-failure` - a pipeline update fails with a retryable error.
+// * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+// * `on-flow-failure` - a single data flow fails.
+func (o PipelineNotificationOutput) Alerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineNotification) []string { return v.Alerts }).(pulumi.StringArrayOutput)
+}
+
+// non-empty list of emails to notify.
+func (o PipelineNotificationOutput) EmailRecipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineNotification) []string { return v.EmailRecipients }).(pulumi.StringArrayOutput)
+}
+
+type PipelineNotificationArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineNotificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineNotification)(nil)).Elem()
+}
+
+func (o PipelineNotificationArrayOutput) ToPipelineNotificationArrayOutput() PipelineNotificationArrayOutput {
+	return o
+}
+
+func (o PipelineNotificationArrayOutput) ToPipelineNotificationArrayOutputWithContext(ctx context.Context) PipelineNotificationArrayOutput {
+	return o
+}
+
+func (o PipelineNotificationArrayOutput) Index(i pulumi.IntInput) PipelineNotificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineNotification {
+		return vs[0].([]PipelineNotification)[vs[1].(int)]
+	}).(PipelineNotificationOutput)
+}
+
 type RecipientIpAccessList struct {
 	// Allowed IP Addresses in CIDR notation. Limit of 100.
 	AllowedIpAddresses []string `pulumi:"allowedIpAddresses"`
@@ -61789,6 +61907,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLibraryMavenPtrInput)(nil)).Elem(), PipelineLibraryMavenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLibraryNotebookInput)(nil)).Elem(), PipelineLibraryNotebookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLibraryNotebookPtrInput)(nil)).Elem(), PipelineLibraryNotebookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineNotificationInput)(nil)).Elem(), PipelineNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineNotificationArrayInput)(nil)).Elem(), PipelineNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecipientIpAccessListInput)(nil)).Elem(), RecipientIpAccessListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecipientIpAccessListPtrInput)(nil)).Elem(), RecipientIpAccessListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecipientTokenInput)(nil)).Elem(), RecipientTokenArgs{})
@@ -62538,6 +62658,8 @@ func init() {
 	pulumi.RegisterOutputType(PipelineLibraryMavenPtrOutput{})
 	pulumi.RegisterOutputType(PipelineLibraryNotebookOutput{})
 	pulumi.RegisterOutputType(PipelineLibraryNotebookPtrOutput{})
+	pulumi.RegisterOutputType(PipelineNotificationOutput{})
+	pulumi.RegisterOutputType(PipelineNotificationArrayOutput{})
 	pulumi.RegisterOutputType(RecipientIpAccessListOutput{})
 	pulumi.RegisterOutputType(RecipientIpAccessListPtrOutput{})
 	pulumi.RegisterOutputType(RecipientTokenOutput{})

@@ -27,6 +27,7 @@ class PipelineArgs:
                  filters: Optional[pulumi.Input['PipelineFiltersArgs']] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
@@ -66,6 +67,8 @@ class PipelineArgs:
             pulumi.set(__self__, "libraries", libraries)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if notifications is not None:
+            pulumi.set(__self__, "notifications", notifications)
         if photon is not None:
             pulumi.set(__self__, "photon", photon)
         if storage is not None:
@@ -198,6 +201,15 @@ class PipelineArgs:
 
     @property
     @pulumi.getter
+    def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]]:
+        return pulumi.get(self, "notifications")
+
+    @notifications.setter
+    def notifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]]):
+        pulumi.set(self, "notifications", value)
+
+    @property
+    @pulumi.getter
     def photon(self) -> Optional[pulumi.Input[bool]]:
         """
         A flag indicating whether to use Photon engine. The default value is `false`.
@@ -247,6 +259,7 @@ class _PipelineState:
                  filters: Optional[pulumi.Input['PipelineFiltersArgs']] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
@@ -287,6 +300,8 @@ class _PipelineState:
             pulumi.set(__self__, "libraries", libraries)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if notifications is not None:
+            pulumi.set(__self__, "notifications", notifications)
         if photon is not None:
             pulumi.set(__self__, "photon", photon)
         if storage is not None:
@@ -421,6 +436,15 @@ class _PipelineState:
 
     @property
     @pulumi.getter
+    def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]]:
+        return pulumi.get(self, "notifications")
+
+    @notifications.setter
+    def notifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]]):
+        pulumi.set(self, "notifications", value)
+
+    @property
+    @pulumi.getter
     def photon(self) -> Optional[pulumi.Input[bool]]:
         """
         A flag indicating whether to use Photon engine. The default value is `false`.
@@ -481,6 +505,7 @@ class Pipeline(pulumi.CustomResource):
                  filters: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersArgs']]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineNotificationArgs']]]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
@@ -532,7 +557,19 @@ class Pipeline(pulumi.CustomResource):
                     ),
                 ),
             ],
-            continuous=False)
+            continuous=False,
+            notifications=[databricks.PipelineNotificationArgs(
+                email_recipients=[
+                    "user@domain.com",
+                    "user1@domain.com",
+                ],
+                alerts=[
+                    "on-update-failure",
+                    "on-update-fatal-failure",
+                    "on-update-success",
+                    "on-flow-failure",
+                ],
+            )])
         ```
         ## Related Resources
 
@@ -618,7 +655,19 @@ class Pipeline(pulumi.CustomResource):
                     ),
                 ),
             ],
-            continuous=False)
+            continuous=False,
+            notifications=[databricks.PipelineNotificationArgs(
+                email_recipients=[
+                    "user@domain.com",
+                    "user1@domain.com",
+                ],
+                alerts=[
+                    "on-update-failure",
+                    "on-update-fatal-failure",
+                    "on-update-success",
+                    "on-flow-failure",
+                ],
+            )])
         ```
         ## Related Resources
 
@@ -663,6 +712,7 @@ class Pipeline(pulumi.CustomResource):
                  filters: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersArgs']]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineNotificationArgs']]]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  storage: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
@@ -686,6 +736,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["filters"] = filters
             __props__.__dict__["libraries"] = libraries
             __props__.__dict__["name"] = name
+            __props__.__dict__["notifications"] = notifications
             __props__.__dict__["photon"] = photon
             __props__.__dict__["storage"] = storage
             __props__.__dict__["target"] = target
@@ -711,6 +762,7 @@ class Pipeline(pulumi.CustomResource):
             filters: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersArgs']]] = None,
             libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineNotificationArgs']]]]] = None,
             photon: Optional[pulumi.Input[bool]] = None,
             storage: Optional[pulumi.Input[str]] = None,
             target: Optional[pulumi.Input[str]] = None,
@@ -749,6 +801,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["filters"] = filters
         __props__.__dict__["libraries"] = libraries
         __props__.__dict__["name"] = name
+        __props__.__dict__["notifications"] = notifications
         __props__.__dict__["photon"] = photon
         __props__.__dict__["storage"] = storage
         __props__.__dict__["target"] = target
@@ -833,6 +886,11 @@ class Pipeline(pulumi.CustomResource):
         A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def notifications(self) -> pulumi.Output[Optional[Sequence['outputs.PipelineNotification']]]:
+        return pulumi.get(self, "notifications")
 
     @property
     @pulumi.getter
