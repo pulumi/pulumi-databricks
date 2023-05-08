@@ -63,18 +63,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/clusterPolicy:ClusterPolicy")
 public class ClusterPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
      * 
      */
     @Export(name="definition", type=String.class, parameters={})
-    private Output<String> definition;
+    private Output</* @Nullable */ String> definition;
 
     /**
-     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
      * 
      */
-    public Output<String> definition() {
-        return this.definition;
+    public Output<Optional<String>> definition() {
+        return Codegen.optional(this.definition);
+    }
+    /**
+     * Additional human-readable description of the cluster policy.
+     * 
+     */
+    @Export(name="description", type=String.class, parameters={})
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return Additional human-readable description of the cluster policy.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
@@ -105,6 +119,34 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+     * 
+     */
+    @Export(name="policyFamilyDefinitionOverrides", type=String.class, parameters={})
+    private Output</* @Nullable */ String> policyFamilyDefinitionOverrides;
+
+    /**
+     * @return Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+     * 
+     */
+    public Output<Optional<String>> policyFamilyDefinitionOverrides() {
+        return Codegen.optional(this.policyFamilyDefinitionOverrides);
+    }
+    /**
+     * ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+     * 
+     */
+    @Export(name="policyFamilyId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> policyFamilyId;
+
+    /**
+     * @return ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+     * 
+     */
+    public Output<Optional<String>> policyFamilyId() {
+        return Codegen.optional(this.policyFamilyId);
+    }
+    /**
      * Canonical unique identifier for the cluster policy.
      * 
      */
@@ -131,7 +173,7 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClusterPolicy(String name, ClusterPolicyArgs args) {
+    public ClusterPolicy(String name, @Nullable ClusterPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -140,7 +182,7 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClusterPolicy(String name, ClusterPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ClusterPolicy(String name, @Nullable ClusterPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/clusterPolicy:ClusterPolicy", name, args == null ? ClusterPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

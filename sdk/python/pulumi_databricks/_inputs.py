@@ -27,6 +27,7 @@ __all__ = [
     'ClusterInitScriptFileArgs',
     'ClusterInitScriptGcsArgs',
     'ClusterInitScriptS3Args',
+    'ClusterInitScriptWorkspaceArgs',
     'ClusterLibraryArgs',
     'ClusterLibraryCranArgs',
     'ClusterLibraryMavenArgs',
@@ -68,6 +69,7 @@ __all__ = [
     'JobJobClusterNewClusterInitScriptFileArgs',
     'JobJobClusterNewClusterInitScriptGcsArgs',
     'JobJobClusterNewClusterInitScriptS3Args',
+    'JobJobClusterNewClusterInitScriptWorkspaceArgs',
     'JobJobClusterNewClusterWorkloadTypeArgs',
     'JobJobClusterNewClusterWorkloadTypeClientsArgs',
     'JobLibraryArgs',
@@ -92,6 +94,7 @@ __all__ = [
     'JobNewClusterInitScriptFileArgs',
     'JobNewClusterInitScriptGcsArgs',
     'JobNewClusterInitScriptS3Args',
+    'JobNewClusterInitScriptWorkspaceArgs',
     'JobNewClusterWorkloadTypeArgs',
     'JobNewClusterWorkloadTypeClientsArgs',
     'JobNotebookTaskArgs',
@@ -128,6 +131,7 @@ __all__ = [
     'JobTaskNewClusterInitScriptFileArgs',
     'JobTaskNewClusterInitScriptGcsArgs',
     'JobTaskNewClusterInitScriptS3Args',
+    'JobTaskNewClusterInitScriptWorkspaceArgs',
     'JobTaskNewClusterWorkloadTypeArgs',
     'JobTaskNewClusterWorkloadTypeClientsArgs',
     'JobTaskNotebookTaskArgs',
@@ -194,6 +198,7 @@ __all__ = [
     'PipelineClusterInitScriptFileArgs',
     'PipelineClusterInitScriptGcsArgs',
     'PipelineClusterInitScriptS3Args',
+    'PipelineClusterInitScriptWorkspaceArgs',
     'PipelineFiltersArgs',
     'PipelineLibraryArgs',
     'PipelineLibraryFileArgs',
@@ -233,6 +238,7 @@ __all__ = [
     'SqlQueryScheduleContinuousArgs',
     'SqlQueryScheduleDailyArgs',
     'SqlQueryScheduleWeeklyArgs',
+    'SqlTableColumnArgs',
     'SqlWidgetParameterArgs',
     'SqlWidgetPositionArgs',
     'StorageCredentialAwsIamRoleArgs',
@@ -262,6 +268,7 @@ __all__ = [
     'GetClusterClusterInfoInitScriptFileArgs',
     'GetClusterClusterInfoInitScriptGcsArgs',
     'GetClusterClusterInfoInitScriptS3Args',
+    'GetClusterClusterInfoInitScriptWorkspaceArgs',
     'GetClusterClusterInfoTerminationReasonArgs',
     'GetInstancePoolPoolInfoArgs',
     'GetInstancePoolPoolInfoAwsAttributesArgs',
@@ -301,6 +308,7 @@ __all__ = [
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args',
+    'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs',
     'GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs',
     'GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs',
     'GetJobJobSettingsSettingsLibraryArgs',
@@ -325,6 +333,7 @@ __all__ = [
     'GetJobJobSettingsSettingsNewClusterInitScriptFileArgs',
     'GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs',
     'GetJobJobSettingsSettingsNewClusterInitScriptS3Args',
+    'GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs',
     'GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs',
     'GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs',
     'GetJobJobSettingsSettingsNotebookTaskArgs',
@@ -361,6 +370,7 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args',
+    'GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs',
     'GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgs',
     'GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgs',
     'GetJobJobSettingsSettingsTaskNotebookTaskArgs',
@@ -887,7 +897,8 @@ class ClusterInitScriptArgs:
                  dbfs: Optional[pulumi.Input['ClusterInitScriptDbfsArgs']] = None,
                  file: Optional[pulumi.Input['ClusterInitScriptFileArgs']] = None,
                  gcs: Optional[pulumi.Input['ClusterInitScriptGcsArgs']] = None,
-                 s3: Optional[pulumi.Input['ClusterInitScriptS3Args']] = None):
+                 s3: Optional[pulumi.Input['ClusterInitScriptS3Args']] = None,
+                 workspace: Optional[pulumi.Input['ClusterInitScriptWorkspaceArgs']] = None):
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -898,6 +909,8 @@ class ClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if workspace is not None:
+            pulumi.set(__self__, "workspace", workspace)
 
     @property
     @pulumi.getter
@@ -943,6 +956,15 @@ class ClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['ClusterInitScriptS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def workspace(self) -> Optional[pulumi.Input['ClusterInitScriptWorkspaceArgs']]:
+        return pulumi.get(self, "workspace")
+
+    @workspace.setter
+    def workspace(self, value: Optional[pulumi.Input['ClusterInitScriptWorkspaceArgs']]):
+        pulumi.set(self, "workspace", value)
 
 
 @pulumi.input_type
@@ -1098,6 +1120,23 @@ class ClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class ClusterInitScriptWorkspaceArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -2915,7 +2954,8 @@ class JobJobClusterNewClusterInitScriptArgs:
                  dbfs: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptDbfsArgs']] = None,
                  file: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptFileArgs']] = None,
                  gcs: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptGcsArgs']] = None,
-                 s3: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptS3Args']] = None):
+                 s3: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptS3Args']] = None,
+                 workspace: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptWorkspaceArgs']] = None):
         """
         :param pulumi.Input['JobJobClusterNewClusterInitScriptFileArgs'] file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
         """
@@ -2929,6 +2969,8 @@ class JobJobClusterNewClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if workspace is not None:
+            pulumi.set(__self__, "workspace", workspace)
 
     @property
     @pulumi.getter
@@ -2977,6 +3019,15 @@ class JobJobClusterNewClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def workspace(self) -> Optional[pulumi.Input['JobJobClusterNewClusterInitScriptWorkspaceArgs']]:
+        return pulumi.get(self, "workspace")
+
+    @workspace.setter
+    def workspace(self, value: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptWorkspaceArgs']]):
+        pulumi.set(self, "workspace", value)
 
 
 @pulumi.input_type
@@ -3132,6 +3183,23 @@ class JobJobClusterNewClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class JobJobClusterNewClusterInitScriptWorkspaceArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -4220,7 +4288,8 @@ class JobNewClusterInitScriptArgs:
                  dbfs: Optional[pulumi.Input['JobNewClusterInitScriptDbfsArgs']] = None,
                  file: Optional[pulumi.Input['JobNewClusterInitScriptFileArgs']] = None,
                  gcs: Optional[pulumi.Input['JobNewClusterInitScriptGcsArgs']] = None,
-                 s3: Optional[pulumi.Input['JobNewClusterInitScriptS3Args']] = None):
+                 s3: Optional[pulumi.Input['JobNewClusterInitScriptS3Args']] = None,
+                 workspace: Optional[pulumi.Input['JobNewClusterInitScriptWorkspaceArgs']] = None):
         """
         :param pulumi.Input['JobNewClusterInitScriptFileArgs'] file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
         """
@@ -4234,6 +4303,8 @@ class JobNewClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if workspace is not None:
+            pulumi.set(__self__, "workspace", workspace)
 
     @property
     @pulumi.getter
@@ -4282,6 +4353,15 @@ class JobNewClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['JobNewClusterInitScriptS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def workspace(self) -> Optional[pulumi.Input['JobNewClusterInitScriptWorkspaceArgs']]:
+        return pulumi.get(self, "workspace")
+
+    @workspace.setter
+    def workspace(self, value: Optional[pulumi.Input['JobNewClusterInitScriptWorkspaceArgs']]):
+        pulumi.set(self, "workspace", value)
 
 
 @pulumi.input_type
@@ -4437,6 +4517,23 @@ class JobNewClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class JobNewClusterInitScriptWorkspaceArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -6352,7 +6449,8 @@ class JobTaskNewClusterInitScriptArgs:
                  dbfs: Optional[pulumi.Input['JobTaskNewClusterInitScriptDbfsArgs']] = None,
                  file: Optional[pulumi.Input['JobTaskNewClusterInitScriptFileArgs']] = None,
                  gcs: Optional[pulumi.Input['JobTaskNewClusterInitScriptGcsArgs']] = None,
-                 s3: Optional[pulumi.Input['JobTaskNewClusterInitScriptS3Args']] = None):
+                 s3: Optional[pulumi.Input['JobTaskNewClusterInitScriptS3Args']] = None,
+                 workspace: Optional[pulumi.Input['JobTaskNewClusterInitScriptWorkspaceArgs']] = None):
         """
         :param pulumi.Input['JobTaskNewClusterInitScriptFileArgs'] file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
         """
@@ -6366,6 +6464,8 @@ class JobTaskNewClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if workspace is not None:
+            pulumi.set(__self__, "workspace", workspace)
 
     @property
     @pulumi.getter
@@ -6414,6 +6514,15 @@ class JobTaskNewClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['JobTaskNewClusterInitScriptS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def workspace(self) -> Optional[pulumi.Input['JobTaskNewClusterInitScriptWorkspaceArgs']]:
+        return pulumi.get(self, "workspace")
+
+    @workspace.setter
+    def workspace(self, value: Optional[pulumi.Input['JobTaskNewClusterInitScriptWorkspaceArgs']]):
+        pulumi.set(self, "workspace", value)
 
 
 @pulumi.input_type
@@ -6569,6 +6678,23 @@ class JobTaskNewClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class JobTaskNewClusterInitScriptWorkspaceArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -9358,7 +9484,8 @@ class PipelineClusterInitScriptArgs:
                  dbfs: Optional[pulumi.Input['PipelineClusterInitScriptDbfsArgs']] = None,
                  file: Optional[pulumi.Input['PipelineClusterInitScriptFileArgs']] = None,
                  gcs: Optional[pulumi.Input['PipelineClusterInitScriptGcsArgs']] = None,
-                 s3: Optional[pulumi.Input['PipelineClusterInitScriptS3Args']] = None):
+                 s3: Optional[pulumi.Input['PipelineClusterInitScriptS3Args']] = None,
+                 workspace: Optional[pulumi.Input['PipelineClusterInitScriptWorkspaceArgs']] = None):
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -9369,6 +9496,8 @@ class PipelineClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if workspace is not None:
+            pulumi.set(__self__, "workspace", workspace)
 
     @property
     @pulumi.getter
@@ -9414,6 +9543,15 @@ class PipelineClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['PipelineClusterInitScriptS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def workspace(self) -> Optional[pulumi.Input['PipelineClusterInitScriptWorkspaceArgs']]:
+        return pulumi.get(self, "workspace")
+
+    @workspace.setter
+    def workspace(self, value: Optional[pulumi.Input['PipelineClusterInitScriptWorkspaceArgs']]):
+        pulumi.set(self, "workspace", value)
 
 
 @pulumi.input_type
@@ -9569,6 +9707,23 @@ class PipelineClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class PipelineClusterInitScriptWorkspaceArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -11187,6 +11342,75 @@ class SqlQueryScheduleWeeklyArgs:
     @until_date.setter
     def until_date(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "until_date", value)
+
+
+@pulumi.input_type
+class SqlTableColumnArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 comment: Optional[pulumi.Input[str]] = None,
+                 nullable: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] name: User-visible name of column
+        :param pulumi.Input[str] type: Column type spec (with metadata) as SQL text
+        :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[bool] nullable: Whether field is nullable (Default: `true`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        User-visible name of column
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Column type spec (with metadata) as SQL text
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-supplied free-form text.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether field is nullable (Default: `true`)
+        """
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nullable", value)
 
 
 @pulumi.input_type
@@ -12886,7 +13110,8 @@ class GetClusterClusterInfoInitScriptArgs:
                  dbfs: Optional['GetClusterClusterInfoInitScriptDbfsArgs'] = None,
                  file: Optional['GetClusterClusterInfoInitScriptFileArgs'] = None,
                  gcs: Optional['GetClusterClusterInfoInitScriptGcsArgs'] = None,
-                 s3: Optional['GetClusterClusterInfoInitScriptS3Args'] = None):
+                 s3: Optional['GetClusterClusterInfoInitScriptS3Args'] = None,
+                 workspace: Optional['GetClusterClusterInfoInitScriptWorkspaceArgs'] = None):
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -12897,6 +13122,8 @@ class GetClusterClusterInfoInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if workspace is not None:
+            pulumi.set(__self__, "workspace", workspace)
 
     @property
     @pulumi.getter
@@ -12942,6 +13169,15 @@ class GetClusterClusterInfoInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional['GetClusterClusterInfoInitScriptS3Args']):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def workspace(self) -> Optional['GetClusterClusterInfoInitScriptWorkspaceArgs']:
+        return pulumi.get(self, "workspace")
+
+    @workspace.setter
+    def workspace(self, value: Optional['GetClusterClusterInfoInitScriptWorkspaceArgs']):
+        pulumi.set(self, "workspace", value)
 
 
 @pulumi.input_type
@@ -13097,6 +13333,23 @@ class GetClusterClusterInfoInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[str]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoInitScriptWorkspaceArgs:
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[str]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -15237,7 +15490,8 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs:
                  dbfs: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgs'] = None,
                  file: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs'] = None,
                  gcs: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs'] = None,
-                 s3: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args'] = None):
+                 s3: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args'] = None,
+                 workspace: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs'] = None):
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -15248,6 +15502,8 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if workspace is not None:
+            pulumi.set(__self__, "workspace", workspace)
 
     @property
     @pulumi.getter
@@ -15293,6 +15549,15 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args']):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def workspace(self) -> Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs']:
+        return pulumi.get(self, "workspace")
+
+    @workspace.setter
+    def workspace(self, value: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs']):
+        pulumi.set(self, "workspace", value)
 
 
 @pulumi.input_type
@@ -15448,6 +15713,23 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[str]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs:
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[str]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -16524,7 +16806,8 @@ class GetJobJobSettingsSettingsNewClusterInitScriptArgs:
                  dbfs: Optional['GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs'] = None,
                  file: Optional['GetJobJobSettingsSettingsNewClusterInitScriptFileArgs'] = None,
                  gcs: Optional['GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs'] = None,
-                 s3: Optional['GetJobJobSettingsSettingsNewClusterInitScriptS3Args'] = None):
+                 s3: Optional['GetJobJobSettingsSettingsNewClusterInitScriptS3Args'] = None,
+                 workspace: Optional['GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs'] = None):
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -16535,6 +16818,8 @@ class GetJobJobSettingsSettingsNewClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if workspace is not None:
+            pulumi.set(__self__, "workspace", workspace)
 
     @property
     @pulumi.getter
@@ -16580,6 +16865,15 @@ class GetJobJobSettingsSettingsNewClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional['GetJobJobSettingsSettingsNewClusterInitScriptS3Args']):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def workspace(self) -> Optional['GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs']:
+        return pulumi.get(self, "workspace")
+
+    @workspace.setter
+    def workspace(self, value: Optional['GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs']):
+        pulumi.set(self, "workspace", value)
 
 
 @pulumi.input_type
@@ -16735,6 +17029,23 @@ class GetJobJobSettingsSettingsNewClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[str]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs:
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[str]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -18476,7 +18787,8 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs:
                  dbfs: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsArgs'] = None,
                  file: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs'] = None,
                  gcs: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs'] = None,
-                 s3: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args'] = None):
+                 s3: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args'] = None,
+                 workspace: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs'] = None):
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -18487,6 +18799,8 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if workspace is not None:
+            pulumi.set(__self__, "workspace", workspace)
 
     @property
     @pulumi.getter
@@ -18532,6 +18846,15 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args']):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def workspace(self) -> Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs']:
+        return pulumi.get(self, "workspace")
+
+    @workspace.setter
+    def workspace(self, value: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs']):
+        pulumi.set(self, "workspace", value)
 
 
 @pulumi.input_type
@@ -18687,6 +19010,23 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[str]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs:
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[str]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type

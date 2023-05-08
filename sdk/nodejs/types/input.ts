@@ -81,6 +81,7 @@ export interface ClusterInitScript {
     file?: pulumi.Input<inputs.ClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.ClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.ClusterInitScriptS3>;
+    workspace?: pulumi.Input<inputs.ClusterInitScriptWorkspace>;
 }
 
 export interface ClusterInitScriptAbfss {
@@ -107,6 +108,10 @@ export interface ClusterInitScriptS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface ClusterInitScriptWorkspace {
+    destination?: pulumi.Input<string>;
 }
 
 export interface ClusterLibrary {
@@ -533,6 +538,7 @@ export interface GetClusterClusterInfoInitScript {
     file?: inputs.GetClusterClusterInfoInitScriptFile;
     gcs?: inputs.GetClusterClusterInfoInitScriptGcs;
     s3?: inputs.GetClusterClusterInfoInitScriptS3;
+    workspace?: inputs.GetClusterClusterInfoInitScriptWorkspace;
 }
 
 export interface GetClusterClusterInfoInitScriptArgs {
@@ -541,6 +547,7 @@ export interface GetClusterClusterInfoInitScriptArgs {
     file?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptFileArgs>;
     gcs?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptGcsArgs>;
     s3?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptS3Args>;
+    workspace?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptWorkspaceArgs>;
 }
 
 export interface GetClusterClusterInfoInitScriptAbfss {
@@ -593,6 +600,14 @@ export interface GetClusterClusterInfoInitScriptS3Args {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoInitScriptWorkspace {
+    destination?: string;
+}
+
+export interface GetClusterClusterInfoInitScriptWorkspaceArgs {
+    destination?: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoTerminationReason {
@@ -1137,6 +1152,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
     file?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile;
     gcs?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs;
     s3?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3;
+    workspace?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs {
@@ -1145,6 +1161,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs {
     file?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs>;
     gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs>;
     s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args>;
+    workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss {
@@ -1197,6 +1214,14 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs {
+    destination?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType {
@@ -1479,6 +1504,7 @@ export interface GetJobJobSettingsSettingsNewClusterInitScript {
     file?: inputs.GetJobJobSettingsSettingsNewClusterInitScriptFile;
     gcs?: inputs.GetJobJobSettingsSettingsNewClusterInitScriptGcs;
     s3?: inputs.GetJobJobSettingsSettingsNewClusterInitScriptS3;
+    workspace?: inputs.GetJobJobSettingsSettingsNewClusterInitScriptWorkspace;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptArgs {
@@ -1487,6 +1513,7 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptArgs {
     file?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptFileArgs>;
     gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs>;
     s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptS3Args>;
+    workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptAbfss {
@@ -1539,6 +1566,14 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptS3Args {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs {
+    destination?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterWorkloadType {
@@ -1995,6 +2030,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScript {
     file?: inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFile;
     gcs?: inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs;
     s3?: inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3;
+    workspace?: inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs {
@@ -2003,6 +2039,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs {
     file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs>;
     gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs>;
     s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args>;
+    workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss {
@@ -2055,6 +2092,14 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs {
+    destination?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterWorkloadType {
@@ -2675,6 +2720,7 @@ export interface JobJobClusterNewClusterInitScript {
     file?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptS3>;
+    workspace?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptWorkspace>;
 }
 
 export interface JobJobClusterNewClusterInitScriptAbfss {
@@ -2701,6 +2747,10 @@ export interface JobJobClusterNewClusterInitScriptS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface JobJobClusterNewClusterInitScriptWorkspace {
+    destination?: pulumi.Input<string>;
 }
 
 export interface JobJobClusterNewClusterWorkloadType {
@@ -2852,6 +2902,7 @@ export interface JobNewClusterInitScript {
     file?: pulumi.Input<inputs.JobNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobNewClusterInitScriptS3>;
+    workspace?: pulumi.Input<inputs.JobNewClusterInitScriptWorkspace>;
 }
 
 export interface JobNewClusterInitScriptAbfss {
@@ -2878,6 +2929,10 @@ export interface JobNewClusterInitScriptS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface JobNewClusterInitScriptWorkspace {
+    destination?: pulumi.Input<string>;
 }
 
 export interface JobNewClusterWorkloadType {
@@ -3221,6 +3276,7 @@ export interface JobTaskNewClusterInitScript {
     file?: pulumi.Input<inputs.JobTaskNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobTaskNewClusterInitScriptS3>;
+    workspace?: pulumi.Input<inputs.JobTaskNewClusterInitScriptWorkspace>;
 }
 
 export interface JobTaskNewClusterInitScriptAbfss {
@@ -3247,6 +3303,10 @@ export interface JobTaskNewClusterInitScriptS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface JobTaskNewClusterInitScriptWorkspace {
+    destination?: pulumi.Input<string>;
 }
 
 export interface JobTaskNewClusterWorkloadType {
@@ -3848,6 +3908,7 @@ export interface PipelineClusterInitScript {
     file?: pulumi.Input<inputs.PipelineClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.PipelineClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.PipelineClusterInitScriptS3>;
+    workspace?: pulumi.Input<inputs.PipelineClusterInitScriptWorkspace>;
 }
 
 export interface PipelineClusterInitScriptAbfss {
@@ -3874,6 +3935,10 @@ export interface PipelineClusterInitScriptS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface PipelineClusterInitScriptWorkspace {
+    destination?: pulumi.Input<string>;
 }
 
 export interface PipelineFilters {
@@ -4180,6 +4245,25 @@ export interface SqlQueryScheduleWeekly {
     intervalWeeks: pulumi.Input<number>;
     timeOfDay: pulumi.Input<string>;
     untilDate?: pulumi.Input<string>;
+}
+
+export interface SqlTableColumn {
+    /**
+     * User-supplied free-form text.
+     */
+    comment?: pulumi.Input<string>;
+    /**
+     * User-visible name of column
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Whether field is nullable (Default: `true`)
+     */
+    nullable?: pulumi.Input<boolean>;
+    /**
+     * Column type spec (with metadata) as SQL text
+     */
+    type: pulumi.Input<string>;
 }
 
 export interface SqlWidgetParameter {

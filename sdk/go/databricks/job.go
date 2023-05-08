@@ -56,9 +56,8 @@ type Job struct {
 	SparkJarTask    JobSparkJarTaskPtrOutput    `pulumi:"sparkJarTask"`
 	SparkPythonTask JobSparkPythonTaskPtrOutput `pulumi:"sparkPythonTask"`
 	SparkSubmitTask JobSparkSubmitTaskPtrOutput `pulumi:"sparkSubmitTask"`
-	// (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-	Tags  pulumi.MapOutput   `pulumi:"tags"`
-	Tasks JobTaskArrayOutput `pulumi:"tasks"`
+	Tags            pulumi.MapOutput            `pulumi:"tags"`
+	Tasks           JobTaskArrayOutput          `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrOutput `pulumi:"timeoutSeconds"`
 	Trigger        JobTriggerPtrOutput `pulumi:"trigger"`
@@ -127,13 +126,12 @@ type jobState struct {
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
-	Schedule        *JobSchedule        `pulumi:"schedule"`
-	SparkJarTask    *JobSparkJarTask    `pulumi:"sparkJarTask"`
-	SparkPythonTask *JobSparkPythonTask `pulumi:"sparkPythonTask"`
-	SparkSubmitTask *JobSparkSubmitTask `pulumi:"sparkSubmitTask"`
-	// (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-	Tags  map[string]interface{} `pulumi:"tags"`
-	Tasks []JobTask              `pulumi:"tasks"`
+	Schedule        *JobSchedule           `pulumi:"schedule"`
+	SparkJarTask    *JobSparkJarTask       `pulumi:"sparkJarTask"`
+	SparkPythonTask *JobSparkPythonTask    `pulumi:"sparkPythonTask"`
+	SparkSubmitTask *JobSparkSubmitTask    `pulumi:"sparkSubmitTask"`
+	Tags            map[string]interface{} `pulumi:"tags"`
+	Tasks           []JobTask              `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int        `pulumi:"timeoutSeconds"`
 	Trigger        *JobTrigger `pulumi:"trigger"`
@@ -178,9 +176,8 @@ type JobState struct {
 	SparkJarTask    JobSparkJarTaskPtrInput
 	SparkPythonTask JobSparkPythonTaskPtrInput
 	SparkSubmitTask JobSparkSubmitTaskPtrInput
-	// (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-	Tags  pulumi.MapInput
-	Tasks JobTaskArrayInput
+	Tags            pulumi.MapInput
+	Tasks           JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
 	Trigger        JobTriggerPtrInput
@@ -225,13 +222,12 @@ type jobArgs struct {
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
-	Schedule        *JobSchedule        `pulumi:"schedule"`
-	SparkJarTask    *JobSparkJarTask    `pulumi:"sparkJarTask"`
-	SparkPythonTask *JobSparkPythonTask `pulumi:"sparkPythonTask"`
-	SparkSubmitTask *JobSparkSubmitTask `pulumi:"sparkSubmitTask"`
-	// (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-	Tags  map[string]interface{} `pulumi:"tags"`
-	Tasks []JobTask              `pulumi:"tasks"`
+	Schedule        *JobSchedule           `pulumi:"schedule"`
+	SparkJarTask    *JobSparkJarTask       `pulumi:"sparkJarTask"`
+	SparkPythonTask *JobSparkPythonTask    `pulumi:"sparkPythonTask"`
+	SparkSubmitTask *JobSparkSubmitTask    `pulumi:"sparkSubmitTask"`
+	Tags            map[string]interface{} `pulumi:"tags"`
+	Tasks           []JobTask              `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int        `pulumi:"timeoutSeconds"`
 	Trigger        *JobTrigger `pulumi:"trigger"`
@@ -275,9 +271,8 @@ type JobArgs struct {
 	SparkJarTask    JobSparkJarTaskPtrInput
 	SparkPythonTask JobSparkPythonTaskPtrInput
 	SparkSubmitTask JobSparkSubmitTaskPtrInput
-	// (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-	Tags  pulumi.MapInput
-	Tasks JobTaskArrayInput
+	Tags            pulumi.MapInput
+	Tasks           JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
 	Trigger        JobTriggerPtrInput
@@ -475,7 +470,6 @@ func (o JobOutput) SparkSubmitTask() JobSparkSubmitTaskPtrOutput {
 	return o.ApplyT(func(v *Job) JobSparkSubmitTaskPtrOutput { return v.SparkSubmitTask }).(JobSparkSubmitTaskPtrOutput)
 }
 
-// (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
 func (o JobOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Job) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

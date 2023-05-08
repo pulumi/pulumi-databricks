@@ -79,7 +79,7 @@ export interface GetSqlWarehouseArgs {
      */
     enablePhoton?: boolean;
     /**
-     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
+     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
      */
     enableServerlessCompute?: boolean;
     /**
@@ -144,7 +144,7 @@ export interface GetSqlWarehouseResult {
      */
     readonly enablePhoton: boolean;
     /**
-     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
+     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
      */
     readonly enableServerlessCompute: boolean;
     readonly id: string;
@@ -233,7 +233,7 @@ export interface GetSqlWarehouseOutputArgs {
      */
     enablePhoton?: pulumi.Input<boolean>;
     /**
-     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
+     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
      */
     enableServerlessCompute?: pulumi.Input<boolean>;
     /**

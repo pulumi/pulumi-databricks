@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.JobTaskNewClusterInitScriptDbfs;
 import com.pulumi.databricks.outputs.JobTaskNewClusterInitScriptFile;
 import com.pulumi.databricks.outputs.JobTaskNewClusterInitScriptGcs;
 import com.pulumi.databricks.outputs.JobTaskNewClusterInitScriptS3;
+import com.pulumi.databricks.outputs.JobTaskNewClusterInitScriptWorkspace;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -24,6 +25,7 @@ public final class JobTaskNewClusterInitScript {
     private @Nullable JobTaskNewClusterInitScriptFile file;
     private @Nullable JobTaskNewClusterInitScriptGcs gcs;
     private @Nullable JobTaskNewClusterInitScriptS3 s3;
+    private @Nullable JobTaskNewClusterInitScriptWorkspace workspace;
 
     private JobTaskNewClusterInitScript() {}
     public Optional<JobTaskNewClusterInitScriptAbfss> abfss() {
@@ -45,6 +47,9 @@ public final class JobTaskNewClusterInitScript {
     public Optional<JobTaskNewClusterInitScriptS3> s3() {
         return Optional.ofNullable(this.s3);
     }
+    public Optional<JobTaskNewClusterInitScriptWorkspace> workspace() {
+        return Optional.ofNullable(this.workspace);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -60,6 +65,7 @@ public final class JobTaskNewClusterInitScript {
         private @Nullable JobTaskNewClusterInitScriptFile file;
         private @Nullable JobTaskNewClusterInitScriptGcs gcs;
         private @Nullable JobTaskNewClusterInitScriptS3 s3;
+        private @Nullable JobTaskNewClusterInitScriptWorkspace workspace;
         public Builder() {}
         public Builder(JobTaskNewClusterInitScript defaults) {
     	      Objects.requireNonNull(defaults);
@@ -68,6 +74,7 @@ public final class JobTaskNewClusterInitScript {
     	      this.file = defaults.file;
     	      this.gcs = defaults.gcs;
     	      this.s3 = defaults.s3;
+    	      this.workspace = defaults.workspace;
         }
 
         @CustomType.Setter
@@ -95,6 +102,11 @@ public final class JobTaskNewClusterInitScript {
             this.s3 = s3;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspace(@Nullable JobTaskNewClusterInitScriptWorkspace workspace) {
+            this.workspace = workspace;
+            return this;
+        }
         public JobTaskNewClusterInitScript build() {
             final var o = new JobTaskNewClusterInitScript();
             o.abfss = abfss;
@@ -102,6 +114,7 @@ public final class JobTaskNewClusterInitScript {
             o.file = file;
             o.gcs = gcs;
             o.s3 = s3;
+            o.workspace = workspace;
             return o;
         }
     }

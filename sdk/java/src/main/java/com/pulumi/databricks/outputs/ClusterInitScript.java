@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.ClusterInitScriptDbfs;
 import com.pulumi.databricks.outputs.ClusterInitScriptFile;
 import com.pulumi.databricks.outputs.ClusterInitScriptGcs;
 import com.pulumi.databricks.outputs.ClusterInitScriptS3;
+import com.pulumi.databricks.outputs.ClusterInitScriptWorkspace;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,6 +21,7 @@ public final class ClusterInitScript {
     private @Nullable ClusterInitScriptFile file;
     private @Nullable ClusterInitScriptGcs gcs;
     private @Nullable ClusterInitScriptS3 s3;
+    private @Nullable ClusterInitScriptWorkspace workspace;
 
     private ClusterInitScript() {}
     public Optional<ClusterInitScriptAbfss> abfss() {
@@ -37,6 +39,9 @@ public final class ClusterInitScript {
     public Optional<ClusterInitScriptS3> s3() {
         return Optional.ofNullable(this.s3);
     }
+    public Optional<ClusterInitScriptWorkspace> workspace() {
+        return Optional.ofNullable(this.workspace);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -52,6 +57,7 @@ public final class ClusterInitScript {
         private @Nullable ClusterInitScriptFile file;
         private @Nullable ClusterInitScriptGcs gcs;
         private @Nullable ClusterInitScriptS3 s3;
+        private @Nullable ClusterInitScriptWorkspace workspace;
         public Builder() {}
         public Builder(ClusterInitScript defaults) {
     	      Objects.requireNonNull(defaults);
@@ -60,6 +66,7 @@ public final class ClusterInitScript {
     	      this.file = defaults.file;
     	      this.gcs = defaults.gcs;
     	      this.s3 = defaults.s3;
+    	      this.workspace = defaults.workspace;
         }
 
         @CustomType.Setter
@@ -87,6 +94,11 @@ public final class ClusterInitScript {
             this.s3 = s3;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspace(@Nullable ClusterInitScriptWorkspace workspace) {
+            this.workspace = workspace;
+            return this;
+        }
         public ClusterInitScript build() {
             final var o = new ClusterInitScript();
             o.abfss = abfss;
@@ -94,6 +106,7 @@ public final class ClusterInitScript {
             o.file = file;
             o.gcs = gcs;
             o.s3 = s3;
+            o.workspace = workspace;
             return o;
         }
     }

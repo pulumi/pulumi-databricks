@@ -96,14 +96,14 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
+     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
      * 
      */
     @Import(name="enableServerlessCompute")
     private @Nullable Output<Boolean> enableServerlessCompute;
 
     /**
-     * @return Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
+     * @return Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
      * 
      */
     public Optional<Output<Boolean>> enableServerlessCompute() {
@@ -397,7 +397,7 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableServerlessCompute Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
+         * @param enableServerlessCompute Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableServerlessCompute Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
+         * @param enableServerlessCompute Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
          * 
          * @return builder
          * 

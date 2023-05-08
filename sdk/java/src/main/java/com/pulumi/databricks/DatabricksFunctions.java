@@ -44,6 +44,8 @@ import com.pulumi.databricks.inputs.GetNotebookArgs;
 import com.pulumi.databricks.inputs.GetNotebookPathsArgs;
 import com.pulumi.databricks.inputs.GetNotebookPathsPlainArgs;
 import com.pulumi.databricks.inputs.GetNotebookPlainArgs;
+import com.pulumi.databricks.inputs.GetPipelinesArgs;
+import com.pulumi.databricks.inputs.GetPipelinesPlainArgs;
 import com.pulumi.databricks.inputs.GetSchemasArgs;
 import com.pulumi.databricks.inputs.GetSchemasPlainArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
@@ -86,6 +88,7 @@ import com.pulumi.databricks.outputs.GetMwsWorkspacesResult;
 import com.pulumi.databricks.outputs.GetNodeTypeResult;
 import com.pulumi.databricks.outputs.GetNotebookPathsResult;
 import com.pulumi.databricks.outputs.GetNotebookResult;
+import com.pulumi.databricks.outputs.GetPipelinesResult;
 import com.pulumi.databricks.outputs.GetSchemasResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalsResult;
@@ -2943,7 +2946,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * Listing all workspaces in
+     * Listing all credentials in
      * ```java
      * package generated_program;
      * 
@@ -2995,7 +2998,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * Listing all workspaces in
+     * Listing all credentials in
      * ```java
      * package generated_program;
      * 
@@ -3047,7 +3050,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * Listing all workspaces in
+     * Listing all credentials in
      * ```java
      * package generated_program;
      * 
@@ -3099,7 +3102,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * Listing all workspaces in
+     * Listing all credentials in
      * ```java
      * package generated_program;
      * 
@@ -3151,7 +3154,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * Listing all workspaces in
+     * Listing all credentials in
      * ```java
      * package generated_program;
      * 
@@ -3203,7 +3206,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * Listing all workspaces in
+     * Listing all credentials in
      * ```java
      * package generated_program;
      * 
@@ -3953,6 +3956,648 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetNotebookPathsResult> getNotebookPathsPlain(GetNotebookPathsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getNotebookPaths:getNotebookPaths", TypeShape.of(GetNotebookPathsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get all Delta Live Tables pipelines:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getPipelines();
+     * 
+     *         ctx.export(&#34;allPipelines&#34;, all.applyValue(getPipelinesResult -&gt; getPipelinesResult.ids()));
+     *     }
+     * }
+     * ```
+     * 
+     * Filter Delta Live Tables pipelines by name (exact match):
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .pipelineName(&#34;my_pipeline&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;myPipeline&#34;, this_.ids());
+     *     }
+     * }
+     * ```
+     * 
+     * Filter Delta Live Tables pipelines by name (wildcard search):
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .pipelineName(&#34;%pipeline%&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wildcardPipelines&#34;, this_.ids());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * 
+     */
+    public static Output<GetPipelinesResult> getPipelines() {
+        return getPipelines(GetPipelinesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get all Delta Live Tables pipelines:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getPipelines();
+     * 
+     *         ctx.export(&#34;allPipelines&#34;, all.applyValue(getPipelinesResult -&gt; getPipelinesResult.ids()));
+     *     }
+     * }
+     * ```
+     * 
+     * Filter Delta Live Tables pipelines by name (exact match):
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .pipelineName(&#34;my_pipeline&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;myPipeline&#34;, this_.ids());
+     *     }
+     * }
+     * ```
+     * 
+     * Filter Delta Live Tables pipelines by name (wildcard search):
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .pipelineName(&#34;%pipeline%&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wildcardPipelines&#34;, this_.ids());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * 
+     */
+    public static CompletableFuture<GetPipelinesResult> getPipelinesPlain() {
+        return getPipelinesPlain(GetPipelinesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get all Delta Live Tables pipelines:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getPipelines();
+     * 
+     *         ctx.export(&#34;allPipelines&#34;, all.applyValue(getPipelinesResult -&gt; getPipelinesResult.ids()));
+     *     }
+     * }
+     * ```
+     * 
+     * Filter Delta Live Tables pipelines by name (exact match):
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .pipelineName(&#34;my_pipeline&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;myPipeline&#34;, this_.ids());
+     *     }
+     * }
+     * ```
+     * 
+     * Filter Delta Live Tables pipelines by name (wildcard search):
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .pipelineName(&#34;%pipeline%&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wildcardPipelines&#34;, this_.ids());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * 
+     */
+    public static Output<GetPipelinesResult> getPipelines(GetPipelinesArgs args) {
+        return getPipelines(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get all Delta Live Tables pipelines:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getPipelines();
+     * 
+     *         ctx.export(&#34;allPipelines&#34;, all.applyValue(getPipelinesResult -&gt; getPipelinesResult.ids()));
+     *     }
+     * }
+     * ```
+     * 
+     * Filter Delta Live Tables pipelines by name (exact match):
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .pipelineName(&#34;my_pipeline&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;myPipeline&#34;, this_.ids());
+     *     }
+     * }
+     * ```
+     * 
+     * Filter Delta Live Tables pipelines by name (wildcard search):
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .pipelineName(&#34;%pipeline%&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wildcardPipelines&#34;, this_.ids());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * 
+     */
+    public static CompletableFuture<GetPipelinesResult> getPipelinesPlain(GetPipelinesPlainArgs args) {
+        return getPipelinesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get all Delta Live Tables pipelines:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getPipelines();
+     * 
+     *         ctx.export(&#34;allPipelines&#34;, all.applyValue(getPipelinesResult -&gt; getPipelinesResult.ids()));
+     *     }
+     * }
+     * ```
+     * 
+     * Filter Delta Live Tables pipelines by name (exact match):
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .pipelineName(&#34;my_pipeline&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;myPipeline&#34;, this_.ids());
+     *     }
+     * }
+     * ```
+     * 
+     * Filter Delta Live Tables pipelines by name (wildcard search):
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .pipelineName(&#34;%pipeline%&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wildcardPipelines&#34;, this_.ids());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * 
+     */
+    public static Output<GetPipelinesResult> getPipelines(GetPipelinesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPipelines:getPipelines", TypeShape.of(GetPipelinesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get all Delta Live Tables pipelines:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getPipelines();
+     * 
+     *         ctx.export(&#34;allPipelines&#34;, all.applyValue(getPipelinesResult -&gt; getPipelinesResult.ids()));
+     *     }
+     * }
+     * ```
+     * 
+     * Filter Delta Live Tables pipelines by name (exact match):
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .pipelineName(&#34;my_pipeline&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;myPipeline&#34;, this_.ids());
+     *     }
+     * }
+     * ```
+     * 
+     * Filter Delta Live Tables pipelines by name (wildcard search):
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPipelinesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .pipelineName(&#34;%pipeline%&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;wildcardPipelines&#34;, this_.ids());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * 
+     */
+    public static CompletableFuture<GetPipelinesResult> getPipelinesPlain(GetPipelinesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPipelines:getPipelines", TypeShape.of(GetPipelinesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

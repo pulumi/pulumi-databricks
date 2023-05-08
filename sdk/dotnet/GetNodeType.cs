@@ -142,6 +142,9 @@ namespace Pulumi.Databricks
         [Input("category")]
         public string? Category { get; set; }
 
+        /// <summary>
+        /// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+        /// </summary>
         [Input("fleet")]
         public bool? Fleet { get; set; }
 
@@ -238,6 +241,9 @@ namespace Pulumi.Databricks
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        /// <summary>
+        /// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+        /// </summary>
         [Input("fleet")]
         public Input<bool>? Fleet { get; set; }
 

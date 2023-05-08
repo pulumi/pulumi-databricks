@@ -1716,11 +1716,12 @@ func (o ClusterGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 }
 
 type ClusterInitScript struct {
-	Abfss *ClusterInitScriptAbfss `pulumi:"abfss"`
-	Dbfs  *ClusterInitScriptDbfs  `pulumi:"dbfs"`
-	File  *ClusterInitScriptFile  `pulumi:"file"`
-	Gcs   *ClusterInitScriptGcs   `pulumi:"gcs"`
-	S3    *ClusterInitScriptS3    `pulumi:"s3"`
+	Abfss     *ClusterInitScriptAbfss     `pulumi:"abfss"`
+	Dbfs      *ClusterInitScriptDbfs      `pulumi:"dbfs"`
+	File      *ClusterInitScriptFile      `pulumi:"file"`
+	Gcs       *ClusterInitScriptGcs       `pulumi:"gcs"`
+	S3        *ClusterInitScriptS3        `pulumi:"s3"`
+	Workspace *ClusterInitScriptWorkspace `pulumi:"workspace"`
 }
 
 // ClusterInitScriptInput is an input type that accepts ClusterInitScriptArgs and ClusterInitScriptOutput values.
@@ -1735,11 +1736,12 @@ type ClusterInitScriptInput interface {
 }
 
 type ClusterInitScriptArgs struct {
-	Abfss ClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
-	Dbfs  ClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
-	File  ClusterInitScriptFilePtrInput  `pulumi:"file"`
-	Gcs   ClusterInitScriptGcsPtrInput   `pulumi:"gcs"`
-	S3    ClusterInitScriptS3PtrInput    `pulumi:"s3"`
+	Abfss     ClusterInitScriptAbfssPtrInput     `pulumi:"abfss"`
+	Dbfs      ClusterInitScriptDbfsPtrInput      `pulumi:"dbfs"`
+	File      ClusterInitScriptFilePtrInput      `pulumi:"file"`
+	Gcs       ClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
+	S3        ClusterInitScriptS3PtrInput        `pulumi:"s3"`
+	Workspace ClusterInitScriptWorkspacePtrInput `pulumi:"workspace"`
 }
 
 func (ClusterInitScriptArgs) ElementType() reflect.Type {
@@ -1811,6 +1813,10 @@ func (o ClusterInitScriptOutput) Gcs() ClusterInitScriptGcsPtrOutput {
 
 func (o ClusterInitScriptOutput) S3() ClusterInitScriptS3PtrOutput {
 	return o.ApplyT(func(v ClusterInitScript) *ClusterInitScriptS3 { return v.S3 }).(ClusterInitScriptS3PtrOutput)
+}
+
+func (o ClusterInitScriptOutput) Workspace() ClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyT(func(v ClusterInitScript) *ClusterInitScriptWorkspace { return v.Workspace }).(ClusterInitScriptWorkspacePtrOutput)
 }
 
 type ClusterInitScriptArrayOutput struct{ *pulumi.OutputState }
@@ -2585,6 +2591,139 @@ func (o ClusterInitScriptS3PtrOutput) Region() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterInitScriptWorkspace struct {
+	Destination *string `pulumi:"destination"`
+}
+
+// ClusterInitScriptWorkspaceInput is an input type that accepts ClusterInitScriptWorkspaceArgs and ClusterInitScriptWorkspaceOutput values.
+// You can construct a concrete instance of `ClusterInitScriptWorkspaceInput` via:
+//
+//	ClusterInitScriptWorkspaceArgs{...}
+type ClusterInitScriptWorkspaceInput interface {
+	pulumi.Input
+
+	ToClusterInitScriptWorkspaceOutput() ClusterInitScriptWorkspaceOutput
+	ToClusterInitScriptWorkspaceOutputWithContext(context.Context) ClusterInitScriptWorkspaceOutput
+}
+
+type ClusterInitScriptWorkspaceArgs struct {
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (ClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i ClusterInitScriptWorkspaceArgs) ToClusterInitScriptWorkspaceOutput() ClusterInitScriptWorkspaceOutput {
+	return i.ToClusterInitScriptWorkspaceOutputWithContext(context.Background())
+}
+
+func (i ClusterInitScriptWorkspaceArgs) ToClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) ClusterInitScriptWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterInitScriptWorkspaceOutput)
+}
+
+func (i ClusterInitScriptWorkspaceArgs) ToClusterInitScriptWorkspacePtrOutput() ClusterInitScriptWorkspacePtrOutput {
+	return i.ToClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterInitScriptWorkspaceArgs) ToClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) ClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterInitScriptWorkspaceOutput).ToClusterInitScriptWorkspacePtrOutputWithContext(ctx)
+}
+
+// ClusterInitScriptWorkspacePtrInput is an input type that accepts ClusterInitScriptWorkspaceArgs, ClusterInitScriptWorkspacePtr and ClusterInitScriptWorkspacePtrOutput values.
+// You can construct a concrete instance of `ClusterInitScriptWorkspacePtrInput` via:
+//
+//	        ClusterInitScriptWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterInitScriptWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToClusterInitScriptWorkspacePtrOutput() ClusterInitScriptWorkspacePtrOutput
+	ToClusterInitScriptWorkspacePtrOutputWithContext(context.Context) ClusterInitScriptWorkspacePtrOutput
+}
+
+type clusterInitScriptWorkspacePtrType ClusterInitScriptWorkspaceArgs
+
+func ClusterInitScriptWorkspacePtr(v *ClusterInitScriptWorkspaceArgs) ClusterInitScriptWorkspacePtrInput {
+	return (*clusterInitScriptWorkspacePtrType)(v)
+}
+
+func (*clusterInitScriptWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i *clusterInitScriptWorkspacePtrType) ToClusterInitScriptWorkspacePtrOutput() ClusterInitScriptWorkspacePtrOutput {
+	return i.ToClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterInitScriptWorkspacePtrType) ToClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) ClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterInitScriptWorkspacePtrOutput)
+}
+
+type ClusterInitScriptWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (ClusterInitScriptWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o ClusterInitScriptWorkspaceOutput) ToClusterInitScriptWorkspaceOutput() ClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o ClusterInitScriptWorkspaceOutput) ToClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) ClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o ClusterInitScriptWorkspaceOutput) ToClusterInitScriptWorkspacePtrOutput() ClusterInitScriptWorkspacePtrOutput {
+	return o.ToClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterInitScriptWorkspaceOutput) ToClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) ClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterInitScriptWorkspace) *ClusterInitScriptWorkspace {
+		return &v
+	}).(ClusterInitScriptWorkspacePtrOutput)
+}
+
+func (o ClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type ClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterInitScriptWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o ClusterInitScriptWorkspacePtrOutput) ToClusterInitScriptWorkspacePtrOutput() ClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o ClusterInitScriptWorkspacePtrOutput) ToClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) ClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o ClusterInitScriptWorkspacePtrOutput) Elem() ClusterInitScriptWorkspaceOutput {
+	return o.ApplyT(func(v *ClusterInitScriptWorkspace) ClusterInitScriptWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterInitScriptWorkspace
+		return ret
+	}).(ClusterInitScriptWorkspaceOutput)
+}
+
+func (o ClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterInitScriptWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8336,9 +8475,10 @@ type JobJobClusterNewClusterInitScript struct {
 	Abfss *JobJobClusterNewClusterInitScriptAbfss `pulumi:"abfss"`
 	Dbfs  *JobJobClusterNewClusterInitScriptDbfs  `pulumi:"dbfs"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-	File *JobJobClusterNewClusterInitScriptFile `pulumi:"file"`
-	Gcs  *JobJobClusterNewClusterInitScriptGcs  `pulumi:"gcs"`
-	S3   *JobJobClusterNewClusterInitScriptS3   `pulumi:"s3"`
+	File      *JobJobClusterNewClusterInitScriptFile      `pulumi:"file"`
+	Gcs       *JobJobClusterNewClusterInitScriptGcs       `pulumi:"gcs"`
+	S3        *JobJobClusterNewClusterInitScriptS3        `pulumi:"s3"`
+	Workspace *JobJobClusterNewClusterInitScriptWorkspace `pulumi:"workspace"`
 }
 
 // JobJobClusterNewClusterInitScriptInput is an input type that accepts JobJobClusterNewClusterInitScriptArgs and JobJobClusterNewClusterInitScriptOutput values.
@@ -8356,9 +8496,10 @@ type JobJobClusterNewClusterInitScriptArgs struct {
 	Abfss JobJobClusterNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
 	Dbfs  JobJobClusterNewClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-	File JobJobClusterNewClusterInitScriptFilePtrInput `pulumi:"file"`
-	Gcs  JobJobClusterNewClusterInitScriptGcsPtrInput  `pulumi:"gcs"`
-	S3   JobJobClusterNewClusterInitScriptS3PtrInput   `pulumi:"s3"`
+	File      JobJobClusterNewClusterInitScriptFilePtrInput      `pulumi:"file"`
+	Gcs       JobJobClusterNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
+	S3        JobJobClusterNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
+	Workspace JobJobClusterNewClusterInitScriptWorkspacePtrInput `pulumi:"workspace"`
 }
 
 func (JobJobClusterNewClusterInitScriptArgs) ElementType() reflect.Type {
@@ -8431,6 +8572,12 @@ func (o JobJobClusterNewClusterInitScriptOutput) Gcs() JobJobClusterNewClusterIn
 
 func (o JobJobClusterNewClusterInitScriptOutput) S3() JobJobClusterNewClusterInitScriptS3PtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewClusterInitScript) *JobJobClusterNewClusterInitScriptS3 { return v.S3 }).(JobJobClusterNewClusterInitScriptS3PtrOutput)
+}
+
+func (o JobJobClusterNewClusterInitScriptOutput) Workspace() JobJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterInitScript) *JobJobClusterNewClusterInitScriptWorkspace {
+		return v.Workspace
+	}).(JobJobClusterNewClusterInitScriptWorkspacePtrOutput)
 }
 
 type JobJobClusterNewClusterInitScriptArrayOutput struct{ *pulumi.OutputState }
@@ -9205,6 +9352,139 @@ func (o JobJobClusterNewClusterInitScriptS3PtrOutput) Region() pulumi.StringPtrO
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobJobClusterNewClusterInitScriptWorkspace struct {
+	Destination *string `pulumi:"destination"`
+}
+
+// JobJobClusterNewClusterInitScriptWorkspaceInput is an input type that accepts JobJobClusterNewClusterInitScriptWorkspaceArgs and JobJobClusterNewClusterInitScriptWorkspaceOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterInitScriptWorkspaceInput` via:
+//
+//	JobJobClusterNewClusterInitScriptWorkspaceArgs{...}
+type JobJobClusterNewClusterInitScriptWorkspaceInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterInitScriptWorkspaceOutput() JobJobClusterNewClusterInitScriptWorkspaceOutput
+	ToJobJobClusterNewClusterInitScriptWorkspaceOutputWithContext(context.Context) JobJobClusterNewClusterInitScriptWorkspaceOutput
+}
+
+type JobJobClusterNewClusterInitScriptWorkspaceArgs struct {
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (JobJobClusterNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i JobJobClusterNewClusterInitScriptWorkspaceArgs) ToJobJobClusterNewClusterInitScriptWorkspaceOutput() JobJobClusterNewClusterInitScriptWorkspaceOutput {
+	return i.ToJobJobClusterNewClusterInitScriptWorkspaceOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterInitScriptWorkspaceArgs) ToJobJobClusterNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) JobJobClusterNewClusterInitScriptWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterInitScriptWorkspaceOutput)
+}
+
+func (i JobJobClusterNewClusterInitScriptWorkspaceArgs) ToJobJobClusterNewClusterInitScriptWorkspacePtrOutput() JobJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToJobJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i JobJobClusterNewClusterInitScriptWorkspaceArgs) ToJobJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterInitScriptWorkspaceOutput).ToJobJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx)
+}
+
+// JobJobClusterNewClusterInitScriptWorkspacePtrInput is an input type that accepts JobJobClusterNewClusterInitScriptWorkspaceArgs, JobJobClusterNewClusterInitScriptWorkspacePtr and JobJobClusterNewClusterInitScriptWorkspacePtrOutput values.
+// You can construct a concrete instance of `JobJobClusterNewClusterInitScriptWorkspacePtrInput` via:
+//
+//	        JobJobClusterNewClusterInitScriptWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobJobClusterNewClusterInitScriptWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToJobJobClusterNewClusterInitScriptWorkspacePtrOutput() JobJobClusterNewClusterInitScriptWorkspacePtrOutput
+	ToJobJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(context.Context) JobJobClusterNewClusterInitScriptWorkspacePtrOutput
+}
+
+type jobJobClusterNewClusterInitScriptWorkspacePtrType JobJobClusterNewClusterInitScriptWorkspaceArgs
+
+func JobJobClusterNewClusterInitScriptWorkspacePtr(v *JobJobClusterNewClusterInitScriptWorkspaceArgs) JobJobClusterNewClusterInitScriptWorkspacePtrInput {
+	return (*jobJobClusterNewClusterInitScriptWorkspacePtrType)(v)
+}
+
+func (*jobJobClusterNewClusterInitScriptWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i *jobJobClusterNewClusterInitScriptWorkspacePtrType) ToJobJobClusterNewClusterInitScriptWorkspacePtrOutput() JobJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToJobJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *jobJobClusterNewClusterInitScriptWorkspacePtrType) ToJobJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobJobClusterNewClusterInitScriptWorkspacePtrOutput)
+}
+
+type JobJobClusterNewClusterInitScriptWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterInitScriptWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobClusterNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterInitScriptWorkspaceOutput) ToJobJobClusterNewClusterInitScriptWorkspaceOutput() JobJobClusterNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterInitScriptWorkspaceOutput) ToJobJobClusterNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) JobJobClusterNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterInitScriptWorkspaceOutput) ToJobJobClusterNewClusterInitScriptWorkspacePtrOutput() JobJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o.ToJobJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o JobJobClusterNewClusterInitScriptWorkspaceOutput) ToJobJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobClusterNewClusterInitScriptWorkspace) *JobJobClusterNewClusterInitScriptWorkspace {
+		return &v
+	}).(JobJobClusterNewClusterInitScriptWorkspacePtrOutput)
+}
+
+func (o JobJobClusterNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type JobJobClusterNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (JobJobClusterNewClusterInitScriptWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobJobClusterNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o JobJobClusterNewClusterInitScriptWorkspacePtrOutput) ToJobJobClusterNewClusterInitScriptWorkspacePtrOutput() JobJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterInitScriptWorkspacePtrOutput) ToJobJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) JobJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o JobJobClusterNewClusterInitScriptWorkspacePtrOutput) Elem() JobJobClusterNewClusterInitScriptWorkspaceOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterInitScriptWorkspace) JobJobClusterNewClusterInitScriptWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret JobJobClusterNewClusterInitScriptWorkspace
+		return ret
+	}).(JobJobClusterNewClusterInitScriptWorkspaceOutput)
+}
+
+func (o JobJobClusterNewClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterInitScriptWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12355,9 +12635,10 @@ type JobNewClusterInitScript struct {
 	Abfss *JobNewClusterInitScriptAbfss `pulumi:"abfss"`
 	Dbfs  *JobNewClusterInitScriptDbfs  `pulumi:"dbfs"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-	File *JobNewClusterInitScriptFile `pulumi:"file"`
-	Gcs  *JobNewClusterInitScriptGcs  `pulumi:"gcs"`
-	S3   *JobNewClusterInitScriptS3   `pulumi:"s3"`
+	File      *JobNewClusterInitScriptFile      `pulumi:"file"`
+	Gcs       *JobNewClusterInitScriptGcs       `pulumi:"gcs"`
+	S3        *JobNewClusterInitScriptS3        `pulumi:"s3"`
+	Workspace *JobNewClusterInitScriptWorkspace `pulumi:"workspace"`
 }
 
 // JobNewClusterInitScriptInput is an input type that accepts JobNewClusterInitScriptArgs and JobNewClusterInitScriptOutput values.
@@ -12375,9 +12656,10 @@ type JobNewClusterInitScriptArgs struct {
 	Abfss JobNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
 	Dbfs  JobNewClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-	File JobNewClusterInitScriptFilePtrInput `pulumi:"file"`
-	Gcs  JobNewClusterInitScriptGcsPtrInput  `pulumi:"gcs"`
-	S3   JobNewClusterInitScriptS3PtrInput   `pulumi:"s3"`
+	File      JobNewClusterInitScriptFilePtrInput      `pulumi:"file"`
+	Gcs       JobNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
+	S3        JobNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
+	Workspace JobNewClusterInitScriptWorkspacePtrInput `pulumi:"workspace"`
 }
 
 func (JobNewClusterInitScriptArgs) ElementType() reflect.Type {
@@ -12450,6 +12732,10 @@ func (o JobNewClusterInitScriptOutput) Gcs() JobNewClusterInitScriptGcsPtrOutput
 
 func (o JobNewClusterInitScriptOutput) S3() JobNewClusterInitScriptS3PtrOutput {
 	return o.ApplyT(func(v JobNewClusterInitScript) *JobNewClusterInitScriptS3 { return v.S3 }).(JobNewClusterInitScriptS3PtrOutput)
+}
+
+func (o JobNewClusterInitScriptOutput) Workspace() JobNewClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyT(func(v JobNewClusterInitScript) *JobNewClusterInitScriptWorkspace { return v.Workspace }).(JobNewClusterInitScriptWorkspacePtrOutput)
 }
 
 type JobNewClusterInitScriptArrayOutput struct{ *pulumi.OutputState }
@@ -13224,6 +13510,139 @@ func (o JobNewClusterInitScriptS3PtrOutput) Region() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobNewClusterInitScriptWorkspace struct {
+	Destination *string `pulumi:"destination"`
+}
+
+// JobNewClusterInitScriptWorkspaceInput is an input type that accepts JobNewClusterInitScriptWorkspaceArgs and JobNewClusterInitScriptWorkspaceOutput values.
+// You can construct a concrete instance of `JobNewClusterInitScriptWorkspaceInput` via:
+//
+//	JobNewClusterInitScriptWorkspaceArgs{...}
+type JobNewClusterInitScriptWorkspaceInput interface {
+	pulumi.Input
+
+	ToJobNewClusterInitScriptWorkspaceOutput() JobNewClusterInitScriptWorkspaceOutput
+	ToJobNewClusterInitScriptWorkspaceOutputWithContext(context.Context) JobNewClusterInitScriptWorkspaceOutput
+}
+
+type JobNewClusterInitScriptWorkspaceArgs struct {
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (JobNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i JobNewClusterInitScriptWorkspaceArgs) ToJobNewClusterInitScriptWorkspaceOutput() JobNewClusterInitScriptWorkspaceOutput {
+	return i.ToJobNewClusterInitScriptWorkspaceOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterInitScriptWorkspaceArgs) ToJobNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) JobNewClusterInitScriptWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterInitScriptWorkspaceOutput)
+}
+
+func (i JobNewClusterInitScriptWorkspaceArgs) ToJobNewClusterInitScriptWorkspacePtrOutput() JobNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToJobNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i JobNewClusterInitScriptWorkspaceArgs) ToJobNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) JobNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterInitScriptWorkspaceOutput).ToJobNewClusterInitScriptWorkspacePtrOutputWithContext(ctx)
+}
+
+// JobNewClusterInitScriptWorkspacePtrInput is an input type that accepts JobNewClusterInitScriptWorkspaceArgs, JobNewClusterInitScriptWorkspacePtr and JobNewClusterInitScriptWorkspacePtrOutput values.
+// You can construct a concrete instance of `JobNewClusterInitScriptWorkspacePtrInput` via:
+//
+//	        JobNewClusterInitScriptWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobNewClusterInitScriptWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToJobNewClusterInitScriptWorkspacePtrOutput() JobNewClusterInitScriptWorkspacePtrOutput
+	ToJobNewClusterInitScriptWorkspacePtrOutputWithContext(context.Context) JobNewClusterInitScriptWorkspacePtrOutput
+}
+
+type jobNewClusterInitScriptWorkspacePtrType JobNewClusterInitScriptWorkspaceArgs
+
+func JobNewClusterInitScriptWorkspacePtr(v *JobNewClusterInitScriptWorkspaceArgs) JobNewClusterInitScriptWorkspacePtrInput {
+	return (*jobNewClusterInitScriptWorkspacePtrType)(v)
+}
+
+func (*jobNewClusterInitScriptWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i *jobNewClusterInitScriptWorkspacePtrType) ToJobNewClusterInitScriptWorkspacePtrOutput() JobNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToJobNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *jobNewClusterInitScriptWorkspacePtrType) ToJobNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) JobNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNewClusterInitScriptWorkspacePtrOutput)
+}
+
+type JobNewClusterInitScriptWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterInitScriptWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o JobNewClusterInitScriptWorkspaceOutput) ToJobNewClusterInitScriptWorkspaceOutput() JobNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o JobNewClusterInitScriptWorkspaceOutput) ToJobNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) JobNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o JobNewClusterInitScriptWorkspaceOutput) ToJobNewClusterInitScriptWorkspacePtrOutput() JobNewClusterInitScriptWorkspacePtrOutput {
+	return o.ToJobNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o JobNewClusterInitScriptWorkspaceOutput) ToJobNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) JobNewClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobNewClusterInitScriptWorkspace) *JobNewClusterInitScriptWorkspace {
+		return &v
+	}).(JobNewClusterInitScriptWorkspacePtrOutput)
+}
+
+func (o JobNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobNewClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type JobNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (JobNewClusterInitScriptWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o JobNewClusterInitScriptWorkspacePtrOutput) ToJobNewClusterInitScriptWorkspacePtrOutput() JobNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o JobNewClusterInitScriptWorkspacePtrOutput) ToJobNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) JobNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o JobNewClusterInitScriptWorkspacePtrOutput) Elem() JobNewClusterInitScriptWorkspaceOutput {
+	return o.ApplyT(func(v *JobNewClusterInitScriptWorkspace) JobNewClusterInitScriptWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret JobNewClusterInitScriptWorkspace
+		return ret
+	}).(JobNewClusterInitScriptWorkspaceOutput)
+}
+
+func (o JobNewClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterInitScriptWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18427,9 +18846,10 @@ type JobTaskNewClusterInitScript struct {
 	Abfss *JobTaskNewClusterInitScriptAbfss `pulumi:"abfss"`
 	Dbfs  *JobTaskNewClusterInitScriptDbfs  `pulumi:"dbfs"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-	File *JobTaskNewClusterInitScriptFile `pulumi:"file"`
-	Gcs  *JobTaskNewClusterInitScriptGcs  `pulumi:"gcs"`
-	S3   *JobTaskNewClusterInitScriptS3   `pulumi:"s3"`
+	File      *JobTaskNewClusterInitScriptFile      `pulumi:"file"`
+	Gcs       *JobTaskNewClusterInitScriptGcs       `pulumi:"gcs"`
+	S3        *JobTaskNewClusterInitScriptS3        `pulumi:"s3"`
+	Workspace *JobTaskNewClusterInitScriptWorkspace `pulumi:"workspace"`
 }
 
 // JobTaskNewClusterInitScriptInput is an input type that accepts JobTaskNewClusterInitScriptArgs and JobTaskNewClusterInitScriptOutput values.
@@ -18447,9 +18867,10 @@ type JobTaskNewClusterInitScriptArgs struct {
 	Abfss JobTaskNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
 	Dbfs  JobTaskNewClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-	File JobTaskNewClusterInitScriptFilePtrInput `pulumi:"file"`
-	Gcs  JobTaskNewClusterInitScriptGcsPtrInput  `pulumi:"gcs"`
-	S3   JobTaskNewClusterInitScriptS3PtrInput   `pulumi:"s3"`
+	File      JobTaskNewClusterInitScriptFilePtrInput      `pulumi:"file"`
+	Gcs       JobTaskNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
+	S3        JobTaskNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
+	Workspace JobTaskNewClusterInitScriptWorkspacePtrInput `pulumi:"workspace"`
 }
 
 func (JobTaskNewClusterInitScriptArgs) ElementType() reflect.Type {
@@ -18522,6 +18943,10 @@ func (o JobTaskNewClusterInitScriptOutput) Gcs() JobTaskNewClusterInitScriptGcsP
 
 func (o JobTaskNewClusterInitScriptOutput) S3() JobTaskNewClusterInitScriptS3PtrOutput {
 	return o.ApplyT(func(v JobTaskNewClusterInitScript) *JobTaskNewClusterInitScriptS3 { return v.S3 }).(JobTaskNewClusterInitScriptS3PtrOutput)
+}
+
+func (o JobTaskNewClusterInitScriptOutput) Workspace() JobTaskNewClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterInitScript) *JobTaskNewClusterInitScriptWorkspace { return v.Workspace }).(JobTaskNewClusterInitScriptWorkspacePtrOutput)
 }
 
 type JobTaskNewClusterInitScriptArrayOutput struct{ *pulumi.OutputState }
@@ -19296,6 +19721,139 @@ func (o JobTaskNewClusterInitScriptS3PtrOutput) Region() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskNewClusterInitScriptWorkspace struct {
+	Destination *string `pulumi:"destination"`
+}
+
+// JobTaskNewClusterInitScriptWorkspaceInput is an input type that accepts JobTaskNewClusterInitScriptWorkspaceArgs and JobTaskNewClusterInitScriptWorkspaceOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterInitScriptWorkspaceInput` via:
+//
+//	JobTaskNewClusterInitScriptWorkspaceArgs{...}
+type JobTaskNewClusterInitScriptWorkspaceInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterInitScriptWorkspaceOutput() JobTaskNewClusterInitScriptWorkspaceOutput
+	ToJobTaskNewClusterInitScriptWorkspaceOutputWithContext(context.Context) JobTaskNewClusterInitScriptWorkspaceOutput
+}
+
+type JobTaskNewClusterInitScriptWorkspaceArgs struct {
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (JobTaskNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i JobTaskNewClusterInitScriptWorkspaceArgs) ToJobTaskNewClusterInitScriptWorkspaceOutput() JobTaskNewClusterInitScriptWorkspaceOutput {
+	return i.ToJobTaskNewClusterInitScriptWorkspaceOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterInitScriptWorkspaceArgs) ToJobTaskNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) JobTaskNewClusterInitScriptWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterInitScriptWorkspaceOutput)
+}
+
+func (i JobTaskNewClusterInitScriptWorkspaceArgs) ToJobTaskNewClusterInitScriptWorkspacePtrOutput() JobTaskNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToJobTaskNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskNewClusterInitScriptWorkspaceArgs) ToJobTaskNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) JobTaskNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterInitScriptWorkspaceOutput).ToJobTaskNewClusterInitScriptWorkspacePtrOutputWithContext(ctx)
+}
+
+// JobTaskNewClusterInitScriptWorkspacePtrInput is an input type that accepts JobTaskNewClusterInitScriptWorkspaceArgs, JobTaskNewClusterInitScriptWorkspacePtr and JobTaskNewClusterInitScriptWorkspacePtrOutput values.
+// You can construct a concrete instance of `JobTaskNewClusterInitScriptWorkspacePtrInput` via:
+//
+//	        JobTaskNewClusterInitScriptWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskNewClusterInitScriptWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToJobTaskNewClusterInitScriptWorkspacePtrOutput() JobTaskNewClusterInitScriptWorkspacePtrOutput
+	ToJobTaskNewClusterInitScriptWorkspacePtrOutputWithContext(context.Context) JobTaskNewClusterInitScriptWorkspacePtrOutput
+}
+
+type jobTaskNewClusterInitScriptWorkspacePtrType JobTaskNewClusterInitScriptWorkspaceArgs
+
+func JobTaskNewClusterInitScriptWorkspacePtr(v *JobTaskNewClusterInitScriptWorkspaceArgs) JobTaskNewClusterInitScriptWorkspacePtrInput {
+	return (*jobTaskNewClusterInitScriptWorkspacePtrType)(v)
+}
+
+func (*jobTaskNewClusterInitScriptWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i *jobTaskNewClusterInitScriptWorkspacePtrType) ToJobTaskNewClusterInitScriptWorkspacePtrOutput() JobTaskNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToJobTaskNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskNewClusterInitScriptWorkspacePtrType) ToJobTaskNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) JobTaskNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNewClusterInitScriptWorkspacePtrOutput)
+}
+
+type JobTaskNewClusterInitScriptWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterInitScriptWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterInitScriptWorkspaceOutput) ToJobTaskNewClusterInitScriptWorkspaceOutput() JobTaskNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o JobTaskNewClusterInitScriptWorkspaceOutput) ToJobTaskNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) JobTaskNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o JobTaskNewClusterInitScriptWorkspaceOutput) ToJobTaskNewClusterInitScriptWorkspacePtrOutput() JobTaskNewClusterInitScriptWorkspacePtrOutput {
+	return o.ToJobTaskNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskNewClusterInitScriptWorkspaceOutput) ToJobTaskNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) JobTaskNewClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskNewClusterInitScriptWorkspace) *JobTaskNewClusterInitScriptWorkspace {
+		return &v
+	}).(JobTaskNewClusterInitScriptWorkspacePtrOutput)
+}
+
+func (o JobTaskNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNewClusterInitScriptWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o JobTaskNewClusterInitScriptWorkspacePtrOutput) ToJobTaskNewClusterInitScriptWorkspacePtrOutput() JobTaskNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o JobTaskNewClusterInitScriptWorkspacePtrOutput) ToJobTaskNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) JobTaskNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o JobTaskNewClusterInitScriptWorkspacePtrOutput) Elem() JobTaskNewClusterInitScriptWorkspaceOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterInitScriptWorkspace) JobTaskNewClusterInitScriptWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskNewClusterInitScriptWorkspace
+		return ret
+	}).(JobTaskNewClusterInitScriptWorkspaceOutput)
+}
+
+func (o JobTaskNewClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterInitScriptWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -28801,11 +29359,12 @@ func (o PipelineClusterGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 }
 
 type PipelineClusterInitScript struct {
-	Abfss *PipelineClusterInitScriptAbfss `pulumi:"abfss"`
-	Dbfs  *PipelineClusterInitScriptDbfs  `pulumi:"dbfs"`
-	File  *PipelineClusterInitScriptFile  `pulumi:"file"`
-	Gcs   *PipelineClusterInitScriptGcs   `pulumi:"gcs"`
-	S3    *PipelineClusterInitScriptS3    `pulumi:"s3"`
+	Abfss     *PipelineClusterInitScriptAbfss     `pulumi:"abfss"`
+	Dbfs      *PipelineClusterInitScriptDbfs      `pulumi:"dbfs"`
+	File      *PipelineClusterInitScriptFile      `pulumi:"file"`
+	Gcs       *PipelineClusterInitScriptGcs       `pulumi:"gcs"`
+	S3        *PipelineClusterInitScriptS3        `pulumi:"s3"`
+	Workspace *PipelineClusterInitScriptWorkspace `pulumi:"workspace"`
 }
 
 // PipelineClusterInitScriptInput is an input type that accepts PipelineClusterInitScriptArgs and PipelineClusterInitScriptOutput values.
@@ -28820,11 +29379,12 @@ type PipelineClusterInitScriptInput interface {
 }
 
 type PipelineClusterInitScriptArgs struct {
-	Abfss PipelineClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
-	Dbfs  PipelineClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
-	File  PipelineClusterInitScriptFilePtrInput  `pulumi:"file"`
-	Gcs   PipelineClusterInitScriptGcsPtrInput   `pulumi:"gcs"`
-	S3    PipelineClusterInitScriptS3PtrInput    `pulumi:"s3"`
+	Abfss     PipelineClusterInitScriptAbfssPtrInput     `pulumi:"abfss"`
+	Dbfs      PipelineClusterInitScriptDbfsPtrInput      `pulumi:"dbfs"`
+	File      PipelineClusterInitScriptFilePtrInput      `pulumi:"file"`
+	Gcs       PipelineClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
+	S3        PipelineClusterInitScriptS3PtrInput        `pulumi:"s3"`
+	Workspace PipelineClusterInitScriptWorkspacePtrInput `pulumi:"workspace"`
 }
 
 func (PipelineClusterInitScriptArgs) ElementType() reflect.Type {
@@ -28896,6 +29456,10 @@ func (o PipelineClusterInitScriptOutput) Gcs() PipelineClusterInitScriptGcsPtrOu
 
 func (o PipelineClusterInitScriptOutput) S3() PipelineClusterInitScriptS3PtrOutput {
 	return o.ApplyT(func(v PipelineClusterInitScript) *PipelineClusterInitScriptS3 { return v.S3 }).(PipelineClusterInitScriptS3PtrOutput)
+}
+
+func (o PipelineClusterInitScriptOutput) Workspace() PipelineClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyT(func(v PipelineClusterInitScript) *PipelineClusterInitScriptWorkspace { return v.Workspace }).(PipelineClusterInitScriptWorkspacePtrOutput)
 }
 
 type PipelineClusterInitScriptArrayOutput struct{ *pulumi.OutputState }
@@ -29670,6 +30234,139 @@ func (o PipelineClusterInitScriptS3PtrOutput) Region() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineClusterInitScriptWorkspace struct {
+	Destination *string `pulumi:"destination"`
+}
+
+// PipelineClusterInitScriptWorkspaceInput is an input type that accepts PipelineClusterInitScriptWorkspaceArgs and PipelineClusterInitScriptWorkspaceOutput values.
+// You can construct a concrete instance of `PipelineClusterInitScriptWorkspaceInput` via:
+//
+//	PipelineClusterInitScriptWorkspaceArgs{...}
+type PipelineClusterInitScriptWorkspaceInput interface {
+	pulumi.Input
+
+	ToPipelineClusterInitScriptWorkspaceOutput() PipelineClusterInitScriptWorkspaceOutput
+	ToPipelineClusterInitScriptWorkspaceOutputWithContext(context.Context) PipelineClusterInitScriptWorkspaceOutput
+}
+
+type PipelineClusterInitScriptWorkspaceArgs struct {
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (PipelineClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i PipelineClusterInitScriptWorkspaceArgs) ToPipelineClusterInitScriptWorkspaceOutput() PipelineClusterInitScriptWorkspaceOutput {
+	return i.ToPipelineClusterInitScriptWorkspaceOutputWithContext(context.Background())
+}
+
+func (i PipelineClusterInitScriptWorkspaceArgs) ToPipelineClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) PipelineClusterInitScriptWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineClusterInitScriptWorkspaceOutput)
+}
+
+func (i PipelineClusterInitScriptWorkspaceArgs) ToPipelineClusterInitScriptWorkspacePtrOutput() PipelineClusterInitScriptWorkspacePtrOutput {
+	return i.ToPipelineClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i PipelineClusterInitScriptWorkspaceArgs) ToPipelineClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) PipelineClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineClusterInitScriptWorkspaceOutput).ToPipelineClusterInitScriptWorkspacePtrOutputWithContext(ctx)
+}
+
+// PipelineClusterInitScriptWorkspacePtrInput is an input type that accepts PipelineClusterInitScriptWorkspaceArgs, PipelineClusterInitScriptWorkspacePtr and PipelineClusterInitScriptWorkspacePtrOutput values.
+// You can construct a concrete instance of `PipelineClusterInitScriptWorkspacePtrInput` via:
+//
+//	        PipelineClusterInitScriptWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineClusterInitScriptWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToPipelineClusterInitScriptWorkspacePtrOutput() PipelineClusterInitScriptWorkspacePtrOutput
+	ToPipelineClusterInitScriptWorkspacePtrOutputWithContext(context.Context) PipelineClusterInitScriptWorkspacePtrOutput
+}
+
+type pipelineClusterInitScriptWorkspacePtrType PipelineClusterInitScriptWorkspaceArgs
+
+func PipelineClusterInitScriptWorkspacePtr(v *PipelineClusterInitScriptWorkspaceArgs) PipelineClusterInitScriptWorkspacePtrInput {
+	return (*pipelineClusterInitScriptWorkspacePtrType)(v)
+}
+
+func (*pipelineClusterInitScriptWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i *pipelineClusterInitScriptWorkspacePtrType) ToPipelineClusterInitScriptWorkspacePtrOutput() PipelineClusterInitScriptWorkspacePtrOutput {
+	return i.ToPipelineClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineClusterInitScriptWorkspacePtrType) ToPipelineClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) PipelineClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineClusterInitScriptWorkspacePtrOutput)
+}
+
+type PipelineClusterInitScriptWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (PipelineClusterInitScriptWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o PipelineClusterInitScriptWorkspaceOutput) ToPipelineClusterInitScriptWorkspaceOutput() PipelineClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o PipelineClusterInitScriptWorkspaceOutput) ToPipelineClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) PipelineClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o PipelineClusterInitScriptWorkspaceOutput) ToPipelineClusterInitScriptWorkspacePtrOutput() PipelineClusterInitScriptWorkspacePtrOutput {
+	return o.ToPipelineClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o PipelineClusterInitScriptWorkspaceOutput) ToPipelineClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) PipelineClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineClusterInitScriptWorkspace) *PipelineClusterInitScriptWorkspace {
+		return &v
+	}).(PipelineClusterInitScriptWorkspacePtrOutput)
+}
+
+func (o PipelineClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type PipelineClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineClusterInitScriptWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o PipelineClusterInitScriptWorkspacePtrOutput) ToPipelineClusterInitScriptWorkspacePtrOutput() PipelineClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o PipelineClusterInitScriptWorkspacePtrOutput) ToPipelineClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) PipelineClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o PipelineClusterInitScriptWorkspacePtrOutput) Elem() PipelineClusterInitScriptWorkspaceOutput {
+	return o.ApplyT(func(v *PipelineClusterInitScriptWorkspace) PipelineClusterInitScriptWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineClusterInitScriptWorkspace
+		return ret
+	}).(PipelineClusterInitScriptWorkspaceOutput)
+}
+
+func (o PipelineClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineClusterInitScriptWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -35378,6 +36075,130 @@ func (o SqlQueryScheduleWeeklyPtrOutput) UntilDate() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SqlTableColumn struct {
+	// User-supplied free-form text.
+	Comment *string `pulumi:"comment"`
+	// User-visible name of column
+	Name string `pulumi:"name"`
+	// Whether field is nullable (Default: `true`)
+	Nullable *bool `pulumi:"nullable"`
+	// Column type spec (with metadata) as SQL text
+	Type string `pulumi:"type"`
+}
+
+// SqlTableColumnInput is an input type that accepts SqlTableColumnArgs and SqlTableColumnOutput values.
+// You can construct a concrete instance of `SqlTableColumnInput` via:
+//
+//	SqlTableColumnArgs{...}
+type SqlTableColumnInput interface {
+	pulumi.Input
+
+	ToSqlTableColumnOutput() SqlTableColumnOutput
+	ToSqlTableColumnOutputWithContext(context.Context) SqlTableColumnOutput
+}
+
+type SqlTableColumnArgs struct {
+	// User-supplied free-form text.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// User-visible name of column
+	Name pulumi.StringInput `pulumi:"name"`
+	// Whether field is nullable (Default: `true`)
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// Column type spec (with metadata) as SQL text
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SqlTableColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlTableColumn)(nil)).Elem()
+}
+
+func (i SqlTableColumnArgs) ToSqlTableColumnOutput() SqlTableColumnOutput {
+	return i.ToSqlTableColumnOutputWithContext(context.Background())
+}
+
+func (i SqlTableColumnArgs) ToSqlTableColumnOutputWithContext(ctx context.Context) SqlTableColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlTableColumnOutput)
+}
+
+// SqlTableColumnArrayInput is an input type that accepts SqlTableColumnArray and SqlTableColumnArrayOutput values.
+// You can construct a concrete instance of `SqlTableColumnArrayInput` via:
+//
+//	SqlTableColumnArray{ SqlTableColumnArgs{...} }
+type SqlTableColumnArrayInput interface {
+	pulumi.Input
+
+	ToSqlTableColumnArrayOutput() SqlTableColumnArrayOutput
+	ToSqlTableColumnArrayOutputWithContext(context.Context) SqlTableColumnArrayOutput
+}
+
+type SqlTableColumnArray []SqlTableColumnInput
+
+func (SqlTableColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlTableColumn)(nil)).Elem()
+}
+
+func (i SqlTableColumnArray) ToSqlTableColumnArrayOutput() SqlTableColumnArrayOutput {
+	return i.ToSqlTableColumnArrayOutputWithContext(context.Background())
+}
+
+func (i SqlTableColumnArray) ToSqlTableColumnArrayOutputWithContext(ctx context.Context) SqlTableColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlTableColumnArrayOutput)
+}
+
+type SqlTableColumnOutput struct{ *pulumi.OutputState }
+
+func (SqlTableColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlTableColumn)(nil)).Elem()
+}
+
+func (o SqlTableColumnOutput) ToSqlTableColumnOutput() SqlTableColumnOutput {
+	return o
+}
+
+func (o SqlTableColumnOutput) ToSqlTableColumnOutputWithContext(ctx context.Context) SqlTableColumnOutput {
+	return o
+}
+
+// User-supplied free-form text.
+func (o SqlTableColumnOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlTableColumn) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// User-visible name of column
+func (o SqlTableColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlTableColumn) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether field is nullable (Default: `true`)
+func (o SqlTableColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlTableColumn) *bool { return v.Nullable }).(pulumi.BoolPtrOutput)
+}
+
+// Column type spec (with metadata) as SQL text
+func (o SqlTableColumnOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlTableColumn) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SqlTableColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlTableColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlTableColumn)(nil)).Elem()
+}
+
+func (o SqlTableColumnArrayOutput) ToSqlTableColumnArrayOutput() SqlTableColumnArrayOutput {
+	return o
+}
+
+func (o SqlTableColumnArrayOutput) ToSqlTableColumnArrayOutputWithContext(ctx context.Context) SqlTableColumnArrayOutput {
+	return o
+}
+
+func (o SqlTableColumnArrayOutput) Index(i pulumi.IntInput) SqlTableColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlTableColumn {
+		return vs[0].([]SqlTableColumn)[vs[1].(int)]
+	}).(SqlTableColumnOutput)
+}
+
 type SqlWidgetParameter struct {
 	MapTo  *string  `pulumi:"mapTo"`
 	Name   string   `pulumi:"name"`
@@ -39753,11 +40574,12 @@ func (o GetClusterClusterInfoGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOu
 }
 
 type GetClusterClusterInfoInitScript struct {
-	Abfss *GetClusterClusterInfoInitScriptAbfss `pulumi:"abfss"`
-	Dbfs  *GetClusterClusterInfoInitScriptDbfs  `pulumi:"dbfs"`
-	File  *GetClusterClusterInfoInitScriptFile  `pulumi:"file"`
-	Gcs   *GetClusterClusterInfoInitScriptGcs   `pulumi:"gcs"`
-	S3    *GetClusterClusterInfoInitScriptS3    `pulumi:"s3"`
+	Abfss     *GetClusterClusterInfoInitScriptAbfss     `pulumi:"abfss"`
+	Dbfs      *GetClusterClusterInfoInitScriptDbfs      `pulumi:"dbfs"`
+	File      *GetClusterClusterInfoInitScriptFile      `pulumi:"file"`
+	Gcs       *GetClusterClusterInfoInitScriptGcs       `pulumi:"gcs"`
+	S3        *GetClusterClusterInfoInitScriptS3        `pulumi:"s3"`
+	Workspace *GetClusterClusterInfoInitScriptWorkspace `pulumi:"workspace"`
 }
 
 // GetClusterClusterInfoInitScriptInput is an input type that accepts GetClusterClusterInfoInitScriptArgs and GetClusterClusterInfoInitScriptOutput values.
@@ -39772,11 +40594,12 @@ type GetClusterClusterInfoInitScriptInput interface {
 }
 
 type GetClusterClusterInfoInitScriptArgs struct {
-	Abfss GetClusterClusterInfoInitScriptAbfssPtrInput `pulumi:"abfss"`
-	Dbfs  GetClusterClusterInfoInitScriptDbfsPtrInput  `pulumi:"dbfs"`
-	File  GetClusterClusterInfoInitScriptFilePtrInput  `pulumi:"file"`
-	Gcs   GetClusterClusterInfoInitScriptGcsPtrInput   `pulumi:"gcs"`
-	S3    GetClusterClusterInfoInitScriptS3PtrInput    `pulumi:"s3"`
+	Abfss     GetClusterClusterInfoInitScriptAbfssPtrInput     `pulumi:"abfss"`
+	Dbfs      GetClusterClusterInfoInitScriptDbfsPtrInput      `pulumi:"dbfs"`
+	File      GetClusterClusterInfoInitScriptFilePtrInput      `pulumi:"file"`
+	Gcs       GetClusterClusterInfoInitScriptGcsPtrInput       `pulumi:"gcs"`
+	S3        GetClusterClusterInfoInitScriptS3PtrInput        `pulumi:"s3"`
+	Workspace GetClusterClusterInfoInitScriptWorkspacePtrInput `pulumi:"workspace"`
 }
 
 func (GetClusterClusterInfoInitScriptArgs) ElementType() reflect.Type {
@@ -39848,6 +40671,10 @@ func (o GetClusterClusterInfoInitScriptOutput) Gcs() GetClusterClusterInfoInitSc
 
 func (o GetClusterClusterInfoInitScriptOutput) S3() GetClusterClusterInfoInitScriptS3PtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptS3 { return v.S3 }).(GetClusterClusterInfoInitScriptS3PtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptOutput) Workspace() GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptWorkspace { return v.Workspace }).(GetClusterClusterInfoInitScriptWorkspacePtrOutput)
 }
 
 type GetClusterClusterInfoInitScriptArrayOutput struct{ *pulumi.OutputState }
@@ -40622,6 +41449,139 @@ func (o GetClusterClusterInfoInitScriptS3PtrOutput) Region() pulumi.StringPtrOut
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptWorkspace struct {
+	Destination *string `pulumi:"destination"`
+}
+
+// GetClusterClusterInfoInitScriptWorkspaceInput is an input type that accepts GetClusterClusterInfoInitScriptWorkspaceArgs and GetClusterClusterInfoInitScriptWorkspaceOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptWorkspaceInput` via:
+//
+//	GetClusterClusterInfoInitScriptWorkspaceArgs{...}
+type GetClusterClusterInfoInitScriptWorkspaceInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptWorkspaceOutput() GetClusterClusterInfoInitScriptWorkspaceOutput
+	ToGetClusterClusterInfoInitScriptWorkspaceOutputWithContext(context.Context) GetClusterClusterInfoInitScriptWorkspaceOutput
+}
+
+type GetClusterClusterInfoInitScriptWorkspaceArgs struct {
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (GetClusterClusterInfoInitScriptWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoInitScriptWorkspaceArgs) ToGetClusterClusterInfoInitScriptWorkspaceOutput() GetClusterClusterInfoInitScriptWorkspaceOutput {
+	return i.ToGetClusterClusterInfoInitScriptWorkspaceOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptWorkspaceArgs) ToGetClusterClusterInfoInitScriptWorkspaceOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptWorkspaceOutput)
+}
+
+func (i GetClusterClusterInfoInitScriptWorkspaceArgs) ToGetClusterClusterInfoInitScriptWorkspacePtrOutput() GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptWorkspaceArgs) ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptWorkspaceOutput).ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoInitScriptWorkspacePtrInput is an input type that accepts GetClusterClusterInfoInitScriptWorkspaceArgs, GetClusterClusterInfoInitScriptWorkspacePtr and GetClusterClusterInfoInitScriptWorkspacePtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptWorkspacePtrInput` via:
+//
+//	        GetClusterClusterInfoInitScriptWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoInitScriptWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptWorkspacePtrOutput() GetClusterClusterInfoInitScriptWorkspacePtrOutput
+	ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(context.Context) GetClusterClusterInfoInitScriptWorkspacePtrOutput
+}
+
+type getClusterClusterInfoInitScriptWorkspacePtrType GetClusterClusterInfoInitScriptWorkspaceArgs
+
+func GetClusterClusterInfoInitScriptWorkspacePtr(v *GetClusterClusterInfoInitScriptWorkspaceArgs) GetClusterClusterInfoInitScriptWorkspacePtrInput {
+	return (*getClusterClusterInfoInitScriptWorkspacePtrType)(v)
+}
+
+func (*getClusterClusterInfoInitScriptWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoInitScriptWorkspacePtrType) ToGetClusterClusterInfoInitScriptWorkspacePtrOutput() GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoInitScriptWorkspacePtrType) ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptWorkspacePtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspaceOutput) ToGetClusterClusterInfoInitScriptWorkspaceOutput() GetClusterClusterInfoInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspaceOutput) ToGetClusterClusterInfoInitScriptWorkspaceOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspaceOutput) ToGetClusterClusterInfoInitScriptWorkspacePtrOutput() GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return o.ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspaceOutput) ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoInitScriptWorkspace) *GetClusterClusterInfoInitScriptWorkspace {
+		return &v
+	}).(GetClusterClusterInfoInitScriptWorkspacePtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspacePtrOutput) ToGetClusterClusterInfoInitScriptWorkspacePtrOutput() GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspacePtrOutput) ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspacePtrOutput) Elem() GetClusterClusterInfoInitScriptWorkspaceOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptWorkspace) GetClusterClusterInfoInitScriptWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoInitScriptWorkspace
+		return ret
+	}).(GetClusterClusterInfoInitScriptWorkspaceOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -46838,11 +47798,12 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesPtrOutput) Zon
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScript struct {
-	Abfss *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss `pulumi:"abfss"`
-	Dbfs  *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs  `pulumi:"dbfs"`
-	File  *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile  `pulumi:"file"`
-	Gcs   *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs   `pulumi:"gcs"`
-	S3    *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3    `pulumi:"s3"`
+	Abfss     *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss     `pulumi:"abfss"`
+	Dbfs      *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs      `pulumi:"dbfs"`
+	File      *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile      `pulumi:"file"`
+	Gcs       *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs       `pulumi:"gcs"`
+	S3        *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3        `pulumi:"s3"`
+	Workspace *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace `pulumi:"workspace"`
 }
 
 // GetJobJobSettingsSettingsJobClusterNewClusterInitScriptInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptOutput values.
@@ -46857,11 +47818,12 @@ type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptInput interface {
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs struct {
-	Abfss GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
-	Dbfs  GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
-	File  GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFilePtrInput  `pulumi:"file"`
-	Gcs   GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrInput   `pulumi:"gcs"`
-	S3    GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrInput    `pulumi:"s3"`
+	Abfss     GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssPtrInput     `pulumi:"abfss"`
+	Dbfs      GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsPtrInput      `pulumi:"dbfs"`
+	File      GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFilePtrInput      `pulumi:"file"`
+	Gcs       GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
+	S3        GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
+	Workspace GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrInput `pulumi:"workspace"`
 }
 
 func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs) ElementType() reflect.Type {
@@ -46943,6 +47905,12 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptOutput) S3() GetJ
 	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScript) *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 {
 		return v.S3
 	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptOutput) Workspace() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScript) *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace {
+		return v.Workspace
+	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput)
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArrayOutput struct{ *pulumi.OutputState }
@@ -47717,6 +48685,139 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput) Regi
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace struct {
+	Destination *string `pulumi:"destination"`
+}
+
+// GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceInput` via:
+//
+//	GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs{...}
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs struct {
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput)
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput).ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs, GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtr and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrInput` via:
+//
+//	        GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput
+	ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput
+}
+
+type getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrType GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs
+
+func GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtr(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrInput {
+	return (*getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrType) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o.ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace) *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace {
+		return &v
+	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput) ToGetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput) Elem() GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace) GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace
+		return ret
+	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -50888,11 +51989,12 @@ func (o GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) ZoneId() pulu
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScript struct {
-	Abfss *GetJobJobSettingsSettingsNewClusterInitScriptAbfss `pulumi:"abfss"`
-	Dbfs  *GetJobJobSettingsSettingsNewClusterInitScriptDbfs  `pulumi:"dbfs"`
-	File  *GetJobJobSettingsSettingsNewClusterInitScriptFile  `pulumi:"file"`
-	Gcs   *GetJobJobSettingsSettingsNewClusterInitScriptGcs   `pulumi:"gcs"`
-	S3    *GetJobJobSettingsSettingsNewClusterInitScriptS3    `pulumi:"s3"`
+	Abfss     *GetJobJobSettingsSettingsNewClusterInitScriptAbfss     `pulumi:"abfss"`
+	Dbfs      *GetJobJobSettingsSettingsNewClusterInitScriptDbfs      `pulumi:"dbfs"`
+	File      *GetJobJobSettingsSettingsNewClusterInitScriptFile      `pulumi:"file"`
+	Gcs       *GetJobJobSettingsSettingsNewClusterInitScriptGcs       `pulumi:"gcs"`
+	S3        *GetJobJobSettingsSettingsNewClusterInitScriptS3        `pulumi:"s3"`
+	Workspace *GetJobJobSettingsSettingsNewClusterInitScriptWorkspace `pulumi:"workspace"`
 }
 
 // GetJobJobSettingsSettingsNewClusterInitScriptInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptArgs and GetJobJobSettingsSettingsNewClusterInitScriptOutput values.
@@ -50907,11 +52009,12 @@ type GetJobJobSettingsSettingsNewClusterInitScriptInput interface {
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptArgs struct {
-	Abfss GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
-	Dbfs  GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
-	File  GetJobJobSettingsSettingsNewClusterInitScriptFilePtrInput  `pulumi:"file"`
-	Gcs   GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrInput   `pulumi:"gcs"`
-	S3    GetJobJobSettingsSettingsNewClusterInitScriptS3PtrInput    `pulumi:"s3"`
+	Abfss     GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrInput     `pulumi:"abfss"`
+	Dbfs      GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrInput      `pulumi:"dbfs"`
+	File      GetJobJobSettingsSettingsNewClusterInitScriptFilePtrInput      `pulumi:"file"`
+	Gcs       GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
+	S3        GetJobJobSettingsSettingsNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
+	Workspace GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrInput `pulumi:"workspace"`
 }
 
 func (GetJobJobSettingsSettingsNewClusterInitScriptArgs) ElementType() reflect.Type {
@@ -50993,6 +52096,12 @@ func (o GetJobJobSettingsSettingsNewClusterInitScriptOutput) S3() GetJobJobSetti
 	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScript) *GetJobJobSettingsSettingsNewClusterInitScriptS3 {
 		return v.S3
 	}).(GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsNewClusterInitScriptOutput) Workspace() GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScript) *GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
+		return v.Workspace
+	}).(GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput)
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput struct{ *pulumi.OutputState }
@@ -51767,6 +52876,139 @@ func (o GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput) Region() pulum
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsNewClusterInitScriptWorkspace struct {
+	Destination *string `pulumi:"destination"`
+}
+
+// GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs and GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceInput` via:
+//
+//	GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs{...}
+type GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput
+	ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput
+}
+
+type GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs struct {
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput {
+	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput)
+}
+
+func (i GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput).ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs, GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtr and GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrInput` via:
+//
+//	        GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput
+	ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput
+}
+
+type getJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrType GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs
+
+func GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtr(v *GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs) GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrInput {
+	return (*getJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrType) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput)
+}
+
+type GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
+	return o.ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNewClusterInitScriptWorkspace) *GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
+		return &v
+	}).(GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput) ToGetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput) Elem() GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptWorkspace) GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsNewClusterInitScriptWorkspace
+		return ret
+	}).(GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput)
+}
+
+func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterInitScriptWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -56877,11 +58119,12 @@ func (o GetJobJobSettingsSettingsTaskNewClusterGcpAttributesPtrOutput) ZoneId() 
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScript struct {
-	Abfss *GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss `pulumi:"abfss"`
-	Dbfs  *GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs  `pulumi:"dbfs"`
-	File  *GetJobJobSettingsSettingsTaskNewClusterInitScriptFile  `pulumi:"file"`
-	Gcs   *GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs   `pulumi:"gcs"`
-	S3    *GetJobJobSettingsSettingsTaskNewClusterInitScriptS3    `pulumi:"s3"`
+	Abfss     *GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss     `pulumi:"abfss"`
+	Dbfs      *GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs      `pulumi:"dbfs"`
+	File      *GetJobJobSettingsSettingsTaskNewClusterInitScriptFile      `pulumi:"file"`
+	Gcs       *GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs       `pulumi:"gcs"`
+	S3        *GetJobJobSettingsSettingsTaskNewClusterInitScriptS3        `pulumi:"s3"`
+	Workspace *GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace `pulumi:"workspace"`
 }
 
 // GetJobJobSettingsSettingsTaskNewClusterInitScriptInput is an input type that accepts GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs and GetJobJobSettingsSettingsTaskNewClusterInitScriptOutput values.
@@ -56896,11 +58139,12 @@ type GetJobJobSettingsSettingsTaskNewClusterInitScriptInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs struct {
-	Abfss GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
-	Dbfs  GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
-	File  GetJobJobSettingsSettingsTaskNewClusterInitScriptFilePtrInput  `pulumi:"file"`
-	Gcs   GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsPtrInput   `pulumi:"gcs"`
-	S3    GetJobJobSettingsSettingsTaskNewClusterInitScriptS3PtrInput    `pulumi:"s3"`
+	Abfss     GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssPtrInput     `pulumi:"abfss"`
+	Dbfs      GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsPtrInput      `pulumi:"dbfs"`
+	File      GetJobJobSettingsSettingsTaskNewClusterInitScriptFilePtrInput      `pulumi:"file"`
+	Gcs       GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
+	S3        GetJobJobSettingsSettingsTaskNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
+	Workspace GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrInput `pulumi:"workspace"`
 }
 
 func (GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs) ElementType() reflect.Type {
@@ -56982,6 +58226,12 @@ func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptOutput) S3() GetJobJobS
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterInitScript) *GetJobJobSettingsSettingsTaskNewClusterInitScriptS3 {
 		return v.S3
 	}).(GetJobJobSettingsSettingsTaskNewClusterInitScriptS3PtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptOutput) Workspace() GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterInitScript) *GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace {
+		return v.Workspace
+	}).(GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput)
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptArrayOutput struct{ *pulumi.OutputState }
@@ -57756,6 +59006,139 @@ func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptS3PtrOutput) Region() p
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace struct {
+	Destination *string `pulumi:"destination"`
+}
+
+// GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceInput is an input type that accepts GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs and GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceInput` via:
+//
+//	GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs{...}
+type GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput
+	ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput
+}
+
+type GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs struct {
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+}
+
+func (GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput {
+	return i.ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs) ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput).ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrInput is an input type that accepts GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs, GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtr and GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput
+	ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput
+}
+
+type getJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrType GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs
+
+func GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtr(v *GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs) GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrInput {
+	return (*getJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrType) ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrType) ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput() GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput) ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace) *GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput) ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput() GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput) ToGetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput) Elem() GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace) GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace
+		return ret
+	}).(GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -61566,6 +62949,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInitScriptGcsPtrInput)(nil)).Elem(), ClusterInitScriptGcsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInitScriptS3Input)(nil)).Elem(), ClusterInitScriptS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInitScriptS3PtrInput)(nil)).Elem(), ClusterInitScriptS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInitScriptWorkspaceInput)(nil)).Elem(), ClusterInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInitScriptWorkspacePtrInput)(nil)).Elem(), ClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLibraryInput)(nil)).Elem(), ClusterLibraryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLibraryArrayInput)(nil)).Elem(), ClusterLibraryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLibraryCranInput)(nil)).Elem(), ClusterLibraryCranArgs{})
@@ -61647,6 +63032,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterInitScriptGcsPtrInput)(nil)).Elem(), JobJobClusterNewClusterInitScriptGcsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterInitScriptS3Input)(nil)).Elem(), JobJobClusterNewClusterInitScriptS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterInitScriptS3PtrInput)(nil)).Elem(), JobJobClusterNewClusterInitScriptS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterInitScriptWorkspaceInput)(nil)).Elem(), JobJobClusterNewClusterInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterInitScriptWorkspacePtrInput)(nil)).Elem(), JobJobClusterNewClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterWorkloadTypeInput)(nil)).Elem(), JobJobClusterNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterWorkloadTypePtrInput)(nil)).Elem(), JobJobClusterNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterWorkloadTypeClientsInput)(nil)).Elem(), JobJobClusterNewClusterWorkloadTypeClientsArgs{})
@@ -61694,6 +63081,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterInitScriptGcsPtrInput)(nil)).Elem(), JobNewClusterInitScriptGcsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterInitScriptS3Input)(nil)).Elem(), JobNewClusterInitScriptS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterInitScriptS3PtrInput)(nil)).Elem(), JobNewClusterInitScriptS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterInitScriptWorkspaceInput)(nil)).Elem(), JobNewClusterInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterInitScriptWorkspacePtrInput)(nil)).Elem(), JobNewClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterWorkloadTypeInput)(nil)).Elem(), JobNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterWorkloadTypePtrInput)(nil)).Elem(), JobNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterWorkloadTypeClientsInput)(nil)).Elem(), JobNewClusterWorkloadTypeClientsArgs{})
@@ -61765,6 +63154,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterInitScriptGcsPtrInput)(nil)).Elem(), JobTaskNewClusterInitScriptGcsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterInitScriptS3Input)(nil)).Elem(), JobTaskNewClusterInitScriptS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterInitScriptS3PtrInput)(nil)).Elem(), JobTaskNewClusterInitScriptS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterInitScriptWorkspaceInput)(nil)).Elem(), JobTaskNewClusterInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterInitScriptWorkspacePtrInput)(nil)).Elem(), JobTaskNewClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterWorkloadTypeInput)(nil)).Elem(), JobTaskNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterWorkloadTypePtrInput)(nil)).Elem(), JobTaskNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterWorkloadTypeClientsInput)(nil)).Elem(), JobTaskNewClusterWorkloadTypeClientsArgs{})
@@ -61897,6 +63288,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterInitScriptGcsPtrInput)(nil)).Elem(), PipelineClusterInitScriptGcsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterInitScriptS3Input)(nil)).Elem(), PipelineClusterInitScriptS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterInitScriptS3PtrInput)(nil)).Elem(), PipelineClusterInitScriptS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterInitScriptWorkspaceInput)(nil)).Elem(), PipelineClusterInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterInitScriptWorkspacePtrInput)(nil)).Elem(), PipelineClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineFiltersInput)(nil)).Elem(), PipelineFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineFiltersPtrInput)(nil)).Elem(), PipelineFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLibraryInput)(nil)).Elem(), PipelineLibraryArgs{})
@@ -61975,6 +63368,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleDailyPtrInput)(nil)).Elem(), SqlQueryScheduleDailyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleWeeklyInput)(nil)).Elem(), SqlQueryScheduleWeeklyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleWeeklyPtrInput)(nil)).Elem(), SqlQueryScheduleWeeklyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlTableColumnInput)(nil)).Elem(), SqlTableColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlTableColumnArrayInput)(nil)).Elem(), SqlTableColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlWidgetParameterInput)(nil)).Elem(), SqlWidgetParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlWidgetParameterArrayInput)(nil)).Elem(), SqlWidgetParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlWidgetPositionInput)(nil)).Elem(), SqlWidgetPositionArgs{})
@@ -62033,6 +63428,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptGcsPtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptGcsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptS3Input)(nil)).Elem(), GetClusterClusterInfoInitScriptS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptS3PtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptWorkspaceInput)(nil)).Elem(), GetClusterClusterInfoInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptWorkspacePtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoTerminationReasonInput)(nil)).Elem(), GetClusterClusterInfoTerminationReasonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoTerminationReasonPtrInput)(nil)).Elem(), GetClusterClusterInfoTerminationReasonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbfsFilePathsPathListInput)(nil)).Elem(), GetDbfsFilePathsPathListArgs{})
@@ -62112,6 +63509,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Input)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs{})
@@ -62159,6 +63558,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptS3Input)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptS3PtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterWorkloadTypeInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterWorkloadTypePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs{})
@@ -62230,6 +63631,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Input)(nil)).Elem(), GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNewClusterInitScriptS3PtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNewClusterWorkloadTypePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgs{})
@@ -62317,6 +63720,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterInitScriptGcsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterInitScriptS3Output{})
 	pulumi.RegisterOutputType(ClusterInitScriptS3PtrOutput{})
+	pulumi.RegisterOutputType(ClusterInitScriptWorkspaceOutput{})
+	pulumi.RegisterOutputType(ClusterInitScriptWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(ClusterLibraryOutput{})
 	pulumi.RegisterOutputType(ClusterLibraryArrayOutput{})
 	pulumi.RegisterOutputType(ClusterLibraryCranOutput{})
@@ -62398,6 +63803,8 @@ func init() {
 	pulumi.RegisterOutputType(JobJobClusterNewClusterInitScriptGcsPtrOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterInitScriptS3Output{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterInitScriptS3PtrOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterInitScriptWorkspaceOutput{})
+	pulumi.RegisterOutputType(JobJobClusterNewClusterInitScriptWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterWorkloadTypeOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterWorkloadTypeClientsOutput{})
@@ -62445,6 +63852,8 @@ func init() {
 	pulumi.RegisterOutputType(JobNewClusterInitScriptGcsPtrOutput{})
 	pulumi.RegisterOutputType(JobNewClusterInitScriptS3Output{})
 	pulumi.RegisterOutputType(JobNewClusterInitScriptS3PtrOutput{})
+	pulumi.RegisterOutputType(JobNewClusterInitScriptWorkspaceOutput{})
+	pulumi.RegisterOutputType(JobNewClusterInitScriptWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(JobNewClusterWorkloadTypeOutput{})
 	pulumi.RegisterOutputType(JobNewClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(JobNewClusterWorkloadTypeClientsOutput{})
@@ -62516,6 +63925,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskNewClusterInitScriptGcsPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterInitScriptS3Output{})
 	pulumi.RegisterOutputType(JobTaskNewClusterInitScriptS3PtrOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterInitScriptWorkspaceOutput{})
+	pulumi.RegisterOutputType(JobTaskNewClusterInitScriptWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterWorkloadTypeOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(JobTaskNewClusterWorkloadTypeClientsOutput{})
@@ -62648,6 +64059,8 @@ func init() {
 	pulumi.RegisterOutputType(PipelineClusterInitScriptGcsPtrOutput{})
 	pulumi.RegisterOutputType(PipelineClusterInitScriptS3Output{})
 	pulumi.RegisterOutputType(PipelineClusterInitScriptS3PtrOutput{})
+	pulumi.RegisterOutputType(PipelineClusterInitScriptWorkspaceOutput{})
+	pulumi.RegisterOutputType(PipelineClusterInitScriptWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(PipelineFiltersOutput{})
 	pulumi.RegisterOutputType(PipelineFiltersPtrOutput{})
 	pulumi.RegisterOutputType(PipelineLibraryOutput{})
@@ -62726,6 +64139,8 @@ func init() {
 	pulumi.RegisterOutputType(SqlQueryScheduleDailyPtrOutput{})
 	pulumi.RegisterOutputType(SqlQueryScheduleWeeklyOutput{})
 	pulumi.RegisterOutputType(SqlQueryScheduleWeeklyPtrOutput{})
+	pulumi.RegisterOutputType(SqlTableColumnOutput{})
+	pulumi.RegisterOutputType(SqlTableColumnArrayOutput{})
 	pulumi.RegisterOutputType(SqlWidgetParameterOutput{})
 	pulumi.RegisterOutputType(SqlWidgetParameterArrayOutput{})
 	pulumi.RegisterOutputType(SqlWidgetPositionOutput{})
@@ -62784,6 +64199,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptGcsPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptS3Output{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptS3PtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptWorkspaceOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoTerminationReasonOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoTerminationReasonPtrOutput{})
 	pulumi.RegisterOutputType(GetDbfsFilePathsPathListOutput{})
@@ -62863,6 +64280,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Output{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3PtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsOutput{})
@@ -62910,6 +64329,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptS3Output{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptS3PtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterWorkloadTypeOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsOutput{})
@@ -62981,6 +64402,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Output{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNewClusterInitScriptS3PtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNewClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsOutput{})

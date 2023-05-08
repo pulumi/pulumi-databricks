@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScrip
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptFileArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptS3Args;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -54,6 +55,13 @@ public final class GetJobJobSettingsSettingsNewClusterInitScriptArgs extends com
         return Optional.ofNullable(this.s3);
     }
 
+    @Import(name="workspace")
+    private @Nullable Output<GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs> workspace;
+
+    public Optional<Output<GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs>> workspace() {
+        return Optional.ofNullable(this.workspace);
+    }
+
     private GetJobJobSettingsSettingsNewClusterInitScriptArgs() {}
 
     private GetJobJobSettingsSettingsNewClusterInitScriptArgs(GetJobJobSettingsSettingsNewClusterInitScriptArgs $) {
@@ -62,6 +70,7 @@ public final class GetJobJobSettingsSettingsNewClusterInitScriptArgs extends com
         this.file = $.file;
         this.gcs = $.gcs;
         this.s3 = $.s3;
+        this.workspace = $.workspace;
     }
 
     public static Builder builder() {
@@ -125,6 +134,15 @@ public final class GetJobJobSettingsSettingsNewClusterInitScriptArgs extends com
 
         public Builder s3(GetJobJobSettingsSettingsNewClusterInitScriptS3Args s3) {
             return s3(Output.of(s3));
+        }
+
+        public Builder workspace(@Nullable Output<GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs> workspace) {
+            $.workspace = workspace;
+            return this;
+        }
+
+        public Builder workspace(GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs workspace) {
+            return workspace(Output.of(workspace));
         }
 
         public GetJobJobSettingsSettingsNewClusterInitScriptArgs build() {

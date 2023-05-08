@@ -14,86 +14,39 @@ __all__ = ['ClusterPolicyArgs', 'ClusterPolicy']
 @pulumi.input_type
 class ClusterPolicyArgs:
     def __init__(__self__, *,
-                 definition: pulumi.Input[str],
-                 max_clusters_per_user: Optional[pulumi.Input[int]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
-        """
-        The set of arguments for constructing a ClusterPolicy resource.
-        :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
-        :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
-        """
-        pulumi.set(__self__, "definition", definition)
-        if max_clusters_per_user is not None:
-            pulumi.set(__self__, "max_clusters_per_user", max_clusters_per_user)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def definition(self) -> pulumi.Input[str]:
-        """
-        Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-        """
-        return pulumi.get(self, "definition")
-
-    @definition.setter
-    def definition(self, value: pulumi.Input[str]):
-        pulumi.set(self, "definition", value)
-
-    @property
-    @pulumi.getter(name="maxClustersPerUser")
-    def max_clusters_per_user(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
-        """
-        return pulumi.get(self, "max_clusters_per_user")
-
-    @max_clusters_per_user.setter
-    def max_clusters_per_user(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "max_clusters_per_user", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-
-@pulumi.input_type
-class _ClusterPolicyState:
-    def __init__(__self__, *,
                  definition: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  max_clusters_per_user: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policy_id: Optional[pulumi.Input[str]] = None):
+                 policy_family_definition_overrides: Optional[pulumi.Input[str]] = None,
+                 policy_family_id: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering ClusterPolicy resources.
-        :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        The set of arguments for constructing a ClusterPolicy resource.
+        :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+        :param pulumi.Input[str] description: Additional human-readable description of the cluster policy.
         :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
-        :param pulumi.Input[str] policy_id: Canonical unique identifier for the cluster policy.
+        :param pulumi.Input[str] policy_family_definition_overrides: Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+        :param pulumi.Input[str] policy_family_id: ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
         """
         if definition is not None:
             pulumi.set(__self__, "definition", definition)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if max_clusters_per_user is not None:
             pulumi.set(__self__, "max_clusters_per_user", max_clusters_per_user)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if policy_id is not None:
-            pulumi.set(__self__, "policy_id", policy_id)
+        if policy_family_definition_overrides is not None:
+            pulumi.set(__self__, "policy_family_definition_overrides", policy_family_definition_overrides)
+        if policy_family_id is not None:
+            pulumi.set(__self__, "policy_family_id", policy_family_id)
 
     @property
     @pulumi.getter
     def definition(self) -> Optional[pulumi.Input[str]]:
         """
-        Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
         """
         return pulumi.get(self, "definition")
 
@@ -102,6 +55,18 @@ class _ClusterPolicyState:
         pulumi.set(self, "definition", value)
 
     @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional human-readable description of the cluster policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
     @pulumi.getter(name="maxClustersPerUser")
     def max_clusters_per_user(self) -> Optional[pulumi.Input[int]]:
         """
@@ -124,6 +89,138 @@ class _ClusterPolicyState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="policyFamilyDefinitionOverrides")
+    def policy_family_definition_overrides(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+        """
+        return pulumi.get(self, "policy_family_definition_overrides")
+
+    @policy_family_definition_overrides.setter
+    def policy_family_definition_overrides(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_family_definition_overrides", value)
+
+    @property
+    @pulumi.getter(name="policyFamilyId")
+    def policy_family_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+        """
+        return pulumi.get(self, "policy_family_id")
+
+    @policy_family_id.setter
+    def policy_family_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_family_id", value)
+
+
+@pulumi.input_type
+class _ClusterPolicyState:
+    def __init__(__self__, *,
+                 definition: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 max_clusters_per_user: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 policy_family_definition_overrides: Optional[pulumi.Input[str]] = None,
+                 policy_family_id: Optional[pulumi.Input[str]] = None,
+                 policy_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ClusterPolicy resources.
+        :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+        :param pulumi.Input[str] description: Additional human-readable description of the cluster policy.
+        :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
+        :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
+        :param pulumi.Input[str] policy_family_definition_overrides: Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+        :param pulumi.Input[str] policy_family_id: ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+        :param pulumi.Input[str] policy_id: Canonical unique identifier for the cluster policy.
+        """
+        if definition is not None:
+            pulumi.set(__self__, "definition", definition)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if max_clusters_per_user is not None:
+            pulumi.set(__self__, "max_clusters_per_user", max_clusters_per_user)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if policy_family_definition_overrides is not None:
+            pulumi.set(__self__, "policy_family_definition_overrides", policy_family_definition_overrides)
+        if policy_family_id is not None:
+            pulumi.set(__self__, "policy_family_id", policy_family_id)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+
+    @property
+    @pulumi.getter
+    def definition(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+        """
+        return pulumi.get(self, "definition")
+
+    @definition.setter
+    def definition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "definition", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional human-readable description of the cluster policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="maxClustersPerUser")
+    def max_clusters_per_user(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
+        """
+        return pulumi.get(self, "max_clusters_per_user")
+
+    @max_clusters_per_user.setter
+    def max_clusters_per_user(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_clusters_per_user", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="policyFamilyDefinitionOverrides")
+    def policy_family_definition_overrides(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+        """
+        return pulumi.get(self, "policy_family_definition_overrides")
+
+    @policy_family_definition_overrides.setter
+    def policy_family_definition_overrides(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_family_definition_overrides", value)
+
+    @property
+    @pulumi.getter(name="policyFamilyId")
+    def policy_family_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+        """
+        return pulumi.get(self, "policy_family_id")
+
+    @policy_family_id.setter
+    def policy_family_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_family_id", value)
 
     @property
     @pulumi.getter(name="policyId")
@@ -144,8 +241,11 @@ class ClusterPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  definition: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  max_clusters_per_user: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 policy_family_definition_overrides: Optional[pulumi.Input[str]] = None,
+                 policy_family_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         This resource creates a cluster policy, which limits the ability to create clusters based on a set of rules. The policy rules limit the attributes or attribute values available for cluster creation. cluster policies have ACLs that limit their use to specific users and groups. Only admin users can create, edit, and delete policies. Admin users also have access to all policies.
@@ -193,15 +293,18 @@ class ClusterPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+        :param pulumi.Input[str] description: Additional human-readable description of the cluster policy.
         :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
+        :param pulumi.Input[str] policy_family_definition_overrides: Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+        :param pulumi.Input[str] policy_family_id: ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ClusterPolicyArgs,
+                 args: Optional[ClusterPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource creates a cluster policy, which limits the ability to create clusters based on a set of rules. The policy rules limit the attributes or attribute values available for cluster creation. cluster policies have ACLs that limit their use to specific users and groups. Only admin users can create, edit, and delete policies. Admin users also have access to all policies.
@@ -263,8 +366,11 @@ class ClusterPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  definition: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  max_clusters_per_user: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 policy_family_definition_overrides: Optional[pulumi.Input[str]] = None,
+                 policy_family_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -274,11 +380,12 @@ class ClusterPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterPolicyArgs.__new__(ClusterPolicyArgs)
 
-            if definition is None and not opts.urn:
-                raise TypeError("Missing required property 'definition'")
             __props__.__dict__["definition"] = definition
+            __props__.__dict__["description"] = description
             __props__.__dict__["max_clusters_per_user"] = max_clusters_per_user
             __props__.__dict__["name"] = name
+            __props__.__dict__["policy_family_definition_overrides"] = policy_family_definition_overrides
+            __props__.__dict__["policy_family_id"] = policy_family_id
             __props__.__dict__["policy_id"] = None
         super(ClusterPolicy, __self__).__init__(
             'databricks:index/clusterPolicy:ClusterPolicy',
@@ -291,8 +398,11 @@ class ClusterPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             definition: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             max_clusters_per_user: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            policy_family_definition_overrides: Optional[pulumi.Input[str]] = None,
+            policy_family_id: Optional[pulumi.Input[str]] = None,
             policy_id: Optional[pulumi.Input[str]] = None) -> 'ClusterPolicy':
         """
         Get an existing ClusterPolicy resource's state with the given name, id, and optional extra
@@ -301,9 +411,12 @@ class ClusterPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        :param pulumi.Input[str] definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+        :param pulumi.Input[str] description: Additional human-readable description of the cluster policy.
         :param pulumi.Input[int] max_clusters_per_user: Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         :param pulumi.Input[str] name: Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
+        :param pulumi.Input[str] policy_family_definition_overrides: Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+        :param pulumi.Input[str] policy_family_id: ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
         :param pulumi.Input[str] policy_id: Canonical unique identifier for the cluster policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -311,18 +424,29 @@ class ClusterPolicy(pulumi.CustomResource):
         __props__ = _ClusterPolicyState.__new__(_ClusterPolicyState)
 
         __props__.__dict__["definition"] = definition
+        __props__.__dict__["description"] = description
         __props__.__dict__["max_clusters_per_user"] = max_clusters_per_user
         __props__.__dict__["name"] = name
+        __props__.__dict__["policy_family_definition_overrides"] = policy_family_definition_overrides
+        __props__.__dict__["policy_family_id"] = policy_family_id
         __props__.__dict__["policy_id"] = policy_id
         return ClusterPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def definition(self) -> pulumi.Output[str]:
+    def definition(self) -> pulumi.Output[Optional[str]]:
         """
-        Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+        Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
         """
         return pulumi.get(self, "definition")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        Additional human-readable description of the cluster policy.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="maxClustersPerUser")
@@ -339,6 +463,22 @@ class ClusterPolicy(pulumi.CustomResource):
         Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="policyFamilyDefinitionOverrides")
+    def policy_family_definition_overrides(self) -> pulumi.Output[Optional[str]]:
+        """
+        Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+        """
+        return pulumi.get(self, "policy_family_definition_overrides")
+
+    @property
+    @pulumi.getter(name="policyFamilyId")
+    def policy_family_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+        """
+        return pulumi.get(self, "policy_family_id")
 
     @property
     @pulumi.getter(name="policyId")

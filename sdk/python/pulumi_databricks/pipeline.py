@@ -576,6 +576,7 @@ class Pipeline(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         * End to end workspace management guide.
+        * get_pipelines to retrieve [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipeline data.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -674,6 +675,7 @@ class Pipeline(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         * End to end workspace management guide.
+        * get_pipelines to retrieve [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipeline data.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).

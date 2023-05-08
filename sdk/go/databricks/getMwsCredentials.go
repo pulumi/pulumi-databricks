@@ -18,7 +18,7 @@ import (
 //
 // ## Example Usage
 //
-// # Listing all workspaces in
+// # Listing all credentials in
 //
 // ```go
 // package main

@@ -99,9 +99,6 @@ export class Job extends pulumi.CustomResource {
     public readonly sparkJarTask!: pulumi.Output<outputs.JobSparkJarTask | undefined>;
     public readonly sparkPythonTask!: pulumi.Output<outputs.JobSparkPythonTask | undefined>;
     public readonly sparkSubmitTask!: pulumi.Output<outputs.JobSparkSubmitTask | undefined>;
-    /**
-     * (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly tasks!: pulumi.Output<outputs.JobTask[] | undefined>;
     /**
@@ -257,9 +254,6 @@ export interface JobState {
     sparkJarTask?: pulumi.Input<inputs.JobSparkJarTask>;
     sparkPythonTask?: pulumi.Input<inputs.JobSparkPythonTask>;
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
-    /**
-     * (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-     */
     tags?: pulumi.Input<{[key: string]: any}>;
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;
     /**
@@ -337,9 +331,6 @@ export interface JobArgs {
     sparkJarTask?: pulumi.Input<inputs.JobSparkJarTask>;
     sparkPythonTask?: pulumi.Input<inputs.JobSparkPythonTask>;
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
-    /**
-     * (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-     */
     tags?: pulumi.Input<{[key: string]: any}>;
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;
     /**

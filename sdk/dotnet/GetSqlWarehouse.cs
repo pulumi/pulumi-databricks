@@ -74,7 +74,7 @@ namespace Pulumi.Databricks
         public bool? EnablePhoton { get; set; }
 
         /// <summary>
-        /// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
+        /// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
         /// </summary>
         [Input("enableServerlessCompute")]
         public bool? EnableServerlessCompute { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.Databricks
         public Input<bool>? EnablePhoton { get; set; }
 
         /// <summary>
-        /// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
+        /// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
@@ -268,7 +268,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly bool EnablePhoton;
         /// <summary>
-        /// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
+        /// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
         /// </summary>
         public readonly bool EnableServerlessCompute;
         public readonly string Id;

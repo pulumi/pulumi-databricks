@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.ClusterInitScriptDbfsArgs;
 import com.pulumi.databricks.inputs.ClusterInitScriptFileArgs;
 import com.pulumi.databricks.inputs.ClusterInitScriptGcsArgs;
 import com.pulumi.databricks.inputs.ClusterInitScriptS3Args;
+import com.pulumi.databricks.inputs.ClusterInitScriptWorkspaceArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -54,6 +55,13 @@ public final class ClusterInitScriptArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.s3);
     }
 
+    @Import(name="workspace")
+    private @Nullable Output<ClusterInitScriptWorkspaceArgs> workspace;
+
+    public Optional<Output<ClusterInitScriptWorkspaceArgs>> workspace() {
+        return Optional.ofNullable(this.workspace);
+    }
+
     private ClusterInitScriptArgs() {}
 
     private ClusterInitScriptArgs(ClusterInitScriptArgs $) {
@@ -62,6 +70,7 @@ public final class ClusterInitScriptArgs extends com.pulumi.resources.ResourceAr
         this.file = $.file;
         this.gcs = $.gcs;
         this.s3 = $.s3;
+        this.workspace = $.workspace;
     }
 
     public static Builder builder() {
@@ -125,6 +134,15 @@ public final class ClusterInitScriptArgs extends com.pulumi.resources.ResourceAr
 
         public Builder s3(ClusterInitScriptS3Args s3) {
             return s3(Output.of(s3));
+        }
+
+        public Builder workspace(@Nullable Output<ClusterInitScriptWorkspaceArgs> workspace) {
+            $.workspace = workspace;
+            return this;
+        }
+
+        public Builder workspace(ClusterInitScriptWorkspaceArgs workspace) {
+            return workspace(Output.of(workspace));
         }
 
         public ClusterInitScriptArgs build() {

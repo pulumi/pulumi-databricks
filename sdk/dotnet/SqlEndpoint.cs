@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
         public Output<bool?> EnablePhoton { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
+        /// Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
         /// </summary>
         [Output("enableServerlessCompute")]
         public Output<bool?> EnableServerlessCompute { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.SqlEndpointTags?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
+        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
         /// </summary>
         [Output("warehouseType")]
         public Output<string?> WarehouseType { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.Databricks
         public Input<bool>? EnablePhoton { get; set; }
 
         /// <summary>
-        /// Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
+        /// Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
@@ -296,7 +296,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.SqlEndpointTagsArgs>? Tags { get; set; }
 
         /// <summary>
-        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
+        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
         /// </summary>
         [Input("warehouseType")]
         public Input<string>? WarehouseType { get; set; }
@@ -340,7 +340,7 @@ namespace Pulumi.Databricks
         public Input<bool>? EnablePhoton { get; set; }
 
         /// <summary>
-        /// Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
+        /// Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
@@ -397,7 +397,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.SqlEndpointTagsGetArgs>? Tags { get; set; }
 
         /// <summary>
-        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.
+        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
         /// </summary>
         [Input("warehouseType")]
         public Input<string>? WarehouseType { get; set; }

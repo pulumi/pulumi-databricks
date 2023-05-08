@@ -120,7 +120,7 @@ class GetSqlWarehouseResult:
     @pulumi.getter(name="enableServerlessCompute")
     def enable_serverless_compute(self) -> bool:
         """
-        Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
+        Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
         """
         return pulumi.get(self, "enable_serverless_compute")
 
@@ -272,7 +272,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
     :param str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
     :param str data_source_id: ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
     :param bool enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine).
-    :param bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
+    :param bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
     :param str id: The ID of the SQL warehouse
     :param str jdbc_url: JDBC connection string.
     :param int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.
@@ -370,7 +370,7 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]
     :param str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
     :param str data_source_id: ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
     :param bool enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine).
-    :param bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.
+    :param bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
     :param str id: The ID of the SQL warehouse
     :param str jdbc_url: JDBC connection string.
     :param int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.

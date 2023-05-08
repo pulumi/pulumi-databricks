@@ -81,6 +81,7 @@ export interface ClusterInitScript {
     file?: outputs.ClusterInitScriptFile;
     gcs?: outputs.ClusterInitScriptGcs;
     s3?: outputs.ClusterInitScriptS3;
+    workspace?: outputs.ClusterInitScriptWorkspace;
 }
 
 export interface ClusterInitScriptAbfss {
@@ -107,6 +108,10 @@ export interface ClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface ClusterInitScriptWorkspace {
+    destination?: string;
 }
 
 export interface ClusterLibrary {
@@ -341,6 +346,7 @@ export interface GetClusterClusterInfoInitScript {
     file?: outputs.GetClusterClusterInfoInitScriptFile;
     gcs?: outputs.GetClusterClusterInfoInitScriptGcs;
     s3?: outputs.GetClusterClusterInfoInitScriptS3;
+    workspace?: outputs.GetClusterClusterInfoInitScriptWorkspace;
 }
 
 export interface GetClusterClusterInfoInitScriptAbfss {
@@ -367,6 +373,10 @@ export interface GetClusterClusterInfoInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface GetClusterClusterInfoInitScriptWorkspace {
+    destination?: string;
 }
 
 export interface GetClusterClusterInfoTerminationReason {
@@ -651,6 +661,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
     file?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile;
     gcs?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs;
     s3?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3;
+    workspace?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss {
@@ -677,6 +688,10 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace {
+    destination?: string;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType {
@@ -822,6 +837,7 @@ export interface GetJobJobSettingsSettingsNewClusterInitScript {
     file?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptFile;
     gcs?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptGcs;
     s3?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptS3;
+    workspace?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptWorkspace;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptAbfss {
@@ -848,6 +864,10 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
+    destination?: string;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterWorkloadType {
@@ -1080,6 +1100,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScript {
     file?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFile;
     gcs?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs;
     s3?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3;
+    workspace?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss {
@@ -1106,6 +1127,10 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace {
+    destination?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterWorkloadType {
@@ -1568,6 +1593,7 @@ export interface JobJobClusterNewClusterInitScript {
     file?: outputs.JobJobClusterNewClusterInitScriptFile;
     gcs?: outputs.JobJobClusterNewClusterInitScriptGcs;
     s3?: outputs.JobJobClusterNewClusterInitScriptS3;
+    workspace?: outputs.JobJobClusterNewClusterInitScriptWorkspace;
 }
 
 export interface JobJobClusterNewClusterInitScriptAbfss {
@@ -1594,6 +1620,10 @@ export interface JobJobClusterNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface JobJobClusterNewClusterInitScriptWorkspace {
+    destination?: string;
 }
 
 export interface JobJobClusterNewClusterWorkloadType {
@@ -1745,6 +1775,7 @@ export interface JobNewClusterInitScript {
     file?: outputs.JobNewClusterInitScriptFile;
     gcs?: outputs.JobNewClusterInitScriptGcs;
     s3?: outputs.JobNewClusterInitScriptS3;
+    workspace?: outputs.JobNewClusterInitScriptWorkspace;
 }
 
 export interface JobNewClusterInitScriptAbfss {
@@ -1771,6 +1802,10 @@ export interface JobNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface JobNewClusterInitScriptWorkspace {
+    destination?: string;
 }
 
 export interface JobNewClusterWorkloadType {
@@ -2114,6 +2149,7 @@ export interface JobTaskNewClusterInitScript {
     file?: outputs.JobTaskNewClusterInitScriptFile;
     gcs?: outputs.JobTaskNewClusterInitScriptGcs;
     s3?: outputs.JobTaskNewClusterInitScriptS3;
+    workspace?: outputs.JobTaskNewClusterInitScriptWorkspace;
 }
 
 export interface JobTaskNewClusterInitScriptAbfss {
@@ -2140,6 +2176,10 @@ export interface JobTaskNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface JobTaskNewClusterInitScriptWorkspace {
+    destination?: string;
 }
 
 export interface JobTaskNewClusterWorkloadType {
@@ -2741,6 +2781,7 @@ export interface PipelineClusterInitScript {
     file?: outputs.PipelineClusterInitScriptFile;
     gcs?: outputs.PipelineClusterInitScriptGcs;
     s3?: outputs.PipelineClusterInitScriptS3;
+    workspace?: outputs.PipelineClusterInitScriptWorkspace;
 }
 
 export interface PipelineClusterInitScriptAbfss {
@@ -2767,6 +2808,10 @@ export interface PipelineClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface PipelineClusterInitScriptWorkspace {
+    destination?: string;
 }
 
 export interface PipelineFilters {
@@ -3073,6 +3118,25 @@ export interface SqlQueryScheduleWeekly {
     intervalWeeks: number;
     timeOfDay: string;
     untilDate?: string;
+}
+
+export interface SqlTableColumn {
+    /**
+     * User-supplied free-form text.
+     */
+    comment?: string;
+    /**
+     * User-visible name of column
+     */
+    name: string;
+    /**
+     * Whether field is nullable (Default: `true`)
+     */
+    nullable?: boolean;
+    /**
+     * Column type spec (with metadata) as SQL text
+     */
+    type: string;
 }
 
 export interface SqlWidgetParameter {
