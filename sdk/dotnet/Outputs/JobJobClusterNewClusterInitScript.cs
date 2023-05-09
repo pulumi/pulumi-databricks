@@ -21,6 +21,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.JobJobClusterNewClusterInitScriptFile? File;
         public readonly Outputs.JobJobClusterNewClusterInitScriptGcs? Gcs;
         public readonly Outputs.JobJobClusterNewClusterInitScriptS3? S3;
+        public readonly Outputs.JobJobClusterNewClusterInitScriptWorkspace? Workspace;
 
         [OutputConstructor]
         private JobJobClusterNewClusterInitScript(
@@ -32,13 +33,16 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobJobClusterNewClusterInitScriptGcs? gcs,
 
-            Outputs.JobJobClusterNewClusterInitScriptS3? s3)
+            Outputs.JobJobClusterNewClusterInitScriptS3? s3,
+
+            Outputs.JobJobClusterNewClusterInitScriptWorkspace? workspace)
         {
             Abfss = abfss;
             Dbfs = dbfs;
             File = file;
             Gcs = gcs;
             S3 = s3;
+            Workspace = workspace;
         }
     }
 }

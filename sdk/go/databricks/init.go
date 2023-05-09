@@ -136,6 +136,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SqlPermissions{}
 	case "databricks:index/sqlQuery:SqlQuery":
 		r = &SqlQuery{}
+	case "databricks:index/sqlTable:SqlTable":
+		r = &SqlTable{}
 	case "databricks:index/sqlVisualization:SqlVisualization":
 		r = &SqlVisualization{}
 	case "databricks:index/sqlWidget:SqlWidget":
@@ -470,6 +472,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/sqlQuery",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/sqlTable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -27,6 +27,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("s3")]
         public Inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args? S3 { get; set; }
 
+        [Input("workspace")]
+        public Inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs? Workspace { get; set; }
+
         public GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs()
         {
         }

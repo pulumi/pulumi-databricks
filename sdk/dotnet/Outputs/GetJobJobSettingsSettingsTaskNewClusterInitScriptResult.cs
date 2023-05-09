@@ -18,6 +18,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFileResult? File;
         public readonly Outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsResult? Gcs;
         public readonly Outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Result? S3;
+        public readonly Outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceResult? Workspace;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskNewClusterInitScriptResult(
@@ -29,13 +30,16 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsResult? gcs,
 
-            Outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Result? s3)
+            Outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Result? s3,
+
+            Outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceResult? workspace)
         {
             Abfss = abfss;
             Dbfs = dbfs;
             File = file;
             Gcs = gcs;
             S3 = s3;
+            Workspace = workspace;
         }
     }
 }

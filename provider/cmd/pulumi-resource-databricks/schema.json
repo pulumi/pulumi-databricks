@@ -346,6 +346,9 @@
                 },
                 "s3": {
                     "$ref": "#/types/databricks:index/ClusterInitScriptS3:ClusterInitScriptS3"
+                },
+                "workspace": {
+                    "$ref": "#/types/databricks:index/ClusterInitScriptWorkspace:ClusterInitScriptWorkspace"
                 }
             },
             "type": "object"
@@ -413,6 +416,14 @@
             "required": [
                 "destination"
             ]
+        },
+        "databricks:index/ClusterInitScriptWorkspace:ClusterInitScriptWorkspace": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/ClusterLibrary:ClusterLibrary": {
             "properties": {
@@ -1168,6 +1179,9 @@
                 },
                 "s3": {
                     "$ref": "#/types/databricks:index/JobJobClusterNewClusterInitScriptS3:JobJobClusterNewClusterInitScriptS3"
+                },
+                "workspace": {
+                    "$ref": "#/types/databricks:index/JobJobClusterNewClusterInitScriptWorkspace:JobJobClusterNewClusterInitScriptWorkspace"
                 }
             },
             "type": "object"
@@ -1235,6 +1249,14 @@
             "required": [
                 "destination"
             ]
+        },
+        "databricks:index/JobJobClusterNewClusterInitScriptWorkspace:JobJobClusterNewClusterInitScriptWorkspace": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/JobJobClusterNewClusterWorkloadType:JobJobClusterNewClusterWorkloadType": {
             "properties": {
@@ -1663,6 +1685,9 @@
                 },
                 "s3": {
                     "$ref": "#/types/databricks:index/JobNewClusterInitScriptS3:JobNewClusterInitScriptS3"
+                },
+                "workspace": {
+                    "$ref": "#/types/databricks:index/JobNewClusterInitScriptWorkspace:JobNewClusterInitScriptWorkspace"
                 }
             },
             "type": "object"
@@ -1730,6 +1755,14 @@
             "required": [
                 "destination"
             ]
+        },
+        "databricks:index/JobNewClusterInitScriptWorkspace:JobNewClusterInitScriptWorkspace": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/JobNewClusterWorkloadType:JobNewClusterWorkloadType": {
             "properties": {
@@ -2472,6 +2505,9 @@
                 },
                 "s3": {
                     "$ref": "#/types/databricks:index/JobTaskNewClusterInitScriptS3:JobTaskNewClusterInitScriptS3"
+                },
+                "workspace": {
+                    "$ref": "#/types/databricks:index/JobTaskNewClusterInitScriptWorkspace:JobTaskNewClusterInitScriptWorkspace"
                 }
             },
             "type": "object"
@@ -2539,6 +2575,14 @@
             "required": [
                 "destination"
             ]
+        },
+        "databricks:index/JobTaskNewClusterInitScriptWorkspace:JobTaskNewClusterInitScriptWorkspace": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/JobTaskNewClusterWorkloadType:JobTaskNewClusterWorkloadType": {
             "properties": {
@@ -3860,6 +3904,9 @@
                 },
                 "s3": {
                     "$ref": "#/types/databricks:index/PipelineClusterInitScriptS3:PipelineClusterInitScriptS3"
+                },
+                "workspace": {
+                    "$ref": "#/types/databricks:index/PipelineClusterInitScriptWorkspace:PipelineClusterInitScriptWorkspace"
                 }
             },
             "type": "object"
@@ -3927,6 +3974,14 @@
             "required": [
                 "destination"
             ]
+        },
+        "databricks:index/PipelineClusterInitScriptWorkspace:PipelineClusterInitScriptWorkspace": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/PipelineFilters:PipelineFilters": {
             "properties": {
@@ -4667,6 +4722,31 @@
                 "timeOfDay"
             ]
         },
+        "databricks:index/SqlTableColumn:SqlTableColumn": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "User-supplied free-form text.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "User-visible name of column\n"
+                },
+                "nullable": {
+                    "type": "boolean",
+                    "description": "Whether field is nullable (Default: `true`)\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Column type spec (with metadata) as SQL text\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "type"
+            ]
+        },
         "databricks:index/SqlWidgetParameter:SqlWidgetParameter": {
             "properties": {
                 "mapTo": {
@@ -5287,6 +5367,9 @@
                 },
                 "s3": {
                     "$ref": "#/types/databricks:index/getClusterClusterInfoInitScriptS3:getClusterClusterInfoInitScriptS3"
+                },
+                "workspace": {
+                    "$ref": "#/types/databricks:index/getClusterClusterInfoInitScriptWorkspace:getClusterClusterInfoInitScriptWorkspace"
                 }
             },
             "type": "object"
@@ -5354,6 +5437,14 @@
             "required": [
                 "destination"
             ]
+        },
+        "databricks:index/getClusterClusterInfoInitScriptWorkspace:getClusterClusterInfoInitScriptWorkspace": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/getClusterClusterInfoTerminationReason:getClusterClusterInfoTerminationReason": {
             "properties": {
@@ -6213,6 +6304,9 @@
                 },
                 "s3": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterInitScriptS3:getJobJobSettingsSettingsJobClusterNewClusterInitScriptS3"
+                },
+                "workspace": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace:getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace"
                 }
             },
             "type": "object"
@@ -6280,6 +6374,14 @@
             "required": [
                 "destination"
             ]
+        },
+        "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace:getJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterWorkloadType:getJobJobSettingsSettingsJobClusterNewClusterWorkloadType": {
             "properties": {
@@ -6707,6 +6809,9 @@
                 },
                 "s3": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterInitScriptS3:getJobJobSettingsSettingsNewClusterInitScriptS3"
+                },
+                "workspace": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNewClusterInitScriptWorkspace:getJobJobSettingsSettingsNewClusterInitScriptWorkspace"
                 }
             },
             "type": "object"
@@ -6774,6 +6879,14 @@
             "required": [
                 "destination"
             ]
+        },
+        "databricks:index/getJobJobSettingsSettingsNewClusterInitScriptWorkspace:getJobJobSettingsSettingsNewClusterInitScriptWorkspace": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/getJobJobSettingsSettingsNewClusterWorkloadType:getJobJobSettingsSettingsNewClusterWorkloadType": {
             "properties": {
@@ -7481,6 +7594,9 @@
                 },
                 "s3": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterInitScriptS3:getJobJobSettingsSettingsTaskNewClusterInitScriptS3"
+                },
+                "workspace": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace:getJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace"
                 }
             },
             "type": "object"
@@ -7548,6 +7664,14 @@
             "required": [
                 "destination"
             ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace:getJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/getJobJobSettingsSettingsTaskNewClusterWorkloadType:getJobJobSettingsSettingsTaskNewClusterWorkloadType": {
             "properties": {
@@ -8811,7 +8935,11 @@
             "properties": {
                 "definition": {
                     "type": "string",
-                    "description": "Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).\n"
+                    "description": "Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Additional human-readable description of the cluster policy.\n"
                 },
                 "maxClustersPerUser": {
                     "type": "integer",
@@ -8820,6 +8948,14 @@
                 "name": {
                     "type": "string",
                     "description": "Cluster policy name. This must be unique. Length must be between 1 and 100 characters.\n"
+                },
+                "policyFamilyDefinitionOverrides": {
+                    "type": "string",
+                    "description": "Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.\n"
+                },
+                "policyFamilyId": {
+                    "type": "string",
+                    "description": "ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.\n"
                 },
                 "policyId": {
                     "type": "string",
@@ -8827,14 +8963,17 @@
                 }
             },
             "required": [
-                "definition",
                 "name",
                 "policyId"
             ],
             "inputProperties": {
                 "definition": {
                     "type": "string",
-                    "description": "Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).\n"
+                    "description": "Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Additional human-readable description of the cluster policy.\n"
                 },
                 "maxClustersPerUser": {
                     "type": "integer",
@@ -8843,17 +8982,26 @@
                 "name": {
                     "type": "string",
                     "description": "Cluster policy name. This must be unique. Length must be between 1 and 100 characters.\n"
+                },
+                "policyFamilyDefinitionOverrides": {
+                    "type": "string",
+                    "description": "Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.\n"
+                },
+                "policyFamilyId": {
+                    "type": "string",
+                    "description": "ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.\n"
                 }
             },
-            "requiredInputs": [
-                "definition"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ClusterPolicy resources.\n",
                 "properties": {
                     "definition": {
                         "type": "string",
-                        "description": "Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).\n"
+                        "description": "Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Additional human-readable description of the cluster policy.\n"
                     },
                     "maxClustersPerUser": {
                         "type": "integer",
@@ -8862,6 +9010,14 @@
                     "name": {
                         "type": "string",
                         "description": "Cluster policy name. This must be unique. Length must be between 1 and 100 characters.\n"
+                    },
+                    "policyFamilyDefinitionOverrides": {
+                        "type": "string",
+                        "description": "Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.\n"
+                    },
+                    "policyFamilyId": {
+                        "type": "string",
+                        "description": "ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.\n"
                     },
                     "policyId": {
                         "type": "string",
@@ -10258,8 +10414,7 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    },
-                    "description": "(Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.\n"
+                    }
                 },
                 "tasks": {
                     "type": "array",
@@ -10379,8 +10534,7 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    },
-                    "description": "(Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.\n"
+                    }
                 },
                 "tasks": {
                     "type": "array",
@@ -10493,8 +10647,7 @@
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
-                        },
-                        "description": "(Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.\n"
+                        }
                     },
                     "tasks": {
                         "type": "array",
@@ -13462,7 +13615,7 @@
             }
         },
         "databricks:index/pipeline:Pipeline": {
-            "description": "Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html). \n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst dltDemoNotebook = new databricks.Notebook(\"dltDemoNotebook\", {});\n//...\nconst dltDemoRepo = new databricks.Repo(\"dltDemoRepo\", {});\n//...\nconst _this = new databricks.Pipeline(\"this\", {\n    storage: \"/test/first-pipeline\",\n    configuration: {\n        key1: \"value1\",\n        key2: \"value2\",\n    },\n    clusters: [\n        {\n            label: \"default\",\n            numWorkers: 2,\n            customTags: {\n                cluster_type: \"default\",\n            },\n        },\n        {\n            label: \"maintenance\",\n            numWorkers: 1,\n            customTags: {\n                cluster_type: \"maintenance\",\n            },\n        },\n    ],\n    libraries: [\n        {\n            notebook: {\n                path: dltDemoNotebook.id,\n            },\n        },\n        {\n            file: {\n                path: pulumi.interpolate`${dltDemoRepo.path}/pipeline.sql`,\n            },\n        },\n    ],\n    continuous: false,\n    notifications: [{\n        emailRecipients: [\n            \"user@domain.com\",\n            \"user1@domain.com\",\n        ],\n        alerts: [\n            \"on-update-failure\",\n            \"on-update-fatal-failure\",\n            \"on-update-success\",\n            \"on-flow-failure\",\n        ],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ndlt_demo_notebook = databricks.Notebook(\"dltDemoNotebook\")\n#...\ndlt_demo_repo = databricks.Repo(\"dltDemoRepo\")\n#...\nthis = databricks.Pipeline(\"this\",\n    storage=\"/test/first-pipeline\",\n    configuration={\n        \"key1\": \"value1\",\n        \"key2\": \"value2\",\n    },\n    clusters=[\n        databricks.PipelineClusterArgs(\n            label=\"default\",\n            num_workers=2,\n            custom_tags={\n                \"cluster_type\": \"default\",\n            },\n        ),\n        databricks.PipelineClusterArgs(\n            label=\"maintenance\",\n            num_workers=1,\n            custom_tags={\n                \"cluster_type\": \"maintenance\",\n            },\n        ),\n    ],\n    libraries=[\n        databricks.PipelineLibraryArgs(\n            notebook=databricks.PipelineLibraryNotebookArgs(\n                path=dlt_demo_notebook.id,\n            ),\n        ),\n        databricks.PipelineLibraryArgs(\n            file=databricks.PipelineLibraryFileArgs(\n                path=dlt_demo_repo.path.apply(lambda path: f\"{path}/pipeline.sql\"),\n            ),\n        ),\n    ],\n    continuous=False,\n    notifications=[databricks.PipelineNotificationArgs(\n        email_recipients=[\n            \"user@domain.com\",\n            \"user1@domain.com\",\n        ],\n        alerts=[\n            \"on-update-failure\",\n            \"on-update-fatal-failure\",\n            \"on-update-success\",\n            \"on-flow-failure\",\n        ],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var dltDemoNotebook = new Databricks.Notebook(\"dltDemoNotebook\");\n\n    //...\n    var dltDemoRepo = new Databricks.Repo(\"dltDemoRepo\");\n\n    //...\n    var @this = new Databricks.Pipeline(\"this\", new()\n    {\n        Storage = \"/test/first-pipeline\",\n        Configuration = \n        {\n            { \"key1\", \"value1\" },\n            { \"key2\", \"value2\" },\n        },\n        Clusters = new[]\n        {\n            new Databricks.Inputs.PipelineClusterArgs\n            {\n                Label = \"default\",\n                NumWorkers = 2,\n                CustomTags = \n                {\n                    { \"cluster_type\", \"default\" },\n                },\n            },\n            new Databricks.Inputs.PipelineClusterArgs\n            {\n                Label = \"maintenance\",\n                NumWorkers = 1,\n                CustomTags = \n                {\n                    { \"cluster_type\", \"maintenance\" },\n                },\n            },\n        },\n        Libraries = new[]\n        {\n            new Databricks.Inputs.PipelineLibraryArgs\n            {\n                Notebook = new Databricks.Inputs.PipelineLibraryNotebookArgs\n                {\n                    Path = dltDemoNotebook.Id,\n                },\n            },\n            new Databricks.Inputs.PipelineLibraryArgs\n            {\n                File = new Databricks.Inputs.PipelineLibraryFileArgs\n                {\n                    Path = dltDemoRepo.Path.Apply(path =\u003e $\"{path}/pipeline.sql\"),\n                },\n            },\n        },\n        Continuous = false,\n        Notifications = new[]\n        {\n            new Databricks.Inputs.PipelineNotificationArgs\n            {\n                EmailRecipients = new[]\n                {\n                    \"user@domain.com\",\n                    \"user1@domain.com\",\n                },\n                Alerts = new[]\n                {\n                    \"on-update-failure\",\n                    \"on-update-fatal-failure\",\n                    \"on-update-success\",\n                    \"on-flow-failure\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdltDemoNotebook, err := databricks.NewNotebook(ctx, \"dltDemoNotebook\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tdltDemoRepo, err := databricks.NewRepo(ctx, \"dltDemoRepo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewPipeline(ctx, \"this\", \u0026databricks.PipelineArgs{\n\t\t\tStorage: pulumi.String(\"/test/first-pipeline\"),\n\t\t\tConfiguration: pulumi.AnyMap{\n\t\t\t\t\"key1\": pulumi.Any(\"value1\"),\n\t\t\t\t\"key2\": pulumi.Any(\"value2\"),\n\t\t\t},\n\t\t\tClusters: databricks.PipelineClusterArray{\n\t\t\t\t\u0026databricks.PipelineClusterArgs{\n\t\t\t\t\tLabel:      pulumi.String(\"default\"),\n\t\t\t\t\tNumWorkers: pulumi.Int(2),\n\t\t\t\t\tCustomTags: pulumi.AnyMap{\n\t\t\t\t\t\t\"cluster_type\": pulumi.Any(\"default\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026databricks.PipelineClusterArgs{\n\t\t\t\t\tLabel:      pulumi.String(\"maintenance\"),\n\t\t\t\t\tNumWorkers: pulumi.Int(1),\n\t\t\t\t\tCustomTags: pulumi.AnyMap{\n\t\t\t\t\t\t\"cluster_type\": pulumi.Any(\"maintenance\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tLibraries: databricks.PipelineLibraryArray{\n\t\t\t\t\u0026databricks.PipelineLibraryArgs{\n\t\t\t\t\tNotebook: \u0026databricks.PipelineLibraryNotebookArgs{\n\t\t\t\t\t\tPath: dltDemoNotebook.ID(),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026databricks.PipelineLibraryArgs{\n\t\t\t\t\tFile: \u0026databricks.PipelineLibraryFileArgs{\n\t\t\t\t\t\tPath: dltDemoRepo.Path.ApplyT(func(path string) (string, error) {\n\t\t\t\t\t\t\treturn fmt.Sprintf(\"%v/pipeline.sql\", path), nil\n\t\t\t\t\t\t}).(pulumi.StringOutput),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tContinuous: pulumi.Bool(false),\n\t\t\tNotifications: databricks.PipelineNotificationArray{\n\t\t\t\t\u0026databricks.PipelineNotificationArgs{\n\t\t\t\t\tEmailRecipients: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"user@domain.com\"),\n\t\t\t\t\t\tpulumi.String(\"user1@domain.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tAlerts: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"on-update-failure\"),\n\t\t\t\t\t\tpulumi.String(\"on-update-fatal-failure\"),\n\t\t\t\t\t\tpulumi.String(\"on-update-success\"),\n\t\t\t\t\t\tpulumi.String(\"on-flow-failure\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Notebook;\nimport com.pulumi.databricks.Repo;\nimport com.pulumi.databricks.Pipeline;\nimport com.pulumi.databricks.PipelineArgs;\nimport com.pulumi.databricks.inputs.PipelineClusterArgs;\nimport com.pulumi.databricks.inputs.PipelineLibraryArgs;\nimport com.pulumi.databricks.inputs.PipelineLibraryNotebookArgs;\nimport com.pulumi.databricks.inputs.PipelineLibraryFileArgs;\nimport com.pulumi.databricks.inputs.PipelineNotificationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var dltDemoNotebook = new Notebook(\"dltDemoNotebook\");\n\n        var dltDemoRepo = new Repo(\"dltDemoRepo\");\n\n        var this_ = new Pipeline(\"this\", PipelineArgs.builder()        \n            .storage(\"/test/first-pipeline\")\n            .configuration(Map.ofEntries(\n                Map.entry(\"key1\", \"value1\"),\n                Map.entry(\"key2\", \"value2\")\n            ))\n            .clusters(            \n                PipelineClusterArgs.builder()\n                    .label(\"default\")\n                    .numWorkers(2)\n                    .customTags(Map.of(\"cluster_type\", \"default\"))\n                    .build(),\n                PipelineClusterArgs.builder()\n                    .label(\"maintenance\")\n                    .numWorkers(1)\n                    .customTags(Map.of(\"cluster_type\", \"maintenance\"))\n                    .build())\n            .libraries(            \n                PipelineLibraryArgs.builder()\n                    .notebook(PipelineLibraryNotebookArgs.builder()\n                        .path(dltDemoNotebook.id())\n                        .build())\n                    .build(),\n                PipelineLibraryArgs.builder()\n                    .file(PipelineLibraryFileArgs.builder()\n                        .path(dltDemoRepo.path().applyValue(path -\u003e String.format(\"%s/pipeline.sql\", path)))\n                        .build())\n                    .build())\n            .continuous(false)\n            .notifications(PipelineNotificationArgs.builder()\n                .emailRecipients(                \n                    \"user@domain.com\",\n                    \"user1@domain.com\")\n                .alerts(                \n                    \"on-update-failure\",\n                    \"on-update-fatal-failure\",\n                    \"on-update-success\",\n                    \"on-flow-failure\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  dltDemoNotebook:\n    type: databricks:Notebook\n  dltDemoRepo:\n    type: databricks:Repo\n  this:\n    type: databricks:Pipeline\n    properties:\n      storage: /test/first-pipeline\n      configuration:\n        key1: value1\n        key2: value2\n      clusters:\n        - label: default\n          numWorkers: 2\n          customTags:\n            cluster_type: default\n        - label: maintenance\n          numWorkers: 1\n          customTags:\n            cluster_type: maintenance\n      libraries:\n        - notebook:\n            path: ${dltDemoNotebook.id}\n        - file:\n            path: ${dltDemoRepo.path}/pipeline.sql\n      continuous: false\n      notifications:\n        - emailRecipients:\n            - user@domain.com\n            - user1@domain.com\n          alerts:\n            - on-update-failure\n            - on-update-fatal-failure\n            - on-update-success\n            - on-flow-failure\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n* databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).\n\n\n## Import\n\nThe resource job can be imported using the id of the pipeline bash\n\n```sh\n $ pulumi import databricks:index/pipeline:Pipeline this \u003cpipeline-id\u003e\n```\n\n ",
+            "description": "Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html). \n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst dltDemoNotebook = new databricks.Notebook(\"dltDemoNotebook\", {});\n//...\nconst dltDemoRepo = new databricks.Repo(\"dltDemoRepo\", {});\n//...\nconst _this = new databricks.Pipeline(\"this\", {\n    storage: \"/test/first-pipeline\",\n    configuration: {\n        key1: \"value1\",\n        key2: \"value2\",\n    },\n    clusters: [\n        {\n            label: \"default\",\n            numWorkers: 2,\n            customTags: {\n                cluster_type: \"default\",\n            },\n        },\n        {\n            label: \"maintenance\",\n            numWorkers: 1,\n            customTags: {\n                cluster_type: \"maintenance\",\n            },\n        },\n    ],\n    libraries: [\n        {\n            notebook: {\n                path: dltDemoNotebook.id,\n            },\n        },\n        {\n            file: {\n                path: pulumi.interpolate`${dltDemoRepo.path}/pipeline.sql`,\n            },\n        },\n    ],\n    continuous: false,\n    notifications: [{\n        emailRecipients: [\n            \"user@domain.com\",\n            \"user1@domain.com\",\n        ],\n        alerts: [\n            \"on-update-failure\",\n            \"on-update-fatal-failure\",\n            \"on-update-success\",\n            \"on-flow-failure\",\n        ],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ndlt_demo_notebook = databricks.Notebook(\"dltDemoNotebook\")\n#...\ndlt_demo_repo = databricks.Repo(\"dltDemoRepo\")\n#...\nthis = databricks.Pipeline(\"this\",\n    storage=\"/test/first-pipeline\",\n    configuration={\n        \"key1\": \"value1\",\n        \"key2\": \"value2\",\n    },\n    clusters=[\n        databricks.PipelineClusterArgs(\n            label=\"default\",\n            num_workers=2,\n            custom_tags={\n                \"cluster_type\": \"default\",\n            },\n        ),\n        databricks.PipelineClusterArgs(\n            label=\"maintenance\",\n            num_workers=1,\n            custom_tags={\n                \"cluster_type\": \"maintenance\",\n            },\n        ),\n    ],\n    libraries=[\n        databricks.PipelineLibraryArgs(\n            notebook=databricks.PipelineLibraryNotebookArgs(\n                path=dlt_demo_notebook.id,\n            ),\n        ),\n        databricks.PipelineLibraryArgs(\n            file=databricks.PipelineLibraryFileArgs(\n                path=dlt_demo_repo.path.apply(lambda path: f\"{path}/pipeline.sql\"),\n            ),\n        ),\n    ],\n    continuous=False,\n    notifications=[databricks.PipelineNotificationArgs(\n        email_recipients=[\n            \"user@domain.com\",\n            \"user1@domain.com\",\n        ],\n        alerts=[\n            \"on-update-failure\",\n            \"on-update-fatal-failure\",\n            \"on-update-success\",\n            \"on-flow-failure\",\n        ],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var dltDemoNotebook = new Databricks.Notebook(\"dltDemoNotebook\");\n\n    //...\n    var dltDemoRepo = new Databricks.Repo(\"dltDemoRepo\");\n\n    //...\n    var @this = new Databricks.Pipeline(\"this\", new()\n    {\n        Storage = \"/test/first-pipeline\",\n        Configuration = \n        {\n            { \"key1\", \"value1\" },\n            { \"key2\", \"value2\" },\n        },\n        Clusters = new[]\n        {\n            new Databricks.Inputs.PipelineClusterArgs\n            {\n                Label = \"default\",\n                NumWorkers = 2,\n                CustomTags = \n                {\n                    { \"cluster_type\", \"default\" },\n                },\n            },\n            new Databricks.Inputs.PipelineClusterArgs\n            {\n                Label = \"maintenance\",\n                NumWorkers = 1,\n                CustomTags = \n                {\n                    { \"cluster_type\", \"maintenance\" },\n                },\n            },\n        },\n        Libraries = new[]\n        {\n            new Databricks.Inputs.PipelineLibraryArgs\n            {\n                Notebook = new Databricks.Inputs.PipelineLibraryNotebookArgs\n                {\n                    Path = dltDemoNotebook.Id,\n                },\n            },\n            new Databricks.Inputs.PipelineLibraryArgs\n            {\n                File = new Databricks.Inputs.PipelineLibraryFileArgs\n                {\n                    Path = dltDemoRepo.Path.Apply(path =\u003e $\"{path}/pipeline.sql\"),\n                },\n            },\n        },\n        Continuous = false,\n        Notifications = new[]\n        {\n            new Databricks.Inputs.PipelineNotificationArgs\n            {\n                EmailRecipients = new[]\n                {\n                    \"user@domain.com\",\n                    \"user1@domain.com\",\n                },\n                Alerts = new[]\n                {\n                    \"on-update-failure\",\n                    \"on-update-fatal-failure\",\n                    \"on-update-success\",\n                    \"on-flow-failure\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdltDemoNotebook, err := databricks.NewNotebook(ctx, \"dltDemoNotebook\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tdltDemoRepo, err := databricks.NewRepo(ctx, \"dltDemoRepo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewPipeline(ctx, \"this\", \u0026databricks.PipelineArgs{\n\t\t\tStorage: pulumi.String(\"/test/first-pipeline\"),\n\t\t\tConfiguration: pulumi.AnyMap{\n\t\t\t\t\"key1\": pulumi.Any(\"value1\"),\n\t\t\t\t\"key2\": pulumi.Any(\"value2\"),\n\t\t\t},\n\t\t\tClusters: databricks.PipelineClusterArray{\n\t\t\t\t\u0026databricks.PipelineClusterArgs{\n\t\t\t\t\tLabel:      pulumi.String(\"default\"),\n\t\t\t\t\tNumWorkers: pulumi.Int(2),\n\t\t\t\t\tCustomTags: pulumi.AnyMap{\n\t\t\t\t\t\t\"cluster_type\": pulumi.Any(\"default\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026databricks.PipelineClusterArgs{\n\t\t\t\t\tLabel:      pulumi.String(\"maintenance\"),\n\t\t\t\t\tNumWorkers: pulumi.Int(1),\n\t\t\t\t\tCustomTags: pulumi.AnyMap{\n\t\t\t\t\t\t\"cluster_type\": pulumi.Any(\"maintenance\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tLibraries: databricks.PipelineLibraryArray{\n\t\t\t\t\u0026databricks.PipelineLibraryArgs{\n\t\t\t\t\tNotebook: \u0026databricks.PipelineLibraryNotebookArgs{\n\t\t\t\t\t\tPath: dltDemoNotebook.ID(),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026databricks.PipelineLibraryArgs{\n\t\t\t\t\tFile: \u0026databricks.PipelineLibraryFileArgs{\n\t\t\t\t\t\tPath: dltDemoRepo.Path.ApplyT(func(path string) (string, error) {\n\t\t\t\t\t\t\treturn fmt.Sprintf(\"%v/pipeline.sql\", path), nil\n\t\t\t\t\t\t}).(pulumi.StringOutput),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tContinuous: pulumi.Bool(false),\n\t\t\tNotifications: databricks.PipelineNotificationArray{\n\t\t\t\t\u0026databricks.PipelineNotificationArgs{\n\t\t\t\t\tEmailRecipients: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"user@domain.com\"),\n\t\t\t\t\t\tpulumi.String(\"user1@domain.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tAlerts: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"on-update-failure\"),\n\t\t\t\t\t\tpulumi.String(\"on-update-fatal-failure\"),\n\t\t\t\t\t\tpulumi.String(\"on-update-success\"),\n\t\t\t\t\t\tpulumi.String(\"on-flow-failure\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Notebook;\nimport com.pulumi.databricks.Repo;\nimport com.pulumi.databricks.Pipeline;\nimport com.pulumi.databricks.PipelineArgs;\nimport com.pulumi.databricks.inputs.PipelineClusterArgs;\nimport com.pulumi.databricks.inputs.PipelineLibraryArgs;\nimport com.pulumi.databricks.inputs.PipelineLibraryNotebookArgs;\nimport com.pulumi.databricks.inputs.PipelineLibraryFileArgs;\nimport com.pulumi.databricks.inputs.PipelineNotificationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var dltDemoNotebook = new Notebook(\"dltDemoNotebook\");\n\n        var dltDemoRepo = new Repo(\"dltDemoRepo\");\n\n        var this_ = new Pipeline(\"this\", PipelineArgs.builder()        \n            .storage(\"/test/first-pipeline\")\n            .configuration(Map.ofEntries(\n                Map.entry(\"key1\", \"value1\"),\n                Map.entry(\"key2\", \"value2\")\n            ))\n            .clusters(            \n                PipelineClusterArgs.builder()\n                    .label(\"default\")\n                    .numWorkers(2)\n                    .customTags(Map.of(\"cluster_type\", \"default\"))\n                    .build(),\n                PipelineClusterArgs.builder()\n                    .label(\"maintenance\")\n                    .numWorkers(1)\n                    .customTags(Map.of(\"cluster_type\", \"maintenance\"))\n                    .build())\n            .libraries(            \n                PipelineLibraryArgs.builder()\n                    .notebook(PipelineLibraryNotebookArgs.builder()\n                        .path(dltDemoNotebook.id())\n                        .build())\n                    .build(),\n                PipelineLibraryArgs.builder()\n                    .file(PipelineLibraryFileArgs.builder()\n                        .path(dltDemoRepo.path().applyValue(path -\u003e String.format(\"%s/pipeline.sql\", path)))\n                        .build())\n                    .build())\n            .continuous(false)\n            .notifications(PipelineNotificationArgs.builder()\n                .emailRecipients(                \n                    \"user@domain.com\",\n                    \"user1@domain.com\")\n                .alerts(                \n                    \"on-update-failure\",\n                    \"on-update-fatal-failure\",\n                    \"on-update-success\",\n                    \"on-flow-failure\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  dltDemoNotebook:\n    type: databricks:Notebook\n  dltDemoRepo:\n    type: databricks:Repo\n  this:\n    type: databricks:Pipeline\n    properties:\n      storage: /test/first-pipeline\n      configuration:\n        key1: value1\n        key2: value2\n      clusters:\n        - label: default\n          numWorkers: 2\n          customTags:\n            cluster_type: default\n        - label: maintenance\n          numWorkers: 1\n          customTags:\n            cluster_type: maintenance\n      libraries:\n        - notebook:\n            path: ${dltDemoNotebook.id}\n        - file:\n            path: ${dltDemoRepo.path}/pipeline.sql\n      continuous: false\n      notifications:\n        - emailRecipients:\n            - user@domain.com\n            - user1@domain.com\n          alerts:\n            - on-update-failure\n            - on-update-fatal-failure\n            - on-update-success\n            - on-flow-failure\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.getPipelines to retrieve [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipeline data.\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n* databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).\n\n\n## Import\n\nThe resource job can be imported using the id of the pipeline bash\n\n```sh\n $ pulumi import databricks:index/pipeline:Pipeline this \u003cpipeline-id\u003e\n```\n\n ",
             "properties": {
                 "allowDuplicateNames": {
                     "type": "boolean"
@@ -14790,7 +14943,7 @@
                 },
                 "enableServerlessCompute": {
                     "type": "boolean",
-                    "description": "Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.\n"
+                    "description": "Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.\n"
                 },
                 "instanceProfileArn": {
                     "type": "string"
@@ -14831,7 +14984,7 @@
                 },
                 "warehouseType": {
                     "type": "string",
-                    "description": "SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.\n"
+                    "description": "SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.\n"
                 }
             },
             "required": [
@@ -14865,7 +15018,7 @@
                 },
                 "enableServerlessCompute": {
                     "type": "boolean",
-                    "description": "Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.\n"
+                    "description": "Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.\n"
                 },
                 "instanceProfileArn": {
                     "type": "string"
@@ -14906,7 +15059,7 @@
                 },
                 "warehouseType": {
                     "type": "string",
-                    "description": "SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.\n"
+                    "description": "SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.\n"
                 }
             },
             "requiredInputs": [
@@ -14937,7 +15090,7 @@
                     },
                     "enableServerlessCompute": {
                         "type": "boolean",
-                        "description": "Whether this SQL warehouse is a serverless endpoint. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.\n"
+                        "description": "Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.\n"
                     },
                     "instanceProfileArn": {
                         "type": "string"
@@ -14978,7 +15131,7 @@
                     },
                     "warehouseType": {
                         "type": "string",
-                        "description": "SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless). Set to `PRO` or `CLASSIC` (default).  If you want to use serverless compute, you must set to `PRO` and **also** set the field `enable_serverless_compute` to `true`.\n"
+                        "description": "SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.\n"
                     }
                 },
                 "type": "object"
@@ -15323,6 +15476,201 @@
                         "items": {
                             "type": "string"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "databricks:index/sqlTable:SqlTable": {
+            "description": "Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables / views.\n\nA `databricks.SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table or a view.\n\nThis resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation.\n\n\n## Import\n\nThis resource can be imported by namebash\n\n```sh\n $ pulumi import databricks:index/sqlTable:SqlTable this \u003cname\u003e\n```\n\n ",
+            "properties": {
+                "catalogName": {
+                    "type": "string",
+                    "description": "Name of parent catalog\n"
+                },
+                "clusterId": {
+                    "type": "string"
+                },
+                "columns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/SqlTableColumn:SqlTableColumn"
+                    }
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.\n"
+                },
+                "dataSourceFormat": {
+                    "type": "string",
+                    "description": "External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of table relative to parent catalog and schema. Change forces creation of a new resource.\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Extensible Table properties.\n"
+                },
+                "schemaName": {
+                    "type": "string",
+                    "description": "Name of parent Schema relative to parent Catalog\n"
+                },
+                "storageCredentialName": {
+                    "type": "string",
+                    "description": "For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated\n"
+                },
+                "storageLocation": {
+                    "type": "string",
+                    "description": "URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.\n"
+                },
+                "tableType": {
+                    "type": "string",
+                    "description": "Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.\n"
+                },
+                "viewDefinition": {
+                    "type": "string",
+                    "description": "SQL text defining the view (for `table_type == \"VIEW\"`). Not supported for `MANAGED` or `EXTERNAL` table_type.\n"
+                }
+            },
+            "required": [
+                "catalogName",
+                "clusterId",
+                "columns",
+                "name",
+                "properties",
+                "schemaName",
+                "tableType"
+            ],
+            "inputProperties": {
+                "catalogName": {
+                    "type": "string",
+                    "description": "Name of parent catalog\n",
+                    "willReplaceOnChanges": true
+                },
+                "clusterId": {
+                    "type": "string"
+                },
+                "columns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/SqlTableColumn:SqlTableColumn"
+                    },
+                    "willReplaceOnChanges": true
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.\n"
+                },
+                "dataSourceFormat": {
+                    "type": "string",
+                    "description": "External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of table relative to parent catalog and schema. Change forces creation of a new resource.\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Extensible Table properties.\n"
+                },
+                "schemaName": {
+                    "type": "string",
+                    "description": "Name of parent Schema relative to parent Catalog\n",
+                    "willReplaceOnChanges": true
+                },
+                "storageCredentialName": {
+                    "type": "string",
+                    "description": "For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated\n",
+                    "willReplaceOnChanges": true
+                },
+                "storageLocation": {
+                    "type": "string",
+                    "description": "URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.\n"
+                },
+                "tableType": {
+                    "type": "string",
+                    "description": "Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "viewDefinition": {
+                    "type": "string",
+                    "description": "SQL text defining the view (for `table_type == \"VIEW\"`). Not supported for `MANAGED` or `EXTERNAL` table_type.\n"
+                }
+            },
+            "requiredInputs": [
+                "catalogName",
+                "schemaName",
+                "tableType"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SqlTable resources.\n",
+                "properties": {
+                    "catalogName": {
+                        "type": "string",
+                        "description": "Name of parent catalog\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "clusterId": {
+                        "type": "string"
+                    },
+                    "columns": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/databricks:index/SqlTableColumn:SqlTableColumn"
+                        },
+                        "willReplaceOnChanges": true
+                    },
+                    "comment": {
+                        "type": "string",
+                        "description": "User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.\n"
+                    },
+                    "dataSourceFormat": {
+                        "type": "string",
+                        "description": "External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of table relative to parent catalog and schema. Change forces creation of a new resource.\n"
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Extensible Table properties.\n"
+                    },
+                    "schemaName": {
+                        "type": "string",
+                        "description": "Name of parent Schema relative to parent Catalog\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "storageCredentialName": {
+                        "type": "string",
+                        "description": "For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "storageLocation": {
+                        "type": "string",
+                        "description": "URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.\n"
+                    },
+                    "tableType": {
+                        "type": "string",
+                        "description": "Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "viewDefinition": {
+                        "type": "string",
+                        "description": "SQL text defining the view (for `table_type == \"VIEW\"`). Not supported for `MANAGED` or `EXTERNAL` table_type.\n"
                     }
                 },
                 "type": "object"
@@ -17009,7 +17357,7 @@
             }
         },
         "databricks:index/getMwsCredentials:getMwsCredentials": {
-            "description": "\u003e **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.\n\nLists all databricks.MwsCredentials in Databricks Account.\n\n\u003e **Note** `account_id` provider configuration property is required for this resource to work.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nListing all workspaces in \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getMwsCredentials({});\nexport const allMwsCredentials = all.then(all =\u003e all.ids);\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_mws_credentials()\npulumi.export(\"allMwsCredentials\", all.ids)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetMwsCredentials.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allMwsCredentials\"] = all.Apply(getMwsCredentialsResult =\u003e getMwsCredentialsResult.Ids),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := databricks.LookupMwsCredentials(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allMwsCredentials\", all.Ids)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetMwsCredentialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getMwsCredentials();\n\n        ctx.export(\"allMwsCredentials\", all.applyValue(getMwsCredentialsResult -\u003e getMwsCredentialsResult.ids()));\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getMwsCredentials\n      Arguments: {}\noutputs:\n  allMwsCredentials: ${all.ids}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* Provisioning Databricks on AWS guide.\n* databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.\n* databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).\n* databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) \u0026 subnets for new workspaces within AWS.\n* databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.\n* databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).\n",
+            "description": "\u003e **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.\n\nLists all databricks.MwsCredentials in Databricks Account.\n\n\u003e **Note** `account_id` provider configuration property is required for this resource to work.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nListing all credentials in \n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getMwsCredentials({});\nexport const allMwsCredentials = all.then(all =\u003e all.ids);\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_mws_credentials()\npulumi.export(\"allMwsCredentials\", all.ids)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetMwsCredentials.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allMwsCredentials\"] = all.Apply(getMwsCredentialsResult =\u003e getMwsCredentialsResult.Ids),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := databricks.LookupMwsCredentials(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allMwsCredentials\", all.Ids)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetMwsCredentialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getMwsCredentials();\n\n        ctx.export(\"allMwsCredentials\", all.applyValue(getMwsCredentialsResult -\u003e getMwsCredentialsResult.ids()));\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getMwsCredentials\n      Arguments: {}\noutputs:\n  allMwsCredentials: ${all.ids}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* Provisioning Databricks on AWS guide.\n* databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.\n* databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).\n* databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) \u0026 subnets for new workspaces within AWS.\n* databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.\n* databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getMwsCredentials.\n",
                 "properties": {
@@ -17091,7 +17439,8 @@
                         "description": "Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):\n* `General Purpose` (all clouds)\n* `General Purpose (HDD)` (Azure)\n* `Compute Optimized` (all clouds)\n* `Memory Optimized` (all clouds)\n* `Memory Optimized (Remote HDD)` (Azure)\n* `Storage Optimized` (AWS, Azure)\n* `GPU Accelerated` (AWS, Azure)\n"
                     },
                     "fleet": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.\n"
                     },
                     "gbPerCore": {
                         "type": "integer",
@@ -17321,6 +17670,50 @@
                     "notebookPathLists",
                     "path",
                     "recursive",
+                    "id"
+                ]
+            }
+        },
+        "databricks:index/getPipelines:getPipelines": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGet all Delta Live Tables pipelines:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getPipelines({});\nexport const allPipelines = all.then(all =\u003e all.ids);\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_pipelines()\npulumi.export(\"allPipelines\", all.ids)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetPipelines.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allPipelines\"] = all.Apply(getPipelinesResult =\u003e getPipelinesResult.Ids),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := databricks.GetPipelines(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allPipelines\", all.Ids)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetPipelinesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getPipelines();\n\n        ctx.export(\"allPipelines\", all.applyValue(getPipelinesResult -\u003e getPipelinesResult.ids()));\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getPipelines\n      Arguments: {}\noutputs:\n  allPipelines: ${all.ids}\n```\n\nFilter Delta Live Tables pipelines by name (exact match):\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst this = databricks.getPipelines({\n    pipelineName: \"my_pipeline\",\n});\nexport const myPipeline = _this.then(_this =\u003e _this.ids);\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.get_pipelines(pipeline_name=\"my_pipeline\")\npulumi.export(\"myPipeline\", this.ids)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Databricks.GetPipelines.Invoke(new()\n    {\n        PipelineName = \"my_pipeline\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"myPipeline\"] = @this.Apply(@this =\u003e @this.Apply(getPipelinesResult =\u003e getPipelinesResult.Ids)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthis, err := databricks.GetPipelines(ctx, \u0026databricks.GetPipelinesArgs{\n\t\t\tPipelineName: pulumi.StringRef(\"my_pipeline\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"myPipeline\", this.Ids)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetPipelinesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()\n            .pipelineName(\"my_pipeline\")\n            .build());\n\n        ctx.export(\"myPipeline\", this_.ids());\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      Function: databricks:getPipelines\n      Arguments:\n        pipelineName: my_pipeline\noutputs:\n  myPipeline: ${this.ids}\n```\n\nFilter Delta Live Tables pipelines by name (wildcard search):\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst this = databricks.getPipelines({\n    pipelineName: \"%pipeline%\",\n});\nexport const wildcardPipelines = _this.then(_this =\u003e _this.ids);\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.get_pipelines(pipeline_name=\"%pipeline%\")\npulumi.export(\"wildcardPipelines\", this.ids)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Databricks.GetPipelines.Invoke(new()\n    {\n        PipelineName = \"%pipeline%\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"wildcardPipelines\"] = @this.Apply(@this =\u003e @this.Apply(getPipelinesResult =\u003e getPipelinesResult.Ids)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthis, err := databricks.GetPipelines(ctx, \u0026databricks.GetPipelinesArgs{\n\t\t\tPipelineName: pulumi.StringRef(\"%pipeline%\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"wildcardPipelines\", this.Ids)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetPipelinesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()\n            .pipelineName(\"%pipeline%\")\n            .build());\n\n        ctx.export(\"wildcardPipelines\", this_.ids());\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      Function: databricks:getPipelines\n      Arguments:\n        pipelineName: '%pipeline%'\noutputs:\n  wildcardPipelines: ${this.ids}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide.\n* databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n* databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPipelines.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.\n"
+                    },
+                    "pipelineName": {
+                        "type": "string",
+                        "description": "Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPipelines.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.\n"
+                    },
+                    "pipelineName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
                     "id"
                 ]
             }
@@ -17724,7 +18117,7 @@
                     },
                     "enableServerlessCompute": {
                         "type": "boolean",
-                        "description": "Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.\n"
+                        "description": "Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.\n"
                     },
                     "id": {
                         "type": "string",
@@ -17798,7 +18191,7 @@
                     },
                     "enableServerlessCompute": {
                         "type": "boolean",
-                        "description": "Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouse_type` field to `pro`.\n"
+                        "description": "Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.\n"
                     },
                     "id": {
                         "type": "string"

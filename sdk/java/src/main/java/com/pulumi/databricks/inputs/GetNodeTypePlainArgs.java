@@ -45,9 +45,17 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.category);
     }
 
+    /**
+     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+     * 
+     */
     @Import(name="fleet")
     private @Nullable Boolean fleet;
 
+    /**
+     * @return if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+     * 
+     */
     public Optional<Boolean> fleet() {
         return Optional.ofNullable(this.fleet);
     }
@@ -287,6 +295,12 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
             return this;
         }
 
+        /**
+         * @param fleet if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fleet(@Nullable Boolean fleet) {
             $.fleet = fleet;
             return this;

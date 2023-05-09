@@ -18,6 +18,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetClusterClusterInfoInitScriptFileResult? File;
         public readonly Outputs.GetClusterClusterInfoInitScriptGcsResult? Gcs;
         public readonly Outputs.GetClusterClusterInfoInitScriptS3Result? S3;
+        public readonly Outputs.GetClusterClusterInfoInitScriptWorkspaceResult? Workspace;
 
         [OutputConstructor]
         private GetClusterClusterInfoInitScriptResult(
@@ -29,13 +30,16 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetClusterClusterInfoInitScriptGcsResult? gcs,
 
-            Outputs.GetClusterClusterInfoInitScriptS3Result? s3)
+            Outputs.GetClusterClusterInfoInitScriptS3Result? s3,
+
+            Outputs.GetClusterClusterInfoInitScriptWorkspaceResult? workspace)
         {
             Abfss = abfss;
             Dbfs = dbfs;
             File = file;
             Gcs = gcs;
             S3 = s3;
+            Workspace = workspace;
         }
     }
 }

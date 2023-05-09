@@ -40,7 +40,7 @@ type GetSqlWarehouseArgs struct {
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine).
 	EnablePhoton *bool `pulumi:"enablePhoton"`
-	// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
+	// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
 	EnableServerlessCompute *bool `pulumi:"enableServerlessCompute"`
 	// The ID of the SQL warehouse
 	Id                 string  `pulumi:"id"`
@@ -75,7 +75,7 @@ type GetSqlWarehouseResult struct {
 	DataSourceId string `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine).
 	EnablePhoton bool `pulumi:"enablePhoton"`
-	// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
+	// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
 	EnableServerlessCompute bool   `pulumi:"enableServerlessCompute"`
 	Id                      string `pulumi:"id"`
 	InstanceProfileArn      string `pulumi:"instanceProfileArn"`
@@ -122,7 +122,7 @@ type GetSqlWarehouseOutputArgs struct {
 	DataSourceId pulumi.StringPtrInput `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine).
 	EnablePhoton pulumi.BoolPtrInput `pulumi:"enablePhoton"`
-	// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
+	// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
 	EnableServerlessCompute pulumi.BoolPtrInput `pulumi:"enableServerlessCompute"`
 	// The ID of the SQL warehouse
 	Id                 pulumi.StringInput    `pulumi:"id"`
@@ -189,7 +189,7 @@ func (o GetSqlWarehouseResultOutput) EnablePhoton() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) bool { return v.EnablePhoton }).(pulumi.BoolOutput)
 }
 
-// Whether this SQL warehouse is a serverless SQL warehouse. If this value is true explicitly or through the default, you **must** also set `warehouseType` field to `pro`.
+// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
 func (o GetSqlWarehouseResultOutput) EnableServerlessCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) bool { return v.EnableServerlessCompute }).(pulumi.BoolOutput)
 }

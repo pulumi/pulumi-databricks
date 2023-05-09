@@ -102,6 +102,7 @@ namespace Pulumi.Databricks
     /// The following resources are often used in the same context:
     /// 
     /// * End to end workspace management guide.
+    /// * databricks.getPipelines to retrieve [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipeline data.
     /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
     /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
     /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).

@@ -79,6 +79,9 @@ export interface GetNodeTypeArgs {
      * * `GPU Accelerated` (AWS, Azure)
      */
     category?: string;
+    /**
+     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+     */
     fleet?: boolean;
     /**
      * Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.
@@ -209,6 +212,9 @@ export interface GetNodeTypeOutputArgs {
      * * `GPU Accelerated` (AWS, Azure)
      */
     category?: pulumi.Input<string>;
+    /**
+     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+     */
     fleet?: pulumi.Input<boolean>;
     /**
      * Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.

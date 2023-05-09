@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.GetClusterClusterInfoInitScriptDbfs;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoInitScriptFile;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoInitScriptGcs;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoInitScriptS3;
+import com.pulumi.databricks.outputs.GetClusterClusterInfoInitScriptWorkspace;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,6 +21,7 @@ public final class GetClusterClusterInfoInitScript {
     private @Nullable GetClusterClusterInfoInitScriptFile file;
     private @Nullable GetClusterClusterInfoInitScriptGcs gcs;
     private @Nullable GetClusterClusterInfoInitScriptS3 s3;
+    private @Nullable GetClusterClusterInfoInitScriptWorkspace workspace;
 
     private GetClusterClusterInfoInitScript() {}
     public Optional<GetClusterClusterInfoInitScriptAbfss> abfss() {
@@ -37,6 +39,9 @@ public final class GetClusterClusterInfoInitScript {
     public Optional<GetClusterClusterInfoInitScriptS3> s3() {
         return Optional.ofNullable(this.s3);
     }
+    public Optional<GetClusterClusterInfoInitScriptWorkspace> workspace() {
+        return Optional.ofNullable(this.workspace);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -52,6 +57,7 @@ public final class GetClusterClusterInfoInitScript {
         private @Nullable GetClusterClusterInfoInitScriptFile file;
         private @Nullable GetClusterClusterInfoInitScriptGcs gcs;
         private @Nullable GetClusterClusterInfoInitScriptS3 s3;
+        private @Nullable GetClusterClusterInfoInitScriptWorkspace workspace;
         public Builder() {}
         public Builder(GetClusterClusterInfoInitScript defaults) {
     	      Objects.requireNonNull(defaults);
@@ -60,6 +66,7 @@ public final class GetClusterClusterInfoInitScript {
     	      this.file = defaults.file;
     	      this.gcs = defaults.gcs;
     	      this.s3 = defaults.s3;
+    	      this.workspace = defaults.workspace;
         }
 
         @CustomType.Setter
@@ -87,6 +94,11 @@ public final class GetClusterClusterInfoInitScript {
             this.s3 = s3;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspace(@Nullable GetClusterClusterInfoInitScriptWorkspace workspace) {
+            this.workspace = workspace;
+            return this;
+        }
         public GetClusterClusterInfoInitScript build() {
             final var o = new GetClusterClusterInfoInitScript();
             o.abfss = abfss;
@@ -94,6 +106,7 @@ public final class GetClusterClusterInfoInitScript {
             o.file = file;
             o.gcs = gcs;
             o.s3 = s3;
+            o.workspace = workspace;
             return o;
         }
     }

@@ -17,18 +17,33 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
     public static final ClusterPolicyState Empty = new ClusterPolicyState();
 
     /**
-     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
      * 
      */
     @Import(name="definition")
     private @Nullable Output<String> definition;
 
     /**
-     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
      * 
      */
     public Optional<Output<String>> definition() {
         return Optional.ofNullable(this.definition);
+    }
+
+    /**
+     * Additional human-readable description of the cluster policy.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Additional human-readable description of the cluster policy.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
@@ -62,6 +77,36 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+     * 
+     */
+    @Import(name="policyFamilyDefinitionOverrides")
+    private @Nullable Output<String> policyFamilyDefinitionOverrides;
+
+    /**
+     * @return Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+     * 
+     */
+    public Optional<Output<String>> policyFamilyDefinitionOverrides() {
+        return Optional.ofNullable(this.policyFamilyDefinitionOverrides);
+    }
+
+    /**
+     * ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+     * 
+     */
+    @Import(name="policyFamilyId")
+    private @Nullable Output<String> policyFamilyId;
+
+    /**
+     * @return ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+     * 
+     */
+    public Optional<Output<String>> policyFamilyId() {
+        return Optional.ofNullable(this.policyFamilyId);
+    }
+
+    /**
      * Canonical unique identifier for the cluster policy.
      * 
      */
@@ -80,8 +125,11 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
 
     private ClusterPolicyState(ClusterPolicyState $) {
         this.definition = $.definition;
+        this.description = $.description;
         this.maxClustersPerUser = $.maxClustersPerUser;
         this.name = $.name;
+        this.policyFamilyDefinitionOverrides = $.policyFamilyDefinitionOverrides;
+        this.policyFamilyId = $.policyFamilyId;
         this.policyId = $.policyId;
     }
 
@@ -104,7 +152,7 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param definition Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+         * @param definition Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
          * 
          * @return builder
          * 
@@ -115,13 +163,34 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param definition Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+         * @param definition Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
          * 
          * @return builder
          * 
          */
         public Builder definition(String definition) {
             return definition(Output.of(definition));
+        }
+
+        /**
+         * @param description Additional human-readable description of the cluster policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Additional human-readable description of the cluster policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**
@@ -164,6 +233,48 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param policyFamilyDefinitionOverrides Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyFamilyDefinitionOverrides(@Nullable Output<String> policyFamilyDefinitionOverrides) {
+            $.policyFamilyDefinitionOverrides = policyFamilyDefinitionOverrides;
+            return this;
+        }
+
+        /**
+         * @param policyFamilyDefinitionOverrides Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyFamilyDefinitionOverrides(String policyFamilyDefinitionOverrides) {
+            return policyFamilyDefinitionOverrides(Output.of(policyFamilyDefinitionOverrides));
+        }
+
+        /**
+         * @param policyFamilyId ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyFamilyId(@Nullable Output<String> policyFamilyId) {
+            $.policyFamilyId = policyFamilyId;
+            return this;
+        }
+
+        /**
+         * @param policyFamilyId ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyFamilyId(String policyFamilyId) {
+            return policyFamilyId(Output.of(policyFamilyId));
         }
 
         /**

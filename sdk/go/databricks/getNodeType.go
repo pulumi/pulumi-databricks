@@ -87,7 +87,8 @@ type GetNodeTypeArgs struct {
 	// * `Storage Optimized` (AWS, Azure)
 	// * `GPU Accelerated` (AWS, Azure)
 	Category *string `pulumi:"category"`
-	Fleet    *bool   `pulumi:"fleet"`
+	// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+	Fleet *bool `pulumi:"fleet"`
 	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.
 	GbPerCore *int `pulumi:"gbPerCore"`
 	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
@@ -157,7 +158,8 @@ type GetNodeTypeOutputArgs struct {
 	// * `Storage Optimized` (AWS, Azure)
 	// * `GPU Accelerated` (AWS, Azure)
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	Fleet    pulumi.BoolPtrInput   `pulumi:"fleet"`
+	// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+	Fleet pulumi.BoolPtrInput `pulumi:"fleet"`
 	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.
 	GbPerCore pulumi.IntPtrInput `pulumi:"gbPerCore"`
 	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.

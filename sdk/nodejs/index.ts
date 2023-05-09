@@ -139,6 +139,11 @@ export const getNotebookPaths: typeof import("./getNotebookPaths").getNotebookPa
 export const getNotebookPathsOutput: typeof import("./getNotebookPaths").getNotebookPathsOutput = null as any;
 utilities.lazyLoad(exports, ["getNotebookPaths","getNotebookPathsOutput"], () => require("./getNotebookPaths"));
 
+export { GetPipelinesArgs, GetPipelinesResult, GetPipelinesOutputArgs } from "./getPipelines";
+export const getPipelines: typeof import("./getPipelines").getPipelines = null as any;
+export const getPipelinesOutput: typeof import("./getPipelines").getPipelinesOutput = null as any;
+utilities.lazyLoad(exports, ["getPipelines","getPipelinesOutput"], () => require("./getPipelines"));
+
 export { GetSchemasArgs, GetSchemasResult, GetSchemasOutputArgs } from "./getSchemas";
 export const getSchemas: typeof import("./getSchemas").getSchemas = null as any;
 export const getSchemasOutput: typeof import("./getSchemas").getSchemasOutput = null as any;
@@ -458,6 +463,11 @@ export type SqlQuery = import("./sqlQuery").SqlQuery;
 export const SqlQuery: typeof import("./sqlQuery").SqlQuery = null as any;
 utilities.lazyLoad(exports, ["SqlQuery"], () => require("./sqlQuery"));
 
+export { SqlTableArgs, SqlTableState } from "./sqlTable";
+export type SqlTable = import("./sqlTable").SqlTable;
+export const SqlTable: typeof import("./sqlTable").SqlTable = null as any;
+utilities.lazyLoad(exports, ["SqlTable"], () => require("./sqlTable"));
+
 export { SqlVisualizationArgs, SqlVisualizationState } from "./sqlVisualization";
 export type SqlVisualization = import("./sqlVisualization").SqlVisualization;
 export const SqlVisualization: typeof import("./sqlVisualization").SqlVisualization = null as any;
@@ -633,6 +643,8 @@ const _module = {
                 return new SqlPermissions(name, <any>undefined, { urn })
             case "databricks:index/sqlQuery:SqlQuery":
                 return new SqlQuery(name, <any>undefined, { urn })
+            case "databricks:index/sqlTable:SqlTable":
+                return new SqlTable(name, <any>undefined, { urn })
             case "databricks:index/sqlVisualization:SqlVisualization":
                 return new SqlVisualization(name, <any>undefined, { urn })
             case "databricks:index/sqlWidget:SqlWidget":
@@ -714,6 +726,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/sqlEndpoint", _module
 pulumi.runtime.registerResourceModule("databricks", "index/sqlGlobalConfig", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlPermissions", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlQuery", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/sqlTable", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlVisualization", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlWidget", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/storageCredential", _module)

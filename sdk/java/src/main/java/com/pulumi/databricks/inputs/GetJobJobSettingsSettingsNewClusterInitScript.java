@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScrip
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptFile;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptGcs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptS3;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptWorkspace;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -53,6 +54,13 @@ public final class GetJobJobSettingsSettingsNewClusterInitScript extends com.pul
         return Optional.ofNullable(this.s3);
     }
 
+    @Import(name="workspace")
+    private @Nullable GetJobJobSettingsSettingsNewClusterInitScriptWorkspace workspace;
+
+    public Optional<GetJobJobSettingsSettingsNewClusterInitScriptWorkspace> workspace() {
+        return Optional.ofNullable(this.workspace);
+    }
+
     private GetJobJobSettingsSettingsNewClusterInitScript() {}
 
     private GetJobJobSettingsSettingsNewClusterInitScript(GetJobJobSettingsSettingsNewClusterInitScript $) {
@@ -61,6 +69,7 @@ public final class GetJobJobSettingsSettingsNewClusterInitScript extends com.pul
         this.file = $.file;
         this.gcs = $.gcs;
         this.s3 = $.s3;
+        this.workspace = $.workspace;
     }
 
     public static Builder builder() {
@@ -103,6 +112,11 @@ public final class GetJobJobSettingsSettingsNewClusterInitScript extends com.pul
 
         public Builder s3(@Nullable GetJobJobSettingsSettingsNewClusterInitScriptS3 s3) {
             $.s3 = s3;
+            return this;
+        }
+
+        public Builder workspace(@Nullable GetJobJobSettingsSettingsNewClusterInitScriptWorkspace workspace) {
+            $.workspace = workspace;
             return this;
         }
 

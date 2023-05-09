@@ -275,17 +275,9 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobSparkSubmitTask>> sparkSubmitTask() {
         return Codegen.optional(this.sparkSubmitTask);
     }
-    /**
-     * (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-     * 
-     */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
-    /**
-     * @return (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-     * 
-     */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }

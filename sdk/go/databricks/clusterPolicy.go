@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,12 +57,18 @@ import (
 type ClusterPolicy struct {
 	pulumi.CustomResourceState
 
-	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-	Definition pulumi.StringOutput `pulumi:"definition"`
+	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
+	Definition pulumi.StringPtrOutput `pulumi:"definition"`
+	// Additional human-readable description of the cluster policy.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser pulumi.IntPtrOutput `pulumi:"maxClustersPerUser"`
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+	PolicyFamilyDefinitionOverrides pulumi.StringPtrOutput `pulumi:"policyFamilyDefinitionOverrides"`
+	// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
+	PolicyFamilyId pulumi.StringPtrOutput `pulumi:"policyFamilyId"`
 	// Canonical unique identifier for the cluster policy.
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
 }
@@ -72,12 +77,9 @@ type ClusterPolicy struct {
 func NewClusterPolicy(ctx *pulumi.Context,
 	name string, args *ClusterPolicyArgs, opts ...pulumi.ResourceOption) (*ClusterPolicy, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ClusterPolicyArgs{}
 	}
 
-	if args.Definition == nil {
-		return nil, errors.New("invalid value for required argument 'Definition'")
-	}
 	var resource ClusterPolicy
 	err := ctx.RegisterResource("databricks:index/clusterPolicy:ClusterPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -100,23 +102,35 @@ func GetClusterPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClusterPolicy resources.
 type clusterPolicyState struct {
-	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
 	Definition *string `pulumi:"definition"`
+	// Additional human-readable description of the cluster policy.
+	Description *string `pulumi:"description"`
 	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser *int `pulumi:"maxClustersPerUser"`
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name *string `pulumi:"name"`
+	// Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+	PolicyFamilyDefinitionOverrides *string `pulumi:"policyFamilyDefinitionOverrides"`
+	// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
+	PolicyFamilyId *string `pulumi:"policyFamilyId"`
 	// Canonical unique identifier for the cluster policy.
 	PolicyId *string `pulumi:"policyId"`
 }
 
 type ClusterPolicyState struct {
-	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
 	Definition pulumi.StringPtrInput
+	// Additional human-readable description of the cluster policy.
+	Description pulumi.StringPtrInput
 	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser pulumi.IntPtrInput
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name pulumi.StringPtrInput
+	// Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+	PolicyFamilyDefinitionOverrides pulumi.StringPtrInput
+	// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
+	PolicyFamilyId pulumi.StringPtrInput
 	// Canonical unique identifier for the cluster policy.
 	PolicyId pulumi.StringPtrInput
 }
@@ -126,22 +140,34 @@ func (ClusterPolicyState) ElementType() reflect.Type {
 }
 
 type clusterPolicyArgs struct {
-	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-	Definition string `pulumi:"definition"`
+	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
+	Definition *string `pulumi:"definition"`
+	// Additional human-readable description of the cluster policy.
+	Description *string `pulumi:"description"`
 	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser *int `pulumi:"maxClustersPerUser"`
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name *string `pulumi:"name"`
+	// Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+	PolicyFamilyDefinitionOverrides *string `pulumi:"policyFamilyDefinitionOverrides"`
+	// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
+	PolicyFamilyId *string `pulumi:"policyFamilyId"`
 }
 
 // The set of arguments for constructing a ClusterPolicy resource.
 type ClusterPolicyArgs struct {
-	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-	Definition pulumi.StringInput
+	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
+	Definition pulumi.StringPtrInput
+	// Additional human-readable description of the cluster policy.
+	Description pulumi.StringPtrInput
 	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser pulumi.IntPtrInput
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 	Name pulumi.StringPtrInput
+	// Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+	PolicyFamilyDefinitionOverrides pulumi.StringPtrInput
+	// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
+	PolicyFamilyId pulumi.StringPtrInput
 }
 
 func (ClusterPolicyArgs) ElementType() reflect.Type {
@@ -231,9 +257,14 @@ func (o ClusterPolicyOutput) ToClusterPolicyOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-func (o ClusterPolicyOutput) Definition() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClusterPolicy) pulumi.StringOutput { return v.Definition }).(pulumi.StringOutput)
+// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
+func (o ClusterPolicyOutput) Definition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPolicy) pulumi.StringPtrOutput { return v.Definition }).(pulumi.StringPtrOutput)
+}
+
+// Additional human-readable description of the cluster policy.
+func (o ClusterPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
@@ -244,6 +275,16 @@ func (o ClusterPolicyOutput) MaxClustersPerUser() pulumi.IntPtrOutput {
 // Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
 func (o ClusterPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+func (o ClusterPolicyOutput) PolicyFamilyDefinitionOverrides() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPolicy) pulumi.StringPtrOutput { return v.PolicyFamilyDefinitionOverrides }).(pulumi.StringPtrOutput)
+}
+
+// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
+func (o ClusterPolicyOutput) PolicyFamilyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPolicy) pulumi.StringPtrOutput { return v.PolicyFamilyId }).(pulumi.StringPtrOutput)
 }
 
 // Canonical unique identifier for the cluster policy.

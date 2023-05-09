@@ -287,17 +287,9 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sparkSubmitTask);
     }
 
-    /**
-     * (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
-    /**
-     * @return (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -756,23 +748,11 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
             return sparkSubmitTask(Output.of(sparkSubmitTask));
         }
 
-        /**
-         * @param tags (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }

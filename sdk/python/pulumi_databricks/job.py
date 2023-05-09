@@ -57,7 +57,6 @@ class JobArgs:
         :param pulumi.Input['JobNewClusterArgs'] new_cluster: Same set of parameters as for Cluster resource.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input['JobScheduleArgs'] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
-        :param pulumi.Input[Mapping[str, Any]] tags: (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
@@ -361,9 +360,6 @@ class JobArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -458,7 +454,6 @@ class _JobState:
         :param pulumi.Input['JobNewClusterArgs'] new_cluster: Same set of parameters as for Cluster resource.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input['JobScheduleArgs'] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
-        :param pulumi.Input[Mapping[str, Any]] tags: (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input[str] url: string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -765,9 +760,6 @@ class _JobState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -885,7 +877,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobNewClusterArgs']] new_cluster: Same set of parameters as for Cluster resource.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
-        :param pulumi.Input[Mapping[str, Any]] tags: (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
@@ -1042,7 +1033,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobNewClusterArgs']] new_cluster: Same set of parameters as for Cluster resource.
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
-        :param pulumi.Input[Mapping[str, Any]] tags: (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input[str] url: string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         :param pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -1233,9 +1223,6 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-        """
         return pulumi.get(self, "tags")
 
     @property

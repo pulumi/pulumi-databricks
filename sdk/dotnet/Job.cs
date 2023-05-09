@@ -123,9 +123,6 @@ namespace Pulumi.Databricks
         [Output("sparkSubmitTask")]
         public Output<Outputs.JobSparkSubmitTask?> SparkSubmitTask { get; private set; } = null!;
 
-        /// <summary>
-        /// (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
@@ -315,10 +312,6 @@ namespace Pulumi.Databricks
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -472,10 +465,6 @@ namespace Pulumi.Databricks
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// (Map) An optional map of the tags associated with the job. Specified tags will be used as cluster tags for job clusters.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());

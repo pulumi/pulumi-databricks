@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.PipelineClusterInitScriptDbfs;
 import com.pulumi.databricks.outputs.PipelineClusterInitScriptFile;
 import com.pulumi.databricks.outputs.PipelineClusterInitScriptGcs;
 import com.pulumi.databricks.outputs.PipelineClusterInitScriptS3;
+import com.pulumi.databricks.outputs.PipelineClusterInitScriptWorkspace;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,6 +21,7 @@ public final class PipelineClusterInitScript {
     private @Nullable PipelineClusterInitScriptFile file;
     private @Nullable PipelineClusterInitScriptGcs gcs;
     private @Nullable PipelineClusterInitScriptS3 s3;
+    private @Nullable PipelineClusterInitScriptWorkspace workspace;
 
     private PipelineClusterInitScript() {}
     public Optional<PipelineClusterInitScriptAbfss> abfss() {
@@ -37,6 +39,9 @@ public final class PipelineClusterInitScript {
     public Optional<PipelineClusterInitScriptS3> s3() {
         return Optional.ofNullable(this.s3);
     }
+    public Optional<PipelineClusterInitScriptWorkspace> workspace() {
+        return Optional.ofNullable(this.workspace);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -52,6 +57,7 @@ public final class PipelineClusterInitScript {
         private @Nullable PipelineClusterInitScriptFile file;
         private @Nullable PipelineClusterInitScriptGcs gcs;
         private @Nullable PipelineClusterInitScriptS3 s3;
+        private @Nullable PipelineClusterInitScriptWorkspace workspace;
         public Builder() {}
         public Builder(PipelineClusterInitScript defaults) {
     	      Objects.requireNonNull(defaults);
@@ -60,6 +66,7 @@ public final class PipelineClusterInitScript {
     	      this.file = defaults.file;
     	      this.gcs = defaults.gcs;
     	      this.s3 = defaults.s3;
+    	      this.workspace = defaults.workspace;
         }
 
         @CustomType.Setter
@@ -87,6 +94,11 @@ public final class PipelineClusterInitScript {
             this.s3 = s3;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspace(@Nullable PipelineClusterInitScriptWorkspace workspace) {
+            this.workspace = workspace;
+            return this;
+        }
         public PipelineClusterInitScript build() {
             final var o = new PipelineClusterInitScript();
             o.abfss = abfss;
@@ -94,6 +106,7 @@ public final class PipelineClusterInitScript {
             o.file = file;
             o.gcs = gcs;
             o.s3 = s3;
+            o.workspace = workspace;
             return o;
         }
     }
