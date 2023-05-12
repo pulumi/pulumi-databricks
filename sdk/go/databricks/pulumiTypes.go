@@ -5664,7 +5664,7 @@ func (o JobDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 
 type JobEmailNotifications struct {
 	AlertOnLastAttempt *bool `pulumi:"alertOnLastAttempt"`
-	// (Bool) don't send alert for skipped runs.
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures []string `pulumi:"onFailures"`
@@ -5687,7 +5687,7 @@ type JobEmailNotificationsInput interface {
 
 type JobEmailNotificationsArgs struct {
 	AlertOnLastAttempt pulumi.BoolPtrInput `pulumi:"alertOnLastAttempt"`
-	// (Bool) don't send alert for skipped runs.
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures pulumi.StringArrayInput `pulumi:"onFailures"`
@@ -5778,7 +5778,7 @@ func (o JobEmailNotificationsOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobEmailNotifications) *bool { return v.AlertOnLastAttempt }).(pulumi.BoolPtrOutput)
 }
 
-// (Bool) don't send alert for skipped runs.
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
 }
@@ -5831,7 +5831,7 @@ func (o JobEmailNotificationsPtrOutput) AlertOnLastAttempt() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// (Bool) don't send alert for skipped runs.
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) *bool {
 		if v == nil {
@@ -14102,6 +14102,162 @@ func (o JobNotebookTaskPtrOutput) Source() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobNotificationSettings struct {
+	// (Bool) don't send alert for cancelled runs.
+	NoAlertForCanceledRuns *bool `pulumi:"noAlertForCanceledRuns"`
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
+}
+
+// JobNotificationSettingsInput is an input type that accepts JobNotificationSettingsArgs and JobNotificationSettingsOutput values.
+// You can construct a concrete instance of `JobNotificationSettingsInput` via:
+//
+//	JobNotificationSettingsArgs{...}
+type JobNotificationSettingsInput interface {
+	pulumi.Input
+
+	ToJobNotificationSettingsOutput() JobNotificationSettingsOutput
+	ToJobNotificationSettingsOutputWithContext(context.Context) JobNotificationSettingsOutput
+}
+
+type JobNotificationSettingsArgs struct {
+	// (Bool) don't send alert for cancelled runs.
+	NoAlertForCanceledRuns pulumi.BoolPtrInput `pulumi:"noAlertForCanceledRuns"`
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
+}
+
+func (JobNotificationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNotificationSettings)(nil)).Elem()
+}
+
+func (i JobNotificationSettingsArgs) ToJobNotificationSettingsOutput() JobNotificationSettingsOutput {
+	return i.ToJobNotificationSettingsOutputWithContext(context.Background())
+}
+
+func (i JobNotificationSettingsArgs) ToJobNotificationSettingsOutputWithContext(ctx context.Context) JobNotificationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNotificationSettingsOutput)
+}
+
+func (i JobNotificationSettingsArgs) ToJobNotificationSettingsPtrOutput() JobNotificationSettingsPtrOutput {
+	return i.ToJobNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i JobNotificationSettingsArgs) ToJobNotificationSettingsPtrOutputWithContext(ctx context.Context) JobNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNotificationSettingsOutput).ToJobNotificationSettingsPtrOutputWithContext(ctx)
+}
+
+// JobNotificationSettingsPtrInput is an input type that accepts JobNotificationSettingsArgs, JobNotificationSettingsPtr and JobNotificationSettingsPtrOutput values.
+// You can construct a concrete instance of `JobNotificationSettingsPtrInput` via:
+//
+//	        JobNotificationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobNotificationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToJobNotificationSettingsPtrOutput() JobNotificationSettingsPtrOutput
+	ToJobNotificationSettingsPtrOutputWithContext(context.Context) JobNotificationSettingsPtrOutput
+}
+
+type jobNotificationSettingsPtrType JobNotificationSettingsArgs
+
+func JobNotificationSettingsPtr(v *JobNotificationSettingsArgs) JobNotificationSettingsPtrInput {
+	return (*jobNotificationSettingsPtrType)(v)
+}
+
+func (*jobNotificationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNotificationSettings)(nil)).Elem()
+}
+
+func (i *jobNotificationSettingsPtrType) ToJobNotificationSettingsPtrOutput() JobNotificationSettingsPtrOutput {
+	return i.ToJobNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobNotificationSettingsPtrType) ToJobNotificationSettingsPtrOutputWithContext(ctx context.Context) JobNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNotificationSettingsPtrOutput)
+}
+
+type JobNotificationSettingsOutput struct{ *pulumi.OutputState }
+
+func (JobNotificationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNotificationSettings)(nil)).Elem()
+}
+
+func (o JobNotificationSettingsOutput) ToJobNotificationSettingsOutput() JobNotificationSettingsOutput {
+	return o
+}
+
+func (o JobNotificationSettingsOutput) ToJobNotificationSettingsOutputWithContext(ctx context.Context) JobNotificationSettingsOutput {
+	return o
+}
+
+func (o JobNotificationSettingsOutput) ToJobNotificationSettingsPtrOutput() JobNotificationSettingsPtrOutput {
+	return o.ToJobNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o JobNotificationSettingsOutput) ToJobNotificationSettingsPtrOutputWithContext(ctx context.Context) JobNotificationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobNotificationSettings) *JobNotificationSettings {
+		return &v
+	}).(JobNotificationSettingsPtrOutput)
+}
+
+// (Bool) don't send alert for cancelled runs.
+func (o JobNotificationSettingsOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobNotificationSettings) *bool { return v.NoAlertForCanceledRuns }).(pulumi.BoolPtrOutput)
+}
+
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+func (o JobNotificationSettingsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobNotificationSettings) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
+}
+
+type JobNotificationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobNotificationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNotificationSettings)(nil)).Elem()
+}
+
+func (o JobNotificationSettingsPtrOutput) ToJobNotificationSettingsPtrOutput() JobNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o JobNotificationSettingsPtrOutput) ToJobNotificationSettingsPtrOutputWithContext(ctx context.Context) JobNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o JobNotificationSettingsPtrOutput) Elem() JobNotificationSettingsOutput {
+	return o.ApplyT(func(v *JobNotificationSettings) JobNotificationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret JobNotificationSettings
+		return ret
+	}).(JobNotificationSettingsOutput)
+}
+
+// (Bool) don't send alert for cancelled runs.
+func (o JobNotificationSettingsPtrOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoAlertForCanceledRuns
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+func (o JobNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoAlertForSkippedRuns
+	}).(pulumi.BoolPtrOutput)
+}
+
 type JobPipelineTask struct {
 	// The pipeline's unique ID.
 	PipelineId string `pulumi:"pipelineId"`
@@ -15775,7 +15931,7 @@ func (o JobTaskDependsOnArrayOutput) Index(i pulumi.IntInput) JobTaskDependsOnOu
 
 type JobTaskEmailNotifications struct {
 	AlertOnLastAttempt *bool `pulumi:"alertOnLastAttempt"`
-	// (Bool) don't send alert for skipped runs.
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures []string `pulumi:"onFailures"`
@@ -15798,7 +15954,7 @@ type JobTaskEmailNotificationsInput interface {
 
 type JobTaskEmailNotificationsArgs struct {
 	AlertOnLastAttempt pulumi.BoolPtrInput `pulumi:"alertOnLastAttempt"`
-	// (Bool) don't send alert for skipped runs.
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures pulumi.StringArrayInput `pulumi:"onFailures"`
@@ -15889,7 +16045,7 @@ func (o JobTaskEmailNotificationsOutput) AlertOnLastAttempt() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v JobTaskEmailNotifications) *bool { return v.AlertOnLastAttempt }).(pulumi.BoolPtrOutput)
 }
 
-// (Bool) don't send alert for skipped runs.
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobTaskEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
 }
@@ -15942,7 +16098,7 @@ func (o JobTaskEmailNotificationsPtrOutput) AlertOnLastAttempt() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// (Bool) don't send alert for skipped runs.
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) *bool {
 		if v == nil {
@@ -44140,6 +44296,7 @@ type GetJobJobSettingsSettings struct {
 	Name                 *string                                        `pulumi:"name"`
 	NewCluster           *GetJobJobSettingsSettingsNewCluster           `pulumi:"newCluster"`
 	NotebookTask         *GetJobJobSettingsSettingsNotebookTask         `pulumi:"notebookTask"`
+	NotificationSettings *GetJobJobSettingsSettingsNotificationSettings `pulumi:"notificationSettings"`
 	PipelineTask         *GetJobJobSettingsSettingsPipelineTask         `pulumi:"pipelineTask"`
 	PythonWheelTask      *GetJobJobSettingsSettingsPythonWheelTask      `pulumi:"pythonWheelTask"`
 	Queue                *GetJobJobSettingsSettingsQueue                `pulumi:"queue"`
@@ -44182,6 +44339,7 @@ type GetJobJobSettingsSettingsArgs struct {
 	Name                 pulumi.StringPtrInput                                 `pulumi:"name"`
 	NewCluster           GetJobJobSettingsSettingsNewClusterPtrInput           `pulumi:"newCluster"`
 	NotebookTask         GetJobJobSettingsSettingsNotebookTaskPtrInput         `pulumi:"notebookTask"`
+	NotificationSettings GetJobJobSettingsSettingsNotificationSettingsPtrInput `pulumi:"notificationSettings"`
 	PipelineTask         GetJobJobSettingsSettingsPipelineTaskPtrInput         `pulumi:"pipelineTask"`
 	PythonWheelTask      GetJobJobSettingsSettingsPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
 	Queue                GetJobJobSettingsSettingsQueuePtrInput                `pulumi:"queue"`
@@ -44331,6 +44489,12 @@ func (o GetJobJobSettingsSettingsOutput) NewCluster() GetJobJobSettingsSettingsN
 
 func (o GetJobJobSettingsSettingsOutput) NotebookTask() GetJobJobSettingsSettingsNotebookTaskPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsNotebookTask { return v.NotebookTask }).(GetJobJobSettingsSettingsNotebookTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsOutput) NotificationSettings() GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsNotificationSettings {
+		return v.NotificationSettings
+	}).(GetJobJobSettingsSettingsNotificationSettingsPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsOutput) PipelineTask() GetJobJobSettingsSettingsPipelineTaskPtrOutput {
@@ -44536,6 +44700,15 @@ func (o GetJobJobSettingsSettingsPtrOutput) NotebookTask() GetJobJobSettingsSett
 		}
 		return v.NotebookTask
 	}).(GetJobJobSettingsSettingsNotebookTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsPtrOutput) NotificationSettings() GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettings) *GetJobJobSettingsSettingsNotificationSettings {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationSettings
+	}).(GetJobJobSettingsSettingsNotificationSettingsPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsPtrOutput) PipelineTask() GetJobJobSettingsSettingsPipelineTaskPtrOutput {
@@ -53456,6 +53629,154 @@ func (o GetJobJobSettingsSettingsNotebookTaskPtrOutput) Source() pulumi.StringPt
 		}
 		return v.Source
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsNotificationSettings struct {
+	NoAlertForCanceledRuns *bool `pulumi:"noAlertForCanceledRuns"`
+	NoAlertForSkippedRuns  *bool `pulumi:"noAlertForSkippedRuns"`
+}
+
+// GetJobJobSettingsSettingsNotificationSettingsInput is an input type that accepts GetJobJobSettingsSettingsNotificationSettingsArgs and GetJobJobSettingsSettingsNotificationSettingsOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsNotificationSettingsInput` via:
+//
+//	GetJobJobSettingsSettingsNotificationSettingsArgs{...}
+type GetJobJobSettingsSettingsNotificationSettingsInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsNotificationSettingsOutput() GetJobJobSettingsSettingsNotificationSettingsOutput
+	ToGetJobJobSettingsSettingsNotificationSettingsOutputWithContext(context.Context) GetJobJobSettingsSettingsNotificationSettingsOutput
+}
+
+type GetJobJobSettingsSettingsNotificationSettingsArgs struct {
+	NoAlertForCanceledRuns pulumi.BoolPtrInput `pulumi:"noAlertForCanceledRuns"`
+	NoAlertForSkippedRuns  pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
+}
+
+func (GetJobJobSettingsSettingsNotificationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsNotificationSettings)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsNotificationSettingsArgs) ToGetJobJobSettingsSettingsNotificationSettingsOutput() GetJobJobSettingsSettingsNotificationSettingsOutput {
+	return i.ToGetJobJobSettingsSettingsNotificationSettingsOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsNotificationSettingsArgs) ToGetJobJobSettingsSettingsNotificationSettingsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotificationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNotificationSettingsOutput)
+}
+
+func (i GetJobJobSettingsSettingsNotificationSettingsArgs) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutput() GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsNotificationSettingsArgs) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNotificationSettingsOutput).ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsNotificationSettingsPtrInput is an input type that accepts GetJobJobSettingsSettingsNotificationSettingsArgs, GetJobJobSettingsSettingsNotificationSettingsPtr and GetJobJobSettingsSettingsNotificationSettingsPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsNotificationSettingsPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsNotificationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsNotificationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsNotificationSettingsPtrOutput() GetJobJobSettingsSettingsNotificationSettingsPtrOutput
+	ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsNotificationSettingsPtrOutput
+}
+
+type getJobJobSettingsSettingsNotificationSettingsPtrType GetJobJobSettingsSettingsNotificationSettingsArgs
+
+func GetJobJobSettingsSettingsNotificationSettingsPtr(v *GetJobJobSettingsSettingsNotificationSettingsArgs) GetJobJobSettingsSettingsNotificationSettingsPtrInput {
+	return (*getJobJobSettingsSettingsNotificationSettingsPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsNotificationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsNotificationSettings)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsNotificationSettingsPtrType) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutput() GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsNotificationSettingsPtrType) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsNotificationSettingsPtrOutput)
+}
+
+type GetJobJobSettingsSettingsNotificationSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsNotificationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsNotificationSettings)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsNotificationSettingsOutput) ToGetJobJobSettingsSettingsNotificationSettingsOutput() GetJobJobSettingsSettingsNotificationSettingsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsNotificationSettingsOutput) ToGetJobJobSettingsSettingsNotificationSettingsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotificationSettingsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsNotificationSettingsOutput) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutput() GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
+	return o.ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsNotificationSettingsOutput) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsNotificationSettings) *GetJobJobSettingsSettingsNotificationSettings {
+		return &v
+	}).(GetJobJobSettingsSettingsNotificationSettingsPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsNotificationSettingsOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsNotificationSettings) *bool { return v.NoAlertForCanceledRuns }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsNotificationSettingsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsNotificationSettings) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
+}
+
+type GetJobJobSettingsSettingsNotificationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsNotificationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsNotificationSettings)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutput() GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) ToGetJobJobSettingsSettingsNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) Elem() GetJobJobSettingsSettingsNotificationSettingsOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsNotificationSettings) GetJobJobSettingsSettingsNotificationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsNotificationSettings
+		return ret
+	}).(GetJobJobSettingsSettingsNotificationSettingsOutput)
+}
+
+func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoAlertForCanceledRuns
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoAlertForSkippedRuns
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetJobJobSettingsSettingsPipelineTask struct {
@@ -63089,6 +63410,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNewClusterWorkloadTypeClientsPtrInput)(nil)).Elem(), JobNewClusterWorkloadTypeClientsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNotebookTaskInput)(nil)).Elem(), JobNotebookTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNotebookTaskPtrInput)(nil)).Elem(), JobNotebookTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNotificationSettingsInput)(nil)).Elem(), JobNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobNotificationSettingsPtrInput)(nil)).Elem(), JobNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPipelineTaskInput)(nil)).Elem(), JobPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPipelineTaskPtrInput)(nil)).Elem(), JobPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPythonWheelTaskInput)(nil)).Elem(), JobPythonWheelTaskArgs{})
@@ -63566,6 +63889,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNotebookTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsNotebookTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNotebookTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNotebookTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNotificationSettingsInput)(nil)).Elem(), GetJobJobSettingsSettingsNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNotificationSettingsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPipelineTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPipelineTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPythonWheelTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsPythonWheelTaskArgs{})
@@ -63860,6 +64185,8 @@ func init() {
 	pulumi.RegisterOutputType(JobNewClusterWorkloadTypeClientsPtrOutput{})
 	pulumi.RegisterOutputType(JobNotebookTaskOutput{})
 	pulumi.RegisterOutputType(JobNotebookTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobNotificationSettingsOutput{})
+	pulumi.RegisterOutputType(JobNotificationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(JobPipelineTaskOutput{})
 	pulumi.RegisterOutputType(JobPipelineTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobPythonWheelTaskOutput{})
@@ -64337,6 +64664,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNotebookTaskOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNotebookTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNotificationSettingsOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNotificationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPipelineTaskOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPipelineTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPythonWheelTaskOutput{})

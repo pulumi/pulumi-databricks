@@ -10,6 +10,44 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// Lists all MwsWorkspaces in Databricks Account.
+//
+// > **Note** `accountId` provider configuration property is required for this resource to work.
+//
+// ## Example Usage
+//
+// # Listing all workspaces in
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.LookupMwsWorkspaces(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("allMwsWorkspaces", all.Ids)
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * MwsWorkspaces to manage Databricks E2 Workspaces.
+// * MetastoreAssignment
 func LookupMwsWorkspaces(ctx *pulumi.Context, args *LookupMwsWorkspacesArgs, opts ...pulumi.InvokeOption) (*LookupMwsWorkspacesResult, error) {
 	var rv LookupMwsWorkspacesResult
 	err := ctx.Invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args, &rv, opts...)

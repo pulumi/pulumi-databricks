@@ -513,6 +513,11 @@ export type WorkspaceConf = import("./workspaceConf").WorkspaceConf;
 export const WorkspaceConf: typeof import("./workspaceConf").WorkspaceConf = null as any;
 utilities.lazyLoad(exports, ["WorkspaceConf"], () => require("./workspaceConf"));
 
+export { WorkspaceFileArgs, WorkspaceFileState } from "./workspaceFile";
+export type WorkspaceFile = import("./workspaceFile").WorkspaceFile;
+export const WorkspaceFile: typeof import("./workspaceFile").WorkspaceFile = null as any;
+utilities.lazyLoad(exports, ["WorkspaceFile"], () => require("./workspaceFile"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -663,6 +668,8 @@ const _module = {
                 return new UserRole(name, <any>undefined, { urn })
             case "databricks:index/workspaceConf:WorkspaceConf":
                 return new WorkspaceConf(name, <any>undefined, { urn })
+            case "databricks:index/workspaceFile:WorkspaceFile":
+                return new WorkspaceFile(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -736,6 +743,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/user", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/userInstanceProfile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/userRole", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceConf", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/workspaceFile", _module)
 pulumi.runtime.registerResourcePackage("databricks", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

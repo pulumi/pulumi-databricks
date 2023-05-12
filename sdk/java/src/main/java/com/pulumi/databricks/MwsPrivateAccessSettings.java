@@ -17,6 +17,152 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Note** Initialize provider with `alias = &#34;mws&#34;`, `host  = &#34;https://accounts.cloud.databricks.com&#34;` and use `provider = databricks.mws` for all `databricks_mws_*` resources.
+ * 
+ * &gt; **Note** This resource has an evolving API, which will change in the upcoming versions of the provider in order to simplify user experience.
+ * 
+ * Allows you to create a [Private Access Setting]that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
+ * 
+ * It is strongly recommended that customers read the [Enable AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) [Enable GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation before trying to leverage this resource.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsPrivateAccessSettings;
+ * import com.pulumi.databricks.MwsPrivateAccessSettingsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pas = new MwsPrivateAccessSettings(&#34;pas&#34;, MwsPrivateAccessSettingsArgs.builder()        
+ *             .accountId(var_.databricks_account_id())
+ *             .privateAccessSettingsName(String.format(&#34;Private Access Settings for %s&#34;, local.prefix()))
+ *             .region(var_.region())
+ *             .publicAccessEnabled(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(databricks.mws())
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * The `databricks_mws_private_access_settings.pas.private_access_settings_id` can then be used as part of a databricks.MwsWorkspaces resource:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsWorkspaces;
+ * import com.pulumi.databricks.MwsWorkspacesArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new MwsWorkspaces(&#34;this&#34;, MwsWorkspacesArgs.builder()        
+ *             .accountId(var_.databricks_account_id())
+ *             .awsRegion(var_.region())
+ *             .workspaceName(local.prefix())
+ *             .credentialsId(databricks_mws_credentials.this().credentials_id())
+ *             .storageConfigurationId(databricks_mws_storage_configurations.this().storage_configuration_id())
+ *             .networkId(databricks_mws_networks.this().network_id())
+ *             .privateAccessSettingsId(databricks_mws_private_access_settings.pas().private_access_settings_id())
+ *             .pricingTier(&#34;ENTERPRISE&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(databricks.mws())
+ *                 .dependsOn(databricks_mws_networks.this())
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * or
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsWorkspaces;
+ * import com.pulumi.databricks.MwsWorkspacesArgs;
+ * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerArgs;
+ * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerGcpArgs;
+ * import com.pulumi.databricks.inputs.MwsWorkspacesGkeConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new MwsWorkspaces(&#34;this&#34;, MwsWorkspacesArgs.builder()        
+ *             .accountId(var_.databricks_account_id())
+ *             .workspaceName(&#34;gcp-workspace&#34;)
+ *             .location(var_.subnet_region())
+ *             .cloudResourceContainer(MwsWorkspacesCloudResourceContainerArgs.builder()
+ *                 .gcp(MwsWorkspacesCloudResourceContainerGcpArgs.builder()
+ *                     .projectId(var_.google_project())
+ *                     .build())
+ *                 .build())
+ *             .gkeConfig(MwsWorkspacesGkeConfigArgs.builder()
+ *                 .connectivityType(&#34;PRIVATE_NODE_PUBLIC_MASTER&#34;)
+ *                 .masterIpRange(&#34;10.3.0.0/28&#34;)
+ *                 .build())
+ *             .networkId(databricks_mws_networks.this().network_id())
+ *             .privateAccessSettingsId(databricks_mws_private_access_settings.pas().private_access_settings_id())
+ *             .pricingTier(&#34;PREMIUM&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(databricks.mws())
+ *                 .dependsOn(databricks_mws_networks.this())
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Related Resources
+ * 
+ * The following resources are used in the same context:
+ * 
+ * * Provisioning Databricks on AWS guide.
+ * * Provisioning Databricks on AWS with PrivateLink guide.
+ * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide.
+ * * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+ * * databricks.MwsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
+ * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
+ * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+ * 
  * ## Import
  * 
  * -&gt; **Note** Importing this resource is not currently supported.

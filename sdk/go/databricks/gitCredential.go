@@ -28,7 +28,8 @@ type GitCredential struct {
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider pulumi.StringOutput `pulumi:"gitProvider"`
 	// user name at Git provider.
-	GitUsername         pulumi.StringPtrOutput `pulumi:"gitUsername"`
+	GitUsername pulumi.StringPtrOutput `pulumi:"gitUsername"`
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrOutput `pulumi:"personalAccessToken"`
 }
 
@@ -69,7 +70,8 @@ type gitCredentialState struct {
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider *string `pulumi:"gitProvider"`
 	// user name at Git provider.
-	GitUsername         *string `pulumi:"gitUsername"`
+	GitUsername *string `pulumi:"gitUsername"`
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
 }
 
@@ -79,7 +81,8 @@ type GitCredentialState struct {
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider pulumi.StringPtrInput
 	// user name at Git provider.
-	GitUsername         pulumi.StringPtrInput
+	GitUsername pulumi.StringPtrInput
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrInput
 }
 
@@ -93,7 +96,8 @@ type gitCredentialArgs struct {
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider string `pulumi:"gitProvider"`
 	// user name at Git provider.
-	GitUsername         *string `pulumi:"gitUsername"`
+	GitUsername *string `pulumi:"gitUsername"`
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
 }
 
@@ -104,7 +108,8 @@ type GitCredentialArgs struct {
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 	GitProvider pulumi.StringInput
 	// user name at Git provider.
-	GitUsername         pulumi.StringPtrInput
+	GitUsername pulumi.StringPtrInput
+	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrInput
 }
 
@@ -210,6 +215,7 @@ func (o GitCredentialOutput) GitUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.GitUsername }).(pulumi.StringPtrOutput)
 }
 
+// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
 func (o GitCredentialOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.PersonalAccessToken }).(pulumi.StringPtrOutput)
 }

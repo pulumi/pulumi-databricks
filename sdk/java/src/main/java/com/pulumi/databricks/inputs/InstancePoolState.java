@@ -41,14 +41,14 @@ public final class InstancePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+     * (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
      * 
      */
     @Import(name="customTags")
     private @Nullable Output<Map<String,Object>> customTags;
 
     /**
-     * @return (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+     * @return (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
      * 
      */
     public Optional<Output<Map<String,Object>>> customTags() {
@@ -252,7 +252,7 @@ public final class InstancePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customTags (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+         * @param customTags (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class InstancePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customTags (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+         * @param customTags (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
          * 
          * @return builder
          * 

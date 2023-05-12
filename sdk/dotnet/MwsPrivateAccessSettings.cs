@@ -10,6 +10,121 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// &gt; **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws` for all `databricks_mws_*` resources.
+    /// 
+    /// &gt; **Note** This resource has an evolving API, which will change in the upcoming versions of the provider in order to simplify user experience.
+    /// 
+    /// Allows you to create a [Private Access Setting]that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
+    /// 
+    /// It is strongly recommended that customers read the [Enable AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) [Enable GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation before trying to leverage this resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pas = new Databricks.MwsPrivateAccessSettings("pas", new()
+    ///     {
+    ///         AccountId = @var.Databricks_account_id,
+    ///         PrivateAccessSettingsName = $"Private Access Settings for {local.Prefix}",
+    ///         Region = @var.Region,
+    ///         PublicAccessEnabled = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Mws,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The `databricks_mws_private_access_settings.pas.private_access_settings_id` can then be used as part of a databricks.MwsWorkspaces resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.MwsWorkspaces("this", new()
+    ///     {
+    ///         AccountId = @var.Databricks_account_id,
+    ///         AwsRegion = @var.Region,
+    ///         WorkspaceName = local.Prefix,
+    ///         CredentialsId = databricks_mws_credentials.This.Credentials_id,
+    ///         StorageConfigurationId = databricks_mws_storage_configurations.This.Storage_configuration_id,
+    ///         NetworkId = databricks_mws_networks.This.Network_id,
+    ///         PrivateAccessSettingsId = databricks_mws_private_access_settings.Pas.Private_access_settings_id,
+    ///         PricingTier = "ENTERPRISE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Mws,
+    ///         DependsOn = new[]
+    ///         {
+    ///             databricks_mws_networks.This,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// or
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.MwsWorkspaces("this", new()
+    ///     {
+    ///         AccountId = @var.Databricks_account_id,
+    ///         WorkspaceName = "gcp-workspace",
+    ///         Location = @var.Subnet_region,
+    ///         CloudResourceContainer = new Databricks.Inputs.MwsWorkspacesCloudResourceContainerArgs
+    ///         {
+    ///             Gcp = new Databricks.Inputs.MwsWorkspacesCloudResourceContainerGcpArgs
+    ///             {
+    ///                 ProjectId = @var.Google_project,
+    ///             },
+    ///         },
+    ///         GkeConfig = new Databricks.Inputs.MwsWorkspacesGkeConfigArgs
+    ///         {
+    ///             ConnectivityType = "PRIVATE_NODE_PUBLIC_MASTER",
+    ///             MasterIpRange = "10.3.0.0/28",
+    ///         },
+    ///         NetworkId = databricks_mws_networks.This.Network_id,
+    ///         PrivateAccessSettingsId = databricks_mws_private_access_settings.Pas.Private_access_settings_id,
+    ///         PricingTier = "PREMIUM",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Mws,
+    ///         DependsOn = new[]
+    ///         {
+    ///             databricks_mws_networks.This,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Related Resources
+    /// 
+    /// The following resources are used in the same context:
+    /// 
+    /// * Provisioning Databricks on AWS guide.
+    /// * Provisioning Databricks on AWS with PrivateLink guide.
+    /// * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide.
+    /// * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+    /// * databricks.MwsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
+    /// * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
+    /// * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+    /// 
     /// ## Import
     /// 
     /// -&gt; **Note** Importing this resource is not currently supported.

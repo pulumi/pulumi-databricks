@@ -62,11 +62,7 @@ public class Notebook extends com.pulumi.resources.CustomResource {
     /**
      * Unique identifier for a NOTEBOOK
      * 
-     * @deprecated
-     * Use id argument to retrieve object id
-     * 
      */
-    @Deprecated /* Use id argument to retrieve object id */
     @Export(name="objectId", type=Integer.class, parameters={})
     private Output<Integer> objectId;
 

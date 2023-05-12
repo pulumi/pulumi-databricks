@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * This data source allows to get information about a directory in a Databricks Workspace.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -54,6 +58,10 @@ export interface GetDirectoryResult {
     readonly path: string;
 }
 /**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * This data source allows to get information about a directory in a Databricks Workspace.
+ *
  * ## Example Usage
  *
  * ```typescript

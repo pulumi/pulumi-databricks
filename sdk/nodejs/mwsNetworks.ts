@@ -7,6 +7,73 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ * ### Creating a Databricks on AWS workspace
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const available = aws.getAvailabilityZones({});
+ * const _this = new databricks.MwsNetworks("this", {
+ *     accountId: databricksAccountId,
+ *     networkName: `${local.prefix}-network`,
+ *     securityGroupIds: [module.vpc.default_security_group_id],
+ *     subnetIds: module.vpc.private_subnets,
+ *     vpcId: module.vpc.vpc_id,
+ * }, {
+ *     provider: databricks.mws,
+ * });
+ * ```
+ *
+ * In order to create a VPC [that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) you would need to add the `vpcEndpointId` Attributes from mwsVpcEndpoint resources into the databricks.MwsNetworks resource. For example:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.MwsNetworks("this", {
+ *     accountId: _var.databricks_account_id,
+ *     networkName: `${local.prefix}-network`,
+ *     securityGroupIds: [module.vpc.default_security_group_id],
+ *     subnetIds: module.vpc.private_subnets,
+ *     vpcId: module.vpc.vpc_id,
+ *     vpcEndpoints: {
+ *         dataplaneRelays: [databricks_mws_vpc_endpoint.relay.vpc_endpoint_id],
+ *         restApis: [databricks_mws_vpc_endpoint.workspace.vpc_endpoint_id],
+ *     },
+ * }, {
+ *     provider: databricks.mws,
+ *     dependsOn: [
+ *         aws_vpc_endpoint.workspace,
+ *         aws_vpc_endpoint.relay,
+ *     ],
+ * });
+ * ```
+ * ## Modifying networks on running workspaces (AWS only)
+ *
+ * Due to specifics of platform APIs, changing any attribute of network configuration would cause `databricks.MwsNetworks` to be re-created - deleted & added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:
+ *
+ * 1. Create a new `databricks.MwsNetworks` resource.
+ * 2. Update the `databricks.MwsWorkspaces` to point to the new `networkId`.
+ * 3. Delete the old `databricks.MwsNetworks` resource.
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * Provisioning Databricks on AWS guide.
+ * * Provisioning Databricks on AWS with PrivateLink guide.
+ * * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide.
+ * * Provisioning Databricks on GCP guide.
+ * * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+ * * databricks.MwsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
+ * * databricks.MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect] (https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
+ * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+ *
  * ## Import
  *
  * -> **Note** Importing this resource is not currently supported.
@@ -57,7 +124,13 @@ export class MwsNetworks extends pulumi.CustomResource {
      * name under which this network is registered
      */
     public readonly networkName!: pulumi.Output<string>;
+    /**
+     * ids of aws_security_group
+     */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * ids of aws_subnet
+     */
     public readonly subnetIds!: pulumi.Output<string[] | undefined>;
     /**
      * mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
@@ -151,7 +224,13 @@ export interface MwsNetworksState {
      * name under which this network is registered
      */
     networkName?: pulumi.Input<string>;
+    /**
+     * ids of aws_security_group
+     */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ids of aws_subnet
+     */
     subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
@@ -193,7 +272,13 @@ export interface MwsNetworksArgs {
      * name under which this network is registered
      */
     networkName: pulumi.Input<string>;
+    /**
+     * ids of aws_security_group
+     */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ids of aws_subnet
+     */
     subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections

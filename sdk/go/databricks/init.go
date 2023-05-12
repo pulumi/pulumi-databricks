@@ -156,6 +156,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &UserRole{}
 	case "databricks:index/workspaceConf:WorkspaceConf":
 		r = &WorkspaceConf{}
+	case "databricks:index/workspaceFile:WorkspaceFile":
+		r = &WorkspaceFile{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -522,6 +524,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/workspaceConf",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/workspaceFile",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

@@ -39,6 +39,9 @@ namespace Pulumi.Databricks
         [Output("gitUsername")]
         public Output<string?> GitUsername { get; private set; } = null!;
 
+        /// <summary>
+        /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+        /// </summary>
         [Output("personalAccessToken")]
         public Output<string?> PersonalAccessToken { get; private set; } = null!;
 
@@ -106,6 +109,9 @@ namespace Pulumi.Databricks
         [Input("gitUsername")]
         public Input<string>? GitUsername { get; set; }
 
+        /// <summary>
+        /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+        /// </summary>
         [Input("personalAccessToken")]
         public Input<string>? PersonalAccessToken { get; set; }
 
@@ -135,6 +141,9 @@ namespace Pulumi.Databricks
         [Input("gitUsername")]
         public Input<string>? GitUsername { get; set; }
 
+        /// <summary>
+        /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+        /// </summary>
         [Input("personalAccessToken")]
         public Input<string>? PersonalAccessToken { get; set; }
 

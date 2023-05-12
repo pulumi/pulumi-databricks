@@ -12,6 +12,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobCluster;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibrary;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewCluster;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNotebookTask;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNotificationSettings;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPipelineTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPythonWheelTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsQueue;
@@ -143,6 +144,13 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.notebookTask);
     }
 
+    @Import(name="notificationSettings")
+    private @Nullable GetJobJobSettingsSettingsNotificationSettings notificationSettings;
+
+    public Optional<GetJobJobSettingsSettingsNotificationSettings> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
+    }
+
     @Import(name="pipelineTask")
     private @Nullable GetJobJobSettingsSettingsPipelineTask pipelineTask;
 
@@ -251,6 +259,7 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         this.name = $.name;
         this.newCluster = $.newCluster;
         this.notebookTask = $.notebookTask;
+        this.notificationSettings = $.notificationSettings;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.queue = $.queue;
@@ -365,6 +374,11 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
 
         public Builder notebookTask(@Nullable GetJobJobSettingsSettingsNotebookTask notebookTask) {
             $.notebookTask = notebookTask;
+            return this;
+        }
+
+        public Builder notificationSettings(@Nullable GetJobJobSettingsSettingsNotificationSettings notificationSettings) {
+            $.notificationSettings = notificationSettings;
             return this;
         }
 

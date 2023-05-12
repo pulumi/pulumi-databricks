@@ -12,6 +12,10 @@ namespace Pulumi.Databricks
     public static class GetCluster
     {
         /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are often used in the same context:
@@ -28,6 +32,10 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("databricks:index/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are often used in the same context:

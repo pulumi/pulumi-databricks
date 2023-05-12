@@ -39,9 +39,6 @@ class NotebookArgs:
         if md5 is not None:
             pulumi.set(__self__, "md5", md5)
         if object_id is not None:
-            warnings.warn("""Use id argument to retrieve object id""", DeprecationWarning)
-            pulumi.log.warn("""object_id is deprecated: Use id argument to retrieve object id""")
-        if object_id is not None:
             pulumi.set(__self__, "object_id", object_id)
         if object_type is not None:
             warnings.warn("""Always is a notebook""", DeprecationWarning)
@@ -164,9 +161,6 @@ class _NotebookState:
             pulumi.set(__self__, "language", language)
         if md5 is not None:
             pulumi.set(__self__, "md5", md5)
-        if object_id is not None:
-            warnings.warn("""Use id argument to retrieve object id""", DeprecationWarning)
-            pulumi.log.warn("""object_id is deprecated: Use id argument to retrieve object id""")
         if object_id is not None:
             pulumi.set(__self__, "object_id", object_id)
         if object_type is not None:
@@ -359,9 +353,6 @@ class Notebook(pulumi.CustomResource):
             __props__.__dict__["format"] = format
             __props__.__dict__["language"] = language
             __props__.__dict__["md5"] = md5
-            if object_id is not None and not opts.urn:
-                warnings.warn("""Use id argument to retrieve object id""", DeprecationWarning)
-                pulumi.log.warn("""object_id is deprecated: Use id argument to retrieve object id""")
             __props__.__dict__["object_id"] = object_id
             if object_type is not None and not opts.urn:
                 warnings.warn("""Always is a notebook""", DeprecationWarning)

@@ -88,7 +88,43 @@ def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
                                for_log_delivery: Optional[bool] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsAssumeRolePolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source constructs necessary AWS STS assume role policy for you.
+
+    ## Example Usage
+
+    End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_databricks as databricks
+
+    config = pulumi.Config()
+    databricks_account_id = config.require_object("databricksAccountId")
+    this_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
+    cross_account_policy = aws.iam.Policy("crossAccountPolicy", policy=this_aws_cross_account_policy.json)
+    this_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
+    cross_account_role = aws.iam.Role("crossAccountRole",
+        assume_role_policy=this_aws_assume_role_policy.json,
+        description="Grants Databricks full access to VPC resources")
+    cross_account_role_policy_attachment = aws.iam.RolePolicyAttachment("crossAccountRolePolicyAttachment",
+        policy_arn=cross_account_policy.arn,
+        role=cross_account_role.name)
+    # required only in case of multi-workspace setup
+    this_mws_credentials = databricks.MwsCredentials("thisMwsCredentials",
+        account_id=databricks_account_id,
+        credentials_name=f"{var['prefix']}-creds",
+        role_arn=cross_account_role.arn,
+        opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+    ```
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
+    * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+
 
     :param str external_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
     :param bool for_log_delivery: Either or not this assume role policy should be created for usage log delivery. Defaults to false.
@@ -114,7 +150,43 @@ def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Inp
                                       for_log_delivery: Optional[pulumi.Input[Optional[bool]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsAssumeRolePolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source constructs necessary AWS STS assume role policy for you.
+
+    ## Example Usage
+
+    End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_databricks as databricks
+
+    config = pulumi.Config()
+    databricks_account_id = config.require_object("databricksAccountId")
+    this_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
+    cross_account_policy = aws.iam.Policy("crossAccountPolicy", policy=this_aws_cross_account_policy.json)
+    this_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
+    cross_account_role = aws.iam.Role("crossAccountRole",
+        assume_role_policy=this_aws_assume_role_policy.json,
+        description="Grants Databricks full access to VPC resources")
+    cross_account_role_policy_attachment = aws.iam.RolePolicyAttachment("crossAccountRolePolicyAttachment",
+        policy_arn=cross_account_policy.arn,
+        role=cross_account_role.name)
+    # required only in case of multi-workspace setup
+    this_mws_credentials = databricks.MwsCredentials("thisMwsCredentials",
+        account_id=databricks_account_id,
+        credentials_name=f"{var['prefix']}-creds",
+        role_arn=cross_account_role.arn,
+        opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+    ```
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
+    * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+
 
     :param str external_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
     :param bool for_log_delivery: Either or not this assume role policy should be created for usage log delivery. Defaults to false.

@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.JobJobClusterArgs;
 import com.pulumi.databricks.inputs.JobLibraryArgs;
 import com.pulumi.databricks.inputs.JobNewClusterArgs;
 import com.pulumi.databricks.inputs.JobNotebookTaskArgs;
+import com.pulumi.databricks.inputs.JobNotificationSettingsArgs;
 import com.pulumi.databricks.inputs.JobPipelineTaskArgs;
 import com.pulumi.databricks.inputs.JobPythonWheelTaskArgs;
 import com.pulumi.databricks.inputs.JobQueueArgs;
@@ -215,6 +216,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.notebookTask);
     }
 
+    @Import(name="notificationSettings")
+    private @Nullable Output<JobNotificationSettingsArgs> notificationSettings;
+
+    public Optional<Output<JobNotificationSettingsArgs>> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
+    }
+
     @Import(name="pipelineTask")
     private @Nullable Output<JobPipelineTaskArgs> pipelineTask;
 
@@ -356,6 +364,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.newCluster = $.newCluster;
         this.notebookTask = $.notebookTask;
+        this.notificationSettings = $.notificationSettings;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.queue = $.queue;
@@ -650,6 +659,15 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder notebookTask(JobNotebookTaskArgs notebookTask) {
             return notebookTask(Output.of(notebookTask));
+        }
+
+        public Builder notificationSettings(@Nullable Output<JobNotificationSettingsArgs> notificationSettings) {
+            $.notificationSettings = notificationSettings;
+            return this;
+        }
+
+        public Builder notificationSettings(JobNotificationSettingsArgs notificationSettings) {
+            return notificationSettings(Output.of(notificationSettings));
         }
 
         public Builder pipelineTask(@Nullable Output<JobPipelineTaskArgs> pipelineTask) {

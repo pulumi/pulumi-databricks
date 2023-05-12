@@ -107,6 +107,7 @@ from .user import *
 from .user_instance_profile import *
 from .user_role import *
 from .workspace_conf import *
+from .workspace_file import *
 from ._inputs import *
 from . import outputs
 
@@ -662,6 +663,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/workspaceConf:WorkspaceConf": "WorkspaceConf"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/workspaceFile",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/workspaceFile:WorkspaceFile": "WorkspaceFile"
   }
  }
 ]

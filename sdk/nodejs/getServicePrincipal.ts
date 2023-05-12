@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves information about databricks_service_principal.
+ *
  * ## Example Usage
  *
  * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
@@ -120,6 +124,10 @@ export interface GetServicePrincipalResult {
     readonly spId: string;
 }
 /**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves information about databricks_service_principal.
+ *
  * ## Example Usage
  *
  * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group

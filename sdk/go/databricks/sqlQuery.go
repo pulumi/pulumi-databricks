@@ -11,6 +11,140 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your Group or databricks_user.
+//
+// **Note:** documentation for this resource is a work in progress.
+//
+// A query may have one or more visualizations.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sharedDir, err := databricks.NewDirectory(ctx, "sharedDir", &databricks.DirectoryArgs{
+//				Path: pulumi.String("/Shared/Queries"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSqlQuery(ctx, "q1", &databricks.SqlQueryArgs{
+//				DataSourceId: pulumi.Any(databricks_sql_endpoint.Example.Data_source_id),
+//				Query:        pulumi.String("                        SELECT {{ p1 }} AS p1\n                        WHERE 1=1\n                        AND p2 in ({{ p2 }})\n                        AND event_date > date '{{ p3 }}'\n"),
+//				Parent: sharedDir.ObjectId.ApplyT(func(objectId int) (string, error) {
+//					return fmt.Sprintf("folders/%v", objectId), nil
+//				}).(pulumi.StringOutput),
+//				RunAsRole: pulumi.String("viewer"),
+//				Parameters: databricks.SqlQueryParameterArray{
+//					&databricks.SqlQueryParameterArgs{
+//						Name:  pulumi.String("p1"),
+//						Title: pulumi.String("Title for p1"),
+//						Text: &databricks.SqlQueryParameterTextArgs{
+//							Value: pulumi.String("default"),
+//						},
+//					},
+//					&databricks.SqlQueryParameterArgs{
+//						Name:  pulumi.String("p2"),
+//						Title: pulumi.String("Title for p2"),
+//						Enum: &databricks.SqlQueryParameterEnumArgs{
+//							Options: pulumi.StringArray{
+//								pulumi.String("default"),
+//								pulumi.String("foo"),
+//								pulumi.String("bar"),
+//							},
+//							Value: pulumi.String("default"),
+//							Multiple: &databricks.SqlQueryParameterEnumMultipleArgs{
+//								Prefix:    pulumi.String("\""),
+//								Suffix:    pulumi.String("\""),
+//								Separator: pulumi.String(","),
+//							},
+//						},
+//					},
+//					&databricks.SqlQueryParameterArgs{
+//						Name:  pulumi.String("p3"),
+//						Title: pulumi.String("Title for p3"),
+//						Date: &databricks.SqlQueryParameterDateArgs{
+//							Value: pulumi.String("2022-01-01"),
+//						},
+//					},
+//				},
+//				Tags: pulumi.StringArray{
+//					pulumi.String("t1"),
+//					pulumi.String("t2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Example permission to share query with all users:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPermissions(ctx, "q1", &databricks.PermissionsArgs{
+//				SqlQueryId: pulumi.Any(databricks_sql_query.Q1.Id),
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.Any(data.Databricks_group.Users.Display_name),
+//						PermissionLevel: pulumi.String("CAN_RUN"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.Any(data.Databricks_group.Team.Display_name),
+//						PermissionLevel: pulumi.String("CAN_EDIT"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Troubleshooting
+//
+// In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `dataSourceId`
+//
+// Operations on `SqlQuery` schedules are ⛔️ deprecated. You can create, update or delete a schedule for SQLA and other Databricks resources using the Job resource.
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * End to end workspace management guide.
+// * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+// * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+// * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
+// * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+// * Job to schedule Databricks SQL queries (as well as dashboards and alerts) using Databricks Jobs.
+//
 // ## Import
 //
 // You can import a `databricks_sql_query` resource with ID like the followingbash

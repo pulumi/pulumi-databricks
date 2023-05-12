@@ -12,6 +12,10 @@ namespace Pulumi.Databricks
     public static class GetJob
     {
         /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -50,6 +54,10 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("databricks:index/getJob:getJob", args ?? new GetJobArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

@@ -7,6 +7,105 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your databricks.Group or databricks_user.
+ *
+ * **Note:** documentation for this resource is a work in progress.
+ *
+ * A query may have one or more visualizations.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const sharedDir = new databricks.Directory("sharedDir", {path: "/Shared/Queries"});
+ * const q1 = new databricks.SqlQuery("q1", {
+ *     dataSourceId: databricks_sql_endpoint.example.data_source_id,
+ *     query: `                        SELECT {{ p1 }} AS p1
+ *                         WHERE 1=1
+ *                         AND p2 in ({{ p2 }})
+ *                         AND event_date > date '{{ p3 }}'
+ * `,
+ *     parent: pulumi.interpolate`folders/${sharedDir.objectId}`,
+ *     runAsRole: "viewer",
+ *     parameters: [
+ *         {
+ *             name: "p1",
+ *             title: "Title for p1",
+ *             text: {
+ *                 value: "default",
+ *             },
+ *         },
+ *         {
+ *             name: "p2",
+ *             title: "Title for p2",
+ *             "enum": {
+ *                 options: [
+ *                     "default",
+ *                     "foo",
+ *                     "bar",
+ *                 ],
+ *                 value: "default",
+ *                 multiple: {
+ *                     prefix: "\"",
+ *                     suffix: "\"",
+ *                     separator: ",",
+ *                 },
+ *             },
+ *         },
+ *         {
+ *             name: "p3",
+ *             title: "Title for p3",
+ *             date: {
+ *                 value: "2022-01-01",
+ *             },
+ *         },
+ *     ],
+ *     tags: [
+ *         "t1",
+ *         "t2",
+ *     ],
+ * });
+ * ```
+ *
+ * Example permission to share query with all users:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const q1 = new databricks.Permissions("q1", {
+ *     sqlQueryId: databricks_sql_query.q1.id,
+ *     accessControls: [
+ *         {
+ *             groupName: data.databricks_group.users.display_name,
+ *             permissionLevel: "CAN_RUN",
+ *         },
+ *         {
+ *             groupName: data.databricks_group.team.display_name,
+ *             permissionLevel: "CAN_EDIT",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ## Troubleshooting
+ *
+ * In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `dataSourceId`
+ *
+ * Operations on `databricks.SqlQuery` schedules are ⛔️ deprecated. You can create, update or delete a schedule for SQLA and other Databricks resources using the databricks.Job resource.
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+ * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
+ * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+ * * databricks.Job to schedule Databricks SQL queries (as well as dashboards and alerts) using Databricks Jobs.
+ *
  * ## Import
  *
  * You can import a `databricks_sql_query` resource with ID like the followingbash

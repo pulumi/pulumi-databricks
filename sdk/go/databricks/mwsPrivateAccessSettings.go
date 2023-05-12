@@ -11,6 +11,131 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws` for all `databricks_mws_*` resources.
+//
+// > **Note** This resource has an evolving API, which will change in the upcoming versions of the provider in order to simplify user experience.
+//
+// Allows you to create a [Private Access Setting]that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
+//
+// It is strongly recommended that customers read the [Enable AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) [Enable GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation before trying to leverage this resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMwsPrivateAccessSettings(ctx, "pas", &databricks.MwsPrivateAccessSettingsArgs{
+//				AccountId:                 pulumi.Any(_var.Databricks_account_id),
+//				PrivateAccessSettingsName: pulumi.String(fmt.Sprintf("Private Access Settings for %v", local.Prefix)),
+//				Region:                    pulumi.Any(_var.Region),
+//				PublicAccessEnabled:       pulumi.Bool(true),
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The `databricks_mws_private_access_settings.pas.private_access_settings_id` can then be used as part of a MwsWorkspaces resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
+//				AccountId:               pulumi.Any(_var.Databricks_account_id),
+//				AwsRegion:               pulumi.Any(_var.Region),
+//				WorkspaceName:           pulumi.Any(local.Prefix),
+//				CredentialsId:           pulumi.Any(databricks_mws_credentials.This.Credentials_id),
+//				StorageConfigurationId:  pulumi.Any(databricks_mws_storage_configurations.This.Storage_configuration_id),
+//				NetworkId:               pulumi.Any(databricks_mws_networks.This.Network_id),
+//				PrivateAccessSettingsId: pulumi.Any(databricks_mws_private_access_settings.Pas.Private_access_settings_id),
+//				PricingTier:             pulumi.String("ENTERPRISE"),
+//			}, pulumi.Provider(databricks.Mws), pulumi.DependsOn([]pulumi.Resource{
+//				databricks_mws_networks.This,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// or
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
+//				AccountId:     pulumi.Any(_var.Databricks_account_id),
+//				WorkspaceName: pulumi.String("gcp-workspace"),
+//				Location:      pulumi.Any(_var.Subnet_region),
+//				CloudResourceContainer: &databricks.MwsWorkspacesCloudResourceContainerArgs{
+//					Gcp: &databricks.MwsWorkspacesCloudResourceContainerGcpArgs{
+//						ProjectId: pulumi.Any(_var.Google_project),
+//					},
+//				},
+//				GkeConfig: &databricks.MwsWorkspacesGkeConfigArgs{
+//					ConnectivityType: pulumi.String("PRIVATE_NODE_PUBLIC_MASTER"),
+//					MasterIpRange:    pulumi.String("10.3.0.0/28"),
+//				},
+//				NetworkId:               pulumi.Any(databricks_mws_networks.This.Network_id),
+//				PrivateAccessSettingsId: pulumi.Any(databricks_mws_private_access_settings.Pas.Private_access_settings_id),
+//				PricingTier:             pulumi.String("PREMIUM"),
+//			}, pulumi.Provider(databricks.Mws), pulumi.DependsOn([]pulumi.Resource{
+//				databricks_mws_networks.This,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Provisioning Databricks on AWS guide.
+// * Provisioning Databricks on AWS with PrivateLink guide.
+// * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide.
+// * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+// * MwsVpcEndpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
+// * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+// * MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+//
 // ## Import
 //
 // -> **Note** Importing this resource is not currently supported.

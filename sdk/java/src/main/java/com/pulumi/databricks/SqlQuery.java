@@ -18,6 +18,151 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
+ * 
+ * **Note:** documentation for this resource is a work in progress.
+ * 
+ * A query may have one or more visualizations.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Directory;
+ * import com.pulumi.databricks.DirectoryArgs;
+ * import com.pulumi.databricks.SqlQuery;
+ * import com.pulumi.databricks.SqlQueryArgs;
+ * import com.pulumi.databricks.inputs.SqlQueryParameterArgs;
+ * import com.pulumi.databricks.inputs.SqlQueryParameterTextArgs;
+ * import com.pulumi.databricks.inputs.SqlQueryParameterEnumArgs;
+ * import com.pulumi.databricks.inputs.SqlQueryParameterEnumMultipleArgs;
+ * import com.pulumi.databricks.inputs.SqlQueryParameterDateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sharedDir = new Directory(&#34;sharedDir&#34;, DirectoryArgs.builder()        
+ *             .path(&#34;/Shared/Queries&#34;)
+ *             .build());
+ * 
+ *         var q1 = new SqlQuery(&#34;q1&#34;, SqlQueryArgs.builder()        
+ *             .dataSourceId(databricks_sql_endpoint.example().data_source_id())
+ *             .query(&#34;&#34;&#34;
+ *                         SELECT {{ p1 }} AS p1
+ *                         WHERE 1=1
+ *                         AND p2 in ({{ p2 }})
+ *                         AND event_date &gt; date &#39;{{ p3 }}&#39;
+ *             &#34;&#34;&#34;)
+ *             .parent(sharedDir.objectId().applyValue(objectId -&gt; String.format(&#34;folders/%s&#34;, objectId)))
+ *             .runAsRole(&#34;viewer&#34;)
+ *             .parameters(            
+ *                 SqlQueryParameterArgs.builder()
+ *                     .name(&#34;p1&#34;)
+ *                     .title(&#34;Title for p1&#34;)
+ *                     .text(SqlQueryParameterTextArgs.builder()
+ *                         .value(&#34;default&#34;)
+ *                         .build())
+ *                     .build(),
+ *                 SqlQueryParameterArgs.builder()
+ *                     .name(&#34;p2&#34;)
+ *                     .title(&#34;Title for p2&#34;)
+ *                     .enum_(SqlQueryParameterEnumArgs.builder()
+ *                         .options(                        
+ *                             &#34;default&#34;,
+ *                             &#34;foo&#34;,
+ *                             &#34;bar&#34;)
+ *                         .value(&#34;default&#34;)
+ *                         .multiple(SqlQueryParameterEnumMultipleArgs.builder()
+ *                             .prefix(&#34;\&#34;&#34;)
+ *                             .suffix(&#34;\&#34;&#34;)
+ *                             .separator(&#34;,&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 SqlQueryParameterArgs.builder()
+ *                     .name(&#34;p3&#34;)
+ *                     .title(&#34;Title for p3&#34;)
+ *                     .date(SqlQueryParameterDateArgs.builder()
+ *                         .value(&#34;2022-01-01&#34;)
+ *                         .build())
+ *                     .build())
+ *             .tags(            
+ *                 &#34;t1&#34;,
+ *                 &#34;t2&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Example permission to share query with all users:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Permissions;
+ * import com.pulumi.databricks.PermissionsArgs;
+ * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var q1 = new Permissions(&#34;q1&#34;, PermissionsArgs.builder()        
+ *             .sqlQueryId(databricks_sql_query.q1().id())
+ *             .accessControls(            
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(data.databricks_group().users().display_name())
+ *                     .permissionLevel(&#34;CAN_RUN&#34;)
+ *                     .build(),
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(data.databricks_group().team().display_name())
+ *                     .permissionLevel(&#34;CAN_EDIT&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Troubleshooting
+ * 
+ * In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `data_source_id`
+ * 
+ * Operations on `databricks.SqlQuery` schedules are ⛔️ deprecated. You can create, update or delete a schedule for SQLA and other Databricks resources using the databricks.Job resource.
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * End to end workspace management guide.
+ * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+ * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
+ * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+ * * databricks.Job to schedule Databricks SQL queries (as well as dashboards and alerts) using Databricks Jobs.
+ * 
  * ## Import
  * 
  * You can import a `databricks_sql_query` resource with ID like the followingbash

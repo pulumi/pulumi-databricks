@@ -29,8 +29,6 @@ type Notebook struct {
 	Language pulumi.StringPtrOutput `pulumi:"language"`
 	Md5      pulumi.StringPtrOutput `pulumi:"md5"`
 	// Unique identifier for a NOTEBOOK
-	//
-	// Deprecated: Use id argument to retrieve object id
 	ObjectId pulumi.IntOutput `pulumi:"objectId"`
 	// Deprecated: Always is a notebook
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
@@ -80,8 +78,6 @@ type notebookState struct {
 	Language *string `pulumi:"language"`
 	Md5      *string `pulumi:"md5"`
 	// Unique identifier for a NOTEBOOK
-	//
-	// Deprecated: Use id argument to retrieve object id
 	ObjectId *int `pulumi:"objectId"`
 	// Deprecated: Always is a notebook
 	ObjectType *string `pulumi:"objectType"`
@@ -100,8 +96,6 @@ type NotebookState struct {
 	Language pulumi.StringPtrInput
 	Md5      pulumi.StringPtrInput
 	// Unique identifier for a NOTEBOOK
-	//
-	// Deprecated: Use id argument to retrieve object id
 	ObjectId pulumi.IntPtrInput
 	// Deprecated: Always is a notebook
 	ObjectType pulumi.StringPtrInput
@@ -124,8 +118,6 @@ type notebookArgs struct {
 	Language *string `pulumi:"language"`
 	Md5      *string `pulumi:"md5"`
 	// Unique identifier for a NOTEBOOK
-	//
-	// Deprecated: Use id argument to retrieve object id
 	ObjectId *int `pulumi:"objectId"`
 	// Deprecated: Always is a notebook
 	ObjectType *string `pulumi:"objectType"`
@@ -143,8 +135,6 @@ type NotebookArgs struct {
 	Language pulumi.StringPtrInput
 	Md5      pulumi.StringPtrInput
 	// Unique identifier for a NOTEBOOK
-	//
-	// Deprecated: Use id argument to retrieve object id
 	ObjectId pulumi.IntPtrInput
 	// Deprecated: Always is a notebook
 	ObjectType pulumi.StringPtrInput
@@ -259,8 +249,6 @@ func (o NotebookOutput) Md5() pulumi.StringPtrOutput {
 }
 
 // Unique identifier for a NOTEBOOK
-//
-// Deprecated: Use id argument to retrieve object id
 func (o NotebookOutput) ObjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.IntOutput { return v.ObjectId }).(pulumi.IntOutput)
 }

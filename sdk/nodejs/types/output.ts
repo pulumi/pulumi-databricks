@@ -503,6 +503,7 @@ export interface GetJobJobSettingsSettings {
     name?: string;
     newCluster?: outputs.GetJobJobSettingsSettingsNewCluster;
     notebookTask?: outputs.GetJobJobSettingsSettingsNotebookTask;
+    notificationSettings?: outputs.GetJobJobSettingsSettingsNotificationSettings;
     pipelineTask?: outputs.GetJobJobSettingsSettingsPipelineTask;
     pythonWheelTask?: outputs.GetJobJobSettingsSettingsPythonWheelTask;
     queue?: outputs.GetJobJobSettingsSettingsQueue;
@@ -883,6 +884,11 @@ export interface GetJobJobSettingsSettingsNotebookTask {
     baseParameters?: {[key: string]: any};
     notebookPath: string;
     source?: string;
+}
+
+export interface GetJobJobSettingsSettingsNotificationSettings {
+    noAlertForCanceledRuns?: boolean;
+    noAlertForSkippedRuns?: boolean;
 }
 
 export interface GetJobJobSettingsSettingsPipelineTask {
@@ -1427,7 +1433,7 @@ export interface JobDbtTask {
 export interface JobEmailNotifications {
     alertOnLastAttempt?: boolean;
     /**
-     * (Bool) don't send alert for skipped runs.
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
      */
     noAlertForSkippedRuns?: boolean;
     /**
@@ -1832,6 +1838,17 @@ export interface JobNotebookTask {
     source?: string;
 }
 
+export interface JobNotificationSettings {
+    /**
+     * (Bool) don't send alert for cancelled runs.
+     */
+    noAlertForCanceledRuns?: boolean;
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
+    noAlertForSkippedRuns?: boolean;
+}
+
 export interface JobPipelineTask {
     /**
      * The pipeline's unique ID.
@@ -1992,7 +2009,7 @@ export interface JobTaskDependsOn {
 export interface JobTaskEmailNotifications {
     alertOnLastAttempt?: boolean;
     /**
-     * (Bool) don't send alert for skipped runs.
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
      */
     noAlertForSkippedRuns?: boolean;
     /**

@@ -55,22 +55,14 @@ public final class NotebookState extends com.pulumi.resources.ResourceArgs {
     /**
      * Unique identifier for a NOTEBOOK
      * 
-     * @deprecated
-     * Use id argument to retrieve object id
-     * 
      */
-    @Deprecated /* Use id argument to retrieve object id */
     @Import(name="objectId")
     private @Nullable Output<Integer> objectId;
 
     /**
      * @return Unique identifier for a NOTEBOOK
      * 
-     * @deprecated
-     * Use id argument to retrieve object id
-     * 
      */
-    @Deprecated /* Use id argument to retrieve object id */
     public Optional<Output<Integer>> objectId() {
         return Optional.ofNullable(this.objectId);
     }
@@ -224,11 +216,7 @@ public final class NotebookState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use id argument to retrieve object id
-         * 
          */
-        @Deprecated /* Use id argument to retrieve object id */
         public Builder objectId(@Nullable Output<Integer> objectId) {
             $.objectId = objectId;
             return this;
@@ -239,11 +227,7 @@ public final class NotebookState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use id argument to retrieve object id
-         * 
          */
-        @Deprecated /* Use id argument to retrieve object id */
         public Builder objectId(Integer objectId) {
             return objectId(Output.of(objectId));
         }

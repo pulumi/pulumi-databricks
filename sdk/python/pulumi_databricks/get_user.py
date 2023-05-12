@@ -138,6 +138,10 @@ def get_user(user_id: Optional[str] = None,
              user_name: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_user.
+
     ## Example Usage
 
     Adding user to administrative group
@@ -193,6 +197,10 @@ def get_user_output(user_id: Optional[pulumi.Input[Optional[str]]] = None,
                     user_name: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_user.
+
     ## Example Usage
 
     Adding user to administrative group

@@ -50,8 +50,6 @@ export class Notebook extends pulumi.CustomResource {
     public readonly md5!: pulumi.Output<string | undefined>;
     /**
      * Unique identifier for a NOTEBOOK
-     *
-     * @deprecated Use id argument to retrieve object id
      */
     public readonly objectId!: pulumi.Output<number>;
     /**
@@ -126,8 +124,6 @@ export interface NotebookState {
     md5?: pulumi.Input<string>;
     /**
      * Unique identifier for a NOTEBOOK
-     *
-     * @deprecated Use id argument to retrieve object id
      */
     objectId?: pulumi.Input<number>;
     /**
@@ -161,8 +157,6 @@ export interface NotebookArgs {
     md5?: pulumi.Input<string>;
     /**
      * Unique identifier for a NOTEBOOK
-     *
-     * @deprecated Use id argument to retrieve object id
      */
     objectId?: pulumi.Input<number>;
     /**

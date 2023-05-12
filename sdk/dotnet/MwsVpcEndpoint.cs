@@ -32,6 +32,9 @@ namespace Pulumi.Databricks
         [Output("awsEndpointServiceId")]
         public Output<string> AwsEndpointServiceId { get; private set; } = null!;
 
+        /// <summary>
+        /// ID of configured aws_vpc_endpoint
+        /// </summary>
         [Output("awsVpcEndpointId")]
         public Output<string?> AwsVpcEndpointId { get; private set; } = null!;
 
@@ -129,6 +132,9 @@ namespace Pulumi.Databricks
         [Input("awsEndpointServiceId")]
         public Input<string>? AwsEndpointServiceId { get; set; }
 
+        /// <summary>
+        /// ID of configured aws_vpc_endpoint
+        /// </summary>
         [Input("awsVpcEndpointId")]
         public Input<string>? AwsVpcEndpointId { get; set; }
 
@@ -188,6 +194,9 @@ namespace Pulumi.Databricks
         [Input("awsEndpointServiceId")]
         public Input<string>? AwsEndpointServiceId { get; set; }
 
+        /// <summary>
+        /// ID of configured aws_vpc_endpoint
+        /// </summary>
         [Input("awsVpcEndpointId")]
         public Input<string>? AwsVpcEndpointId { get; set; }
 

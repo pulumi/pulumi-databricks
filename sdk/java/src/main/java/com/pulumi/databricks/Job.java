@@ -18,6 +18,7 @@ import com.pulumi.databricks.outputs.JobJobCluster;
 import com.pulumi.databricks.outputs.JobLibrary;
 import com.pulumi.databricks.outputs.JobNewCluster;
 import com.pulumi.databricks.outputs.JobNotebookTask;
+import com.pulumi.databricks.outputs.JobNotificationSettings;
 import com.pulumi.databricks.outputs.JobPipelineTask;
 import com.pulumi.databricks.outputs.JobPythonWheelTask;
 import com.pulumi.databricks.outputs.JobQueue;
@@ -210,6 +211,12 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<JobNotebookTask>> notebookTask() {
         return Codegen.optional(this.notebookTask);
+    }
+    @Export(name="notificationSettings", type=JobNotificationSettings.class, parameters={})
+    private Output</* @Nullable */ JobNotificationSettings> notificationSettings;
+
+    public Output<Optional<JobNotificationSettings>> notificationSettings() {
+        return Codegen.optional(this.notificationSettings);
     }
     @Export(name="pipelineTask", type=JobPipelineTask.class, parameters={})
     private Output</* @Nullable */ JobPipelineTask> pipelineTask;

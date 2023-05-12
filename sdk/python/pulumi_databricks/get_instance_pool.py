@@ -71,6 +71,10 @@ def get_instance_pool(name: Optional[str] = None,
                       pool_info: Optional[pulumi.InputType['GetInstancePoolPoolInfoArgs']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancePoolResult:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_instance_pool.
+
     ## Example Usage
 
     Referring to an instance pool by name:
@@ -105,6 +109,10 @@ def get_instance_pool_output(name: Optional[pulumi.Input[str]] = None,
                              pool_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetInstancePoolPoolInfoArgs']]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancePoolResult]:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_instance_pool.
+
     ## Example Usage
 
     Referring to an instance pool by name:

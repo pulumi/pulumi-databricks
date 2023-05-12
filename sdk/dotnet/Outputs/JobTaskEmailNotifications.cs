@@ -15,7 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly bool? AlertOnLastAttempt;
         /// <summary>
-        /// (Bool) don't send alert for skipped runs.
+        /// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         /// </summary>
         public readonly bool? NoAlertForSkippedRuns;
         /// <summary>

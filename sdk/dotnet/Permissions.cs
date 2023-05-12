@@ -156,6 +156,12 @@ namespace Pulumi.Databricks
         [Output("sqlQueryId")]
         public Output<string?> SqlQueryId { get; private set; } = null!;
 
+        [Output("workspaceFileId")]
+        public Output<string?> WorkspaceFileId { get; private set; } = null!;
+
+        [Output("workspaceFilePath")]
+        public Output<string?> WorkspaceFilePath { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Permissions resource with the given unique name, arguments, and options.
@@ -324,6 +330,12 @@ namespace Pulumi.Databricks
         [Input("sqlQueryId")]
         public Input<string>? SqlQueryId { get; set; }
 
+        [Input("workspaceFileId")]
+        public Input<string>? WorkspaceFileId { get; set; }
+
+        [Input("workspaceFilePath")]
+        public Input<string>? WorkspaceFilePath { get; set; }
+
         public PermissionsArgs()
         {
         }
@@ -453,6 +465,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("sqlQueryId")]
         public Input<string>? SqlQueryId { get; set; }
+
+        [Input("workspaceFileId")]
+        public Input<string>? WorkspaceFileId { get; set; }
+
+        [Input("workspaceFilePath")]
+        public Input<string>? WorkspaceFilePath { get; set; }
 
         public PermissionsState()
         {
