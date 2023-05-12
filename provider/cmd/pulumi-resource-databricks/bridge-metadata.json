@@ -475,6 +475,9 @@
                     "notebook_task": {
                         "maxItemsOne": true
                     },
+                    "notification_settings": {
+                        "maxItemsOne": true
+                    },
                     "pipeline_task": {
                         "maxItemsOne": true
                     },
@@ -1443,6 +1446,9 @@
             },
             "databricks_workspace_conf": {
                 "current": "databricks:index/workspaceConf:WorkspaceConf"
+            },
+            "databricks_workspace_file": {
+                "current": "databricks:index/workspaceFile:WorkspaceFile"
             }
         },
         "datasources": {
@@ -1616,7 +1622,8 @@
             "databricks:index/user:User": "databricks_user",
             "databricks:index/userInstanceProfile:UserInstanceProfile": "databricks_user_instance_profile",
             "databricks:index/userRole:UserRole": "databricks_user_role",
-            "databricks:index/workspaceConf:WorkspaceConf": "databricks_workspace_conf"
+            "databricks:index/workspaceConf:WorkspaceConf": "databricks_workspace_conf",
+            "databricks:index/workspaceFile:WorkspaceFile": "databricks_workspace_file"
         },
         "functions": {
             "databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy": "databricks_aws_assume_role_policy",
@@ -1918,6 +1925,10 @@
             "databricks:index/JobNotebookTask:JobNotebookTask": {
                 "baseParameters": "base_parameters",
                 "notebookPath": "notebook_path"
+            },
+            "databricks:index/JobNotificationSettings:JobNotificationSettings": {
+                "noAlertForCanceledRuns": "no_alert_for_canceled_runs",
+                "noAlertForSkippedRuns": "no_alert_for_skipped_runs"
             },
             "databricks:index/JobPipelineTask:JobPipelineTask": {
                 "pipelineId": "pipeline_id"
@@ -2698,6 +2709,7 @@
                 "minRetryIntervalMillis": "min_retry_interval_millis",
                 "newCluster": "new_cluster",
                 "notebookTask": "notebook_task",
+                "notificationSettings": "notification_settings",
                 "pipelineTask": "pipeline_task",
                 "pythonWheelTask": "python_wheel_task",
                 "retryOnTimeout": "retry_on_timeout",
@@ -2886,6 +2898,10 @@
             "databricks:index/getJobJobSettingsSettingsNotebookTask:getJobJobSettingsSettingsNotebookTask": {
                 "baseParameters": "base_parameters",
                 "notebookPath": "notebook_path"
+            },
+            "databricks:index/getJobJobSettingsSettingsNotificationSettings:getJobJobSettingsSettingsNotificationSettings": {
+                "noAlertForCanceledRuns": "no_alert_for_canceled_runs",
+                "noAlertForSkippedRuns": "no_alert_for_skipped_runs"
             },
             "databricks:index/getJobJobSettingsSettingsPipelineTask:getJobJobSettingsSettingsPipelineTask": {
                 "pipelineId": "pipeline_id"
@@ -3237,6 +3253,7 @@
                 "minRetryIntervalMillis": "min_retry_interval_millis",
                 "newCluster": "new_cluster",
                 "notebookTask": "notebook_task",
+                "notificationSettings": "notification_settings",
                 "pipelineTask": "pipeline_task",
                 "pythonWheelTask": "python_wheel_task",
                 "retryOnTimeout": "retry_on_timeout",
@@ -3433,7 +3450,9 @@
                 "sqlAlertId": "sql_alert_id",
                 "sqlDashboardId": "sql_dashboard_id",
                 "sqlEndpointId": "sql_endpoint_id",
-                "sqlQueryId": "sql_query_id"
+                "sqlQueryId": "sql_query_id",
+                "workspaceFileId": "workspace_file_id",
+                "workspaceFilePath": "workspace_file_path"
             },
             "databricks:index/pipeline:Pipeline": {
                 "allowDuplicateNames": "allow_duplicate_names",
@@ -3593,6 +3612,10 @@
             },
             "databricks:index/workspaceConf:WorkspaceConf": {
                 "customConfig": "custom_config"
+            },
+            "databricks:index/workspaceFile:WorkspaceFile": {
+                "contentBase64": "content_base64",
+                "objectId": "object_id"
             },
             "databricks:index:Provider": {
                 "accountId": "account_id",
