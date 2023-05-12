@@ -85,6 +85,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly newCluster!: pulumi.Output<outputs.JobNewCluster | undefined>;
     public readonly notebookTask!: pulumi.Output<outputs.JobNotebookTask | undefined>;
+    public readonly notificationSettings!: pulumi.Output<outputs.JobNotificationSettings | undefined>;
     public readonly pipelineTask!: pulumi.Output<outputs.JobPipelineTask | undefined>;
     public readonly pythonWheelTask!: pulumi.Output<outputs.JobPythonWheelTask | undefined>;
     public readonly queue!: pulumi.Output<outputs.JobQueue | undefined>;
@@ -143,6 +144,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["newCluster"] = state ? state.newCluster : undefined;
             resourceInputs["notebookTask"] = state ? state.notebookTask : undefined;
+            resourceInputs["notificationSettings"] = state ? state.notificationSettings : undefined;
             resourceInputs["pipelineTask"] = state ? state.pipelineTask : undefined;
             resourceInputs["pythonWheelTask"] = state ? state.pythonWheelTask : undefined;
             resourceInputs["queue"] = state ? state.queue : undefined;
@@ -174,6 +176,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["newCluster"] = args ? args.newCluster : undefined;
             resourceInputs["notebookTask"] = args ? args.notebookTask : undefined;
+            resourceInputs["notificationSettings"] = args ? args.notificationSettings : undefined;
             resourceInputs["pipelineTask"] = args ? args.pipelineTask : undefined;
             resourceInputs["pythonWheelTask"] = args ? args.pythonWheelTask : undefined;
             resourceInputs["queue"] = args ? args.queue : undefined;
@@ -240,6 +243,7 @@ export interface JobState {
      */
     newCluster?: pulumi.Input<inputs.JobNewCluster>;
     notebookTask?: pulumi.Input<inputs.JobNotebookTask>;
+    notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
     pipelineTask?: pulumi.Input<inputs.JobPipelineTask>;
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
     queue?: pulumi.Input<inputs.JobQueue>;
@@ -317,6 +321,7 @@ export interface JobArgs {
      */
     newCluster?: pulumi.Input<inputs.JobNewCluster>;
     notebookTask?: pulumi.Input<inputs.JobNotebookTask>;
+    notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
     pipelineTask?: pulumi.Input<inputs.JobPipelineTask>;
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
     queue?: pulumi.Input<inputs.JobQueue>;

@@ -69,6 +69,10 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
                            display_name_contains: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalsResult:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -103,6 +107,10 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
                                   display_name_contains: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePrincipalsResult]:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
+
     ## Related Resources
 
     The following resources are used in the same context:

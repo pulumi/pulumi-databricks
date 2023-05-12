@@ -11,6 +11,60 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances. An instance pool reduces cluster start and auto-scaling times by maintaining a set of idle, ready-to-use cloud instances. When a cluster attached to a pool needs an instance, it first attempts to allocate one of the pool’s idle instances. If the pool has no idle instances, it expands by allocating a new instance from the instance provider in order to accommodate the cluster’s request. When a cluster releases an instance, it returns to the pool and is free for another cluster to use. Only clusters attached to a pool can use that pool’s idle instances.
+//
+// > **Note** It is important to know that different cloud service providers have different `nodeTypeId`, `diskSpecs` and potentially other configurations.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			smallest, err := databricks.GetNodeType(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewInstancePool(ctx, "smallestNodes", &databricks.InstancePoolArgs{
+//				InstancePoolName: pulumi.String("Smallest Nodes"),
+//				MinIdleInstances: pulumi.Int(0),
+//				MaxCapacity:      pulumi.Int(300),
+//				NodeTypeId:       *pulumi.String(smallest.Id),
+//				AwsAttributes: &databricks.InstancePoolAwsAttributesArgs{
+//					Availability:        pulumi.String("ON_DEMAND"),
+//					ZoneId:              pulumi.String("us-east-1a"),
+//					SpotBidPricePercent: pulumi.Int(100),
+//				},
+//				IdleInstanceAutoterminationMinutes: pulumi.Int(10),
+//				DiskSpec: &databricks.InstancePoolDiskSpecArgs{
+//					DiskType: &databricks.InstancePoolDiskSpecDiskTypeArgs{
+//						EbsVolumeType: pulumi.String("GENERAL_PURPOSE_SSD"),
+//					},
+//					DiskSize:  pulumi.Int(80),
+//					DiskCount: pulumi.Int(1),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Access Control
+//
+// * Group and User can control which groups or individual users can create instance pools.
+// * Permissions can control which groups or individual users can *Manage* or *Attach to* individual instance pools.
+//
 // ## Import
 //
 // # The resource instance pool can be imported using it's idbash
@@ -25,7 +79,7 @@ type InstancePool struct {
 
 	AwsAttributes   InstancePoolAwsAttributesPtrOutput   `pulumi:"awsAttributes"`
 	AzureAttributes InstancePoolAzureAttributesPtrOutput `pulumi:"azureAttributes"`
-	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
 	CustomTags pulumi.MapOutput              `pulumi:"customTags"`
 	DiskSpec   InstancePoolDiskSpecPtrOutput `pulumi:"diskSpec"`
 	// (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
@@ -85,7 +139,7 @@ func GetInstancePool(ctx *pulumi.Context,
 type instancePoolState struct {
 	AwsAttributes   *InstancePoolAwsAttributes   `pulumi:"awsAttributes"`
 	AzureAttributes *InstancePoolAzureAttributes `pulumi:"azureAttributes"`
-	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
 	CustomTags map[string]interface{} `pulumi:"customTags"`
 	DiskSpec   *InstancePoolDiskSpec  `pulumi:"diskSpec"`
 	// (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
@@ -111,7 +165,7 @@ type instancePoolState struct {
 type InstancePoolState struct {
 	AwsAttributes   InstancePoolAwsAttributesPtrInput
 	AzureAttributes InstancePoolAzureAttributesPtrInput
-	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
 	CustomTags pulumi.MapInput
 	DiskSpec   InstancePoolDiskSpecPtrInput
 	// (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
@@ -141,7 +195,7 @@ func (InstancePoolState) ElementType() reflect.Type {
 type instancePoolArgs struct {
 	AwsAttributes   *InstancePoolAwsAttributes   `pulumi:"awsAttributes"`
 	AzureAttributes *InstancePoolAzureAttributes `pulumi:"azureAttributes"`
-	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
 	CustomTags map[string]interface{} `pulumi:"customTags"`
 	DiskSpec   *InstancePoolDiskSpec  `pulumi:"diskSpec"`
 	// (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
@@ -168,7 +222,7 @@ type instancePoolArgs struct {
 type InstancePoolArgs struct {
 	AwsAttributes   InstancePoolAwsAttributesPtrInput
 	AzureAttributes InstancePoolAzureAttributesPtrInput
-	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+	// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
 	CustomTags pulumi.MapInput
 	DiskSpec   InstancePoolDiskSpecPtrInput
 	// (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
@@ -286,7 +340,7 @@ func (o InstancePoolOutput) AzureAttributes() InstancePoolAzureAttributesPtrOutp
 	return o.ApplyT(func(v *InstancePool) InstancePoolAzureAttributesPtrOutput { return v.AzureAttributes }).(InstancePoolAzureAttributesPtrOutput)
 }
 
-// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
 func (o InstancePoolOutput) CustomTags() pulumi.MapOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.MapOutput { return v.CustomTags }).(pulumi.MapOutput)
 }

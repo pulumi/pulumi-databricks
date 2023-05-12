@@ -67,6 +67,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("notebookTask")]
         public Input<Inputs.GetJobJobSettingsSettingsNotebookTaskInputArgs>? NotebookTask { get; set; }
 
+        [Input("notificationSettings")]
+        public Input<Inputs.GetJobJobSettingsSettingsNotificationSettingsInputArgs>? NotificationSettings { get; set; }
+
         [Input("pipelineTask")]
         public Input<Inputs.GetJobJobSettingsSettingsPipelineTaskInputArgs>? PipelineTask { get; set; }
 

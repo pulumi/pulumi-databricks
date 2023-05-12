@@ -34,6 +34,8 @@ class MwsNetworksArgs:
         :param pulumi.Input[str] network_name: name under which this network is registered
         :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
         :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
@@ -131,6 +133,9 @@ class MwsNetworksArgs:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        ids of aws_security_group
+        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -140,6 +145,9 @@ class MwsNetworksArgs:
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        ids of aws_subnet
+        """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
@@ -216,6 +224,8 @@ class _MwsNetworksState:
         :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
         :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
@@ -315,6 +325,9 @@ class _MwsNetworksState:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        ids of aws_security_group
+        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -324,6 +337,9 @@ class _MwsNetworksState:
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        ids of aws_subnet
+        """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
@@ -398,6 +414,69 @@ class MwsNetworks(pulumi.CustomResource):
                  workspace_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### Creating a Databricks on AWS workspace
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        databricks_account_id = config.require_object("databricksAccountId")
+        available = aws.get_availability_zones()
+        this = databricks.MwsNetworks("this",
+            account_id=databricks_account_id,
+            network_name=f"{local['prefix']}-network",
+            security_group_ids=[module["vpc"]["default_security_group_id"]],
+            subnet_ids=module["vpc"]["private_subnets"],
+            vpc_id=module["vpc"]["vpc_id"],
+            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        ```
+
+        In order to create a VPC [that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the MwsNetworks resource. For example:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.MwsNetworks("this",
+            account_id=var["databricks_account_id"],
+            network_name=f"{local['prefix']}-network",
+            security_group_ids=[module["vpc"]["default_security_group_id"]],
+            subnet_ids=module["vpc"]["private_subnets"],
+            vpc_id=module["vpc"]["vpc_id"],
+            vpc_endpoints=databricks.MwsNetworksVpcEndpointsArgs(
+                dataplane_relays=[databricks_mws_vpc_endpoint["relay"]["vpc_endpoint_id"]],
+                rest_apis=[databricks_mws_vpc_endpoint["workspace"]["vpc_endpoint_id"]],
+            ),
+            opts=pulumi.ResourceOptions(provider=databricks["mws"],
+                depends_on=[
+                    aws_vpc_endpoint["workspace"],
+                    aws_vpc_endpoint["relay"],
+                ]))
+        ```
+        ## Modifying networks on running workspaces (AWS only)
+
+        Due to specifics of platform APIs, changing any attribute of network configuration would cause `MwsNetworks` to be re-created - deleted & added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:
+
+        1. Create a new `MwsNetworks` resource.
+        2. Update the `MwsWorkspaces` to point to the new `network_id`.
+        3. Delete the old `MwsNetworks` resource.
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * Provisioning Databricks on AWS guide.
+        * Provisioning Databricks on AWS with PrivateLink guide.
+        * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide.
+        * Provisioning Databricks on GCP guide.
+        * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+        * MwsVpcEndpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
+        * MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect] (https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
+        * MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
         ## Import
 
         -> **Note** Importing this resource is not currently supported.
@@ -408,6 +487,8 @@ class MwsNetworks(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
         :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
@@ -420,6 +501,69 @@ class MwsNetworks(pulumi.CustomResource):
                  args: MwsNetworksArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### Creating a Databricks on AWS workspace
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        databricks_account_id = config.require_object("databricksAccountId")
+        available = aws.get_availability_zones()
+        this = databricks.MwsNetworks("this",
+            account_id=databricks_account_id,
+            network_name=f"{local['prefix']}-network",
+            security_group_ids=[module["vpc"]["default_security_group_id"]],
+            subnet_ids=module["vpc"]["private_subnets"],
+            vpc_id=module["vpc"]["vpc_id"],
+            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        ```
+
+        In order to create a VPC [that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the MwsNetworks resource. For example:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.MwsNetworks("this",
+            account_id=var["databricks_account_id"],
+            network_name=f"{local['prefix']}-network",
+            security_group_ids=[module["vpc"]["default_security_group_id"]],
+            subnet_ids=module["vpc"]["private_subnets"],
+            vpc_id=module["vpc"]["vpc_id"],
+            vpc_endpoints=databricks.MwsNetworksVpcEndpointsArgs(
+                dataplane_relays=[databricks_mws_vpc_endpoint["relay"]["vpc_endpoint_id"]],
+                rest_apis=[databricks_mws_vpc_endpoint["workspace"]["vpc_endpoint_id"]],
+            ),
+            opts=pulumi.ResourceOptions(provider=databricks["mws"],
+                depends_on=[
+                    aws_vpc_endpoint["workspace"],
+                    aws_vpc_endpoint["relay"],
+                ]))
+        ```
+        ## Modifying networks on running workspaces (AWS only)
+
+        Due to specifics of platform APIs, changing any attribute of network configuration would cause `MwsNetworks` to be re-created - deleted & added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:
+
+        1. Create a new `MwsNetworks` resource.
+        2. Update the `MwsWorkspaces` to point to the new `network_id`.
+        3. Delete the old `MwsNetworks` resource.
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * Provisioning Databricks on AWS guide.
+        * Provisioning Databricks on AWS with PrivateLink guide.
+        * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide.
+        * Provisioning Databricks on GCP guide.
+        * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+        * MwsVpcEndpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
+        * MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect] (https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
+        * MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
         ## Import
 
         -> **Note** Importing this resource is not currently supported.
@@ -511,6 +655,8 @@ class MwsNetworks(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
         :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
@@ -579,11 +725,17 @@ class MwsNetworks(pulumi.CustomResource):
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        ids of aws_security_group
+        """
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        ids of aws_subnet
+        """
         return pulumi.get(self, "subnet_ids")
 
     @property

@@ -93,6 +93,9 @@ namespace Pulumi.Databricks
         [Output("notebookTask")]
         public Output<Outputs.JobNotebookTask?> NotebookTask { get; private set; } = null!;
 
+        [Output("notificationSettings")]
+        public Output<Outputs.JobNotificationSettings?> NotificationSettings { get; private set; } = null!;
+
         [Output("pipelineTask")]
         public Output<Outputs.JobPipelineTask?> PipelineTask { get; private set; } = null!;
 
@@ -280,6 +283,9 @@ namespace Pulumi.Databricks
         [Input("notebookTask")]
         public Input<Inputs.JobNotebookTaskArgs>? NotebookTask { get; set; }
 
+        [Input("notificationSettings")]
+        public Input<Inputs.JobNotificationSettingsArgs>? NotificationSettings { get; set; }
+
         [Input("pipelineTask")]
         public Input<Inputs.JobPipelineTaskArgs>? PipelineTask { get; set; }
 
@@ -432,6 +438,9 @@ namespace Pulumi.Databricks
 
         [Input("notebookTask")]
         public Input<Inputs.JobNotebookTaskGetArgs>? NotebookTask { get; set; }
+
+        [Input("notificationSettings")]
+        public Input<Inputs.JobNotificationSettingsGetArgs>? NotificationSettings { get; set; }
 
         [Input("pipelineTask")]
         public Input<Inputs.JobPipelineTaskGetArgs>? PipelineTask { get; set; }

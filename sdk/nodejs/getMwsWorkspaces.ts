@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Lists all databricks.MwsWorkspaces in Databricks Account.
+ *
+ * > **Note** `accountId` provider configuration property is required for this resource to work.
+ *
+ * ## Example Usage
+ *
+ * Listing all workspaces in
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getMwsWorkspaces({});
+ * export const allMwsWorkspaces = all.then(all => all.ids);
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+ * * databricks.MetastoreAssignment
+ */
 export function getMwsWorkspaces(args?: GetMwsWorkspacesArgs, opts?: pulumi.InvokeOptions): Promise<GetMwsWorkspacesResult> {
     args = args || {};
 
@@ -36,6 +61,31 @@ export interface GetMwsWorkspacesResult {
      */
     readonly ids: {[key: string]: any};
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Lists all databricks.MwsWorkspaces in Databricks Account.
+ *
+ * > **Note** `accountId` provider configuration property is required for this resource to work.
+ *
+ * ## Example Usage
+ *
+ * Listing all workspaces in
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getMwsWorkspaces({});
+ * export const allMwsWorkspaces = all.then(all => all.ids);
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+ * * databricks.MetastoreAssignment
+ */
 export function getMwsWorkspacesOutput(args?: GetMwsWorkspacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMwsWorkspacesResult> {
     return pulumi.output(args).apply((a: any) => getMwsWorkspaces(a, opts))
 }

@@ -11,6 +11,114 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+// ### Creating a Databricks on AWS workspace
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			_, err := aws.GetAvailabilityZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMwsNetworks(ctx, "this", &databricks.MwsNetworksArgs{
+//				AccountId:   pulumi.Any(databricksAccountId),
+//				NetworkName: pulumi.String(fmt.Sprintf("%v-network", local.Prefix)),
+//				SecurityGroupIds: pulumi.StringArray{
+//					module.Vpc.Default_security_group_id,
+//				},
+//				SubnetIds: pulumi.Any(module.Vpc.Private_subnets),
+//				VpcId:     pulumi.Any(module.Vpc.Vpc_id),
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// In order to create a VPC [that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) you would need to add the `vpcEndpointId` Attributes from mwsVpcEndpoint resources into the MwsNetworks resource. For example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMwsNetworks(ctx, "this", &databricks.MwsNetworksArgs{
+//				AccountId:   pulumi.Any(_var.Databricks_account_id),
+//				NetworkName: pulumi.String(fmt.Sprintf("%v-network", local.Prefix)),
+//				SecurityGroupIds: pulumi.StringArray{
+//					module.Vpc.Default_security_group_id,
+//				},
+//				SubnetIds: pulumi.Any(module.Vpc.Private_subnets),
+//				VpcId:     pulumi.Any(module.Vpc.Vpc_id),
+//				VpcEndpoints: &databricks.MwsNetworksVpcEndpointsArgs{
+//					DataplaneRelays: pulumi.StringArray{
+//						databricks_mws_vpc_endpoint.Relay.Vpc_endpoint_id,
+//					},
+//					RestApis: pulumi.StringArray{
+//						databricks_mws_vpc_endpoint.Workspace.Vpc_endpoint_id,
+//					},
+//				},
+//			}, pulumi.Provider(databricks.Mws), pulumi.DependsOn([]pulumi.Resource{
+//				aws_vpc_endpoint.Workspace,
+//				aws_vpc_endpoint.Relay,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Modifying networks on running workspaces (AWS only)
+//
+// Due to specifics of platform APIs, changing any attribute of network configuration would cause `MwsNetworks` to be re-created - deleted & added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:
+//
+// 1. Create a new `MwsNetworks` resource.
+// 2. Update the `MwsWorkspaces` to point to the new `networkId`.
+// 3. Delete the old `MwsNetworks` resource.
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Provisioning Databricks on AWS guide.
+// * Provisioning Databricks on AWS with PrivateLink guide.
+// * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide.
+// * Provisioning Databricks on GCP guide.
+// * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+// * MwsVpcEndpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
+// * MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect] (https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
+// * MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+//
 // ## Import
 //
 // -> **Note** Importing this resource is not currently supported.
@@ -26,9 +134,11 @@ type MwsNetworks struct {
 	// (String) id of network to be used for MwsWorkspaces resource.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
 	// name under which this network is registered
-	NetworkName      pulumi.StringOutput      `pulumi:"networkName"`
+	NetworkName pulumi.StringOutput `pulumi:"networkName"`
+	// ids of aws_security_group
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	SubnetIds        pulumi.StringArrayOutput `pulumi:"subnetIds"`
+	// ids of aws_subnet
+	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints MwsNetworksVpcEndpointsOutput `pulumi:"vpcEndpoints"`
 	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
@@ -90,9 +200,11 @@ type mwsNetworksState struct {
 	// (String) id of network to be used for MwsWorkspaces resource.
 	NetworkId *string `pulumi:"networkId"`
 	// name under which this network is registered
-	NetworkName      *string  `pulumi:"networkName"`
+	NetworkName *string `pulumi:"networkName"`
+	// ids of aws_security_group
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	SubnetIds        []string `pulumi:"subnetIds"`
+	// ids of aws_subnet
+	SubnetIds []string `pulumi:"subnetIds"`
 	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints *MwsNetworksVpcEndpoints `pulumi:"vpcEndpoints"`
 	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
@@ -113,9 +225,11 @@ type MwsNetworksState struct {
 	// (String) id of network to be used for MwsWorkspaces resource.
 	NetworkId pulumi.StringPtrInput
 	// name under which this network is registered
-	NetworkName      pulumi.StringPtrInput
+	NetworkName pulumi.StringPtrInput
+	// ids of aws_security_group
 	SecurityGroupIds pulumi.StringArrayInput
-	SubnetIds        pulumi.StringArrayInput
+	// ids of aws_subnet
+	SubnetIds pulumi.StringArrayInput
 	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints MwsNetworksVpcEndpointsPtrInput
 	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
@@ -140,9 +254,11 @@ type mwsNetworksArgs struct {
 	// (String) id of network to be used for MwsWorkspaces resource.
 	NetworkId *string `pulumi:"networkId"`
 	// name under which this network is registered
-	NetworkName      string   `pulumi:"networkName"`
+	NetworkName string `pulumi:"networkName"`
+	// ids of aws_security_group
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	SubnetIds        []string `pulumi:"subnetIds"`
+	// ids of aws_subnet
+	SubnetIds []string `pulumi:"subnetIds"`
 	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints *MwsNetworksVpcEndpoints `pulumi:"vpcEndpoints"`
 	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
@@ -164,9 +280,11 @@ type MwsNetworksArgs struct {
 	// (String) id of network to be used for MwsWorkspaces resource.
 	NetworkId pulumi.StringPtrInput
 	// name under which this network is registered
-	NetworkName      pulumi.StringInput
+	NetworkName pulumi.StringInput
+	// ids of aws_security_group
 	SecurityGroupIds pulumi.StringArrayInput
-	SubnetIds        pulumi.StringArrayInput
+	// ids of aws_subnet
+	SubnetIds pulumi.StringArrayInput
 	// mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
 	VpcEndpoints MwsNetworksVpcEndpointsPtrInput
 	// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
@@ -292,10 +410,12 @@ func (o MwsNetworksOutput) NetworkName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNetworks) pulumi.StringOutput { return v.NetworkName }).(pulumi.StringOutput)
 }
 
+// ids of aws_security_group
 func (o MwsNetworksOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MwsNetworks) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
+// ids of aws_subnet
 func (o MwsNetworksOutput) SubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MwsNetworks) pulumi.StringArrayOutput { return v.SubnetIds }).(pulumi.StringArrayOutput)
 }

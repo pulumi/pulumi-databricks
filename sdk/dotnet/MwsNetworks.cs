@@ -10,6 +10,104 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// ## Example Usage
+    /// ### Creating a Databricks on AWS workspace
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     var available = Aws.GetAvailabilityZones.Invoke();
+    /// 
+    ///     var @this = new Databricks.MwsNetworks("this", new()
+    ///     {
+    ///         AccountId = databricksAccountId,
+    ///         NetworkName = $"{local.Prefix}-network",
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             module.Vpc.Default_security_group_id,
+    ///         },
+    ///         SubnetIds = module.Vpc.Private_subnets,
+    ///         VpcId = module.Vpc.Vpc_id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Mws,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// In order to create a VPC [that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the databricks.MwsNetworks resource. For example:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.MwsNetworks("this", new()
+    ///     {
+    ///         AccountId = @var.Databricks_account_id,
+    ///         NetworkName = $"{local.Prefix}-network",
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             module.Vpc.Default_security_group_id,
+    ///         },
+    ///         SubnetIds = module.Vpc.Private_subnets,
+    ///         VpcId = module.Vpc.Vpc_id,
+    ///         VpcEndpoints = new Databricks.Inputs.MwsNetworksVpcEndpointsArgs
+    ///         {
+    ///             DataplaneRelays = new[]
+    ///             {
+    ///                 databricks_mws_vpc_endpoint.Relay.Vpc_endpoint_id,
+    ///             },
+    ///             RestApis = new[]
+    ///             {
+    ///                 databricks_mws_vpc_endpoint.Workspace.Vpc_endpoint_id,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = databricks.Mws,
+    ///         DependsOn = new[]
+    ///         {
+    ///             aws_vpc_endpoint.Workspace,
+    ///             aws_vpc_endpoint.Relay,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Modifying networks on running workspaces (AWS only)
+    /// 
+    /// Due to specifics of platform APIs, changing any attribute of network configuration would cause `databricks.MwsNetworks` to be re-created - deleted &amp; added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:
+    /// 
+    /// 1. Create a new `databricks.MwsNetworks` resource.
+    /// 2. Update the `databricks.MwsWorkspaces` to point to the new `network_id`.
+    /// 3. Delete the old `databricks.MwsNetworks` resource.
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are used in the same context:
+    /// 
+    /// * Provisioning Databricks on AWS guide.
+    /// * Provisioning Databricks on AWS with PrivateLink guide.
+    /// * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide.
+    /// * Provisioning Databricks on GCP guide.
+    /// * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+    /// * databricks.MwsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
+    /// * databricks.MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect] (https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
+    /// * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+    /// 
     /// ## Import
     /// 
     /// -&gt; **Note** Importing this resource is not currently supported.
@@ -47,9 +145,15 @@ namespace Pulumi.Databricks
         [Output("networkName")]
         public Output<string> NetworkName { get; private set; } = null!;
 
+        /// <summary>
+        /// ids of aws_security_group
+        /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
+        /// <summary>
+        /// ids of aws_subnet
+        /// </summary>
         [Output("subnetIds")]
         public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
 
@@ -174,6 +278,10 @@ namespace Pulumi.Databricks
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// ids of aws_security_group
+        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
@@ -182,6 +290,10 @@ namespace Pulumi.Databricks
 
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;
+
+        /// <summary>
+        /// ids of aws_subnet
+        /// </summary>
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());
@@ -267,6 +379,10 @@ namespace Pulumi.Databricks
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// ids of aws_security_group
+        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
@@ -275,6 +391,10 @@ namespace Pulumi.Databricks
 
         [Input("subnetIds")]
         private InputList<string>? _subnetIds;
+
+        /// <summary>
+        /// ids of aws_subnet
+        /// </summary>
         public InputList<string> SubnetIds
         {
             get => _subnetIds ?? (_subnetIds = new InputList<string>());

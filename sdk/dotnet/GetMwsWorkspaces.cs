@@ -11,9 +11,85 @@ namespace Pulumi.Databricks
 {
     public static class GetMwsWorkspaces
     {
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Lists all databricks.MwsWorkspaces in Databricks Account.
+        /// 
+        /// &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Listing all workspaces in 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetMwsWorkspaces.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allMwsWorkspaces"] = all.Apply(getMwsWorkspacesResult =&gt; getMwsWorkspacesResult.Ids),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+        /// * databricks.MetastoreAssignment
+        /// </summary>
         public static Task<GetMwsWorkspacesResult> InvokeAsync(GetMwsWorkspacesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args ?? new GetMwsWorkspacesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Lists all databricks.MwsWorkspaces in Databricks Account.
+        /// 
+        /// &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Listing all workspaces in 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetMwsWorkspaces.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allMwsWorkspaces"] = all.Apply(getMwsWorkspacesResult =&gt; getMwsWorkspacesResult.Ids),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+        /// * databricks.MetastoreAssignment
+        /// </summary>
         public static Output<GetMwsWorkspacesResult> Invoke(GetMwsWorkspacesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args ?? new GetMwsWorkspacesInvokeArgs(), options.WithDefaults());
     }

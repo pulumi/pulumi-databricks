@@ -121,6 +121,7 @@
         "userInstanceProfile.ts",
         "userRole.ts",
         "utilities.ts",
-        "workspaceConf.ts"
+        "workspaceConf.ts",
+        "workspaceFile.ts"
     ]
 }

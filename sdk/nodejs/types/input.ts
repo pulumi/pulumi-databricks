@@ -824,6 +824,7 @@ export interface GetJobJobSettingsSettings {
     name?: string;
     newCluster?: inputs.GetJobJobSettingsSettingsNewCluster;
     notebookTask?: inputs.GetJobJobSettingsSettingsNotebookTask;
+    notificationSettings?: inputs.GetJobJobSettingsSettingsNotificationSettings;
     pipelineTask?: inputs.GetJobJobSettingsSettingsPipelineTask;
     pythonWheelTask?: inputs.GetJobJobSettingsSettingsPythonWheelTask;
     queue?: inputs.GetJobJobSettingsSettingsQueue;
@@ -857,6 +858,7 @@ export interface GetJobJobSettingsSettingsArgs {
     name?: pulumi.Input<string>;
     newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterArgs>;
     notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsNotebookTaskArgs>;
+    notificationSettings?: pulumi.Input<inputs.GetJobJobSettingsSettingsNotificationSettingsArgs>;
     pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsPipelineTaskArgs>;
     pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsPythonWheelTaskArgs>;
     queue?: pulumi.Input<inputs.GetJobJobSettingsSettingsQueueArgs>;
@@ -1604,6 +1606,16 @@ export interface GetJobJobSettingsSettingsNotebookTaskArgs {
     baseParameters?: pulumi.Input<{[key: string]: any}>;
     notebookPath: pulumi.Input<string>;
     source?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsNotificationSettings {
+    noAlertForCanceledRuns?: boolean;
+    noAlertForSkippedRuns?: boolean;
+}
+
+export interface GetJobJobSettingsSettingsNotificationSettingsArgs {
+    noAlertForCanceledRuns?: pulumi.Input<boolean>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean>;
 }
 
 export interface GetJobJobSettingsSettingsPipelineTask {
@@ -2554,7 +2566,7 @@ export interface JobDbtTask {
 export interface JobEmailNotifications {
     alertOnLastAttempt?: pulumi.Input<boolean>;
     /**
-     * (Bool) don't send alert for skipped runs.
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
      */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
     /**
@@ -2959,6 +2971,17 @@ export interface JobNotebookTask {
     source?: pulumi.Input<string>;
 }
 
+export interface JobNotificationSettings {
+    /**
+     * (Bool) don't send alert for cancelled runs.
+     */
+    noAlertForCanceledRuns?: pulumi.Input<boolean>;
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
+    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+}
+
 export interface JobPipelineTask {
     /**
      * The pipeline's unique ID.
@@ -3119,7 +3142,7 @@ export interface JobTaskDependsOn {
 export interface JobTaskEmailNotifications {
     alertOnLastAttempt?: pulumi.Input<boolean>;
     /**
-     * (Bool) don't send alert for skipped runs.
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
      */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
     /**

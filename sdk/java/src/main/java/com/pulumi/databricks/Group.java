@@ -16,6 +16,18 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This resource allows you to manage both [account groups and workspace-local groups](https://docs.databricks.com/administration-guide/users-groups/groups.html). You can use the databricks.GroupMember resource to assign Databricks users, service principals as well as other groups as members of the group. This is useful if you are using an application to sync users &amp; groups with SCIM API.
+ * 
+ * &gt; **Note** To assign an account level group to a workspace use databricks_mws_permission_assignment.
+ * 
+ * To create account groups in the Databricks account, the provider must be configured accordingly. On AWS deployment with `host = &#34;https://accounts.cloud.databricks.com&#34;` and `account_id = &#34;00000000-0000-0000-0000-000000000000&#34;`. On Azure deployments `host = &#34;https://accounts.azuredatabricks.net&#34;`, `account_id = &#34;00000000-0000-0000-0000-000000000000&#34;` and using AAD tokens as authentication.
+ * 
+ * Recommended to use along with Identity Provider SCIM provisioning to populate users into those groups:
+ * 
+ * * [Azure Active Directory](https://docs.microsoft.com/en-us/azure/databricks/administration-guide/users-groups/scim/aad)
+ * * [Okta](https://docs.databricks.com/administration-guide/users-groups/scim/okta.html)
+ * * [OneLogin](https://docs.databricks.com/administration-guide/users-groups/scim/onelogin.html)
+ * 
  * ## Example Usage
  * 
  * Creating some group

@@ -79,6 +79,10 @@ def get_dbfs_file_paths(path: Optional[str] = None,
                         recursive: Optional[bool] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbfsFilePathsResult:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+
     ## Example Usage
 
     ```python
@@ -121,6 +125,10 @@ def get_dbfs_file_paths_output(path: Optional[pulumi.Input[str]] = None,
                                recursive: Optional[pulumi.Input[bool]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbfsFilePathsResult]:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+
     ## Example Usage
 
     ```python

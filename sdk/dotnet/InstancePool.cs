@@ -10,6 +10,53 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// This resource allows you to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances. An instance pool reduces cluster start and auto-scaling times by maintaining a set of idle, ready-to-use cloud instances. When a cluster attached to a pool needs an instance, it first attempts to allocate one of the pool’s idle instances. If the pool has no idle instances, it expands by allocating a new instance from the instance provider in order to accommodate the cluster’s request. When a cluster releases an instance, it returns to the pool and is free for another cluster to use. Only clusters attached to a pool can use that pool’s idle instances.
+    /// 
+    /// &gt; **Note** It is important to know that different cloud service providers have different `node_type_id`, `disk_specs` and potentially other configurations.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var smallest = Databricks.GetNodeType.Invoke();
+    /// 
+    ///     var smallestNodes = new Databricks.InstancePool("smallestNodes", new()
+    ///     {
+    ///         InstancePoolName = "Smallest Nodes",
+    ///         MinIdleInstances = 0,
+    ///         MaxCapacity = 300,
+    ///         NodeTypeId = smallest.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
+    ///         AwsAttributes = new Databricks.Inputs.InstancePoolAwsAttributesArgs
+    ///         {
+    ///             Availability = "ON_DEMAND",
+    ///             ZoneId = "us-east-1a",
+    ///             SpotBidPricePercent = 100,
+    ///         },
+    ///         IdleInstanceAutoterminationMinutes = 10,
+    ///         DiskSpec = new Databricks.Inputs.InstancePoolDiskSpecArgs
+    ///         {
+    ///             DiskType = new Databricks.Inputs.InstancePoolDiskSpecDiskTypeArgs
+    ///             {
+    ///                 EbsVolumeType = "GENERAL_PURPOSE_SSD",
+    ///             },
+    ///             DiskSize = 80,
+    ///             DiskCount = 1,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Access Control
+    /// 
+    /// * databricks.Group and databricks.User can control which groups or individual users can create instance pools.
+    /// * databricks.Permissions can control which groups or individual users can *Manage* or *Attach to* individual instance pools.
+    /// 
     /// ## Import
     /// 
     /// The resource instance pool can be imported using it's idbash
@@ -28,7 +75,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.InstancePoolAzureAttributes?> AzureAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+        /// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         /// </summary>
         [Output("customTags")]
         public Output<ImmutableDictionary<string, object>?> CustomTags { get; private set; } = null!;
@@ -146,7 +193,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _customTags;
 
         /// <summary>
-        /// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+        /// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         /// </summary>
         public InputMap<object> CustomTags
         {
@@ -240,7 +287,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _customTags;
 
         /// <summary>
-        /// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+        /// (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
         /// </summary>
         public InputMap<object> CustomTags
         {

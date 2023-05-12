@@ -79,7 +79,9 @@ type Permissions struct {
 	// SQL warehouse id
 	SqlEndpointId pulumi.StringPtrOutput `pulumi:"sqlEndpointId"`
 	// SQL query id
-	SqlQueryId pulumi.StringPtrOutput `pulumi:"sqlQueryId"`
+	SqlQueryId        pulumi.StringPtrOutput `pulumi:"sqlQueryId"`
+	WorkspaceFileId   pulumi.StringPtrOutput `pulumi:"workspaceFileId"`
+	WorkspaceFilePath pulumi.StringPtrOutput `pulumi:"workspaceFilePath"`
 }
 
 // NewPermissions registers a new resource with the given unique name, arguments, and options.
@@ -152,7 +154,9 @@ type permissionsState struct {
 	// SQL warehouse id
 	SqlEndpointId *string `pulumi:"sqlEndpointId"`
 	// SQL query id
-	SqlQueryId *string `pulumi:"sqlQueryId"`
+	SqlQueryId        *string `pulumi:"sqlQueryId"`
+	WorkspaceFileId   *string `pulumi:"workspaceFileId"`
+	WorkspaceFilePath *string `pulumi:"workspaceFilePath"`
 }
 
 type PermissionsState struct {
@@ -194,7 +198,9 @@ type PermissionsState struct {
 	// SQL warehouse id
 	SqlEndpointId pulumi.StringPtrInput
 	// SQL query id
-	SqlQueryId pulumi.StringPtrInput
+	SqlQueryId        pulumi.StringPtrInput
+	WorkspaceFileId   pulumi.StringPtrInput
+	WorkspaceFilePath pulumi.StringPtrInput
 }
 
 func (PermissionsState) ElementType() reflect.Type {
@@ -240,7 +246,9 @@ type permissionsArgs struct {
 	// SQL warehouse id
 	SqlEndpointId *string `pulumi:"sqlEndpointId"`
 	// SQL query id
-	SqlQueryId *string `pulumi:"sqlQueryId"`
+	SqlQueryId        *string `pulumi:"sqlQueryId"`
+	WorkspaceFileId   *string `pulumi:"workspaceFileId"`
+	WorkspaceFilePath *string `pulumi:"workspaceFilePath"`
 }
 
 // The set of arguments for constructing a Permissions resource.
@@ -283,7 +291,9 @@ type PermissionsArgs struct {
 	// SQL warehouse id
 	SqlEndpointId pulumi.StringPtrInput
 	// SQL query id
-	SqlQueryId pulumi.StringPtrInput
+	SqlQueryId        pulumi.StringPtrInput
+	WorkspaceFileId   pulumi.StringPtrInput
+	WorkspaceFilePath pulumi.StringPtrInput
 }
 
 func (PermissionsArgs) ElementType() reflect.Type {
@@ -470,6 +480,14 @@ func (o PermissionsOutput) SqlEndpointId() pulumi.StringPtrOutput {
 // SQL query id
 func (o PermissionsOutput) SqlQueryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlQueryId }).(pulumi.StringPtrOutput)
+}
+
+func (o PermissionsOutput) WorkspaceFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.WorkspaceFileId }).(pulumi.StringPtrOutput)
+}
+
+func (o PermissionsOutput) WorkspaceFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.WorkspaceFilePath }).(pulumi.StringPtrOutput)
 }
 
 type PermissionsArrayOutput struct{ *pulumi.OutputState }

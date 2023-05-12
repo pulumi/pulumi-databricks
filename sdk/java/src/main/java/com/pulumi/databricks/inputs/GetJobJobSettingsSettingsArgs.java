@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNotebookTaskArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNotificationSettingsArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPipelineTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPythonWheelTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsQueueArgs;
@@ -144,6 +145,13 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.notebookTask);
     }
 
+    @Import(name="notificationSettings")
+    private @Nullable Output<GetJobJobSettingsSettingsNotificationSettingsArgs> notificationSettings;
+
+    public Optional<Output<GetJobJobSettingsSettingsNotificationSettingsArgs>> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
+    }
+
     @Import(name="pipelineTask")
     private @Nullable Output<GetJobJobSettingsSettingsPipelineTaskArgs> pipelineTask;
 
@@ -252,6 +260,7 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         this.name = $.name;
         this.newCluster = $.newCluster;
         this.notebookTask = $.notebookTask;
+        this.notificationSettings = $.notificationSettings;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.queue = $.queue;
@@ -429,6 +438,15 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
         public Builder notebookTask(GetJobJobSettingsSettingsNotebookTaskArgs notebookTask) {
             return notebookTask(Output.of(notebookTask));
+        }
+
+        public Builder notificationSettings(@Nullable Output<GetJobJobSettingsSettingsNotificationSettingsArgs> notificationSettings) {
+            $.notificationSettings = notificationSettings;
+            return this;
+        }
+
+        public Builder notificationSettings(GetJobJobSettingsSettingsNotificationSettingsArgs notificationSettings) {
+            return notificationSettings(Output.of(notificationSettings));
         }
 
         public Builder pipelineTask(@Nullable Output<GetJobJobSettingsSettingsPipelineTaskArgs> pipelineTask) {

@@ -107,15 +107,331 @@ import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class DatabricksFunctions {
+    /**
+     * This data source constructs necessary AWS STS assume role policy for you.
+     * 
+     * ## Example Usage
+     * 
+     * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.databricks.MwsCredentials;
+     * import com.pulumi.databricks.MwsCredentialsArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
+     *         final var thisAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
+     * 
+     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
+     *             .policy(thisAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -&gt; getAwsCrossAccountPolicyResult.json()))
+     *             .build());
+     * 
+     *         final var thisAwsAssumeRolePolicy = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
+     *             .externalId(databricksAccountId)
+     *             .build());
+     * 
+     *         var crossAccountRole = new Role(&#34;crossAccountRole&#34;, RoleArgs.builder()        
+     *             .assumeRolePolicy(thisAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
+     *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
+     *             .build());
+     * 
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+     *             .policyArn(crossAccountPolicy.arn())
+     *             .role(crossAccountRole.name())
+     *             .build());
+     * 
+     *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
+     *             .accountId(databricksAccountId)
+     *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
+     *             .roleArn(crossAccountRole.arn())
+     *             .build(), CustomResourceOptions.builder()
+     *                 .provider(databricks.mws())
+     *                 .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * 
+     */
     public static Output<GetAwsAssumeRolePolicyResult> getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs args) {
         return getAwsAssumeRolePolicy(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source constructs necessary AWS STS assume role policy for you.
+     * 
+     * ## Example Usage
+     * 
+     * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.databricks.MwsCredentials;
+     * import com.pulumi.databricks.MwsCredentialsArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
+     *         final var thisAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
+     * 
+     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
+     *             .policy(thisAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -&gt; getAwsCrossAccountPolicyResult.json()))
+     *             .build());
+     * 
+     *         final var thisAwsAssumeRolePolicy = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
+     *             .externalId(databricksAccountId)
+     *             .build());
+     * 
+     *         var crossAccountRole = new Role(&#34;crossAccountRole&#34;, RoleArgs.builder()        
+     *             .assumeRolePolicy(thisAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
+     *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
+     *             .build());
+     * 
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+     *             .policyArn(crossAccountPolicy.arn())
+     *             .role(crossAccountRole.name())
+     *             .build());
+     * 
+     *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
+     *             .accountId(databricksAccountId)
+     *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
+     *             .roleArn(crossAccountRole.arn())
+     *             .build(), CustomResourceOptions.builder()
+     *                 .provider(databricks.mws())
+     *                 .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * 
+     */
     public static CompletableFuture<GetAwsAssumeRolePolicyResult> getAwsAssumeRolePolicyPlain(GetAwsAssumeRolePolicyPlainArgs args) {
         return getAwsAssumeRolePolicyPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source constructs necessary AWS STS assume role policy for you.
+     * 
+     * ## Example Usage
+     * 
+     * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.databricks.MwsCredentials;
+     * import com.pulumi.databricks.MwsCredentialsArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
+     *         final var thisAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
+     * 
+     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
+     *             .policy(thisAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -&gt; getAwsCrossAccountPolicyResult.json()))
+     *             .build());
+     * 
+     *         final var thisAwsAssumeRolePolicy = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
+     *             .externalId(databricksAccountId)
+     *             .build());
+     * 
+     *         var crossAccountRole = new Role(&#34;crossAccountRole&#34;, RoleArgs.builder()        
+     *             .assumeRolePolicy(thisAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
+     *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
+     *             .build());
+     * 
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+     *             .policyArn(crossAccountPolicy.arn())
+     *             .role(crossAccountRole.name())
+     *             .build());
+     * 
+     *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
+     *             .accountId(databricksAccountId)
+     *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
+     *             .roleArn(crossAccountRole.arn())
+     *             .build(), CustomResourceOptions.builder()
+     *                 .provider(databricks.mws())
+     *                 .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * 
+     */
     public static Output<GetAwsAssumeRolePolicyResult> getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", TypeShape.of(GetAwsAssumeRolePolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source constructs necessary AWS STS assume role policy for you.
+     * 
+     * ## Example Usage
+     * 
+     * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.databricks.MwsCredentials;
+     * import com.pulumi.databricks.MwsCredentialsArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
+     *         final var thisAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
+     * 
+     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
+     *             .policy(thisAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -&gt; getAwsCrossAccountPolicyResult.json()))
+     *             .build());
+     * 
+     *         final var thisAwsAssumeRolePolicy = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
+     *             .externalId(databricksAccountId)
+     *             .build());
+     * 
+     *         var crossAccountRole = new Role(&#34;crossAccountRole&#34;, RoleArgs.builder()        
+     *             .assumeRolePolicy(thisAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
+     *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
+     *             .build());
+     * 
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+     *             .policyArn(crossAccountPolicy.arn())
+     *             .role(crossAccountRole.name())
+     *             .build());
+     * 
+     *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
+     *             .accountId(databricksAccountId)
+     *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
+     *             .roleArn(crossAccountRole.arn())
+     *             .build(), CustomResourceOptions.builder()
+     *                 .provider(databricks.mws())
+     *                 .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+     * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * 
+     */
     public static CompletableFuture<GetAwsAssumeRolePolicyResult> getAwsAssumeRolePolicyPlain(GetAwsAssumeRolePolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", TypeShape.of(GetAwsAssumeRolePolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -718,6 +1034,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getCatalogs:getCatalogs", TypeShape.of(GetCatalogsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
+     * 
      * ## Example Usage
      * ## Related Resources
      * 
@@ -736,6 +1056,10 @@ public final class DatabricksFunctions {
         return getCluster(GetClusterArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
+     * 
      * ## Example Usage
      * ## Related Resources
      * 
@@ -754,6 +1078,10 @@ public final class DatabricksFunctions {
         return getClusterPlain(GetClusterPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
+     * 
      * ## Example Usage
      * ## Related Resources
      * 
@@ -772,6 +1100,10 @@ public final class DatabricksFunctions {
         return getCluster(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
+     * 
      * ## Example Usage
      * ## Related Resources
      * 
@@ -790,6 +1122,10 @@ public final class DatabricksFunctions {
         return getClusterPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
+     * 
      * ## Example Usage
      * ## Related Resources
      * 
@@ -808,6 +1144,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
+     * 
      * ## Example Usage
      * ## Related Resources
      * 
@@ -826,6 +1166,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_cluster_policy.
+     * 
      * ## Example Usage
      * 
      * Referring to a cluster policy by name:
@@ -869,6 +1213,10 @@ public final class DatabricksFunctions {
         return getClusterPolicy(GetClusterPolicyArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_cluster_policy.
+     * 
      * ## Example Usage
      * 
      * Referring to a cluster policy by name:
@@ -912,6 +1260,10 @@ public final class DatabricksFunctions {
         return getClusterPolicyPlain(GetClusterPolicyPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_cluster_policy.
+     * 
      * ## Example Usage
      * 
      * Referring to a cluster policy by name:
@@ -955,6 +1307,10 @@ public final class DatabricksFunctions {
         return getClusterPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_cluster_policy.
+     * 
      * ## Example Usage
      * 
      * Referring to a cluster policy by name:
@@ -998,6 +1354,10 @@ public final class DatabricksFunctions {
         return getClusterPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_cluster_policy.
+     * 
      * ## Example Usage
      * 
      * Referring to a cluster policy by name:
@@ -1041,6 +1401,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getClusterPolicy:getClusterPolicy", TypeShape.of(GetClusterPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_cluster_policy.
+     * 
      * ## Example Usage
      * 
      * Referring to a cluster policy by name:
@@ -1696,6 +2060,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getCurrentUser:getCurrentUser", TypeShape.of(GetCurrentUserResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1740,6 +2108,10 @@ public final class DatabricksFunctions {
         return getDbfsFile(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1784,6 +2156,10 @@ public final class DatabricksFunctions {
         return getDbfsFilePlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1828,6 +2204,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDbfsFile:getDbfsFile", TypeShape.of(GetDbfsFileResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1872,6 +2252,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDbfsFile:getDbfsFile", TypeShape.of(GetDbfsFileResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1918,6 +2302,10 @@ public final class DatabricksFunctions {
         return getDbfsFilePaths(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1964,6 +2352,10 @@ public final class DatabricksFunctions {
         return getDbfsFilePathsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2010,6 +2402,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDbfsFilePaths:getDbfsFilePaths", TypeShape.of(GetDbfsFilePathsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2056,6 +2452,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDbfsFilePaths:getDbfsFilePaths", TypeShape.of(GetDbfsFilePathsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to get information about a directory in a Databricks Workspace.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2091,6 +2491,10 @@ public final class DatabricksFunctions {
         return getDirectory(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to get information about a directory in a Databricks Workspace.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2126,6 +2530,10 @@ public final class DatabricksFunctions {
         return getDirectoryPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to get information about a directory in a Databricks Workspace.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2161,6 +2569,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to get information about a directory in a Databricks Workspace.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2196,6 +2608,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks.Group members, entitlements and instance profiles.
+     * 
      * ## Example Usage
      * 
      * Adding user to administrative group
@@ -2256,6 +2672,10 @@ public final class DatabricksFunctions {
         return getGroup(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks.Group members, entitlements and instance profiles.
+     * 
      * ## Example Usage
      * 
      * Adding user to administrative group
@@ -2316,6 +2736,10 @@ public final class DatabricksFunctions {
         return getGroupPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks.Group members, entitlements and instance profiles.
+     * 
      * ## Example Usage
      * 
      * Adding user to administrative group
@@ -2376,6 +2800,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getGroup:getGroup", TypeShape.of(GetGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks.Group members, entitlements and instance profiles.
+     * 
      * ## Example Usage
      * 
      * Adding user to administrative group
@@ -2436,6 +2864,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getGroup:getGroup", TypeShape.of(GetGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_instance_pool.
+     * 
      * ## Example Usage
      * 
      * Referring to an instance pool by name:
@@ -2479,6 +2911,10 @@ public final class DatabricksFunctions {
         return getInstancePool(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_instance_pool.
+     * 
      * ## Example Usage
      * 
      * Referring to an instance pool by name:
@@ -2522,6 +2958,10 @@ public final class DatabricksFunctions {
         return getInstancePoolPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_instance_pool.
+     * 
      * ## Example Usage
      * 
      * Referring to an instance pool by name:
@@ -2565,6 +3005,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getInstancePool:getInstancePool", TypeShape.of(GetInstancePoolResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_instance_pool.
+     * 
      * ## Example Usage
      * 
      * Referring to an instance pool by name:
@@ -2608,6 +3052,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getInstancePool:getInstancePool", TypeShape.of(GetInstancePoolResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
+     * 
      * ## Example Usage
      * 
      * Getting the existing cluster id of specific databricks.Job by name or by id:
@@ -2652,6 +3100,10 @@ public final class DatabricksFunctions {
         return getJob(GetJobArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
+     * 
      * ## Example Usage
      * 
      * Getting the existing cluster id of specific databricks.Job by name or by id:
@@ -2696,6 +3148,10 @@ public final class DatabricksFunctions {
         return getJobPlain(GetJobPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
+     * 
      * ## Example Usage
      * 
      * Getting the existing cluster id of specific databricks.Job by name or by id:
@@ -2740,6 +3196,10 @@ public final class DatabricksFunctions {
         return getJob(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
+     * 
      * ## Example Usage
      * 
      * Getting the existing cluster id of specific databricks.Job by name or by id:
@@ -2784,6 +3244,10 @@ public final class DatabricksFunctions {
         return getJobPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
+     * 
      * ## Example Usage
      * 
      * Getting the existing cluster id of specific databricks.Job by name or by id:
@@ -2828,6 +3292,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getJob:getJob", TypeShape.of(GetJobResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
+     * 
      * ## Example Usage
      * 
      * Getting the existing cluster id of specific databricks.Job by name or by id:
@@ -3249,25 +3717,301 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetMwsCredentialsResult> getMwsCredentialsPlain(GetMwsCredentialsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getMwsCredentials:getMwsCredentials", TypeShape.of(GetMwsCredentialsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Lists all databricks.MwsWorkspaces in Databricks Account.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+     * 
+     * ## Example Usage
+     * 
+     * Listing all workspaces in
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMwsWorkspaces();
+     * 
+     *         ctx.export(&#34;allMwsWorkspaces&#34;, all.applyValue(getMwsWorkspacesResult -&gt; getMwsWorkspacesResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+     * * databricks.MetastoreAssignment
+     * 
+     */
     public static Output<GetMwsWorkspacesResult> getMwsWorkspaces() {
         return getMwsWorkspaces(GetMwsWorkspacesArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Lists all databricks.MwsWorkspaces in Databricks Account.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+     * 
+     * ## Example Usage
+     * 
+     * Listing all workspaces in
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMwsWorkspaces();
+     * 
+     *         ctx.export(&#34;allMwsWorkspaces&#34;, all.applyValue(getMwsWorkspacesResult -&gt; getMwsWorkspacesResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+     * * databricks.MetastoreAssignment
+     * 
+     */
     public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain() {
         return getMwsWorkspacesPlain(GetMwsWorkspacesPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Lists all databricks.MwsWorkspaces in Databricks Account.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+     * 
+     * ## Example Usage
+     * 
+     * Listing all workspaces in
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMwsWorkspaces();
+     * 
+     *         ctx.export(&#34;allMwsWorkspaces&#34;, all.applyValue(getMwsWorkspacesResult -&gt; getMwsWorkspacesResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+     * * databricks.MetastoreAssignment
+     * 
+     */
     public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(GetMwsWorkspacesArgs args) {
         return getMwsWorkspaces(args, InvokeOptions.Empty);
     }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Lists all databricks.MwsWorkspaces in Databricks Account.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+     * 
+     * ## Example Usage
+     * 
+     * Listing all workspaces in
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMwsWorkspaces();
+     * 
+     *         ctx.export(&#34;allMwsWorkspaces&#34;, all.applyValue(getMwsWorkspacesResult -&gt; getMwsWorkspacesResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+     * * databricks.MetastoreAssignment
+     * 
+     */
     public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(GetMwsWorkspacesPlainArgs args) {
         return getMwsWorkspacesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Lists all databricks.MwsWorkspaces in Databricks Account.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+     * 
+     * ## Example Usage
+     * 
+     * Listing all workspaces in
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMwsWorkspaces();
+     * 
+     *         ctx.export(&#34;allMwsWorkspaces&#34;, all.applyValue(getMwsWorkspacesResult -&gt; getMwsWorkspacesResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+     * * databricks.MetastoreAssignment
+     * 
+     */
     public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(GetMwsWorkspacesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", TypeShape.of(GetMwsWorkspacesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Lists all databricks.MwsWorkspaces in Databricks Account.
+     * 
+     * &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+     * 
+     * ## Example Usage
+     * 
+     * Listing all workspaces in
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMwsWorkspaces();
+     * 
+     *         ctx.export(&#34;allMwsWorkspaces&#34;, all.applyValue(getMwsWorkspacesResult -&gt; getMwsWorkspacesResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.MwsWorkspaces to manage Databricks E2 Workspaces.
+     * * databricks.MetastoreAssignment
+     * 
+     */
     public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(GetMwsWorkspacesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getMwsWorkspaces:getMwsWorkspaces", TypeShape.of(GetMwsWorkspacesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
+     * 
+     * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3335,6 +4079,12 @@ public final class DatabricksFunctions {
         return getNodeType(GetNodeTypeArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
+     * 
+     * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3402,6 +4152,12 @@ public final class DatabricksFunctions {
         return getNodeTypePlain(GetNodeTypePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
+     * 
+     * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3469,6 +4225,12 @@ public final class DatabricksFunctions {
         return getNodeType(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
+     * 
+     * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3536,6 +4298,12 @@ public final class DatabricksFunctions {
         return getNodeTypePlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
+     * 
+     * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3603,6 +4371,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getNodeType:getNodeType", TypeShape.of(GetNodeTypeResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
+     * 
+     * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3670,6 +4444,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getNodeType:getNodeType", TypeShape.of(GetNodeTypeResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to export a notebook from Databricks Workspace.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3706,6 +4484,10 @@ public final class DatabricksFunctions {
         return getNotebook(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to export a notebook from Databricks Workspace.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3742,6 +4524,10 @@ public final class DatabricksFunctions {
         return getNotebookPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to export a notebook from Databricks Workspace.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3778,6 +4564,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getNotebook:getNotebook", TypeShape.of(GetNotebookResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to export a notebook from Databricks Workspace.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3814,6 +4604,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getNotebook:getNotebook", TypeShape.of(GetNotebookResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to list notebooks in the Databricks Workspace.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3850,6 +4644,10 @@ public final class DatabricksFunctions {
         return getNotebookPaths(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to list notebooks in the Databricks Workspace.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3886,6 +4684,10 @@ public final class DatabricksFunctions {
         return getNotebookPathsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to list notebooks in the Databricks Workspace.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3922,6 +4724,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getNotebookPaths:getNotebookPaths", TypeShape.of(GetNotebookPathsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows to list notebooks in the Databricks Workspace.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -3958,6 +4764,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getNotebookPaths:getNotebookPaths", TypeShape.of(GetNotebookPathsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
+     * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+     * 
      * ## Example Usage
      * 
      * Get all Delta Live Tables pipelines:
@@ -4065,6 +4875,10 @@ public final class DatabricksFunctions {
         return getPipelines(GetPipelinesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
+     * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+     * 
      * ## Example Usage
      * 
      * Get all Delta Live Tables pipelines:
@@ -4172,6 +4986,10 @@ public final class DatabricksFunctions {
         return getPipelinesPlain(GetPipelinesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
+     * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+     * 
      * ## Example Usage
      * 
      * Get all Delta Live Tables pipelines:
@@ -4279,6 +5097,10 @@ public final class DatabricksFunctions {
         return getPipelines(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
+     * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+     * 
      * ## Example Usage
      * 
      * Get all Delta Live Tables pipelines:
@@ -4386,6 +5208,10 @@ public final class DatabricksFunctions {
         return getPipelinesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
+     * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+     * 
      * ## Example Usage
      * 
      * Get all Delta Live Tables pipelines:
@@ -4493,6 +5319,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPipelines:getPipelines", TypeShape.of(GetPipelinesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+     * 
+     * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+     * 
      * ## Example Usage
      * 
      * Get all Delta Live Tables pipelines:
@@ -4776,6 +5606,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSchemas:getSchemas", TypeShape.of(GetSchemasResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_service_principal.
+     * 
      * ## Example Usage
      * 
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
@@ -4837,6 +5671,10 @@ public final class DatabricksFunctions {
         return getServicePrincipal(GetServicePrincipalArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_service_principal.
+     * 
      * ## Example Usage
      * 
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
@@ -4898,6 +5736,10 @@ public final class DatabricksFunctions {
         return getServicePrincipalPlain(GetServicePrincipalPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_service_principal.
+     * 
      * ## Example Usage
      * 
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
@@ -4959,6 +5801,10 @@ public final class DatabricksFunctions {
         return getServicePrincipal(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_service_principal.
+     * 
      * ## Example Usage
      * 
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
@@ -5020,6 +5866,10 @@ public final class DatabricksFunctions {
         return getServicePrincipalPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_service_principal.
+     * 
      * ## Example Usage
      * 
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
@@ -5081,6 +5931,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipal:getServicePrincipal", TypeShape.of(GetServicePrincipalResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_service_principal.
+     * 
      * ## Example Usage
      * 
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
@@ -5142,6 +5996,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getServicePrincipal:getServicePrincipal", TypeShape.of(GetServicePrincipalResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5160,6 +6018,10 @@ public final class DatabricksFunctions {
         return getServicePrincipals(GetServicePrincipalsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5178,6 +6040,10 @@ public final class DatabricksFunctions {
         return getServicePrincipalsPlain(GetServicePrincipalsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5196,6 +6062,10 @@ public final class DatabricksFunctions {
         return getServicePrincipals(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5214,6 +6084,10 @@ public final class DatabricksFunctions {
         return getServicePrincipalsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5232,6 +6106,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipals:getServicePrincipals", TypeShape.of(GetServicePrincipalsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5778,6 +6656,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getShares:getShares", TypeShape.of(GetSharesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+     * 
+     * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -5845,6 +6729,12 @@ public final class DatabricksFunctions {
         return getSparkVersion(GetSparkVersionArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+     * 
+     * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -5912,6 +6802,12 @@ public final class DatabricksFunctions {
         return getSparkVersionPlain(GetSparkVersionPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+     * 
+     * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -5979,6 +6875,12 @@ public final class DatabricksFunctions {
         return getSparkVersion(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+     * 
+     * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -6046,6 +6948,12 @@ public final class DatabricksFunctions {
         return getSparkVersionPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+     * 
+     * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -6113,6 +7021,12 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSparkVersion:getSparkVersion", TypeShape.of(GetSparkVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+     * 
+     * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -6180,6 +7094,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSparkVersion:getSparkVersion", TypeShape.of(GetSparkVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
+     * 
      * ## Example Usage
      * ## Related resources
      * 
@@ -6196,6 +7114,10 @@ public final class DatabricksFunctions {
         return getSqlWarehouse(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
+     * 
      * ## Example Usage
      * ## Related resources
      * 
@@ -6212,6 +7134,10 @@ public final class DatabricksFunctions {
         return getSqlWarehousePlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
+     * 
      * ## Example Usage
      * ## Related resources
      * 
@@ -6228,6 +7154,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSqlWarehouse:getSqlWarehouse", TypeShape.of(GetSqlWarehouseResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
+     * 
      * ## Example Usage
      * ## Related resources
      * 
@@ -6736,6 +7666,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_user.
+     * 
      * ## Example Usage
      * 
      * Adding user to administrative group
@@ -6798,6 +7732,10 @@ public final class DatabricksFunctions {
         return getUser(GetUserArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_user.
+     * 
      * ## Example Usage
      * 
      * Adding user to administrative group
@@ -6860,6 +7798,10 @@ public final class DatabricksFunctions {
         return getUserPlain(GetUserPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_user.
+     * 
      * ## Example Usage
      * 
      * Adding user to administrative group
@@ -6922,6 +7864,10 @@ public final class DatabricksFunctions {
         return getUser(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_user.
+     * 
      * ## Example Usage
      * 
      * Adding user to administrative group
@@ -6984,6 +7930,10 @@ public final class DatabricksFunctions {
         return getUserPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_user.
+     * 
      * ## Example Usage
      * 
      * Adding user to administrative group
@@ -7046,6 +7996,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about databricks_user.
+     * 
      * ## Example Usage
      * 
      * Adding user to administrative group
@@ -7156,6 +8110,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getViews:getViews", TypeShape.of(GetViewsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7188,6 +8146,10 @@ public final class DatabricksFunctions {
         return getZones(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7220,6 +8182,10 @@ public final class DatabricksFunctions {
         return getZonesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7252,6 +8218,10 @@ public final class DatabricksFunctions {
         return getZones(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7284,6 +8254,10 @@ public final class DatabricksFunctions {
         return getZonesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7316,6 +8290,10 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;

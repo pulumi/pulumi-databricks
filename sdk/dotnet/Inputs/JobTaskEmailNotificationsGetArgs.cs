@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? AlertOnLastAttempt { get; set; }
 
         /// <summary>
-        /// (Bool) don't send alert for skipped runs.
+        /// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         /// </summary>
         [Input("noAlertForSkippedRuns")]
         public Input<bool>? NoAlertForSkippedRuns { get; set; }

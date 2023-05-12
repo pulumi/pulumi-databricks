@@ -309,6 +309,20 @@ public final class PermissionsArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sqlQueryId);
     }
 
+    @Import(name="workspaceFileId")
+    private @Nullable Output<String> workspaceFileId;
+
+    public Optional<Output<String>> workspaceFileId() {
+        return Optional.ofNullable(this.workspaceFileId);
+    }
+
+    @Import(name="workspaceFilePath")
+    private @Nullable Output<String> workspaceFilePath;
+
+    public Optional<Output<String>> workspaceFilePath() {
+        return Optional.ofNullable(this.workspaceFilePath);
+    }
+
     private PermissionsArgs() {}
 
     private PermissionsArgs(PermissionsArgs $) {
@@ -332,6 +346,8 @@ public final class PermissionsArgs extends com.pulumi.resources.ResourceArgs {
         this.sqlDashboardId = $.sqlDashboardId;
         this.sqlEndpointId = $.sqlEndpointId;
         this.sqlQueryId = $.sqlQueryId;
+        this.workspaceFileId = $.workspaceFileId;
+        this.workspaceFilePath = $.workspaceFilePath;
     }
 
     public static Builder builder() {
@@ -762,6 +778,24 @@ public final class PermissionsArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sqlQueryId(String sqlQueryId) {
             return sqlQueryId(Output.of(sqlQueryId));
+        }
+
+        public Builder workspaceFileId(@Nullable Output<String> workspaceFileId) {
+            $.workspaceFileId = workspaceFileId;
+            return this;
+        }
+
+        public Builder workspaceFileId(String workspaceFileId) {
+            return workspaceFileId(Output.of(workspaceFileId));
+        }
+
+        public Builder workspaceFilePath(@Nullable Output<String> workspaceFilePath) {
+            $.workspaceFilePath = workspaceFilePath;
+            return this;
+        }
+
+        public Builder workspaceFilePath(String workspaceFilePath) {
+            return workspaceFilePath(Output.of(workspaceFilePath));
         }
 
         public PermissionsArgs build() {

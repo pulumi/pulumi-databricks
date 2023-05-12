@@ -12,6 +12,10 @@ namespace Pulumi.Databricks
     public static class GetPipelines
     {
         /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+        /// 
+        /// Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results. 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -94,6 +98,10 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPipelinesResult>("databricks:index/getPipelines:getPipelines", args ?? new GetPipelinesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+        /// 
+        /// Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results. 
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

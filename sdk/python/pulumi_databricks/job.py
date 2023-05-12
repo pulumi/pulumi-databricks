@@ -31,6 +31,7 @@ class JobArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  new_cluster: Optional[pulumi.Input['JobNewClusterArgs']] = None,
                  notebook_task: Optional[pulumi.Input['JobNotebookTaskArgs']] = None,
+                 notification_settings: Optional[pulumi.Input['JobNotificationSettingsArgs']] = None,
                  pipeline_task: Optional[pulumi.Input['JobPipelineTaskArgs']] = None,
                  python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
                  queue: Optional[pulumi.Input['JobQueueArgs']] = None,
@@ -90,6 +91,8 @@ class JobArgs:
             pulumi.set(__self__, "new_cluster", new_cluster)
         if notebook_task is not None:
             pulumi.set(__self__, "notebook_task", notebook_task)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
         if python_wheel_task is not None:
@@ -280,6 +283,15 @@ class JobArgs:
         pulumi.set(self, "notebook_task", value)
 
     @property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional[pulumi.Input['JobNotificationSettingsArgs']]:
+        return pulumi.get(self, "notification_settings")
+
+    @notification_settings.setter
+    def notification_settings(self, value: Optional[pulumi.Input['JobNotificationSettingsArgs']]):
+        pulumi.set(self, "notification_settings", value)
+
+    @property
     @pulumi.getter(name="pipelineTask")
     def pipeline_task(self) -> Optional[pulumi.Input['JobPipelineTaskArgs']]:
         return pulumi.get(self, "pipeline_task")
@@ -427,6 +439,7 @@ class _JobState:
                  name: Optional[pulumi.Input[str]] = None,
                  new_cluster: Optional[pulumi.Input['JobNewClusterArgs']] = None,
                  notebook_task: Optional[pulumi.Input['JobNotebookTaskArgs']] = None,
+                 notification_settings: Optional[pulumi.Input['JobNotificationSettingsArgs']] = None,
                  pipeline_task: Optional[pulumi.Input['JobPipelineTaskArgs']] = None,
                  python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
                  queue: Optional[pulumi.Input['JobQueueArgs']] = None,
@@ -488,6 +501,8 @@ class _JobState:
             pulumi.set(__self__, "new_cluster", new_cluster)
         if notebook_task is not None:
             pulumi.set(__self__, "notebook_task", notebook_task)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
         if python_wheel_task is not None:
@@ -680,6 +695,15 @@ class _JobState:
         pulumi.set(self, "notebook_task", value)
 
     @property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional[pulumi.Input['JobNotificationSettingsArgs']]:
+        return pulumi.get(self, "notification_settings")
+
+    @notification_settings.setter
+    def notification_settings(self, value: Optional[pulumi.Input['JobNotificationSettingsArgs']]):
+        pulumi.set(self, "notification_settings", value)
+
+    @property
     @pulumi.getter(name="pipelineTask")
     def pipeline_task(self) -> Optional[pulumi.Input['JobPipelineTaskArgs']]:
         return pulumi.get(self, "pipeline_task")
@@ -841,6 +865,7 @@ class Job(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  new_cluster: Optional[pulumi.Input[pulumi.InputType['JobNewClusterArgs']]] = None,
                  notebook_task: Optional[pulumi.Input[pulumi.InputType['JobNotebookTaskArgs']]] = None,
+                 notification_settings: Optional[pulumi.Input[pulumi.InputType['JobNotificationSettingsArgs']]] = None,
                  pipeline_task: Optional[pulumi.Input[pulumi.InputType['JobPipelineTaskArgs']]] = None,
                  python_wheel_task: Optional[pulumi.Input[pulumi.InputType['JobPythonWheelTaskArgs']]] = None,
                  queue: Optional[pulumi.Input[pulumi.InputType['JobQueueArgs']]] = None,
@@ -925,6 +950,7 @@ class Job(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  new_cluster: Optional[pulumi.Input[pulumi.InputType['JobNewClusterArgs']]] = None,
                  notebook_task: Optional[pulumi.Input[pulumi.InputType['JobNotebookTaskArgs']]] = None,
+                 notification_settings: Optional[pulumi.Input[pulumi.InputType['JobNotificationSettingsArgs']]] = None,
                  pipeline_task: Optional[pulumi.Input[pulumi.InputType['JobPipelineTaskArgs']]] = None,
                  python_wheel_task: Optional[pulumi.Input[pulumi.InputType['JobPythonWheelTaskArgs']]] = None,
                  queue: Optional[pulumi.Input[pulumi.InputType['JobQueueArgs']]] = None,
@@ -962,6 +988,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["new_cluster"] = new_cluster
             __props__.__dict__["notebook_task"] = notebook_task
+            __props__.__dict__["notification_settings"] = notification_settings
             __props__.__dict__["pipeline_task"] = pipeline_task
             __props__.__dict__["python_wheel_task"] = python_wheel_task
             __props__.__dict__["queue"] = queue
@@ -1001,6 +1028,7 @@ class Job(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             new_cluster: Optional[pulumi.Input[pulumi.InputType['JobNewClusterArgs']]] = None,
             notebook_task: Optional[pulumi.Input[pulumi.InputType['JobNotebookTaskArgs']]] = None,
+            notification_settings: Optional[pulumi.Input[pulumi.InputType['JobNotificationSettingsArgs']]] = None,
             pipeline_task: Optional[pulumi.Input[pulumi.InputType['JobPipelineTaskArgs']]] = None,
             python_wheel_task: Optional[pulumi.Input[pulumi.InputType['JobPythonWheelTaskArgs']]] = None,
             queue: Optional[pulumi.Input[pulumi.InputType['JobQueueArgs']]] = None,
@@ -1056,6 +1084,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["new_cluster"] = new_cluster
         __props__.__dict__["notebook_task"] = notebook_task
+        __props__.__dict__["notification_settings"] = notification_settings
         __props__.__dict__["pipeline_task"] = pipeline_task
         __props__.__dict__["python_wheel_task"] = python_wheel_task
         __props__.__dict__["queue"] = queue
@@ -1173,6 +1202,11 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="notebookTask")
     def notebook_task(self) -> pulumi.Output[Optional['outputs.JobNotebookTask']]:
         return pulumi.get(self, "notebook_task")
+
+    @property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> pulumi.Output[Optional['outputs.JobNotificationSettings']]:
+        return pulumi.get(self, "notification_settings")
 
     @property
     @pulumi.getter(name="pipelineTask")

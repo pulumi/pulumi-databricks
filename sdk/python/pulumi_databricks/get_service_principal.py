@@ -132,6 +132,10 @@ def get_service_principal(active: Optional[bool] = None,
                           sp_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalResult:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_service_principal.
+
     ## Example Usage
 
     Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
@@ -202,6 +206,10 @@ def get_service_principal_output(active: Optional[pulumi.Input[Optional[bool]]] 
                                  sp_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePrincipalResult]:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_service_principal.
+
     ## Example Usage
 
     Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group

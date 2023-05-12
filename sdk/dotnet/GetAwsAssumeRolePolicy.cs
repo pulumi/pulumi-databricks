@@ -11,9 +11,143 @@ namespace Pulumi.Databricks
 {
     public static class GetAwsAssumeRolePolicy
     {
+        /// <summary>
+        /// This data source constructs necessary AWS STS assume role policy for you.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+        ///     var thisAwsCrossAccountPolicy = Databricks.GetAwsCrossAccountPolicy.Invoke();
+        /// 
+        ///     var crossAccountPolicy = new Aws.Iam.Policy("crossAccountPolicy", new()
+        ///     {
+        ///         PolicyDocument = thisAwsCrossAccountPolicy.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json),
+        ///     });
+        /// 
+        ///     var thisAwsAssumeRolePolicy = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
+        ///     {
+        ///         ExternalId = databricksAccountId,
+        ///     });
+        /// 
+        ///     var crossAccountRole = new Aws.Iam.Role("crossAccountRole", new()
+        ///     {
+        ///         AssumeRolePolicy = thisAwsAssumeRolePolicy.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
+        ///         Description = "Grants Databricks full access to VPC resources",
+        ///     });
+        /// 
+        ///     var crossAccountRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("crossAccountRolePolicyAttachment", new()
+        ///     {
+        ///         PolicyArn = crossAccountPolicy.Arn,
+        ///         Role = crossAccountRole.Name,
+        ///     });
+        /// 
+        ///     // required only in case of multi-workspace setup
+        ///     var thisMwsCredentials = new Databricks.MwsCredentials("thisMwsCredentials", new()
+        ///     {
+        ///         AccountId = databricksAccountId,
+        ///         CredentialsName = $"{@var.Prefix}-creds",
+        ///         RoleArn = crossAccountRole.Arn,
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         Provider = databricks.Mws,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+        /// * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+        /// * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+        /// </summary>
         public static Task<GetAwsAssumeRolePolicyResult> InvokeAsync(GetAwsAssumeRolePolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsAssumeRolePolicyResult>("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", args ?? new GetAwsAssumeRolePolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source constructs necessary AWS STS assume role policy for you.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+        ///     var thisAwsCrossAccountPolicy = Databricks.GetAwsCrossAccountPolicy.Invoke();
+        /// 
+        ///     var crossAccountPolicy = new Aws.Iam.Policy("crossAccountPolicy", new()
+        ///     {
+        ///         PolicyDocument = thisAwsCrossAccountPolicy.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json),
+        ///     });
+        /// 
+        ///     var thisAwsAssumeRolePolicy = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
+        ///     {
+        ///         ExternalId = databricksAccountId,
+        ///     });
+        /// 
+        ///     var crossAccountRole = new Aws.Iam.Role("crossAccountRole", new()
+        ///     {
+        ///         AssumeRolePolicy = thisAwsAssumeRolePolicy.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
+        ///         Description = "Grants Databricks full access to VPC resources",
+        ///     });
+        /// 
+        ///     var crossAccountRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("crossAccountRolePolicyAttachment", new()
+        ///     {
+        ///         PolicyArn = crossAccountPolicy.Arn,
+        ///         Role = crossAccountRole.Name,
+        ///     });
+        /// 
+        ///     // required only in case of multi-workspace setup
+        ///     var thisMwsCredentials = new Databricks.MwsCredentials("thisMwsCredentials", new()
+        ///     {
+        ///         AccountId = databricksAccountId,
+        ///         CredentialsName = $"{@var.Prefix}-creds",
+        ///         RoleArn = crossAccountRole.Arn,
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         Provider = databricks.Mws,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
+        /// * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+        /// * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+        /// </summary>
         public static Output<GetAwsAssumeRolePolicyResult> Invoke(GetAwsAssumeRolePolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsAssumeRolePolicyResult>("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", args ?? new GetAwsAssumeRolePolicyInvokeArgs(), options.WithDefaults());
     }

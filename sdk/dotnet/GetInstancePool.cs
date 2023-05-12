@@ -12,6 +12,10 @@ namespace Pulumi.Databricks
     public static class GetInstancePool
     {
         /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves information about databricks_instance_pool.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -46,6 +50,10 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancePoolResult>("databricks:index/getInstancePool:getInstancePool", args ?? new GetInstancePoolArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves information about databricks_instance_pool.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

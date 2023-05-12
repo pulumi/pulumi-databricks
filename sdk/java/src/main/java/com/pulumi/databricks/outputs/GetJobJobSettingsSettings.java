@@ -12,6 +12,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobCluster;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsLibrary;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNewCluster;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNotebookTask;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNotificationSettings;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsPipelineTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsPythonWheelTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsQueue;
@@ -52,6 +53,7 @@ public final class GetJobJobSettingsSettings {
     private @Nullable String name;
     private @Nullable GetJobJobSettingsSettingsNewCluster newCluster;
     private @Nullable GetJobJobSettingsSettingsNotebookTask notebookTask;
+    private @Nullable GetJobJobSettingsSettingsNotificationSettings notificationSettings;
     private @Nullable GetJobJobSettingsSettingsPipelineTask pipelineTask;
     private @Nullable GetJobJobSettingsSettingsPythonWheelTask pythonWheelTask;
     private @Nullable GetJobJobSettingsSettingsQueue queue;
@@ -112,6 +114,9 @@ public final class GetJobJobSettingsSettings {
     }
     public Optional<GetJobJobSettingsSettingsNotebookTask> notebookTask() {
         return Optional.ofNullable(this.notebookTask);
+    }
+    public Optional<GetJobJobSettingsSettingsNotificationSettings> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
     }
     public Optional<GetJobJobSettingsSettingsPipelineTask> pipelineTask() {
         return Optional.ofNullable(this.pipelineTask);
@@ -176,6 +181,7 @@ public final class GetJobJobSettingsSettings {
         private @Nullable String name;
         private @Nullable GetJobJobSettingsSettingsNewCluster newCluster;
         private @Nullable GetJobJobSettingsSettingsNotebookTask notebookTask;
+        private @Nullable GetJobJobSettingsSettingsNotificationSettings notificationSettings;
         private @Nullable GetJobJobSettingsSettingsPipelineTask pipelineTask;
         private @Nullable GetJobJobSettingsSettingsPythonWheelTask pythonWheelTask;
         private @Nullable GetJobJobSettingsSettingsQueue queue;
@@ -206,6 +212,7 @@ public final class GetJobJobSettingsSettings {
     	      this.name = defaults.name;
     	      this.newCluster = defaults.newCluster;
     	      this.notebookTask = defaults.notebookTask;
+    	      this.notificationSettings = defaults.notificationSettings;
     	      this.pipelineTask = defaults.pipelineTask;
     	      this.pythonWheelTask = defaults.pythonWheelTask;
     	      this.queue = defaults.queue;
@@ -298,6 +305,11 @@ public final class GetJobJobSettingsSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder notificationSettings(@Nullable GetJobJobSettingsSettingsNotificationSettings notificationSettings) {
+            this.notificationSettings = notificationSettings;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pipelineTask(@Nullable GetJobJobSettingsSettingsPipelineTask pipelineTask) {
             this.pipelineTask = pipelineTask;
             return this;
@@ -381,6 +393,7 @@ public final class GetJobJobSettingsSettings {
             o.name = name;
             o.newCluster = newCluster;
             o.notebookTask = notebookTask;
+            o.notificationSettings = notificationSettings;
             o.pipelineTask = pipelineTask;
             o.pythonWheelTask = pythonWheelTask;
             o.queue = queue;

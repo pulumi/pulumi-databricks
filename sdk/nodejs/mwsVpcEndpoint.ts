@@ -48,6 +48,9 @@ export class MwsVpcEndpoint extends pulumi.CustomResource {
      * (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      */
     public readonly awsEndpointServiceId!: pulumi.Output<string>;
+    /**
+     * ID of configured aws_vpc_endpoint
+     */
     public readonly awsVpcEndpointId!: pulumi.Output<string | undefined>;
     /**
      * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
@@ -128,6 +131,9 @@ export interface MwsVpcEndpointState {
      * (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      */
     awsEndpointServiceId?: pulumi.Input<string>;
+    /**
+     * ID of configured aws_vpc_endpoint
+     */
     awsVpcEndpointId?: pulumi.Input<string>;
     /**
      * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
@@ -165,6 +171,9 @@ export interface MwsVpcEndpointArgs {
      * (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      */
     awsEndpointServiceId?: pulumi.Input<string>;
+    /**
+     * ID of configured aws_vpc_endpoint
+     */
     awsVpcEndpointId?: pulumi.Input<string>;
     /**
      * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:

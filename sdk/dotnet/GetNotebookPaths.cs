@@ -12,6 +12,10 @@ namespace Pulumi.Databricks
     public static class GetNotebookPaths
     {
         /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// This data source allows to list notebooks in the Databricks Workspace.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -39,6 +43,10 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotebookPathsResult>("databricks:index/getNotebookPaths:getNotebookPaths", args ?? new GetNotebookPathsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// This data source allows to list notebooks in the Databricks Workspace.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

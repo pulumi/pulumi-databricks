@@ -138,6 +138,8 @@ export class Permissions extends pulumi.CustomResource {
      * SQL query id
      */
     public readonly sqlQueryId!: pulumi.Output<string | undefined>;
+    public readonly workspaceFileId!: pulumi.Output<string | undefined>;
+    public readonly workspaceFilePath!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Permissions resource with the given unique name, arguments, and options.
@@ -172,6 +174,8 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["sqlDashboardId"] = state ? state.sqlDashboardId : undefined;
             resourceInputs["sqlEndpointId"] = state ? state.sqlEndpointId : undefined;
             resourceInputs["sqlQueryId"] = state ? state.sqlQueryId : undefined;
+            resourceInputs["workspaceFileId"] = state ? state.workspaceFileId : undefined;
+            resourceInputs["workspaceFilePath"] = state ? state.workspaceFilePath : undefined;
         } else {
             const args = argsOrState as PermissionsArgs | undefined;
             if ((!args || args.accessControls === undefined) && !opts.urn) {
@@ -197,6 +201,8 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["sqlDashboardId"] = args ? args.sqlDashboardId : undefined;
             resourceInputs["sqlEndpointId"] = args ? args.sqlEndpointId : undefined;
             resourceInputs["sqlQueryId"] = args ? args.sqlQueryId : undefined;
+            resourceInputs["workspaceFileId"] = args ? args.workspaceFileId : undefined;
+            resourceInputs["workspaceFilePath"] = args ? args.workspaceFilePath : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Permissions.__pulumiType, name, resourceInputs, opts);
@@ -284,6 +290,8 @@ export interface PermissionsState {
      * SQL query id
      */
     sqlQueryId?: pulumi.Input<string>;
+    workspaceFileId?: pulumi.Input<string>;
+    workspaceFilePath?: pulumi.Input<string>;
 }
 
 /**
@@ -367,4 +375,6 @@ export interface PermissionsArgs {
      * SQL query id
      */
     sqlQueryId?: pulumi.Input<string>;
+    workspaceFileId?: pulumi.Input<string>;
+    workspaceFilePath?: pulumi.Input<string>;
 }

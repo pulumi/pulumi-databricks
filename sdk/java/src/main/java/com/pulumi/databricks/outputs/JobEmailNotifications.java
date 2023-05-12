@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class JobEmailNotifications {
     private @Nullable Boolean alertOnLastAttempt;
     /**
-     * @return (Bool) don&#39;t send alert for skipped runs.
+     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
      * 
      */
     private @Nullable Boolean noAlertForSkippedRuns;
@@ -40,7 +40,7 @@ public final class JobEmailNotifications {
         return Optional.ofNullable(this.alertOnLastAttempt);
     }
     /**
-     * @return (Bool) don&#39;t send alert for skipped runs.
+     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
      * 
      */
     public Optional<Boolean> noAlertForSkippedRuns() {

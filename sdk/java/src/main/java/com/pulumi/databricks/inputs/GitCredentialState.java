@@ -61,9 +61,17 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.gitUsername);
     }
 
+    /**
+     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+     * 
+     */
     @Import(name="personalAccessToken")
     private @Nullable Output<String> personalAccessToken;
 
+    /**
+     * @return The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+     * 
+     */
     public Optional<Output<String>> personalAccessToken() {
         return Optional.ofNullable(this.personalAccessToken);
     }
@@ -158,11 +166,23 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
             return gitUsername(Output.of(gitUsername));
         }
 
+        /**
+         * @param personalAccessToken The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder personalAccessToken(@Nullable Output<String> personalAccessToken) {
             $.personalAccessToken = personalAccessToken;
             return this;
         }
 
+        /**
+         * @param personalAccessToken The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder personalAccessToken(String personalAccessToken) {
             return personalAccessToken(Output.of(personalAccessToken));
         }

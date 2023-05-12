@@ -318,6 +318,18 @@ public class Permissions extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> sqlQueryId() {
         return Codegen.optional(this.sqlQueryId);
     }
+    @Export(name="workspaceFileId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> workspaceFileId;
+
+    public Output<Optional<String>> workspaceFileId() {
+        return Codegen.optional(this.workspaceFileId);
+    }
+    @Export(name="workspaceFilePath", type=String.class, parameters={})
+    private Output</* @Nullable */ String> workspaceFilePath;
+
+    public Output<Optional<String>> workspaceFilePath() {
+        return Codegen.optional(this.workspaceFilePath);
+    }
 
     /**
      *

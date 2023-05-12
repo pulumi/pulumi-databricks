@@ -53,9 +53,17 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.awsEndpointServiceId);
     }
 
+    /**
+     * ID of configured aws_vpc_endpoint
+     * 
+     */
     @Import(name="awsVpcEndpointId")
     private @Nullable Output<String> awsVpcEndpointId;
 
+    /**
+     * @return ID of configured aws_vpc_endpoint
+     * 
+     */
     public Optional<Output<String>> awsVpcEndpointId() {
         return Optional.ofNullable(this.awsVpcEndpointId);
     }
@@ -226,11 +234,23 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
             return awsEndpointServiceId(Output.of(awsEndpointServiceId));
         }
 
+        /**
+         * @param awsVpcEndpointId ID of configured aws_vpc_endpoint
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsVpcEndpointId(@Nullable Output<String> awsVpcEndpointId) {
             $.awsVpcEndpointId = awsVpcEndpointId;
             return this;
         }
 
+        /**
+         * @param awsVpcEndpointId ID of configured aws_vpc_endpoint
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsVpcEndpointId(String awsVpcEndpointId) {
             return awsVpcEndpointId(Output.of(awsVpcEndpointId));
         }

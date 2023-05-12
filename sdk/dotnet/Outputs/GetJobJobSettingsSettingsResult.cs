@@ -30,6 +30,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Name;
         public readonly Outputs.GetJobJobSettingsSettingsNewClusterResult? NewCluster;
         public readonly Outputs.GetJobJobSettingsSettingsNotebookTaskResult? NotebookTask;
+        public readonly Outputs.GetJobJobSettingsSettingsNotificationSettingsResult? NotificationSettings;
         public readonly Outputs.GetJobJobSettingsSettingsPipelineTaskResult? PipelineTask;
         public readonly Outputs.GetJobJobSettingsSettingsPythonWheelTaskResult? PythonWheelTask;
         public readonly Outputs.GetJobJobSettingsSettingsQueueResult? Queue;
@@ -74,6 +75,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsNotebookTaskResult? notebookTask,
 
+            Outputs.GetJobJobSettingsSettingsNotificationSettingsResult? notificationSettings,
+
             Outputs.GetJobJobSettingsSettingsPipelineTaskResult? pipelineTask,
 
             Outputs.GetJobJobSettingsSettingsPythonWheelTaskResult? pythonWheelTask,
@@ -114,6 +117,7 @@ namespace Pulumi.Databricks.Outputs
             Name = name;
             NewCluster = newCluster;
             NotebookTask = notebookTask;
+            NotificationSettings = notificationSettings;
             PipelineTask = pipelineTask;
             PythonWheelTask = pythonWheelTask;
             Queue = queue;

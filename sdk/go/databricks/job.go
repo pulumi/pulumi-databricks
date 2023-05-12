@@ -44,11 +44,12 @@ type Job struct {
 	// An optional name for the job. The default value is Untitled.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Same set of parameters as for Cluster resource.
-	NewCluster      JobNewClusterPtrOutput      `pulumi:"newCluster"`
-	NotebookTask    JobNotebookTaskPtrOutput    `pulumi:"notebookTask"`
-	PipelineTask    JobPipelineTaskPtrOutput    `pulumi:"pipelineTask"`
-	PythonWheelTask JobPythonWheelTaskPtrOutput `pulumi:"pythonWheelTask"`
-	Queue           JobQueuePtrOutput           `pulumi:"queue"`
+	NewCluster           JobNewClusterPtrOutput           `pulumi:"newCluster"`
+	NotebookTask         JobNotebookTaskPtrOutput         `pulumi:"notebookTask"`
+	NotificationSettings JobNotificationSettingsPtrOutput `pulumi:"notificationSettings"`
+	PipelineTask         JobPipelineTaskPtrOutput         `pulumi:"pipelineTask"`
+	PythonWheelTask      JobPythonWheelTaskPtrOutput      `pulumi:"pythonWheelTask"`
+	Queue                JobQueuePtrOutput                `pulumi:"queue"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrOutput `pulumi:"retryOnTimeout"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -118,11 +119,12 @@ type jobState struct {
 	// An optional name for the job. The default value is Untitled.
 	Name *string `pulumi:"name"`
 	// Same set of parameters as for Cluster resource.
-	NewCluster      *JobNewCluster      `pulumi:"newCluster"`
-	NotebookTask    *JobNotebookTask    `pulumi:"notebookTask"`
-	PipelineTask    *JobPipelineTask    `pulumi:"pipelineTask"`
-	PythonWheelTask *JobPythonWheelTask `pulumi:"pythonWheelTask"`
-	Queue           *JobQueue           `pulumi:"queue"`
+	NewCluster           *JobNewCluster           `pulumi:"newCluster"`
+	NotebookTask         *JobNotebookTask         `pulumi:"notebookTask"`
+	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
+	PipelineTask         *JobPipelineTask         `pulumi:"pipelineTask"`
+	PythonWheelTask      *JobPythonWheelTask      `pulumi:"pythonWheelTask"`
+	Queue                *JobQueue                `pulumi:"queue"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -164,11 +166,12 @@ type JobState struct {
 	// An optional name for the job. The default value is Untitled.
 	Name pulumi.StringPtrInput
 	// Same set of parameters as for Cluster resource.
-	NewCluster      JobNewClusterPtrInput
-	NotebookTask    JobNotebookTaskPtrInput
-	PipelineTask    JobPipelineTaskPtrInput
-	PythonWheelTask JobPythonWheelTaskPtrInput
-	Queue           JobQueuePtrInput
+	NewCluster           JobNewClusterPtrInput
+	NotebookTask         JobNotebookTaskPtrInput
+	NotificationSettings JobNotificationSettingsPtrInput
+	PipelineTask         JobPipelineTaskPtrInput
+	PythonWheelTask      JobPythonWheelTaskPtrInput
+	Queue                JobQueuePtrInput
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrInput
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -214,11 +217,12 @@ type jobArgs struct {
 	// An optional name for the job. The default value is Untitled.
 	Name *string `pulumi:"name"`
 	// Same set of parameters as for Cluster resource.
-	NewCluster      *JobNewCluster      `pulumi:"newCluster"`
-	NotebookTask    *JobNotebookTask    `pulumi:"notebookTask"`
-	PipelineTask    *JobPipelineTask    `pulumi:"pipelineTask"`
-	PythonWheelTask *JobPythonWheelTask `pulumi:"pythonWheelTask"`
-	Queue           *JobQueue           `pulumi:"queue"`
+	NewCluster           *JobNewCluster           `pulumi:"newCluster"`
+	NotebookTask         *JobNotebookTask         `pulumi:"notebookTask"`
+	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
+	PipelineTask         *JobPipelineTask         `pulumi:"pipelineTask"`
+	PythonWheelTask      *JobPythonWheelTask      `pulumi:"pythonWheelTask"`
+	Queue                *JobQueue                `pulumi:"queue"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -259,11 +263,12 @@ type JobArgs struct {
 	// An optional name for the job. The default value is Untitled.
 	Name pulumi.StringPtrInput
 	// Same set of parameters as for Cluster resource.
-	NewCluster      JobNewClusterPtrInput
-	NotebookTask    JobNotebookTaskPtrInput
-	PipelineTask    JobPipelineTaskPtrInput
-	PythonWheelTask JobPythonWheelTaskPtrInput
-	Queue           JobQueuePtrInput
+	NewCluster           JobNewClusterPtrInput
+	NotebookTask         JobNotebookTaskPtrInput
+	NotificationSettings JobNotificationSettingsPtrInput
+	PipelineTask         JobPipelineTaskPtrInput
+	PythonWheelTask      JobPythonWheelTaskPtrInput
+	Queue                JobQueuePtrInput
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrInput
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -434,6 +439,10 @@ func (o JobOutput) NewCluster() JobNewClusterPtrOutput {
 
 func (o JobOutput) NotebookTask() JobNotebookTaskPtrOutput {
 	return o.ApplyT(func(v *Job) JobNotebookTaskPtrOutput { return v.NotebookTask }).(JobNotebookTaskPtrOutput)
+}
+
+func (o JobOutput) NotificationSettings() JobNotificationSettingsPtrOutput {
+	return o.ApplyT(func(v *Job) JobNotificationSettingsPtrOutput { return v.NotificationSettings }).(JobNotificationSettingsPtrOutput)
 }
 
 func (o JobOutput) PipelineTask() JobPipelineTaskPtrOutput {

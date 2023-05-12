@@ -25,14 +25,14 @@ public final class JobTaskEmailNotificationsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * (Bool) don&#39;t send alert for skipped runs.
+     * (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
      * 
      */
     @Import(name="noAlertForSkippedRuns")
     private @Nullable Output<Boolean> noAlertForSkippedRuns;
 
     /**
-     * @return (Bool) don&#39;t send alert for skipped runs.
+     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
      * 
      */
     public Optional<Output<Boolean>> noAlertForSkippedRuns() {
@@ -122,7 +122,7 @@ public final class JobTaskEmailNotificationsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs.
+         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class JobTaskEmailNotificationsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs.
+         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
          * 
          * @return builder
          * 

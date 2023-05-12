@@ -57,9 +57,17 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
     public Output<String> awsEndpointServiceId() {
         return this.awsEndpointServiceId;
     }
+    /**
+     * ID of configured aws_vpc_endpoint
+     * 
+     */
     @Export(name="awsVpcEndpointId", type=String.class, parameters={})
     private Output</* @Nullable */ String> awsVpcEndpointId;
 
+    /**
+     * @return ID of configured aws_vpc_endpoint
+     * 
+     */
     public Output<Optional<String>> awsVpcEndpointId() {
         return Codegen.optional(this.awsVpcEndpointId);
     }

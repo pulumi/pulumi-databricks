@@ -98,6 +98,7 @@ __all__ = [
     'JobNewClusterWorkloadTypeArgs',
     'JobNewClusterWorkloadTypeClientsArgs',
     'JobNotebookTaskArgs',
+    'JobNotificationSettingsArgs',
     'JobPipelineTaskArgs',
     'JobPythonWheelTaskArgs',
     'JobQueueArgs',
@@ -337,6 +338,7 @@ __all__ = [
     'GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs',
     'GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs',
     'GetJobJobSettingsSettingsNotebookTaskArgs',
+    'GetJobJobSettingsSettingsNotificationSettingsArgs',
     'GetJobJobSettingsSettingsPipelineTaskArgs',
     'GetJobJobSettingsSettingsPythonWheelTaskArgs',
     'GetJobJobSettingsSettingsQueueArgs',
@@ -1887,7 +1889,7 @@ class JobEmailNotificationsArgs:
                  on_starts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_successes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[bool] no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs.
+        :param pulumi.Input[bool] no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_failures: (List) list of emails to notify when the run fails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_starts: (List) list of emails to notify when the run starts.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_successes: (List) list of emails to notify when the run completes successfully.
@@ -1916,7 +1918,7 @@ class JobEmailNotificationsArgs:
     @pulumi.getter(name="noAlertForSkippedRuns")
     def no_alert_for_skipped_runs(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Bool) don't send alert for skipped runs.
+        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         """
         return pulumi.get(self, "no_alert_for_skipped_runs")
 
@@ -4636,6 +4638,45 @@ class JobNotebookTaskArgs:
 
 
 @pulumi.input_type
+class JobNotificationSettingsArgs:
+    def __init__(__self__, *,
+                 no_alert_for_canceled_runs: Optional[pulumi.Input[bool]] = None,
+                 no_alert_for_skipped_runs: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] no_alert_for_canceled_runs: (Bool) don't send alert for cancelled runs.
+        :param pulumi.Input[bool] no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        """
+        if no_alert_for_canceled_runs is not None:
+            pulumi.set(__self__, "no_alert_for_canceled_runs", no_alert_for_canceled_runs)
+        if no_alert_for_skipped_runs is not None:
+            pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
+
+    @property
+    @pulumi.getter(name="noAlertForCanceledRuns")
+    def no_alert_for_canceled_runs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Bool) don't send alert for cancelled runs.
+        """
+        return pulumi.get(self, "no_alert_for_canceled_runs")
+
+    @no_alert_for_canceled_runs.setter
+    def no_alert_for_canceled_runs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_alert_for_canceled_runs", value)
+
+    @property
+    @pulumi.getter(name="noAlertForSkippedRuns")
+    def no_alert_for_skipped_runs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        """
+        return pulumi.get(self, "no_alert_for_skipped_runs")
+
+    @no_alert_for_skipped_runs.setter
+    def no_alert_for_skipped_runs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_alert_for_skipped_runs", value)
+
+
+@pulumi.input_type
 class JobPipelineTaskArgs:
     def __init__(__self__, *,
                  pipeline_id: pulumi.Input[str]):
@@ -5334,7 +5375,7 @@ class JobTaskEmailNotificationsArgs:
                  on_starts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_successes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[bool] no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs.
+        :param pulumi.Input[bool] no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_failures: (List) list of emails to notify when the run fails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_starts: (List) list of emails to notify when the run starts.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_successes: (List) list of emails to notify when the run completes successfully.
@@ -5363,7 +5404,7 @@ class JobTaskEmailNotificationsArgs:
     @pulumi.getter(name="noAlertForSkippedRuns")
     def no_alert_for_skipped_runs(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Bool) don't send alert for skipped runs.
+        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         """
         return pulumi.get(self, "no_alert_for_skipped_runs")
 
@@ -14067,6 +14108,7 @@ class GetJobJobSettingsSettingsArgs:
                  name: Optional[str] = None,
                  new_cluster: Optional['GetJobJobSettingsSettingsNewClusterArgs'] = None,
                  notebook_task: Optional['GetJobJobSettingsSettingsNotebookTaskArgs'] = None,
+                 notification_settings: Optional['GetJobJobSettingsSettingsNotificationSettingsArgs'] = None,
                  pipeline_task: Optional['GetJobJobSettingsSettingsPipelineTaskArgs'] = None,
                  python_wheel_task: Optional['GetJobJobSettingsSettingsPythonWheelTaskArgs'] = None,
                  queue: Optional['GetJobJobSettingsSettingsQueueArgs'] = None,
@@ -14110,6 +14152,8 @@ class GetJobJobSettingsSettingsArgs:
             pulumi.set(__self__, "new_cluster", new_cluster)
         if notebook_task is not None:
             pulumi.set(__self__, "notebook_task", notebook_task)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
         if python_wheel_task is not None:
@@ -14265,6 +14309,15 @@ class GetJobJobSettingsSettingsArgs:
     @notebook_task.setter
     def notebook_task(self, value: Optional['GetJobJobSettingsSettingsNotebookTaskArgs']):
         pulumi.set(self, "notebook_task", value)
+
+    @property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional['GetJobJobSettingsSettingsNotificationSettingsArgs']:
+        return pulumi.get(self, "notification_settings")
+
+    @notification_settings.setter
+    def notification_settings(self, value: Optional['GetJobJobSettingsSettingsNotificationSettingsArgs']):
+        pulumi.set(self, "notification_settings", value)
 
     @property
     @pulumi.getter(name="pipelineTask")
@@ -17131,6 +17184,35 @@ class GetJobJobSettingsSettingsNotebookTaskArgs:
     @source.setter
     def source(self, value: Optional[str]):
         pulumi.set(self, "source", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsNotificationSettingsArgs:
+    def __init__(__self__, *,
+                 no_alert_for_canceled_runs: Optional[bool] = None,
+                 no_alert_for_skipped_runs: Optional[bool] = None):
+        if no_alert_for_canceled_runs is not None:
+            pulumi.set(__self__, "no_alert_for_canceled_runs", no_alert_for_canceled_runs)
+        if no_alert_for_skipped_runs is not None:
+            pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
+
+    @property
+    @pulumi.getter(name="noAlertForCanceledRuns")
+    def no_alert_for_canceled_runs(self) -> Optional[bool]:
+        return pulumi.get(self, "no_alert_for_canceled_runs")
+
+    @no_alert_for_canceled_runs.setter
+    def no_alert_for_canceled_runs(self, value: Optional[bool]):
+        pulumi.set(self, "no_alert_for_canceled_runs", value)
+
+    @property
+    @pulumi.getter(name="noAlertForSkippedRuns")
+    def no_alert_for_skipped_runs(self) -> Optional[bool]:
+        return pulumi.get(self, "no_alert_for_skipped_runs")
+
+    @no_alert_for_skipped_runs.setter
+    def no_alert_for_skipped_runs(self, value: Optional[bool]):
+        pulumi.set(self, "no_alert_for_skipped_runs", value)
 
 
 @pulumi.input_type

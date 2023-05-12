@@ -83,6 +83,10 @@ def get_cluster_policy(definition: Optional[str] = None,
                        name: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterPolicyResult:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_cluster_policy.
+
     ## Example Usage
 
     Referring to a cluster policy by name:
@@ -124,6 +128,10 @@ def get_cluster_policy_output(definition: Optional[pulumi.Input[Optional[str]]] 
                               name: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterPolicyResult]:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_cluster_policy.
+
     ## Example Usage
 
     Referring to a cluster policy by name:

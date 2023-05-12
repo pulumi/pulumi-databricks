@@ -26,6 +26,67 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This resource allows you to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances. An instance pool reduces cluster start and auto-scaling times by maintaining a set of idle, ready-to-use cloud instances. When a cluster attached to a pool needs an instance, it first attempts to allocate one of the pool’s idle instances. If the pool has no idle instances, it expands by allocating a new instance from the instance provider in order to accommodate the cluster’s request. When a cluster releases an instance, it returns to the pool and is free for another cluster to use. Only clusters attached to a pool can use that pool’s idle instances.
+ * 
+ * &gt; **Note** It is important to know that different cloud service providers have different `node_type_id`, `disk_specs` and potentially other configurations.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+ * import com.pulumi.databricks.InstancePool;
+ * import com.pulumi.databricks.InstancePoolArgs;
+ * import com.pulumi.databricks.inputs.InstancePoolAwsAttributesArgs;
+ * import com.pulumi.databricks.inputs.InstancePoolDiskSpecArgs;
+ * import com.pulumi.databricks.inputs.InstancePoolDiskSpecDiskTypeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var smallest = DatabricksFunctions.getNodeType();
+ * 
+ *         var smallestNodes = new InstancePool(&#34;smallestNodes&#34;, InstancePoolArgs.builder()        
+ *             .instancePoolName(&#34;Smallest Nodes&#34;)
+ *             .minIdleInstances(0)
+ *             .maxCapacity(300)
+ *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+ *             .awsAttributes(InstancePoolAwsAttributesArgs.builder()
+ *                 .availability(&#34;ON_DEMAND&#34;)
+ *                 .zoneId(&#34;us-east-1a&#34;)
+ *                 .spotBidPricePercent(&#34;100&#34;)
+ *                 .build())
+ *             .idleInstanceAutoterminationMinutes(10)
+ *             .diskSpec(InstancePoolDiskSpecArgs.builder()
+ *                 .diskType(InstancePoolDiskSpecDiskTypeArgs.builder()
+ *                     .ebsVolumeType(&#34;GENERAL_PURPOSE_SSD&#34;)
+ *                     .build())
+ *                 .diskSize(80)
+ *                 .diskCount(1)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Access Control
+ * 
+ * * databricks.Group and databricks.User can control which groups or individual users can create instance pools.
+ * * databricks.Permissions can control which groups or individual users can *Manage* or *Attach to* individual instance pools.
+ * 
  * ## Import
  * 
  * The resource instance pool can be imported using it&#39;s idbash
@@ -50,14 +111,14 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.azureAttributes);
     }
     /**
-     * (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+     * (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
      * 
      */
     @Export(name="customTags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> customTags;
 
     /**
-     * @return (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). *Databricks allows at most 43 custom tags.*
+     * @return (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
      * 
      */
     public Output<Optional<Map<String,Object>>> customTags() {

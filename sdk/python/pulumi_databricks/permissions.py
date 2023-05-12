@@ -35,7 +35,9 @@ class PermissionsArgs:
                  sql_alert_id: Optional[pulumi.Input[str]] = None,
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
-                 sql_query_id: Optional[pulumi.Input[str]] = None):
+                 sql_query_id: Optional[pulumi.Input[str]] = None,
+                 workspace_file_id: Optional[pulumi.Input[str]] = None,
+                 workspace_file_path: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Permissions resource.
         :param pulumi.Input[str] authorization: either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
@@ -97,6 +99,10 @@ class PermissionsArgs:
             pulumi.set(__self__, "sql_endpoint_id", sql_endpoint_id)
         if sql_query_id is not None:
             pulumi.set(__self__, "sql_query_id", sql_query_id)
+        if workspace_file_id is not None:
+            pulumi.set(__self__, "workspace_file_id", workspace_file_id)
+        if workspace_file_path is not None:
+            pulumi.set(__self__, "workspace_file_path", workspace_file_path)
 
     @property
     @pulumi.getter(name="accessControls")
@@ -335,6 +341,24 @@ class PermissionsArgs:
     def sql_query_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sql_query_id", value)
 
+    @property
+    @pulumi.getter(name="workspaceFileId")
+    def workspace_file_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "workspace_file_id")
+
+    @workspace_file_id.setter
+    def workspace_file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workspace_file_id", value)
+
+    @property
+    @pulumi.getter(name="workspaceFilePath")
+    def workspace_file_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "workspace_file_path")
+
+    @workspace_file_path.setter
+    def workspace_file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workspace_file_path", value)
+
 
 @pulumi.input_type
 class _PermissionsState:
@@ -358,7 +382,9 @@ class _PermissionsState:
                  sql_alert_id: Optional[pulumi.Input[str]] = None,
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
-                 sql_query_id: Optional[pulumi.Input[str]] = None):
+                 sql_query_id: Optional[pulumi.Input[str]] = None,
+                 workspace_file_id: Optional[pulumi.Input[str]] = None,
+                 workspace_file_path: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Permissions resources.
         :param pulumi.Input[str] authorization: either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
@@ -421,6 +447,10 @@ class _PermissionsState:
             pulumi.set(__self__, "sql_endpoint_id", sql_endpoint_id)
         if sql_query_id is not None:
             pulumi.set(__self__, "sql_query_id", sql_query_id)
+        if workspace_file_id is not None:
+            pulumi.set(__self__, "workspace_file_id", workspace_file_id)
+        if workspace_file_path is not None:
+            pulumi.set(__self__, "workspace_file_path", workspace_file_path)
 
     @property
     @pulumi.getter(name="accessControls")
@@ -659,6 +689,24 @@ class _PermissionsState:
     def sql_query_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sql_query_id", value)
 
+    @property
+    @pulumi.getter(name="workspaceFileId")
+    def workspace_file_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "workspace_file_id")
+
+    @workspace_file_id.setter
+    def workspace_file_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workspace_file_id", value)
+
+    @property
+    @pulumi.getter(name="workspaceFilePath")
+    def workspace_file_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "workspace_file_path")
+
+    @workspace_file_path.setter
+    def workspace_file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workspace_file_path", value)
+
 
 class Permissions(pulumi.CustomResource):
     @overload
@@ -685,6 +733,8 @@ class Permissions(pulumi.CustomResource):
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_query_id: Optional[pulumi.Input[str]] = None,
+                 workspace_file_id: Optional[pulumi.Input[str]] = None,
+                 workspace_file_path: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Import
@@ -803,6 +853,8 @@ class Permissions(pulumi.CustomResource):
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_query_id: Optional[pulumi.Input[str]] = None,
+                 workspace_file_id: Optional[pulumi.Input[str]] = None,
+                 workspace_file_path: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -834,6 +886,8 @@ class Permissions(pulumi.CustomResource):
             __props__.__dict__["sql_dashboard_id"] = sql_dashboard_id
             __props__.__dict__["sql_endpoint_id"] = sql_endpoint_id
             __props__.__dict__["sql_query_id"] = sql_query_id
+            __props__.__dict__["workspace_file_id"] = workspace_file_id
+            __props__.__dict__["workspace_file_path"] = workspace_file_path
         super(Permissions, __self__).__init__(
             'databricks:index/permissions:Permissions',
             resource_name,
@@ -863,7 +917,9 @@ class Permissions(pulumi.CustomResource):
             sql_alert_id: Optional[pulumi.Input[str]] = None,
             sql_dashboard_id: Optional[pulumi.Input[str]] = None,
             sql_endpoint_id: Optional[pulumi.Input[str]] = None,
-            sql_query_id: Optional[pulumi.Input[str]] = None) -> 'Permissions':
+            sql_query_id: Optional[pulumi.Input[str]] = None,
+            workspace_file_id: Optional[pulumi.Input[str]] = None,
+            workspace_file_path: Optional[pulumi.Input[str]] = None) -> 'Permissions':
         """
         Get an existing Permissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -915,6 +971,8 @@ class Permissions(pulumi.CustomResource):
         __props__.__dict__["sql_dashboard_id"] = sql_dashboard_id
         __props__.__dict__["sql_endpoint_id"] = sql_endpoint_id
         __props__.__dict__["sql_query_id"] = sql_query_id
+        __props__.__dict__["workspace_file_id"] = workspace_file_id
+        __props__.__dict__["workspace_file_path"] = workspace_file_path
         return Permissions(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1073,4 +1131,14 @@ class Permissions(pulumi.CustomResource):
         SQL query id
         """
         return pulumi.get(self, "sql_query_id")
+
+    @property
+    @pulumi.getter(name="workspaceFileId")
+    def workspace_file_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "workspace_file_id")
+
+    @property
+    @pulumi.getter(name="workspaceFilePath")
+    def workspace_file_path(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "workspace_file_path")
 

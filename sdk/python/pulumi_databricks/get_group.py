@@ -204,6 +204,10 @@ def get_group(allow_cluster_create: Optional[bool] = None,
               workspace_access: Optional[bool] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about Group members, entitlements and instance profiles.
+
     ## Example Usage
 
     Adding user to administrative group
@@ -291,6 +295,10 @@ def get_group_output(allow_cluster_create: Optional[pulumi.Input[Optional[bool]]
                      workspace_access: Optional[pulumi.Input[Optional[bool]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about Group members, entitlements and instance profiles.
+
     ## Example Usage
 
     Adding user to administrative group

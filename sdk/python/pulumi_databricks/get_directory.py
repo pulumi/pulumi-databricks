@@ -69,6 +69,10 @@ def get_directory(object_id: Optional[int] = None,
                   path: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectoryResult:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    This data source allows to get information about a directory in a Databricks Workspace.
+
     ## Example Usage
 
     ```python
@@ -99,6 +103,10 @@ def get_directory_output(object_id: Optional[pulumi.Input[Optional[int]]] = None
                          path: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectoryResult]:
     """
+    > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    This data source allows to get information about a directory in a Databricks Workspace.
+
     ## Example Usage
 
     ```python
