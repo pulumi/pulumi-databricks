@@ -17,9 +17,9 @@ import * as utilities from "./utilities";
  *
  * const instanceProfile = new databricks.InstanceProfile("instanceProfile", {instanceProfileArn: "my_instance_profile_arn"});
  * const myGroup = new databricks.Group("myGroup", {});
- * const myGroupInstanceProfile = new databricks.GroupInstanceProfile("myGroupInstanceProfile", {
+ * const myGroupInstanceProfile = new databricks.GroupRole("myGroupInstanceProfile", {
  *     groupId: myGroup.id,
- *     instanceProfileId: instanceProfile.id,
+ *     role: instanceProfile.id,
  * });
  * ```
  *

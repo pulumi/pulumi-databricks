@@ -32,12 +32,16 @@ public final class SqlPermissionsPrivilegeAssignmentArgs extends com.pulumi.reso
     /**
      * set of available privilege names in upper case.
      * 
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+     * 
      */
     @Import(name="privileges", required=true)
     private Output<List<String>> privileges;
 
     /**
      * @return set of available privilege names in upper case.
+     * 
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
      * 
      */
     public Output<List<String>> privileges() {
@@ -93,6 +97,8 @@ public final class SqlPermissionsPrivilegeAssignmentArgs extends com.pulumi.reso
         /**
          * @param privileges set of available privilege names in upper case.
          * 
+         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+         * 
          * @return builder
          * 
          */
@@ -104,6 +110,8 @@ public final class SqlPermissionsPrivilegeAssignmentArgs extends com.pulumi.reso
         /**
          * @param privileges set of available privilege names in upper case.
          * 
+         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+         * 
          * @return builder
          * 
          */
@@ -113,6 +121,8 @@ public final class SqlPermissionsPrivilegeAssignmentArgs extends com.pulumi.reso
 
         /**
          * @param privileges set of available privilege names in upper case.
+         * 
+         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
          * 
          * @return builder
          * 

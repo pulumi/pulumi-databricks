@@ -27,6 +27,8 @@ type MetastoreDataAccess struct {
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrOutput        `pulumi:"gcpServiceAccountKey"`
 	IsDefault                   pulumi.BoolPtrOutput                                    `pulumi:"isDefault"`
 	// Unique identifier of the parent Metastore
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -72,6 +74,8 @@ type metastoreDataAccessState struct {
 	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
 	IsDefault                   *bool                                           `pulumi:"isDefault"`
 	// Unique identifier of the parent Metastore
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
@@ -86,6 +90,8 @@ type MetastoreDataAccessState struct {
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
 	IsDefault                   pulumi.BoolPtrInput
 	// Unique identifier of the parent Metastore
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
 	MetastoreId pulumi.StringPtrInput
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
@@ -104,6 +110,8 @@ type metastoreDataAccessArgs struct {
 	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
 	IsDefault                   *bool                                           `pulumi:"isDefault"`
 	// Unique identifier of the parent Metastore
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
 	MetastoreId string `pulumi:"metastoreId"`
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
@@ -119,6 +127,8 @@ type MetastoreDataAccessArgs struct {
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
 	IsDefault                   pulumi.BoolPtrInput
 	// Unique identifier of the parent Metastore
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
 	MetastoreId pulumi.StringInput
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
@@ -248,6 +258,8 @@ func (o MetastoreDataAccessOutput) IsDefault() pulumi.BoolPtrOutput {
 }
 
 // Unique identifier of the parent Metastore
+//
+// `awsIamRole` optional configuration block for credential details for AWS:
 func (o MetastoreDataAccessOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }

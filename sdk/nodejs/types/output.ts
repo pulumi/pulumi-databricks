@@ -1426,6 +1426,8 @@ export interface JobDbtTask {
     schema?: string;
     /**
      * The ID of the SQL warehouse that dbt should execute against.
+     *
+     * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
      */
     warehouseId?: string;
 }
@@ -1595,6 +1597,23 @@ export interface JobJobClusterNewClusterInitScript {
     dbfs?: outputs.JobJobClusterNewClusterInitScriptDbfs;
     /**
      * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [{
+     *     taskKey: "run_agg_query",
+     *     sqlTask: {
+     *         warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *         query: {
+     *             queryId: databricks_sql_query.agg_query.id,
+     *         },
+     *     },
+     * }]});
+     * ```
      */
     file?: outputs.JobJobClusterNewClusterInitScriptFile;
     gcs?: outputs.JobJobClusterNewClusterInitScriptGcs;
@@ -1777,6 +1796,23 @@ export interface JobNewClusterInitScript {
     dbfs?: outputs.JobNewClusterInitScriptDbfs;
     /**
      * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [{
+     *     taskKey: "run_agg_query",
+     *     sqlTask: {
+     *         warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *         query: {
+     *             queryId: databricks_sql_query.agg_query.id,
+     *         },
+     *     },
+     * }]});
+     * ```
      */
     file?: outputs.JobNewClusterInitScriptFile;
     gcs?: outputs.JobNewClusterInitScriptGcs;
@@ -1852,6 +1888,8 @@ export interface JobNotificationSettings {
 export interface JobPipelineTask {
     /**
      * The pipeline's unique ID.
+     *
+     * > **Note** The following configuration blocks are only supported inside a `task` block
      */
     pipelineId: string;
 }
@@ -1998,6 +2036,8 @@ export interface JobTaskDbtTask {
     schema?: string;
     /**
      * The ID of the SQL warehouse that dbt should execute against.
+     *
+     * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
      */
     warehouseId?: string;
 }
@@ -2162,6 +2202,23 @@ export interface JobTaskNewClusterInitScript {
     dbfs?: outputs.JobTaskNewClusterInitScriptDbfs;
     /**
      * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [{
+     *     taskKey: "run_agg_query",
+     *     sqlTask: {
+     *         warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *         query: {
+     *             queryId: databricks_sql_query.agg_query.id,
+     *         },
+     *     },
+     * }]});
+     * ```
      */
     file?: outputs.JobTaskNewClusterInitScriptFile;
     gcs?: outputs.JobTaskNewClusterInitScriptGcs;
@@ -2226,6 +2283,8 @@ export interface JobTaskNotebookTask {
 export interface JobTaskPipelineTask {
     /**
      * The pipeline's unique ID.
+     *
+     * > **Note** The following configuration blocks are only supported inside a `task` block
      */
     pipelineId: string;
 }
@@ -2294,6 +2353,23 @@ export interface JobTaskSqlTask {
     dashboard?: outputs.JobTaskSqlTaskDashboard;
     /**
      * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [{
+     *     taskKey: "run_agg_query",
+     *     sqlTask: {
+     *         warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *         query: {
+     *             queryId: databricks_sql_query.agg_query.id,
+     *         },
+     *     },
+     * }]});
+     * ```
      */
     file?: outputs.JobTaskSqlTaskFile;
     /**
@@ -2355,6 +2431,14 @@ export interface JobTriggerFileArrival {
 export interface JobWebhookNotifications {
     /**
      * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+     *
+     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
      */
     onFailures?: outputs.JobWebhookNotificationsOnFailure[];
     /**
@@ -2370,6 +2454,8 @@ export interface JobWebhookNotifications {
 export interface JobWebhookNotificationsOnFailure {
     /**
      * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
     id: string;
 }
@@ -2377,6 +2463,8 @@ export interface JobWebhookNotificationsOnFailure {
 export interface JobWebhookNotificationsOnStart {
     /**
      * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
     id: string;
 }
@@ -2384,6 +2472,8 @@ export interface JobWebhookNotificationsOnStart {
 export interface JobWebhookNotificationsOnSuccess {
     /**
      * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
     id: string;
 }
@@ -2407,6 +2497,8 @@ export interface LibraryPypi {
 export interface MetastoreDataAccessAwsIamRole {
     /**
      * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     *
+     * `azureServicePrincipal` optional configuration block for credential details for Azure:
      */
     roleArn: string;
 }
@@ -2414,6 +2506,8 @@ export interface MetastoreDataAccessAwsIamRole {
 export interface MetastoreDataAccessAzureManagedIdentity {
     /**
      * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+     *
+     * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
      */
     accessConnectorId: string;
 }
@@ -2425,6 +2519,8 @@ export interface MetastoreDataAccessAzureServicePrincipal {
     applicationId: string;
     /**
      * The client secret generated for the above app ID in AAD. **This field is redacted on output**
+     *
+     * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure:
      */
     clientSecret: string;
     /**
@@ -2710,6 +2806,8 @@ export interface PermissionsAccessControl {
     groupName?: string;
     /**
      * permission level according to specific resource. See examples above for the reference.
+     *
+     * Exactly one of the below arguments is required:
      */
     permissionLevel: string;
     /**
@@ -2916,6 +3014,8 @@ export interface ShareObject {
     dataObjectType: string;
     /**
      * Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
+     *
+     * To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
      */
     historyDataSharingStatus?: string;
     /**
@@ -3018,6 +3118,8 @@ export interface SqlPermissionsPrivilegeAssignment {
     principal: string;
     /**
      * set of available privilege names in upper case.
+     *
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
      */
     privileges: string[];
 }
@@ -3176,6 +3278,8 @@ export interface SqlWidgetPosition {
 export interface StorageCredentialAwsIamRole {
     /**
      * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     *
+     * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
      */
     roleArn: string;
 }
@@ -3183,6 +3287,8 @@ export interface StorageCredentialAwsIamRole {
 export interface StorageCredentialAzureManagedIdentity {
     /**
      * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+     *
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure:
      */
     accessConnectorId: string;
 }
@@ -3194,6 +3300,8 @@ export interface StorageCredentialAzureServicePrincipal {
     applicationId: string;
     /**
      * The client secret generated for the above app ID in AAD. **This field is redacted on output**
+     *
+     * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
      */
     clientSecret: string;
     /**

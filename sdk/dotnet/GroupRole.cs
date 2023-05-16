@@ -31,10 +31,10 @@ namespace Pulumi.Databricks
     /// 
     ///     var myGroup = new Databricks.Group("myGroup");
     /// 
-    ///     var myGroupInstanceProfile = new Databricks.GroupInstanceProfile("myGroupInstanceProfile", new()
+    ///     var myGroupInstanceProfile = new Databricks.GroupRole("myGroupInstanceProfile", new()
     ///     {
     ///         GroupId = myGroup.Id,
-    ///         InstanceProfileId = instanceProfile.Id,
+    ///         Role = instanceProfile.Id,
     ///     });
     /// 
     /// });

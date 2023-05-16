@@ -276,12 +276,120 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters&#39; maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
      * 
+     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+     * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+     *             .localDisk(true)
+     *             .build());
+     * 
+     *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+     *             .longTermSupport(true)
+     *             .build());
+     * 
+     *         var sharedAutoscaling = new Cluster(&#34;sharedAutoscaling&#34;, ClusterArgs.builder()        
+     *             .clusterName(&#34;Shared Autoscaling&#34;)
+     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
+     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *             .autoterminationMinutes(20)
+     *             .autoscale(ClusterAutoscaleArgs.builder()
+     *                 .minWorkers(1)
+     *                 .maxWorkers(50)
+     *                 .build())
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry(&#34;spark.databricks.io.cache.enabled&#34;, true),
+     *                 Map.entry(&#34;spark.databricks.io.cache.maxDiskUsage&#34;, &#34;50g&#34;),
+     *                 Map.entry(&#34;spark.databricks.io.cache.maxMetaDataCache&#34;, &#34;1g&#34;)
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     @Import(name="isPinned")
     private @Nullable Output<Boolean> isPinned;
 
     /**
      * @return boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters&#39; maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+     * 
+     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+     * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+     *             .localDisk(true)
+     *             .build());
+     * 
+     *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+     *             .longTermSupport(true)
+     *             .build());
+     * 
+     *         var sharedAutoscaling = new Cluster(&#34;sharedAutoscaling&#34;, ClusterArgs.builder()        
+     *             .clusterName(&#34;Shared Autoscaling&#34;)
+     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
+     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+     *             .autoterminationMinutes(20)
+     *             .autoscale(ClusterAutoscaleArgs.builder()
+     *                 .minWorkers(1)
+     *                 .maxWorkers(50)
+     *                 .build())
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry(&#34;spark.databricks.io.cache.enabled&#34;, true),
+     *                 Map.entry(&#34;spark.databricks.io.cache.maxDiskUsage&#34;, &#34;50g&#34;),
+     *                 Map.entry(&#34;spark.databricks.io.cache.maxMetaDataCache&#34;, &#34;1g&#34;)
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public Optional<Output<Boolean>> isPinned() {
@@ -861,6 +969,60 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param isPinned boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters&#39; maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
          * 
+         * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.DatabricksFunctions;
+         * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+         * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+         * import com.pulumi.databricks.Cluster;
+         * import com.pulumi.databricks.ClusterArgs;
+         * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+         *             .localDisk(true)
+         *             .build());
+         * 
+         *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+         *             .longTermSupport(true)
+         *             .build());
+         * 
+         *         var sharedAutoscaling = new Cluster(&#34;sharedAutoscaling&#34;, ClusterArgs.builder()        
+         *             .clusterName(&#34;Shared Autoscaling&#34;)
+         *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
+         *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+         *             .autoterminationMinutes(20)
+         *             .autoscale(ClusterAutoscaleArgs.builder()
+         *                 .minWorkers(1)
+         *                 .maxWorkers(50)
+         *                 .build())
+         *             .sparkConf(Map.ofEntries(
+         *                 Map.entry(&#34;spark.databricks.io.cache.enabled&#34;, true),
+         *                 Map.entry(&#34;spark.databricks.io.cache.maxDiskUsage&#34;, &#34;50g&#34;),
+         *                 Map.entry(&#34;spark.databricks.io.cache.maxMetaDataCache&#34;, &#34;1g&#34;)
+         *             ))
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
+         * 
          * @return builder
          * 
          */
@@ -871,6 +1033,60 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param isPinned boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters&#39; maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+         * 
+         * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.DatabricksFunctions;
+         * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+         * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+         * import com.pulumi.databricks.Cluster;
+         * import com.pulumi.databricks.ClusterArgs;
+         * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+         *             .localDisk(true)
+         *             .build());
+         * 
+         *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+         *             .longTermSupport(true)
+         *             .build());
+         * 
+         *         var sharedAutoscaling = new Cluster(&#34;sharedAutoscaling&#34;, ClusterArgs.builder()        
+         *             .clusterName(&#34;Shared Autoscaling&#34;)
+         *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
+         *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+         *             .autoterminationMinutes(20)
+         *             .autoscale(ClusterAutoscaleArgs.builder()
+         *                 .minWorkers(1)
+         *                 .maxWorkers(50)
+         *                 .build())
+         *             .sparkConf(Map.ofEntries(
+         *                 Map.entry(&#34;spark.databricks.io.cache.enabled&#34;, true),
+         *                 Map.entry(&#34;spark.databricks.io.cache.maxDiskUsage&#34;, &#34;50g&#34;),
+         *                 Map.entry(&#34;spark.databricks.io.cache.maxMetaDataCache&#34;, &#34;1g&#34;)
+         *             ))
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 

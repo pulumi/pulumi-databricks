@@ -1824,6 +1824,8 @@ class JobDbtTask(dict):
         :param str project_directory: The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
         :param str schema: The name of the schema dbt should run in. Defaults to `default`.
         :param str warehouse_id: The ID of the SQL warehouse that dbt should execute against.
+               
+               You also need to include a `git_source` block to configure the repository that contains the dbt project.
         """
         pulumi.set(__self__, "commands", commands)
         if catalog is not None:
@@ -1882,6 +1884,8 @@ class JobDbtTask(dict):
     def warehouse_id(self) -> Optional[str]:
         """
         The ID of the SQL warehouse that dbt should execute against.
+
+        You also need to include a `git_source` block to configure the repository that contains the dbt project.
         """
         return pulumi.get(self, "warehouse_id")
 
@@ -2937,6 +2941,23 @@ class JobJobClusterNewClusterInitScript(dict):
                  workspace: Optional['outputs.JobJobClusterNewClusterInitScriptWorkspace'] = None):
         """
         :param 'JobJobClusterNewClusterInitScriptFileArgs' file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+               
+               Example
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
+                   task_key="run_agg_query",
+                   sql_task=databricks.JobTaskSqlTaskArgs(
+                       warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       query=databricks.JobTaskSqlTaskQueryArgs(
+                           query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       ),
+                   ),
+               )])
+               ```
         """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
@@ -2966,6 +2987,23 @@ class JobJobClusterNewClusterInitScript(dict):
     def file(self) -> Optional['outputs.JobJobClusterNewClusterInitScriptFile']:
         """
         block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+
+        Example
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
+            task_key="run_agg_query",
+            sql_task=databricks.JobTaskSqlTaskArgs(
+                warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                query=databricks.JobTaskSqlTaskQueryArgs(
+                    query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                ),
+            ),
+        )])
+        ```
         """
         return pulumi.get(self, "file")
 
@@ -4133,6 +4171,23 @@ class JobNewClusterInitScript(dict):
                  workspace: Optional['outputs.JobNewClusterInitScriptWorkspace'] = None):
         """
         :param 'JobNewClusterInitScriptFileArgs' file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+               
+               Example
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
+                   task_key="run_agg_query",
+                   sql_task=databricks.JobTaskSqlTaskArgs(
+                       warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       query=databricks.JobTaskSqlTaskQueryArgs(
+                           query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       ),
+                   ),
+               )])
+               ```
         """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
@@ -4162,6 +4217,23 @@ class JobNewClusterInitScript(dict):
     def file(self) -> Optional['outputs.JobNewClusterInitScriptFile']:
         """
         block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+
+        Example
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
+            task_key="run_agg_query",
+            sql_task=databricks.JobTaskSqlTaskArgs(
+                warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                query=databricks.JobTaskSqlTaskQueryArgs(
+                    query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                ),
+            ),
+        )])
+        ```
         """
         return pulumi.get(self, "file")
 
@@ -4495,6 +4567,8 @@ class JobPipelineTask(dict):
                  pipeline_id: str):
         """
         :param str pipeline_id: The pipeline's unique ID.
+               
+               > **Note** The following configuration blocks are only supported inside a `task` block
         """
         pulumi.set(__self__, "pipeline_id", pipeline_id)
 
@@ -4503,6 +4577,8 @@ class JobPipelineTask(dict):
     def pipeline_id(self) -> str:
         """
         The pipeline's unique ID.
+
+        > **Note** The following configuration blocks are only supported inside a `task` block
         """
         return pulumi.get(self, "pipeline_id")
 
@@ -5084,6 +5160,8 @@ class JobTaskDbtTask(dict):
         :param str project_directory: The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
         :param str schema: The name of the schema dbt should run in. Defaults to `default`.
         :param str warehouse_id: The ID of the SQL warehouse that dbt should execute against.
+               
+               You also need to include a `git_source` block to configure the repository that contains the dbt project.
         """
         pulumi.set(__self__, "commands", commands)
         if catalog is not None:
@@ -5142,6 +5220,8 @@ class JobTaskDbtTask(dict):
     def warehouse_id(self) -> Optional[str]:
         """
         The ID of the SQL warehouse that dbt should execute against.
+
+        You also need to include a `git_source` block to configure the repository that contains the dbt project.
         """
         return pulumi.get(self, "warehouse_id")
 
@@ -6232,6 +6312,23 @@ class JobTaskNewClusterInitScript(dict):
                  workspace: Optional['outputs.JobTaskNewClusterInitScriptWorkspace'] = None):
         """
         :param 'JobTaskNewClusterInitScriptFileArgs' file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+               
+               Example
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
+                   task_key="run_agg_query",
+                   sql_task=databricks.JobTaskSqlTaskArgs(
+                       warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       query=databricks.JobTaskSqlTaskQueryArgs(
+                           query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       ),
+                   ),
+               )])
+               ```
         """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
@@ -6261,6 +6358,23 @@ class JobTaskNewClusterInitScript(dict):
     def file(self) -> Optional['outputs.JobTaskNewClusterInitScriptFile']:
         """
         block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+
+        Example
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
+            task_key="run_agg_query",
+            sql_task=databricks.JobTaskSqlTaskArgs(
+                warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                query=databricks.JobTaskSqlTaskQueryArgs(
+                    query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                ),
+            ),
+        )])
+        ```
         """
         return pulumi.get(self, "file")
 
@@ -6544,6 +6658,8 @@ class JobTaskPipelineTask(dict):
                  pipeline_id: str):
         """
         :param str pipeline_id: The pipeline's unique ID.
+               
+               > **Note** The following configuration blocks are only supported inside a `task` block
         """
         pulumi.set(__self__, "pipeline_id", pipeline_id)
 
@@ -6552,6 +6668,8 @@ class JobTaskPipelineTask(dict):
     def pipeline_id(self) -> str:
         """
         The pipeline's unique ID.
+
+        > **Note** The following configuration blocks are only supported inside a `task` block
         """
         return pulumi.get(self, "pipeline_id")
 
@@ -6798,6 +6916,23 @@ class JobTaskSqlTask(dict):
         :param 'JobTaskSqlTaskAlertArgs' alert: block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.
         :param 'JobTaskSqlTaskDashboardArgs' dashboard: block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
         :param 'JobTaskSqlTaskFileArgs' file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+               
+               Example
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
+                   task_key="run_agg_query",
+                   sql_task=databricks.JobTaskSqlTaskArgs(
+                       warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       query=databricks.JobTaskSqlTaskQueryArgs(
+                           query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       ),
+                   ),
+               )])
+               ```
         :param Mapping[str, Any] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         :param 'JobTaskSqlTaskQueryArgs' query: block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
         :param str warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
@@ -6836,6 +6971,23 @@ class JobTaskSqlTask(dict):
     def file(self) -> Optional['outputs.JobTaskSqlTaskFile']:
         """
         block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+
+        Example
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
+            task_key="run_agg_query",
+            sql_task=databricks.JobTaskSqlTaskArgs(
+                warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                query=databricks.JobTaskSqlTaskQueryArgs(
+                    query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                ),
+            ),
+        )])
+        ```
         """
         return pulumi.get(self, "file")
 
@@ -7102,6 +7254,14 @@ class JobWebhookNotifications(dict):
                  on_successes: Optional[Sequence['outputs.JobWebhookNotificationsOnSuccess']] = None):
         """
         :param Sequence['JobWebhookNotificationsOnFailureArgs'] on_failures: (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+               
+               Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+               
+               Example
+               
+               ```python
+               import pulumi
+               ```
         :param Sequence['JobWebhookNotificationsOnStartArgs'] on_starts: (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
         :param Sequence['JobWebhookNotificationsOnSuccessArgs'] on_successes: (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
         """
@@ -7117,6 +7277,14 @@ class JobWebhookNotifications(dict):
     def on_failures(self) -> Optional[Sequence['outputs.JobWebhookNotificationsOnFailure']]:
         """
         (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+
+        Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+
+        Example
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "on_failures")
 
@@ -7143,6 +7311,8 @@ class JobWebhookNotificationsOnFailure(dict):
                  id: str):
         """
         :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+               
+               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         pulumi.set(__self__, "id", id)
 
@@ -7151,6 +7321,8 @@ class JobWebhookNotificationsOnFailure(dict):
     def id(self) -> str:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+
+        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         return pulumi.get(self, "id")
 
@@ -7161,6 +7333,8 @@ class JobWebhookNotificationsOnStart(dict):
                  id: str):
         """
         :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+               
+               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         pulumi.set(__self__, "id", id)
 
@@ -7169,6 +7343,8 @@ class JobWebhookNotificationsOnStart(dict):
     def id(self) -> str:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+
+        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         return pulumi.get(self, "id")
 
@@ -7179,6 +7355,8 @@ class JobWebhookNotificationsOnSuccess(dict):
                  id: str):
         """
         :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+               
+               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         pulumi.set(__self__, "id", id)
 
@@ -7187,6 +7365,8 @@ class JobWebhookNotificationsOnSuccess(dict):
     def id(self) -> str:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+
+        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         return pulumi.get(self, "id")
 
@@ -7282,6 +7462,8 @@ class MetastoreDataAccessAwsIamRole(dict):
                  role_arn: str):
         """
         :param str role_arn: The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+               
+               `azure_service_principal` optional configuration block for credential details for Azure:
         """
         pulumi.set(__self__, "role_arn", role_arn)
 
@@ -7290,6 +7472,8 @@ class MetastoreDataAccessAwsIamRole(dict):
     def role_arn(self) -> str:
         """
         The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+
+        `azure_service_principal` optional configuration block for credential details for Azure:
         """
         return pulumi.get(self, "role_arn")
 
@@ -7317,6 +7501,8 @@ class MetastoreDataAccessAzureManagedIdentity(dict):
                  access_connector_id: str):
         """
         :param str access_connector_id: The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+               
+               `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         """
         pulumi.set(__self__, "access_connector_id", access_connector_id)
 
@@ -7325,6 +7511,8 @@ class MetastoreDataAccessAzureManagedIdentity(dict):
     def access_connector_id(self) -> str:
         """
         The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+
+        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         """
         return pulumi.get(self, "access_connector_id")
 
@@ -7359,6 +7547,8 @@ class MetastoreDataAccessAzureServicePrincipal(dict):
         """
         :param str application_id: The application ID of the application registration within the referenced AAD tenant
         :param str client_secret: The client secret generated for the above app ID in AAD. **This field is redacted on output**
+               
+               `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure:
         :param str directory_id: The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
         """
         pulumi.set(__self__, "application_id", application_id)
@@ -7378,6 +7568,8 @@ class MetastoreDataAccessAzureServicePrincipal(dict):
     def client_secret(self) -> str:
         """
         The client secret generated for the above app ID in AAD. **This field is redacted on output**
+
+        `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure:
         """
         return pulumi.get(self, "client_secret")
 
@@ -8790,6 +8982,8 @@ class PermissionsAccessControl(dict):
                  user_name: Optional[str] = None):
         """
         :param str permission_level: permission level according to specific resource. See examples above for the reference.
+               
+               Exactly one of the below arguments is required:
         :param str group_name: name of the group. We recommend setting permissions on groups.
         :param str service_principal_name: Application ID of the service_principal.
         :param str user_name: name of the user.
@@ -8807,6 +9001,8 @@ class PermissionsAccessControl(dict):
     def permission_level(self) -> str:
         """
         permission level according to specific resource. See examples above for the reference.
+
+        Exactly one of the below arguments is required:
         """
         return pulumi.get(self, "permission_level")
 
@@ -9993,6 +10189,8 @@ class ShareObject(dict):
         :param bool cdf_enabled: Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
         :param str comment: Description about the object.
         :param str history_data_sharing_status: Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+               
+               To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
         :param str shared_as: A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
         :param int start_version: The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
         :param str status: Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
@@ -10065,6 +10263,8 @@ class ShareObject(dict):
     def history_data_sharing_status(self) -> Optional[str]:
         """
         Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+
+        To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
         """
         return pulumi.get(self, "history_data_sharing_status")
 
@@ -10392,6 +10592,8 @@ class SqlPermissionsPrivilegeAssignment(dict):
         """
         :param str principal: `display_name` for a Group or databricks_user, `application_id` for a databricks_service_principal.
         :param Sequence[str] privileges: set of available privilege names in upper case.
+               
+               [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
         """
         pulumi.set(__self__, "principal", principal)
         pulumi.set(__self__, "privileges", privileges)
@@ -10409,6 +10611,8 @@ class SqlPermissionsPrivilegeAssignment(dict):
     def privileges(self) -> Sequence[str]:
         """
         set of available privilege names in upper case.
+
+        [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
         """
         return pulumi.get(self, "privileges")
 
@@ -11240,6 +11444,8 @@ class StorageCredentialAwsIamRole(dict):
                  role_arn: str):
         """
         :param str role_arn: The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+               
+               `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
         """
         pulumi.set(__self__, "role_arn", role_arn)
 
@@ -11248,6 +11454,8 @@ class StorageCredentialAwsIamRole(dict):
     def role_arn(self) -> str:
         """
         The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+
+        `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
         """
         return pulumi.get(self, "role_arn")
 
@@ -11275,6 +11483,8 @@ class StorageCredentialAzureManagedIdentity(dict):
                  access_connector_id: str):
         """
         :param str access_connector_id: The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+               
+               `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
         """
         pulumi.set(__self__, "access_connector_id", access_connector_id)
 
@@ -11283,6 +11493,8 @@ class StorageCredentialAzureManagedIdentity(dict):
     def access_connector_id(self) -> str:
         """
         The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+
+        `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
         """
         return pulumi.get(self, "access_connector_id")
 
@@ -11317,6 +11529,8 @@ class StorageCredentialAzureServicePrincipal(dict):
         """
         :param str application_id: The application ID of the application registration within the referenced AAD tenant
         :param str client_secret: The client secret generated for the above app ID in AAD. **This field is redacted on output**
+               
+               `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         :param str directory_id: The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
         """
         pulumi.set(__self__, "application_id", application_id)
@@ -11336,6 +11550,8 @@ class StorageCredentialAzureServicePrincipal(dict):
     def client_secret(self) -> str:
         """
         The client secret generated for the above app ID in AAD. **This field is redacted on output**
+
+        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         """
         return pulumi.get(self, "client_secret")
 

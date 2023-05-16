@@ -217,12 +217,16 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
     /**
      * Canonical unique identifier for the service principal.
      * 
+     * The following entitlements are available.
+     * 
      */
     @Export(name="servicePrincipalId", type=String.class, parameters={})
     private Output</* @Nullable */ String> servicePrincipalId;
 
     /**
      * @return Canonical unique identifier for the service principal.
+     * 
+     * The following entitlements are available.
      * 
      */
     public Output<Optional<String>> servicePrincipalId() {

@@ -12,12 +12,16 @@ public final class JobTaskPipelineTask {
     /**
      * @return The pipeline&#39;s unique ID.
      * 
+     * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+     * 
      */
     private String pipelineId;
 
     private JobTaskPipelineTask() {}
     /**
      * @return The pipeline&#39;s unique ID.
+     * 
+     * &gt; **Note** The following configuration blocks are only supported inside a `task` block
      * 
      */
     public String pipelineId() {

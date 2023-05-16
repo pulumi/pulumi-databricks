@@ -16,12 +16,16 @@ public final class MetastoreDataAccessAzureManagedIdentityArgs extends com.pulum
     /**
      * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
      * 
+     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
+     * 
      */
     @Import(name="accessConnectorId", required=true)
     private Output<String> accessConnectorId;
 
     /**
      * @return The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+     * 
+     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
      * 
      */
     public Output<String> accessConnectorId() {
@@ -55,6 +59,8 @@ public final class MetastoreDataAccessAzureManagedIdentityArgs extends com.pulum
         /**
          * @param accessConnectorId The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
          * 
+         * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
+         * 
          * @return builder
          * 
          */
@@ -65,6 +71,8 @@ public final class MetastoreDataAccessAzureManagedIdentityArgs extends com.pulum
 
         /**
          * @param accessConnectorId The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+         * 
+         * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
          * 
          * @return builder
          * 

@@ -33,6 +33,7 @@ class PipelineArgs:
                  target: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Pipeline resource.
+        :param pulumi.Input[str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
         :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
@@ -42,8 +43,8 @@ class PipelineArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
-        :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
-        :param pulumi.Input[str] target: The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+        :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+        :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
         if allow_duplicate_names is not None:
             pulumi.set(__self__, "allow_duplicate_names", allow_duplicate_names)
@@ -88,6 +89,9 @@ class PipelineArgs:
     @property
     @pulumi.getter
     def catalog(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        """
         return pulumi.get(self, "catalog")
 
     @catalog.setter
@@ -224,7 +228,7 @@ class PipelineArgs:
     @pulumi.getter
     def storage(self) -> Optional[pulumi.Input[str]]:
         """
-        A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+        A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         """
         return pulumi.get(self, "storage")
 
@@ -236,7 +240,7 @@ class PipelineArgs:
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+        The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
         return pulumi.get(self, "target")
 
@@ -266,6 +270,7 @@ class _PipelineState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Pipeline resources.
+        :param pulumi.Input[str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
         :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
@@ -275,8 +280,8 @@ class _PipelineState:
         :param pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
-        :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
-        :param pulumi.Input[str] target: The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+        :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+        :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
         if allow_duplicate_names is not None:
             pulumi.set(__self__, "allow_duplicate_names", allow_duplicate_names)
@@ -323,6 +328,9 @@ class _PipelineState:
     @property
     @pulumi.getter
     def catalog(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        """
         return pulumi.get(self, "catalog")
 
     @catalog.setter
@@ -459,7 +467,7 @@ class _PipelineState:
     @pulumi.getter
     def storage(self) -> Optional[pulumi.Input[str]]:
         """
-        A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+        A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         """
         return pulumi.get(self, "storage")
 
@@ -471,7 +479,7 @@ class _PipelineState:
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+        The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
         return pulumi.get(self, "target")
 
@@ -591,6 +599,7 @@ class Pipeline(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
@@ -600,8 +609,8 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
-        :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
-        :param pulumi.Input[str] target: The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+        :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+        :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
         ...
     @overload
@@ -776,6 +785,7 @@ class Pipeline(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
         :param pulumi.Input[str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, Any]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
@@ -785,8 +795,8 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineLibraryArgs']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
-        :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
-        :param pulumi.Input[str] target: The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+        :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+        :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -818,6 +828,9 @@ class Pipeline(pulumi.CustomResource):
     @property
     @pulumi.getter
     def catalog(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        """
         return pulumi.get(self, "catalog")
 
     @property
@@ -906,7 +919,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter
     def storage(self) -> pulumi.Output[Optional[str]]:
         """
-        A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+        A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         """
         return pulumi.get(self, "storage")
 
@@ -914,7 +927,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter
     def target(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+        The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
         return pulumi.get(self, "target")
 

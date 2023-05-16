@@ -167,6 +167,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Username/groupname/sp application_id of the storage credential owner.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
@@ -246,6 +248,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Username/groupname/sp application_id of the storage credential owner.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -287,6 +291,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Username/groupname/sp application_id of the storage credential owner.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }

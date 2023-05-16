@@ -14,6 +14,8 @@ namespace Pulumi.Databricks.Inputs
     {
         /// <summary>
         /// ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+        /// 
+        /// &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

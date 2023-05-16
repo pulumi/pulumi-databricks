@@ -28,6 +28,8 @@ class MetastoreDataAccessArgs:
         """
         The set of arguments for constructing a MetastoreDataAccess resource.
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] name: Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         """
         pulumi.set(__self__, "metastore_id", metastore_id)
@@ -53,6 +55,8 @@ class MetastoreDataAccessArgs:
     def metastore_id(self) -> pulumi.Input[str]:
         """
         Unique identifier of the parent Metastore
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "metastore_id")
 
@@ -151,6 +155,8 @@ class _MetastoreDataAccessState:
         """
         Input properties used for looking up and filtering MetastoreDataAccess resources.
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] name: Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         """
         if aws_iam_role is not None:
@@ -240,6 +246,8 @@ class _MetastoreDataAccessState:
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
         """
         Unique identifier of the parent Metastore
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "metastore_id")
 
@@ -285,6 +293,8 @@ class MetastoreDataAccess(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] name: Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         """
         ...
@@ -371,6 +381,8 @@ class MetastoreDataAccess(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] name: Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -428,6 +440,8 @@ class MetastoreDataAccess(pulumi.CustomResource):
     def metastore_id(self) -> pulumi.Output[str]:
         """
         Unique identifier of the parent Metastore
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "metastore_id")
 

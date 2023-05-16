@@ -5442,6 +5442,8 @@ type JobDbtTask struct {
 	// The name of the schema dbt should run in. Defaults to `default`.
 	Schema *string `pulumi:"schema"`
 	// The ID of the SQL warehouse that dbt should execute against.
+	//
+	// You also need to include a `gitSource` block to configure the repository that contains the dbt project.
 	WarehouseId *string `pulumi:"warehouseId"`
 }
 
@@ -5468,6 +5470,8 @@ type JobDbtTaskArgs struct {
 	// The name of the schema dbt should run in. Defaults to `default`.
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// The ID of the SQL warehouse that dbt should execute against.
+	//
+	// You also need to include a `gitSource` block to configure the repository that contains the dbt project.
 	WarehouseId pulumi.StringPtrInput `pulumi:"warehouseId"`
 }
 
@@ -5574,6 +5578,8 @@ func (o JobDbtTaskOutput) Schema() pulumi.StringPtrOutput {
 }
 
 // The ID of the SQL warehouse that dbt should execute against.
+//
+// You also need to include a `gitSource` block to configure the repository that contains the dbt project.
 func (o JobDbtTaskOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobDbtTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }
@@ -5653,6 +5659,8 @@ func (o JobDbtTaskPtrOutput) Schema() pulumi.StringPtrOutput {
 }
 
 // The ID of the SQL warehouse that dbt should execute against.
+//
+// You also need to include a `gitSource` block to configure the repository that contains the dbt project.
 func (o JobDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDbtTask) *string {
 		if v == nil {
@@ -8475,6 +8483,39 @@ type JobJobClusterNewClusterInitScript struct {
 	Abfss *JobJobClusterNewClusterInitScriptAbfss `pulumi:"abfss"`
 	Dbfs  *JobJobClusterNewClusterInitScriptDbfs  `pulumi:"dbfs"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+	// 			Tasks: databricks.JobTaskArray{
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_agg_query"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
+	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 						},
+	// 					},
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	File      *JobJobClusterNewClusterInitScriptFile      `pulumi:"file"`
 	Gcs       *JobJobClusterNewClusterInitScriptGcs       `pulumi:"gcs"`
 	S3        *JobJobClusterNewClusterInitScriptS3        `pulumi:"s3"`
@@ -8496,6 +8537,39 @@ type JobJobClusterNewClusterInitScriptArgs struct {
 	Abfss JobJobClusterNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
 	Dbfs  JobJobClusterNewClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+	// 			Tasks: databricks.JobTaskArray{
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_agg_query"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
+	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 						},
+	// 					},
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	File      JobJobClusterNewClusterInitScriptFilePtrInput      `pulumi:"file"`
 	Gcs       JobJobClusterNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
 	S3        JobJobClusterNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
@@ -8562,6 +8636,42 @@ func (o JobJobClusterNewClusterInitScriptOutput) Dbfs() JobJobClusterNewClusterI
 }
 
 // block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+//
+// # Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+//				Tasks: databricks.JobTaskArray{
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_agg_query"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Query: &databricks.JobTaskSqlTaskQueryArgs{
+//								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o JobJobClusterNewClusterInitScriptOutput) File() JobJobClusterNewClusterInitScriptFilePtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewClusterInitScript) *JobJobClusterNewClusterInitScriptFile { return v.File }).(JobJobClusterNewClusterInitScriptFilePtrOutput)
 }
@@ -12635,6 +12745,39 @@ type JobNewClusterInitScript struct {
 	Abfss *JobNewClusterInitScriptAbfss `pulumi:"abfss"`
 	Dbfs  *JobNewClusterInitScriptDbfs  `pulumi:"dbfs"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+	// 			Tasks: databricks.JobTaskArray{
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_agg_query"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
+	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 						},
+	// 					},
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	File      *JobNewClusterInitScriptFile      `pulumi:"file"`
 	Gcs       *JobNewClusterInitScriptGcs       `pulumi:"gcs"`
 	S3        *JobNewClusterInitScriptS3        `pulumi:"s3"`
@@ -12656,6 +12799,39 @@ type JobNewClusterInitScriptArgs struct {
 	Abfss JobNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
 	Dbfs  JobNewClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+	// 			Tasks: databricks.JobTaskArray{
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_agg_query"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
+	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 						},
+	// 					},
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	File      JobNewClusterInitScriptFilePtrInput      `pulumi:"file"`
 	Gcs       JobNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
 	S3        JobNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
@@ -12722,6 +12898,42 @@ func (o JobNewClusterInitScriptOutput) Dbfs() JobNewClusterInitScriptDbfsPtrOutp
 }
 
 // block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+//
+// # Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+//				Tasks: databricks.JobTaskArray{
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_agg_query"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Query: &databricks.JobTaskSqlTaskQueryArgs{
+//								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o JobNewClusterInitScriptOutput) File() JobNewClusterInitScriptFilePtrOutput {
 	return o.ApplyT(func(v JobNewClusterInitScript) *JobNewClusterInitScriptFile { return v.File }).(JobNewClusterInitScriptFilePtrOutput)
 }
@@ -14260,6 +14472,8 @@ func (o JobNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtr
 
 type JobPipelineTask struct {
 	// The pipeline's unique ID.
+	//
+	// > **Note** The following configuration blocks are only supported inside a `task` block
 	PipelineId string `pulumi:"pipelineId"`
 }
 
@@ -14276,6 +14490,8 @@ type JobPipelineTaskInput interface {
 
 type JobPipelineTaskArgs struct {
 	// The pipeline's unique ID.
+	//
+	// > **Note** The following configuration blocks are only supported inside a `task` block
 	PipelineId pulumi.StringInput `pulumi:"pipelineId"`
 }
 
@@ -14357,6 +14573,8 @@ func (o JobPipelineTaskOutput) ToJobPipelineTaskPtrOutputWithContext(ctx context
 }
 
 // The pipeline's unique ID.
+//
+// > **Note** The following configuration blocks are only supported inside a `task` block
 func (o JobPipelineTaskOutput) PipelineId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobPipelineTask) string { return v.PipelineId }).(pulumi.StringOutput)
 }
@@ -14386,6 +14604,8 @@ func (o JobPipelineTaskPtrOutput) Elem() JobPipelineTaskOutput {
 }
 
 // The pipeline's unique ID.
+//
+// > **Note** The following configuration blocks are only supported inside a `task` block
 func (o JobPipelineTaskPtrOutput) PipelineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobPipelineTask) *string {
 		if v == nil {
@@ -15615,6 +15835,8 @@ type JobTaskDbtTask struct {
 	// The name of the schema dbt should run in. Defaults to `default`.
 	Schema *string `pulumi:"schema"`
 	// The ID of the SQL warehouse that dbt should execute against.
+	//
+	// You also need to include a `gitSource` block to configure the repository that contains the dbt project.
 	WarehouseId *string `pulumi:"warehouseId"`
 }
 
@@ -15641,6 +15863,8 @@ type JobTaskDbtTaskArgs struct {
 	// The name of the schema dbt should run in. Defaults to `default`.
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// The ID of the SQL warehouse that dbt should execute against.
+	//
+	// You also need to include a `gitSource` block to configure the repository that contains the dbt project.
 	WarehouseId pulumi.StringPtrInput `pulumi:"warehouseId"`
 }
 
@@ -15747,6 +15971,8 @@ func (o JobTaskDbtTaskOutput) Schema() pulumi.StringPtrOutput {
 }
 
 // The ID of the SQL warehouse that dbt should execute against.
+//
+// You also need to include a `gitSource` block to configure the repository that contains the dbt project.
 func (o JobTaskDbtTaskOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskDbtTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }
@@ -15826,6 +16052,8 @@ func (o JobTaskDbtTaskPtrOutput) Schema() pulumi.StringPtrOutput {
 }
 
 // The ID of the SQL warehouse that dbt should execute against.
+//
+// You also need to include a `gitSource` block to configure the repository that contains the dbt project.
 func (o JobTaskDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskDbtTask) *string {
 		if v == nil {
@@ -19002,6 +19230,39 @@ type JobTaskNewClusterInitScript struct {
 	Abfss *JobTaskNewClusterInitScriptAbfss `pulumi:"abfss"`
 	Dbfs  *JobTaskNewClusterInitScriptDbfs  `pulumi:"dbfs"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+	// 			Tasks: databricks.JobTaskArray{
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_agg_query"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
+	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 						},
+	// 					},
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	File      *JobTaskNewClusterInitScriptFile      `pulumi:"file"`
 	Gcs       *JobTaskNewClusterInitScriptGcs       `pulumi:"gcs"`
 	S3        *JobTaskNewClusterInitScriptS3        `pulumi:"s3"`
@@ -19023,6 +19284,39 @@ type JobTaskNewClusterInitScriptArgs struct {
 	Abfss JobTaskNewClusterInitScriptAbfssPtrInput `pulumi:"abfss"`
 	Dbfs  JobTaskNewClusterInitScriptDbfsPtrInput  `pulumi:"dbfs"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+	// 			Tasks: databricks.JobTaskArray{
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_agg_query"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
+	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 						},
+	// 					},
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	File      JobTaskNewClusterInitScriptFilePtrInput      `pulumi:"file"`
 	Gcs       JobTaskNewClusterInitScriptGcsPtrInput       `pulumi:"gcs"`
 	S3        JobTaskNewClusterInitScriptS3PtrInput        `pulumi:"s3"`
@@ -19089,6 +19383,42 @@ func (o JobTaskNewClusterInitScriptOutput) Dbfs() JobTaskNewClusterInitScriptDbf
 }
 
 // block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+//
+// # Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+//				Tasks: databricks.JobTaskArray{
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_agg_query"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Query: &databricks.JobTaskSqlTaskQueryArgs{
+//								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o JobTaskNewClusterInitScriptOutput) File() JobTaskNewClusterInitScriptFilePtrOutput {
 	return o.ApplyT(func(v JobTaskNewClusterInitScript) *JobTaskNewClusterInitScriptFile { return v.File }).(JobTaskNewClusterInitScriptFilePtrOutput)
 }
@@ -20471,6 +20801,8 @@ func (o JobTaskNotebookTaskPtrOutput) Source() pulumi.StringPtrOutput {
 
 type JobTaskPipelineTask struct {
 	// The pipeline's unique ID.
+	//
+	// > **Note** The following configuration blocks are only supported inside a `task` block
 	PipelineId string `pulumi:"pipelineId"`
 }
 
@@ -20487,6 +20819,8 @@ type JobTaskPipelineTaskInput interface {
 
 type JobTaskPipelineTaskArgs struct {
 	// The pipeline's unique ID.
+	//
+	// > **Note** The following configuration blocks are only supported inside a `task` block
 	PipelineId pulumi.StringInput `pulumi:"pipelineId"`
 }
 
@@ -20568,6 +20902,8 @@ func (o JobTaskPipelineTaskOutput) ToJobTaskPipelineTaskPtrOutputWithContext(ctx
 }
 
 // The pipeline's unique ID.
+//
+// > **Note** The following configuration blocks are only supported inside a `task` block
 func (o JobTaskPipelineTaskOutput) PipelineId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskPipelineTask) string { return v.PipelineId }).(pulumi.StringOutput)
 }
@@ -20597,6 +20933,8 @@ func (o JobTaskPipelineTaskPtrOutput) Elem() JobTaskPipelineTaskOutput {
 }
 
 // The pipeline's unique ID.
+//
+// > **Note** The following configuration blocks are only supported inside a `task` block
 func (o JobTaskPipelineTaskPtrOutput) PipelineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskPipelineTask) *string {
 		if v == nil {
@@ -21289,6 +21627,39 @@ type JobTaskSqlTask struct {
 	// block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	Dashboard *JobTaskSqlTaskDashboard `pulumi:"dashboard"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+	// 			Tasks: databricks.JobTaskArray{
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_agg_query"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
+	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 						},
+	// 					},
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	File *JobTaskSqlTaskFile `pulumi:"file"`
 	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters map[string]interface{} `pulumi:"parameters"`
@@ -21315,6 +21686,39 @@ type JobTaskSqlTaskArgs struct {
 	// block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	Dashboard JobTaskSqlTaskDashboardPtrInput `pulumi:"dashboard"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+	// 			Tasks: databricks.JobTaskArray{
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_agg_query"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
+	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 						},
+	// 					},
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	File JobTaskSqlTaskFilePtrInput `pulumi:"file"`
 	// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
 	Parameters pulumi.MapInput `pulumi:"parameters"`
@@ -21412,6 +21816,42 @@ func (o JobTaskSqlTaskOutput) Dashboard() JobTaskSqlTaskDashboardPtrOutput {
 }
 
 // block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+//
+// # Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+//				Tasks: databricks.JobTaskArray{
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_agg_query"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Query: &databricks.JobTaskSqlTaskQueryArgs{
+//								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o JobTaskSqlTaskOutput) File() JobTaskSqlTaskFilePtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTask) *JobTaskSqlTaskFile { return v.File }).(JobTaskSqlTaskFilePtrOutput)
 }
@@ -21476,6 +21916,42 @@ func (o JobTaskSqlTaskPtrOutput) Dashboard() JobTaskSqlTaskDashboardPtrOutput {
 }
 
 // block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
+//
+// # Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+//				Tasks: databricks.JobTaskArray{
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_agg_query"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Query: &databricks.JobTaskSqlTaskQueryArgs{
+//								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o JobTaskSqlTaskPtrOutput) File() JobTaskSqlTaskFilePtrOutput {
 	return o.ApplyT(func(v *JobTaskSqlTask) *JobTaskSqlTaskFile {
 		if v == nil {
@@ -22380,6 +22856,24 @@ func (o JobTriggerFileArrivalPtrOutput) WaitAfterLastChangeSeconds() pulumi.IntP
 
 type JobWebhookNotifications struct {
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+	//
+	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	OnFailures []JobWebhookNotificationsOnFailure `pulumi:"onFailures"`
 	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStarts []JobWebhookNotificationsOnStart `pulumi:"onStarts"`
@@ -22400,6 +22894,24 @@ type JobWebhookNotificationsInput interface {
 
 type JobWebhookNotificationsArgs struct {
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+	//
+	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	OnFailures JobWebhookNotificationsOnFailureArrayInput `pulumi:"onFailures"`
 	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStarts JobWebhookNotificationsOnStartArrayInput `pulumi:"onStarts"`
@@ -22485,6 +22997,27 @@ func (o JobWebhookNotificationsOutput) ToJobWebhookNotificationsPtrOutputWithCon
 }
 
 // (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+//
+// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+//
+// # Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o JobWebhookNotificationsOutput) OnFailures() JobWebhookNotificationsOnFailureArrayOutput {
 	return o.ApplyT(func(v JobWebhookNotifications) []JobWebhookNotificationsOnFailure { return v.OnFailures }).(JobWebhookNotificationsOnFailureArrayOutput)
 }
@@ -22524,6 +23057,27 @@ func (o JobWebhookNotificationsPtrOutput) Elem() JobWebhookNotificationsOutput {
 }
 
 // (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+//
+// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+//
+// # Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o JobWebhookNotificationsPtrOutput) OnFailures() JobWebhookNotificationsOnFailureArrayOutput {
 	return o.ApplyT(func(v *JobWebhookNotifications) []JobWebhookNotificationsOnFailure {
 		if v == nil {
@@ -22555,6 +23109,8 @@ func (o JobWebhookNotificationsPtrOutput) OnSuccesses() JobWebhookNotificationsO
 
 type JobWebhookNotificationsOnFailure struct {
 	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id string `pulumi:"id"`
 }
 
@@ -22571,6 +23127,8 @@ type JobWebhookNotificationsOnFailureInput interface {
 
 type JobWebhookNotificationsOnFailureArgs struct {
 	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -22626,6 +23184,8 @@ func (o JobWebhookNotificationsOnFailureOutput) ToJobWebhookNotificationsOnFailu
 }
 
 // ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+//
+// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 func (o JobWebhookNotificationsOnFailureOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnFailure) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -22652,6 +23212,8 @@ func (o JobWebhookNotificationsOnFailureArrayOutput) Index(i pulumi.IntInput) Jo
 
 type JobWebhookNotificationsOnStart struct {
 	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id string `pulumi:"id"`
 }
 
@@ -22668,6 +23230,8 @@ type JobWebhookNotificationsOnStartInput interface {
 
 type JobWebhookNotificationsOnStartArgs struct {
 	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -22723,6 +23287,8 @@ func (o JobWebhookNotificationsOnStartOutput) ToJobWebhookNotificationsOnStartOu
 }
 
 // ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+//
+// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 func (o JobWebhookNotificationsOnStartOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnStart) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -22749,6 +23315,8 @@ func (o JobWebhookNotificationsOnStartArrayOutput) Index(i pulumi.IntInput) JobW
 
 type JobWebhookNotificationsOnSuccess struct {
 	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id string `pulumi:"id"`
 }
 
@@ -22765,6 +23333,8 @@ type JobWebhookNotificationsOnSuccessInput interface {
 
 type JobWebhookNotificationsOnSuccessArgs struct {
 	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -22820,6 +23390,8 @@ func (o JobWebhookNotificationsOnSuccessOutput) ToJobWebhookNotificationsOnSucce
 }
 
 // ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+//
+// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 func (o JobWebhookNotificationsOnSuccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnSuccess) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -23305,6 +23877,8 @@ func (o LibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
 
 type MetastoreDataAccessAwsIamRole struct {
 	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+	//
+	// `azureServicePrincipal` optional configuration block for credential details for Azure:
 	RoleArn string `pulumi:"roleArn"`
 }
 
@@ -23321,6 +23895,8 @@ type MetastoreDataAccessAwsIamRoleInput interface {
 
 type MetastoreDataAccessAwsIamRoleArgs struct {
 	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+	//
+	// `azureServicePrincipal` optional configuration block for credential details for Azure:
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
@@ -23402,6 +23978,8 @@ func (o MetastoreDataAccessAwsIamRoleOutput) ToMetastoreDataAccessAwsIamRolePtrO
 }
 
 // The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+//
+// `azureServicePrincipal` optional configuration block for credential details for Azure:
 func (o MetastoreDataAccessAwsIamRoleOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreDataAccessAwsIamRole) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -23431,6 +24009,8 @@ func (o MetastoreDataAccessAwsIamRolePtrOutput) Elem() MetastoreDataAccessAwsIam
 }
 
 // The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+//
+// `azureServicePrincipal` optional configuration block for credential details for Azure:
 func (o MetastoreDataAccessAwsIamRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessAwsIamRole) *string {
 		if v == nil {
@@ -23442,6 +24022,8 @@ func (o MetastoreDataAccessAwsIamRolePtrOutput) RoleArn() pulumi.StringPtrOutput
 
 type MetastoreDataAccessAzureManagedIdentity struct {
 	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+	//
+	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 	AccessConnectorId string `pulumi:"accessConnectorId"`
 }
 
@@ -23458,6 +24040,8 @@ type MetastoreDataAccessAzureManagedIdentityInput interface {
 
 type MetastoreDataAccessAzureManagedIdentityArgs struct {
 	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+	//
+	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 	AccessConnectorId pulumi.StringInput `pulumi:"accessConnectorId"`
 }
 
@@ -23539,6 +24123,8 @@ func (o MetastoreDataAccessAzureManagedIdentityOutput) ToMetastoreDataAccessAzur
 }
 
 // The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+//
+// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 func (o MetastoreDataAccessAzureManagedIdentityOutput) AccessConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreDataAccessAzureManagedIdentity) string { return v.AccessConnectorId }).(pulumi.StringOutput)
 }
@@ -23568,6 +24154,8 @@ func (o MetastoreDataAccessAzureManagedIdentityPtrOutput) Elem() MetastoreDataAc
 }
 
 // The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+//
+// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 func (o MetastoreDataAccessAzureManagedIdentityPtrOutput) AccessConnectorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessAzureManagedIdentity) *string {
 		if v == nil {
@@ -23581,6 +24169,8 @@ type MetastoreDataAccessAzureServicePrincipal struct {
 	// The application ID of the application registration within the referenced AAD tenant
 	ApplicationId string `pulumi:"applicationId"`
 	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
+	//
+	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure:
 	ClientSecret string `pulumi:"clientSecret"`
 	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 	DirectoryId string `pulumi:"directoryId"`
@@ -23601,6 +24191,8 @@ type MetastoreDataAccessAzureServicePrincipalArgs struct {
 	// The application ID of the application registration within the referenced AAD tenant
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
 	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
+	//
+	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure:
 	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
 	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
@@ -23689,6 +24281,8 @@ func (o MetastoreDataAccessAzureServicePrincipalOutput) ApplicationId() pulumi.S
 }
 
 // The client secret generated for the above app ID in AAD. **This field is redacted on output**
+//
+// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure:
 func (o MetastoreDataAccessAzureServicePrincipalOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreDataAccessAzureServicePrincipal) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
@@ -23733,6 +24327,8 @@ func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) ApplicationId() pulum
 }
 
 // The client secret generated for the above app ID in AAD. **This field is redacted on output**
+//
+// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure:
 func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessAzureServicePrincipal) *string {
 		if v == nil {
@@ -27961,6 +28557,8 @@ type PermissionsAccessControl struct {
 	// name of the group. We recommend setting permissions on groups.
 	GroupName *string `pulumi:"groupName"`
 	// permission level according to specific resource. See examples above for the reference.
+	//
+	// Exactly one of the below arguments is required:
 	PermissionLevel string `pulumi:"permissionLevel"`
 	// Application ID of the service_principal.
 	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
@@ -27983,6 +28581,8 @@ type PermissionsAccessControlArgs struct {
 	// name of the group. We recommend setting permissions on groups.
 	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
 	// permission level according to specific resource. See examples above for the reference.
+	//
+	// Exactly one of the below arguments is required:
 	PermissionLevel pulumi.StringInput `pulumi:"permissionLevel"`
 	// Application ID of the service_principal.
 	ServicePrincipalName pulumi.StringPtrInput `pulumi:"servicePrincipalName"`
@@ -28047,6 +28647,8 @@ func (o PermissionsAccessControlOutput) GroupName() pulumi.StringPtrOutput {
 }
 
 // permission level according to specific resource. See examples above for the reference.
+//
+// Exactly one of the below arguments is required:
 func (o PermissionsAccessControlOutput) PermissionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v PermissionsAccessControl) string { return v.PermissionLevel }).(pulumi.StringOutput)
 }
@@ -31897,6 +32499,8 @@ type ShareObject struct {
 	// Type of the object, currently only `TABLE` is allowed.
 	DataObjectType string `pulumi:"dataObjectType"`
 	// Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
+	//
+	// To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
 	HistoryDataSharingStatus *string `pulumi:"historyDataSharingStatus"`
 	// Full name of the object, e.g. `catalog.schema.name` for a table.
 	Name       string                 `pulumi:"name"`
@@ -31930,6 +32534,8 @@ type ShareObjectArgs struct {
 	// Type of the object, currently only `TABLE` is allowed.
 	DataObjectType pulumi.StringInput `pulumi:"dataObjectType"`
 	// Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
+	//
+	// To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
 	HistoryDataSharingStatus pulumi.StringPtrInput `pulumi:"historyDataSharingStatus"`
 	// Full name of the object, e.g. `catalog.schema.name` for a table.
 	Name       pulumi.StringInput             `pulumi:"name"`
@@ -32017,6 +32623,8 @@ func (o ShareObjectOutput) DataObjectType() pulumi.StringOutput {
 }
 
 // Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
+//
+// To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
 func (o ShareObjectOutput) HistoryDataSharingStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShareObject) *string { return v.HistoryDataSharingStatus }).(pulumi.StringPtrOutput)
 }
@@ -33082,6 +33690,8 @@ type SqlPermissionsPrivilegeAssignment struct {
 	// `displayName` for a Group or databricks_user, `applicationId` for a databricks_service_principal.
 	Principal string `pulumi:"principal"`
 	// set of available privilege names in upper case.
+	//
+	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
 	Privileges []string `pulumi:"privileges"`
 }
 
@@ -33100,6 +33710,8 @@ type SqlPermissionsPrivilegeAssignmentArgs struct {
 	// `displayName` for a Group or databricks_user, `applicationId` for a databricks_service_principal.
 	Principal pulumi.StringInput `pulumi:"principal"`
 	// set of available privilege names in upper case.
+	//
+	// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
 	Privileges pulumi.StringArrayInput `pulumi:"privileges"`
 }
 
@@ -33160,6 +33772,8 @@ func (o SqlPermissionsPrivilegeAssignmentOutput) Principal() pulumi.StringOutput
 }
 
 // set of available privilege names in upper case.
+//
+// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
 func (o SqlPermissionsPrivilegeAssignmentOutput) Privileges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SqlPermissionsPrivilegeAssignment) []string { return v.Privileges }).(pulumi.StringArrayOutput)
 }
@@ -36674,6 +37288,8 @@ func (o SqlWidgetPositionPtrOutput) SizeY() pulumi.IntPtrOutput {
 
 type StorageCredentialAwsIamRole struct {
 	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+	//
+	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
 	RoleArn string `pulumi:"roleArn"`
 }
 
@@ -36690,6 +37306,8 @@ type StorageCredentialAwsIamRoleInput interface {
 
 type StorageCredentialAwsIamRoleArgs struct {
 	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+	//
+	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
@@ -36771,6 +37389,8 @@ func (o StorageCredentialAwsIamRoleOutput) ToStorageCredentialAwsIamRolePtrOutpu
 }
 
 // The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+//
+// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
 func (o StorageCredentialAwsIamRoleOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageCredentialAwsIamRole) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -36800,6 +37420,8 @@ func (o StorageCredentialAwsIamRolePtrOutput) Elem() StorageCredentialAwsIamRole
 }
 
 // The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+//
+// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
 func (o StorageCredentialAwsIamRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageCredentialAwsIamRole) *string {
 		if v == nil {
@@ -36811,6 +37433,8 @@ func (o StorageCredentialAwsIamRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
 
 type StorageCredentialAzureManagedIdentity struct {
 	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+	//
+	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure:
 	AccessConnectorId string `pulumi:"accessConnectorId"`
 }
 
@@ -36827,6 +37451,8 @@ type StorageCredentialAzureManagedIdentityInput interface {
 
 type StorageCredentialAzureManagedIdentityArgs struct {
 	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+	//
+	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure:
 	AccessConnectorId pulumi.StringInput `pulumi:"accessConnectorId"`
 }
 
@@ -36908,6 +37534,8 @@ func (o StorageCredentialAzureManagedIdentityOutput) ToStorageCredentialAzureMan
 }
 
 // The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+//
+// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure:
 func (o StorageCredentialAzureManagedIdentityOutput) AccessConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageCredentialAzureManagedIdentity) string { return v.AccessConnectorId }).(pulumi.StringOutput)
 }
@@ -36937,6 +37565,8 @@ func (o StorageCredentialAzureManagedIdentityPtrOutput) Elem() StorageCredential
 }
 
 // The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+//
+// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure:
 func (o StorageCredentialAzureManagedIdentityPtrOutput) AccessConnectorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageCredentialAzureManagedIdentity) *string {
 		if v == nil {
@@ -36950,6 +37580,8 @@ type StorageCredentialAzureServicePrincipal struct {
 	// The application ID of the application registration within the referenced AAD tenant
 	ApplicationId string `pulumi:"applicationId"`
 	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
+	//
+	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 	ClientSecret string `pulumi:"clientSecret"`
 	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 	DirectoryId string `pulumi:"directoryId"`
@@ -36970,6 +37602,8 @@ type StorageCredentialAzureServicePrincipalArgs struct {
 	// The application ID of the application registration within the referenced AAD tenant
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
 	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
+	//
+	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
 	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
@@ -37058,6 +37692,8 @@ func (o StorageCredentialAzureServicePrincipalOutput) ApplicationId() pulumi.Str
 }
 
 // The client secret generated for the above app ID in AAD. **This field is redacted on output**
+//
+// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 func (o StorageCredentialAzureServicePrincipalOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageCredentialAzureServicePrincipal) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
@@ -37102,6 +37738,8 @@ func (o StorageCredentialAzureServicePrincipalPtrOutput) ApplicationId() pulumi.
 }
 
 // The client secret generated for the above app ID in AAD. **This field is redacted on output**
+//
+// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 func (o StorageCredentialAzureServicePrincipalPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageCredentialAzureServicePrincipal) *string {
 		if v == nil {

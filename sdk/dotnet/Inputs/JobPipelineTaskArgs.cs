@@ -14,6 +14,8 @@ namespace Pulumi.Databricks.Inputs
     {
         /// <summary>
         /// The pipeline's unique ID.
+        /// 
+        /// &gt; **Note** The following configuration blocks are only supported inside a `task` block
         /// </summary>
         [Input("pipelineId", required: true)]
         public Input<string> PipelineId { get; set; } = null!;

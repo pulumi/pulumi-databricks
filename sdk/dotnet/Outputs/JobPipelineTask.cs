@@ -15,6 +15,8 @@ namespace Pulumi.Databricks.Outputs
     {
         /// <summary>
         /// The pipeline's unique ID.
+        /// 
+        /// &gt; **Note** The following configuration blocks are only supported inside a `task` block
         /// </summary>
         public readonly string PipelineId;
 

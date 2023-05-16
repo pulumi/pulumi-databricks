@@ -16,12 +16,16 @@ public final class JobWebhookNotificationsOnStartArgs extends com.pulumi.resourc
     /**
      * ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
      * 
+     * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
      * @return ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+     * 
+     * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
      * 
      */
     public Output<String> id() {
@@ -55,6 +59,8 @@ public final class JobWebhookNotificationsOnStartArgs extends com.pulumi.resourc
         /**
          * @param id ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
          * 
+         * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
+         * 
          * @return builder
          * 
          */
@@ -65,6 +71,8 @@ public final class JobWebhookNotificationsOnStartArgs extends com.pulumi.resourc
 
         /**
          * @param id ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+         * 
+         * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
          * 
          * @return builder
          * 

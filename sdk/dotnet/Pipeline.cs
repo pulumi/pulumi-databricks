@@ -121,6 +121,9 @@ namespace Pulumi.Databricks
         [Output("allowDuplicateNames")]
         public Output<bool?> AllowDuplicateNames { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        /// </summary>
         [Output("catalog")]
         public Output<string?> Catalog { get; private set; } = null!;
 
@@ -185,13 +188,13 @@ namespace Pulumi.Databricks
         public Output<bool?> Photon { get; private set; } = null!;
 
         /// <summary>
-        /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+        /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         /// </summary>
         [Output("storage")]
         public Output<string?> Storage { get; private set; } = null!;
 
         /// <summary>
-        /// The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+        /// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         /// </summary>
         [Output("target")]
         public Output<string?> Target { get; private set; } = null!;
@@ -248,6 +251,9 @@ namespace Pulumi.Databricks
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
 
+        /// <summary>
+        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        /// </summary>
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
 
@@ -335,13 +341,13 @@ namespace Pulumi.Databricks
         public Input<bool>? Photon { get; set; }
 
         /// <summary>
-        /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+        /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         /// </summary>
         [Input("storage")]
         public Input<string>? Storage { get; set; }
 
         /// <summary>
-        /// The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+        /// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
@@ -357,6 +363,9 @@ namespace Pulumi.Databricks
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
 
+        /// <summary>
+        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        /// </summary>
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
 
@@ -444,13 +453,13 @@ namespace Pulumi.Databricks
         public Input<bool>? Photon { get; set; }
 
         /// <summary>
-        /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+        /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         /// </summary>
         [Input("storage")]
         public Input<string>? Storage { get; set; }
 
         /// <summary>
-        /// The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+        /// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

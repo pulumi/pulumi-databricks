@@ -12,6 +12,66 @@ namespace Pulumi.Databricks
     public static class GetJobs
     {
         /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Granting view databricks.Permissions to all databricks.Job within the workspace:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var @this = await Databricks.GetJobs.InvokeAsync();
+        /// 
+        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyoneCanViewAllJobs-{range.Key}", new()
+        ///         {
+        ///             JobId = range.Value,
+        ///             AccessControls = new[]
+        ///             {
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = "users",
+        ///                     PermissionLevel = "CAN_VIEW",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
+        /// 
+        /// Getting ID of specific databricks.Job by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetJobs.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["x"] = 
+        ///         {
+        ///             { "sensitive", false },
+        ///             { "value", @this.Apply(@this =&gt; $"ID of `x` job is {@this.Apply(getJobsResult =&gt; getJobsResult.Ids?.X)}") },
+        ///         },
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:
@@ -22,6 +82,66 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobsResult>("databricks:index/getJobs:getJobs", args ?? new GetJobsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Granting view databricks.Permissions to all databricks.Job within the workspace:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var @this = await Databricks.GetJobs.InvokeAsync();
+        /// 
+        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyoneCanViewAllJobs-{range.Key}", new()
+        ///         {
+        ///             JobId = range.Value,
+        ///             AccessControls = new[]
+        ///             {
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = "users",
+        ///                     PermissionLevel = "CAN_VIEW",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
+        /// 
+        /// Getting ID of specific databricks.Job by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetJobs.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["x"] = 
+        ///         {
+        ///             { "sensitive", false },
+        ///             { "value", @this.Apply(@this =&gt; $"ID of `x` job is {@this.Apply(getJobsResult =&gt; getJobsResult.Ids?.X)}") },
+        ///         },
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:

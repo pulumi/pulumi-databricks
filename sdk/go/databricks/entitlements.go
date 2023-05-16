@@ -150,6 +150,8 @@ type Entitlements struct {
 	// Canonical unique identifier for the group.
 	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
 	// Canonical unique identifier for the service principal.
+	//
+	// The following entitlements are available.
 	ServicePrincipalId pulumi.StringPtrOutput `pulumi:"servicePrincipalId"`
 	// Canonical unique identifier for the user.
 	UserId pulumi.StringPtrOutput `pulumi:"userId"`
@@ -195,6 +197,8 @@ type entitlementsState struct {
 	// Canonical unique identifier for the group.
 	GroupId *string `pulumi:"groupId"`
 	// Canonical unique identifier for the service principal.
+	//
+	// The following entitlements are available.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	// Canonical unique identifier for the user.
 	UserId *string `pulumi:"userId"`
@@ -212,6 +216,8 @@ type EntitlementsState struct {
 	// Canonical unique identifier for the group.
 	GroupId pulumi.StringPtrInput
 	// Canonical unique identifier for the service principal.
+	//
+	// The following entitlements are available.
 	ServicePrincipalId pulumi.StringPtrInput
 	// Canonical unique identifier for the user.
 	UserId pulumi.StringPtrInput
@@ -233,6 +239,8 @@ type entitlementsArgs struct {
 	// Canonical unique identifier for the group.
 	GroupId *string `pulumi:"groupId"`
 	// Canonical unique identifier for the service principal.
+	//
+	// The following entitlements are available.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	// Canonical unique identifier for the user.
 	UserId *string `pulumi:"userId"`
@@ -251,6 +259,8 @@ type EntitlementsArgs struct {
 	// Canonical unique identifier for the group.
 	GroupId pulumi.StringPtrInput
 	// Canonical unique identifier for the service principal.
+	//
+	// The following entitlements are available.
 	ServicePrincipalId pulumi.StringPtrInput
 	// Canonical unique identifier for the user.
 	UserId pulumi.StringPtrInput
@@ -366,6 +376,8 @@ func (o EntitlementsOutput) GroupId() pulumi.StringPtrOutput {
 }
 
 // Canonical unique identifier for the service principal.
+//
+// The following entitlements are available.
 func (o EntitlementsOutput) ServicePrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Entitlements) pulumi.StringPtrOutput { return v.ServicePrincipalId }).(pulumi.StringPtrOutput)
 }

@@ -57,6 +57,53 @@ type Cluster struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId pulumi.StringPtrOutput `pulumi:"instancePoolId"`
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+	//
+	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
+	// 			LocalDisk: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
+	// 			LongTermSupport: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
+	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
+	// 			SparkVersion:           *pulumi.String(latestLts.Id),
+	// 			NodeTypeId:             *pulumi.String(smallest.Id),
+	// 			AutoterminationMinutes: pulumi.Int(20),
+	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
+	// 				MinWorkers: pulumi.Int(1),
+	// 				MaxWorkers: pulumi.Int(50),
+	// 			},
+	// 			SparkConf: pulumi.AnyMap{
+	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
+	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
+	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	IsPinned  pulumi.BoolPtrOutput      `pulumi:"isPinned"`
 	Libraries ClusterLibraryArrayOutput `pulumi:"libraries"`
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
@@ -149,6 +196,53 @@ type clusterState struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId *string `pulumi:"instancePoolId"`
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+	//
+	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
+	// 			LocalDisk: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
+	// 			LongTermSupport: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
+	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
+	// 			SparkVersion:           *pulumi.String(latestLts.Id),
+	// 			NodeTypeId:             *pulumi.String(smallest.Id),
+	// 			AutoterminationMinutes: pulumi.Int(20),
+	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
+	// 				MinWorkers: pulumi.Int(1),
+	// 				MaxWorkers: pulumi.Int(50),
+	// 			},
+	// 			SparkConf: pulumi.AnyMap{
+	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
+	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
+	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	IsPinned  *bool            `pulumi:"isPinned"`
 	Libraries []ClusterLibrary `pulumi:"libraries"`
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
@@ -210,6 +304,53 @@ type ClusterState struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId pulumi.StringPtrInput
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+	//
+	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
+	// 			LocalDisk: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
+	// 			LongTermSupport: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
+	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
+	// 			SparkVersion:           *pulumi.String(latestLts.Id),
+	// 			NodeTypeId:             *pulumi.String(smallest.Id),
+	// 			AutoterminationMinutes: pulumi.Int(20),
+	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
+	// 				MinWorkers: pulumi.Int(1),
+	// 				MaxWorkers: pulumi.Int(50),
+	// 			},
+	// 			SparkConf: pulumi.AnyMap{
+	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
+	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
+	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	IsPinned  pulumi.BoolPtrInput
 	Libraries ClusterLibraryArrayInput
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
@@ -273,6 +414,53 @@ type clusterArgs struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId *string `pulumi:"instancePoolId"`
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+	//
+	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
+	// 			LocalDisk: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
+	// 			LongTermSupport: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
+	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
+	// 			SparkVersion:           *pulumi.String(latestLts.Id),
+	// 			NodeTypeId:             *pulumi.String(smallest.Id),
+	// 			AutoterminationMinutes: pulumi.Int(20),
+	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
+	// 				MinWorkers: pulumi.Int(1),
+	// 				MaxWorkers: pulumi.Int(50),
+	// 			},
+	// 			SparkConf: pulumi.AnyMap{
+	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
+	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
+	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	IsPinned  *bool            `pulumi:"isPinned"`
 	Libraries []ClusterLibrary `pulumi:"libraries"`
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
@@ -330,6 +518,53 @@ type ClusterArgs struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId pulumi.StringPtrInput
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+	//
+	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
+	// 			LocalDisk: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
+	// 			LongTermSupport: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
+	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
+	// 			SparkVersion:           *pulumi.String(latestLts.Id),
+	// 			NodeTypeId:             *pulumi.String(smallest.Id),
+	// 			AutoterminationMinutes: pulumi.Int(20),
+	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
+	// 				MinWorkers: pulumi.Int(1),
+	// 				MaxWorkers: pulumi.Int(50),
+	// 			},
+	// 			SparkConf: pulumi.AnyMap{
+	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
+	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
+	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	IsPinned  pulumi.BoolPtrInput
 	Libraries ClusterLibraryArrayInput
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
@@ -537,6 +772,56 @@ func (o ClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
 }
 
 // boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+//
+// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
+//				LocalDisk: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
+//				LongTermSupport: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
+//				ClusterName:            pulumi.String("Shared Autoscaling"),
+//				SparkVersion:           *pulumi.String(latestLts.Id),
+//				NodeTypeId:             *pulumi.String(smallest.Id),
+//				AutoterminationMinutes: pulumi.Int(20),
+//				Autoscale: &databricks.ClusterAutoscaleArgs{
+//					MinWorkers: pulumi.Int(1),
+//					MaxWorkers: pulumi.Int(50),
+//				},
+//				SparkConf: pulumi.AnyMap{
+//					"spark.databricks.io.cache.enabled":          pulumi.Any(true),
+//					"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
+//					"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterOutput) IsPinned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.IsPinned }).(pulumi.BoolPtrOutput)
 }

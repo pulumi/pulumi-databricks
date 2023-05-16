@@ -17,6 +17,38 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.JobTaskNewClusterInitScriptDbfs? Dbfs;
         /// <summary>
         /// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+        /// 
+        /// Example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sqlAggregationJob = new Databricks.Job("sqlAggregationJob", new()
+        ///     {
+        ///         Tasks = new[]
+        ///         {
+        ///             new Databricks.Inputs.JobTaskArgs
+        ///             {
+        ///                 TaskKey = "run_agg_query",
+        ///                 SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs
+        ///                 {
+        ///                     WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,
+        ///                     Query = new Databricks.Inputs.JobTaskSqlTaskQueryArgs
+        ///                     {
+        ///                         QueryId = databricks_sql_query.Agg_query.Id,
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public readonly Outputs.JobTaskNewClusterInitScriptFile? File;
         public readonly Outputs.JobTaskNewClusterInitScriptGcs? Gcs;

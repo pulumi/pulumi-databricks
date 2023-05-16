@@ -5,6 +5,34 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * export = async () => {
+ *     const thingsViews = await databricks.getViews({
+ *         catalogName: "sandbox",
+ *         schemaName: "things",
+ *     });
+ *     const thingsGrants: databricks.Grants[] = [];
+ *     for (const range of thingsViews.ids.map((v, k) => ({key: k, value: v}))) {
+ *         thingsGrants.push(new databricks.Grants(`thingsGrants-${range.key}`, {
+ *             view: range.value,
+ *             grants: [{
+ *                 principal: "sensitive",
+ *                 privileges: [
+ *                     "SELECT",
+ *                     "MODIFY",
+ *                 ],
+ *             }],
+ *         }));
+ *     }
+ * }
+ * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -56,6 +84,34 @@ export interface GetViewsResult {
     readonly schemaName: string;
 }
 /**
+ * ## Example Usage
+ *
+ * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * export = async () => {
+ *     const thingsViews = await databricks.getViews({
+ *         catalogName: "sandbox",
+ *         schemaName: "things",
+ *     });
+ *     const thingsGrants: databricks.Grants[] = [];
+ *     for (const range of thingsViews.ids.map((v, k) => ({key: k, value: v}))) {
+ *         thingsGrants.push(new databricks.Grants(`thingsGrants-${range.key}`, {
+ *             view: range.value,
+ *             grants: [{
+ *                 principal: "sensitive",
+ *                 privileges: [
+ *                     "SELECT",
+ *                     "MODIFY",
+ *                 ],
+ *             }],
+ *         }));
+ *     }
+ * }
+ * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:

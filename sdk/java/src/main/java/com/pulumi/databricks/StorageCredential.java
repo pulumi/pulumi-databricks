@@ -229,12 +229,16 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
     /**
      * Username/groupname/sp application_id of the storage credential owner.
      * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
      */
     @Export(name="owner", type=String.class, parameters={})
     private Output<String> owner;
 
     /**
      * @return Username/groupname/sp application_id of the storage credential owner.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
      */
     public Output<String> owner() {

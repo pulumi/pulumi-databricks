@@ -50,6 +50,8 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// The ID of the SQL warehouse that dbt should execute against.
+        /// 
+        /// You also need to include a `git_source` block to configure the repository that contains the dbt project.
         /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }

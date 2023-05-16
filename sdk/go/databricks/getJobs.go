@@ -10,6 +10,77 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Granting view Permissions to all Job within the workspace:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.GetJobs(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var everyoneCanViewAllJobs []*databricks.Permissions
+//			for key0, val0 := range this.Ids {
+//				__res, err := databricks.NewPermissions(ctx, fmt.Sprintf("everyoneCanViewAllJobs-%v", key0), &databricks.PermissionsArgs{
+//					JobId: pulumi.Any(val0),
+//					AccessControls: databricks.PermissionsAccessControlArray{
+//						&databricks.PermissionsAccessControlArgs{
+//							GroupName:       pulumi.String("users"),
+//							PermissionLevel: pulumi.String("CAN_VIEW"),
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				everyoneCanViewAllJobs = append(everyoneCanViewAllJobs, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Getting ID of specific Job by name:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.GetJobs(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("x", map[string]interface{}{
+//				"sensitive": false,
+//				"value":     fmt.Sprintf("ID of `x` job is %v", this.Ids.X),
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Related Resources
 //
 // The following resources are used in the same context:

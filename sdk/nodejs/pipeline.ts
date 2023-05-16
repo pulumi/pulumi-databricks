@@ -115,6 +115,9 @@ export class Pipeline extends pulumi.CustomResource {
     }
 
     public readonly allowDuplicateNames!: pulumi.Output<boolean | undefined>;
+    /**
+     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     */
     public readonly catalog!: pulumi.Output<string | undefined>;
     /**
      * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
@@ -155,11 +158,11 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly photon!: pulumi.Output<boolean | undefined>;
     /**
-     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      */
     public readonly storage!: pulumi.Output<string | undefined>;
     /**
-     * The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+     * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */
     public readonly target!: pulumi.Output<string | undefined>;
     public /*out*/ readonly url!: pulumi.Output<string>;
@@ -222,6 +225,9 @@ export class Pipeline extends pulumi.CustomResource {
  */
 export interface PipelineState {
     allowDuplicateNames?: pulumi.Input<boolean>;
+    /**
+     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     */
     catalog?: pulumi.Input<string>;
     /**
      * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
@@ -262,11 +268,11 @@ export interface PipelineState {
      */
     photon?: pulumi.Input<boolean>;
     /**
-     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      */
     storage?: pulumi.Input<string>;
     /**
-     * The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+     * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */
     target?: pulumi.Input<string>;
     url?: pulumi.Input<string>;
@@ -277,6 +283,9 @@ export interface PipelineState {
  */
 export interface PipelineArgs {
     allowDuplicateNames?: pulumi.Input<boolean>;
+    /**
+     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     */
     catalog?: pulumi.Input<string>;
     /**
      * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
@@ -317,11 +326,11 @@ export interface PipelineArgs {
      */
     photon?: pulumi.Input<boolean>;
     /**
-     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      */
     storage?: pulumi.Input<string>;
     /**
-     * The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+     * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */
     target?: pulumi.Input<string>;
 }

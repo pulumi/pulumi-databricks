@@ -30,9 +30,17 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.allowDuplicateNames);
     }
 
+    /**
+     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * 
+     */
     @Import(name="catalog")
     private @Nullable Output<String> catalog;
 
+    /**
+     * @return The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * 
+     */
     public Optional<Output<String>> catalog() {
         return Optional.ofNullable(this.catalog);
     }
@@ -187,14 +195,14 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      * 
      */
     @Import(name="storage")
     private @Nullable Output<String> storage;
 
     /**
-     * @return A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+     * @return A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      * 
      */
     public Optional<Output<String>> storage() {
@@ -202,14 +210,14 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+     * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+     * @return The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      * 
      */
     public Optional<Output<String>> target() {
@@ -271,11 +279,23 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
             return allowDuplicateNames(Output.of(allowDuplicateNames));
         }
 
+        /**
+         * @param catalog The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalog(@Nullable Output<String> catalog) {
             $.catalog = catalog;
             return this;
         }
 
+        /**
+         * @param catalog The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalog(String catalog) {
             return catalog(Output.of(catalog));
         }
@@ -512,7 +532,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storage A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+         * @param storage A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
          * 
          * @return builder
          * 
@@ -523,7 +543,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storage A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+         * @param storage A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
          * 
          * @return builder
          * 
@@ -533,7 +553,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param target The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+         * @param target The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
          * 
          * @return builder
          * 
@@ -544,7 +564,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param target The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+         * @param target The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
          * 
          * @return builder
          * 

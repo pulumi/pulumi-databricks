@@ -16,12 +16,16 @@ public final class JobTaskPipelineTaskArgs extends com.pulumi.resources.Resource
     /**
      * The pipeline&#39;s unique ID.
      * 
+     * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+     * 
      */
     @Import(name="pipelineId", required=true)
     private Output<String> pipelineId;
 
     /**
      * @return The pipeline&#39;s unique ID.
+     * 
+     * &gt; **Note** The following configuration blocks are only supported inside a `task` block
      * 
      */
     public Output<String> pipelineId() {
@@ -55,6 +59,8 @@ public final class JobTaskPipelineTaskArgs extends com.pulumi.resources.Resource
         /**
          * @param pipelineId The pipeline&#39;s unique ID.
          * 
+         * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+         * 
          * @return builder
          * 
          */
@@ -65,6 +71,8 @@ public final class JobTaskPipelineTaskArgs extends com.pulumi.resources.Resource
 
         /**
          * @param pipelineId The pipeline&#39;s unique ID.
+         * 
+         * &gt; **Note** The following configuration blocks are only supported inside a `task` block
          * 
          * @return builder
          * 

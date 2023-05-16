@@ -102,6 +102,35 @@ export class Cluster extends pulumi.CustomResource {
     public readonly instancePoolId!: pulumi.Output<string | undefined>;
     /**
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+     *
+     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const smallest = databricks.getNodeType({
+     *     localDisk: true,
+     * });
+     * const latestLts = databricks.getSparkVersion({
+     *     longTermSupport: true,
+     * });
+     * const sharedAutoscaling = new databricks.Cluster("sharedAutoscaling", {
+     *     clusterName: "Shared Autoscaling",
+     *     sparkVersion: latestLts.then(latestLts => latestLts.id),
+     *     nodeTypeId: smallest.then(smallest => smallest.id),
+     *     autoterminationMinutes: 20,
+     *     autoscale: {
+     *         minWorkers: 1,
+     *         maxWorkers: 50,
+     *     },
+     *     sparkConf: {
+     *         "spark.databricks.io.cache.enabled": true,
+     *         "spark.databricks.io.cache.maxDiskUsage": "50g",
+     *         "spark.databricks.io.cache.maxMetaDataCache": "1g",
+     *     },
+     * });
+     * ```
      */
     public readonly isPinned!: pulumi.Output<boolean | undefined>;
     public readonly libraries!: pulumi.Output<outputs.ClusterLibrary[] | undefined>;
@@ -305,6 +334,35 @@ export interface ClusterState {
     instancePoolId?: pulumi.Input<string>;
     /**
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+     *
+     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const smallest = databricks.getNodeType({
+     *     localDisk: true,
+     * });
+     * const latestLts = databricks.getSparkVersion({
+     *     longTermSupport: true,
+     * });
+     * const sharedAutoscaling = new databricks.Cluster("sharedAutoscaling", {
+     *     clusterName: "Shared Autoscaling",
+     *     sparkVersion: latestLts.then(latestLts => latestLts.id),
+     *     nodeTypeId: smallest.then(smallest => smallest.id),
+     *     autoterminationMinutes: 20,
+     *     autoscale: {
+     *         minWorkers: 1,
+     *         maxWorkers: 50,
+     *     },
+     *     sparkConf: {
+     *         "spark.databricks.io.cache.enabled": true,
+     *         "spark.databricks.io.cache.maxDiskUsage": "50g",
+     *         "spark.databricks.io.cache.maxMetaDataCache": "1g",
+     *     },
+     * });
+     * ```
      */
     isPinned?: pulumi.Input<boolean>;
     libraries?: pulumi.Input<pulumi.Input<inputs.ClusterLibrary>[]>;
@@ -411,6 +469,35 @@ export interface ClusterArgs {
     instancePoolId?: pulumi.Input<string>;
     /**
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+     *
+     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const smallest = databricks.getNodeType({
+     *     localDisk: true,
+     * });
+     * const latestLts = databricks.getSparkVersion({
+     *     longTermSupport: true,
+     * });
+     * const sharedAutoscaling = new databricks.Cluster("sharedAutoscaling", {
+     *     clusterName: "Shared Autoscaling",
+     *     sparkVersion: latestLts.then(latestLts => latestLts.id),
+     *     nodeTypeId: smallest.then(smallest => smallest.id),
+     *     autoterminationMinutes: 20,
+     *     autoscale: {
+     *         minWorkers: 1,
+     *         maxWorkers: 50,
+     *     },
+     *     sparkConf: {
+     *         "spark.databricks.io.cache.enabled": true,
+     *         "spark.databricks.io.cache.maxDiskUsage": "50g",
+     *         "spark.databricks.io.cache.maxMetaDataCache": "1g",
+     *     },
+     * });
+     * ```
      */
     isPinned?: pulumi.Input<boolean>;
     libraries?: pulumi.Input<pulumi.Input<inputs.ClusterLibrary>[]>;

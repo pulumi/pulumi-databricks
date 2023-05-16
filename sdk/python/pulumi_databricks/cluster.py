@@ -63,6 +63,30 @@ class ClusterArgs:
         :param pulumi.Input[str] idempotency_token: An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         :param pulumi.Input[str] instance_pool_id: To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         :param pulumi.Input[bool] is_pinned: boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+               
+               The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               smallest = databricks.get_node_type(local_disk=True)
+               latest_lts = databricks.get_spark_version(long_term_support=True)
+               shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+                   cluster_name="Shared Autoscaling",
+                   spark_version=latest_lts.id,
+                   node_type_id=smallest.id,
+                   autotermination_minutes=20,
+                   autoscale=databricks.ClusterAutoscaleArgs(
+                       min_workers=1,
+                       max_workers=50,
+                   ),
+                   spark_conf={
+                       "spark.databricks.io.cache.enabled": True,
+                       "spark.databricks.io.cache.maxDiskUsage": "50g",
+                       "spark.databricks.io.cache.maxMetaDataCache": "1g",
+                   })
+               ```
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
@@ -366,6 +390,30 @@ class ClusterArgs:
     def is_pinned(self) -> Optional[pulumi.Input[bool]]:
         """
         boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+
+        The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        smallest = databricks.get_node_type(local_disk=True)
+        latest_lts = databricks.get_spark_version(long_term_support=True)
+        shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+            cluster_name="Shared Autoscaling",
+            spark_version=latest_lts.id,
+            node_type_id=smallest.id,
+            autotermination_minutes=20,
+            autoscale=databricks.ClusterAutoscaleArgs(
+                min_workers=1,
+                max_workers=50,
+            ),
+            spark_conf={
+                "spark.databricks.io.cache.enabled": True,
+                "spark.databricks.io.cache.maxDiskUsage": "50g",
+                "spark.databricks.io.cache.maxMetaDataCache": "1g",
+            })
+        ```
         """
         return pulumi.get(self, "is_pinned")
 
@@ -541,6 +589,30 @@ class _ClusterState:
         :param pulumi.Input[str] idempotency_token: An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         :param pulumi.Input[str] instance_pool_id: To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         :param pulumi.Input[bool] is_pinned: boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+               
+               The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               smallest = databricks.get_node_type(local_disk=True)
+               latest_lts = databricks.get_spark_version(long_term_support=True)
+               shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+                   cluster_name="Shared Autoscaling",
+                   spark_version=latest_lts.id,
+                   node_type_id=smallest.id,
+                   autotermination_minutes=20,
+                   autoscale=databricks.ClusterAutoscaleArgs(
+                       min_workers=1,
+                       max_workers=50,
+                   ),
+                   spark_conf={
+                       "spark.databricks.io.cache.enabled": True,
+                       "spark.databricks.io.cache.maxDiskUsage": "50g",
+                       "spark.databricks.io.cache.maxMetaDataCache": "1g",
+                   })
+               ```
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
@@ -853,6 +925,30 @@ class _ClusterState:
     def is_pinned(self) -> Optional[pulumi.Input[bool]]:
         """
         boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+
+        The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        smallest = databricks.get_node_type(local_disk=True)
+        latest_lts = databricks.get_spark_version(long_term_support=True)
+        shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+            cluster_name="Shared Autoscaling",
+            spark_version=latest_lts.id,
+            node_type_id=smallest.id,
+            autotermination_minutes=20,
+            autoscale=databricks.ClusterAutoscaleArgs(
+                min_workers=1,
+                max_workers=50,
+            ),
+            spark_conf={
+                "spark.databricks.io.cache.enabled": True,
+                "spark.databricks.io.cache.maxDiskUsage": "50g",
+                "spark.databricks.io.cache.maxMetaDataCache": "1g",
+            })
+        ```
         """
         return pulumi.get(self, "is_pinned")
 
@@ -1069,6 +1165,30 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] idempotency_token: An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         :param pulumi.Input[str] instance_pool_id: To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         :param pulumi.Input[bool] is_pinned: boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+               
+               The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               smallest = databricks.get_node_type(local_disk=True)
+               latest_lts = databricks.get_spark_version(long_term_support=True)
+               shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+                   cluster_name="Shared Autoscaling",
+                   spark_version=latest_lts.id,
+                   node_type_id=smallest.id,
+                   autotermination_minutes=20,
+                   autoscale=databricks.ClusterAutoscaleArgs(
+                       min_workers=1,
+                       max_workers=50,
+                   ),
+                   spark_conf={
+                       "spark.databricks.io.cache.enabled": True,
+                       "spark.databricks.io.cache.maxDiskUsage": "50g",
+                       "spark.databricks.io.cache.maxMetaDataCache": "1g",
+                   })
+               ```
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
@@ -1252,6 +1372,30 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] idempotency_token: An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         :param pulumi.Input[str] instance_pool_id: To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         :param pulumi.Input[bool] is_pinned: boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+               
+               The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               smallest = databricks.get_node_type(local_disk=True)
+               latest_lts = databricks.get_spark_version(long_term_support=True)
+               shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+                   cluster_name="Shared Autoscaling",
+                   spark_version=latest_lts.id,
+                   node_type_id=smallest.id,
+                   autotermination_minutes=20,
+                   autoscale=databricks.ClusterAutoscaleArgs(
+                       min_workers=1,
+                       max_workers=50,
+                   ),
+                   spark_conf={
+                       "spark.databricks.io.cache.enabled": True,
+                       "spark.databricks.io.cache.maxDiskUsage": "50g",
+                       "spark.databricks.io.cache.maxMetaDataCache": "1g",
+                   })
+               ```
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
@@ -1450,6 +1594,30 @@ class Cluster(pulumi.CustomResource):
     def is_pinned(self) -> pulumi.Output[Optional[bool]]:
         """
         boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+
+        The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        smallest = databricks.get_node_type(local_disk=True)
+        latest_lts = databricks.get_spark_version(long_term_support=True)
+        shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+            cluster_name="Shared Autoscaling",
+            spark_version=latest_lts.id,
+            node_type_id=smallest.id,
+            autotermination_minutes=20,
+            autoscale=databricks.ClusterAutoscaleArgs(
+                min_workers=1,
+                max_workers=50,
+            ),
+            spark_conf={
+                "spark.databricks.io.cache.enabled": True,
+                "spark.databricks.io.cache.maxDiskUsage": "50g",
+                "spark.databricks.io.cache.maxMetaDataCache": "1g",
+            })
+        ```
         """
         return pulumi.get(self, "is_pinned")
 

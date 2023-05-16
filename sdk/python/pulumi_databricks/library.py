@@ -214,6 +214,24 @@ class Library(pulumi.CustomResource):
 
         > **Note** `Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
 
+        ## Installing library on all clusters
+
+        You can install libraries on all clusters with the help of get_clusters data resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        all = databricks.get_clusters()
+        cli = []
+        for range in [{"key": k, "value": v} for [k, v] in enumerate(all.ids)]:
+            cli.append(databricks.Library(f"cli-{range['key']}",
+                cluster_id=range["key"],
+                pypi=databricks.LibraryPypiArgs(
+                    package="databricks-cli",
+                )))
+        ```
+
         ## Java/Scala JAR
 
         ```python
@@ -338,6 +356,24 @@ class Library(pulumi.CustomResource):
         Installs a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster. Each different type of library has a slightly different syntax. It's possible to set only one type of library within one resource. Otherwise, the plan will fail with an error.
 
         > **Note** `Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
+
+        ## Installing library on all clusters
+
+        You can install libraries on all clusters with the help of get_clusters data resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        all = databricks.get_clusters()
+        cli = []
+        for range in [{"key": k, "value": v} for [k, v] in enumerate(all.ids)]:
+            cli.append(databricks.Library(f"cli-{range['key']}",
+                cluster_id=range["key"],
+                pypi=databricks.LibraryPypiArgs(
+                    package="databricks-cli",
+                )))
+        ```
 
         ## Java/Scala JAR
 

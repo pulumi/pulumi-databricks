@@ -29,6 +29,8 @@ class StorageCredentialArgs:
         The set of arguments for constructing a StorageCredential resource.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -129,6 +131,8 @@ class StorageCredentialArgs:
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
         Username/groupname/sp application_id of the storage credential owner.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "owner")
 
@@ -153,6 +157,8 @@ class _StorageCredentialState:
         Input properties used for looking up and filtering StorageCredential resources.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -253,6 +259,8 @@ class _StorageCredentialState:
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
         Username/groupname/sp application_id of the storage credential owner.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "owner")
 
@@ -292,7 +300,7 @@ class StorageCredential(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=aws_iam_role["external_data_access"]["arn"],
+                role_arn=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
             ),
             comment="Managed by TF")
         external_creds = databricks.Grants("externalCreds",
@@ -311,7 +319,7 @@ class StorageCredential(pulumi.CustomResource):
 
         external_mi = databricks.StorageCredential("externalMi",
             azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(
-                access_connector_id=azurerm_databricks_access_connector["example"]["id"],
+                access_connector_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
             ),
             comment="Managed identity credential managed by TF")
         external_creds = databricks.Grants("externalCreds",
@@ -349,6 +357,8 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         """
         ...
     @overload
@@ -372,7 +382,7 @@ class StorageCredential(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=aws_iam_role["external_data_access"]["arn"],
+                role_arn=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
             ),
             comment="Managed by TF")
         external_creds = databricks.Grants("externalCreds",
@@ -391,7 +401,7 @@ class StorageCredential(pulumi.CustomResource):
 
         external_mi = databricks.StorageCredential("externalMi",
             azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(
-                access_connector_id=azurerm_databricks_access_connector["example"]["id"],
+                access_connector_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
             ),
             comment="Managed identity credential managed by TF")
         external_creds = databricks.Grants("externalCreds",
@@ -495,6 +505,8 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -559,6 +571,8 @@ class StorageCredential(pulumi.CustomResource):
     def owner(self) -> pulumi.Output[str]:
         """
         Username/groupname/sp application_id of the storage credential owner.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "owner")
 

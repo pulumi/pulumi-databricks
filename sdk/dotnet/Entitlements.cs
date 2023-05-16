@@ -139,6 +139,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Canonical unique identifier for the service principal.
+        /// 
+        /// The following entitlements are available.
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string?> ServicePrincipalId { get; private set; } = null!;
@@ -227,6 +229,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Canonical unique identifier for the service principal.
+        /// 
+        /// The following entitlements are available.
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }
@@ -277,6 +281,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Canonical unique identifier for the service principal.
+        /// 
+        /// The following entitlements are available.
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }

@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.InstanceProfile;
  * import com.pulumi.databricks.InstanceProfileArgs;
  * import com.pulumi.databricks.Group;
- * import com.pulumi.databricks.GroupInstanceProfile;
- * import com.pulumi.databricks.GroupInstanceProfileArgs;
+ * import com.pulumi.databricks.GroupRole;
+ * import com.pulumi.databricks.GroupRoleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,9 +49,9 @@ import javax.annotation.Nullable;
  * 
  *         var myGroup = new Group(&#34;myGroup&#34;);
  * 
- *         var myGroupInstanceProfile = new GroupInstanceProfile(&#34;myGroupInstanceProfile&#34;, GroupInstanceProfileArgs.builder()        
+ *         var myGroupInstanceProfile = new GroupRole(&#34;myGroupInstanceProfile&#34;, GroupRoleArgs.builder()        
  *             .groupId(myGroup.id())
- *             .instanceProfileId(instanceProfile.id())
+ *             .role(instanceProfile.id())
  *             .build());
  * 
  *     }

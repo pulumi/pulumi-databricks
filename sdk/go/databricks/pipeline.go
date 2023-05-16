@@ -118,8 +118,9 @@ import (
 type Pipeline struct {
 	pulumi.CustomResourceState
 
-	AllowDuplicateNames pulumi.BoolPtrOutput   `pulumi:"allowDuplicateNames"`
-	Catalog             pulumi.StringPtrOutput `pulumi:"catalog"`
+	AllowDuplicateNames pulumi.BoolPtrOutput `pulumi:"allowDuplicateNames"`
+	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	Catalog pulumi.StringPtrOutput `pulumi:"catalog"`
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel pulumi.StringPtrOutput `pulumi:"channel"`
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
@@ -140,9 +141,9 @@ type Pipeline struct {
 	Notifications PipelineNotificationArrayOutput `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon pulumi.BoolPtrOutput `pulumi:"photon"`
-	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrOutput `pulumi:"storage"`
-	// The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target pulumi.StringPtrOutput `pulumi:"target"`
 	Url    pulumi.StringOutput    `pulumi:"url"`
 }
@@ -176,8 +177,9 @@ func GetPipeline(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Pipeline resources.
 type pipelineState struct {
-	AllowDuplicateNames *bool   `pulumi:"allowDuplicateNames"`
-	Catalog             *string `pulumi:"catalog"`
+	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
+	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	Catalog *string `pulumi:"catalog"`
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel *string `pulumi:"channel"`
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
@@ -198,16 +200,17 @@ type pipelineState struct {
 	Notifications []PipelineNotification `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon *bool `pulumi:"photon"`
-	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage *string `pulumi:"storage"`
-	// The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target *string `pulumi:"target"`
 	Url    *string `pulumi:"url"`
 }
 
 type PipelineState struct {
 	AllowDuplicateNames pulumi.BoolPtrInput
-	Catalog             pulumi.StringPtrInput
+	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	Catalog pulumi.StringPtrInput
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel pulumi.StringPtrInput
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
@@ -228,9 +231,9 @@ type PipelineState struct {
 	Notifications PipelineNotificationArrayInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon pulumi.BoolPtrInput
-	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrInput
-	// The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target pulumi.StringPtrInput
 	Url    pulumi.StringPtrInput
 }
@@ -240,8 +243,9 @@ func (PipelineState) ElementType() reflect.Type {
 }
 
 type pipelineArgs struct {
-	AllowDuplicateNames *bool   `pulumi:"allowDuplicateNames"`
-	Catalog             *string `pulumi:"catalog"`
+	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
+	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	Catalog *string `pulumi:"catalog"`
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel *string `pulumi:"channel"`
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
@@ -262,16 +266,17 @@ type pipelineArgs struct {
 	Notifications []PipelineNotification `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon *bool `pulumi:"photon"`
-	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage *string `pulumi:"storage"`
-	// The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target *string `pulumi:"target"`
 }
 
 // The set of arguments for constructing a Pipeline resource.
 type PipelineArgs struct {
 	AllowDuplicateNames pulumi.BoolPtrInput
-	Catalog             pulumi.StringPtrInput
+	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	Catalog pulumi.StringPtrInput
 	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
 	Channel pulumi.StringPtrInput
 	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
@@ -292,9 +297,9 @@ type PipelineArgs struct {
 	Notifications PipelineNotificationArrayInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon pulumi.BoolPtrInput
-	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrInput
-	// The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target pulumi.StringPtrInput
 }
 
@@ -389,6 +394,7 @@ func (o PipelineOutput) AllowDuplicateNames() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.AllowDuplicateNames }).(pulumi.BoolPtrOutput)
 }
 
+// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 func (o PipelineOutput) Catalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Catalog }).(pulumi.StringPtrOutput)
 }
@@ -446,12 +452,12 @@ func (o PipelineOutput) Photon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Photon }).(pulumi.BoolPtrOutput)
 }
 
-// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 func (o PipelineOutput) Storage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Storage }).(pulumi.StringPtrOutput)
 }
 
-// The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 func (o PipelineOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Target }).(pulumi.StringPtrOutput)
 }

@@ -17,6 +17,8 @@ public final class MetastoreDataAccessAzureServicePrincipal {
     /**
      * @return The client secret generated for the above app ID in AAD. **This field is redacted on output**
      * 
+     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure:
+     * 
      */
     private String clientSecret;
     /**
@@ -35,6 +37,8 @@ public final class MetastoreDataAccessAzureServicePrincipal {
     }
     /**
      * @return The client secret generated for the above app ID in AAD. **This field is redacted on output**
+     * 
+     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure:
      * 
      */
     public String clientSecret() {

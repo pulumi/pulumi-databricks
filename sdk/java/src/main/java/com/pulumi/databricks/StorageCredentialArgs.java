@@ -87,12 +87,16 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
     /**
      * Username/groupname/sp application_id of the storage credential owner.
      * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
      * @return Username/groupname/sp application_id of the storage credential owner.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
      */
     public Optional<Output<String>> owner() {
@@ -218,6 +222,8 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param owner Username/groupname/sp application_id of the storage credential owner.
          * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * 
          * @return builder
          * 
          */
@@ -228,6 +234,8 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param owner Username/groupname/sp application_id of the storage credential owner.
+         * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
          * 
          * @return builder
          * 
