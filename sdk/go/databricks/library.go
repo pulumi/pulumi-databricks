@@ -15,6 +15,45 @@ import (
 //
 // > **Note** `Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
 //
+// ## Installing library on all clusters
+//
+// You can install libraries on all clusters with the help of getClusters data resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.GetClusters(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var cli []*databricks.Library
+//			for key0, _ := range all.Ids {
+//				__res, err := databricks.NewLibrary(ctx, fmt.Sprintf("cli-%v", key0), &databricks.LibraryArgs{
+//					ClusterId: pulumi.Float64(key0),
+//					Pypi: &databricks.LibraryPypiArgs{
+//						Package: pulumi.String("databricks-cli"),
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				cli = append(cli, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Java/Scala JAR
 //
 // ```go

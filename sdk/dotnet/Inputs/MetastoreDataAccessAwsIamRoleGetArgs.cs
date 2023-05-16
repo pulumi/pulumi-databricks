@@ -14,6 +14,8 @@ namespace Pulumi.Databricks.Inputs
     {
         /// <summary>
         /// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+        /// 
+        /// `azure_service_principal` optional configuration block for credential details for Azure:
         /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;

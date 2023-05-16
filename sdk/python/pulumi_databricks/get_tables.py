@@ -79,6 +79,28 @@ def get_tables(catalog_name: Optional[str] = None,
                schema_name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTablesResult:
     """
+    ## Example Usage
+
+    Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ Schema from _sandbox_ databricks_catalog:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    things_tables = databricks.get_tables(catalog_name="sandbox",
+        schema_name="things")
+    things_grants = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(things_tables.ids)]:
+        things_grants.append(databricks.Grants(f"thingsGrants-{range['key']}",
+            table=range["value"],
+            grants=[databricks.GrantsGrantArgs(
+                principal="sensitive",
+                privileges=[
+                    "SELECT",
+                    "MODIFY",
+                ],
+            )]))
+    ```
     ## Related Resources
 
     The following resources are used in the same context:
@@ -111,6 +133,28 @@ def get_tables_output(catalog_name: Optional[pulumi.Input[str]] = None,
                       schema_name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTablesResult]:
     """
+    ## Example Usage
+
+    Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ Schema from _sandbox_ databricks_catalog:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    things_tables = databricks.get_tables(catalog_name="sandbox",
+        schema_name="things")
+    things_grants = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(things_tables.ids)]:
+        things_grants.append(databricks.Grants(f"thingsGrants-{range['key']}",
+            table=range["value"],
+            grants=[databricks.GrantsGrantArgs(
+                principal="sensitive",
+                privileges=[
+                    "SELECT",
+                    "MODIFY",
+                ],
+            )]))
+    ```
     ## Related Resources
 
     The following resources are used in the same context:

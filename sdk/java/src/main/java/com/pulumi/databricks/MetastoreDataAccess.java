@@ -75,12 +75,16 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
     /**
      * Unique identifier of the parent Metastore
      * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
      */
     @Export(name="metastoreId", type=String.class, parameters={})
     private Output<String> metastoreId;
 
     /**
      * @return Unique identifier of the parent Metastore
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
      */
     public Output<String> metastoreId() {

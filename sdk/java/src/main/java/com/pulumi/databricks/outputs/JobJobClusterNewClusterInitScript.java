@@ -21,6 +21,47 @@ public final class JobJobClusterNewClusterInitScript {
     /**
      * @return block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
      * 
+     * Example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Job;
+     * import com.pulumi.databricks.JobArgs;
+     * import com.pulumi.databricks.inputs.JobTaskArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
+     *             .tasks(JobTaskArgs.builder()
+     *                 .taskKey(&#34;run_agg_query&#34;)
+     *                 .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                     .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                     .query(JobTaskSqlTaskQueryArgs.builder()
+     *                         .queryId(databricks_sql_query.agg_query().id())
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     private @Nullable JobJobClusterNewClusterInitScriptFile file;
     private @Nullable JobJobClusterNewClusterInitScriptGcs gcs;
@@ -36,6 +77,47 @@ public final class JobJobClusterNewClusterInitScript {
     }
     /**
      * @return block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
+     * 
+     * Example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Job;
+     * import com.pulumi.databricks.JobArgs;
+     * import com.pulumi.databricks.inputs.JobTaskArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
+     *             .tasks(JobTaskArgs.builder()
+     *                 .taskKey(&#34;run_agg_query&#34;)
+     *                 .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                     .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                     .query(JobTaskSqlTaskQueryArgs.builder()
+     *                         .queryId(databricks_sql_query.agg_query().id())
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public Optional<JobJobClusterNewClusterInitScriptFile> file() {

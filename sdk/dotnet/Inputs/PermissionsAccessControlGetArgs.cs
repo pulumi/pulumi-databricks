@@ -20,6 +20,8 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// permission level according to specific resource. See examples above for the reference.
+        /// 
+        /// Exactly one of the below arguments is required:
         /// </summary>
         [Input("permissionLevel", required: true)]
         public Input<string> PermissionLevel { get; set; } = null!;

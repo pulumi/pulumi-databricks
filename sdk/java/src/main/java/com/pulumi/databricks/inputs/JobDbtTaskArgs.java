@@ -94,12 +94,16 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the SQL warehouse that dbt should execute against.
      * 
+     * You also need to include a `git_source` block to configure the repository that contains the dbt project.
+     * 
      */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
     /**
      * @return The ID of the SQL warehouse that dbt should execute against.
+     * 
+     * You also need to include a `git_source` block to configure the repository that contains the dbt project.
      * 
      */
     public Optional<Output<String>> warehouseId() {
@@ -253,6 +257,8 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param warehouseId The ID of the SQL warehouse that dbt should execute against.
          * 
+         * You also need to include a `git_source` block to configure the repository that contains the dbt project.
+         * 
          * @return builder
          * 
          */
@@ -263,6 +269,8 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param warehouseId The ID of the SQL warehouse that dbt should execute against.
+         * 
+         * You also need to include a `git_source` block to configure the repository that contains the dbt project.
          * 
          * @return builder
          * 

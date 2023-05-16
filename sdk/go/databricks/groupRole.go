@@ -39,9 +39,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewGroupInstanceProfile(ctx, "myGroupInstanceProfile", &databricks.GroupInstanceProfileArgs{
-//				GroupId:           myGroup.ID(),
-//				InstanceProfileId: instanceProfile.ID(),
+//			_, err = databricks.NewGroupRole(ctx, "myGroupInstanceProfile", &databricks.GroupRoleArgs{
+//				GroupId: myGroup.ID(),
+//				Role:    instanceProfile.ID(),
 //			})
 //			if err != nil {
 //				return err

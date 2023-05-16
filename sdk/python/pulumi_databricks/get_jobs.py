@@ -59,6 +59,37 @@ class AwaitableGetJobsResult(GetJobsResult):
 def get_jobs(ids: Optional[Mapping[str, Any]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobsResult:
     """
+    ## Example Usage
+
+    Granting view Permissions to all Job within the workspace:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_jobs()
+    everyone_can_view_all_jobs = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
+        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyoneCanViewAllJobs-{range['key']}",
+            job_id=range["value"],
+            access_controls=[databricks.PermissionsAccessControlArgs(
+                group_name="users",
+                permission_level="CAN_VIEW",
+            )]))
+    ```
+
+    Getting ID of specific Job by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_jobs()
+    pulumi.export("x", {
+        "sensitive": False,
+        "value": f"ID of `x` job is {this.ids['x']}",
+    })
+    ```
     ## Related Resources
 
     The following resources are used in the same context:
@@ -82,6 +113,37 @@ def get_jobs(ids: Optional[Mapping[str, Any]] = None,
 def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobsResult]:
     """
+    ## Example Usage
+
+    Granting view Permissions to all Job within the workspace:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_jobs()
+    everyone_can_view_all_jobs = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
+        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyoneCanViewAllJobs-{range['key']}",
+            job_id=range["value"],
+            access_controls=[databricks.PermissionsAccessControlArgs(
+                group_name="users",
+                permission_level="CAN_VIEW",
+            )]))
+    ```
+
+    Getting ID of specific Job by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_jobs()
+    pulumi.export("x", {
+        "sensitive": False,
+        "value": f"ID of `x` job is {this.ids['x']}",
+    })
+    ```
     ## Related Resources
 
     The following resources are used in the same context:

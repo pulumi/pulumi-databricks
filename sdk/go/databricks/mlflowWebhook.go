@@ -70,6 +70,8 @@ type MlflowWebhook struct {
 	// Optional description of the MLflow webhook.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+	//
+	// Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
 	Events      pulumi.StringArrayOutput          `pulumi:"events"`
 	HttpUrlSpec MlflowWebhookHttpUrlSpecPtrOutput `pulumi:"httpUrlSpec"`
 	JobSpec     MlflowWebhookJobSpecPtrOutput     `pulumi:"jobSpec"`
@@ -114,6 +116,8 @@ type mlflowWebhookState struct {
 	// Optional description of the MLflow webhook.
 	Description *string `pulumi:"description"`
 	// The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+	//
+	// Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
 	Events      []string                  `pulumi:"events"`
 	HttpUrlSpec *MlflowWebhookHttpUrlSpec `pulumi:"httpUrlSpec"`
 	JobSpec     *MlflowWebhookJobSpec     `pulumi:"jobSpec"`
@@ -127,6 +131,8 @@ type MlflowWebhookState struct {
 	// Optional description of the MLflow webhook.
 	Description pulumi.StringPtrInput
 	// The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+	//
+	// Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
 	Events      pulumi.StringArrayInput
 	HttpUrlSpec MlflowWebhookHttpUrlSpecPtrInput
 	JobSpec     MlflowWebhookJobSpecPtrInput
@@ -144,6 +150,8 @@ type mlflowWebhookArgs struct {
 	// Optional description of the MLflow webhook.
 	Description *string `pulumi:"description"`
 	// The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+	//
+	// Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
 	Events      []string                  `pulumi:"events"`
 	HttpUrlSpec *MlflowWebhookHttpUrlSpec `pulumi:"httpUrlSpec"`
 	JobSpec     *MlflowWebhookJobSpec     `pulumi:"jobSpec"`
@@ -158,6 +166,8 @@ type MlflowWebhookArgs struct {
 	// Optional description of the MLflow webhook.
 	Description pulumi.StringPtrInput
 	// The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+	//
+	// Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
 	Events      pulumi.StringArrayInput
 	HttpUrlSpec MlflowWebhookHttpUrlSpecPtrInput
 	JobSpec     MlflowWebhookJobSpecPtrInput
@@ -260,6 +270,8 @@ func (o MlflowWebhookOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+//
+// Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
 func (o MlflowWebhookOutput) Events() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MlflowWebhook) pulumi.StringArrayOutput { return v.Events }).(pulumi.StringArrayOutput)
 }

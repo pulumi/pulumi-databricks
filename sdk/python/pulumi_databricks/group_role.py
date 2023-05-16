@@ -110,9 +110,9 @@ class GroupRole(pulumi.CustomResource):
 
         instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
         my_group = databricks.Group("myGroup")
-        my_group_instance_profile = databricks.GroupInstanceProfile("myGroupInstanceProfile",
+        my_group_instance_profile = databricks.GroupRole("myGroupInstanceProfile",
             group_id=my_group.id,
-            instance_profile_id=instance_profile.id)
+            role=instance_profile.id)
         ```
 
         Attach account admin role to an account-level group
@@ -168,9 +168,9 @@ class GroupRole(pulumi.CustomResource):
 
         instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
         my_group = databricks.Group("myGroup")
-        my_group_instance_profile = databricks.GroupInstanceProfile("myGroupInstanceProfile",
+        my_group_instance_profile = databricks.GroupRole("myGroupInstanceProfile",
             group_id=my_group.id,
-            instance_profile_id=instance_profile.id)
+            role=instance_profile.id)
         ```
 
         Attach account admin role to an account-level group

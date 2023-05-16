@@ -10,6 +10,53 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ Schema from _sandbox_ databricks_catalog.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thingsViews, err := databricks.GetViews(ctx, &databricks.GetViewsArgs{
+//				CatalogName: "sandbox",
+//				SchemaName:  "things",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var thingsGrants []*databricks.Grants
+//			for key0, val0 := range thingsViews.Ids {
+//				__res, err := databricks.NewGrants(ctx, fmt.Sprintf("thingsGrants-%v", key0), &databricks.GrantsArgs{
+//					View: pulumi.String(val0),
+//					Grants: databricks.GrantsGrantArray{
+//						&databricks.GrantsGrantArgs{
+//							Principal: pulumi.String("sensitive"),
+//							Privileges: pulumi.StringArray{
+//								pulumi.String("SELECT"),
+//								pulumi.String("MODIFY"),
+//							},
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				thingsGrants = append(thingsGrants, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Related Resources
 //
 // The following resources are used in the same context:

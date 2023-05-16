@@ -14,6 +14,36 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; **Note** `databricks.Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
     /// 
+    /// ## Installing library on all clusters
+    /// 
+    /// You can install libraries on all clusters with the help of databricks.getClusters data resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Threading.Tasks;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(async() =&gt; 
+    /// {
+    ///     var all = await Databricks.GetClusters.InvokeAsync();
+    /// 
+    ///     var cli = new List&lt;Databricks.Library&gt;();
+    ///     foreach (var range in )
+    ///     {
+    ///         cli.Add(new Databricks.Library($"cli-{range.Key}", new()
+    ///         {
+    ///             ClusterId = range.Key,
+    ///             Pypi = new Databricks.Inputs.LibraryPypiArgs
+    ///             {
+    ///                 Package = "databricks-cli",
+    ///             },
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// 
     /// ## Java/Scala JAR
     /// 
     /// ```csharp

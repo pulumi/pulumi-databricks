@@ -78,6 +78,8 @@ export class MlflowWebhook extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+     *
+     * Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
      */
     public readonly events!: pulumi.Output<string[]>;
     public readonly httpUrlSpec!: pulumi.Output<outputs.MlflowWebhookHttpUrlSpec | undefined>;
@@ -137,6 +139,8 @@ export interface MlflowWebhookState {
     description?: pulumi.Input<string>;
     /**
      * The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+     *
+     * Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
      */
     events?: pulumi.Input<pulumi.Input<string>[]>;
     httpUrlSpec?: pulumi.Input<inputs.MlflowWebhookHttpUrlSpec>;
@@ -161,6 +165,8 @@ export interface MlflowWebhookArgs {
     description?: pulumi.Input<string>;
     /**
      * The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+     *
+     * Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
      */
     events: pulumi.Input<pulumi.Input<string>[]>;
     httpUrlSpec?: pulumi.Input<inputs.MlflowWebhookHttpUrlSpec>;

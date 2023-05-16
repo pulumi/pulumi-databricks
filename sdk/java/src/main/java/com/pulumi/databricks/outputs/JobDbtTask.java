@@ -40,6 +40,8 @@ public final class JobDbtTask {
     /**
      * @return The ID of the SQL warehouse that dbt should execute against.
      * 
+     * You also need to include a `git_source` block to configure the repository that contains the dbt project.
+     * 
      */
     private @Nullable String warehouseId;
 
@@ -81,6 +83,8 @@ public final class JobDbtTask {
     }
     /**
      * @return The ID of the SQL warehouse that dbt should execute against.
+     * 
+     * You also need to include a `git_source` block to configure the repository that contains the dbt project.
      * 
      */
     public Optional<String> warehouseId() {

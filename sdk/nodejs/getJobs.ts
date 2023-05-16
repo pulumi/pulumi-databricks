@@ -5,6 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Granting view databricks.Permissions to all databricks.Job within the workspace:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * export = async () => {
+ *     const this = await databricks.getJobs({});
+ *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
+ *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
+ *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyoneCanViewAllJobs-${range.key}`, {
+ *             jobId: range.value,
+ *             accessControls: [{
+ *                 groupName: "users",
+ *                 permissionLevel: "CAN_VIEW",
+ *             }],
+ *         }));
+ *     }
+ * }
+ * ```
+ *
+ * Getting ID of specific databricks.Job by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getJobs({});
+ * export const x = {
+ *     sensitive: false,
+ *     value: _this.then(_this => `ID of `x` job is ${_this.ids?.x}`),
+ * };
+ * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -44,6 +79,41 @@ export interface GetJobsResult {
     readonly ids: {[key: string]: any};
 }
 /**
+ * ## Example Usage
+ *
+ * Granting view databricks.Permissions to all databricks.Job within the workspace:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * export = async () => {
+ *     const this = await databricks.getJobs({});
+ *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
+ *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
+ *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyoneCanViewAllJobs-${range.key}`, {
+ *             jobId: range.value,
+ *             accessControls: [{
+ *                 groupName: "users",
+ *                 permissionLevel: "CAN_VIEW",
+ *             }],
+ *         }));
+ *     }
+ * }
+ * ```
+ *
+ * Getting ID of specific databricks.Job by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getJobs({});
+ * export const x = {
+ *     sensitive: false,
+ *     value: _this.then(_this => `ID of `x` job is ${_this.ids?.x}`),
+ * };
+ * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:

@@ -124,6 +124,8 @@ export class Entitlements extends pulumi.CustomResource {
     public readonly groupId!: pulumi.Output<string | undefined>;
     /**
      * Canonical unique identifier for the service principal.
+     *
+     * The following entitlements are available.
      */
     public readonly servicePrincipalId!: pulumi.Output<string | undefined>;
     /**
@@ -192,6 +194,8 @@ export interface EntitlementsState {
     groupId?: pulumi.Input<string>;
     /**
      * Canonical unique identifier for the service principal.
+     *
+     * The following entitlements are available.
      */
     servicePrincipalId?: pulumi.Input<string>;
     /**
@@ -226,6 +230,8 @@ export interface EntitlementsArgs {
     groupId?: pulumi.Input<string>;
     /**
      * Canonical unique identifier for the service principal.
+     *
+     * The following entitlements are available.
      */
     servicePrincipalId?: pulumi.Input<string>;
     /**

@@ -16,12 +16,16 @@ public final class StorageCredentialAwsIamRoleArgs extends com.pulumi.resources.
     /**
      * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      * 
+     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+     * 
      */
     @Import(name="roleArn", required=true)
     private Output<String> roleArn;
 
     /**
      * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * 
+     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
      * 
      */
     public Output<String> roleArn() {
@@ -55,6 +59,8 @@ public final class StorageCredentialAwsIamRoleArgs extends com.pulumi.resources.
         /**
          * @param roleArn The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
          * 
+         * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+         * 
          * @return builder
          * 
          */
@@ -65,6 +71,8 @@ public final class StorageCredentialAwsIamRoleArgs extends com.pulumi.resources.
 
         /**
          * @param roleArn The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+         * 
+         * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
          * 
          * @return builder
          * 

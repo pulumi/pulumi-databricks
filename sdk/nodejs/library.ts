@@ -11,6 +11,28 @@ import * as utilities from "./utilities";
  *
  * > **Note** `databricks.Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
  *
+ * ## Installing library on all clusters
+ *
+ * You can install libraries on all clusters with the help of databricks.getClusters data resource:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * export = async () => {
+ *     const all = await databricks.getClusters({});
+ *     const cli: databricks.Library[] = [];
+ *     for (const range of all.ids.map((v, k) => ({key: k, value: v}))) {
+ *         cli.push(new databricks.Library(`cli-${range.key}`, {
+ *             clusterId: range.key,
+ *             pypi: {
+ *                 "package": "databricks-cli",
+ *             },
+ *         }));
+ *     }
+ * }
+ * ```
+ *
  * ## Java/Scala JAR
  *
  * ```typescript

@@ -121,6 +121,8 @@ export class StorageCredential extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * Username/groupname/sp applicationId of the storage credential owner.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     public readonly owner!: pulumi.Output<string>;
 
@@ -180,6 +182,8 @@ export interface StorageCredentialState {
     name?: pulumi.Input<string>;
     /**
      * Username/groupname/sp applicationId of the storage credential owner.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     owner?: pulumi.Input<string>;
 }
@@ -201,6 +205,8 @@ export interface StorageCredentialArgs {
     name?: pulumi.Input<string>;
     /**
      * Username/groupname/sp applicationId of the storage credential owner.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     owner?: pulumi.Input<string>;
 }

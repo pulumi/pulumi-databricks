@@ -12,12 +12,16 @@ public final class JobWebhookNotificationsOnSuccess {
     /**
      * @return ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
      * 
+     * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * 
      */
     private String id;
 
     private JobWebhookNotificationsOnSuccess() {}
     /**
      * @return ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+     * 
+     * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
      * 
      */
     public String id() {

@@ -3340,6 +3340,85 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getJob:getJob", TypeShape.of(GetJobResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting view databricks.Permissions to all databricks.Job within the workspace:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -&gt; {
+     *             final var resources = new ArrayList&lt;Permissions&gt;();
+     *             for (var range : KeyedValue.of(getJobsResult.ids()) {
+     *                 var resource = new Permissions(&#34;everyoneCanViewAllJobs-&#34; + range.key(), PermissionsArgs.builder()                
+     *                     .jobId(range.value())
+     *                     .accessControls(PermissionsAccessControlArgs.builder()
+     *                         .groupName(&#34;users&#34;)
+     *                         .permissionLevel(&#34;CAN_VIEW&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Getting ID of specific databricks.Job by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         ctx.export(&#34;x&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3351,6 +3430,85 @@ public final class DatabricksFunctions {
         return getJobs(GetJobsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting view databricks.Permissions to all databricks.Job within the workspace:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -&gt; {
+     *             final var resources = new ArrayList&lt;Permissions&gt;();
+     *             for (var range : KeyedValue.of(getJobsResult.ids()) {
+     *                 var resource = new Permissions(&#34;everyoneCanViewAllJobs-&#34; + range.key(), PermissionsArgs.builder()                
+     *                     .jobId(range.value())
+     *                     .accessControls(PermissionsAccessControlArgs.builder()
+     *                         .groupName(&#34;users&#34;)
+     *                         .permissionLevel(&#34;CAN_VIEW&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Getting ID of specific databricks.Job by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         ctx.export(&#34;x&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3362,6 +3520,85 @@ public final class DatabricksFunctions {
         return getJobsPlain(GetJobsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting view databricks.Permissions to all databricks.Job within the workspace:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -&gt; {
+     *             final var resources = new ArrayList&lt;Permissions&gt;();
+     *             for (var range : KeyedValue.of(getJobsResult.ids()) {
+     *                 var resource = new Permissions(&#34;everyoneCanViewAllJobs-&#34; + range.key(), PermissionsArgs.builder()                
+     *                     .jobId(range.value())
+     *                     .accessControls(PermissionsAccessControlArgs.builder()
+     *                         .groupName(&#34;users&#34;)
+     *                         .permissionLevel(&#34;CAN_VIEW&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Getting ID of specific databricks.Job by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         ctx.export(&#34;x&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3373,6 +3610,85 @@ public final class DatabricksFunctions {
         return getJobs(args, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting view databricks.Permissions to all databricks.Job within the workspace:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -&gt; {
+     *             final var resources = new ArrayList&lt;Permissions&gt;();
+     *             for (var range : KeyedValue.of(getJobsResult.ids()) {
+     *                 var resource = new Permissions(&#34;everyoneCanViewAllJobs-&#34; + range.key(), PermissionsArgs.builder()                
+     *                     .jobId(range.value())
+     *                     .accessControls(PermissionsAccessControlArgs.builder()
+     *                         .groupName(&#34;users&#34;)
+     *                         .permissionLevel(&#34;CAN_VIEW&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Getting ID of specific databricks.Job by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         ctx.export(&#34;x&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3384,6 +3700,85 @@ public final class DatabricksFunctions {
         return getJobsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting view databricks.Permissions to all databricks.Job within the workspace:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -&gt; {
+     *             final var resources = new ArrayList&lt;Permissions&gt;();
+     *             for (var range : KeyedValue.of(getJobsResult.ids()) {
+     *                 var resource = new Permissions(&#34;everyoneCanViewAllJobs-&#34; + range.key(), PermissionsArgs.builder()                
+     *                     .jobId(range.value())
+     *                     .accessControls(PermissionsAccessControlArgs.builder()
+     *                         .groupName(&#34;users&#34;)
+     *                         .permissionLevel(&#34;CAN_VIEW&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Getting ID of specific databricks.Job by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         ctx.export(&#34;x&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3395,6 +3790,85 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getJobs:getJobs", TypeShape.of(GetJobsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting view databricks.Permissions to all databricks.Job within the workspace:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -&gt; {
+     *             final var resources = new ArrayList&lt;Permissions&gt;();
+     *             for (var range : KeyedValue.of(getJobsResult.ids()) {
+     *                 var resource = new Permissions(&#34;everyoneCanViewAllJobs-&#34; + range.key(), PermissionsArgs.builder()                
+     *                     .jobId(range.value())
+     *                     .accessControls(PermissionsAccessControlArgs.builder()
+     *                         .groupName(&#34;users&#34;)
+     *                         .permissionLevel(&#34;CAN_VIEW&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Getting ID of specific databricks.Job by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         ctx.export(&#34;x&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7618,6 +8092,61 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSqlWarehouses:getSqlWarehouses", TypeShape.of(GetSqlWarehousesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTablesArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var thingsTables = DatabricksFunctions.getTables(GetTablesArgs.builder()
+     *             .catalogName(&#34;sandbox&#34;)
+     *             .schemaName(&#34;things&#34;)
+     *             .build());
+     * 
+     *         final var thingsGrants = thingsTables.applyValue(getTablesResult -&gt; {
+     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *             for (var range : KeyedValue.of(getTablesResult.ids()) {
+     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                     .table(range.value())
+     *                     .grants(GrantsGrantArgs.builder()
+     *                         .principal(&#34;sensitive&#34;)
+     *                         .privileges(                        
+     *                             &#34;SELECT&#34;,
+     *                             &#34;MODIFY&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7630,6 +8159,61 @@ public final class DatabricksFunctions {
         return getTables(args, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTablesArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var thingsTables = DatabricksFunctions.getTables(GetTablesArgs.builder()
+     *             .catalogName(&#34;sandbox&#34;)
+     *             .schemaName(&#34;things&#34;)
+     *             .build());
+     * 
+     *         final var thingsGrants = thingsTables.applyValue(getTablesResult -&gt; {
+     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *             for (var range : KeyedValue.of(getTablesResult.ids()) {
+     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                     .table(range.value())
+     *                     .grants(GrantsGrantArgs.builder()
+     *                         .principal(&#34;sensitive&#34;)
+     *                         .privileges(                        
+     *                             &#34;SELECT&#34;,
+     *                             &#34;MODIFY&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7642,6 +8226,61 @@ public final class DatabricksFunctions {
         return getTablesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTablesArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var thingsTables = DatabricksFunctions.getTables(GetTablesArgs.builder()
+     *             .catalogName(&#34;sandbox&#34;)
+     *             .schemaName(&#34;things&#34;)
+     *             .build());
+     * 
+     *         final var thingsGrants = thingsTables.applyValue(getTablesResult -&gt; {
+     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *             for (var range : KeyedValue.of(getTablesResult.ids()) {
+     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                     .table(range.value())
+     *                     .grants(GrantsGrantArgs.builder()
+     *                         .principal(&#34;sensitive&#34;)
+     *                         .privileges(                        
+     *                             &#34;SELECT&#34;,
+     *                             &#34;MODIFY&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7654,6 +8293,61 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTablesArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var thingsTables = DatabricksFunctions.getTables(GetTablesArgs.builder()
+     *             .catalogName(&#34;sandbox&#34;)
+     *             .schemaName(&#34;things&#34;)
+     *             .build());
+     * 
+     *         final var thingsGrants = thingsTables.applyValue(getTablesResult -&gt; {
+     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *             for (var range : KeyedValue.of(getTablesResult.ids()) {
+     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                     .table(range.value())
+     *                     .grants(GrantsGrantArgs.builder()
+     *                         .principal(&#34;sensitive&#34;)
+     *                         .privileges(                        
+     *                             &#34;SELECT&#34;,
+     *                             &#34;MODIFY&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8062,6 +8756,61 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetViewsArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var thingsViews = DatabricksFunctions.getViews(GetViewsArgs.builder()
+     *             .catalogName(&#34;sandbox&#34;)
+     *             .schemaName(&#34;things&#34;)
+     *             .build());
+     * 
+     *         final var thingsGrants = thingsViews.applyValue(getViewsResult -&gt; {
+     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                     .view(range.value())
+     *                     .grants(GrantsGrantArgs.builder()
+     *                         .principal(&#34;sensitive&#34;)
+     *                         .privileges(                        
+     *                             &#34;SELECT&#34;,
+     *                             &#34;MODIFY&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8074,6 +8823,61 @@ public final class DatabricksFunctions {
         return getViews(args, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetViewsArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var thingsViews = DatabricksFunctions.getViews(GetViewsArgs.builder()
+     *             .catalogName(&#34;sandbox&#34;)
+     *             .schemaName(&#34;things&#34;)
+     *             .build());
+     * 
+     *         final var thingsGrants = thingsViews.applyValue(getViewsResult -&gt; {
+     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                     .view(range.value())
+     *                     .grants(GrantsGrantArgs.builder()
+     *                         .principal(&#34;sensitive&#34;)
+     *                         .privileges(                        
+     *                             &#34;SELECT&#34;,
+     *                             &#34;MODIFY&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8086,6 +8890,61 @@ public final class DatabricksFunctions {
         return getViewsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetViewsArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var thingsViews = DatabricksFunctions.getViews(GetViewsArgs.builder()
+     *             .catalogName(&#34;sandbox&#34;)
+     *             .schemaName(&#34;things&#34;)
+     *             .build());
+     * 
+     *         final var thingsGrants = thingsViews.applyValue(getViewsResult -&gt; {
+     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                     .view(range.value())
+     *                     .grants(GrantsGrantArgs.builder()
+     *                         .principal(&#34;sensitive&#34;)
+     *                         .privileges(                        
+     *                             &#34;SELECT&#34;,
+     *                             &#34;MODIFY&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8098,6 +8957,61 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getViews:getViews", TypeShape.of(GetViewsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetViewsArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var thingsViews = DatabricksFunctions.getViews(GetViewsArgs.builder()
+     *             .catalogName(&#34;sandbox&#34;)
+     *             .schemaName(&#34;things&#34;)
+     *             .build());
+     * 
+     *         final var thingsGrants = thingsViews.applyValue(getViewsResult -&gt; {
+     *             final var resources = new ArrayList&lt;Grants&gt;();
+     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+     *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
+     *                     .view(range.value())
+     *                     .grants(GrantsGrantArgs.builder()
+     *                         .principal(&#34;sensitive&#34;)
+     *                         .privileges(                        
+     *                             &#34;SELECT&#34;,
+     *                             &#34;MODIFY&#34;)
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * ```
      * ## Related Resources
      * 
      * The following resources are used in the same context:

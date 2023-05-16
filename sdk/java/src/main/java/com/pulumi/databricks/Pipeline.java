@@ -129,9 +129,17 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> allowDuplicateNames() {
         return Codegen.optional(this.allowDuplicateNames);
     }
+    /**
+     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * 
+     */
     @Export(name="catalog", type=String.class, parameters={})
     private Output</* @Nullable */ String> catalog;
 
+    /**
+     * @return The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * 
+     */
     public Output<Optional<String>> catalog() {
         return Codegen.optional(this.catalog);
     }
@@ -274,28 +282,28 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.photon);
     }
     /**
-     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      * 
      */
     @Export(name="storage", type=String.class, parameters={})
     private Output</* @Nullable */ String> storage;
 
     /**
-     * @return A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.*
+     * @return A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      * 
      */
     public Output<Optional<String>> storage() {
         return Codegen.optional(this.storage);
     }
     /**
-     * The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+     * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      * 
      */
     @Export(name="target", type=String.class, parameters={})
     private Output</* @Nullable */ String> target;
 
     /**
-     * @return The name of a database for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+     * @return The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      * 
      */
     public Output<Optional<String>> target() {

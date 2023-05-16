@@ -165,6 +165,8 @@ type StorageCredential struct {
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Username/groupname/sp applicationId of the storage credential owner.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner pulumi.StringOutput `pulumi:"owner"`
 }
 
@@ -207,6 +209,8 @@ type storageCredentialState struct {
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the storage credential owner.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner *string `pulumi:"owner"`
 }
 
@@ -221,6 +225,8 @@ type StorageCredentialState struct {
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the storage credential owner.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner pulumi.StringPtrInput
 }
 
@@ -239,6 +245,8 @@ type storageCredentialArgs struct {
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the storage credential owner.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner *string `pulumi:"owner"`
 }
 
@@ -254,6 +262,8 @@ type StorageCredentialArgs struct {
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the storage credential owner.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner pulumi.StringPtrInput
 }
 
@@ -386,6 +396,8 @@ func (o StorageCredentialOutput) Name() pulumi.StringOutput {
 }
 
 // Username/groupname/sp applicationId of the storage credential owner.
+//
+// `awsIamRole` optional configuration block for credential details for AWS:
 func (o StorageCredentialOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }

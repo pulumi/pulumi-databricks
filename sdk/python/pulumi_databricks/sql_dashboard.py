@@ -139,7 +139,7 @@ class SqlDashboard(pulumi.CustomResource):
         d1 = databricks.Permissions("d1",
             sql_dashboard_id=databricks_sql_dashboard["d1"]["id"],
             access_controls=[databricks.PermissionsAccessControlArgs(
-                group_name=data["databricks_group"]["users"]["display_name"],
+                group_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 permission_level="CAN_RUN",
             )])
         ```
@@ -200,7 +200,7 @@ class SqlDashboard(pulumi.CustomResource):
         d1 = databricks.Permissions("d1",
             sql_dashboard_id=databricks_sql_dashboard["d1"]["id"],
             access_controls=[databricks.PermissionsAccessControlArgs(
-                group_name=data["databricks_group"]["users"]["display_name"],
+                group_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 permission_level="CAN_RUN",
             )])
         ```

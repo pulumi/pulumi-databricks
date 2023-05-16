@@ -19,6 +19,8 @@ public final class PermissionsAccessControl {
     /**
      * @return permission level according to specific resource. See examples above for the reference.
      * 
+     * Exactly one of the below arguments is required:
+     * 
      */
     private String permissionLevel;
     /**
@@ -42,6 +44,8 @@ public final class PermissionsAccessControl {
     }
     /**
      * @return permission level according to specific resource. See examples above for the reference.
+     * 
+     * Exactly one of the below arguments is required:
      * 
      */
     public String permissionLevel() {

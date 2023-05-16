@@ -50,6 +50,8 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
     public readonly isDefault!: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier of the parent Metastore
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     public readonly metastoreId!: pulumi.Output<string>;
     /**
@@ -112,6 +114,8 @@ export interface MetastoreDataAccessState {
     isDefault?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the parent Metastore
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     metastoreId?: pulumi.Input<string>;
     /**
@@ -133,6 +137,8 @@ export interface MetastoreDataAccessArgs {
     isDefault?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the parent Metastore
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     metastoreId: pulumi.Input<string>;
     /**

@@ -79,12 +79,16 @@ public final class EntitlementsArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Canonical unique identifier for the service principal.
      * 
+     * The following entitlements are available.
+     * 
      */
     @Import(name="servicePrincipalId")
     private @Nullable Output<String> servicePrincipalId;
 
     /**
      * @return Canonical unique identifier for the service principal.
+     * 
+     * The following entitlements are available.
      * 
      */
     public Optional<Output<String>> servicePrincipalId() {
@@ -238,6 +242,8 @@ public final class EntitlementsArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param servicePrincipalId Canonical unique identifier for the service principal.
          * 
+         * The following entitlements are available.
+         * 
          * @return builder
          * 
          */
@@ -248,6 +254,8 @@ public final class EntitlementsArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param servicePrincipalId Canonical unique identifier for the service principal.
+         * 
+         * The following entitlements are available.
          * 
          * @return builder
          * 

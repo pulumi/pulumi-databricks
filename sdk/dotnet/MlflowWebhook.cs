@@ -69,6 +69,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+        /// 
+        /// Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
         /// </summary>
         [Output("events")]
         public Output<ImmutableArray<string>> Events { get; private set; } = null!;
@@ -148,6 +150,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+        /// 
+        /// Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
         /// </summary>
         public InputList<string> Events
         {
@@ -192,6 +196,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+        /// 
+        /// Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
         /// </summary>
         public InputList<string> Events
         {

@@ -336,11 +336,11 @@ class SqlQuery(pulumi.CustomResource):
             sql_query_id=databricks_sql_query["q1"]["id"],
             access_controls=[
                 databricks.PermissionsAccessControlArgs(
-                    group_name=data["databricks_group"]["users"]["display_name"],
+                    group_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                     permission_level="CAN_RUN",
                 ),
                 databricks.PermissionsAccessControlArgs(
-                    group_name=data["databricks_group"]["team"]["display_name"],
+                    group_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                     permission_level="CAN_EDIT",
                 ),
             ])
@@ -451,11 +451,11 @@ class SqlQuery(pulumi.CustomResource):
             sql_query_id=databricks_sql_query["q1"]["id"],
             access_controls=[
                 databricks.PermissionsAccessControlArgs(
-                    group_name=data["databricks_group"]["users"]["display_name"],
+                    group_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                     permission_level="CAN_RUN",
                 ),
                 databricks.PermissionsAccessControlArgs(
-                    group_name=data["databricks_group"]["team"]["display_name"],
+                    group_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                     permission_level="CAN_EDIT",
                 ),
             ])

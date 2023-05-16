@@ -28,6 +28,8 @@ class EntitlementsArgs:
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         :param pulumi.Input[str] group_id: Canonical unique identifier for the group.
         :param pulumi.Input[str] service_principal_id: Canonical unique identifier for the service principal.
+               
+               The following entitlements are available.
         :param pulumi.Input[str] user_id: Canonical unique identifier for the user.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the principal to have access to Databricks Workspace.
         """
@@ -99,6 +101,8 @@ class EntitlementsArgs:
     def service_principal_id(self) -> Optional[pulumi.Input[str]]:
         """
         Canonical unique identifier for the service principal.
+
+        The following entitlements are available.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -148,6 +152,8 @@ class _EntitlementsState:
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         :param pulumi.Input[str] group_id: Canonical unique identifier for the group.
         :param pulumi.Input[str] service_principal_id: Canonical unique identifier for the service principal.
+               
+               The following entitlements are available.
         :param pulumi.Input[str] user_id: Canonical unique identifier for the user.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the principal to have access to Databricks Workspace.
         """
@@ -219,6 +225,8 @@ class _EntitlementsState:
     def service_principal_id(self) -> Optional[pulumi.Input[str]]:
         """
         Canonical unique identifier for the service principal.
+
+        The following entitlements are available.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -336,6 +344,8 @@ class Entitlements(pulumi.CustomResource):
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         :param pulumi.Input[str] group_id: Canonical unique identifier for the group.
         :param pulumi.Input[str] service_principal_id: Canonical unique identifier for the service principal.
+               
+               The following entitlements are available.
         :param pulumi.Input[str] user_id: Canonical unique identifier for the user.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the principal to have access to Databricks Workspace.
         """
@@ -477,6 +487,8 @@ class Entitlements(pulumi.CustomResource):
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         :param pulumi.Input[str] group_id: Canonical unique identifier for the group.
         :param pulumi.Input[str] service_principal_id: Canonical unique identifier for the service principal.
+               
+               The following entitlements are available.
         :param pulumi.Input[str] user_id: Canonical unique identifier for the user.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the principal to have access to Databricks Workspace.
         """
@@ -530,6 +542,8 @@ class Entitlements(pulumi.CustomResource):
     def service_principal_id(self) -> pulumi.Output[Optional[str]]:
         """
         Canonical unique identifier for the service principal.
+
+        The following entitlements are available.
         """
         return pulumi.get(self, "service_principal_id")
 

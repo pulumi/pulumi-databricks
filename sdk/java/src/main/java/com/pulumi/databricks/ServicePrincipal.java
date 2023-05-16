@@ -220,7 +220,7 @@ import javax.annotation.Nullable;
  * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
  * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
- * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](&lt;https://docs.databricks&gt;.
+ * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and more to manage secrets for the service principal (only for AWS deployments)
  * 
  * ## Import
  * 

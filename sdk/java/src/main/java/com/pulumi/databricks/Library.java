@@ -22,6 +22,56 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note** `databricks.Library` resource would always start the associated cluster if it&#39;s not running, so make sure to have auto-termination configured. It&#39;s not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
  * 
+ * ## Installing library on all clusters
+ * 
+ * You can install libraries on all clusters with the help of databricks.getClusters data resource:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetClustersArgs;
+ * import com.pulumi.databricks.Library;
+ * import com.pulumi.databricks.LibraryArgs;
+ * import com.pulumi.databricks.inputs.LibraryPypiArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var all = DatabricksFunctions.getClusters();
+ * 
+ *         final var cli = all.applyValue(getClustersResult -&gt; {
+ *             final var resources = new ArrayList&lt;Library&gt;();
+ *             for (var range : KeyedValue.of(getClustersResult.ids()) {
+ *                 var resource = new Library(&#34;cli-&#34; + range.key(), LibraryArgs.builder()                
+ *                     .clusterId(range.key())
+ *                     .pypi(LibraryPypiArgs.builder()
+ *                         .package_(&#34;databricks-cli&#34;)
+ *                         .build())
+ *                     .build());
+ * 
+ *                 resources.add(resource);
+ *             }
+ * 
+ *             return resources;
+ *         });
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Java/Scala JAR
  * ```java
  * package generated_program;

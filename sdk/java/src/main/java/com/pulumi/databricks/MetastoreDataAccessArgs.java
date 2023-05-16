@@ -73,12 +73,16 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
     /**
      * Unique identifier of the parent Metastore
      * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
      */
     @Import(name="metastoreId", required=true)
     private Output<String> metastoreId;
 
     /**
      * @return Unique identifier of the parent Metastore
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
      */
     public Output<String> metastoreId() {
@@ -198,6 +202,8 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
         /**
          * @param metastoreId Unique identifier of the parent Metastore
          * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * 
          * @return builder
          * 
          */
@@ -208,6 +214,8 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
 
         /**
          * @param metastoreId Unique identifier of the parent Metastore
+         * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
          * 
          * @return builder
          * 

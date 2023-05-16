@@ -42,6 +42,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Unique identifier of the parent Metastore
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
@@ -121,6 +123,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Unique identifier of the parent Metastore
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("metastoreId", required: true)]
         public Input<string> MetastoreId { get; set; } = null!;
@@ -162,6 +166,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Unique identifier of the parent Metastore
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }

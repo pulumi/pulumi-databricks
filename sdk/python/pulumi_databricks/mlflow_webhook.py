@@ -25,6 +25,8 @@ class MlflowWebhookArgs:
         """
         The set of arguments for constructing a MlflowWebhook resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+               
+               Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
         :param pulumi.Input[str] description: Optional description of the MLflow webhook.
         :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         :param pulumi.Input[str] status: Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
@@ -46,6 +48,8 @@ class MlflowWebhookArgs:
     def events(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+
+        Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
         """
         return pulumi.get(self, "events")
 
@@ -121,6 +125,8 @@ class _MlflowWebhookState:
         Input properties used for looking up and filtering MlflowWebhook resources.
         :param pulumi.Input[str] description: Optional description of the MLflow webhook.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+               
+               Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
         :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         :param pulumi.Input[str] status: Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
         """
@@ -154,6 +160,8 @@ class _MlflowWebhookState:
     def events(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+
+        Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
         """
         return pulumi.get(self, "events")
 
@@ -257,6 +265,8 @@ class MlflowWebhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional description of the MLflow webhook.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+               
+               Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
         :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         :param pulumi.Input[str] status: Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
         """
@@ -366,6 +376,8 @@ class MlflowWebhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional description of the MLflow webhook.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+               
+               Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
         :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         :param pulumi.Input[str] status: Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
         """
@@ -394,6 +406,8 @@ class MlflowWebhook(pulumi.CustomResource):
     def events(self) -> pulumi.Output[Sequence[str]]:
         """
         The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
+
+        Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
         """
         return pulumi.get(self, "events")
 

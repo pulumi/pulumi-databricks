@@ -122,6 +122,48 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+        /// 
+        /// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var smallest = Databricks.GetNodeType.Invoke(new()
+        ///     {
+        ///         LocalDisk = true,
+        ///     });
+        /// 
+        ///     var latestLts = Databricks.GetSparkVersion.Invoke(new()
+        ///     {
+        ///         LongTermSupport = true,
+        ///     });
+        /// 
+        ///     var sharedAutoscaling = new Databricks.Cluster("sharedAutoscaling", new()
+        ///     {
+        ///         ClusterName = "Shared Autoscaling",
+        ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
+        ///         NodeTypeId = smallest.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
+        ///         AutoterminationMinutes = 20,
+        ///         Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
+        ///         {
+        ///             MinWorkers = 1,
+        ///             MaxWorkers = 50,
+        ///         },
+        ///         SparkConf = 
+        ///         {
+        ///             { "spark.databricks.io.cache.enabled", true },
+        ///             { "spark.databricks.io.cache.maxDiskUsage", "50g" },
+        ///             { "spark.databricks.io.cache.maxMetaDataCache", "1g" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         [Output("isPinned")]
         public Output<bool?> IsPinned { get; private set; } = null!;
@@ -352,6 +394,48 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+        /// 
+        /// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var smallest = Databricks.GetNodeType.Invoke(new()
+        ///     {
+        ///         LocalDisk = true,
+        ///     });
+        /// 
+        ///     var latestLts = Databricks.GetSparkVersion.Invoke(new()
+        ///     {
+        ///         LongTermSupport = true,
+        ///     });
+        /// 
+        ///     var sharedAutoscaling = new Databricks.Cluster("sharedAutoscaling", new()
+        ///     {
+        ///         ClusterName = "Shared Autoscaling",
+        ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
+        ///         NodeTypeId = smallest.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
+        ///         AutoterminationMinutes = 20,
+        ///         Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
+        ///         {
+        ///             MinWorkers = 1,
+        ///             MaxWorkers = 50,
+        ///         },
+        ///         SparkConf = 
+        ///         {
+        ///             { "spark.databricks.io.cache.enabled", true },
+        ///             { "spark.databricks.io.cache.maxDiskUsage", "50g" },
+        ///             { "spark.databricks.io.cache.maxMetaDataCache", "1g" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         [Input("isPinned")]
         public Input<bool>? IsPinned { get; set; }
@@ -570,6 +654,48 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 70](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that.
+        /// 
+        /// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var smallest = Databricks.GetNodeType.Invoke(new()
+        ///     {
+        ///         LocalDisk = true,
+        ///     });
+        /// 
+        ///     var latestLts = Databricks.GetSparkVersion.Invoke(new()
+        ///     {
+        ///         LongTermSupport = true,
+        ///     });
+        /// 
+        ///     var sharedAutoscaling = new Databricks.Cluster("sharedAutoscaling", new()
+        ///     {
+        ///         ClusterName = "Shared Autoscaling",
+        ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
+        ///         NodeTypeId = smallest.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
+        ///         AutoterminationMinutes = 20,
+        ///         Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
+        ///         {
+        ///             MinWorkers = 1,
+        ///             MaxWorkers = 50,
+        ///         },
+        ///         SparkConf = 
+        ///         {
+        ///             { "spark.databricks.io.cache.enabled", true },
+        ///             { "spark.databricks.io.cache.maxDiskUsage", "50g" },
+        ///             { "spark.databricks.io.cache.maxMetaDataCache", "1g" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         [Input("isPinned")]
         public Input<bool>? IsPinned { get; set; }

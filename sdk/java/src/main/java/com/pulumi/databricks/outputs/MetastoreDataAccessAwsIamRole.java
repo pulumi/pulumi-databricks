@@ -12,12 +12,16 @@ public final class MetastoreDataAccessAwsIamRole {
     /**
      * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      * 
+     * `azure_service_principal` optional configuration block for credential details for Azure:
+     * 
      */
     private String roleArn;
 
     private MetastoreDataAccessAwsIamRole() {}
     /**
      * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * 
+     * `azure_service_principal` optional configuration block for credential details for Azure:
      * 
      */
     public String roleArn() {

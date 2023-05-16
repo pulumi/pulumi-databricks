@@ -23,6 +23,8 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// set of available privilege names in upper case.
+        /// 
+        /// [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
         /// </summary>
         public InputList<string> Privileges
         {
