@@ -42,9 +42,6 @@ namespace Pulumi.Databricks
         [Output("azureWorkspaceResourceId")]
         public Output<string?> AzureWorkspaceResourceId { get; private set; } = null!;
 
-        [Output("bricksCliPath")]
-        public Output<string?> BricksCliPath { get; private set; } = null!;
-
         [Output("clientId")]
         public Output<string?> ClientId { get; private set; } = null!;
 
@@ -53,6 +50,9 @@ namespace Pulumi.Databricks
 
         [Output("configFile")]
         public Output<string?> ConfigFile { get; private set; } = null!;
+
+        [Output("databricksCliPath")]
+        public Output<string?> DatabricksCliPath { get; private set; } = null!;
 
         [Output("googleCredentials")]
         public Output<string?> GoogleCredentials { get; private set; } = null!;
@@ -151,9 +151,6 @@ namespace Pulumi.Databricks
         [Input("azureWorkspaceResourceId")]
         public Input<string>? AzureWorkspaceResourceId { get; set; }
 
-        [Input("bricksCliPath")]
-        public Input<string>? BricksCliPath { get; set; }
-
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
@@ -171,6 +168,9 @@ namespace Pulumi.Databricks
 
         [Input("configFile")]
         public Input<string>? ConfigFile { get; set; }
+
+        [Input("databricksCliPath")]
+        public Input<string>? DatabricksCliPath { get; set; }
 
         [Input("debugHeaders", json: true)]
         public Input<bool>? DebugHeaders { get; set; }

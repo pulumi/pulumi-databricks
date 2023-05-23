@@ -109,9 +109,8 @@ type Cluster struct {
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
 	NodeTypeId pulumi.StringOutput `pulumi:"nodeTypeId"`
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
-	NumWorkers pulumi.IntPtrOutput `pulumi:"numWorkers"`
-	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.
-	PolicyId pulumi.StringPtrOutput `pulumi:"policyId"`
+	NumWorkers pulumi.IntPtrOutput    `pulumi:"numWorkers"`
+	PolicyId   pulumi.StringPtrOutput `pulumi:"policyId"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrOutput `pulumi:"runtimeEngine"`
 	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -248,9 +247,8 @@ type clusterState struct {
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
 	NodeTypeId *string `pulumi:"nodeTypeId"`
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
-	NumWorkers *int `pulumi:"numWorkers"`
-	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.
-	PolicyId *string `pulumi:"policyId"`
+	NumWorkers *int    `pulumi:"numWorkers"`
+	PolicyId   *string `pulumi:"policyId"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine *string `pulumi:"runtimeEngine"`
 	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -357,8 +355,7 @@ type ClusterState struct {
 	NodeTypeId pulumi.StringPtrInput
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
 	NumWorkers pulumi.IntPtrInput
-	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.
-	PolicyId pulumi.StringPtrInput
+	PolicyId   pulumi.StringPtrInput
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrInput
 	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -466,9 +463,8 @@ type clusterArgs struct {
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
 	NodeTypeId *string `pulumi:"nodeTypeId"`
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
-	NumWorkers *int `pulumi:"numWorkers"`
-	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.
-	PolicyId *string `pulumi:"policyId"`
+	NumWorkers *int    `pulumi:"numWorkers"`
+	PolicyId   *string `pulumi:"policyId"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine *string `pulumi:"runtimeEngine"`
 	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -571,8 +567,7 @@ type ClusterArgs struct {
 	NodeTypeId pulumi.StringPtrInput
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
 	NumWorkers pulumi.IntPtrInput
-	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.
-	PolicyId pulumi.StringPtrInput
+	PolicyId   pulumi.StringPtrInput
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrInput
 	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -840,7 +835,6 @@ func (o ClusterOutput) NumWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.NumWorkers }).(pulumi.IntPtrOutput)
 }
 
-// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.
 func (o ClusterOutput) PolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PolicyId }).(pulumi.StringPtrOutput)
 }

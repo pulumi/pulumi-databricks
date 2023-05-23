@@ -35,9 +35,6 @@ func GetAzureUseMsi(ctx *pulumi.Context) bool {
 func GetAzureWorkspaceResourceId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:azureWorkspaceResourceId")
 }
-func GetBricksCliPath(ctx *pulumi.Context) string {
-	return config.Get(ctx, "databricks:bricksCliPath")
-}
 func GetClientId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:clientId")
 }
@@ -46,6 +43,9 @@ func GetClientSecret(ctx *pulumi.Context) string {
 }
 func GetConfigFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:configFile")
+}
+func GetDatabricksCliPath(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:databricksCliPath")
 }
 func GetDebugHeaders(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "databricks:debugHeaders")

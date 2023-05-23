@@ -46,14 +46,14 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      * 
      */
     @Import(name="channel")
     private @Nullable Output<String> channel;
 
     /**
-     * @return optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+     * @return optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      * 
      */
     public Optional<Output<String>> channel() {
@@ -121,14 +121,14 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
      * 
      */
     @Import(name="edition")
     private @Nullable Output<String> edition;
 
     /**
-     * @return optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+     * @return optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
      * 
      */
     public Optional<Output<String>> edition() {
@@ -194,6 +194,13 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.photon);
     }
 
+    @Import(name="serverless")
+    private @Nullable Output<Boolean> serverless;
+
+    public Optional<Output<Boolean>> serverless() {
+        return Optional.ofNullable(this.serverless);
+    }
+
     /**
      * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      * 
@@ -240,6 +247,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.notifications = $.notifications;
         this.photon = $.photon;
+        this.serverless = $.serverless;
         this.storage = $.storage;
         this.target = $.target;
     }
@@ -293,7 +301,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param channel optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+         * @param channel optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
          * 
          * @return builder
          * 
@@ -304,7 +312,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param channel optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+         * @param channel optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
          * 
          * @return builder
          * 
@@ -408,7 +416,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edition optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+         * @param edition optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
          * 
          * @return builder
          * 
@@ -419,7 +427,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edition optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+         * @param edition optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
          * 
          * @return builder
          * 
@@ -521,6 +529,15 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder photon(Boolean photon) {
             return photon(Output.of(photon));
+        }
+
+        public Builder serverless(@Nullable Output<Boolean> serverless) {
+            $.serverless = serverless;
+            return this;
+        }
+
+        public Builder serverless(Boolean serverless) {
+            return serverless(Output.of(serverless));
         }
 
         /**

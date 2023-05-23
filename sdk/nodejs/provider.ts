@@ -33,10 +33,10 @@ export class Provider extends pulumi.ProviderResource {
     public readonly azureLoginAppId!: pulumi.Output<string | undefined>;
     public readonly azureTenantId!: pulumi.Output<string | undefined>;
     public readonly azureWorkspaceResourceId!: pulumi.Output<string | undefined>;
-    public readonly bricksCliPath!: pulumi.Output<string | undefined>;
     public readonly clientId!: pulumi.Output<string | undefined>;
     public readonly clientSecret!: pulumi.Output<string | undefined>;
     public readonly configFile!: pulumi.Output<string | undefined>;
+    public readonly databricksCliPath!: pulumi.Output<string | undefined>;
     public readonly googleCredentials!: pulumi.Output<string | undefined>;
     public readonly googleServiceAccount!: pulumi.Output<string | undefined>;
     public readonly host!: pulumi.Output<string | undefined>;
@@ -66,10 +66,10 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["azureTenantId"] = args ? args.azureTenantId : undefined;
             resourceInputs["azureUseMsi"] = pulumi.output(args ? args.azureUseMsi : undefined).apply(JSON.stringify);
             resourceInputs["azureWorkspaceResourceId"] = args ? args.azureWorkspaceResourceId : undefined;
-            resourceInputs["bricksCliPath"] = args ? args.bricksCliPath : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["clientSecret"] = args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined;
             resourceInputs["configFile"] = args ? args.configFile : undefined;
+            resourceInputs["databricksCliPath"] = args ? args.databricksCliPath : undefined;
             resourceInputs["debugHeaders"] = pulumi.output(args ? args.debugHeaders : undefined).apply(JSON.stringify);
             resourceInputs["debugTruncateBytes"] = pulumi.output(args ? args.debugTruncateBytes : undefined).apply(JSON.stringify);
             resourceInputs["googleCredentials"] = args?.googleCredentials ? pulumi.secret(args.googleCredentials) : undefined;
@@ -105,10 +105,10 @@ export interface ProviderArgs {
     azureTenantId?: pulumi.Input<string>;
     azureUseMsi?: pulumi.Input<boolean>;
     azureWorkspaceResourceId?: pulumi.Input<string>;
-    bricksCliPath?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
     clientSecret?: pulumi.Input<string>;
     configFile?: pulumi.Input<string>;
+    databricksCliPath?: pulumi.Input<string>;
     debugHeaders?: pulumi.Input<boolean>;
     debugTruncateBytes?: pulumi.Input<number>;
     googleCredentials?: pulumi.Input<string>;

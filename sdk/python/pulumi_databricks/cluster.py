@@ -89,7 +89,6 @@ class ClusterArgs:
                ```
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
-        :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, Any]] spark_conf: Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
@@ -457,9 +456,6 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
-        """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
@@ -615,7 +611,6 @@ class _ClusterState:
                ```
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
-        :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, Any]] spark_conf: Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
@@ -992,9 +987,6 @@ class _ClusterState:
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
-        """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
@@ -1191,7 +1183,6 @@ class Cluster(pulumi.CustomResource):
                ```
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
-        :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, Any]] spark_conf: Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
@@ -1398,7 +1389,6 @@ class Cluster(pulumi.CustomResource):
                ```
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
-        :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, Any]] spark_conf: Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
@@ -1645,9 +1635,6 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
-        """
         return pulumi.get(self, "policy_id")
 
     @property

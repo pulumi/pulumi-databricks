@@ -27,13 +27,13 @@ azureUseMsi: Optional[bool]
 
 azureWorkspaceResourceId: Optional[str]
 
-bricksCliPath: Optional[str]
-
 clientId: Optional[str]
 
 clientSecret: Optional[str]
 
 configFile: Optional[str]
+
+databricksCliPath: Optional[str]
 
 debugHeaders: Optional[bool]
 

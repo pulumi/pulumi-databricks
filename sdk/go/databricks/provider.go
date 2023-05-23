@@ -25,10 +25,10 @@ type Provider struct {
 	AzureLoginAppId          pulumi.StringPtrOutput `pulumi:"azureLoginAppId"`
 	AzureTenantId            pulumi.StringPtrOutput `pulumi:"azureTenantId"`
 	AzureWorkspaceResourceId pulumi.StringPtrOutput `pulumi:"azureWorkspaceResourceId"`
-	BricksCliPath            pulumi.StringPtrOutput `pulumi:"bricksCliPath"`
 	ClientId                 pulumi.StringPtrOutput `pulumi:"clientId"`
 	ClientSecret             pulumi.StringPtrOutput `pulumi:"clientSecret"`
 	ConfigFile               pulumi.StringPtrOutput `pulumi:"configFile"`
+	DatabricksCliPath        pulumi.StringPtrOutput `pulumi:"databricksCliPath"`
 	GoogleCredentials        pulumi.StringPtrOutput `pulumi:"googleCredentials"`
 	GoogleServiceAccount     pulumi.StringPtrOutput `pulumi:"googleServiceAccount"`
 	Host                     pulumi.StringPtrOutput `pulumi:"host"`
@@ -91,10 +91,10 @@ type providerArgs struct {
 	AzureTenantId            *string `pulumi:"azureTenantId"`
 	AzureUseMsi              *bool   `pulumi:"azureUseMsi"`
 	AzureWorkspaceResourceId *string `pulumi:"azureWorkspaceResourceId"`
-	BricksCliPath            *string `pulumi:"bricksCliPath"`
 	ClientId                 *string `pulumi:"clientId"`
 	ClientSecret             *string `pulumi:"clientSecret"`
 	ConfigFile               *string `pulumi:"configFile"`
+	DatabricksCliPath        *string `pulumi:"databricksCliPath"`
 	DebugHeaders             *bool   `pulumi:"debugHeaders"`
 	DebugTruncateBytes       *int    `pulumi:"debugTruncateBytes"`
 	GoogleCredentials        *string `pulumi:"googleCredentials"`
@@ -122,10 +122,10 @@ type ProviderArgs struct {
 	AzureTenantId            pulumi.StringPtrInput
 	AzureUseMsi              pulumi.BoolPtrInput
 	AzureWorkspaceResourceId pulumi.StringPtrInput
-	BricksCliPath            pulumi.StringPtrInput
 	ClientId                 pulumi.StringPtrInput
 	ClientSecret             pulumi.StringPtrInput
 	ConfigFile               pulumi.StringPtrInput
+	DatabricksCliPath        pulumi.StringPtrInput
 	DebugHeaders             pulumi.BoolPtrInput
 	DebugTruncateBytes       pulumi.IntPtrInput
 	GoogleCredentials        pulumi.StringPtrInput
@@ -211,10 +211,6 @@ func (o ProviderOutput) AzureWorkspaceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AzureWorkspaceResourceId }).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderOutput) BricksCliPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BricksCliPath }).(pulumi.StringPtrOutput)
-}
-
 func (o ProviderOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientId }).(pulumi.StringPtrOutput)
 }
@@ -225,6 +221,10 @@ func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) ConfigFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ConfigFile }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) DatabricksCliPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DatabricksCliPath }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) GoogleCredentials() pulumi.StringPtrOutput {

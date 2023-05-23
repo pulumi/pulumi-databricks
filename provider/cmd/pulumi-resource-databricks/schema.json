@@ -81,9 +81,6 @@
             "azureWorkspaceResourceId": {
                 "type": "string"
             },
-            "bricksCliPath": {
-                "type": "string"
-            },
             "clientId": {
                 "type": "string"
             },
@@ -92,6 +89,9 @@
                 "secret": true
             },
             "configFile": {
+                "type": "string"
+            },
+            "databricksCliPath": {
                 "type": "string"
             },
             "debugHeaders": {
@@ -8194,9 +8194,6 @@
             "azureWorkspaceResourceId": {
                 "type": "string"
             },
-            "bricksCliPath": {
-                "type": "string"
-            },
             "clientId": {
                 "type": "string"
             },
@@ -8205,6 +8202,9 @@
                 "secret": true
             },
             "configFile": {
+                "type": "string"
+            },
+            "databricksCliPath": {
                 "type": "string"
             },
             "debugHeaders": {
@@ -8283,9 +8283,6 @@
             "azureWorkspaceResourceId": {
                 "type": "string"
             },
-            "bricksCliPath": {
-                "type": "string"
-            },
             "clientId": {
                 "type": "string"
             },
@@ -8294,6 +8291,9 @@
                 "secret": true
             },
             "configFile": {
+                "type": "string"
+            },
+            "databricksCliPath": {
                 "type": "string"
             },
             "debugHeaders": {
@@ -8594,8 +8594,7 @@
                     "description": "Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.\n"
                 },
                 "policyId": {
-                    "type": "string",
-                    "description": "Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.\n"
+                    "type": "string"
                 },
                 "runtimeEngine": {
                     "type": "string",
@@ -8754,8 +8753,7 @@
                     "description": "Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.\n"
                 },
                 "policyId": {
-                    "type": "string",
-                    "description": "Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.\n"
+                    "type": "string"
                 },
                 "runtimeEngine": {
                     "type": "string",
@@ -8907,8 +8905,7 @@
                         "description": "Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.\n"
                     },
                     "policyId": {
-                        "type": "string",
-                        "description": "Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.\n"
+                        "type": "string"
                     },
                     "runtimeEngine": {
                         "type": "string",
@@ -13693,7 +13690,7 @@
                 },
                 "channel": {
                     "type": "string",
-                    "description": "optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.\n"
+                    "description": "optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.\n"
                 },
                 "clusters": {
                     "type": "array",
@@ -13719,7 +13716,7 @@
                 },
                 "edition": {
                     "type": "string",
-                    "description": "optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).\n"
+                    "description": "optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).\n"
                 },
                 "filters": {
                     "$ref": "#/types/databricks:index/PipelineFilters:PipelineFilters"
@@ -13744,6 +13741,9 @@
                 "photon": {
                     "type": "boolean",
                     "description": "A flag indicating whether to use Photon engine. The default value is `false`.\n"
+                },
+                "serverless": {
+                    "type": "boolean"
                 },
                 "storage": {
                     "type": "string",
@@ -13772,7 +13772,7 @@
                 },
                 "channel": {
                     "type": "string",
-                    "description": "optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.\n"
+                    "description": "optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.\n"
                 },
                 "clusters": {
                     "type": "array",
@@ -13798,7 +13798,7 @@
                 },
                 "edition": {
                     "type": "string",
-                    "description": "optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).\n"
+                    "description": "optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).\n"
                 },
                 "filters": {
                     "$ref": "#/types/databricks:index/PipelineFilters:PipelineFilters"
@@ -13824,6 +13824,9 @@
                     "type": "boolean",
                     "description": "A flag indicating whether to use Photon engine. The default value is `false`.\n"
                 },
+                "serverless": {
+                    "type": "boolean"
+                },
                 "storage": {
                     "type": "string",
                     "description": "A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).\n",
@@ -13847,7 +13850,7 @@
                     },
                     "channel": {
                         "type": "string",
-                        "description": "optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.\n"
+                        "description": "optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.\n"
                     },
                     "clusters": {
                         "type": "array",
@@ -13873,7 +13876,7 @@
                     },
                     "edition": {
                         "type": "string",
-                        "description": "optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).\n"
+                        "description": "optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).\n"
                     },
                     "filters": {
                         "$ref": "#/types/databricks:index/PipelineFilters:PipelineFilters"
@@ -13898,6 +13901,9 @@
                     "photon": {
                         "type": "boolean",
                         "description": "A flag indicating whether to use Photon engine. The default value is `false`.\n"
+                    },
+                    "serverless": {
+                        "type": "boolean"
                     },
                     "storage": {
                         "type": "string",

@@ -183,9 +183,6 @@ namespace Pulumi.Databricks
         [Output("numWorkers")]
         public Output<int?> NumWorkers { get; private set; } = null!;
 
-        /// <summary>
-        /// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
-        /// </summary>
         [Output("policyId")]
         public Output<string?> PolicyId { get; private set; } = null!;
 
@@ -460,9 +457,6 @@ namespace Pulumi.Databricks
         [Input("numWorkers")]
         public Input<int>? NumWorkers { get; set; }
 
-        /// <summary>
-        /// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
-        /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 
@@ -720,9 +714,6 @@ namespace Pulumi.Databricks
         [Input("numWorkers")]
         public Input<int>? NumWorkers { get; set; }
 
-        /// <summary>
-        /// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
-        /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 

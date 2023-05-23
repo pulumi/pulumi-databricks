@@ -128,7 +128,7 @@ namespace Pulumi.Databricks
         public Output<string?> Catalog { get; private set; } = null!;
 
         /// <summary>
-        /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+        /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         /// </summary>
         [Output("channel")]
         public Output<string?> Channel { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Databricks
         public Output<bool?> Development { get; private set; } = null!;
 
         /// <summary>
-        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
         /// </summary>
         [Output("edition")]
         public Output<string?> Edition { get; private set; } = null!;
@@ -186,6 +186,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("photon")]
         public Output<bool?> Photon { get; private set; } = null!;
+
+        [Output("serverless")]
+        public Output<bool?> Serverless { get; private set; } = null!;
 
         /// <summary>
         /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
@@ -258,7 +261,7 @@ namespace Pulumi.Databricks
         public Input<string>? Catalog { get; set; }
 
         /// <summary>
-        /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+        /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         /// </summary>
         [Input("channel")]
         public Input<string>? Channel { get; set; }
@@ -300,7 +303,7 @@ namespace Pulumi.Databricks
         public Input<bool>? Development { get; set; }
 
         /// <summary>
-        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
@@ -340,6 +343,9 @@ namespace Pulumi.Databricks
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
 
+        [Input("serverless")]
+        public Input<bool>? Serverless { get; set; }
+
         /// <summary>
         /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         /// </summary>
@@ -370,7 +376,7 @@ namespace Pulumi.Databricks
         public Input<string>? Catalog { get; set; }
 
         /// <summary>
-        /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+        /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         /// </summary>
         [Input("channel")]
         public Input<string>? Channel { get; set; }
@@ -412,7 +418,7 @@ namespace Pulumi.Databricks
         public Input<bool>? Development { get; set; }
 
         /// <summary>
-        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+        /// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
@@ -451,6 +457,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
+
+        [Input("serverless")]
+        public Input<bool>? Serverless { get; set; }
 
         /// <summary>
         /// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
