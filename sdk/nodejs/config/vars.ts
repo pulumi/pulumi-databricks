@@ -79,14 +79,6 @@ Object.defineProperty(exports, "azureWorkspaceResourceId", {
     enumerable: true,
 });
 
-export declare const bricksCliPath: string | undefined;
-Object.defineProperty(exports, "bricksCliPath", {
-    get() {
-        return __config.get("bricksCliPath");
-    },
-    enumerable: true,
-});
-
 export declare const clientId: string | undefined;
 Object.defineProperty(exports, "clientId", {
     get() {
@@ -107,6 +99,14 @@ export declare const configFile: string | undefined;
 Object.defineProperty(exports, "configFile", {
     get() {
         return __config.get("configFile");
+    },
+    enumerable: true,
+});
+
+export declare const databricksCliPath: string | undefined;
+Object.defineProperty(exports, "databricksCliPath", {
+    get() {
+        return __config.get("databricksCliPath");
     },
     enumerable: true,
 });

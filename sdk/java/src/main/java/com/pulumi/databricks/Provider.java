@@ -71,12 +71,6 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> azureWorkspaceResourceId() {
         return Codegen.optional(this.azureWorkspaceResourceId);
     }
-    @Export(name="bricksCliPath", type=String.class, parameters={})
-    private Output</* @Nullable */ String> bricksCliPath;
-
-    public Output<Optional<String>> bricksCliPath() {
-        return Codegen.optional(this.bricksCliPath);
-    }
     @Export(name="clientId", type=String.class, parameters={})
     private Output</* @Nullable */ String> clientId;
 
@@ -94,6 +88,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> configFile() {
         return Codegen.optional(this.configFile);
+    }
+    @Export(name="databricksCliPath", type=String.class, parameters={})
+    private Output</* @Nullable */ String> databricksCliPath;
+
+    public Output<Optional<String>> databricksCliPath() {
+        return Codegen.optional(this.databricksCliPath);
     }
     @Export(name="googleCredentials", type=String.class, parameters={})
     private Output</* @Nullable */ String> googleCredentials;

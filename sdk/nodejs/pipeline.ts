@@ -120,7 +120,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly catalog!: pulumi.Output<string | undefined>;
     /**
-     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      */
     public readonly channel!: pulumi.Output<string | undefined>;
     /**
@@ -140,7 +140,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly development!: pulumi.Output<boolean | undefined>;
     /**
-     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
      */
     public readonly edition!: pulumi.Output<string | undefined>;
     public readonly filters!: pulumi.Output<outputs.PipelineFilters | undefined>;
@@ -157,6 +157,7 @@ export class Pipeline extends pulumi.CustomResource {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     public readonly photon!: pulumi.Output<boolean | undefined>;
+    public readonly serverless!: pulumi.Output<boolean | undefined>;
     /**
      * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      */
@@ -193,6 +194,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notifications"] = state ? state.notifications : undefined;
             resourceInputs["photon"] = state ? state.photon : undefined;
+            resourceInputs["serverless"] = state ? state.serverless : undefined;
             resourceInputs["storage"] = state ? state.storage : undefined;
             resourceInputs["target"] = state ? state.target : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
@@ -211,6 +213,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["photon"] = args ? args.photon : undefined;
+            resourceInputs["serverless"] = args ? args.serverless : undefined;
             resourceInputs["storage"] = args ? args.storage : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
             resourceInputs["url"] = undefined /*out*/;
@@ -230,7 +233,7 @@ export interface PipelineState {
      */
     catalog?: pulumi.Input<string>;
     /**
-     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      */
     channel?: pulumi.Input<string>;
     /**
@@ -250,7 +253,7 @@ export interface PipelineState {
      */
     development?: pulumi.Input<boolean>;
     /**
-     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
      */
     edition?: pulumi.Input<string>;
     filters?: pulumi.Input<inputs.PipelineFilters>;
@@ -267,6 +270,7 @@ export interface PipelineState {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     photon?: pulumi.Input<boolean>;
+    serverless?: pulumi.Input<boolean>;
     /**
      * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      */
@@ -288,7 +292,7 @@ export interface PipelineArgs {
      */
     catalog?: pulumi.Input<string>;
     /**
-     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      */
     channel?: pulumi.Input<string>;
     /**
@@ -308,7 +312,7 @@ export interface PipelineArgs {
      */
     development?: pulumi.Input<boolean>;
     /**
-     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
      */
     edition?: pulumi.Input<string>;
     filters?: pulumi.Input<inputs.PipelineFilters>;
@@ -325,6 +329,7 @@ export interface PipelineArgs {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     photon?: pulumi.Input<boolean>;
+    serverless?: pulumi.Input<boolean>;
     /**
      * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      */

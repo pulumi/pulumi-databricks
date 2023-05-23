@@ -144,14 +144,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.catalog);
     }
     /**
-     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      * 
      */
     @Export(name="channel", type=String.class, parameters={})
     private Output</* @Nullable */ String> channel;
 
     /**
-     * @return optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `current` (default) and `preview`.
+     * @return optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      * 
      */
     public Output<Optional<String>> channel() {
@@ -214,14 +214,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.development);
     }
     /**
-     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
      * 
      */
     @Export(name="edition", type=String.class, parameters={})
     private Output</* @Nullable */ String> edition;
 
     /**
-     * @return optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `core`, `pro`, `advanced` (default).
+     * @return optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
      * 
      */
     public Output<Optional<String>> edition() {
@@ -280,6 +280,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> photon() {
         return Codegen.optional(this.photon);
+    }
+    @Export(name="serverless", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> serverless;
+
+    public Output<Optional<Boolean>> serverless() {
+        return Codegen.optional(this.serverless);
     }
     /**
      * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).

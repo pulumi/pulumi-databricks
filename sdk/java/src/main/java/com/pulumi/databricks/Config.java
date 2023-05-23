@@ -39,9 +39,6 @@ public final class Config {
     public Optional<String> azureWorkspaceResourceId() {
         return Codegen.stringProp("azureWorkspaceResourceId").config(config).get();
     }
-    public Optional<String> bricksCliPath() {
-        return Codegen.stringProp("bricksCliPath").config(config).get();
-    }
     public Optional<String> clientId() {
         return Codegen.stringProp("clientId").config(config).get();
     }
@@ -50,6 +47,9 @@ public final class Config {
     }
     public Optional<String> configFile() {
         return Codegen.stringProp("configFile").config(config).get();
+    }
+    public Optional<String> databricksCliPath() {
+        return Codegen.stringProp("databricksCliPath").config(config).get();
     }
     public Optional<Boolean> debugHeaders() {
         return Codegen.booleanProp("debugHeaders").config(config).get();

@@ -80,13 +80,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.azureWorkspaceResourceId);
     }
 
-    @Import(name="bricksCliPath")
-    private @Nullable Output<String> bricksCliPath;
-
-    public Optional<Output<String>> bricksCliPath() {
-        return Optional.ofNullable(this.bricksCliPath);
-    }
-
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
@@ -106,6 +99,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> configFile() {
         return Optional.ofNullable(this.configFile);
+    }
+
+    @Import(name="databricksCliPath")
+    private @Nullable Output<String> databricksCliPath;
+
+    public Optional<Output<String>> databricksCliPath() {
+        return Optional.ofNullable(this.databricksCliPath);
     }
 
     @Import(name="debugHeaders", json=true)
@@ -218,10 +218,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.azureTenantId = $.azureTenantId;
         this.azureUseMsi = $.azureUseMsi;
         this.azureWorkspaceResourceId = $.azureWorkspaceResourceId;
-        this.bricksCliPath = $.bricksCliPath;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.configFile = $.configFile;
+        this.databricksCliPath = $.databricksCliPath;
         this.debugHeaders = $.debugHeaders;
         this.debugTruncateBytes = $.debugTruncateBytes;
         this.googleCredentials = $.googleCredentials;
@@ -337,15 +337,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return azureWorkspaceResourceId(Output.of(azureWorkspaceResourceId));
         }
 
-        public Builder bricksCliPath(@Nullable Output<String> bricksCliPath) {
-            $.bricksCliPath = bricksCliPath;
-            return this;
-        }
-
-        public Builder bricksCliPath(String bricksCliPath) {
-            return bricksCliPath(Output.of(bricksCliPath));
-        }
-
         public Builder clientId(@Nullable Output<String> clientId) {
             $.clientId = clientId;
             return this;
@@ -371,6 +362,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder configFile(String configFile) {
             return configFile(Output.of(configFile));
+        }
+
+        public Builder databricksCliPath(@Nullable Output<String> databricksCliPath) {
+            $.databricksCliPath = databricksCliPath;
+            return this;
+        }
+
+        public Builder databricksCliPath(String databricksCliPath) {
+            return databricksCliPath(Output.of(databricksCliPath));
         }
 
         public Builder debugHeaders(@Nullable Output<Boolean> debugHeaders) {

@@ -419,17 +419,9 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> numWorkers() {
         return Codegen.optional(this.numWorkers);
     }
-    /**
-     * Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
-     * 
-     */
     @Export(name="policyId", type=String.class, parameters={})
     private Output</* @Nullable */ String> policyId;
 
-    /**
-     * @return Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.
-     * 
-     */
     public Output<Optional<String>> policyId() {
         return Codegen.optional(this.policyId);
     }
