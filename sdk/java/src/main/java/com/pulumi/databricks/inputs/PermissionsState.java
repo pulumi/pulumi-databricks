@@ -250,6 +250,21 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Model Serving endpoint id.
+     * 
+     */
+    @Import(name="servingEndpointId")
+    private @Nullable Output<String> servingEndpointId;
+
+    /**
+     * @return Model Serving endpoint id.
+     * 
+     */
+    public Optional<Output<String>> servingEndpointId() {
+        return Optional.ofNullable(this.servingEndpointId);
+    }
+
+    /**
      * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
      * 
      */
@@ -342,6 +357,7 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         this.registeredModelId = $.registeredModelId;
         this.repoId = $.repoId;
         this.repoPath = $.repoPath;
+        this.servingEndpointId = $.servingEndpointId;
         this.sqlAlertId = $.sqlAlertId;
         this.sqlDashboardId = $.sqlDashboardId;
         this.sqlEndpointId = $.sqlEndpointId;
@@ -694,6 +710,27 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder repoPath(String repoPath) {
             return repoPath(Output.of(repoPath));
+        }
+
+        /**
+         * @param servingEndpointId Model Serving endpoint id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servingEndpointId(@Nullable Output<String> servingEndpointId) {
+            $.servingEndpointId = servingEndpointId;
+            return this;
+        }
+
+        /**
+         * @param servingEndpointId Model Serving endpoint id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servingEndpointId(String servingEndpointId) {
+            return servingEndpointId(Output.of(servingEndpointId));
         }
 
         /**

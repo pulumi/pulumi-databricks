@@ -46,11 +46,27 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+     * 
+     */
+    @Import(name="servingEndpointId")
+    private @Nullable Output<String> servingEndpointId;
+
+    /**
+     * @return Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+     * 
+     */
+    public Optional<Output<String>> servingEndpointId() {
+        return Optional.ofNullable(this.servingEndpointId);
+    }
+
     private ModelServingState() {}
 
     private ModelServingState(ModelServingState $) {
         this.config = $.config;
         this.name = $.name;
+        this.servingEndpointId = $.servingEndpointId;
     }
 
     public static Builder builder() {
@@ -111,6 +127,27 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param servingEndpointId Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servingEndpointId(@Nullable Output<String> servingEndpointId) {
+            $.servingEndpointId = servingEndpointId;
+            return this;
+        }
+
+        /**
+         * @param servingEndpointId Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servingEndpointId(String servingEndpointId) {
+            return servingEndpointId(Output.of(servingEndpointId));
         }
 
         public ModelServingState build() {

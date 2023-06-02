@@ -508,6 +508,11 @@ export type UserRole = import("./userRole").UserRole;
 export const UserRole: typeof import("./userRole").UserRole = null as any;
 utilities.lazyLoad(exports, ["UserRole"], () => require("./userRole"));
 
+export { VolumeArgs, VolumeState } from "./volume";
+export type Volume = import("./volume").Volume;
+export const Volume: typeof import("./volume").Volume = null as any;
+utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
+
 export { WorkspaceConfArgs, WorkspaceConfState } from "./workspaceConf";
 export type WorkspaceConf = import("./workspaceConf").WorkspaceConf;
 export const WorkspaceConf: typeof import("./workspaceConf").WorkspaceConf = null as any;
@@ -666,6 +671,8 @@ const _module = {
                 return new UserInstanceProfile(name, <any>undefined, { urn })
             case "databricks:index/userRole:UserRole":
                 return new UserRole(name, <any>undefined, { urn })
+            case "databricks:index/volume:Volume":
+                return new Volume(name, <any>undefined, { urn })
             case "databricks:index/workspaceConf:WorkspaceConf":
                 return new WorkspaceConf(name, <any>undefined, { urn })
             case "databricks:index/workspaceFile:WorkspaceFile":
@@ -742,6 +749,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/token", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/user", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/userInstanceProfile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/userRole", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/volume", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceConf", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceFile", _module)
 pulumi.runtime.registerResourcePackage("databricks", {

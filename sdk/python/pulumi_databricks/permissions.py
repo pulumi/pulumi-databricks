@@ -32,6 +32,7 @@ class PermissionsArgs:
                  registered_model_id: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
                  repo_path: Optional[pulumi.Input[str]] = None,
+                 serving_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_alert_id: Optional[pulumi.Input[str]] = None,
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
@@ -55,6 +56,7 @@ class PermissionsArgs:
         :param pulumi.Input[str] registered_model_id: MLflow registered model id
         :param pulumi.Input[str] repo_id: repo id
         :param pulumi.Input[str] repo_path: path of databricks repo directory(`/Repos/<username>/...`)
+        :param pulumi.Input[str] serving_endpoint_id: Model Serving endpoint id.
         :param pulumi.Input[str] sql_alert_id: [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
         :param pulumi.Input[str] sql_dashboard_id: SQL dashboard id
         :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
@@ -91,6 +93,8 @@ class PermissionsArgs:
             pulumi.set(__self__, "repo_id", repo_id)
         if repo_path is not None:
             pulumi.set(__self__, "repo_path", repo_path)
+        if serving_endpoint_id is not None:
+            pulumi.set(__self__, "serving_endpoint_id", serving_endpoint_id)
         if sql_alert_id is not None:
             pulumi.set(__self__, "sql_alert_id", sql_alert_id)
         if sql_dashboard_id is not None:
@@ -294,6 +298,18 @@ class PermissionsArgs:
         pulumi.set(self, "repo_path", value)
 
     @property
+    @pulumi.getter(name="servingEndpointId")
+    def serving_endpoint_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Model Serving endpoint id.
+        """
+        return pulumi.get(self, "serving_endpoint_id")
+
+    @serving_endpoint_id.setter
+    def serving_endpoint_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serving_endpoint_id", value)
+
+    @property
     @pulumi.getter(name="sqlAlertId")
     def sql_alert_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -379,6 +395,7 @@ class _PermissionsState:
                  registered_model_id: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
                  repo_path: Optional[pulumi.Input[str]] = None,
+                 serving_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_alert_id: Optional[pulumi.Input[str]] = None,
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
@@ -402,6 +419,7 @@ class _PermissionsState:
         :param pulumi.Input[str] registered_model_id: MLflow registered model id
         :param pulumi.Input[str] repo_id: repo id
         :param pulumi.Input[str] repo_path: path of databricks repo directory(`/Repos/<username>/...`)
+        :param pulumi.Input[str] serving_endpoint_id: Model Serving endpoint id.
         :param pulumi.Input[str] sql_alert_id: [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
         :param pulumi.Input[str] sql_dashboard_id: SQL dashboard id
         :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
@@ -439,6 +457,8 @@ class _PermissionsState:
             pulumi.set(__self__, "repo_id", repo_id)
         if repo_path is not None:
             pulumi.set(__self__, "repo_path", repo_path)
+        if serving_endpoint_id is not None:
+            pulumi.set(__self__, "serving_endpoint_id", serving_endpoint_id)
         if sql_alert_id is not None:
             pulumi.set(__self__, "sql_alert_id", sql_alert_id)
         if sql_dashboard_id is not None:
@@ -642,6 +662,18 @@ class _PermissionsState:
         pulumi.set(self, "repo_path", value)
 
     @property
+    @pulumi.getter(name="servingEndpointId")
+    def serving_endpoint_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Model Serving endpoint id.
+        """
+        return pulumi.get(self, "serving_endpoint_id")
+
+    @serving_endpoint_id.setter
+    def serving_endpoint_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serving_endpoint_id", value)
+
+    @property
     @pulumi.getter(name="sqlAlertId")
     def sql_alert_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -729,6 +761,7 @@ class Permissions(pulumi.CustomResource):
                  registered_model_id: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
                  repo_path: Optional[pulumi.Input[str]] = None,
+                 serving_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_alert_id: Optional[pulumi.Input[str]] = None,
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
@@ -780,6 +813,7 @@ class Permissions(pulumi.CustomResource):
         :param pulumi.Input[str] registered_model_id: MLflow registered model id
         :param pulumi.Input[str] repo_id: repo id
         :param pulumi.Input[str] repo_path: path of databricks repo directory(`/Repos/<username>/...`)
+        :param pulumi.Input[str] serving_endpoint_id: Model Serving endpoint id.
         :param pulumi.Input[str] sql_alert_id: [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
         :param pulumi.Input[str] sql_dashboard_id: SQL dashboard id
         :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
@@ -849,6 +883,7 @@ class Permissions(pulumi.CustomResource):
                  registered_model_id: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
                  repo_path: Optional[pulumi.Input[str]] = None,
+                 serving_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_alert_id: Optional[pulumi.Input[str]] = None,
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
@@ -882,6 +917,7 @@ class Permissions(pulumi.CustomResource):
             __props__.__dict__["registered_model_id"] = registered_model_id
             __props__.__dict__["repo_id"] = repo_id
             __props__.__dict__["repo_path"] = repo_path
+            __props__.__dict__["serving_endpoint_id"] = serving_endpoint_id
             __props__.__dict__["sql_alert_id"] = sql_alert_id
             __props__.__dict__["sql_dashboard_id"] = sql_dashboard_id
             __props__.__dict__["sql_endpoint_id"] = sql_endpoint_id
@@ -914,6 +950,7 @@ class Permissions(pulumi.CustomResource):
             registered_model_id: Optional[pulumi.Input[str]] = None,
             repo_id: Optional[pulumi.Input[str]] = None,
             repo_path: Optional[pulumi.Input[str]] = None,
+            serving_endpoint_id: Optional[pulumi.Input[str]] = None,
             sql_alert_id: Optional[pulumi.Input[str]] = None,
             sql_dashboard_id: Optional[pulumi.Input[str]] = None,
             sql_endpoint_id: Optional[pulumi.Input[str]] = None,
@@ -942,6 +979,7 @@ class Permissions(pulumi.CustomResource):
         :param pulumi.Input[str] registered_model_id: MLflow registered model id
         :param pulumi.Input[str] repo_id: repo id
         :param pulumi.Input[str] repo_path: path of databricks repo directory(`/Repos/<username>/...`)
+        :param pulumi.Input[str] serving_endpoint_id: Model Serving endpoint id.
         :param pulumi.Input[str] sql_alert_id: [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
         :param pulumi.Input[str] sql_dashboard_id: SQL dashboard id
         :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
@@ -967,6 +1005,7 @@ class Permissions(pulumi.CustomResource):
         __props__.__dict__["registered_model_id"] = registered_model_id
         __props__.__dict__["repo_id"] = repo_id
         __props__.__dict__["repo_path"] = repo_path
+        __props__.__dict__["serving_endpoint_id"] = serving_endpoint_id
         __props__.__dict__["sql_alert_id"] = sql_alert_id
         __props__.__dict__["sql_dashboard_id"] = sql_dashboard_id
         __props__.__dict__["sql_endpoint_id"] = sql_endpoint_id
@@ -1099,6 +1138,14 @@ class Permissions(pulumi.CustomResource):
         path of databricks repo directory(`/Repos/<username>/...`)
         """
         return pulumi.get(self, "repo_path")
+
+    @property
+    @pulumi.getter(name="servingEndpointId")
+    def serving_endpoint_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Model Serving endpoint id.
+        """
+        return pulumi.get(self, "serving_endpoint_id")
 
     @property
     @pulumi.getter(name="sqlAlertId")

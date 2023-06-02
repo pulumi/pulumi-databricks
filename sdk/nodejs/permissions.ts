@@ -123,6 +123,10 @@ export class Permissions extends pulumi.CustomResource {
      */
     public readonly repoPath!: pulumi.Output<string | undefined>;
     /**
+     * Model Serving endpoint id.
+     */
+    public readonly servingEndpointId!: pulumi.Output<string | undefined>;
+    /**
      * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
      */
     public readonly sqlAlertId!: pulumi.Output<string | undefined>;
@@ -170,6 +174,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["registeredModelId"] = state ? state.registeredModelId : undefined;
             resourceInputs["repoId"] = state ? state.repoId : undefined;
             resourceInputs["repoPath"] = state ? state.repoPath : undefined;
+            resourceInputs["servingEndpointId"] = state ? state.servingEndpointId : undefined;
             resourceInputs["sqlAlertId"] = state ? state.sqlAlertId : undefined;
             resourceInputs["sqlDashboardId"] = state ? state.sqlDashboardId : undefined;
             resourceInputs["sqlEndpointId"] = state ? state.sqlEndpointId : undefined;
@@ -197,6 +202,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["registeredModelId"] = args ? args.registeredModelId : undefined;
             resourceInputs["repoId"] = args ? args.repoId : undefined;
             resourceInputs["repoPath"] = args ? args.repoPath : undefined;
+            resourceInputs["servingEndpointId"] = args ? args.servingEndpointId : undefined;
             resourceInputs["sqlAlertId"] = args ? args.sqlAlertId : undefined;
             resourceInputs["sqlDashboardId"] = args ? args.sqlDashboardId : undefined;
             resourceInputs["sqlEndpointId"] = args ? args.sqlEndpointId : undefined;
@@ -274,6 +280,10 @@ export interface PermissionsState {
      * path of databricks repo directory(`/Repos/<username>/...`)
      */
     repoPath?: pulumi.Input<string>;
+    /**
+     * Model Serving endpoint id.
+     */
+    servingEndpointId?: pulumi.Input<string>;
     /**
      * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
      */
@@ -359,6 +369,10 @@ export interface PermissionsArgs {
      * path of databricks repo directory(`/Repos/<username>/...`)
      */
     repoPath?: pulumi.Input<string>;
+    /**
+     * Model Serving endpoint id.
+     */
+    servingEndpointId?: pulumi.Input<string>;
     /**
      * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
      */

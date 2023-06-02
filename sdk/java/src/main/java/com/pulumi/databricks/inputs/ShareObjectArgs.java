@@ -120,14 +120,14 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+     * A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
      * 
      */
     @Import(name="sharedAs")
     private @Nullable Output<String> sharedAs;
 
     /**
-     * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+     * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> sharedAs() {
@@ -339,7 +339,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
          * 
          * @return builder
          * 

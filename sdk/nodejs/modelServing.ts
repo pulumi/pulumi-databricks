@@ -46,6 +46,10 @@ import * as utilities from "./utilities";
  *     },
  * }});
  * ```
+ * ## Access Control
+ *
+ * * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -101,6 +105,10 @@ export class ModelServing extends pulumi.CustomResource {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+     */
+    public /*out*/ readonly servingEndpointId!: pulumi.Output<string>;
 
     /**
      * Create a ModelServing resource with the given unique name, arguments, and options.
@@ -117,6 +125,7 @@ export class ModelServing extends pulumi.CustomResource {
             const state = argsOrState as ModelServingState | undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["servingEndpointId"] = state ? state.servingEndpointId : undefined;
         } else {
             const args = argsOrState as ModelServingArgs | undefined;
             if ((!args || args.config === undefined) && !opts.urn) {
@@ -124,6 +133,7 @@ export class ModelServing extends pulumi.CustomResource {
             }
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["servingEndpointId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ModelServing.__pulumiType, name, resourceInputs, opts);
@@ -142,6 +152,10 @@ export interface ModelServingState {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+     */
+    servingEndpointId?: pulumi.Input<string>;
 }
 
 /**

@@ -133,6 +133,12 @@ namespace Pulumi.Databricks
         public Output<string?> RepoPath { get; private set; } = null!;
 
         /// <summary>
+        /// Model Serving endpoint id.
+        /// </summary>
+        [Output("servingEndpointId")]
+        public Output<string?> ServingEndpointId { get; private set; } = null!;
+
+        /// <summary>
         /// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
         /// </summary>
         [Output("sqlAlertId")]
@@ -307,6 +313,12 @@ namespace Pulumi.Databricks
         public Input<string>? RepoPath { get; set; }
 
         /// <summary>
+        /// Model Serving endpoint id.
+        /// </summary>
+        [Input("servingEndpointId")]
+        public Input<string>? ServingEndpointId { get; set; }
+
+        /// <summary>
         /// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
         /// </summary>
         [Input("sqlAlertId")]
@@ -441,6 +453,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("repoPath")]
         public Input<string>? RepoPath { get; set; }
+
+        /// <summary>
+        /// Model Serving endpoint id.
+        /// </summary>
+        [Input("servingEndpointId")]
+        public Input<string>? ServingEndpointId { get; set; }
 
         /// <summary>
         /// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id

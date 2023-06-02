@@ -263,6 +263,20 @@ public class Permissions extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.repoPath);
     }
     /**
+     * Model Serving endpoint id.
+     * 
+     */
+    @Export(name="servingEndpointId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> servingEndpointId;
+
+    /**
+     * @return Model Serving endpoint id.
+     * 
+     */
+    public Output<Optional<String>> servingEndpointId() {
+        return Codegen.optional(this.servingEndpointId);
+    }
+    /**
      * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
      * 
      */

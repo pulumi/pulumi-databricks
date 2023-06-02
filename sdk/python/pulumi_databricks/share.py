@@ -160,18 +160,7 @@ class Share(pulumi.CustomResource):
                  objects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShareObjectArgs']]]]] = None,
                  __props__=None):
         """
-        Within a metastore, Unity Catalog provides the ability to create a share, which is a named object that contains a collection of tables in a metastore that you want to share as a group. A share can contain tables from only a single metastore. You can add or remove tables from a share at any time.
-
-        A `Share` is contained within Metastore and can contain a list of tables.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * Recipient to create Delta Sharing recipients.
-        * Grants to manage Delta Sharing permissions.
-        * get_shares to read existing Delta Sharing shares.
-
+        Create a Share resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] created_at: Time when the share was created.
@@ -185,18 +174,7 @@ class Share(pulumi.CustomResource):
                  args: Optional[ShareArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Within a metastore, Unity Catalog provides the ability to create a share, which is a named object that contains a collection of tables in a metastore that you want to share as a group. A share can contain tables from only a single metastore. You can add or remove tables from a share at any time.
-
-        A `Share` is contained within Metastore and can contain a list of tables.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * Recipient to create Delta Sharing recipients.
-        * Grants to manage Delta Sharing permissions.
-        * get_shares to read existing Delta Sharing shares.
-
+        Create a Share resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ShareArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

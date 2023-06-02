@@ -4157,7 +4157,7 @@ export interface ShareObject {
     name: pulumi.Input<string>;
     partitions?: pulumi.Input<pulumi.Input<inputs.ShareObjectPartition>[]>;
     /**
-     * A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share.
+     * A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
      */
     sharedAs?: pulumi.Input<string>;
     /**

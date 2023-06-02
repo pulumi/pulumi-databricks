@@ -46,7 +46,7 @@ public final class ShareObject {
     private String name;
     private @Nullable List<ShareObjectPartition> partitions;
     /**
-     * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+     * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
      * 
      */
     private @Nullable String sharedAs;
@@ -109,7 +109,7 @@ public final class ShareObject {
         return this.partitions == null ? List.of() : this.partitions;
     }
     /**
-     * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+     * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
      * 
      */
     public Optional<String> sharedAs() {

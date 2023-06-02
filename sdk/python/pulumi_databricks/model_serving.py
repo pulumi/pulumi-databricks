@@ -56,16 +56,20 @@ class ModelServingArgs:
 class _ModelServingState:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input['ModelServingConfigArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 serving_endpoint_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ModelServing resources.
         :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        :param pulumi.Input[str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if serving_endpoint_id is not None:
+            pulumi.set(__self__, "serving_endpoint_id", serving_endpoint_id)
 
     @property
     @pulumi.getter
@@ -90,6 +94,18 @@ class _ModelServingState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="servingEndpointId")
+    def serving_endpoint_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+        """
+        return pulumi.get(self, "serving_endpoint_id")
+
+    @serving_endpoint_id.setter
+    def serving_endpoint_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serving_endpoint_id", value)
 
 
 class ModelServing(pulumi.CustomResource):
@@ -140,6 +156,10 @@ class ModelServing(pulumi.CustomResource):
             ),
         ))
         ```
+        ## Access Control
+
+        * Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -210,6 +230,10 @@ class ModelServing(pulumi.CustomResource):
             ),
         ))
         ```
+        ## Access Control
+
+        * Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -259,6 +283,7 @@ class ModelServing(pulumi.CustomResource):
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
             __props__.__dict__["name"] = name
+            __props__.__dict__["serving_endpoint_id"] = None
         super(ModelServing, __self__).__init__(
             'databricks:index/modelServing:ModelServing',
             resource_name,
@@ -270,7 +295,8 @@ class ModelServing(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             config: Optional[pulumi.Input[pulumi.InputType['ModelServingConfigArgs']]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'ModelServing':
+            name: Optional[pulumi.Input[str]] = None,
+            serving_endpoint_id: Optional[pulumi.Input[str]] = None) -> 'ModelServing':
         """
         Get an existing ModelServing resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -280,6 +306,7 @@ class ModelServing(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ModelServingConfigArgs']] config: The model serving endpoint configuration.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        :param pulumi.Input[str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -287,6 +314,7 @@ class ModelServing(pulumi.CustomResource):
 
         __props__.__dict__["config"] = config
         __props__.__dict__["name"] = name
+        __props__.__dict__["serving_endpoint_id"] = serving_endpoint_id
         return ModelServing(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -304,4 +332,12 @@ class ModelServing(pulumi.CustomResource):
         The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="servingEndpointId")
+    def serving_endpoint_id(self) -> pulumi.Output[str]:
+        """
+        Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+        """
+        return pulumi.get(self, "serving_endpoint_id")
 

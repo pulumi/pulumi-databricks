@@ -66,6 +66,10 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// ## Access Control
+    /// 
+    /// * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:
@@ -99,6 +103,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+        /// </summary>
+        [Output("servingEndpointId")]
+        public Output<string> ServingEndpointId { get; private set; } = null!;
 
 
         /// <summary>
@@ -177,6 +187,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+        /// </summary>
+        [Input("servingEndpointId")]
+        public Input<string>? ServingEndpointId { get; set; }
 
         public ModelServingState()
         {
