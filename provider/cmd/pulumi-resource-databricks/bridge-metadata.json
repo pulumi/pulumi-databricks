@@ -1444,6 +1444,9 @@
             "databricks_user_role": {
                 "current": "databricks:index/userRole:UserRole"
             },
+            "databricks_volume": {
+                "current": "databricks:index/volume:Volume"
+            },
             "databricks_workspace_conf": {
                 "current": "databricks:index/workspaceConf:WorkspaceConf"
             },
@@ -1622,6 +1625,7 @@
             "databricks:index/user:User": "databricks_user",
             "databricks:index/userInstanceProfile:UserInstanceProfile": "databricks_user_instance_profile",
             "databricks:index/userRole:UserRole": "databricks_user_role",
+            "databricks:index/volume:Volume": "databricks_volume",
             "databricks:index/workspaceConf:WorkspaceConf": "databricks_workspace_conf",
             "databricks:index/workspaceFile:WorkspaceFile": "databricks_workspace_file"
         },
@@ -3317,6 +3321,9 @@
                 "jobSpec": "job_spec",
                 "modelName": "model_name"
             },
+            "databricks:index/modelServing:ModelServing": {
+                "servingEndpointId": "serving_endpoint_id"
+            },
             "databricks:index/mount:Mount": {
                 "clusterId": "cluster_id",
                 "encryptionType": "encryption_type",
@@ -3447,6 +3454,7 @@
                 "registeredModelId": "registered_model_id",
                 "repoId": "repo_id",
                 "repoPath": "repo_path",
+                "servingEndpointId": "serving_endpoint_id",
                 "sqlAlertId": "sql_alert_id",
                 "sqlDashboardId": "sql_dashboard_id",
                 "sqlEndpointId": "sql_endpoint_id",
@@ -3609,6 +3617,12 @@
             },
             "databricks:index/userRole:UserRole": {
                 "userId": "user_id"
+            },
+            "databricks:index/volume:Volume": {
+                "catalogName": "catalog_name",
+                "schemaName": "schema_name",
+                "storageLocation": "storage_location",
+                "volumeType": "volume_type"
             },
             "databricks:index/workspaceConf:WorkspaceConf": {
                 "customConfig": "custom_config"
