@@ -32505,7 +32505,7 @@ type ShareObject struct {
 	// Full name of the object, e.g. `catalog.schema.name` for a table.
 	Name       string                 `pulumi:"name"`
 	Partitions []ShareObjectPartition `pulumi:"partitions"`
-	// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share.
+	// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
 	SharedAs *string `pulumi:"sharedAs"`
 	// The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
 	StartVersion *int `pulumi:"startVersion"`
@@ -32540,7 +32540,7 @@ type ShareObjectArgs struct {
 	// Full name of the object, e.g. `catalog.schema.name` for a table.
 	Name       pulumi.StringInput             `pulumi:"name"`
 	Partitions ShareObjectPartitionArrayInput `pulumi:"partitions"`
-	// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share.
+	// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
 	SharedAs pulumi.StringPtrInput `pulumi:"sharedAs"`
 	// The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
 	StartVersion pulumi.IntPtrInput `pulumi:"startVersion"`
@@ -32638,7 +32638,7 @@ func (o ShareObjectOutput) Partitions() ShareObjectPartitionArrayOutput {
 	return o.ApplyT(func(v ShareObject) []ShareObjectPartition { return v.Partitions }).(ShareObjectPartitionArrayOutput)
 }
 
-// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share.
+// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
 func (o ShareObjectOutput) SharedAs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShareObject) *string { return v.SharedAs }).(pulumi.StringPtrOutput)
 }

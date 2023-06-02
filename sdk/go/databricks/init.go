@@ -154,6 +154,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &UserInstanceProfile{}
 	case "databricks:index/userRole:UserRole":
 		r = &UserRole{}
+	case "databricks:index/volume:Volume":
+		r = &Volume{}
 	case "databricks:index/workspaceConf:WorkspaceConf":
 		r = &WorkspaceConf{}
 	case "databricks:index/workspaceFile:WorkspaceFile":
@@ -519,6 +521,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/userRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/volume",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

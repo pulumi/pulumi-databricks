@@ -2592,7 +2592,7 @@ export interface ModelServingConfig {
     /**
      * A single block represents the traffic split configuration amongst the served models.
      */
-    trafficConfig?: outputs.ModelServingConfigTrafficConfig;
+    trafficConfig: outputs.ModelServingConfigTrafficConfig;
 }
 
 export interface ModelServingConfigServedModel {
@@ -3024,7 +3024,7 @@ export interface ShareObject {
     name: string;
     partitions?: outputs.ShareObjectPartition[];
     /**
-     * A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share.
+     * A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
      */
     sharedAs?: string;
     /**

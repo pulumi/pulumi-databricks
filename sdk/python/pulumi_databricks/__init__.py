@@ -106,6 +106,7 @@ from .token import *
 from .user import *
 from .user_instance_profile import *
 from .user_role import *
+from .volume import *
 from .workspace_conf import *
 from .workspace_file import *
 from ._inputs import *
@@ -655,6 +656,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/userRole:UserRole": "UserRole"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/volume",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/volume:Volume": "Volume"
   }
  },
  {

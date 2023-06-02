@@ -75,6 +75,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ## Access Control
+ * 
+ * * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -124,6 +128,20 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+     * 
+     */
+    @Export(name="servingEndpointId", type=String.class, parameters={})
+    private Output<String> servingEndpointId;
+
+    /**
+     * @return Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+     * 
+     */
+    public Output<String> servingEndpointId() {
+        return this.servingEndpointId;
     }
 
     /**

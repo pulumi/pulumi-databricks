@@ -10,17 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Within a metastore, Unity Catalog provides the ability to create a share, which is a named object that contains a collection of tables in a metastore that you want to share as a group. A share can contain tables from only a single metastore. You can add or remove tables from a share at any time.
-//
-// A `Share` is contained within Metastore and can contain a list of tables.
-//
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// * Recipient to create Delta Sharing recipients.
-// * Grants to manage Delta Sharing permissions.
-// * getShares to read existing Delta Sharing shares.
 type Share struct {
 	pulumi.CustomResourceState
 

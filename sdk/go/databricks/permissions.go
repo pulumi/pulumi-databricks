@@ -72,6 +72,8 @@ type Permissions struct {
 	RepoId pulumi.StringPtrOutput `pulumi:"repoId"`
 	// path of databricks repo directory(`/Repos/<username>/...`)
 	RepoPath pulumi.StringPtrOutput `pulumi:"repoPath"`
+	// Model Serving endpoint id.
+	ServingEndpointId pulumi.StringPtrOutput `pulumi:"servingEndpointId"`
 	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
 	SqlAlertId pulumi.StringPtrOutput `pulumi:"sqlAlertId"`
 	// SQL dashboard id
@@ -147,6 +149,8 @@ type permissionsState struct {
 	RepoId *string `pulumi:"repoId"`
 	// path of databricks repo directory(`/Repos/<username>/...`)
 	RepoPath *string `pulumi:"repoPath"`
+	// Model Serving endpoint id.
+	ServingEndpointId *string `pulumi:"servingEndpointId"`
 	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
 	SqlAlertId *string `pulumi:"sqlAlertId"`
 	// SQL dashboard id
@@ -191,6 +195,8 @@ type PermissionsState struct {
 	RepoId pulumi.StringPtrInput
 	// path of databricks repo directory(`/Repos/<username>/...`)
 	RepoPath pulumi.StringPtrInput
+	// Model Serving endpoint id.
+	ServingEndpointId pulumi.StringPtrInput
 	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
 	SqlAlertId pulumi.StringPtrInput
 	// SQL dashboard id
@@ -239,6 +245,8 @@ type permissionsArgs struct {
 	RepoId *string `pulumi:"repoId"`
 	// path of databricks repo directory(`/Repos/<username>/...`)
 	RepoPath *string `pulumi:"repoPath"`
+	// Model Serving endpoint id.
+	ServingEndpointId *string `pulumi:"servingEndpointId"`
 	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
 	SqlAlertId *string `pulumi:"sqlAlertId"`
 	// SQL dashboard id
@@ -284,6 +292,8 @@ type PermissionsArgs struct {
 	RepoId pulumi.StringPtrInput
 	// path of databricks repo directory(`/Repos/<username>/...`)
 	RepoPath pulumi.StringPtrInput
+	// Model Serving endpoint id.
+	ServingEndpointId pulumi.StringPtrInput
 	// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
 	SqlAlertId pulumi.StringPtrInput
 	// SQL dashboard id
@@ -460,6 +470,11 @@ func (o PermissionsOutput) RepoId() pulumi.StringPtrOutput {
 // path of databricks repo directory(`/Repos/<username>/...`)
 func (o PermissionsOutput) RepoPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.RepoPath }).(pulumi.StringPtrOutput)
+}
+
+// Model Serving endpoint id.
+func (o PermissionsOutput) ServingEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.ServingEndpointId }).(pulumi.StringPtrOutput)
 }
 
 // [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id

@@ -39,7 +39,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string Name;
         public readonly ImmutableArray<Outputs.ShareObjectPartition> Partitions;
         /// <summary>
-        /// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share.
+        /// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
         /// </summary>
         public readonly string? SharedAs;
         /// <summary>
