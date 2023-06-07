@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"path/filepath"
 
+	"github.com/databricks/databricks-sdk-go/useragent"
 	databricksProv "github.com/databricks/terraform-provider-databricks/provider"
 	"github.com/pulumi/pulumi-databricks/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -42,6 +43,8 @@ const (
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
+	// Set the user agent to the provider version, this is not the version of the Pulumi CLI.
+	useragent.WithUserAgentExtra("pulumi", version.Version)
 	// Instantiate the Terraform provider
 	p := shimv2.NewProvider(databricksProv.DatabricksProvider())
 
