@@ -19,6 +19,7 @@ import (
 	_ "embed"
 	"fmt"
 	"path/filepath"
+	"strings"
 
 	"github.com/databricks/databricks-sdk-go/useragent"
 	databricksProv "github.com/databricks/terraform-provider-databricks/provider"
@@ -41,10 +42,15 @@ const (
 	mainMod = "index" // the databricks module
 )
 
+// Remove a preceding v from a version string to pass the regex checks on WithUserAgentExtra
+func userAgentValue(version string) string {
+	return strings.TrimPrefix(version, "v")
+}
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Set the user agent to the provider version, this is not the version of the Pulumi CLI.
-	useragent.WithUserAgentExtra("pulumi", version.Version)
+	useragent.WithUserAgentExtra("pulumi", userAgentValue(version.Version))
 	// Instantiate the Terraform provider
 	p := shimv2.NewProvider(databricksProv.DatabricksProvider())
 
