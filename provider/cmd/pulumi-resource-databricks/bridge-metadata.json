@@ -494,6 +494,9 @@
                     "queue": {
                         "maxItemsOne": true
                     },
+                    "run_as": {
+                        "maxItemsOne": true
+                    },
                     "schedule": {
                         "maxItemsOne": true
                     },
@@ -1942,6 +1945,10 @@
                 "namedParameters": "named_parameters",
                 "packageName": "package_name"
             },
+            "databricks:index/JobRunAs:JobRunAs": {
+                "servicePrincipalName": "service_principal_name",
+                "userName": "user_name"
+            },
             "databricks:index/JobSchedule:JobSchedule": {
                 "pauseStatus": "pause_status",
                 "quartzCronExpression": "quartz_cron_expression",
@@ -2397,6 +2404,7 @@
             },
             "databricks:index/catalog:Catalog": {
                 "forceDestroy": "force_destroy",
+                "isolationMode": "isolation_mode",
                 "metastoreId": "metastore_id",
                 "providerName": "provider_name",
                 "shareName": "share_name",
@@ -2462,7 +2470,9 @@
             },
             "databricks:index/externalLocation:ExternalLocation": {
                 "credentialName": "credential_name",
+                "forceDestroy": "force_destroy",
                 "metastoreId": "metastore_id",
+                "readOnly": "read_only",
                 "skipValidation": "skip_validation"
             },
             "databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy": {
@@ -2591,7 +2601,10 @@
                 "kmsKey": "kms_key"
             },
             "databricks:index/getClusterPolicy:getClusterPolicy": {
-                "maxClustersPerUser": "max_clusters_per_user"
+                "isDefault": "is_default",
+                "maxClustersPerUser": "max_clusters_per_user",
+                "policyFamilyDefinitionOverrides": "policy_family_definition_overrides",
+                "policyFamilyId": "policy_family_id"
             },
             "databricks:index/getClusters:getClusters": {
                 "clusterNameContains": "cluster_name_contains"
@@ -2699,7 +2712,8 @@
             "databricks:index/getJobJobSettings:getJobJobSettings": {
                 "createdTime": "created_time",
                 "creatorUserName": "creator_user_name",
-                "jobId": "job_id"
+                "jobId": "job_id",
+                "runAsUserName": "run_as_user_name"
             },
             "databricks:index/getJobJobSettingsSettings:getJobJobSettingsSettings": {
                 "dbtTask": "dbt_task",
@@ -2717,6 +2731,7 @@
                 "pipelineTask": "pipeline_task",
                 "pythonWheelTask": "python_wheel_task",
                 "retryOnTimeout": "retry_on_timeout",
+                "runAs": "run_as",
                 "sparkJarTask": "spark_jar_task",
                 "sparkPythonTask": "spark_python_task",
                 "sparkSubmitTask": "spark_submit_task",
@@ -2914,6 +2929,10 @@
                 "entryPoint": "entry_point",
                 "namedParameters": "named_parameters",
                 "packageName": "package_name"
+            },
+            "databricks:index/getJobJobSettingsSettingsRunAs:getJobJobSettingsSettingsRunAs": {
+                "servicePrincipalName": "service_principal_name",
+                "userName": "user_name"
             },
             "databricks:index/getJobJobSettingsSettingsSchedule:getJobJobSettingsSettingsSchedule": {
                 "pauseStatus": "pause_status",
@@ -3261,6 +3280,7 @@
                 "pipelineTask": "pipeline_task",
                 "pythonWheelTask": "python_wheel_task",
                 "retryOnTimeout": "retry_on_timeout",
+                "runAs": "run_as",
                 "sparkJarTask": "spark_jar_task",
                 "sparkPythonTask": "spark_python_task",
                 "sparkSubmitTask": "spark_submit_task",
@@ -3581,7 +3601,8 @@
                 "azureServicePrincipal": "azure_service_principal",
                 "databricksGcpServiceAccount": "databricks_gcp_service_account",
                 "gcpServiceAccountKey": "gcp_service_account_key",
-                "metastoreId": "metastore_id"
+                "metastoreId": "metastore_id",
+                "readOnly": "read_only"
             },
             "databricks:index/table:Table": {
                 "catalogName": "catalog_name",
