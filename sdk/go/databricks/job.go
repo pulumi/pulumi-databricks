@@ -52,6 +52,7 @@ type Job struct {
 	Queue                JobQueuePtrOutput                `pulumi:"queue"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrOutput `pulumi:"retryOnTimeout"`
+	RunAs          JobRunAsPtrOutput    `pulumi:"runAs"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
 	Schedule        JobSchedulePtrOutput        `pulumi:"schedule"`
 	SparkJarTask    JobSparkJarTaskPtrOutput    `pulumi:"sparkJarTask"`
@@ -126,7 +127,8 @@ type jobState struct {
 	PythonWheelTask      *JobPythonWheelTask      `pulumi:"pythonWheelTask"`
 	Queue                *JobQueue                `pulumi:"queue"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
+	RetryOnTimeout *bool     `pulumi:"retryOnTimeout"`
+	RunAs          *JobRunAs `pulumi:"runAs"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
 	Schedule        *JobSchedule           `pulumi:"schedule"`
 	SparkJarTask    *JobSparkJarTask       `pulumi:"sparkJarTask"`
@@ -174,6 +176,7 @@ type JobState struct {
 	Queue                JobQueuePtrInput
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrInput
+	RunAs          JobRunAsPtrInput
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
 	Schedule        JobSchedulePtrInput
 	SparkJarTask    JobSparkJarTaskPtrInput
@@ -224,7 +227,8 @@ type jobArgs struct {
 	PythonWheelTask      *JobPythonWheelTask      `pulumi:"pythonWheelTask"`
 	Queue                *JobQueue                `pulumi:"queue"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
+	RetryOnTimeout *bool     `pulumi:"retryOnTimeout"`
+	RunAs          *JobRunAs `pulumi:"runAs"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
 	Schedule        *JobSchedule           `pulumi:"schedule"`
 	SparkJarTask    *JobSparkJarTask       `pulumi:"sparkJarTask"`
@@ -271,6 +275,7 @@ type JobArgs struct {
 	Queue                JobQueuePtrInput
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrInput
+	RunAs          JobRunAsPtrInput
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
 	Schedule        JobSchedulePtrInput
 	SparkJarTask    JobSparkJarTaskPtrInput
@@ -460,6 +465,10 @@ func (o JobOutput) Queue() JobQueuePtrOutput {
 // (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 func (o JobOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.RetryOnTimeout }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobOutput) RunAs() JobRunAsPtrOutput {
+	return o.ApplyT(func(v *Job) JobRunAsPtrOutput { return v.RunAs }).(JobRunAsPtrOutput)
 }
 
 // (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.

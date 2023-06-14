@@ -796,6 +796,7 @@ export interface GetJobJobSettings {
     createdTime?: number;
     creatorUserName?: string;
     jobId?: number;
+    runAsUserName?: string;
     settings?: inputs.GetJobJobSettingsSettings;
 }
 
@@ -803,6 +804,7 @@ export interface GetJobJobSettingsArgs {
     createdTime?: pulumi.Input<number>;
     creatorUserName?: pulumi.Input<string>;
     jobId?: pulumi.Input<number>;
+    runAsUserName?: pulumi.Input<string>;
     settings?: pulumi.Input<inputs.GetJobJobSettingsSettingsArgs>;
 }
 
@@ -829,6 +831,7 @@ export interface GetJobJobSettingsSettings {
     pythonWheelTask?: inputs.GetJobJobSettingsSettingsPythonWheelTask;
     queue?: inputs.GetJobJobSettingsSettingsQueue;
     retryOnTimeout?: boolean;
+    runAs?: inputs.GetJobJobSettingsSettingsRunAs;
     schedule?: inputs.GetJobJobSettingsSettingsSchedule;
     sparkJarTask?: inputs.GetJobJobSettingsSettingsSparkJarTask;
     sparkPythonTask?: inputs.GetJobJobSettingsSettingsSparkPythonTask;
@@ -863,6 +866,7 @@ export interface GetJobJobSettingsSettingsArgs {
     pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsPythonWheelTaskArgs>;
     queue?: pulumi.Input<inputs.GetJobJobSettingsSettingsQueueArgs>;
     retryOnTimeout?: pulumi.Input<boolean>;
+    runAs?: pulumi.Input<inputs.GetJobJobSettingsSettingsRunAsArgs>;
     schedule?: pulumi.Input<inputs.GetJobJobSettingsSettingsScheduleArgs>;
     sparkJarTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsSparkJarTaskArgs>;
     sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsSparkPythonTaskArgs>;
@@ -1644,6 +1648,16 @@ export interface GetJobJobSettingsSettingsQueue {
 }
 
 export interface GetJobJobSettingsSettingsQueueArgs {
+}
+
+export interface GetJobJobSettingsSettingsRunAs {
+    servicePrincipalName?: string;
+    userName?: string;
+}
+
+export interface GetJobJobSettingsSettingsRunAsArgs {
+    servicePrincipalName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsSchedule {
@@ -3047,6 +3061,28 @@ export interface JobPythonWheelTask {
 }
 
 export interface JobQueue {
+}
+
+export interface JobRunAs {
+    /**
+     * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const _this = new databricks.Job("this", {runAs: {
+     *     servicePrincipalName: "8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
+     * }});
+     * ```
+     */
+    servicePrincipalName?: pulumi.Input<string>;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: pulumi.Input<string>;
 }
 
 export interface JobSchedule {

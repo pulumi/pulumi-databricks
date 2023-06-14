@@ -7,6 +7,38 @@ import * as utilities from "./utilities";
 /**
  * This resource creates [Personal Access Tokens](https://docs.databricks.com/sql/user/security/personal-access-tokens.html) for the same user that is authenticated with the provider. Most likely you should use databricks.OboToken to create [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a databricks.ServicePrincipal in Databricks workspaces on AWS. Databricks workspaces on other clouds use their own native OAuth token flows.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // initialize provider in normal mode
+ * const createdWorkspace = new databricks.Provider("createdWorkspace", {host: databricks_mws_workspaces["this"].workspace_url});
+ * // create PAT token to provision entities within workspace
+ * const pat = new databricks.Token("pat", {
+ *     comment: "Terraform Provisioning",
+ *     lifetimeSeconds: 8640000,
+ * }, {
+ *     provider: databricks.created_workspace,
+ * });
+ * export const databricksToken = pat.tokenValue;
+ * ```
+ *
+ * A token can be automatically rotated by taking a dependency on the `timeRotating` resource:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const _this = new time.Rotating("this", {rotationDays: 30});
+ * const pat = new databricks.Token("pat", {
+ *     comment: pulumi.interpolate`Terraform (created: ${_this.rfc3339})`,
+ *     lifetimeSeconds: 60 * 24 * 60 * 60,
+ * });
+ * ```
+ *
  * ## Import
  *
  * -> **Note** Importing this resource is not currently supported.

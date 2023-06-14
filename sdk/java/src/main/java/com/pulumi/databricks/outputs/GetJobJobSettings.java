@@ -16,6 +16,7 @@ public final class GetJobJobSettings {
     private @Nullable Integer createdTime;
     private @Nullable String creatorUserName;
     private @Nullable Integer jobId;
+    private String runAsUserName;
     private @Nullable GetJobJobSettingsSettings settings;
 
     private GetJobJobSettings() {}
@@ -27,6 +28,9 @@ public final class GetJobJobSettings {
     }
     public Optional<Integer> jobId() {
         return Optional.ofNullable(this.jobId);
+    }
+    public String runAsUserName() {
+        return this.runAsUserName;
     }
     public Optional<GetJobJobSettingsSettings> settings() {
         return Optional.ofNullable(this.settings);
@@ -44,6 +48,7 @@ public final class GetJobJobSettings {
         private @Nullable Integer createdTime;
         private @Nullable String creatorUserName;
         private @Nullable Integer jobId;
+        private String runAsUserName;
         private @Nullable GetJobJobSettingsSettings settings;
         public Builder() {}
         public Builder(GetJobJobSettings defaults) {
@@ -51,6 +56,7 @@ public final class GetJobJobSettings {
     	      this.createdTime = defaults.createdTime;
     	      this.creatorUserName = defaults.creatorUserName;
     	      this.jobId = defaults.jobId;
+    	      this.runAsUserName = defaults.runAsUserName;
     	      this.settings = defaults.settings;
         }
 
@@ -70,6 +76,11 @@ public final class GetJobJobSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder runAsUserName(String runAsUserName) {
+            this.runAsUserName = Objects.requireNonNull(runAsUserName);
+            return this;
+        }
+        @CustomType.Setter
         public Builder settings(@Nullable GetJobJobSettingsSettings settings) {
             this.settings = settings;
             return this;
@@ -79,6 +90,7 @@ public final class GetJobJobSettings {
             o.createdTime = createdTime;
             o.creatorUserName = creatorUserName;
             o.jobId = jobId;
+            o.runAsUserName = runAsUserName;
             o.settings = settings;
             return o;
         }

@@ -60,6 +60,20 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
     public Output<String> credentialName() {
         return this.credentialName;
     }
+    /**
+     * Destroy external location regardless of its dependents.
+     * 
+     */
+    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> forceDestroy;
+
+    /**
+     * @return Destroy external location regardless of its dependents.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDestroy() {
+        return Codegen.optional(this.forceDestroy);
+    }
     @Export(name="metastoreId", type=String.class, parameters={})
     private Output<String> metastoreId;
 
@@ -93,6 +107,20 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> owner() {
         return this.owner;
+    }
+    /**
+     * Indicates whether the external location is read-only.
+     * 
+     */
+    @Export(name="readOnly", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> readOnly;
+
+    /**
+     * @return Indicates whether the external location is read-only.
+     * 
+     */
+    public Output<Optional<Boolean>> readOnly() {
+        return Codegen.optional(this.readOnly);
     }
     /**
      * Suppress validation errors if any &amp; force save the external location

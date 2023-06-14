@@ -46,6 +46,21 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
         return this.credentialName;
     }
 
+    /**
+     * Destroy external location regardless of its dependents.
+     * 
+     */
+    @Import(name="forceDestroy")
+    private @Nullable Output<Boolean> forceDestroy;
+
+    /**
+     * @return Destroy external location regardless of its dependents.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDestroy() {
+        return Optional.ofNullable(this.forceDestroy);
+    }
+
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
@@ -84,6 +99,21 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Indicates whether the external location is read-only.
+     * 
+     */
+    @Import(name="readOnly")
+    private @Nullable Output<Boolean> readOnly;
+
+    /**
+     * @return Indicates whether the external location is read-only.
+     * 
+     */
+    public Optional<Output<Boolean>> readOnly() {
+        return Optional.ofNullable(this.readOnly);
+    }
+
+    /**
      * Suppress validation errors if any &amp; force save the external location
      * 
      */
@@ -118,9 +148,11 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
     private ExternalLocationArgs(ExternalLocationArgs $) {
         this.comment = $.comment;
         this.credentialName = $.credentialName;
+        this.forceDestroy = $.forceDestroy;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
+        this.readOnly = $.readOnly;
         this.skipValidation = $.skipValidation;
         this.url = $.url;
     }
@@ -185,6 +217,27 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
             return credentialName(Output.of(credentialName));
         }
 
+        /**
+         * @param forceDestroy Destroy external location regardless of its dependents.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
+            $.forceDestroy = forceDestroy;
+            return this;
+        }
+
+        /**
+         * @param forceDestroy Destroy external location regardless of its dependents.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(Boolean forceDestroy) {
+            return forceDestroy(Output.of(forceDestroy));
+        }
+
         public Builder metastoreId(@Nullable Output<String> metastoreId) {
             $.metastoreId = metastoreId;
             return this;
@@ -234,6 +287,27 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
+        }
+
+        /**
+         * @param readOnly Indicates whether the external location is read-only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnly(@Nullable Output<Boolean> readOnly) {
+            $.readOnly = readOnly;
+            return this;
+        }
+
+        /**
+         * @param readOnly Indicates whether the external location is read-only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnly(Boolean readOnly) {
+            return readOnly(Output.of(readOnly));
         }
 
         /**

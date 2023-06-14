@@ -287,7 +287,7 @@ class Volume(pulumi.CustomResource):
                 "kind": "various",
             })
         external = databricks.StorageCredential("external", aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-            role_arn=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+            role_arn=aws_iam_role["external_data_access"]["arn"],
         ))
         some = databricks.ExternalLocation("some",
             url=f"s3://{aws_s3_bucket['external']['id']}/some",
@@ -350,7 +350,7 @@ class Volume(pulumi.CustomResource):
                 "kind": "various",
             })
         external = databricks.StorageCredential("external", aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-            role_arn=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+            role_arn=aws_iam_role["external_data_access"]["arn"],
         ))
         some = databricks.ExternalLocation("some",
             url=f"s3://{aws_s3_bucket['external']['id']}/some",

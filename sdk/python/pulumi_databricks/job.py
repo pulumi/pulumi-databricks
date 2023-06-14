@@ -36,6 +36,7 @@ class JobArgs:
                  python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
                  queue: Optional[pulumi.Input['JobQueueArgs']] = None,
                  retry_on_timeout: Optional[pulumi.Input[bool]] = None,
+                 run_as: Optional[pulumi.Input['JobRunAsArgs']] = None,
                  schedule: Optional[pulumi.Input['JobScheduleArgs']] = None,
                  spark_jar_task: Optional[pulumi.Input['JobSparkJarTaskArgs']] = None,
                  spark_python_task: Optional[pulumi.Input['JobSparkPythonTaskArgs']] = None,
@@ -101,6 +102,8 @@ class JobArgs:
             pulumi.set(__self__, "queue", queue)
         if retry_on_timeout is not None:
             pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
+        if run_as is not None:
+            pulumi.set(__self__, "run_as", run_as)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if spark_jar_task is not None:
@@ -331,6 +334,15 @@ class JobArgs:
         pulumi.set(self, "retry_on_timeout", value)
 
     @property
+    @pulumi.getter(name="runAs")
+    def run_as(self) -> Optional[pulumi.Input['JobRunAsArgs']]:
+        return pulumi.get(self, "run_as")
+
+    @run_as.setter
+    def run_as(self, value: Optional[pulumi.Input['JobRunAsArgs']]):
+        pulumi.set(self, "run_as", value)
+
+    @property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['JobScheduleArgs']]:
         """
@@ -444,6 +456,7 @@ class _JobState:
                  python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
                  queue: Optional[pulumi.Input['JobQueueArgs']] = None,
                  retry_on_timeout: Optional[pulumi.Input[bool]] = None,
+                 run_as: Optional[pulumi.Input['JobRunAsArgs']] = None,
                  schedule: Optional[pulumi.Input['JobScheduleArgs']] = None,
                  spark_jar_task: Optional[pulumi.Input['JobSparkJarTaskArgs']] = None,
                  spark_python_task: Optional[pulumi.Input['JobSparkPythonTaskArgs']] = None,
@@ -511,6 +524,8 @@ class _JobState:
             pulumi.set(__self__, "queue", queue)
         if retry_on_timeout is not None:
             pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
+        if run_as is not None:
+            pulumi.set(__self__, "run_as", run_as)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if spark_jar_task is not None:
@@ -743,6 +758,15 @@ class _JobState:
         pulumi.set(self, "retry_on_timeout", value)
 
     @property
+    @pulumi.getter(name="runAs")
+    def run_as(self) -> Optional[pulumi.Input['JobRunAsArgs']]:
+        return pulumi.get(self, "run_as")
+
+    @run_as.setter
+    def run_as(self, value: Optional[pulumi.Input['JobRunAsArgs']]):
+        pulumi.set(self, "run_as", value)
+
+    @property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['JobScheduleArgs']]:
         """
@@ -870,6 +894,7 @@ class Job(pulumi.CustomResource):
                  python_wheel_task: Optional[pulumi.Input[pulumi.InputType['JobPythonWheelTaskArgs']]] = None,
                  queue: Optional[pulumi.Input[pulumi.InputType['JobQueueArgs']]] = None,
                  retry_on_timeout: Optional[pulumi.Input[bool]] = None,
+                 run_as: Optional[pulumi.Input[pulumi.InputType['JobRunAsArgs']]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['JobScheduleArgs']]] = None,
                  spark_jar_task: Optional[pulumi.Input[pulumi.InputType['JobSparkJarTaskArgs']]] = None,
                  spark_python_task: Optional[pulumi.Input[pulumi.InputType['JobSparkPythonTaskArgs']]] = None,
@@ -955,6 +980,7 @@ class Job(pulumi.CustomResource):
                  python_wheel_task: Optional[pulumi.Input[pulumi.InputType['JobPythonWheelTaskArgs']]] = None,
                  queue: Optional[pulumi.Input[pulumi.InputType['JobQueueArgs']]] = None,
                  retry_on_timeout: Optional[pulumi.Input[bool]] = None,
+                 run_as: Optional[pulumi.Input[pulumi.InputType['JobRunAsArgs']]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['JobScheduleArgs']]] = None,
                  spark_jar_task: Optional[pulumi.Input[pulumi.InputType['JobSparkJarTaskArgs']]] = None,
                  spark_python_task: Optional[pulumi.Input[pulumi.InputType['JobSparkPythonTaskArgs']]] = None,
@@ -993,6 +1019,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["python_wheel_task"] = python_wheel_task
             __props__.__dict__["queue"] = queue
             __props__.__dict__["retry_on_timeout"] = retry_on_timeout
+            __props__.__dict__["run_as"] = run_as
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["spark_jar_task"] = spark_jar_task
             __props__.__dict__["spark_python_task"] = spark_python_task
@@ -1033,6 +1060,7 @@ class Job(pulumi.CustomResource):
             python_wheel_task: Optional[pulumi.Input[pulumi.InputType['JobPythonWheelTaskArgs']]] = None,
             queue: Optional[pulumi.Input[pulumi.InputType['JobQueueArgs']]] = None,
             retry_on_timeout: Optional[pulumi.Input[bool]] = None,
+            run_as: Optional[pulumi.Input[pulumi.InputType['JobRunAsArgs']]] = None,
             schedule: Optional[pulumi.Input[pulumi.InputType['JobScheduleArgs']]] = None,
             spark_jar_task: Optional[pulumi.Input[pulumi.InputType['JobSparkJarTaskArgs']]] = None,
             spark_python_task: Optional[pulumi.Input[pulumi.InputType['JobSparkPythonTaskArgs']]] = None,
@@ -1089,6 +1117,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["python_wheel_task"] = python_wheel_task
         __props__.__dict__["queue"] = queue
         __props__.__dict__["retry_on_timeout"] = retry_on_timeout
+        __props__.__dict__["run_as"] = run_as
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["spark_jar_task"] = spark_jar_task
         __props__.__dict__["spark_python_task"] = spark_python_task
@@ -1230,6 +1259,11 @@ class Job(pulumi.CustomResource):
         (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         """
         return pulumi.get(self, "retry_on_timeout")
+
+    @property
+    @pulumi.getter(name="runAs")
+    def run_as(self) -> pulumi.Output[Optional['outputs.JobRunAs']]:
+        return pulumi.get(self, "run_as")
 
     @property
     @pulumi.getter

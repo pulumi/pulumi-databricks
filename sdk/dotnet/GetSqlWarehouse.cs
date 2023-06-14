@@ -16,6 +16,34 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Retrieve attributes of each SQL warehouses in a workspace
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var allSqlWarehouses = Databricks.GetSqlWarehouses.Invoke();
+        /// 
+        ///     var allSqlWarehouse = .Select(__value =&gt; 
+        ///     {
+        ///         return  Databricks.GetSqlWarehouse.Invoke(new()
+        ///         {
+        ///             Id = __value,
+        ///         });
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Related resources
         /// 
         /// The following resources are often used in the same context:
@@ -34,6 +62,34 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Retrieve attributes of each SQL warehouses in a workspace
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var allSqlWarehouses = Databricks.GetSqlWarehouses.Invoke();
+        /// 
+        ///     var allSqlWarehouse = .Select(__value =&gt; 
+        ///     {
+        ///         return  Databricks.GetSqlWarehouse.Invoke(new()
+        ///         {
+        ///             Id = __value,
+        ///         });
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Related resources
         /// 
         /// The following resources are often used in the same context:

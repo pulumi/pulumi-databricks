@@ -16,6 +16,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNotificationSettin
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsPipelineTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsPythonWheelTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsQueue;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsRunAs;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsSchedule;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsSparkJarTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsSparkPythonTask;
@@ -58,6 +59,7 @@ public final class GetJobJobSettingsSettings {
     private @Nullable GetJobJobSettingsSettingsPythonWheelTask pythonWheelTask;
     private @Nullable GetJobJobSettingsSettingsQueue queue;
     private @Nullable Boolean retryOnTimeout;
+    private @Nullable GetJobJobSettingsSettingsRunAs runAs;
     private @Nullable GetJobJobSettingsSettingsSchedule schedule;
     private @Nullable GetJobJobSettingsSettingsSparkJarTask sparkJarTask;
     private @Nullable GetJobJobSettingsSettingsSparkPythonTask sparkPythonTask;
@@ -130,6 +132,9 @@ public final class GetJobJobSettingsSettings {
     public Optional<Boolean> retryOnTimeout() {
         return Optional.ofNullable(this.retryOnTimeout);
     }
+    public Optional<GetJobJobSettingsSettingsRunAs> runAs() {
+        return Optional.ofNullable(this.runAs);
+    }
     public Optional<GetJobJobSettingsSettingsSchedule> schedule() {
         return Optional.ofNullable(this.schedule);
     }
@@ -186,6 +191,7 @@ public final class GetJobJobSettingsSettings {
         private @Nullable GetJobJobSettingsSettingsPythonWheelTask pythonWheelTask;
         private @Nullable GetJobJobSettingsSettingsQueue queue;
         private @Nullable Boolean retryOnTimeout;
+        private @Nullable GetJobJobSettingsSettingsRunAs runAs;
         private @Nullable GetJobJobSettingsSettingsSchedule schedule;
         private @Nullable GetJobJobSettingsSettingsSparkJarTask sparkJarTask;
         private @Nullable GetJobJobSettingsSettingsSparkPythonTask sparkPythonTask;
@@ -217,6 +223,7 @@ public final class GetJobJobSettingsSettings {
     	      this.pythonWheelTask = defaults.pythonWheelTask;
     	      this.queue = defaults.queue;
     	      this.retryOnTimeout = defaults.retryOnTimeout;
+    	      this.runAs = defaults.runAs;
     	      this.schedule = defaults.schedule;
     	      this.sparkJarTask = defaults.sparkJarTask;
     	      this.sparkPythonTask = defaults.sparkPythonTask;
@@ -330,6 +337,11 @@ public final class GetJobJobSettingsSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder runAs(@Nullable GetJobJobSettingsSettingsRunAs runAs) {
+            this.runAs = runAs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder schedule(@Nullable GetJobJobSettingsSettingsSchedule schedule) {
             this.schedule = schedule;
             return this;
@@ -398,6 +410,7 @@ public final class GetJobJobSettingsSettings {
             o.pythonWheelTask = pythonWheelTask;
             o.queue = queue;
             o.retryOnTimeout = retryOnTimeout;
+            o.runAs = runAs;
             o.schedule = schedule;
             o.sparkJarTask = sparkJarTask;
             o.sparkPythonTask = sparkPythonTask;

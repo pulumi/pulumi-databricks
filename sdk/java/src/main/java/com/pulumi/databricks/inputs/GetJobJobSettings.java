@@ -37,6 +37,13 @@ public final class GetJobJobSettings extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.jobId);
     }
 
+    @Import(name="runAsUserName", required=true)
+    private String runAsUserName;
+
+    public String runAsUserName() {
+        return this.runAsUserName;
+    }
+
     @Import(name="settings")
     private @Nullable GetJobJobSettingsSettings settings;
 
@@ -50,6 +57,7 @@ public final class GetJobJobSettings extends com.pulumi.resources.InvokeArgs {
         this.createdTime = $.createdTime;
         this.creatorUserName = $.creatorUserName;
         this.jobId = $.jobId;
+        this.runAsUserName = $.runAsUserName;
         this.settings = $.settings;
     }
 
@@ -86,12 +94,18 @@ public final class GetJobJobSettings extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        public Builder runAsUserName(String runAsUserName) {
+            $.runAsUserName = runAsUserName;
+            return this;
+        }
+
         public Builder settings(@Nullable GetJobJobSettingsSettings settings) {
             $.settings = settings;
             return this;
         }
 
         public GetJobJobSettings build() {
+            $.runAsUserName = Objects.requireNonNull($.runAsUserName, "expected parameter 'runAsUserName' to be non-null");
             return $;
         }
     }

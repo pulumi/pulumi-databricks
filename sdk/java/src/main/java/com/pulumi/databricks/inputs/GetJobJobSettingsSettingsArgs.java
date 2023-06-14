@@ -17,6 +17,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNotificationSetting
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPipelineTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPythonWheelTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsQueueArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsRunAsArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsScheduleArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkJarTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkPythonTaskArgs;
@@ -180,6 +181,13 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.retryOnTimeout);
     }
 
+    @Import(name="runAs")
+    private @Nullable Output<GetJobJobSettingsSettingsRunAsArgs> runAs;
+
+    public Optional<Output<GetJobJobSettingsSettingsRunAsArgs>> runAs() {
+        return Optional.ofNullable(this.runAs);
+    }
+
     @Import(name="schedule")
     private @Nullable Output<GetJobJobSettingsSettingsScheduleArgs> schedule;
 
@@ -265,6 +273,7 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         this.pythonWheelTask = $.pythonWheelTask;
         this.queue = $.queue;
         this.retryOnTimeout = $.retryOnTimeout;
+        this.runAs = $.runAs;
         this.schedule = $.schedule;
         this.sparkJarTask = $.sparkJarTask;
         this.sparkPythonTask = $.sparkPythonTask;
@@ -483,6 +492,15 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
         public Builder retryOnTimeout(Boolean retryOnTimeout) {
             return retryOnTimeout(Output.of(retryOnTimeout));
+        }
+
+        public Builder runAs(@Nullable Output<GetJobJobSettingsSettingsRunAsArgs> runAs) {
+            $.runAs = runAs;
+            return this;
+        }
+
+        public Builder runAs(GetJobJobSettingsSettingsRunAsArgs runAs) {
+            return runAs(Output.of(runAs));
         }
 
         public Builder schedule(@Nullable Output<GetJobJobSettingsSettingsScheduleArgs> schedule) {
