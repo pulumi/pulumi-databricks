@@ -48,6 +48,21 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.forceDestroy);
     }
 
+    /**
+     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     * 
+     */
+    @Import(name="isolationMode")
+    private @Nullable Output<String> isolationMode;
+
+    /**
+     * @return Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     * 
+     */
+    public Optional<Output<String>> isolationMode() {
+        return Optional.ofNullable(this.isolationMode);
+    }
+
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
@@ -56,14 +71,14 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+     * Name of Catalog relative to parent metastore.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+     * @return Name of Catalog relative to parent metastore.
      * 
      */
     public Optional<Output<String>> name() {
@@ -150,6 +165,7 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
     private CatalogState(CatalogState $) {
         this.comment = $.comment;
         this.forceDestroy = $.forceDestroy;
+        this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
@@ -219,6 +235,27 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
             return forceDestroy(Output.of(forceDestroy));
         }
 
+        /**
+         * @param isolationMode Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationMode(@Nullable Output<String> isolationMode) {
+            $.isolationMode = isolationMode;
+            return this;
+        }
+
+        /**
+         * @param isolationMode Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationMode(String isolationMode) {
+            return isolationMode(Output.of(isolationMode));
+        }
+
         public Builder metastoreId(@Nullable Output<String> metastoreId) {
             $.metastoreId = metastoreId;
             return this;
@@ -229,7 +266,7 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+         * @param name Name of Catalog relative to parent metastore.
          * 
          * @return builder
          * 
@@ -240,7 +277,7 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+         * @param name Name of Catalog relative to parent metastore.
          * 
          * @return builder
          * 

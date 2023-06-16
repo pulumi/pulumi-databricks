@@ -16,6 +16,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNotificationSetting
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPipelineTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPythonWheelTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsQueue;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsRunAs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSchedule;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkJarTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkPythonTask;
@@ -179,6 +180,13 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.retryOnTimeout);
     }
 
+    @Import(name="runAs")
+    private @Nullable GetJobJobSettingsSettingsRunAs runAs;
+
+    public Optional<GetJobJobSettingsSettingsRunAs> runAs() {
+        return Optional.ofNullable(this.runAs);
+    }
+
     @Import(name="schedule")
     private @Nullable GetJobJobSettingsSettingsSchedule schedule;
 
@@ -264,6 +272,7 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         this.pythonWheelTask = $.pythonWheelTask;
         this.queue = $.queue;
         this.retryOnTimeout = $.retryOnTimeout;
+        this.runAs = $.runAs;
         this.schedule = $.schedule;
         this.sparkJarTask = $.sparkJarTask;
         this.sparkPythonTask = $.sparkPythonTask;
@@ -399,6 +408,11 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
 
         public Builder retryOnTimeout(@Nullable Boolean retryOnTimeout) {
             $.retryOnTimeout = retryOnTimeout;
+            return this;
+        }
+
+        public Builder runAs(@Nullable GetJobJobSettingsSettingsRunAs runAs) {
+            $.runAs = runAs;
             return this;
         }
 

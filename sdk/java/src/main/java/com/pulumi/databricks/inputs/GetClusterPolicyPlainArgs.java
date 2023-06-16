@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -31,6 +32,21 @@ public final class GetClusterPolicyPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
+     * Additional human-readable description of the cluster policy.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable String description;
+
+    /**
+     * @return Additional human-readable description of the cluster policy.
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * The id of the cluster policy.
      * 
      */
@@ -46,14 +62,29 @@ public final class GetClusterPolicyPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Max number of clusters per user that can be active using this policy
+     * If true, policy is a default policy created and managed by Databricks.
+     * 
+     */
+    @Import(name="isDefault")
+    private @Nullable Boolean isDefault;
+
+    /**
+     * @return If true, policy is a default policy created and managed by Databricks.
+     * 
+     */
+    public Optional<Boolean> isDefault() {
+        return Optional.ofNullable(this.isDefault);
+    }
+
+    /**
+     * Max number of clusters per user that can be active using this policy.
      * 
      */
     @Import(name="maxClustersPerUser")
     private @Nullable Integer maxClustersPerUser;
 
     /**
-     * @return Max number of clusters per user that can be active using this policy
+     * @return Max number of clusters per user that can be active using this policy.
      * 
      */
     public Optional<Integer> maxClustersPerUser() {
@@ -75,13 +106,47 @@ public final class GetClusterPolicyPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
+     * 
+     */
+    @Import(name="policyFamilyDefinitionOverrides")
+    private @Nullable String policyFamilyDefinitionOverrides;
+
+    /**
+     * @return Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
+     * 
+     */
+    public Optional<String> policyFamilyDefinitionOverrides() {
+        return Optional.ofNullable(this.policyFamilyDefinitionOverrides);
+    }
+
+    /**
+     * ID of the policy family.
+     * 
+     */
+    @Import(name="policyFamilyId")
+    private @Nullable String policyFamilyId;
+
+    /**
+     * @return ID of the policy family.
+     * 
+     */
+    public Optional<String> policyFamilyId() {
+        return Optional.ofNullable(this.policyFamilyId);
+    }
+
     private GetClusterPolicyPlainArgs() {}
 
     private GetClusterPolicyPlainArgs(GetClusterPolicyPlainArgs $) {
         this.definition = $.definition;
+        this.description = $.description;
         this.id = $.id;
+        this.isDefault = $.isDefault;
         this.maxClustersPerUser = $.maxClustersPerUser;
         this.name = $.name;
+        this.policyFamilyDefinitionOverrides = $.policyFamilyDefinitionOverrides;
+        this.policyFamilyId = $.policyFamilyId;
     }
 
     public static Builder builder() {
@@ -114,6 +179,17 @@ public final class GetClusterPolicyPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
+         * @param description Additional human-readable description of the cluster policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable String description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
          * @param id The id of the cluster policy.
          * 
          * @return builder
@@ -125,7 +201,18 @@ public final class GetClusterPolicyPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param maxClustersPerUser Max number of clusters per user that can be active using this policy
+         * @param isDefault If true, policy is a default policy created and managed by Databricks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefault(@Nullable Boolean isDefault) {
+            $.isDefault = isDefault;
+            return this;
+        }
+
+        /**
+         * @param maxClustersPerUser Max number of clusters per user that can be active using this policy.
          * 
          * @return builder
          * 
@@ -143,6 +230,28 @@ public final class GetClusterPolicyPlainArgs extends com.pulumi.resources.Invoke
          */
         public Builder name(@Nullable String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param policyFamilyDefinitionOverrides Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyFamilyDefinitionOverrides(@Nullable String policyFamilyDefinitionOverrides) {
+            $.policyFamilyDefinitionOverrides = policyFamilyDefinitionOverrides;
+            return this;
+        }
+
+        /**
+         * @param policyFamilyId ID of the policy family.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyFamilyId(@Nullable String policyFamilyId) {
+            $.policyFamilyId = policyFamilyId;
             return this;
         }
 

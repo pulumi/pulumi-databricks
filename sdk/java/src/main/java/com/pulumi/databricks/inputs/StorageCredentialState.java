@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.StorageCredentialAzureManagedIdentityArgs;
 import com.pulumi.databricks.inputs.StorageCredentialAzureServicePrincipalArgs;
 import com.pulumi.databricks.inputs.StorageCredentialDatabricksGcpServiceAccountArgs;
 import com.pulumi.databricks.inputs.StorageCredentialGcpServiceAccountKeyArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -103,6 +104,21 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * Indicates whether the storage credential is only usable for read operations.
+     * 
+     */
+    @Import(name="readOnly")
+    private @Nullable Output<Boolean> readOnly;
+
+    /**
+     * @return Indicates whether the storage credential is only usable for read operations.
+     * 
+     */
+    public Optional<Output<Boolean>> readOnly() {
+        return Optional.ofNullable(this.readOnly);
+    }
+
     private StorageCredentialState() {}
 
     private StorageCredentialState(StorageCredentialState $) {
@@ -115,6 +131,7 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
+        this.readOnly = $.readOnly;
     }
 
     public static Builder builder() {
@@ -242,6 +259,27 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
          */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
+        }
+
+        /**
+         * @param readOnly Indicates whether the storage credential is only usable for read operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnly(@Nullable Output<Boolean> readOnly) {
+            $.readOnly = readOnly;
+            return this;
+        }
+
+        /**
+         * @param readOnly Indicates whether the storage credential is only usable for read operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnly(Boolean readOnly) {
+            return readOnly(Output.of(readOnly));
         }
 
         public StorageCredentialState build() {

@@ -98,6 +98,139 @@ import (
 //	}
 //
 // ```
+// ### Creating a Databricks on GCP workspace
+//
+// > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) on GCP.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-google/sdk/v1/go/google"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			dbxPrivateVpc, err := index.NewGoogle_compute_network(ctx, "dbxPrivateVpc", &index.Google_compute_networkArgs{
+//				Project:               _var.Google_project,
+//				Name:                  fmt.Sprintf("tf-network-%v", random_string.Suffix.Result),
+//				AutoCreateSubnetworks: false,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = index.NewGoogle_compute_subnetwork(ctx, "network-with-private-secondary-ip-ranges", &index.Google_compute_subnetworkArgs{
+//				Name:        fmt.Sprintf("test-dbx-%v", random_string.Suffix.Result),
+//				IpCidrRange: "10.0.0.0/16",
+//				Region:      "us-central1",
+//				Network:     dbxPrivateVpc.Id,
+//				SecondaryIpRange: []map[string]interface{}{
+//					map[string]interface{}{
+//						"rangeName":   "pods",
+//						"ipCidrRange": "10.1.0.0/16",
+//					},
+//					map[string]interface{}{
+//						"rangeName":   "svc",
+//						"ipCidrRange": "10.2.0.0/20",
+//					},
+//				},
+//				PrivateIpGoogleAccess: true,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			router, err := index.NewGoogle_compute_router(ctx, "router", &index.Google_compute_routerArgs{
+//				Name:    fmt.Sprintf("my-router-%v", random_string.Suffix.Result),
+//				Region:  network_with_private_secondary_ip_ranges.Region,
+//				Network: dbxPrivateVpc.Id,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = index.NewGoogle_compute_router_nat(ctx, "nat", &index.Google_compute_router_natArgs{
+//				Name:                          fmt.Sprintf("my-router-nat-%v", random_string.Suffix.Result),
+//				Router:                        router.Name,
+//				Region:                        router.Region,
+//				NatIpAllocateOption:           "AUTO_ONLY",
+//				SourceSubnetworkIpRangesToNat: "ALL_SUBNETWORKS_ALL_IP_RANGES",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMwsNetworks(ctx, "this", &databricks.MwsNetworksArgs{
+//				AccountId:   pulumi.Any(databricksAccountId),
+//				NetworkName: pulumi.String(fmt.Sprintf("test-demo-%v", random_string.Suffix.Result)),
+//				GcpNetworkInfo: &databricks.MwsNetworksGcpNetworkInfoArgs{
+//					NetworkProjectId:   pulumi.Any(_var.Google_project),
+//					VpcId:              dbxPrivateVpc.Name,
+//					SubnetId:           pulumi.Any(google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name),
+//					SubnetRegion:       pulumi.Any(google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region),
+//					PodIpRangeName:     pulumi.String("pods"),
+//					ServiceIpRangeName: pulumi.String("svc"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// In order to create a VPC [that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) you would need to add the `vpcEndpointId` Attributes from mwsVpcEndpoint resources into the MwsNetworks resource. For example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMwsNetworks(ctx, "this", &databricks.MwsNetworksArgs{
+//				AccountId:   pulumi.Any(_var.Databricks_account_id),
+//				NetworkName: pulumi.String(fmt.Sprintf("test-demo-%v", random_string.Suffix.Result)),
+//				GcpNetworkInfo: &databricks.MwsNetworksGcpNetworkInfoArgs{
+//					NetworkProjectId:   pulumi.Any(_var.Google_project),
+//					VpcId:              pulumi.Any(google_compute_network.Dbx_private_vpc.Name),
+//					SubnetId:           pulumi.Any(google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name),
+//					SubnetRegion:       pulumi.Any(google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region),
+//					PodIpRangeName:     pulumi.String("pods"),
+//					ServiceIpRangeName: pulumi.String("svc"),
+//				},
+//				VpcEndpoints: &databricks.MwsNetworksVpcEndpointsArgs{
+//					DataplaneRelays: pulumi.StringArray{
+//						databricks_mws_vpc_endpoint.Relay.Vpc_endpoint_id,
+//					},
+//					RestApis: pulumi.StringArray{
+//						databricks_mws_vpc_endpoint.Workspace.Vpc_endpoint_id,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Modifying networks on running workspaces (AWS only)
 //
 // Due to specifics of platform APIs, changing any attribute of network configuration would cause `MwsNetworks` to be re-created - deleted & added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:

@@ -16,6 +16,34 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Retrieve attributes of each SQL warehouses in a workspace
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var allClusters = Databricks.GetClusters.Invoke();
+        /// 
+        ///     var allCluster = .Select(__value =&gt; 
+        ///     {
+        ///         return  Databricks.GetCluster.Invoke(new()
+        ///         {
+        ///             ClusterId = __value,
+        ///         });
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Related Resources
         /// 
         /// The following resources are often used in the same context:
@@ -36,6 +64,34 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
         /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Retrieve attributes of each SQL warehouses in a workspace
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var allClusters = Databricks.GetClusters.Invoke();
+        /// 
+        ///     var allCluster = .Select(__value =&gt; 
+        ///     {
+        ///         return  Databricks.GetCluster.Invoke(new()
+        ///         {
+        ///             ClusterId = __value,
+        ///         });
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// ## Related Resources
         /// 
         /// The following resources are often used in the same context:

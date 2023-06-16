@@ -53,6 +53,88 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ * ### Creating a Databricks on GCP workspace
+ *
+ * > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) on GCP.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as google from "@pulumi/google";
+ *
+ * const config = new pulumi.Config();
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const dbxPrivateVpc = new google.index.Google_compute_network("dbxPrivateVpc", {
+ *     project: _var.google_project,
+ *     name: `tf-network-${random_string.suffix.result}`,
+ *     autoCreateSubnetworks: false,
+ * });
+ * const network_with_private_secondary_ip_ranges = new google.index.Google_compute_subnetwork("network-with-private-secondary-ip-ranges", {
+ *     name: `test-dbx-${random_string.suffix.result}`,
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ *     network: dbxPrivateVpc.id,
+ *     secondaryIpRange: [
+ *         {
+ *             rangeName: "pods",
+ *             ipCidrRange: "10.1.0.0/16",
+ *         },
+ *         {
+ *             rangeName: "svc",
+ *             ipCidrRange: "10.2.0.0/20",
+ *         },
+ *     ],
+ *     privateIpGoogleAccess: true,
+ * });
+ * const router = new google.index.Google_compute_router("router", {
+ *     name: `my-router-${random_string.suffix.result}`,
+ *     region: network_with_private_secondary_ip_ranges.region,
+ *     network: dbxPrivateVpc.id,
+ * });
+ * const nat = new google.index.Google_compute_router_nat("nat", {
+ *     name: `my-router-nat-${random_string.suffix.result}`,
+ *     router: router.name,
+ *     region: router.region,
+ *     natIpAllocateOption: "AUTO_ONLY",
+ *     sourceSubnetworkIpRangesToNat: "ALL_SUBNETWORKS_ALL_IP_RANGES",
+ * });
+ * const _this = new databricks.MwsNetworks("this", {
+ *     accountId: databricksAccountId,
+ *     networkName: `test-demo-${random_string.suffix.result}`,
+ *     gcpNetworkInfo: {
+ *         networkProjectId: _var.google_project,
+ *         vpcId: dbxPrivateVpc.name,
+ *         subnetId: google_compute_subnetwork.network_with_private_secondary_ip_ranges.name,
+ *         subnetRegion: google_compute_subnetwork.network_with_private_secondary_ip_ranges.region,
+ *         podIpRangeName: "pods",
+ *         serviceIpRangeName: "svc",
+ *     },
+ * });
+ * ```
+ *
+ * In order to create a VPC [that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) you would need to add the `vpcEndpointId` Attributes from mwsVpcEndpoint resources into the databricks.MwsNetworks resource. For example:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.MwsNetworks("this", {
+ *     accountId: _var.databricks_account_id,
+ *     networkName: `test-demo-${random_string.suffix.result}`,
+ *     gcpNetworkInfo: {
+ *         networkProjectId: _var.google_project,
+ *         vpcId: google_compute_network.dbx_private_vpc.name,
+ *         subnetId: google_compute_subnetwork.network_with_private_secondary_ip_ranges.name,
+ *         subnetRegion: google_compute_subnetwork.network_with_private_secondary_ip_ranges.region,
+ *         podIpRangeName: "pods",
+ *         serviceIpRangeName: "svc",
+ *     },
+ *     vpcEndpoints: {
+ *         dataplaneRelays: [databricks_mws_vpc_endpoint.relay.vpc_endpoint_id],
+ *         restApis: [databricks_mws_vpc_endpoint.workspace.vpc_endpoint_id],
+ *     },
+ * });
+ * ```
  * ## Modifying networks on running workspaces (AWS only)
  *
  * Due to specifics of platform APIs, changing any attribute of network configuration would cause `databricks.MwsNetworks` to be re-created - deleted & added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:

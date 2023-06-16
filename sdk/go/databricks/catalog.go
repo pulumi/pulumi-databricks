@@ -63,8 +63,10 @@ type Catalog struct {
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Delete catalog regardless of its contents.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
-	MetastoreId  pulumi.StringOutput  `pulumi:"metastoreId"`
-	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+	IsolationMode pulumi.StringOutput `pulumi:"isolationMode"`
+	MetastoreId   pulumi.StringOutput `pulumi:"metastoreId"`
+	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
@@ -110,9 +112,11 @@ type catalogState struct {
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
 	// Delete catalog regardless of its contents.
-	ForceDestroy *bool   `pulumi:"forceDestroy"`
-	MetastoreId  *string `pulumi:"metastoreId"`
-	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+	IsolationMode *string `pulumi:"isolationMode"`
+	MetastoreId   *string `pulumi:"metastoreId"`
+	// Name of Catalog relative to parent metastore.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner *string `pulumi:"owner"`
@@ -131,8 +135,10 @@ type CatalogState struct {
 	Comment pulumi.StringPtrInput
 	// Delete catalog regardless of its contents.
 	ForceDestroy pulumi.BoolPtrInput
-	MetastoreId  pulumi.StringPtrInput
-	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+	IsolationMode pulumi.StringPtrInput
+	MetastoreId   pulumi.StringPtrInput
+	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner pulumi.StringPtrInput
@@ -154,9 +160,11 @@ type catalogArgs struct {
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
 	// Delete catalog regardless of its contents.
-	ForceDestroy *bool   `pulumi:"forceDestroy"`
-	MetastoreId  *string `pulumi:"metastoreId"`
-	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+	IsolationMode *string `pulumi:"isolationMode"`
+	MetastoreId   *string `pulumi:"metastoreId"`
+	// Name of Catalog relative to parent metastore.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner *string `pulumi:"owner"`
@@ -176,8 +184,10 @@ type CatalogArgs struct {
 	Comment pulumi.StringPtrInput
 	// Delete catalog regardless of its contents.
 	ForceDestroy pulumi.BoolPtrInput
-	MetastoreId  pulumi.StringPtrInput
-	// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+	IsolationMode pulumi.StringPtrInput
+	MetastoreId   pulumi.StringPtrInput
+	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner pulumi.StringPtrInput
@@ -288,11 +298,16 @@ func (o CatalogOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
+// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+func (o CatalogOutput) IsolationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.IsolationMode }).(pulumi.StringOutput)
+}
+
 func (o CatalogOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+// Name of Catalog relative to parent metastore.
 func (o CatalogOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

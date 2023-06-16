@@ -108,6 +108,133 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Creating a Databricks on GCP workspace
+ * 
+ * &gt; **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) on GCP.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.google.google_compute_network;
+ * import com.pulumi.google.Google_compute_networkArgs;
+ * import com.pulumi.google.google_compute_subnetwork;
+ * import com.pulumi.google.Google_compute_subnetworkArgs;
+ * import com.pulumi.google.google_compute_router;
+ * import com.pulumi.google.Google_compute_routerArgs;
+ * import com.pulumi.google.google_compute_router_nat;
+ * import com.pulumi.google.Google_compute_router_natArgs;
+ * import com.pulumi.databricks.MwsNetworks;
+ * import com.pulumi.databricks.MwsNetworksArgs;
+ * import com.pulumi.databricks.inputs.MwsNetworksGcpNetworkInfoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
+ *         var dbxPrivateVpc = new Google_compute_network(&#34;dbxPrivateVpc&#34;, Google_compute_networkArgs.builder()        
+ *             .project(var_.google_project())
+ *             .name(String.format(&#34;tf-network-%s&#34;, random_string.suffix().result()))
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var network_with_private_secondary_ip_ranges = new Google_compute_subnetwork(&#34;network-with-private-secondary-ip-ranges&#34;, Google_compute_subnetworkArgs.builder()        
+ *             .name(String.format(&#34;test-dbx-%s&#34;, random_string.suffix().result()))
+ *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .network(dbxPrivateVpc.id())
+ *             .secondaryIpRange(            
+ *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .privateIpGoogleAccess(true)
+ *             .build());
+ * 
+ *         var router = new Google_compute_router(&#34;router&#34;, Google_compute_routerArgs.builder()        
+ *             .name(String.format(&#34;my-router-%s&#34;, random_string.suffix().result()))
+ *             .region(network_with_private_secondary_ip_ranges.region())
+ *             .network(dbxPrivateVpc.id())
+ *             .build());
+ * 
+ *         var nat = new Google_compute_router_nat(&#34;nat&#34;, Google_compute_router_natArgs.builder()        
+ *             .name(String.format(&#34;my-router-nat-%s&#34;, random_string.suffix().result()))
+ *             .router(router.name())
+ *             .region(router.region())
+ *             .natIpAllocateOption(&#34;AUTO_ONLY&#34;)
+ *             .sourceSubnetworkIpRangesToNat(&#34;ALL_SUBNETWORKS_ALL_IP_RANGES&#34;)
+ *             .build());
+ * 
+ *         var this_ = new MwsNetworks(&#34;this&#34;, MwsNetworksArgs.builder()        
+ *             .accountId(databricksAccountId)
+ *             .networkName(String.format(&#34;test-demo-%s&#34;, random_string.suffix().result()))
+ *             .gcpNetworkInfo(MwsNetworksGcpNetworkInfoArgs.builder()
+ *                 .networkProjectId(var_.google_project())
+ *                 .vpcId(dbxPrivateVpc.name())
+ *                 .subnetId(google_compute_subnetwork.network_with_private_secondary_ip_ranges().name())
+ *                 .subnetRegion(google_compute_subnetwork.network_with_private_secondary_ip_ranges().region())
+ *                 .podIpRangeName(&#34;pods&#34;)
+ *                 .serviceIpRangeName(&#34;svc&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * In order to create a VPC [that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the databricks.MwsNetworks resource. For example:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsNetworks;
+ * import com.pulumi.databricks.MwsNetworksArgs;
+ * import com.pulumi.databricks.inputs.MwsNetworksGcpNetworkInfoArgs;
+ * import com.pulumi.databricks.inputs.MwsNetworksVpcEndpointsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new MwsNetworks(&#34;this&#34;, MwsNetworksArgs.builder()        
+ *             .accountId(var_.databricks_account_id())
+ *             .networkName(String.format(&#34;test-demo-%s&#34;, random_string.suffix().result()))
+ *             .gcpNetworkInfo(MwsNetworksGcpNetworkInfoArgs.builder()
+ *                 .networkProjectId(var_.google_project())
+ *                 .vpcId(google_compute_network.dbx_private_vpc().name())
+ *                 .subnetId(google_compute_subnetwork.network_with_private_secondary_ip_ranges().name())
+ *                 .subnetRegion(google_compute_subnetwork.network_with_private_secondary_ip_ranges().region())
+ *                 .podIpRangeName(&#34;pods&#34;)
+ *                 .serviceIpRangeName(&#34;svc&#34;)
+ *                 .build())
+ *             .vpcEndpoints(MwsNetworksVpcEndpointsArgs.builder()
+ *                 .dataplaneRelays(databricks_mws_vpc_endpoint.relay().vpc_endpoint_id())
+ *                 .restApis(databricks_mws_vpc_endpoint.workspace().vpc_endpoint_id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Modifying networks on running workspaces (AWS only)
  * 
  * Due to specifics of platform APIs, changing any attribute of network configuration would cause `databricks.MwsNetworks` to be re-created - deleted &amp; added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:

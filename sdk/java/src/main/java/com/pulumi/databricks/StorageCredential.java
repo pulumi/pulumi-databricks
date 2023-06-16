@@ -15,6 +15,7 @@ import com.pulumi.databricks.outputs.StorageCredentialAzureManagedIdentity;
 import com.pulumi.databricks.outputs.StorageCredentialAzureServicePrincipal;
 import com.pulumi.databricks.outputs.StorageCredentialDatabricksGcpServiceAccount;
 import com.pulumi.databricks.outputs.StorageCredentialGcpServiceAccountKey;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -243,6 +244,20 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
      */
     public Output<String> owner() {
         return this.owner;
+    }
+    /**
+     * Indicates whether the storage credential is only usable for read operations.
+     * 
+     */
+    @Export(name="readOnly", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> readOnly;
+
+    /**
+     * @return Indicates whether the storage credential is only usable for read operations.
+     * 
+     */
+    public Output<Optional<Boolean>> readOnly() {
+        return Codegen.optional(this.readOnly);
     }
 
     /**

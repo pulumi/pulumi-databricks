@@ -456,6 +456,82 @@ class MwsNetworks(pulumi.CustomResource):
                     aws_vpc_endpoint["relay"],
                 ]))
         ```
+        ### Creating a Databricks on GCP workspace
+
+        > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) on GCP.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_google as google
+
+        config = pulumi.Config()
+        databricks_account_id = config.require_object("databricksAccountId")
+        dbx_private_vpc = google.index.Google_compute_network("dbxPrivateVpc",
+            project=var.google_project,
+            name=ftf-network-{random_string.suffix.result},
+            auto_create_subnetworks=False)
+        network_with_private_secondary_ip_ranges = google.index.Google_compute_subnetwork("network-with-private-secondary-ip-ranges",
+            name=ftest-dbx-{random_string.suffix.result},
+            ip_cidr_range=10.0.0.0/16,
+            region=us-central1,
+            network=dbx_private_vpc.id,
+            secondary_ip_range=[
+                {
+                    rangeName: pods,
+                    ipCidrRange: 10.1.0.0/16,
+                },
+                {
+                    rangeName: svc,
+                    ipCidrRange: 10.2.0.0/20,
+                },
+            ],
+            private_ip_google_access=True)
+        router = google.index.Google_compute_router("router",
+            name=fmy-router-{random_string.suffix.result},
+            region=network_with_private_secondary_ip_ranges.region,
+            network=dbx_private_vpc.id)
+        nat = google.index.Google_compute_router_nat("nat",
+            name=fmy-router-nat-{random_string.suffix.result},
+            router=router.name,
+            region=router.region,
+            nat_ip_allocate_option=AUTO_ONLY,
+            source_subnetwork_ip_ranges_to_nat=ALL_SUBNETWORKS_ALL_IP_RANGES)
+        this = databricks.MwsNetworks("this",
+            account_id=databricks_account_id,
+            network_name=f"test-demo-{random_string['suffix']['result']}",
+            gcp_network_info=databricks.MwsNetworksGcpNetworkInfoArgs(
+                network_project_id=var["google_project"],
+                vpc_id=dbx_private_vpc["name"],
+                subnet_id=google_compute_subnetwork["network_with_private_secondary_ip_ranges"]["name"],
+                subnet_region=google_compute_subnetwork["network_with_private_secondary_ip_ranges"]["region"],
+                pod_ip_range_name="pods",
+                service_ip_range_name="svc",
+            ))
+        ```
+
+        In order to create a VPC [that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the MwsNetworks resource. For example:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.MwsNetworks("this",
+            account_id=var["databricks_account_id"],
+            network_name=f"test-demo-{random_string['suffix']['result']}",
+            gcp_network_info=databricks.MwsNetworksGcpNetworkInfoArgs(
+                network_project_id=var["google_project"],
+                vpc_id=google_compute_network["dbx_private_vpc"]["name"],
+                subnet_id=google_compute_subnetwork["network_with_private_secondary_ip_ranges"]["name"],
+                subnet_region=google_compute_subnetwork["network_with_private_secondary_ip_ranges"]["region"],
+                pod_ip_range_name="pods",
+                service_ip_range_name="svc",
+            ),
+            vpc_endpoints=databricks.MwsNetworksVpcEndpointsArgs(
+                dataplane_relays=[databricks_mws_vpc_endpoint["relay"]["vpc_endpoint_id"]],
+                rest_apis=[databricks_mws_vpc_endpoint["workspace"]["vpc_endpoint_id"]],
+            ))
+        ```
         ## Modifying networks on running workspaces (AWS only)
 
         Due to specifics of platform APIs, changing any attribute of network configuration would cause `MwsNetworks` to be re-created - deleted & added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:
@@ -542,6 +618,82 @@ class MwsNetworks(pulumi.CustomResource):
                     aws_vpc_endpoint["workspace"],
                     aws_vpc_endpoint["relay"],
                 ]))
+        ```
+        ### Creating a Databricks on GCP workspace
+
+        > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) on GCP.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_google as google
+
+        config = pulumi.Config()
+        databricks_account_id = config.require_object("databricksAccountId")
+        dbx_private_vpc = google.index.Google_compute_network("dbxPrivateVpc",
+            project=var.google_project,
+            name=ftf-network-{random_string.suffix.result},
+            auto_create_subnetworks=False)
+        network_with_private_secondary_ip_ranges = google.index.Google_compute_subnetwork("network-with-private-secondary-ip-ranges",
+            name=ftest-dbx-{random_string.suffix.result},
+            ip_cidr_range=10.0.0.0/16,
+            region=us-central1,
+            network=dbx_private_vpc.id,
+            secondary_ip_range=[
+                {
+                    rangeName: pods,
+                    ipCidrRange: 10.1.0.0/16,
+                },
+                {
+                    rangeName: svc,
+                    ipCidrRange: 10.2.0.0/20,
+                },
+            ],
+            private_ip_google_access=True)
+        router = google.index.Google_compute_router("router",
+            name=fmy-router-{random_string.suffix.result},
+            region=network_with_private_secondary_ip_ranges.region,
+            network=dbx_private_vpc.id)
+        nat = google.index.Google_compute_router_nat("nat",
+            name=fmy-router-nat-{random_string.suffix.result},
+            router=router.name,
+            region=router.region,
+            nat_ip_allocate_option=AUTO_ONLY,
+            source_subnetwork_ip_ranges_to_nat=ALL_SUBNETWORKS_ALL_IP_RANGES)
+        this = databricks.MwsNetworks("this",
+            account_id=databricks_account_id,
+            network_name=f"test-demo-{random_string['suffix']['result']}",
+            gcp_network_info=databricks.MwsNetworksGcpNetworkInfoArgs(
+                network_project_id=var["google_project"],
+                vpc_id=dbx_private_vpc["name"],
+                subnet_id=google_compute_subnetwork["network_with_private_secondary_ip_ranges"]["name"],
+                subnet_region=google_compute_subnetwork["network_with_private_secondary_ip_ranges"]["region"],
+                pod_ip_range_name="pods",
+                service_ip_range_name="svc",
+            ))
+        ```
+
+        In order to create a VPC [that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the MwsNetworks resource. For example:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.MwsNetworks("this",
+            account_id=var["databricks_account_id"],
+            network_name=f"test-demo-{random_string['suffix']['result']}",
+            gcp_network_info=databricks.MwsNetworksGcpNetworkInfoArgs(
+                network_project_id=var["google_project"],
+                vpc_id=google_compute_network["dbx_private_vpc"]["name"],
+                subnet_id=google_compute_subnetwork["network_with_private_secondary_ip_ranges"]["name"],
+                subnet_region=google_compute_subnetwork["network_with_private_secondary_ip_ranges"]["region"],
+                pod_ip_range_name="pods",
+                service_ip_range_name="svc",
+            ),
+            vpc_endpoints=databricks.MwsNetworksVpcEndpointsArgs(
+                dataplane_relays=[databricks_mws_vpc_endpoint["relay"]["vpc_endpoint_id"]],
+                rest_apis=[databricks_mws_vpc_endpoint["workspace"]["vpc_endpoint_id"]],
+            ))
         ```
         ## Modifying networks on running workspaces (AWS only)
 

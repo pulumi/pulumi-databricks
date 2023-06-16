@@ -16,6 +16,7 @@ class CatalogArgs:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -27,7 +28,8 @@ class CatalogArgs:
         The set of arguments for constructing a Catalog resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
-        :param pulumi.Input[str] name: Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
         :param pulumi.Input[str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
@@ -38,6 +40,8 @@ class CatalogArgs:
             pulumi.set(__self__, "comment", comment)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
+        if isolation_mode is not None:
+            pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -78,6 +82,18 @@ class CatalogArgs:
         pulumi.set(self, "force_destroy", value)
 
     @property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        """
+        return pulumi.get(self, "isolation_mode")
+
+    @isolation_mode.setter
+    def isolation_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "isolation_mode", value)
+
+    @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "metastore_id")
@@ -90,7 +106,7 @@ class CatalogArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+        Name of Catalog relative to parent metastore.
         """
         return pulumi.get(self, "name")
 
@@ -164,6 +180,7 @@ class _CatalogState:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -175,7 +192,8 @@ class _CatalogState:
         Input properties used for looking up and filtering Catalog resources.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
-        :param pulumi.Input[str] name: Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
         :param pulumi.Input[str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
@@ -186,6 +204,8 @@ class _CatalogState:
             pulumi.set(__self__, "comment", comment)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
+        if isolation_mode is not None:
+            pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
@@ -226,6 +246,18 @@ class _CatalogState:
         pulumi.set(self, "force_destroy", value)
 
     @property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        """
+        return pulumi.get(self, "isolation_mode")
+
+    @isolation_mode.setter
+    def isolation_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "isolation_mode", value)
+
+    @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "metastore_id")
@@ -238,7 +270,7 @@ class _CatalogState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+        Name of Catalog relative to parent metastore.
         """
         return pulumi.get(self, "name")
 
@@ -314,6 +346,7 @@ class Catalog(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -356,7 +389,8 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
-        :param pulumi.Input[str] name: Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
         :param pulumi.Input[str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
@@ -416,6 +450,7 @@ class Catalog(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -434,6 +469,7 @@ class Catalog(pulumi.CustomResource):
 
             __props__.__dict__["comment"] = comment
             __props__.__dict__["force_destroy"] = force_destroy
+            __props__.__dict__["isolation_mode"] = isolation_mode
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
@@ -453,6 +489,7 @@ class Catalog(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
+            isolation_mode: Optional[pulumi.Input[str]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
@@ -469,7 +506,8 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
-        :param pulumi.Input[str] name: Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
         :param pulumi.Input[str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
@@ -482,6 +520,7 @@ class Catalog(pulumi.CustomResource):
 
         __props__.__dict__["comment"] = comment
         __props__.__dict__["force_destroy"] = force_destroy
+        __props__.__dict__["isolation_mode"] = isolation_mode
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
@@ -508,6 +547,14 @@ class Catalog(pulumi.CustomResource):
         return pulumi.get(self, "force_destroy")
 
     @property
+    @pulumi.getter(name="isolationMode")
+    def isolation_mode(self) -> pulumi.Output[str]:
+        """
+        Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        """
+        return pulumi.get(self, "isolation_mode")
+
+    @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "metastore_id")
@@ -516,7 +563,7 @@ class Catalog(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+        Name of Catalog relative to parent metastore.
         """
         return pulumi.get(self, "name")
 

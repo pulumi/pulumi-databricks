@@ -38,6 +38,12 @@ namespace Pulumi.Databricks
         [Output("credentialName")]
         public Output<string> CredentialName { get; private set; } = null!;
 
+        /// <summary>
+        /// Destroy external location regardless of its dependents.
+        /// </summary>
+        [Output("forceDestroy")]
+        public Output<bool?> ForceDestroy { get; private set; } = null!;
+
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
@@ -52,6 +58,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the external location is read-only.
+        /// </summary>
+        [Output("readOnly")]
+        public Output<bool?> ReadOnly { get; private set; } = null!;
 
         /// <summary>
         /// Suppress validation errors if any &amp; force save the external location
@@ -123,6 +135,12 @@ namespace Pulumi.Databricks
         [Input("credentialName", required: true)]
         public Input<string> CredentialName { get; set; } = null!;
 
+        /// <summary>
+        /// Destroy external location regardless of its dependents.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
+
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
@@ -137,6 +155,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        /// <summary>
+        /// Indicates whether the external location is read-only.
+        /// </summary>
+        [Input("readOnly")]
+        public Input<bool>? ReadOnly { get; set; }
 
         /// <summary>
         /// Suppress validation errors if any &amp; force save the external location
@@ -170,6 +194,12 @@ namespace Pulumi.Databricks
         [Input("credentialName")]
         public Input<string>? CredentialName { get; set; }
 
+        /// <summary>
+        /// Destroy external location regardless of its dependents.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
+
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
@@ -184,6 +214,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        /// <summary>
+        /// Indicates whether the external location is read-only.
+        /// </summary>
+        [Input("readOnly")]
+        public Input<bool>? ReadOnly { get; set; }
 
         /// <summary>
         /// Suppress validation errors if any &amp; force save the external location

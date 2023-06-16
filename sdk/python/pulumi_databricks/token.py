@@ -193,6 +193,35 @@ class Token(pulumi.CustomResource):
         """
         This resource creates [Personal Access Tokens](https://docs.databricks.com/sql/user/security/personal-access-tokens.html) for the same user that is authenticated with the provider. Most likely you should use OboToken to create [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a ServicePrincipal in Databricks workspaces on AWS. Databricks workspaces on other clouds use their own native OAuth token flows.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider in normal mode
+        created_workspace = databricks.Provider("createdWorkspace", host=databricks_mws_workspaces["this"]["workspace_url"])
+        # create PAT token to provision entities within workspace
+        pat = databricks.Token("pat",
+            comment="Terraform Provisioning",
+            lifetime_seconds=8640000,
+            opts=pulumi.ResourceOptions(provider=databricks["created_workspace"]))
+        pulumi.export("databricksToken", pat.token_value)
+        ```
+
+        A token can be automatically rotated by taking a dependency on the `time_rotating` resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumiverse_time as time
+
+        this = time.Rotating("this", rotation_days=30)
+        pat = databricks.Token("pat",
+            comment=this.rfc3339.apply(lambda rfc3339: f"Terraform (created: {rfc3339})"),
+            lifetime_seconds=60 * 24 * 60 * 60)
+        ```
+
         ## Import
 
         -> **Note** Importing this resource is not currently supported.
@@ -210,6 +239,35 @@ class Token(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource creates [Personal Access Tokens](https://docs.databricks.com/sql/user/security/personal-access-tokens.html) for the same user that is authenticated with the provider. Most likely you should use OboToken to create [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a ServicePrincipal in Databricks workspaces on AWS. Databricks workspaces on other clouds use their own native OAuth token flows.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # initialize provider in normal mode
+        created_workspace = databricks.Provider("createdWorkspace", host=databricks_mws_workspaces["this"]["workspace_url"])
+        # create PAT token to provision entities within workspace
+        pat = databricks.Token("pat",
+            comment="Terraform Provisioning",
+            lifetime_seconds=8640000,
+            opts=pulumi.ResourceOptions(provider=databricks["created_workspace"]))
+        pulumi.export("databricksToken", pat.token_value)
+        ```
+
+        A token can be automatically rotated by taking a dependency on the `time_rotating` resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumiverse_time as time
+
+        this = time.Rotating("this", rotation_days=30)
+        pat = databricks.Token("pat",
+            comment=this.rfc3339.apply(lambda rfc3339: f"Terraform (created: {rfc3339})"),
+            lifetime_seconds=60 * 24 * 60 * 60)
+        ```
 
         ## Import
 

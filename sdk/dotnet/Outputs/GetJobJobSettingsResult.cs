@@ -16,6 +16,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly int? CreatedTime;
         public readonly string? CreatorUserName;
         public readonly int? JobId;
+        public readonly string RunAsUserName;
         public readonly Outputs.GetJobJobSettingsSettingsResult? Settings;
 
         [OutputConstructor]
@@ -26,11 +27,14 @@ namespace Pulumi.Databricks.Outputs
 
             int? jobId,
 
+            string runAsUserName,
+
             Outputs.GetJobJobSettingsSettingsResult? settings)
         {
             CreatedTime = createdTime;
             CreatorUserName = creatorUserName;
             JobId = jobId;
+            RunAsUserName = runAsUserName;
             Settings = settings;
         }
     }

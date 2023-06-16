@@ -125,6 +125,10 @@ export class StorageCredential extends pulumi.CustomResource {
      * `awsIamRole` optional configuration block for credential details for AWS:
      */
     public readonly owner!: pulumi.Output<string>;
+    /**
+     * Indicates whether the storage credential is only usable for read operations.
+     */
+    public readonly readOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a StorageCredential resource with the given unique name, arguments, and options.
@@ -148,6 +152,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
+            resourceInputs["readOnly"] = state ? state.readOnly : undefined;
         } else {
             const args = argsOrState as StorageCredentialArgs | undefined;
             resourceInputs["awsIamRole"] = args ? args.awsIamRole : undefined;
@@ -159,6 +164,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
+            resourceInputs["readOnly"] = args ? args.readOnly : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StorageCredential.__pulumiType, name, resourceInputs, opts);
@@ -186,6 +192,10 @@ export interface StorageCredentialState {
      * `awsIamRole` optional configuration block for credential details for AWS:
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Indicates whether the storage credential is only usable for read operations.
+     */
+    readOnly?: pulumi.Input<boolean>;
 }
 
 /**
@@ -209,4 +219,8 @@ export interface StorageCredentialArgs {
      * `awsIamRole` optional configuration block for credential details for AWS:
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Indicates whether the storage credential is only usable for read operations.
+     */
+    readOnly?: pulumi.Input<boolean>;
 }
