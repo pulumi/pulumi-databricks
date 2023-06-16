@@ -14,6 +14,32 @@ import (
 //
 // Retrieves information about a getSqlWarehouse using its id. This could be retrieved programmatically using getSqlWarehouses data source.
 //
+// ## Example Usage
+//
+// # Retrieve attributes of each SQL warehouses in a workspace
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetSqlWarehouses(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_ := "TODO: For expression"
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Related resources
 //
 // The following resources are often used in the same context:

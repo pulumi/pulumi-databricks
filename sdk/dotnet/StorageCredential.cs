@@ -173,6 +173,12 @@ namespace Pulumi.Databricks
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether the storage credential is only usable for read operations.
+        /// </summary>
+        [Output("readOnly")]
+        public Output<bool?> ReadOnly { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a StorageCredential resource with the given unique name, arguments, and options.
@@ -254,6 +260,12 @@ namespace Pulumi.Databricks
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// Indicates whether the storage credential is only usable for read operations.
+        /// </summary>
+        [Input("readOnly")]
+        public Input<bool>? ReadOnly { get; set; }
+
         public StorageCredentialArgs()
         {
         }
@@ -296,6 +308,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        /// <summary>
+        /// Indicates whether the storage credential is only usable for read operations.
+        /// </summary>
+        [Input("readOnly")]
+        public Input<bool>? ReadOnly { get; set; }
 
         public StorageCredentialState()
         {

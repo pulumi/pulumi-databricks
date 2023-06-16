@@ -82,6 +82,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("retryOnTimeout")]
         public Input<bool>? RetryOnTimeout { get; set; }
 
+        [Input("runAs")]
+        public Input<Inputs.GetJobJobSettingsSettingsRunAsInputArgs>? RunAs { get; set; }
+
         [Input("schedule")]
         public Input<Inputs.GetJobJobSettingsSettingsScheduleInputArgs>? Schedule { get; set; }
 

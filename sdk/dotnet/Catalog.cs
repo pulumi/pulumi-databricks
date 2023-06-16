@@ -63,11 +63,17 @@ namespace Pulumi.Databricks
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        /// </summary>
+        [Output("isolationMode")]
+        public Output<string> IsolationMode { get; private set; } = null!;
+
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+        /// Name of Catalog relative to parent metastore.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -160,11 +166,17 @@ namespace Pulumi.Databricks
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        /// <summary>
+        /// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        /// </summary>
+        [Input("isolationMode")]
+        public Input<string>? IsolationMode { get; set; }
+
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
-        /// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+        /// Name of Catalog relative to parent metastore.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -225,11 +237,17 @@ namespace Pulumi.Databricks
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        /// <summary>
+        /// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        /// </summary>
+        [Input("isolationMode")]
+        public Input<string>? IsolationMode { get; set; }
+
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
-        /// Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+        /// Name of Catalog relative to parent metastore.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -93,6 +93,7 @@ export class Job extends pulumi.CustomResource {
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      */
     public readonly retryOnTimeout!: pulumi.Output<boolean | undefined>;
+    public readonly runAs!: pulumi.Output<outputs.JobRunAs | undefined>;
     /**
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
      */
@@ -149,6 +150,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["pythonWheelTask"] = state ? state.pythonWheelTask : undefined;
             resourceInputs["queue"] = state ? state.queue : undefined;
             resourceInputs["retryOnTimeout"] = state ? state.retryOnTimeout : undefined;
+            resourceInputs["runAs"] = state ? state.runAs : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
             resourceInputs["sparkJarTask"] = state ? state.sparkJarTask : undefined;
             resourceInputs["sparkPythonTask"] = state ? state.sparkPythonTask : undefined;
@@ -181,6 +183,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["pythonWheelTask"] = args ? args.pythonWheelTask : undefined;
             resourceInputs["queue"] = args ? args.queue : undefined;
             resourceInputs["retryOnTimeout"] = args ? args.retryOnTimeout : undefined;
+            resourceInputs["runAs"] = args ? args.runAs : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["sparkJarTask"] = args ? args.sparkJarTask : undefined;
             resourceInputs["sparkPythonTask"] = args ? args.sparkPythonTask : undefined;
@@ -251,6 +254,7 @@ export interface JobState {
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      */
     retryOnTimeout?: pulumi.Input<boolean>;
+    runAs?: pulumi.Input<inputs.JobRunAs>;
     /**
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
      */
@@ -329,6 +333,7 @@ export interface JobArgs {
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      */
     retryOnTimeout?: pulumi.Input<boolean>;
+    runAs?: pulumi.Input<inputs.JobRunAs>;
     /**
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
      */

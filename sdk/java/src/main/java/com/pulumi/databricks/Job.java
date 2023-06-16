@@ -22,6 +22,7 @@ import com.pulumi.databricks.outputs.JobNotificationSettings;
 import com.pulumi.databricks.outputs.JobPipelineTask;
 import com.pulumi.databricks.outputs.JobPythonWheelTask;
 import com.pulumi.databricks.outputs.JobQueue;
+import com.pulumi.databricks.outputs.JobRunAs;
 import com.pulumi.databricks.outputs.JobSchedule;
 import com.pulumi.databricks.outputs.JobSparkJarTask;
 import com.pulumi.databricks.outputs.JobSparkPythonTask;
@@ -249,6 +250,12 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> retryOnTimeout() {
         return Codegen.optional(this.retryOnTimeout);
+    }
+    @Export(name="runAs", type=JobRunAs.class, parameters={})
+    private Output</* @Nullable */ JobRunAs> runAs;
+
+    public Output<Optional<JobRunAs>> runAs() {
+        return Codegen.optional(this.runAs);
     }
     /**
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.

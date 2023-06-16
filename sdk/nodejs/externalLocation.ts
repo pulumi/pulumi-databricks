@@ -54,6 +54,10 @@ export class ExternalLocation extends pulumi.CustomResource {
      * Name of the databricks.StorageCredential to use with this External Location.
      */
     public readonly credentialName!: pulumi.Output<string>;
+    /**
+     * Destroy external location regardless of its dependents.
+     */
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     public readonly metastoreId!: pulumi.Output<string>;
     /**
      * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -63,6 +67,10 @@ export class ExternalLocation extends pulumi.CustomResource {
      * Username/groupname/sp applicationId of the external Location owner.
      */
     public readonly owner!: pulumi.Output<string>;
+    /**
+     * Indicates whether the external location is read-only.
+     */
+    public readonly readOnly!: pulumi.Output<boolean | undefined>;
     /**
      * Suppress validation errors if any & force save the external location
      */
@@ -87,9 +95,11 @@ export class ExternalLocation extends pulumi.CustomResource {
             const state = argsOrState as ExternalLocationState | undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
             resourceInputs["credentialName"] = state ? state.credentialName : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
+            resourceInputs["readOnly"] = state ? state.readOnly : undefined;
             resourceInputs["skipValidation"] = state ? state.skipValidation : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
@@ -102,9 +112,11 @@ export class ExternalLocation extends pulumi.CustomResource {
             }
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["credentialName"] = args ? args.credentialName : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
+            resourceInputs["readOnly"] = args ? args.readOnly : undefined;
             resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
         }
@@ -125,6 +137,10 @@ export interface ExternalLocationState {
      * Name of the databricks.StorageCredential to use with this External Location.
      */
     credentialName?: pulumi.Input<string>;
+    /**
+     * Destroy external location regardless of its dependents.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -134,6 +150,10 @@ export interface ExternalLocationState {
      * Username/groupname/sp applicationId of the external Location owner.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Indicates whether the external location is read-only.
+     */
+    readOnly?: pulumi.Input<boolean>;
     /**
      * Suppress validation errors if any & force save the external location
      */
@@ -156,6 +176,10 @@ export interface ExternalLocationArgs {
      * Name of the databricks.StorageCredential to use with this External Location.
      */
     credentialName: pulumi.Input<string>;
+    /**
+     * Destroy external location regardless of its dependents.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -165,6 +189,10 @@ export interface ExternalLocationArgs {
      * Username/groupname/sp applicationId of the external Location owner.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Indicates whether the external location is read-only.
+     */
+    readOnly?: pulumi.Input<boolean>;
     /**
      * Suppress validation errors if any & force save the external location
      */

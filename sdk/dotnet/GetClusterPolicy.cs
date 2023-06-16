@@ -98,13 +98,25 @@ namespace Pulumi.Databricks
         public string? Definition { get; set; }
 
         /// <summary>
+        /// Additional human-readable description of the cluster policy.
+        /// </summary>
+        [Input("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
         /// The id of the cluster policy.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Max number of clusters per user that can be active using this policy
+        /// If true, policy is a default policy created and managed by Databricks.
+        /// </summary>
+        [Input("isDefault")]
+        public bool? IsDefault { get; set; }
+
+        /// <summary>
+        /// Max number of clusters per user that can be active using this policy.
         /// </summary>
         [Input("maxClustersPerUser")]
         public int? MaxClustersPerUser { get; set; }
@@ -114,6 +126,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
+        /// </summary>
+        [Input("policyFamilyDefinitionOverrides")]
+        public string? PolicyFamilyDefinitionOverrides { get; set; }
+
+        /// <summary>
+        /// ID of the policy family.
+        /// </summary>
+        [Input("policyFamilyId")]
+        public string? PolicyFamilyId { get; set; }
 
         public GetClusterPolicyArgs()
         {
@@ -130,13 +154,25 @@ namespace Pulumi.Databricks
         public Input<string>? Definition { get; set; }
 
         /// <summary>
+        /// Additional human-readable description of the cluster policy.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The id of the cluster policy.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Max number of clusters per user that can be active using this policy
+        /// If true, policy is a default policy created and managed by Databricks.
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
+
+        /// <summary>
+        /// Max number of clusters per user that can be active using this policy.
         /// </summary>
         [Input("maxClustersPerUser")]
         public Input<int>? MaxClustersPerUser { get; set; }
@@ -146,6 +182,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
+        /// </summary>
+        [Input("policyFamilyDefinitionOverrides")]
+        public Input<string>? PolicyFamilyDefinitionOverrides { get; set; }
+
+        /// <summary>
+        /// ID of the policy family.
+        /// </summary>
+        [Input("policyFamilyId")]
+        public Input<string>? PolicyFamilyId { get; set; }
 
         public GetClusterPolicyInvokeArgs()
         {
@@ -162,29 +210,57 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Definition;
         /// <summary>
+        /// Additional human-readable description of the cluster policy.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
         /// The id of the cluster policy.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Max number of clusters per user that can be active using this policy
+        /// If true, policy is a default policy created and managed by Databricks.
+        /// </summary>
+        public readonly bool IsDefault;
+        /// <summary>
+        /// Max number of clusters per user that can be active using this policy.
         /// </summary>
         public readonly int MaxClustersPerUser;
         public readonly string Name;
+        /// <summary>
+        /// Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
+        /// </summary>
+        public readonly string PolicyFamilyDefinitionOverrides;
+        /// <summary>
+        /// ID of the policy family.
+        /// </summary>
+        public readonly string PolicyFamilyId;
 
         [OutputConstructor]
         private GetClusterPolicyResult(
             string definition,
 
+            string description,
+
             string id,
+
+            bool isDefault,
 
             int maxClustersPerUser,
 
-            string name)
+            string name,
+
+            string policyFamilyDefinitionOverrides,
+
+            string policyFamilyId)
         {
             Definition = definition;
+            Description = description;
             Id = id;
+            IsDefault = isDefault;
             MaxClustersPerUser = maxClustersPerUser;
             Name = name;
+            PolicyFamilyDefinitionOverrides = policyFamilyDefinitionOverrides;
+            PolicyFamilyId = policyFamilyId;
         }
     }
 }

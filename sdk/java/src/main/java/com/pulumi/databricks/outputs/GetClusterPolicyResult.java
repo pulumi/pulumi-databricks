@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -16,16 +17,36 @@ public final class GetClusterPolicyResult {
      */
     private String definition;
     /**
+     * @return Additional human-readable description of the cluster policy.
+     * 
+     */
+    private String description;
+    /**
      * @return The id of the cluster policy.
      * 
      */
     private String id;
     /**
-     * @return Max number of clusters per user that can be active using this policy
+     * @return If true, policy is a default policy created and managed by Databricks.
+     * 
+     */
+    private Boolean isDefault;
+    /**
+     * @return Max number of clusters per user that can be active using this policy.
      * 
      */
     private Integer maxClustersPerUser;
     private String name;
+    /**
+     * @return Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
+     * 
+     */
+    private String policyFamilyDefinitionOverrides;
+    /**
+     * @return ID of the policy family.
+     * 
+     */
+    private String policyFamilyId;
 
     private GetClusterPolicyResult() {}
     /**
@@ -36,6 +57,13 @@ public final class GetClusterPolicyResult {
         return this.definition;
     }
     /**
+     * @return Additional human-readable description of the cluster policy.
+     * 
+     */
+    public String description() {
+        return this.description;
+    }
+    /**
      * @return The id of the cluster policy.
      * 
      */
@@ -43,7 +71,14 @@ public final class GetClusterPolicyResult {
         return this.id;
     }
     /**
-     * @return Max number of clusters per user that can be active using this policy
+     * @return If true, policy is a default policy created and managed by Databricks.
+     * 
+     */
+    public Boolean isDefault() {
+        return this.isDefault;
+    }
+    /**
+     * @return Max number of clusters per user that can be active using this policy.
      * 
      */
     public Integer maxClustersPerUser() {
@@ -51,6 +86,20 @@ public final class GetClusterPolicyResult {
     }
     public String name() {
         return this.name;
+    }
+    /**
+     * @return Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
+     * 
+     */
+    public String policyFamilyDefinitionOverrides() {
+        return this.policyFamilyDefinitionOverrides;
+    }
+    /**
+     * @return ID of the policy family.
+     * 
+     */
+    public String policyFamilyId() {
+        return this.policyFamilyId;
     }
 
     public static Builder builder() {
@@ -63,16 +112,24 @@ public final class GetClusterPolicyResult {
     @CustomType.Builder
     public static final class Builder {
         private String definition;
+        private String description;
         private String id;
+        private Boolean isDefault;
         private Integer maxClustersPerUser;
         private String name;
+        private String policyFamilyDefinitionOverrides;
+        private String policyFamilyId;
         public Builder() {}
         public Builder(GetClusterPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.definition = defaults.definition;
+    	      this.description = defaults.description;
     	      this.id = defaults.id;
+    	      this.isDefault = defaults.isDefault;
     	      this.maxClustersPerUser = defaults.maxClustersPerUser;
     	      this.name = defaults.name;
+    	      this.policyFamilyDefinitionOverrides = defaults.policyFamilyDefinitionOverrides;
+    	      this.policyFamilyId = defaults.policyFamilyId;
         }
 
         @CustomType.Setter
@@ -81,8 +138,18 @@ public final class GetClusterPolicyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder description(String description) {
+            this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isDefault(Boolean isDefault) {
+            this.isDefault = Objects.requireNonNull(isDefault);
             return this;
         }
         @CustomType.Setter
@@ -95,12 +162,26 @@ public final class GetClusterPolicyResult {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
+        public Builder policyFamilyDefinitionOverrides(String policyFamilyDefinitionOverrides) {
+            this.policyFamilyDefinitionOverrides = Objects.requireNonNull(policyFamilyDefinitionOverrides);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder policyFamilyId(String policyFamilyId) {
+            this.policyFamilyId = Objects.requireNonNull(policyFamilyId);
+            return this;
+        }
         public GetClusterPolicyResult build() {
             final var o = new GetClusterPolicyResult();
             o.definition = definition;
+            o.description = description;
             o.id = id;
+            o.isDefault = isDefault;
             o.maxClustersPerUser = maxClustersPerUser;
             o.name = name;
+            o.policyFamilyDefinitionOverrides = policyFamilyDefinitionOverrides;
+            o.policyFamilyId = policyFamilyId;
             return o;
         }
     }

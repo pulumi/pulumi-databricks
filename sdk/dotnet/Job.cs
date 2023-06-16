@@ -111,6 +111,9 @@ namespace Pulumi.Databricks
         [Output("retryOnTimeout")]
         public Output<bool?> RetryOnTimeout { get; private set; } = null!;
 
+        [Output("runAs")]
+        public Output<Outputs.JobRunAs?> RunAs { get; private set; } = null!;
+
         /// <summary>
         /// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
         /// </summary>
@@ -301,6 +304,9 @@ namespace Pulumi.Databricks
         [Input("retryOnTimeout")]
         public Input<bool>? RetryOnTimeout { get; set; }
 
+        [Input("runAs")]
+        public Input<Inputs.JobRunAsArgs>? RunAs { get; set; }
+
         /// <summary>
         /// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
         /// </summary>
@@ -456,6 +462,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("retryOnTimeout")]
         public Input<bool>? RetryOnTimeout { get; set; }
+
+        [Input("runAs")]
+        public Input<Inputs.JobRunAsGetArgs>? RunAs { get; set; }
 
         /// <summary>
         /// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.

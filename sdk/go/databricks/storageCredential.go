@@ -168,6 +168,8 @@ type StorageCredential struct {
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner pulumi.StringOutput `pulumi:"owner"`
+	// Indicates whether the storage credential is only usable for read operations.
+	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
 }
 
 // NewStorageCredential registers a new resource with the given unique name, arguments, and options.
@@ -212,6 +214,8 @@ type storageCredentialState struct {
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner *string `pulumi:"owner"`
+	// Indicates whether the storage credential is only usable for read operations.
+	ReadOnly *bool `pulumi:"readOnly"`
 }
 
 type StorageCredentialState struct {
@@ -228,6 +232,8 @@ type StorageCredentialState struct {
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner pulumi.StringPtrInput
+	// Indicates whether the storage credential is only usable for read operations.
+	ReadOnly pulumi.BoolPtrInput
 }
 
 func (StorageCredentialState) ElementType() reflect.Type {
@@ -248,6 +254,8 @@ type storageCredentialArgs struct {
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner *string `pulumi:"owner"`
+	// Indicates whether the storage credential is only usable for read operations.
+	ReadOnly *bool `pulumi:"readOnly"`
 }
 
 // The set of arguments for constructing a StorageCredential resource.
@@ -265,6 +273,8 @@ type StorageCredentialArgs struct {
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner pulumi.StringPtrInput
+	// Indicates whether the storage credential is only usable for read operations.
+	ReadOnly pulumi.BoolPtrInput
 }
 
 func (StorageCredentialArgs) ElementType() reflect.Type {
@@ -400,6 +410,11 @@ func (o StorageCredentialOutput) Name() pulumi.StringOutput {
 // `awsIamRole` optional configuration block for credential details for AWS:
 func (o StorageCredentialOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+// Indicates whether the storage credential is only usable for read operations.
+func (o StorageCredentialOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StorageCredential) pulumi.BoolPtrOutput { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
 type StorageCredentialArrayOutput struct{ *pulumi.OutputState }

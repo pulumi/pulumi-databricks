@@ -17,6 +17,7 @@ import com.pulumi.databricks.inputs.JobNotificationSettingsArgs;
 import com.pulumi.databricks.inputs.JobPipelineTaskArgs;
 import com.pulumi.databricks.inputs.JobPythonWheelTaskArgs;
 import com.pulumi.databricks.inputs.JobQueueArgs;
+import com.pulumi.databricks.inputs.JobRunAsArgs;
 import com.pulumi.databricks.inputs.JobScheduleArgs;
 import com.pulumi.databricks.inputs.JobSparkJarTaskArgs;
 import com.pulumi.databricks.inputs.JobSparkPythonTaskArgs;
@@ -259,6 +260,13 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.retryOnTimeout);
     }
 
+    @Import(name="runAs")
+    private @Nullable Output<JobRunAsArgs> runAs;
+
+    public Optional<Output<JobRunAsArgs>> runAs() {
+        return Optional.ofNullable(this.runAs);
+    }
+
     /**
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
      * 
@@ -384,6 +392,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.pythonWheelTask = $.pythonWheelTask;
         this.queue = $.queue;
         this.retryOnTimeout = $.retryOnTimeout;
+        this.runAs = $.runAs;
         this.schedule = $.schedule;
         this.sparkJarTask = $.sparkJarTask;
         this.sparkPythonTask = $.sparkPythonTask;
@@ -732,6 +741,15 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder retryOnTimeout(Boolean retryOnTimeout) {
             return retryOnTimeout(Output.of(retryOnTimeout));
+        }
+
+        public Builder runAs(@Nullable Output<JobRunAsArgs> runAs) {
+            $.runAs = runAs;
+            return this;
+        }
+
+        public Builder runAs(JobRunAsArgs runAs) {
+            return runAs(Output.of(runAs));
         }
 
         /**

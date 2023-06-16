@@ -347,7 +347,7 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
             location=var["subnet_region"],
             cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
                 gcp=databricks.MwsWorkspacesCloudResourceContainerGcpArgs(
-                    project_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    project_id=var["google_project"],
                 ),
             ),
             gke_config=databricks.MwsWorkspacesGkeConfigArgs(
@@ -445,7 +445,7 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
             location=var["subnet_region"],
             cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
                 gcp=databricks.MwsWorkspacesCloudResourceContainerGcpArgs(
-                    project_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    project_id=var["google_project"],
                 ),
             ),
             gke_config=databricks.MwsWorkspacesGkeConfigArgs(

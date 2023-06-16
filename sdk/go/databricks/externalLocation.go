@@ -32,11 +32,15 @@ type ExternalLocation struct {
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Name of the StorageCredential to use with this External Location.
 	CredentialName pulumi.StringOutput `pulumi:"credentialName"`
-	MetastoreId    pulumi.StringOutput `pulumi:"metastoreId"`
+	// Destroy external location regardless of its dependents.
+	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
+	MetastoreId  pulumi.StringOutput  `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Username/groupname/sp applicationId of the external Location owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
+	// Indicates whether the external location is read-only.
+	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
 	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
@@ -82,11 +86,15 @@ type externalLocationState struct {
 	Comment *string `pulumi:"comment"`
 	// Name of the StorageCredential to use with this External Location.
 	CredentialName *string `pulumi:"credentialName"`
-	MetastoreId    *string `pulumi:"metastoreId"`
+	// Destroy external location regardless of its dependents.
+	ForceDestroy *bool   `pulumi:"forceDestroy"`
+	MetastoreId  *string `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the external Location owner.
 	Owner *string `pulumi:"owner"`
+	// Indicates whether the external location is read-only.
+	ReadOnly *bool `pulumi:"readOnly"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation *bool `pulumi:"skipValidation"`
 	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
@@ -98,11 +106,15 @@ type ExternalLocationState struct {
 	Comment pulumi.StringPtrInput
 	// Name of the StorageCredential to use with this External Location.
 	CredentialName pulumi.StringPtrInput
-	MetastoreId    pulumi.StringPtrInput
+	// Destroy external location regardless of its dependents.
+	ForceDestroy pulumi.BoolPtrInput
+	MetastoreId  pulumi.StringPtrInput
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the external Location owner.
 	Owner pulumi.StringPtrInput
+	// Indicates whether the external location is read-only.
+	ReadOnly pulumi.BoolPtrInput
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrInput
 	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
@@ -117,12 +129,16 @@ type externalLocationArgs struct {
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
 	// Name of the StorageCredential to use with this External Location.
-	CredentialName string  `pulumi:"credentialName"`
-	MetastoreId    *string `pulumi:"metastoreId"`
+	CredentialName string `pulumi:"credentialName"`
+	// Destroy external location regardless of its dependents.
+	ForceDestroy *bool   `pulumi:"forceDestroy"`
+	MetastoreId  *string `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the external Location owner.
 	Owner *string `pulumi:"owner"`
+	// Indicates whether the external location is read-only.
+	ReadOnly *bool `pulumi:"readOnly"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation *bool `pulumi:"skipValidation"`
 	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
@@ -135,11 +151,15 @@ type ExternalLocationArgs struct {
 	Comment pulumi.StringPtrInput
 	// Name of the StorageCredential to use with this External Location.
 	CredentialName pulumi.StringInput
-	MetastoreId    pulumi.StringPtrInput
+	// Destroy external location regardless of its dependents.
+	ForceDestroy pulumi.BoolPtrInput
+	MetastoreId  pulumi.StringPtrInput
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the external Location owner.
 	Owner pulumi.StringPtrInput
+	// Indicates whether the external location is read-only.
+	ReadOnly pulumi.BoolPtrInput
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrInput
 	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
@@ -243,6 +263,11 @@ func (o ExternalLocationOutput) CredentialName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.CredentialName }).(pulumi.StringOutput)
 }
 
+// Destroy external location regardless of its dependents.
+func (o ExternalLocationOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
 func (o ExternalLocationOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
@@ -255,6 +280,11 @@ func (o ExternalLocationOutput) Name() pulumi.StringOutput {
 // Username/groupname/sp applicationId of the external Location owner.
 func (o ExternalLocationOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+// Indicates whether the external location is read-only.
+func (o ExternalLocationOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
 // Suppress validation errors if any & force save the external location

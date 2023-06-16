@@ -71,9 +71,13 @@ export class Catalog extends pulumi.CustomResource {
      * Delete catalog regardless of its contents.
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     */
+    public readonly isolationMode!: pulumi.Output<string>;
     public readonly metastoreId!: pulumi.Output<string>;
     /**
-     * Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+     * Name of Catalog relative to parent metastore.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -112,6 +116,7 @@ export class Catalog extends pulumi.CustomResource {
             const state = argsOrState as CatalogState | undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["isolationMode"] = state ? state.isolationMode : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
@@ -123,6 +128,7 @@ export class Catalog extends pulumi.CustomResource {
             const args = argsOrState as CatalogArgs | undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["isolationMode"] = args ? args.isolationMode : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
@@ -148,9 +154,13 @@ export interface CatalogState {
      * Delete catalog regardless of its contents.
      */
     forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     */
+    isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
     /**
-     * Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+     * Name of Catalog relative to parent metastore.
      */
     name?: pulumi.Input<string>;
     /**
@@ -187,9 +197,13 @@ export interface CatalogArgs {
      * Delete catalog regardless of its contents.
      */
     forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     */
+    isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
     /**
-     * Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+     * Name of Catalog relative to parent metastore.
      */
     name?: pulumi.Input<string>;
     /**

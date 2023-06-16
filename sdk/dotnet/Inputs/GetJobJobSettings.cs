@@ -21,6 +21,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("jobId")]
         public int? JobId { get; set; }
 
+        [Input("runAsUserName", required: true)]
+        public string RunAsUserName { get; set; } = null!;
+
         [Input("settings")]
         public Inputs.GetJobJobSettingsSettingsArgs? Settings { get; set; }
 

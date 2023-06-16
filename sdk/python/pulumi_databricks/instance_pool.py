@@ -503,6 +503,34 @@ class InstancePool(pulumi.CustomResource):
                 disk_count=1,
             ))
         ```
+        ## preloaded_docker_image sub_block
+
+        [Databricks Container Services](https://docs.databricks.com/clusters/custom-containers.html) lets you specify a Docker image when you create a cluster.  You need to enable Container Services in *Admin Console /  Advanced* page in the user interface. By enabling this feature, you acknowledge and agree that your usage of this feature is subject to the [applicable additional terms](http://www.databricks.com/product-specific-terms). You can instruct the instance pool to pre-download the Docker image onto the instances so when node is acquired for a cluster that requires a custom Docker image the setup process will be faster.
+
+        `preloaded_docker_image` configuration block has the following attributes:
+
+        * `url` - URL for the Docker image
+        * `basic_auth` - (Optional) `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+
+        Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_docker as docker
+
+        thisdocker_registry_image = docker.index.Docker_registry_image("thisdocker_registry_image",
+            name=f{azurerm_container_registry.this.login_server}/sample:latest,
+            build=[{}])
+        this_instance_pool = databricks.InstancePool("thisInstancePool", preloaded_docker_images=[databricks.InstancePoolPreloadedDockerImageArgs(
+            url=thisdocker_registry_image["name"],
+            basic_auth=databricks.InstancePoolPreloadedDockerImageBasicAuthArgs(
+                username=azurerm_container_registry["this"]["admin_username"],
+                password=azurerm_container_registry["this"]["admin_password"],
+            ),
+        )])
+        ```
+
         ## Access Control
 
         * Group and User can control which groups or individual users can create instance pools.
@@ -564,6 +592,34 @@ class InstancePool(pulumi.CustomResource):
                 disk_count=1,
             ))
         ```
+        ## preloaded_docker_image sub_block
+
+        [Databricks Container Services](https://docs.databricks.com/clusters/custom-containers.html) lets you specify a Docker image when you create a cluster.  You need to enable Container Services in *Admin Console /  Advanced* page in the user interface. By enabling this feature, you acknowledge and agree that your usage of this feature is subject to the [applicable additional terms](http://www.databricks.com/product-specific-terms). You can instruct the instance pool to pre-download the Docker image onto the instances so when node is acquired for a cluster that requires a custom Docker image the setup process will be faster.
+
+        `preloaded_docker_image` configuration block has the following attributes:
+
+        * `url` - URL for the Docker image
+        * `basic_auth` - (Optional) `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+
+        Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_docker as docker
+
+        thisdocker_registry_image = docker.index.Docker_registry_image("thisdocker_registry_image",
+            name=f{azurerm_container_registry.this.login_server}/sample:latest,
+            build=[{}])
+        this_instance_pool = databricks.InstancePool("thisInstancePool", preloaded_docker_images=[databricks.InstancePoolPreloadedDockerImageArgs(
+            url=thisdocker_registry_image["name"],
+            basic_auth=databricks.InstancePoolPreloadedDockerImageBasicAuthArgs(
+                username=azurerm_container_registry["this"]["admin_username"],
+                password=azurerm_container_registry["this"]["admin_password"],
+            ),
+        )])
+        ```
+
         ## Access Control
 
         * Group and User can control which groups or individual users can create instance pools.

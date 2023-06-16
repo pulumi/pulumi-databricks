@@ -17,29 +17,37 @@ class ExternalLocationArgs:
                  credential_name: pulumi.Input[str],
                  url: pulumi.Input[str],
                  comment: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ExternalLocation resource.
         :param pulumi.Input[str] credential_name: Name of the StorageCredential to use with this External Location.
         :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external Location owner.
+        :param pulumi.Input[bool] read_only: Indicates whether the external location is read-only.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
         """
         pulumi.set(__self__, "credential_name", credential_name)
         pulumi.set(__self__, "url", url)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
         if skip_validation is not None:
             pulumi.set(__self__, "skip_validation", skip_validation)
 
@@ -80,6 +88,18 @@ class ExternalLocationArgs:
         pulumi.set(self, "comment", value)
 
     @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Destroy external location regardless of its dependents.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
+
+    @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "metastore_id")
@@ -113,6 +133,18 @@ class ExternalLocationArgs:
         pulumi.set(self, "owner", value)
 
     @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the external location is read-only.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
     @pulumi.getter(name="skipValidation")
     def skip_validation(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -130,17 +162,21 @@ class _ExternalLocationState:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
                  credential_name: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ExternalLocation resources.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] credential_name: Name of the StorageCredential to use with this External Location.
+        :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external Location owner.
+        :param pulumi.Input[bool] read_only: Indicates whether the external location is read-only.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
         :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
@@ -148,12 +184,16 @@ class _ExternalLocationState:
             pulumi.set(__self__, "comment", comment)
         if credential_name is not None:
             pulumi.set(__self__, "credential_name", credential_name)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
         if skip_validation is not None:
             pulumi.set(__self__, "skip_validation", skip_validation)
         if url is not None:
@@ -184,6 +224,18 @@ class _ExternalLocationState:
         pulumi.set(self, "credential_name", value)
 
     @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Destroy external location regardless of its dependents.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
+
+    @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "metastore_id")
@@ -215,6 +267,18 @@ class _ExternalLocationState:
     @owner.setter
     def owner(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the external location is read-only.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
 
     @property
     @pulumi.getter(name="skipValidation")
@@ -248,9 +312,11 @@ class ExternalLocation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  credential_name: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -272,8 +338,10 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] credential_name: Name of the StorageCredential to use with this External Location.
+        :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external Location owner.
+        :param pulumi.Input[bool] read_only: Indicates whether the external location is read-only.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
         :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
@@ -314,9 +382,11 @@ class ExternalLocation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  credential_name: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -332,9 +402,11 @@ class ExternalLocation(pulumi.CustomResource):
             if credential_name is None and not opts.urn:
                 raise TypeError("Missing required property 'credential_name'")
             __props__.__dict__["credential_name"] = credential_name
+            __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
+            __props__.__dict__["read_only"] = read_only
             __props__.__dict__["skip_validation"] = skip_validation
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
@@ -351,9 +423,11 @@ class ExternalLocation(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: Optional[pulumi.Input[str]] = None,
             credential_name: Optional[pulumi.Input[str]] = None,
+            force_destroy: Optional[pulumi.Input[bool]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
+            read_only: Optional[pulumi.Input[bool]] = None,
             skip_validation: Optional[pulumi.Input[bool]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'ExternalLocation':
         """
@@ -365,8 +439,10 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] credential_name: Name of the StorageCredential to use with this External Location.
+        :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[str] name: Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external Location owner.
+        :param pulumi.Input[bool] read_only: Indicates whether the external location is read-only.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
         :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
@@ -376,9 +452,11 @@ class ExternalLocation(pulumi.CustomResource):
 
         __props__.__dict__["comment"] = comment
         __props__.__dict__["credential_name"] = credential_name
+        __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
+        __props__.__dict__["read_only"] = read_only
         __props__.__dict__["skip_validation"] = skip_validation
         __props__.__dict__["url"] = url
         return ExternalLocation(resource_name, opts=opts, __props__=__props__)
@@ -400,6 +478,14 @@ class ExternalLocation(pulumi.CustomResource):
         return pulumi.get(self, "credential_name")
 
     @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Destroy external location regardless of its dependents.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "metastore_id")
@@ -419,6 +505,14 @@ class ExternalLocation(pulumi.CustomResource):
         Username/groupname/sp application_id of the external Location owner.
         """
         return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether the external location is read-only.
+        """
+        return pulumi.get(self, "read_only")
 
     @property
     @pulumi.getter(name="skipValidation")

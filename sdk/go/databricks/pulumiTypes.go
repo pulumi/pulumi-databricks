@@ -14927,6 +14927,268 @@ func (o JobQueuePtrOutput) Elem() JobQueueOutput {
 	}).(JobQueueOutput)
 }
 
+type JobRunAs struct {
+	// The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := databricks.NewJob(ctx, "this", &databricks.JobArgs{
+	// 			RunAs: &databricks.JobRunAsArgs{
+	// 				ServicePrincipalName: pulumi.String("8d23ae77-912e-4a19-81e4-b9c3f5cc9349"),
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	UserName *string `pulumi:"userName"`
+}
+
+// JobRunAsInput is an input type that accepts JobRunAsArgs and JobRunAsOutput values.
+// You can construct a concrete instance of `JobRunAsInput` via:
+//
+//	JobRunAsArgs{...}
+type JobRunAsInput interface {
+	pulumi.Input
+
+	ToJobRunAsOutput() JobRunAsOutput
+	ToJobRunAsOutputWithContext(context.Context) JobRunAsOutput
+}
+
+type JobRunAsArgs struct {
+	// The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := databricks.NewJob(ctx, "this", &databricks.JobArgs{
+	// 			RunAs: &databricks.JobRunAsArgs{
+	// 				ServicePrincipalName: pulumi.String("8d23ae77-912e-4a19-81e4-b9c3f5cc9349"),
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	ServicePrincipalName pulumi.StringPtrInput `pulumi:"servicePrincipalName"`
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (JobRunAsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobRunAs)(nil)).Elem()
+}
+
+func (i JobRunAsArgs) ToJobRunAsOutput() JobRunAsOutput {
+	return i.ToJobRunAsOutputWithContext(context.Background())
+}
+
+func (i JobRunAsArgs) ToJobRunAsOutputWithContext(ctx context.Context) JobRunAsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobRunAsOutput)
+}
+
+func (i JobRunAsArgs) ToJobRunAsPtrOutput() JobRunAsPtrOutput {
+	return i.ToJobRunAsPtrOutputWithContext(context.Background())
+}
+
+func (i JobRunAsArgs) ToJobRunAsPtrOutputWithContext(ctx context.Context) JobRunAsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobRunAsOutput).ToJobRunAsPtrOutputWithContext(ctx)
+}
+
+// JobRunAsPtrInput is an input type that accepts JobRunAsArgs, JobRunAsPtr and JobRunAsPtrOutput values.
+// You can construct a concrete instance of `JobRunAsPtrInput` via:
+//
+//	        JobRunAsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobRunAsPtrInput interface {
+	pulumi.Input
+
+	ToJobRunAsPtrOutput() JobRunAsPtrOutput
+	ToJobRunAsPtrOutputWithContext(context.Context) JobRunAsPtrOutput
+}
+
+type jobRunAsPtrType JobRunAsArgs
+
+func JobRunAsPtr(v *JobRunAsArgs) JobRunAsPtrInput {
+	return (*jobRunAsPtrType)(v)
+}
+
+func (*jobRunAsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobRunAs)(nil)).Elem()
+}
+
+func (i *jobRunAsPtrType) ToJobRunAsPtrOutput() JobRunAsPtrOutput {
+	return i.ToJobRunAsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobRunAsPtrType) ToJobRunAsPtrOutputWithContext(ctx context.Context) JobRunAsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobRunAsPtrOutput)
+}
+
+type JobRunAsOutput struct{ *pulumi.OutputState }
+
+func (JobRunAsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobRunAs)(nil)).Elem()
+}
+
+func (o JobRunAsOutput) ToJobRunAsOutput() JobRunAsOutput {
+	return o
+}
+
+func (o JobRunAsOutput) ToJobRunAsOutputWithContext(ctx context.Context) JobRunAsOutput {
+	return o
+}
+
+func (o JobRunAsOutput) ToJobRunAsPtrOutput() JobRunAsPtrOutput {
+	return o.ToJobRunAsPtrOutputWithContext(context.Background())
+}
+
+func (o JobRunAsOutput) ToJobRunAsPtrOutputWithContext(ctx context.Context) JobRunAsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobRunAs) *JobRunAs {
+		return &v
+	}).(JobRunAsPtrOutput)
+}
+
+// The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+//
+// # Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewJob(ctx, "this", &databricks.JobArgs{
+//				RunAs: &databricks.JobRunAsArgs{
+//					ServicePrincipalName: pulumi.String("8d23ae77-912e-4a19-81e4-b9c3f5cc9349"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+func (o JobRunAsOutput) ServicePrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobRunAs) *string { return v.ServicePrincipalName }).(pulumi.StringPtrOutput)
+}
+
+// The email of an active workspace user. Non-admin users can only set this field to their own email.
+func (o JobRunAsOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobRunAs) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type JobRunAsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobRunAsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobRunAs)(nil)).Elem()
+}
+
+func (o JobRunAsPtrOutput) ToJobRunAsPtrOutput() JobRunAsPtrOutput {
+	return o
+}
+
+func (o JobRunAsPtrOutput) ToJobRunAsPtrOutputWithContext(ctx context.Context) JobRunAsPtrOutput {
+	return o
+}
+
+func (o JobRunAsPtrOutput) Elem() JobRunAsOutput {
+	return o.ApplyT(func(v *JobRunAs) JobRunAs {
+		if v != nil {
+			return *v
+		}
+		var ret JobRunAs
+		return ret
+	}).(JobRunAsOutput)
+}
+
+// The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+//
+// # Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewJob(ctx, "this", &databricks.JobArgs{
+//				RunAs: &databricks.JobRunAsArgs{
+//					ServicePrincipalName: pulumi.String("8d23ae77-912e-4a19-81e4-b9c3f5cc9349"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+func (o JobRunAsPtrOutput) ServicePrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobRunAs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePrincipalName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The email of an active workspace user. Non-admin users can only set this field to their own email.
+func (o JobRunAsPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobRunAs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
 type JobSchedule struct {
 	// Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
 	PauseStatus *string `pulumi:"pauseStatus"`
@@ -44744,6 +45006,7 @@ type GetJobJobSettings struct {
 	CreatedTime     *int                       `pulumi:"createdTime"`
 	CreatorUserName *string                    `pulumi:"creatorUserName"`
 	JobId           *int                       `pulumi:"jobId"`
+	RunAsUserName   string                     `pulumi:"runAsUserName"`
 	Settings        *GetJobJobSettingsSettings `pulumi:"settings"`
 }
 
@@ -44762,6 +45025,7 @@ type GetJobJobSettingsArgs struct {
 	CreatedTime     pulumi.IntPtrInput                `pulumi:"createdTime"`
 	CreatorUserName pulumi.StringPtrInput             `pulumi:"creatorUserName"`
 	JobId           pulumi.IntPtrInput                `pulumi:"jobId"`
+	RunAsUserName   pulumi.StringInput                `pulumi:"runAsUserName"`
 	Settings        GetJobJobSettingsSettingsPtrInput `pulumi:"settings"`
 }
 
@@ -44854,6 +45118,10 @@ func (o GetJobJobSettingsOutput) JobId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettings) *int { return v.JobId }).(pulumi.IntPtrOutput)
 }
 
+func (o GetJobJobSettingsOutput) RunAsUserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettings) string { return v.RunAsUserName }).(pulumi.StringOutput)
+}
+
 func (o GetJobJobSettingsOutput) Settings() GetJobJobSettingsSettingsPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettings) *GetJobJobSettingsSettings { return v.Settings }).(GetJobJobSettingsSettingsPtrOutput)
 }
@@ -44909,6 +45177,15 @@ func (o GetJobJobSettingsPtrOutput) JobId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o GetJobJobSettingsPtrOutput) RunAsUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RunAsUserName
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetJobJobSettingsPtrOutput) Settings() GetJobJobSettingsSettingsPtrOutput {
 	return o.ApplyT(func(v *GetJobJobSettings) *GetJobJobSettingsSettings {
 		if v == nil {
@@ -44939,6 +45216,7 @@ type GetJobJobSettingsSettings struct {
 	PythonWheelTask      *GetJobJobSettingsSettingsPythonWheelTask      `pulumi:"pythonWheelTask"`
 	Queue                *GetJobJobSettingsSettingsQueue                `pulumi:"queue"`
 	RetryOnTimeout       *bool                                          `pulumi:"retryOnTimeout"`
+	RunAs                *GetJobJobSettingsSettingsRunAs                `pulumi:"runAs"`
 	Schedule             *GetJobJobSettingsSettingsSchedule             `pulumi:"schedule"`
 	SparkJarTask         *GetJobJobSettingsSettingsSparkJarTask         `pulumi:"sparkJarTask"`
 	SparkPythonTask      *GetJobJobSettingsSettingsSparkPythonTask      `pulumi:"sparkPythonTask"`
@@ -44982,6 +45260,7 @@ type GetJobJobSettingsSettingsArgs struct {
 	PythonWheelTask      GetJobJobSettingsSettingsPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
 	Queue                GetJobJobSettingsSettingsQueuePtrInput                `pulumi:"queue"`
 	RetryOnTimeout       pulumi.BoolPtrInput                                   `pulumi:"retryOnTimeout"`
+	RunAs                GetJobJobSettingsSettingsRunAsPtrInput                `pulumi:"runAs"`
 	Schedule             GetJobJobSettingsSettingsSchedulePtrInput             `pulumi:"schedule"`
 	SparkJarTask         GetJobJobSettingsSettingsSparkJarTaskPtrInput         `pulumi:"sparkJarTask"`
 	SparkPythonTask      GetJobJobSettingsSettingsSparkPythonTaskPtrInput      `pulumi:"sparkPythonTask"`
@@ -45149,6 +45428,10 @@ func (o GetJobJobSettingsSettingsOutput) Queue() GetJobJobSettingsSettingsQueueP
 
 func (o GetJobJobSettingsSettingsOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *bool { return v.RetryOnTimeout }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsOutput) RunAs() GetJobJobSettingsSettingsRunAsPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsRunAs { return v.RunAs }).(GetJobJobSettingsSettingsRunAsPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsOutput) Schedule() GetJobJobSettingsSettingsSchedulePtrOutput {
@@ -45383,6 +45666,15 @@ func (o GetJobJobSettingsSettingsPtrOutput) RetryOnTimeout() pulumi.BoolPtrOutpu
 		}
 		return v.RetryOnTimeout
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsPtrOutput) RunAs() GetJobJobSettingsSettingsRunAsPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettings) *GetJobJobSettingsSettingsRunAs {
+		if v == nil {
+			return nil
+		}
+		return v.RunAs
+	}).(GetJobJobSettingsSettingsRunAsPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsPtrOutput) Schedule() GetJobJobSettingsSettingsSchedulePtrOutput {
@@ -54846,6 +55138,154 @@ func (o GetJobJobSettingsSettingsQueuePtrOutput) Elem() GetJobJobSettingsSetting
 	}).(GetJobJobSettingsSettingsQueueOutput)
 }
 
+type GetJobJobSettingsSettingsRunAs struct {
+	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
+	UserName             *string `pulumi:"userName"`
+}
+
+// GetJobJobSettingsSettingsRunAsInput is an input type that accepts GetJobJobSettingsSettingsRunAsArgs and GetJobJobSettingsSettingsRunAsOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsRunAsInput` via:
+//
+//	GetJobJobSettingsSettingsRunAsArgs{...}
+type GetJobJobSettingsSettingsRunAsInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsRunAsOutput() GetJobJobSettingsSettingsRunAsOutput
+	ToGetJobJobSettingsSettingsRunAsOutputWithContext(context.Context) GetJobJobSettingsSettingsRunAsOutput
+}
+
+type GetJobJobSettingsSettingsRunAsArgs struct {
+	ServicePrincipalName pulumi.StringPtrInput `pulumi:"servicePrincipalName"`
+	UserName             pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (GetJobJobSettingsSettingsRunAsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsRunAs)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsRunAsArgs) ToGetJobJobSettingsSettingsRunAsOutput() GetJobJobSettingsSettingsRunAsOutput {
+	return i.ToGetJobJobSettingsSettingsRunAsOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsRunAsArgs) ToGetJobJobSettingsSettingsRunAsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunAsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsRunAsOutput)
+}
+
+func (i GetJobJobSettingsSettingsRunAsArgs) ToGetJobJobSettingsSettingsRunAsPtrOutput() GetJobJobSettingsSettingsRunAsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsRunAsArgs) ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunAsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsRunAsOutput).ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsRunAsPtrInput is an input type that accepts GetJobJobSettingsSettingsRunAsArgs, GetJobJobSettingsSettingsRunAsPtr and GetJobJobSettingsSettingsRunAsPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsRunAsPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsRunAsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsRunAsPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsRunAsPtrOutput() GetJobJobSettingsSettingsRunAsPtrOutput
+	ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsRunAsPtrOutput
+}
+
+type getJobJobSettingsSettingsRunAsPtrType GetJobJobSettingsSettingsRunAsArgs
+
+func GetJobJobSettingsSettingsRunAsPtr(v *GetJobJobSettingsSettingsRunAsArgs) GetJobJobSettingsSettingsRunAsPtrInput {
+	return (*getJobJobSettingsSettingsRunAsPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsRunAsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsRunAs)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsRunAsPtrType) ToGetJobJobSettingsSettingsRunAsPtrOutput() GetJobJobSettingsSettingsRunAsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsRunAsPtrType) ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunAsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsRunAsPtrOutput)
+}
+
+type GetJobJobSettingsSettingsRunAsOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsRunAsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsRunAs)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsRunAsOutput) ToGetJobJobSettingsSettingsRunAsOutput() GetJobJobSettingsSettingsRunAsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsRunAsOutput) ToGetJobJobSettingsSettingsRunAsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunAsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsRunAsOutput) ToGetJobJobSettingsSettingsRunAsPtrOutput() GetJobJobSettingsSettingsRunAsPtrOutput {
+	return o.ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsRunAsOutput) ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunAsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsRunAs) *GetJobJobSettingsSettingsRunAs {
+		return &v
+	}).(GetJobJobSettingsSettingsRunAsPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsRunAsOutput) ServicePrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsRunAs) *string { return v.ServicePrincipalName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsRunAsOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsRunAs) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsRunAsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsRunAsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsRunAs)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsRunAsPtrOutput) ToGetJobJobSettingsSettingsRunAsPtrOutput() GetJobJobSettingsSettingsRunAsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsRunAsPtrOutput) ToGetJobJobSettingsSettingsRunAsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunAsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsRunAsPtrOutput) Elem() GetJobJobSettingsSettingsRunAsOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunAs) GetJobJobSettingsSettingsRunAs {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsRunAs
+		return ret
+	}).(GetJobJobSettingsSettingsRunAsOutput)
+}
+
+func (o GetJobJobSettingsSettingsRunAsPtrOutput) ServicePrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunAs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePrincipalName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsRunAsPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunAs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetJobJobSettingsSettingsSchedule struct {
 	PauseStatus          string `pulumi:"pauseStatus"`
 	QuartzCronExpression string `pulumi:"quartzCronExpression"`
@@ -64056,6 +64496,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPythonWheelTaskPtrInput)(nil)).Elem(), JobPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobQueueInput)(nil)).Elem(), JobQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobQueuePtrInput)(nil)).Elem(), JobQueueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobRunAsInput)(nil)).Elem(), JobRunAsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobRunAsPtrInput)(nil)).Elem(), JobRunAsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobScheduleInput)(nil)).Elem(), JobScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSchedulePtrInput)(nil)).Elem(), JobScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSparkJarTaskInput)(nil)).Elem(), JobSparkJarTaskArgs{})
@@ -64535,6 +64977,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPythonWheelTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsQueueInput)(nil)).Elem(), GetJobJobSettingsSettingsQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsQueuePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsQueueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsRunAsInput)(nil)).Elem(), GetJobJobSettingsSettingsRunAsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsRunAsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsRunAsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsScheduleInput)(nil)).Elem(), GetJobJobSettingsSettingsScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSchedulePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSparkJarTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsSparkJarTaskArgs{})
@@ -64831,6 +65275,8 @@ func init() {
 	pulumi.RegisterOutputType(JobPythonWheelTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobQueueOutput{})
 	pulumi.RegisterOutputType(JobQueuePtrOutput{})
+	pulumi.RegisterOutputType(JobRunAsOutput{})
+	pulumi.RegisterOutputType(JobRunAsPtrOutput{})
 	pulumi.RegisterOutputType(JobScheduleOutput{})
 	pulumi.RegisterOutputType(JobSchedulePtrOutput{})
 	pulumi.RegisterOutputType(JobSparkJarTaskOutput{})
@@ -65310,6 +65756,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPythonWheelTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsQueueOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsQueuePtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsRunAsOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsRunAsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsScheduleOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSchedulePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSparkJarTaskOutput{})

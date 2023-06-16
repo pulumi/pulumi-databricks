@@ -102,6 +102,7 @@ __all__ = [
     'JobPipelineTaskArgs',
     'JobPythonWheelTaskArgs',
     'JobQueueArgs',
+    'JobRunAsArgs',
     'JobScheduleArgs',
     'JobSparkJarTaskArgs',
     'JobSparkPythonTaskArgs',
@@ -342,6 +343,7 @@ __all__ = [
     'GetJobJobSettingsSettingsPipelineTaskArgs',
     'GetJobJobSettingsSettingsPythonWheelTaskArgs',
     'GetJobJobSettingsSettingsQueueArgs',
+    'GetJobJobSettingsSettingsRunAsArgs',
     'GetJobJobSettingsSettingsScheduleArgs',
     'GetJobJobSettingsSettingsSparkJarTaskArgs',
     'GetJobJobSettingsSettingsSparkPythonTaskArgs',
@@ -2974,9 +2976,9 @@ class JobJobClusterNewClusterInitScriptArgs:
                sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
                    task_key="run_agg_query",
                    sql_task=databricks.JobTaskSqlTaskArgs(
-                       warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
                        query=databricks.JobTaskSqlTaskQueryArgs(
-                           query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                           query_id=databricks_sql_query["agg_query"]["id"],
                        ),
                    ),
                )])
@@ -3028,9 +3030,9 @@ class JobJobClusterNewClusterInitScriptArgs:
         sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
             task_key="run_agg_query",
             sql_task=databricks.JobTaskSqlTaskArgs(
-                warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
                 query=databricks.JobTaskSqlTaskQueryArgs(
-                    query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    query_id=databricks_sql_query["agg_query"]["id"],
                 ),
             ),
         )])
@@ -4342,9 +4344,9 @@ class JobNewClusterInitScriptArgs:
                sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
                    task_key="run_agg_query",
                    sql_task=databricks.JobTaskSqlTaskArgs(
-                       warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
                        query=databricks.JobTaskSqlTaskQueryArgs(
-                           query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                           query_id=databricks_sql_query["agg_query"]["id"],
                        ),
                    ),
                )])
@@ -4396,9 +4398,9 @@ class JobNewClusterInitScriptArgs:
         sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
             task_key="run_agg_query",
             sql_task=databricks.JobTaskSqlTaskArgs(
-                warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
                 query=databricks.JobTaskSqlTaskQueryArgs(
-                    query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    query_id=databricks_sql_query["agg_query"]["id"],
                 ),
             ),
         )])
@@ -4849,6 +4851,67 @@ class JobPythonWheelTaskArgs:
 class JobQueueArgs:
     def __init__(__self__):
         pass
+
+
+@pulumi.input_type
+class JobRunAsArgs:
+    def __init__(__self__, *,
+                 service_principal_name: Optional[pulumi.Input[str]] = None,
+                 user_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] service_principal_name: The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+               
+               Example
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               this = databricks.Job("this", run_as=databricks.JobRunAsArgs(
+                   service_principal_name="8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
+               ))
+               ```
+        :param pulumi.Input[str] user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        if service_principal_name is not None:
+            pulumi.set(__self__, "service_principal_name", service_principal_name)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="servicePrincipalName")
+    def service_principal_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+
+        Example
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Job("this", run_as=databricks.JobRunAsArgs(
+            service_principal_name="8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
+        ))
+        ```
+        """
+        return pulumi.get(self, "service_principal_name")
+
+    @service_principal_name.setter
+    def service_principal_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_principal_name", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_name", value)
 
 
 @pulumi.input_type
@@ -6584,9 +6647,9 @@ class JobTaskNewClusterInitScriptArgs:
                sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
                    task_key="run_agg_query",
                    sql_task=databricks.JobTaskSqlTaskArgs(
-                       warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
                        query=databricks.JobTaskSqlTaskQueryArgs(
-                           query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                           query_id=databricks_sql_query["agg_query"]["id"],
                        ),
                    ),
                )])
@@ -6638,9 +6701,9 @@ class JobTaskNewClusterInitScriptArgs:
         sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
             task_key="run_agg_query",
             sql_task=databricks.JobTaskSqlTaskArgs(
-                warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
                 query=databricks.JobTaskSqlTaskQueryArgs(
-                    query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    query_id=databricks_sql_query["agg_query"]["id"],
                 ),
             ),
         )])
@@ -7199,9 +7262,9 @@ class JobTaskSqlTaskArgs:
                sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
                    task_key="run_agg_query",
                    sql_task=databricks.JobTaskSqlTaskArgs(
-                       warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                       warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
                        query=databricks.JobTaskSqlTaskQueryArgs(
-                           query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                           query_id=databricks_sql_query["agg_query"]["id"],
                        ),
                    ),
                )])
@@ -7262,9 +7325,9 @@ class JobTaskSqlTaskArgs:
         sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
             task_key="run_agg_query",
             sql_task=databricks.JobTaskSqlTaskArgs(
-                warehouse_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
                 query=databricks.JobTaskSqlTaskQueryArgs(
-                    query_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    query_id=databricks_sql_query["agg_query"]["id"],
                 ),
             ),
         )])
@@ -14257,10 +14320,12 @@ class GetInstancePoolPoolInfoStatsArgs:
 @pulumi.input_type
 class GetJobJobSettingsArgs:
     def __init__(__self__, *,
+                 run_as_user_name: str,
                  created_time: Optional[int] = None,
                  creator_user_name: Optional[str] = None,
                  job_id: Optional[int] = None,
                  settings: Optional['GetJobJobSettingsSettingsArgs'] = None):
+        pulumi.set(__self__, "run_as_user_name", run_as_user_name)
         if created_time is not None:
             pulumi.set(__self__, "created_time", created_time)
         if creator_user_name is not None:
@@ -14269,6 +14334,15 @@ class GetJobJobSettingsArgs:
             pulumi.set(__self__, "job_id", job_id)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
+
+    @property
+    @pulumi.getter(name="runAsUserName")
+    def run_as_user_name(self) -> str:
+        return pulumi.get(self, "run_as_user_name")
+
+    @run_as_user_name.setter
+    def run_as_user_name(self, value: str):
+        pulumi.set(self, "run_as_user_name", value)
 
     @property
     @pulumi.getter(name="createdTime")
@@ -14329,6 +14403,7 @@ class GetJobJobSettingsSettingsArgs:
                  python_wheel_task: Optional['GetJobJobSettingsSettingsPythonWheelTaskArgs'] = None,
                  queue: Optional['GetJobJobSettingsSettingsQueueArgs'] = None,
                  retry_on_timeout: Optional[bool] = None,
+                 run_as: Optional['GetJobJobSettingsSettingsRunAsArgs'] = None,
                  schedule: Optional['GetJobJobSettingsSettingsScheduleArgs'] = None,
                  spark_jar_task: Optional['GetJobJobSettingsSettingsSparkJarTaskArgs'] = None,
                  spark_python_task: Optional['GetJobJobSettingsSettingsSparkPythonTaskArgs'] = None,
@@ -14378,6 +14453,8 @@ class GetJobJobSettingsSettingsArgs:
             pulumi.set(__self__, "queue", queue)
         if retry_on_timeout is not None:
             pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
+        if run_as is not None:
+            pulumi.set(__self__, "run_as", run_as)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if spark_jar_task is not None:
@@ -14570,6 +14647,15 @@ class GetJobJobSettingsSettingsArgs:
     @retry_on_timeout.setter
     def retry_on_timeout(self, value: Optional[bool]):
         pulumi.set(self, "retry_on_timeout", value)
+
+    @property
+    @pulumi.getter(name="runAs")
+    def run_as(self) -> Optional['GetJobJobSettingsSettingsRunAsArgs']:
+        return pulumi.get(self, "run_as")
+
+    @run_as.setter
+    def run_as(self, value: Optional['GetJobJobSettingsSettingsRunAsArgs']):
+        pulumi.set(self, "run_as", value)
 
     @property
     @pulumi.getter
@@ -17504,6 +17590,35 @@ class GetJobJobSettingsSettingsPythonWheelTaskArgs:
 class GetJobJobSettingsSettingsQueueArgs:
     def __init__(__self__):
         pass
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsRunAsArgs:
+    def __init__(__self__, *,
+                 service_principal_name: Optional[str] = None,
+                 user_name: Optional[str] = None):
+        if service_principal_name is not None:
+            pulumi.set(__self__, "service_principal_name", service_principal_name)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="servicePrincipalName")
+    def service_principal_name(self) -> Optional[str]:
+        return pulumi.get(self, "service_principal_name")
+
+    @service_principal_name.setter
+    def service_principal_name(self, value: Optional[str]):
+        pulumi.set(self, "service_principal_name", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[str]:
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[str]):
+        pulumi.set(self, "user_name", value)
 
 
 @pulumi.input_type

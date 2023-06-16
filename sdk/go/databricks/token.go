@@ -12,6 +12,78 @@ import (
 
 // This resource creates [Personal Access Tokens](https://docs.databricks.com/sql/user/security/personal-access-tokens.html) for the same user that is authenticated with the provider. Most likely you should use OboToken to create [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a ServicePrincipal in Databricks workspaces on AWS. Databricks workspaces on other clouds use their own native OAuth token flows.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewProvider(ctx, "createdWorkspace", &databricks.ProviderArgs{
+//				Host: pulumi.Any(databricks_mws_workspaces.This.Workspace_url),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pat, err := databricks.NewToken(ctx, "pat", &databricks.TokenArgs{
+//				Comment:         pulumi.String("Terraform Provisioning"),
+//				LifetimeSeconds: pulumi.Int(8640000),
+//			}, pulumi.Provider(databricks.Created_workspace))
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databricksToken", pat.TokenValue)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// A token can be automatically rotated by taking a dependency on the `timeRotating` resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := time.NewRotating(ctx, "this", &time.RotatingArgs{
+//				RotationDays: pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewToken(ctx, "pat", &databricks.TokenArgs{
+//				Comment: this.Rfc3339.ApplyT(func(rfc3339 string) (string, error) {
+//					return fmt.Sprintf("Terraform (created: %v)", rfc3339), nil
+//				}).(pulumi.StringOutput),
+//				LifetimeSeconds: 60 * 24 * 60 * 60,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // -> **Note** Importing this resource is not currently supported.

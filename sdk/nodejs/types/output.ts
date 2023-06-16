@@ -482,6 +482,7 @@ export interface GetJobJobSettings {
     createdTime?: number;
     creatorUserName?: string;
     jobId?: number;
+    runAsUserName: string;
     settings?: outputs.GetJobJobSettingsSettings;
 }
 
@@ -508,6 +509,7 @@ export interface GetJobJobSettingsSettings {
     pythonWheelTask?: outputs.GetJobJobSettingsSettingsPythonWheelTask;
     queue?: outputs.GetJobJobSettingsSettingsQueue;
     retryOnTimeout?: boolean;
+    runAs?: outputs.GetJobJobSettingsSettingsRunAs;
     schedule?: outputs.GetJobJobSettingsSettingsSchedule;
     sparkJarTask?: outputs.GetJobJobSettingsSettingsSparkJarTask;
     sparkPythonTask?: outputs.GetJobJobSettingsSettingsSparkPythonTask;
@@ -903,6 +905,11 @@ export interface GetJobJobSettingsSettingsPythonWheelTask {
 }
 
 export interface GetJobJobSettingsSettingsQueue {
+}
+
+export interface GetJobJobSettingsSettingsRunAs {
+    servicePrincipalName?: string;
+    userName?: string;
 }
 
 export interface GetJobJobSettingsSettingsSchedule {
@@ -1914,6 +1921,28 @@ export interface JobPythonWheelTask {
 }
 
 export interface JobQueue {
+}
+
+export interface JobRunAs {
+    /**
+     * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const _this = new databricks.Job("this", {runAs: {
+     *     servicePrincipalName: "8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
+     * }});
+     * ```
+     */
+    servicePrincipalName?: string;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: string;
 }
 
 export interface JobSchedule {

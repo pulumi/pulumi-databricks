@@ -96,6 +96,20 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
+    /**
+     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     * 
+     */
+    @Export(name="isolationMode", type=String.class, parameters={})
+    private Output<String> isolationMode;
+
+    /**
+     * @return Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     * 
+     */
+    public Output<String> isolationMode() {
+        return this.isolationMode;
+    }
     @Export(name="metastoreId", type=String.class, parameters={})
     private Output<String> metastoreId;
 
@@ -103,14 +117,14 @@ public class Catalog extends com.pulumi.resources.CustomResource {
         return this.metastoreId;
     }
     /**
-     * Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+     * Name of Catalog relative to parent metastore.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of Catalog relative to parent metastore. Change forces creation of a new resource.
+     * @return Name of Catalog relative to parent metastore.
      * 
      */
     public Output<String> name() {

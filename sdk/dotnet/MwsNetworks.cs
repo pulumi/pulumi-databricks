@@ -87,6 +87,122 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// ### Creating a Databricks on GCP workspace
+    /// 
+    /// &gt; **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) on GCP.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Google = Pulumi.Google;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     var dbxPrivateVpc = new Google.Index.Google_compute_network("dbxPrivateVpc", new()
+    ///     {
+    ///         Project = @var.Google_project,
+    ///         Name = $"tf-network-{random_string.Suffix.Result}",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var network_with_private_secondary_ip_ranges = new Google.Index.Google_compute_subnetwork("network-with-private-secondary-ip-ranges", new()
+    ///     {
+    ///         Name = $"test-dbx-{random_string.Suffix.Result}",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = dbxPrivateVpc.Id,
+    ///         SecondaryIpRange = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "rangeName", "pods" },
+    ///                 { "ipCidrRange", "10.1.0.0/16" },
+    ///             },
+    ///             
+    ///             {
+    ///                 { "rangeName", "svc" },
+    ///                 { "ipCidrRange", "10.2.0.0/20" },
+    ///             },
+    ///         },
+    ///         PrivateIpGoogleAccess = true,
+    ///     });
+    /// 
+    ///     var router = new Google.Index.Google_compute_router("router", new()
+    ///     {
+    ///         Name = $"my-router-{random_string.Suffix.Result}",
+    ///         Region = network_with_private_secondary_ip_ranges.Region,
+    ///         Network = dbxPrivateVpc.Id,
+    ///     });
+    /// 
+    ///     var nat = new Google.Index.Google_compute_router_nat("nat", new()
+    ///     {
+    ///         Name = $"my-router-nat-{random_string.Suffix.Result}",
+    ///         Router = router.Name,
+    ///         Region = router.Region,
+    ///         NatIpAllocateOption = "AUTO_ONLY",
+    ///         SourceSubnetworkIpRangesToNat = "ALL_SUBNETWORKS_ALL_IP_RANGES",
+    ///     });
+    /// 
+    ///     var @this = new Databricks.MwsNetworks("this", new()
+    ///     {
+    ///         AccountId = databricksAccountId,
+    ///         NetworkName = $"test-demo-{random_string.Suffix.Result}",
+    ///         GcpNetworkInfo = new Databricks.Inputs.MwsNetworksGcpNetworkInfoArgs
+    ///         {
+    ///             NetworkProjectId = @var.Google_project,
+    ///             VpcId = dbxPrivateVpc.Name,
+    ///             SubnetId = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name,
+    ///             SubnetRegion = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
+    ///             PodIpRangeName = "pods",
+    ///             ServiceIpRangeName = "svc",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// In order to create a VPC [that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the databricks.MwsNetworks resource. For example:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.MwsNetworks("this", new()
+    ///     {
+    ///         AccountId = @var.Databricks_account_id,
+    ///         NetworkName = $"test-demo-{random_string.Suffix.Result}",
+    ///         GcpNetworkInfo = new Databricks.Inputs.MwsNetworksGcpNetworkInfoArgs
+    ///         {
+    ///             NetworkProjectId = @var.Google_project,
+    ///             VpcId = google_compute_network.Dbx_private_vpc.Name,
+    ///             SubnetId = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name,
+    ///             SubnetRegion = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
+    ///             PodIpRangeName = "pods",
+    ///             ServiceIpRangeName = "svc",
+    ///         },
+    ///         VpcEndpoints = new Databricks.Inputs.MwsNetworksVpcEndpointsArgs
+    ///         {
+    ///             DataplaneRelays = new[]
+    ///             {
+    ///                 databricks_mws_vpc_endpoint.Relay.Vpc_endpoint_id,
+    ///             },
+    ///             RestApis = new[]
+    ///             {
+    ///                 databricks_mws_vpc_endpoint.Workspace.Vpc_endpoint_id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Modifying networks on running workspaces (AWS only)
     /// 
     /// Due to specifics of platform APIs, changing any attribute of network configuration would cause `databricks.MwsNetworks` to be re-created - deleted &amp; added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:

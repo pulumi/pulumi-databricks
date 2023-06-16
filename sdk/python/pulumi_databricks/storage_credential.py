@@ -24,13 +24,15 @@ class StorageCredentialArgs:
                  gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 owner: Optional[pulumi.Input[str]] = None):
+                 owner: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a StorageCredential resource.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
+        :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -50,6 +52,8 @@ class StorageCredentialArgs:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
 
     @property
     @pulumi.getter(name="awsIamRole")
@@ -139,6 +143,18 @@ class StorageCredentialArgs:
     @owner.setter
     def owner(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the storage credential is only usable for read operations.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
 
 
 @pulumi.input_type
@@ -152,13 +168,15 @@ class _StorageCredentialState:
                  gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 owner: Optional[pulumi.Input[str]] = None):
+                 owner: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering StorageCredential resources.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
+        :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -178,6 +196,8 @@ class _StorageCredentialState:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
 
     @property
     @pulumi.getter(name="awsIamRole")
@@ -267,6 +287,18 @@ class _StorageCredentialState:
     @owner.setter
     def owner(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the storage credential is only usable for read operations.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
 
 
 class StorageCredential(pulumi.CustomResource):
@@ -283,6 +315,7 @@ class StorageCredential(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
@@ -300,7 +333,7 @@ class StorageCredential(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                role_arn=aws_iam_role["external_data_access"]["arn"],
             ),
             comment="Managed by TF")
         external_creds = databricks.Grants("externalCreds",
@@ -319,7 +352,7 @@ class StorageCredential(pulumi.CustomResource):
 
         external_mi = databricks.StorageCredential("externalMi",
             azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(
-                access_connector_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                access_connector_id=azurerm_databricks_access_connector["example"]["id"],
             ),
             comment="Managed identity credential managed by TF")
         external_creds = databricks.Grants("externalCreds",
@@ -359,6 +392,7 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
+        :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
         """
         ...
     @overload
@@ -382,7 +416,7 @@ class StorageCredential(pulumi.CustomResource):
 
         external = databricks.StorageCredential("external",
             aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                role_arn=aws_iam_role["external_data_access"]["arn"],
             ),
             comment="Managed by TF")
         external_creds = databricks.Grants("externalCreds",
@@ -401,7 +435,7 @@ class StorageCredential(pulumi.CustomResource):
 
         external_mi = databricks.StorageCredential("externalMi",
             azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(
-                access_connector_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                access_connector_id=azurerm_databricks_access_connector["example"]["id"],
             ),
             comment="Managed identity credential managed by TF")
         external_creds = databricks.Grants("externalCreds",
@@ -459,6 +493,7 @@ class StorageCredential(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -477,6 +512,7 @@ class StorageCredential(pulumi.CustomResource):
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
+            __props__.__dict__["read_only"] = read_only
         super(StorageCredential, __self__).__init__(
             'databricks:index/storageCredential:StorageCredential',
             resource_name,
@@ -495,7 +531,8 @@ class StorageCredential(pulumi.CustomResource):
             gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            owner: Optional[pulumi.Input[str]] = None) -> 'StorageCredential':
+            owner: Optional[pulumi.Input[str]] = None,
+            read_only: Optional[pulumi.Input[bool]] = None) -> 'StorageCredential':
         """
         Get an existing StorageCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -507,6 +544,7 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
+        :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -521,6 +559,7 @@ class StorageCredential(pulumi.CustomResource):
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
+        __props__.__dict__["read_only"] = read_only
         return StorageCredential(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -575,4 +614,12 @@ class StorageCredential(pulumi.CustomResource):
         `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether the storage credential is only usable for read operations.
+        """
+        return pulumi.get(self, "read_only")
 
