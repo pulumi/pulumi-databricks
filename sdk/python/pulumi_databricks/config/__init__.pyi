@@ -31,6 +31,8 @@ clientId: Optional[str]
 
 clientSecret: Optional[str]
 
+clusterId: Optional[str]
+
 configFile: Optional[str]
 
 databricksCliPath: Optional[str]
@@ -62,4 +64,6 @@ skipVerify: Optional[bool]
 token: Optional[str]
 
 username: Optional[str]
+
+warehouseId: Optional[str]
 

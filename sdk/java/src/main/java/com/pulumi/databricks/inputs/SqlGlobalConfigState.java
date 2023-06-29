@@ -53,6 +53,21 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+     * 
+     */
+    @Import(name="googleServiceAccount")
+    private @Nullable Output<String> googleServiceAccount;
+
+    /**
+     * @return used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+     * 
+     */
+    public Optional<Output<String>> googleServiceAccount() {
+        return Optional.ofNullable(this.googleServiceAccount);
+    }
+
+    /**
      * databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
      * 
      */
@@ -102,6 +117,7 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
     private SqlGlobalConfigState(SqlGlobalConfigState $) {
         this.dataAccessConfig = $.dataAccessConfig;
         this.enableServerlessCompute = $.enableServerlessCompute;
+        this.googleServiceAccount = $.googleServiceAccount;
         this.instanceProfileArn = $.instanceProfileArn;
         this.securityPolicy = $.securityPolicy;
         this.sqlConfigParams = $.sqlConfigParams;
@@ -169,6 +185,27 @@ public final class SqlGlobalConfigState extends com.pulumi.resources.ResourceArg
         @Deprecated /* This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future */
         public Builder enableServerlessCompute(Boolean enableServerlessCompute) {
             return enableServerlessCompute(Output.of(enableServerlessCompute));
+        }
+
+        /**
+         * @param googleServiceAccount used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder googleServiceAccount(@Nullable Output<String> googleServiceAccount) {
+            $.googleServiceAccount = googleServiceAccount;
+            return this;
+        }
+
+        /**
+         * @param googleServiceAccount used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder googleServiceAccount(String googleServiceAccount) {
+            return googleServiceAccount(Output.of(googleServiceAccount));
         }
 
         /**

@@ -2625,6 +2625,7 @@ export interface ModelServingConfig {
 }
 
 export interface ModelServingConfigServedModel {
+    environmentVars?: {[key: string]: any};
     /**
      * The name of the model in Databricks Model Registry to be served.
      */

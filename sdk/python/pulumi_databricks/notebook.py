@@ -114,6 +114,9 @@ class NotebookArgs:
     @property
     @pulumi.getter(name="objectType")
     def object_type(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Always is a notebook""", DeprecationWarning)
+        pulumi.log.warn("""object_type is deprecated: Always is a notebook""")
+
         return pulumi.get(self, "object_type")
 
     @object_type.setter
@@ -229,6 +232,9 @@ class _NotebookState:
     @property
     @pulumi.getter(name="objectType")
     def object_type(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Always is a notebook""", DeprecationWarning)
+        pulumi.log.warn("""object_type is deprecated: Always is a notebook""")
+
         return pulumi.get(self, "object_type")
 
     @object_type.setter
@@ -444,6 +450,9 @@ class Notebook(pulumi.CustomResource):
     @property
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Output[str]:
+        warnings.warn("""Always is a notebook""", DeprecationWarning)
+        pulumi.log.warn("""object_type is deprecated: Always is a notebook""")
+
         return pulumi.get(self, "object_type")
 
     @property

@@ -51,10 +51,6 @@ class GetGroupResult:
         pulumi.set(__self__, "instance_profiles", instance_profiles)
         if members and not isinstance(members, list):
             raise TypeError("Expected argument 'members' to be a list")
-        if members is not None:
-            warnings.warn("""Please use `users`, `service_principals`, and `child_groups` instead""", DeprecationWarning)
-            pulumi.log.warn("""members is deprecated: Please use `users`, `service_principals`, and `child_groups` instead""")
-
         pulumi.set(__self__, "members", members)
         if recursive and not isinstance(recursive, bool):
             raise TypeError("Expected argument 'recursive' to be a bool")
@@ -138,6 +134,9 @@ class GetGroupResult:
     @property
     @pulumi.getter
     def members(self) -> Sequence[str]:
+        warnings.warn("""Please use `users`, `service_principals`, and `child_groups` instead""", DeprecationWarning)
+        pulumi.log.warn("""members is deprecated: Please use `users`, `service_principals`, and `child_groups` instead""")
+
         return pulumi.get(self, "members")
 
     @property
@@ -263,20 +262,20 @@ def get_group(allow_cluster_create: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
-        allow_cluster_create=__ret__.allow_cluster_create,
-        allow_instance_pool_create=__ret__.allow_instance_pool_create,
-        child_groups=__ret__.child_groups,
-        databricks_sql_access=__ret__.databricks_sql_access,
-        display_name=__ret__.display_name,
-        external_id=__ret__.external_id,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        instance_profiles=__ret__.instance_profiles,
-        members=__ret__.members,
-        recursive=__ret__.recursive,
-        service_principals=__ret__.service_principals,
-        users=__ret__.users,
-        workspace_access=__ret__.workspace_access)
+        allow_cluster_create=pulumi.get(__ret__, 'allow_cluster_create'),
+        allow_instance_pool_create=pulumi.get(__ret__, 'allow_instance_pool_create'),
+        child_groups=pulumi.get(__ret__, 'child_groups'),
+        databricks_sql_access=pulumi.get(__ret__, 'databricks_sql_access'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        external_id=pulumi.get(__ret__, 'external_id'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_profiles=pulumi.get(__ret__, 'instance_profiles'),
+        members=pulumi.get(__ret__, 'members'),
+        recursive=pulumi.get(__ret__, 'recursive'),
+        service_principals=pulumi.get(__ret__, 'service_principals'),
+        users=pulumi.get(__ret__, 'users'),
+        workspace_access=pulumi.get(__ret__, 'workspace_access'))
 
 
 @_utilities.lift_output_func(get_group)

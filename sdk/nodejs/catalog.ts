@@ -72,7 +72,7 @@ export class Catalog extends pulumi.CustomResource {
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
     public readonly isolationMode!: pulumi.Output<string>;
     public readonly metastoreId!: pulumi.Output<string>;
@@ -155,7 +155,7 @@ export interface CatalogState {
      */
     forceDestroy?: pulumi.Input<boolean>;
     /**
-     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
     isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
@@ -198,7 +198,7 @@ export interface CatalogArgs {
      */
     forceDestroy?: pulumi.Input<boolean>;
     /**
-     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
     isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;

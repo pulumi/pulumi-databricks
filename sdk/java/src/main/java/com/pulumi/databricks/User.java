@@ -293,6 +293,20 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.databricksSqlAccess);
     }
     /**
+     * When deleting a user, set the user&#39;s active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+     * 
+     */
+    @Export(name="disableAsUserDeletion", type=Boolean.class, parameters={})
+    private Output<Boolean> disableAsUserDeletion;
+
+    /**
+     * @return When deleting a user, set the user&#39;s active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+     * 
+     */
+    public Output<Boolean> disableAsUserDeletion() {
+        return this.disableAsUserDeletion;
+    }
+    /**
      * This is an alias for the username that can be the full name of the user.
      * 
      */

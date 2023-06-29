@@ -123,12 +123,12 @@ def get_aws_bucket_policy(bucket: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getAwsBucketPolicy:getAwsBucketPolicy', __args__, opts=opts, typ=GetAwsBucketPolicyResult).value
 
     return AwaitableGetAwsBucketPolicyResult(
-        bucket=__ret__.bucket,
-        databricks_account_id=__ret__.databricks_account_id,
-        databricks_e2_account_id=__ret__.databricks_e2_account_id,
-        full_access_role=__ret__.full_access_role,
-        id=__ret__.id,
-        json=__ret__.json)
+        bucket=pulumi.get(__ret__, 'bucket'),
+        databricks_account_id=pulumi.get(__ret__, 'databricks_account_id'),
+        databricks_e2_account_id=pulumi.get(__ret__, 'databricks_e2_account_id'),
+        full_access_role=pulumi.get(__ret__, 'full_access_role'),
+        id=pulumi.get(__ret__, 'id'),
+        json=pulumi.get(__ret__, 'json'))
 
 
 @_utilities.lift_output_func(get_aws_bucket_policy)

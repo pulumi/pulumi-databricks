@@ -45,6 +45,7 @@ export class Grants extends pulumi.CustomResource {
     public readonly storageCredential!: pulumi.Output<string | undefined>;
     public readonly table!: pulumi.Output<string | undefined>;
     public readonly view!: pulumi.Output<string | undefined>;
+    public readonly volume!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Grants resource with the given unique name, arguments, and options.
@@ -70,6 +71,7 @@ export class Grants extends pulumi.CustomResource {
             resourceInputs["storageCredential"] = state ? state.storageCredential : undefined;
             resourceInputs["table"] = state ? state.table : undefined;
             resourceInputs["view"] = state ? state.view : undefined;
+            resourceInputs["volume"] = state ? state.volume : undefined;
         } else {
             const args = argsOrState as GrantsArgs | undefined;
             if ((!args || args.grants === undefined) && !opts.urn) {
@@ -86,6 +88,7 @@ export class Grants extends pulumi.CustomResource {
             resourceInputs["storageCredential"] = args ? args.storageCredential : undefined;
             resourceInputs["table"] = args ? args.table : undefined;
             resourceInputs["view"] = args ? args.view : undefined;
+            resourceInputs["volume"] = args ? args.volume : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Grants.__pulumiType, name, resourceInputs, opts);
@@ -107,6 +110,7 @@ export interface GrantsState {
     storageCredential?: pulumi.Input<string>;
     table?: pulumi.Input<string>;
     view?: pulumi.Input<string>;
+    volume?: pulumi.Input<string>;
 }
 
 /**
@@ -124,4 +128,5 @@ export interface GrantsArgs {
     storageCredential?: pulumi.Input<string>;
     table?: pulumi.Input<string>;
     view?: pulumi.Input<string>;
+    volume?: pulumi.Input<string>;
 }

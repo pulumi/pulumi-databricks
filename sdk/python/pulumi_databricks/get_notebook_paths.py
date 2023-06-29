@@ -104,10 +104,10 @@ def get_notebook_paths(path: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getNotebookPaths:getNotebookPaths', __args__, opts=opts, typ=GetNotebookPathsResult).value
 
     return AwaitableGetNotebookPathsResult(
-        id=__ret__.id,
-        notebook_path_lists=__ret__.notebook_path_lists,
-        path=__ret__.path,
-        recursive=__ret__.recursive)
+        id=pulumi.get(__ret__, 'id'),
+        notebook_path_lists=pulumi.get(__ret__, 'notebook_path_lists'),
+        path=pulumi.get(__ret__, 'path'),
+        recursive=pulumi.get(__ret__, 'recursive'))
 
 
 @_utilities.lift_output_func(get_notebook_paths)

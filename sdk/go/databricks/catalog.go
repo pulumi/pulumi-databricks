@@ -63,7 +63,7 @@ type Catalog struct {
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Delete catalog regardless of its contents.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
-	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode pulumi.StringOutput `pulumi:"isolationMode"`
 	MetastoreId   pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
@@ -113,7 +113,7 @@ type catalogState struct {
 	Comment *string `pulumi:"comment"`
 	// Delete catalog regardless of its contents.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode *string `pulumi:"isolationMode"`
 	MetastoreId   *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
@@ -135,7 +135,7 @@ type CatalogState struct {
 	Comment pulumi.StringPtrInput
 	// Delete catalog regardless of its contents.
 	ForceDestroy pulumi.BoolPtrInput
-	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode pulumi.StringPtrInput
 	MetastoreId   pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore.
@@ -161,7 +161,7 @@ type catalogArgs struct {
 	Comment *string `pulumi:"comment"`
 	// Delete catalog regardless of its contents.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode *string `pulumi:"isolationMode"`
 	MetastoreId   *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
@@ -184,7 +184,7 @@ type CatalogArgs struct {
 	Comment pulumi.StringPtrInput
 	// Delete catalog regardless of its contents.
 	ForceDestroy pulumi.BoolPtrInput
-	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode pulumi.StringPtrInput
 	MetastoreId   pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore.
@@ -298,7 +298,7 @@ func (o CatalogOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 func (o CatalogOutput) IsolationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.IsolationMode }).(pulumi.StringOutput)
 }

@@ -14,6 +14,7 @@
     },
     "files": [
         "catalog.ts",
+        "catalogWorkspaceBinding.ts",
         "cluster.ts",
         "clusterPolicy.ts",
         "config/index.ts",

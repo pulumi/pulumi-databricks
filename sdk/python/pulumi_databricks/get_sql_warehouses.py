@@ -109,9 +109,9 @@ def get_sql_warehouses(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getSqlWarehouses:getSqlWarehouses', __args__, opts=opts, typ=GetSqlWarehousesResult).value
 
     return AwaitableGetSqlWarehousesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        warehouse_name_contains=__ret__.warehouse_name_contains)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        warehouse_name_contains=pulumi.get(__ret__, 'warehouse_name_contains'))
 
 
 @_utilities.lift_output_func(get_sql_warehouses)

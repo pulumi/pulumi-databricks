@@ -5,13 +5,16 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedModel {
+    private @Nullable Map<String,Object> environmentVars;
     /**
      * @return The name of the model in Databricks Model Registry to be served.
      * 
@@ -39,6 +42,9 @@ public final class ModelServingConfigServedModel {
     private String workloadSize;
 
     private ModelServingConfigServedModel() {}
+    public Map<String,Object> environmentVars() {
+        return this.environmentVars == null ? Map.of() : this.environmentVars;
+    }
     /**
      * @return The name of the model in Databricks Model Registry to be served.
      * 
@@ -84,6 +90,7 @@ public final class ModelServingConfigServedModel {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Map<String,Object> environmentVars;
         private String modelName;
         private String modelVersion;
         private @Nullable String name;
@@ -92,6 +99,7 @@ public final class ModelServingConfigServedModel {
         public Builder() {}
         public Builder(ModelServingConfigServedModel defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.environmentVars = defaults.environmentVars;
     	      this.modelName = defaults.modelName;
     	      this.modelVersion = defaults.modelVersion;
     	      this.name = defaults.name;
@@ -99,6 +107,11 @@ public final class ModelServingConfigServedModel {
     	      this.workloadSize = defaults.workloadSize;
         }
 
+        @CustomType.Setter
+        public Builder environmentVars(@Nullable Map<String,Object> environmentVars) {
+            this.environmentVars = environmentVars;
+            return this;
+        }
         @CustomType.Setter
         public Builder modelName(String modelName) {
             this.modelName = Objects.requireNonNull(modelName);
@@ -126,6 +139,7 @@ public final class ModelServingConfigServedModel {
         }
         public ModelServingConfigServedModel build() {
             final var o = new ModelServingConfigServedModel();
+            o.environmentVars = environmentVars;
             o.modelName = modelName;
             o.modelVersion = modelVersion;
             o.name = name;

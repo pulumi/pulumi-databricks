@@ -137,11 +137,11 @@ def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy', __args__, opts=opts, typ=GetAwsAssumeRolePolicyResult).value
 
     return AwaitableGetAwsAssumeRolePolicyResult(
-        databricks_account_id=__ret__.databricks_account_id,
-        external_id=__ret__.external_id,
-        for_log_delivery=__ret__.for_log_delivery,
-        id=__ret__.id,
-        json=__ret__.json)
+        databricks_account_id=pulumi.get(__ret__, 'databricks_account_id'),
+        external_id=pulumi.get(__ret__, 'external_id'),
+        for_log_delivery=pulumi.get(__ret__, 'for_log_delivery'),
+        id=pulumi.get(__ret__, 'id'),
+        json=pulumi.get(__ret__, 'json'))
 
 
 @_utilities.lift_output_func(get_aws_assume_role_policy)

@@ -97,6 +97,12 @@ namespace Pulumi.Databricks
         public Output<bool?> EnableServerlessCompute { get; private set; } = null!;
 
         /// <summary>
+        /// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+        /// </summary>
+        [Output("googleServiceAccount")]
+        public Output<string?> GoogleServiceAccount { get; private set; } = null!;
+
+        /// <summary>
         /// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         /// </summary>
         [Output("instanceProfileArn")]
@@ -176,6 +182,12 @@ namespace Pulumi.Databricks
         public Input<bool>? EnableServerlessCompute { get; set; }
 
         /// <summary>
+        /// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+        /// </summary>
+        [Input("googleServiceAccount")]
+        public Input<string>? GoogleServiceAccount { get; set; }
+
+        /// <summary>
         /// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         /// </summary>
         [Input("instanceProfileArn")]
@@ -221,6 +233,12 @@ namespace Pulumi.Databricks
 
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
+
+        /// <summary>
+        /// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+        /// </summary>
+        [Input("googleServiceAccount")]
+        public Input<string>? GoogleServiceAccount { get; set; }
 
         /// <summary>
         /// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.

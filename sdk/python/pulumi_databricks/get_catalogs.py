@@ -86,8 +86,8 @@ def get_catalogs(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getCatalogs:getCatalogs', __args__, opts=opts, typ=GetCatalogsResult).value
 
     return AwaitableGetCatalogsResult(
-        id=__ret__.id,
-        ids=__ret__.ids)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'))
 
 
 @_utilities.lift_output_func(get_catalogs)

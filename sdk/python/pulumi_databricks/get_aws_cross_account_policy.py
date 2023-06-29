@@ -100,9 +100,9 @@ def get_aws_cross_account_policy(pass_roles: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy', __args__, opts=opts, typ=GetAwsCrossAccountPolicyResult).value
 
     return AwaitableGetAwsCrossAccountPolicyResult(
-        id=__ret__.id,
-        json=__ret__.json,
-        pass_roles=__ret__.pass_roles)
+        id=pulumi.get(__ret__, 'id'),
+        json=pulumi.get(__ret__, 'json'),
+        pass_roles=pulumi.get(__ret__, 'pass_roles'))
 
 
 @_utilities.lift_output_func(get_aws_cross_account_policy)

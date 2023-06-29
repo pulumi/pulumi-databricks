@@ -211,17 +211,17 @@ def get_spark_version(beta: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getSparkVersion:getSparkVersion', __args__, opts=opts, typ=GetSparkVersionResult).value
 
     return AwaitableGetSparkVersionResult(
-        beta=__ret__.beta,
-        genomics=__ret__.genomics,
-        gpu=__ret__.gpu,
-        graviton=__ret__.graviton,
-        id=__ret__.id,
-        latest=__ret__.latest,
-        long_term_support=__ret__.long_term_support,
-        ml=__ret__.ml,
-        photon=__ret__.photon,
-        scala=__ret__.scala,
-        spark_version=__ret__.spark_version)
+        beta=pulumi.get(__ret__, 'beta'),
+        genomics=pulumi.get(__ret__, 'genomics'),
+        gpu=pulumi.get(__ret__, 'gpu'),
+        graviton=pulumi.get(__ret__, 'graviton'),
+        id=pulumi.get(__ret__, 'id'),
+        latest=pulumi.get(__ret__, 'latest'),
+        long_term_support=pulumi.get(__ret__, 'long_term_support'),
+        ml=pulumi.get(__ret__, 'ml'),
+        photon=pulumi.get(__ret__, 'photon'),
+        scala=pulumi.get(__ret__, 'scala'),
+        spark_version=pulumi.get(__ret__, 'spark_version'))
 
 
 @_utilities.lift_output_func(get_spark_version)

@@ -212,6 +212,8 @@ type ServicePrincipal struct {
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrOutput `pulumi:"databricksSqlAccess"`
+	// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+	DisableAsUserDeletion pulumi.BoolPtrOutput `pulumi:"disableAsUserDeletion"`
 	// This is an alias for the service principal and can be the full name of the service principal.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// ID of the service principal in an external identity provider.
@@ -268,6 +270,8 @@ type servicePrincipalState struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
+	// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+	DisableAsUserDeletion *bool `pulumi:"disableAsUserDeletion"`
 	// This is an alias for the service principal and can be the full name of the service principal.
 	DisplayName *string `pulumi:"displayName"`
 	// ID of the service principal in an external identity provider.
@@ -296,6 +300,8 @@ type ServicePrincipalState struct {
 	ApplicationId pulumi.StringPtrInput
 	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrInput
+	// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+	DisableAsUserDeletion pulumi.BoolPtrInput
 	// This is an alias for the service principal and can be the full name of the service principal.
 	DisplayName pulumi.StringPtrInput
 	// ID of the service principal in an external identity provider.
@@ -328,6 +334,8 @@ type servicePrincipalArgs struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
+	// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+	DisableAsUserDeletion *bool `pulumi:"disableAsUserDeletion"`
 	// This is an alias for the service principal and can be the full name of the service principal.
 	DisplayName *string `pulumi:"displayName"`
 	// ID of the service principal in an external identity provider.
@@ -357,6 +365,8 @@ type ServicePrincipalArgs struct {
 	ApplicationId pulumi.StringPtrInput
 	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrInput
+	// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+	DisableAsUserDeletion pulumi.BoolPtrInput
 	// This is an alias for the service principal and can be the full name of the service principal.
 	DisplayName pulumi.StringPtrInput
 	// ID of the service principal in an external identity provider.
@@ -484,6 +494,11 @@ func (o ServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
 // This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
 func (o ServicePrincipalOutput) DatabricksSqlAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.DatabricksSqlAccess }).(pulumi.BoolPtrOutput)
+}
+
+// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+func (o ServicePrincipalOutput) DisableAsUserDeletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.DisableAsUserDeletion }).(pulumi.BoolPtrOutput)
 }
 
 // This is an alias for the service principal and can be the full name of the service principal.

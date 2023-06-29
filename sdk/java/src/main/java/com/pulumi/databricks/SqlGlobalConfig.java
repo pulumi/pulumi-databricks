@@ -139,6 +139,20 @@ public class SqlGlobalConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableServerlessCompute);
     }
     /**
+     * used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+     * 
+     */
+    @Export(name="googleServiceAccount", type=String.class, parameters={})
+    private Output</* @Nullable */ String> googleServiceAccount;
+
+    /**
+     * @return used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+     * 
+     */
+    public Output<Optional<String>> googleServiceAccount() {
+        return Codegen.optional(this.googleServiceAccount);
+    }
+    /**
      * databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
      * 
      */

@@ -175,14 +175,14 @@ def get_cluster_policy(definition: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getClusterPolicy:getClusterPolicy', __args__, opts=opts, typ=GetClusterPolicyResult).value
 
     return AwaitableGetClusterPolicyResult(
-        definition=__ret__.definition,
-        description=__ret__.description,
-        id=__ret__.id,
-        is_default=__ret__.is_default,
-        max_clusters_per_user=__ret__.max_clusters_per_user,
-        name=__ret__.name,
-        policy_family_definition_overrides=__ret__.policy_family_definition_overrides,
-        policy_family_id=__ret__.policy_family_id)
+        definition=pulumi.get(__ret__, 'definition'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        is_default=pulumi.get(__ret__, 'is_default'),
+        max_clusters_per_user=pulumi.get(__ret__, 'max_clusters_per_user'),
+        name=pulumi.get(__ret__, 'name'),
+        policy_family_definition_overrides=pulumi.get(__ret__, 'policy_family_definition_overrides'),
+        policy_family_id=pulumi.get(__ret__, 'policy_family_id'))
 
 
 @_utilities.lift_output_func(get_cluster_policy)

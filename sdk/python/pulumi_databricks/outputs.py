@@ -7938,6 +7938,8 @@ class ModelServingConfigServedModel(dict):
             suggest = "model_version"
         elif key == "workloadSize":
             suggest = "workload_size"
+        elif key == "environmentVars":
+            suggest = "environment_vars"
         elif key == "scaleToZeroEnabled":
             suggest = "scale_to_zero_enabled"
 
@@ -7956,6 +7958,7 @@ class ModelServingConfigServedModel(dict):
                  model_name: str,
                  model_version: str,
                  workload_size: str,
+                 environment_vars: Optional[Mapping[str, Any]] = None,
                  name: Optional[str] = None,
                  scale_to_zero_enabled: Optional[bool] = None):
         """
@@ -7968,6 +7971,8 @@ class ModelServingConfigServedModel(dict):
         pulumi.set(__self__, "model_name", model_name)
         pulumi.set(__self__, "model_version", model_version)
         pulumi.set(__self__, "workload_size", workload_size)
+        if environment_vars is not None:
+            pulumi.set(__self__, "environment_vars", environment_vars)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if scale_to_zero_enabled is not None:
@@ -7996,6 +8001,11 @@ class ModelServingConfigServedModel(dict):
         The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
         """
         return pulumi.get(self, "workload_size")
+
+    @property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "environment_vars")
 
     @property
     @pulumi.getter

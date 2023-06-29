@@ -87,8 +87,8 @@ def get_shares(shares: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getShares:getShares', __args__, opts=opts, typ=GetSharesResult).value
 
     return AwaitableGetSharesResult(
-        id=__ret__.id,
-        shares=__ret__.shares)
+        id=pulumi.get(__ret__, 'id'),
+        shares=pulumi.get(__ret__, 'shares'))
 
 
 @_utilities.lift_output_func(get_shares)

@@ -123,11 +123,11 @@ def get_dbfs_file(limit_file_size: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getDbfsFile:getDbfsFile', __args__, opts=opts, typ=GetDbfsFileResult).value
 
     return AwaitableGetDbfsFileResult(
-        content=__ret__.content,
-        file_size=__ret__.file_size,
-        id=__ret__.id,
-        limit_file_size=__ret__.limit_file_size,
-        path=__ret__.path)
+        content=pulumi.get(__ret__, 'content'),
+        file_size=pulumi.get(__ret__, 'file_size'),
+        id=pulumi.get(__ret__, 'id'),
+        limit_file_size=pulumi.get(__ret__, 'limit_file_size'),
+        path=pulumi.get(__ret__, 'path'))
 
 
 @_utilities.lift_output_func(get_dbfs_file)

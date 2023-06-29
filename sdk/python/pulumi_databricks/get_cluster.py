@@ -127,10 +127,10 @@ def get_cluster(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
-        cluster_id=__ret__.cluster_id,
-        cluster_info=__ret__.cluster_info,
-        cluster_name=__ret__.cluster_name,
-        id=__ret__.id)
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        cluster_info=pulumi.get(__ret__, 'cluster_info'),
+        cluster_name=pulumi.get(__ret__, 'cluster_name'),
+        id=pulumi.get(__ret__, 'id'))
 
 
 @_utilities.lift_output_func(get_cluster)

@@ -193,6 +193,9 @@ class MwsWorkspacesArgs:
     @property
     @pulumi.getter(name="customerManagedKeyId")
     def customer_managed_key_id(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use managed_services_customer_managed_key_id instead""", DeprecationWarning)
+        pulumi.log.warn("""customer_managed_key_id is deprecated: Use managed_services_customer_managed_key_id instead""")
+
         return pulumi.get(self, "customer_managed_key_id")
 
     @customer_managed_key_id.setter
@@ -556,6 +559,9 @@ class _MwsWorkspacesState:
     @property
     @pulumi.getter(name="customerManagedKeyId")
     def customer_managed_key_id(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use managed_services_customer_managed_key_id instead""", DeprecationWarning)
+        pulumi.log.warn("""customer_managed_key_id is deprecated: Use managed_services_customer_managed_key_id instead""")
+
         return pulumi.get(self, "customer_managed_key_id")
 
     @customer_managed_key_id.setter
@@ -1045,6 +1051,9 @@ class MwsWorkspaces(pulumi.CustomResource):
     @property
     @pulumi.getter(name="customerManagedKeyId")
     def customer_managed_key_id(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Use managed_services_customer_managed_key_id instead""", DeprecationWarning)
+        pulumi.log.warn("""customer_managed_key_id is deprecated: Use managed_services_customer_managed_key_id instead""")
+
         return pulumi.get(self, "customer_managed_key_id")
 
     @property

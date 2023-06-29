@@ -96,8 +96,8 @@ def get_mws_credentials(ids: Optional[Mapping[str, Any]] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getMwsCredentials:getMwsCredentials', __args__, opts=opts, typ=GetMwsCredentialsResult).value
 
     return AwaitableGetMwsCredentialsResult(
-        id=__ret__.id,
-        ids=__ret__.ids)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'))
 
 
 @_utilities.lift_output_func(get_mws_credentials)

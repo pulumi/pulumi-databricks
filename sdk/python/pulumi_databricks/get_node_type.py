@@ -257,20 +257,20 @@ def get_node_type(category: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getNodeType:getNodeType', __args__, opts=opts, typ=GetNodeTypeResult).value
 
     return AwaitableGetNodeTypeResult(
-        category=__ret__.category,
-        fleet=__ret__.fleet,
-        gb_per_core=__ret__.gb_per_core,
-        graviton=__ret__.graviton,
-        id=__ret__.id,
-        is_io_cache_enabled=__ret__.is_io_cache_enabled,
-        local_disk=__ret__.local_disk,
-        local_disk_min_size=__ret__.local_disk_min_size,
-        min_cores=__ret__.min_cores,
-        min_gpus=__ret__.min_gpus,
-        min_memory_gb=__ret__.min_memory_gb,
-        photon_driver_capable=__ret__.photon_driver_capable,
-        photon_worker_capable=__ret__.photon_worker_capable,
-        support_port_forwarding=__ret__.support_port_forwarding)
+        category=pulumi.get(__ret__, 'category'),
+        fleet=pulumi.get(__ret__, 'fleet'),
+        gb_per_core=pulumi.get(__ret__, 'gb_per_core'),
+        graviton=pulumi.get(__ret__, 'graviton'),
+        id=pulumi.get(__ret__, 'id'),
+        is_io_cache_enabled=pulumi.get(__ret__, 'is_io_cache_enabled'),
+        local_disk=pulumi.get(__ret__, 'local_disk'),
+        local_disk_min_size=pulumi.get(__ret__, 'local_disk_min_size'),
+        min_cores=pulumi.get(__ret__, 'min_cores'),
+        min_gpus=pulumi.get(__ret__, 'min_gpus'),
+        min_memory_gb=pulumi.get(__ret__, 'min_memory_gb'),
+        photon_driver_capable=pulumi.get(__ret__, 'photon_driver_capable'),
+        photon_worker_capable=pulumi.get(__ret__, 'photon_worker_capable'),
+        support_port_forwarding=pulumi.get(__ret__, 'support_port_forwarding'))
 
 
 @_utilities.lift_output_func(get_node_type)

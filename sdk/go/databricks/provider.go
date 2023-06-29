@@ -27,6 +27,7 @@ type Provider struct {
 	AzureWorkspaceResourceId pulumi.StringPtrOutput `pulumi:"azureWorkspaceResourceId"`
 	ClientId                 pulumi.StringPtrOutput `pulumi:"clientId"`
 	ClientSecret             pulumi.StringPtrOutput `pulumi:"clientSecret"`
+	ClusterId                pulumi.StringPtrOutput `pulumi:"clusterId"`
 	ConfigFile               pulumi.StringPtrOutput `pulumi:"configFile"`
 	DatabricksCliPath        pulumi.StringPtrOutput `pulumi:"databricksCliPath"`
 	GoogleCredentials        pulumi.StringPtrOutput `pulumi:"googleCredentials"`
@@ -37,6 +38,7 @@ type Provider struct {
 	Profile                  pulumi.StringPtrOutput `pulumi:"profile"`
 	Token                    pulumi.StringPtrOutput `pulumi:"token"`
 	Username                 pulumi.StringPtrOutput `pulumi:"username"`
+	WarehouseId              pulumi.StringPtrOutput `pulumi:"warehouseId"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -93,6 +95,7 @@ type providerArgs struct {
 	AzureWorkspaceResourceId *string `pulumi:"azureWorkspaceResourceId"`
 	ClientId                 *string `pulumi:"clientId"`
 	ClientSecret             *string `pulumi:"clientSecret"`
+	ClusterId                *string `pulumi:"clusterId"`
 	ConfigFile               *string `pulumi:"configFile"`
 	DatabricksCliPath        *string `pulumi:"databricksCliPath"`
 	DebugHeaders             *bool   `pulumi:"debugHeaders"`
@@ -109,6 +112,7 @@ type providerArgs struct {
 	SkipVerify               *bool   `pulumi:"skipVerify"`
 	Token                    *string `pulumi:"token"`
 	Username                 *string `pulumi:"username"`
+	WarehouseId              *string `pulumi:"warehouseId"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -124,6 +128,7 @@ type ProviderArgs struct {
 	AzureWorkspaceResourceId pulumi.StringPtrInput
 	ClientId                 pulumi.StringPtrInput
 	ClientSecret             pulumi.StringPtrInput
+	ClusterId                pulumi.StringPtrInput
 	ConfigFile               pulumi.StringPtrInput
 	DatabricksCliPath        pulumi.StringPtrInput
 	DebugHeaders             pulumi.BoolPtrInput
@@ -140,6 +145,7 @@ type ProviderArgs struct {
 	SkipVerify               pulumi.BoolPtrInput
 	Token                    pulumi.StringPtrInput
 	Username                 pulumi.StringPtrInput
+	WarehouseId              pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -219,6 +225,10 @@ func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) ConfigFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ConfigFile }).(pulumi.StringPtrOutput)
 }
@@ -257,6 +267,10 @@ func (o ProviderOutput) Token() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

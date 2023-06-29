@@ -6,7 +6,9 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,13 @@ import javax.annotation.Nullable;
 public final class ModelServingConfigServedModelArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ModelServingConfigServedModelArgs Empty = new ModelServingConfigServedModelArgs();
+
+    @Import(name="environmentVars")
+    private @Nullable Output<Map<String,Object>> environmentVars;
+
+    public Optional<Output<Map<String,Object>>> environmentVars() {
+        return Optional.ofNullable(this.environmentVars);
+    }
 
     /**
      * The name of the model in Databricks Model Registry to be served.
@@ -94,6 +103,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
     private ModelServingConfigServedModelArgs() {}
 
     private ModelServingConfigServedModelArgs(ModelServingConfigServedModelArgs $) {
+        this.environmentVars = $.environmentVars;
         this.modelName = $.modelName;
         this.modelVersion = $.modelVersion;
         this.name = $.name;
@@ -117,6 +127,15 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
 
         public Builder(ModelServingConfigServedModelArgs defaults) {
             $ = new ModelServingConfigServedModelArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder environmentVars(@Nullable Output<Map<String,Object>> environmentVars) {
+            $.environmentVars = environmentVars;
+            return this;
+        }
+
+        public Builder environmentVars(Map<String,Object> environmentVars) {
+            return environmentVars(Output.of(environmentVars));
         }
 
         /**

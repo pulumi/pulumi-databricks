@@ -25,6 +25,7 @@ class ProviderArgs:
                  azure_workspace_resource_id: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  config_file: Optional[pulumi.Input[str]] = None,
                  databricks_cli_path: Optional[pulumi.Input[str]] = None,
                  debug_headers: Optional[pulumi.Input[bool]] = None,
@@ -40,7 +41,8 @@ class ProviderArgs:
                  retry_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  skip_verify: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
-                 username: Optional[pulumi.Input[str]] = None):
+                 username: Optional[pulumi.Input[str]] = None,
+                 warehouse_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         """
@@ -66,6 +68,8 @@ class ProviderArgs:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if config_file is not None:
             pulumi.set(__self__, "config_file", config_file)
         if databricks_cli_path is not None:
@@ -98,6 +102,8 @@ class ProviderArgs:
             pulumi.set(__self__, "token", token)
         if username is not None:
             pulumi.set(__self__, "username", username)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -197,6 +203,15 @@ class ProviderArgs:
     @client_secret.setter
     def client_secret(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
 
     @property
     @pulumi.getter(name="configFile")
@@ -342,6 +357,15 @@ class ProviderArgs:
     def username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username", value)
 
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "warehouse_id")
+
+    @warehouse_id.setter
+    def warehouse_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warehouse_id", value)
+
 
 class Provider(pulumi.ProviderResource):
     @overload
@@ -359,6 +383,7 @@ class Provider(pulumi.ProviderResource):
                  azure_workspace_resource_id: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  config_file: Optional[pulumi.Input[str]] = None,
                  databricks_cli_path: Optional[pulumi.Input[str]] = None,
                  debug_headers: Optional[pulumi.Input[bool]] = None,
@@ -375,6 +400,7 @@ class Provider(pulumi.ProviderResource):
                  skip_verify: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
+                 warehouse_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The provider type for the databricks package. By default, resources use package-wide configuration
@@ -423,6 +449,7 @@ class Provider(pulumi.ProviderResource):
                  azure_workspace_resource_id: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  config_file: Optional[pulumi.Input[str]] = None,
                  databricks_cli_path: Optional[pulumi.Input[str]] = None,
                  debug_headers: Optional[pulumi.Input[bool]] = None,
@@ -439,6 +466,7 @@ class Provider(pulumi.ProviderResource):
                  skip_verify: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
+                 warehouse_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -459,6 +487,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["azure_workspace_resource_id"] = azure_workspace_resource_id
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_secret"] = None if client_secret is None else pulumi.Output.secret(client_secret)
+            __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["config_file"] = config_file
             __props__.__dict__["databricks_cli_path"] = databricks_cli_path
             __props__.__dict__["debug_headers"] = pulumi.Output.from_input(debug_headers).apply(pulumi.runtime.to_json) if debug_headers is not None else None
@@ -475,6 +504,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["skip_verify"] = pulumi.Output.from_input(skip_verify).apply(pulumi.runtime.to_json) if skip_verify is not None else None
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
             __props__.__dict__["username"] = username
+            __props__.__dict__["warehouse_id"] = warehouse_id
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["azureClientSecret", "clientSecret", "googleCredentials", "metadataServiceUrl", "password", "token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
@@ -534,6 +564,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "client_secret")
 
     @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "cluster_id")
+
+    @property
     @pulumi.getter(name="configFile")
     def config_file(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "config_file")
@@ -582,4 +617,9 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "warehouse_id")
 

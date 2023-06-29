@@ -45,6 +45,9 @@ public final class Config {
     public Optional<String> clientSecret() {
         return Codegen.stringProp("clientSecret").config(config).get();
     }
+    public Optional<String> clusterId() {
+        return Codegen.stringProp("clusterId").config(config).get();
+    }
     public Optional<String> configFile() {
         return Codegen.stringProp("configFile").config(config).get();
     }
@@ -92,5 +95,8 @@ public final class Config {
     }
     public Optional<String> username() {
         return Codegen.stringProp("username").config(config).get();
+    }
+    public Optional<String> warehouseId() {
+        return Codegen.stringProp("warehouseId").config(config).get();
     }
 }

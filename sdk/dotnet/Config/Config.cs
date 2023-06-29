@@ -109,6 +109,13 @@ namespace Pulumi.Databricks
             set => _clientSecret.Set(value);
         }
 
+        private static readonly __Value<string?> _clusterId = new __Value<string?>(() => __config.Get("clusterId"));
+        public static string? ClusterId
+        {
+            get => _clusterId.Get();
+            set => _clusterId.Set(value);
+        }
+
         private static readonly __Value<string?> _configFile = new __Value<string?>(() => __config.Get("configFile"));
         public static string? ConfigFile
         {
@@ -219,6 +226,13 @@ namespace Pulumi.Databricks
         {
             get => _username.Get();
             set => _username.Set(value);
+        }
+
+        private static readonly __Value<string?> _warehouseId = new __Value<string?>(() => __config.Get("warehouseId"));
+        public static string? WarehouseId
+        {
+            get => _warehouseId.Get();
+            set => _warehouseId.Set(value);
         }
 
     }

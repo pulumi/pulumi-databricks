@@ -35,6 +35,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly azureWorkspaceResourceId!: pulumi.Output<string | undefined>;
     public readonly clientId!: pulumi.Output<string | undefined>;
     public readonly clientSecret!: pulumi.Output<string | undefined>;
+    public readonly clusterId!: pulumi.Output<string | undefined>;
     public readonly configFile!: pulumi.Output<string | undefined>;
     public readonly databricksCliPath!: pulumi.Output<string | undefined>;
     public readonly googleCredentials!: pulumi.Output<string | undefined>;
@@ -45,6 +46,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly profile!: pulumi.Output<string | undefined>;
     public readonly token!: pulumi.Output<string | undefined>;
     public readonly username!: pulumi.Output<string | undefined>;
+    public readonly warehouseId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -68,6 +70,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["azureWorkspaceResourceId"] = args ? args.azureWorkspaceResourceId : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["clientSecret"] = args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["configFile"] = args ? args.configFile : undefined;
             resourceInputs["databricksCliPath"] = args ? args.databricksCliPath : undefined;
             resourceInputs["debugHeaders"] = pulumi.output(args ? args.debugHeaders : undefined).apply(JSON.stringify);
@@ -84,6 +87,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["skipVerify"] = pulumi.output(args ? args.skipVerify : undefined).apply(JSON.stringify);
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["warehouseId"] = args ? args.warehouseId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["azureClientSecret", "clientSecret", "googleCredentials", "metadataServiceUrl", "password", "token"] };
@@ -107,6 +111,7 @@ export interface ProviderArgs {
     azureWorkspaceResourceId?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
     clientSecret?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
     configFile?: pulumi.Input<string>;
     databricksCliPath?: pulumi.Input<string>;
     debugHeaders?: pulumi.Input<boolean>;
@@ -123,4 +128,5 @@ export interface ProviderArgs {
     skipVerify?: pulumi.Input<boolean>;
     token?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string>;
 }

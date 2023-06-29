@@ -93,9 +93,9 @@ def get_directory(object_id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getDirectory:getDirectory', __args__, opts=opts, typ=GetDirectoryResult).value
 
     return AwaitableGetDirectoryResult(
-        id=__ret__.id,
-        object_id=__ret__.object_id,
-        path=__ret__.path)
+        id=pulumi.get(__ret__, 'id'),
+        object_id=pulumi.get(__ret__, 'object_id'),
+        path=pulumi.get(__ret__, 'path'))
 
 
 @_utilities.lift_output_func(get_directory)

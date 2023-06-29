@@ -308,23 +308,23 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getSqlWarehouse:getSqlWarehouse', __args__, opts=opts, typ=GetSqlWarehouseResult).value
 
     return AwaitableGetSqlWarehouseResult(
-        auto_stop_mins=__ret__.auto_stop_mins,
-        channel=__ret__.channel,
-        cluster_size=__ret__.cluster_size,
-        data_source_id=__ret__.data_source_id,
-        enable_photon=__ret__.enable_photon,
-        enable_serverless_compute=__ret__.enable_serverless_compute,
-        id=__ret__.id,
-        instance_profile_arn=__ret__.instance_profile_arn,
-        jdbc_url=__ret__.jdbc_url,
-        max_num_clusters=__ret__.max_num_clusters,
-        min_num_clusters=__ret__.min_num_clusters,
-        name=__ret__.name,
-        num_clusters=__ret__.num_clusters,
-        odbc_params=__ret__.odbc_params,
-        spot_instance_policy=__ret__.spot_instance_policy,
-        state=__ret__.state,
-        tags=__ret__.tags)
+        auto_stop_mins=pulumi.get(__ret__, 'auto_stop_mins'),
+        channel=pulumi.get(__ret__, 'channel'),
+        cluster_size=pulumi.get(__ret__, 'cluster_size'),
+        data_source_id=pulumi.get(__ret__, 'data_source_id'),
+        enable_photon=pulumi.get(__ret__, 'enable_photon'),
+        enable_serverless_compute=pulumi.get(__ret__, 'enable_serverless_compute'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_profile_arn=pulumi.get(__ret__, 'instance_profile_arn'),
+        jdbc_url=pulumi.get(__ret__, 'jdbc_url'),
+        max_num_clusters=pulumi.get(__ret__, 'max_num_clusters'),
+        min_num_clusters=pulumi.get(__ret__, 'min_num_clusters'),
+        name=pulumi.get(__ret__, 'name'),
+        num_clusters=pulumi.get(__ret__, 'num_clusters'),
+        odbc_params=pulumi.get(__ret__, 'odbc_params'),
+        spot_instance_policy=pulumi.get(__ret__, 'spot_instance_policy'),
+        state=pulumi.get(__ret__, 'state'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_sql_warehouse)

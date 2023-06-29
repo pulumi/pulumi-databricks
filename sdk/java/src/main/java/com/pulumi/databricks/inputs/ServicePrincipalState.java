@@ -92,6 +92,21 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * When deleting a user, set the user&#39;s active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+     * 
+     */
+    @Import(name="disableAsUserDeletion")
+    private @Nullable Output<Boolean> disableAsUserDeletion;
+
+    /**
+     * @return When deleting a user, set the user&#39;s active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+     * 
+     */
+    public Optional<Output<Boolean>> disableAsUserDeletion() {
+        return Optional.ofNullable(this.disableAsUserDeletion);
+    }
+
+    /**
      * This is an alias for the service principal and can be the full name of the service principal.
      * 
      */
@@ -211,6 +226,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         this.allowInstancePoolCreate = $.allowInstancePoolCreate;
         this.applicationId = $.applicationId;
         this.databricksSqlAccess = $.databricksSqlAccess;
+        this.disableAsUserDeletion = $.disableAsUserDeletion;
         this.displayName = $.displayName;
         this.externalId = $.externalId;
         this.force = $.force;
@@ -342,6 +358,27 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
          */
         public Builder databricksSqlAccess(Boolean databricksSqlAccess) {
             return databricksSqlAccess(Output.of(databricksSqlAccess));
+        }
+
+        /**
+         * @param disableAsUserDeletion When deleting a user, set the user&#39;s active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableAsUserDeletion(@Nullable Output<Boolean> disableAsUserDeletion) {
+            $.disableAsUserDeletion = disableAsUserDeletion;
+            return this;
+        }
+
+        /**
+         * @param disableAsUserDeletion When deleting a user, set the user&#39;s active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableAsUserDeletion(Boolean disableAsUserDeletion) {
+            return disableAsUserDeletion(Output.of(disableAsUserDeletion));
         }
 
         /**

@@ -12,6 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedModelGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("environmentVars")]
+        private InputMap<object>? _environmentVars;
+        public InputMap<object> EnvironmentVars
+        {
+            get => _environmentVars ?? (_environmentVars = new InputMap<object>());
+            set => _environmentVars = value;
+        }
+
         /// <summary>
         /// The name of the model in Databricks Model Registry to be served.
         /// </summary>

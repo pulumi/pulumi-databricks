@@ -154,6 +154,10 @@ export class User extends pulumi.CustomResource {
      */
     public readonly databricksSqlAccess!: pulumi.Output<boolean | undefined>;
     /**
+     * When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+     */
+    public readonly disableAsUserDeletion!: pulumi.Output<boolean>;
+    /**
      * This is an alias for the username that can be the full name of the user.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -201,6 +205,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["allowClusterCreate"] = state ? state.allowClusterCreate : undefined;
             resourceInputs["allowInstancePoolCreate"] = state ? state.allowInstancePoolCreate : undefined;
             resourceInputs["databricksSqlAccess"] = state ? state.databricksSqlAccess : undefined;
+            resourceInputs["disableAsUserDeletion"] = state ? state.disableAsUserDeletion : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["externalId"] = state ? state.externalId : undefined;
             resourceInputs["force"] = state ? state.force : undefined;
@@ -219,6 +224,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["allowClusterCreate"] = args ? args.allowClusterCreate : undefined;
             resourceInputs["allowInstancePoolCreate"] = args ? args.allowInstancePoolCreate : undefined;
             resourceInputs["databricksSqlAccess"] = args ? args.databricksSqlAccess : undefined;
+            resourceInputs["disableAsUserDeletion"] = args ? args.disableAsUserDeletion : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["externalId"] = args ? args.externalId : undefined;
             resourceInputs["force"] = args ? args.force : undefined;
@@ -254,6 +260,10 @@ export interface UserState {
      * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      */
     databricksSqlAccess?: pulumi.Input<boolean>;
+    /**
+     * When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+     */
+    disableAsUserDeletion?: pulumi.Input<boolean>;
     /**
      * This is an alias for the username that can be the full name of the user.
      */
@@ -306,6 +316,10 @@ export interface UserArgs {
      * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      */
     databricksSqlAccess?: pulumi.Input<boolean>;
+    /**
+     * When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+     */
+    disableAsUserDeletion?: pulumi.Input<boolean>;
     /**
      * This is an alias for the username that can be the full name of the user.
      */

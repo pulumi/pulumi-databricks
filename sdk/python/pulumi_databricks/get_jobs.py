@@ -105,8 +105,8 @@ def get_jobs(ids: Optional[Mapping[str, Any]] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getJobs:getJobs', __args__, opts=opts, typ=GetJobsResult).value
 
     return AwaitableGetJobsResult(
-        id=__ret__.id,
-        ids=__ret__.ids)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'))
 
 
 @_utilities.lift_output_func(get_jobs)
