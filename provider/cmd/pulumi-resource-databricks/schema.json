@@ -88,6 +88,9 @@
                 "type": "string",
                 "secret": true
             },
+            "clusterId": {
+                "type": "string"
+            },
             "configFile": {
                 "type": "string"
             },
@@ -138,6 +141,9 @@
                 "secret": true
             },
             "username": {
+                "type": "string"
+            },
+            "warehouseId": {
                 "type": "string"
             }
         }
@@ -3168,6 +3174,12 @@
         },
         "databricks:index/ModelServingConfigServedModel:ModelServingConfigServedModel": {
             "properties": {
+                "environmentVars": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                },
                 "modelName": {
                     "type": "string",
                     "description": "The name of the model in Databricks Model Registry to be served.\n"
@@ -8247,6 +8259,9 @@
                 "type": "string",
                 "secret": true
             },
+            "clusterId": {
+                "type": "string"
+            },
             "configFile": {
                 "type": "string"
             },
@@ -8297,6 +8312,9 @@
                 "secret": true
             },
             "username": {
+                "type": "string"
+            },
+            "warehouseId": {
                 "type": "string"
             }
         },
@@ -8336,6 +8354,9 @@
                 "type": "string",
                 "secret": true
             },
+            "clusterId": {
+                "type": "string"
+            },
             "configFile": {
                 "type": "string"
             },
@@ -8387,6 +8408,9 @@
             },
             "username": {
                 "type": "string"
+            },
+            "warehouseId": {
+                "type": "string"
             }
         }
     },
@@ -8404,7 +8428,7 @@
                 },
                 "isolationMode": {
                     "type": "string",
-                    "description": "Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.\n"
+                    "description": "Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.\n"
                 },
                 "metastoreId": {
                     "type": "string"
@@ -8454,7 +8478,7 @@
                 },
                 "isolationMode": {
                     "type": "string",
-                    "description": "Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.\n"
+                    "description": "Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.\n"
                 },
                 "metastoreId": {
                     "type": "string"
@@ -8503,7 +8527,7 @@
                     },
                     "isolationMode": {
                         "type": "string",
-                        "description": "Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.\n"
+                        "description": "Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.\n"
                     },
                     "metastoreId": {
                         "type": "string"
@@ -8536,6 +8560,55 @@
                     "storageRoot": {
                         "type": "string",
                         "description": "Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sandboxCatalog = new databricks.Catalog(\"sandboxCatalog\", {isolationMode: \"ISOLATED\"});\nconst sandboxCatalogWorkspaceBinding = new databricks.CatalogWorkspaceBinding(\"sandboxCatalogWorkspaceBinding\", {\n    catalogName: sandboxCatalog.name,\n    workspaceId: databricks_mws_workspaces.other.workspace_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsandbox_catalog = databricks.Catalog(\"sandboxCatalog\", isolation_mode=\"ISOLATED\")\nsandbox_catalog_workspace_binding = databricks.CatalogWorkspaceBinding(\"sandboxCatalogWorkspaceBinding\",\n    catalog_name=sandbox_catalog.name,\n    workspace_id=databricks_mws_workspaces[\"other\"][\"workspace_id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sandboxCatalog = new Databricks.Catalog(\"sandboxCatalog\", new()\n    {\n        IsolationMode = \"ISOLATED\",\n    });\n\n    var sandboxCatalogWorkspaceBinding = new Databricks.CatalogWorkspaceBinding(\"sandboxCatalogWorkspaceBinding\", new()\n    {\n        CatalogName = sandboxCatalog.Name,\n        WorkspaceId = databricks_mws_workspaces.Other.Workspace_id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsandboxCatalog, err := databricks.NewCatalog(ctx, \"sandboxCatalog\", \u0026databricks.CatalogArgs{\n\t\t\tIsolationMode: pulumi.String(\"ISOLATED\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewCatalogWorkspaceBinding(ctx, \"sandboxCatalogWorkspaceBinding\", \u0026databricks.CatalogWorkspaceBindingArgs{\n\t\t\tCatalogName: sandboxCatalog.Name,\n\t\t\tWorkspaceId: pulumi.Any(databricks_mws_workspaces.Other.Workspace_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Catalog;\nimport com.pulumi.databricks.CatalogArgs;\nimport com.pulumi.databricks.CatalogWorkspaceBinding;\nimport com.pulumi.databricks.CatalogWorkspaceBindingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sandboxCatalog = new Catalog(\"sandboxCatalog\", CatalogArgs.builder()        \n            .isolationMode(\"ISOLATED\")\n            .build());\n\n        var sandboxCatalogWorkspaceBinding = new CatalogWorkspaceBinding(\"sandboxCatalogWorkspaceBinding\", CatalogWorkspaceBindingArgs.builder()        \n            .catalogName(sandboxCatalog.name())\n            .workspaceId(databricks_mws_workspaces.other().workspace_id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sandboxCatalog:\n    type: databricks:Catalog\n    properties:\n      isolationMode: ISOLATED\n  sandboxCatalogWorkspaceBinding:\n    type: databricks:CatalogWorkspaceBinding\n    properties:\n      catalogName: ${sandboxCatalog.name}\n      workspaceId: ${databricks_mws_workspaces.other.workspace_id}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n-\u003e **Note** Importing this resource is not currently supported. ",
+            "properties": {
+                "catalogName": {
+                    "type": "string",
+                    "description": "Name of Catalog. Change forces creation of a new resource.\n"
+                },
+                "workspaceId": {
+                    "type": "string",
+                    "description": "ID of the workspace. Change forces creation of a new resource.\n"
+                }
+            },
+            "required": [
+                "catalogName",
+                "workspaceId"
+            ],
+            "inputProperties": {
+                "catalogName": {
+                    "type": "string",
+                    "description": "Name of Catalog. Change forces creation of a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "workspaceId": {
+                    "type": "string",
+                    "description": "ID of the workspace. Change forces creation of a new resource.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "catalogName",
+                "workspaceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CatalogWorkspaceBinding resources.\n",
+                "properties": {
+                    "catalogName": {
+                        "type": "string",
+                        "description": "Name of Catalog. Change forces creation of a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "workspaceId": {
+                        "type": "string",
+                        "description": "ID of the workspace. Change forces creation of a new resource.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -9676,6 +9749,9 @@
                 },
                 "view": {
                     "type": "string"
+                },
+                "volume": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -9730,6 +9806,10 @@
                     "willReplaceOnChanges": true
                 },
                 "view": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "volume": {
                     "type": "string",
                     "willReplaceOnChanges": true
                 }
@@ -9788,6 +9868,10 @@
                         "willReplaceOnChanges": true
                     },
                     "view": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "volume": {
                         "type": "string",
                         "willReplaceOnChanges": true
                     }
@@ -10138,8 +10222,7 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "(Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS \u0026 Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*\n",
-                    "willReplaceOnChanges": true
+                    "description": "(Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS \u0026 Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*\n"
                 },
                 "diskSpec": {
                     "$ref": "#/types/databricks:index/InstancePoolDiskSpec:InstancePoolDiskSpec",
@@ -10218,8 +10301,7 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "(Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS \u0026 Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*\n",
-                        "willReplaceOnChanges": true
+                        "description": "(Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS \u0026 Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*\n"
                     },
                     "diskSpec": {
                         "$ref": "#/types/databricks:index/InstancePoolDiskSpec:InstancePoolDiskSpec",
@@ -14641,6 +14723,10 @@
                     "type": "boolean",
                     "description": "This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.\n"
                 },
+                "disableAsUserDeletion": {
+                    "type": "boolean",
+                    "description": "When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.\n"
+                },
                 "displayName": {
                     "type": "string",
                     "description": "This is an alias for the service principal and can be the full name of the service principal.\n"
@@ -14701,6 +14787,10 @@
                     "type": "boolean",
                     "description": "This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.\n"
                 },
+                "disableAsUserDeletion": {
+                    "type": "boolean",
+                    "description": "When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.\n"
+                },
                 "displayName": {
                     "type": "string",
                     "description": "This is an alias for the service principal and can be the full name of the service principal.\n",
@@ -14757,6 +14847,10 @@
                     "databricksSqlAccess": {
                         "type": "boolean",
                         "description": "This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.\n"
+                    },
+                    "disableAsUserDeletion": {
+                        "type": "boolean",
+                        "description": "When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.\n"
                     },
                     "displayName": {
                         "type": "string",
@@ -15339,6 +15433,10 @@
                     "type": "boolean",
                     "deprecationMessage": "This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future"
                 },
+                "googleServiceAccount": {
+                    "type": "string",
+                    "description": "used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.\n"
+                },
                 "instanceProfileArn": {
                     "type": "string",
                     "description": "databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.\n"
@@ -15366,6 +15464,10 @@
                 "enableServerlessCompute": {
                     "type": "boolean",
                     "deprecationMessage": "This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future"
+                },
+                "googleServiceAccount": {
+                    "type": "string",
+                    "description": "used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.\n"
                 },
                 "instanceProfileArn": {
                     "type": "string",
@@ -15396,6 +15498,10 @@
                     "enableServerlessCompute": {
                         "type": "boolean",
                         "deprecationMessage": "This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future"
+                    },
+                    "googleServiceAccount": {
+                        "type": "string",
+                        "description": "used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.\n"
                     },
                     "instanceProfileArn": {
                         "type": "string",
@@ -16448,6 +16554,10 @@
                     "type": "boolean",
                     "description": "This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.\n"
                 },
+                "disableAsUserDeletion": {
+                    "type": "boolean",
+                    "description": "When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.\n"
+                },
                 "displayName": {
                     "type": "string",
                     "description": "This is an alias for the username that can be the full name of the user.\n"
@@ -16484,6 +16594,7 @@
                 }
             },
             "required": [
+                "disableAsUserDeletion",
                 "displayName",
                 "home",
                 "repos",
@@ -16505,6 +16616,10 @@
                 "databricksSqlAccess": {
                     "type": "boolean",
                     "description": "This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.\n"
+                },
+                "disableAsUserDeletion": {
+                    "type": "boolean",
+                    "description": "When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.\n"
                 },
                 "displayName": {
                     "type": "string",
@@ -16563,6 +16678,10 @@
                     "databricksSqlAccess": {
                         "type": "boolean",
                         "description": "This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.\n"
+                    },
+                    "disableAsUserDeletion": {
+                        "type": "boolean",
+                        "description": "When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.\n"
                     },
                     "displayName": {
                         "type": "string",
@@ -16702,7 +16821,7 @@
             }
         },
         "databricks:index/volume:Volume": {
-            "description": "Volumes are a new Unity Catalog (UC) capability for accessing, storing, governing, and organizing files. Volumes unlock new processing capabilities for data governed by the Unity Catalog, including support for most machine learning and data science workloads. You can use volumes to store and access files in any format; data can be structured, semi-structured, or unstructured.\n\nVolumes are organized under a 3-level namespace: `\u003ccatalog\u003e.\u003cschema\u003e.\u003cvolume\u003e`.\n\nThis resource manages Volumes in Unity Catalog.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sandbox = new databricks.Catalog(\"sandbox\", {\n    metastoreId: databricks_metastore[\"this\"].id,\n    comment: \"this catalog is managed by terraform\",\n    properties: {\n        purpose: \"testing\",\n    },\n});\nconst things = new databricks.Schema(\"things\", {\n    catalogName: sandbox.name,\n    comment: \"this schema is managed by terraform\",\n    properties: {\n        kind: \"various\",\n    },\n});\nconst external = new databricks.StorageCredential(\"external\", {awsIamRole: {\n    roleArn: aws_iam_role.external_data_access.arn,\n}});\nconst some = new databricks.ExternalLocation(\"some\", {\n    url: `s3://${aws_s3_bucket.external.id}/some`,\n    credentialName: external.name,\n});\nconst _this = new databricks.Volume(\"this\", {\n    catalogName: sandbox.name,\n    schemaName: things.name,\n    volumeType: \"EXTERNAL\",\n    storageLocation: some.url,\n    comment: \"this volume is managed by terraform\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsandbox = databricks.Catalog(\"sandbox\",\n    metastore_id=databricks_metastore[\"this\"][\"id\"],\n    comment=\"this catalog is managed by terraform\",\n    properties={\n        \"purpose\": \"testing\",\n    })\nthings = databricks.Schema(\"things\",\n    catalog_name=sandbox.name,\n    comment=\"this schema is managed by terraform\",\n    properties={\n        \"kind\": \"various\",\n    })\nexternal = databricks.StorageCredential(\"external\", aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(\n    role_arn=aws_iam_role[\"external_data_access\"][\"arn\"],\n))\nsome = databricks.ExternalLocation(\"some\",\n    url=f\"s3://{aws_s3_bucket['external']['id']}/some\",\n    credential_name=external.name)\nthis = databricks.Volume(\"this\",\n    catalog_name=sandbox.name,\n    schema_name=things.name,\n    volume_type=\"EXTERNAL\",\n    storage_location=some.url,\n    comment=\"this volume is managed by terraform\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sandbox = new Databricks.Catalog(\"sandbox\", new()\n    {\n        MetastoreId = databricks_metastore.This.Id,\n        Comment = \"this catalog is managed by terraform\",\n        Properties = \n        {\n            { \"purpose\", \"testing\" },\n        },\n    });\n\n    var things = new Databricks.Schema(\"things\", new()\n    {\n        CatalogName = sandbox.Name,\n        Comment = \"this schema is managed by terraform\",\n        Properties = \n        {\n            { \"kind\", \"various\" },\n        },\n    });\n\n    var external = new Databricks.StorageCredential(\"external\", new()\n    {\n        AwsIamRole = new Databricks.Inputs.StorageCredentialAwsIamRoleArgs\n        {\n            RoleArn = aws_iam_role.External_data_access.Arn,\n        },\n    });\n\n    var some = new Databricks.ExternalLocation(\"some\", new()\n    {\n        Url = $\"s3://{aws_s3_bucket.External.Id}/some\",\n        CredentialName = external.Name,\n    });\n\n    var @this = new Databricks.Volume(\"this\", new()\n    {\n        CatalogName = sandbox.Name,\n        SchemaName = things.Name,\n        VolumeType = \"EXTERNAL\",\n        StorageLocation = some.Url,\n        Comment = \"this volume is managed by terraform\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsandbox, err := databricks.NewCatalog(ctx, \"sandbox\", \u0026databricks.CatalogArgs{\n\t\t\tMetastoreId: pulumi.Any(databricks_metastore.This.Id),\n\t\t\tComment:     pulumi.String(\"this catalog is managed by terraform\"),\n\t\t\tProperties: pulumi.AnyMap{\n\t\t\t\t\"purpose\": pulumi.Any(\"testing\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tthings, err := databricks.NewSchema(ctx, \"things\", \u0026databricks.SchemaArgs{\n\t\t\tCatalogName: sandbox.Name,\n\t\t\tComment:     pulumi.String(\"this schema is managed by terraform\"),\n\t\t\tProperties: pulumi.AnyMap{\n\t\t\t\t\"kind\": pulumi.Any(\"various\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texternal, err := databricks.NewStorageCredential(ctx, \"external\", \u0026databricks.StorageCredentialArgs{\n\t\t\tAwsIamRole: \u0026databricks.StorageCredentialAwsIamRoleArgs{\n\t\t\t\tRoleArn: pulumi.Any(aws_iam_role.External_data_access.Arn),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsome, err := databricks.NewExternalLocation(ctx, \"some\", \u0026databricks.ExternalLocationArgs{\n\t\t\tUrl:            pulumi.String(fmt.Sprintf(\"s3://%v/some\", aws_s3_bucket.External.Id)),\n\t\t\tCredentialName: external.Name,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewVolume(ctx, \"this\", \u0026databricks.VolumeArgs{\n\t\t\tCatalogName:     sandbox.Name,\n\t\t\tSchemaName:      things.Name,\n\t\t\tVolumeType:      pulumi.String(\"EXTERNAL\"),\n\t\t\tStorageLocation: some.Url,\n\t\t\tComment:         pulumi.String(\"this volume is managed by terraform\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Catalog;\nimport com.pulumi.databricks.CatalogArgs;\nimport com.pulumi.databricks.Schema;\nimport com.pulumi.databricks.SchemaArgs;\nimport com.pulumi.databricks.StorageCredential;\nimport com.pulumi.databricks.StorageCredentialArgs;\nimport com.pulumi.databricks.inputs.StorageCredentialAwsIamRoleArgs;\nimport com.pulumi.databricks.ExternalLocation;\nimport com.pulumi.databricks.ExternalLocationArgs;\nimport com.pulumi.databricks.Volume;\nimport com.pulumi.databricks.VolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sandbox = new Catalog(\"sandbox\", CatalogArgs.builder()        \n            .metastoreId(databricks_metastore.this().id())\n            .comment(\"this catalog is managed by terraform\")\n            .properties(Map.of(\"purpose\", \"testing\"))\n            .build());\n\n        var things = new Schema(\"things\", SchemaArgs.builder()        \n            .catalogName(sandbox.name())\n            .comment(\"this schema is managed by terraform\")\n            .properties(Map.of(\"kind\", \"various\"))\n            .build());\n\n        var external = new StorageCredential(\"external\", StorageCredentialArgs.builder()        \n            .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()\n                .roleArn(aws_iam_role.external_data_access().arn())\n                .build())\n            .build());\n\n        var some = new ExternalLocation(\"some\", ExternalLocationArgs.builder()        \n            .url(String.format(\"s3://%s/some\", aws_s3_bucket.external().id()))\n            .credentialName(external.name())\n            .build());\n\n        var this_ = new Volume(\"this\", VolumeArgs.builder()        \n            .catalogName(sandbox.name())\n            .schemaName(things.name())\n            .volumeType(\"EXTERNAL\")\n            .storageLocation(some.url())\n            .comment(\"this volume is managed by terraform\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sandbox:\n    type: databricks:Catalog\n    properties:\n      metastoreId: ${databricks_metastore.this.id}\n      comment: this catalog is managed by terraform\n      properties:\n        purpose: testing\n  things:\n    type: databricks:Schema\n    properties:\n      catalogName: ${sandbox.name}\n      comment: this schema is managed by terraform\n      properties:\n        kind: various\n  external:\n    type: databricks:StorageCredential\n    properties:\n      awsIamRole:\n        roleArn: ${aws_iam_role.external_data_access.arn}\n  some:\n    type: databricks:ExternalLocation\n    properties:\n      url: s3://${aws_s3_bucket.external.id}/some\n      credentialName: ${external.name}\n  this:\n    type: databricks:Volume\n    properties:\n      catalogName: ${sandbox.name}\n      schemaName: ${things.name}\n      volumeType: EXTERNAL\n      storageLocation: ${some.url}\n      comment: this volume is managed by terraform\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThis resource can be imported by `full_name` which is the 3-level Volume identifier`\u003ccatalog\u003e.\u003cschema\u003e.\u003cvolume\u003e` bash\n\n```sh\n $ pulumi import databricks:index/volume:Volume this \u003ccatalog_name\u003e.\u003cschema_name\u003e.\u003cname\u003e\n```\n\n ",
+            "description": "Volumes are Unity Catalog objects representing a logical volume of storage in a cloud object storage location. Volumes provide capabilities for accessing, storing, governing, and organizing files. While tables provide governance over tabular datasets, volumes add governance over non-tabular datasets. You can use volumes to store and access files in any format, including structured, semi-structured, and unstructured data.\n\nA volume resides in the third layer of Unity Catalog’s three-level namespace. Volumes are siblings to tables, views, and other objects organized under a schema in Unity Catalog.\n\nA volume can be **managed** or **external**.\n\nA **managed volume** is a Unity Catalog-governed storage volume created within the default storage location of the containing schema. Managed volumes allow the creation of governed storage for working with files without the overhead of external locations and storage credentials. You do not need to specify a location when creating a managed volume, and all file access for data in managed volumes is through paths managed by Unity Catalog.\n\nAn **external volume** is a Unity Catalog-governed storage volume registered against a directory within an external location.\n\nA volume can be referenced using its identifier: ```\u003ccatalogName\u003e.\u003cschemaName\u003e.\u003cvolumeName\u003e```, where:\n* ```\u003ccatalogName\u003e```: The name of the catalog containing the Volume.\n* ```\u003cschemaName\u003e```: The name of the schema containing the Volume.\n* ```\u003cvolumeName\u003e```: The name of the Volume. It identifies the volume object.\n\nThe path to access files in volumes uses the following format:\n\n\nThis resource manages Volumes in Unity Catalog.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sandbox = new databricks.Catalog(\"sandbox\", {\n    metastoreId: databricks_metastore[\"this\"].id,\n    comment: \"this catalog is managed by terraform\",\n    properties: {\n        purpose: \"testing\",\n    },\n});\nconst things = new databricks.Schema(\"things\", {\n    catalogName: sandbox.name,\n    comment: \"this schema is managed by terraform\",\n    properties: {\n        kind: \"various\",\n    },\n});\nconst external = new databricks.StorageCredential(\"external\", {awsIamRole: {\n    roleArn: aws_iam_role.external_data_access.arn,\n}});\nconst some = new databricks.ExternalLocation(\"some\", {\n    url: `s3://${aws_s3_bucket.external.id}/some`,\n    credentialName: external.name,\n});\nconst _this = new databricks.Volume(\"this\", {\n    catalogName: sandbox.name,\n    schemaName: things.name,\n    volumeType: \"EXTERNAL\",\n    storageLocation: some.url,\n    comment: \"this volume is managed by terraform\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsandbox = databricks.Catalog(\"sandbox\",\n    metastore_id=databricks_metastore[\"this\"][\"id\"],\n    comment=\"this catalog is managed by terraform\",\n    properties={\n        \"purpose\": \"testing\",\n    })\nthings = databricks.Schema(\"things\",\n    catalog_name=sandbox.name,\n    comment=\"this schema is managed by terraform\",\n    properties={\n        \"kind\": \"various\",\n    })\nexternal = databricks.StorageCredential(\"external\", aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(\n    role_arn=aws_iam_role[\"external_data_access\"][\"arn\"],\n))\nsome = databricks.ExternalLocation(\"some\",\n    url=f\"s3://{aws_s3_bucket['external']['id']}/some\",\n    credential_name=external.name)\nthis = databricks.Volume(\"this\",\n    catalog_name=sandbox.name,\n    schema_name=things.name,\n    volume_type=\"EXTERNAL\",\n    storage_location=some.url,\n    comment=\"this volume is managed by terraform\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sandbox = new Databricks.Catalog(\"sandbox\", new()\n    {\n        MetastoreId = databricks_metastore.This.Id,\n        Comment = \"this catalog is managed by terraform\",\n        Properties = \n        {\n            { \"purpose\", \"testing\" },\n        },\n    });\n\n    var things = new Databricks.Schema(\"things\", new()\n    {\n        CatalogName = sandbox.Name,\n        Comment = \"this schema is managed by terraform\",\n        Properties = \n        {\n            { \"kind\", \"various\" },\n        },\n    });\n\n    var external = new Databricks.StorageCredential(\"external\", new()\n    {\n        AwsIamRole = new Databricks.Inputs.StorageCredentialAwsIamRoleArgs\n        {\n            RoleArn = aws_iam_role.External_data_access.Arn,\n        },\n    });\n\n    var some = new Databricks.ExternalLocation(\"some\", new()\n    {\n        Url = $\"s3://{aws_s3_bucket.External.Id}/some\",\n        CredentialName = external.Name,\n    });\n\n    var @this = new Databricks.Volume(\"this\", new()\n    {\n        CatalogName = sandbox.Name,\n        SchemaName = things.Name,\n        VolumeType = \"EXTERNAL\",\n        StorageLocation = some.Url,\n        Comment = \"this volume is managed by terraform\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsandbox, err := databricks.NewCatalog(ctx, \"sandbox\", \u0026databricks.CatalogArgs{\n\t\t\tMetastoreId: pulumi.Any(databricks_metastore.This.Id),\n\t\t\tComment:     pulumi.String(\"this catalog is managed by terraform\"),\n\t\t\tProperties: pulumi.AnyMap{\n\t\t\t\t\"purpose\": pulumi.Any(\"testing\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tthings, err := databricks.NewSchema(ctx, \"things\", \u0026databricks.SchemaArgs{\n\t\t\tCatalogName: sandbox.Name,\n\t\t\tComment:     pulumi.String(\"this schema is managed by terraform\"),\n\t\t\tProperties: pulumi.AnyMap{\n\t\t\t\t\"kind\": pulumi.Any(\"various\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texternal, err := databricks.NewStorageCredential(ctx, \"external\", \u0026databricks.StorageCredentialArgs{\n\t\t\tAwsIamRole: \u0026databricks.StorageCredentialAwsIamRoleArgs{\n\t\t\t\tRoleArn: pulumi.Any(aws_iam_role.External_data_access.Arn),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsome, err := databricks.NewExternalLocation(ctx, \"some\", \u0026databricks.ExternalLocationArgs{\n\t\t\tUrl:            pulumi.String(fmt.Sprintf(\"s3://%v/some\", aws_s3_bucket.External.Id)),\n\t\t\tCredentialName: external.Name,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewVolume(ctx, \"this\", \u0026databricks.VolumeArgs{\n\t\t\tCatalogName:     sandbox.Name,\n\t\t\tSchemaName:      things.Name,\n\t\t\tVolumeType:      pulumi.String(\"EXTERNAL\"),\n\t\t\tStorageLocation: some.Url,\n\t\t\tComment:         pulumi.String(\"this volume is managed by terraform\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Catalog;\nimport com.pulumi.databricks.CatalogArgs;\nimport com.pulumi.databricks.Schema;\nimport com.pulumi.databricks.SchemaArgs;\nimport com.pulumi.databricks.StorageCredential;\nimport com.pulumi.databricks.StorageCredentialArgs;\nimport com.pulumi.databricks.inputs.StorageCredentialAwsIamRoleArgs;\nimport com.pulumi.databricks.ExternalLocation;\nimport com.pulumi.databricks.ExternalLocationArgs;\nimport com.pulumi.databricks.Volume;\nimport com.pulumi.databricks.VolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sandbox = new Catalog(\"sandbox\", CatalogArgs.builder()        \n            .metastoreId(databricks_metastore.this().id())\n            .comment(\"this catalog is managed by terraform\")\n            .properties(Map.of(\"purpose\", \"testing\"))\n            .build());\n\n        var things = new Schema(\"things\", SchemaArgs.builder()        \n            .catalogName(sandbox.name())\n            .comment(\"this schema is managed by terraform\")\n            .properties(Map.of(\"kind\", \"various\"))\n            .build());\n\n        var external = new StorageCredential(\"external\", StorageCredentialArgs.builder()        \n            .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()\n                .roleArn(aws_iam_role.external_data_access().arn())\n                .build())\n            .build());\n\n        var some = new ExternalLocation(\"some\", ExternalLocationArgs.builder()        \n            .url(String.format(\"s3://%s/some\", aws_s3_bucket.external().id()))\n            .credentialName(external.name())\n            .build());\n\n        var this_ = new Volume(\"this\", VolumeArgs.builder()        \n            .catalogName(sandbox.name())\n            .schemaName(things.name())\n            .volumeType(\"EXTERNAL\")\n            .storageLocation(some.url())\n            .comment(\"this volume is managed by terraform\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sandbox:\n    type: databricks:Catalog\n    properties:\n      metastoreId: ${databricks_metastore.this.id}\n      comment: this catalog is managed by terraform\n      properties:\n        purpose: testing\n  things:\n    type: databricks:Schema\n    properties:\n      catalogName: ${sandbox.name}\n      comment: this schema is managed by terraform\n      properties:\n        kind: various\n  external:\n    type: databricks:StorageCredential\n    properties:\n      awsIamRole:\n        roleArn: ${aws_iam_role.external_data_access.arn}\n  some:\n    type: databricks:ExternalLocation\n    properties:\n      url: s3://${aws_s3_bucket.external.id}/some\n      credentialName: ${external.name}\n  this:\n    type: databricks:Volume\n    properties:\n      catalogName: ${sandbox.name}\n      schemaName: ${things.name}\n      volumeType: EXTERNAL\n      storageLocation: ${some.url}\n      comment: this volume is managed by terraform\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThis resource can be imported by `full_name` which is the 3-level Volume identifier`\u003ccatalog\u003e.\u003cschema\u003e.\u003cvolume\u003e` bash\n\n```sh\n $ pulumi import databricks:index/volume:Volume this \u003ccatalog_name\u003e.\u003cschema_name\u003e.\u003cname\u003e\n```\n\n ",
             "properties": {
                 "catalogName": {
                     "type": "string",
