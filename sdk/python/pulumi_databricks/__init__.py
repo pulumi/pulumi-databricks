@@ -6,6 +6,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .catalog import *
+from .catalog_workspace_binding import *
 from .cluster import *
 from .cluster_policy import *
 from .dbfs_file import *
@@ -128,6 +129,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/catalog:Catalog": "Catalog"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/catalogWorkspaceBinding",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding": "CatalogWorkspaceBinding"
   }
  },
  {

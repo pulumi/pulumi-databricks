@@ -181,15 +181,15 @@ def get_user(user_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
-        alphanumeric=__ret__.alphanumeric,
-        application_id=__ret__.application_id,
-        display_name=__ret__.display_name,
-        external_id=__ret__.external_id,
-        home=__ret__.home,
-        id=__ret__.id,
-        repos=__ret__.repos,
-        user_id=__ret__.user_id,
-        user_name=__ret__.user_name)
+        alphanumeric=pulumi.get(__ret__, 'alphanumeric'),
+        application_id=pulumi.get(__ret__, 'application_id'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        external_id=pulumi.get(__ret__, 'external_id'),
+        home=pulumi.get(__ret__, 'home'),
+        id=pulumi.get(__ret__, 'id'),
+        repos=pulumi.get(__ret__, 'repos'),
+        user_id=pulumi.get(__ret__, 'user_id'),
+        user_name=pulumi.get(__ret__, 'user_name'))
 
 
 @_utilities.lift_output_func(get_user)

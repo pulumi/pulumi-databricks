@@ -49,14 +49,14 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      * 
      */
     @Import(name="isolationMode")
     private @Nullable Output<String> isolationMode;
 
     /**
-     * @return Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     * @return Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      * 
      */
     public Optional<Output<String>> isolationMode() {
@@ -236,7 +236,7 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isolationMode Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+         * @param isolationMode Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isolationMode Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+         * @param isolationMode Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
          * 
          * @return builder
          * 

@@ -132,11 +132,11 @@ def get_job(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getJob:getJob', __args__, opts=opts, typ=GetJobResult).value
 
     return AwaitableGetJobResult(
-        id=__ret__.id,
-        job_id=__ret__.job_id,
-        job_name=__ret__.job_name,
-        job_settings=__ret__.job_settings,
-        name=__ret__.name)
+        id=pulumi.get(__ret__, 'id'),
+        job_id=pulumi.get(__ret__, 'job_id'),
+        job_name=pulumi.get(__ret__, 'job_name'),
+        job_settings=pulumi.get(__ret__, 'job_settings'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_job)

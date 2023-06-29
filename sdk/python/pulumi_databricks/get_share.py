@@ -134,11 +134,11 @@ def get_share(created_at: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getShare:getShare', __args__, opts=opts, typ=GetShareResult).value
 
     return AwaitableGetShareResult(
-        created_at=__ret__.created_at,
-        created_by=__ret__.created_by,
-        id=__ret__.id,
-        name=__ret__.name,
-        objects=__ret__.objects)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        created_by=pulumi.get(__ret__, 'created_by'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        objects=pulumi.get(__ret__, 'objects'))
 
 
 @_utilities.lift_output_func(get_share)

@@ -60,6 +60,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('clientSecret')
 
     @property
+    def cluster_id(self) -> Optional[str]:
+        return __config__.get('clusterId')
+
+    @property
     def config_file(self) -> Optional[str]:
         return __config__.get('configFile')
 
@@ -122,4 +126,8 @@ class _ExportableConfig(types.ModuleType):
     @property
     def username(self) -> Optional[str]:
         return __config__.get('username')
+
+    @property
+    def warehouse_id(self) -> Optional[str]:
+        return __config__.get('warehouseId')
 

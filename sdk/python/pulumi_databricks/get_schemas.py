@@ -98,9 +98,9 @@ def get_schemas(catalog_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getSchemas:getSchemas', __args__, opts=opts, typ=GetSchemasResult).value
 
     return AwaitableGetSchemasResult(
-        catalog_name=__ret__.catalog_name,
-        id=__ret__.id,
-        ids=__ret__.ids)
+        catalog_name=pulumi.get(__ret__, 'catalog_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'))
 
 
 @_utilities.lift_output_func(get_schemas)

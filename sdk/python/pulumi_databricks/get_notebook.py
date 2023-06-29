@@ -148,13 +148,13 @@ def get_notebook(format: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getNotebook:getNotebook', __args__, opts=opts, typ=GetNotebookResult).value
 
     return AwaitableGetNotebookResult(
-        content=__ret__.content,
-        format=__ret__.format,
-        id=__ret__.id,
-        language=__ret__.language,
-        object_id=__ret__.object_id,
-        object_type=__ret__.object_type,
-        path=__ret__.path)
+        content=pulumi.get(__ret__, 'content'),
+        format=pulumi.get(__ret__, 'format'),
+        id=pulumi.get(__ret__, 'id'),
+        language=pulumi.get(__ret__, 'language'),
+        object_id=pulumi.get(__ret__, 'object_id'),
+        object_type=pulumi.get(__ret__, 'object_type'),
+        path=pulumi.get(__ret__, 'path'))
 
 
 @_utilities.lift_output_func(get_notebook)

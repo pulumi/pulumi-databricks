@@ -48,6 +48,9 @@ namespace Pulumi.Databricks
         [Output("clientSecret")]
         public Output<string?> ClientSecret { get; private set; } = null!;
 
+        [Output("clusterId")]
+        public Output<string?> ClusterId { get; private set; } = null!;
+
         [Output("configFile")]
         public Output<string?> ConfigFile { get; private set; } = null!;
 
@@ -77,6 +80,9 @@ namespace Pulumi.Databricks
 
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
+
+        [Output("warehouseId")]
+        public Output<string?> WarehouseId { get; private set; } = null!;
 
 
         /// <summary>
@@ -166,6 +172,9 @@ namespace Pulumi.Databricks
             }
         }
 
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
         [Input("configFile")]
         public Input<string>? ConfigFile { get; set; }
 
@@ -249,6 +258,9 @@ namespace Pulumi.Databricks
 
         [Input("username")]
         public Input<string>? Username { get; set; }
+
+        [Input("warehouseId")]
+        public Input<string>? WarehouseId { get; set; }
 
         public ProviderArgs()
         {

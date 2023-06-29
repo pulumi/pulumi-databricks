@@ -28,7 +28,7 @@ class CatalogArgs:
         The set of arguments for constructing a Catalog resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
-        :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
@@ -85,7 +85,7 @@ class CatalogArgs:
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         """
         return pulumi.get(self, "isolation_mode")
 
@@ -192,7 +192,7 @@ class _CatalogState:
         Input properties used for looking up and filtering Catalog resources.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
-        :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
@@ -249,7 +249,7 @@ class _CatalogState:
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         """
         return pulumi.get(self, "isolation_mode")
 
@@ -389,7 +389,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
-        :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
@@ -506,7 +506,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
-        :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
@@ -550,7 +550,7 @@ class Catalog(pulumi.CustomResource):
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> pulumi.Output[str]:
         """
-        Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         """
         return pulumi.get(self, "isolation_mode")
 

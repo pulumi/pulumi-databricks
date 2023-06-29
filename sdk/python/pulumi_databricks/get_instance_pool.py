@@ -99,9 +99,9 @@ def get_instance_pool(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getInstancePool:getInstancePool', __args__, opts=opts, typ=GetInstancePoolResult).value
 
     return AwaitableGetInstancePoolResult(
-        id=__ret__.id,
-        name=__ret__.name,
-        pool_info=__ret__.pool_info)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        pool_info=pulumi.get(__ret__, 'pool_info'))
 
 
 @_utilities.lift_output_func(get_instance_pool)

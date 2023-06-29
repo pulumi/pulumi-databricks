@@ -94,6 +94,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clientSecret);
     }
 
+    @Import(name="clusterId")
+    private @Nullable Output<String> clusterId;
+
+    public Optional<Output<String>> clusterId() {
+        return Optional.ofNullable(this.clusterId);
+    }
+
     @Import(name="configFile")
     private @Nullable Output<String> configFile;
 
@@ -206,6 +213,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.username);
     }
 
+    @Import(name="warehouseId")
+    private @Nullable Output<String> warehouseId;
+
+    public Optional<Output<String>> warehouseId() {
+        return Optional.ofNullable(this.warehouseId);
+    }
+
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
@@ -220,6 +234,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.azureWorkspaceResourceId = $.azureWorkspaceResourceId;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
+        this.clusterId = $.clusterId;
         this.configFile = $.configFile;
         this.databricksCliPath = $.databricksCliPath;
         this.debugHeaders = $.debugHeaders;
@@ -236,6 +251,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.skipVerify = $.skipVerify;
         this.token = $.token;
         this.username = $.username;
+        this.warehouseId = $.warehouseId;
     }
 
     public static Builder builder() {
@@ -353,6 +369,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
+        }
+
+        public Builder clusterId(@Nullable Output<String> clusterId) {
+            $.clusterId = clusterId;
+            return this;
+        }
+
+        public Builder clusterId(String clusterId) {
+            return clusterId(Output.of(clusterId));
         }
 
         public Builder configFile(@Nullable Output<String> configFile) {
@@ -497,6 +522,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder username(String username) {
             return username(Output.of(username));
+        }
+
+        public Builder warehouseId(@Nullable Output<String> warehouseId) {
+            $.warehouseId = warehouseId;
+            return this;
+        }
+
+        public Builder warehouseId(String warehouseId) {
+            return warehouseId(Output.of(warehouseId));
         }
 
         public ProviderArgs build() {

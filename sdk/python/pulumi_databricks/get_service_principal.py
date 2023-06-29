@@ -185,14 +185,14 @@ def get_service_principal(active: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts, typ=GetServicePrincipalResult).value
 
     return AwaitableGetServicePrincipalResult(
-        active=__ret__.active,
-        application_id=__ret__.application_id,
-        display_name=__ret__.display_name,
-        external_id=__ret__.external_id,
-        home=__ret__.home,
-        id=__ret__.id,
-        repos=__ret__.repos,
-        sp_id=__ret__.sp_id)
+        active=pulumi.get(__ret__, 'active'),
+        application_id=pulumi.get(__ret__, 'application_id'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        external_id=pulumi.get(__ret__, 'external_id'),
+        home=pulumi.get(__ret__, 'home'),
+        id=pulumi.get(__ret__, 'id'),
+        repos=pulumi.get(__ret__, 'repos'),
+        sp_id=pulumi.get(__ret__, 'sp_id'))
 
 
 @_utilities.lift_output_func(get_service_principal)

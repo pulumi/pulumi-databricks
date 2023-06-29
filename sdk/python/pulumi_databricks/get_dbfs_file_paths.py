@@ -114,10 +114,10 @@ def get_dbfs_file_paths(path: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getDbfsFilePaths:getDbfsFilePaths', __args__, opts=opts, typ=GetDbfsFilePathsResult).value
 
     return AwaitableGetDbfsFilePathsResult(
-        id=__ret__.id,
-        path=__ret__.path,
-        path_lists=__ret__.path_lists,
-        recursive=__ret__.recursive)
+        id=pulumi.get(__ret__, 'id'),
+        path=pulumi.get(__ret__, 'path'),
+        path_lists=pulumi.get(__ret__, 'path_lists'),
+        recursive=pulumi.get(__ret__, 'recursive'))
 
 
 @_utilities.lift_output_func(get_dbfs_file_paths)

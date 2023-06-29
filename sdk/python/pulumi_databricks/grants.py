@@ -26,7 +26,8 @@ class GrantsArgs:
                  share: Optional[pulumi.Input[str]] = None,
                  storage_credential: Optional[pulumi.Input[str]] = None,
                  table: Optional[pulumi.Input[str]] = None,
-                 view: Optional[pulumi.Input[str]] = None):
+                 view: Optional[pulumi.Input[str]] = None,
+                 volume: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Grants resource.
         """
@@ -51,6 +52,8 @@ class GrantsArgs:
             pulumi.set(__self__, "table", table)
         if view is not None:
             pulumi.set(__self__, "view", view)
+        if volume is not None:
+            pulumi.set(__self__, "volume", volume)
 
     @property
     @pulumi.getter
@@ -151,6 +154,15 @@ class GrantsArgs:
     def view(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "view", value)
 
+    @property
+    @pulumi.getter
+    def volume(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "volume")
+
+    @volume.setter
+    def volume(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume", value)
+
 
 @pulumi.input_type
 class _GrantsState:
@@ -165,7 +177,8 @@ class _GrantsState:
                  share: Optional[pulumi.Input[str]] = None,
                  storage_credential: Optional[pulumi.Input[str]] = None,
                  table: Optional[pulumi.Input[str]] = None,
-                 view: Optional[pulumi.Input[str]] = None):
+                 view: Optional[pulumi.Input[str]] = None,
+                 volume: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Grants resources.
         """
@@ -191,6 +204,8 @@ class _GrantsState:
             pulumi.set(__self__, "table", table)
         if view is not None:
             pulumi.set(__self__, "view", view)
+        if volume is not None:
+            pulumi.set(__self__, "volume", volume)
 
     @property
     @pulumi.getter
@@ -291,6 +306,15 @@ class _GrantsState:
     def view(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "view", value)
 
+    @property
+    @pulumi.getter
+    def volume(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "volume")
+
+    @volume.setter
+    def volume(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume", value)
+
 
 class Grants(pulumi.CustomResource):
     @overload
@@ -308,6 +332,7 @@ class Grants(pulumi.CustomResource):
                  storage_credential: Optional[pulumi.Input[str]] = None,
                  table: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input[str]] = None,
+                 volume: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a Grants resource with the given unique name, props, and options.
@@ -348,6 +373,7 @@ class Grants(pulumi.CustomResource):
                  storage_credential: Optional[pulumi.Input[str]] = None,
                  table: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input[str]] = None,
+                 volume: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -370,6 +396,7 @@ class Grants(pulumi.CustomResource):
             __props__.__dict__["storage_credential"] = storage_credential
             __props__.__dict__["table"] = table
             __props__.__dict__["view"] = view
+            __props__.__dict__["volume"] = volume
         super(Grants, __self__).__init__(
             'databricks:index/grants:Grants',
             resource_name,
@@ -390,7 +417,8 @@ class Grants(pulumi.CustomResource):
             share: Optional[pulumi.Input[str]] = None,
             storage_credential: Optional[pulumi.Input[str]] = None,
             table: Optional[pulumi.Input[str]] = None,
-            view: Optional[pulumi.Input[str]] = None) -> 'Grants':
+            view: Optional[pulumi.Input[str]] = None,
+            volume: Optional[pulumi.Input[str]] = None) -> 'Grants':
         """
         Get an existing Grants resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -414,6 +442,7 @@ class Grants(pulumi.CustomResource):
         __props__.__dict__["storage_credential"] = storage_credential
         __props__.__dict__["table"] = table
         __props__.__dict__["view"] = view
+        __props__.__dict__["volume"] = volume
         return Grants(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -470,4 +499,9 @@ class Grants(pulumi.CustomResource):
     @pulumi.getter
     def view(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "view")
+
+    @property
+    @pulumi.getter
+    def volume(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "volume")
 

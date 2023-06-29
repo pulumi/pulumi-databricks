@@ -64,7 +64,7 @@ namespace Pulumi.Databricks
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        /// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         /// </summary>
         [Output("isolationMode")]
         public Output<string> IsolationMode { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.Databricks
         public Input<bool>? ForceDestroy { get; set; }
 
         /// <summary>
-        /// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        /// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         /// </summary>
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
@@ -238,7 +238,7 @@ namespace Pulumi.Databricks
         public Input<bool>? ForceDestroy { get; set; }
 
         /// <summary>
-        /// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+        /// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         /// </summary>
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }

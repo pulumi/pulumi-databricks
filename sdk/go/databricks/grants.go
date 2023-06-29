@@ -25,6 +25,7 @@ type Grants struct {
 	StorageCredential pulumi.StringPtrOutput `pulumi:"storageCredential"`
 	Table             pulumi.StringPtrOutput `pulumi:"table"`
 	View              pulumi.StringPtrOutput `pulumi:"view"`
+	Volume            pulumi.StringPtrOutput `pulumi:"volume"`
 }
 
 // NewGrants registers a new resource with the given unique name, arguments, and options.
@@ -70,6 +71,7 @@ type grantsState struct {
 	StorageCredential *string       `pulumi:"storageCredential"`
 	Table             *string       `pulumi:"table"`
 	View              *string       `pulumi:"view"`
+	Volume            *string       `pulumi:"volume"`
 }
 
 type GrantsState struct {
@@ -84,6 +86,7 @@ type GrantsState struct {
 	StorageCredential pulumi.StringPtrInput
 	Table             pulumi.StringPtrInput
 	View              pulumi.StringPtrInput
+	Volume            pulumi.StringPtrInput
 }
 
 func (GrantsState) ElementType() reflect.Type {
@@ -102,6 +105,7 @@ type grantsArgs struct {
 	StorageCredential *string       `pulumi:"storageCredential"`
 	Table             *string       `pulumi:"table"`
 	View              *string       `pulumi:"view"`
+	Volume            *string       `pulumi:"volume"`
 }
 
 // The set of arguments for constructing a Grants resource.
@@ -117,6 +121,7 @@ type GrantsArgs struct {
 	StorageCredential pulumi.StringPtrInput
 	Table             pulumi.StringPtrInput
 	View              pulumi.StringPtrInput
+	Volume            pulumi.StringPtrInput
 }
 
 func (GrantsArgs) ElementType() reflect.Type {
@@ -248,6 +253,10 @@ func (o GrantsOutput) Table() pulumi.StringPtrOutput {
 
 func (o GrantsOutput) View() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.View }).(pulumi.StringPtrOutput)
+}
+
+func (o GrantsOutput) Volume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Volume }).(pulumi.StringPtrOutput)
 }
 
 type GrantsArrayOutput struct{ *pulumi.OutputState }

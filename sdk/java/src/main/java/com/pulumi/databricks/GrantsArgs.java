@@ -94,6 +94,13 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.view);
     }
 
+    @Import(name="volume")
+    private @Nullable Output<String> volume;
+
+    public Optional<Output<String>> volume() {
+        return Optional.ofNullable(this.volume);
+    }
+
     private GrantsArgs() {}
 
     private GrantsArgs(GrantsArgs $) {
@@ -108,6 +115,7 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
         this.storageCredential = $.storageCredential;
         this.table = $.table;
         this.view = $.view;
+        this.volume = $.volume;
     }
 
     public static Builder builder() {
@@ -229,6 +237,15 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder view(String view) {
             return view(Output.of(view));
+        }
+
+        public Builder volume(@Nullable Output<String> volume) {
+            $.volume = volume;
+            return this;
+        }
+
+        public Builder volume(String volume) {
+            return volume(Output.of(volume));
         }
 
         public GrantsArgs build() {

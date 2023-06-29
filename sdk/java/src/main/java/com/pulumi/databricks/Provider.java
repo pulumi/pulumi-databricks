@@ -83,6 +83,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> clientSecret() {
         return Codegen.optional(this.clientSecret);
     }
+    @Export(name="clusterId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> clusterId;
+
+    public Output<Optional<String>> clusterId() {
+        return Codegen.optional(this.clusterId);
+    }
     @Export(name="configFile", type=String.class, parameters={})
     private Output</* @Nullable */ String> configFile;
 
@@ -142,6 +148,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> username() {
         return Codegen.optional(this.username);
+    }
+    @Export(name="warehouseId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> warehouseId;
+
+    public Output<Optional<String>> warehouseId() {
+        return Codegen.optional(this.warehouseId);
     }
 
     /**

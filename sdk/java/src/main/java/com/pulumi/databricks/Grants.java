@@ -84,6 +84,12 @@ public class Grants extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> view() {
         return Codegen.optional(this.view);
     }
+    @Export(name="volume", type=String.class, parameters={})
+    private Output</* @Nullable */ String> volume;
+
+    public Output<Optional<String>> volume() {
+        return Codegen.optional(this.volume);
+    }
 
     /**
      *

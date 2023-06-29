@@ -191,6 +191,12 @@ namespace Pulumi.Databricks
         public Output<bool?> DatabricksSqlAccess { get; private set; } = null!;
 
         /// <summary>
+        /// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+        /// </summary>
+        [Output("disableAsUserDeletion")]
+        public Output<bool> DisableAsUserDeletion { get; private set; } = null!;
+
+        /// <summary>
         /// This is an alias for the username that can be the full name of the user.
         /// </summary>
         [Output("displayName")]
@@ -309,6 +315,12 @@ namespace Pulumi.Databricks
         public Input<bool>? DatabricksSqlAccess { get; set; }
 
         /// <summary>
+        /// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+        /// </summary>
+        [Input("disableAsUserDeletion")]
+        public Input<bool>? DisableAsUserDeletion { get; set; }
+
+        /// <summary>
         /// This is an alias for the username that can be the full name of the user.
         /// </summary>
         [Input("displayName")]
@@ -387,6 +399,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("databricksSqlAccess")]
         public Input<bool>? DatabricksSqlAccess { get; set; }
+
+        /// <summary>
+        /// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+        /// </summary>
+        [Input("disableAsUserDeletion")]
+        public Input<bool>? DisableAsUserDeletion { get; set; }
 
         /// <summary>
         /// This is an alias for the username that can be the full name of the user.

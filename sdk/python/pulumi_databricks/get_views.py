@@ -121,10 +121,10 @@ def get_views(catalog_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getViews:getViews', __args__, opts=opts, typ=GetViewsResult).value
 
     return AwaitableGetViewsResult(
-        catalog_name=__ret__.catalog_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        schema_name=__ret__.schema_name)
+        catalog_name=pulumi.get(__ret__, 'catalog_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        schema_name=pulumi.get(__ret__, 'schema_name'))
 
 
 @_utilities.lift_output_func(get_views)

@@ -212,6 +212,8 @@ type User struct {
 	AllowInstancePoolCreate pulumi.BoolPtrOutput `pulumi:"allowInstancePoolCreate"`
 	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrOutput `pulumi:"databricksSqlAccess"`
+	// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+	DisableAsUserDeletion pulumi.BoolOutput `pulumi:"disableAsUserDeletion"`
 	// This is an alias for the username that can be the full name of the user.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// ID of the user in an external identity provider.
@@ -270,6 +272,8 @@ type userState struct {
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
 	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
+	// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+	DisableAsUserDeletion *bool `pulumi:"disableAsUserDeletion"`
 	// This is an alias for the username that can be the full name of the user.
 	DisplayName *string `pulumi:"displayName"`
 	// ID of the user in an external identity provider.
@@ -297,6 +301,8 @@ type UserState struct {
 	AllowInstancePoolCreate pulumi.BoolPtrInput
 	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrInput
+	// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+	DisableAsUserDeletion pulumi.BoolPtrInput
 	// This is an alias for the username that can be the full name of the user.
 	DisplayName pulumi.StringPtrInput
 	// ID of the user in an external identity provider.
@@ -328,6 +334,8 @@ type userArgs struct {
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
 	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
+	// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+	DisableAsUserDeletion *bool `pulumi:"disableAsUserDeletion"`
 	// This is an alias for the username that can be the full name of the user.
 	DisplayName *string `pulumi:"displayName"`
 	// ID of the user in an external identity provider.
@@ -356,6 +364,8 @@ type UserArgs struct {
 	AllowInstancePoolCreate pulumi.BoolPtrInput
 	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrInput
+	// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+	DisableAsUserDeletion pulumi.BoolPtrInput
 	// This is an alias for the username that can be the full name of the user.
 	DisplayName pulumi.StringPtrInput
 	// ID of the user in an external identity provider.
@@ -479,6 +489,11 @@ func (o UserOutput) AllowInstancePoolCreate() pulumi.BoolPtrOutput {
 // This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
 func (o UserOutput) DatabricksSqlAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.DatabricksSqlAccess }).(pulumi.BoolPtrOutput)
+}
+
+// When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags. True by default for accounts SCIM API, false otherwise.
+func (o UserOutput) DisableAsUserDeletion() pulumi.BoolOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.DisableAsUserDeletion }).(pulumi.BoolOutput)
 }
 
 // This is an alias for the username that can be the full name of the user.

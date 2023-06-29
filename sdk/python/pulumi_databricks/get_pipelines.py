@@ -125,9 +125,9 @@ def get_pipelines(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getPipelines:getPipelines', __args__, opts=opts, typ=GetPipelinesResult).value
 
     return AwaitableGetPipelinesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        pipeline_name=__ret__.pipeline_name)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        pipeline_name=pulumi.get(__ret__, 'pipeline_name'))
 
 
 @_utilities.lift_output_func(get_pipelines)

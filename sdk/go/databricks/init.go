@@ -22,6 +22,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "databricks:index/catalog:Catalog":
 		r = &Catalog{}
+	case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
+		r = &CatalogWorkspaceBinding{}
 	case "databricks:index/cluster:Cluster":
 		r = &Cluster{}
 	case "databricks:index/clusterPolicy:ClusterPolicy":
@@ -191,6 +193,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/catalog",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/catalogWorkspaceBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

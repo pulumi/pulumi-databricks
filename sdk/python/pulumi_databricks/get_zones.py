@@ -87,6 +87,6 @@ def get_zones(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesR
     __ret__ = pulumi.runtime.invoke('databricks:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        default_zone=__ret__.default_zone,
-        id=__ret__.id,
-        zones=__ret__.zones)
+        default_zone=pulumi.get(__ret__, 'default_zone'),
+        id=pulumi.get(__ret__, 'id'),
+        zones=pulumi.get(__ret__, 'zones'))

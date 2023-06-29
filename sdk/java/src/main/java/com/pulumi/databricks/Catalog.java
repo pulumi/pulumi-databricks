@@ -97,14 +97,14 @@ public class Catalog extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceDestroy);
     }
     /**
-     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      * 
      */
     @Export(name="isolationMode", type=String.class, parameters={})
     private Output<String> isolationMode;
 
     /**
-     * @return Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`.
+     * @return Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      * 
      */
     public Output<String> isolationMode() {

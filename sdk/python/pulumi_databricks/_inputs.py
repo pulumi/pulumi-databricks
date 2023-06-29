@@ -8146,6 +8146,7 @@ class ModelServingConfigServedModelArgs:
                  model_name: pulumi.Input[str],
                  model_version: pulumi.Input[str],
                  workload_size: pulumi.Input[str],
+                 environment_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scale_to_zero_enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -8158,6 +8159,8 @@ class ModelServingConfigServedModelArgs:
         pulumi.set(__self__, "model_name", model_name)
         pulumi.set(__self__, "model_version", model_version)
         pulumi.set(__self__, "workload_size", workload_size)
+        if environment_vars is not None:
+            pulumi.set(__self__, "environment_vars", environment_vars)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if scale_to_zero_enabled is not None:
@@ -8198,6 +8201,15 @@ class ModelServingConfigServedModelArgs:
     @workload_size.setter
     def workload_size(self, value: pulumi.Input[str]):
         pulumi.set(self, "workload_size", value)
+
+    @property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "environment_vars")
+
+    @environment_vars.setter
+    def environment_vars(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "environment_vars", value)
 
     @property
     @pulumi.getter

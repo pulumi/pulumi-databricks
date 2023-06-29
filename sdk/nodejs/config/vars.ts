@@ -95,6 +95,14 @@ Object.defineProperty(exports, "clientSecret", {
     enumerable: true,
 });
 
+export declare const clusterId: string | undefined;
+Object.defineProperty(exports, "clusterId", {
+    get() {
+        return __config.get("clusterId");
+    },
+    enumerable: true,
+});
+
 export declare const configFile: string | undefined;
 Object.defineProperty(exports, "configFile", {
     get() {
@@ -219,6 +227,14 @@ export declare const username: string | undefined;
 Object.defineProperty(exports, "username", {
     get() {
         return __config.get("username");
+    },
+    enumerable: true,
+});
+
+export declare const warehouseId: string | undefined;
+Object.defineProperty(exports, "warehouseId", {
+    get() {
+        return __config.get("warehouseId");
     },
     enumerable: true,
 });

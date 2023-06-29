@@ -19,6 +19,7 @@ class ServicePrincipalArgs:
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[bool]] = None,
+                 disable_as_user_deletion: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -34,6 +35,7 @@ class ServicePrincipalArgs:
         :param pulumi.Input[bool] allow_instance_pool_create: Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[str] application_id: This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        :param pulumi.Input[bool] disable_as_user_deletion: When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
         :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -52,6 +54,8 @@ class ServicePrincipalArgs:
             pulumi.set(__self__, "application_id", application_id)
         if databricks_sql_access is not None:
             pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
+        if disable_as_user_deletion is not None:
+            pulumi.set(__self__, "disable_as_user_deletion", disable_as_user_deletion)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if external_id is not None:
@@ -128,6 +132,18 @@ class ServicePrincipalArgs:
     @databricks_sql_access.setter
     def databricks_sql_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "databricks_sql_access", value)
+
+    @property
+    @pulumi.getter(name="disableAsUserDeletion")
+    def disable_as_user_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+        """
+        return pulumi.get(self, "disable_as_user_deletion")
+
+    @disable_as_user_deletion.setter
+    def disable_as_user_deletion(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_as_user_deletion", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -231,6 +247,7 @@ class _ServicePrincipalState:
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[bool]] = None,
+                 disable_as_user_deletion: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -246,6 +263,7 @@ class _ServicePrincipalState:
         :param pulumi.Input[bool] allow_instance_pool_create: Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[str] application_id: This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        :param pulumi.Input[bool] disable_as_user_deletion: When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
         :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -264,6 +282,8 @@ class _ServicePrincipalState:
             pulumi.set(__self__, "application_id", application_id)
         if databricks_sql_access is not None:
             pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
+        if disable_as_user_deletion is not None:
+            pulumi.set(__self__, "disable_as_user_deletion", disable_as_user_deletion)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if external_id is not None:
@@ -340,6 +360,18 @@ class _ServicePrincipalState:
     @databricks_sql_access.setter
     def databricks_sql_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "databricks_sql_access", value)
+
+    @property
+    @pulumi.getter(name="disableAsUserDeletion")
+    def disable_as_user_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+        """
+        return pulumi.get(self, "disable_as_user_deletion")
+
+    @disable_as_user_deletion.setter
+    def disable_as_user_deletion(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_as_user_deletion", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -445,6 +477,7 @@ class ServicePrincipal(pulumi.CustomResource):
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[bool]] = None,
+                 disable_as_user_deletion: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -553,6 +586,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_instance_pool_create: Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[str] application_id: This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        :param pulumi.Input[bool] disable_as_user_deletion: When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
         :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -679,6 +713,7 @@ class ServicePrincipal(pulumi.CustomResource):
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  databricks_sql_access: Optional[pulumi.Input[bool]] = None,
+                 disable_as_user_deletion: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -701,6 +736,7 @@ class ServicePrincipal(pulumi.CustomResource):
             __props__.__dict__["allow_instance_pool_create"] = allow_instance_pool_create
             __props__.__dict__["application_id"] = application_id
             __props__.__dict__["databricks_sql_access"] = databricks_sql_access
+            __props__.__dict__["disable_as_user_deletion"] = disable_as_user_deletion
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["external_id"] = external_id
             __props__.__dict__["force"] = force
@@ -724,6 +760,7 @@ class ServicePrincipal(pulumi.CustomResource):
             allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
             databricks_sql_access: Optional[pulumi.Input[bool]] = None,
+            disable_as_user_deletion: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             external_id: Optional[pulumi.Input[str]] = None,
             force: Optional[pulumi.Input[bool]] = None,
@@ -744,6 +781,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_instance_pool_create: Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[str] application_id: This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        :param pulumi.Input[bool] disable_as_user_deletion: When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
         :param pulumi.Input[str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[str] external_id: ID of the service principal in an external identity provider.
         :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
@@ -761,6 +799,7 @@ class ServicePrincipal(pulumi.CustomResource):
         __props__.__dict__["allow_instance_pool_create"] = allow_instance_pool_create
         __props__.__dict__["application_id"] = application_id
         __props__.__dict__["databricks_sql_access"] = databricks_sql_access
+        __props__.__dict__["disable_as_user_deletion"] = disable_as_user_deletion
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["external_id"] = external_id
         __props__.__dict__["force"] = force
@@ -810,6 +849,14 @@ class ServicePrincipal(pulumi.CustomResource):
         This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
+
+    @property
+    @pulumi.getter(name="disableAsUserDeletion")
+    def disable_as_user_deletion(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When deleting a user, set the user's active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+        """
+        return pulumi.get(self, "disable_as_user_deletion")
 
     @property
     @pulumi.getter(name="displayName")

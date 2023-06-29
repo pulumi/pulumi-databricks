@@ -99,6 +99,10 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
      */
     public readonly enableServerlessCompute!: pulumi.Output<boolean | undefined>;
     /**
+     * used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+     */
+    public readonly googleServiceAccount!: pulumi.Output<string | undefined>;
+    /**
      * databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
      */
     public readonly instanceProfileArn!: pulumi.Output<string | undefined>;
@@ -126,6 +130,7 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
             const state = argsOrState as SqlGlobalConfigState | undefined;
             resourceInputs["dataAccessConfig"] = state ? state.dataAccessConfig : undefined;
             resourceInputs["enableServerlessCompute"] = state ? state.enableServerlessCompute : undefined;
+            resourceInputs["googleServiceAccount"] = state ? state.googleServiceAccount : undefined;
             resourceInputs["instanceProfileArn"] = state ? state.instanceProfileArn : undefined;
             resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
             resourceInputs["sqlConfigParams"] = state ? state.sqlConfigParams : undefined;
@@ -133,6 +138,7 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
             const args = argsOrState as SqlGlobalConfigArgs | undefined;
             resourceInputs["dataAccessConfig"] = args ? args.dataAccessConfig : undefined;
             resourceInputs["enableServerlessCompute"] = args ? args.enableServerlessCompute : undefined;
+            resourceInputs["googleServiceAccount"] = args ? args.googleServiceAccount : undefined;
             resourceInputs["instanceProfileArn"] = args ? args.instanceProfileArn : undefined;
             resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             resourceInputs["sqlConfigParams"] = args ? args.sqlConfigParams : undefined;
@@ -154,6 +160,10 @@ export interface SqlGlobalConfigState {
      * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      */
     enableServerlessCompute?: pulumi.Input<boolean>;
+    /**
+     * used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+     */
+    googleServiceAccount?: pulumi.Input<string>;
     /**
      * databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
      */
@@ -180,6 +190,10 @@ export interface SqlGlobalConfigArgs {
      * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      */
     enableServerlessCompute?: pulumi.Input<boolean>;
+    /**
+     * used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+     */
+    googleServiceAccount?: pulumi.Input<string>;
     /**
      * databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
      */

@@ -25540,6 +25540,7 @@ func (o ModelServingConfigPtrOutput) TrafficConfig() ModelServingConfigTrafficCo
 }
 
 type ModelServingConfigServedModel struct {
+	EnvironmentVars map[string]interface{} `pulumi:"environmentVars"`
 	// The name of the model in Databricks Model Registry to be served.
 	ModelName string `pulumi:"modelName"`
 	// The version of the model in Databricks Model Registry to be served.
@@ -25564,6 +25565,7 @@ type ModelServingConfigServedModelInput interface {
 }
 
 type ModelServingConfigServedModelArgs struct {
+	EnvironmentVars pulumi.MapInput `pulumi:"environmentVars"`
 	// The name of the model in Databricks Model Registry to be served.
 	ModelName pulumi.StringInput `pulumi:"modelName"`
 	// The version of the model in Databricks Model Registry to be served.
@@ -25625,6 +25627,10 @@ func (o ModelServingConfigServedModelOutput) ToModelServingConfigServedModelOutp
 
 func (o ModelServingConfigServedModelOutput) ToModelServingConfigServedModelOutputWithContext(ctx context.Context) ModelServingConfigServedModelOutput {
 	return o
+}
+
+func (o ModelServingConfigServedModelOutput) EnvironmentVars() pulumi.MapOutput {
+	return o.ApplyT(func(v ModelServingConfigServedModel) map[string]interface{} { return v.EnvironmentVars }).(pulumi.MapOutput)
 }
 
 // The name of the model in Databricks Model Registry to be served.

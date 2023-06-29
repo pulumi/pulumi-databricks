@@ -107,6 +107,8 @@ type SqlGlobalConfig struct {
 	DataAccessConfig pulumi.MapOutput `pulumi:"dataAccessConfig"`
 	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 	EnableServerlessCompute pulumi.BoolPtrOutput `pulumi:"enableServerlessCompute"`
+	// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+	GoogleServiceAccount pulumi.StringPtrOutput `pulumi:"googleServiceAccount"`
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn pulumi.StringPtrOutput `pulumi:"instanceProfileArn"`
 	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
@@ -148,6 +150,8 @@ type sqlGlobalConfigState struct {
 	DataAccessConfig map[string]interface{} `pulumi:"dataAccessConfig"`
 	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 	EnableServerlessCompute *bool `pulumi:"enableServerlessCompute"`
+	// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+	GoogleServiceAccount *string `pulumi:"googleServiceAccount"`
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
 	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
@@ -161,6 +165,8 @@ type SqlGlobalConfigState struct {
 	DataAccessConfig pulumi.MapInput
 	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 	EnableServerlessCompute pulumi.BoolPtrInput
+	// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+	GoogleServiceAccount pulumi.StringPtrInput
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn pulumi.StringPtrInput
 	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
@@ -178,6 +184,8 @@ type sqlGlobalConfigArgs struct {
 	DataAccessConfig map[string]interface{} `pulumi:"dataAccessConfig"`
 	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 	EnableServerlessCompute *bool `pulumi:"enableServerlessCompute"`
+	// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+	GoogleServiceAccount *string `pulumi:"googleServiceAccount"`
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
 	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
@@ -192,6 +200,8 @@ type SqlGlobalConfigArgs struct {
 	DataAccessConfig pulumi.MapInput
 	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 	EnableServerlessCompute pulumi.BoolPtrInput
+	// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+	GoogleServiceAccount pulumi.StringPtrInput
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn pulumi.StringPtrInput
 	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
@@ -295,6 +305,11 @@ func (o SqlGlobalConfigOutput) DataAccessConfig() pulumi.MapOutput {
 // Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 func (o SqlGlobalConfigOutput) EnableServerlessCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlGlobalConfig) pulumi.BoolPtrOutput { return v.EnableServerlessCompute }).(pulumi.BoolPtrOutput)
+}
+
+// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
+func (o SqlGlobalConfigOutput) GoogleServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlGlobalConfig) pulumi.StringPtrOutput { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 // databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.

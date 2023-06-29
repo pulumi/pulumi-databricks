@@ -41,6 +41,9 @@ func GetClientId(ctx *pulumi.Context) string {
 func GetClientSecret(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:clientSecret")
 }
+func GetClusterId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:clusterId")
+}
 func GetConfigFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:configFile")
 }
@@ -88,4 +91,7 @@ func GetToken(ctx *pulumi.Context) string {
 }
 func GetUsername(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:username")
+}
+func GetWarehouseId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:warehouseId")
 }

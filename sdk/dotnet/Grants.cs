@@ -45,6 +45,9 @@ namespace Pulumi.Databricks
         [Output("view")]
         public Output<string?> View { get; private set; } = null!;
 
+        [Output("volume")]
+        public Output<string?> Volume { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Grants resource with the given unique name, arguments, and options.
@@ -129,6 +132,9 @@ namespace Pulumi.Databricks
         [Input("view")]
         public Input<string>? View { get; set; }
 
+        [Input("volume")]
+        public Input<string>? Volume { get; set; }
+
         public GrantsArgs()
         {
         }
@@ -174,6 +180,9 @@ namespace Pulumi.Databricks
 
         [Input("view")]
         public Input<string>? View { get; set; }
+
+        [Input("volume")]
+        public Input<string>? Volume { get; set; }
 
         public GrantsState()
         {

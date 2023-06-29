@@ -108,9 +108,9 @@ def get_clusters(cluster_name_contains: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult).value
 
     return AwaitableGetClustersResult(
-        cluster_name_contains=__ret__.cluster_name_contains,
-        id=__ret__.id,
-        ids=__ret__.ids)
+        cluster_name_contains=pulumi.get(__ret__, 'cluster_name_contains'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'))
 
 
 @_utilities.lift_output_func(get_clusters)

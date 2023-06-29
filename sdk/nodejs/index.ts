@@ -10,6 +10,11 @@ export type Catalog = import("./catalog").Catalog;
 export const Catalog: typeof import("./catalog").Catalog = null as any;
 utilities.lazyLoad(exports, ["Catalog"], () => require("./catalog"));
 
+export { CatalogWorkspaceBindingArgs, CatalogWorkspaceBindingState } from "./catalogWorkspaceBinding";
+export type CatalogWorkspaceBinding = import("./catalogWorkspaceBinding").CatalogWorkspaceBinding;
+export const CatalogWorkspaceBinding: typeof import("./catalogWorkspaceBinding").CatalogWorkspaceBinding = null as any;
+utilities.lazyLoad(exports, ["CatalogWorkspaceBinding"], () => require("./catalogWorkspaceBinding"));
+
 export { ClusterArgs, ClusterState } from "./cluster";
 export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
@@ -539,6 +544,8 @@ const _module = {
         switch (type) {
             case "databricks:index/catalog:Catalog":
                 return new Catalog(name, <any>undefined, { urn })
+            case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
+                return new CatalogWorkspaceBinding(name, <any>undefined, { urn })
             case "databricks:index/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
             case "databricks:index/clusterPolicy:ClusterPolicy":
@@ -683,6 +690,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("databricks", "index/catalog", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/catalogWorkspaceBinding", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/clusterPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dbfsFile", _module)

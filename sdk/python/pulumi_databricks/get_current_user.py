@@ -125,10 +125,10 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     __ret__ = pulumi.runtime.invoke('databricks:index/getCurrentUser:getCurrentUser', __args__, opts=opts, typ=GetCurrentUserResult).value
 
     return AwaitableGetCurrentUserResult(
-        alphanumeric=__ret__.alphanumeric,
-        external_id=__ret__.external_id,
-        home=__ret__.home,
-        id=__ret__.id,
-        repos=__ret__.repos,
-        user_name=__ret__.user_name,
-        workspace_url=__ret__.workspace_url)
+        alphanumeric=pulumi.get(__ret__, 'alphanumeric'),
+        external_id=pulumi.get(__ret__, 'external_id'),
+        home=pulumi.get(__ret__, 'home'),
+        id=pulumi.get(__ret__, 'id'),
+        repos=pulumi.get(__ret__, 'repos'),
+        user_name=pulumi.get(__ret__, 'user_name'),
+        workspace_url=pulumi.get(__ret__, 'workspace_url'))

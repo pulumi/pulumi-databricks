@@ -97,9 +97,9 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getServicePrincipals:getServicePrincipals', __args__, opts=opts, typ=GetServicePrincipalsResult).value
 
     return AwaitableGetServicePrincipalsResult(
-        application_ids=__ret__.application_ids,
-        display_name_contains=__ret__.display_name_contains,
-        id=__ret__.id)
+        application_ids=pulumi.get(__ret__, 'application_ids'),
+        display_name_contains=pulumi.get(__ret__, 'display_name_contains'),
+        id=pulumi.get(__ret__, 'id'))
 
 
 @_utilities.lift_output_func(get_service_principals)
