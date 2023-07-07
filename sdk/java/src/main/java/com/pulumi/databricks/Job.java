@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.JobArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.JobState;
+import com.pulumi.databricks.outputs.JobCompute;
 import com.pulumi.databricks.outputs.JobContinuous;
 import com.pulumi.databricks.outputs.JobDbtTask;
 import com.pulumi.databricks.outputs.JobEmailNotifications;
@@ -64,6 +65,12 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> alwaysRunning() {
         return Codegen.optional(this.alwaysRunning);
+    }
+    @Export(name="computes", type=List.class, parameters={JobCompute.class})
+    private Output</* @Nullable */ List<JobCompute>> computes;
+
+    public Output<Optional<List<JobCompute>>> computes() {
+        return Codegen.optional(this.computes);
     }
     @Export(name="continuous", type=JobContinuous.class, parameters={})
     private Output</* @Nullable */ JobContinuous> continuous;

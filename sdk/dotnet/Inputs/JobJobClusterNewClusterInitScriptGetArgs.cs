@@ -47,6 +47,44 @@ namespace Pulumi.Databricks.Inputs
         ///                     },
         ///                 },
         ///             },
+        ///             new Databricks.Inputs.JobTaskArgs
+        ///             {
+        ///                 TaskKey = "run_dashboard",
+        ///                 SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs
+        ///                 {
+        ///                     WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,
+        ///                     Dashboard = new Databricks.Inputs.JobTaskSqlTaskDashboardArgs
+        ///                     {
+        ///                         DashboardId = databricks_sql_dashboard.Dash.Id,
+        ///                         Subscriptions = new[]
+        ///                         {
+        ///                             new Databricks.Inputs.JobTaskSqlTaskDashboardSubscriptionArgs
+        ///                             {
+        ///                                 UserName = "user@domain.com",
+        ///                             },
+        ///                         },
+        ///                     },
+        ///                 },
+        ///             },
+        ///             new Databricks.Inputs.JobTaskArgs
+        ///             {
+        ///                 TaskKey = "run_alert",
+        ///                 SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs
+        ///                 {
+        ///                     WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,
+        ///                     Alert = new Databricks.Inputs.JobTaskSqlTaskAlertArgs
+        ///                     {
+        ///                         AlertId = databricks_sql_alert.Alert.Id,
+        ///                         Subscriptions = new[]
+        ///                         {
+        ///                             new Databricks.Inputs.JobTaskSqlTaskAlertSubscriptionArgs
+        ///                             {
+        ///                                 UserName = "user@domain.com",
+        ///                             },
+        ///                         },
+        ///                     },
+        ///                 },
+        ///             },
         ///         },
         ///     });
         /// 

@@ -4,13 +4,25 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsTaskSqlTaskDashboard extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsTaskSqlTaskDashboard Empty = new GetJobJobSettingsSettingsTaskSqlTaskDashboard();
+
+    @Import(name="customSubject")
+    private @Nullable String customSubject;
+
+    public Optional<String> customSubject() {
+        return Optional.ofNullable(this.customSubject);
+    }
 
     @Import(name="dashboardId", required=true)
     private String dashboardId;
@@ -19,10 +31,27 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskDashboard extends com.pul
         return this.dashboardId;
     }
 
+    @Import(name="pauseSubscriptions")
+    private @Nullable Boolean pauseSubscriptions;
+
+    public Optional<Boolean> pauseSubscriptions() {
+        return Optional.ofNullable(this.pauseSubscriptions);
+    }
+
+    @Import(name="subscriptions")
+    private @Nullable List<GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription> subscriptions;
+
+    public Optional<List<GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription>> subscriptions() {
+        return Optional.ofNullable(this.subscriptions);
+    }
+
     private GetJobJobSettingsSettingsTaskSqlTaskDashboard() {}
 
     private GetJobJobSettingsSettingsTaskSqlTaskDashboard(GetJobJobSettingsSettingsTaskSqlTaskDashboard $) {
+        this.customSubject = $.customSubject;
         this.dashboardId = $.dashboardId;
+        this.pauseSubscriptions = $.pauseSubscriptions;
+        this.subscriptions = $.subscriptions;
     }
 
     public static Builder builder() {
@@ -43,9 +72,28 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskDashboard extends com.pul
             $ = new GetJobJobSettingsSettingsTaskSqlTaskDashboard(Objects.requireNonNull(defaults));
         }
 
+        public Builder customSubject(@Nullable String customSubject) {
+            $.customSubject = customSubject;
+            return this;
+        }
+
         public Builder dashboardId(String dashboardId) {
             $.dashboardId = dashboardId;
             return this;
+        }
+
+        public Builder pauseSubscriptions(@Nullable Boolean pauseSubscriptions) {
+            $.pauseSubscriptions = pauseSubscriptions;
+            return this;
+        }
+
+        public Builder subscriptions(@Nullable List<GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription> subscriptions) {
+            $.subscriptions = subscriptions;
+            return this;
+        }
+
+        public Builder subscriptions(GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription... subscriptions) {
+            return subscriptions(List.of(subscriptions));
         }
 
         public GetJobJobSettingsSettingsTaskSqlTaskDashboard build() {

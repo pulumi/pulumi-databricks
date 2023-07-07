@@ -47,6 +47,7 @@ export class Job extends pulumi.CustomResource {
      * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      */
     public readonly alwaysRunning!: pulumi.Output<boolean | undefined>;
+    public readonly computes!: pulumi.Output<outputs.JobCompute[] | undefined>;
     public readonly continuous!: pulumi.Output<outputs.JobContinuous | undefined>;
     public readonly dbtTask!: pulumi.Output<outputs.JobDbtTask | undefined>;
     /**
@@ -131,6 +132,7 @@ export class Job extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
             resourceInputs["alwaysRunning"] = state ? state.alwaysRunning : undefined;
+            resourceInputs["computes"] = state ? state.computes : undefined;
             resourceInputs["continuous"] = state ? state.continuous : undefined;
             resourceInputs["dbtTask"] = state ? state.dbtTask : undefined;
             resourceInputs["emailNotifications"] = state ? state.emailNotifications : undefined;
@@ -164,6 +166,7 @@ export class Job extends pulumi.CustomResource {
         } else {
             const args = argsOrState as JobArgs | undefined;
             resourceInputs["alwaysRunning"] = args ? args.alwaysRunning : undefined;
+            resourceInputs["computes"] = args ? args.computes : undefined;
             resourceInputs["continuous"] = args ? args.continuous : undefined;
             resourceInputs["dbtTask"] = args ? args.dbtTask : undefined;
             resourceInputs["emailNotifications"] = args ? args.emailNotifications : undefined;
@@ -208,6 +211,7 @@ export interface JobState {
      * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      */
     alwaysRunning?: pulumi.Input<boolean>;
+    computes?: pulumi.Input<pulumi.Input<inputs.JobCompute>[]>;
     continuous?: pulumi.Input<inputs.JobContinuous>;
     dbtTask?: pulumi.Input<inputs.JobDbtTask>;
     /**
@@ -287,6 +291,7 @@ export interface JobArgs {
      * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      */
     alwaysRunning?: pulumi.Input<boolean>;
+    computes?: pulumi.Input<pulumi.Input<inputs.JobCompute>[]>;
     continuous?: pulumi.Input<inputs.JobContinuous>;
     dbtTask?: pulumi.Input<inputs.JobDbtTask>;
     /**

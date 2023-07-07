@@ -4,16 +4,33 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsTaskSqlTaskDashboard {
+    private @Nullable String customSubject;
     private String dashboardId;
+    private @Nullable Boolean pauseSubscriptions;
+    private @Nullable List<GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription> subscriptions;
 
     private GetJobJobSettingsSettingsTaskSqlTaskDashboard() {}
+    public Optional<String> customSubject() {
+        return Optional.ofNullable(this.customSubject);
+    }
     public String dashboardId() {
         return this.dashboardId;
+    }
+    public Optional<Boolean> pauseSubscriptions() {
+        return Optional.ofNullable(this.pauseSubscriptions);
+    }
+    public List<GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription> subscriptions() {
+        return this.subscriptions == null ? List.of() : this.subscriptions;
     }
 
     public static Builder builder() {
@@ -25,21 +42,48 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskDashboard {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String customSubject;
         private String dashboardId;
+        private @Nullable Boolean pauseSubscriptions;
+        private @Nullable List<GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription> subscriptions;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskSqlTaskDashboard defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customSubject = defaults.customSubject;
     	      this.dashboardId = defaults.dashboardId;
+    	      this.pauseSubscriptions = defaults.pauseSubscriptions;
+    	      this.subscriptions = defaults.subscriptions;
         }
 
+        @CustomType.Setter
+        public Builder customSubject(@Nullable String customSubject) {
+            this.customSubject = customSubject;
+            return this;
+        }
         @CustomType.Setter
         public Builder dashboardId(String dashboardId) {
             this.dashboardId = Objects.requireNonNull(dashboardId);
             return this;
         }
+        @CustomType.Setter
+        public Builder pauseSubscriptions(@Nullable Boolean pauseSubscriptions) {
+            this.pauseSubscriptions = pauseSubscriptions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder subscriptions(@Nullable List<GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription> subscriptions) {
+            this.subscriptions = subscriptions;
+            return this;
+        }
+        public Builder subscriptions(GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription... subscriptions) {
+            return subscriptions(List.of(subscriptions));
+        }
         public GetJobJobSettingsSettingsTaskSqlTaskDashboard build() {
             final var o = new GetJobJobSettingsSettingsTaskSqlTaskDashboard();
+            o.customSubject = customSubject;
             o.dashboardId = dashboardId;
+            o.pauseSubscriptions = pauseSubscriptions;
+            o.subscriptions = subscriptions;
             return o;
         }
     }

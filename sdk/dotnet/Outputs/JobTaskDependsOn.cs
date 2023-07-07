@@ -13,11 +13,16 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskDependsOn
     {
-        public readonly string? TaskKey;
+        public readonly string? Outcome;
+        public readonly string TaskKey;
 
         [OutputConstructor]
-        private JobTaskDependsOn(string? taskKey)
+        private JobTaskDependsOn(
+            string? outcome,
+
+            string taskKey)
         {
+            Outcome = outcome;
             TaskKey = taskKey;
         }
     }

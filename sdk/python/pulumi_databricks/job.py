@@ -17,6 +17,7 @@ __all__ = ['JobArgs', 'Job']
 class JobArgs:
     def __init__(__self__, *,
                  always_running: Optional[pulumi.Input[bool]] = None,
+                 computes: Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]] = None,
                  continuous: Optional[pulumi.Input['JobContinuousArgs']] = None,
                  dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
                  email_notifications: Optional[pulumi.Input['JobEmailNotificationsArgs']] = None,
@@ -64,6 +65,8 @@ class JobArgs:
         """
         if always_running is not None:
             pulumi.set(__self__, "always_running", always_running)
+        if computes is not None:
+            pulumi.set(__self__, "computes", computes)
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
         if dbt_task is not None:
@@ -134,6 +137,15 @@ class JobArgs:
     @always_running.setter
     def always_running(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "always_running", value)
+
+    @property
+    @pulumi.getter
+    def computes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]]:
+        return pulumi.get(self, "computes")
+
+    @computes.setter
+    def computes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]]):
+        pulumi.set(self, "computes", value)
 
     @property
     @pulumi.getter
@@ -437,6 +449,7 @@ class JobArgs:
 class _JobState:
     def __init__(__self__, *,
                  always_running: Optional[pulumi.Input[bool]] = None,
+                 computes: Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]] = None,
                  continuous: Optional[pulumi.Input['JobContinuousArgs']] = None,
                  dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
                  email_notifications: Optional[pulumi.Input['JobEmailNotificationsArgs']] = None,
@@ -486,6 +499,8 @@ class _JobState:
         """
         if always_running is not None:
             pulumi.set(__self__, "always_running", always_running)
+        if computes is not None:
+            pulumi.set(__self__, "computes", computes)
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
         if dbt_task is not None:
@@ -558,6 +573,15 @@ class _JobState:
     @always_running.setter
     def always_running(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "always_running", value)
+
+    @property
+    @pulumi.getter
+    def computes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]]:
+        return pulumi.get(self, "computes")
+
+    @computes.setter
+    def computes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]]):
+        pulumi.set(self, "computes", value)
 
     @property
     @pulumi.getter
@@ -875,6 +899,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_running: Optional[pulumi.Input[bool]] = None,
+                 computes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobComputeArgs']]]]] = None,
                  continuous: Optional[pulumi.Input[pulumi.InputType['JobContinuousArgs']]] = None,
                  dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
                  email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
@@ -961,6 +986,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_running: Optional[pulumi.Input[bool]] = None,
+                 computes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobComputeArgs']]]]] = None,
                  continuous: Optional[pulumi.Input[pulumi.InputType['JobContinuousArgs']]] = None,
                  dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
                  email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
@@ -1000,6 +1026,7 @@ class Job(pulumi.CustomResource):
             __props__ = JobArgs.__new__(JobArgs)
 
             __props__.__dict__["always_running"] = always_running
+            __props__.__dict__["computes"] = computes
             __props__.__dict__["continuous"] = continuous
             __props__.__dict__["dbt_task"] = dbt_task
             __props__.__dict__["email_notifications"] = email_notifications
@@ -1041,6 +1068,7 @@ class Job(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             always_running: Optional[pulumi.Input[bool]] = None,
+            computes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobComputeArgs']]]]] = None,
             continuous: Optional[pulumi.Input[pulumi.InputType['JobContinuousArgs']]] = None,
             dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
             email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
@@ -1098,6 +1126,7 @@ class Job(pulumi.CustomResource):
         __props__ = _JobState.__new__(_JobState)
 
         __props__.__dict__["always_running"] = always_running
+        __props__.__dict__["computes"] = computes
         __props__.__dict__["continuous"] = continuous
         __props__.__dict__["dbt_task"] = dbt_task
         __props__.__dict__["email_notifications"] = email_notifications
@@ -1137,6 +1166,11 @@ class Job(pulumi.CustomResource):
         (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
         """
         return pulumi.get(self, "always_running")
+
+    @property
+    @pulumi.getter
+    def computes(self) -> pulumi.Output[Optional[Sequence['outputs.JobCompute']]]:
+        return pulumi.get(self, "computes")
 
     @property
     @pulumi.getter

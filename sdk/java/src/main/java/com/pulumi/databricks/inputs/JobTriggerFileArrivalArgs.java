@@ -20,15 +20,15 @@ public final class JobTriggerFileArrivalArgs extends com.pulumi.resources.Resour
      * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
      * 
      */
-    @Import(name="minTimeBetweenTriggerSeconds")
-    private @Nullable Output<Integer> minTimeBetweenTriggerSeconds;
+    @Import(name="minTimeBetweenTriggersSeconds")
+    private @Nullable Output<Integer> minTimeBetweenTriggersSeconds;
 
     /**
      * @return If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
      * 
      */
-    public Optional<Output<Integer>> minTimeBetweenTriggerSeconds() {
-        return Optional.ofNullable(this.minTimeBetweenTriggerSeconds);
+    public Optional<Output<Integer>> minTimeBetweenTriggersSeconds() {
+        return Optional.ofNullable(this.minTimeBetweenTriggersSeconds);
     }
 
     /**
@@ -64,7 +64,7 @@ public final class JobTriggerFileArrivalArgs extends com.pulumi.resources.Resour
     private JobTriggerFileArrivalArgs() {}
 
     private JobTriggerFileArrivalArgs(JobTriggerFileArrivalArgs $) {
-        this.minTimeBetweenTriggerSeconds = $.minTimeBetweenTriggerSeconds;
+        this.minTimeBetweenTriggersSeconds = $.minTimeBetweenTriggersSeconds;
         this.url = $.url;
         this.waitAfterLastChangeSeconds = $.waitAfterLastChangeSeconds;
     }
@@ -88,24 +88,24 @@ public final class JobTriggerFileArrivalArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param minTimeBetweenTriggerSeconds If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+         * @param minTimeBetweenTriggersSeconds If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
          * 
          * @return builder
          * 
          */
-        public Builder minTimeBetweenTriggerSeconds(@Nullable Output<Integer> minTimeBetweenTriggerSeconds) {
-            $.minTimeBetweenTriggerSeconds = minTimeBetweenTriggerSeconds;
+        public Builder minTimeBetweenTriggersSeconds(@Nullable Output<Integer> minTimeBetweenTriggersSeconds) {
+            $.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
             return this;
         }
 
         /**
-         * @param minTimeBetweenTriggerSeconds If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+         * @param minTimeBetweenTriggersSeconds If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
          * 
          * @return builder
          * 
          */
-        public Builder minTimeBetweenTriggerSeconds(Integer minTimeBetweenTriggerSeconds) {
-            return minTimeBetweenTriggerSeconds(Output.of(minTimeBetweenTriggerSeconds));
+        public Builder minTimeBetweenTriggersSeconds(Integer minTimeBetweenTriggersSeconds) {
+            return minTimeBetweenTriggersSeconds(Output.of(minTimeBetweenTriggersSeconds));
         }
 
         /**

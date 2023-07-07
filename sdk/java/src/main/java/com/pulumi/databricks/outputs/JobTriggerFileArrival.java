@@ -16,7 +16,7 @@ public final class JobTriggerFileArrival {
      * @return If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
      * 
      */
-    private @Nullable Integer minTimeBetweenTriggerSeconds;
+    private @Nullable Integer minTimeBetweenTriggersSeconds;
     /**
      * @return string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      * 
@@ -33,8 +33,8 @@ public final class JobTriggerFileArrival {
      * @return If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
      * 
      */
-    public Optional<Integer> minTimeBetweenTriggerSeconds() {
-        return Optional.ofNullable(this.minTimeBetweenTriggerSeconds);
+    public Optional<Integer> minTimeBetweenTriggersSeconds() {
+        return Optional.ofNullable(this.minTimeBetweenTriggersSeconds);
     }
     /**
      * @return string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
@@ -60,20 +60,20 @@ public final class JobTriggerFileArrival {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer minTimeBetweenTriggerSeconds;
+        private @Nullable Integer minTimeBetweenTriggersSeconds;
         private String url;
         private @Nullable Integer waitAfterLastChangeSeconds;
         public Builder() {}
         public Builder(JobTriggerFileArrival defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.minTimeBetweenTriggerSeconds = defaults.minTimeBetweenTriggerSeconds;
+    	      this.minTimeBetweenTriggersSeconds = defaults.minTimeBetweenTriggersSeconds;
     	      this.url = defaults.url;
     	      this.waitAfterLastChangeSeconds = defaults.waitAfterLastChangeSeconds;
         }
 
         @CustomType.Setter
-        public Builder minTimeBetweenTriggerSeconds(@Nullable Integer minTimeBetweenTriggerSeconds) {
-            this.minTimeBetweenTriggerSeconds = minTimeBetweenTriggerSeconds;
+        public Builder minTimeBetweenTriggersSeconds(@Nullable Integer minTimeBetweenTriggersSeconds) {
+            this.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
             return this;
         }
         @CustomType.Setter
@@ -88,7 +88,7 @@ public final class JobTriggerFileArrival {
         }
         public JobTriggerFileArrival build() {
             final var o = new JobTriggerFileArrival();
-            o.minTimeBetweenTriggerSeconds = minTimeBetweenTriggerSeconds;
+            o.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
             o.url = url;
             o.waitAfterLastChangeSeconds = waitAfterLastChangeSeconds;
             return o;

@@ -12,8 +12,22 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsTaskSqlTaskDashboardInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("customSubject")]
+        public Input<string>? CustomSubject { get; set; }
+
         [Input("dashboardId", required: true)]
         public Input<string> DashboardId { get; set; } = null!;
+
+        [Input("pauseSubscriptions")]
+        public Input<bool>? PauseSubscriptions { get; set; }
+
+        [Input("subscriptions")]
+        private InputList<Inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionInputArgs>? _subscriptions;
+        public InputList<Inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionInputArgs> Subscriptions
+        {
+            get => _subscriptions ?? (_subscriptions = new InputList<Inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionInputArgs>());
+            set => _subscriptions = value;
+        }
 
         public GetJobJobSettingsSettingsTaskSqlTaskDashboardInputArgs()
         {

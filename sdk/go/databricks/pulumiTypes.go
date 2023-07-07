@@ -5293,6 +5293,239 @@ func (o InstancePoolPreloadedDockerImageBasicAuthPtrOutput) Username() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobCompute struct {
+	ComputeKey *string         `pulumi:"computeKey"`
+	Spec       *JobComputeSpec `pulumi:"spec"`
+}
+
+// JobComputeInput is an input type that accepts JobComputeArgs and JobComputeOutput values.
+// You can construct a concrete instance of `JobComputeInput` via:
+//
+//	JobComputeArgs{...}
+type JobComputeInput interface {
+	pulumi.Input
+
+	ToJobComputeOutput() JobComputeOutput
+	ToJobComputeOutputWithContext(context.Context) JobComputeOutput
+}
+
+type JobComputeArgs struct {
+	ComputeKey pulumi.StringPtrInput  `pulumi:"computeKey"`
+	Spec       JobComputeSpecPtrInput `pulumi:"spec"`
+}
+
+func (JobComputeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCompute)(nil)).Elem()
+}
+
+func (i JobComputeArgs) ToJobComputeOutput() JobComputeOutput {
+	return i.ToJobComputeOutputWithContext(context.Background())
+}
+
+func (i JobComputeArgs) ToJobComputeOutputWithContext(ctx context.Context) JobComputeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobComputeOutput)
+}
+
+// JobComputeArrayInput is an input type that accepts JobComputeArray and JobComputeArrayOutput values.
+// You can construct a concrete instance of `JobComputeArrayInput` via:
+//
+//	JobComputeArray{ JobComputeArgs{...} }
+type JobComputeArrayInput interface {
+	pulumi.Input
+
+	ToJobComputeArrayOutput() JobComputeArrayOutput
+	ToJobComputeArrayOutputWithContext(context.Context) JobComputeArrayOutput
+}
+
+type JobComputeArray []JobComputeInput
+
+func (JobComputeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobCompute)(nil)).Elem()
+}
+
+func (i JobComputeArray) ToJobComputeArrayOutput() JobComputeArrayOutput {
+	return i.ToJobComputeArrayOutputWithContext(context.Background())
+}
+
+func (i JobComputeArray) ToJobComputeArrayOutputWithContext(ctx context.Context) JobComputeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobComputeArrayOutput)
+}
+
+type JobComputeOutput struct{ *pulumi.OutputState }
+
+func (JobComputeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCompute)(nil)).Elem()
+}
+
+func (o JobComputeOutput) ToJobComputeOutput() JobComputeOutput {
+	return o
+}
+
+func (o JobComputeOutput) ToJobComputeOutputWithContext(ctx context.Context) JobComputeOutput {
+	return o
+}
+
+func (o JobComputeOutput) ComputeKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCompute) *string { return v.ComputeKey }).(pulumi.StringPtrOutput)
+}
+
+func (o JobComputeOutput) Spec() JobComputeSpecPtrOutput {
+	return o.ApplyT(func(v JobCompute) *JobComputeSpec { return v.Spec }).(JobComputeSpecPtrOutput)
+}
+
+type JobComputeArrayOutput struct{ *pulumi.OutputState }
+
+func (JobComputeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobCompute)(nil)).Elem()
+}
+
+func (o JobComputeArrayOutput) ToJobComputeArrayOutput() JobComputeArrayOutput {
+	return o
+}
+
+func (o JobComputeArrayOutput) ToJobComputeArrayOutputWithContext(ctx context.Context) JobComputeArrayOutput {
+	return o
+}
+
+func (o JobComputeArrayOutput) Index(i pulumi.IntInput) JobComputeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobCompute {
+		return vs[0].([]JobCompute)[vs[1].(int)]
+	}).(JobComputeOutput)
+}
+
+type JobComputeSpec struct {
+	Kind *string `pulumi:"kind"`
+}
+
+// JobComputeSpecInput is an input type that accepts JobComputeSpecArgs and JobComputeSpecOutput values.
+// You can construct a concrete instance of `JobComputeSpecInput` via:
+//
+//	JobComputeSpecArgs{...}
+type JobComputeSpecInput interface {
+	pulumi.Input
+
+	ToJobComputeSpecOutput() JobComputeSpecOutput
+	ToJobComputeSpecOutputWithContext(context.Context) JobComputeSpecOutput
+}
+
+type JobComputeSpecArgs struct {
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+}
+
+func (JobComputeSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobComputeSpec)(nil)).Elem()
+}
+
+func (i JobComputeSpecArgs) ToJobComputeSpecOutput() JobComputeSpecOutput {
+	return i.ToJobComputeSpecOutputWithContext(context.Background())
+}
+
+func (i JobComputeSpecArgs) ToJobComputeSpecOutputWithContext(ctx context.Context) JobComputeSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobComputeSpecOutput)
+}
+
+func (i JobComputeSpecArgs) ToJobComputeSpecPtrOutput() JobComputeSpecPtrOutput {
+	return i.ToJobComputeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i JobComputeSpecArgs) ToJobComputeSpecPtrOutputWithContext(ctx context.Context) JobComputeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobComputeSpecOutput).ToJobComputeSpecPtrOutputWithContext(ctx)
+}
+
+// JobComputeSpecPtrInput is an input type that accepts JobComputeSpecArgs, JobComputeSpecPtr and JobComputeSpecPtrOutput values.
+// You can construct a concrete instance of `JobComputeSpecPtrInput` via:
+//
+//	        JobComputeSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobComputeSpecPtrInput interface {
+	pulumi.Input
+
+	ToJobComputeSpecPtrOutput() JobComputeSpecPtrOutput
+	ToJobComputeSpecPtrOutputWithContext(context.Context) JobComputeSpecPtrOutput
+}
+
+type jobComputeSpecPtrType JobComputeSpecArgs
+
+func JobComputeSpecPtr(v *JobComputeSpecArgs) JobComputeSpecPtrInput {
+	return (*jobComputeSpecPtrType)(v)
+}
+
+func (*jobComputeSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobComputeSpec)(nil)).Elem()
+}
+
+func (i *jobComputeSpecPtrType) ToJobComputeSpecPtrOutput() JobComputeSpecPtrOutput {
+	return i.ToJobComputeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *jobComputeSpecPtrType) ToJobComputeSpecPtrOutputWithContext(ctx context.Context) JobComputeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobComputeSpecPtrOutput)
+}
+
+type JobComputeSpecOutput struct{ *pulumi.OutputState }
+
+func (JobComputeSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobComputeSpec)(nil)).Elem()
+}
+
+func (o JobComputeSpecOutput) ToJobComputeSpecOutput() JobComputeSpecOutput {
+	return o
+}
+
+func (o JobComputeSpecOutput) ToJobComputeSpecOutputWithContext(ctx context.Context) JobComputeSpecOutput {
+	return o
+}
+
+func (o JobComputeSpecOutput) ToJobComputeSpecPtrOutput() JobComputeSpecPtrOutput {
+	return o.ToJobComputeSpecPtrOutputWithContext(context.Background())
+}
+
+func (o JobComputeSpecOutput) ToJobComputeSpecPtrOutputWithContext(ctx context.Context) JobComputeSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobComputeSpec) *JobComputeSpec {
+		return &v
+	}).(JobComputeSpecPtrOutput)
+}
+
+func (o JobComputeSpecOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobComputeSpec) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+type JobComputeSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (JobComputeSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobComputeSpec)(nil)).Elem()
+}
+
+func (o JobComputeSpecPtrOutput) ToJobComputeSpecPtrOutput() JobComputeSpecPtrOutput {
+	return o
+}
+
+func (o JobComputeSpecPtrOutput) ToJobComputeSpecPtrOutputWithContext(ctx context.Context) JobComputeSpecPtrOutput {
+	return o
+}
+
+func (o JobComputeSpecPtrOutput) Elem() JobComputeSpecOutput {
+	return o.ApplyT(func(v *JobComputeSpec) JobComputeSpec {
+		if v != nil {
+			return *v
+		}
+		var ret JobComputeSpec
+		return ret
+	}).(JobComputeSpecOutput)
+}
+
+func (o JobComputeSpecPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobComputeSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
 type JobContinuous struct {
 	// Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
 	PauseStatus *string `pulumi:"pauseStatus"`
@@ -8507,6 +8740,34 @@ type JobJobClusterNewClusterInitScript struct {
 	// 						},
 	// 					},
 	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_dashboard"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
+	// 							DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_alert"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Alert: &databricks.JobTaskSqlTaskAlertArgs{
+	// 							AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 				},
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -8558,6 +8819,34 @@ type JobJobClusterNewClusterInitScriptArgs struct {
 	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
 	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
 	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 						},
+	// 					},
+	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_dashboard"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
+	// 							DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_alert"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Alert: &databricks.JobTaskSqlTaskAlertArgs{
+	// 							AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
 	// 						},
 	// 					},
 	// 				},
@@ -8659,6 +8948,34 @@ func (o JobJobClusterNewClusterInitScriptOutput) Dbfs() JobJobClusterNewClusterI
 //							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
 //							Query: &databricks.JobTaskSqlTaskQueryArgs{
 //								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//							},
+//						},
+//					},
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_dashboard"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
+//								DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+//								Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
+//									&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
+//										UserName: pulumi.String("user@domain.com"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_alert"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Alert: &databricks.JobTaskSqlTaskAlertArgs{
+//								AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+//								Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
+//									&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
+//										UserName: pulumi.String("user@domain.com"),
+//									},
+//								},
 //							},
 //						},
 //					},
@@ -12769,6 +13086,34 @@ type JobNewClusterInitScript struct {
 	// 						},
 	// 					},
 	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_dashboard"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
+	// 							DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_alert"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Alert: &databricks.JobTaskSqlTaskAlertArgs{
+	// 							AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 				},
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -12820,6 +13165,34 @@ type JobNewClusterInitScriptArgs struct {
 	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
 	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
 	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 						},
+	// 					},
+	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_dashboard"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
+	// 							DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_alert"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Alert: &databricks.JobTaskSqlTaskAlertArgs{
+	// 							AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
 	// 						},
 	// 					},
 	// 				},
@@ -12921,6 +13294,34 @@ func (o JobNewClusterInitScriptOutput) Dbfs() JobNewClusterInitScriptDbfsPtrOutp
 //							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
 //							Query: &databricks.JobTaskSqlTaskQueryArgs{
 //								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//							},
+//						},
+//					},
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_dashboard"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
+//								DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+//								Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
+//									&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
+//										UserName: pulumi.String("user@domain.com"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_alert"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Alert: &databricks.JobTaskSqlTaskAlertArgs{
+//								AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+//								Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
+//									&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
+//										UserName: pulumi.String("user@domain.com"),
+//									},
+//								},
 //							},
 //						},
 //					},
@@ -15848,9 +16249,11 @@ func (o JobSparkSubmitTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 }
 
 type JobTask struct {
-	DbtTask     *JobTaskDbtTask    `pulumi:"dbtTask"`
-	DependsOns  []JobTaskDependsOn `pulumi:"dependsOns"`
-	Description *string            `pulumi:"description"`
+	ComputeKey    *string               `pulumi:"computeKey"`
+	ConditionTask *JobTaskConditionTask `pulumi:"conditionTask"`
+	DbtTask       *JobTaskDbtTask       `pulumi:"dbtTask"`
+	DependsOns    []JobTaskDependsOn    `pulumi:"dependsOns"`
+	Description   *string               `pulumi:"description"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobTaskEmailNotifications `pulumi:"emailNotifications"`
 	ExistingClusterId  *string                    `pulumi:"existingClusterId"`
@@ -15891,9 +16294,11 @@ type JobTaskInput interface {
 }
 
 type JobTaskArgs struct {
-	DbtTask     JobTaskDbtTaskPtrInput     `pulumi:"dbtTask"`
-	DependsOns  JobTaskDependsOnArrayInput `pulumi:"dependsOns"`
-	Description pulumi.StringPtrInput      `pulumi:"description"`
+	ComputeKey    pulumi.StringPtrInput        `pulumi:"computeKey"`
+	ConditionTask JobTaskConditionTaskPtrInput `pulumi:"conditionTask"`
+	DbtTask       JobTaskDbtTaskPtrInput       `pulumi:"dbtTask"`
+	DependsOns    JobTaskDependsOnArrayInput   `pulumi:"dependsOns"`
+	Description   pulumi.StringPtrInput        `pulumi:"description"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobTaskEmailNotificationsPtrInput `pulumi:"emailNotifications"`
 	ExistingClusterId  pulumi.StringPtrInput             `pulumi:"existingClusterId"`
@@ -15971,6 +16376,14 @@ func (o JobTaskOutput) ToJobTaskOutput() JobTaskOutput {
 
 func (o JobTaskOutput) ToJobTaskOutputWithContext(ctx context.Context) JobTaskOutput {
 	return o
+}
+
+func (o JobTaskOutput) ComputeKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTask) *string { return v.ComputeKey }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskOutput) ConditionTask() JobTaskConditionTaskPtrOutput {
+	return o.ApplyT(func(v JobTask) *JobTaskConditionTask { return v.ConditionTask }).(JobTaskConditionTaskPtrOutput)
 }
 
 func (o JobTaskOutput) DbtTask() JobTaskDbtTaskPtrOutput {
@@ -16083,6 +16496,169 @@ func (o JobTaskArrayOutput) Index(i pulumi.IntInput) JobTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTask {
 		return vs[0].([]JobTask)[vs[1].(int)]
 	}).(JobTaskOutput)
+}
+
+type JobTaskConditionTask struct {
+	Left  *string `pulumi:"left"`
+	Op    *string `pulumi:"op"`
+	Right *string `pulumi:"right"`
+}
+
+// JobTaskConditionTaskInput is an input type that accepts JobTaskConditionTaskArgs and JobTaskConditionTaskOutput values.
+// You can construct a concrete instance of `JobTaskConditionTaskInput` via:
+//
+//	JobTaskConditionTaskArgs{...}
+type JobTaskConditionTaskInput interface {
+	pulumi.Input
+
+	ToJobTaskConditionTaskOutput() JobTaskConditionTaskOutput
+	ToJobTaskConditionTaskOutputWithContext(context.Context) JobTaskConditionTaskOutput
+}
+
+type JobTaskConditionTaskArgs struct {
+	Left  pulumi.StringPtrInput `pulumi:"left"`
+	Op    pulumi.StringPtrInput `pulumi:"op"`
+	Right pulumi.StringPtrInput `pulumi:"right"`
+}
+
+func (JobTaskConditionTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskConditionTask)(nil)).Elem()
+}
+
+func (i JobTaskConditionTaskArgs) ToJobTaskConditionTaskOutput() JobTaskConditionTaskOutput {
+	return i.ToJobTaskConditionTaskOutputWithContext(context.Background())
+}
+
+func (i JobTaskConditionTaskArgs) ToJobTaskConditionTaskOutputWithContext(ctx context.Context) JobTaskConditionTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskConditionTaskOutput)
+}
+
+func (i JobTaskConditionTaskArgs) ToJobTaskConditionTaskPtrOutput() JobTaskConditionTaskPtrOutput {
+	return i.ToJobTaskConditionTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskConditionTaskArgs) ToJobTaskConditionTaskPtrOutputWithContext(ctx context.Context) JobTaskConditionTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskConditionTaskOutput).ToJobTaskConditionTaskPtrOutputWithContext(ctx)
+}
+
+// JobTaskConditionTaskPtrInput is an input type that accepts JobTaskConditionTaskArgs, JobTaskConditionTaskPtr and JobTaskConditionTaskPtrOutput values.
+// You can construct a concrete instance of `JobTaskConditionTaskPtrInput` via:
+//
+//	        JobTaskConditionTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskConditionTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskConditionTaskPtrOutput() JobTaskConditionTaskPtrOutput
+	ToJobTaskConditionTaskPtrOutputWithContext(context.Context) JobTaskConditionTaskPtrOutput
+}
+
+type jobTaskConditionTaskPtrType JobTaskConditionTaskArgs
+
+func JobTaskConditionTaskPtr(v *JobTaskConditionTaskArgs) JobTaskConditionTaskPtrInput {
+	return (*jobTaskConditionTaskPtrType)(v)
+}
+
+func (*jobTaskConditionTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskConditionTask)(nil)).Elem()
+}
+
+func (i *jobTaskConditionTaskPtrType) ToJobTaskConditionTaskPtrOutput() JobTaskConditionTaskPtrOutput {
+	return i.ToJobTaskConditionTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskConditionTaskPtrType) ToJobTaskConditionTaskPtrOutputWithContext(ctx context.Context) JobTaskConditionTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskConditionTaskPtrOutput)
+}
+
+type JobTaskConditionTaskOutput struct{ *pulumi.OutputState }
+
+func (JobTaskConditionTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskConditionTask)(nil)).Elem()
+}
+
+func (o JobTaskConditionTaskOutput) ToJobTaskConditionTaskOutput() JobTaskConditionTaskOutput {
+	return o
+}
+
+func (o JobTaskConditionTaskOutput) ToJobTaskConditionTaskOutputWithContext(ctx context.Context) JobTaskConditionTaskOutput {
+	return o
+}
+
+func (o JobTaskConditionTaskOutput) ToJobTaskConditionTaskPtrOutput() JobTaskConditionTaskPtrOutput {
+	return o.ToJobTaskConditionTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskConditionTaskOutput) ToJobTaskConditionTaskPtrOutputWithContext(ctx context.Context) JobTaskConditionTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskConditionTask) *JobTaskConditionTask {
+		return &v
+	}).(JobTaskConditionTaskPtrOutput)
+}
+
+func (o JobTaskConditionTaskOutput) Left() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskConditionTask) *string { return v.Left }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskConditionTaskOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskConditionTask) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskConditionTaskOutput) Right() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskConditionTask) *string { return v.Right }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskConditionTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskConditionTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskConditionTask)(nil)).Elem()
+}
+
+func (o JobTaskConditionTaskPtrOutput) ToJobTaskConditionTaskPtrOutput() JobTaskConditionTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskConditionTaskPtrOutput) ToJobTaskConditionTaskPtrOutputWithContext(ctx context.Context) JobTaskConditionTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskConditionTaskPtrOutput) Elem() JobTaskConditionTaskOutput {
+	return o.ApplyT(func(v *JobTaskConditionTask) JobTaskConditionTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskConditionTask
+		return ret
+	}).(JobTaskConditionTaskOutput)
+}
+
+func (o JobTaskConditionTaskPtrOutput) Left() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskConditionTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Left
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskConditionTaskPtrOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskConditionTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Op
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskConditionTaskPtrOutput) Right() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskConditionTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Right
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobTaskDbtTask struct {
@@ -16326,7 +16902,8 @@ func (o JobTaskDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 }
 
 type JobTaskDependsOn struct {
-	TaskKey *string `pulumi:"taskKey"`
+	Outcome *string `pulumi:"outcome"`
+	TaskKey string  `pulumi:"taskKey"`
 }
 
 // JobTaskDependsOnInput is an input type that accepts JobTaskDependsOnArgs and JobTaskDependsOnOutput values.
@@ -16341,7 +16918,8 @@ type JobTaskDependsOnInput interface {
 }
 
 type JobTaskDependsOnArgs struct {
-	TaskKey pulumi.StringPtrInput `pulumi:"taskKey"`
+	Outcome pulumi.StringPtrInput `pulumi:"outcome"`
+	TaskKey pulumi.StringInput    `pulumi:"taskKey"`
 }
 
 func (JobTaskDependsOnArgs) ElementType() reflect.Type {
@@ -16395,8 +16973,12 @@ func (o JobTaskDependsOnOutput) ToJobTaskDependsOnOutputWithContext(ctx context.
 	return o
 }
 
-func (o JobTaskDependsOnOutput) TaskKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobTaskDependsOn) *string { return v.TaskKey }).(pulumi.StringPtrOutput)
+func (o JobTaskDependsOnOutput) Outcome() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskDependsOn) *string { return v.Outcome }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskDependsOnOutput) TaskKey() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskDependsOn) string { return v.TaskKey }).(pulumi.StringOutput)
 }
 
 type JobTaskDependsOnArrayOutput struct{ *pulumi.OutputState }
@@ -19516,6 +20098,34 @@ type JobTaskNewClusterInitScript struct {
 	// 						},
 	// 					},
 	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_dashboard"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
+	// 							DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_alert"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Alert: &databricks.JobTaskSqlTaskAlertArgs{
+	// 							AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 				},
 	// 			},
 	// 		})
 	// 		if err != nil {
@@ -19567,6 +20177,34 @@ type JobTaskNewClusterInitScriptArgs struct {
 	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
 	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
 	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 						},
+	// 					},
+	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_dashboard"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
+	// 							DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_alert"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Alert: &databricks.JobTaskSqlTaskAlertArgs{
+	// 							AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
 	// 						},
 	// 					},
 	// 				},
@@ -19668,6 +20306,34 @@ func (o JobTaskNewClusterInitScriptOutput) Dbfs() JobTaskNewClusterInitScriptDbf
 //							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
 //							Query: &databricks.JobTaskSqlTaskQueryArgs{
 //								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//							},
+//						},
+//					},
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_dashboard"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
+//								DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+//								Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
+//									&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
+//										UserName: pulumi.String("user@domain.com"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_alert"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Alert: &databricks.JobTaskSqlTaskAlertArgs{
+//								AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+//								Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
+//									&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
+//										UserName: pulumi.String("user@domain.com"),
+//									},
+//								},
 //							},
 //						},
 //					},
@@ -21884,9 +22550,9 @@ func (o JobTaskSparkSubmitTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 }
 
 type JobTaskSqlTask struct {
-	// block consisting of single string field: `alertId` - identifier of the Databricks SQL Alert.
+	// block consisting of following fields:
 	Alert *JobTaskSqlTaskAlert `pulumi:"alert"`
-	// block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+	// block consisting of following fields:
 	Dashboard *JobTaskSqlTaskDashboard `pulumi:"dashboard"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
 	//
@@ -21910,6 +22576,34 @@ type JobTaskSqlTask struct {
 	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
 	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
 	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 						},
+	// 					},
+	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_dashboard"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
+	// 							DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_alert"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Alert: &databricks.JobTaskSqlTaskAlertArgs{
+	// 							AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
 	// 						},
 	// 					},
 	// 				},
@@ -21943,9 +22637,9 @@ type JobTaskSqlTaskInput interface {
 }
 
 type JobTaskSqlTaskArgs struct {
-	// block consisting of single string field: `alertId` - identifier of the Databricks SQL Alert.
+	// block consisting of following fields:
 	Alert JobTaskSqlTaskAlertPtrInput `pulumi:"alert"`
-	// block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+	// block consisting of following fields:
 	Dashboard JobTaskSqlTaskDashboardPtrInput `pulumi:"dashboard"`
 	// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
 	//
@@ -21969,6 +22663,34 @@ type JobTaskSqlTaskArgs struct {
 	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
 	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
 	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 						},
+	// 					},
+	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_dashboard"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
+	// 							DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
+	// 						},
+	// 					},
+	// 				},
+	// 				&databricks.JobTaskArgs{
+	// 					TaskKey: pulumi.String("run_alert"),
+	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
+	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						Alert: &databricks.JobTaskSqlTaskAlertArgs{
+	// 							AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+	// 							Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
+	// 								&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
+	// 									UserName: pulumi.String("user@domain.com"),
+	// 								},
+	// 							},
 	// 						},
 	// 					},
 	// 				},
@@ -22067,12 +22789,12 @@ func (o JobTaskSqlTaskOutput) ToJobTaskSqlTaskPtrOutputWithContext(ctx context.C
 	}).(JobTaskSqlTaskPtrOutput)
 }
 
-// block consisting of single string field: `alertId` - identifier of the Databricks SQL Alert.
+// block consisting of following fields:
 func (o JobTaskSqlTaskOutput) Alert() JobTaskSqlTaskAlertPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTask) *JobTaskSqlTaskAlert { return v.Alert }).(JobTaskSqlTaskAlertPtrOutput)
 }
 
-// block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+// block consisting of following fields:
 func (o JobTaskSqlTaskOutput) Dashboard() JobTaskSqlTaskDashboardPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTask) *JobTaskSqlTaskDashboard { return v.Dashboard }).(JobTaskSqlTaskDashboardPtrOutput)
 }
@@ -22101,6 +22823,34 @@ func (o JobTaskSqlTaskOutput) Dashboard() JobTaskSqlTaskDashboardPtrOutput {
 //							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
 //							Query: &databricks.JobTaskSqlTaskQueryArgs{
 //								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//							},
+//						},
+//					},
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_dashboard"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
+//								DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+//								Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
+//									&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
+//										UserName: pulumi.String("user@domain.com"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_alert"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Alert: &databricks.JobTaskSqlTaskAlertArgs{
+//								AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+//								Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
+//									&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
+//										UserName: pulumi.String("user@domain.com"),
+//									},
+//								},
 //							},
 //						},
 //					},
@@ -22157,7 +22907,7 @@ func (o JobTaskSqlTaskPtrOutput) Elem() JobTaskSqlTaskOutput {
 	}).(JobTaskSqlTaskOutput)
 }
 
-// block consisting of single string field: `alertId` - identifier of the Databricks SQL Alert.
+// block consisting of following fields:
 func (o JobTaskSqlTaskPtrOutput) Alert() JobTaskSqlTaskAlertPtrOutput {
 	return o.ApplyT(func(v *JobTaskSqlTask) *JobTaskSqlTaskAlert {
 		if v == nil {
@@ -22167,7 +22917,7 @@ func (o JobTaskSqlTaskPtrOutput) Alert() JobTaskSqlTaskAlertPtrOutput {
 	}).(JobTaskSqlTaskAlertPtrOutput)
 }
 
-// block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+// block consisting of following fields:
 func (o JobTaskSqlTaskPtrOutput) Dashboard() JobTaskSqlTaskDashboardPtrOutput {
 	return o.ApplyT(func(v *JobTaskSqlTask) *JobTaskSqlTaskDashboard {
 		if v == nil {
@@ -22201,6 +22951,34 @@ func (o JobTaskSqlTaskPtrOutput) Dashboard() JobTaskSqlTaskDashboardPtrOutput {
 //							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
 //							Query: &databricks.JobTaskSqlTaskQueryArgs{
 //								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//							},
+//						},
+//					},
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_dashboard"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
+//								DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+//								Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
+//									&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
+//										UserName: pulumi.String("user@domain.com"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("run_alert"),
+//						SqlTask: &databricks.JobTaskSqlTaskArgs{
+//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							Alert: &databricks.JobTaskSqlTaskAlertArgs{
+//								AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+//								Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
+//									&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
+//										UserName: pulumi.String("user@domain.com"),
+//									},
+//								},
 //							},
 //						},
 //					},
@@ -22254,7 +23032,12 @@ func (o JobTaskSqlTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 }
 
 type JobTaskSqlTaskAlert struct {
+	// (String) identifier of the Databricks SQL Alert.
 	AlertId string `pulumi:"alertId"`
+	// flag that specifies if subscriptions are paused or not.
+	PauseSubscriptions *bool `pulumi:"pauseSubscriptions"`
+	// a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+	Subscriptions []JobTaskSqlTaskAlertSubscription `pulumi:"subscriptions"`
 }
 
 // JobTaskSqlTaskAlertInput is an input type that accepts JobTaskSqlTaskAlertArgs and JobTaskSqlTaskAlertOutput values.
@@ -22269,7 +23052,12 @@ type JobTaskSqlTaskAlertInput interface {
 }
 
 type JobTaskSqlTaskAlertArgs struct {
+	// (String) identifier of the Databricks SQL Alert.
 	AlertId pulumi.StringInput `pulumi:"alertId"`
+	// flag that specifies if subscriptions are paused or not.
+	PauseSubscriptions pulumi.BoolPtrInput `pulumi:"pauseSubscriptions"`
+	// a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+	Subscriptions JobTaskSqlTaskAlertSubscriptionArrayInput `pulumi:"subscriptions"`
 }
 
 func (JobTaskSqlTaskAlertArgs) ElementType() reflect.Type {
@@ -22349,8 +23137,19 @@ func (o JobTaskSqlTaskAlertOutput) ToJobTaskSqlTaskAlertPtrOutputWithContext(ctx
 	}).(JobTaskSqlTaskAlertPtrOutput)
 }
 
+// (String) identifier of the Databricks SQL Alert.
 func (o JobTaskSqlTaskAlertOutput) AlertId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskSqlTaskAlert) string { return v.AlertId }).(pulumi.StringOutput)
+}
+
+// flag that specifies if subscriptions are paused or not.
+func (o JobTaskSqlTaskAlertOutput) PauseSubscriptions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskSqlTaskAlert) *bool { return v.PauseSubscriptions }).(pulumi.BoolPtrOutput)
+}
+
+// a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+func (o JobTaskSqlTaskAlertOutput) Subscriptions() JobTaskSqlTaskAlertSubscriptionArrayOutput {
+	return o.ApplyT(func(v JobTaskSqlTaskAlert) []JobTaskSqlTaskAlertSubscription { return v.Subscriptions }).(JobTaskSqlTaskAlertSubscriptionArrayOutput)
 }
 
 type JobTaskSqlTaskAlertPtrOutput struct{ *pulumi.OutputState }
@@ -22377,6 +23176,7 @@ func (o JobTaskSqlTaskAlertPtrOutput) Elem() JobTaskSqlTaskAlertOutput {
 	}).(JobTaskSqlTaskAlertOutput)
 }
 
+// (String) identifier of the Databricks SQL Alert.
 func (o JobTaskSqlTaskAlertPtrOutput) AlertId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskSqlTaskAlert) *string {
 		if v == nil {
@@ -22386,8 +23186,138 @@ func (o JobTaskSqlTaskAlertPtrOutput) AlertId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// flag that specifies if subscriptions are paused or not.
+func (o JobTaskSqlTaskAlertPtrOutput) PauseSubscriptions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskSqlTaskAlert) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PauseSubscriptions
+	}).(pulumi.BoolPtrOutput)
+}
+
+// a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+func (o JobTaskSqlTaskAlertPtrOutput) Subscriptions() JobTaskSqlTaskAlertSubscriptionArrayOutput {
+	return o.ApplyT(func(v *JobTaskSqlTaskAlert) []JobTaskSqlTaskAlertSubscription {
+		if v == nil {
+			return nil
+		}
+		return v.Subscriptions
+	}).(JobTaskSqlTaskAlertSubscriptionArrayOutput)
+}
+
+type JobTaskSqlTaskAlertSubscription struct {
+	DestinationId *string `pulumi:"destinationId"`
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	UserName *string `pulumi:"userName"`
+}
+
+// JobTaskSqlTaskAlertSubscriptionInput is an input type that accepts JobTaskSqlTaskAlertSubscriptionArgs and JobTaskSqlTaskAlertSubscriptionOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskAlertSubscriptionInput` via:
+//
+//	JobTaskSqlTaskAlertSubscriptionArgs{...}
+type JobTaskSqlTaskAlertSubscriptionInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskAlertSubscriptionOutput() JobTaskSqlTaskAlertSubscriptionOutput
+	ToJobTaskSqlTaskAlertSubscriptionOutputWithContext(context.Context) JobTaskSqlTaskAlertSubscriptionOutput
+}
+
+type JobTaskSqlTaskAlertSubscriptionArgs struct {
+	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (JobTaskSqlTaskAlertSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTaskAlertSubscription)(nil)).Elem()
+}
+
+func (i JobTaskSqlTaskAlertSubscriptionArgs) ToJobTaskSqlTaskAlertSubscriptionOutput() JobTaskSqlTaskAlertSubscriptionOutput {
+	return i.ToJobTaskSqlTaskAlertSubscriptionOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskAlertSubscriptionArgs) ToJobTaskSqlTaskAlertSubscriptionOutputWithContext(ctx context.Context) JobTaskSqlTaskAlertSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskAlertSubscriptionOutput)
+}
+
+// JobTaskSqlTaskAlertSubscriptionArrayInput is an input type that accepts JobTaskSqlTaskAlertSubscriptionArray and JobTaskSqlTaskAlertSubscriptionArrayOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskAlertSubscriptionArrayInput` via:
+//
+//	JobTaskSqlTaskAlertSubscriptionArray{ JobTaskSqlTaskAlertSubscriptionArgs{...} }
+type JobTaskSqlTaskAlertSubscriptionArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskAlertSubscriptionArrayOutput() JobTaskSqlTaskAlertSubscriptionArrayOutput
+	ToJobTaskSqlTaskAlertSubscriptionArrayOutputWithContext(context.Context) JobTaskSqlTaskAlertSubscriptionArrayOutput
+}
+
+type JobTaskSqlTaskAlertSubscriptionArray []JobTaskSqlTaskAlertSubscriptionInput
+
+func (JobTaskSqlTaskAlertSubscriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskSqlTaskAlertSubscription)(nil)).Elem()
+}
+
+func (i JobTaskSqlTaskAlertSubscriptionArray) ToJobTaskSqlTaskAlertSubscriptionArrayOutput() JobTaskSqlTaskAlertSubscriptionArrayOutput {
+	return i.ToJobTaskSqlTaskAlertSubscriptionArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskAlertSubscriptionArray) ToJobTaskSqlTaskAlertSubscriptionArrayOutputWithContext(ctx context.Context) JobTaskSqlTaskAlertSubscriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskAlertSubscriptionArrayOutput)
+}
+
+type JobTaskSqlTaskAlertSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskAlertSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTaskAlertSubscription)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskAlertSubscriptionOutput) ToJobTaskSqlTaskAlertSubscriptionOutput() JobTaskSqlTaskAlertSubscriptionOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskAlertSubscriptionOutput) ToJobTaskSqlTaskAlertSubscriptionOutputWithContext(ctx context.Context) JobTaskSqlTaskAlertSubscriptionOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskAlertSubscriptionOutput) DestinationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskSqlTaskAlertSubscription) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
+}
+
+// The email of an active workspace user. Non-admin users can only set this field to their own email.
+func (o JobTaskSqlTaskAlertSubscriptionOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskSqlTaskAlertSubscription) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskSqlTaskAlertSubscriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskAlertSubscriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskSqlTaskAlertSubscription)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskAlertSubscriptionArrayOutput) ToJobTaskSqlTaskAlertSubscriptionArrayOutput() JobTaskSqlTaskAlertSubscriptionArrayOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskAlertSubscriptionArrayOutput) ToJobTaskSqlTaskAlertSubscriptionArrayOutputWithContext(ctx context.Context) JobTaskSqlTaskAlertSubscriptionArrayOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskAlertSubscriptionArrayOutput) Index(i pulumi.IntInput) JobTaskSqlTaskAlertSubscriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskSqlTaskAlertSubscription {
+		return vs[0].([]JobTaskSqlTaskAlertSubscription)[vs[1].(int)]
+	}).(JobTaskSqlTaskAlertSubscriptionOutput)
+}
+
 type JobTaskSqlTaskDashboard struct {
+	// string specifying a custom subject of email sent.
+	CustomSubject *string `pulumi:"customSubject"`
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	DashboardId string `pulumi:"dashboardId"`
+	// flag that specifies if subscriptions are paused or not.
+	PauseSubscriptions *bool `pulumi:"pauseSubscriptions"`
+	// a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+	Subscriptions []JobTaskSqlTaskDashboardSubscription `pulumi:"subscriptions"`
 }
 
 // JobTaskSqlTaskDashboardInput is an input type that accepts JobTaskSqlTaskDashboardArgs and JobTaskSqlTaskDashboardOutput values.
@@ -22402,7 +23332,14 @@ type JobTaskSqlTaskDashboardInput interface {
 }
 
 type JobTaskSqlTaskDashboardArgs struct {
+	// string specifying a custom subject of email sent.
+	CustomSubject pulumi.StringPtrInput `pulumi:"customSubject"`
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 	DashboardId pulumi.StringInput `pulumi:"dashboardId"`
+	// flag that specifies if subscriptions are paused or not.
+	PauseSubscriptions pulumi.BoolPtrInput `pulumi:"pauseSubscriptions"`
+	// a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+	Subscriptions JobTaskSqlTaskDashboardSubscriptionArrayInput `pulumi:"subscriptions"`
 }
 
 func (JobTaskSqlTaskDashboardArgs) ElementType() reflect.Type {
@@ -22482,8 +23419,24 @@ func (o JobTaskSqlTaskDashboardOutput) ToJobTaskSqlTaskDashboardPtrOutputWithCon
 	}).(JobTaskSqlTaskDashboardPtrOutput)
 }
 
+// string specifying a custom subject of email sent.
+func (o JobTaskSqlTaskDashboardOutput) CustomSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskSqlTaskDashboard) *string { return v.CustomSubject }).(pulumi.StringPtrOutput)
+}
+
+// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 func (o JobTaskSqlTaskDashboardOutput) DashboardId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskSqlTaskDashboard) string { return v.DashboardId }).(pulumi.StringOutput)
+}
+
+// flag that specifies if subscriptions are paused or not.
+func (o JobTaskSqlTaskDashboardOutput) PauseSubscriptions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskSqlTaskDashboard) *bool { return v.PauseSubscriptions }).(pulumi.BoolPtrOutput)
+}
+
+// a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+func (o JobTaskSqlTaskDashboardOutput) Subscriptions() JobTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return o.ApplyT(func(v JobTaskSqlTaskDashboard) []JobTaskSqlTaskDashboardSubscription { return v.Subscriptions }).(JobTaskSqlTaskDashboardSubscriptionArrayOutput)
 }
 
 type JobTaskSqlTaskDashboardPtrOutput struct{ *pulumi.OutputState }
@@ -22510,6 +23463,17 @@ func (o JobTaskSqlTaskDashboardPtrOutput) Elem() JobTaskSqlTaskDashboardOutput {
 	}).(JobTaskSqlTaskDashboardOutput)
 }
 
+// string specifying a custom subject of email sent.
+func (o JobTaskSqlTaskDashboardPtrOutput) CustomSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskSqlTaskDashboard) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomSubject
+	}).(pulumi.StringPtrOutput)
+}
+
+// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
 func (o JobTaskSqlTaskDashboardPtrOutput) DashboardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskSqlTaskDashboard) *string {
 		if v == nil {
@@ -22517,6 +23481,129 @@ func (o JobTaskSqlTaskDashboardPtrOutput) DashboardId() pulumi.StringPtrOutput {
 		}
 		return &v.DashboardId
 	}).(pulumi.StringPtrOutput)
+}
+
+// flag that specifies if subscriptions are paused or not.
+func (o JobTaskSqlTaskDashboardPtrOutput) PauseSubscriptions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskSqlTaskDashboard) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PauseSubscriptions
+	}).(pulumi.BoolPtrOutput)
+}
+
+// a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+func (o JobTaskSqlTaskDashboardPtrOutput) Subscriptions() JobTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return o.ApplyT(func(v *JobTaskSqlTaskDashboard) []JobTaskSqlTaskDashboardSubscription {
+		if v == nil {
+			return nil
+		}
+		return v.Subscriptions
+	}).(JobTaskSqlTaskDashboardSubscriptionArrayOutput)
+}
+
+type JobTaskSqlTaskDashboardSubscription struct {
+	DestinationId *string `pulumi:"destinationId"`
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	UserName *string `pulumi:"userName"`
+}
+
+// JobTaskSqlTaskDashboardSubscriptionInput is an input type that accepts JobTaskSqlTaskDashboardSubscriptionArgs and JobTaskSqlTaskDashboardSubscriptionOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskDashboardSubscriptionInput` via:
+//
+//	JobTaskSqlTaskDashboardSubscriptionArgs{...}
+type JobTaskSqlTaskDashboardSubscriptionInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskDashboardSubscriptionOutput() JobTaskSqlTaskDashboardSubscriptionOutput
+	ToJobTaskSqlTaskDashboardSubscriptionOutputWithContext(context.Context) JobTaskSqlTaskDashboardSubscriptionOutput
+}
+
+type JobTaskSqlTaskDashboardSubscriptionArgs struct {
+	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (JobTaskSqlTaskDashboardSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTaskDashboardSubscription)(nil)).Elem()
+}
+
+func (i JobTaskSqlTaskDashboardSubscriptionArgs) ToJobTaskSqlTaskDashboardSubscriptionOutput() JobTaskSqlTaskDashboardSubscriptionOutput {
+	return i.ToJobTaskSqlTaskDashboardSubscriptionOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskDashboardSubscriptionArgs) ToJobTaskSqlTaskDashboardSubscriptionOutputWithContext(ctx context.Context) JobTaskSqlTaskDashboardSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskDashboardSubscriptionOutput)
+}
+
+// JobTaskSqlTaskDashboardSubscriptionArrayInput is an input type that accepts JobTaskSqlTaskDashboardSubscriptionArray and JobTaskSqlTaskDashboardSubscriptionArrayOutput values.
+// You can construct a concrete instance of `JobTaskSqlTaskDashboardSubscriptionArrayInput` via:
+//
+//	JobTaskSqlTaskDashboardSubscriptionArray{ JobTaskSqlTaskDashboardSubscriptionArgs{...} }
+type JobTaskSqlTaskDashboardSubscriptionArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskSqlTaskDashboardSubscriptionArrayOutput() JobTaskSqlTaskDashboardSubscriptionArrayOutput
+	ToJobTaskSqlTaskDashboardSubscriptionArrayOutputWithContext(context.Context) JobTaskSqlTaskDashboardSubscriptionArrayOutput
+}
+
+type JobTaskSqlTaskDashboardSubscriptionArray []JobTaskSqlTaskDashboardSubscriptionInput
+
+func (JobTaskSqlTaskDashboardSubscriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskSqlTaskDashboardSubscription)(nil)).Elem()
+}
+
+func (i JobTaskSqlTaskDashboardSubscriptionArray) ToJobTaskSqlTaskDashboardSubscriptionArrayOutput() JobTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return i.ToJobTaskSqlTaskDashboardSubscriptionArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskSqlTaskDashboardSubscriptionArray) ToJobTaskSqlTaskDashboardSubscriptionArrayOutputWithContext(ctx context.Context) JobTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskSqlTaskDashboardSubscriptionArrayOutput)
+}
+
+type JobTaskSqlTaskDashboardSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskDashboardSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskSqlTaskDashboardSubscription)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskDashboardSubscriptionOutput) ToJobTaskSqlTaskDashboardSubscriptionOutput() JobTaskSqlTaskDashboardSubscriptionOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskDashboardSubscriptionOutput) ToJobTaskSqlTaskDashboardSubscriptionOutputWithContext(ctx context.Context) JobTaskSqlTaskDashboardSubscriptionOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskDashboardSubscriptionOutput) DestinationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskSqlTaskDashboardSubscription) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
+}
+
+// The email of an active workspace user. Non-admin users can only set this field to their own email.
+func (o JobTaskSqlTaskDashboardSubscriptionOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskSqlTaskDashboardSubscription) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskSqlTaskDashboardSubscriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskSqlTaskDashboardSubscriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskSqlTaskDashboardSubscription)(nil)).Elem()
+}
+
+func (o JobTaskSqlTaskDashboardSubscriptionArrayOutput) ToJobTaskSqlTaskDashboardSubscriptionArrayOutput() JobTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskDashboardSubscriptionArrayOutput) ToJobTaskSqlTaskDashboardSubscriptionArrayOutputWithContext(ctx context.Context) JobTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return o
+}
+
+func (o JobTaskSqlTaskDashboardSubscriptionArrayOutput) Index(i pulumi.IntInput) JobTaskSqlTaskDashboardSubscriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskSqlTaskDashboardSubscription {
+		return vs[0].([]JobTaskSqlTaskDashboardSubscription)[vs[1].(int)]
+	}).(JobTaskSqlTaskDashboardSubscriptionOutput)
 }
 
 type JobTaskSqlTaskFile struct {
@@ -22943,7 +24030,7 @@ func (o JobTriggerPtrOutput) PauseStatus() pulumi.StringPtrOutput {
 
 type JobTriggerFileArrival struct {
 	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-	MinTimeBetweenTriggerSeconds *int `pulumi:"minTimeBetweenTriggerSeconds"`
+	MinTimeBetweenTriggersSeconds *int `pulumi:"minTimeBetweenTriggersSeconds"`
 	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 	Url string `pulumi:"url"`
 	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
@@ -22963,7 +24050,7 @@ type JobTriggerFileArrivalInput interface {
 
 type JobTriggerFileArrivalArgs struct {
 	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-	MinTimeBetweenTriggerSeconds pulumi.IntPtrInput `pulumi:"minTimeBetweenTriggerSeconds"`
+	MinTimeBetweenTriggersSeconds pulumi.IntPtrInput `pulumi:"minTimeBetweenTriggersSeconds"`
 	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
 	Url pulumi.StringInput `pulumi:"url"`
 	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
@@ -23048,8 +24135,8 @@ func (o JobTriggerFileArrivalOutput) ToJobTriggerFileArrivalPtrOutputWithContext
 }
 
 // If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-func (o JobTriggerFileArrivalOutput) MinTimeBetweenTriggerSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v JobTriggerFileArrival) *int { return v.MinTimeBetweenTriggerSeconds }).(pulumi.IntPtrOutput)
+func (o JobTriggerFileArrivalOutput) MinTimeBetweenTriggersSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTriggerFileArrival) *int { return v.MinTimeBetweenTriggersSeconds }).(pulumi.IntPtrOutput)
 }
 
 // string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
@@ -23087,12 +24174,12 @@ func (o JobTriggerFileArrivalPtrOutput) Elem() JobTriggerFileArrivalOutput {
 }
 
 // If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-func (o JobTriggerFileArrivalPtrOutput) MinTimeBetweenTriggerSeconds() pulumi.IntPtrOutput {
+func (o JobTriggerFileArrivalPtrOutput) MinTimeBetweenTriggersSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobTriggerFileArrival) *int {
 		if v == nil {
 			return nil
 		}
-		return v.MinTimeBetweenTriggerSeconds
+		return v.MinTimeBetweenTriggersSeconds
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -45202,6 +46289,7 @@ func (o GetJobJobSettingsPtrOutput) Settings() GetJobJobSettingsSettingsPtrOutpu
 }
 
 type GetJobJobSettingsSettings struct {
+	Computes               []GetJobJobSettingsSettingsCompute           `pulumi:"computes"`
 	Continuous             *GetJobJobSettingsSettingsContinuous         `pulumi:"continuous"`
 	DbtTask                *GetJobJobSettingsSettingsDbtTask            `pulumi:"dbtTask"`
 	EmailNotifications     *GetJobJobSettingsSettingsEmailNotifications `pulumi:"emailNotifications"`
@@ -45246,6 +46334,7 @@ type GetJobJobSettingsSettingsInput interface {
 }
 
 type GetJobJobSettingsSettingsArgs struct {
+	Computes               GetJobJobSettingsSettingsComputeArrayInput          `pulumi:"computes"`
 	Continuous             GetJobJobSettingsSettingsContinuousPtrInput         `pulumi:"continuous"`
 	DbtTask                GetJobJobSettingsSettingsDbtTaskPtrInput            `pulumi:"dbtTask"`
 	EmailNotifications     GetJobJobSettingsSettingsEmailNotificationsPtrInput `pulumi:"emailNotifications"`
@@ -45353,6 +46442,10 @@ func (o GetJobJobSettingsSettingsOutput) ToGetJobJobSettingsSettingsPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettings) *GetJobJobSettingsSettings {
 		return &v
 	}).(GetJobJobSettingsSettingsPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsOutput) Computes() GetJobJobSettingsSettingsComputeArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) []GetJobJobSettingsSettingsCompute { return v.Computes }).(GetJobJobSettingsSettingsComputeArrayOutput)
 }
 
 func (o GetJobJobSettingsSettingsOutput) Continuous() GetJobJobSettingsSettingsContinuousPtrOutput {
@@ -45500,6 +46593,15 @@ func (o GetJobJobSettingsSettingsPtrOutput) Elem() GetJobJobSettingsSettingsOutp
 		var ret GetJobJobSettingsSettings
 		return ret
 	}).(GetJobJobSettingsSettingsOutput)
+}
+
+func (o GetJobJobSettingsSettingsPtrOutput) Computes() GetJobJobSettingsSettingsComputeArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettings) []GetJobJobSettingsSettingsCompute {
+		if v == nil {
+			return nil
+		}
+		return v.Computes
+	}).(GetJobJobSettingsSettingsComputeArrayOutput)
 }
 
 func (o GetJobJobSettingsSettingsPtrOutput) Continuous() GetJobJobSettingsSettingsContinuousPtrOutput {
@@ -45762,6 +46864,239 @@ func (o GetJobJobSettingsSettingsPtrOutput) WebhookNotifications() GetJobJobSett
 		}
 		return v.WebhookNotifications
 	}).(GetJobJobSettingsSettingsWebhookNotificationsPtrOutput)
+}
+
+type GetJobJobSettingsSettingsCompute struct {
+	ComputeKey *string                               `pulumi:"computeKey"`
+	Spec       *GetJobJobSettingsSettingsComputeSpec `pulumi:"spec"`
+}
+
+// GetJobJobSettingsSettingsComputeInput is an input type that accepts GetJobJobSettingsSettingsComputeArgs and GetJobJobSettingsSettingsComputeOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsComputeInput` via:
+//
+//	GetJobJobSettingsSettingsComputeArgs{...}
+type GetJobJobSettingsSettingsComputeInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsComputeOutput() GetJobJobSettingsSettingsComputeOutput
+	ToGetJobJobSettingsSettingsComputeOutputWithContext(context.Context) GetJobJobSettingsSettingsComputeOutput
+}
+
+type GetJobJobSettingsSettingsComputeArgs struct {
+	ComputeKey pulumi.StringPtrInput                        `pulumi:"computeKey"`
+	Spec       GetJobJobSettingsSettingsComputeSpecPtrInput `pulumi:"spec"`
+}
+
+func (GetJobJobSettingsSettingsComputeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsCompute)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsComputeArgs) ToGetJobJobSettingsSettingsComputeOutput() GetJobJobSettingsSettingsComputeOutput {
+	return i.ToGetJobJobSettingsSettingsComputeOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsComputeArgs) ToGetJobJobSettingsSettingsComputeOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsComputeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsComputeOutput)
+}
+
+// GetJobJobSettingsSettingsComputeArrayInput is an input type that accepts GetJobJobSettingsSettingsComputeArray and GetJobJobSettingsSettingsComputeArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsComputeArrayInput` via:
+//
+//	GetJobJobSettingsSettingsComputeArray{ GetJobJobSettingsSettingsComputeArgs{...} }
+type GetJobJobSettingsSettingsComputeArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsComputeArrayOutput() GetJobJobSettingsSettingsComputeArrayOutput
+	ToGetJobJobSettingsSettingsComputeArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsComputeArrayOutput
+}
+
+type GetJobJobSettingsSettingsComputeArray []GetJobJobSettingsSettingsComputeInput
+
+func (GetJobJobSettingsSettingsComputeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsCompute)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsComputeArray) ToGetJobJobSettingsSettingsComputeArrayOutput() GetJobJobSettingsSettingsComputeArrayOutput {
+	return i.ToGetJobJobSettingsSettingsComputeArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsComputeArray) ToGetJobJobSettingsSettingsComputeArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsComputeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsComputeArrayOutput)
+}
+
+type GetJobJobSettingsSettingsComputeOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsComputeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsCompute)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsComputeOutput) ToGetJobJobSettingsSettingsComputeOutput() GetJobJobSettingsSettingsComputeOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsComputeOutput) ToGetJobJobSettingsSettingsComputeOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsComputeOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsComputeOutput) ComputeKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsCompute) *string { return v.ComputeKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsComputeOutput) Spec() GetJobJobSettingsSettingsComputeSpecPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsCompute) *GetJobJobSettingsSettingsComputeSpec { return v.Spec }).(GetJobJobSettingsSettingsComputeSpecPtrOutput)
+}
+
+type GetJobJobSettingsSettingsComputeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsComputeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsCompute)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsComputeArrayOutput) ToGetJobJobSettingsSettingsComputeArrayOutput() GetJobJobSettingsSettingsComputeArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsComputeArrayOutput) ToGetJobJobSettingsSettingsComputeArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsComputeArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsComputeArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsComputeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsCompute {
+		return vs[0].([]GetJobJobSettingsSettingsCompute)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsComputeOutput)
+}
+
+type GetJobJobSettingsSettingsComputeSpec struct {
+	Kind *string `pulumi:"kind"`
+}
+
+// GetJobJobSettingsSettingsComputeSpecInput is an input type that accepts GetJobJobSettingsSettingsComputeSpecArgs and GetJobJobSettingsSettingsComputeSpecOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsComputeSpecInput` via:
+//
+//	GetJobJobSettingsSettingsComputeSpecArgs{...}
+type GetJobJobSettingsSettingsComputeSpecInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsComputeSpecOutput() GetJobJobSettingsSettingsComputeSpecOutput
+	ToGetJobJobSettingsSettingsComputeSpecOutputWithContext(context.Context) GetJobJobSettingsSettingsComputeSpecOutput
+}
+
+type GetJobJobSettingsSettingsComputeSpecArgs struct {
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+}
+
+func (GetJobJobSettingsSettingsComputeSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsComputeSpec)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsComputeSpecArgs) ToGetJobJobSettingsSettingsComputeSpecOutput() GetJobJobSettingsSettingsComputeSpecOutput {
+	return i.ToGetJobJobSettingsSettingsComputeSpecOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsComputeSpecArgs) ToGetJobJobSettingsSettingsComputeSpecOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsComputeSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsComputeSpecOutput)
+}
+
+func (i GetJobJobSettingsSettingsComputeSpecArgs) ToGetJobJobSettingsSettingsComputeSpecPtrOutput() GetJobJobSettingsSettingsComputeSpecPtrOutput {
+	return i.ToGetJobJobSettingsSettingsComputeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsComputeSpecArgs) ToGetJobJobSettingsSettingsComputeSpecPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsComputeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsComputeSpecOutput).ToGetJobJobSettingsSettingsComputeSpecPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsComputeSpecPtrInput is an input type that accepts GetJobJobSettingsSettingsComputeSpecArgs, GetJobJobSettingsSettingsComputeSpecPtr and GetJobJobSettingsSettingsComputeSpecPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsComputeSpecPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsComputeSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsComputeSpecPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsComputeSpecPtrOutput() GetJobJobSettingsSettingsComputeSpecPtrOutput
+	ToGetJobJobSettingsSettingsComputeSpecPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsComputeSpecPtrOutput
+}
+
+type getJobJobSettingsSettingsComputeSpecPtrType GetJobJobSettingsSettingsComputeSpecArgs
+
+func GetJobJobSettingsSettingsComputeSpecPtr(v *GetJobJobSettingsSettingsComputeSpecArgs) GetJobJobSettingsSettingsComputeSpecPtrInput {
+	return (*getJobJobSettingsSettingsComputeSpecPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsComputeSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsComputeSpec)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsComputeSpecPtrType) ToGetJobJobSettingsSettingsComputeSpecPtrOutput() GetJobJobSettingsSettingsComputeSpecPtrOutput {
+	return i.ToGetJobJobSettingsSettingsComputeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsComputeSpecPtrType) ToGetJobJobSettingsSettingsComputeSpecPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsComputeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsComputeSpecPtrOutput)
+}
+
+type GetJobJobSettingsSettingsComputeSpecOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsComputeSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsComputeSpec)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsComputeSpecOutput) ToGetJobJobSettingsSettingsComputeSpecOutput() GetJobJobSettingsSettingsComputeSpecOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsComputeSpecOutput) ToGetJobJobSettingsSettingsComputeSpecOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsComputeSpecOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsComputeSpecOutput) ToGetJobJobSettingsSettingsComputeSpecPtrOutput() GetJobJobSettingsSettingsComputeSpecPtrOutput {
+	return o.ToGetJobJobSettingsSettingsComputeSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsComputeSpecOutput) ToGetJobJobSettingsSettingsComputeSpecPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsComputeSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsComputeSpec) *GetJobJobSettingsSettingsComputeSpec {
+		return &v
+	}).(GetJobJobSettingsSettingsComputeSpecPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsComputeSpecOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsComputeSpec) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsComputeSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsComputeSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsComputeSpec)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsComputeSpecPtrOutput) ToGetJobJobSettingsSettingsComputeSpecPtrOutput() GetJobJobSettingsSettingsComputeSpecPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsComputeSpecPtrOutput) ToGetJobJobSettingsSettingsComputeSpecPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsComputeSpecPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsComputeSpecPtrOutput) Elem() GetJobJobSettingsSettingsComputeSpecOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsComputeSpec) GetJobJobSettingsSettingsComputeSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsComputeSpec
+		return ret
+	}).(GetJobJobSettingsSettingsComputeSpecOutput)
+}
+
+func (o GetJobJobSettingsSettingsComputeSpecPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsComputeSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetJobJobSettingsSettingsContinuous struct {
@@ -55915,6 +57250,8 @@ func (o GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput) Parameters() pulumi.S
 }
 
 type GetJobJobSettingsSettingsTask struct {
+	ComputeKey             *string                                          `pulumi:"computeKey"`
+	ConditionTask          *GetJobJobSettingsSettingsTaskConditionTask      `pulumi:"conditionTask"`
 	DbtTask                *GetJobJobSettingsSettingsTaskDbtTask            `pulumi:"dbtTask"`
 	DependsOns             []GetJobJobSettingsSettingsTaskDependsOn         `pulumi:"dependsOns"`
 	Description            *string                                          `pulumi:"description"`
@@ -55950,6 +57287,8 @@ type GetJobJobSettingsSettingsTaskInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskArgs struct {
+	ComputeKey             pulumi.StringPtrInput                                   `pulumi:"computeKey"`
+	ConditionTask          GetJobJobSettingsSettingsTaskConditionTaskPtrInput      `pulumi:"conditionTask"`
 	DbtTask                GetJobJobSettingsSettingsTaskDbtTaskPtrInput            `pulumi:"dbtTask"`
 	DependsOns             GetJobJobSettingsSettingsTaskDependsOnArrayInput        `pulumi:"dependsOns"`
 	Description            pulumi.StringPtrInput                                   `pulumi:"description"`
@@ -56022,6 +57361,16 @@ func (o GetJobJobSettingsSettingsTaskOutput) ToGetJobJobSettingsSettingsTaskOutp
 
 func (o GetJobJobSettingsSettingsTaskOutput) ToGetJobJobSettingsSettingsTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskOutput {
 	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskOutput) ComputeKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *string { return v.ComputeKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskOutput) ConditionTask() GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskConditionTask {
+		return v.ConditionTask
+	}).(GetJobJobSettingsSettingsTaskConditionTaskPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskOutput) DbtTask() GetJobJobSettingsSettingsTaskDbtTaskPtrOutput {
@@ -56140,6 +57489,169 @@ func (o GetJobJobSettingsSettingsTaskArrayOutput) Index(i pulumi.IntInput) GetJo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTask {
 		return vs[0].([]GetJobJobSettingsSettingsTask)[vs[1].(int)]
 	}).(GetJobJobSettingsSettingsTaskOutput)
+}
+
+type GetJobJobSettingsSettingsTaskConditionTask struct {
+	Left  *string `pulumi:"left"`
+	Op    *string `pulumi:"op"`
+	Right *string `pulumi:"right"`
+}
+
+// GetJobJobSettingsSettingsTaskConditionTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskConditionTaskArgs and GetJobJobSettingsSettingsTaskConditionTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskConditionTaskInput` via:
+//
+//	GetJobJobSettingsSettingsTaskConditionTaskArgs{...}
+type GetJobJobSettingsSettingsTaskConditionTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskConditionTaskOutput() GetJobJobSettingsSettingsTaskConditionTaskOutput
+	ToGetJobJobSettingsSettingsTaskConditionTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskConditionTaskOutput
+}
+
+type GetJobJobSettingsSettingsTaskConditionTaskArgs struct {
+	Left  pulumi.StringPtrInput `pulumi:"left"`
+	Op    pulumi.StringPtrInput `pulumi:"op"`
+	Right pulumi.StringPtrInput `pulumi:"right"`
+}
+
+func (GetJobJobSettingsSettingsTaskConditionTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskConditionTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskConditionTaskArgs) ToGetJobJobSettingsSettingsTaskConditionTaskOutput() GetJobJobSettingsSettingsTaskConditionTaskOutput {
+	return i.ToGetJobJobSettingsSettingsTaskConditionTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskConditionTaskArgs) ToGetJobJobSettingsSettingsTaskConditionTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskConditionTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskConditionTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskConditionTaskArgs) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutput() GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskConditionTaskArgs) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskConditionTaskOutput).ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskConditionTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskConditionTaskArgs, GetJobJobSettingsSettingsTaskConditionTaskPtr and GetJobJobSettingsSettingsTaskConditionTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskConditionTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskConditionTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskConditionTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutput() GetJobJobSettingsSettingsTaskConditionTaskPtrOutput
+	ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskConditionTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskConditionTaskPtrType GetJobJobSettingsSettingsTaskConditionTaskArgs
+
+func GetJobJobSettingsSettingsTaskConditionTaskPtr(v *GetJobJobSettingsSettingsTaskConditionTaskArgs) GetJobJobSettingsSettingsTaskConditionTaskPtrInput {
+	return (*getJobJobSettingsSettingsTaskConditionTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskConditionTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskConditionTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskConditionTaskPtrType) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutput() GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskConditionTaskPtrType) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskConditionTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskConditionTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskConditionTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskConditionTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) ToGetJobJobSettingsSettingsTaskConditionTaskOutput() GetJobJobSettingsSettingsTaskConditionTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) ToGetJobJobSettingsSettingsTaskConditionTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskConditionTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutput() GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskConditionTask) *GetJobJobSettingsSettingsTaskConditionTask {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskConditionTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) Left() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskConditionTask) *string { return v.Left }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskConditionTask) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskConditionTaskOutput) Right() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskConditionTask) *string { return v.Right }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskConditionTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskConditionTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutput() GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) ToGetJobJobSettingsSettingsTaskConditionTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskConditionTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskConditionTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskConditionTask) GetJobJobSettingsSettingsTaskConditionTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskConditionTask
+		return ret
+	}).(GetJobJobSettingsSettingsTaskConditionTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) Left() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskConditionTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Left
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskConditionTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Op
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskConditionTaskPtrOutput) Right() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskConditionTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Right
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetJobJobSettingsSettingsTaskDbtTask struct {
@@ -56351,7 +57863,8 @@ func (o GetJobJobSettingsSettingsTaskDbtTaskPtrOutput) WarehouseId() pulumi.Stri
 }
 
 type GetJobJobSettingsSettingsTaskDependsOn struct {
-	TaskKey *string `pulumi:"taskKey"`
+	Outcome *string `pulumi:"outcome"`
+	TaskKey string  `pulumi:"taskKey"`
 }
 
 // GetJobJobSettingsSettingsTaskDependsOnInput is an input type that accepts GetJobJobSettingsSettingsTaskDependsOnArgs and GetJobJobSettingsSettingsTaskDependsOnOutput values.
@@ -56366,7 +57879,8 @@ type GetJobJobSettingsSettingsTaskDependsOnInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskDependsOnArgs struct {
-	TaskKey pulumi.StringPtrInput `pulumi:"taskKey"`
+	Outcome pulumi.StringPtrInput `pulumi:"outcome"`
+	TaskKey pulumi.StringInput    `pulumi:"taskKey"`
 }
 
 func (GetJobJobSettingsSettingsTaskDependsOnArgs) ElementType() reflect.Type {
@@ -56420,8 +57934,12 @@ func (o GetJobJobSettingsSettingsTaskDependsOnOutput) ToGetJobJobSettingsSetting
 	return o
 }
 
-func (o GetJobJobSettingsSettingsTaskDependsOnOutput) TaskKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskDependsOn) *string { return v.TaskKey }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsTaskDependsOnOutput) Outcome() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskDependsOn) *string { return v.Outcome }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskDependsOnOutput) TaskKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskDependsOn) string { return v.TaskKey }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsTaskDependsOnArrayOutput struct{ *pulumi.OutputState }
@@ -61978,7 +63496,9 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskPtrOutput) WarehouseId() pulumi.Stri
 }
 
 type GetJobJobSettingsSettingsTaskSqlTaskAlert struct {
-	AlertId string `pulumi:"alertId"`
+	AlertId            string                                                  `pulumi:"alertId"`
+	PauseSubscriptions *bool                                                   `pulumi:"pauseSubscriptions"`
+	Subscriptions      []GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription `pulumi:"subscriptions"`
 }
 
 // GetJobJobSettingsSettingsTaskSqlTaskAlertInput is an input type that accepts GetJobJobSettingsSettingsTaskSqlTaskAlertArgs and GetJobJobSettingsSettingsTaskSqlTaskAlertOutput values.
@@ -61993,7 +63513,9 @@ type GetJobJobSettingsSettingsTaskSqlTaskAlertInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskSqlTaskAlertArgs struct {
-	AlertId pulumi.StringInput `pulumi:"alertId"`
+	AlertId            pulumi.StringInput                                              `pulumi:"alertId"`
+	PauseSubscriptions pulumi.BoolPtrInput                                             `pulumi:"pauseSubscriptions"`
+	Subscriptions      GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayInput `pulumi:"subscriptions"`
 }
 
 func (GetJobJobSettingsSettingsTaskSqlTaskAlertArgs) ElementType() reflect.Type {
@@ -62077,6 +63599,16 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskAlertOutput) AlertId() pulumi.String
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskAlert) string { return v.AlertId }).(pulumi.StringOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertOutput) PauseSubscriptions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskAlert) *bool { return v.PauseSubscriptions }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertOutput) Subscriptions() GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskAlert) []GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription {
+		return v.Subscriptions
+	}).(GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput)
+}
+
 type GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput struct{ *pulumi.OutputState }
 
 func (GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput) ElementType() reflect.Type {
@@ -62110,8 +63642,129 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput) AlertId() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput) PauseSubscriptions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTaskAlert) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PauseSubscriptions
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput) Subscriptions() GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTaskAlert) []GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription {
+		if v == nil {
+			return nil
+		}
+		return v.Subscriptions
+	}).(GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription struct {
+	DestinationId *string `pulumi:"destinationId"`
+	UserName      *string `pulumi:"userName"`
+}
+
+// GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionInput is an input type that accepts GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs and GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionInput` via:
+//
+//	GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs{...}
+type GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput
+	ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs struct {
+	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
+	UserName      pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs) ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs) ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput)
+}
+
+// GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArray and GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArray{ GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs{...} }
+type GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput
+	ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArray []GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionInput
+
+func (GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArray) ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArray) ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput) ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput) ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput) DestinationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput) ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput() GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput) ToGetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription {
+		return vs[0].([]GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput)
+}
+
 type GetJobJobSettingsSettingsTaskSqlTaskDashboard struct {
-	DashboardId string `pulumi:"dashboardId"`
+	CustomSubject      *string                                                     `pulumi:"customSubject"`
+	DashboardId        string                                                      `pulumi:"dashboardId"`
+	PauseSubscriptions *bool                                                       `pulumi:"pauseSubscriptions"`
+	Subscriptions      []GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription `pulumi:"subscriptions"`
 }
 
 // GetJobJobSettingsSettingsTaskSqlTaskDashboardInput is an input type that accepts GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs and GetJobJobSettingsSettingsTaskSqlTaskDashboardOutput values.
@@ -62126,7 +63779,10 @@ type GetJobJobSettingsSettingsTaskSqlTaskDashboardInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs struct {
-	DashboardId pulumi.StringInput `pulumi:"dashboardId"`
+	CustomSubject      pulumi.StringPtrInput                                               `pulumi:"customSubject"`
+	DashboardId        pulumi.StringInput                                                  `pulumi:"dashboardId"`
+	PauseSubscriptions pulumi.BoolPtrInput                                                 `pulumi:"pauseSubscriptions"`
+	Subscriptions      GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayInput `pulumi:"subscriptions"`
 }
 
 func (GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs) ElementType() reflect.Type {
@@ -62206,8 +63862,22 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardOutput) ToGetJobJobSettings
 	}).(GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardOutput) CustomSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskDashboard) *string { return v.CustomSubject }).(pulumi.StringPtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardOutput) DashboardId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskDashboard) string { return v.DashboardId }).(pulumi.StringOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardOutput) PauseSubscriptions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskDashboard) *bool { return v.PauseSubscriptions }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardOutput) Subscriptions() GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskDashboard) []GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription {
+		return v.Subscriptions
+	}).(GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput)
 }
 
 type GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput struct{ *pulumi.OutputState }
@@ -62234,6 +63904,15 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput) Elem() GetJobJob
 	}).(GetJobJobSettingsSettingsTaskSqlTaskDashboardOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput) CustomSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTaskDashboard) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomSubject
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput) DashboardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTaskDashboard) *string {
 		if v == nil {
@@ -62241,6 +63920,124 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput) DashboardId() pu
 		}
 		return &v.DashboardId
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput) PauseSubscriptions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTaskDashboard) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PauseSubscriptions
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput) Subscriptions() GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskSqlTaskDashboard) []GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription {
+		if v == nil {
+			return nil
+		}
+		return v.Subscriptions
+	}).(GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription struct {
+	DestinationId *string `pulumi:"destinationId"`
+	UserName      *string `pulumi:"userName"`
+}
+
+// GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionInput is an input type that accepts GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs and GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionInput` via:
+//
+//	GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs{...}
+type GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput() GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput
+	ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs struct {
+	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
+	UserName      pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs) ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput() GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs) ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput)
+}
+
+// GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArray and GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArray{ GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs{...} }
+type GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput() GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput
+	ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArray []GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionInput
+
+func (GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArray) ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput() GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArray) ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput) ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput() GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput) ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput) DestinationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput) ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput() GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput) ToGetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription {
+		return vs[0].([]GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput)
 }
 
 type GetJobJobSettingsSettingsTaskSqlTaskFile struct {
@@ -62660,9 +64457,9 @@ func (o GetJobJobSettingsSettingsTriggerPtrOutput) PauseStatus() pulumi.StringPt
 }
 
 type GetJobJobSettingsSettingsTriggerFileArrival struct {
-	MinTimeBetweenTriggerSeconds *int   `pulumi:"minTimeBetweenTriggerSeconds"`
-	Url                          string `pulumi:"url"`
-	WaitAfterLastChangeSeconds   *int   `pulumi:"waitAfterLastChangeSeconds"`
+	MinTimeBetweenTriggersSeconds *int   `pulumi:"minTimeBetweenTriggersSeconds"`
+	Url                           string `pulumi:"url"`
+	WaitAfterLastChangeSeconds    *int   `pulumi:"waitAfterLastChangeSeconds"`
 }
 
 // GetJobJobSettingsSettingsTriggerFileArrivalInput is an input type that accepts GetJobJobSettingsSettingsTriggerFileArrivalArgs and GetJobJobSettingsSettingsTriggerFileArrivalOutput values.
@@ -62677,9 +64474,9 @@ type GetJobJobSettingsSettingsTriggerFileArrivalInput interface {
 }
 
 type GetJobJobSettingsSettingsTriggerFileArrivalArgs struct {
-	MinTimeBetweenTriggerSeconds pulumi.IntPtrInput `pulumi:"minTimeBetweenTriggerSeconds"`
-	Url                          pulumi.StringInput `pulumi:"url"`
-	WaitAfterLastChangeSeconds   pulumi.IntPtrInput `pulumi:"waitAfterLastChangeSeconds"`
+	MinTimeBetweenTriggersSeconds pulumi.IntPtrInput `pulumi:"minTimeBetweenTriggersSeconds"`
+	Url                           pulumi.StringInput `pulumi:"url"`
+	WaitAfterLastChangeSeconds    pulumi.IntPtrInput `pulumi:"waitAfterLastChangeSeconds"`
 }
 
 func (GetJobJobSettingsSettingsTriggerFileArrivalArgs) ElementType() reflect.Type {
@@ -62759,8 +64556,8 @@ func (o GetJobJobSettingsSettingsTriggerFileArrivalOutput) ToGetJobJobSettingsSe
 	}).(GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTriggerFileArrivalOutput) MinTimeBetweenTriggerSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTriggerFileArrival) *int { return v.MinTimeBetweenTriggerSeconds }).(pulumi.IntPtrOutput)
+func (o GetJobJobSettingsSettingsTriggerFileArrivalOutput) MinTimeBetweenTriggersSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTriggerFileArrival) *int { return v.MinTimeBetweenTriggersSeconds }).(pulumi.IntPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsTriggerFileArrivalOutput) Url() pulumi.StringOutput {
@@ -62795,12 +64592,12 @@ func (o GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput) Elem() GetJobJobSe
 	}).(GetJobJobSettingsSettingsTriggerFileArrivalOutput)
 }
 
-func (o GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput) MinTimeBetweenTriggerSeconds() pulumi.IntPtrOutput {
+func (o GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput) MinTimeBetweenTriggersSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetJobJobSettingsSettingsTriggerFileArrival) *int {
 		if v == nil {
 			return nil
 		}
-		return v.MinTimeBetweenTriggerSeconds
+		return v.MinTimeBetweenTriggersSeconds
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -64392,6 +66189,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolPreloadedDockerImageArrayInput)(nil)).Elem(), InstancePoolPreloadedDockerImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolPreloadedDockerImageBasicAuthInput)(nil)).Elem(), InstancePoolPreloadedDockerImageBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolPreloadedDockerImageBasicAuthPtrInput)(nil)).Elem(), InstancePoolPreloadedDockerImageBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobComputeInput)(nil)).Elem(), JobComputeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobComputeArrayInput)(nil)).Elem(), JobComputeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobComputeSpecInput)(nil)).Elem(), JobComputeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobComputeSpecPtrInput)(nil)).Elem(), JobComputeSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobContinuousInput)(nil)).Elem(), JobContinuousArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobContinuousPtrInput)(nil)).Elem(), JobContinuousArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobDbtTaskInput)(nil)).Elem(), JobDbtTaskArgs{})
@@ -64514,6 +66315,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSparkSubmitTaskPtrInput)(nil)).Elem(), JobSparkSubmitTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskInput)(nil)).Elem(), JobTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskArrayInput)(nil)).Elem(), JobTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskConditionTaskInput)(nil)).Elem(), JobTaskConditionTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskConditionTaskPtrInput)(nil)).Elem(), JobTaskConditionTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDbtTaskInput)(nil)).Elem(), JobTaskDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDbtTaskPtrInput)(nil)).Elem(), JobTaskDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDependsOnInput)(nil)).Elem(), JobTaskDependsOnArgs{})
@@ -64585,8 +66388,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskPtrInput)(nil)).Elem(), JobTaskSqlTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskAlertInput)(nil)).Elem(), JobTaskSqlTaskAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskAlertPtrInput)(nil)).Elem(), JobTaskSqlTaskAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskAlertSubscriptionInput)(nil)).Elem(), JobTaskSqlTaskAlertSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskAlertSubscriptionArrayInput)(nil)).Elem(), JobTaskSqlTaskAlertSubscriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskDashboardInput)(nil)).Elem(), JobTaskSqlTaskDashboardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskDashboardPtrInput)(nil)).Elem(), JobTaskSqlTaskDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskDashboardSubscriptionInput)(nil)).Elem(), JobTaskSqlTaskDashboardSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskDashboardSubscriptionArrayInput)(nil)).Elem(), JobTaskSqlTaskDashboardSubscriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskFileInput)(nil)).Elem(), JobTaskSqlTaskFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskFilePtrInput)(nil)).Elem(), JobTaskSqlTaskFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskQueryInput)(nil)).Elem(), JobTaskSqlTaskQueryArgs{})
@@ -64873,6 +66680,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsPtrInput)(nil)).Elem(), GetJobJobSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsInput)(nil)).Elem(), GetJobJobSettingsSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsComputeInput)(nil)).Elem(), GetJobJobSettingsSettingsComputeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsComputeArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsComputeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsComputeSpecInput)(nil)).Elem(), GetJobJobSettingsSettingsComputeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsComputeSpecPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsComputeSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsContinuousInput)(nil)).Elem(), GetJobJobSettingsSettingsContinuousArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsContinuousPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsContinuousArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsDbtTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsDbtTaskArgs{})
@@ -64995,6 +66806,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSparkSubmitTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsSparkSubmitTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskConditionTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskConditionTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskConditionTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskConditionTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskDbtTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskDbtTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskDependsOnInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskDependsOnArgs{})
@@ -65066,8 +66879,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlertInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlertPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskDashboardInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskFileInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskFilePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskQueryInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskQueryArgs{})
@@ -65171,6 +66988,10 @@ func init() {
 	pulumi.RegisterOutputType(InstancePoolPreloadedDockerImageArrayOutput{})
 	pulumi.RegisterOutputType(InstancePoolPreloadedDockerImageBasicAuthOutput{})
 	pulumi.RegisterOutputType(InstancePoolPreloadedDockerImageBasicAuthPtrOutput{})
+	pulumi.RegisterOutputType(JobComputeOutput{})
+	pulumi.RegisterOutputType(JobComputeArrayOutput{})
+	pulumi.RegisterOutputType(JobComputeSpecOutput{})
+	pulumi.RegisterOutputType(JobComputeSpecPtrOutput{})
 	pulumi.RegisterOutputType(JobContinuousOutput{})
 	pulumi.RegisterOutputType(JobContinuousPtrOutput{})
 	pulumi.RegisterOutputType(JobDbtTaskOutput{})
@@ -65293,6 +67114,8 @@ func init() {
 	pulumi.RegisterOutputType(JobSparkSubmitTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskArrayOutput{})
+	pulumi.RegisterOutputType(JobTaskConditionTaskOutput{})
+	pulumi.RegisterOutputType(JobTaskConditionTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskDbtTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskDbtTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskDependsOnOutput{})
@@ -65364,8 +67187,12 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskSqlTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskAlertOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskAlertPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskAlertSubscriptionOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskAlertSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskDashboardOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskDashboardPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskDashboardSubscriptionOutput{})
+	pulumi.RegisterOutputType(JobTaskSqlTaskDashboardSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskFileOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskFilePtrOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskQueryOutput{})
@@ -65652,6 +67479,10 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsComputeOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsComputeArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsComputeSpecOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsComputeSpecPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsContinuousOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsContinuousPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsDbtTaskOutput{})
@@ -65774,6 +67605,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskConditionTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskConditionTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskDbtTaskOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskDbtTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskDependsOnOutput{})
@@ -65845,8 +67678,12 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskAlertOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskAlertPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskDashboardOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskDashboardPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskFileOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskQueryOutput{})

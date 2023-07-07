@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Inputs
     public sealed class JobTaskSqlTaskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.
+        /// block consisting of following fields:
         /// </summary>
         [Input("alert")]
         public Input<Inputs.JobTaskSqlTaskAlertGetArgs>? Alert { get; set; }
 
         /// <summary>
-        /// block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        /// block consisting of following fields:
         /// </summary>
         [Input("dashboard")]
         public Input<Inputs.JobTaskSqlTaskDashboardGetArgs>? Dashboard { get; set; }
@@ -50,6 +50,44 @@ namespace Pulumi.Databricks.Inputs
         ///                     Query = new Databricks.Inputs.JobTaskSqlTaskQueryArgs
         ///                     {
         ///                         QueryId = databricks_sql_query.Agg_query.Id,
+        ///                     },
+        ///                 },
+        ///             },
+        ///             new Databricks.Inputs.JobTaskArgs
+        ///             {
+        ///                 TaskKey = "run_dashboard",
+        ///                 SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs
+        ///                 {
+        ///                     WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,
+        ///                     Dashboard = new Databricks.Inputs.JobTaskSqlTaskDashboardArgs
+        ///                     {
+        ///                         DashboardId = databricks_sql_dashboard.Dash.Id,
+        ///                         Subscriptions = new[]
+        ///                         {
+        ///                             new Databricks.Inputs.JobTaskSqlTaskDashboardSubscriptionArgs
+        ///                             {
+        ///                                 UserName = "user@domain.com",
+        ///                             },
+        ///                         },
+        ///                     },
+        ///                 },
+        ///             },
+        ///             new Databricks.Inputs.JobTaskArgs
+        ///             {
+        ///                 TaskKey = "run_alert",
+        ///                 SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs
+        ///                 {
+        ///                     WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,
+        ///                     Alert = new Databricks.Inputs.JobTaskSqlTaskAlertArgs
+        ///                     {
+        ///                         AlertId = databricks_sql_alert.Alert.Id,
+        ///                         Subscriptions = new[]
+        ///                         {
+        ///                             new Databricks.Inputs.JobTaskSqlTaskAlertSubscriptionArgs
+        ///                             {
+        ///                                 UserName = "user@domain.com",
+        ///                             },
+        ///                         },
         ///                     },
         ///                 },
         ///             },

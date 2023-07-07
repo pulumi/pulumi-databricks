@@ -12,8 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsTaskDependsOnArgs : global::Pulumi.InvokeArgs
     {
-        [Input("taskKey")]
-        public string? TaskKey { get; set; }
+        [Input("outcome")]
+        public string? Outcome { get; set; }
+
+        [Input("taskKey", required: true)]
+        public string TaskKey { get; set; } = null!;
 
         public GetJobJobSettingsSettingsTaskDependsOnArgs()
         {

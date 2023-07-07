@@ -15,16 +15,24 @@ public final class JobTaskDependsOnArgs extends com.pulumi.resources.ResourceArg
 
     public static final JobTaskDependsOnArgs Empty = new JobTaskDependsOnArgs();
 
-    @Import(name="taskKey")
-    private @Nullable Output<String> taskKey;
+    @Import(name="outcome")
+    private @Nullable Output<String> outcome;
 
-    public Optional<Output<String>> taskKey() {
-        return Optional.ofNullable(this.taskKey);
+    public Optional<Output<String>> outcome() {
+        return Optional.ofNullable(this.outcome);
+    }
+
+    @Import(name="taskKey", required=true)
+    private Output<String> taskKey;
+
+    public Output<String> taskKey() {
+        return this.taskKey;
     }
 
     private JobTaskDependsOnArgs() {}
 
     private JobTaskDependsOnArgs(JobTaskDependsOnArgs $) {
+        this.outcome = $.outcome;
         this.taskKey = $.taskKey;
     }
 
@@ -46,7 +54,16 @@ public final class JobTaskDependsOnArgs extends com.pulumi.resources.ResourceArg
             $ = new JobTaskDependsOnArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder taskKey(@Nullable Output<String> taskKey) {
+        public Builder outcome(@Nullable Output<String> outcome) {
+            $.outcome = outcome;
+            return this;
+        }
+
+        public Builder outcome(String outcome) {
+            return outcome(Output.of(outcome));
+        }
+
+        public Builder taskKey(Output<String> taskKey) {
             $.taskKey = taskKey;
             return this;
         }
@@ -56,6 +73,7 @@ public final class JobTaskDependsOnArgs extends com.pulumi.resources.ResourceArg
         }
 
         public JobTaskDependsOnArgs build() {
+            $.taskKey = Objects.requireNonNull($.taskKey, "expected parameter 'taskKey' to be non-null");
             return $;
         }
     }

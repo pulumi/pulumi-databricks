@@ -13,6 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsTaskResult
     {
+        public readonly string? ComputeKey;
+        public readonly Outputs.GetJobJobSettingsSettingsTaskConditionTaskResult? ConditionTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskDbtTaskResult? DbtTask;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskDependsOnResult> DependsOns;
         public readonly string? Description;
@@ -37,6 +39,10 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskResult(
+            string? computeKey,
+
+            Outputs.GetJobJobSettingsSettingsTaskConditionTaskResult? conditionTask,
+
             Outputs.GetJobJobSettingsSettingsTaskDbtTaskResult? dbtTask,
 
             ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskDependsOnResult> dependsOns,
@@ -79,6 +85,8 @@ namespace Pulumi.Databricks.Outputs
 
             int? timeoutSeconds)
         {
+            ComputeKey = computeKey;
+            ConditionTask = conditionTask;
             DbtTask = dbtTask;
             DependsOns = dependsOns;
             Description = description;

@@ -13,12 +13,30 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskSqlTaskAlert
     {
+        /// <summary>
+        /// (String) identifier of the Databricks SQL Alert.
+        /// </summary>
         public readonly string AlertId;
+        /// <summary>
+        /// flag that specifies if subscriptions are paused or not.
+        /// </summary>
+        public readonly bool? PauseSubscriptions;
+        /// <summary>
+        /// a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.JobTaskSqlTaskAlertSubscription> Subscriptions;
 
         [OutputConstructor]
-        private JobTaskSqlTaskAlert(string alertId)
+        private JobTaskSqlTaskAlert(
+            string alertId,
+
+            bool? pauseSubscriptions,
+
+            ImmutableArray<Outputs.JobTaskSqlTaskAlertSubscription> subscriptions)
         {
             AlertId = alertId;
+            PauseSubscriptions = pauseSubscriptions;
+            Subscriptions = subscriptions;
         }
     }
 }

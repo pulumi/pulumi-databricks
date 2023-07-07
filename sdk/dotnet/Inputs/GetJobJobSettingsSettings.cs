@@ -12,6 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsArgs : global::Pulumi.InvokeArgs
     {
+        [Input("computes")]
+        private List<Inputs.GetJobJobSettingsSettingsComputeArgs>? _computes;
+        public List<Inputs.GetJobJobSettingsSettingsComputeArgs> Computes
+        {
+            get => _computes ?? (_computes = new List<Inputs.GetJobJobSettingsSettingsComputeArgs>());
+            set => _computes = value;
+        }
+
         [Input("continuous")]
         public Inputs.GetJobJobSettingsSettingsContinuousArgs? Continuous { get; set; }
 

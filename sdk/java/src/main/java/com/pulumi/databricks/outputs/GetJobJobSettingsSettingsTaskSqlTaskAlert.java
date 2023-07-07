@@ -4,16 +4,29 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsTaskSqlTaskAlert {
     private String alertId;
+    private @Nullable Boolean pauseSubscriptions;
+    private List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions;
 
     private GetJobJobSettingsSettingsTaskSqlTaskAlert() {}
     public String alertId() {
         return this.alertId;
+    }
+    public Optional<Boolean> pauseSubscriptions() {
+        return Optional.ofNullable(this.pauseSubscriptions);
+    }
+    public List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions() {
+        return this.subscriptions;
     }
 
     public static Builder builder() {
@@ -26,10 +39,14 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskAlert {
     @CustomType.Builder
     public static final class Builder {
         private String alertId;
+        private @Nullable Boolean pauseSubscriptions;
+        private List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskSqlTaskAlert defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alertId = defaults.alertId;
+    	      this.pauseSubscriptions = defaults.pauseSubscriptions;
+    	      this.subscriptions = defaults.subscriptions;
         }
 
         @CustomType.Setter
@@ -37,9 +54,24 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskAlert {
             this.alertId = Objects.requireNonNull(alertId);
             return this;
         }
+        @CustomType.Setter
+        public Builder pauseSubscriptions(@Nullable Boolean pauseSubscriptions) {
+            this.pauseSubscriptions = pauseSubscriptions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder subscriptions(List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription> subscriptions) {
+            this.subscriptions = Objects.requireNonNull(subscriptions);
+            return this;
+        }
+        public Builder subscriptions(GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription... subscriptions) {
+            return subscriptions(List.of(subscriptions));
+        }
         public GetJobJobSettingsSettingsTaskSqlTaskAlert build() {
             final var o = new GetJobJobSettingsSettingsTaskSqlTaskAlert();
             o.alertId = alertId;
+            o.pauseSubscriptions = pauseSubscriptions;
+            o.subscriptions = subscriptions;
             return o;
         }
     }

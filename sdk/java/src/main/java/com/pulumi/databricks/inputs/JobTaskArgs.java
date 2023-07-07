@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobTaskConditionTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDependsOnArgs;
 import com.pulumi.databricks.inputs.JobTaskEmailNotificationsArgs;
@@ -29,6 +30,20 @@ import javax.annotation.Nullable;
 public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTaskArgs Empty = new JobTaskArgs();
+
+    @Import(name="computeKey")
+    private @Nullable Output<String> computeKey;
+
+    public Optional<Output<String>> computeKey() {
+        return Optional.ofNullable(this.computeKey);
+    }
+
+    @Import(name="conditionTask")
+    private @Nullable Output<JobTaskConditionTaskArgs> conditionTask;
+
+    public Optional<Output<JobTaskConditionTaskArgs>> conditionTask() {
+        return Optional.ofNullable(this.conditionTask);
+    }
 
     @Import(name="dbtTask")
     private @Nullable Output<JobTaskDbtTaskArgs> dbtTask;
@@ -244,6 +259,8 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     private JobTaskArgs() {}
 
     private JobTaskArgs(JobTaskArgs $) {
+        this.computeKey = $.computeKey;
+        this.conditionTask = $.conditionTask;
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
         this.description = $.description;
@@ -283,6 +300,24 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(JobTaskArgs defaults) {
             $ = new JobTaskArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder computeKey(@Nullable Output<String> computeKey) {
+            $.computeKey = computeKey;
+            return this;
+        }
+
+        public Builder computeKey(String computeKey) {
+            return computeKey(Output.of(computeKey));
+        }
+
+        public Builder conditionTask(@Nullable Output<JobTaskConditionTaskArgs> conditionTask) {
+            $.conditionTask = conditionTask;
+            return this;
+        }
+
+        public Builder conditionTask(JobTaskConditionTaskArgs conditionTask) {
+            return conditionTask(Output.of(conditionTask));
         }
 
         public Builder dbtTask(@Nullable Output<JobTaskDbtTaskArgs> dbtTask) {

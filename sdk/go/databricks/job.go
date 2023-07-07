@@ -24,6 +24,7 @@ type Job struct {
 
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning pulumi.BoolPtrOutput   `pulumi:"alwaysRunning"`
+	Computes      JobComputeArrayOutput  `pulumi:"computes"`
 	Continuous    JobContinuousPtrOutput `pulumi:"continuous"`
 	DbtTask       JobDbtTaskPtrOutput    `pulumi:"dbtTask"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -100,6 +101,7 @@ func GetJob(ctx *pulumi.Context,
 type jobState struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning *bool          `pulumi:"alwaysRunning"`
+	Computes      []JobCompute   `pulumi:"computes"`
 	Continuous    *JobContinuous `pulumi:"continuous"`
 	DbtTask       *JobDbtTask    `pulumi:"dbtTask"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -148,6 +150,7 @@ type jobState struct {
 type JobState struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning pulumi.BoolPtrInput
+	Computes      JobComputeArrayInput
 	Continuous    JobContinuousPtrInput
 	DbtTask       JobDbtTaskPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -200,6 +203,7 @@ func (JobState) ElementType() reflect.Type {
 type jobArgs struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning *bool          `pulumi:"alwaysRunning"`
+	Computes      []JobCompute   `pulumi:"computes"`
 	Continuous    *JobContinuous `pulumi:"continuous"`
 	DbtTask       *JobDbtTask    `pulumi:"dbtTask"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -247,6 +251,7 @@ type jobArgs struct {
 type JobArgs struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	AlwaysRunning pulumi.BoolPtrInput
+	Computes      JobComputeArrayInput
 	Continuous    JobContinuousPtrInput
 	DbtTask       JobDbtTaskPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -380,6 +385,10 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 // (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 func (o JobOutput) AlwaysRunning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.AlwaysRunning }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobOutput) Computes() JobComputeArrayOutput {
+	return o.ApplyT(func(v *Job) JobComputeArrayOutput { return v.Computes }).(JobComputeArrayOutput)
 }
 
 func (o JobOutput) Continuous() JobContinuousPtrOutput {

@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsResult
     {
+        public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsComputeResult> Computes;
         public readonly Outputs.GetJobJobSettingsSettingsContinuousResult? Continuous;
         public readonly Outputs.GetJobJobSettingsSettingsDbtTaskResult? DbtTask;
         public readonly Outputs.GetJobJobSettingsSettingsEmailNotificationsResult? EmailNotifications;
@@ -48,6 +49,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsResult(
+            ImmutableArray<Outputs.GetJobJobSettingsSettingsComputeResult> computes,
+
             Outputs.GetJobJobSettingsSettingsContinuousResult? continuous,
 
             Outputs.GetJobJobSettingsSettingsDbtTaskResult? dbtTask,
@@ -106,6 +109,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsWebhookNotificationsResult? webhookNotifications)
         {
+            Computes = computes;
             Continuous = continuous;
             DbtTask = dbtTask;
             EmailNotifications = emailNotifications;

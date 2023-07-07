@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskConditionTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDbtTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDependsOnArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskEmailNotificationsArgs;
@@ -29,6 +30,20 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsTaskArgs Empty = new GetJobJobSettingsSettingsTaskArgs();
+
+    @Import(name="computeKey")
+    private @Nullable Output<String> computeKey;
+
+    public Optional<Output<String>> computeKey() {
+        return Optional.ofNullable(this.computeKey);
+    }
+
+    @Import(name="conditionTask")
+    private @Nullable Output<GetJobJobSettingsSettingsTaskConditionTaskArgs> conditionTask;
+
+    public Optional<Output<GetJobJobSettingsSettingsTaskConditionTaskArgs>> conditionTask() {
+        return Optional.ofNullable(this.conditionTask);
+    }
 
     @Import(name="dbtTask")
     private @Nullable Output<GetJobJobSettingsSettingsTaskDbtTaskArgs> dbtTask;
@@ -180,6 +195,8 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
     private GetJobJobSettingsSettingsTaskArgs() {}
 
     private GetJobJobSettingsSettingsTaskArgs(GetJobJobSettingsSettingsTaskArgs $) {
+        this.computeKey = $.computeKey;
+        this.conditionTask = $.conditionTask;
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
         this.description = $.description;
@@ -219,6 +236,24 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
 
         public Builder(GetJobJobSettingsSettingsTaskArgs defaults) {
             $ = new GetJobJobSettingsSettingsTaskArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder computeKey(@Nullable Output<String> computeKey) {
+            $.computeKey = computeKey;
+            return this;
+        }
+
+        public Builder computeKey(String computeKey) {
+            return computeKey(Output.of(computeKey));
+        }
+
+        public Builder conditionTask(@Nullable Output<GetJobJobSettingsSettingsTaskConditionTaskArgs> conditionTask) {
+            $.conditionTask = conditionTask;
+            return this;
+        }
+
+        public Builder conditionTask(GetJobJobSettingsSettingsTaskConditionTaskArgs conditionTask) {
+            return conditionTask(Output.of(conditionTask));
         }
 
         public Builder dbtTask(@Nullable Output<GetJobJobSettingsSettingsTaskDbtTaskArgs> dbtTask) {

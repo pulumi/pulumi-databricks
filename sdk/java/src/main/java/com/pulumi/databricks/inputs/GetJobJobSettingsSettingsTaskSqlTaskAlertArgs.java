@@ -5,8 +5,13 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsTaskSqlTaskAlertArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,10 +25,26 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskAlertArgs extends com.pul
         return this.alertId;
     }
 
+    @Import(name="pauseSubscriptions")
+    private @Nullable Output<Boolean> pauseSubscriptions;
+
+    public Optional<Output<Boolean>> pauseSubscriptions() {
+        return Optional.ofNullable(this.pauseSubscriptions);
+    }
+
+    @Import(name="subscriptions", required=true)
+    private Output<List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs>> subscriptions;
+
+    public Output<List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs>> subscriptions() {
+        return this.subscriptions;
+    }
+
     private GetJobJobSettingsSettingsTaskSqlTaskAlertArgs() {}
 
     private GetJobJobSettingsSettingsTaskSqlTaskAlertArgs(GetJobJobSettingsSettingsTaskSqlTaskAlertArgs $) {
         this.alertId = $.alertId;
+        this.pauseSubscriptions = $.pauseSubscriptions;
+        this.subscriptions = $.subscriptions;
     }
 
     public static Builder builder() {
@@ -53,8 +74,31 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskAlertArgs extends com.pul
             return alertId(Output.of(alertId));
         }
 
+        public Builder pauseSubscriptions(@Nullable Output<Boolean> pauseSubscriptions) {
+            $.pauseSubscriptions = pauseSubscriptions;
+            return this;
+        }
+
+        public Builder pauseSubscriptions(Boolean pauseSubscriptions) {
+            return pauseSubscriptions(Output.of(pauseSubscriptions));
+        }
+
+        public Builder subscriptions(Output<List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs>> subscriptions) {
+            $.subscriptions = subscriptions;
+            return this;
+        }
+
+        public Builder subscriptions(List<GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs> subscriptions) {
+            return subscriptions(Output.of(subscriptions));
+        }
+
+        public Builder subscriptions(GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs... subscriptions) {
+            return subscriptions(List.of(subscriptions));
+        }
+
         public GetJobJobSettingsSettingsTaskSqlTaskAlertArgs build() {
             $.alertId = Objects.requireNonNull($.alertId, "expected parameter 'alertId' to be non-null");
+            $.subscriptions = Objects.requireNonNull($.subscriptions, "expected parameter 'subscriptions' to be non-null");
             return $;
         }
     }

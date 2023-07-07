@@ -14,16 +14,24 @@ public final class GetJobJobSettingsSettingsTaskDependsOn extends com.pulumi.res
 
     public static final GetJobJobSettingsSettingsTaskDependsOn Empty = new GetJobJobSettingsSettingsTaskDependsOn();
 
-    @Import(name="taskKey")
-    private @Nullable String taskKey;
+    @Import(name="outcome")
+    private @Nullable String outcome;
 
-    public Optional<String> taskKey() {
-        return Optional.ofNullable(this.taskKey);
+    public Optional<String> outcome() {
+        return Optional.ofNullable(this.outcome);
+    }
+
+    @Import(name="taskKey", required=true)
+    private String taskKey;
+
+    public String taskKey() {
+        return this.taskKey;
     }
 
     private GetJobJobSettingsSettingsTaskDependsOn() {}
 
     private GetJobJobSettingsSettingsTaskDependsOn(GetJobJobSettingsSettingsTaskDependsOn $) {
+        this.outcome = $.outcome;
         this.taskKey = $.taskKey;
     }
 
@@ -45,12 +53,18 @@ public final class GetJobJobSettingsSettingsTaskDependsOn extends com.pulumi.res
             $ = new GetJobJobSettingsSettingsTaskDependsOn(Objects.requireNonNull(defaults));
         }
 
-        public Builder taskKey(@Nullable String taskKey) {
+        public Builder outcome(@Nullable String outcome) {
+            $.outcome = outcome;
+            return this;
+        }
+
+        public Builder taskKey(String taskKey) {
             $.taskKey = taskKey;
             return this;
         }
 
         public GetJobJobSettingsSettingsTaskDependsOn build() {
+            $.taskKey = Objects.requireNonNull($.taskKey, "expected parameter 'taskKey' to be non-null");
             return $;
         }
     }

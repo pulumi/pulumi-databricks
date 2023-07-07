@@ -12,6 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsTaskInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("computeKey")]
+        public Input<string>? ComputeKey { get; set; }
+
+        [Input("conditionTask")]
+        public Input<Inputs.GetJobJobSettingsSettingsTaskConditionTaskInputArgs>? ConditionTask { get; set; }
+
         [Input("dbtTask")]
         public Input<Inputs.GetJobJobSettingsSettingsTaskDbtTaskInputArgs>? DbtTask { get; set; }
 

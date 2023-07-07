@@ -12,13 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsTriggerFileArrival {
-    private @Nullable Integer minTimeBetweenTriggerSeconds;
+    private @Nullable Integer minTimeBetweenTriggersSeconds;
     private String url;
     private @Nullable Integer waitAfterLastChangeSeconds;
 
     private GetJobJobSettingsSettingsTriggerFileArrival() {}
-    public Optional<Integer> minTimeBetweenTriggerSeconds() {
-        return Optional.ofNullable(this.minTimeBetweenTriggerSeconds);
+    public Optional<Integer> minTimeBetweenTriggersSeconds() {
+        return Optional.ofNullable(this.minTimeBetweenTriggersSeconds);
     }
     public String url() {
         return this.url;
@@ -36,20 +36,20 @@ public final class GetJobJobSettingsSettingsTriggerFileArrival {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer minTimeBetweenTriggerSeconds;
+        private @Nullable Integer minTimeBetweenTriggersSeconds;
         private String url;
         private @Nullable Integer waitAfterLastChangeSeconds;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTriggerFileArrival defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.minTimeBetweenTriggerSeconds = defaults.minTimeBetweenTriggerSeconds;
+    	      this.minTimeBetweenTriggersSeconds = defaults.minTimeBetweenTriggersSeconds;
     	      this.url = defaults.url;
     	      this.waitAfterLastChangeSeconds = defaults.waitAfterLastChangeSeconds;
         }
 
         @CustomType.Setter
-        public Builder minTimeBetweenTriggerSeconds(@Nullable Integer minTimeBetweenTriggerSeconds) {
-            this.minTimeBetweenTriggerSeconds = minTimeBetweenTriggerSeconds;
+        public Builder minTimeBetweenTriggersSeconds(@Nullable Integer minTimeBetweenTriggersSeconds) {
+            this.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
             return this;
         }
         @CustomType.Setter
@@ -64,7 +64,7 @@ public final class GetJobJobSettingsSettingsTriggerFileArrival {
         }
         public GetJobJobSettingsSettingsTriggerFileArrival build() {
             final var o = new GetJobJobSettingsSettingsTriggerFileArrival();
-            o.minTimeBetweenTriggerSeconds = minTimeBetweenTriggerSeconds;
+            o.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
             o.url = url;
             o.waitAfterLastChangeSeconds = waitAfterLastChangeSeconds;
             return o;

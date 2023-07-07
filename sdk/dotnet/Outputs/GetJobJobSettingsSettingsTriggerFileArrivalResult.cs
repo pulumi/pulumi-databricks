@@ -13,19 +13,19 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsTriggerFileArrivalResult
     {
-        public readonly int? MinTimeBetweenTriggerSeconds;
+        public readonly int? MinTimeBetweenTriggersSeconds;
         public readonly string Url;
         public readonly int? WaitAfterLastChangeSeconds;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTriggerFileArrivalResult(
-            int? minTimeBetweenTriggerSeconds,
+            int? minTimeBetweenTriggersSeconds,
 
             string url,
 
             int? waitAfterLastChangeSeconds)
         {
-            MinTimeBetweenTriggerSeconds = minTimeBetweenTriggerSeconds;
+            MinTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
             Url = url;
             WaitAfterLastChangeSeconds = waitAfterLastChangeSeconds;
         }

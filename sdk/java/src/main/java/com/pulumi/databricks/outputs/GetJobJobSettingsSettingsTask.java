@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskConditionTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskDbtTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskDependsOn;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskEmailNotifications;
@@ -26,6 +27,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsTask {
+    private @Nullable String computeKey;
+    private @Nullable GetJobJobSettingsSettingsTaskConditionTask conditionTask;
     private @Nullable GetJobJobSettingsSettingsTaskDbtTask dbtTask;
     private @Nullable List<GetJobJobSettingsSettingsTaskDependsOn> dependsOns;
     private @Nullable String description;
@@ -49,6 +52,12 @@ public final class GetJobJobSettingsSettingsTask {
     private @Nullable Integer timeoutSeconds;
 
     private GetJobJobSettingsSettingsTask() {}
+    public Optional<String> computeKey() {
+        return Optional.ofNullable(this.computeKey);
+    }
+    public Optional<GetJobJobSettingsSettingsTaskConditionTask> conditionTask() {
+        return Optional.ofNullable(this.conditionTask);
+    }
     public Optional<GetJobJobSettingsSettingsTaskDbtTask> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
     }
@@ -122,6 +131,8 @@ public final class GetJobJobSettingsSettingsTask {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String computeKey;
+        private @Nullable GetJobJobSettingsSettingsTaskConditionTask conditionTask;
         private @Nullable GetJobJobSettingsSettingsTaskDbtTask dbtTask;
         private @Nullable List<GetJobJobSettingsSettingsTaskDependsOn> dependsOns;
         private @Nullable String description;
@@ -146,6 +157,8 @@ public final class GetJobJobSettingsSettingsTask {
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTask defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.computeKey = defaults.computeKey;
+    	      this.conditionTask = defaults.conditionTask;
     	      this.dbtTask = defaults.dbtTask;
     	      this.dependsOns = defaults.dependsOns;
     	      this.description = defaults.description;
@@ -169,6 +182,16 @@ public final class GetJobJobSettingsSettingsTask {
     	      this.timeoutSeconds = defaults.timeoutSeconds;
         }
 
+        @CustomType.Setter
+        public Builder computeKey(@Nullable String computeKey) {
+            this.computeKey = computeKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder conditionTask(@Nullable GetJobJobSettingsSettingsTaskConditionTask conditionTask) {
+            this.conditionTask = conditionTask;
+            return this;
+        }
         @CustomType.Setter
         public Builder dbtTask(@Nullable GetJobJobSettingsSettingsTaskDbtTask dbtTask) {
             this.dbtTask = dbtTask;
@@ -282,6 +305,8 @@ public final class GetJobJobSettingsSettingsTask {
         }
         public GetJobJobSettingsSettingsTask build() {
             final var o = new GetJobJobSettingsSettingsTask();
+            o.computeKey = computeKey;
+            o.conditionTask = conditionTask;
             o.dbtTask = dbtTask;
             o.dependsOns = dependsOns;
             o.description = description;

@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
         /// </summary>
-        public readonly int? MinTimeBetweenTriggerSeconds;
+        public readonly int? MinTimeBetweenTriggersSeconds;
         /// <summary>
         /// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         /// </summary>
@@ -28,13 +28,13 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobTriggerFileArrival(
-            int? minTimeBetweenTriggerSeconds,
+            int? minTimeBetweenTriggersSeconds,
 
             string url,
 
             int? waitAfterLastChangeSeconds)
         {
-            MinTimeBetweenTriggerSeconds = minTimeBetweenTriggerSeconds;
+            MinTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
             Url = url;
             WaitAfterLastChangeSeconds = waitAfterLastChangeSeconds;
         }

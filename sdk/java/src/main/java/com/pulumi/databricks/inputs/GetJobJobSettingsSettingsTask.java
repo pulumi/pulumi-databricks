@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskConditionTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDbtTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDependsOn;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskEmailNotifications;
@@ -28,6 +29,20 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsTask Empty = new GetJobJobSettingsSettingsTask();
+
+    @Import(name="computeKey")
+    private @Nullable String computeKey;
+
+    public Optional<String> computeKey() {
+        return Optional.ofNullable(this.computeKey);
+    }
+
+    @Import(name="conditionTask")
+    private @Nullable GetJobJobSettingsSettingsTaskConditionTask conditionTask;
+
+    public Optional<GetJobJobSettingsSettingsTaskConditionTask> conditionTask() {
+        return Optional.ofNullable(this.conditionTask);
+    }
 
     @Import(name="dbtTask")
     private @Nullable GetJobJobSettingsSettingsTaskDbtTask dbtTask;
@@ -179,6 +194,8 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
     private GetJobJobSettingsSettingsTask() {}
 
     private GetJobJobSettingsSettingsTask(GetJobJobSettingsSettingsTask $) {
+        this.computeKey = $.computeKey;
+        this.conditionTask = $.conditionTask;
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
         this.description = $.description;
@@ -218,6 +235,16 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
 
         public Builder(GetJobJobSettingsSettingsTask defaults) {
             $ = new GetJobJobSettingsSettingsTask(Objects.requireNonNull(defaults));
+        }
+
+        public Builder computeKey(@Nullable String computeKey) {
+            $.computeKey = computeKey;
+            return this;
+        }
+
+        public Builder conditionTask(@Nullable GetJobJobSettingsSettingsTaskConditionTask conditionTask) {
+            $.conditionTask = conditionTask;
+            return this;
         }
 
         public Builder dbtTask(@Nullable GetJobJobSettingsSettingsTaskDbtTask dbtTask) {

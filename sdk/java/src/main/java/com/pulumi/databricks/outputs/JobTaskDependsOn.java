@@ -11,11 +11,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskDependsOn {
-    private @Nullable String taskKey;
+    private @Nullable String outcome;
+    private String taskKey;
 
     private JobTaskDependsOn() {}
-    public Optional<String> taskKey() {
-        return Optional.ofNullable(this.taskKey);
+    public Optional<String> outcome() {
+        return Optional.ofNullable(this.outcome);
+    }
+    public String taskKey() {
+        return this.taskKey;
     }
 
     public static Builder builder() {
@@ -27,20 +31,28 @@ public final class JobTaskDependsOn {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String taskKey;
+        private @Nullable String outcome;
+        private String taskKey;
         public Builder() {}
         public Builder(JobTaskDependsOn defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.outcome = defaults.outcome;
     	      this.taskKey = defaults.taskKey;
         }
 
         @CustomType.Setter
-        public Builder taskKey(@Nullable String taskKey) {
-            this.taskKey = taskKey;
+        public Builder outcome(@Nullable String outcome) {
+            this.outcome = outcome;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder taskKey(String taskKey) {
+            this.taskKey = Objects.requireNonNull(taskKey);
             return this;
         }
         public JobTaskDependsOn build() {
             final var o = new JobTaskDependsOn();
+            o.outcome = outcome;
             o.taskKey = taskKey;
             return o;
         }
