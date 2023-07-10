@@ -14,11 +14,20 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetJobJobSettingsSettingsTaskSqlTaskAlertResult
     {
         public readonly string AlertId;
+        public readonly bool? PauseSubscriptions;
+        public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionResult> Subscriptions;
 
         [OutputConstructor]
-        private GetJobJobSettingsSettingsTaskSqlTaskAlertResult(string alertId)
+        private GetJobJobSettingsSettingsTaskSqlTaskAlertResult(
+            string alertId,
+
+            bool? pauseSubscriptions,
+
+            ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionResult> subscriptions)
         {
             AlertId = alertId;
+            PauseSubscriptions = pauseSubscriptions;
+            Subscriptions = subscriptions;
         }
     }
 }

@@ -40,6 +40,8 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing databricks cloud resources.",
             "packageName": "",
+            "pluginName": "",
+            "pluginVersion": "",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/databricks/terraform-provider-databricks)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-databricks` repo](https://github.com/pulumi/pulumi-databricks/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-databricks` repo](https://github.com/databricks/terraform-provider-databricks/issues).",
             "typescriptVersion": ""
         },
@@ -726,6 +728,25 @@
                 "username"
             ]
         },
+        "databricks:index/JobCompute:JobCompute": {
+            "properties": {
+                "computeKey": {
+                    "type": "string"
+                },
+                "spec": {
+                    "$ref": "#/types/databricks:index/JobComputeSpec:JobComputeSpec"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/JobComputeSpec:JobComputeSpec": {
+            "properties": {
+                "kind": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "databricks:index/JobContinuous:JobContinuous": {
             "properties": {
                 "pauseStatus": {
@@ -1178,7 +1199,7 @@
                 },
                 "file": {
                     "$ref": "#/types/databricks:index/JobJobClusterNewClusterInitScriptFile:JobJobClusterNewClusterInitScriptFile",
-                    "description": "block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.\n\nExample\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sqlAggregationJob = new databricks.Job(\"sqlAggregationJob\", {tasks: [{\n    taskKey: \"run_agg_query\",\n    sqlTask: {\n        warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n        query: {\n            queryId: databricks_sql_query.agg_query.id,\n        },\n    },\n}]});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsql_aggregation_job = databricks.Job(\"sqlAggregationJob\", tasks=[databricks.JobTaskArgs(\n    task_key=\"run_agg_query\",\n    sql_task=databricks.JobTaskSqlTaskArgs(\n        warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n        query=databricks.JobTaskSqlTaskQueryArgs(\n            query_id=databricks_sql_query[\"agg_query\"][\"id\"],\n        ),\n    ),\n)])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sqlAggregationJob = new Databricks.Job(\"sqlAggregationJob\", new()\n    {\n        Tasks = new[]\n        {\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_agg_query\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Query = new Databricks.Inputs.JobTaskSqlTaskQueryArgs\n                    {\n                        QueryId = databricks_sql_query.Agg_query.Id,\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewJob(ctx, \"sqlAggregationJob\", \u0026databricks.JobArgs{\n\t\t\tTasks: databricks.JobTaskArray{\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_agg_query\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tQuery: \u0026databricks.JobTaskSqlTaskQueryArgs{\n\t\t\t\t\t\t\tQueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Job;\nimport com.pulumi.databricks.JobArgs;\nimport com.pulumi.databricks.inputs.JobTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sqlAggregationJob = new Job(\"sqlAggregationJob\", JobArgs.builder()        \n            .tasks(JobTaskArgs.builder()\n                .taskKey(\"run_agg_query\")\n                .sqlTask(JobTaskSqlTaskArgs.builder()\n                    .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                    .query(JobTaskSqlTaskQueryArgs.builder()\n                        .queryId(databricks_sql_query.agg_query().id())\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sqlAggregationJob:\n    type: databricks:Job\n    properties:\n      tasks:\n        - taskKey: run_agg_query\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            query:\n              queryId: ${databricks_sql_query.agg_query.id}\n```\n"
+                    "description": "block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.\n\nExample\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sqlAggregationJob = new databricks.Job(\"sqlAggregationJob\", {tasks: [\n    {\n        taskKey: \"run_agg_query\",\n        sqlTask: {\n            warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n            query: {\n                queryId: databricks_sql_query.agg_query.id,\n            },\n        },\n    },\n    {\n        taskKey: \"run_dashboard\",\n        sqlTask: {\n            warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n            dashboard: {\n                dashboardId: databricks_sql_dashboard.dash.id,\n                subscriptions: [{\n                    userName: \"user@domain.com\",\n                }],\n            },\n        },\n    },\n    {\n        taskKey: \"run_alert\",\n        sqlTask: {\n            warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n            alert: {\n                alertId: databricks_sql_alert.alert.id,\n                subscriptions: [{\n                    userName: \"user@domain.com\",\n                }],\n            },\n        },\n    },\n]});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsql_aggregation_job = databricks.Job(\"sqlAggregationJob\", tasks=[\n    databricks.JobTaskArgs(\n        task_key=\"run_agg_query\",\n        sql_task=databricks.JobTaskSqlTaskArgs(\n            warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n            query=databricks.JobTaskSqlTaskQueryArgs(\n                query_id=databricks_sql_query[\"agg_query\"][\"id\"],\n            ),\n        ),\n    ),\n    databricks.JobTaskArgs(\n        task_key=\"run_dashboard\",\n        sql_task=databricks.JobTaskSqlTaskArgs(\n            warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n            dashboard=databricks.JobTaskSqlTaskDashboardArgs(\n                dashboard_id=databricks_sql_dashboard[\"dash\"][\"id\"],\n                subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(\n                    user_name=\"user@domain.com\",\n                )],\n            ),\n        ),\n    ),\n    databricks.JobTaskArgs(\n        task_key=\"run_alert\",\n        sql_task=databricks.JobTaskSqlTaskArgs(\n            warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n            alert=databricks.JobTaskSqlTaskAlertArgs(\n                alert_id=databricks_sql_alert[\"alert\"][\"id\"],\n                subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(\n                    user_name=\"user@domain.com\",\n                )],\n            ),\n        ),\n    ),\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sqlAggregationJob = new Databricks.Job(\"sqlAggregationJob\", new()\n    {\n        Tasks = new[]\n        {\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_agg_query\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Query = new Databricks.Inputs.JobTaskSqlTaskQueryArgs\n                    {\n                        QueryId = databricks_sql_query.Agg_query.Id,\n                    },\n                },\n            },\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_dashboard\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Dashboard = new Databricks.Inputs.JobTaskSqlTaskDashboardArgs\n                    {\n                        DashboardId = databricks_sql_dashboard.Dash.Id,\n                        Subscriptions = new[]\n                        {\n                            new Databricks.Inputs.JobTaskSqlTaskDashboardSubscriptionArgs\n                            {\n                                UserName = \"user@domain.com\",\n                            },\n                        },\n                    },\n                },\n            },\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_alert\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Alert = new Databricks.Inputs.JobTaskSqlTaskAlertArgs\n                    {\n                        AlertId = databricks_sql_alert.Alert.Id,\n                        Subscriptions = new[]\n                        {\n                            new Databricks.Inputs.JobTaskSqlTaskAlertSubscriptionArgs\n                            {\n                                UserName = \"user@domain.com\",\n                            },\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewJob(ctx, \"sqlAggregationJob\", \u0026databricks.JobArgs{\n\t\t\tTasks: databricks.JobTaskArray{\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_agg_query\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tQuery: \u0026databricks.JobTaskSqlTaskQueryArgs{\n\t\t\t\t\t\t\tQueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_dashboard\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tDashboard: \u0026databricks.JobTaskSqlTaskDashboardArgs{\n\t\t\t\t\t\t\tDashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),\n\t\t\t\t\t\t\tSubscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{\n\t\t\t\t\t\t\t\t\u0026databricks.JobTaskSqlTaskDashboardSubscriptionArgs{\n\t\t\t\t\t\t\t\t\tUserName: pulumi.String(\"user@domain.com\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_alert\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tAlert: \u0026databricks.JobTaskSqlTaskAlertArgs{\n\t\t\t\t\t\t\tAlertId: pulumi.Any(databricks_sql_alert.Alert.Id),\n\t\t\t\t\t\t\tSubscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{\n\t\t\t\t\t\t\t\t\u0026databricks.JobTaskSqlTaskAlertSubscriptionArgs{\n\t\t\t\t\t\t\t\t\tUserName: pulumi.String(\"user@domain.com\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Job;\nimport com.pulumi.databricks.JobArgs;\nimport com.pulumi.databricks.inputs.JobTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sqlAggregationJob = new Job(\"sqlAggregationJob\", JobArgs.builder()        \n            .tasks(            \n                JobTaskArgs.builder()\n                    .taskKey(\"run_agg_query\")\n                    .sqlTask(JobTaskSqlTaskArgs.builder()\n                        .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                        .query(JobTaskSqlTaskQueryArgs.builder()\n                            .queryId(databricks_sql_query.agg_query().id())\n                            .build())\n                        .build())\n                    .build(),\n                JobTaskArgs.builder()\n                    .taskKey(\"run_dashboard\")\n                    .sqlTask(JobTaskSqlTaskArgs.builder()\n                        .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                        .dashboard(JobTaskSqlTaskDashboardArgs.builder()\n                            .dashboardId(databricks_sql_dashboard.dash().id())\n                            .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()\n                                .userName(\"user@domain.com\")\n                                .build())\n                            .build())\n                        .build())\n                    .build(),\n                JobTaskArgs.builder()\n                    .taskKey(\"run_alert\")\n                    .sqlTask(JobTaskSqlTaskArgs.builder()\n                        .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                        .alert(JobTaskSqlTaskAlertArgs.builder()\n                            .alertId(databricks_sql_alert.alert().id())\n                            .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()\n                                .userName(\"user@domain.com\")\n                                .build())\n                            .build())\n                        .build())\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sqlAggregationJob:\n    type: databricks:Job\n    properties:\n      tasks:\n        - taskKey: run_agg_query\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            query:\n              queryId: ${databricks_sql_query.agg_query.id}\n        - taskKey: run_dashboard\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            dashboard:\n              dashboardId: ${databricks_sql_dashboard.dash.id}\n              subscriptions:\n                - userName: user@domain.com\n        - taskKey: run_alert\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            alert:\n              alertId: ${databricks_sql_alert.alert.id}\n              subscriptions:\n                - userName: user@domain.com\n```\n"
                 },
                 "gcs": {
                     "$ref": "#/types/databricks:index/JobJobClusterNewClusterInitScriptGcs:JobJobClusterNewClusterInitScriptGcs"
@@ -1684,7 +1705,7 @@
                 },
                 "file": {
                     "$ref": "#/types/databricks:index/JobNewClusterInitScriptFile:JobNewClusterInitScriptFile",
-                    "description": "block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.\n\nExample\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sqlAggregationJob = new databricks.Job(\"sqlAggregationJob\", {tasks: [{\n    taskKey: \"run_agg_query\",\n    sqlTask: {\n        warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n        query: {\n            queryId: databricks_sql_query.agg_query.id,\n        },\n    },\n}]});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsql_aggregation_job = databricks.Job(\"sqlAggregationJob\", tasks=[databricks.JobTaskArgs(\n    task_key=\"run_agg_query\",\n    sql_task=databricks.JobTaskSqlTaskArgs(\n        warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n        query=databricks.JobTaskSqlTaskQueryArgs(\n            query_id=databricks_sql_query[\"agg_query\"][\"id\"],\n        ),\n    ),\n)])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sqlAggregationJob = new Databricks.Job(\"sqlAggregationJob\", new()\n    {\n        Tasks = new[]\n        {\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_agg_query\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Query = new Databricks.Inputs.JobTaskSqlTaskQueryArgs\n                    {\n                        QueryId = databricks_sql_query.Agg_query.Id,\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewJob(ctx, \"sqlAggregationJob\", \u0026databricks.JobArgs{\n\t\t\tTasks: databricks.JobTaskArray{\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_agg_query\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tQuery: \u0026databricks.JobTaskSqlTaskQueryArgs{\n\t\t\t\t\t\t\tQueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Job;\nimport com.pulumi.databricks.JobArgs;\nimport com.pulumi.databricks.inputs.JobTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sqlAggregationJob = new Job(\"sqlAggregationJob\", JobArgs.builder()        \n            .tasks(JobTaskArgs.builder()\n                .taskKey(\"run_agg_query\")\n                .sqlTask(JobTaskSqlTaskArgs.builder()\n                    .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                    .query(JobTaskSqlTaskQueryArgs.builder()\n                        .queryId(databricks_sql_query.agg_query().id())\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sqlAggregationJob:\n    type: databricks:Job\n    properties:\n      tasks:\n        - taskKey: run_agg_query\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            query:\n              queryId: ${databricks_sql_query.agg_query.id}\n```\n"
+                    "description": "block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.\n\nExample\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sqlAggregationJob = new databricks.Job(\"sqlAggregationJob\", {tasks: [\n    {\n        taskKey: \"run_agg_query\",\n        sqlTask: {\n            warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n            query: {\n                queryId: databricks_sql_query.agg_query.id,\n            },\n        },\n    },\n    {\n        taskKey: \"run_dashboard\",\n        sqlTask: {\n            warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n            dashboard: {\n                dashboardId: databricks_sql_dashboard.dash.id,\n                subscriptions: [{\n                    userName: \"user@domain.com\",\n                }],\n            },\n        },\n    },\n    {\n        taskKey: \"run_alert\",\n        sqlTask: {\n            warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n            alert: {\n                alertId: databricks_sql_alert.alert.id,\n                subscriptions: [{\n                    userName: \"user@domain.com\",\n                }],\n            },\n        },\n    },\n]});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsql_aggregation_job = databricks.Job(\"sqlAggregationJob\", tasks=[\n    databricks.JobTaskArgs(\n        task_key=\"run_agg_query\",\n        sql_task=databricks.JobTaskSqlTaskArgs(\n            warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n            query=databricks.JobTaskSqlTaskQueryArgs(\n                query_id=databricks_sql_query[\"agg_query\"][\"id\"],\n            ),\n        ),\n    ),\n    databricks.JobTaskArgs(\n        task_key=\"run_dashboard\",\n        sql_task=databricks.JobTaskSqlTaskArgs(\n            warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n            dashboard=databricks.JobTaskSqlTaskDashboardArgs(\n                dashboard_id=databricks_sql_dashboard[\"dash\"][\"id\"],\n                subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(\n                    user_name=\"user@domain.com\",\n                )],\n            ),\n        ),\n    ),\n    databricks.JobTaskArgs(\n        task_key=\"run_alert\",\n        sql_task=databricks.JobTaskSqlTaskArgs(\n            warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n            alert=databricks.JobTaskSqlTaskAlertArgs(\n                alert_id=databricks_sql_alert[\"alert\"][\"id\"],\n                subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(\n                    user_name=\"user@domain.com\",\n                )],\n            ),\n        ),\n    ),\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sqlAggregationJob = new Databricks.Job(\"sqlAggregationJob\", new()\n    {\n        Tasks = new[]\n        {\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_agg_query\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Query = new Databricks.Inputs.JobTaskSqlTaskQueryArgs\n                    {\n                        QueryId = databricks_sql_query.Agg_query.Id,\n                    },\n                },\n            },\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_dashboard\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Dashboard = new Databricks.Inputs.JobTaskSqlTaskDashboardArgs\n                    {\n                        DashboardId = databricks_sql_dashboard.Dash.Id,\n                        Subscriptions = new[]\n                        {\n                            new Databricks.Inputs.JobTaskSqlTaskDashboardSubscriptionArgs\n                            {\n                                UserName = \"user@domain.com\",\n                            },\n                        },\n                    },\n                },\n            },\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_alert\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Alert = new Databricks.Inputs.JobTaskSqlTaskAlertArgs\n                    {\n                        AlertId = databricks_sql_alert.Alert.Id,\n                        Subscriptions = new[]\n                        {\n                            new Databricks.Inputs.JobTaskSqlTaskAlertSubscriptionArgs\n                            {\n                                UserName = \"user@domain.com\",\n                            },\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewJob(ctx, \"sqlAggregationJob\", \u0026databricks.JobArgs{\n\t\t\tTasks: databricks.JobTaskArray{\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_agg_query\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tQuery: \u0026databricks.JobTaskSqlTaskQueryArgs{\n\t\t\t\t\t\t\tQueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_dashboard\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tDashboard: \u0026databricks.JobTaskSqlTaskDashboardArgs{\n\t\t\t\t\t\t\tDashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),\n\t\t\t\t\t\t\tSubscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{\n\t\t\t\t\t\t\t\t\u0026databricks.JobTaskSqlTaskDashboardSubscriptionArgs{\n\t\t\t\t\t\t\t\t\tUserName: pulumi.String(\"user@domain.com\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_alert\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tAlert: \u0026databricks.JobTaskSqlTaskAlertArgs{\n\t\t\t\t\t\t\tAlertId: pulumi.Any(databricks_sql_alert.Alert.Id),\n\t\t\t\t\t\t\tSubscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{\n\t\t\t\t\t\t\t\t\u0026databricks.JobTaskSqlTaskAlertSubscriptionArgs{\n\t\t\t\t\t\t\t\t\tUserName: pulumi.String(\"user@domain.com\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Job;\nimport com.pulumi.databricks.JobArgs;\nimport com.pulumi.databricks.inputs.JobTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sqlAggregationJob = new Job(\"sqlAggregationJob\", JobArgs.builder()        \n            .tasks(            \n                JobTaskArgs.builder()\n                    .taskKey(\"run_agg_query\")\n                    .sqlTask(JobTaskSqlTaskArgs.builder()\n                        .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                        .query(JobTaskSqlTaskQueryArgs.builder()\n                            .queryId(databricks_sql_query.agg_query().id())\n                            .build())\n                        .build())\n                    .build(),\n                JobTaskArgs.builder()\n                    .taskKey(\"run_dashboard\")\n                    .sqlTask(JobTaskSqlTaskArgs.builder()\n                        .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                        .dashboard(JobTaskSqlTaskDashboardArgs.builder()\n                            .dashboardId(databricks_sql_dashboard.dash().id())\n                            .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()\n                                .userName(\"user@domain.com\")\n                                .build())\n                            .build())\n                        .build())\n                    .build(),\n                JobTaskArgs.builder()\n                    .taskKey(\"run_alert\")\n                    .sqlTask(JobTaskSqlTaskArgs.builder()\n                        .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                        .alert(JobTaskSqlTaskAlertArgs.builder()\n                            .alertId(databricks_sql_alert.alert().id())\n                            .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()\n                                .userName(\"user@domain.com\")\n                                .build())\n                            .build())\n                        .build())\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sqlAggregationJob:\n    type: databricks:Job\n    properties:\n      tasks:\n        - taskKey: run_agg_query\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            query:\n              queryId: ${databricks_sql_query.agg_query.id}\n        - taskKey: run_dashboard\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            dashboard:\n              dashboardId: ${databricks_sql_dashboard.dash.id}\n              subscriptions:\n                - userName: user@domain.com\n        - taskKey: run_alert\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            alert:\n              alertId: ${databricks_sql_alert.alert.id}\n              subscriptions:\n                - userName: user@domain.com\n```\n"
                 },
                 "gcs": {
                     "$ref": "#/types/databricks:index/JobNewClusterInitScriptGcs:JobNewClusterInitScriptGcs"
@@ -1969,6 +1990,12 @@
         },
         "databricks:index/JobTask:JobTask": {
             "properties": {
+                "computeKey": {
+                    "type": "string"
+                },
+                "conditionTask": {
+                    "$ref": "#/types/databricks:index/JobTaskConditionTask:JobTaskConditionTask"
+                },
                 "dbtTask": {
                     "$ref": "#/types/databricks:index/JobTaskDbtTask:JobTaskDbtTask"
                 },
@@ -2056,6 +2083,20 @@
                 }
             }
         },
+        "databricks:index/JobTaskConditionTask:JobTaskConditionTask": {
+            "properties": {
+                "left": {
+                    "type": "string"
+                },
+                "op": {
+                    "type": "string"
+                },
+                "right": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "databricks:index/JobTaskDbtTask:JobTaskDbtTask": {
             "properties": {
                 "catalog": {
@@ -2093,11 +2134,17 @@
         },
         "databricks:index/JobTaskDependsOn:JobTaskDependsOn": {
             "properties": {
+                "outcome": {
+                    "type": "string"
+                },
                 "taskKey": {
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "taskKey"
+            ]
         },
         "databricks:index/JobTaskEmailNotifications:JobTaskEmailNotifications": {
             "properties": {
@@ -2530,7 +2577,7 @@
                 },
                 "file": {
                     "$ref": "#/types/databricks:index/JobTaskNewClusterInitScriptFile:JobTaskNewClusterInitScriptFile",
-                    "description": "block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.\n\nExample\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sqlAggregationJob = new databricks.Job(\"sqlAggregationJob\", {tasks: [{\n    taskKey: \"run_agg_query\",\n    sqlTask: {\n        warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n        query: {\n            queryId: databricks_sql_query.agg_query.id,\n        },\n    },\n}]});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsql_aggregation_job = databricks.Job(\"sqlAggregationJob\", tasks=[databricks.JobTaskArgs(\n    task_key=\"run_agg_query\",\n    sql_task=databricks.JobTaskSqlTaskArgs(\n        warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n        query=databricks.JobTaskSqlTaskQueryArgs(\n            query_id=databricks_sql_query[\"agg_query\"][\"id\"],\n        ),\n    ),\n)])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sqlAggregationJob = new Databricks.Job(\"sqlAggregationJob\", new()\n    {\n        Tasks = new[]\n        {\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_agg_query\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Query = new Databricks.Inputs.JobTaskSqlTaskQueryArgs\n                    {\n                        QueryId = databricks_sql_query.Agg_query.Id,\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewJob(ctx, \"sqlAggregationJob\", \u0026databricks.JobArgs{\n\t\t\tTasks: databricks.JobTaskArray{\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_agg_query\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tQuery: \u0026databricks.JobTaskSqlTaskQueryArgs{\n\t\t\t\t\t\t\tQueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Job;\nimport com.pulumi.databricks.JobArgs;\nimport com.pulumi.databricks.inputs.JobTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sqlAggregationJob = new Job(\"sqlAggregationJob\", JobArgs.builder()        \n            .tasks(JobTaskArgs.builder()\n                .taskKey(\"run_agg_query\")\n                .sqlTask(JobTaskSqlTaskArgs.builder()\n                    .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                    .query(JobTaskSqlTaskQueryArgs.builder()\n                        .queryId(databricks_sql_query.agg_query().id())\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sqlAggregationJob:\n    type: databricks:Job\n    properties:\n      tasks:\n        - taskKey: run_agg_query\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            query:\n              queryId: ${databricks_sql_query.agg_query.id}\n```\n"
+                    "description": "block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.\n\nExample\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sqlAggregationJob = new databricks.Job(\"sqlAggregationJob\", {tasks: [\n    {\n        taskKey: \"run_agg_query\",\n        sqlTask: {\n            warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n            query: {\n                queryId: databricks_sql_query.agg_query.id,\n            },\n        },\n    },\n    {\n        taskKey: \"run_dashboard\",\n        sqlTask: {\n            warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n            dashboard: {\n                dashboardId: databricks_sql_dashboard.dash.id,\n                subscriptions: [{\n                    userName: \"user@domain.com\",\n                }],\n            },\n        },\n    },\n    {\n        taskKey: \"run_alert\",\n        sqlTask: {\n            warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n            alert: {\n                alertId: databricks_sql_alert.alert.id,\n                subscriptions: [{\n                    userName: \"user@domain.com\",\n                }],\n            },\n        },\n    },\n]});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsql_aggregation_job = databricks.Job(\"sqlAggregationJob\", tasks=[\n    databricks.JobTaskArgs(\n        task_key=\"run_agg_query\",\n        sql_task=databricks.JobTaskSqlTaskArgs(\n            warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n            query=databricks.JobTaskSqlTaskQueryArgs(\n                query_id=databricks_sql_query[\"agg_query\"][\"id\"],\n            ),\n        ),\n    ),\n    databricks.JobTaskArgs(\n        task_key=\"run_dashboard\",\n        sql_task=databricks.JobTaskSqlTaskArgs(\n            warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n            dashboard=databricks.JobTaskSqlTaskDashboardArgs(\n                dashboard_id=databricks_sql_dashboard[\"dash\"][\"id\"],\n                subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(\n                    user_name=\"user@domain.com\",\n                )],\n            ),\n        ),\n    ),\n    databricks.JobTaskArgs(\n        task_key=\"run_alert\",\n        sql_task=databricks.JobTaskSqlTaskArgs(\n            warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n            alert=databricks.JobTaskSqlTaskAlertArgs(\n                alert_id=databricks_sql_alert[\"alert\"][\"id\"],\n                subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(\n                    user_name=\"user@domain.com\",\n                )],\n            ),\n        ),\n    ),\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sqlAggregationJob = new Databricks.Job(\"sqlAggregationJob\", new()\n    {\n        Tasks = new[]\n        {\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_agg_query\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Query = new Databricks.Inputs.JobTaskSqlTaskQueryArgs\n                    {\n                        QueryId = databricks_sql_query.Agg_query.Id,\n                    },\n                },\n            },\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_dashboard\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Dashboard = new Databricks.Inputs.JobTaskSqlTaskDashboardArgs\n                    {\n                        DashboardId = databricks_sql_dashboard.Dash.Id,\n                        Subscriptions = new[]\n                        {\n                            new Databricks.Inputs.JobTaskSqlTaskDashboardSubscriptionArgs\n                            {\n                                UserName = \"user@domain.com\",\n                            },\n                        },\n                    },\n                },\n            },\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_alert\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Alert = new Databricks.Inputs.JobTaskSqlTaskAlertArgs\n                    {\n                        AlertId = databricks_sql_alert.Alert.Id,\n                        Subscriptions = new[]\n                        {\n                            new Databricks.Inputs.JobTaskSqlTaskAlertSubscriptionArgs\n                            {\n                                UserName = \"user@domain.com\",\n                            },\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewJob(ctx, \"sqlAggregationJob\", \u0026databricks.JobArgs{\n\t\t\tTasks: databricks.JobTaskArray{\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_agg_query\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tQuery: \u0026databricks.JobTaskSqlTaskQueryArgs{\n\t\t\t\t\t\t\tQueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_dashboard\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tDashboard: \u0026databricks.JobTaskSqlTaskDashboardArgs{\n\t\t\t\t\t\t\tDashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),\n\t\t\t\t\t\t\tSubscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{\n\t\t\t\t\t\t\t\t\u0026databricks.JobTaskSqlTaskDashboardSubscriptionArgs{\n\t\t\t\t\t\t\t\t\tUserName: pulumi.String(\"user@domain.com\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_alert\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tAlert: \u0026databricks.JobTaskSqlTaskAlertArgs{\n\t\t\t\t\t\t\tAlertId: pulumi.Any(databricks_sql_alert.Alert.Id),\n\t\t\t\t\t\t\tSubscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{\n\t\t\t\t\t\t\t\t\u0026databricks.JobTaskSqlTaskAlertSubscriptionArgs{\n\t\t\t\t\t\t\t\t\tUserName: pulumi.String(\"user@domain.com\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Job;\nimport com.pulumi.databricks.JobArgs;\nimport com.pulumi.databricks.inputs.JobTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sqlAggregationJob = new Job(\"sqlAggregationJob\", JobArgs.builder()        \n            .tasks(            \n                JobTaskArgs.builder()\n                    .taskKey(\"run_agg_query\")\n                    .sqlTask(JobTaskSqlTaskArgs.builder()\n                        .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                        .query(JobTaskSqlTaskQueryArgs.builder()\n                            .queryId(databricks_sql_query.agg_query().id())\n                            .build())\n                        .build())\n                    .build(),\n                JobTaskArgs.builder()\n                    .taskKey(\"run_dashboard\")\n                    .sqlTask(JobTaskSqlTaskArgs.builder()\n                        .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                        .dashboard(JobTaskSqlTaskDashboardArgs.builder()\n                            .dashboardId(databricks_sql_dashboard.dash().id())\n                            .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()\n                                .userName(\"user@domain.com\")\n                                .build())\n                            .build())\n                        .build())\n                    .build(),\n                JobTaskArgs.builder()\n                    .taskKey(\"run_alert\")\n                    .sqlTask(JobTaskSqlTaskArgs.builder()\n                        .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                        .alert(JobTaskSqlTaskAlertArgs.builder()\n                            .alertId(databricks_sql_alert.alert().id())\n                            .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()\n                                .userName(\"user@domain.com\")\n                                .build())\n                            .build())\n                        .build())\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sqlAggregationJob:\n    type: databricks:Job\n    properties:\n      tasks:\n        - taskKey: run_agg_query\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            query:\n              queryId: ${databricks_sql_query.agg_query.id}\n        - taskKey: run_dashboard\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            dashboard:\n              dashboardId: ${databricks_sql_dashboard.dash.id}\n              subscriptions:\n                - userName: user@domain.com\n        - taskKey: run_alert\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            alert:\n              alertId: ${databricks_sql_alert.alert.id}\n              subscriptions:\n                - userName: user@domain.com\n```\n"
                 },
                 "gcs": {
                     "$ref": "#/types/databricks:index/JobTaskNewClusterInitScriptGcs:JobTaskNewClusterInitScriptGcs"
@@ -2758,15 +2805,15 @@
             "properties": {
                 "alert": {
                     "$ref": "#/types/databricks:index/JobTaskSqlTaskAlert:JobTaskSqlTaskAlert",
-                    "description": "block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.\n"
+                    "description": "block consisting of following fields:\n"
                 },
                 "dashboard": {
                     "$ref": "#/types/databricks:index/JobTaskSqlTaskDashboard:JobTaskSqlTaskDashboard",
-                    "description": "block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.\n"
+                    "description": "block consisting of following fields:\n"
                 },
                 "file": {
                     "$ref": "#/types/databricks:index/JobTaskSqlTaskFile:JobTaskSqlTaskFile",
-                    "description": "block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.\n\nExample\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sqlAggregationJob = new databricks.Job(\"sqlAggregationJob\", {tasks: [{\n    taskKey: \"run_agg_query\",\n    sqlTask: {\n        warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n        query: {\n            queryId: databricks_sql_query.agg_query.id,\n        },\n    },\n}]});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsql_aggregation_job = databricks.Job(\"sqlAggregationJob\", tasks=[databricks.JobTaskArgs(\n    task_key=\"run_agg_query\",\n    sql_task=databricks.JobTaskSqlTaskArgs(\n        warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n        query=databricks.JobTaskSqlTaskQueryArgs(\n            query_id=databricks_sql_query[\"agg_query\"][\"id\"],\n        ),\n    ),\n)])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sqlAggregationJob = new Databricks.Job(\"sqlAggregationJob\", new()\n    {\n        Tasks = new[]\n        {\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_agg_query\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Query = new Databricks.Inputs.JobTaskSqlTaskQueryArgs\n                    {\n                        QueryId = databricks_sql_query.Agg_query.Id,\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewJob(ctx, \"sqlAggregationJob\", \u0026databricks.JobArgs{\n\t\t\tTasks: databricks.JobTaskArray{\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_agg_query\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tQuery: \u0026databricks.JobTaskSqlTaskQueryArgs{\n\t\t\t\t\t\t\tQueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Job;\nimport com.pulumi.databricks.JobArgs;\nimport com.pulumi.databricks.inputs.JobTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sqlAggregationJob = new Job(\"sqlAggregationJob\", JobArgs.builder()        \n            .tasks(JobTaskArgs.builder()\n                .taskKey(\"run_agg_query\")\n                .sqlTask(JobTaskSqlTaskArgs.builder()\n                    .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                    .query(JobTaskSqlTaskQueryArgs.builder()\n                        .queryId(databricks_sql_query.agg_query().id())\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sqlAggregationJob:\n    type: databricks:Job\n    properties:\n      tasks:\n        - taskKey: run_agg_query\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            query:\n              queryId: ${databricks_sql_query.agg_query.id}\n```\n"
+                    "description": "block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.\n\nExample\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sqlAggregationJob = new databricks.Job(\"sqlAggregationJob\", {tasks: [\n    {\n        taskKey: \"run_agg_query\",\n        sqlTask: {\n            warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n            query: {\n                queryId: databricks_sql_query.agg_query.id,\n            },\n        },\n    },\n    {\n        taskKey: \"run_dashboard\",\n        sqlTask: {\n            warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n            dashboard: {\n                dashboardId: databricks_sql_dashboard.dash.id,\n                subscriptions: [{\n                    userName: \"user@domain.com\",\n                }],\n            },\n        },\n    },\n    {\n        taskKey: \"run_alert\",\n        sqlTask: {\n            warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,\n            alert: {\n                alertId: databricks_sql_alert.alert.id,\n                subscriptions: [{\n                    userName: \"user@domain.com\",\n                }],\n            },\n        },\n    },\n]});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsql_aggregation_job = databricks.Job(\"sqlAggregationJob\", tasks=[\n    databricks.JobTaskArgs(\n        task_key=\"run_agg_query\",\n        sql_task=databricks.JobTaskSqlTaskArgs(\n            warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n            query=databricks.JobTaskSqlTaskQueryArgs(\n                query_id=databricks_sql_query[\"agg_query\"][\"id\"],\n            ),\n        ),\n    ),\n    databricks.JobTaskArgs(\n        task_key=\"run_dashboard\",\n        sql_task=databricks.JobTaskSqlTaskArgs(\n            warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n            dashboard=databricks.JobTaskSqlTaskDashboardArgs(\n                dashboard_id=databricks_sql_dashboard[\"dash\"][\"id\"],\n                subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(\n                    user_name=\"user@domain.com\",\n                )],\n            ),\n        ),\n    ),\n    databricks.JobTaskArgs(\n        task_key=\"run_alert\",\n        sql_task=databricks.JobTaskSqlTaskArgs(\n            warehouse_id=databricks_sql_endpoint[\"sql_job_warehouse\"][\"id\"],\n            alert=databricks.JobTaskSqlTaskAlertArgs(\n                alert_id=databricks_sql_alert[\"alert\"][\"id\"],\n                subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(\n                    user_name=\"user@domain.com\",\n                )],\n            ),\n        ),\n    ),\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sqlAggregationJob = new Databricks.Job(\"sqlAggregationJob\", new()\n    {\n        Tasks = new[]\n        {\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_agg_query\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Query = new Databricks.Inputs.JobTaskSqlTaskQueryArgs\n                    {\n                        QueryId = databricks_sql_query.Agg_query.Id,\n                    },\n                },\n            },\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_dashboard\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Dashboard = new Databricks.Inputs.JobTaskSqlTaskDashboardArgs\n                    {\n                        DashboardId = databricks_sql_dashboard.Dash.Id,\n                        Subscriptions = new[]\n                        {\n                            new Databricks.Inputs.JobTaskSqlTaskDashboardSubscriptionArgs\n                            {\n                                UserName = \"user@domain.com\",\n                            },\n                        },\n                    },\n                },\n            },\n            new Databricks.Inputs.JobTaskArgs\n            {\n                TaskKey = \"run_alert\",\n                SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs\n                {\n                    WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,\n                    Alert = new Databricks.Inputs.JobTaskSqlTaskAlertArgs\n                    {\n                        AlertId = databricks_sql_alert.Alert.Id,\n                        Subscriptions = new[]\n                        {\n                            new Databricks.Inputs.JobTaskSqlTaskAlertSubscriptionArgs\n                            {\n                                UserName = \"user@domain.com\",\n                            },\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewJob(ctx, \"sqlAggregationJob\", \u0026databricks.JobArgs{\n\t\t\tTasks: databricks.JobTaskArray{\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_agg_query\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tQuery: \u0026databricks.JobTaskSqlTaskQueryArgs{\n\t\t\t\t\t\t\tQueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_dashboard\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tDashboard: \u0026databricks.JobTaskSqlTaskDashboardArgs{\n\t\t\t\t\t\t\tDashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),\n\t\t\t\t\t\t\tSubscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{\n\t\t\t\t\t\t\t\t\u0026databricks.JobTaskSqlTaskDashboardSubscriptionArgs{\n\t\t\t\t\t\t\t\t\tUserName: pulumi.String(\"user@domain.com\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026databricks.JobTaskArgs{\n\t\t\t\t\tTaskKey: pulumi.String(\"run_alert\"),\n\t\t\t\t\tSqlTask: \u0026databricks.JobTaskSqlTaskArgs{\n\t\t\t\t\t\tWarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),\n\t\t\t\t\t\tAlert: \u0026databricks.JobTaskSqlTaskAlertArgs{\n\t\t\t\t\t\t\tAlertId: pulumi.Any(databricks_sql_alert.Alert.Id),\n\t\t\t\t\t\t\tSubscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{\n\t\t\t\t\t\t\t\t\u0026databricks.JobTaskSqlTaskAlertSubscriptionArgs{\n\t\t\t\t\t\t\t\t\tUserName: pulumi.String(\"user@domain.com\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Job;\nimport com.pulumi.databricks.JobArgs;\nimport com.pulumi.databricks.inputs.JobTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;\nimport com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sqlAggregationJob = new Job(\"sqlAggregationJob\", JobArgs.builder()        \n            .tasks(            \n                JobTaskArgs.builder()\n                    .taskKey(\"run_agg_query\")\n                    .sqlTask(JobTaskSqlTaskArgs.builder()\n                        .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                        .query(JobTaskSqlTaskQueryArgs.builder()\n                            .queryId(databricks_sql_query.agg_query().id())\n                            .build())\n                        .build())\n                    .build(),\n                JobTaskArgs.builder()\n                    .taskKey(\"run_dashboard\")\n                    .sqlTask(JobTaskSqlTaskArgs.builder()\n                        .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                        .dashboard(JobTaskSqlTaskDashboardArgs.builder()\n                            .dashboardId(databricks_sql_dashboard.dash().id())\n                            .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()\n                                .userName(\"user@domain.com\")\n                                .build())\n                            .build())\n                        .build())\n                    .build(),\n                JobTaskArgs.builder()\n                    .taskKey(\"run_alert\")\n                    .sqlTask(JobTaskSqlTaskArgs.builder()\n                        .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())\n                        .alert(JobTaskSqlTaskAlertArgs.builder()\n                            .alertId(databricks_sql_alert.alert().id())\n                            .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()\n                                .userName(\"user@domain.com\")\n                                .build())\n                            .build())\n                        .build())\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sqlAggregationJob:\n    type: databricks:Job\n    properties:\n      tasks:\n        - taskKey: run_agg_query\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            query:\n              queryId: ${databricks_sql_query.agg_query.id}\n        - taskKey: run_dashboard\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            dashboard:\n              dashboardId: ${databricks_sql_dashboard.dash.id}\n              subscriptions:\n                - userName: user@domain.com\n        - taskKey: run_alert\n          sqlTask:\n            warehouseId: ${databricks_sql_endpoint.sql_job_warehouse.id}\n            alert:\n              alertId: ${databricks_sql_alert.alert.id}\n              subscriptions:\n                - userName: user@domain.com\n```\n"
                 },
                 "parameters": {
                     "type": "object",
@@ -2789,24 +2836,77 @@
         "databricks:index/JobTaskSqlTaskAlert:JobTaskSqlTaskAlert": {
             "properties": {
                 "alertId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "(String) identifier of the Databricks SQL Alert.\n"
+                },
+                "pauseSubscriptions": {
+                    "type": "boolean",
+                    "description": "flag that specifies if subscriptions are paused or not.\n"
+                },
+                "subscriptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/JobTaskSqlTaskAlertSubscription:JobTaskSqlTaskAlertSubscription"
+                    },
+                    "description": "a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.\n"
                 }
             },
             "type": "object",
             "required": [
-                "alertId"
+                "alertId",
+                "subscriptions"
             ]
+        },
+        "databricks:index/JobTaskSqlTaskAlertSubscription:JobTaskSqlTaskAlertSubscription": {
+            "properties": {
+                "destinationId": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "The email of an active workspace user. Non-admin users can only set this field to their own email.\n"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/JobTaskSqlTaskDashboard:JobTaskSqlTaskDashboard": {
             "properties": {
+                "customSubject": {
+                    "type": "string",
+                    "description": "string specifying a custom subject of email sent.\n"
+                },
                 "dashboardId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "(String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.\n"
+                },
+                "pauseSubscriptions": {
+                    "type": "boolean",
+                    "description": "flag that specifies if subscriptions are paused or not.\n"
+                },
+                "subscriptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/JobTaskSqlTaskDashboardSubscription:JobTaskSqlTaskDashboardSubscription"
+                    },
+                    "description": "a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.\n"
                 }
             },
             "type": "object",
             "required": [
                 "dashboardId"
             ]
+        },
+        "databricks:index/JobTaskSqlTaskDashboardSubscription:JobTaskSqlTaskDashboardSubscription": {
+            "properties": {
+                "destinationId": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "The email of an active workspace user. Non-admin users can only set this field to their own email.\n"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/JobTaskSqlTaskFile:JobTaskSqlTaskFile": {
             "properties": {
@@ -2856,7 +2956,7 @@
         },
         "databricks:index/JobTriggerFileArrival:JobTriggerFileArrival": {
             "properties": {
-                "minTimeBetweenTriggerSeconds": {
+                "minTimeBetweenTriggersSeconds": {
                     "type": "integer",
                     "description": "If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.\n"
                 },
@@ -5815,6 +5915,12 @@
         },
         "databricks:index/getJobJobSettingsSettings:getJobJobSettingsSettings": {
             "properties": {
+                "computes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getJobJobSettingsSettingsCompute:getJobJobSettingsSettingsCompute"
+                    }
+                },
                 "continuous": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsContinuous:getJobJobSettingsSettingsContinuous"
                 },
@@ -5925,6 +6031,25 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "databricks:index/getJobJobSettingsSettingsCompute:getJobJobSettingsSettingsCompute": {
+            "properties": {
+                "computeKey": {
+                    "type": "string"
+                },
+                "spec": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsComputeSpec:getJobJobSettingsSettingsComputeSpec"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsComputeSpec:getJobJobSettingsSettingsComputeSpec": {
+            "properties": {
+                "kind": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/getJobJobSettingsSettingsContinuous:getJobJobSettingsSettingsContinuous": {
             "properties": {
@@ -7129,6 +7254,12 @@
         },
         "databricks:index/getJobJobSettingsSettingsTask:getJobJobSettingsSettingsTask": {
             "properties": {
+                "computeKey": {
+                    "type": "string"
+                },
+                "conditionTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskConditionTask:getJobJobSettingsSettingsTaskConditionTask"
+                },
                 "dbtTask": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskDbtTask:getJobJobSettingsSettingsTaskDbtTask"
                 },
@@ -7209,6 +7340,20 @@
                 }
             }
         },
+        "databricks:index/getJobJobSettingsSettingsTaskConditionTask:getJobJobSettingsSettingsTaskConditionTask": {
+            "properties": {
+                "left": {
+                    "type": "string"
+                },
+                "op": {
+                    "type": "string"
+                },
+                "right": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "databricks:index/getJobJobSettingsSettingsTaskDbtTask:getJobJobSettingsSettingsTaskDbtTask": {
             "properties": {
                 "catalog": {
@@ -7240,11 +7385,17 @@
         },
         "databricks:index/getJobJobSettingsSettingsTaskDependsOn:getJobJobSettingsSettingsTaskDependsOn": {
             "properties": {
+                "outcome": {
+                    "type": "string"
+                },
                 "taskKey": {
                     "type": "string"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "taskKey"
+            ]
         },
         "databricks:index/getJobJobSettingsSettingsTaskEmailNotifications:getJobJobSettingsSettingsTaskEmailNotifications": {
             "properties": {
@@ -7912,23 +8063,67 @@
             "properties": {
                 "alertId": {
                     "type": "string"
+                },
+                "pauseSubscriptions": {
+                    "type": "boolean"
+                },
+                "subscriptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskSqlTaskAlertSubscription:getJobJobSettingsSettingsTaskSqlTaskAlertSubscription"
+                    }
                 }
             },
             "type": "object",
             "required": [
-                "alertId"
+                "alertId",
+                "subscriptions"
             ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskSqlTaskAlertSubscription:getJobJobSettingsSettingsTaskSqlTaskAlertSubscription": {
+            "properties": {
+                "destinationId": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/getJobJobSettingsSettingsTaskSqlTaskDashboard:getJobJobSettingsSettingsTaskSqlTaskDashboard": {
             "properties": {
+                "customSubject": {
+                    "type": "string"
+                },
                 "dashboardId": {
                     "type": "string"
+                },
+                "pauseSubscriptions": {
+                    "type": "boolean"
+                },
+                "subscriptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskSqlTaskDashboardSubscription:getJobJobSettingsSettingsTaskSqlTaskDashboardSubscription"
+                    }
                 }
             },
             "type": "object",
             "required": [
                 "dashboardId"
             ]
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskSqlTaskDashboardSubscription:getJobJobSettingsSettingsTaskSqlTaskDashboardSubscription": {
+            "properties": {
+                "destinationId": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/getJobJobSettingsSettingsTaskSqlTaskFile:getJobJobSettingsSettingsTaskSqlTaskFile": {
             "properties": {
@@ -7976,7 +8171,7 @@
         },
         "databricks:index/getJobJobSettingsSettingsTriggerFileArrival:getJobJobSettingsSettingsTriggerFileArrival": {
             "properties": {
-                "minTimeBetweenTriggerSeconds": {
+                "minTimeBetweenTriggersSeconds": {
                     "type": "integer"
                 },
                 "url": {
@@ -10518,6 +10713,12 @@
                     "type": "boolean",
                     "description": "(Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.\n"
                 },
+                "computes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/JobCompute:JobCompute"
+                    }
+                },
                 "continuous": {
                     "$ref": "#/types/databricks:index/JobContinuous:JobContinuous"
                 },
@@ -10644,6 +10845,12 @@
                     "type": "boolean",
                     "description": "(Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.\n"
                 },
+                "computes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/JobCompute:JobCompute"
+                    }
+                },
                 "continuous": {
                     "$ref": "#/types/databricks:index/JobContinuous:JobContinuous"
                 },
@@ -10762,6 +10969,12 @@
                     "alwaysRunning": {
                         "type": "boolean",
                         "description": "(Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.\n"
+                    },
+                    "computes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/databricks:index/JobCompute:JobCompute"
+                        }
                     },
                     "continuous": {
                         "$ref": "#/types/databricks:index/JobContinuous:JobContinuous"

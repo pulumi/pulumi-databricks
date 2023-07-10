@@ -22,14 +22,14 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
     public static final JobTaskSqlTaskArgs Empty = new JobTaskSqlTaskArgs();
 
     /**
-     * block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.
+     * block consisting of following fields:
      * 
      */
     @Import(name="alert")
     private @Nullable Output<JobTaskSqlTaskAlertArgs> alert;
 
     /**
-     * @return block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.
+     * @return block consisting of following fields:
      * 
      */
     public Optional<Output<JobTaskSqlTaskAlertArgs>> alert() {
@@ -37,14 +37,14 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * block consisting of following fields:
      * 
      */
     @Import(name="dashboard")
     private @Nullable Output<JobTaskSqlTaskDashboardArgs> dashboard;
 
     /**
-     * @return block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * @return block consisting of following fields:
      * 
      */
     public Optional<Output<JobTaskSqlTaskDashboardArgs>> dashboard() {
@@ -66,6 +66,8 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
      * import com.pulumi.databricks.inputs.JobTaskArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -80,15 +82,40 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
      * 
      *     public static void stack(Context ctx) {
      *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
-     *             .tasks(JobTaskArgs.builder()
-     *                 .taskKey(&#34;run_agg_query&#34;)
-     *                 .sqlTask(JobTaskSqlTaskArgs.builder()
-     *                     .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
-     *                     .query(JobTaskSqlTaskQueryArgs.builder()
-     *                         .queryId(databricks_sql_query.agg_query().id())
+     *             .tasks(            
+     *                 JobTaskArgs.builder()
+     *                     .taskKey(&#34;run_agg_query&#34;)
+     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                         .query(JobTaskSqlTaskQueryArgs.builder()
+     *                             .queryId(databricks_sql_query.agg_query().id())
+     *                             .build())
+     *                         .build())
+     *                     .build(),
+     *                 JobTaskArgs.builder()
+     *                     .taskKey(&#34;run_dashboard&#34;)
+     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
+     *                             .dashboardId(databricks_sql_dashboard.dash().id())
+     *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
+     *                                 .userName(&#34;user@domain.com&#34;)
+     *                                 .build())
+     *                             .build())
+     *                         .build())
+     *                     .build(),
+     *                 JobTaskArgs.builder()
+     *                     .taskKey(&#34;run_alert&#34;)
+     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                         .alert(JobTaskSqlTaskAlertArgs.builder()
+     *                             .alertId(databricks_sql_alert.alert().id())
+     *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
+     *                                 .userName(&#34;user@domain.com&#34;)
+     *                                 .build())
+     *                             .build())
      *                         .build())
      *                     .build())
-     *                 .build())
      *             .build());
      * 
      *     }
@@ -114,6 +141,8 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
      * import com.pulumi.databricks.inputs.JobTaskArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -128,15 +157,40 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
      * 
      *     public static void stack(Context ctx) {
      *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
-     *             .tasks(JobTaskArgs.builder()
-     *                 .taskKey(&#34;run_agg_query&#34;)
-     *                 .sqlTask(JobTaskSqlTaskArgs.builder()
-     *                     .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
-     *                     .query(JobTaskSqlTaskQueryArgs.builder()
-     *                         .queryId(databricks_sql_query.agg_query().id())
+     *             .tasks(            
+     *                 JobTaskArgs.builder()
+     *                     .taskKey(&#34;run_agg_query&#34;)
+     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                         .query(JobTaskSqlTaskQueryArgs.builder()
+     *                             .queryId(databricks_sql_query.agg_query().id())
+     *                             .build())
+     *                         .build())
+     *                     .build(),
+     *                 JobTaskArgs.builder()
+     *                     .taskKey(&#34;run_dashboard&#34;)
+     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
+     *                             .dashboardId(databricks_sql_dashboard.dash().id())
+     *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
+     *                                 .userName(&#34;user@domain.com&#34;)
+     *                                 .build())
+     *                             .build())
+     *                         .build())
+     *                     .build(),
+     *                 JobTaskArgs.builder()
+     *                     .taskKey(&#34;run_alert&#34;)
+     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                         .alert(JobTaskSqlTaskAlertArgs.builder()
+     *                             .alertId(databricks_sql_alert.alert().id())
+     *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
+     *                                 .userName(&#34;user@domain.com&#34;)
+     *                                 .build())
+     *                             .build())
      *                         .build())
      *                     .build())
-     *                 .build())
      *             .build());
      * 
      *     }
@@ -223,7 +277,7 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param alert block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.
+         * @param alert block consisting of following fields:
          * 
          * @return builder
          * 
@@ -234,7 +288,7 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param alert block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.
+         * @param alert block consisting of following fields:
          * 
          * @return builder
          * 
@@ -244,7 +298,7 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dashboard block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+         * @param dashboard block consisting of following fields:
          * 
          * @return builder
          * 
@@ -255,7 +309,7 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dashboard block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+         * @param dashboard block consisting of following fields:
          * 
          * @return builder
          * 
@@ -279,6 +333,8 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
          * import com.pulumi.databricks.inputs.JobTaskArgs;
          * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
          * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
+         * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
+         * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
          * import java.util.List;
          * import java.util.ArrayList;
          * import java.util.Map;
@@ -293,15 +349,40 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
          * 
          *     public static void stack(Context ctx) {
          *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
-         *             .tasks(JobTaskArgs.builder()
-         *                 .taskKey(&#34;run_agg_query&#34;)
-         *                 .sqlTask(JobTaskSqlTaskArgs.builder()
-         *                     .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
-         *                     .query(JobTaskSqlTaskQueryArgs.builder()
-         *                         .queryId(databricks_sql_query.agg_query().id())
+         *             .tasks(            
+         *                 JobTaskArgs.builder()
+         *                     .taskKey(&#34;run_agg_query&#34;)
+         *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+         *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+         *                         .query(JobTaskSqlTaskQueryArgs.builder()
+         *                             .queryId(databricks_sql_query.agg_query().id())
+         *                             .build())
+         *                         .build())
+         *                     .build(),
+         *                 JobTaskArgs.builder()
+         *                     .taskKey(&#34;run_dashboard&#34;)
+         *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+         *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+         *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
+         *                             .dashboardId(databricks_sql_dashboard.dash().id())
+         *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
+         *                                 .userName(&#34;user@domain.com&#34;)
+         *                                 .build())
+         *                             .build())
+         *                         .build())
+         *                     .build(),
+         *                 JobTaskArgs.builder()
+         *                     .taskKey(&#34;run_alert&#34;)
+         *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+         *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+         *                         .alert(JobTaskSqlTaskAlertArgs.builder()
+         *                             .alertId(databricks_sql_alert.alert().id())
+         *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
+         *                                 .userName(&#34;user@domain.com&#34;)
+         *                                 .build())
+         *                             .build())
          *                         .build())
          *                     .build())
-         *                 .build())
          *             .build());
          * 
          *     }
@@ -331,6 +412,8 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
          * import com.pulumi.databricks.inputs.JobTaskArgs;
          * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
          * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
+         * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
+         * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
          * import java.util.List;
          * import java.util.ArrayList;
          * import java.util.Map;
@@ -345,15 +428,40 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
          * 
          *     public static void stack(Context ctx) {
          *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
-         *             .tasks(JobTaskArgs.builder()
-         *                 .taskKey(&#34;run_agg_query&#34;)
-         *                 .sqlTask(JobTaskSqlTaskArgs.builder()
-         *                     .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
-         *                     .query(JobTaskSqlTaskQueryArgs.builder()
-         *                         .queryId(databricks_sql_query.agg_query().id())
+         *             .tasks(            
+         *                 JobTaskArgs.builder()
+         *                     .taskKey(&#34;run_agg_query&#34;)
+         *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+         *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+         *                         .query(JobTaskSqlTaskQueryArgs.builder()
+         *                             .queryId(databricks_sql_query.agg_query().id())
+         *                             .build())
+         *                         .build())
+         *                     .build(),
+         *                 JobTaskArgs.builder()
+         *                     .taskKey(&#34;run_dashboard&#34;)
+         *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+         *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+         *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
+         *                             .dashboardId(databricks_sql_dashboard.dash().id())
+         *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
+         *                                 .userName(&#34;user@domain.com&#34;)
+         *                                 .build())
+         *                             .build())
+         *                         .build())
+         *                     .build(),
+         *                 JobTaskArgs.builder()
+         *                     .taskKey(&#34;run_alert&#34;)
+         *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+         *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+         *                         .alert(JobTaskSqlTaskAlertArgs.builder()
+         *                             .alertId(databricks_sql_alert.alert().id())
+         *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
+         *                                 .userName(&#34;user@domain.com&#34;)
+         *                                 .build())
+         *                             .build())
          *                         .build())
          *                     .build())
-         *                 .build())
          *             .build());
          * 
          *     }

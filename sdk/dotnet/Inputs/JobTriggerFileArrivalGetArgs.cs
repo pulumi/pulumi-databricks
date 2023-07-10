@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
         /// </summary>
-        [Input("minTimeBetweenTriggerSeconds")]
-        public Input<int>? MinTimeBetweenTriggerSeconds { get; set; }
+        [Input("minTimeBetweenTriggersSeconds")]
+        public Input<int>? MinTimeBetweenTriggersSeconds { get; set; }
 
         /// <summary>
         /// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).

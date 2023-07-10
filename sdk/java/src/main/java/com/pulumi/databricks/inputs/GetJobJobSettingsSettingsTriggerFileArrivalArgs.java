@@ -16,11 +16,11 @@ public final class GetJobJobSettingsSettingsTriggerFileArrivalArgs extends com.p
 
     public static final GetJobJobSettingsSettingsTriggerFileArrivalArgs Empty = new GetJobJobSettingsSettingsTriggerFileArrivalArgs();
 
-    @Import(name="minTimeBetweenTriggerSeconds")
-    private @Nullable Output<Integer> minTimeBetweenTriggerSeconds;
+    @Import(name="minTimeBetweenTriggersSeconds")
+    private @Nullable Output<Integer> minTimeBetweenTriggersSeconds;
 
-    public Optional<Output<Integer>> minTimeBetweenTriggerSeconds() {
-        return Optional.ofNullable(this.minTimeBetweenTriggerSeconds);
+    public Optional<Output<Integer>> minTimeBetweenTriggersSeconds() {
+        return Optional.ofNullable(this.minTimeBetweenTriggersSeconds);
     }
 
     @Import(name="url", required=true)
@@ -40,7 +40,7 @@ public final class GetJobJobSettingsSettingsTriggerFileArrivalArgs extends com.p
     private GetJobJobSettingsSettingsTriggerFileArrivalArgs() {}
 
     private GetJobJobSettingsSettingsTriggerFileArrivalArgs(GetJobJobSettingsSettingsTriggerFileArrivalArgs $) {
-        this.minTimeBetweenTriggerSeconds = $.minTimeBetweenTriggerSeconds;
+        this.minTimeBetweenTriggersSeconds = $.minTimeBetweenTriggersSeconds;
         this.url = $.url;
         this.waitAfterLastChangeSeconds = $.waitAfterLastChangeSeconds;
     }
@@ -63,13 +63,13 @@ public final class GetJobJobSettingsSettingsTriggerFileArrivalArgs extends com.p
             $ = new GetJobJobSettingsSettingsTriggerFileArrivalArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder minTimeBetweenTriggerSeconds(@Nullable Output<Integer> minTimeBetweenTriggerSeconds) {
-            $.minTimeBetweenTriggerSeconds = minTimeBetweenTriggerSeconds;
+        public Builder minTimeBetweenTriggersSeconds(@Nullable Output<Integer> minTimeBetweenTriggersSeconds) {
+            $.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
             return this;
         }
 
-        public Builder minTimeBetweenTriggerSeconds(Integer minTimeBetweenTriggerSeconds) {
-            return minTimeBetweenTriggerSeconds(Output.of(minTimeBetweenTriggerSeconds));
+        public Builder minTimeBetweenTriggersSeconds(Integer minTimeBetweenTriggersSeconds) {
+            return minTimeBetweenTriggersSeconds(Output.of(minTimeBetweenTriggersSeconds));
         }
 
         public Builder url(Output<String> url) {

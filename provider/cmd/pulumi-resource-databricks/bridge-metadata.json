@@ -252,6 +252,16 @@
                 "current": "databricks:index/job:Job",
                 "majorVersion": 1,
                 "fields": {
+                    "compute": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "spec": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "continuous": {
                         "maxItemsOne": true
                     },
@@ -556,6 +566,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "condition_task": {
+                                    "maxItemsOne": true
+                                },
                                 "dbt_task": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -749,10 +762,24 @@
                                     "elem": {
                                         "fields": {
                                             "alert": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "subscriptions": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "dashboard": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "subscriptions": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "file": {
                                                 "maxItemsOne": true
@@ -1794,6 +1821,16 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "compute": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "spec": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "continuous": {
                                                 "maxItemsOne": true
                                             },
@@ -2098,6 +2135,9 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
+                                                        "condition_task": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "dbt_task": {
                                                             "maxItemsOne": true,
                                                             "elem": {
@@ -2291,10 +2331,24 @@
                                                             "elem": {
                                                                 "fields": {
                                                                     "alert": {
-                                                                        "maxItemsOne": true
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "subscriptions": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     },
                                                                     "dashboard": {
-                                                                        "maxItemsOne": true
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "subscriptions": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     },
                                                                     "file": {
                                                                         "maxItemsOne": true
@@ -2698,6 +2752,9 @@
             "databricks:index/InstancePoolPreloadedDockerImage:InstancePoolPreloadedDockerImage": {
                 "basicAuth": "basic_auth"
             },
+            "databricks:index/JobCompute:JobCompute": {
+                "computeKey": "compute_key"
+            },
             "databricks:index/JobContinuous:JobContinuous": {
                 "pauseStatus": "pause_status"
             },
@@ -2906,6 +2963,8 @@
                 "pythonFile": "python_file"
             },
             "databricks:index/JobTask:JobTask": {
+                "computeKey": "compute_key",
+                "conditionTask": "condition_task",
                 "dbtTask": "dbt_task",
                 "dependsOns": "depends_on",
                 "emailNotifications": "email_notifications",
@@ -3043,10 +3102,21 @@
                 "warehouseId": "warehouse_id"
             },
             "databricks:index/JobTaskSqlTaskAlert:JobTaskSqlTaskAlert": {
-                "alertId": "alert_id"
+                "alertId": "alert_id",
+                "pauseSubscriptions": "pause_subscriptions"
+            },
+            "databricks:index/JobTaskSqlTaskAlertSubscription:JobTaskSqlTaskAlertSubscription": {
+                "destinationId": "destination_id",
+                "userName": "user_name"
             },
             "databricks:index/JobTaskSqlTaskDashboard:JobTaskSqlTaskDashboard": {
-                "dashboardId": "dashboard_id"
+                "customSubject": "custom_subject",
+                "dashboardId": "dashboard_id",
+                "pauseSubscriptions": "pause_subscriptions"
+            },
+            "databricks:index/JobTaskSqlTaskDashboardSubscription:JobTaskSqlTaskDashboardSubscription": {
+                "destinationId": "destination_id",
+                "userName": "user_name"
             },
             "databricks:index/JobTaskSqlTaskQuery:JobTaskSqlTaskQuery": {
                 "queryId": "query_id"
@@ -3056,7 +3126,7 @@
                 "pauseStatus": "pause_status"
             },
             "databricks:index/JobTriggerFileArrival:JobTriggerFileArrival": {
-                "minTimeBetweenTriggerSeconds": "min_time_between_trigger_seconds",
+                "minTimeBetweenTriggersSeconds": "min_time_between_triggers_seconds",
                 "waitAfterLastChangeSeconds": "wait_after_last_change_seconds"
             },
             "databricks:index/JobWebhookNotifications:JobWebhookNotifications": {
@@ -3665,6 +3735,7 @@
                 "runAsUserName": "run_as_user_name"
             },
             "databricks:index/getJobJobSettingsSettings:getJobJobSettingsSettings": {
+                "computes": "compute",
                 "dbtTask": "dbt_task",
                 "emailNotifications": "email_notifications",
                 "existingClusterId": "existing_cluster_id",
@@ -3687,6 +3758,9 @@
                 "tasks": "task",
                 "timeoutSeconds": "timeout_seconds",
                 "webhookNotifications": "webhook_notifications"
+            },
+            "databricks:index/getJobJobSettingsSettingsCompute:getJobJobSettingsSettingsCompute": {
+                "computeKey": "compute_key"
             },
             "databricks:index/getJobJobSettingsSettingsContinuous:getJobJobSettingsSettingsContinuous": {
                 "pauseStatus": "pause_status"
@@ -3896,6 +3970,8 @@
                 "pythonFile": "python_file"
             },
             "databricks:index/getJobJobSettingsSettingsTask:getJobJobSettingsSettingsTask": {
+                "computeKey": "compute_key",
+                "conditionTask": "condition_task",
                 "dbtTask": "dbt_task",
                 "dependsOns": "depends_on",
                 "emailNotifications": "email_notifications",
@@ -4033,10 +4109,21 @@
                 "warehouseId": "warehouse_id"
             },
             "databricks:index/getJobJobSettingsSettingsTaskSqlTaskAlert:getJobJobSettingsSettingsTaskSqlTaskAlert": {
-                "alertId": "alert_id"
+                "alertId": "alert_id",
+                "pauseSubscriptions": "pause_subscriptions"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskSqlTaskAlertSubscription:getJobJobSettingsSettingsTaskSqlTaskAlertSubscription": {
+                "destinationId": "destination_id",
+                "userName": "user_name"
             },
             "databricks:index/getJobJobSettingsSettingsTaskSqlTaskDashboard:getJobJobSettingsSettingsTaskSqlTaskDashboard": {
-                "dashboardId": "dashboard_id"
+                "customSubject": "custom_subject",
+                "dashboardId": "dashboard_id",
+                "pauseSubscriptions": "pause_subscriptions"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskSqlTaskDashboardSubscription:getJobJobSettingsSettingsTaskSqlTaskDashboardSubscription": {
+                "destinationId": "destination_id",
+                "userName": "user_name"
             },
             "databricks:index/getJobJobSettingsSettingsTaskSqlTaskQuery:getJobJobSettingsSettingsTaskSqlTaskQuery": {
                 "queryId": "query_id"
@@ -4046,7 +4133,7 @@
                 "pauseStatus": "pause_status"
             },
             "databricks:index/getJobJobSettingsSettingsTriggerFileArrival:getJobJobSettingsSettingsTriggerFileArrival": {
-                "minTimeBetweenTriggerSeconds": "min_time_between_trigger_seconds",
+                "minTimeBetweenTriggersSeconds": "min_time_between_triggers_seconds",
                 "waitAfterLastChangeSeconds": "wait_after_last_change_seconds"
             },
             "databricks:index/getJobJobSettingsSettingsWebhookNotifications:getJobJobSettingsSettingsWebhookNotifications": {
@@ -4214,6 +4301,7 @@
             },
             "databricks:index/job:Job": {
                 "alwaysRunning": "always_running",
+                "computes": "compute",
                 "dbtTask": "dbt_task",
                 "emailNotifications": "email_notifications",
                 "existingClusterId": "existing_cluster_id",

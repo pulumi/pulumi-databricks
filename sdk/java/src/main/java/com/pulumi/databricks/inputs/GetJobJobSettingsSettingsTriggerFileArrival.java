@@ -15,11 +15,11 @@ public final class GetJobJobSettingsSettingsTriggerFileArrival extends com.pulum
 
     public static final GetJobJobSettingsSettingsTriggerFileArrival Empty = new GetJobJobSettingsSettingsTriggerFileArrival();
 
-    @Import(name="minTimeBetweenTriggerSeconds")
-    private @Nullable Integer minTimeBetweenTriggerSeconds;
+    @Import(name="minTimeBetweenTriggersSeconds")
+    private @Nullable Integer minTimeBetweenTriggersSeconds;
 
-    public Optional<Integer> minTimeBetweenTriggerSeconds() {
-        return Optional.ofNullable(this.minTimeBetweenTriggerSeconds);
+    public Optional<Integer> minTimeBetweenTriggersSeconds() {
+        return Optional.ofNullable(this.minTimeBetweenTriggersSeconds);
     }
 
     @Import(name="url", required=true)
@@ -39,7 +39,7 @@ public final class GetJobJobSettingsSettingsTriggerFileArrival extends com.pulum
     private GetJobJobSettingsSettingsTriggerFileArrival() {}
 
     private GetJobJobSettingsSettingsTriggerFileArrival(GetJobJobSettingsSettingsTriggerFileArrival $) {
-        this.minTimeBetweenTriggerSeconds = $.minTimeBetweenTriggerSeconds;
+        this.minTimeBetweenTriggersSeconds = $.minTimeBetweenTriggersSeconds;
         this.url = $.url;
         this.waitAfterLastChangeSeconds = $.waitAfterLastChangeSeconds;
     }
@@ -62,8 +62,8 @@ public final class GetJobJobSettingsSettingsTriggerFileArrival extends com.pulum
             $ = new GetJobJobSettingsSettingsTriggerFileArrival(Objects.requireNonNull(defaults));
         }
 
-        public Builder minTimeBetweenTriggerSeconds(@Nullable Integer minTimeBetweenTriggerSeconds) {
-            $.minTimeBetweenTriggerSeconds = minTimeBetweenTriggerSeconds;
+        public Builder minTimeBetweenTriggersSeconds(@Nullable Integer minTimeBetweenTriggersSeconds) {
+            $.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
             return this;
         }
 

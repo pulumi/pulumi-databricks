@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobComputeArgs;
 import com.pulumi.databricks.inputs.JobContinuousArgs;
 import com.pulumi.databricks.inputs.JobDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobEmailNotificationsArgs;
@@ -53,6 +54,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> alwaysRunning() {
         return Optional.ofNullable(this.alwaysRunning);
+    }
+
+    @Import(name="computes")
+    private @Nullable Output<List<JobComputeArgs>> computes;
+
+    public Optional<Output<List<JobComputeArgs>>> computes() {
+        return Optional.ofNullable(this.computes);
     }
 
     @Import(name="continuous")
@@ -358,6 +366,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     private JobArgs(JobArgs $) {
         this.alwaysRunning = $.alwaysRunning;
+        this.computes = $.computes;
         this.continuous = $.continuous;
         this.dbtTask = $.dbtTask;
         this.emailNotifications = $.emailNotifications;
@@ -426,6 +435,19 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder alwaysRunning(Boolean alwaysRunning) {
             return alwaysRunning(Output.of(alwaysRunning));
+        }
+
+        public Builder computes(@Nullable Output<List<JobComputeArgs>> computes) {
+            $.computes = computes;
+            return this;
+        }
+
+        public Builder computes(List<JobComputeArgs> computes) {
+            return computes(Output.of(computes));
+        }
+
+        public Builder computes(JobComputeArgs... computes) {
+            return computes(List.of(computes));
         }
 
         public Builder continuous(@Nullable Output<JobContinuousArgs> continuous) {

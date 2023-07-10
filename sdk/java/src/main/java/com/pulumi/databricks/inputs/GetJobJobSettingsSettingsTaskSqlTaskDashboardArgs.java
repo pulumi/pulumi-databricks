@@ -5,13 +5,25 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs Empty = new GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs();
+
+    @Import(name="customSubject")
+    private @Nullable Output<String> customSubject;
+
+    public Optional<Output<String>> customSubject() {
+        return Optional.ofNullable(this.customSubject);
+    }
 
     @Import(name="dashboardId", required=true)
     private Output<String> dashboardId;
@@ -20,10 +32,27 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs extends com
         return this.dashboardId;
     }
 
+    @Import(name="pauseSubscriptions")
+    private @Nullable Output<Boolean> pauseSubscriptions;
+
+    public Optional<Output<Boolean>> pauseSubscriptions() {
+        return Optional.ofNullable(this.pauseSubscriptions);
+    }
+
+    @Import(name="subscriptions")
+    private @Nullable Output<List<GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs>> subscriptions;
+
+    public Optional<Output<List<GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs>>> subscriptions() {
+        return Optional.ofNullable(this.subscriptions);
+    }
+
     private GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs() {}
 
     private GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs(GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs $) {
+        this.customSubject = $.customSubject;
         this.dashboardId = $.dashboardId;
+        this.pauseSubscriptions = $.pauseSubscriptions;
+        this.subscriptions = $.subscriptions;
     }
 
     public static Builder builder() {
@@ -44,6 +73,15 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs extends com
             $ = new GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder customSubject(@Nullable Output<String> customSubject) {
+            $.customSubject = customSubject;
+            return this;
+        }
+
+        public Builder customSubject(String customSubject) {
+            return customSubject(Output.of(customSubject));
+        }
+
         public Builder dashboardId(Output<String> dashboardId) {
             $.dashboardId = dashboardId;
             return this;
@@ -51,6 +89,28 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs extends com
 
         public Builder dashboardId(String dashboardId) {
             return dashboardId(Output.of(dashboardId));
+        }
+
+        public Builder pauseSubscriptions(@Nullable Output<Boolean> pauseSubscriptions) {
+            $.pauseSubscriptions = pauseSubscriptions;
+            return this;
+        }
+
+        public Builder pauseSubscriptions(Boolean pauseSubscriptions) {
+            return pauseSubscriptions(Output.of(pauseSubscriptions));
+        }
+
+        public Builder subscriptions(@Nullable Output<List<GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs>> subscriptions) {
+            $.subscriptions = subscriptions;
+            return this;
+        }
+
+        public Builder subscriptions(List<GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs> subscriptions) {
+            return subscriptions(Output.of(subscriptions));
+        }
+
+        public Builder subscriptions(GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs... subscriptions) {
+            return subscriptions(List.of(subscriptions));
         }
 
         public GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs build() {

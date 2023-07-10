@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsCompute;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsContinuous;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsDbtTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsEmailNotifications;
@@ -36,6 +37,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettings {
+    private @Nullable List<GetJobJobSettingsSettingsCompute> computes;
     private @Nullable GetJobJobSettingsSettingsContinuous continuous;
     private @Nullable GetJobJobSettingsSettingsDbtTask dbtTask;
     private @Nullable GetJobJobSettingsSettingsEmailNotifications emailNotifications;
@@ -71,6 +73,9 @@ public final class GetJobJobSettingsSettings {
     private @Nullable GetJobJobSettingsSettingsWebhookNotifications webhookNotifications;
 
     private GetJobJobSettingsSettings() {}
+    public List<GetJobJobSettingsSettingsCompute> computes() {
+        return this.computes == null ? List.of() : this.computes;
+    }
     public Optional<GetJobJobSettingsSettingsContinuous> continuous() {
         return Optional.ofNullable(this.continuous);
     }
@@ -172,6 +177,7 @@ public final class GetJobJobSettingsSettings {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<GetJobJobSettingsSettingsCompute> computes;
         private @Nullable GetJobJobSettingsSettingsContinuous continuous;
         private @Nullable GetJobJobSettingsSettingsDbtTask dbtTask;
         private @Nullable GetJobJobSettingsSettingsEmailNotifications emailNotifications;
@@ -204,6 +210,7 @@ public final class GetJobJobSettingsSettings {
         public Builder() {}
         public Builder(GetJobJobSettingsSettings defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.computes = defaults.computes;
     	      this.continuous = defaults.continuous;
     	      this.dbtTask = defaults.dbtTask;
     	      this.emailNotifications = defaults.emailNotifications;
@@ -235,6 +242,14 @@ public final class GetJobJobSettingsSettings {
     	      this.webhookNotifications = defaults.webhookNotifications;
         }
 
+        @CustomType.Setter
+        public Builder computes(@Nullable List<GetJobJobSettingsSettingsCompute> computes) {
+            this.computes = computes;
+            return this;
+        }
+        public Builder computes(GetJobJobSettingsSettingsCompute... computes) {
+            return computes(List.of(computes));
+        }
         @CustomType.Setter
         public Builder continuous(@Nullable GetJobJobSettingsSettingsContinuous continuous) {
             this.continuous = continuous;
@@ -391,6 +406,7 @@ public final class GetJobJobSettingsSettings {
         }
         public GetJobJobSettingsSettings build() {
             final var o = new GetJobJobSettingsSettings();
+            o.computes = computes;
             o.continuous = continuous;
             o.dbtTask = dbtTask;
             o.emailNotifications = emailNotifications;

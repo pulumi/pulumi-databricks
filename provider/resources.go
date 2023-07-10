@@ -25,9 +25,8 @@ import (
 	databricksProv "github.com/databricks/terraform-provider-databricks/provider"
 	"github.com/pulumi/pulumi-databricks/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 //go:embed cmd/pulumi-resource-databricks/bridge-metadata.json
@@ -241,12 +240,10 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	err := x.ComputeDefaults(&prov, x.TokensSingleModule("databricks_",
-		mainMod, x.MakeStandardToken(mainPkg)))
-	contract.AssertNoErrorf(err, "auto token mapping failed")
+	prov.MustComputeTokens(tokens.SingleModule("databricks_",
+		mainMod, tokens.MakeStandard(mainPkg)))
 
-	err = x.AutoAliasing(&prov, prov.GetMetadata())
-	contract.AssertNoErrorf(err, "auto aliasing failed")
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov

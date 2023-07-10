@@ -487,6 +487,7 @@ export interface GetJobJobSettings {
 }
 
 export interface GetJobJobSettingsSettings {
+    computes?: outputs.GetJobJobSettingsSettingsCompute[];
     continuous?: outputs.GetJobJobSettingsSettingsContinuous;
     dbtTask?: outputs.GetJobJobSettingsSettingsDbtTask;
     emailNotifications?: outputs.GetJobJobSettingsSettingsEmailNotifications;
@@ -519,6 +520,15 @@ export interface GetJobJobSettingsSettings {
     timeoutSeconds?: number;
     trigger?: outputs.GetJobJobSettingsSettingsTrigger;
     webhookNotifications?: outputs.GetJobJobSettingsSettingsWebhookNotifications;
+}
+
+export interface GetJobJobSettingsSettingsCompute {
+    computeKey?: string;
+    spec?: outputs.GetJobJobSettingsSettingsComputeSpec;
+}
+
+export interface GetJobJobSettingsSettingsComputeSpec {
+    kind?: string;
 }
 
 export interface GetJobJobSettingsSettingsContinuous {
@@ -935,6 +945,8 @@ export interface GetJobJobSettingsSettingsSparkSubmitTask {
 }
 
 export interface GetJobJobSettingsSettingsTask {
+    computeKey?: string;
+    conditionTask?: outputs.GetJobJobSettingsSettingsTaskConditionTask;
     dbtTask?: outputs.GetJobJobSettingsSettingsTaskDbtTask;
     dependsOns?: outputs.GetJobJobSettingsSettingsTaskDependsOn[];
     description?: string;
@@ -958,6 +970,12 @@ export interface GetJobJobSettingsSettingsTask {
     timeoutSeconds?: number;
 }
 
+export interface GetJobJobSettingsSettingsTaskConditionTask {
+    left?: string;
+    op?: string;
+    right?: string;
+}
+
 export interface GetJobJobSettingsSettingsTaskDbtTask {
     catalog?: string;
     commands: string[];
@@ -968,7 +986,8 @@ export interface GetJobJobSettingsSettingsTaskDbtTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskDependsOn {
-    taskKey?: string;
+    outcome?: string;
+    taskKey: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskEmailNotifications {
@@ -1199,10 +1218,25 @@ export interface GetJobJobSettingsSettingsTaskSqlTask {
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskAlert {
     alertId: string;
+    pauseSubscriptions?: boolean;
+    subscriptions: outputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription[];
+}
+
+export interface GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription {
+    destinationId?: string;
+    userName?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskDashboard {
+    customSubject?: string;
     dashboardId: string;
+    pauseSubscriptions?: boolean;
+    subscriptions?: outputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription[];
+}
+
+export interface GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription {
+    destinationId?: string;
+    userName?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskFile {
@@ -1219,7 +1253,7 @@ export interface GetJobJobSettingsSettingsTrigger {
 }
 
 export interface GetJobJobSettingsSettingsTriggerFileArrival {
-    minTimeBetweenTriggerSeconds?: number;
+    minTimeBetweenTriggersSeconds?: number;
     url: string;
     waitAfterLastChangeSeconds?: number;
 }
@@ -1401,6 +1435,15 @@ export interface InstancePoolPreloadedDockerImage {
 export interface InstancePoolPreloadedDockerImageBasicAuth {
     password: string;
     username: string;
+}
+
+export interface JobCompute {
+    computeKey?: string;
+    spec?: outputs.JobComputeSpec;
+}
+
+export interface JobComputeSpec {
+    kind?: string;
 }
 
 export interface JobContinuous {
@@ -1611,15 +1654,41 @@ export interface JobJobClusterNewClusterInitScript {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [{
-     *     taskKey: "run_agg_query",
-     *     sqlTask: {
-     *         warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *         query: {
-     *             queryId: databricks_sql_query.agg_query.id,
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
+     *     {
+     *         taskKey: "run_agg_query",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             query: {
+     *                 queryId: databricks_sql_query.agg_query.id,
+     *             },
      *         },
      *     },
-     * }]});
+     *     {
+     *         taskKey: "run_dashboard",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             dashboard: {
+     *                 dashboardId: databricks_sql_dashboard.dash.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_alert",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             alert: {
+     *                 alertId: databricks_sql_alert.alert.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     * ]});
      * ```
      */
     file?: outputs.JobJobClusterNewClusterInitScriptFile;
@@ -1810,15 +1879,41 @@ export interface JobNewClusterInitScript {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [{
-     *     taskKey: "run_agg_query",
-     *     sqlTask: {
-     *         warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *         query: {
-     *             queryId: databricks_sql_query.agg_query.id,
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
+     *     {
+     *         taskKey: "run_agg_query",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             query: {
+     *                 queryId: databricks_sql_query.agg_query.id,
+     *             },
      *         },
      *     },
-     * }]});
+     *     {
+     *         taskKey: "run_dashboard",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             dashboard: {
+     *                 dashboardId: databricks_sql_dashboard.dash.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_alert",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             alert: {
+     *                 alertId: databricks_sql_alert.alert.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     * ]});
      * ```
      */
     file?: outputs.JobNewClusterInitScriptFile;
@@ -1995,6 +2090,8 @@ export interface JobSparkSubmitTask {
 }
 
 export interface JobTask {
+    computeKey?: string;
+    conditionTask?: outputs.JobTaskConditionTask;
     dbtTask?: outputs.JobTaskDbtTask;
     dependsOns?: outputs.JobTaskDependsOn[];
     description?: string;
@@ -2042,6 +2139,12 @@ export interface JobTask {
     timeoutSeconds?: number;
 }
 
+export interface JobTaskConditionTask {
+    left?: string;
+    op?: string;
+    right?: string;
+}
+
 export interface JobTaskDbtTask {
     /**
      * The name of the catalog to use inside Unity Catalog.
@@ -2072,7 +2175,8 @@ export interface JobTaskDbtTask {
 }
 
 export interface JobTaskDependsOn {
-    taskKey?: string;
+    outcome?: string;
+    taskKey: string;
 }
 
 export interface JobTaskEmailNotifications {
@@ -2238,15 +2342,41 @@ export interface JobTaskNewClusterInitScript {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [{
-     *     taskKey: "run_agg_query",
-     *     sqlTask: {
-     *         warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *         query: {
-     *             queryId: databricks_sql_query.agg_query.id,
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
+     *     {
+     *         taskKey: "run_agg_query",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             query: {
+     *                 queryId: databricks_sql_query.agg_query.id,
+     *             },
      *         },
      *     },
-     * }]});
+     *     {
+     *         taskKey: "run_dashboard",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             dashboard: {
+     *                 dashboardId: databricks_sql_dashboard.dash.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_alert",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             alert: {
+     *                 alertId: databricks_sql_alert.alert.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     * ]});
      * ```
      */
     file?: outputs.JobTaskNewClusterInitScriptFile;
@@ -2373,11 +2503,11 @@ export interface JobTaskSparkSubmitTask {
 
 export interface JobTaskSqlTask {
     /**
-     * block consisting of single string field: `alertId` - identifier of the Databricks SQL Alert.
+     * block consisting of following fields:
      */
     alert?: outputs.JobTaskSqlTaskAlert;
     /**
-     * block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * block consisting of following fields:
      */
     dashboard?: outputs.JobTaskSqlTaskDashboard;
     /**
@@ -2389,15 +2519,41 @@ export interface JobTaskSqlTask {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [{
-     *     taskKey: "run_agg_query",
-     *     sqlTask: {
-     *         warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *         query: {
-     *             queryId: databricks_sql_query.agg_query.id,
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
+     *     {
+     *         taskKey: "run_agg_query",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             query: {
+     *                 queryId: databricks_sql_query.agg_query.id,
+     *             },
      *         },
      *     },
-     * }]});
+     *     {
+     *         taskKey: "run_dashboard",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             dashboard: {
+     *                 dashboardId: databricks_sql_dashboard.dash.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_alert",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             alert: {
+     *                 alertId: databricks_sql_alert.alert.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     * ]});
      * ```
      */
     file?: outputs.JobTaskSqlTaskFile;
@@ -2416,11 +2572,53 @@ export interface JobTaskSqlTask {
 }
 
 export interface JobTaskSqlTaskAlert {
+    /**
+     * (String) identifier of the Databricks SQL Alert.
+     */
     alertId: string;
+    /**
+     * flag that specifies if subscriptions are paused or not.
+     */
+    pauseSubscriptions?: boolean;
+    /**
+     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+     */
+    subscriptions: outputs.JobTaskSqlTaskAlertSubscription[];
+}
+
+export interface JobTaskSqlTaskAlertSubscription {
+    destinationId?: string;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: string;
 }
 
 export interface JobTaskSqlTaskDashboard {
+    /**
+     * string specifying a custom subject of email sent.
+     */
+    customSubject?: string;
+    /**
+     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     */
     dashboardId: string;
+    /**
+     * flag that specifies if subscriptions are paused or not.
+     */
+    pauseSubscriptions?: boolean;
+    /**
+     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+     */
+    subscriptions?: outputs.JobTaskSqlTaskDashboardSubscription[];
+}
+
+export interface JobTaskSqlTaskDashboardSubscription {
+    destinationId?: string;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: string;
 }
 
 export interface JobTaskSqlTaskFile {
@@ -2446,7 +2644,7 @@ export interface JobTriggerFileArrival {
     /**
      * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
      */
-    minTimeBetweenTriggerSeconds?: number;
+    minTimeBetweenTriggersSeconds?: number;
     /**
      * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      */

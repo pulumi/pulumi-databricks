@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsTriggerFileArrivalInputArgs : global::Pulumi.ResourceArgs
     {
-        [Input("minTimeBetweenTriggerSeconds")]
-        public Input<int>? MinTimeBetweenTriggerSeconds { get; set; }
+        [Input("minTimeBetweenTriggersSeconds")]
+        public Input<int>? MinTimeBetweenTriggersSeconds { get; set; }
 
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

@@ -15,6 +15,17 @@ namespace Pulumi.Databricks.Inputs
         [Input("alertId", required: true)]
         public Input<string> AlertId { get; set; } = null!;
 
+        [Input("pauseSubscriptions")]
+        public Input<bool>? PauseSubscriptions { get; set; }
+
+        [Input("subscriptions", required: true)]
+        private InputList<Inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionInputArgs>? _subscriptions;
+        public InputList<Inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionInputArgs> Subscriptions
+        {
+            get => _subscriptions ?? (_subscriptions = new InputList<Inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionInputArgs>());
+            set => _subscriptions = value;
+        }
+
         public GetJobJobSettingsSettingsTaskSqlTaskAlertInputArgs()
         {
         }

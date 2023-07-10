@@ -27,6 +27,9 @@ namespace Pulumi.Databricks
         [Output("alwaysRunning")]
         public Output<bool?> AlwaysRunning { get; private set; } = null!;
 
+        [Output("computes")]
+        public Output<ImmutableArray<Outputs.JobCompute>> Computes { get; private set; } = null!;
+
         [Output("continuous")]
         public Output<Outputs.JobContinuous?> Continuous { get; private set; } = null!;
 
@@ -208,6 +211,14 @@ namespace Pulumi.Databricks
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
 
+        [Input("computes")]
+        private InputList<Inputs.JobComputeArgs>? _computes;
+        public InputList<Inputs.JobComputeArgs> Computes
+        {
+            get => _computes ?? (_computes = new InputList<Inputs.JobComputeArgs>());
+            set => _computes = value;
+        }
+
         [Input("continuous")]
         public Input<Inputs.JobContinuousArgs>? Continuous { get; set; }
 
@@ -366,6 +377,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
+
+        [Input("computes")]
+        private InputList<Inputs.JobComputeGetArgs>? _computes;
+        public InputList<Inputs.JobComputeGetArgs> Computes
+        {
+            get => _computes ?? (_computes = new InputList<Inputs.JobComputeGetArgs>());
+            set => _computes = value;
+        }
 
         [Input("continuous")]
         public Input<Inputs.JobContinuousGetArgs>? Continuous { get; set; }

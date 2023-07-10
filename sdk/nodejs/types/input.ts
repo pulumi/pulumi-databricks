@@ -809,6 +809,7 @@ export interface GetJobJobSettingsArgs {
 }
 
 export interface GetJobJobSettingsSettings {
+    computes?: inputs.GetJobJobSettingsSettingsCompute[];
     continuous?: inputs.GetJobJobSettingsSettingsContinuous;
     dbtTask?: inputs.GetJobJobSettingsSettingsDbtTask;
     emailNotifications?: inputs.GetJobJobSettingsSettingsEmailNotifications;
@@ -844,6 +845,7 @@ export interface GetJobJobSettingsSettings {
 }
 
 export interface GetJobJobSettingsSettingsArgs {
+    computes?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsComputeArgs>[]>;
     continuous?: pulumi.Input<inputs.GetJobJobSettingsSettingsContinuousArgs>;
     dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsDbtTaskArgs>;
     emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsEmailNotificationsArgs>;
@@ -876,6 +878,24 @@ export interface GetJobJobSettingsSettingsArgs {
     timeoutSeconds?: pulumi.Input<number>;
     trigger?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerArgs>;
     webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsArgs>;
+}
+
+export interface GetJobJobSettingsSettingsCompute {
+    computeKey?: string;
+    spec?: inputs.GetJobJobSettingsSettingsComputeSpec;
+}
+
+export interface GetJobJobSettingsSettingsComputeArgs {
+    computeKey?: pulumi.Input<string>;
+    spec?: pulumi.Input<inputs.GetJobJobSettingsSettingsComputeSpecArgs>;
+}
+
+export interface GetJobJobSettingsSettingsComputeSpec {
+    kind?: string;
+}
+
+export interface GetJobJobSettingsSettingsComputeSpecArgs {
+    kind?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsContinuous {
@@ -1705,6 +1725,8 @@ export interface GetJobJobSettingsSettingsSparkSubmitTaskArgs {
 }
 
 export interface GetJobJobSettingsSettingsTask {
+    computeKey?: string;
+    conditionTask?: inputs.GetJobJobSettingsSettingsTaskConditionTask;
     dbtTask?: inputs.GetJobJobSettingsSettingsTaskDbtTask;
     dependsOns?: inputs.GetJobJobSettingsSettingsTaskDependsOn[];
     description?: string;
@@ -1729,6 +1751,8 @@ export interface GetJobJobSettingsSettingsTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskArgs {
+    computeKey?: pulumi.Input<string>;
+    conditionTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskConditionTaskArgs>;
     dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDbtTaskArgs>;
     dependsOns?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDependsOnArgs>[]>;
     description?: pulumi.Input<string>;
@@ -1752,6 +1776,18 @@ export interface GetJobJobSettingsSettingsTaskArgs {
     timeoutSeconds?: pulumi.Input<number>;
 }
 
+export interface GetJobJobSettingsSettingsTaskConditionTask {
+    left?: string;
+    op?: string;
+    right?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskConditionTaskArgs {
+    left?: pulumi.Input<string>;
+    op?: pulumi.Input<string>;
+    right?: pulumi.Input<string>;
+}
+
 export interface GetJobJobSettingsSettingsTaskDbtTask {
     catalog?: string;
     commands: string[];
@@ -1771,11 +1807,13 @@ export interface GetJobJobSettingsSettingsTaskDbtTaskArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskDependsOn {
-    taskKey?: string;
+    outcome?: string;
+    taskKey: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskDependsOnArgs {
-    taskKey?: pulumi.Input<string>;
+    outcome?: pulumi.Input<string>;
+    taskKey: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskEmailNotifications {
@@ -2232,18 +2270,48 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskArgs {
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskAlert {
     alertId: string;
+    pauseSubscriptions?: boolean;
+    subscriptions: inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription[];
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskAlertArgs {
     alertId: pulumi.Input<string>;
+    pauseSubscriptions?: pulumi.Input<boolean>;
+    subscriptions: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription {
+    destinationId?: string;
+    userName?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs {
+    destinationId?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskDashboard {
+    customSubject?: string;
     dashboardId: string;
+    pauseSubscriptions?: boolean;
+    subscriptions?: inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription[];
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs {
+    customSubject?: pulumi.Input<string>;
     dashboardId: pulumi.Input<string>;
+    pauseSubscriptions?: pulumi.Input<boolean>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription {
+    destinationId?: string;
+    userName?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs {
+    destinationId?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskFile {
@@ -2273,13 +2341,13 @@ export interface GetJobJobSettingsSettingsTriggerArgs {
 }
 
 export interface GetJobJobSettingsSettingsTriggerFileArrival {
-    minTimeBetweenTriggerSeconds?: number;
+    minTimeBetweenTriggersSeconds?: number;
     url: string;
     waitAfterLastChangeSeconds?: number;
 }
 
 export interface GetJobJobSettingsSettingsTriggerFileArrivalArgs {
-    minTimeBetweenTriggerSeconds?: pulumi.Input<number>;
+    minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
     url: pulumi.Input<string>;
     waitAfterLastChangeSeconds?: pulumi.Input<number>;
 }
@@ -2543,6 +2611,15 @@ export interface InstancePoolPreloadedDockerImageBasicAuth {
     username: pulumi.Input<string>;
 }
 
+export interface JobCompute {
+    computeKey?: pulumi.Input<string>;
+    spec?: pulumi.Input<inputs.JobComputeSpec>;
+}
+
+export interface JobComputeSpec {
+    kind?: pulumi.Input<string>;
+}
+
 export interface JobContinuous {
     /**
      * Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
@@ -2751,15 +2828,41 @@ export interface JobJobClusterNewClusterInitScript {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [{
-     *     taskKey: "run_agg_query",
-     *     sqlTask: {
-     *         warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *         query: {
-     *             queryId: databricks_sql_query.agg_query.id,
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
+     *     {
+     *         taskKey: "run_agg_query",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             query: {
+     *                 queryId: databricks_sql_query.agg_query.id,
+     *             },
      *         },
      *     },
-     * }]});
+     *     {
+     *         taskKey: "run_dashboard",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             dashboard: {
+     *                 dashboardId: databricks_sql_dashboard.dash.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_alert",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             alert: {
+     *                 alertId: databricks_sql_alert.alert.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     * ]});
      * ```
      */
     file?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptFile>;
@@ -2950,15 +3053,41 @@ export interface JobNewClusterInitScript {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [{
-     *     taskKey: "run_agg_query",
-     *     sqlTask: {
-     *         warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *         query: {
-     *             queryId: databricks_sql_query.agg_query.id,
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
+     *     {
+     *         taskKey: "run_agg_query",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             query: {
+     *                 queryId: databricks_sql_query.agg_query.id,
+     *             },
      *         },
      *     },
-     * }]});
+     *     {
+     *         taskKey: "run_dashboard",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             dashboard: {
+     *                 dashboardId: databricks_sql_dashboard.dash.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_alert",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             alert: {
+     *                 alertId: databricks_sql_alert.alert.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     * ]});
      * ```
      */
     file?: pulumi.Input<inputs.JobNewClusterInitScriptFile>;
@@ -3135,6 +3264,8 @@ export interface JobSparkSubmitTask {
 }
 
 export interface JobTask {
+    computeKey?: pulumi.Input<string>;
+    conditionTask?: pulumi.Input<inputs.JobTaskConditionTask>;
     dbtTask?: pulumi.Input<inputs.JobTaskDbtTask>;
     dependsOns?: pulumi.Input<pulumi.Input<inputs.JobTaskDependsOn>[]>;
     description?: pulumi.Input<string>;
@@ -3182,6 +3313,12 @@ export interface JobTask {
     timeoutSeconds?: pulumi.Input<number>;
 }
 
+export interface JobTaskConditionTask {
+    left?: pulumi.Input<string>;
+    op?: pulumi.Input<string>;
+    right?: pulumi.Input<string>;
+}
+
 export interface JobTaskDbtTask {
     /**
      * The name of the catalog to use inside Unity Catalog.
@@ -3212,7 +3349,8 @@ export interface JobTaskDbtTask {
 }
 
 export interface JobTaskDependsOn {
-    taskKey?: pulumi.Input<string>;
+    outcome?: pulumi.Input<string>;
+    taskKey: pulumi.Input<string>;
 }
 
 export interface JobTaskEmailNotifications {
@@ -3378,15 +3516,41 @@ export interface JobTaskNewClusterInitScript {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [{
-     *     taskKey: "run_agg_query",
-     *     sqlTask: {
-     *         warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *         query: {
-     *             queryId: databricks_sql_query.agg_query.id,
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
+     *     {
+     *         taskKey: "run_agg_query",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             query: {
+     *                 queryId: databricks_sql_query.agg_query.id,
+     *             },
      *         },
      *     },
-     * }]});
+     *     {
+     *         taskKey: "run_dashboard",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             dashboard: {
+     *                 dashboardId: databricks_sql_dashboard.dash.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_alert",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             alert: {
+     *                 alertId: databricks_sql_alert.alert.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     * ]});
      * ```
      */
     file?: pulumi.Input<inputs.JobTaskNewClusterInitScriptFile>;
@@ -3513,11 +3677,11 @@ export interface JobTaskSparkSubmitTask {
 
 export interface JobTaskSqlTask {
     /**
-     * block consisting of single string field: `alertId` - identifier of the Databricks SQL Alert.
+     * block consisting of following fields:
      */
     alert?: pulumi.Input<inputs.JobTaskSqlTaskAlert>;
     /**
-     * block consisting of single string field: `dashboardId` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * block consisting of following fields:
      */
     dashboard?: pulumi.Input<inputs.JobTaskSqlTaskDashboard>;
     /**
@@ -3529,15 +3693,41 @@ export interface JobTaskSqlTask {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [{
-     *     taskKey: "run_agg_query",
-     *     sqlTask: {
-     *         warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *         query: {
-     *             queryId: databricks_sql_query.agg_query.id,
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
+     *     {
+     *         taskKey: "run_agg_query",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             query: {
+     *                 queryId: databricks_sql_query.agg_query.id,
+     *             },
      *         },
      *     },
-     * }]});
+     *     {
+     *         taskKey: "run_dashboard",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             dashboard: {
+     *                 dashboardId: databricks_sql_dashboard.dash.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_alert",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             alert: {
+     *                 alertId: databricks_sql_alert.alert.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     * ]});
      * ```
      */
     file?: pulumi.Input<inputs.JobTaskSqlTaskFile>;
@@ -3556,11 +3746,53 @@ export interface JobTaskSqlTask {
 }
 
 export interface JobTaskSqlTaskAlert {
+    /**
+     * (String) identifier of the Databricks SQL Alert.
+     */
     alertId: pulumi.Input<string>;
+    /**
+     * flag that specifies if subscriptions are paused or not.
+     */
+    pauseSubscriptions?: pulumi.Input<boolean>;
+    /**
+     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+     */
+    subscriptions: pulumi.Input<pulumi.Input<inputs.JobTaskSqlTaskAlertSubscription>[]>;
+}
+
+export interface JobTaskSqlTaskAlertSubscription {
+    destinationId?: pulumi.Input<string>;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: pulumi.Input<string>;
 }
 
 export interface JobTaskSqlTaskDashboard {
+    /**
+     * string specifying a custom subject of email sent.
+     */
+    customSubject?: pulumi.Input<string>;
+    /**
+     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     */
     dashboardId: pulumi.Input<string>;
+    /**
+     * flag that specifies if subscriptions are paused or not.
+     */
+    pauseSubscriptions?: pulumi.Input<boolean>;
+    /**
+     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+     */
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskSqlTaskDashboardSubscription>[]>;
+}
+
+export interface JobTaskSqlTaskDashboardSubscription {
+    destinationId?: pulumi.Input<string>;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: pulumi.Input<string>;
 }
 
 export interface JobTaskSqlTaskFile {
@@ -3586,7 +3818,7 @@ export interface JobTriggerFileArrival {
     /**
      * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
      */
-    minTimeBetweenTriggerSeconds?: pulumi.Input<number>;
+    minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
     /**
      * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      */

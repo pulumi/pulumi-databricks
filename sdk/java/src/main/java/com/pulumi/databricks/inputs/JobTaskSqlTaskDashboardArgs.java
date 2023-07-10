@@ -5,25 +5,86 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardSubscriptionArgs;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class JobTaskSqlTaskDashboardArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTaskSqlTaskDashboardArgs Empty = new JobTaskSqlTaskDashboardArgs();
 
+    /**
+     * string specifying a custom subject of email sent.
+     * 
+     */
+    @Import(name="customSubject")
+    private @Nullable Output<String> customSubject;
+
+    /**
+     * @return string specifying a custom subject of email sent.
+     * 
+     */
+    public Optional<Output<String>> customSubject() {
+        return Optional.ofNullable(this.customSubject);
+    }
+
+    /**
+     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * 
+     */
     @Import(name="dashboardId", required=true)
     private Output<String> dashboardId;
 
+    /**
+     * @return (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * 
+     */
     public Output<String> dashboardId() {
         return this.dashboardId;
+    }
+
+    /**
+     * flag that specifies if subscriptions are paused or not.
+     * 
+     */
+    @Import(name="pauseSubscriptions")
+    private @Nullable Output<Boolean> pauseSubscriptions;
+
+    /**
+     * @return flag that specifies if subscriptions are paused or not.
+     * 
+     */
+    public Optional<Output<Boolean>> pauseSubscriptions() {
+        return Optional.ofNullable(this.pauseSubscriptions);
+    }
+
+    /**
+     * a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * 
+     */
+    @Import(name="subscriptions")
+    private @Nullable Output<List<JobTaskSqlTaskDashboardSubscriptionArgs>> subscriptions;
+
+    /**
+     * @return a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * 
+     */
+    public Optional<Output<List<JobTaskSqlTaskDashboardSubscriptionArgs>>> subscriptions() {
+        return Optional.ofNullable(this.subscriptions);
     }
 
     private JobTaskSqlTaskDashboardArgs() {}
 
     private JobTaskSqlTaskDashboardArgs(JobTaskSqlTaskDashboardArgs $) {
+        this.customSubject = $.customSubject;
         this.dashboardId = $.dashboardId;
+        this.pauseSubscriptions = $.pauseSubscriptions;
+        this.subscriptions = $.subscriptions;
     }
 
     public static Builder builder() {
@@ -44,13 +105,98 @@ public final class JobTaskSqlTaskDashboardArgs extends com.pulumi.resources.Reso
             $ = new JobTaskSqlTaskDashboardArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param customSubject string specifying a custom subject of email sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customSubject(@Nullable Output<String> customSubject) {
+            $.customSubject = customSubject;
+            return this;
+        }
+
+        /**
+         * @param customSubject string specifying a custom subject of email sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customSubject(String customSubject) {
+            return customSubject(Output.of(customSubject));
+        }
+
+        /**
+         * @param dashboardId (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardId(Output<String> dashboardId) {
             $.dashboardId = dashboardId;
             return this;
         }
 
+        /**
+         * @param dashboardId (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardId(String dashboardId) {
             return dashboardId(Output.of(dashboardId));
+        }
+
+        /**
+         * @param pauseSubscriptions flag that specifies if subscriptions are paused or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pauseSubscriptions(@Nullable Output<Boolean> pauseSubscriptions) {
+            $.pauseSubscriptions = pauseSubscriptions;
+            return this;
+        }
+
+        /**
+         * @param pauseSubscriptions flag that specifies if subscriptions are paused or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pauseSubscriptions(Boolean pauseSubscriptions) {
+            return pauseSubscriptions(Output.of(pauseSubscriptions));
+        }
+
+        /**
+         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subscriptions(@Nullable Output<List<JobTaskSqlTaskDashboardSubscriptionArgs>> subscriptions) {
+            $.subscriptions = subscriptions;
+            return this;
+        }
+
+        /**
+         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subscriptions(List<JobTaskSqlTaskDashboardSubscriptionArgs> subscriptions) {
+            return subscriptions(Output.of(subscriptions));
+        }
+
+        /**
+         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs... subscriptions) {
+            return subscriptions(List.of(subscriptions));
         }
 
         public JobTaskSqlTaskDashboardArgs build() {

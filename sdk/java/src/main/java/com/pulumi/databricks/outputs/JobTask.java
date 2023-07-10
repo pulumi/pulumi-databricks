@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobTaskConditionTask;
 import com.pulumi.databricks.outputs.JobTaskDbtTask;
 import com.pulumi.databricks.outputs.JobTaskDependsOn;
 import com.pulumi.databricks.outputs.JobTaskEmailNotifications;
@@ -26,6 +27,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTask {
+    private @Nullable String computeKey;
+    private @Nullable JobTaskConditionTask conditionTask;
     private @Nullable JobTaskDbtTask dbtTask;
     private @Nullable List<JobTaskDependsOn> dependsOns;
     private @Nullable String description;
@@ -81,6 +84,12 @@ public final class JobTask {
     private @Nullable Integer timeoutSeconds;
 
     private JobTask() {}
+    public Optional<String> computeKey() {
+        return Optional.ofNullable(this.computeKey);
+    }
+    public Optional<JobTaskConditionTask> conditionTask() {
+        return Optional.ofNullable(this.conditionTask);
+    }
     public Optional<JobTaskDbtTask> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
     }
@@ -186,6 +195,8 @@ public final class JobTask {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String computeKey;
+        private @Nullable JobTaskConditionTask conditionTask;
         private @Nullable JobTaskDbtTask dbtTask;
         private @Nullable List<JobTaskDependsOn> dependsOns;
         private @Nullable String description;
@@ -210,6 +221,8 @@ public final class JobTask {
         public Builder() {}
         public Builder(JobTask defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.computeKey = defaults.computeKey;
+    	      this.conditionTask = defaults.conditionTask;
     	      this.dbtTask = defaults.dbtTask;
     	      this.dependsOns = defaults.dependsOns;
     	      this.description = defaults.description;
@@ -233,6 +246,16 @@ public final class JobTask {
     	      this.timeoutSeconds = defaults.timeoutSeconds;
         }
 
+        @CustomType.Setter
+        public Builder computeKey(@Nullable String computeKey) {
+            this.computeKey = computeKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder conditionTask(@Nullable JobTaskConditionTask conditionTask) {
+            this.conditionTask = conditionTask;
+            return this;
+        }
         @CustomType.Setter
         public Builder dbtTask(@Nullable JobTaskDbtTask dbtTask) {
             this.dbtTask = dbtTask;
@@ -346,6 +369,8 @@ public final class JobTask {
         }
         public JobTask build() {
             final var o = new JobTask();
+            o.computeKey = computeKey;
+            o.conditionTask = conditionTask;
             o.dbtTask = dbtTask;
             o.dependsOns = dependsOns;
             o.description = description;

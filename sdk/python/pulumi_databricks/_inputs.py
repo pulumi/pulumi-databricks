@@ -46,6 +46,8 @@ __all__ = [
     'InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs',
     'InstancePoolPreloadedDockerImageArgs',
     'InstancePoolPreloadedDockerImageBasicAuthArgs',
+    'JobComputeArgs',
+    'JobComputeSpecArgs',
     'JobContinuousArgs',
     'JobDbtTaskArgs',
     'JobEmailNotificationsArgs',
@@ -108,6 +110,7 @@ __all__ = [
     'JobSparkPythonTaskArgs',
     'JobSparkSubmitTaskArgs',
     'JobTaskArgs',
+    'JobTaskConditionTaskArgs',
     'JobTaskDbtTaskArgs',
     'JobTaskDependsOnArgs',
     'JobTaskEmailNotificationsArgs',
@@ -144,7 +147,9 @@ __all__ = [
     'JobTaskSparkSubmitTaskArgs',
     'JobTaskSqlTaskArgs',
     'JobTaskSqlTaskAlertArgs',
+    'JobTaskSqlTaskAlertSubscriptionArgs',
     'JobTaskSqlTaskDashboardArgs',
+    'JobTaskSqlTaskDashboardSubscriptionArgs',
     'JobTaskSqlTaskFileArgs',
     'JobTaskSqlTaskQueryArgs',
     'JobTriggerArgs',
@@ -287,6 +292,8 @@ __all__ = [
     'GetInstancePoolPoolInfoStatsArgs',
     'GetJobJobSettingsArgs',
     'GetJobJobSettingsSettingsArgs',
+    'GetJobJobSettingsSettingsComputeArgs',
+    'GetJobJobSettingsSettingsComputeSpecArgs',
     'GetJobJobSettingsSettingsContinuousArgs',
     'GetJobJobSettingsSettingsDbtTaskArgs',
     'GetJobJobSettingsSettingsEmailNotificationsArgs',
@@ -349,6 +356,7 @@ __all__ = [
     'GetJobJobSettingsSettingsSparkPythonTaskArgs',
     'GetJobJobSettingsSettingsSparkSubmitTaskArgs',
     'GetJobJobSettingsSettingsTaskArgs',
+    'GetJobJobSettingsSettingsTaskConditionTaskArgs',
     'GetJobJobSettingsSettingsTaskDbtTaskArgs',
     'GetJobJobSettingsSettingsTaskDependsOnArgs',
     'GetJobJobSettingsSettingsTaskEmailNotificationsArgs',
@@ -385,7 +393,9 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs',
     'GetJobJobSettingsSettingsTaskSqlTaskArgs',
     'GetJobJobSettingsSettingsTaskSqlTaskAlertArgs',
+    'GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs',
     'GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs',
+    'GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs',
     'GetJobJobSettingsSettingsTaskSqlTaskFileArgs',
     'GetJobJobSettingsSettingsTaskSqlTaskQueryArgs',
     'GetJobJobSettingsSettingsTriggerArgs',
@@ -1758,6 +1768,52 @@ class InstancePoolPreloadedDockerImageBasicAuthArgs:
 
 
 @pulumi.input_type
+class JobComputeArgs:
+    def __init__(__self__, *,
+                 compute_key: Optional[pulumi.Input[str]] = None,
+                 spec: Optional[pulumi.Input['JobComputeSpecArgs']] = None):
+        if compute_key is not None:
+            pulumi.set(__self__, "compute_key", compute_key)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter(name="computeKey")
+    def compute_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "compute_key")
+
+    @compute_key.setter
+    def compute_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compute_key", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input['JobComputeSpecArgs']]:
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input['JobComputeSpecArgs']]):
+        pulumi.set(self, "spec", value)
+
+
+@pulumi.input_type
+class JobComputeSpecArgs:
+    def __init__(__self__, *,
+                 kind: Optional[pulumi.Input[str]] = None):
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+
+@pulumi.input_type
 class JobContinuousArgs:
     def __init__(__self__, *,
                  pause_status: Optional[pulumi.Input[str]] = None):
@@ -2973,15 +3029,41 @@ class JobJobClusterNewClusterInitScriptArgs:
                import pulumi
                import pulumi_databricks as databricks
                
-               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
-                   task_key="run_agg_query",
-                   sql_task=databricks.JobTaskSqlTaskArgs(
-                       warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                       query=databricks.JobTaskSqlTaskQueryArgs(
-                           query_id=databricks_sql_query["agg_query"]["id"],
+               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[
+                   databricks.JobTaskArgs(
+                       task_key="run_agg_query",
+                       sql_task=databricks.JobTaskSqlTaskArgs(
+                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                           query=databricks.JobTaskSqlTaskQueryArgs(
+                               query_id=databricks_sql_query["agg_query"]["id"],
+                           ),
                        ),
                    ),
-               )])
+                   databricks.JobTaskArgs(
+                       task_key="run_dashboard",
+                       sql_task=databricks.JobTaskSqlTaskArgs(
+                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                           dashboard=databricks.JobTaskSqlTaskDashboardArgs(
+                               dashboard_id=databricks_sql_dashboard["dash"]["id"],
+                               subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
+                                   user_name="user@domain.com",
+                               )],
+                           ),
+                       ),
+                   ),
+                   databricks.JobTaskArgs(
+                       task_key="run_alert",
+                       sql_task=databricks.JobTaskSqlTaskArgs(
+                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                           alert=databricks.JobTaskSqlTaskAlertArgs(
+                               alert_id=databricks_sql_alert["alert"]["id"],
+                               subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
+                                   user_name="user@domain.com",
+                               )],
+                           ),
+                       ),
+                   ),
+               ])
                ```
         """
         if abfss is not None:
@@ -3027,15 +3109,41 @@ class JobJobClusterNewClusterInitScriptArgs:
         import pulumi
         import pulumi_databricks as databricks
 
-        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
-            task_key="run_agg_query",
-            sql_task=databricks.JobTaskSqlTaskArgs(
-                warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                query=databricks.JobTaskSqlTaskQueryArgs(
-                    query_id=databricks_sql_query["agg_query"]["id"],
+        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[
+            databricks.JobTaskArgs(
+                task_key="run_agg_query",
+                sql_task=databricks.JobTaskSqlTaskArgs(
+                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                    query=databricks.JobTaskSqlTaskQueryArgs(
+                        query_id=databricks_sql_query["agg_query"]["id"],
+                    ),
                 ),
             ),
-        )])
+            databricks.JobTaskArgs(
+                task_key="run_dashboard",
+                sql_task=databricks.JobTaskSqlTaskArgs(
+                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                    dashboard=databricks.JobTaskSqlTaskDashboardArgs(
+                        dashboard_id=databricks_sql_dashboard["dash"]["id"],
+                        subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
+                            user_name="user@domain.com",
+                        )],
+                    ),
+                ),
+            ),
+            databricks.JobTaskArgs(
+                task_key="run_alert",
+                sql_task=databricks.JobTaskSqlTaskArgs(
+                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                    alert=databricks.JobTaskSqlTaskAlertArgs(
+                        alert_id=databricks_sql_alert["alert"]["id"],
+                        subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
+                            user_name="user@domain.com",
+                        )],
+                    ),
+                ),
+            ),
+        ])
         ```
         """
         return pulumi.get(self, "file")
@@ -4341,15 +4449,41 @@ class JobNewClusterInitScriptArgs:
                import pulumi
                import pulumi_databricks as databricks
                
-               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
-                   task_key="run_agg_query",
-                   sql_task=databricks.JobTaskSqlTaskArgs(
-                       warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                       query=databricks.JobTaskSqlTaskQueryArgs(
-                           query_id=databricks_sql_query["agg_query"]["id"],
+               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[
+                   databricks.JobTaskArgs(
+                       task_key="run_agg_query",
+                       sql_task=databricks.JobTaskSqlTaskArgs(
+                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                           query=databricks.JobTaskSqlTaskQueryArgs(
+                               query_id=databricks_sql_query["agg_query"]["id"],
+                           ),
                        ),
                    ),
-               )])
+                   databricks.JobTaskArgs(
+                       task_key="run_dashboard",
+                       sql_task=databricks.JobTaskSqlTaskArgs(
+                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                           dashboard=databricks.JobTaskSqlTaskDashboardArgs(
+                               dashboard_id=databricks_sql_dashboard["dash"]["id"],
+                               subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
+                                   user_name="user@domain.com",
+                               )],
+                           ),
+                       ),
+                   ),
+                   databricks.JobTaskArgs(
+                       task_key="run_alert",
+                       sql_task=databricks.JobTaskSqlTaskArgs(
+                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                           alert=databricks.JobTaskSqlTaskAlertArgs(
+                               alert_id=databricks_sql_alert["alert"]["id"],
+                               subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
+                                   user_name="user@domain.com",
+                               )],
+                           ),
+                       ),
+                   ),
+               ])
                ```
         """
         if abfss is not None:
@@ -4395,15 +4529,41 @@ class JobNewClusterInitScriptArgs:
         import pulumi
         import pulumi_databricks as databricks
 
-        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
-            task_key="run_agg_query",
-            sql_task=databricks.JobTaskSqlTaskArgs(
-                warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                query=databricks.JobTaskSqlTaskQueryArgs(
-                    query_id=databricks_sql_query["agg_query"]["id"],
+        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[
+            databricks.JobTaskArgs(
+                task_key="run_agg_query",
+                sql_task=databricks.JobTaskSqlTaskArgs(
+                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                    query=databricks.JobTaskSqlTaskQueryArgs(
+                        query_id=databricks_sql_query["agg_query"]["id"],
+                    ),
                 ),
             ),
-        )])
+            databricks.JobTaskArgs(
+                task_key="run_dashboard",
+                sql_task=databricks.JobTaskSqlTaskArgs(
+                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                    dashboard=databricks.JobTaskSqlTaskDashboardArgs(
+                        dashboard_id=databricks_sql_dashboard["dash"]["id"],
+                        subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
+                            user_name="user@domain.com",
+                        )],
+                    ),
+                ),
+            ),
+            databricks.JobTaskArgs(
+                task_key="run_alert",
+                sql_task=databricks.JobTaskSqlTaskArgs(
+                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                    alert=databricks.JobTaskSqlTaskAlertArgs(
+                        alert_id=databricks_sql_alert["alert"]["id"],
+                        subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
+                            user_name="user@domain.com",
+                        )],
+                    ),
+                ),
+            ),
+        ])
         ```
         """
         return pulumi.get(self, "file")
@@ -5098,6 +5258,8 @@ class JobSparkSubmitTaskArgs:
 @pulumi.input_type
 class JobTaskArgs:
     def __init__(__self__, *,
+                 compute_key: Optional[pulumi.Input[str]] = None,
+                 condition_task: Optional[pulumi.Input['JobTaskConditionTaskArgs']] = None,
                  dbt_task: Optional[pulumi.Input['JobTaskDbtTaskArgs']] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskDependsOnArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -5129,6 +5291,10 @@ class JobTaskArgs:
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         """
+        if compute_key is not None:
+            pulumi.set(__self__, "compute_key", compute_key)
+        if condition_task is not None:
+            pulumi.set(__self__, "condition_task", condition_task)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if depends_ons is not None:
@@ -5171,6 +5337,24 @@ class JobTaskArgs:
             pulumi.set(__self__, "task_key", task_key)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="computeKey")
+    def compute_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "compute_key")
+
+    @compute_key.setter
+    def compute_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compute_key", value)
+
+    @property
+    @pulumi.getter(name="conditionTask")
+    def condition_task(self) -> Optional[pulumi.Input['JobTaskConditionTaskArgs']]:
+        return pulumi.get(self, "condition_task")
+
+    @condition_task.setter
+    def condition_task(self, value: Optional[pulumi.Input['JobTaskConditionTaskArgs']]):
+        pulumi.set(self, "condition_task", value)
 
     @property
     @pulumi.getter(name="dbtTask")
@@ -5387,6 +5571,47 @@ class JobTaskArgs:
 
 
 @pulumi.input_type
+class JobTaskConditionTaskArgs:
+    def __init__(__self__, *,
+                 left: Optional[pulumi.Input[str]] = None,
+                 op: Optional[pulumi.Input[str]] = None,
+                 right: Optional[pulumi.Input[str]] = None):
+        if left is not None:
+            pulumi.set(__self__, "left", left)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if right is not None:
+            pulumi.set(__self__, "right", right)
+
+    @property
+    @pulumi.getter
+    def left(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "left")
+
+    @left.setter
+    def left(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "left", value)
+
+    @property
+    @pulumi.getter
+    def op(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter
+    def right(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "right")
+
+    @right.setter
+    def right(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "right", value)
+
+
+@pulumi.input_type
 class JobTaskDbtTaskArgs:
     def __init__(__self__, *,
                  commands: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -5495,18 +5720,29 @@ class JobTaskDbtTaskArgs:
 @pulumi.input_type
 class JobTaskDependsOnArgs:
     def __init__(__self__, *,
-                 task_key: Optional[pulumi.Input[str]] = None):
-        if task_key is not None:
-            pulumi.set(__self__, "task_key", task_key)
+                 task_key: pulumi.Input[str],
+                 outcome: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "task_key", task_key)
+        if outcome is not None:
+            pulumi.set(__self__, "outcome", outcome)
 
     @property
     @pulumi.getter(name="taskKey")
-    def task_key(self) -> Optional[pulumi.Input[str]]:
+    def task_key(self) -> pulumi.Input[str]:
         return pulumi.get(self, "task_key")
 
     @task_key.setter
-    def task_key(self, value: Optional[pulumi.Input[str]]):
+    def task_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "task_key", value)
+
+    @property
+    @pulumi.getter
+    def outcome(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "outcome")
+
+    @outcome.setter
+    def outcome(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "outcome", value)
 
 
 @pulumi.input_type
@@ -6644,15 +6880,41 @@ class JobTaskNewClusterInitScriptArgs:
                import pulumi
                import pulumi_databricks as databricks
                
-               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
-                   task_key="run_agg_query",
-                   sql_task=databricks.JobTaskSqlTaskArgs(
-                       warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                       query=databricks.JobTaskSqlTaskQueryArgs(
-                           query_id=databricks_sql_query["agg_query"]["id"],
+               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[
+                   databricks.JobTaskArgs(
+                       task_key="run_agg_query",
+                       sql_task=databricks.JobTaskSqlTaskArgs(
+                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                           query=databricks.JobTaskSqlTaskQueryArgs(
+                               query_id=databricks_sql_query["agg_query"]["id"],
+                           ),
                        ),
                    ),
-               )])
+                   databricks.JobTaskArgs(
+                       task_key="run_dashboard",
+                       sql_task=databricks.JobTaskSqlTaskArgs(
+                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                           dashboard=databricks.JobTaskSqlTaskDashboardArgs(
+                               dashboard_id=databricks_sql_dashboard["dash"]["id"],
+                               subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
+                                   user_name="user@domain.com",
+                               )],
+                           ),
+                       ),
+                   ),
+                   databricks.JobTaskArgs(
+                       task_key="run_alert",
+                       sql_task=databricks.JobTaskSqlTaskArgs(
+                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                           alert=databricks.JobTaskSqlTaskAlertArgs(
+                               alert_id=databricks_sql_alert["alert"]["id"],
+                               subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
+                                   user_name="user@domain.com",
+                               )],
+                           ),
+                       ),
+                   ),
+               ])
                ```
         """
         if abfss is not None:
@@ -6698,15 +6960,41 @@ class JobTaskNewClusterInitScriptArgs:
         import pulumi
         import pulumi_databricks as databricks
 
-        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
-            task_key="run_agg_query",
-            sql_task=databricks.JobTaskSqlTaskArgs(
-                warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                query=databricks.JobTaskSqlTaskQueryArgs(
-                    query_id=databricks_sql_query["agg_query"]["id"],
+        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[
+            databricks.JobTaskArgs(
+                task_key="run_agg_query",
+                sql_task=databricks.JobTaskSqlTaskArgs(
+                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                    query=databricks.JobTaskSqlTaskQueryArgs(
+                        query_id=databricks_sql_query["agg_query"]["id"],
+                    ),
                 ),
             ),
-        )])
+            databricks.JobTaskArgs(
+                task_key="run_dashboard",
+                sql_task=databricks.JobTaskSqlTaskArgs(
+                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                    dashboard=databricks.JobTaskSqlTaskDashboardArgs(
+                        dashboard_id=databricks_sql_dashboard["dash"]["id"],
+                        subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
+                            user_name="user@domain.com",
+                        )],
+                    ),
+                ),
+            ),
+            databricks.JobTaskArgs(
+                task_key="run_alert",
+                sql_task=databricks.JobTaskSqlTaskArgs(
+                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                    alert=databricks.JobTaskSqlTaskAlertArgs(
+                        alert_id=databricks_sql_alert["alert"]["id"],
+                        subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
+                            user_name="user@domain.com",
+                        )],
+                    ),
+                ),
+            ),
+        ])
         ```
         """
         return pulumi.get(self, "file")
@@ -7249,8 +7537,8 @@ class JobTaskSqlTaskArgs:
                  query: Optional[pulumi.Input['JobTaskSqlTaskQueryArgs']] = None,
                  warehouse_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['JobTaskSqlTaskAlertArgs'] alert: block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.
-        :param pulumi.Input['JobTaskSqlTaskDashboardArgs'] dashboard: block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        :param pulumi.Input['JobTaskSqlTaskAlertArgs'] alert: block consisting of following fields:
+        :param pulumi.Input['JobTaskSqlTaskDashboardArgs'] dashboard: block consisting of following fields:
         :param pulumi.Input['JobTaskSqlTaskFileArgs'] file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
                
                Example
@@ -7259,15 +7547,41 @@ class JobTaskSqlTaskArgs:
                import pulumi
                import pulumi_databricks as databricks
                
-               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
-                   task_key="run_agg_query",
-                   sql_task=databricks.JobTaskSqlTaskArgs(
-                       warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                       query=databricks.JobTaskSqlTaskQueryArgs(
-                           query_id=databricks_sql_query["agg_query"]["id"],
+               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[
+                   databricks.JobTaskArgs(
+                       task_key="run_agg_query",
+                       sql_task=databricks.JobTaskSqlTaskArgs(
+                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                           query=databricks.JobTaskSqlTaskQueryArgs(
+                               query_id=databricks_sql_query["agg_query"]["id"],
+                           ),
                        ),
                    ),
-               )])
+                   databricks.JobTaskArgs(
+                       task_key="run_dashboard",
+                       sql_task=databricks.JobTaskSqlTaskArgs(
+                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                           dashboard=databricks.JobTaskSqlTaskDashboardArgs(
+                               dashboard_id=databricks_sql_dashboard["dash"]["id"],
+                               subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
+                                   user_name="user@domain.com",
+                               )],
+                           ),
+                       ),
+                   ),
+                   databricks.JobTaskArgs(
+                       task_key="run_alert",
+                       sql_task=databricks.JobTaskSqlTaskArgs(
+                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                           alert=databricks.JobTaskSqlTaskAlertArgs(
+                               alert_id=databricks_sql_alert["alert"]["id"],
+                               subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
+                                   user_name="user@domain.com",
+                               )],
+                           ),
+                       ),
+                   ),
+               ])
                ```
         :param pulumi.Input[Mapping[str, Any]] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
         :param pulumi.Input['JobTaskSqlTaskQueryArgs'] query: block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
@@ -7290,7 +7604,7 @@ class JobTaskSqlTaskArgs:
     @pulumi.getter
     def alert(self) -> Optional[pulumi.Input['JobTaskSqlTaskAlertArgs']]:
         """
-        block consisting of single string field: `alert_id` - identifier of the Databricks SQL Alert.
+        block consisting of following fields:
         """
         return pulumi.get(self, "alert")
 
@@ -7302,7 +7616,7 @@ class JobTaskSqlTaskArgs:
     @pulumi.getter
     def dashboard(self) -> Optional[pulumi.Input['JobTaskSqlTaskDashboardArgs']]:
         """
-        block consisting of single string field: `dashboard_id` - identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        block consisting of following fields:
         """
         return pulumi.get(self, "dashboard")
 
@@ -7322,15 +7636,41 @@ class JobTaskSqlTaskArgs:
         import pulumi
         import pulumi_databricks as databricks
 
-        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[databricks.JobTaskArgs(
-            task_key="run_agg_query",
-            sql_task=databricks.JobTaskSqlTaskArgs(
-                warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                query=databricks.JobTaskSqlTaskQueryArgs(
-                    query_id=databricks_sql_query["agg_query"]["id"],
+        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[
+            databricks.JobTaskArgs(
+                task_key="run_agg_query",
+                sql_task=databricks.JobTaskSqlTaskArgs(
+                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                    query=databricks.JobTaskSqlTaskQueryArgs(
+                        query_id=databricks_sql_query["agg_query"]["id"],
+                    ),
                 ),
             ),
-        )])
+            databricks.JobTaskArgs(
+                task_key="run_dashboard",
+                sql_task=databricks.JobTaskSqlTaskArgs(
+                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                    dashboard=databricks.JobTaskSqlTaskDashboardArgs(
+                        dashboard_id=databricks_sql_dashboard["dash"]["id"],
+                        subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
+                            user_name="user@domain.com",
+                        )],
+                    ),
+                ),
+            ),
+            databricks.JobTaskArgs(
+                task_key="run_alert",
+                sql_task=databricks.JobTaskSqlTaskArgs(
+                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
+                    alert=databricks.JobTaskSqlTaskAlertArgs(
+                        alert_id=databricks_sql_alert["alert"]["id"],
+                        subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
+                            user_name="user@domain.com",
+                        )],
+                    ),
+                ),
+            ),
+        ])
         ```
         """
         return pulumi.get(self, "file")
@@ -7379,33 +7719,194 @@ class JobTaskSqlTaskArgs:
 @pulumi.input_type
 class JobTaskSqlTaskAlertArgs:
     def __init__(__self__, *,
-                 alert_id: pulumi.Input[str]):
+                 alert_id: pulumi.Input[str],
+                 subscriptions: pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]],
+                 pause_subscriptions: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] alert_id: (String) identifier of the Databricks SQL Alert.
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]] subscriptions: a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
+        :param pulumi.Input[bool] pause_subscriptions: flag that specifies if subscriptions are paused or not.
+        """
         pulumi.set(__self__, "alert_id", alert_id)
+        pulumi.set(__self__, "subscriptions", subscriptions)
+        if pause_subscriptions is not None:
+            pulumi.set(__self__, "pause_subscriptions", pause_subscriptions)
 
     @property
     @pulumi.getter(name="alertId")
     def alert_id(self) -> pulumi.Input[str]:
+        """
+        (String) identifier of the Databricks SQL Alert.
+        """
         return pulumi.get(self, "alert_id")
 
     @alert_id.setter
     def alert_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "alert_id", value)
 
+    @property
+    @pulumi.getter
+    def subscriptions(self) -> pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]]:
+        """
+        a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
+        """
+        return pulumi.get(self, "subscriptions")
+
+    @subscriptions.setter
+    def subscriptions(self, value: pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]]):
+        pulumi.set(self, "subscriptions", value)
+
+    @property
+    @pulumi.getter(name="pauseSubscriptions")
+    def pause_subscriptions(self) -> Optional[pulumi.Input[bool]]:
+        """
+        flag that specifies if subscriptions are paused or not.
+        """
+        return pulumi.get(self, "pause_subscriptions")
+
+    @pause_subscriptions.setter
+    def pause_subscriptions(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pause_subscriptions", value)
+
+
+@pulumi.input_type
+class JobTaskSqlTaskAlertSubscriptionArgs:
+    def __init__(__self__, *,
+                 destination_id: Optional[pulumi.Input[str]] = None,
+                 user_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        if destination_id is not None:
+            pulumi.set(__self__, "destination_id", destination_id)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="destinationId")
+    def destination_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination_id")
+
+    @destination_id.setter
+    def destination_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_id", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_name", value)
+
 
 @pulumi.input_type
 class JobTaskSqlTaskDashboardArgs:
     def __init__(__self__, *,
-                 dashboard_id: pulumi.Input[str]):
+                 dashboard_id: pulumi.Input[str],
+                 custom_subject: Optional[pulumi.Input[str]] = None,
+                 pause_subscriptions: Optional[pulumi.Input[bool]] = None,
+                 subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskDashboardSubscriptionArgs']]]] = None):
+        """
+        :param pulumi.Input[str] dashboard_id: (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        :param pulumi.Input[str] custom_subject: string specifying a custom subject of email sent.
+        :param pulumi.Input[bool] pause_subscriptions: flag that specifies if subscriptions are paused or not.
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskDashboardSubscriptionArgs']]] subscriptions: a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
+        """
         pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if custom_subject is not None:
+            pulumi.set(__self__, "custom_subject", custom_subject)
+        if pause_subscriptions is not None:
+            pulumi.set(__self__, "pause_subscriptions", pause_subscriptions)
+        if subscriptions is not None:
+            pulumi.set(__self__, "subscriptions", subscriptions)
 
     @property
     @pulumi.getter(name="dashboardId")
     def dashboard_id(self) -> pulumi.Input[str]:
+        """
+        (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
         return pulumi.get(self, "dashboard_id")
 
     @dashboard_id.setter
     def dashboard_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dashboard_id", value)
+
+    @property
+    @pulumi.getter(name="customSubject")
+    def custom_subject(self) -> Optional[pulumi.Input[str]]:
+        """
+        string specifying a custom subject of email sent.
+        """
+        return pulumi.get(self, "custom_subject")
+
+    @custom_subject.setter
+    def custom_subject(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_subject", value)
+
+    @property
+    @pulumi.getter(name="pauseSubscriptions")
+    def pause_subscriptions(self) -> Optional[pulumi.Input[bool]]:
+        """
+        flag that specifies if subscriptions are paused or not.
+        """
+        return pulumi.get(self, "pause_subscriptions")
+
+    @pause_subscriptions.setter
+    def pause_subscriptions(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pause_subscriptions", value)
+
+    @property
+    @pulumi.getter
+    def subscriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskDashboardSubscriptionArgs']]]]:
+        """
+        a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
+        """
+        return pulumi.get(self, "subscriptions")
+
+    @subscriptions.setter
+    def subscriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskDashboardSubscriptionArgs']]]]):
+        pulumi.set(self, "subscriptions", value)
+
+
+@pulumi.input_type
+class JobTaskSqlTaskDashboardSubscriptionArgs:
+    def __init__(__self__, *,
+                 destination_id: Optional[pulumi.Input[str]] = None,
+                 user_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        if destination_id is not None:
+            pulumi.set(__self__, "destination_id", destination_id)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="destinationId")
+    def destination_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination_id")
+
+    @destination_id.setter
+    def destination_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_id", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_name", value)
 
 
 @pulumi.input_type
@@ -7482,16 +7983,16 @@ class JobTriggerArgs:
 class JobTriggerFileArrivalArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[str],
-                 min_time_between_trigger_seconds: Optional[pulumi.Input[int]] = None,
+                 min_time_between_triggers_seconds: Optional[pulumi.Input[int]] = None,
                  wait_after_last_change_seconds: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] url: string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
-        :param pulumi.Input[int] min_time_between_trigger_seconds: If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+        :param pulumi.Input[int] min_time_between_triggers_seconds: If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
         :param pulumi.Input[int] wait_after_last_change_seconds: If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
         """
         pulumi.set(__self__, "url", url)
-        if min_time_between_trigger_seconds is not None:
-            pulumi.set(__self__, "min_time_between_trigger_seconds", min_time_between_trigger_seconds)
+        if min_time_between_triggers_seconds is not None:
+            pulumi.set(__self__, "min_time_between_triggers_seconds", min_time_between_triggers_seconds)
         if wait_after_last_change_seconds is not None:
             pulumi.set(__self__, "wait_after_last_change_seconds", wait_after_last_change_seconds)
 
@@ -7508,16 +8009,16 @@ class JobTriggerFileArrivalArgs:
         pulumi.set(self, "url", value)
 
     @property
-    @pulumi.getter(name="minTimeBetweenTriggerSeconds")
-    def min_time_between_trigger_seconds(self) -> Optional[pulumi.Input[int]]:
+    @pulumi.getter(name="minTimeBetweenTriggersSeconds")
+    def min_time_between_triggers_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
         """
-        return pulumi.get(self, "min_time_between_trigger_seconds")
+        return pulumi.get(self, "min_time_between_triggers_seconds")
 
-    @min_time_between_trigger_seconds.setter
-    def min_time_between_trigger_seconds(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "min_time_between_trigger_seconds", value)
+    @min_time_between_triggers_seconds.setter
+    def min_time_between_triggers_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_time_between_triggers_seconds", value)
 
     @property
     @pulumi.getter(name="waitAfterLastChangeSeconds")
@@ -14397,6 +14898,7 @@ class GetJobJobSettingsArgs:
 class GetJobJobSettingsSettingsArgs:
     def __init__(__self__, *,
                  format: str,
+                 computes: Optional[Sequence['GetJobJobSettingsSettingsComputeArgs']] = None,
                  continuous: Optional['GetJobJobSettingsSettingsContinuousArgs'] = None,
                  dbt_task: Optional['GetJobJobSettingsSettingsDbtTaskArgs'] = None,
                  email_notifications: Optional['GetJobJobSettingsSettingsEmailNotificationsArgs'] = None,
@@ -14429,6 +14931,8 @@ class GetJobJobSettingsSettingsArgs:
         :param str name: the job name of Job if the resource was matched by id.
         """
         pulumi.set(__self__, "format", format)
+        if computes is not None:
+            pulumi.set(__self__, "computes", computes)
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
         if dbt_task is not None:
@@ -14494,6 +14998,15 @@ class GetJobJobSettingsSettingsArgs:
     @format.setter
     def format(self, value: str):
         pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def computes(self) -> Optional[Sequence['GetJobJobSettingsSettingsComputeArgs']]:
+        return pulumi.get(self, "computes")
+
+    @computes.setter
+    def computes(self, value: Optional[Sequence['GetJobJobSettingsSettingsComputeArgs']]):
+        pulumi.set(self, "computes", value)
 
     @property
     @pulumi.getter
@@ -14749,6 +15262,52 @@ class GetJobJobSettingsSettingsArgs:
     @webhook_notifications.setter
     def webhook_notifications(self, value: Optional['GetJobJobSettingsSettingsWebhookNotificationsArgs']):
         pulumi.set(self, "webhook_notifications", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsComputeArgs:
+    def __init__(__self__, *,
+                 compute_key: Optional[str] = None,
+                 spec: Optional['GetJobJobSettingsSettingsComputeSpecArgs'] = None):
+        if compute_key is not None:
+            pulumi.set(__self__, "compute_key", compute_key)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter(name="computeKey")
+    def compute_key(self) -> Optional[str]:
+        return pulumi.get(self, "compute_key")
+
+    @compute_key.setter
+    def compute_key(self, value: Optional[str]):
+        pulumi.set(self, "compute_key", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional['GetJobJobSettingsSettingsComputeSpecArgs']:
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional['GetJobJobSettingsSettingsComputeSpecArgs']):
+        pulumi.set(self, "spec", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsComputeSpecArgs:
+    def __init__(__self__, *,
+                 kind: Optional[str] = None):
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[str]):
+        pulumi.set(self, "kind", value)
 
 
 @pulumi.input_type
@@ -17773,6 +18332,8 @@ class GetJobJobSettingsSettingsSparkSubmitTaskArgs:
 class GetJobJobSettingsSettingsTaskArgs:
     def __init__(__self__, *,
                  retry_on_timeout: bool,
+                 compute_key: Optional[str] = None,
+                 condition_task: Optional['GetJobJobSettingsSettingsTaskConditionTaskArgs'] = None,
                  dbt_task: Optional['GetJobJobSettingsSettingsTaskDbtTaskArgs'] = None,
                  depends_ons: Optional[Sequence['GetJobJobSettingsSettingsTaskDependsOnArgs']] = None,
                  description: Optional[str] = None,
@@ -17794,6 +18355,10 @@ class GetJobJobSettingsSettingsTaskArgs:
                  task_key: Optional[str] = None,
                  timeout_seconds: Optional[int] = None):
         pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
+        if compute_key is not None:
+            pulumi.set(__self__, "compute_key", compute_key)
+        if condition_task is not None:
+            pulumi.set(__self__, "condition_task", condition_task)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if depends_ons is not None:
@@ -17843,6 +18408,24 @@ class GetJobJobSettingsSettingsTaskArgs:
     @retry_on_timeout.setter
     def retry_on_timeout(self, value: bool):
         pulumi.set(self, "retry_on_timeout", value)
+
+    @property
+    @pulumi.getter(name="computeKey")
+    def compute_key(self) -> Optional[str]:
+        return pulumi.get(self, "compute_key")
+
+    @compute_key.setter
+    def compute_key(self, value: Optional[str]):
+        pulumi.set(self, "compute_key", value)
+
+    @property
+    @pulumi.getter(name="conditionTask")
+    def condition_task(self) -> Optional['GetJobJobSettingsSettingsTaskConditionTaskArgs']:
+        return pulumi.get(self, "condition_task")
+
+    @condition_task.setter
+    def condition_task(self, value: Optional['GetJobJobSettingsSettingsTaskConditionTaskArgs']):
+        pulumi.set(self, "condition_task", value)
 
     @property
     @pulumi.getter(name="dbtTask")
@@ -18026,6 +18609,47 @@ class GetJobJobSettingsSettingsTaskArgs:
 
 
 @pulumi.input_type
+class GetJobJobSettingsSettingsTaskConditionTaskArgs:
+    def __init__(__self__, *,
+                 left: Optional[str] = None,
+                 op: Optional[str] = None,
+                 right: Optional[str] = None):
+        if left is not None:
+            pulumi.set(__self__, "left", left)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if right is not None:
+            pulumi.set(__self__, "right", right)
+
+    @property
+    @pulumi.getter
+    def left(self) -> Optional[str]:
+        return pulumi.get(self, "left")
+
+    @left.setter
+    def left(self, value: Optional[str]):
+        pulumi.set(self, "left", value)
+
+    @property
+    @pulumi.getter
+    def op(self) -> Optional[str]:
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: Optional[str]):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter
+    def right(self) -> Optional[str]:
+        return pulumi.get(self, "right")
+
+    @right.setter
+    def right(self, value: Optional[str]):
+        pulumi.set(self, "right", value)
+
+
+@pulumi.input_type
 class GetJobJobSettingsSettingsTaskDbtTaskArgs:
     def __init__(__self__, *,
                  commands: Sequence[str],
@@ -18104,18 +18728,29 @@ class GetJobJobSettingsSettingsTaskDbtTaskArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskDependsOnArgs:
     def __init__(__self__, *,
-                 task_key: Optional[str] = None):
-        if task_key is not None:
-            pulumi.set(__self__, "task_key", task_key)
+                 task_key: str,
+                 outcome: Optional[str] = None):
+        pulumi.set(__self__, "task_key", task_key)
+        if outcome is not None:
+            pulumi.set(__self__, "outcome", outcome)
 
     @property
     @pulumi.getter(name="taskKey")
-    def task_key(self) -> Optional[str]:
+    def task_key(self) -> str:
         return pulumi.get(self, "task_key")
 
     @task_key.setter
-    def task_key(self, value: Optional[str]):
+    def task_key(self, value: str):
         pulumi.set(self, "task_key", value)
+
+    @property
+    @pulumi.getter
+    def outcome(self) -> Optional[str]:
+        return pulumi.get(self, "outcome")
+
+    @outcome.setter
+    def outcome(self, value: Optional[str]):
+        pulumi.set(self, "outcome", value)
 
 
 @pulumi.input_type
@@ -19786,8 +20421,13 @@ class GetJobJobSettingsSettingsTaskSqlTaskArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskSqlTaskAlertArgs:
     def __init__(__self__, *,
-                 alert_id: str):
+                 alert_id: str,
+                 subscriptions: Sequence['GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs'],
+                 pause_subscriptions: Optional[bool] = None):
         pulumi.set(__self__, "alert_id", alert_id)
+        pulumi.set(__self__, "subscriptions", subscriptions)
+        if pause_subscriptions is not None:
+            pulumi.set(__self__, "pause_subscriptions", pause_subscriptions)
 
     @property
     @pulumi.getter(name="alertId")
@@ -19798,12 +20438,68 @@ class GetJobJobSettingsSettingsTaskSqlTaskAlertArgs:
     def alert_id(self, value: str):
         pulumi.set(self, "alert_id", value)
 
+    @property
+    @pulumi.getter
+    def subscriptions(self) -> Sequence['GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs']:
+        return pulumi.get(self, "subscriptions")
+
+    @subscriptions.setter
+    def subscriptions(self, value: Sequence['GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs']):
+        pulumi.set(self, "subscriptions", value)
+
+    @property
+    @pulumi.getter(name="pauseSubscriptions")
+    def pause_subscriptions(self) -> Optional[bool]:
+        return pulumi.get(self, "pause_subscriptions")
+
+    @pause_subscriptions.setter
+    def pause_subscriptions(self, value: Optional[bool]):
+        pulumi.set(self, "pause_subscriptions", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs:
+    def __init__(__self__, *,
+                 destination_id: Optional[str] = None,
+                 user_name: Optional[str] = None):
+        if destination_id is not None:
+            pulumi.set(__self__, "destination_id", destination_id)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="destinationId")
+    def destination_id(self) -> Optional[str]:
+        return pulumi.get(self, "destination_id")
+
+    @destination_id.setter
+    def destination_id(self, value: Optional[str]):
+        pulumi.set(self, "destination_id", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[str]:
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[str]):
+        pulumi.set(self, "user_name", value)
+
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs:
     def __init__(__self__, *,
-                 dashboard_id: str):
+                 dashboard_id: str,
+                 custom_subject: Optional[str] = None,
+                 pause_subscriptions: Optional[bool] = None,
+                 subscriptions: Optional[Sequence['GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs']] = None):
         pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if custom_subject is not None:
+            pulumi.set(__self__, "custom_subject", custom_subject)
+        if pause_subscriptions is not None:
+            pulumi.set(__self__, "pause_subscriptions", pause_subscriptions)
+        if subscriptions is not None:
+            pulumi.set(__self__, "subscriptions", subscriptions)
 
     @property
     @pulumi.getter(name="dashboardId")
@@ -19813,6 +20509,62 @@ class GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs:
     @dashboard_id.setter
     def dashboard_id(self, value: str):
         pulumi.set(self, "dashboard_id", value)
+
+    @property
+    @pulumi.getter(name="customSubject")
+    def custom_subject(self) -> Optional[str]:
+        return pulumi.get(self, "custom_subject")
+
+    @custom_subject.setter
+    def custom_subject(self, value: Optional[str]):
+        pulumi.set(self, "custom_subject", value)
+
+    @property
+    @pulumi.getter(name="pauseSubscriptions")
+    def pause_subscriptions(self) -> Optional[bool]:
+        return pulumi.get(self, "pause_subscriptions")
+
+    @pause_subscriptions.setter
+    def pause_subscriptions(self, value: Optional[bool]):
+        pulumi.set(self, "pause_subscriptions", value)
+
+    @property
+    @pulumi.getter
+    def subscriptions(self) -> Optional[Sequence['GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs']]:
+        return pulumi.get(self, "subscriptions")
+
+    @subscriptions.setter
+    def subscriptions(self, value: Optional[Sequence['GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs']]):
+        pulumi.set(self, "subscriptions", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs:
+    def __init__(__self__, *,
+                 destination_id: Optional[str] = None,
+                 user_name: Optional[str] = None):
+        if destination_id is not None:
+            pulumi.set(__self__, "destination_id", destination_id)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="destinationId")
+    def destination_id(self) -> Optional[str]:
+        return pulumi.get(self, "destination_id")
+
+    @destination_id.setter
+    def destination_id(self, value: Optional[str]):
+        pulumi.set(self, "destination_id", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[str]:
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[str]):
+        pulumi.set(self, "user_name", value)
 
 
 @pulumi.input_type
@@ -19878,11 +20630,11 @@ class GetJobJobSettingsSettingsTriggerArgs:
 class GetJobJobSettingsSettingsTriggerFileArrivalArgs:
     def __init__(__self__, *,
                  url: str,
-                 min_time_between_trigger_seconds: Optional[int] = None,
+                 min_time_between_triggers_seconds: Optional[int] = None,
                  wait_after_last_change_seconds: Optional[int] = None):
         pulumi.set(__self__, "url", url)
-        if min_time_between_trigger_seconds is not None:
-            pulumi.set(__self__, "min_time_between_trigger_seconds", min_time_between_trigger_seconds)
+        if min_time_between_triggers_seconds is not None:
+            pulumi.set(__self__, "min_time_between_triggers_seconds", min_time_between_triggers_seconds)
         if wait_after_last_change_seconds is not None:
             pulumi.set(__self__, "wait_after_last_change_seconds", wait_after_last_change_seconds)
 
@@ -19896,13 +20648,13 @@ class GetJobJobSettingsSettingsTriggerFileArrivalArgs:
         pulumi.set(self, "url", value)
 
     @property
-    @pulumi.getter(name="minTimeBetweenTriggerSeconds")
-    def min_time_between_trigger_seconds(self) -> Optional[int]:
-        return pulumi.get(self, "min_time_between_trigger_seconds")
+    @pulumi.getter(name="minTimeBetweenTriggersSeconds")
+    def min_time_between_triggers_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "min_time_between_triggers_seconds")
 
-    @min_time_between_trigger_seconds.setter
-    def min_time_between_trigger_seconds(self, value: Optional[int]):
-        pulumi.set(self, "min_time_between_trigger_seconds", value)
+    @min_time_between_triggers_seconds.setter
+    def min_time_between_triggers_seconds(self, value: Optional[int]):
+        pulumi.set(self, "min_time_between_triggers_seconds", value)
 
     @property
     @pulumi.getter(name="waitAfterLastChangeSeconds")
