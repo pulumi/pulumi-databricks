@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs;
@@ -17,6 +18,13 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsWebhookNotificationsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsWebhookNotificationsArgs Empty = new GetJobJobSettingsSettingsWebhookNotificationsArgs();
+
+    @Import(name="onDurationWarningThresholdExceededs")
+    private @Nullable Output<List<GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs>> onDurationWarningThresholdExceededs;
+
+    public Optional<Output<List<GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs>>> onDurationWarningThresholdExceededs() {
+        return Optional.ofNullable(this.onDurationWarningThresholdExceededs);
+    }
 
     @Import(name="onFailures")
     private @Nullable Output<List<GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs>> onFailures;
@@ -42,6 +50,7 @@ public final class GetJobJobSettingsSettingsWebhookNotificationsArgs extends com
     private GetJobJobSettingsSettingsWebhookNotificationsArgs() {}
 
     private GetJobJobSettingsSettingsWebhookNotificationsArgs(GetJobJobSettingsSettingsWebhookNotificationsArgs $) {
+        this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
         this.onStarts = $.onStarts;
         this.onSuccesses = $.onSuccesses;
@@ -63,6 +72,19 @@ public final class GetJobJobSettingsSettingsWebhookNotificationsArgs extends com
 
         public Builder(GetJobJobSettingsSettingsWebhookNotificationsArgs defaults) {
             $ = new GetJobJobSettingsSettingsWebhookNotificationsArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder onDurationWarningThresholdExceededs(@Nullable Output<List<GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs>> onDurationWarningThresholdExceededs) {
+            $.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
+            return this;
+        }
+
+        public Builder onDurationWarningThresholdExceededs(List<GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs> onDurationWarningThresholdExceededs) {
+            return onDurationWarningThresholdExceededs(Output.of(onDurationWarningThresholdExceededs));
+        }
+
+        public Builder onDurationWarningThresholdExceededs(GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs... onDurationWarningThresholdExceededs) {
+            return onDurationWarningThresholdExceededs(List.of(onDurationWarningThresholdExceededs));
         }
 
         public Builder onFailures(@Nullable Output<List<GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs>> onFailures) {

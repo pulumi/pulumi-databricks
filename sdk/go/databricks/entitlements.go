@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -166,6 +167,7 @@ func NewEntitlements(ctx *pulumi.Context,
 		args = &EntitlementsArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Entitlements
 	err := ctx.RegisterResource("databricks:index/entitlements:Entitlements", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ func NewMount(ctx *pulumi.Context,
 		args = &MountArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Mount
 	err := ctx.RegisterResource("databricks:index/mount:Mount", name, args, &resource, opts...)
 	if err != nil {

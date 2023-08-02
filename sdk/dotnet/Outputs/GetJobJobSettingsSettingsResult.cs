@@ -20,6 +20,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? ExistingClusterId;
         public readonly string Format;
         public readonly Outputs.GetJobJobSettingsSettingsGitSourceResult? GitSource;
+        public readonly Outputs.GetJobJobSettingsSettingsHealthResult? Health;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsJobClusterResult> JobClusters;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsLibraryResult> Libraries;
         public readonly int? MaxConcurrentRuns;
@@ -62,6 +63,8 @@ namespace Pulumi.Databricks.Outputs
             string format,
 
             Outputs.GetJobJobSettingsSettingsGitSourceResult? gitSource,
+
+            Outputs.GetJobJobSettingsSettingsHealthResult? health,
 
             ImmutableArray<Outputs.GetJobJobSettingsSettingsJobClusterResult> jobClusters,
 
@@ -116,6 +119,7 @@ namespace Pulumi.Databricks.Outputs
             ExistingClusterId = existingClusterId;
             Format = format;
             GitSource = gitSource;
+            Health = health;
             JobClusters = jobClusters;
             Libraries = libraries;
             MaxConcurrentRuns = maxConcurrentRuns;

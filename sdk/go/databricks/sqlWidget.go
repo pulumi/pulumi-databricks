@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -104,6 +105,7 @@ func NewSqlWidget(ctx *pulumi.Context,
 	if args.DashboardId == nil {
 		return nil, errors.New("invalid value for required argument 'DashboardId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SqlWidget
 	err := ctx.RegisterResource("databricks:index/sqlWidget:SqlWidget", name, args, &resource, opts...)
 	if err != nil {

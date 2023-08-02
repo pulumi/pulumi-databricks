@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ func NewGlobalInitScript(ctx *pulumi.Context,
 		args = &GlobalInitScriptArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GlobalInitScript
 	err := ctx.RegisterResource("databricks:index/globalInitScript:GlobalInitScript", name, args, &resource, opts...)
 	if err != nil {

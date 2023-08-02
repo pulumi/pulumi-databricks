@@ -5,6 +5,22 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AccessControlRuleSetGrantRule {
+    /**
+     * a list of principals who are granted a role. The following format is supported:
+     * * `users/{username}` (also exposed as `aclPrincipalId` attribute of `databricks.User` resource).
+     * * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `databricks.Group` resource).
+     * * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `databricks.ServicePrincipal` resource).
+     */
+    principals?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles).
+     * * `roles/servicePrincipal.manager` - Manager of a service principal.
+     * * `roles/servicePrincipal.user` - User of a service principal.
+     */
+    role: pulumi.Input<string>;
+}
+
 export interface ClusterAutoscale {
     maxWorkers?: pulumi.Input<number>;
     minWorkers?: pulumi.Input<number>;
@@ -816,6 +832,7 @@ export interface GetJobJobSettingsSettings {
     existingClusterId?: string;
     format?: string;
     gitSource?: inputs.GetJobJobSettingsSettingsGitSource;
+    health?: inputs.GetJobJobSettingsSettingsHealth;
     jobClusters?: inputs.GetJobJobSettingsSettingsJobCluster[];
     libraries?: inputs.GetJobJobSettingsSettingsLibrary[];
     maxConcurrentRuns?: number;
@@ -852,6 +869,7 @@ export interface GetJobJobSettingsSettingsArgs {
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
     gitSource?: pulumi.Input<inputs.GetJobJobSettingsSettingsGitSourceArgs>;
+    health?: pulumi.Input<inputs.GetJobJobSettingsSettingsHealthArgs>;
     jobClusters?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterArgs>[]>;
     libraries?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryArgs>[]>;
     maxConcurrentRuns?: pulumi.Input<number>;
@@ -927,6 +945,7 @@ export interface GetJobJobSettingsSettingsDbtTaskArgs {
 export interface GetJobJobSettingsSettingsEmailNotifications {
     alertOnLastAttempt?: boolean;
     noAlertForSkippedRuns?: boolean;
+    onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
     onSuccesses?: string[];
@@ -935,6 +954,7 @@ export interface GetJobJobSettingsSettingsEmailNotifications {
 export interface GetJobJobSettingsSettingsEmailNotificationsArgs {
     alertOnLastAttempt?: pulumi.Input<boolean>;
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
@@ -943,6 +963,7 @@ export interface GetJobJobSettingsSettingsEmailNotificationsArgs {
 export interface GetJobJobSettingsSettingsGitSource {
     branch?: string;
     commit?: string;
+    jobSource?: inputs.GetJobJobSettingsSettingsGitSourceJobSource;
     provider?: string;
     tag?: string;
     url: string;
@@ -951,9 +972,42 @@ export interface GetJobJobSettingsSettingsGitSource {
 export interface GetJobJobSettingsSettingsGitSourceArgs {
     branch?: pulumi.Input<string>;
     commit?: pulumi.Input<string>;
+    jobSource?: pulumi.Input<inputs.GetJobJobSettingsSettingsGitSourceJobSourceArgs>;
     provider?: pulumi.Input<string>;
     tag?: pulumi.Input<string>;
     url: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsGitSourceJobSource {
+    dirtyState?: string;
+    importFromGitBranch: string;
+    jobConfigPath: string;
+}
+
+export interface GetJobJobSettingsSettingsGitSourceJobSourceArgs {
+    dirtyState?: pulumi.Input<string>;
+    importFromGitBranch: pulumi.Input<string>;
+    jobConfigPath: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsHealth {
+    rules: inputs.GetJobJobSettingsSettingsHealthRule[];
+}
+
+export interface GetJobJobSettingsSettingsHealthArgs {
+    rules: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsHealthRuleArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsHealthRule {
+    metric?: string;
+    op?: string;
+    value?: number;
+}
+
+export interface GetJobJobSettingsSettingsHealthRuleArgs {
+    metric?: pulumi.Input<string>;
+    op?: pulumi.Input<string>;
+    value?: pulumi.Input<number>;
 }
 
 export interface GetJobJobSettingsSettingsJobCluster {
@@ -1643,10 +1697,12 @@ export interface GetJobJobSettingsSettingsNotificationSettingsArgs {
 }
 
 export interface GetJobJobSettingsSettingsPipelineTask {
+    fullRefresh?: boolean;
     pipelineId: string;
 }
 
 export interface GetJobJobSettingsSettingsPipelineTaskArgs {
+    fullRefresh?: pulumi.Input<boolean>;
     pipelineId: pulumi.Input<string>;
 }
 
@@ -1732,12 +1788,14 @@ export interface GetJobJobSettingsSettingsTask {
     description?: string;
     emailNotifications?: inputs.GetJobJobSettingsSettingsTaskEmailNotifications;
     existingClusterId?: string;
+    health?: inputs.GetJobJobSettingsSettingsTaskHealth;
     jobClusterKey?: string;
     libraries?: inputs.GetJobJobSettingsSettingsTaskLibrary[];
     maxRetries?: number;
     minRetryIntervalMillis?: number;
     newCluster?: inputs.GetJobJobSettingsSettingsTaskNewCluster;
     notebookTask?: inputs.GetJobJobSettingsSettingsTaskNotebookTask;
+    notificationSettings?: inputs.GetJobJobSettingsSettingsTaskNotificationSettings;
     pipelineTask?: inputs.GetJobJobSettingsSettingsTaskPipelineTask;
     pythonWheelTask?: inputs.GetJobJobSettingsSettingsTaskPythonWheelTask;
     retryOnTimeout?: boolean;
@@ -1758,12 +1816,14 @@ export interface GetJobJobSettingsSettingsTaskArgs {
     description?: pulumi.Input<string>;
     emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskEmailNotificationsArgs>;
     existingClusterId?: pulumi.Input<string>;
+    health?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskHealthArgs>;
     jobClusterKey?: pulumi.Input<string>;
     libraries?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryArgs>[]>;
     maxRetries?: pulumi.Input<number>;
     minRetryIntervalMillis?: pulumi.Input<number>;
     newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterArgs>;
     notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNotebookTaskArgs>;
+    notificationSettings?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNotificationSettingsArgs>;
     pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPipelineTaskArgs>;
     pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPythonWheelTaskArgs>;
     retryOnTimeout?: pulumi.Input<boolean>;
@@ -1819,6 +1879,7 @@ export interface GetJobJobSettingsSettingsTaskDependsOnArgs {
 export interface GetJobJobSettingsSettingsTaskEmailNotifications {
     alertOnLastAttempt?: boolean;
     noAlertForSkippedRuns?: boolean;
+    onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
     onSuccesses?: string[];
@@ -1827,9 +1888,30 @@ export interface GetJobJobSettingsSettingsTaskEmailNotifications {
 export interface GetJobJobSettingsSettingsTaskEmailNotificationsArgs {
     alertOnLastAttempt?: pulumi.Input<boolean>;
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskHealth {
+    rules: inputs.GetJobJobSettingsSettingsTaskHealthRule[];
+}
+
+export interface GetJobJobSettingsSettingsTaskHealthArgs {
+    rules: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskHealthRuleArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskHealthRule {
+    metric?: string;
+    op?: string;
+    value?: number;
+}
+
+export interface GetJobJobSettingsSettingsTaskHealthRuleArgs {
+    metric?: pulumi.Input<string>;
+    op?: pulumi.Input<string>;
+    value?: pulumi.Input<number>;
 }
 
 export interface GetJobJobSettingsSettingsTaskLibrary {
@@ -2196,11 +2278,25 @@ export interface GetJobJobSettingsSettingsTaskNotebookTaskArgs {
     source?: pulumi.Input<string>;
 }
 
+export interface GetJobJobSettingsSettingsTaskNotificationSettings {
+    alertOnLastAttempt?: boolean;
+    noAlertForCanceledRuns?: boolean;
+    noAlertForSkippedRuns?: boolean;
+}
+
+export interface GetJobJobSettingsSettingsTaskNotificationSettingsArgs {
+    alertOnLastAttempt?: pulumi.Input<boolean>;
+    noAlertForCanceledRuns?: pulumi.Input<boolean>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+}
+
 export interface GetJobJobSettingsSettingsTaskPipelineTask {
+    fullRefresh?: boolean;
     pipelineId: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskPipelineTaskArgs {
+    fullRefresh?: pulumi.Input<boolean>;
     pipelineId: pulumi.Input<string>;
 }
 
@@ -2353,15 +2449,31 @@ export interface GetJobJobSettingsSettingsTriggerFileArrivalArgs {
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotifications {
+    onDurationWarningThresholdExceededs?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailure[];
     onStarts?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStart[];
     onSuccesses?: inputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccess[];
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsArgs {
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs>[]>;
     onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs>[]>;
     onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs>[]>;
     onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
@@ -2404,6 +2516,90 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs {
      * the id of databricks.Job if the resource was matched by name.
      */
     id: pulumi.Input<string>;
+}
+
+export interface GetMetastoreMetastoreInfo {
+    cloud?: string;
+    createdAt?: number;
+    createdBy?: string;
+    defaultDataAccessConfigId?: string;
+    /**
+     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+     */
+    deltaSharingOrganizationName?: string;
+    /**
+     * Used to set expiration duration in seconds on recipient data access tokens.
+     */
+    deltaSharingRecipientTokenLifetimeInSeconds?: number;
+    /**
+     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     */
+    deltaSharingScope?: string;
+    globalMetastoreId?: string;
+    /**
+     * Id of the metastore to be fetched
+     */
+    metastoreId?: string;
+    /**
+     * Name of metastore.
+     */
+    name?: string;
+    /**
+     * Username/groupname/sp applicationId of the metastore owner.
+     */
+    owner?: string;
+    privilegeModelVersion?: string;
+    region?: string;
+    /**
+     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     */
+    storageRoot?: string;
+    storageRootCredentialId?: string;
+    storageRootCredentialName?: string;
+    updatedAt?: number;
+    updatedBy?: string;
+}
+
+export interface GetMetastoreMetastoreInfoArgs {
+    cloud?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<number>;
+    createdBy?: pulumi.Input<string>;
+    defaultDataAccessConfigId?: pulumi.Input<string>;
+    /**
+     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+     */
+    deltaSharingOrganizationName?: pulumi.Input<string>;
+    /**
+     * Used to set expiration duration in seconds on recipient data access tokens.
+     */
+    deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
+    /**
+     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     */
+    deltaSharingScope?: pulumi.Input<string>;
+    globalMetastoreId?: pulumi.Input<string>;
+    /**
+     * Id of the metastore to be fetched
+     */
+    metastoreId?: pulumi.Input<string>;
+    /**
+     * Name of metastore.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Username/groupname/sp applicationId of the metastore owner.
+     */
+    owner?: pulumi.Input<string>;
+    privilegeModelVersion?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    /**
+     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     */
+    storageRoot?: pulumi.Input<string>;
+    storageRootCredentialId?: pulumi.Input<string>;
+    storageRootCredentialName?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<number>;
+    updatedBy?: pulumi.Input<string>;
 }
 
 export interface GetShareObject {
@@ -2482,14 +2678,14 @@ export interface GetShareObjectPartitionValueArgs {
 
 export interface GetSqlWarehouseChannel {
     /**
-     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * Name of the SQL warehouse to search (case-sensitive).
      */
     name?: string;
 }
 
 export interface GetSqlWarehouseChannelArgs {
     /**
-     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * Name of the SQL warehouse to search (case-sensitive).
      */
     name?: pulumi.Input<string>;
 }
@@ -2657,11 +2853,18 @@ export interface JobDbtTask {
 }
 
 export interface JobEmailNotifications {
+    /**
+     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
+     */
     alertOnLastAttempt?: pulumi.Input<boolean>;
     /**
      * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
      */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    /**
+     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     */
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (List) list of emails to notify when the run fails.
      */
@@ -2685,6 +2888,7 @@ export interface JobGitSource {
      * hash of Git commit to use. Conflicts with `branch` and `tag`.
      */
     commit?: pulumi.Input<string>;
+    jobSource?: pulumi.Input<inputs.JobGitSourceJobSource>;
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
      */
@@ -2697,6 +2901,34 @@ export interface JobGitSource {
      * URL of the Git repository to use.
      */
     url: pulumi.Input<string>;
+}
+
+export interface JobGitSourceJobSource {
+    dirtyState?: pulumi.Input<string>;
+    importFromGitBranch: pulumi.Input<string>;
+    jobConfigPath: pulumi.Input<string>;
+}
+
+export interface JobHealth {
+    /**
+     * list of rules that are represented as objects with the following attributes:
+     */
+    rules: pulumi.Input<pulumi.Input<inputs.JobHealthRule>[]>;
+}
+
+export interface JobHealthRule {
+    /**
+     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     */
+    metric?: pulumi.Input<string>;
+    /**
+     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     */
+    op?: pulumi.Input<string>;
+    /**
+     * integer value used to compare to the given metric.
+     */
+    value?: pulumi.Input<number>;
 }
 
 export interface JobJobCluster {
@@ -3163,9 +3395,13 @@ export interface JobNotificationSettings {
 
 export interface JobPipelineTask {
     /**
-     * The pipeline's unique ID.
+     * (Bool) Specifies if there should be full refresh of the pipeline.
      *
      * > **Note** The following configuration blocks are only supported inside a `task` block
+     */
+    fullRefresh?: pulumi.Input<boolean>;
+    /**
+     * The pipeline's unique ID.
      */
     pipelineId: pulumi.Input<string>;
 }
@@ -3267,6 +3503,9 @@ export interface JobTask {
     computeKey?: pulumi.Input<string>;
     conditionTask?: pulumi.Input<inputs.JobTaskConditionTask>;
     dbtTask?: pulumi.Input<inputs.JobTaskDbtTask>;
+    /**
+     * block specifying dependency(-ies) for a given task.
+     */
     dependsOns?: pulumi.Input<pulumi.Input<inputs.JobTaskDependsOn>[]>;
     description?: pulumi.Input<string>;
     /**
@@ -3274,6 +3513,10 @@ export interface JobTask {
      */
     emailNotifications?: pulumi.Input<inputs.JobTaskEmailNotifications>;
     existingClusterId?: pulumi.Input<string>;
+    /**
+     * block described below that specifies health conditions for a given task.
+     */
+    health?: pulumi.Input<inputs.JobTaskHealth>;
     /**
      * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      */
@@ -3283,7 +3526,7 @@ export interface JobTask {
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskLibrary>[]>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      */
     maxRetries?: pulumi.Input<number>;
     /**
@@ -3295,6 +3538,10 @@ export interface JobTask {
      */
     newCluster?: pulumi.Input<inputs.JobTaskNewCluster>;
     notebookTask?: pulumi.Input<inputs.JobTaskNotebookTask>;
+    /**
+     * An optional block controlling the notification settings on the job level (described below).
+     */
+    notificationSettings?: pulumi.Input<inputs.JobTaskNotificationSettings>;
     pipelineTask?: pulumi.Input<inputs.JobTaskPipelineTask>;
     pythonWheelTask?: pulumi.Input<inputs.JobTaskPythonWheelTask>;
     /**
@@ -3306,6 +3553,10 @@ export interface JobTask {
     sparkPythonTask?: pulumi.Input<inputs.JobTaskSparkPythonTask>;
     sparkSubmitTask?: pulumi.Input<inputs.JobTaskSparkSubmitTask>;
     sqlTask?: pulumi.Input<inputs.JobTaskSqlTask>;
+    /**
+     * string specifying an unique key for a given task.
+     * * `*_task` - (Required) one of the specific task blocks described below:
+     */
     taskKey?: pulumi.Input<string>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -3315,6 +3566,9 @@ export interface JobTask {
 
 export interface JobTaskConditionTask {
     left?: pulumi.Input<string>;
+    /**
+     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     */
     op?: pulumi.Input<string>;
     right?: pulumi.Input<string>;
 }
@@ -3350,15 +3604,25 @@ export interface JobTaskDbtTask {
 
 export interface JobTaskDependsOn {
     outcome?: pulumi.Input<string>;
+    /**
+     * The name of the task this task depends on.
+     */
     taskKey: pulumi.Input<string>;
 }
 
 export interface JobTaskEmailNotifications {
+    /**
+     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
+     */
     alertOnLastAttempt?: pulumi.Input<boolean>;
     /**
      * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
      */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    /**
+     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     */
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (List) list of emails to notify when the run fails.
      */
@@ -3371,6 +3635,28 @@ export interface JobTaskEmailNotifications {
      * (List) list of emails to notify when the run completes successfully.
      */
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface JobTaskHealth {
+    /**
+     * list of rules that are represented as objects with the following attributes:
+     */
+    rules: pulumi.Input<pulumi.Input<inputs.JobTaskHealthRule>[]>;
+}
+
+export interface JobTaskHealthRule {
+    /**
+     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     */
+    metric?: pulumi.Input<string>;
+    /**
+     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     */
+    op?: pulumi.Input<string>;
+    /**
+     * integer value used to compare to the given metric.
+     */
+    value?: pulumi.Input<number>;
 }
 
 export interface JobTaskLibrary {
@@ -3613,11 +3899,30 @@ export interface JobTaskNotebookTask {
     source?: pulumi.Input<string>;
 }
 
+export interface JobTaskNotificationSettings {
+    /**
+     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
+     */
+    alertOnLastAttempt?: pulumi.Input<boolean>;
+    /**
+     * (Bool) don't send alert for cancelled runs.
+     */
+    noAlertForCanceledRuns?: pulumi.Input<boolean>;
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
+    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+}
+
 export interface JobTaskPipelineTask {
     /**
-     * The pipeline's unique ID.
+     * (Bool) Specifies if there should be full refresh of the pipeline.
      *
      * > **Note** The following configuration blocks are only supported inside a `task` block
+     */
+    fullRefresh?: pulumi.Input<boolean>;
+    /**
+     * The pipeline's unique ID.
      */
     pipelineId: pulumi.Input<string>;
 }
@@ -3831,7 +4136,7 @@ export interface JobTriggerFileArrival {
 
 export interface JobWebhookNotifications {
     /**
-     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+     * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      *
      * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
      *
@@ -3840,6 +4145,10 @@ export interface JobWebhookNotifications {
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
+     */
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnDurationWarningThresholdExceeded>[]>;
+    /**
+     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      */
     onFailures?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnFailure>[]>;
     /**
@@ -3850,6 +4159,15 @@ export interface JobWebhookNotifications {
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      */
     onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnSuccess>[]>;
+}
+
+export interface JobWebhookNotificationsOnDurationWarningThresholdExceeded {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     */
+    id: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnFailure {

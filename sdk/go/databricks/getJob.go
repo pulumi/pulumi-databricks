@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +50,7 @@ import (
 // * getJobs data to get all jobs and their names from a workspace.
 // * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobResult
 	err := ctx.Invoke("databricks:index/getJob:getJob", args, &rv, opts...)
 	if err != nil {

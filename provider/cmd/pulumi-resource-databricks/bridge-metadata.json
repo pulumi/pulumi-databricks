@@ -1,6 +1,22 @@
 {
     "auto-aliasing": {
         "resources": {
+            "databricks_access_control_rule_set": {
+                "current": "databricks:index/accessControlRuleSet:AccessControlRuleSet",
+                "majorVersion": 1,
+                "fields": {
+                    "grant_rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "principals": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_catalog": {
                 "current": "databricks:index/catalog:Catalog",
                 "majorVersion": 1
@@ -279,6 +295,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "on_duration_warning_threshold_exceeded": {
+                                    "maxItemsOne": false
+                                },
                                 "on_failure": {
                                     "maxItemsOne": false
                                 },
@@ -292,7 +311,24 @@
                         }
                     },
                     "git_source": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "job_source": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "health": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "rules": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "job_cluster": {
                         "maxItemsOne": false,
@@ -586,6 +622,9 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "on_duration_warning_threshold_exceeded": {
+                                                "maxItemsOne": false
+                                            },
                                             "on_failure": {
                                                 "maxItemsOne": false
                                             },
@@ -593,6 +632,16 @@
                                                 "maxItemsOne": false
                                             },
                                             "on_success": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "health": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "rules": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -714,6 +763,9 @@
                                 "notebook_task": {
                                     "maxItemsOne": true
                                 },
+                                "notification_settings": {
+                                    "maxItemsOne": true
+                                },
                                 "pipeline_task": {
                                     "maxItemsOne": true
                                 },
@@ -807,6 +859,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "on_duration_warning_threshold_exceeded": {
+                                    "maxItemsOne": false
+                                },
                                 "on_failure": {
                                     "maxItemsOne": false
                                 },
@@ -1848,6 +1903,9 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "on_duration_warning_threshold_exceeded": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "on_failure": {
                                                             "maxItemsOne": false
                                                         },
@@ -1861,7 +1919,24 @@
                                                 }
                                             },
                                             "git_source": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "job_source": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "health": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "rules": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "job_cluster": {
                                                 "maxItemsOne": false,
@@ -2155,6 +2230,9 @@
                                                             "maxItemsOne": true,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "on_duration_warning_threshold_exceeded": {
+                                                                        "maxItemsOne": false
+                                                                    },
                                                                     "on_failure": {
                                                                         "maxItemsOne": false
                                                                     },
@@ -2162,6 +2240,16 @@
                                                                         "maxItemsOne": false
                                                                     },
                                                                     "on_success": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "health": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "rules": {
                                                                         "maxItemsOne": false
                                                                     }
                                                                 }
@@ -2283,6 +2371,9 @@
                                                         "notebook_task": {
                                                             "maxItemsOne": true
                                                         },
+                                                        "notification_settings": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "pipeline_task": {
                                                             "maxItemsOne": true
                                                         },
@@ -2376,6 +2467,9 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "on_duration_warning_threshold_exceeded": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "on_failure": {
                                                             "maxItemsOne": false
                                                         },
@@ -2398,6 +2492,19 @@
             },
             "databricks_jobs": {
                 "current": "databricks:index/getJobs:getJobs",
+                "majorVersion": 1
+            },
+            "databricks_metastore": {
+                "current": "databricks:index/getMetastore:getMetastore",
+                "majorVersion": 1,
+                "fields": {
+                    "metastore_info": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "databricks_metastores": {
+                "current": "databricks:index/getMetastores:getMetastores",
                 "majorVersion": 1
             },
             "databricks_mws_credentials": {
@@ -2558,6 +2665,7 @@
     },
     "renames": {
         "resources": {
+            "databricks:index/accessControlRuleSet:AccessControlRuleSet": "databricks_access_control_rule_set",
             "databricks:index/catalog:Catalog": "databricks_catalog",
             "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding": "databricks_catalog_workspace_binding",
             "databricks:index/cluster:Cluster": "databricks_cluster",
@@ -2646,6 +2754,8 @@
             "databricks:index/getInstancePool:getInstancePool": "databricks_instance_pool",
             "databricks:index/getJob:getJob": "databricks_job",
             "databricks:index/getJobs:getJobs": "databricks_jobs",
+            "databricks:index/getMetastore:getMetastore": "databricks_metastore",
+            "databricks:index/getMetastores:getMetastores": "databricks_metastores",
             "databricks:index/getMwsCredentials:getMwsCredentials": "databricks_mws_credentials",
             "databricks:index/getMwsWorkspaces:getMwsWorkspaces": "databricks_mws_workspaces",
             "databricks:index/getNodeType:getNodeType": "databricks_node_type",
@@ -2766,9 +2876,18 @@
             "databricks:index/JobEmailNotifications:JobEmailNotifications": {
                 "alertOnLastAttempt": "alert_on_last_attempt",
                 "noAlertForSkippedRuns": "no_alert_for_skipped_runs",
+                "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
                 "onFailures": "on_failure",
                 "onStarts": "on_start",
                 "onSuccesses": "on_success"
+            },
+            "databricks:index/JobGitSource:JobGitSource": {
+                "jobSource": "job_source"
+            },
+            "databricks:index/JobGitSourceJobSource:JobGitSourceJobSource": {
+                "dirtyState": "dirty_state",
+                "importFromGitBranch": "import_from_git_branch",
+                "jobConfigPath": "job_config_path"
             },
             "databricks:index/JobJobCluster:JobJobCluster": {
                 "jobClusterKey": "job_cluster_key",
@@ -2939,6 +3058,7 @@
                 "noAlertForSkippedRuns": "no_alert_for_skipped_runs"
             },
             "databricks:index/JobPipelineTask:JobPipelineTask": {
+                "fullRefresh": "full_refresh",
                 "pipelineId": "pipeline_id"
             },
             "databricks:index/JobPythonWheelTask:JobPythonWheelTask": {
@@ -2975,6 +3095,7 @@
                 "minRetryIntervalMillis": "min_retry_interval_millis",
                 "newCluster": "new_cluster",
                 "notebookTask": "notebook_task",
+                "notificationSettings": "notification_settings",
                 "pipelineTask": "pipeline_task",
                 "pythonWheelTask": "python_wheel_task",
                 "retryOnTimeout": "retry_on_timeout",
@@ -2997,6 +3118,7 @@
             "databricks:index/JobTaskEmailNotifications:JobTaskEmailNotifications": {
                 "alertOnLastAttempt": "alert_on_last_attempt",
                 "noAlertForSkippedRuns": "no_alert_for_skipped_runs",
+                "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
                 "onFailures": "on_failure",
                 "onStarts": "on_start",
                 "onSuccesses": "on_success"
@@ -3083,7 +3205,13 @@
                 "baseParameters": "base_parameters",
                 "notebookPath": "notebook_path"
             },
+            "databricks:index/JobTaskNotificationSettings:JobTaskNotificationSettings": {
+                "alertOnLastAttempt": "alert_on_last_attempt",
+                "noAlertForCanceledRuns": "no_alert_for_canceled_runs",
+                "noAlertForSkippedRuns": "no_alert_for_skipped_runs"
+            },
             "databricks:index/JobTaskPipelineTask:JobTaskPipelineTask": {
+                "fullRefresh": "full_refresh",
                 "pipelineId": "pipeline_id"
             },
             "databricks:index/JobTaskPythonWheelTask:JobTaskPythonWheelTask": {
@@ -3130,6 +3258,7 @@
                 "waitAfterLastChangeSeconds": "wait_after_last_change_seconds"
             },
             "databricks:index/JobWebhookNotifications:JobWebhookNotifications": {
+                "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
                 "onFailures": "on_failure",
                 "onStarts": "on_start",
                 "onSuccesses": "on_success"
@@ -3416,6 +3545,9 @@
                 "typePrecision": "type_precision",
                 "typeScale": "type_scale",
                 "typeText": "type_text"
+            },
+            "databricks:index/accessControlRuleSet:AccessControlRuleSet": {
+                "grantRules": "grant_rules"
             },
             "databricks:index/catalog:Catalog": {
                 "forceDestroy": "force_destroy",
@@ -3773,9 +3905,18 @@
             "databricks:index/getJobJobSettingsSettingsEmailNotifications:getJobJobSettingsSettingsEmailNotifications": {
                 "alertOnLastAttempt": "alert_on_last_attempt",
                 "noAlertForSkippedRuns": "no_alert_for_skipped_runs",
+                "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
                 "onFailures": "on_failure",
                 "onStarts": "on_start",
                 "onSuccesses": "on_success"
+            },
+            "databricks:index/getJobJobSettingsSettingsGitSource:getJobJobSettingsSettingsGitSource": {
+                "jobSource": "job_source"
+            },
+            "databricks:index/getJobJobSettingsSettingsGitSourceJobSource:getJobJobSettingsSettingsGitSourceJobSource": {
+                "dirtyState": "dirty_state",
+                "importFromGitBranch": "import_from_git_branch",
+                "jobConfigPath": "job_config_path"
             },
             "databricks:index/getJobJobSettingsSettingsJobCluster:getJobJobSettingsSettingsJobCluster": {
                 "jobClusterKey": "job_cluster_key",
@@ -3946,6 +4087,7 @@
                 "noAlertForSkippedRuns": "no_alert_for_skipped_runs"
             },
             "databricks:index/getJobJobSettingsSettingsPipelineTask:getJobJobSettingsSettingsPipelineTask": {
+                "fullRefresh": "full_refresh",
                 "pipelineId": "pipeline_id"
             },
             "databricks:index/getJobJobSettingsSettingsPythonWheelTask:getJobJobSettingsSettingsPythonWheelTask": {
@@ -3982,6 +4124,7 @@
                 "minRetryIntervalMillis": "min_retry_interval_millis",
                 "newCluster": "new_cluster",
                 "notebookTask": "notebook_task",
+                "notificationSettings": "notification_settings",
                 "pipelineTask": "pipeline_task",
                 "pythonWheelTask": "python_wheel_task",
                 "retryOnTimeout": "retry_on_timeout",
@@ -4004,6 +4147,7 @@
             "databricks:index/getJobJobSettingsSettingsTaskEmailNotifications:getJobJobSettingsSettingsTaskEmailNotifications": {
                 "alertOnLastAttempt": "alert_on_last_attempt",
                 "noAlertForSkippedRuns": "no_alert_for_skipped_runs",
+                "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
                 "onFailures": "on_failure",
                 "onStarts": "on_start",
                 "onSuccesses": "on_success"
@@ -4090,7 +4234,13 @@
                 "baseParameters": "base_parameters",
                 "notebookPath": "notebook_path"
             },
+            "databricks:index/getJobJobSettingsSettingsTaskNotificationSettings:getJobJobSettingsSettingsTaskNotificationSettings": {
+                "alertOnLastAttempt": "alert_on_last_attempt",
+                "noAlertForCanceledRuns": "no_alert_for_canceled_runs",
+                "noAlertForSkippedRuns": "no_alert_for_skipped_runs"
+            },
             "databricks:index/getJobJobSettingsSettingsTaskPipelineTask:getJobJobSettingsSettingsTaskPipelineTask": {
+                "fullRefresh": "full_refresh",
                 "pipelineId": "pipeline_id"
             },
             "databricks:index/getJobJobSettingsSettingsTaskPythonWheelTask:getJobJobSettingsSettingsTaskPythonWheelTask": {
@@ -4137,9 +4287,30 @@
                 "waitAfterLastChangeSeconds": "wait_after_last_change_seconds"
             },
             "databricks:index/getJobJobSettingsSettingsWebhookNotifications:getJobJobSettingsSettingsWebhookNotifications": {
+                "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
                 "onFailures": "on_failure",
                 "onStarts": "on_start",
                 "onSuccesses": "on_success"
+            },
+            "databricks:index/getMetastore:getMetastore": {
+                "metastoreId": "metastore_id",
+                "metastoreInfo": "metastore_info"
+            },
+            "databricks:index/getMetastoreMetastoreInfo:getMetastoreMetastoreInfo": {
+                "createdAt": "created_at",
+                "createdBy": "created_by",
+                "defaultDataAccessConfigId": "default_data_access_config_id",
+                "deltaSharingOrganizationName": "delta_sharing_organization_name",
+                "deltaSharingRecipientTokenLifetimeInSeconds": "delta_sharing_recipient_token_lifetime_in_seconds",
+                "deltaSharingScope": "delta_sharing_scope",
+                "globalMetastoreId": "global_metastore_id",
+                "metastoreId": "metastore_id",
+                "privilegeModelVersion": "privilege_model_version",
+                "storageRoot": "storage_root",
+                "storageRootCredentialId": "storage_root_credential_id",
+                "storageRootCredentialName": "storage_root_credential_name",
+                "updatedAt": "updated_at",
+                "updatedBy": "updated_by"
             },
             "databricks:index/getNodeType:getNodeType": {
                 "gbPerCore": "gb_per_core",
@@ -4254,6 +4425,7 @@
                 "storageCredential": "storage_credential"
             },
             "databricks:index/group:Group": {
+                "aclPrincipalId": "acl_principal_id",
                 "allowClusterCreate": "allow_cluster_create",
                 "allowInstancePoolCreate": "allow_instance_pool_create",
                 "databricksSqlAccess": "databricks_sql_access",
@@ -4302,6 +4474,7 @@
             "databricks:index/job:Job": {
                 "alwaysRunning": "always_running",
                 "computes": "compute",
+                "controlRunState": "control_run_state",
                 "dbtTask": "dbt_task",
                 "emailNotifications": "email_notifications",
                 "existingClusterId": "existing_cluster_id",
@@ -4553,6 +4726,7 @@
                 "keyvaultMetadata": "keyvault_metadata"
             },
             "databricks:index/servicePrincipal:ServicePrincipal": {
+                "aclPrincipalId": "acl_principal_id",
                 "allowClusterCreate": "allow_cluster_create",
                 "allowInstancePoolCreate": "allow_instance_pool_create",
                 "applicationId": "application_id",
@@ -4661,6 +4835,7 @@
                 "tokenValue": "token_value"
             },
             "databricks:index/user:User": {
+                "aclPrincipalId": "acl_principal_id",
                 "allowClusterCreate": "allow_cluster_create",
                 "allowInstancePoolCreate": "allow_instance_pool_create",
                 "databricksSqlAccess": "databricks_sql_access",

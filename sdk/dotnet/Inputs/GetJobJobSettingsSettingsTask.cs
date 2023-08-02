@@ -38,6 +38,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("existingClusterId")]
         public string? ExistingClusterId { get; set; }
 
+        [Input("health")]
+        public Inputs.GetJobJobSettingsSettingsTaskHealthArgs? Health { get; set; }
+
         [Input("jobClusterKey")]
         public string? JobClusterKey { get; set; }
 
@@ -60,6 +63,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("notebookTask")]
         public Inputs.GetJobJobSettingsSettingsTaskNotebookTaskArgs? NotebookTask { get; set; }
+
+        [Input("notificationSettings")]
+        public Inputs.GetJobJobSettingsSettingsTaskNotificationSettingsArgs? NotificationSettings { get; set; }
 
         [Input("pipelineTask")]
         public Inputs.GetJobJobSettingsSettingsTaskPipelineTaskArgs? PipelineTask { get; set; }

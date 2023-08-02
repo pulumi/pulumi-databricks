@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -96,6 +97,7 @@ func NewMetastoreProvider(ctx *pulumi.Context,
 		"recipientProfileStr",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MetastoreProvider
 	err := ctx.RegisterResource("databricks:index/metastoreProvider:MetastoreProvider", name, args, &resource, opts...)
 	if err != nil {

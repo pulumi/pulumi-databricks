@@ -7,6 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "databricks:index/accessControlRuleSet:AccessControlRuleSet":
+		r = &AccessControlRuleSet{}
 	case "databricks:index/catalog:Catalog":
 		r = &Catalog{}
 	case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
@@ -189,7 +192,15 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 }
 
 func init() {
-	version, _ := PkgVersion()
+	version, err := internal.PkgVersion()
+	if err != nil {
+		version = semver.Version{Major: 1}
+	}
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/accessControlRuleSet",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/catalog",

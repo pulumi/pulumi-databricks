@@ -8,9 +8,11 @@ import com.pulumi.databricks.outputs.JobTaskConditionTask;
 import com.pulumi.databricks.outputs.JobTaskDbtTask;
 import com.pulumi.databricks.outputs.JobTaskDependsOn;
 import com.pulumi.databricks.outputs.JobTaskEmailNotifications;
+import com.pulumi.databricks.outputs.JobTaskHealth;
 import com.pulumi.databricks.outputs.JobTaskLibrary;
 import com.pulumi.databricks.outputs.JobTaskNewCluster;
 import com.pulumi.databricks.outputs.JobTaskNotebookTask;
+import com.pulumi.databricks.outputs.JobTaskNotificationSettings;
 import com.pulumi.databricks.outputs.JobTaskPipelineTask;
 import com.pulumi.databricks.outputs.JobTaskPythonWheelTask;
 import com.pulumi.databricks.outputs.JobTaskSparkJarTask;
@@ -30,6 +32,10 @@ public final class JobTask {
     private @Nullable String computeKey;
     private @Nullable JobTaskConditionTask conditionTask;
     private @Nullable JobTaskDbtTask dbtTask;
+    /**
+     * @return block specifying dependency(-ies) for a given task.
+     * 
+     */
     private @Nullable List<JobTaskDependsOn> dependsOns;
     private @Nullable String description;
     /**
@@ -38,6 +44,11 @@ public final class JobTask {
      */
     private @Nullable JobTaskEmailNotifications emailNotifications;
     private @Nullable String existingClusterId;
+    /**
+     * @return block described below that specifies health conditions for a given task.
+     * 
+     */
+    private @Nullable JobTaskHealth health;
     /**
      * @return Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      * 
@@ -49,7 +60,7 @@ public final class JobTask {
      */
     private @Nullable List<JobTaskLibrary> libraries;
     /**
-     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      * 
      */
     private @Nullable Integer maxRetries;
@@ -64,6 +75,11 @@ public final class JobTask {
      */
     private @Nullable JobTaskNewCluster newCluster;
     private @Nullable JobTaskNotebookTask notebookTask;
+    /**
+     * @return An optional block controlling the notification settings on the job level (described below).
+     * 
+     */
+    private @Nullable JobTaskNotificationSettings notificationSettings;
     private @Nullable JobTaskPipelineTask pipelineTask;
     private @Nullable JobTaskPythonWheelTask pythonWheelTask;
     /**
@@ -76,6 +92,11 @@ public final class JobTask {
     private @Nullable JobTaskSparkPythonTask sparkPythonTask;
     private @Nullable JobTaskSparkSubmitTask sparkSubmitTask;
     private @Nullable JobTaskSqlTask sqlTask;
+    /**
+     * @return string specifying an unique key for a given task.
+     * * `*_task` - (Required) one of the specific task blocks described below:
+     * 
+     */
     private @Nullable String taskKey;
     /**
      * @return (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -93,6 +114,10 @@ public final class JobTask {
     public Optional<JobTaskDbtTask> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
     }
+    /**
+     * @return block specifying dependency(-ies) for a given task.
+     * 
+     */
     public List<JobTaskDependsOn> dependsOns() {
         return this.dependsOns == null ? List.of() : this.dependsOns;
     }
@@ -110,6 +135,13 @@ public final class JobTask {
         return Optional.ofNullable(this.existingClusterId);
     }
     /**
+     * @return block described below that specifies health conditions for a given task.
+     * 
+     */
+    public Optional<JobTaskHealth> health() {
+        return Optional.ofNullable(this.health);
+    }
+    /**
      * @return Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      * 
      */
@@ -124,7 +156,7 @@ public final class JobTask {
         return this.libraries == null ? List.of() : this.libraries;
     }
     /**
-     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      * 
      */
     public Optional<Integer> maxRetries() {
@@ -146,6 +178,13 @@ public final class JobTask {
     }
     public Optional<JobTaskNotebookTask> notebookTask() {
         return Optional.ofNullable(this.notebookTask);
+    }
+    /**
+     * @return An optional block controlling the notification settings on the job level (described below).
+     * 
+     */
+    public Optional<JobTaskNotificationSettings> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
     }
     public Optional<JobTaskPipelineTask> pipelineTask() {
         return Optional.ofNullable(this.pipelineTask);
@@ -175,6 +214,11 @@ public final class JobTask {
     public Optional<JobTaskSqlTask> sqlTask() {
         return Optional.ofNullable(this.sqlTask);
     }
+    /**
+     * @return string specifying an unique key for a given task.
+     * * `*_task` - (Required) one of the specific task blocks described below:
+     * 
+     */
     public Optional<String> taskKey() {
         return Optional.ofNullable(this.taskKey);
     }
@@ -202,12 +246,14 @@ public final class JobTask {
         private @Nullable String description;
         private @Nullable JobTaskEmailNotifications emailNotifications;
         private @Nullable String existingClusterId;
+        private @Nullable JobTaskHealth health;
         private @Nullable String jobClusterKey;
         private @Nullable List<JobTaskLibrary> libraries;
         private @Nullable Integer maxRetries;
         private @Nullable Integer minRetryIntervalMillis;
         private @Nullable JobTaskNewCluster newCluster;
         private @Nullable JobTaskNotebookTask notebookTask;
+        private @Nullable JobTaskNotificationSettings notificationSettings;
         private @Nullable JobTaskPipelineTask pipelineTask;
         private @Nullable JobTaskPythonWheelTask pythonWheelTask;
         private @Nullable Boolean retryOnTimeout;
@@ -228,12 +274,14 @@ public final class JobTask {
     	      this.description = defaults.description;
     	      this.emailNotifications = defaults.emailNotifications;
     	      this.existingClusterId = defaults.existingClusterId;
+    	      this.health = defaults.health;
     	      this.jobClusterKey = defaults.jobClusterKey;
     	      this.libraries = defaults.libraries;
     	      this.maxRetries = defaults.maxRetries;
     	      this.minRetryIntervalMillis = defaults.minRetryIntervalMillis;
     	      this.newCluster = defaults.newCluster;
     	      this.notebookTask = defaults.notebookTask;
+    	      this.notificationSettings = defaults.notificationSettings;
     	      this.pipelineTask = defaults.pipelineTask;
     	      this.pythonWheelTask = defaults.pythonWheelTask;
     	      this.retryOnTimeout = defaults.retryOnTimeout;
@@ -285,6 +333,11 @@ public final class JobTask {
             return this;
         }
         @CustomType.Setter
+        public Builder health(@Nullable JobTaskHealth health) {
+            this.health = health;
+            return this;
+        }
+        @CustomType.Setter
         public Builder jobClusterKey(@Nullable String jobClusterKey) {
             this.jobClusterKey = jobClusterKey;
             return this;
@@ -315,6 +368,11 @@ public final class JobTask {
         @CustomType.Setter
         public Builder notebookTask(@Nullable JobTaskNotebookTask notebookTask) {
             this.notebookTask = notebookTask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder notificationSettings(@Nullable JobTaskNotificationSettings notificationSettings) {
+            this.notificationSettings = notificationSettings;
             return this;
         }
         @CustomType.Setter
@@ -376,12 +434,14 @@ public final class JobTask {
             o.description = description;
             o.emailNotifications = emailNotifications;
             o.existingClusterId = existingClusterId;
+            o.health = health;
             o.jobClusterKey = jobClusterKey;
             o.libraries = libraries;
             o.maxRetries = maxRetries;
             o.minRetryIntervalMillis = minRetryIntervalMillis;
             o.newCluster = newCluster;
             o.notebookTask = notebookTask;
+            o.notificationSettings = notificationSettings;
             o.pipelineTask = pipelineTask;
             o.pythonWheelTask = pythonWheelTask;
             o.retryOnTimeout = retryOnTimeout;

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsTaskPipelineTaskArgs : global::Pulumi.InvokeArgs
     {
+        [Input("fullRefresh")]
+        public bool? FullRefresh { get; set; }
+
         [Input("pipelineId", required: true)]
         public string PipelineId { get; set; } = null!;
 

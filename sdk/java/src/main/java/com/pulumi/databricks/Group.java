@@ -196,6 +196,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/group:Group")
 public class Group extends com.pulumi.resources.CustomResource {
     /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
+    @Export(name="aclPrincipalId", type=String.class, parameters={})
+    private Output<String> aclPrincipalId;
+
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
+    public Output<String> aclPrincipalId() {
+        return this.aclPrincipalId;
+    }
+    /**
      * This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      * 
      */

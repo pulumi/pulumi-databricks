@@ -18,6 +18,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("noAlertForSkippedRuns")]
         public Input<bool>? NoAlertForSkippedRuns { get; set; }
 
+        [Input("onDurationWarningThresholdExceededs")]
+        private InputList<string>? _onDurationWarningThresholdExceededs;
+        public InputList<string> OnDurationWarningThresholdExceededs
+        {
+            get => _onDurationWarningThresholdExceededs ?? (_onDurationWarningThresholdExceededs = new InputList<string>());
+            set => _onDurationWarningThresholdExceededs = value;
+        }
+
         [Input("onFailures")]
         private InputList<string>? _onFailures;
         public InputList<string> OnFailures

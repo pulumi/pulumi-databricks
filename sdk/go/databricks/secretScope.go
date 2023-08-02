@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ func NewSecretScope(ctx *pulumi.Context,
 		args = &SecretScopeArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecretScope
 	err := ctx.RegisterResource("databricks:index/secretScope:SecretScope", name, args, &resource, opts...)
 	if err != nil {

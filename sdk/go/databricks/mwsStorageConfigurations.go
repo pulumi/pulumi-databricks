@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,10 +34,14 @@ import (
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
 //			rootStorageBucket, err := s3.NewBucketV2(ctx, "rootStorageBucket", &s3.BucketV2Args{
 //				Acl: pulumi.String("private"),
-//				Versionings: s3.BucketV2VersioningArray{
-//					&s3.BucketV2VersioningArgs{
-//						Enabled: pulumi.Bool(false),
-//					},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = s3.NewBucketVersioningV2(ctx, "rootVersioning", &s3.BucketVersioningV2Args{
+//				Bucket: rootStorageBucket.ID(),
+//				VersioningConfiguration: &s3.BucketVersioningV2VersioningConfigurationArgs{
+//					Status: pulumi.String("Disabled"),
 //				},
 //			})
 //			if err != nil {
@@ -107,6 +112,7 @@ func NewMwsStorageConfigurations(ctx *pulumi.Context,
 		"accountId",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MwsStorageConfigurations
 	err := ctx.RegisterResource("databricks:index/mwsStorageConfigurations:MwsStorageConfigurations", name, args, &resource, opts...)
 	if err != nil {

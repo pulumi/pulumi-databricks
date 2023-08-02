@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskConditionTask {
     private @Nullable String left;
+    /**
+     * @return string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * 
+     */
     private @Nullable String op;
     private @Nullable String right;
 
@@ -19,6 +23,10 @@ public final class JobTaskConditionTask {
     public Optional<String> left() {
         return Optional.ofNullable(this.left);
     }
+    /**
+     * @return string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * 
+     */
     public Optional<String> op() {
         return Optional.ofNullable(this.op);
     }

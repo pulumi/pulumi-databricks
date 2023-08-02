@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -88,6 +89,7 @@ func NewServicePrincipalRole(ctx *pulumi.Context,
 	if args.ServicePrincipalId == nil {
 		return nil, errors.New("invalid value for required argument 'ServicePrincipalId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServicePrincipalRole
 	err := ctx.RegisterResource("databricks:index/servicePrincipalRole:ServicePrincipalRole", name, args, &resource, opts...)
 	if err != nil {

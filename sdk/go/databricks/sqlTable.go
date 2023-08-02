@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,11 +20,11 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by namebash
+// # This resource can be imported by its full namebash
 //
 // ```sh
 //
-//	$ pulumi import databricks:index/sqlTable:SqlTable this <name>
+//	$ pulumi import databricks:index/sqlTable:SqlTable this <catalog_name>.<schema_name>.<name>
 //
 // ```
 type SqlTable struct {
@@ -69,6 +70,7 @@ func NewSqlTable(ctx *pulumi.Context,
 	if args.TableType == nil {
 		return nil, errors.New("invalid value for required argument 'TableType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SqlTable
 	err := ctx.RegisterResource("databricks:index/sqlTable:SqlTable", name, args, &resource, opts...)
 	if err != nil {

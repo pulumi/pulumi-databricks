@@ -167,6 +167,12 @@ namespace Pulumi.Databricks
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+        /// </summary>
+        [Output("aclPrincipalId")]
+        public Output<string> AclPrincipalId { get; private set; } = null!;
+
+        /// <summary>
         /// Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         /// </summary>
         [Output("active")]
@@ -291,6 +297,12 @@ namespace Pulumi.Databricks
     public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+        /// </summary>
+        [Input("aclPrincipalId")]
+        public Input<string>? AclPrincipalId { get; set; }
+
+        /// <summary>
         /// Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         /// </summary>
         [Input("active")]
@@ -376,6 +388,12 @@ namespace Pulumi.Databricks
 
     public sealed class UserState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+        /// </summary>
+        [Input("aclPrincipalId")]
+        public Input<string>? AclPrincipalId { get; set; }
+
         /// <summary>
         /// Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         /// </summary>

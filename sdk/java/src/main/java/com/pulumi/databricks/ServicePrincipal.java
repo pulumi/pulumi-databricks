@@ -234,6 +234,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/servicePrincipal:ServicePrincipal")
 public class ServicePrincipal extends com.pulumi.resources.CustomResource {
     /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    @Export(name="aclPrincipalId", type=String.class, parameters={})
+    private Output<String> aclPrincipalId;
+
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    public Output<String> aclPrincipalId() {
+        return this.aclPrincipalId;
+    }
+    /**
      * Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
      * 
      */

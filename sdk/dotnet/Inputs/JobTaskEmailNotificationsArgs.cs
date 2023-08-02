@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskEmailNotificationsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+        /// </summary>
         [Input("alertOnLastAttempt")]
         public Input<bool>? AlertOnLastAttempt { get; set; }
 
@@ -20,6 +23,18 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("noAlertForSkippedRuns")]
         public Input<bool>? NoAlertForSkippedRuns { get; set; }
+
+        [Input("onDurationWarningThresholdExceededs")]
+        private InputList<string>? _onDurationWarningThresholdExceededs;
+
+        /// <summary>
+        /// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+        /// </summary>
+        public InputList<string> OnDurationWarningThresholdExceededs
+        {
+            get => _onDurationWarningThresholdExceededs ?? (_onDurationWarningThresholdExceededs = new InputList<string>());
+            set => _onDurationWarningThresholdExceededs = value;
+        }
 
         [Input("onFailures")]
         private InputList<string>? _onFailures;

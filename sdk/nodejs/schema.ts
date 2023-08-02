@@ -40,10 +40,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by namebash
+ * This resource can be imported by its full namebash
  *
  * ```sh
- *  $ pulumi import databricks:index/schema:Schema this <name>
+ *  $ pulumi import databricks:index/schema:Schema this <catalog_name>.<name>
  * ```
  */
 export class Schema extends pulumi.CustomResource {

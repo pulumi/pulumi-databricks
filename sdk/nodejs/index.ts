@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AccessControlRuleSetArgs, AccessControlRuleSetState } from "./accessControlRuleSet";
+export type AccessControlRuleSet = import("./accessControlRuleSet").AccessControlRuleSet;
+export const AccessControlRuleSet: typeof import("./accessControlRuleSet").AccessControlRuleSet = null as any;
+utilities.lazyLoad(exports, ["AccessControlRuleSet"], () => require("./accessControlRuleSet"));
+
 export { CatalogArgs, CatalogState } from "./catalog";
 export type Catalog = import("./catalog").Catalog;
 export const Catalog: typeof import("./catalog").Catalog = null as any;
@@ -118,6 +123,16 @@ export { GetJobsArgs, GetJobsResult, GetJobsOutputArgs } from "./getJobs";
 export const getJobs: typeof import("./getJobs").getJobs = null as any;
 export const getJobsOutput: typeof import("./getJobs").getJobsOutput = null as any;
 utilities.lazyLoad(exports, ["getJobs","getJobsOutput"], () => require("./getJobs"));
+
+export { GetMetastoreArgs, GetMetastoreResult, GetMetastoreOutputArgs } from "./getMetastore";
+export const getMetastore: typeof import("./getMetastore").getMetastore = null as any;
+export const getMetastoreOutput: typeof import("./getMetastore").getMetastoreOutput = null as any;
+utilities.lazyLoad(exports, ["getMetastore","getMetastoreOutput"], () => require("./getMetastore"));
+
+export { GetMetastoresArgs, GetMetastoresResult, GetMetastoresOutputArgs } from "./getMetastores";
+export const getMetastores: typeof import("./getMetastores").getMetastores = null as any;
+export const getMetastoresOutput: typeof import("./getMetastores").getMetastoresOutput = null as any;
+utilities.lazyLoad(exports, ["getMetastores","getMetastoresOutput"], () => require("./getMetastores"));
 
 export { GetMwsCredentialsArgs, GetMwsCredentialsResult, GetMwsCredentialsOutputArgs } from "./getMwsCredentials";
 export const getMwsCredentials: typeof import("./getMwsCredentials").getMwsCredentials = null as any;
@@ -542,6 +557,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "databricks:index/accessControlRuleSet:AccessControlRuleSet":
+                return new AccessControlRuleSet(name, <any>undefined, { urn })
             case "databricks:index/catalog:Catalog":
                 return new Catalog(name, <any>undefined, { urn })
             case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
@@ -689,6 +706,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("databricks", "index/accessControlRuleSet", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalog", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalogWorkspaceBinding", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)

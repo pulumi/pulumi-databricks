@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,6 +37,7 @@ func NewServicePrincipalSecret(ctx *pulumi.Context,
 		"secret",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServicePrincipalSecret
 	err := ctx.RegisterResource("databricks:index/servicePrincipalSecret:ServicePrincipalSecret", name, args, &resource, opts...)
 	if err != nil {

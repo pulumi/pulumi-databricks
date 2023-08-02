@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailure;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsWebhookNotificationsOnStart;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccess;
@@ -13,11 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsWebhookNotifications {
+    private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs;
     private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnFailure> onFailures;
     private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnStart> onStarts;
     private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnSuccess> onSuccesses;
 
     private GetJobJobSettingsSettingsWebhookNotifications() {}
+    public List<GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs() {
+        return this.onDurationWarningThresholdExceededs == null ? List.of() : this.onDurationWarningThresholdExceededs;
+    }
     public List<GetJobJobSettingsSettingsWebhookNotificationsOnFailure> onFailures() {
         return this.onFailures == null ? List.of() : this.onFailures;
     }
@@ -37,17 +42,27 @@ public final class GetJobJobSettingsSettingsWebhookNotifications {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs;
         private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnFailure> onFailures;
         private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnStart> onStarts;
         private @Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnSuccess> onSuccesses;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsWebhookNotifications defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
     	      this.onStarts = defaults.onStarts;
     	      this.onSuccesses = defaults.onSuccesses;
         }
 
+        @CustomType.Setter
+        public Builder onDurationWarningThresholdExceededs(@Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs) {
+            this.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
+            return this;
+        }
+        public Builder onDurationWarningThresholdExceededs(GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded... onDurationWarningThresholdExceededs) {
+            return onDurationWarningThresholdExceededs(List.of(onDurationWarningThresholdExceededs));
+        }
         @CustomType.Setter
         public Builder onFailures(@Nullable List<GetJobJobSettingsSettingsWebhookNotificationsOnFailure> onFailures) {
             this.onFailures = onFailures;
@@ -74,6 +89,7 @@ public final class GetJobJobSettingsSettingsWebhookNotifications {
         }
         public GetJobJobSettingsSettingsWebhookNotifications build() {
             final var o = new GetJobJobSettingsSettingsWebhookNotifications();
+            o.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             o.onFailures = onFailures;
             o.onStarts = onStarts;
             o.onSuccesses = onSuccesses;

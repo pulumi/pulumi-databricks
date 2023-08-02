@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -202,6 +203,8 @@ import (
 type ServicePrincipal struct {
 	pulumi.CustomResourceState
 
+	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+	AclPrincipalId pulumi.StringOutput `pulumi:"aclPrincipalId"`
 	// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
 	Active pulumi.BoolPtrOutput `pulumi:"active"`
 	// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
@@ -238,6 +241,7 @@ func NewServicePrincipal(ctx *pulumi.Context,
 		args = &ServicePrincipalArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServicePrincipal
 	err := ctx.RegisterResource("databricks:index/servicePrincipal:ServicePrincipal", name, args, &resource, opts...)
 	if err != nil {
@@ -260,6 +264,8 @@ func GetServicePrincipal(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePrincipal resources.
 type servicePrincipalState struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+	AclPrincipalId *string `pulumi:"aclPrincipalId"`
 	// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
 	Active *bool `pulumi:"active"`
 	// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
@@ -290,6 +296,8 @@ type servicePrincipalState struct {
 }
 
 type ServicePrincipalState struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+	AclPrincipalId pulumi.StringPtrInput
 	// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
 	Active pulumi.BoolPtrInput
 	// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
@@ -324,6 +332,8 @@ func (ServicePrincipalState) ElementType() reflect.Type {
 }
 
 type servicePrincipalArgs struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+	AclPrincipalId *string `pulumi:"aclPrincipalId"`
 	// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
 	Active *bool `pulumi:"active"`
 	// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
@@ -355,6 +365,8 @@ type servicePrincipalArgs struct {
 
 // The set of arguments for constructing a ServicePrincipal resource.
 type ServicePrincipalArgs struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+	AclPrincipalId pulumi.StringPtrInput
 	// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
 	Active pulumi.BoolPtrInput
 	// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
@@ -469,6 +481,11 @@ func (o ServicePrincipalOutput) ToServicePrincipalOutput() ServicePrincipalOutpu
 
 func (o ServicePrincipalOutput) ToServicePrincipalOutputWithContext(ctx context.Context) ServicePrincipalOutput {
 	return o
+}
+
+// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+func (o ServicePrincipalOutput) AclPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.AclPrincipalId }).(pulumi.StringOutput)
 }
 
 // Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -166,6 +167,8 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
+	// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+	AclPrincipalId pulumi.StringOutput `pulumi:"aclPrincipalId"`
 	// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
 	AllowClusterCreate pulumi.BoolPtrOutput `pulumi:"allowClusterCreate"`
 	// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
@@ -189,6 +192,7 @@ func NewGroup(ctx *pulumi.Context,
 		args = &GroupArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Group
 	err := ctx.RegisterResource("databricks:index/group:Group", name, args, &resource, opts...)
 	if err != nil {
@@ -211,6 +215,8 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+	AclPrincipalId *string `pulumi:"aclPrincipalId"`
 	// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
@@ -228,6 +234,8 @@ type groupState struct {
 }
 
 type GroupState struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+	AclPrincipalId pulumi.StringPtrInput
 	// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
 	AllowClusterCreate pulumi.BoolPtrInput
 	// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
@@ -249,6 +257,8 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+	AclPrincipalId *string `pulumi:"aclPrincipalId"`
 	// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
@@ -267,6 +277,8 @@ type groupArgs struct {
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+	AclPrincipalId pulumi.StringPtrInput
 	// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
 	AllowClusterCreate pulumi.BoolPtrInput
 	// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
@@ -368,6 +380,11 @@ func (o GroupOutput) ToGroupOutput() GroupOutput {
 
 func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
+}
+
+// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+func (o GroupOutput) AclPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.AclPrincipalId }).(pulumi.StringOutput)
 }
 
 // This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.

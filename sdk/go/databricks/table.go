@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,6 +51,7 @@ func NewTable(ctx *pulumi.Context,
 	if args.TableType == nil {
 		return nil, errors.New("invalid value for required argument 'TableType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Table
 	err := ctx.RegisterResource("databricks:index/table:Table", name, args, &resource, opts...)
 	if err != nil {

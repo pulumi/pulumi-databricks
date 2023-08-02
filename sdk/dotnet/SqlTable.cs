@@ -18,10 +18,10 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by namebash
+    /// This resource can be imported by its full namebash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/sqlTable:SqlTable this &lt;name&gt;
+    ///  $ pulumi import databricks:index/sqlTable:SqlTable this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlTable:SqlTable")]

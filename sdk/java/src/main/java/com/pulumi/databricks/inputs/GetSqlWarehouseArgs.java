@@ -81,14 +81,14 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Whether to enable [Photon](https://databricks.com/product/delta-engine).
+     * Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
      * 
      */
     @Import(name="enablePhoton")
     private @Nullable Output<Boolean> enablePhoton;
 
     /**
-     * @return Whether to enable [Photon](https://databricks.com/product/delta-engine).
+     * @return Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
      * 
      */
     public Optional<Output<Boolean>> enablePhoton() {
@@ -96,14 +96,14 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
+     * Whether this SQL warehouse is a serverless SQL warehouse.
      * 
      */
     @Import(name="enableServerlessCompute")
     private @Nullable Output<Boolean> enableServerlessCompute;
 
     /**
-     * @return Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
+     * @return Whether this SQL warehouse is a serverless SQL warehouse.
      * 
      */
     public Optional<Output<Boolean>> enableServerlessCompute() {
@@ -111,18 +111,18 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of the SQL warehouse
+     * The ID of the SQL warehouse.
      * 
      */
-    @Import(name="id", required=true)
-    private Output<String> id;
+    @Import(name="id")
+    private @Nullable Output<String> id;
 
     /**
-     * @return The ID of the SQL warehouse
+     * @return The ID of the SQL warehouse.
      * 
      */
-    public Output<String> id() {
-        return this.id;
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
     }
 
     @Import(name="instanceProfileArn")
@@ -178,14 +178,14 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * Name of the SQL warehouse to search (case-sensitive).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * @return Name of the SQL warehouse to search (case-sensitive).
      * 
      */
     public Optional<Output<String>> name() {
@@ -237,14 +237,14 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Databricks tags all warehouse resources with these tags.
+     * tags used for SQL warehouse resources.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<GetSqlWarehouseTagsArgs> tags;
 
     /**
-     * @return Databricks tags all warehouse resources with these tags.
+     * @return tags used for SQL warehouse resources.
      * 
      */
     public Optional<Output<GetSqlWarehouseTagsArgs>> tags() {
@@ -376,7 +376,7 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enablePhoton Whether to enable [Photon](https://databricks.com/product/delta-engine).
+         * @param enablePhoton Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enablePhoton Whether to enable [Photon](https://databricks.com/product/delta-engine).
+         * @param enablePhoton Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableServerlessCompute Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
+         * @param enableServerlessCompute Whether this SQL warehouse is a serverless SQL warehouse.
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableServerlessCompute Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
+         * @param enableServerlessCompute Whether this SQL warehouse is a serverless SQL warehouse.
          * 
          * @return builder
          * 
@@ -418,18 +418,18 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param id The ID of the SQL warehouse
+         * @param id The ID of the SQL warehouse.
          * 
          * @return builder
          * 
          */
-        public Builder id(Output<String> id) {
+        public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
         /**
-         * @param id The ID of the SQL warehouse
+         * @param id The ID of the SQL warehouse.
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+         * @param name Name of the SQL warehouse to search (case-sensitive).
          * 
          * @return builder
          * 
@@ -522,7 +522,7 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+         * @param name Name of the SQL warehouse to search (case-sensitive).
          * 
          * @return builder
          * 
@@ -592,7 +592,7 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags Databricks tags all warehouse resources with these tags.
+         * @param tags tags used for SQL warehouse resources.
          * 
          * @return builder
          * 
@@ -603,7 +603,7 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags Databricks tags all warehouse resources with these tags.
+         * @param tags tags used for SQL warehouse resources.
          * 
          * @return builder
          * 
@@ -613,7 +613,6 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetSqlWarehouseArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
             return $;
         }
     }

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,6 +72,7 @@ import (
 // * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
 // * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
 func GetSqlWarehouses(ctx *pulumi.Context, args *GetSqlWarehousesArgs, opts ...pulumi.InvokeOption) (*GetSqlWarehousesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSqlWarehousesResult
 	err := ctx.Invoke("databricks:index/getSqlWarehouses:getSqlWarehouses", args, &rv, opts...)
 	if err != nil {

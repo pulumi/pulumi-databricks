@@ -17,9 +17,17 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
 
     public static final JobEmailNotificationsArgs Empty = new JobEmailNotificationsArgs();
 
+    /**
+     * (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+     * 
+     */
     @Import(name="alertOnLastAttempt")
     private @Nullable Output<Boolean> alertOnLastAttempt;
 
+    /**
+     * @return (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+     * 
+     */
     public Optional<Output<Boolean>> alertOnLastAttempt() {
         return Optional.ofNullable(this.alertOnLastAttempt);
     }
@@ -37,6 +45,21 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<Boolean>> noAlertForSkippedRuns() {
         return Optional.ofNullable(this.noAlertForSkippedRuns);
+    }
+
+    /**
+     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     * 
+     */
+    @Import(name="onDurationWarningThresholdExceededs")
+    private @Nullable Output<List<String>> onDurationWarningThresholdExceededs;
+
+    /**
+     * @return (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     * 
+     */
+    public Optional<Output<List<String>>> onDurationWarningThresholdExceededs() {
+        return Optional.ofNullable(this.onDurationWarningThresholdExceededs);
     }
 
     /**
@@ -89,6 +112,7 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
     private JobEmailNotificationsArgs(JobEmailNotificationsArgs $) {
         this.alertOnLastAttempt = $.alertOnLastAttempt;
         this.noAlertForSkippedRuns = $.noAlertForSkippedRuns;
+        this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
         this.onStarts = $.onStarts;
         this.onSuccesses = $.onSuccesses;
@@ -112,11 +136,23 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
             $ = new JobEmailNotificationsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alertOnLastAttempt (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertOnLastAttempt(@Nullable Output<Boolean> alertOnLastAttempt) {
             $.alertOnLastAttempt = alertOnLastAttempt;
             return this;
         }
 
+        /**
+         * @param alertOnLastAttempt (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertOnLastAttempt(Boolean alertOnLastAttempt) {
             return alertOnLastAttempt(Output.of(alertOnLastAttempt));
         }
@@ -140,6 +176,37 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
          */
         public Builder noAlertForSkippedRuns(Boolean noAlertForSkippedRuns) {
             return noAlertForSkippedRuns(Output.of(noAlertForSkippedRuns));
+        }
+
+        /**
+         * @param onDurationWarningThresholdExceededs (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDurationWarningThresholdExceededs(@Nullable Output<List<String>> onDurationWarningThresholdExceededs) {
+            $.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
+            return this;
+        }
+
+        /**
+         * @param onDurationWarningThresholdExceededs (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDurationWarningThresholdExceededs(List<String> onDurationWarningThresholdExceededs) {
+            return onDurationWarningThresholdExceededs(Output.of(onDurationWarningThresholdExceededs));
+        }
+
+        /**
+         * @param onDurationWarningThresholdExceededs (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDurationWarningThresholdExceededs(String... onDurationWarningThresholdExceededs) {
+            return onDurationWarningThresholdExceededs(List.of(onDurationWarningThresholdExceededs));
         }
 
         /**

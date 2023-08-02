@@ -16,6 +16,9 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? ComputeKey;
         public readonly Outputs.JobTaskConditionTask? ConditionTask;
         public readonly Outputs.JobTaskDbtTask? DbtTask;
+        /// <summary>
+        /// block specifying dependency(-ies) for a given task.
+        /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskDependsOn> DependsOns;
         public readonly string? Description;
         /// <summary>
@@ -23,6 +26,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.JobTaskEmailNotifications? EmailNotifications;
         public readonly string? ExistingClusterId;
+        /// <summary>
+        /// block described below that specifies health conditions for a given task.
+        /// </summary>
+        public readonly Outputs.JobTaskHealth? Health;
         /// <summary>
         /// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
         /// </summary>
@@ -32,7 +39,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskLibrary> Libraries;
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         /// </summary>
         public readonly int? MaxRetries;
         /// <summary>
@@ -44,6 +51,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.JobTaskNewCluster? NewCluster;
         public readonly Outputs.JobTaskNotebookTask? NotebookTask;
+        /// <summary>
+        /// An optional block controlling the notification settings on the job level (described below).
+        /// </summary>
+        public readonly Outputs.JobTaskNotificationSettings? NotificationSettings;
         public readonly Outputs.JobTaskPipelineTask? PipelineTask;
         public readonly Outputs.JobTaskPythonWheelTask? PythonWheelTask;
         /// <summary>
@@ -55,6 +66,10 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.JobTaskSparkPythonTask? SparkPythonTask;
         public readonly Outputs.JobTaskSparkSubmitTask? SparkSubmitTask;
         public readonly Outputs.JobTaskSqlTask? SqlTask;
+        /// <summary>
+        /// string specifying an unique key for a given task.
+        /// * `*_task` - (Required) one of the specific task blocks described below:
+        /// </summary>
         public readonly string? TaskKey;
         /// <summary>
         /// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -77,6 +92,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? existingClusterId,
 
+            Outputs.JobTaskHealth? health,
+
             string? jobClusterKey,
 
             ImmutableArray<Outputs.JobTaskLibrary> libraries,
@@ -88,6 +105,8 @@ namespace Pulumi.Databricks.Outputs
             Outputs.JobTaskNewCluster? newCluster,
 
             Outputs.JobTaskNotebookTask? notebookTask,
+
+            Outputs.JobTaskNotificationSettings? notificationSettings,
 
             Outputs.JobTaskPipelineTask? pipelineTask,
 
@@ -116,12 +135,14 @@ namespace Pulumi.Databricks.Outputs
             Description = description;
             EmailNotifications = emailNotifications;
             ExistingClusterId = existingClusterId;
+            Health = health;
             JobClusterKey = jobClusterKey;
             Libraries = libraries;
             MaxRetries = maxRetries;
             MinRetryIntervalMillis = minRetryIntervalMillis;
             NewCluster = newCluster;
             NotebookTask = notebookTask;
+            NotificationSettings = notificationSettings;
             PipelineTask = pipelineTask;
             PythonWheelTask = pythonWheelTask;
             RetryOnTimeout = retryOnTimeout;

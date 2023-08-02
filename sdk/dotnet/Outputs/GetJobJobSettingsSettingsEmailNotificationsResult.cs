@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly bool? AlertOnLastAttempt;
         public readonly bool? NoAlertForSkippedRuns;
+        public readonly ImmutableArray<string> OnDurationWarningThresholdExceededs;
         public readonly ImmutableArray<string> OnFailures;
         public readonly ImmutableArray<string> OnStarts;
         public readonly ImmutableArray<string> OnSuccesses;
@@ -25,6 +26,8 @@ namespace Pulumi.Databricks.Outputs
 
             bool? noAlertForSkippedRuns,
 
+            ImmutableArray<string> onDurationWarningThresholdExceededs,
+
             ImmutableArray<string> onFailures,
 
             ImmutableArray<string> onStarts,
@@ -33,6 +36,7 @@ namespace Pulumi.Databricks.Outputs
         {
             AlertOnLastAttempt = alertOnLastAttempt;
             NoAlertForSkippedRuns = noAlertForSkippedRuns;
+            OnDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             OnFailures = onFailures;
             OnStarts = onStarts;
             OnSuccesses = onSuccesses;

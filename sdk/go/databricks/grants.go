@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ func NewGrants(ctx *pulumi.Context,
 	if args.Grants == nil {
 		return nil, errors.New("invalid value for required argument 'Grants'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Grants
 	err := ctx.RegisterResource("databricks:index/grants:Grants", name, args, &resource, opts...)
 	if err != nil {

@@ -14,6 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTaskConditionTask
     {
         public readonly string? Left;
+        /// <summary>
+        /// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+        /// </summary>
         public readonly string? Op;
         public readonly string? Right;
 

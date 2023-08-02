@@ -15,6 +15,7 @@ import com.pulumi.databricks.outputs.JobContinuous;
 import com.pulumi.databricks.outputs.JobDbtTask;
 import com.pulumi.databricks.outputs.JobEmailNotifications;
 import com.pulumi.databricks.outputs.JobGitSource;
+import com.pulumi.databricks.outputs.JobHealth;
 import com.pulumi.databricks.outputs.JobJobCluster;
 import com.pulumi.databricks.outputs.JobLibrary;
 import com.pulumi.databricks.outputs.JobNewCluster;
@@ -55,7 +56,11 @@ public class Job extends com.pulumi.resources.CustomResource {
     /**
      * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
      * 
+     * @deprecated
+     * always_running will be replaced by control_run_state in the next major release.
+     * 
      */
+    @Deprecated /* always_running will be replaced by control_run_state in the next major release. */
     @Export(name="alwaysRunning", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> alwaysRunning;
 
@@ -77,6 +82,68 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<JobContinuous>> continuous() {
         return Codegen.optional(this.continuous);
+    }
+    /**
+     * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+     * 
+     * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    @Export(name="controlRunState", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> controlRunState;
+
+    /**
+     * @return (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+     * 
+     * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public Output<Optional<Boolean>> controlRunState() {
+        return Codegen.optional(this.controlRunState);
     }
     @Export(name="dbtTask", type=JobDbtTask.class, parameters={})
     private Output</* @Nullable */ JobDbtTask> dbtTask;
@@ -115,6 +182,20 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<JobGitSource>> gitSource() {
         return Codegen.optional(this.gitSource);
+    }
+    /**
+     * An optional block that specifies the health conditions for the job (described below).
+     * 
+     */
+    @Export(name="health", type=JobHealth.class, parameters={})
+    private Output</* @Nullable */ JobHealth> health;
+
+    /**
+     * @return An optional block that specifies the health conditions for the job (described below).
+     * 
+     */
+    public Output<Optional<JobHealth>> health() {
+        return Codegen.optional(this.health);
     }
     /**
      * A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
@@ -159,14 +240,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxConcurrentRuns);
     }
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
      * 
      */
     @Export(name="maxRetries", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> maxRetries;
 
     /**
-     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
      * 
      */
     public Output<Optional<Integer>> maxRetries() {
@@ -220,9 +301,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobNotebookTask>> notebookTask() {
         return Codegen.optional(this.notebookTask);
     }
+    /**
+     * An optional block controlling the notification settings on the job level (described below).
+     * 
+     */
     @Export(name="notificationSettings", type=JobNotificationSettings.class, parameters={})
     private Output</* @Nullable */ JobNotificationSettings> notificationSettings;
 
+    /**
+     * @return An optional block controlling the notification settings on the job level (described below).
+     * 
+     */
     public Output<Optional<JobNotificationSettings>> notificationSettings() {
         return Codegen.optional(this.notificationSettings);
     }

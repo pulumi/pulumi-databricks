@@ -166,6 +166,12 @@ namespace Pulumi.Databricks
     public partial class ServicePrincipal : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        /// </summary>
+        [Output("aclPrincipalId")]
+        public Output<string> AclPrincipalId { get; private set; } = null!;
+
+        /// <summary>
         /// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
         /// </summary>
         [Output("active")]
@@ -293,6 +299,12 @@ namespace Pulumi.Databricks
     public sealed class ServicePrincipalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        /// </summary>
+        [Input("aclPrincipalId")]
+        public Input<string>? AclPrincipalId { get; set; }
+
+        /// <summary>
         /// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
         /// </summary>
         [Input("active")]
@@ -381,6 +393,12 @@ namespace Pulumi.Databricks
 
     public sealed class ServicePrincipalState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        /// </summary>
+        [Input("aclPrincipalId")]
+        public Input<string>? AclPrincipalId { get; set; }
+
         /// <summary>
         /// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
         /// </summary>

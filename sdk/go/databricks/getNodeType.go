@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,6 +75,7 @@ import (
 // * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
 // * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 func GetNodeType(ctx *pulumi.Context, args *GetNodeTypeArgs, opts ...pulumi.InvokeOption) (*GetNodeTypeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNodeTypeResult
 	err := ctx.Invoke("databricks:index/getNodeType:getNodeType", args, &rv, opts...)
 	if err != nil {

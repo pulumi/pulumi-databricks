@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -179,6 +180,7 @@ func NewStorageCredential(ctx *pulumi.Context,
 		args = &StorageCredentialArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StorageCredential
 	err := ctx.RegisterResource("databricks:index/storageCredential:StorageCredential", name, args, &resource, opts...)
 	if err != nil {

@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("outcome")]
         public Input<string>? Outcome { get; set; }
 
+        /// <summary>
+        /// The name of the task this task depends on.
+        /// </summary>
         [Input("taskKey", required: true)]
         public Input<string> TaskKey { get; set; } = null!;
 

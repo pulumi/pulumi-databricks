@@ -20,7 +20,7 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// Retrieve attributes of each SQL warehouses in a workspace
+        /// * Retrieve attributes of each SQL warehouses in a workspace:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -42,6 +42,24 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
+        /// 
+        /// * Search for a specific SQL Warehouse by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetSqlWarehouse.Invoke(new()
+        ///     {
+        ///         Name = "Starter Warehouse",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// ## Related resources
@@ -54,7 +72,7 @@ namespace Pulumi.Databricks
         /// * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
         /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
         /// </summary>
-        public static Task<GetSqlWarehouseResult> InvokeAsync(GetSqlWarehouseArgs args, InvokeOptions? options = null)
+        public static Task<GetSqlWarehouseResult> InvokeAsync(GetSqlWarehouseArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSqlWarehouseResult>("databricks:index/getSqlWarehouse:getSqlWarehouse", args ?? new GetSqlWarehouseArgs(), options.WithDefaults());
 
         /// <summary>
@@ -66,7 +84,7 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// Retrieve attributes of each SQL warehouses in a workspace
+        /// * Retrieve attributes of each SQL warehouses in a workspace:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -88,6 +106,24 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
+        /// 
+        /// * Search for a specific SQL Warehouse by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetSqlWarehouse.Invoke(new()
+        ///     {
+        ///         Name = "Starter Warehouse",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// ## Related resources
@@ -100,7 +136,7 @@ namespace Pulumi.Databricks
         /// * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
         /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
         /// </summary>
-        public static Output<GetSqlWarehouseResult> Invoke(GetSqlWarehouseInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetSqlWarehouseResult> Invoke(GetSqlWarehouseInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSqlWarehouseResult>("databricks:index/getSqlWarehouse:getSqlWarehouse", args ?? new GetSqlWarehouseInvokeArgs(), options.WithDefaults());
     }
 
@@ -132,22 +168,22 @@ namespace Pulumi.Databricks
         public string? DataSourceId { get; set; }
 
         /// <summary>
-        /// Whether to enable [Photon](https://databricks.com/product/delta-engine).
+        /// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
         /// </summary>
         [Input("enablePhoton")]
         public bool? EnablePhoton { get; set; }
 
         /// <summary>
-        /// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
+        /// Whether this SQL warehouse is a serverless SQL warehouse.
         /// </summary>
         [Input("enableServerlessCompute")]
         public bool? EnableServerlessCompute { get; set; }
 
         /// <summary>
-        /// The ID of the SQL warehouse
+        /// The ID of the SQL warehouse.
         /// </summary>
-        [Input("id", required: true)]
-        public string Id { get; set; } = null!;
+        [Input("id")]
+        public string? Id { get; set; }
 
         [Input("instanceProfileArn")]
         public string? InstanceProfileArn { get; set; }
@@ -171,7 +207,7 @@ namespace Pulumi.Databricks
         public int? MinNumClusters { get; set; }
 
         /// <summary>
-        /// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+        /// Name of the SQL warehouse to search (case-sensitive).
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -195,7 +231,7 @@ namespace Pulumi.Databricks
         public string? State { get; set; }
 
         /// <summary>
-        /// Databricks tags all warehouse resources with these tags.
+        /// tags used for SQL warehouse resources.
         /// </summary>
         [Input("tags")]
         public Inputs.GetSqlWarehouseTagsArgs? Tags { get; set; }
@@ -233,22 +269,22 @@ namespace Pulumi.Databricks
         public Input<string>? DataSourceId { get; set; }
 
         /// <summary>
-        /// Whether to enable [Photon](https://databricks.com/product/delta-engine).
+        /// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
         /// </summary>
         [Input("enablePhoton")]
         public Input<bool>? EnablePhoton { get; set; }
 
         /// <summary>
-        /// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
+        /// Whether this SQL warehouse is a serverless SQL warehouse.
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
 
         /// <summary>
-        /// The ID of the SQL warehouse
+        /// The ID of the SQL warehouse.
         /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        [Input("id")]
+        public Input<string>? Id { get; set; }
 
         [Input("instanceProfileArn")]
         public Input<string>? InstanceProfileArn { get; set; }
@@ -272,7 +308,7 @@ namespace Pulumi.Databricks
         public Input<int>? MinNumClusters { get; set; }
 
         /// <summary>
-        /// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+        /// Name of the SQL warehouse to search (case-sensitive).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -296,7 +332,7 @@ namespace Pulumi.Databricks
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Databricks tags all warehouse resources with these tags.
+        /// tags used for SQL warehouse resources.
         /// </summary>
         [Input("tags")]
         public Input<Inputs.GetSqlWarehouseTagsInputArgs>? Tags { get; set; }
@@ -328,13 +364,16 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string DataSourceId;
         /// <summary>
-        /// Whether to enable [Photon](https://databricks.com/product/delta-engine).
+        /// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
         /// </summary>
         public readonly bool EnablePhoton;
         /// <summary>
-        /// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
+        /// Whether this SQL warehouse is a serverless SQL warehouse.
         /// </summary>
         public readonly bool EnableServerlessCompute;
+        /// <summary>
+        /// The ID of the SQL warehouse.
+        /// </summary>
         public readonly string Id;
         public readonly string InstanceProfileArn;
         /// <summary>
@@ -364,7 +403,7 @@ namespace Pulumi.Databricks
         public readonly string SpotInstancePolicy;
         public readonly string State;
         /// <summary>
-        /// Databricks tags all warehouse resources with these tags.
+        /// tags used for SQL warehouse resources.
         /// </summary>
         public readonly Outputs.GetSqlWarehouseTagsResult Tags;
 

@@ -109,8 +109,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Creating a Databricks on GCP workspace
- * 
- * &gt; **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) on GCP.
  * ```java
  * package generated_program;
  * 
@@ -253,7 +251,7 @@ import javax.annotation.Nullable;
  * * Provisioning Databricks on GCP guide.
  * * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
  * * databricks.MwsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
- * * databricks.MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect] (https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
+ * * databricks.MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
  * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
  * 
  * ## Import

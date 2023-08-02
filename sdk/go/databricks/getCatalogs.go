@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 // * Schema to manage schemas within Unity Catalog.
 // * Catalog to manage catalogs within Unity Catalog.
 func GetCatalogs(ctx *pulumi.Context, args *GetCatalogsArgs, opts ...pulumi.InvokeOption) (*GetCatalogsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCatalogsResult
 	err := ctx.Invoke("databricks:index/getCatalogs:getCatalogs", args, &rv, opts...)
 	if err != nil {

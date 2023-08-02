@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,6 +82,7 @@ func NewMwsWorkspaces(ctx *pulumi.Context,
 		"accountId",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MwsWorkspaces
 	err := ctx.RegisterResource("databricks:index/mwsWorkspaces:MwsWorkspaces", name, args, &resource, opts...)
 	if err != nil {

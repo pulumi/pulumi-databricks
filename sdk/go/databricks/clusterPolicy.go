@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,6 +81,7 @@ func NewClusterPolicy(ctx *pulumi.Context,
 		args = &ClusterPolicyArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClusterPolicy
 	err := ctx.RegisterResource("databricks:index/clusterPolicy:ClusterPolicy", name, args, &resource, opts...)
 	if err != nil {

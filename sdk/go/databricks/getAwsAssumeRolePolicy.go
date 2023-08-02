@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -85,6 +86,7 @@ import (
 // * getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
 // * getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
 func GetAwsAssumeRolePolicy(ctx *pulumi.Context, args *GetAwsAssumeRolePolicyArgs, opts ...pulumi.InvokeOption) (*GetAwsAssumeRolePolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAwsAssumeRolePolicyResult
 	err := ctx.Invoke("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", args, &rv, opts...)
 	if err != nil {

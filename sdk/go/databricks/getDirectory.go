@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupDirectory(ctx *pulumi.Context, args *LookupDirectoryArgs, opts ...pulumi.InvokeOption) (*LookupDirectoryResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDirectoryResult
 	err := ctx.Invoke("databricks:index/getDirectory:getDirectory", args, &rv, opts...)
 	if err != nil {

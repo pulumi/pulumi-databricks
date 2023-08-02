@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobGitSourceJobSourceArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -43,6 +44,13 @@ public final class JobGitSourceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> commit() {
         return Optional.ofNullable(this.commit);
+    }
+
+    @Import(name="jobSource")
+    private @Nullable Output<JobGitSourceJobSourceArgs> jobSource;
+
+    public Optional<Output<JobGitSourceJobSourceArgs>> jobSource() {
+        return Optional.ofNullable(this.jobSource);
     }
 
     /**
@@ -95,6 +103,7 @@ public final class JobGitSourceArgs extends com.pulumi.resources.ResourceArgs {
     private JobGitSourceArgs(JobGitSourceArgs $) {
         this.branch = $.branch;
         this.commit = $.commit;
+        this.jobSource = $.jobSource;
         this.provider = $.provider;
         this.tag = $.tag;
         this.url = $.url;
@@ -158,6 +167,15 @@ public final class JobGitSourceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder commit(String commit) {
             return commit(Output.of(commit));
+        }
+
+        public Builder jobSource(@Nullable Output<JobGitSourceJobSourceArgs> jobSource) {
+            $.jobSource = jobSource;
+            return this;
+        }
+
+        public Builder jobSource(JobGitSourceJobSourceArgs jobSource) {
+            return jobSource(Output.of(jobSource));
         }
 
         /**

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,6 +64,7 @@ func NewWorkspaceConf(ctx *pulumi.Context,
 		args = &WorkspaceConfArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkspaceConf
 	err := ctx.RegisterResource("databricks:index/workspaceConf:WorkspaceConf", name, args, &resource, opts...)
 	if err != nil {

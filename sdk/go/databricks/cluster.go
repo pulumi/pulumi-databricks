@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -113,7 +114,7 @@ type Cluster struct {
 	PolicyId   pulumi.StringPtrOutput `pulumi:"policyId"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrOutput `pulumi:"runtimeEngine"`
-	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	// The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName pulumi.StringPtrOutput `pulumi:"singleUserName"`
 	// Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
 	SparkConf pulumi.MapOutput `pulumi:"sparkConf"`
@@ -139,6 +140,7 @@ func NewCluster(ctx *pulumi.Context,
 	if args.SparkVersion == nil {
 		return nil, errors.New("invalid value for required argument 'SparkVersion'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Cluster
 	err := ctx.RegisterResource("databricks:index/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {
@@ -251,7 +253,7 @@ type clusterState struct {
 	PolicyId   *string `pulumi:"policyId"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine *string `pulumi:"runtimeEngine"`
-	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	// The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName *string `pulumi:"singleUserName"`
 	// Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
 	SparkConf map[string]interface{} `pulumi:"sparkConf"`
@@ -358,7 +360,7 @@ type ClusterState struct {
 	PolicyId   pulumi.StringPtrInput
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrInput
-	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	// The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName pulumi.StringPtrInput
 	// Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
 	SparkConf pulumi.MapInput
@@ -467,7 +469,7 @@ type clusterArgs struct {
 	PolicyId   *string `pulumi:"policyId"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine *string `pulumi:"runtimeEngine"`
-	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	// The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName *string `pulumi:"singleUserName"`
 	// Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
 	SparkConf map[string]interface{} `pulumi:"sparkConf"`
@@ -570,7 +572,7 @@ type ClusterArgs struct {
 	PolicyId   pulumi.StringPtrInput
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrInput
-	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	// The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName pulumi.StringPtrInput
 	// Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
 	SparkConf pulumi.MapInput
@@ -844,7 +846,7 @@ func (o ClusterOutput) RuntimeEngine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.RuntimeEngine }).(pulumi.StringPtrOutput)
 }
 
-// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+// The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 func (o ClusterOutput) SingleUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.SingleUserName }).(pulumi.StringPtrOutput)
 }

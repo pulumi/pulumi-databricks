@@ -138,6 +138,10 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     */
+    public readonly aclPrincipalId!: pulumi.Output<string>;
+    /**
      * Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
      */
     public readonly active!: pulumi.Output<boolean | undefined>;
@@ -201,6 +205,7 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
+            resourceInputs["aclPrincipalId"] = state ? state.aclPrincipalId : undefined;
             resourceInputs["active"] = state ? state.active : undefined;
             resourceInputs["allowClusterCreate"] = state ? state.allowClusterCreate : undefined;
             resourceInputs["allowInstancePoolCreate"] = state ? state.allowInstancePoolCreate : undefined;
@@ -220,6 +225,7 @@ export class User extends pulumi.CustomResource {
             if ((!args || args.userName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
+            resourceInputs["aclPrincipalId"] = args ? args.aclPrincipalId : undefined;
             resourceInputs["active"] = args ? args.active : undefined;
             resourceInputs["allowClusterCreate"] = args ? args.allowClusterCreate : undefined;
             resourceInputs["allowInstancePoolCreate"] = args ? args.allowInstancePoolCreate : undefined;
@@ -244,6 +250,10 @@ export class User extends pulumi.CustomResource {
  * Input properties used for looking up and filtering User resources.
  */
 export interface UserState {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     */
+    aclPrincipalId?: pulumi.Input<string>;
     /**
      * Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
      */
@@ -300,6 +310,10 @@ export interface UserState {
  * The set of arguments for constructing a User resource.
  */
 export interface UserArgs {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     */
+    aclPrincipalId?: pulumi.Input<string>;
     /**
      * Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
      */

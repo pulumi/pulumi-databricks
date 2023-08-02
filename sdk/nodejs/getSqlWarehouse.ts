@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Retrieve attributes of each SQL warehouses in a workspace
+ * * Retrieve attributes of each SQL warehouses in a workspace:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,17 @@ import * as utilities from "./utilities";
  * const allSqlWarehouse = .map(([, ]) => (databricks.getSqlWarehouse({
  *     id: __value,
  * })));
+ * ```
+ *
+ * * Search for a specific SQL Warehouse by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getSqlWarehouse({
+ *     name: "Starter Warehouse",
+ * });
  * ```
  * ## Related resources
  *
@@ -34,7 +45,8 @@ import * as utilities from "./utilities";
  * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
  * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
  */
-export function getSqlWarehouse(args: GetSqlWarehouseArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlWarehouseResult> {
+export function getSqlWarehouse(args?: GetSqlWarehouseArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlWarehouseResult> {
+    args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getSqlWarehouse:getSqlWarehouse", {
@@ -79,17 +91,17 @@ export interface GetSqlWarehouseArgs {
      */
     dataSourceId?: string;
     /**
-     * Whether to enable [Photon](https://databricks.com/product/delta-engine).
+     * Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
      */
     enablePhoton?: boolean;
     /**
-     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
+     * Whether this SQL warehouse is a serverless SQL warehouse.
      */
     enableServerlessCompute?: boolean;
     /**
-     * The ID of the SQL warehouse
+     * The ID of the SQL warehouse.
      */
-    id: string;
+    id?: string;
     instanceProfileArn?: string;
     /**
      * JDBC connection string.
@@ -104,7 +116,7 @@ export interface GetSqlWarehouseArgs {
      */
     minNumClusters?: number;
     /**
-     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * Name of the SQL warehouse to search (case-sensitive).
      */
     name?: string;
     numClusters?: number;
@@ -118,7 +130,7 @@ export interface GetSqlWarehouseArgs {
     spotInstancePolicy?: string;
     state?: string;
     /**
-     * Databricks tags all warehouse resources with these tags.
+     * tags used for SQL warehouse resources.
      */
     tags?: inputs.GetSqlWarehouseTags;
 }
@@ -144,13 +156,16 @@ export interface GetSqlWarehouseResult {
      */
     readonly dataSourceId: string;
     /**
-     * Whether to enable [Photon](https://databricks.com/product/delta-engine).
+     * Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
      */
     readonly enablePhoton: boolean;
     /**
-     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
+     * Whether this SQL warehouse is a serverless SQL warehouse.
      */
     readonly enableServerlessCompute: boolean;
+    /**
+     * The ID of the SQL warehouse.
+     */
     readonly id: string;
     readonly instanceProfileArn: string;
     /**
@@ -180,7 +195,7 @@ export interface GetSqlWarehouseResult {
     readonly spotInstancePolicy: string;
     readonly state: string;
     /**
-     * Databricks tags all warehouse resources with these tags.
+     * tags used for SQL warehouse resources.
      */
     readonly tags: outputs.GetSqlWarehouseTags;
 }
@@ -191,7 +206,7 @@ export interface GetSqlWarehouseResult {
  *
  * ## Example Usage
  *
- * Retrieve attributes of each SQL warehouses in a workspace
+ * * Retrieve attributes of each SQL warehouses in a workspace:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -201,6 +216,17 @@ export interface GetSqlWarehouseResult {
  * const allSqlWarehouse = .map(([, ]) => (databricks.getSqlWarehouse({
  *     id: __value,
  * })));
+ * ```
+ *
+ * * Search for a specific SQL Warehouse by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getSqlWarehouse({
+ *     name: "Starter Warehouse",
+ * });
  * ```
  * ## Related resources
  *
@@ -212,7 +238,7 @@ export interface GetSqlWarehouseResult {
  * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
  * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
  */
-export function getSqlWarehouseOutput(args: GetSqlWarehouseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlWarehouseResult> {
+export function getSqlWarehouseOutput(args?: GetSqlWarehouseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlWarehouseResult> {
     return pulumi.output(args).apply((a: any) => getSqlWarehouse(a, opts))
 }
 
@@ -237,17 +263,17 @@ export interface GetSqlWarehouseOutputArgs {
      */
     dataSourceId?: pulumi.Input<string>;
     /**
-     * Whether to enable [Photon](https://databricks.com/product/delta-engine).
+     * Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
      */
     enablePhoton?: pulumi.Input<boolean>;
     /**
-     * Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
+     * Whether this SQL warehouse is a serverless SQL warehouse.
      */
     enableServerlessCompute?: pulumi.Input<boolean>;
     /**
-     * The ID of the SQL warehouse
+     * The ID of the SQL warehouse.
      */
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     instanceProfileArn?: pulumi.Input<string>;
     /**
      * JDBC connection string.
@@ -262,7 +288,7 @@ export interface GetSqlWarehouseOutputArgs {
      */
     minNumClusters?: pulumi.Input<number>;
     /**
-     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * Name of the SQL warehouse to search (case-sensitive).
      */
     name?: pulumi.Input<string>;
     numClusters?: pulumi.Input<number>;
@@ -276,7 +302,7 @@ export interface GetSqlWarehouseOutputArgs {
     spotInstancePolicy?: pulumi.Input<string>;
     state?: pulumi.Input<string>;
     /**
-     * Databricks tags all warehouse resources with these tags.
+     * tags used for SQL warehouse resources.
      */
     tags?: pulumi.Input<inputs.GetSqlWarehouseTagsArgs>;
 }

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,6 +28,7 @@ import (
 // * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
 // * databricksService principal to manage service principals
 func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, opts ...pulumi.InvokeOption) (*GetServicePrincipalsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServicePrincipalsResult
 	err := ctx.Invoke("databricks:index/getServicePrincipals:getServicePrincipals", args, &rv, opts...)
 	if err != nil {

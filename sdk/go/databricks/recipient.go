@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -104,6 +105,7 @@ func NewRecipient(ctx *pulumi.Context,
 		"sharingCode",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Recipient
 	err := ctx.RegisterResource("databricks:index/recipient:Recipient", name, args, &resource, opts...)
 	if err != nil {

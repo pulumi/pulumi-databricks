@@ -118,6 +118,10 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     */
+    public readonly aclPrincipalId!: pulumi.Output<string>;
+    /**
      * This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
     public readonly allowClusterCreate!: pulumi.Output<boolean | undefined>;
@@ -157,6 +161,7 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
+            resourceInputs["aclPrincipalId"] = state ? state.aclPrincipalId : undefined;
             resourceInputs["allowClusterCreate"] = state ? state.allowClusterCreate : undefined;
             resourceInputs["allowInstancePoolCreate"] = state ? state.allowInstancePoolCreate : undefined;
             resourceInputs["databricksSqlAccess"] = state ? state.databricksSqlAccess : undefined;
@@ -167,6 +172,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["workspaceAccess"] = state ? state.workspaceAccess : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
+            resourceInputs["aclPrincipalId"] = args ? args.aclPrincipalId : undefined;
             resourceInputs["allowClusterCreate"] = args ? args.allowClusterCreate : undefined;
             resourceInputs["allowInstancePoolCreate"] = args ? args.allowInstancePoolCreate : undefined;
             resourceInputs["databricksSqlAccess"] = args ? args.databricksSqlAccess : undefined;
@@ -185,6 +191,10 @@ export class Group extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Group resources.
  */
 export interface GroupState {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     */
+    aclPrincipalId?: pulumi.Input<string>;
     /**
      * This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
@@ -217,6 +227,10 @@ export interface GroupState {
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     */
+    aclPrincipalId?: pulumi.Input<string>;
     /**
      * This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */

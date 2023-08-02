@@ -12,12 +12,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskDependsOn {
     private @Nullable String outcome;
+    /**
+     * @return The name of the task this task depends on.
+     * 
+     */
     private String taskKey;
 
     private JobTaskDependsOn() {}
     public Optional<String> outcome() {
         return Optional.ofNullable(this.outcome);
     }
+    /**
+     * @return The name of the task this task depends on.
+     * 
+     */
     public String taskKey() {
         return this.taskKey;
     }

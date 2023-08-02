@@ -34,6 +34,10 @@ import com.pulumi.databricks.inputs.GetJobArgs;
 import com.pulumi.databricks.inputs.GetJobPlainArgs;
 import com.pulumi.databricks.inputs.GetJobsArgs;
 import com.pulumi.databricks.inputs.GetJobsPlainArgs;
+import com.pulumi.databricks.inputs.GetMetastoreArgs;
+import com.pulumi.databricks.inputs.GetMetastorePlainArgs;
+import com.pulumi.databricks.inputs.GetMetastoresArgs;
+import com.pulumi.databricks.inputs.GetMetastoresPlainArgs;
 import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
 import com.pulumi.databricks.inputs.GetMwsCredentialsPlainArgs;
 import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
@@ -83,6 +87,8 @@ import com.pulumi.databricks.outputs.GetGroupResult;
 import com.pulumi.databricks.outputs.GetInstancePoolResult;
 import com.pulumi.databricks.outputs.GetJobResult;
 import com.pulumi.databricks.outputs.GetJobsResult;
+import com.pulumi.databricks.outputs.GetMetastoreResult;
+import com.pulumi.databricks.outputs.GetMetastoresResult;
 import com.pulumi.databricks.outputs.GetMwsCredentialsResult;
 import com.pulumi.databricks.outputs.GetMwsWorkspacesResult;
 import com.pulumi.databricks.outputs.GetNodeTypeResult;
@@ -3880,6 +3886,312 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getJobs:getJobs", TypeShape.of(GetJobsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * * databricks.getMetastores to get mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static Output<GetMetastoreResult> getMetastore(GetMetastoreArgs args) {
+        return getMetastore(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * * databricks.getMetastores to get mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetMetastoreResult> getMetastorePlain(GetMetastorePlainArgs args) {
+        return getMetastorePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * * databricks.getMetastores to get mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static Output<GetMetastoreResult> getMetastore(GetMetastoreArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMetastore:getMetastore", TypeShape.of(GetMetastoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * * databricks.getMetastores to get mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetMetastoreResult> getMetastorePlain(GetMetastorePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMetastore:getMetastore", TypeShape.of(GetMetastoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Mapping of name to id of all metastores:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMetastoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMetastores();
+     * 
+     *         ctx.export(&#34;allMetastores&#34;, all.applyValue(getMetastoresResult -&gt; getMetastoresResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Metastore to get information about a single metastore.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static Output<GetMetastoresResult> getMetastores() {
+        return getMetastores(GetMetastoresArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Mapping of name to id of all metastores:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMetastoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMetastores();
+     * 
+     *         ctx.export(&#34;allMetastores&#34;, all.applyValue(getMetastoresResult -&gt; getMetastoresResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Metastore to get information about a single metastore.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetMetastoresResult> getMetastoresPlain() {
+        return getMetastoresPlain(GetMetastoresPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Mapping of name to id of all metastores:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMetastoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMetastores();
+     * 
+     *         ctx.export(&#34;allMetastores&#34;, all.applyValue(getMetastoresResult -&gt; getMetastoresResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Metastore to get information about a single metastore.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static Output<GetMetastoresResult> getMetastores(GetMetastoresArgs args) {
+        return getMetastores(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Mapping of name to id of all metastores:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMetastoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMetastores();
+     * 
+     *         ctx.export(&#34;allMetastores&#34;, all.applyValue(getMetastoresResult -&gt; getMetastoresResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Metastore to get information about a single metastore.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetMetastoresResult> getMetastoresPlain(GetMetastoresPlainArgs args) {
+        return getMetastoresPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Mapping of name to id of all metastores:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMetastoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMetastores();
+     * 
+     *         ctx.export(&#34;allMetastores&#34;, all.applyValue(getMetastoresResult -&gt; getMetastoresResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Metastore to get information about a single metastore.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static Output<GetMetastoresResult> getMetastores(GetMetastoresArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMetastores:getMetastores", TypeShape.of(GetMetastoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Mapping of name to id of all metastores:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMetastoresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getMetastores();
+     * 
+     *         ctx.export(&#34;allMetastores&#34;, all.applyValue(getMetastoresResult -&gt; getMetastoresResult.ids()));
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Metastore to get information about a single metastore.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetMetastoresResult> getMetastoresPlain(GetMetastoresPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMetastores:getMetastores", TypeShape.of(GetMetastoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Lists all databricks.MwsCredentials in Databricks Account.
@@ -3888,7 +4200,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * Listing all credentials in
+     * Listing all credentials in Databricks Account
      * ```java
      * package generated_program;
      * 
@@ -3940,7 +4252,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * Listing all credentials in
+     * Listing all credentials in Databricks Account
      * ```java
      * package generated_program;
      * 
@@ -3992,7 +4304,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * Listing all credentials in
+     * Listing all credentials in Databricks Account
      * ```java
      * package generated_program;
      * 
@@ -4044,7 +4356,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * Listing all credentials in
+     * Listing all credentials in Databricks Account
      * ```java
      * package generated_program;
      * 
@@ -4096,7 +4408,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * Listing all credentials in
+     * Listing all credentials in Databricks Account
      * ```java
      * package generated_program;
      * 
@@ -4148,7 +4460,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * Listing all credentials in
+     * Listing all credentials in Databricks Account
      * ```java
      * package generated_program;
      * 
@@ -7573,6 +7885,142 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
      * 
      * ## Example Usage
+     * 
+     * * Retrieve attributes of each SQL warehouses in a workspace:
+     * 
+     * * Search for a specific SQL Warehouse by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+     *             .name(&#34;Starter Warehouse&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Related resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+     * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
+     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * 
+     */
+    public static Output<GetSqlWarehouseResult> getSqlWarehouse() {
+        return getSqlWarehouse(GetSqlWarehouseArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve attributes of each SQL warehouses in a workspace:
+     * 
+     * * Search for a specific SQL Warehouse by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+     *             .name(&#34;Starter Warehouse&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Related resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+     * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
+     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * 
+     */
+    public static CompletableFuture<GetSqlWarehouseResult> getSqlWarehousePlain() {
+        return getSqlWarehousePlain(GetSqlWarehousePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve attributes of each SQL warehouses in a workspace:
+     * 
+     * * Search for a specific SQL Warehouse by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+     *             .name(&#34;Starter Warehouse&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related resources
      * 
      * The following resources are often used in the same context:
@@ -7593,6 +8041,38 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
      * 
      * ## Example Usage
+     * 
+     * * Retrieve attributes of each SQL warehouses in a workspace:
+     * 
+     * * Search for a specific SQL Warehouse by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+     *             .name(&#34;Starter Warehouse&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related resources
      * 
      * The following resources are often used in the same context:
@@ -7613,6 +8093,38 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
      * 
      * ## Example Usage
+     * 
+     * * Retrieve attributes of each SQL warehouses in a workspace:
+     * 
+     * * Search for a specific SQL Warehouse by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+     *             .name(&#34;Starter Warehouse&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related resources
      * 
      * The following resources are often used in the same context:
@@ -7633,6 +8145,38 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
      * 
      * ## Example Usage
+     * 
+     * * Retrieve attributes of each SQL warehouses in a workspace:
+     * 
+     * * Search for a specific SQL Warehouse by name:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+     *             .name(&#34;Starter Warehouse&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * ## Related resources
      * 
      * The following resources are often used in the same context:

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,7 +17,7 @@ import (
 //
 // ## Example Usage
 //
-// # Retrieve attributes of each SQL warehouses in a workspace
+// * Retrieve attributes of each SQL warehouses in a workspace:
 //
 // ```go
 // package main
@@ -40,6 +41,32 @@ import (
 //	}
 //
 // ```
+//
+// * Search for a specific SQL Warehouse by name:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetSqlWarehouse(ctx, &databricks.GetSqlWarehouseArgs{
+//				Name: pulumi.StringRef("Starter Warehouse"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Related resources
 //
 // The following resources are often used in the same context:
@@ -50,6 +77,7 @@ import (
 // * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all getSqlWarehouse of workspace.
 // * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
 func GetSqlWarehouse(ctx *pulumi.Context, args *GetSqlWarehouseArgs, opts ...pulumi.InvokeOption) (*GetSqlWarehouseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSqlWarehouseResult
 	err := ctx.Invoke("databricks:index/getSqlWarehouse:getSqlWarehouse", args, &rv, opts...)
 	if err != nil {
@@ -68,12 +96,12 @@ type GetSqlWarehouseArgs struct {
 	ClusterSize *string `pulumi:"clusterSize"`
 	// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId *string `pulumi:"dataSourceId"`
-	// Whether to enable [Photon](https://databricks.com/product/delta-engine).
+	// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
 	EnablePhoton *bool `pulumi:"enablePhoton"`
-	// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
+	// Whether this SQL warehouse is a serverless SQL warehouse.
 	EnableServerlessCompute *bool `pulumi:"enableServerlessCompute"`
-	// The ID of the SQL warehouse
-	Id                 string  `pulumi:"id"`
+	// The ID of the SQL warehouse.
+	Id                 *string `pulumi:"id"`
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl *string `pulumi:"jdbcUrl"`
@@ -81,7 +109,7 @@ type GetSqlWarehouseArgs struct {
 	MaxNumClusters *int `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running.
 	MinNumClusters *int `pulumi:"minNumClusters"`
-	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+	// Name of the SQL warehouse to search (case-sensitive).
 	Name        *string `pulumi:"name"`
 	NumClusters *int    `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
@@ -89,7 +117,7 @@ type GetSqlWarehouseArgs struct {
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
 	State              *string `pulumi:"state"`
-	// Databricks tags all warehouse resources with these tags.
+	// tags used for SQL warehouse resources.
 	Tags *GetSqlWarehouseTags `pulumi:"tags"`
 }
 
@@ -103,12 +131,13 @@ type GetSqlWarehouseResult struct {
 	ClusterSize string `pulumi:"clusterSize"`
 	// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId string `pulumi:"dataSourceId"`
-	// Whether to enable [Photon](https://databricks.com/product/delta-engine).
+	// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
 	EnablePhoton bool `pulumi:"enablePhoton"`
-	// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
-	EnableServerlessCompute bool   `pulumi:"enableServerlessCompute"`
-	Id                      string `pulumi:"id"`
-	InstanceProfileArn      string `pulumi:"instanceProfileArn"`
+	// Whether this SQL warehouse is a serverless SQL warehouse.
+	EnableServerlessCompute bool `pulumi:"enableServerlessCompute"`
+	// The ID of the SQL warehouse.
+	Id                 string `pulumi:"id"`
+	InstanceProfileArn string `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl string `pulumi:"jdbcUrl"`
 	// Maximum number of clusters available when a SQL warehouse is running.
@@ -123,7 +152,7 @@ type GetSqlWarehouseResult struct {
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy string `pulumi:"spotInstancePolicy"`
 	State              string `pulumi:"state"`
-	// Databricks tags all warehouse resources with these tags.
+	// tags used for SQL warehouse resources.
 	Tags GetSqlWarehouseTags `pulumi:"tags"`
 }
 
@@ -150,12 +179,12 @@ type GetSqlWarehouseOutputArgs struct {
 	ClusterSize pulumi.StringPtrInput `pulumi:"clusterSize"`
 	// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId pulumi.StringPtrInput `pulumi:"dataSourceId"`
-	// Whether to enable [Photon](https://databricks.com/product/delta-engine).
+	// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
 	EnablePhoton pulumi.BoolPtrInput `pulumi:"enablePhoton"`
-	// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
+	// Whether this SQL warehouse is a serverless SQL warehouse.
 	EnableServerlessCompute pulumi.BoolPtrInput `pulumi:"enableServerlessCompute"`
-	// The ID of the SQL warehouse
-	Id                 pulumi.StringInput    `pulumi:"id"`
+	// The ID of the SQL warehouse.
+	Id                 pulumi.StringPtrInput `pulumi:"id"`
 	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl pulumi.StringPtrInput `pulumi:"jdbcUrl"`
@@ -163,7 +192,7 @@ type GetSqlWarehouseOutputArgs struct {
 	MaxNumClusters pulumi.IntPtrInput `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running.
 	MinNumClusters pulumi.IntPtrInput `pulumi:"minNumClusters"`
-	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+	// Name of the SQL warehouse to search (case-sensitive).
 	Name        pulumi.StringPtrInput `pulumi:"name"`
 	NumClusters pulumi.IntPtrInput    `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
@@ -171,7 +200,7 @@ type GetSqlWarehouseOutputArgs struct {
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput `pulumi:"spotInstancePolicy"`
 	State              pulumi.StringPtrInput `pulumi:"state"`
-	// Databricks tags all warehouse resources with these tags.
+	// tags used for SQL warehouse resources.
 	Tags GetSqlWarehouseTagsPtrInput `pulumi:"tags"`
 }
 
@@ -214,16 +243,17 @@ func (o GetSqlWarehouseResultOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.DataSourceId }).(pulumi.StringOutput)
 }
 
-// Whether to enable [Photon](https://databricks.com/product/delta-engine).
+// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
 func (o GetSqlWarehouseResultOutput) EnablePhoton() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) bool { return v.EnablePhoton }).(pulumi.BoolOutput)
 }
 
-// Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouseType` must be `PRO`.
+// Whether this SQL warehouse is a serverless SQL warehouse.
 func (o GetSqlWarehouseResultOutput) EnableServerlessCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) bool { return v.EnableServerlessCompute }).(pulumi.BoolOutput)
 }
 
+// The ID of the SQL warehouse.
 func (o GetSqlWarehouseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -270,7 +300,7 @@ func (o GetSqlWarehouseResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Databricks tags all warehouse resources with these tags.
+// tags used for SQL warehouse resources.
 func (o GetSqlWarehouseResultOutput) Tags() GetSqlWarehouseTagsOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) GetSqlWarehouseTags { return v.Tags }).(GetSqlWarehouseTagsOutput)
 }

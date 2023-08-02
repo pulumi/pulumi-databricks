@@ -15,14 +15,14 @@ public final class GetSqlWarehouseChannel extends com.pulumi.resources.InvokeArg
     public static final GetSqlWarehouseChannel Empty = new GetSqlWarehouseChannel();
 
     /**
-     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * Name of the SQL warehouse to search (case-sensitive).
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * @return Name of the SQL warehouse to search (case-sensitive).
      * 
      */
     public Optional<String> name() {
@@ -54,7 +54,7 @@ public final class GetSqlWarehouseChannel extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param name Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+         * @param name Name of the SQL warehouse to search (case-sensitive).
          * 
          * @return builder
          * 

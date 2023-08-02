@@ -9,9 +9,11 @@ import com.pulumi.databricks.inputs.JobTaskConditionTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDependsOnArgs;
 import com.pulumi.databricks.inputs.JobTaskEmailNotificationsArgs;
+import com.pulumi.databricks.inputs.JobTaskHealthArgs;
 import com.pulumi.databricks.inputs.JobTaskLibraryArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterArgs;
 import com.pulumi.databricks.inputs.JobTaskNotebookTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskNotificationSettingsArgs;
 import com.pulumi.databricks.inputs.JobTaskPipelineTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskPythonWheelTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskSparkJarTaskArgs;
@@ -52,9 +54,17 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dbtTask);
     }
 
+    /**
+     * block specifying dependency(-ies) for a given task.
+     * 
+     */
     @Import(name="dependsOns")
     private @Nullable Output<List<JobTaskDependsOnArgs>> dependsOns;
 
+    /**
+     * @return block specifying dependency(-ies) for a given task.
+     * 
+     */
     public Optional<Output<List<JobTaskDependsOnArgs>>> dependsOns() {
         return Optional.ofNullable(this.dependsOns);
     }
@@ -89,6 +99,21 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * block described below that specifies health conditions for a given task.
+     * 
+     */
+    @Import(name="health")
+    private @Nullable Output<JobTaskHealthArgs> health;
+
+    /**
+     * @return block described below that specifies health conditions for a given task.
+     * 
+     */
+    public Optional<Output<JobTaskHealthArgs>> health() {
+        return Optional.ofNullable(this.health);
+    }
+
+    /**
      * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      * 
      */
@@ -119,14 +144,14 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      * 
      */
     @Import(name="maxRetries")
     private @Nullable Output<Integer> maxRetries;
 
     /**
-     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      * 
      */
     public Optional<Output<Integer>> maxRetries() {
@@ -168,6 +193,21 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<JobTaskNotebookTaskArgs>> notebookTask() {
         return Optional.ofNullable(this.notebookTask);
+    }
+
+    /**
+     * An optional block controlling the notification settings on the job level (described below).
+     * 
+     */
+    @Import(name="notificationSettings")
+    private @Nullable Output<JobTaskNotificationSettingsArgs> notificationSettings;
+
+    /**
+     * @return An optional block controlling the notification settings on the job level (described below).
+     * 
+     */
+    public Optional<Output<JobTaskNotificationSettingsArgs>> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
     }
 
     @Import(name="pipelineTask")
@@ -234,9 +274,19 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sqlTask);
     }
 
+    /**
+     * string specifying an unique key for a given task.
+     * * `*_task` - (Required) one of the specific task blocks described below:
+     * 
+     */
     @Import(name="taskKey")
     private @Nullable Output<String> taskKey;
 
+    /**
+     * @return string specifying an unique key for a given task.
+     * * `*_task` - (Required) one of the specific task blocks described below:
+     * 
+     */
     public Optional<Output<String>> taskKey() {
         return Optional.ofNullable(this.taskKey);
     }
@@ -266,12 +316,14 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
+        this.health = $.health;
         this.jobClusterKey = $.jobClusterKey;
         this.libraries = $.libraries;
         this.maxRetries = $.maxRetries;
         this.minRetryIntervalMillis = $.minRetryIntervalMillis;
         this.newCluster = $.newCluster;
         this.notebookTask = $.notebookTask;
+        this.notificationSettings = $.notificationSettings;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.retryOnTimeout = $.retryOnTimeout;
@@ -329,15 +381,33 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
             return dbtTask(Output.of(dbtTask));
         }
 
+        /**
+         * @param dependsOns block specifying dependency(-ies) for a given task.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependsOns(@Nullable Output<List<JobTaskDependsOnArgs>> dependsOns) {
             $.dependsOns = dependsOns;
             return this;
         }
 
+        /**
+         * @param dependsOns block specifying dependency(-ies) for a given task.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependsOns(List<JobTaskDependsOnArgs> dependsOns) {
             return dependsOns(Output.of(dependsOns));
         }
 
+        /**
+         * @param dependsOns block specifying dependency(-ies) for a given task.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependsOns(JobTaskDependsOnArgs... dependsOns) {
             return dependsOns(List.of(dependsOns));
         }
@@ -379,6 +449,27 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder existingClusterId(String existingClusterId) {
             return existingClusterId(Output.of(existingClusterId));
+        }
+
+        /**
+         * @param health block described below that specifies health conditions for a given task.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder health(@Nullable Output<JobTaskHealthArgs> health) {
+            $.health = health;
+            return this;
+        }
+
+        /**
+         * @param health block described below that specifies health conditions for a given task.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder health(JobTaskHealthArgs health) {
+            return health(Output.of(health));
         }
 
         /**
@@ -434,7 +525,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRetries (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+         * @param maxRetries (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
          * 
          * @return builder
          * 
@@ -445,7 +536,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRetries (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+         * @param maxRetries (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
          * 
          * @return builder
          * 
@@ -503,6 +594,27 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder notebookTask(JobTaskNotebookTaskArgs notebookTask) {
             return notebookTask(Output.of(notebookTask));
+        }
+
+        /**
+         * @param notificationSettings An optional block controlling the notification settings on the job level (described below).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationSettings(@Nullable Output<JobTaskNotificationSettingsArgs> notificationSettings) {
+            $.notificationSettings = notificationSettings;
+            return this;
+        }
+
+        /**
+         * @param notificationSettings An optional block controlling the notification settings on the job level (described below).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationSettings(JobTaskNotificationSettingsArgs notificationSettings) {
+            return notificationSettings(Output.of(notificationSettings));
         }
 
         public Builder pipelineTask(@Nullable Output<JobTaskPipelineTaskArgs> pipelineTask) {
@@ -589,11 +701,25 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
             return sqlTask(Output.of(sqlTask));
         }
 
+        /**
+         * @param taskKey string specifying an unique key for a given task.
+         * * `*_task` - (Required) one of the specific task blocks described below:
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskKey(@Nullable Output<String> taskKey) {
             $.taskKey = taskKey;
             return this;
         }
 
+        /**
+         * @param taskKey string specifying an unique key for a given task.
+         * * `*_task` - (Required) one of the specific task blocks described below:
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskKey(String taskKey) {
             return taskKey(Output.of(taskKey));
         }

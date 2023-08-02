@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("commit")]
         public Input<string>? Commit { get; set; }
 
+        [Input("jobSource")]
+        public Input<Inputs.JobGitSourceJobSourceGetArgs>? JobSource { get; set; }
+
         /// <summary>
         /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
         /// </summary>

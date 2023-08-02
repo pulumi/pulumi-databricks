@@ -67,7 +67,7 @@ def get_mws_credentials(ids: Optional[Mapping[str, Any]] = None,
 
     ## Example Usage
 
-    Listing all credentials in
+    Listing all credentials in Databricks Account
 
     ```python
     import pulumi
@@ -112,7 +112,7 @@ def get_mws_credentials_output(ids: Optional[pulumi.Input[Optional[Mapping[str, 
 
     ## Example Usage
 
-    Listing all credentials in
+    Listing all credentials in Databricks Account
 
     ```python
     import pulumi

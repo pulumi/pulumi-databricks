@@ -20,12 +20,14 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Description;
         public readonly Outputs.GetJobJobSettingsSettingsTaskEmailNotificationsResult? EmailNotifications;
         public readonly string? ExistingClusterId;
+        public readonly Outputs.GetJobJobSettingsSettingsTaskHealthResult? Health;
         public readonly string? JobClusterKey;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskLibraryResult> Libraries;
         public readonly int? MaxRetries;
         public readonly int? MinRetryIntervalMillis;
         public readonly Outputs.GetJobJobSettingsSettingsTaskNewClusterResult? NewCluster;
         public readonly Outputs.GetJobJobSettingsSettingsTaskNotebookTaskResult? NotebookTask;
+        public readonly Outputs.GetJobJobSettingsSettingsTaskNotificationSettingsResult? NotificationSettings;
         public readonly Outputs.GetJobJobSettingsSettingsTaskPipelineTaskResult? PipelineTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskPythonWheelTaskResult? PythonWheelTask;
         public readonly bool RetryOnTimeout;
@@ -53,6 +55,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? existingClusterId,
 
+            Outputs.GetJobJobSettingsSettingsTaskHealthResult? health,
+
             string? jobClusterKey,
 
             ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskLibraryResult> libraries,
@@ -64,6 +68,8 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetJobJobSettingsSettingsTaskNewClusterResult? newCluster,
 
             Outputs.GetJobJobSettingsSettingsTaskNotebookTaskResult? notebookTask,
+
+            Outputs.GetJobJobSettingsSettingsTaskNotificationSettingsResult? notificationSettings,
 
             Outputs.GetJobJobSettingsSettingsTaskPipelineTaskResult? pipelineTask,
 
@@ -92,12 +98,14 @@ namespace Pulumi.Databricks.Outputs
             Description = description;
             EmailNotifications = emailNotifications;
             ExistingClusterId = existingClusterId;
+            Health = health;
             JobClusterKey = jobClusterKey;
             Libraries = libraries;
             MaxRetries = maxRetries;
             MinRetryIntervalMillis = minRetryIntervalMillis;
             NewCluster = newCluster;
             NotebookTask = notebookTask;
+            NotificationSettings = notificationSettings;
             PipelineTask = pipelineTask;
             PythonWheelTask = pythonWheelTask;
             RetryOnTimeout = retryOnTimeout;

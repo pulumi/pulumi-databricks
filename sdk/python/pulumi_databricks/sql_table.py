@@ -421,10 +421,10 @@ class SqlTable(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by namebash
+        This resource can be imported by its full namebash
 
         ```sh
-         $ pulumi import databricks:index/sqlTable:SqlTable this <name>
+         $ pulumi import databricks:index/sqlTable:SqlTable this <catalog_name>.<schema_name>.<name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -455,10 +455,10 @@ class SqlTable(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by namebash
+        This resource can be imported by its full namebash
 
         ```sh
-         $ pulumi import databricks:index/sqlTable:SqlTable this <name>
+         $ pulumi import databricks:index/sqlTable:SqlTable this <catalog_name>.<schema_name>.<name>
         ```
 
         :param str resource_name: The name of the resource.

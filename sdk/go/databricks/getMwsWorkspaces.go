@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +50,7 @@ import (
 // * MwsWorkspaces to manage Databricks E2 Workspaces.
 // * MetastoreAssignment
 func LookupMwsWorkspaces(ctx *pulumi.Context, args *LookupMwsWorkspacesArgs, opts ...pulumi.InvokeOption) (*LookupMwsWorkspacesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMwsWorkspacesResult
 	err := ctx.Invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args, &rv, opts...)
 	if err != nil {

@@ -25,7 +25,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.aws.s3.BucketV2;
  * import com.pulumi.aws.s3.BucketV2Args;
- * import com.pulumi.aws.s3.inputs.BucketV2VersioningArgs;
+ * import com.pulumi.aws.s3.BucketVersioningV2;
+ * import com.pulumi.aws.s3.BucketVersioningV2Args;
+ * import com.pulumi.aws.s3.inputs.BucketVersioningV2VersioningConfigurationArgs;
  * import com.pulumi.databricks.MwsStorageConfigurations;
  * import com.pulumi.databricks.MwsStorageConfigurationsArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -46,8 +48,12 @@ import javax.annotation.Nullable;
  *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
  *         var rootStorageBucket = new BucketV2(&#34;rootStorageBucket&#34;, BucketV2Args.builder()        
  *             .acl(&#34;private&#34;)
- *             .versionings(BucketV2VersioningArgs.builder()
- *                 .enabled(false)
+ *             .build());
+ * 
+ *         var rootVersioning = new BucketVersioningV2(&#34;rootVersioning&#34;, BucketVersioningV2Args.builder()        
+ *             .bucket(rootStorageBucket.id())
+ *             .versioningConfiguration(BucketVersioningV2VersioningConfigurationArgs.builder()
+ *                 .status(&#34;Disabled&#34;)
  *                 .build())
  *             .build());
  * 

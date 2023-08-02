@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func LookupClusterPolicy(ctx *pulumi.Context, args *LookupClusterPolicyArgs, opts ...pulumi.InvokeOption) (*LookupClusterPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterPolicyResult
 	err := ctx.Invoke("databricks:index/getClusterPolicy:getClusterPolicy", args, &rv, opts...)
 	if err != nil {

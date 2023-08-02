@@ -30,6 +30,13 @@ public final class GetJobJobSettingsSettingsEmailNotifications extends com.pulum
         return Optional.ofNullable(this.noAlertForSkippedRuns);
     }
 
+    @Import(name="onDurationWarningThresholdExceededs")
+    private @Nullable List<String> onDurationWarningThresholdExceededs;
+
+    public Optional<List<String>> onDurationWarningThresholdExceededs() {
+        return Optional.ofNullable(this.onDurationWarningThresholdExceededs);
+    }
+
     @Import(name="onFailures")
     private @Nullable List<String> onFailures;
 
@@ -56,6 +63,7 @@ public final class GetJobJobSettingsSettingsEmailNotifications extends com.pulum
     private GetJobJobSettingsSettingsEmailNotifications(GetJobJobSettingsSettingsEmailNotifications $) {
         this.alertOnLastAttempt = $.alertOnLastAttempt;
         this.noAlertForSkippedRuns = $.noAlertForSkippedRuns;
+        this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
         this.onStarts = $.onStarts;
         this.onSuccesses = $.onSuccesses;
@@ -87,6 +95,15 @@ public final class GetJobJobSettingsSettingsEmailNotifications extends com.pulum
         public Builder noAlertForSkippedRuns(@Nullable Boolean noAlertForSkippedRuns) {
             $.noAlertForSkippedRuns = noAlertForSkippedRuns;
             return this;
+        }
+
+        public Builder onDurationWarningThresholdExceededs(@Nullable List<String> onDurationWarningThresholdExceededs) {
+            $.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
+            return this;
+        }
+
+        public Builder onDurationWarningThresholdExceededs(String... onDurationWarningThresholdExceededs) {
+            return onDurationWarningThresholdExceededs(List.of(onDurationWarningThresholdExceededs));
         }
 
         public Builder onFailures(@Nullable List<String> onFailures) {

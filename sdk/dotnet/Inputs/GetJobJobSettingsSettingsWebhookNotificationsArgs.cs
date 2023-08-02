@@ -12,6 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsWebhookNotificationsInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("onDurationWarningThresholdExceededs")]
+        private InputList<Inputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededInputArgs>? _onDurationWarningThresholdExceededs;
+        public InputList<Inputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededInputArgs> OnDurationWarningThresholdExceededs
+        {
+            get => _onDurationWarningThresholdExceededs ?? (_onDurationWarningThresholdExceededs = new InputList<Inputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededInputArgs>());
+            set => _onDurationWarningThresholdExceededs = value;
+        }
+
         [Input("onFailures")]
         private InputList<Inputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailureInputArgs>? _onFailures;
         public InputList<Inputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailureInputArgs> OnFailures

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,7 +19,7 @@ import (
 //
 // ## Example Usage
 //
-// # Listing all credentials in
+// # Listing all credentials in Databricks Account
 //
 // ```go
 // package main
@@ -53,6 +54,7 @@ import (
 // * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
 // * MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
 func LookupMwsCredentials(ctx *pulumi.Context, args *LookupMwsCredentialsArgs, opts ...pulumi.InvokeOption) (*LookupMwsCredentialsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMwsCredentialsResult
 	err := ctx.Invoke("databricks:index/getMwsCredentials:getMwsCredentials", args, &rv, opts...)
 	if err != nil {

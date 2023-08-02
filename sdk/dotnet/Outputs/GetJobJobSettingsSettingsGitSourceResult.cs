@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? Branch;
         public readonly string? Commit;
+        public readonly Outputs.GetJobJobSettingsSettingsGitSourceJobSourceResult? JobSource;
         public readonly string? Provider;
         public readonly string? Tag;
         public readonly string Url;
@@ -25,6 +26,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? commit,
 
+            Outputs.GetJobJobSettingsSettingsGitSourceJobSourceResult? jobSource,
+
             string? provider,
 
             string? tag,
@@ -33,6 +36,7 @@ namespace Pulumi.Databricks.Outputs
         {
             Branch = branch;
             Commit = commit;
+            JobSource = jobSource;
             Provider = provider;
             Tag = tag;
             Url = url;

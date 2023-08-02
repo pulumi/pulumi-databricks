@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 // * getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
 // * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
 func GetAwsCrossAccountPolicy(ctx *pulumi.Context, args *GetAwsCrossAccountPolicyArgs, opts ...pulumi.InvokeOption) (*GetAwsCrossAccountPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAwsCrossAccountPolicyResult
 	err := ctx.Invoke("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", args, &rv, opts...)
 	if err != nil {

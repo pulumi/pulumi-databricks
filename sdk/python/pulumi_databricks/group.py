@@ -14,6 +14,7 @@ __all__ = ['GroupArgs', 'Group']
 @pulumi.input_type
 class GroupArgs:
     def __init__(__self__, *,
+                 acl_principal_id: Optional[pulumi.Input[str]] = None,
                  allow_cluster_create: Optional[pulumi.Input[bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
                  databricks_sql_access: Optional[pulumi.Input[bool]] = None,
@@ -24,6 +25,7 @@ class GroupArgs:
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Group resource.
+        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
@@ -31,6 +33,8 @@ class GroupArgs:
         :param pulumi.Input[str] external_id: ID of the group in an external identity provider.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
+        if acl_principal_id is not None:
+            pulumi.set(__self__, "acl_principal_id", acl_principal_id)
         if allow_cluster_create is not None:
             pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
@@ -47,6 +51,18 @@ class GroupArgs:
             pulumi.set(__self__, "url", url)
         if workspace_access is not None:
             pulumi.set(__self__, "workspace_access", workspace_access)
+
+    @property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        """
+        return pulumi.get(self, "acl_principal_id")
+
+    @acl_principal_id.setter
+    def acl_principal_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_principal_id", value)
 
     @property
     @pulumi.getter(name="allowClusterCreate")
@@ -142,6 +158,7 @@ class GroupArgs:
 @pulumi.input_type
 class _GroupState:
     def __init__(__self__, *,
+                 acl_principal_id: Optional[pulumi.Input[str]] = None,
                  allow_cluster_create: Optional[pulumi.Input[bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
                  databricks_sql_access: Optional[pulumi.Input[bool]] = None,
@@ -152,6 +169,7 @@ class _GroupState:
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
@@ -159,6 +177,8 @@ class _GroupState:
         :param pulumi.Input[str] external_id: ID of the group in an external identity provider.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
+        if acl_principal_id is not None:
+            pulumi.set(__self__, "acl_principal_id", acl_principal_id)
         if allow_cluster_create is not None:
             pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
@@ -175,6 +195,18 @@ class _GroupState:
             pulumi.set(__self__, "url", url)
         if workspace_access is not None:
             pulumi.set(__self__, "workspace_access", workspace_access)
+
+    @property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        """
+        return pulumi.get(self, "acl_principal_id")
+
+    @acl_principal_id.setter
+    def acl_principal_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_principal_id", value)
 
     @property
     @pulumi.getter(name="allowClusterCreate")
@@ -272,6 +304,7 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_principal_id: Optional[pulumi.Input[str]] = None,
                  allow_cluster_create: Optional[pulumi.Input[bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
                  databricks_sql_access: Optional[pulumi.Input[bool]] = None,
@@ -359,6 +392,7 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
@@ -463,6 +497,7 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_principal_id: Optional[pulumi.Input[str]] = None,
                  allow_cluster_create: Optional[pulumi.Input[bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
                  databricks_sql_access: Optional[pulumi.Input[bool]] = None,
@@ -480,6 +515,7 @@ class Group(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupArgs.__new__(GroupArgs)
 
+            __props__.__dict__["acl_principal_id"] = acl_principal_id
             __props__.__dict__["allow_cluster_create"] = allow_cluster_create
             __props__.__dict__["allow_instance_pool_create"] = allow_instance_pool_create
             __props__.__dict__["databricks_sql_access"] = databricks_sql_access
@@ -498,6 +534,7 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acl_principal_id: Optional[pulumi.Input[str]] = None,
             allow_cluster_create: Optional[pulumi.Input[bool]] = None,
             allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
             databricks_sql_access: Optional[pulumi.Input[bool]] = None,
@@ -513,6 +550,7 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
@@ -524,6 +562,7 @@ class Group(pulumi.CustomResource):
 
         __props__ = _GroupState.__new__(_GroupState)
 
+        __props__.__dict__["acl_principal_id"] = acl_principal_id
         __props__.__dict__["allow_cluster_create"] = allow_cluster_create
         __props__.__dict__["allow_instance_pool_create"] = allow_instance_pool_create
         __props__.__dict__["databricks_sql_access"] = databricks_sql_access
@@ -533,6 +572,14 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         __props__.__dict__["workspace_access"] = workspace_access
         return Group(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> pulumi.Output[str]:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        """
+        return pulumi.get(self, "acl_principal_id")
 
     @property
     @pulumi.getter(name="allowClusterCreate")

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -302,6 +303,7 @@ func NewLibrary(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Library
 	err := ctx.RegisterResource("databricks:index/library:Library", name, args, &resource, opts...)
 	if err != nil {
