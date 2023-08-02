@@ -5,13 +5,23 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsTaskPipelineTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsTaskPipelineTaskArgs Empty = new GetJobJobSettingsSettingsTaskPipelineTaskArgs();
+
+    @Import(name="fullRefresh")
+    private @Nullable Output<Boolean> fullRefresh;
+
+    public Optional<Output<Boolean>> fullRefresh() {
+        return Optional.ofNullable(this.fullRefresh);
+    }
 
     @Import(name="pipelineId", required=true)
     private Output<String> pipelineId;
@@ -23,6 +33,7 @@ public final class GetJobJobSettingsSettingsTaskPipelineTaskArgs extends com.pul
     private GetJobJobSettingsSettingsTaskPipelineTaskArgs() {}
 
     private GetJobJobSettingsSettingsTaskPipelineTaskArgs(GetJobJobSettingsSettingsTaskPipelineTaskArgs $) {
+        this.fullRefresh = $.fullRefresh;
         this.pipelineId = $.pipelineId;
     }
 
@@ -42,6 +53,15 @@ public final class GetJobJobSettingsSettingsTaskPipelineTaskArgs extends com.pul
 
         public Builder(GetJobJobSettingsSettingsTaskPipelineTaskArgs defaults) {
             $ = new GetJobJobSettingsSettingsTaskPipelineTaskArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder fullRefresh(@Nullable Output<Boolean> fullRefresh) {
+            $.fullRefresh = fullRefresh;
+            return this;
+        }
+
+        public Builder fullRefresh(Boolean fullRefresh) {
+            return fullRefresh(Output.of(fullRefresh));
         }
 
         public Builder pipelineId(Output<String> pipelineId) {

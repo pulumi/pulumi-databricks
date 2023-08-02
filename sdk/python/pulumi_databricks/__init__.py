@@ -5,6 +5,7 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .access_control_rule_set import *
 from .catalog import *
 from .catalog_workspace_binding import *
 from .cluster import *
@@ -28,6 +29,8 @@ from .get_group import *
 from .get_instance_pool import *
 from .get_job import *
 from .get_jobs import *
+from .get_metastore import *
+from .get_metastores import *
 from .get_mws_credentials import *
 from .get_mws_workspaces import *
 from .get_node_type import *
@@ -123,6 +126,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "databricks",
+  "mod": "index/accessControlRuleSet",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/accessControlRuleSet:AccessControlRuleSet": "AccessControlRuleSet"
+  }
+ },
  {
   "pkg": "databricks",
   "mod": "index/catalog",

@@ -4,6 +4,7 @@
 package databricks
 
 import (
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,6 +29,7 @@ import (
 // * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
 // * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 func GetCurrentUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCurrentUserResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCurrentUserResult
 	err := ctx.Invoke("databricks:index/getCurrentUser:getCurrentUser", nil, &rv, opts...)
 	if err != nil {

@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsContinuousArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsDbtTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsEmailNotificationsArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsGitSourceArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsHealthArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterArgs;
@@ -88,6 +89,13 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
     public Optional<Output<GetJobJobSettingsSettingsGitSourceArgs>> gitSource() {
         return Optional.ofNullable(this.gitSource);
+    }
+
+    @Import(name="health")
+    private @Nullable Output<GetJobJobSettingsSettingsHealthArgs> health;
+
+    public Optional<Output<GetJobJobSettingsSettingsHealthArgs>> health() {
+        return Optional.ofNullable(this.health);
     }
 
     @Import(name="jobClusters")
@@ -269,6 +277,7 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         this.existingClusterId = $.existingClusterId;
         this.format = $.format;
         this.gitSource = $.gitSource;
+        this.health = $.health;
         this.jobClusters = $.jobClusters;
         this.libraries = $.libraries;
         this.maxConcurrentRuns = $.maxConcurrentRuns;
@@ -377,6 +386,15 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
         public Builder gitSource(GetJobJobSettingsSettingsGitSourceArgs gitSource) {
             return gitSource(Output.of(gitSource));
+        }
+
+        public Builder health(@Nullable Output<GetJobJobSettingsSettingsHealthArgs> health) {
+            $.health = health;
+            return this;
+        }
+
+        public Builder health(GetJobJobSettingsSettingsHealthArgs health) {
+            return health(Output.of(health));
         }
 
         public Builder jobClusters(@Nullable Output<List<GetJobJobSettingsSettingsJobClusterArgs>> jobClusters) {

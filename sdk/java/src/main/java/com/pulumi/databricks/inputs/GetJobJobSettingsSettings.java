@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsContinuous;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsDbtTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsEmailNotifications;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsGitSource;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsHealth;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobCluster;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibrary;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewCluster;
@@ -87,6 +88,13 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
 
     public Optional<GetJobJobSettingsSettingsGitSource> gitSource() {
         return Optional.ofNullable(this.gitSource);
+    }
+
+    @Import(name="health")
+    private @Nullable GetJobJobSettingsSettingsHealth health;
+
+    public Optional<GetJobJobSettingsSettingsHealth> health() {
+        return Optional.ofNullable(this.health);
     }
 
     @Import(name="jobClusters")
@@ -268,6 +276,7 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         this.existingClusterId = $.existingClusterId;
         this.format = $.format;
         this.gitSource = $.gitSource;
+        this.health = $.health;
         this.jobClusters = $.jobClusters;
         this.libraries = $.libraries;
         this.maxConcurrentRuns = $.maxConcurrentRuns;
@@ -347,6 +356,11 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
 
         public Builder gitSource(@Nullable GetJobJobSettingsSettingsGitSource gitSource) {
             $.gitSource = gitSource;
+            return this;
+        }
+
+        public Builder health(@Nullable GetJobJobSettingsSettingsHealth health) {
+            $.health = health;
             return this;
         }
 

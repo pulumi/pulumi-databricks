@@ -5,6 +5,22 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AccessControlRuleSetGrantRule {
+    /**
+     * a list of principals who are granted a role. The following format is supported:
+     * * `users/{username}` (also exposed as `aclPrincipalId` attribute of `databricks.User` resource).
+     * * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `databricks.Group` resource).
+     * * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `databricks.ServicePrincipal` resource).
+     */
+    principals?: string[];
+    /**
+     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles).
+     * * `roles/servicePrincipal.manager` - Manager of a service principal.
+     * * `roles/servicePrincipal.user` - User of a service principal.
+     */
+    role: string;
+}
+
 export interface ClusterAutoscale {
     maxWorkers?: number;
     minWorkers?: number;
@@ -494,6 +510,7 @@ export interface GetJobJobSettingsSettings {
     existingClusterId?: string;
     format: string;
     gitSource?: outputs.GetJobJobSettingsSettingsGitSource;
+    health?: outputs.GetJobJobSettingsSettingsHealth;
     jobClusters?: outputs.GetJobJobSettingsSettingsJobCluster[];
     libraries?: outputs.GetJobJobSettingsSettingsLibrary[];
     maxConcurrentRuns?: number;
@@ -547,6 +564,7 @@ export interface GetJobJobSettingsSettingsDbtTask {
 export interface GetJobJobSettingsSettingsEmailNotifications {
     alertOnLastAttempt?: boolean;
     noAlertForSkippedRuns?: boolean;
+    onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
     onSuccesses?: string[];
@@ -555,9 +573,26 @@ export interface GetJobJobSettingsSettingsEmailNotifications {
 export interface GetJobJobSettingsSettingsGitSource {
     branch?: string;
     commit?: string;
+    jobSource?: outputs.GetJobJobSettingsSettingsGitSourceJobSource;
     provider?: string;
     tag?: string;
     url: string;
+}
+
+export interface GetJobJobSettingsSettingsGitSourceJobSource {
+    dirtyState?: string;
+    importFromGitBranch: string;
+    jobConfigPath: string;
+}
+
+export interface GetJobJobSettingsSettingsHealth {
+    rules: outputs.GetJobJobSettingsSettingsHealthRule[];
+}
+
+export interface GetJobJobSettingsSettingsHealthRule {
+    metric?: string;
+    op?: string;
+    value?: number;
 }
 
 export interface GetJobJobSettingsSettingsJobCluster {
@@ -904,6 +939,7 @@ export interface GetJobJobSettingsSettingsNotificationSettings {
 }
 
 export interface GetJobJobSettingsSettingsPipelineTask {
+    fullRefresh?: boolean;
     pipelineId: string;
 }
 
@@ -952,12 +988,14 @@ export interface GetJobJobSettingsSettingsTask {
     description?: string;
     emailNotifications?: outputs.GetJobJobSettingsSettingsTaskEmailNotifications;
     existingClusterId?: string;
+    health?: outputs.GetJobJobSettingsSettingsTaskHealth;
     jobClusterKey?: string;
     libraries?: outputs.GetJobJobSettingsSettingsTaskLibrary[];
     maxRetries?: number;
     minRetryIntervalMillis?: number;
     newCluster?: outputs.GetJobJobSettingsSettingsTaskNewCluster;
     notebookTask?: outputs.GetJobJobSettingsSettingsTaskNotebookTask;
+    notificationSettings?: outputs.GetJobJobSettingsSettingsTaskNotificationSettings;
     pipelineTask?: outputs.GetJobJobSettingsSettingsTaskPipelineTask;
     pythonWheelTask?: outputs.GetJobJobSettingsSettingsTaskPythonWheelTask;
     retryOnTimeout: boolean;
@@ -993,9 +1031,20 @@ export interface GetJobJobSettingsSettingsTaskDependsOn {
 export interface GetJobJobSettingsSettingsTaskEmailNotifications {
     alertOnLastAttempt?: boolean;
     noAlertForSkippedRuns?: boolean;
+    onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
     onSuccesses?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskHealth {
+    rules: outputs.GetJobJobSettingsSettingsTaskHealthRule[];
+}
+
+export interface GetJobJobSettingsSettingsTaskHealthRule {
+    metric?: string;
+    op?: string;
+    value?: number;
 }
 
 export interface GetJobJobSettingsSettingsTaskLibrary {
@@ -1180,7 +1229,14 @@ export interface GetJobJobSettingsSettingsTaskNotebookTask {
     source?: string;
 }
 
+export interface GetJobJobSettingsSettingsTaskNotificationSettings {
+    alertOnLastAttempt?: boolean;
+    noAlertForCanceledRuns?: boolean;
+    noAlertForSkippedRuns?: boolean;
+}
+
 export interface GetJobJobSettingsSettingsTaskPipelineTask {
+    fullRefresh?: boolean;
     pipelineId: string;
 }
 
@@ -1259,9 +1315,17 @@ export interface GetJobJobSettingsSettingsTriggerFileArrival {
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotifications {
+    onDurationWarningThresholdExceededs?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded[];
     onFailures?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailure[];
     onStarts?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnStart[];
     onSuccesses?: outputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccess[];
+}
+
+export interface GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
@@ -1283,6 +1347,48 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
      * the id of databricks.Job if the resource was matched by name.
      */
     id: string;
+}
+
+export interface GetMetastoreMetastoreInfo {
+    cloud?: string;
+    createdAt?: number;
+    createdBy?: string;
+    defaultDataAccessConfigId?: string;
+    /**
+     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+     */
+    deltaSharingOrganizationName?: string;
+    /**
+     * Used to set expiration duration in seconds on recipient data access tokens.
+     */
+    deltaSharingRecipientTokenLifetimeInSeconds?: number;
+    /**
+     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     */
+    deltaSharingScope?: string;
+    globalMetastoreId?: string;
+    /**
+     * Id of the metastore to be fetched
+     */
+    metastoreId?: string;
+    /**
+     * Name of metastore.
+     */
+    name?: string;
+    /**
+     * Username/groupname/sp applicationId of the metastore owner.
+     */
+    owner?: string;
+    privilegeModelVersion?: string;
+    region?: string;
+    /**
+     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     */
+    storageRoot?: string;
+    storageRootCredentialId?: string;
+    storageRootCredentialName?: string;
+    updatedAt?: number;
+    updatedBy?: string;
 }
 
 export interface GetNotebookPathsNotebookPathList {
@@ -1332,7 +1438,7 @@ export interface GetShareObjectPartitionValue {
 
 export interface GetSqlWarehouseChannel {
     /**
-     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * Name of the SQL warehouse to search (case-sensitive).
      */
     name?: string;
 }
@@ -1483,11 +1589,18 @@ export interface JobDbtTask {
 }
 
 export interface JobEmailNotifications {
+    /**
+     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
+     */
     alertOnLastAttempt?: boolean;
     /**
      * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
      */
     noAlertForSkippedRuns?: boolean;
+    /**
+     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     */
+    onDurationWarningThresholdExceededs?: string[];
     /**
      * (List) list of emails to notify when the run fails.
      */
@@ -1511,6 +1624,7 @@ export interface JobGitSource {
      * hash of Git commit to use. Conflicts with `branch` and `tag`.
      */
     commit?: string;
+    jobSource?: outputs.JobGitSourceJobSource;
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
      */
@@ -1523,6 +1637,34 @@ export interface JobGitSource {
      * URL of the Git repository to use.
      */
     url: string;
+}
+
+export interface JobGitSourceJobSource {
+    dirtyState?: string;
+    importFromGitBranch: string;
+    jobConfigPath: string;
+}
+
+export interface JobHealth {
+    /**
+     * list of rules that are represented as objects with the following attributes:
+     */
+    rules: outputs.JobHealthRule[];
+}
+
+export interface JobHealthRule {
+    /**
+     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     */
+    metric?: string;
+    /**
+     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     */
+    op?: string;
+    /**
+     * integer value used to compare to the given metric.
+     */
+    value?: number;
 }
 
 export interface JobJobCluster {
@@ -1989,9 +2131,13 @@ export interface JobNotificationSettings {
 
 export interface JobPipelineTask {
     /**
-     * The pipeline's unique ID.
+     * (Bool) Specifies if there should be full refresh of the pipeline.
      *
      * > **Note** The following configuration blocks are only supported inside a `task` block
+     */
+    fullRefresh?: boolean;
+    /**
+     * The pipeline's unique ID.
      */
     pipelineId: string;
 }
@@ -2093,6 +2239,9 @@ export interface JobTask {
     computeKey?: string;
     conditionTask?: outputs.JobTaskConditionTask;
     dbtTask?: outputs.JobTaskDbtTask;
+    /**
+     * block specifying dependency(-ies) for a given task.
+     */
     dependsOns?: outputs.JobTaskDependsOn[];
     description?: string;
     /**
@@ -2100,6 +2249,10 @@ export interface JobTask {
      */
     emailNotifications?: outputs.JobTaskEmailNotifications;
     existingClusterId?: string;
+    /**
+     * block described below that specifies health conditions for a given task.
+     */
+    health?: outputs.JobTaskHealth;
     /**
      * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
      */
@@ -2109,7 +2262,7 @@ export interface JobTask {
      */
     libraries?: outputs.JobTaskLibrary[];
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      */
     maxRetries?: number;
     /**
@@ -2121,6 +2274,10 @@ export interface JobTask {
      */
     newCluster?: outputs.JobTaskNewCluster;
     notebookTask?: outputs.JobTaskNotebookTask;
+    /**
+     * An optional block controlling the notification settings on the job level (described below).
+     */
+    notificationSettings?: outputs.JobTaskNotificationSettings;
     pipelineTask?: outputs.JobTaskPipelineTask;
     pythonWheelTask?: outputs.JobTaskPythonWheelTask;
     /**
@@ -2132,6 +2289,10 @@ export interface JobTask {
     sparkPythonTask?: outputs.JobTaskSparkPythonTask;
     sparkSubmitTask?: outputs.JobTaskSparkSubmitTask;
     sqlTask?: outputs.JobTaskSqlTask;
+    /**
+     * string specifying an unique key for a given task.
+     * * `*_task` - (Required) one of the specific task blocks described below:
+     */
     taskKey?: string;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -2141,6 +2302,9 @@ export interface JobTask {
 
 export interface JobTaskConditionTask {
     left?: string;
+    /**
+     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     */
     op?: string;
     right?: string;
 }
@@ -2176,15 +2340,25 @@ export interface JobTaskDbtTask {
 
 export interface JobTaskDependsOn {
     outcome?: string;
+    /**
+     * The name of the task this task depends on.
+     */
     taskKey: string;
 }
 
 export interface JobTaskEmailNotifications {
+    /**
+     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
+     */
     alertOnLastAttempt?: boolean;
     /**
      * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
      */
     noAlertForSkippedRuns?: boolean;
+    /**
+     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     */
+    onDurationWarningThresholdExceededs?: string[];
     /**
      * (List) list of emails to notify when the run fails.
      */
@@ -2197,6 +2371,28 @@ export interface JobTaskEmailNotifications {
      * (List) list of emails to notify when the run completes successfully.
      */
     onSuccesses?: string[];
+}
+
+export interface JobTaskHealth {
+    /**
+     * list of rules that are represented as objects with the following attributes:
+     */
+    rules: outputs.JobTaskHealthRule[];
+}
+
+export interface JobTaskHealthRule {
+    /**
+     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     */
+    metric?: string;
+    /**
+     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     */
+    op?: string;
+    /**
+     * integer value used to compare to the given metric.
+     */
+    value?: number;
 }
 
 export interface JobTaskLibrary {
@@ -2439,11 +2635,30 @@ export interface JobTaskNotebookTask {
     source?: string;
 }
 
+export interface JobTaskNotificationSettings {
+    /**
+     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
+     */
+    alertOnLastAttempt?: boolean;
+    /**
+     * (Bool) don't send alert for cancelled runs.
+     */
+    noAlertForCanceledRuns?: boolean;
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
+    noAlertForSkippedRuns?: boolean;
+}
+
 export interface JobTaskPipelineTask {
     /**
-     * The pipeline's unique ID.
+     * (Bool) Specifies if there should be full refresh of the pipeline.
      *
      * > **Note** The following configuration blocks are only supported inside a `task` block
+     */
+    fullRefresh?: boolean;
+    /**
+     * The pipeline's unique ID.
      */
     pipelineId: string;
 }
@@ -2657,7 +2872,7 @@ export interface JobTriggerFileArrival {
 
 export interface JobWebhookNotifications {
     /**
-     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+     * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      *
      * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
      *
@@ -2666,6 +2881,10 @@ export interface JobWebhookNotifications {
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
+     */
+    onDurationWarningThresholdExceededs?: outputs.JobWebhookNotificationsOnDurationWarningThresholdExceeded[];
+    /**
+     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      */
     onFailures?: outputs.JobWebhookNotificationsOnFailure[];
     /**
@@ -2676,6 +2895,15 @@ export interface JobWebhookNotifications {
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      */
     onSuccesses?: outputs.JobWebhookNotificationsOnSuccess[];
+}
+
+export interface JobWebhookNotificationsOnDurationWarningThresholdExceeded {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     */
+    id: string;
 }
 
 export interface JobWebhookNotificationsOnFailure {

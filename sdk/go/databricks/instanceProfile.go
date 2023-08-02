@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -321,6 +322,7 @@ func NewInstanceProfile(ctx *pulumi.Context,
 	if args.InstanceProfileArn == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceProfileArn'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstanceProfile
 	err := ctx.RegisterResource("databricks:index/instanceProfile:InstanceProfile", name, args, &resource, opts...)
 	if err != nil {

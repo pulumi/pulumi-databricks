@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 // * Recipient to create Delta Sharing recipients.
 // * Grants to manage Delta Sharing permissions.
 func GetShares(ctx *pulumi.Context, args *GetSharesArgs, opts ...pulumi.InvokeOption) (*GetSharesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSharesResult
 	err := ctx.Invoke("databricks:index/getShares:getShares", args, &rv, opts...)
 	if err != nil {

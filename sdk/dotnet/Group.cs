@@ -140,6 +140,12 @@ namespace Pulumi.Databricks
     public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        /// </summary>
+        [Output("aclPrincipalId")]
+        public Output<string> AclPrincipalId { get; private set; } = null!;
+
+        /// <summary>
         /// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         /// </summary>
         [Output("allowClusterCreate")]
@@ -228,6 +234,12 @@ namespace Pulumi.Databricks
     public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        /// </summary>
+        [Input("aclPrincipalId")]
+        public Input<string>? AclPrincipalId { get; set; }
+
+        /// <summary>
         /// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         /// </summary>
         [Input("allowClusterCreate")]
@@ -277,6 +289,12 @@ namespace Pulumi.Databricks
 
     public sealed class GroupState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        /// </summary>
+        [Input("aclPrincipalId")]
+        public Input<string>? AclPrincipalId { get; set; }
+
         /// <summary>
         /// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         /// </summary>

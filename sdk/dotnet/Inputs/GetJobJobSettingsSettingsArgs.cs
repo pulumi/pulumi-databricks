@@ -38,6 +38,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("gitSource")]
         public Input<Inputs.GetJobJobSettingsSettingsGitSourceInputArgs>? GitSource { get; set; }
 
+        [Input("health")]
+        public Input<Inputs.GetJobJobSettingsSettingsHealthInputArgs>? Health { get; set; }
+
         [Input("jobClusters")]
         private InputList<Inputs.GetJobJobSettingsSettingsJobClusterInputArgs>? _jobClusters;
         public InputList<Inputs.GetJobJobSettingsSettingsJobClusterInputArgs> JobClusters

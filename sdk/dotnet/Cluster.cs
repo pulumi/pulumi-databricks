@@ -193,7 +193,7 @@ namespace Pulumi.Databricks
         public Output<string?> RuntimeEngine { get; private set; } = null!;
 
         /// <summary>
-        /// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        /// The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         /// </summary>
         [Output("singleUserName")]
         public Output<string?> SingleUserName { get; private set; } = null!;
@@ -467,7 +467,7 @@ namespace Pulumi.Databricks
         public Input<string>? RuntimeEngine { get; set; }
 
         /// <summary>
-        /// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        /// The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         /// </summary>
         [Input("singleUserName")]
         public Input<string>? SingleUserName { get; set; }
@@ -724,7 +724,7 @@ namespace Pulumi.Databricks
         public Input<string>? RuntimeEngine { get; set; }
 
         /// <summary>
-        /// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        /// The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         /// </summary>
         [Input("singleUserName")]
         public Input<string>? SingleUserName { get; set; }

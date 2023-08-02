@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,6 +106,7 @@ func NewSecretAcl(ctx *pulumi.Context,
 	if args.Scope == nil {
 		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecretAcl
 	err := ctx.RegisterResource("databricks:index/secretAcl:SecretAcl", name, args, &resource, opts...)
 	if err != nil {

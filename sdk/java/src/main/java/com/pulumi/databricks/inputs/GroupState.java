@@ -17,6 +17,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     public static final GroupState Empty = new GroupState();
 
     /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
+    @Import(name="aclPrincipalId")
+    private @Nullable Output<String> aclPrincipalId;
+
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
+    public Optional<Output<String>> aclPrincipalId() {
+        return Optional.ofNullable(this.aclPrincipalId);
+    }
+
+    /**
      * This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      * 
      */
@@ -123,6 +138,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     private GroupState() {}
 
     private GroupState(GroupState $) {
+        this.aclPrincipalId = $.aclPrincipalId;
         this.allowClusterCreate = $.allowClusterCreate;
         this.allowInstancePoolCreate = $.allowInstancePoolCreate;
         this.databricksSqlAccess = $.databricksSqlAccess;
@@ -149,6 +165,27 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(GroupState defaults) {
             $ = new GroupState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPrincipalId(@Nullable Output<String> aclPrincipalId) {
+            $.aclPrincipalId = aclPrincipalId;
+            return this;
+        }
+
+        /**
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPrincipalId(String aclPrincipalId) {
+            return aclPrincipalId(Output.of(aclPrincipalId));
         }
 
         /**

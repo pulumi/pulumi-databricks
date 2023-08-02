@@ -237,6 +237,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     * 
+     */
+    @Export(name="aclPrincipalId", type=String.class, parameters={})
+    private Output<String> aclPrincipalId;
+
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     * 
+     */
+    public Output<String> aclPrincipalId() {
+        return this.aclPrincipalId;
+    }
+    /**
      * Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
      * 
      */

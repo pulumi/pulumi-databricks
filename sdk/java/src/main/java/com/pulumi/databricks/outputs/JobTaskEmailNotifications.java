@@ -13,12 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskEmailNotifications {
+    /**
+     * @return (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+     * 
+     */
     private @Nullable Boolean alertOnLastAttempt;
     /**
      * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
      * 
      */
     private @Nullable Boolean noAlertForSkippedRuns;
+    /**
+     * @return (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     * 
+     */
+    private @Nullable List<String> onDurationWarningThresholdExceededs;
     /**
      * @return (List) list of emails to notify when the run fails.
      * 
@@ -36,6 +45,10 @@ public final class JobTaskEmailNotifications {
     private @Nullable List<String> onSuccesses;
 
     private JobTaskEmailNotifications() {}
+    /**
+     * @return (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+     * 
+     */
     public Optional<Boolean> alertOnLastAttempt() {
         return Optional.ofNullable(this.alertOnLastAttempt);
     }
@@ -45,6 +58,13 @@ public final class JobTaskEmailNotifications {
      */
     public Optional<Boolean> noAlertForSkippedRuns() {
         return Optional.ofNullable(this.noAlertForSkippedRuns);
+    }
+    /**
+     * @return (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     * 
+     */
+    public List<String> onDurationWarningThresholdExceededs() {
+        return this.onDurationWarningThresholdExceededs == null ? List.of() : this.onDurationWarningThresholdExceededs;
     }
     /**
      * @return (List) list of emails to notify when the run fails.
@@ -79,6 +99,7 @@ public final class JobTaskEmailNotifications {
     public static final class Builder {
         private @Nullable Boolean alertOnLastAttempt;
         private @Nullable Boolean noAlertForSkippedRuns;
+        private @Nullable List<String> onDurationWarningThresholdExceededs;
         private @Nullable List<String> onFailures;
         private @Nullable List<String> onStarts;
         private @Nullable List<String> onSuccesses;
@@ -87,6 +108,7 @@ public final class JobTaskEmailNotifications {
     	      Objects.requireNonNull(defaults);
     	      this.alertOnLastAttempt = defaults.alertOnLastAttempt;
     	      this.noAlertForSkippedRuns = defaults.noAlertForSkippedRuns;
+    	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
     	      this.onStarts = defaults.onStarts;
     	      this.onSuccesses = defaults.onSuccesses;
@@ -101,6 +123,14 @@ public final class JobTaskEmailNotifications {
         public Builder noAlertForSkippedRuns(@Nullable Boolean noAlertForSkippedRuns) {
             this.noAlertForSkippedRuns = noAlertForSkippedRuns;
             return this;
+        }
+        @CustomType.Setter
+        public Builder onDurationWarningThresholdExceededs(@Nullable List<String> onDurationWarningThresholdExceededs) {
+            this.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
+            return this;
+        }
+        public Builder onDurationWarningThresholdExceededs(String... onDurationWarningThresholdExceededs) {
+            return onDurationWarningThresholdExceededs(List.of(onDurationWarningThresholdExceededs));
         }
         @CustomType.Setter
         public Builder onFailures(@Nullable List<String> onFailures) {
@@ -130,6 +160,7 @@ public final class JobTaskEmailNotifications {
             final var o = new JobTaskEmailNotifications();
             o.alertOnLastAttempt = alertOnLastAttempt;
             o.noAlertForSkippedRuns = noAlertForSkippedRuns;
+            o.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             o.onFailures = onFailures;
             o.onStarts = onStarts;
             o.onSuccesses = onSuccesses;

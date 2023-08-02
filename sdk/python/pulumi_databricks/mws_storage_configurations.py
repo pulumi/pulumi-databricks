@@ -167,11 +167,12 @@ class MwsStorageConfigurations(pulumi.CustomResource):
 
         config = pulumi.Config()
         databricks_account_id = config.require_object("databricksAccountId")
-        root_storage_bucket = aws.s3.BucketV2("rootStorageBucket",
-            acl="private",
-            versionings=[aws.s3.BucketV2VersioningArgs(
-                enabled=False,
-            )])
+        root_storage_bucket = aws.s3.BucketV2("rootStorageBucket", acl="private")
+        root_versioning = aws.s3.BucketVersioningV2("rootVersioning",
+            bucket=root_storage_bucket.id,
+            versioning_configuration=aws.s3.BucketVersioningV2VersioningConfigurationArgs(
+                status="Disabled",
+            ))
         this = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{var['prefix']}-storage",
@@ -216,11 +217,12 @@ class MwsStorageConfigurations(pulumi.CustomResource):
 
         config = pulumi.Config()
         databricks_account_id = config.require_object("databricksAccountId")
-        root_storage_bucket = aws.s3.BucketV2("rootStorageBucket",
-            acl="private",
-            versionings=[aws.s3.BucketV2VersioningArgs(
-                enabled=False,
-            )])
+        root_storage_bucket = aws.s3.BucketV2("rootStorageBucket", acl="private")
+        root_versioning = aws.s3.BucketVersioningV2("rootVersioning",
+            bucket=root_storage_bucket.id,
+            versioning_configuration=aws.s3.BucketVersioningV2VersioningConfigurationArgs(
+                status="Disabled",
+            ))
         this = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{var['prefix']}-storage",

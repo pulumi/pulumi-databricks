@@ -8,9 +8,11 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskConditionTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDbtTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDependsOn;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskEmailNotifications;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskHealth;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibrary;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewCluster;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNotebookTask;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNotificationSettings;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskPipelineTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskPythonWheelTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSparkJarTask;
@@ -79,6 +81,13 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
         return Optional.ofNullable(this.existingClusterId);
     }
 
+    @Import(name="health")
+    private @Nullable GetJobJobSettingsSettingsTaskHealth health;
+
+    public Optional<GetJobJobSettingsSettingsTaskHealth> health() {
+        return Optional.ofNullable(this.health);
+    }
+
     @Import(name="jobClusterKey")
     private @Nullable String jobClusterKey;
 
@@ -119,6 +128,13 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
 
     public Optional<GetJobJobSettingsSettingsTaskNotebookTask> notebookTask() {
         return Optional.ofNullable(this.notebookTask);
+    }
+
+    @Import(name="notificationSettings")
+    private @Nullable GetJobJobSettingsSettingsTaskNotificationSettings notificationSettings;
+
+    public Optional<GetJobJobSettingsSettingsTaskNotificationSettings> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
     }
 
     @Import(name="pipelineTask")
@@ -201,12 +217,14 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
         this.description = $.description;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
+        this.health = $.health;
         this.jobClusterKey = $.jobClusterKey;
         this.libraries = $.libraries;
         this.maxRetries = $.maxRetries;
         this.minRetryIntervalMillis = $.minRetryIntervalMillis;
         this.newCluster = $.newCluster;
         this.notebookTask = $.notebookTask;
+        this.notificationSettings = $.notificationSettings;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.retryOnTimeout = $.retryOnTimeout;
@@ -276,6 +294,11 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
             return this;
         }
 
+        public Builder health(@Nullable GetJobJobSettingsSettingsTaskHealth health) {
+            $.health = health;
+            return this;
+        }
+
         public Builder jobClusterKey(@Nullable String jobClusterKey) {
             $.jobClusterKey = jobClusterKey;
             return this;
@@ -307,6 +330,11 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
 
         public Builder notebookTask(@Nullable GetJobJobSettingsSettingsTaskNotebookTask notebookTask) {
             $.notebookTask = notebookTask;
+            return this;
+        }
+
+        public Builder notificationSettings(@Nullable GetJobJobSettingsSettingsTaskNotificationSettings notificationSettings) {
+            $.notificationSettings = notificationSettings;
             return this;
         }
 

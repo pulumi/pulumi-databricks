@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -156,6 +157,7 @@ func NewPipeline(ctx *pulumi.Context,
 		args = &PipelineArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Pipeline
 	err := ctx.RegisterResource("databricks:index/pipeline:Pipeline", name, args, &resource, opts...)
 	if err != nil {

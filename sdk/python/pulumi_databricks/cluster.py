@@ -90,7 +90,7 @@ class ClusterArgs:
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
-        :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, Any]] spark_conf: Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
         :param pulumi.Input[Mapping[str, Any]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
@@ -478,7 +478,7 @@ class ClusterArgs:
     @pulumi.getter(name="singleUserName")
     def single_user_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         """
         return pulumi.get(self, "single_user_name")
 
@@ -612,7 +612,7 @@ class _ClusterState:
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
-        :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, Any]] spark_conf: Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
         :param pulumi.Input[Mapping[str, Any]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param pulumi.Input[str] spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported get_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
@@ -1009,7 +1009,7 @@ class _ClusterState:
     @pulumi.getter(name="singleUserName")
     def single_user_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         """
         return pulumi.get(self, "single_user_name")
 
@@ -1184,7 +1184,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
-        :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, Any]] spark_conf: Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
         :param pulumi.Input[Mapping[str, Any]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param pulumi.Input[str] spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported get_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
@@ -1390,7 +1390,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
-        :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, Any]] spark_conf: Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
         :param pulumi.Input[Mapping[str, Any]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param pulumi.Input[str] spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported get_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
@@ -1649,7 +1649,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="singleUserName")
     def single_user_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         """
         return pulumi.get(self, "single_user_name")
 

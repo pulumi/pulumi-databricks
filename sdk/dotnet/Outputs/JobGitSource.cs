@@ -21,6 +21,7 @@ namespace Pulumi.Databricks.Outputs
         /// hash of Git commit to use. Conflicts with `branch` and `tag`.
         /// </summary>
         public readonly string? Commit;
+        public readonly Outputs.JobGitSourceJobSource? JobSource;
         /// <summary>
         /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
         /// </summary>
@@ -40,6 +41,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? commit,
 
+            Outputs.JobGitSourceJobSource? jobSource,
+
             string? provider,
 
             string? tag,
@@ -48,6 +51,7 @@ namespace Pulumi.Databricks.Outputs
         {
             Branch = branch;
             Commit = commit;
+            JobSource = jobSource;
             Provider = provider;
             Tag = tag;
             Url = url;

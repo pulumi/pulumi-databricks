@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,6 +74,7 @@ import (
 // * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
 // * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClustersResult
 	err := ctx.Invoke("databricks:index/getClusters:getClusters", args, &rv, opts...)
 	if err != nil {

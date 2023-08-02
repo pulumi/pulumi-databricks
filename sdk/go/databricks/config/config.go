@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 func GetAccountId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:accountId")

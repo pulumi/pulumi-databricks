@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func LookupNotebook(ctx *pulumi.Context, args *LookupNotebookArgs, opts ...pulumi.InvokeOption) (*LookupNotebookResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotebookResult
 	err := ctx.Invoke("databricks:index/getNotebook:getNotebook", args, &rv, opts...)
 	if err != nil {

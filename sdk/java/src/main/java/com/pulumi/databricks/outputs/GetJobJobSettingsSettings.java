@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsContinuous;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsDbtTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsEmailNotifications;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsGitSource;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsHealth;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobCluster;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsLibrary;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNewCluster;
@@ -44,6 +45,7 @@ public final class GetJobJobSettingsSettings {
     private @Nullable String existingClusterId;
     private String format;
     private @Nullable GetJobJobSettingsSettingsGitSource gitSource;
+    private @Nullable GetJobJobSettingsSettingsHealth health;
     private @Nullable List<GetJobJobSettingsSettingsJobCluster> jobClusters;
     private @Nullable List<GetJobJobSettingsSettingsLibrary> libraries;
     private @Nullable Integer maxConcurrentRuns;
@@ -93,6 +95,9 @@ public final class GetJobJobSettingsSettings {
     }
     public Optional<GetJobJobSettingsSettingsGitSource> gitSource() {
         return Optional.ofNullable(this.gitSource);
+    }
+    public Optional<GetJobJobSettingsSettingsHealth> health() {
+        return Optional.ofNullable(this.health);
     }
     public List<GetJobJobSettingsSettingsJobCluster> jobClusters() {
         return this.jobClusters == null ? List.of() : this.jobClusters;
@@ -184,6 +189,7 @@ public final class GetJobJobSettingsSettings {
         private @Nullable String existingClusterId;
         private String format;
         private @Nullable GetJobJobSettingsSettingsGitSource gitSource;
+        private @Nullable GetJobJobSettingsSettingsHealth health;
         private @Nullable List<GetJobJobSettingsSettingsJobCluster> jobClusters;
         private @Nullable List<GetJobJobSettingsSettingsLibrary> libraries;
         private @Nullable Integer maxConcurrentRuns;
@@ -217,6 +223,7 @@ public final class GetJobJobSettingsSettings {
     	      this.existingClusterId = defaults.existingClusterId;
     	      this.format = defaults.format;
     	      this.gitSource = defaults.gitSource;
+    	      this.health = defaults.health;
     	      this.jobClusters = defaults.jobClusters;
     	      this.libraries = defaults.libraries;
     	      this.maxConcurrentRuns = defaults.maxConcurrentRuns;
@@ -278,6 +285,11 @@ public final class GetJobJobSettingsSettings {
         @CustomType.Setter
         public Builder gitSource(@Nullable GetJobJobSettingsSettingsGitSource gitSource) {
             this.gitSource = gitSource;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder health(@Nullable GetJobJobSettingsSettingsHealth health) {
+            this.health = health;
             return this;
         }
         @CustomType.Setter
@@ -413,6 +425,7 @@ public final class GetJobJobSettingsSettings {
             o.existingClusterId = existingClusterId;
             o.format = format;
             o.gitSource = gitSource;
+            o.health = health;
             o.jobClusters = jobClusters;
             o.libraries = libraries;
             o.maxConcurrentRuns = maxConcurrentRuns;

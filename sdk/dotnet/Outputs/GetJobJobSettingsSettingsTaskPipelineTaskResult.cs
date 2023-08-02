@@ -13,11 +13,16 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsTaskPipelineTaskResult
     {
+        public readonly bool? FullRefresh;
         public readonly string PipelineId;
 
         [OutputConstructor]
-        private GetJobJobSettingsSettingsTaskPipelineTaskResult(string pipelineId)
+        private GetJobJobSettingsSettingsTaskPipelineTaskResult(
+            bool? fullRefresh,
+
+            string pipelineId)
         {
+            FullRefresh = fullRefresh;
             PipelineId = pipelineId;
         }
     }

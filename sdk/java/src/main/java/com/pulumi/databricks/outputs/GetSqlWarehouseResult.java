@@ -35,15 +35,19 @@ public final class GetSqlWarehouseResult {
      */
     private String dataSourceId;
     /**
-     * @return Whether to enable [Photon](https://databricks.com/product/delta-engine).
+     * @return Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
      * 
      */
     private Boolean enablePhoton;
     /**
-     * @return Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
+     * @return Whether this SQL warehouse is a serverless SQL warehouse.
      * 
      */
     private Boolean enableServerlessCompute;
+    /**
+     * @return The ID of the SQL warehouse.
+     * 
+     */
     private String id;
     private String instanceProfileArn;
     /**
@@ -79,7 +83,7 @@ public final class GetSqlWarehouseResult {
     private String spotInstancePolicy;
     private String state;
     /**
-     * @return Databricks tags all warehouse resources with these tags.
+     * @return tags used for SQL warehouse resources.
      * 
      */
     private GetSqlWarehouseTags tags;
@@ -114,19 +118,23 @@ public final class GetSqlWarehouseResult {
         return this.dataSourceId;
     }
     /**
-     * @return Whether to enable [Photon](https://databricks.com/product/delta-engine).
+     * @return Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
      * 
      */
     public Boolean enablePhoton() {
         return this.enablePhoton;
     }
     /**
-     * @return Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
+     * @return Whether this SQL warehouse is a serverless SQL warehouse.
      * 
      */
     public Boolean enableServerlessCompute() {
         return this.enableServerlessCompute;
     }
+    /**
+     * @return The ID of the SQL warehouse.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -182,7 +190,7 @@ public final class GetSqlWarehouseResult {
         return this.state;
     }
     /**
-     * @return Databricks tags all warehouse resources with these tags.
+     * @return tags used for SQL warehouse resources.
      * 
      */
     public GetSqlWarehouseTags tags() {

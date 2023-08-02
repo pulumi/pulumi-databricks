@@ -22,7 +22,7 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// Listing all credentials in 
+        /// Listing all credentials in Databricks Account
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -67,7 +67,7 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// {{% example %}}
         /// 
-        /// Listing all credentials in 
+        /// Listing all credentials in Databricks Account
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

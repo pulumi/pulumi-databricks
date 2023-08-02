@@ -14,11 +14,12 @@ import * as utilities from "./utilities";
  *
  * const config = new pulumi.Config();
  * const databricksAccountId = config.requireObject("databricksAccountId");
- * const rootStorageBucket = new aws.s3.BucketV2("rootStorageBucket", {
- *     acl: "private",
- *     versionings: [{
- *         enabled: false,
- *     }],
+ * const rootStorageBucket = new aws.s3.BucketV2("rootStorageBucket", {acl: "private"});
+ * const rootVersioning = new aws.s3.BucketVersioningV2("rootVersioning", {
+ *     bucket: rootStorageBucket.id,
+ *     versioningConfiguration: {
+ *         status: "Disabled",
+ *     },
  * });
  * const _this = new databricks.MwsStorageConfigurations("this", {
  *     accountId: databricksAccountId,

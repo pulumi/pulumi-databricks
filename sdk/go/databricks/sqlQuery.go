@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -182,6 +183,7 @@ func NewSqlQuery(ctx *pulumi.Context,
 	if args.Query == nil {
 		return nil, errors.New("invalid value for required argument 'Query'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SqlQuery
 	err := ctx.RegisterResource("databricks:index/sqlQuery:SqlQuery", name, args, &resource, opts...)
 	if err != nil {

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Listing all credentials in
+ * Listing all credentials in Databricks Account
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -74,7 +74,7 @@ export interface GetMwsCredentialsResult {
  *
  * ## Example Usage
  *
- * Listing all credentials in
+ * Listing all credentials in Databricks Account
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

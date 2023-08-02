@@ -22,9 +22,17 @@ public final class JobTaskDependsOnArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.outcome);
     }
 
+    /**
+     * The name of the task this task depends on.
+     * 
+     */
     @Import(name="taskKey", required=true)
     private Output<String> taskKey;
 
+    /**
+     * @return The name of the task this task depends on.
+     * 
+     */
     public Output<String> taskKey() {
         return this.taskKey;
     }
@@ -63,11 +71,23 @@ public final class JobTaskDependsOnArgs extends com.pulumi.resources.ResourceArg
             return outcome(Output.of(outcome));
         }
 
+        /**
+         * @param taskKey The name of the task this task depends on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskKey(Output<String> taskKey) {
             $.taskKey = taskKey;
             return this;
         }
 
+        /**
+         * @param taskKey The name of the task this task depends on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskKey(String taskKey) {
             return taskKey(Output.of(taskKey));
         }

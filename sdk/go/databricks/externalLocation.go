@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,6 +61,7 @@ func NewExternalLocation(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ExternalLocation
 	err := ctx.RegisterResource("databricks:index/externalLocation:ExternalLocation", name, args, &resource, opts...)
 	if err != nil {

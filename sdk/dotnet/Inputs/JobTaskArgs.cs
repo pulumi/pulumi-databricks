@@ -23,6 +23,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("dependsOns")]
         private InputList<Inputs.JobTaskDependsOnArgs>? _dependsOns;
+
+        /// <summary>
+        /// block specifying dependency(-ies) for a given task.
+        /// </summary>
         public InputList<Inputs.JobTaskDependsOnArgs> DependsOns
         {
             get => _dependsOns ?? (_dependsOns = new InputList<Inputs.JobTaskDependsOnArgs>());
@@ -40,6 +44,12 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("existingClusterId")]
         public Input<string>? ExistingClusterId { get; set; }
+
+        /// <summary>
+        /// block described below that specifies health conditions for a given task.
+        /// </summary>
+        [Input("health")]
+        public Input<Inputs.JobTaskHealthArgs>? Health { get; set; }
 
         /// <summary>
         /// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
@@ -60,7 +70,7 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }
@@ -79,6 +89,12 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("notebookTask")]
         public Input<Inputs.JobTaskNotebookTaskArgs>? NotebookTask { get; set; }
+
+        /// <summary>
+        /// An optional block controlling the notification settings on the job level (described below).
+        /// </summary>
+        [Input("notificationSettings")]
+        public Input<Inputs.JobTaskNotificationSettingsArgs>? NotificationSettings { get; set; }
 
         [Input("pipelineTask")]
         public Input<Inputs.JobTaskPipelineTaskArgs>? PipelineTask { get; set; }
@@ -107,6 +123,10 @@ namespace Pulumi.Databricks.Inputs
         [Input("sqlTask")]
         public Input<Inputs.JobTaskSqlTaskArgs>? SqlTask { get; set; }
 
+        /// <summary>
+        /// string specifying an unique key for a given task.
+        /// * `*_task` - (Required) one of the specific task blocks described below:
+        /// </summary>
         [Input("taskKey")]
         public Input<string>? TaskKey { get; set; }
 

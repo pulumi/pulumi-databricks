@@ -440,14 +440,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.runtimeEngine);
     }
     /**
-     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     * The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      * 
      */
     @Export(name="singleUserName", type=String.class, parameters={})
     private Output</* @Nullable */ String> singleUserName;
 
     /**
-     * @return The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     * @return The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      * 
      */
     public Output<Optional<String>> singleUserName() {

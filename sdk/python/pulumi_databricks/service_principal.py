@@ -14,6 +14,7 @@ __all__ = ['ServicePrincipalArgs', 'ServicePrincipal']
 @pulumi.input_type
 class ServicePrincipalArgs:
     def __init__(__self__, *,
+                 acl_principal_id: Optional[pulumi.Input[str]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  allow_cluster_create: Optional[pulumi.Input[bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
@@ -30,6 +31,7 @@ class ServicePrincipalArgs:
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ServicePrincipal resource.
+        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[bool] active: Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
         :param pulumi.Input[bool] allow_cluster_create: Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
         :param pulumi.Input[bool] allow_instance_pool_create: Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
@@ -44,6 +46,8 @@ class ServicePrincipalArgs:
         :param pulumi.Input[str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
+        if acl_principal_id is not None:
+            pulumi.set(__self__, "acl_principal_id", acl_principal_id)
         if active is not None:
             pulumi.set(__self__, "active", active)
         if allow_cluster_create is not None:
@@ -72,6 +76,18 @@ class ServicePrincipalArgs:
             pulumi.set(__self__, "repos", repos)
         if workspace_access is not None:
             pulumi.set(__self__, "workspace_access", workspace_access)
+
+    @property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        """
+        return pulumi.get(self, "acl_principal_id")
+
+    @acl_principal_id.setter
+    def acl_principal_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_principal_id", value)
 
     @property
     @pulumi.getter
@@ -242,6 +258,7 @@ class ServicePrincipalArgs:
 @pulumi.input_type
 class _ServicePrincipalState:
     def __init__(__self__, *,
+                 acl_principal_id: Optional[pulumi.Input[str]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  allow_cluster_create: Optional[pulumi.Input[bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
@@ -258,6 +275,7 @@ class _ServicePrincipalState:
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipal resources.
+        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[bool] active: Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
         :param pulumi.Input[bool] allow_cluster_create: Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
         :param pulumi.Input[bool] allow_instance_pool_create: Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
@@ -272,6 +290,8 @@ class _ServicePrincipalState:
         :param pulumi.Input[str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
+        if acl_principal_id is not None:
+            pulumi.set(__self__, "acl_principal_id", acl_principal_id)
         if active is not None:
             pulumi.set(__self__, "active", active)
         if allow_cluster_create is not None:
@@ -300,6 +320,18 @@ class _ServicePrincipalState:
             pulumi.set(__self__, "repos", repos)
         if workspace_access is not None:
             pulumi.set(__self__, "workspace_access", workspace_access)
+
+    @property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        """
+        return pulumi.get(self, "acl_principal_id")
+
+    @acl_principal_id.setter
+    def acl_principal_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_principal_id", value)
 
     @property
     @pulumi.getter
@@ -472,6 +504,7 @@ class ServicePrincipal(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_principal_id: Optional[pulumi.Input[str]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  allow_cluster_create: Optional[pulumi.Input[bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
@@ -581,6 +614,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[bool] active: Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
         :param pulumi.Input[bool] allow_cluster_create: Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
         :param pulumi.Input[bool] allow_instance_pool_create: Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
@@ -708,6 +742,7 @@ class ServicePrincipal(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_principal_id: Optional[pulumi.Input[str]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  allow_cluster_create: Optional[pulumi.Input[bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
@@ -731,6 +766,7 @@ class ServicePrincipal(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServicePrincipalArgs.__new__(ServicePrincipalArgs)
 
+            __props__.__dict__["acl_principal_id"] = acl_principal_id
             __props__.__dict__["active"] = active
             __props__.__dict__["allow_cluster_create"] = allow_cluster_create
             __props__.__dict__["allow_instance_pool_create"] = allow_instance_pool_create
@@ -755,6 +791,7 @@ class ServicePrincipal(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acl_principal_id: Optional[pulumi.Input[str]] = None,
             active: Optional[pulumi.Input[bool]] = None,
             allow_cluster_create: Optional[pulumi.Input[bool]] = None,
             allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
@@ -776,6 +813,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[bool] active: Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
         :param pulumi.Input[bool] allow_cluster_create: Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
         :param pulumi.Input[bool] allow_instance_pool_create: Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
@@ -794,6 +832,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
         __props__ = _ServicePrincipalState.__new__(_ServicePrincipalState)
 
+        __props__.__dict__["acl_principal_id"] = acl_principal_id
         __props__.__dict__["active"] = active
         __props__.__dict__["allow_cluster_create"] = allow_cluster_create
         __props__.__dict__["allow_instance_pool_create"] = allow_instance_pool_create
@@ -809,6 +848,14 @@ class ServicePrincipal(pulumi.CustomResource):
         __props__.__dict__["repos"] = repos
         __props__.__dict__["workspace_access"] = workspace_access
         return ServicePrincipal(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> pulumi.Output[str]:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        """
+        return pulumi.get(self, "acl_principal_id")
 
     @property
     @pulumi.getter

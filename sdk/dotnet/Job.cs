@@ -33,6 +33,23 @@ namespace Pulumi.Databricks
         [Output("continuous")]
         public Output<Outputs.JobContinuous?> Continuous { get; private set; } = null!;
 
+        /// <summary>
+        /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+        /// 
+        /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// </summary>
+        [Output("controlRunState")]
+        public Output<bool?> ControlRunState { get; private set; } = null!;
+
         [Output("dbtTask")]
         public Output<Outputs.JobDbtTask?> DbtTask { get; private set; } = null!;
 
@@ -50,6 +67,12 @@ namespace Pulumi.Databricks
 
         [Output("gitSource")]
         public Output<Outputs.JobGitSource?> GitSource { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional block that specifies the health conditions for the job (described below).
+        /// </summary>
+        [Output("health")]
+        public Output<Outputs.JobHealth?> Health { get; private set; } = null!;
 
         /// <summary>
         /// A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
@@ -70,7 +93,7 @@ namespace Pulumi.Databricks
         public Output<int?> MaxConcurrentRuns { get; private set; } = null!;
 
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
         /// </summary>
         [Output("maxRetries")]
         public Output<int?> MaxRetries { get; private set; } = null!;
@@ -96,6 +119,9 @@ namespace Pulumi.Databricks
         [Output("notebookTask")]
         public Output<Outputs.JobNotebookTask?> NotebookTask { get; private set; } = null!;
 
+        /// <summary>
+        /// An optional block controlling the notification settings on the job level (described below).
+        /// </summary>
         [Output("notificationSettings")]
         public Output<Outputs.JobNotificationSettings?> NotificationSettings { get; private set; } = null!;
 
@@ -222,6 +248,23 @@ namespace Pulumi.Databricks
         [Input("continuous")]
         public Input<Inputs.JobContinuousArgs>? Continuous { get; set; }
 
+        /// <summary>
+        /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+        /// 
+        /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// </summary>
+        [Input("controlRunState")]
+        public Input<bool>? ControlRunState { get; set; }
+
         [Input("dbtTask")]
         public Input<Inputs.JobDbtTaskArgs>? DbtTask { get; set; }
 
@@ -239,6 +282,12 @@ namespace Pulumi.Databricks
 
         [Input("gitSource")]
         public Input<Inputs.JobGitSourceArgs>? GitSource { get; set; }
+
+        /// <summary>
+        /// An optional block that specifies the health conditions for the job (described below).
+        /// </summary>
+        [Input("health")]
+        public Input<Inputs.JobHealthArgs>? Health { get; set; }
 
         [Input("jobClusters")]
         private InputList<Inputs.JobJobClusterArgs>? _jobClusters;
@@ -271,7 +320,7 @@ namespace Pulumi.Databricks
         public Input<int>? MaxConcurrentRuns { get; set; }
 
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
         /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }
@@ -297,6 +346,9 @@ namespace Pulumi.Databricks
         [Input("notebookTask")]
         public Input<Inputs.JobNotebookTaskArgs>? NotebookTask { get; set; }
 
+        /// <summary>
+        /// An optional block controlling the notification settings on the job level (described below).
+        /// </summary>
         [Input("notificationSettings")]
         public Input<Inputs.JobNotificationSettingsArgs>? NotificationSettings { get; set; }
 
@@ -389,6 +441,23 @@ namespace Pulumi.Databricks
         [Input("continuous")]
         public Input<Inputs.JobContinuousGetArgs>? Continuous { get; set; }
 
+        /// <summary>
+        /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+        /// 
+        /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// </summary>
+        [Input("controlRunState")]
+        public Input<bool>? ControlRunState { get; set; }
+
         [Input("dbtTask")]
         public Input<Inputs.JobDbtTaskGetArgs>? DbtTask { get; set; }
 
@@ -406,6 +475,12 @@ namespace Pulumi.Databricks
 
         [Input("gitSource")]
         public Input<Inputs.JobGitSourceGetArgs>? GitSource { get; set; }
+
+        /// <summary>
+        /// An optional block that specifies the health conditions for the job (described below).
+        /// </summary>
+        [Input("health")]
+        public Input<Inputs.JobHealthGetArgs>? Health { get; set; }
 
         [Input("jobClusters")]
         private InputList<Inputs.JobJobClusterGetArgs>? _jobClusters;
@@ -438,7 +513,7 @@ namespace Pulumi.Databricks
         public Input<int>? MaxConcurrentRuns { get; set; }
 
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
         /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }
@@ -464,6 +539,9 @@ namespace Pulumi.Databricks
         [Input("notebookTask")]
         public Input<Inputs.JobNotebookTaskGetArgs>? NotebookTask { get; set; }
 
+        /// <summary>
+        /// An optional block controlling the notification settings on the job level (described below).
+        /// </summary>
         [Input("notificationSettings")]
         public Input<Inputs.JobNotificationSettingsGetArgs>? NotificationSettings { get; set; }
 

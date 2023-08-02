@@ -17,6 +17,21 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     public static final UserArgs Empty = new UserArgs();
 
     /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     * 
+     */
+    @Import(name="aclPrincipalId")
+    private @Nullable Output<String> aclPrincipalId;
+
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     * 
+     */
+    public Optional<Output<String>> aclPrincipalId() {
+        return Optional.ofNullable(this.aclPrincipalId);
+    }
+
+    /**
      * Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
      * 
      */
@@ -213,6 +228,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     private UserArgs() {}
 
     private UserArgs(UserArgs $) {
+        this.aclPrincipalId = $.aclPrincipalId;
         this.active = $.active;
         this.allowClusterCreate = $.allowClusterCreate;
         this.allowInstancePoolCreate = $.allowInstancePoolCreate;
@@ -245,6 +261,27 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(UserArgs defaults) {
             $ = new UserArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPrincipalId(@Nullable Output<String> aclPrincipalId) {
+            $.aclPrincipalId = aclPrincipalId;
+            return this;
+        }
+
+        /**
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPrincipalId(String aclPrincipalId) {
+            return aclPrincipalId(Output.of(aclPrincipalId));
         }
 
         /**

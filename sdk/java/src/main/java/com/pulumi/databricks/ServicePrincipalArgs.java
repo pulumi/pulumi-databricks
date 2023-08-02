@@ -17,6 +17,21 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
     public static final ServicePrincipalArgs Empty = new ServicePrincipalArgs();
 
     /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    @Import(name="aclPrincipalId")
+    private @Nullable Output<String> aclPrincipalId;
+
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    public Optional<Output<String>> aclPrincipalId() {
+        return Optional.ofNullable(this.aclPrincipalId);
+    }
+
+    /**
      * Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
      * 
      */
@@ -221,6 +236,7 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
     private ServicePrincipalArgs() {}
 
     private ServicePrincipalArgs(ServicePrincipalArgs $) {
+        this.aclPrincipalId = $.aclPrincipalId;
         this.active = $.active;
         this.allowClusterCreate = $.allowClusterCreate;
         this.allowInstancePoolCreate = $.allowInstancePoolCreate;
@@ -253,6 +269,27 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(ServicePrincipalArgs defaults) {
             $ = new ServicePrincipalArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPrincipalId(@Nullable Output<String> aclPrincipalId) {
+            $.aclPrincipalId = aclPrincipalId;
+            return this;
+        }
+
+        /**
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPrincipalId(String aclPrincipalId) {
+            return aclPrincipalId(Output.of(aclPrincipalId));
         }
 
         /**

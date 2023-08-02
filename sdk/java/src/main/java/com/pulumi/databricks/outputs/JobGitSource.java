@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobGitSourceJobSource;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,6 +22,7 @@ public final class JobGitSource {
      * 
      */
     private @Nullable String commit;
+    private @Nullable JobGitSourceJobSource jobSource;
     /**
      * @return case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
      * 
@@ -51,6 +53,9 @@ public final class JobGitSource {
      */
     public Optional<String> commit() {
         return Optional.ofNullable(this.commit);
+    }
+    public Optional<JobGitSourceJobSource> jobSource() {
+        return Optional.ofNullable(this.jobSource);
     }
     /**
      * @return case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
@@ -85,6 +90,7 @@ public final class JobGitSource {
     public static final class Builder {
         private @Nullable String branch;
         private @Nullable String commit;
+        private @Nullable JobGitSourceJobSource jobSource;
         private @Nullable String provider;
         private @Nullable String tag;
         private String url;
@@ -93,6 +99,7 @@ public final class JobGitSource {
     	      Objects.requireNonNull(defaults);
     	      this.branch = defaults.branch;
     	      this.commit = defaults.commit;
+    	      this.jobSource = defaults.jobSource;
     	      this.provider = defaults.provider;
     	      this.tag = defaults.tag;
     	      this.url = defaults.url;
@@ -106,6 +113,11 @@ public final class JobGitSource {
         @CustomType.Setter
         public Builder commit(@Nullable String commit) {
             this.commit = commit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder jobSource(@Nullable JobGitSourceJobSource jobSource) {
+            this.jobSource = jobSource;
             return this;
         }
         @CustomType.Setter
@@ -127,6 +139,7 @@ public final class JobGitSource {
             final var o = new JobGitSource();
             o.branch = branch;
             o.commit = commit;
+            o.jobSource = jobSource;
             o.provider = provider;
             o.tag = tag;
             o.url = url;

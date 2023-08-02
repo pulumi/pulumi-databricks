@@ -133,6 +133,10 @@ export class ServicePrincipal extends pulumi.CustomResource {
     }
 
     /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     */
+    public readonly aclPrincipalId!: pulumi.Output<string>;
+    /**
      * Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
      */
     public readonly active!: pulumi.Output<boolean | undefined>;
@@ -199,6 +203,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalState | undefined;
+            resourceInputs["aclPrincipalId"] = state ? state.aclPrincipalId : undefined;
             resourceInputs["active"] = state ? state.active : undefined;
             resourceInputs["allowClusterCreate"] = state ? state.allowClusterCreate : undefined;
             resourceInputs["allowInstancePoolCreate"] = state ? state.allowInstancePoolCreate : undefined;
@@ -215,6 +220,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             resourceInputs["workspaceAccess"] = state ? state.workspaceAccess : undefined;
         } else {
             const args = argsOrState as ServicePrincipalArgs | undefined;
+            resourceInputs["aclPrincipalId"] = args ? args.aclPrincipalId : undefined;
             resourceInputs["active"] = args ? args.active : undefined;
             resourceInputs["allowClusterCreate"] = args ? args.allowClusterCreate : undefined;
             resourceInputs["allowInstancePoolCreate"] = args ? args.allowInstancePoolCreate : undefined;
@@ -239,6 +245,10 @@ export class ServicePrincipal extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServicePrincipal resources.
  */
 export interface ServicePrincipalState {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     */
+    aclPrincipalId?: pulumi.Input<string>;
     /**
      * Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
      */
@@ -298,6 +308,10 @@ export interface ServicePrincipalState {
  * The set of arguments for constructing a ServicePrincipal resource.
  */
 export interface ServicePrincipalArgs {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     */
+    aclPrincipalId?: pulumi.Input<string>;
     /**
      * Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
      */

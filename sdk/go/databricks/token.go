@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -112,6 +113,7 @@ func NewToken(ctx *pulumi.Context,
 		"tokenValue",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Token
 	err := ctx.RegisterResource("databricks:index/token:Token", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -104,6 +105,7 @@ import (
 // * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 // * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
 func GetPipelines(ctx *pulumi.Context, args *GetPipelinesArgs, opts ...pulumi.InvokeOption) (*GetPipelinesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPipelinesResult
 	err := ctx.Invoke("databricks:index/getPipelines:getPipelines", args, &rv, opts...)
 	if err != nil {

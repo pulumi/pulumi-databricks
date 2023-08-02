@@ -9,9 +9,11 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskConditionTaskAr
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDbtTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDependsOnArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskEmailNotificationsArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskHealthArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNotebookTaskArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNotificationSettingsArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskPipelineTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskPythonWheelTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSparkJarTaskArgs;
@@ -80,6 +82,13 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
         return Optional.ofNullable(this.existingClusterId);
     }
 
+    @Import(name="health")
+    private @Nullable Output<GetJobJobSettingsSettingsTaskHealthArgs> health;
+
+    public Optional<Output<GetJobJobSettingsSettingsTaskHealthArgs>> health() {
+        return Optional.ofNullable(this.health);
+    }
+
     @Import(name="jobClusterKey")
     private @Nullable Output<String> jobClusterKey;
 
@@ -120,6 +129,13 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
 
     public Optional<Output<GetJobJobSettingsSettingsTaskNotebookTaskArgs>> notebookTask() {
         return Optional.ofNullable(this.notebookTask);
+    }
+
+    @Import(name="notificationSettings")
+    private @Nullable Output<GetJobJobSettingsSettingsTaskNotificationSettingsArgs> notificationSettings;
+
+    public Optional<Output<GetJobJobSettingsSettingsTaskNotificationSettingsArgs>> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
     }
 
     @Import(name="pipelineTask")
@@ -202,12 +218,14 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
         this.description = $.description;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
+        this.health = $.health;
         this.jobClusterKey = $.jobClusterKey;
         this.libraries = $.libraries;
         this.maxRetries = $.maxRetries;
         this.minRetryIntervalMillis = $.minRetryIntervalMillis;
         this.newCluster = $.newCluster;
         this.notebookTask = $.notebookTask;
+        this.notificationSettings = $.notificationSettings;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.retryOnTimeout = $.retryOnTimeout;
@@ -305,6 +323,15 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
             return existingClusterId(Output.of(existingClusterId));
         }
 
+        public Builder health(@Nullable Output<GetJobJobSettingsSettingsTaskHealthArgs> health) {
+            $.health = health;
+            return this;
+        }
+
+        public Builder health(GetJobJobSettingsSettingsTaskHealthArgs health) {
+            return health(Output.of(health));
+        }
+
         public Builder jobClusterKey(@Nullable Output<String> jobClusterKey) {
             $.jobClusterKey = jobClusterKey;
             return this;
@@ -361,6 +388,15 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
 
         public Builder notebookTask(GetJobJobSettingsSettingsTaskNotebookTaskArgs notebookTask) {
             return notebookTask(Output.of(notebookTask));
+        }
+
+        public Builder notificationSettings(@Nullable Output<GetJobJobSettingsSettingsTaskNotificationSettingsArgs> notificationSettings) {
+            $.notificationSettings = notificationSettings;
+            return this;
+        }
+
+        public Builder notificationSettings(GetJobJobSettingsSettingsTaskNotificationSettingsArgs notificationSettings) {
+            return notificationSettings(Output.of(notificationSettings));
         }
 
         public Builder pipelineTask(@Nullable Output<GetJobJobSettingsSettingsTaskPipelineTaskArgs> pipelineTask) {

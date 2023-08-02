@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,6 +32,7 @@ func NewPermissionAssignment(ctx *pulumi.Context,
 	if args.PrincipalId == nil {
 		return nil, errors.New("invalid value for required argument 'PrincipalId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PermissionAssignment
 	err := ctx.RegisterResource("databricks:index/permissionAssignment:PermissionAssignment", name, args, &resource, opts...)
 	if err != nil {

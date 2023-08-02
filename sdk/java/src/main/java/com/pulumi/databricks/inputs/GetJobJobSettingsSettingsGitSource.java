@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsGitSourceJobSource;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,6 +27,13 @@ public final class GetJobJobSettingsSettingsGitSource extends com.pulumi.resourc
 
     public Optional<String> commit() {
         return Optional.ofNullable(this.commit);
+    }
+
+    @Import(name="jobSource")
+    private @Nullable GetJobJobSettingsSettingsGitSourceJobSource jobSource;
+
+    public Optional<GetJobJobSettingsSettingsGitSourceJobSource> jobSource() {
+        return Optional.ofNullable(this.jobSource);
     }
 
     @Import(name="provider")
@@ -54,6 +62,7 @@ public final class GetJobJobSettingsSettingsGitSource extends com.pulumi.resourc
     private GetJobJobSettingsSettingsGitSource(GetJobJobSettingsSettingsGitSource $) {
         this.branch = $.branch;
         this.commit = $.commit;
+        this.jobSource = $.jobSource;
         this.provider = $.provider;
         this.tag = $.tag;
         this.url = $.url;
@@ -84,6 +93,11 @@ public final class GetJobJobSettingsSettingsGitSource extends com.pulumi.resourc
 
         public Builder commit(@Nullable String commit) {
             $.commit = commit;
+            return this;
+        }
+
+        public Builder jobSource(@Nullable GetJobJobSettingsSettingsGitSourceJobSource jobSource) {
+            $.jobSource = jobSource;
             return this;
         }
 

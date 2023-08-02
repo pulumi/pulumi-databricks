@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,6 +22,7 @@ import (
 // * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
 // * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
 func GetAwsBucketPolicy(ctx *pulumi.Context, args *GetAwsBucketPolicyArgs, opts ...pulumi.InvokeOption) (*GetAwsBucketPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAwsBucketPolicyResult
 	err := ctx.Invoke("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", args, &rv, opts...)
 	if err != nil {

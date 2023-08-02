@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -204,6 +205,8 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
+	// identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+	AclPrincipalId pulumi.StringOutput `pulumi:"aclPrincipalId"`
 	// Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
 	Active pulumi.BoolPtrOutput `pulumi:"active"`
 	// Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
@@ -242,6 +245,7 @@ func NewUser(ctx *pulumi.Context,
 	if args.UserName == nil {
 		return nil, errors.New("invalid value for required argument 'UserName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource User
 	err := ctx.RegisterResource("databricks:index/user:User", name, args, &resource, opts...)
 	if err != nil {
@@ -264,6 +268,8 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+	AclPrincipalId *string `pulumi:"aclPrincipalId"`
 	// Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
 	Active *bool `pulumi:"active"`
 	// Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
@@ -293,6 +299,8 @@ type userState struct {
 }
 
 type UserState struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+	AclPrincipalId pulumi.StringPtrInput
 	// Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
 	Active pulumi.BoolPtrInput
 	// Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
@@ -326,6 +334,8 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+	AclPrincipalId *string `pulumi:"aclPrincipalId"`
 	// Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
 	Active *bool `pulumi:"active"`
 	// Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
@@ -356,6 +366,8 @@ type userArgs struct {
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+	AclPrincipalId pulumi.StringPtrInput
 	// Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
 	Active pulumi.BoolPtrInput
 	// Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
@@ -469,6 +481,11 @@ func (o UserOutput) ToUserOutput() UserOutput {
 
 func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
+}
+
+// identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+func (o UserOutput) AclPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.AclPrincipalId }).(pulumi.StringOutput)
 }
 
 // Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.

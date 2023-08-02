@@ -8,9 +8,11 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskConditionTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskDbtTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskDependsOn;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskEmailNotifications;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskHealth;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskLibrary;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNewCluster;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNotebookTask;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNotificationSettings;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskPipelineTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskPythonWheelTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSparkJarTask;
@@ -34,12 +36,14 @@ public final class GetJobJobSettingsSettingsTask {
     private @Nullable String description;
     private @Nullable GetJobJobSettingsSettingsTaskEmailNotifications emailNotifications;
     private @Nullable String existingClusterId;
+    private @Nullable GetJobJobSettingsSettingsTaskHealth health;
     private @Nullable String jobClusterKey;
     private @Nullable List<GetJobJobSettingsSettingsTaskLibrary> libraries;
     private @Nullable Integer maxRetries;
     private @Nullable Integer minRetryIntervalMillis;
     private @Nullable GetJobJobSettingsSettingsTaskNewCluster newCluster;
     private @Nullable GetJobJobSettingsSettingsTaskNotebookTask notebookTask;
+    private @Nullable GetJobJobSettingsSettingsTaskNotificationSettings notificationSettings;
     private @Nullable GetJobJobSettingsSettingsTaskPipelineTask pipelineTask;
     private @Nullable GetJobJobSettingsSettingsTaskPythonWheelTask pythonWheelTask;
     private Boolean retryOnTimeout;
@@ -73,6 +77,9 @@ public final class GetJobJobSettingsSettingsTask {
     public Optional<String> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
     }
+    public Optional<GetJobJobSettingsSettingsTaskHealth> health() {
+        return Optional.ofNullable(this.health);
+    }
     public Optional<String> jobClusterKey() {
         return Optional.ofNullable(this.jobClusterKey);
     }
@@ -90,6 +97,9 @@ public final class GetJobJobSettingsSettingsTask {
     }
     public Optional<GetJobJobSettingsSettingsTaskNotebookTask> notebookTask() {
         return Optional.ofNullable(this.notebookTask);
+    }
+    public Optional<GetJobJobSettingsSettingsTaskNotificationSettings> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
     }
     public Optional<GetJobJobSettingsSettingsTaskPipelineTask> pipelineTask() {
         return Optional.ofNullable(this.pipelineTask);
@@ -138,12 +148,14 @@ public final class GetJobJobSettingsSettingsTask {
         private @Nullable String description;
         private @Nullable GetJobJobSettingsSettingsTaskEmailNotifications emailNotifications;
         private @Nullable String existingClusterId;
+        private @Nullable GetJobJobSettingsSettingsTaskHealth health;
         private @Nullable String jobClusterKey;
         private @Nullable List<GetJobJobSettingsSettingsTaskLibrary> libraries;
         private @Nullable Integer maxRetries;
         private @Nullable Integer minRetryIntervalMillis;
         private @Nullable GetJobJobSettingsSettingsTaskNewCluster newCluster;
         private @Nullable GetJobJobSettingsSettingsTaskNotebookTask notebookTask;
+        private @Nullable GetJobJobSettingsSettingsTaskNotificationSettings notificationSettings;
         private @Nullable GetJobJobSettingsSettingsTaskPipelineTask pipelineTask;
         private @Nullable GetJobJobSettingsSettingsTaskPythonWheelTask pythonWheelTask;
         private Boolean retryOnTimeout;
@@ -164,12 +176,14 @@ public final class GetJobJobSettingsSettingsTask {
     	      this.description = defaults.description;
     	      this.emailNotifications = defaults.emailNotifications;
     	      this.existingClusterId = defaults.existingClusterId;
+    	      this.health = defaults.health;
     	      this.jobClusterKey = defaults.jobClusterKey;
     	      this.libraries = defaults.libraries;
     	      this.maxRetries = defaults.maxRetries;
     	      this.minRetryIntervalMillis = defaults.minRetryIntervalMillis;
     	      this.newCluster = defaults.newCluster;
     	      this.notebookTask = defaults.notebookTask;
+    	      this.notificationSettings = defaults.notificationSettings;
     	      this.pipelineTask = defaults.pipelineTask;
     	      this.pythonWheelTask = defaults.pythonWheelTask;
     	      this.retryOnTimeout = defaults.retryOnTimeout;
@@ -221,6 +235,11 @@ public final class GetJobJobSettingsSettingsTask {
             return this;
         }
         @CustomType.Setter
+        public Builder health(@Nullable GetJobJobSettingsSettingsTaskHealth health) {
+            this.health = health;
+            return this;
+        }
+        @CustomType.Setter
         public Builder jobClusterKey(@Nullable String jobClusterKey) {
             this.jobClusterKey = jobClusterKey;
             return this;
@@ -251,6 +270,11 @@ public final class GetJobJobSettingsSettingsTask {
         @CustomType.Setter
         public Builder notebookTask(@Nullable GetJobJobSettingsSettingsTaskNotebookTask notebookTask) {
             this.notebookTask = notebookTask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder notificationSettings(@Nullable GetJobJobSettingsSettingsTaskNotificationSettings notificationSettings) {
+            this.notificationSettings = notificationSettings;
             return this;
         }
         @CustomType.Setter
@@ -312,12 +336,14 @@ public final class GetJobJobSettingsSettingsTask {
             o.description = description;
             o.emailNotifications = emailNotifications;
             o.existingClusterId = existingClusterId;
+            o.health = health;
             o.jobClusterKey = jobClusterKey;
             o.libraries = libraries;
             o.maxRetries = maxRetries;
             o.minRetryIntervalMillis = minRetryIntervalMillis;
             o.newCluster = newCluster;
             o.notebookTask = notebookTask;
+            o.notificationSettings = notificationSettings;
             o.pipelineTask = pipelineTask;
             o.pythonWheelTask = pythonWheelTask;
             o.retryOnTimeout = retryOnTimeout;

@@ -5,8 +5,11 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class JobPipelineTaskArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,9 +17,26 @@ public final class JobPipelineTaskArgs extends com.pulumi.resources.ResourceArgs
     public static final JobPipelineTaskArgs Empty = new JobPipelineTaskArgs();
 
     /**
-     * The pipeline&#39;s unique ID.
+     * (Bool) Specifies if there should be full refresh of the pipeline.
      * 
      * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+     * 
+     */
+    @Import(name="fullRefresh")
+    private @Nullable Output<Boolean> fullRefresh;
+
+    /**
+     * @return (Bool) Specifies if there should be full refresh of the pipeline.
+     * 
+     * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+     * 
+     */
+    public Optional<Output<Boolean>> fullRefresh() {
+        return Optional.ofNullable(this.fullRefresh);
+    }
+
+    /**
+     * The pipeline&#39;s unique ID.
      * 
      */
     @Import(name="pipelineId", required=true)
@@ -24,8 +44,6 @@ public final class JobPipelineTaskArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The pipeline&#39;s unique ID.
-     * 
-     * &gt; **Note** The following configuration blocks are only supported inside a `task` block
      * 
      */
     public Output<String> pipelineId() {
@@ -35,6 +53,7 @@ public final class JobPipelineTaskArgs extends com.pulumi.resources.ResourceArgs
     private JobPipelineTaskArgs() {}
 
     private JobPipelineTaskArgs(JobPipelineTaskArgs $) {
+        this.fullRefresh = $.fullRefresh;
         this.pipelineId = $.pipelineId;
     }
 
@@ -57,9 +76,32 @@ public final class JobPipelineTaskArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param pipelineId The pipeline&#39;s unique ID.
+         * @param fullRefresh (Bool) Specifies if there should be full refresh of the pipeline.
          * 
          * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fullRefresh(@Nullable Output<Boolean> fullRefresh) {
+            $.fullRefresh = fullRefresh;
+            return this;
+        }
+
+        /**
+         * @param fullRefresh (Bool) Specifies if there should be full refresh of the pipeline.
+         * 
+         * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fullRefresh(Boolean fullRefresh) {
+            return fullRefresh(Output.of(fullRefresh));
+        }
+
+        /**
+         * @param pipelineId The pipeline&#39;s unique ID.
          * 
          * @return builder
          * 
@@ -71,8 +113,6 @@ public final class JobPipelineTaskArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param pipelineId The pipeline&#39;s unique ID.
-         * 
-         * &gt; **Note** The following configuration blocks are only supported inside a `task` block
          * 
          * @return builder
          * 

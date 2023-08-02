@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -152,6 +153,7 @@ func NewMwsLogDelivery(ctx *pulumi.Context,
 	if args.StorageConfigurationId == nil {
 		return nil, errors.New("invalid value for required argument 'StorageConfigurationId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MwsLogDelivery
 	err := ctx.RegisterResource("databricks:index/mwsLogDelivery:MwsLogDelivery", name, args, &resource, opts...)
 	if err != nil {

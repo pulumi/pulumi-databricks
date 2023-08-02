@@ -31,6 +31,13 @@ public final class GetJobJobSettingsSettingsEmailNotificationsArgs extends com.p
         return Optional.ofNullable(this.noAlertForSkippedRuns);
     }
 
+    @Import(name="onDurationWarningThresholdExceededs")
+    private @Nullable Output<List<String>> onDurationWarningThresholdExceededs;
+
+    public Optional<Output<List<String>>> onDurationWarningThresholdExceededs() {
+        return Optional.ofNullable(this.onDurationWarningThresholdExceededs);
+    }
+
     @Import(name="onFailures")
     private @Nullable Output<List<String>> onFailures;
 
@@ -57,6 +64,7 @@ public final class GetJobJobSettingsSettingsEmailNotificationsArgs extends com.p
     private GetJobJobSettingsSettingsEmailNotificationsArgs(GetJobJobSettingsSettingsEmailNotificationsArgs $) {
         this.alertOnLastAttempt = $.alertOnLastAttempt;
         this.noAlertForSkippedRuns = $.noAlertForSkippedRuns;
+        this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
         this.onStarts = $.onStarts;
         this.onSuccesses = $.onSuccesses;
@@ -96,6 +104,19 @@ public final class GetJobJobSettingsSettingsEmailNotificationsArgs extends com.p
 
         public Builder noAlertForSkippedRuns(Boolean noAlertForSkippedRuns) {
             return noAlertForSkippedRuns(Output.of(noAlertForSkippedRuns));
+        }
+
+        public Builder onDurationWarningThresholdExceededs(@Nullable Output<List<String>> onDurationWarningThresholdExceededs) {
+            $.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
+            return this;
+        }
+
+        public Builder onDurationWarningThresholdExceededs(List<String> onDurationWarningThresholdExceededs) {
+            return onDurationWarningThresholdExceededs(Output.of(onDurationWarningThresholdExceededs));
+        }
+
+        public Builder onDurationWarningThresholdExceededs(String... onDurationWarningThresholdExceededs) {
+            return onDurationWarningThresholdExceededs(List.of(onDurationWarningThresholdExceededs));
         }
 
         public Builder onFailures(@Nullable Output<List<String>> onFailures) {

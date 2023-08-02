@@ -13,6 +13,7 @@
         "strict": true
     },
     "files": [
+        "accessControlRuleSet.ts",
         "catalog.ts",
         "catalogWorkspaceBinding.ts",
         "cluster.ts",
@@ -38,6 +39,8 @@
         "getInstancePool.ts",
         "getJob.ts",
         "getJobs.ts",
+        "getMetastore.ts",
+        "getMetastores.ts",
         "getMwsCredentials.ts",
         "getMwsWorkspaces.ts",
         "getNodeType.ts",

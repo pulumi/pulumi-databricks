@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetSqlWarehouseChannel {
     /**
-     * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * @return Name of the SQL warehouse to search (case-sensitive).
      * 
      */
     private @Nullable String name;
 
     private GetSqlWarehouseChannel() {}
     /**
-     * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * @return Name of the SQL warehouse to search (case-sensitive).
      * 
      */
     public Optional<String> name() {

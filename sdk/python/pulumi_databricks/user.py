@@ -15,6 +15,7 @@ __all__ = ['UserArgs', 'User']
 class UserArgs:
     def __init__(__self__, *,
                  user_name: pulumi.Input[str],
+                 acl_principal_id: Optional[pulumi.Input[str]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  allow_cluster_create: Optional[pulumi.Input[bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
@@ -31,6 +32,7 @@ class UserArgs:
         """
         The set of arguments for constructing a User resource.
         :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.
+        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
         :param pulumi.Input[bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
@@ -44,6 +46,8 @@ class UserArgs:
         :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         """
         pulumi.set(__self__, "user_name", user_name)
+        if acl_principal_id is not None:
+            pulumi.set(__self__, "acl_principal_id", acl_principal_id)
         if active is not None:
             pulumi.set(__self__, "active", active)
         if allow_cluster_create is not None:
@@ -82,6 +86,18 @@ class UserArgs:
     @user_name.setter
     def user_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "user_name", value)
+
+    @property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+        """
+        return pulumi.get(self, "acl_principal_id")
+
+    @acl_principal_id.setter
+    def acl_principal_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_principal_id", value)
 
     @property
     @pulumi.getter
@@ -237,6 +253,7 @@ class UserArgs:
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
+                 acl_principal_id: Optional[pulumi.Input[str]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  allow_cluster_create: Optional[pulumi.Input[bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
@@ -253,6 +270,7 @@ class _UserState:
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering User resources.
+        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
         :param pulumi.Input[bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
@@ -266,6 +284,8 @@ class _UserState:
         :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.
         """
+        if acl_principal_id is not None:
+            pulumi.set(__self__, "acl_principal_id", acl_principal_id)
         if active is not None:
             pulumi.set(__self__, "active", active)
         if allow_cluster_create is not None:
@@ -294,6 +314,18 @@ class _UserState:
             pulumi.set(__self__, "user_name", user_name)
         if workspace_access is not None:
             pulumi.set(__self__, "workspace_access", workspace_access)
+
+    @property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+        """
+        return pulumi.get(self, "acl_principal_id")
+
+    @acl_principal_id.setter
+    def acl_principal_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_principal_id", value)
 
     @property
     @pulumi.getter
@@ -463,6 +495,7 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_principal_id: Optional[pulumi.Input[str]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  allow_cluster_create: Optional[pulumi.Input[bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
@@ -575,6 +608,7 @@ class User(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
         :param pulumi.Input[bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
@@ -704,6 +738,7 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_principal_id: Optional[pulumi.Input[str]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  allow_cluster_create: Optional[pulumi.Input[bool]] = None,
                  allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
@@ -727,6 +762,7 @@ class User(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = UserArgs.__new__(UserArgs)
 
+            __props__.__dict__["acl_principal_id"] = acl_principal_id
             __props__.__dict__["active"] = active
             __props__.__dict__["allow_cluster_create"] = allow_cluster_create
             __props__.__dict__["allow_instance_pool_create"] = allow_instance_pool_create
@@ -753,6 +789,7 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acl_principal_id: Optional[pulumi.Input[str]] = None,
             active: Optional[pulumi.Input[bool]] = None,
             allow_cluster_create: Optional[pulumi.Input[bool]] = None,
             allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
@@ -774,6 +811,7 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
         :param pulumi.Input[bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
@@ -791,6 +829,7 @@ class User(pulumi.CustomResource):
 
         __props__ = _UserState.__new__(_UserState)
 
+        __props__.__dict__["acl_principal_id"] = acl_principal_id
         __props__.__dict__["active"] = active
         __props__.__dict__["allow_cluster_create"] = allow_cluster_create
         __props__.__dict__["allow_instance_pool_create"] = allow_instance_pool_create
@@ -806,6 +845,14 @@ class User(pulumi.CustomResource):
         __props__.__dict__["user_name"] = user_name
         __props__.__dict__["workspace_access"] = workspace_access
         return User(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> pulumi.Output[str]:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+        """
+        return pulumi.get(self, "acl_principal_id")
 
     @property
     @pulumi.getter

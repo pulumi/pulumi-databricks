@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsGitSourceJobSource;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +14,7 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsGitSource {
     private @Nullable String branch;
     private @Nullable String commit;
+    private @Nullable GetJobJobSettingsSettingsGitSourceJobSource jobSource;
     private @Nullable String provider;
     private @Nullable String tag;
     private String url;
@@ -23,6 +25,9 @@ public final class GetJobJobSettingsSettingsGitSource {
     }
     public Optional<String> commit() {
         return Optional.ofNullable(this.commit);
+    }
+    public Optional<GetJobJobSettingsSettingsGitSourceJobSource> jobSource() {
+        return Optional.ofNullable(this.jobSource);
     }
     public Optional<String> provider() {
         return Optional.ofNullable(this.provider);
@@ -45,6 +50,7 @@ public final class GetJobJobSettingsSettingsGitSource {
     public static final class Builder {
         private @Nullable String branch;
         private @Nullable String commit;
+        private @Nullable GetJobJobSettingsSettingsGitSourceJobSource jobSource;
         private @Nullable String provider;
         private @Nullable String tag;
         private String url;
@@ -53,6 +59,7 @@ public final class GetJobJobSettingsSettingsGitSource {
     	      Objects.requireNonNull(defaults);
     	      this.branch = defaults.branch;
     	      this.commit = defaults.commit;
+    	      this.jobSource = defaults.jobSource;
     	      this.provider = defaults.provider;
     	      this.tag = defaults.tag;
     	      this.url = defaults.url;
@@ -66,6 +73,11 @@ public final class GetJobJobSettingsSettingsGitSource {
         @CustomType.Setter
         public Builder commit(@Nullable String commit) {
             this.commit = commit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder jobSource(@Nullable GetJobJobSettingsSettingsGitSourceJobSource jobSource) {
+            this.jobSource = jobSource;
             return this;
         }
         @CustomType.Setter
@@ -87,6 +99,7 @@ public final class GetJobJobSettingsSettingsGitSource {
             final var o = new GetJobJobSettingsSettingsGitSource();
             o.branch = branch;
             o.commit = commit;
+            o.jobSource = jobSource;
             o.provider = provider;
             o.tag = tag;
             o.url = url;

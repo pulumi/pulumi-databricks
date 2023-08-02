@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("left")]
         public Input<string>? Left { get; set; }
 
+        /// <summary>
+        /// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+        /// </summary>
         [Input("op")]
         public Input<string>? Op { get; set; }
 

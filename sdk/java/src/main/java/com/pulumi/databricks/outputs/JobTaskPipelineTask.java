@@ -4,24 +4,39 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskPipelineTask {
     /**
-     * @return The pipeline&#39;s unique ID.
+     * @return (Bool) Specifies if there should be full refresh of the pipeline.
      * 
      * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+     * 
+     */
+    private @Nullable Boolean fullRefresh;
+    /**
+     * @return The pipeline&#39;s unique ID.
      * 
      */
     private String pipelineId;
 
     private JobTaskPipelineTask() {}
     /**
-     * @return The pipeline&#39;s unique ID.
+     * @return (Bool) Specifies if there should be full refresh of the pipeline.
      * 
      * &gt; **Note** The following configuration blocks are only supported inside a `task` block
+     * 
+     */
+    public Optional<Boolean> fullRefresh() {
+        return Optional.ofNullable(this.fullRefresh);
+    }
+    /**
+     * @return The pipeline&#39;s unique ID.
      * 
      */
     public String pipelineId() {
@@ -37,13 +52,20 @@ public final class JobTaskPipelineTask {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean fullRefresh;
         private String pipelineId;
         public Builder() {}
         public Builder(JobTaskPipelineTask defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.fullRefresh = defaults.fullRefresh;
     	      this.pipelineId = defaults.pipelineId;
         }
 
+        @CustomType.Setter
+        public Builder fullRefresh(@Nullable Boolean fullRefresh) {
+            this.fullRefresh = fullRefresh;
+            return this;
+        }
         @CustomType.Setter
         public Builder pipelineId(String pipelineId) {
             this.pipelineId = Objects.requireNonNull(pipelineId);
@@ -51,6 +73,7 @@ public final class JobTaskPipelineTask {
         }
         public JobTaskPipelineTask build() {
             final var o = new JobTaskPipelineTask();
+            o.fullRefresh = fullRefresh;
             o.pipelineId = pipelineId;
             return o;
         }

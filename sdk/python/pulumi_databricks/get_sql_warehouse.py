@@ -112,7 +112,7 @@ class GetSqlWarehouseResult:
     @pulumi.getter(name="enablePhoton")
     def enable_photon(self) -> bool:
         """
-        Whether to enable [Photon](https://databricks.com/product/delta-engine).
+        Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
         """
         return pulumi.get(self, "enable_photon")
 
@@ -120,13 +120,16 @@ class GetSqlWarehouseResult:
     @pulumi.getter(name="enableServerlessCompute")
     def enable_serverless_compute(self) -> bool:
         """
-        Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
+        Whether this SQL warehouse is a serverless SQL warehouse.
         """
         return pulumi.get(self, "enable_serverless_compute")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of the SQL warehouse.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -196,7 +199,7 @@ class GetSqlWarehouseResult:
     @pulumi.getter
     def tags(self) -> 'outputs.GetSqlWarehouseTagsResult':
         """
-        Databricks tags all warehouse resources with these tags.
+        tags used for SQL warehouse resources.
         """
         return pulumi.get(self, "tags")
 
@@ -251,7 +254,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
 
     ## Example Usage
 
-    Retrieve attributes of each SQL warehouses in a workspace
+    * Retrieve attributes of each SQL warehouses in a workspace:
 
     ```python
     import pulumi
@@ -259,6 +262,15 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
 
     all_sql_warehouses = databricks.get_sql_warehouses()
     all_sql_warehouse = [databricks.get_sql_warehouse(id=__value) for __key, __value in data["databricks_sql"]["warehouses"]["ids"]]
+    ```
+
+    * Search for a specific SQL Warehouse by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_sql_warehouse(name="Starter Warehouse")
     ```
     ## Related resources
 
@@ -275,16 +287,16 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
     :param pulumi.InputType['GetSqlWarehouseChannelArgs'] channel: block, consisting of following fields:
     :param str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
     :param str data_source_id: ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
-    :param bool enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine).
-    :param bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
-    :param str id: The ID of the SQL warehouse
+    :param bool enable_photon: Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
+    :param bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse.
+    :param str id: The ID of the SQL warehouse.
     :param str jdbc_url: JDBC connection string.
     :param int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.
     :param int min_num_clusters: Minimum number of clusters available when a SQL warehouse is running.
-    :param str name: Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+    :param str name: Name of the SQL warehouse to search (case-sensitive).
     :param pulumi.InputType['GetSqlWarehouseOdbcParamsArgs'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
     :param str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
-    :param pulumi.InputType['GetSqlWarehouseTagsArgs'] tags: Databricks tags all warehouse resources with these tags.
+    :param pulumi.InputType['GetSqlWarehouseTagsArgs'] tags: tags used for SQL warehouse resources.
     """
     __args__ = dict()
     __args__['autoStopMins'] = auto_stop_mins
@@ -334,7 +346,7 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]
                              data_source_id: Optional[pulumi.Input[Optional[str]]] = None,
                              enable_photon: Optional[pulumi.Input[Optional[bool]]] = None,
                              enable_serverless_compute: Optional[pulumi.Input[Optional[bool]]] = None,
-                             id: Optional[pulumi.Input[str]] = None,
+                             id: Optional[pulumi.Input[Optional[str]]] = None,
                              instance_profile_arn: Optional[pulumi.Input[Optional[str]]] = None,
                              jdbc_url: Optional[pulumi.Input[Optional[str]]] = None,
                              max_num_clusters: Optional[pulumi.Input[Optional[int]]] = None,
@@ -353,7 +365,7 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]
 
     ## Example Usage
 
-    Retrieve attributes of each SQL warehouses in a workspace
+    * Retrieve attributes of each SQL warehouses in a workspace:
 
     ```python
     import pulumi
@@ -361,6 +373,15 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]
 
     all_sql_warehouses = databricks.get_sql_warehouses()
     all_sql_warehouse = [databricks.get_sql_warehouse(id=__value) for __key, __value in data["databricks_sql"]["warehouses"]["ids"]]
+    ```
+
+    * Search for a specific SQL Warehouse by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_sql_warehouse(name="Starter Warehouse")
     ```
     ## Related resources
 
@@ -377,15 +398,15 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]
     :param pulumi.InputType['GetSqlWarehouseChannelArgs'] channel: block, consisting of following fields:
     :param str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
     :param str data_source_id: ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
-    :param bool enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine).
-    :param bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse. If this value is `true`,  `warehouse_type` must be `PRO`.
-    :param str id: The ID of the SQL warehouse
+    :param bool enable_photon: Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
+    :param bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse.
+    :param str id: The ID of the SQL warehouse.
     :param str jdbc_url: JDBC connection string.
     :param int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.
     :param int min_num_clusters: Minimum number of clusters available when a SQL warehouse is running.
-    :param str name: Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+    :param str name: Name of the SQL warehouse to search (case-sensitive).
     :param pulumi.InputType['GetSqlWarehouseOdbcParamsArgs'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
     :param str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
-    :param pulumi.InputType['GetSqlWarehouseTagsArgs'] tags: Databricks tags all warehouse resources with these tags.
+    :param pulumi.InputType['GetSqlWarehouseTagsArgs'] tags: tags used for SQL warehouse resources.
     """
     ...

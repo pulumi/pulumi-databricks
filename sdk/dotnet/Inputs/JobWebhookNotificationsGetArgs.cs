@@ -12,11 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobWebhookNotificationsGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("onFailures")]
-        private InputList<Inputs.JobWebhookNotificationsOnFailureGetArgs>? _onFailures;
+        [Input("onDurationWarningThresholdExceededs")]
+        private InputList<Inputs.JobWebhookNotificationsOnDurationWarningThresholdExceededGetArgs>? _onDurationWarningThresholdExceededs;
 
         /// <summary>
-        /// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+        /// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
         /// 
         /// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
         /// 
@@ -31,6 +31,18 @@ namespace Pulumi.Databricks.Inputs
         /// {
         /// });
         /// ```
+        /// </summary>
+        public InputList<Inputs.JobWebhookNotificationsOnDurationWarningThresholdExceededGetArgs> OnDurationWarningThresholdExceededs
+        {
+            get => _onDurationWarningThresholdExceededs ?? (_onDurationWarningThresholdExceededs = new InputList<Inputs.JobWebhookNotificationsOnDurationWarningThresholdExceededGetArgs>());
+            set => _onDurationWarningThresholdExceededs = value;
+        }
+
+        [Input("onFailures")]
+        private InputList<Inputs.JobWebhookNotificationsOnFailureGetArgs>? _onFailures;
+
+        /// <summary>
+        /// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
         /// </summary>
         public InputList<Inputs.JobWebhookNotificationsOnFailureGetArgs> OnFailures
         {

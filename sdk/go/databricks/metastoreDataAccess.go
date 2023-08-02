@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ func NewMetastoreDataAccess(ctx *pulumi.Context,
 	if args.MetastoreId == nil {
 		return nil, errors.New("invalid value for required argument 'MetastoreId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MetastoreDataAccess
 	err := ctx.RegisterResource("databricks:index/metastoreDataAccess:MetastoreDataAccess", name, args, &resource, opts...)
 	if err != nil {

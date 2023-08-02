@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -120,6 +121,7 @@ func NewSqlDashboard(ctx *pulumi.Context,
 		args = &SqlDashboardArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SqlDashboard
 	err := ctx.RegisterResource("databricks:index/sqlDashboard:SqlDashboard", name, args, &resource, opts...)
 	if err != nil {

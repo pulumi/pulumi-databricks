@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +66,7 @@ func NewMetastore(ctx *pulumi.Context,
 	if args.StorageRoot == nil {
 		return nil, errors.New("invalid value for required argument 'StorageRoot'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Metastore
 	err := ctx.RegisterResource("databricks:index/metastore:Metastore", name, args, &resource, opts...)
 	if err != nil {

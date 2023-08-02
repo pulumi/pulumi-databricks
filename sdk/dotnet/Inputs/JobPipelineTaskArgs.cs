@@ -13,9 +13,15 @@ namespace Pulumi.Databricks.Inputs
     public sealed class JobPipelineTaskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The pipeline's unique ID.
+        /// (Bool) Specifies if there should be full refresh of the pipeline.
         /// 
         /// &gt; **Note** The following configuration blocks are only supported inside a `task` block
+        /// </summary>
+        [Input("fullRefresh")]
+        public Input<bool>? FullRefresh { get; set; }
+
+        /// <summary>
+        /// The pipeline's unique ID.
         /// </summary>
         [Input("pipelineId", required: true)]
         public Input<string> PipelineId { get; set; } = null!;

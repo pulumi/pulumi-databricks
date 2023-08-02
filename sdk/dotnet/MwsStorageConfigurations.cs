@@ -26,12 +26,14 @@ namespace Pulumi.Databricks
     ///     var rootStorageBucket = new Aws.S3.BucketV2("rootStorageBucket", new()
     ///     {
     ///         Acl = "private",
-    ///         Versionings = new[]
+    ///     });
+    /// 
+    ///     var rootVersioning = new Aws.S3.BucketVersioningV2("rootVersioning", new()
+    ///     {
+    ///         Bucket = rootStorageBucket.Id,
+    ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningV2VersioningConfigurationArgs
     ///         {
-    ///             new Aws.S3.Inputs.BucketV2VersioningArgs
-    ///             {
-    ///                 Enabled = false,
-    ///             },
+    ///             Status = "Disabled",
     ///         },
     ///     });
     /// 

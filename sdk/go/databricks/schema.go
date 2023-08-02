@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,11 +65,11 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by namebash
+// # This resource can be imported by its full namebash
 //
 // ```sh
 //
-//	$ pulumi import databricks:index/schema:Schema this <name>
+//	$ pulumi import databricks:index/schema:Schema this <catalog_name>.<name>
 //
 // ```
 type Schema struct {
@@ -101,6 +102,7 @@ func NewSchema(ctx *pulumi.Context,
 	if args.CatalogName == nil {
 		return nil, errors.New("invalid value for required argument 'CatalogName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Schema
 	err := ctx.RegisterResource("databricks:index/schema:Schema", name, args, &resource, opts...)
 	if err != nil {

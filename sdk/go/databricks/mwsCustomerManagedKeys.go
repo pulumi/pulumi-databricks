@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,12 +24,13 @@ import (
 //
 // import (
 //
-// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// "github.com/pulumi/pulumi-aws/sdk/v5/go/aws"
-// "github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
-// "github.com/pulumi/pulumi-aws/sdk/v5/go/aws/kms"
-// "github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// "github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws"
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/kms"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
@@ -119,11 +121,12 @@ import (
 //
 // import (
 //
-// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// "github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
-// "github.com/pulumi/pulumi-aws/sdk/v5/go/aws/kms"
-// "github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-// "github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/kms"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
@@ -309,6 +312,7 @@ func NewMwsCustomerManagedKeys(ctx *pulumi.Context,
 	if args.UseCases == nil {
 		return nil, errors.New("invalid value for required argument 'UseCases'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MwsCustomerManagedKeys
 	err := ctx.RegisterResource("databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys", name, args, &resource, opts...)
 	if err != nil {

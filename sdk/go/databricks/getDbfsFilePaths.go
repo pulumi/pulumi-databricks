@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,6 +52,7 @@ import (
 // * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
 // * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
 func GetDbfsFilePaths(ctx *pulumi.Context, args *GetDbfsFilePathsArgs, opts ...pulumi.InvokeOption) (*GetDbfsFilePathsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDbfsFilePathsResult
 	err := ctx.Invoke("databricks:index/getDbfsFilePaths:getDbfsFilePaths", args, &rv, opts...)
 	if err != nil {

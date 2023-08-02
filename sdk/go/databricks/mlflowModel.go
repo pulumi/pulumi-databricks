@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,6 +95,7 @@ func NewMlflowModel(ctx *pulumi.Context,
 		args = &MlflowModelArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MlflowModel
 	err := ctx.RegisterResource("databricks:index/mlflowModel:MlflowModel", name, args, &resource, opts...)
 	if err != nil {

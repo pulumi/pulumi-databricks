@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,6 +88,7 @@ func NewCatalog(ctx *pulumi.Context,
 		args = &CatalogArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Catalog
 	err := ctx.RegisterResource("databricks:index/catalog:Catalog", name, args, &resource, opts...)
 	if err != nil {

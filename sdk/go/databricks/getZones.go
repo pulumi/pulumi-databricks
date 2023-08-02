@@ -4,6 +4,7 @@
 package databricks
 
 import (
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,7 @@ import (
 //
 // ```
 func GetZones(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZonesResult
 	err := ctx.Invoke("databricks:index/getZones:getZones", nil, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -99,8 +100,6 @@ import (
 //
 // ```
 // ### Creating a Databricks on GCP workspace
-//
-// > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) on GCP.
 //
 // ```go
 // package main
@@ -249,7 +248,7 @@ import (
 // * Provisioning Databricks on GCP guide.
 // * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
 // * MwsVpcEndpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
-// * MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect] (https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
+// * MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
 // * MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
 //
 // ## Import
@@ -302,6 +301,7 @@ func NewMwsNetworks(ctx *pulumi.Context,
 		"accountId",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MwsNetworks
 	err := ctx.RegisterResource("databricks:index/mwsNetworks:MwsNetworks", name, args, &resource, opts...)
 	if err != nil {

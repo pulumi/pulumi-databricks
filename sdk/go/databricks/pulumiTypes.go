@@ -7,8 +7,132 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
+
+type AccessControlRuleSetGrantRule struct {
+	// a list of principals who are granted a role. The following format is supported:
+	// * `users/{username}` (also exposed as `aclPrincipalId` attribute of `User` resource).
+	// * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `Group` resource).
+	// * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `ServicePrincipal` resource).
+	Principals []string `pulumi:"principals"`
+	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles).
+	// * `roles/servicePrincipal.manager` - Manager of a service principal.
+	// * `roles/servicePrincipal.user` - User of a service principal.
+	Role string `pulumi:"role"`
+}
+
+// AccessControlRuleSetGrantRuleInput is an input type that accepts AccessControlRuleSetGrantRuleArgs and AccessControlRuleSetGrantRuleOutput values.
+// You can construct a concrete instance of `AccessControlRuleSetGrantRuleInput` via:
+//
+//	AccessControlRuleSetGrantRuleArgs{...}
+type AccessControlRuleSetGrantRuleInput interface {
+	pulumi.Input
+
+	ToAccessControlRuleSetGrantRuleOutput() AccessControlRuleSetGrantRuleOutput
+	ToAccessControlRuleSetGrantRuleOutputWithContext(context.Context) AccessControlRuleSetGrantRuleOutput
+}
+
+type AccessControlRuleSetGrantRuleArgs struct {
+	// a list of principals who are granted a role. The following format is supported:
+	// * `users/{username}` (also exposed as `aclPrincipalId` attribute of `User` resource).
+	// * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `Group` resource).
+	// * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `ServicePrincipal` resource).
+	Principals pulumi.StringArrayInput `pulumi:"principals"`
+	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles).
+	// * `roles/servicePrincipal.manager` - Manager of a service principal.
+	// * `roles/servicePrincipal.user` - User of a service principal.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (AccessControlRuleSetGrantRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlRuleSetGrantRule)(nil)).Elem()
+}
+
+func (i AccessControlRuleSetGrantRuleArgs) ToAccessControlRuleSetGrantRuleOutput() AccessControlRuleSetGrantRuleOutput {
+	return i.ToAccessControlRuleSetGrantRuleOutputWithContext(context.Background())
+}
+
+func (i AccessControlRuleSetGrantRuleArgs) ToAccessControlRuleSetGrantRuleOutputWithContext(ctx context.Context) AccessControlRuleSetGrantRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessControlRuleSetGrantRuleOutput)
+}
+
+// AccessControlRuleSetGrantRuleArrayInput is an input type that accepts AccessControlRuleSetGrantRuleArray and AccessControlRuleSetGrantRuleArrayOutput values.
+// You can construct a concrete instance of `AccessControlRuleSetGrantRuleArrayInput` via:
+//
+//	AccessControlRuleSetGrantRuleArray{ AccessControlRuleSetGrantRuleArgs{...} }
+type AccessControlRuleSetGrantRuleArrayInput interface {
+	pulumi.Input
+
+	ToAccessControlRuleSetGrantRuleArrayOutput() AccessControlRuleSetGrantRuleArrayOutput
+	ToAccessControlRuleSetGrantRuleArrayOutputWithContext(context.Context) AccessControlRuleSetGrantRuleArrayOutput
+}
+
+type AccessControlRuleSetGrantRuleArray []AccessControlRuleSetGrantRuleInput
+
+func (AccessControlRuleSetGrantRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessControlRuleSetGrantRule)(nil)).Elem()
+}
+
+func (i AccessControlRuleSetGrantRuleArray) ToAccessControlRuleSetGrantRuleArrayOutput() AccessControlRuleSetGrantRuleArrayOutput {
+	return i.ToAccessControlRuleSetGrantRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AccessControlRuleSetGrantRuleArray) ToAccessControlRuleSetGrantRuleArrayOutputWithContext(ctx context.Context) AccessControlRuleSetGrantRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessControlRuleSetGrantRuleArrayOutput)
+}
+
+type AccessControlRuleSetGrantRuleOutput struct{ *pulumi.OutputState }
+
+func (AccessControlRuleSetGrantRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlRuleSetGrantRule)(nil)).Elem()
+}
+
+func (o AccessControlRuleSetGrantRuleOutput) ToAccessControlRuleSetGrantRuleOutput() AccessControlRuleSetGrantRuleOutput {
+	return o
+}
+
+func (o AccessControlRuleSetGrantRuleOutput) ToAccessControlRuleSetGrantRuleOutputWithContext(ctx context.Context) AccessControlRuleSetGrantRuleOutput {
+	return o
+}
+
+// a list of principals who are granted a role. The following format is supported:
+// * `users/{username}` (also exposed as `aclPrincipalId` attribute of `User` resource).
+// * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `Group` resource).
+// * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `ServicePrincipal` resource).
+func (o AccessControlRuleSetGrantRuleOutput) Principals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessControlRuleSetGrantRule) []string { return v.Principals }).(pulumi.StringArrayOutput)
+}
+
+// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles).
+// * `roles/servicePrincipal.manager` - Manager of a service principal.
+// * `roles/servicePrincipal.user` - User of a service principal.
+func (o AccessControlRuleSetGrantRuleOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessControlRuleSetGrantRule) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type AccessControlRuleSetGrantRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessControlRuleSetGrantRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessControlRuleSetGrantRule)(nil)).Elem()
+}
+
+func (o AccessControlRuleSetGrantRuleArrayOutput) ToAccessControlRuleSetGrantRuleArrayOutput() AccessControlRuleSetGrantRuleArrayOutput {
+	return o
+}
+
+func (o AccessControlRuleSetGrantRuleArrayOutput) ToAccessControlRuleSetGrantRuleArrayOutputWithContext(ctx context.Context) AccessControlRuleSetGrantRuleArrayOutput {
+	return o
+}
+
+func (o AccessControlRuleSetGrantRuleArrayOutput) Index(i pulumi.IntInput) AccessControlRuleSetGrantRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessControlRuleSetGrantRule {
+		return vs[0].([]AccessControlRuleSetGrantRule)[vs[1].(int)]
+	}).(AccessControlRuleSetGrantRuleOutput)
+}
 
 type ClusterAutoscale struct {
 	MaxWorkers *int `pulumi:"maxWorkers"`
@@ -5904,9 +6028,12 @@ func (o JobDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 }
 
 type JobEmailNotifications struct {
+	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
 	AlertOnLastAttempt *bool `pulumi:"alertOnLastAttempt"`
 	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
+	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures []string `pulumi:"onFailures"`
 	// (List) list of emails to notify when the run starts.
@@ -5927,9 +6054,12 @@ type JobEmailNotificationsInput interface {
 }
 
 type JobEmailNotificationsArgs struct {
+	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
 	AlertOnLastAttempt pulumi.BoolPtrInput `pulumi:"alertOnLastAttempt"`
 	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
+	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures pulumi.StringArrayInput `pulumi:"onFailures"`
 	// (List) list of emails to notify when the run starts.
@@ -6015,6 +6145,7 @@ func (o JobEmailNotificationsOutput) ToJobEmailNotificationsPtrOutputWithContext
 	}).(JobEmailNotificationsPtrOutput)
 }
 
+// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
 func (o JobEmailNotificationsOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobEmailNotifications) *bool { return v.AlertOnLastAttempt }).(pulumi.BoolPtrOutput)
 }
@@ -6022,6 +6153,11 @@ func (o JobEmailNotificationsOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
 // (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
+}
+
+// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+func (o JobEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobEmailNotifications) []string { return v.OnDurationWarningThresholdExceededs }).(pulumi.StringArrayOutput)
 }
 
 // (List) list of emails to notify when the run fails.
@@ -6063,6 +6199,7 @@ func (o JobEmailNotificationsPtrOutput) Elem() JobEmailNotificationsOutput {
 	}).(JobEmailNotificationsOutput)
 }
 
+// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
 func (o JobEmailNotificationsPtrOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) *bool {
 		if v == nil {
@@ -6080,6 +6217,16 @@ func (o JobEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOu
 		}
 		return v.NoAlertForSkippedRuns
 	}).(pulumi.BoolPtrOutput)
+}
+
+// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+func (o JobEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobEmailNotifications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OnDurationWarningThresholdExceededs
+	}).(pulumi.StringArrayOutput)
 }
 
 // (List) list of emails to notify when the run fails.
@@ -6116,7 +6263,8 @@ type JobGitSource struct {
 	// name of the Git branch to use. Conflicts with `tag` and `commit`.
 	Branch *string `pulumi:"branch"`
 	// hash of Git commit to use. Conflicts with `branch` and `tag`.
-	Commit *string `pulumi:"commit"`
+	Commit    *string                `pulumi:"commit"`
+	JobSource *JobGitSourceJobSource `pulumi:"jobSource"`
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
 	Provider *string `pulumi:"provider"`
 	// name of the Git branch to use. Conflicts with `branch` and `commit`.
@@ -6140,7 +6288,8 @@ type JobGitSourceArgs struct {
 	// name of the Git branch to use. Conflicts with `tag` and `commit`.
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
 	// hash of Git commit to use. Conflicts with `branch` and `tag`.
-	Commit pulumi.StringPtrInput `pulumi:"commit"`
+	Commit    pulumi.StringPtrInput         `pulumi:"commit"`
+	JobSource JobGitSourceJobSourcePtrInput `pulumi:"jobSource"`
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 	// name of the Git branch to use. Conflicts with `branch` and `commit`.
@@ -6236,6 +6385,10 @@ func (o JobGitSourceOutput) Commit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobGitSource) *string { return v.Commit }).(pulumi.StringPtrOutput)
 }
 
+func (o JobGitSourceOutput) JobSource() JobGitSourceJobSourcePtrOutput {
+	return o.ApplyT(func(v JobGitSource) *JobGitSourceJobSource { return v.JobSource }).(JobGitSourceJobSourcePtrOutput)
+}
+
 // case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
 func (o JobGitSourceOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobGitSource) *string { return v.Provider }).(pulumi.StringPtrOutput)
@@ -6295,6 +6448,15 @@ func (o JobGitSourcePtrOutput) Commit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o JobGitSourcePtrOutput) JobSource() JobGitSourceJobSourcePtrOutput {
+	return o.ApplyT(func(v *JobGitSource) *JobGitSourceJobSource {
+		if v == nil {
+			return nil
+		}
+		return v.JobSource
+	}).(JobGitSourceJobSourcePtrOutput)
+}
+
 // case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
 func (o JobGitSourcePtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobGitSource) *string {
@@ -6323,6 +6485,421 @@ func (o JobGitSourcePtrOutput) Url() pulumi.StringPtrOutput {
 		}
 		return &v.Url
 	}).(pulumi.StringPtrOutput)
+}
+
+type JobGitSourceJobSource struct {
+	DirtyState          *string `pulumi:"dirtyState"`
+	ImportFromGitBranch string  `pulumi:"importFromGitBranch"`
+	JobConfigPath       string  `pulumi:"jobConfigPath"`
+}
+
+// JobGitSourceJobSourceInput is an input type that accepts JobGitSourceJobSourceArgs and JobGitSourceJobSourceOutput values.
+// You can construct a concrete instance of `JobGitSourceJobSourceInput` via:
+//
+//	JobGitSourceJobSourceArgs{...}
+type JobGitSourceJobSourceInput interface {
+	pulumi.Input
+
+	ToJobGitSourceJobSourceOutput() JobGitSourceJobSourceOutput
+	ToJobGitSourceJobSourceOutputWithContext(context.Context) JobGitSourceJobSourceOutput
+}
+
+type JobGitSourceJobSourceArgs struct {
+	DirtyState          pulumi.StringPtrInput `pulumi:"dirtyState"`
+	ImportFromGitBranch pulumi.StringInput    `pulumi:"importFromGitBranch"`
+	JobConfigPath       pulumi.StringInput    `pulumi:"jobConfigPath"`
+}
+
+func (JobGitSourceJobSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobGitSourceJobSource)(nil)).Elem()
+}
+
+func (i JobGitSourceJobSourceArgs) ToJobGitSourceJobSourceOutput() JobGitSourceJobSourceOutput {
+	return i.ToJobGitSourceJobSourceOutputWithContext(context.Background())
+}
+
+func (i JobGitSourceJobSourceArgs) ToJobGitSourceJobSourceOutputWithContext(ctx context.Context) JobGitSourceJobSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobGitSourceJobSourceOutput)
+}
+
+func (i JobGitSourceJobSourceArgs) ToJobGitSourceJobSourcePtrOutput() JobGitSourceJobSourcePtrOutput {
+	return i.ToJobGitSourceJobSourcePtrOutputWithContext(context.Background())
+}
+
+func (i JobGitSourceJobSourceArgs) ToJobGitSourceJobSourcePtrOutputWithContext(ctx context.Context) JobGitSourceJobSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobGitSourceJobSourceOutput).ToJobGitSourceJobSourcePtrOutputWithContext(ctx)
+}
+
+// JobGitSourceJobSourcePtrInput is an input type that accepts JobGitSourceJobSourceArgs, JobGitSourceJobSourcePtr and JobGitSourceJobSourcePtrOutput values.
+// You can construct a concrete instance of `JobGitSourceJobSourcePtrInput` via:
+//
+//	        JobGitSourceJobSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobGitSourceJobSourcePtrInput interface {
+	pulumi.Input
+
+	ToJobGitSourceJobSourcePtrOutput() JobGitSourceJobSourcePtrOutput
+	ToJobGitSourceJobSourcePtrOutputWithContext(context.Context) JobGitSourceJobSourcePtrOutput
+}
+
+type jobGitSourceJobSourcePtrType JobGitSourceJobSourceArgs
+
+func JobGitSourceJobSourcePtr(v *JobGitSourceJobSourceArgs) JobGitSourceJobSourcePtrInput {
+	return (*jobGitSourceJobSourcePtrType)(v)
+}
+
+func (*jobGitSourceJobSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobGitSourceJobSource)(nil)).Elem()
+}
+
+func (i *jobGitSourceJobSourcePtrType) ToJobGitSourceJobSourcePtrOutput() JobGitSourceJobSourcePtrOutput {
+	return i.ToJobGitSourceJobSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *jobGitSourceJobSourcePtrType) ToJobGitSourceJobSourcePtrOutputWithContext(ctx context.Context) JobGitSourceJobSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobGitSourceJobSourcePtrOutput)
+}
+
+type JobGitSourceJobSourceOutput struct{ *pulumi.OutputState }
+
+func (JobGitSourceJobSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobGitSourceJobSource)(nil)).Elem()
+}
+
+func (o JobGitSourceJobSourceOutput) ToJobGitSourceJobSourceOutput() JobGitSourceJobSourceOutput {
+	return o
+}
+
+func (o JobGitSourceJobSourceOutput) ToJobGitSourceJobSourceOutputWithContext(ctx context.Context) JobGitSourceJobSourceOutput {
+	return o
+}
+
+func (o JobGitSourceJobSourceOutput) ToJobGitSourceJobSourcePtrOutput() JobGitSourceJobSourcePtrOutput {
+	return o.ToJobGitSourceJobSourcePtrOutputWithContext(context.Background())
+}
+
+func (o JobGitSourceJobSourceOutput) ToJobGitSourceJobSourcePtrOutputWithContext(ctx context.Context) JobGitSourceJobSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobGitSourceJobSource) *JobGitSourceJobSource {
+		return &v
+	}).(JobGitSourceJobSourcePtrOutput)
+}
+
+func (o JobGitSourceJobSourceOutput) DirtyState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobGitSourceJobSource) *string { return v.DirtyState }).(pulumi.StringPtrOutput)
+}
+
+func (o JobGitSourceJobSourceOutput) ImportFromGitBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v JobGitSourceJobSource) string { return v.ImportFromGitBranch }).(pulumi.StringOutput)
+}
+
+func (o JobGitSourceJobSourceOutput) JobConfigPath() pulumi.StringOutput {
+	return o.ApplyT(func(v JobGitSourceJobSource) string { return v.JobConfigPath }).(pulumi.StringOutput)
+}
+
+type JobGitSourceJobSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (JobGitSourceJobSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobGitSourceJobSource)(nil)).Elem()
+}
+
+func (o JobGitSourceJobSourcePtrOutput) ToJobGitSourceJobSourcePtrOutput() JobGitSourceJobSourcePtrOutput {
+	return o
+}
+
+func (o JobGitSourceJobSourcePtrOutput) ToJobGitSourceJobSourcePtrOutputWithContext(ctx context.Context) JobGitSourceJobSourcePtrOutput {
+	return o
+}
+
+func (o JobGitSourceJobSourcePtrOutput) Elem() JobGitSourceJobSourceOutput {
+	return o.ApplyT(func(v *JobGitSourceJobSource) JobGitSourceJobSource {
+		if v != nil {
+			return *v
+		}
+		var ret JobGitSourceJobSource
+		return ret
+	}).(JobGitSourceJobSourceOutput)
+}
+
+func (o JobGitSourceJobSourcePtrOutput) DirtyState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobGitSourceJobSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DirtyState
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobGitSourceJobSourcePtrOutput) ImportFromGitBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobGitSourceJobSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImportFromGitBranch
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobGitSourceJobSourcePtrOutput) JobConfigPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobGitSourceJobSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobConfigPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobHealth struct {
+	// list of rules that are represented as objects with the following attributes:
+	Rules []JobHealthRule `pulumi:"rules"`
+}
+
+// JobHealthInput is an input type that accepts JobHealthArgs and JobHealthOutput values.
+// You can construct a concrete instance of `JobHealthInput` via:
+//
+//	JobHealthArgs{...}
+type JobHealthInput interface {
+	pulumi.Input
+
+	ToJobHealthOutput() JobHealthOutput
+	ToJobHealthOutputWithContext(context.Context) JobHealthOutput
+}
+
+type JobHealthArgs struct {
+	// list of rules that are represented as objects with the following attributes:
+	Rules JobHealthRuleArrayInput `pulumi:"rules"`
+}
+
+func (JobHealthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobHealth)(nil)).Elem()
+}
+
+func (i JobHealthArgs) ToJobHealthOutput() JobHealthOutput {
+	return i.ToJobHealthOutputWithContext(context.Background())
+}
+
+func (i JobHealthArgs) ToJobHealthOutputWithContext(ctx context.Context) JobHealthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobHealthOutput)
+}
+
+func (i JobHealthArgs) ToJobHealthPtrOutput() JobHealthPtrOutput {
+	return i.ToJobHealthPtrOutputWithContext(context.Background())
+}
+
+func (i JobHealthArgs) ToJobHealthPtrOutputWithContext(ctx context.Context) JobHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobHealthOutput).ToJobHealthPtrOutputWithContext(ctx)
+}
+
+// JobHealthPtrInput is an input type that accepts JobHealthArgs, JobHealthPtr and JobHealthPtrOutput values.
+// You can construct a concrete instance of `JobHealthPtrInput` via:
+//
+//	        JobHealthArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobHealthPtrInput interface {
+	pulumi.Input
+
+	ToJobHealthPtrOutput() JobHealthPtrOutput
+	ToJobHealthPtrOutputWithContext(context.Context) JobHealthPtrOutput
+}
+
+type jobHealthPtrType JobHealthArgs
+
+func JobHealthPtr(v *JobHealthArgs) JobHealthPtrInput {
+	return (*jobHealthPtrType)(v)
+}
+
+func (*jobHealthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobHealth)(nil)).Elem()
+}
+
+func (i *jobHealthPtrType) ToJobHealthPtrOutput() JobHealthPtrOutput {
+	return i.ToJobHealthPtrOutputWithContext(context.Background())
+}
+
+func (i *jobHealthPtrType) ToJobHealthPtrOutputWithContext(ctx context.Context) JobHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobHealthPtrOutput)
+}
+
+type JobHealthOutput struct{ *pulumi.OutputState }
+
+func (JobHealthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobHealth)(nil)).Elem()
+}
+
+func (o JobHealthOutput) ToJobHealthOutput() JobHealthOutput {
+	return o
+}
+
+func (o JobHealthOutput) ToJobHealthOutputWithContext(ctx context.Context) JobHealthOutput {
+	return o
+}
+
+func (o JobHealthOutput) ToJobHealthPtrOutput() JobHealthPtrOutput {
+	return o.ToJobHealthPtrOutputWithContext(context.Background())
+}
+
+func (o JobHealthOutput) ToJobHealthPtrOutputWithContext(ctx context.Context) JobHealthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobHealth) *JobHealth {
+		return &v
+	}).(JobHealthPtrOutput)
+}
+
+// list of rules that are represented as objects with the following attributes:
+func (o JobHealthOutput) Rules() JobHealthRuleArrayOutput {
+	return o.ApplyT(func(v JobHealth) []JobHealthRule { return v.Rules }).(JobHealthRuleArrayOutput)
+}
+
+type JobHealthPtrOutput struct{ *pulumi.OutputState }
+
+func (JobHealthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobHealth)(nil)).Elem()
+}
+
+func (o JobHealthPtrOutput) ToJobHealthPtrOutput() JobHealthPtrOutput {
+	return o
+}
+
+func (o JobHealthPtrOutput) ToJobHealthPtrOutputWithContext(ctx context.Context) JobHealthPtrOutput {
+	return o
+}
+
+func (o JobHealthPtrOutput) Elem() JobHealthOutput {
+	return o.ApplyT(func(v *JobHealth) JobHealth {
+		if v != nil {
+			return *v
+		}
+		var ret JobHealth
+		return ret
+	}).(JobHealthOutput)
+}
+
+// list of rules that are represented as objects with the following attributes:
+func (o JobHealthPtrOutput) Rules() JobHealthRuleArrayOutput {
+	return o.ApplyT(func(v *JobHealth) []JobHealthRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(JobHealthRuleArrayOutput)
+}
+
+type JobHealthRule struct {
+	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	Metric *string `pulumi:"metric"`
+	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+	Op *string `pulumi:"op"`
+	// integer value used to compare to the given metric.
+	Value *int `pulumi:"value"`
+}
+
+// JobHealthRuleInput is an input type that accepts JobHealthRuleArgs and JobHealthRuleOutput values.
+// You can construct a concrete instance of `JobHealthRuleInput` via:
+//
+//	JobHealthRuleArgs{...}
+type JobHealthRuleInput interface {
+	pulumi.Input
+
+	ToJobHealthRuleOutput() JobHealthRuleOutput
+	ToJobHealthRuleOutputWithContext(context.Context) JobHealthRuleOutput
+}
+
+type JobHealthRuleArgs struct {
+	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+	Op pulumi.StringPtrInput `pulumi:"op"`
+	// integer value used to compare to the given metric.
+	Value pulumi.IntPtrInput `pulumi:"value"`
+}
+
+func (JobHealthRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobHealthRule)(nil)).Elem()
+}
+
+func (i JobHealthRuleArgs) ToJobHealthRuleOutput() JobHealthRuleOutput {
+	return i.ToJobHealthRuleOutputWithContext(context.Background())
+}
+
+func (i JobHealthRuleArgs) ToJobHealthRuleOutputWithContext(ctx context.Context) JobHealthRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobHealthRuleOutput)
+}
+
+// JobHealthRuleArrayInput is an input type that accepts JobHealthRuleArray and JobHealthRuleArrayOutput values.
+// You can construct a concrete instance of `JobHealthRuleArrayInput` via:
+//
+//	JobHealthRuleArray{ JobHealthRuleArgs{...} }
+type JobHealthRuleArrayInput interface {
+	pulumi.Input
+
+	ToJobHealthRuleArrayOutput() JobHealthRuleArrayOutput
+	ToJobHealthRuleArrayOutputWithContext(context.Context) JobHealthRuleArrayOutput
+}
+
+type JobHealthRuleArray []JobHealthRuleInput
+
+func (JobHealthRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobHealthRule)(nil)).Elem()
+}
+
+func (i JobHealthRuleArray) ToJobHealthRuleArrayOutput() JobHealthRuleArrayOutput {
+	return i.ToJobHealthRuleArrayOutputWithContext(context.Background())
+}
+
+func (i JobHealthRuleArray) ToJobHealthRuleArrayOutputWithContext(ctx context.Context) JobHealthRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobHealthRuleArrayOutput)
+}
+
+type JobHealthRuleOutput struct{ *pulumi.OutputState }
+
+func (JobHealthRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobHealthRule)(nil)).Elem()
+}
+
+func (o JobHealthRuleOutput) ToJobHealthRuleOutput() JobHealthRuleOutput {
+	return o
+}
+
+func (o JobHealthRuleOutput) ToJobHealthRuleOutputWithContext(ctx context.Context) JobHealthRuleOutput {
+	return o
+}
+
+// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+func (o JobHealthRuleOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+func (o JobHealthRuleOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+// integer value used to compare to the given metric.
+func (o JobHealthRuleOutput) Value() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobHealthRule) *int { return v.Value }).(pulumi.IntPtrOutput)
+}
+
+type JobHealthRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (JobHealthRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobHealthRule)(nil)).Elem()
+}
+
+func (o JobHealthRuleArrayOutput) ToJobHealthRuleArrayOutput() JobHealthRuleArrayOutput {
+	return o
+}
+
+func (o JobHealthRuleArrayOutput) ToJobHealthRuleArrayOutputWithContext(ctx context.Context) JobHealthRuleArrayOutput {
+	return o
+}
+
+func (o JobHealthRuleArrayOutput) Index(i pulumi.IntInput) JobHealthRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobHealthRule {
+		return vs[0].([]JobHealthRule)[vs[1].(int)]
+	}).(JobHealthRuleOutput)
 }
 
 type JobJobCluster struct {
@@ -14872,9 +15449,11 @@ func (o JobNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtr
 }
 
 type JobPipelineTask struct {
-	// The pipeline's unique ID.
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	//
 	// > **Note** The following configuration blocks are only supported inside a `task` block
+	FullRefresh *bool `pulumi:"fullRefresh"`
+	// The pipeline's unique ID.
 	PipelineId string `pulumi:"pipelineId"`
 }
 
@@ -14890,9 +15469,11 @@ type JobPipelineTaskInput interface {
 }
 
 type JobPipelineTaskArgs struct {
-	// The pipeline's unique ID.
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	//
 	// > **Note** The following configuration blocks are only supported inside a `task` block
+	FullRefresh pulumi.BoolPtrInput `pulumi:"fullRefresh"`
+	// The pipeline's unique ID.
 	PipelineId pulumi.StringInput `pulumi:"pipelineId"`
 }
 
@@ -14973,9 +15554,14 @@ func (o JobPipelineTaskOutput) ToJobPipelineTaskPtrOutputWithContext(ctx context
 	}).(JobPipelineTaskPtrOutput)
 }
 
-// The pipeline's unique ID.
+// (Bool) Specifies if there should be full refresh of the pipeline.
 //
 // > **Note** The following configuration blocks are only supported inside a `task` block
+func (o JobPipelineTaskOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobPipelineTask) *bool { return v.FullRefresh }).(pulumi.BoolPtrOutput)
+}
+
+// The pipeline's unique ID.
 func (o JobPipelineTaskOutput) PipelineId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobPipelineTask) string { return v.PipelineId }).(pulumi.StringOutput)
 }
@@ -15004,9 +15590,19 @@ func (o JobPipelineTaskPtrOutput) Elem() JobPipelineTaskOutput {
 	}).(JobPipelineTaskOutput)
 }
 
-// The pipeline's unique ID.
+// (Bool) Specifies if there should be full refresh of the pipeline.
 //
 // > **Note** The following configuration blocks are only supported inside a `task` block
+func (o JobPipelineTaskPtrOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobPipelineTask) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FullRefresh
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The pipeline's unique ID.
 func (o JobPipelineTaskPtrOutput) PipelineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobPipelineTask) *string {
 		if v == nil {
@@ -16252,24 +16848,29 @@ type JobTask struct {
 	ComputeKey    *string               `pulumi:"computeKey"`
 	ConditionTask *JobTaskConditionTask `pulumi:"conditionTask"`
 	DbtTask       *JobTaskDbtTask       `pulumi:"dbtTask"`
-	DependsOns    []JobTaskDependsOn    `pulumi:"dependsOns"`
-	Description   *string               `pulumi:"description"`
+	// block specifying dependency(-ies) for a given task.
+	DependsOns  []JobTaskDependsOn `pulumi:"dependsOns"`
+	Description *string            `pulumi:"description"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobTaskEmailNotifications `pulumi:"emailNotifications"`
 	ExistingClusterId  *string                    `pulumi:"existingClusterId"`
+	// block described below that specifies health conditions for a given task.
+	Health *JobTaskHealth `pulumi:"health"`
 	// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
 	JobClusterKey *string `pulumi:"jobClusterKey"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries []JobTaskLibrary `pulumi:"libraries"`
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
 	MaxRetries *int `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis *int `pulumi:"minRetryIntervalMillis"`
 	// Same set of parameters as for Cluster resource.
-	NewCluster      *JobTaskNewCluster      `pulumi:"newCluster"`
-	NotebookTask    *JobTaskNotebookTask    `pulumi:"notebookTask"`
-	PipelineTask    *JobTaskPipelineTask    `pulumi:"pipelineTask"`
-	PythonWheelTask *JobTaskPythonWheelTask `pulumi:"pythonWheelTask"`
+	NewCluster   *JobTaskNewCluster   `pulumi:"newCluster"`
+	NotebookTask *JobTaskNotebookTask `pulumi:"notebookTask"`
+	// An optional block controlling the notification settings on the job level (described below).
+	NotificationSettings *JobTaskNotificationSettings `pulumi:"notificationSettings"`
+	PipelineTask         *JobTaskPipelineTask         `pulumi:"pipelineTask"`
+	PythonWheelTask      *JobTaskPythonWheelTask      `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout  *bool                   `pulumi:"retryOnTimeout"`
 	RunIf           *string                 `pulumi:"runIf"`
@@ -16277,7 +16878,9 @@ type JobTask struct {
 	SparkPythonTask *JobTaskSparkPythonTask `pulumi:"sparkPythonTask"`
 	SparkSubmitTask *JobTaskSparkSubmitTask `pulumi:"sparkSubmitTask"`
 	SqlTask         *JobTaskSqlTask         `pulumi:"sqlTask"`
-	TaskKey         *string                 `pulumi:"taskKey"`
+	// string specifying an unique key for a given task.
+	// * `*_task` - (Required) one of the specific task blocks described below:
+	TaskKey *string `pulumi:"taskKey"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
@@ -16297,24 +16900,29 @@ type JobTaskArgs struct {
 	ComputeKey    pulumi.StringPtrInput        `pulumi:"computeKey"`
 	ConditionTask JobTaskConditionTaskPtrInput `pulumi:"conditionTask"`
 	DbtTask       JobTaskDbtTaskPtrInput       `pulumi:"dbtTask"`
-	DependsOns    JobTaskDependsOnArrayInput   `pulumi:"dependsOns"`
-	Description   pulumi.StringPtrInput        `pulumi:"description"`
+	// block specifying dependency(-ies) for a given task.
+	DependsOns  JobTaskDependsOnArrayInput `pulumi:"dependsOns"`
+	Description pulumi.StringPtrInput      `pulumi:"description"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobTaskEmailNotificationsPtrInput `pulumi:"emailNotifications"`
 	ExistingClusterId  pulumi.StringPtrInput             `pulumi:"existingClusterId"`
+	// block described below that specifies health conditions for a given task.
+	Health JobTaskHealthPtrInput `pulumi:"health"`
 	// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
 	JobClusterKey pulumi.StringPtrInput `pulumi:"jobClusterKey"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries JobTaskLibraryArrayInput `pulumi:"libraries"`
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis pulumi.IntPtrInput `pulumi:"minRetryIntervalMillis"`
 	// Same set of parameters as for Cluster resource.
-	NewCluster      JobTaskNewClusterPtrInput      `pulumi:"newCluster"`
-	NotebookTask    JobTaskNotebookTaskPtrInput    `pulumi:"notebookTask"`
-	PipelineTask    JobTaskPipelineTaskPtrInput    `pulumi:"pipelineTask"`
-	PythonWheelTask JobTaskPythonWheelTaskPtrInput `pulumi:"pythonWheelTask"`
+	NewCluster   JobTaskNewClusterPtrInput   `pulumi:"newCluster"`
+	NotebookTask JobTaskNotebookTaskPtrInput `pulumi:"notebookTask"`
+	// An optional block controlling the notification settings on the job level (described below).
+	NotificationSettings JobTaskNotificationSettingsPtrInput `pulumi:"notificationSettings"`
+	PipelineTask         JobTaskPipelineTaskPtrInput         `pulumi:"pipelineTask"`
+	PythonWheelTask      JobTaskPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout  pulumi.BoolPtrInput            `pulumi:"retryOnTimeout"`
 	RunIf           pulumi.StringPtrInput          `pulumi:"runIf"`
@@ -16322,7 +16930,9 @@ type JobTaskArgs struct {
 	SparkPythonTask JobTaskSparkPythonTaskPtrInput `pulumi:"sparkPythonTask"`
 	SparkSubmitTask JobTaskSparkSubmitTaskPtrInput `pulumi:"sparkSubmitTask"`
 	SqlTask         JobTaskSqlTaskPtrInput         `pulumi:"sqlTask"`
-	TaskKey         pulumi.StringPtrInput          `pulumi:"taskKey"`
+	// string specifying an unique key for a given task.
+	// * `*_task` - (Required) one of the specific task blocks described below:
+	TaskKey pulumi.StringPtrInput `pulumi:"taskKey"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 }
@@ -16390,6 +17000,7 @@ func (o JobTaskOutput) DbtTask() JobTaskDbtTaskPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskDbtTask { return v.DbtTask }).(JobTaskDbtTaskPtrOutput)
 }
 
+// block specifying dependency(-ies) for a given task.
 func (o JobTaskOutput) DependsOns() JobTaskDependsOnArrayOutput {
 	return o.ApplyT(func(v JobTask) []JobTaskDependsOn { return v.DependsOns }).(JobTaskDependsOnArrayOutput)
 }
@@ -16407,6 +17018,11 @@ func (o JobTaskOutput) ExistingClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTask) *string { return v.ExistingClusterId }).(pulumi.StringPtrOutput)
 }
 
+// block described below that specifies health conditions for a given task.
+func (o JobTaskOutput) Health() JobTaskHealthPtrOutput {
+	return o.ApplyT(func(v JobTask) *JobTaskHealth { return v.Health }).(JobTaskHealthPtrOutput)
+}
+
 // Identifier that can be referenced in `task` block, so that cluster is shared between tasks
 func (o JobTaskOutput) JobClusterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTask) *string { return v.JobClusterKey }).(pulumi.StringPtrOutput)
@@ -16417,7 +17033,7 @@ func (o JobTaskOutput) Libraries() JobTaskLibraryArrayOutput {
 	return o.ApplyT(func(v JobTask) []JobTaskLibrary { return v.Libraries }).(JobTaskLibraryArrayOutput)
 }
 
-// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
 func (o JobTaskOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTask) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
 }
@@ -16434,6 +17050,11 @@ func (o JobTaskOutput) NewCluster() JobTaskNewClusterPtrOutput {
 
 func (o JobTaskOutput) NotebookTask() JobTaskNotebookTaskPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskNotebookTask { return v.NotebookTask }).(JobTaskNotebookTaskPtrOutput)
+}
+
+// An optional block controlling the notification settings on the job level (described below).
+func (o JobTaskOutput) NotificationSettings() JobTaskNotificationSettingsPtrOutput {
+	return o.ApplyT(func(v JobTask) *JobTaskNotificationSettings { return v.NotificationSettings }).(JobTaskNotificationSettingsPtrOutput)
 }
 
 func (o JobTaskOutput) PipelineTask() JobTaskPipelineTaskPtrOutput {
@@ -16469,6 +17090,8 @@ func (o JobTaskOutput) SqlTask() JobTaskSqlTaskPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskSqlTask { return v.SqlTask }).(JobTaskSqlTaskPtrOutput)
 }
 
+// string specifying an unique key for a given task.
+// * `*_task` - (Required) one of the specific task blocks described below:
 func (o JobTaskOutput) TaskKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTask) *string { return v.TaskKey }).(pulumi.StringPtrOutput)
 }
@@ -16499,7 +17122,8 @@ func (o JobTaskArrayOutput) Index(i pulumi.IntInput) JobTaskOutput {
 }
 
 type JobTaskConditionTask struct {
-	Left  *string `pulumi:"left"`
+	Left *string `pulumi:"left"`
+	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op    *string `pulumi:"op"`
 	Right *string `pulumi:"right"`
 }
@@ -16516,7 +17140,8 @@ type JobTaskConditionTaskInput interface {
 }
 
 type JobTaskConditionTaskArgs struct {
-	Left  pulumi.StringPtrInput `pulumi:"left"`
+	Left pulumi.StringPtrInput `pulumi:"left"`
+	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op    pulumi.StringPtrInput `pulumi:"op"`
 	Right pulumi.StringPtrInput `pulumi:"right"`
 }
@@ -16602,6 +17227,7 @@ func (o JobTaskConditionTaskOutput) Left() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskConditionTask) *string { return v.Left }).(pulumi.StringPtrOutput)
 }
 
+// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 func (o JobTaskConditionTaskOutput) Op() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskConditionTask) *string { return v.Op }).(pulumi.StringPtrOutput)
 }
@@ -16643,6 +17269,7 @@ func (o JobTaskConditionTaskPtrOutput) Left() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 func (o JobTaskConditionTaskPtrOutput) Op() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskConditionTask) *string {
 		if v == nil {
@@ -16903,7 +17530,8 @@ func (o JobTaskDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 
 type JobTaskDependsOn struct {
 	Outcome *string `pulumi:"outcome"`
-	TaskKey string  `pulumi:"taskKey"`
+	// The name of the task this task depends on.
+	TaskKey string `pulumi:"taskKey"`
 }
 
 // JobTaskDependsOnInput is an input type that accepts JobTaskDependsOnArgs and JobTaskDependsOnOutput values.
@@ -16919,7 +17547,8 @@ type JobTaskDependsOnInput interface {
 
 type JobTaskDependsOnArgs struct {
 	Outcome pulumi.StringPtrInput `pulumi:"outcome"`
-	TaskKey pulumi.StringInput    `pulumi:"taskKey"`
+	// The name of the task this task depends on.
+	TaskKey pulumi.StringInput `pulumi:"taskKey"`
 }
 
 func (JobTaskDependsOnArgs) ElementType() reflect.Type {
@@ -16977,6 +17606,7 @@ func (o JobTaskDependsOnOutput) Outcome() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskDependsOn) *string { return v.Outcome }).(pulumi.StringPtrOutput)
 }
 
+// The name of the task this task depends on.
 func (o JobTaskDependsOnOutput) TaskKey() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskDependsOn) string { return v.TaskKey }).(pulumi.StringOutput)
 }
@@ -17002,9 +17632,12 @@ func (o JobTaskDependsOnArrayOutput) Index(i pulumi.IntInput) JobTaskDependsOnOu
 }
 
 type JobTaskEmailNotifications struct {
+	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
 	AlertOnLastAttempt *bool `pulumi:"alertOnLastAttempt"`
 	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
+	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures []string `pulumi:"onFailures"`
 	// (List) list of emails to notify when the run starts.
@@ -17025,9 +17658,12 @@ type JobTaskEmailNotificationsInput interface {
 }
 
 type JobTaskEmailNotificationsArgs struct {
+	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
 	AlertOnLastAttempt pulumi.BoolPtrInput `pulumi:"alertOnLastAttempt"`
 	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
+	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures pulumi.StringArrayInput `pulumi:"onFailures"`
 	// (List) list of emails to notify when the run starts.
@@ -17113,6 +17749,7 @@ func (o JobTaskEmailNotificationsOutput) ToJobTaskEmailNotificationsPtrOutputWit
 	}).(JobTaskEmailNotificationsPtrOutput)
 }
 
+// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
 func (o JobTaskEmailNotificationsOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) *bool { return v.AlertOnLastAttempt }).(pulumi.BoolPtrOutput)
 }
@@ -17120,6 +17757,11 @@ func (o JobTaskEmailNotificationsOutput) AlertOnLastAttempt() pulumi.BoolPtrOutp
 // (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobTaskEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
+}
+
+// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+func (o JobTaskEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTaskEmailNotifications) []string { return v.OnDurationWarningThresholdExceededs }).(pulumi.StringArrayOutput)
 }
 
 // (List) list of emails to notify when the run fails.
@@ -17161,6 +17803,7 @@ func (o JobTaskEmailNotificationsPtrOutput) Elem() JobTaskEmailNotificationsOutp
 	}).(JobTaskEmailNotificationsOutput)
 }
 
+// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
 func (o JobTaskEmailNotificationsPtrOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) *bool {
 		if v == nil {
@@ -17178,6 +17821,16 @@ func (o JobTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolP
 		}
 		return v.NoAlertForSkippedRuns
 	}).(pulumi.BoolPtrOutput)
+}
+
+// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+func (o JobTaskEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTaskEmailNotifications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OnDurationWarningThresholdExceededs
+	}).(pulumi.StringArrayOutput)
 }
 
 // (List) list of emails to notify when the run fails.
@@ -17208,6 +17861,258 @@ func (o JobTaskEmailNotificationsPtrOutput) OnSuccesses() pulumi.StringArrayOutp
 		}
 		return v.OnSuccesses
 	}).(pulumi.StringArrayOutput)
+}
+
+type JobTaskHealth struct {
+	// list of rules that are represented as objects with the following attributes:
+	Rules []JobTaskHealthRule `pulumi:"rules"`
+}
+
+// JobTaskHealthInput is an input type that accepts JobTaskHealthArgs and JobTaskHealthOutput values.
+// You can construct a concrete instance of `JobTaskHealthInput` via:
+//
+//	JobTaskHealthArgs{...}
+type JobTaskHealthInput interface {
+	pulumi.Input
+
+	ToJobTaskHealthOutput() JobTaskHealthOutput
+	ToJobTaskHealthOutputWithContext(context.Context) JobTaskHealthOutput
+}
+
+type JobTaskHealthArgs struct {
+	// list of rules that are represented as objects with the following attributes:
+	Rules JobTaskHealthRuleArrayInput `pulumi:"rules"`
+}
+
+func (JobTaskHealthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskHealth)(nil)).Elem()
+}
+
+func (i JobTaskHealthArgs) ToJobTaskHealthOutput() JobTaskHealthOutput {
+	return i.ToJobTaskHealthOutputWithContext(context.Background())
+}
+
+func (i JobTaskHealthArgs) ToJobTaskHealthOutputWithContext(ctx context.Context) JobTaskHealthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskHealthOutput)
+}
+
+func (i JobTaskHealthArgs) ToJobTaskHealthPtrOutput() JobTaskHealthPtrOutput {
+	return i.ToJobTaskHealthPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskHealthArgs) ToJobTaskHealthPtrOutputWithContext(ctx context.Context) JobTaskHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskHealthOutput).ToJobTaskHealthPtrOutputWithContext(ctx)
+}
+
+// JobTaskHealthPtrInput is an input type that accepts JobTaskHealthArgs, JobTaskHealthPtr and JobTaskHealthPtrOutput values.
+// You can construct a concrete instance of `JobTaskHealthPtrInput` via:
+//
+//	        JobTaskHealthArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskHealthPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskHealthPtrOutput() JobTaskHealthPtrOutput
+	ToJobTaskHealthPtrOutputWithContext(context.Context) JobTaskHealthPtrOutput
+}
+
+type jobTaskHealthPtrType JobTaskHealthArgs
+
+func JobTaskHealthPtr(v *JobTaskHealthArgs) JobTaskHealthPtrInput {
+	return (*jobTaskHealthPtrType)(v)
+}
+
+func (*jobTaskHealthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskHealth)(nil)).Elem()
+}
+
+func (i *jobTaskHealthPtrType) ToJobTaskHealthPtrOutput() JobTaskHealthPtrOutput {
+	return i.ToJobTaskHealthPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskHealthPtrType) ToJobTaskHealthPtrOutputWithContext(ctx context.Context) JobTaskHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskHealthPtrOutput)
+}
+
+type JobTaskHealthOutput struct{ *pulumi.OutputState }
+
+func (JobTaskHealthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskHealth)(nil)).Elem()
+}
+
+func (o JobTaskHealthOutput) ToJobTaskHealthOutput() JobTaskHealthOutput {
+	return o
+}
+
+func (o JobTaskHealthOutput) ToJobTaskHealthOutputWithContext(ctx context.Context) JobTaskHealthOutput {
+	return o
+}
+
+func (o JobTaskHealthOutput) ToJobTaskHealthPtrOutput() JobTaskHealthPtrOutput {
+	return o.ToJobTaskHealthPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskHealthOutput) ToJobTaskHealthPtrOutputWithContext(ctx context.Context) JobTaskHealthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskHealth) *JobTaskHealth {
+		return &v
+	}).(JobTaskHealthPtrOutput)
+}
+
+// list of rules that are represented as objects with the following attributes:
+func (o JobTaskHealthOutput) Rules() JobTaskHealthRuleArrayOutput {
+	return o.ApplyT(func(v JobTaskHealth) []JobTaskHealthRule { return v.Rules }).(JobTaskHealthRuleArrayOutput)
+}
+
+type JobTaskHealthPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskHealthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskHealth)(nil)).Elem()
+}
+
+func (o JobTaskHealthPtrOutput) ToJobTaskHealthPtrOutput() JobTaskHealthPtrOutput {
+	return o
+}
+
+func (o JobTaskHealthPtrOutput) ToJobTaskHealthPtrOutputWithContext(ctx context.Context) JobTaskHealthPtrOutput {
+	return o
+}
+
+func (o JobTaskHealthPtrOutput) Elem() JobTaskHealthOutput {
+	return o.ApplyT(func(v *JobTaskHealth) JobTaskHealth {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskHealth
+		return ret
+	}).(JobTaskHealthOutput)
+}
+
+// list of rules that are represented as objects with the following attributes:
+func (o JobTaskHealthPtrOutput) Rules() JobTaskHealthRuleArrayOutput {
+	return o.ApplyT(func(v *JobTaskHealth) []JobTaskHealthRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(JobTaskHealthRuleArrayOutput)
+}
+
+type JobTaskHealthRule struct {
+	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	Metric *string `pulumi:"metric"`
+	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+	Op *string `pulumi:"op"`
+	// integer value used to compare to the given metric.
+	Value *int `pulumi:"value"`
+}
+
+// JobTaskHealthRuleInput is an input type that accepts JobTaskHealthRuleArgs and JobTaskHealthRuleOutput values.
+// You can construct a concrete instance of `JobTaskHealthRuleInput` via:
+//
+//	JobTaskHealthRuleArgs{...}
+type JobTaskHealthRuleInput interface {
+	pulumi.Input
+
+	ToJobTaskHealthRuleOutput() JobTaskHealthRuleOutput
+	ToJobTaskHealthRuleOutputWithContext(context.Context) JobTaskHealthRuleOutput
+}
+
+type JobTaskHealthRuleArgs struct {
+	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+	Op pulumi.StringPtrInput `pulumi:"op"`
+	// integer value used to compare to the given metric.
+	Value pulumi.IntPtrInput `pulumi:"value"`
+}
+
+func (JobTaskHealthRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskHealthRule)(nil)).Elem()
+}
+
+func (i JobTaskHealthRuleArgs) ToJobTaskHealthRuleOutput() JobTaskHealthRuleOutput {
+	return i.ToJobTaskHealthRuleOutputWithContext(context.Background())
+}
+
+func (i JobTaskHealthRuleArgs) ToJobTaskHealthRuleOutputWithContext(ctx context.Context) JobTaskHealthRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskHealthRuleOutput)
+}
+
+// JobTaskHealthRuleArrayInput is an input type that accepts JobTaskHealthRuleArray and JobTaskHealthRuleArrayOutput values.
+// You can construct a concrete instance of `JobTaskHealthRuleArrayInput` via:
+//
+//	JobTaskHealthRuleArray{ JobTaskHealthRuleArgs{...} }
+type JobTaskHealthRuleArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskHealthRuleArrayOutput() JobTaskHealthRuleArrayOutput
+	ToJobTaskHealthRuleArrayOutputWithContext(context.Context) JobTaskHealthRuleArrayOutput
+}
+
+type JobTaskHealthRuleArray []JobTaskHealthRuleInput
+
+func (JobTaskHealthRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskHealthRule)(nil)).Elem()
+}
+
+func (i JobTaskHealthRuleArray) ToJobTaskHealthRuleArrayOutput() JobTaskHealthRuleArrayOutput {
+	return i.ToJobTaskHealthRuleArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskHealthRuleArray) ToJobTaskHealthRuleArrayOutputWithContext(ctx context.Context) JobTaskHealthRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskHealthRuleArrayOutput)
+}
+
+type JobTaskHealthRuleOutput struct{ *pulumi.OutputState }
+
+func (JobTaskHealthRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskHealthRule)(nil)).Elem()
+}
+
+func (o JobTaskHealthRuleOutput) ToJobTaskHealthRuleOutput() JobTaskHealthRuleOutput {
+	return o
+}
+
+func (o JobTaskHealthRuleOutput) ToJobTaskHealthRuleOutputWithContext(ctx context.Context) JobTaskHealthRuleOutput {
+	return o
+}
+
+// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+func (o JobTaskHealthRuleOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+func (o JobTaskHealthRuleOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+// integer value used to compare to the given metric.
+func (o JobTaskHealthRuleOutput) Value() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTaskHealthRule) *int { return v.Value }).(pulumi.IntPtrOutput)
+}
+
+type JobTaskHealthRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskHealthRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskHealthRule)(nil)).Elem()
+}
+
+func (o JobTaskHealthRuleArrayOutput) ToJobTaskHealthRuleArrayOutput() JobTaskHealthRuleArrayOutput {
+	return o
+}
+
+func (o JobTaskHealthRuleArrayOutput) ToJobTaskHealthRuleArrayOutputWithContext(ctx context.Context) JobTaskHealthRuleArrayOutput {
+	return o
+}
+
+func (o JobTaskHealthRuleArrayOutput) Index(i pulumi.IntInput) JobTaskHealthRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskHealthRule {
+		return vs[0].([]JobTaskHealthRule)[vs[1].(int)]
+	}).(JobTaskHealthRuleOutput)
 }
 
 type JobTaskLibrary struct {
@@ -21727,10 +22632,187 @@ func (o JobTaskNotebookTaskPtrOutput) Source() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobTaskNotificationSettings struct {
+	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
+	AlertOnLastAttempt *bool `pulumi:"alertOnLastAttempt"`
+	// (Bool) don't send alert for cancelled runs.
+	NoAlertForCanceledRuns *bool `pulumi:"noAlertForCanceledRuns"`
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
+}
+
+// JobTaskNotificationSettingsInput is an input type that accepts JobTaskNotificationSettingsArgs and JobTaskNotificationSettingsOutput values.
+// You can construct a concrete instance of `JobTaskNotificationSettingsInput` via:
+//
+//	JobTaskNotificationSettingsArgs{...}
+type JobTaskNotificationSettingsInput interface {
+	pulumi.Input
+
+	ToJobTaskNotificationSettingsOutput() JobTaskNotificationSettingsOutput
+	ToJobTaskNotificationSettingsOutputWithContext(context.Context) JobTaskNotificationSettingsOutput
+}
+
+type JobTaskNotificationSettingsArgs struct {
+	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
+	AlertOnLastAttempt pulumi.BoolPtrInput `pulumi:"alertOnLastAttempt"`
+	// (Bool) don't send alert for cancelled runs.
+	NoAlertForCanceledRuns pulumi.BoolPtrInput `pulumi:"noAlertForCanceledRuns"`
+	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
+}
+
+func (JobTaskNotificationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNotificationSettings)(nil)).Elem()
+}
+
+func (i JobTaskNotificationSettingsArgs) ToJobTaskNotificationSettingsOutput() JobTaskNotificationSettingsOutput {
+	return i.ToJobTaskNotificationSettingsOutputWithContext(context.Background())
+}
+
+func (i JobTaskNotificationSettingsArgs) ToJobTaskNotificationSettingsOutputWithContext(ctx context.Context) JobTaskNotificationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNotificationSettingsOutput)
+}
+
+func (i JobTaskNotificationSettingsArgs) ToJobTaskNotificationSettingsPtrOutput() JobTaskNotificationSettingsPtrOutput {
+	return i.ToJobTaskNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskNotificationSettingsArgs) ToJobTaskNotificationSettingsPtrOutputWithContext(ctx context.Context) JobTaskNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNotificationSettingsOutput).ToJobTaskNotificationSettingsPtrOutputWithContext(ctx)
+}
+
+// JobTaskNotificationSettingsPtrInput is an input type that accepts JobTaskNotificationSettingsArgs, JobTaskNotificationSettingsPtr and JobTaskNotificationSettingsPtrOutput values.
+// You can construct a concrete instance of `JobTaskNotificationSettingsPtrInput` via:
+//
+//	        JobTaskNotificationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskNotificationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskNotificationSettingsPtrOutput() JobTaskNotificationSettingsPtrOutput
+	ToJobTaskNotificationSettingsPtrOutputWithContext(context.Context) JobTaskNotificationSettingsPtrOutput
+}
+
+type jobTaskNotificationSettingsPtrType JobTaskNotificationSettingsArgs
+
+func JobTaskNotificationSettingsPtr(v *JobTaskNotificationSettingsArgs) JobTaskNotificationSettingsPtrInput {
+	return (*jobTaskNotificationSettingsPtrType)(v)
+}
+
+func (*jobTaskNotificationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNotificationSettings)(nil)).Elem()
+}
+
+func (i *jobTaskNotificationSettingsPtrType) ToJobTaskNotificationSettingsPtrOutput() JobTaskNotificationSettingsPtrOutput {
+	return i.ToJobTaskNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskNotificationSettingsPtrType) ToJobTaskNotificationSettingsPtrOutputWithContext(ctx context.Context) JobTaskNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskNotificationSettingsPtrOutput)
+}
+
+type JobTaskNotificationSettingsOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNotificationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskNotificationSettings)(nil)).Elem()
+}
+
+func (o JobTaskNotificationSettingsOutput) ToJobTaskNotificationSettingsOutput() JobTaskNotificationSettingsOutput {
+	return o
+}
+
+func (o JobTaskNotificationSettingsOutput) ToJobTaskNotificationSettingsOutputWithContext(ctx context.Context) JobTaskNotificationSettingsOutput {
+	return o
+}
+
+func (o JobTaskNotificationSettingsOutput) ToJobTaskNotificationSettingsPtrOutput() JobTaskNotificationSettingsPtrOutput {
+	return o.ToJobTaskNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskNotificationSettingsOutput) ToJobTaskNotificationSettingsPtrOutputWithContext(ctx context.Context) JobTaskNotificationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskNotificationSettings) *JobTaskNotificationSettings {
+		return &v
+	}).(JobTaskNotificationSettingsPtrOutput)
+}
+
+// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
+func (o JobTaskNotificationSettingsOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskNotificationSettings) *bool { return v.AlertOnLastAttempt }).(pulumi.BoolPtrOutput)
+}
+
+// (Bool) don't send alert for cancelled runs.
+func (o JobTaskNotificationSettingsOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskNotificationSettings) *bool { return v.NoAlertForCanceledRuns }).(pulumi.BoolPtrOutput)
+}
+
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+func (o JobTaskNotificationSettingsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskNotificationSettings) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
+}
+
+type JobTaskNotificationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskNotificationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskNotificationSettings)(nil)).Elem()
+}
+
+func (o JobTaskNotificationSettingsPtrOutput) ToJobTaskNotificationSettingsPtrOutput() JobTaskNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o JobTaskNotificationSettingsPtrOutput) ToJobTaskNotificationSettingsPtrOutputWithContext(ctx context.Context) JobTaskNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o JobTaskNotificationSettingsPtrOutput) Elem() JobTaskNotificationSettingsOutput {
+	return o.ApplyT(func(v *JobTaskNotificationSettings) JobTaskNotificationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskNotificationSettings
+		return ret
+	}).(JobTaskNotificationSettingsOutput)
+}
+
+// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
+func (o JobTaskNotificationSettingsPtrOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AlertOnLastAttempt
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Bool) don't send alert for cancelled runs.
+func (o JobTaskNotificationSettingsPtrOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoAlertForCanceledRuns
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+func (o JobTaskNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoAlertForSkippedRuns
+	}).(pulumi.BoolPtrOutput)
+}
+
 type JobTaskPipelineTask struct {
-	// The pipeline's unique ID.
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	//
 	// > **Note** The following configuration blocks are only supported inside a `task` block
+	FullRefresh *bool `pulumi:"fullRefresh"`
+	// The pipeline's unique ID.
 	PipelineId string `pulumi:"pipelineId"`
 }
 
@@ -21746,9 +22828,11 @@ type JobTaskPipelineTaskInput interface {
 }
 
 type JobTaskPipelineTaskArgs struct {
-	// The pipeline's unique ID.
+	// (Bool) Specifies if there should be full refresh of the pipeline.
 	//
 	// > **Note** The following configuration blocks are only supported inside a `task` block
+	FullRefresh pulumi.BoolPtrInput `pulumi:"fullRefresh"`
+	// The pipeline's unique ID.
 	PipelineId pulumi.StringInput `pulumi:"pipelineId"`
 }
 
@@ -21829,9 +22913,14 @@ func (o JobTaskPipelineTaskOutput) ToJobTaskPipelineTaskPtrOutputWithContext(ctx
 	}).(JobTaskPipelineTaskPtrOutput)
 }
 
-// The pipeline's unique ID.
+// (Bool) Specifies if there should be full refresh of the pipeline.
 //
 // > **Note** The following configuration blocks are only supported inside a `task` block
+func (o JobTaskPipelineTaskOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskPipelineTask) *bool { return v.FullRefresh }).(pulumi.BoolPtrOutput)
+}
+
+// The pipeline's unique ID.
 func (o JobTaskPipelineTaskOutput) PipelineId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskPipelineTask) string { return v.PipelineId }).(pulumi.StringOutput)
 }
@@ -21860,9 +22949,19 @@ func (o JobTaskPipelineTaskPtrOutput) Elem() JobTaskPipelineTaskOutput {
 	}).(JobTaskPipelineTaskOutput)
 }
 
-// The pipeline's unique ID.
+// (Bool) Specifies if there should be full refresh of the pipeline.
 //
 // > **Note** The following configuration blocks are only supported inside a `task` block
+func (o JobTaskPipelineTaskPtrOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskPipelineTask) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FullRefresh
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The pipeline's unique ID.
 func (o JobTaskPipelineTaskPtrOutput) PipelineId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskPipelineTask) *string {
 		if v == nil {
@@ -24204,7 +25303,7 @@ func (o JobTriggerFileArrivalPtrOutput) WaitAfterLastChangeSeconds() pulumi.IntP
 }
 
 type JobWebhookNotifications struct {
-	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
 	//
 	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 	//
@@ -24223,6 +25322,8 @@ type JobWebhookNotifications struct {
 	// 	})
 	// }
 	// ```
+	OnDurationWarningThresholdExceededs []JobWebhookNotificationsOnDurationWarningThresholdExceeded `pulumi:"onDurationWarningThresholdExceededs"`
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures []JobWebhookNotificationsOnFailure `pulumi:"onFailures"`
 	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStarts []JobWebhookNotificationsOnStart `pulumi:"onStarts"`
@@ -24242,7 +25343,7 @@ type JobWebhookNotificationsInput interface {
 }
 
 type JobWebhookNotificationsArgs struct {
-	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
 	//
 	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 	//
@@ -24261,6 +25362,8 @@ type JobWebhookNotificationsArgs struct {
 	// 	})
 	// }
 	// ```
+	OnDurationWarningThresholdExceededs JobWebhookNotificationsOnDurationWarningThresholdExceededArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures JobWebhookNotificationsOnFailureArrayInput `pulumi:"onFailures"`
 	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
 	OnStarts JobWebhookNotificationsOnStartArrayInput `pulumi:"onStarts"`
@@ -24345,7 +25448,7 @@ func (o JobWebhookNotificationsOutput) ToJobWebhookNotificationsPtrOutputWithCon
 	}).(JobWebhookNotificationsPtrOutput)
 }
 
-// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
 //
 // Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 //
@@ -24367,6 +25470,13 @@ func (o JobWebhookNotificationsOutput) ToJobWebhookNotificationsPtrOutputWithCon
 //	}
 //
 // ```
+func (o JobWebhookNotificationsOutput) OnDurationWarningThresholdExceededs() JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o.ApplyT(func(v JobWebhookNotifications) []JobWebhookNotificationsOnDurationWarningThresholdExceeded {
+		return v.OnDurationWarningThresholdExceededs
+	}).(JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput)
+}
+
+// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 func (o JobWebhookNotificationsOutput) OnFailures() JobWebhookNotificationsOnFailureArrayOutput {
 	return o.ApplyT(func(v JobWebhookNotifications) []JobWebhookNotificationsOnFailure { return v.OnFailures }).(JobWebhookNotificationsOnFailureArrayOutput)
 }
@@ -24405,7 +25515,7 @@ func (o JobWebhookNotificationsPtrOutput) Elem() JobWebhookNotificationsOutput {
 	}).(JobWebhookNotificationsOutput)
 }
 
-// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
 //
 // Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 //
@@ -24427,6 +25537,16 @@ func (o JobWebhookNotificationsPtrOutput) Elem() JobWebhookNotificationsOutput {
 //	}
 //
 // ```
+func (o JobWebhookNotificationsPtrOutput) OnDurationWarningThresholdExceededs() JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o.ApplyT(func(v *JobWebhookNotifications) []JobWebhookNotificationsOnDurationWarningThresholdExceeded {
+		if v == nil {
+			return nil
+		}
+		return v.OnDurationWarningThresholdExceededs
+	}).(JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput)
+}
+
+// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 func (o JobWebhookNotificationsPtrOutput) OnFailures() JobWebhookNotificationsOnFailureArrayOutput {
 	return o.ApplyT(func(v *JobWebhookNotifications) []JobWebhookNotificationsOnFailure {
 		if v == nil {
@@ -24454,6 +25574,109 @@ func (o JobWebhookNotificationsPtrOutput) OnSuccesses() JobWebhookNotificationsO
 		}
 		return v.OnSuccesses
 	}).(JobWebhookNotificationsOnSuccessArrayOutput)
+}
+
+type JobWebhookNotificationsOnDurationWarningThresholdExceeded struct {
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	Id string `pulumi:"id"`
+}
+
+// JobWebhookNotificationsOnDurationWarningThresholdExceededInput is an input type that accepts JobWebhookNotificationsOnDurationWarningThresholdExceededArgs and JobWebhookNotificationsOnDurationWarningThresholdExceededOutput values.
+// You can construct a concrete instance of `JobWebhookNotificationsOnDurationWarningThresholdExceededInput` via:
+//
+//	JobWebhookNotificationsOnDurationWarningThresholdExceededArgs{...}
+type JobWebhookNotificationsOnDurationWarningThresholdExceededInput interface {
+	pulumi.Input
+
+	ToJobWebhookNotificationsOnDurationWarningThresholdExceededOutput() JobWebhookNotificationsOnDurationWarningThresholdExceededOutput
+	ToJobWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(context.Context) JobWebhookNotificationsOnDurationWarningThresholdExceededOutput
+}
+
+type JobWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (JobWebhookNotificationsOnDurationWarningThresholdExceededArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (i JobWebhookNotificationsOnDurationWarningThresholdExceededArgs) ToJobWebhookNotificationsOnDurationWarningThresholdExceededOutput() JobWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return i.ToJobWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(context.Background())
+}
+
+func (i JobWebhookNotificationsOnDurationWarningThresholdExceededArgs) ToJobWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(ctx context.Context) JobWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobWebhookNotificationsOnDurationWarningThresholdExceededOutput)
+}
+
+// JobWebhookNotificationsOnDurationWarningThresholdExceededArrayInput is an input type that accepts JobWebhookNotificationsOnDurationWarningThresholdExceededArray and JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput values.
+// You can construct a concrete instance of `JobWebhookNotificationsOnDurationWarningThresholdExceededArrayInput` via:
+//
+//	JobWebhookNotificationsOnDurationWarningThresholdExceededArray{ JobWebhookNotificationsOnDurationWarningThresholdExceededArgs{...} }
+type JobWebhookNotificationsOnDurationWarningThresholdExceededArrayInput interface {
+	pulumi.Input
+
+	ToJobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput() JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput
+	ToJobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(context.Context) JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput
+}
+
+type JobWebhookNotificationsOnDurationWarningThresholdExceededArray []JobWebhookNotificationsOnDurationWarningThresholdExceededInput
+
+func (JobWebhookNotificationsOnDurationWarningThresholdExceededArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (i JobWebhookNotificationsOnDurationWarningThresholdExceededArray) ToJobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput() JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return i.ToJobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(context.Background())
+}
+
+func (i JobWebhookNotificationsOnDurationWarningThresholdExceededArray) ToJobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(ctx context.Context) JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput)
+}
+
+type JobWebhookNotificationsOnDurationWarningThresholdExceededOutput struct{ *pulumi.OutputState }
+
+func (JobWebhookNotificationsOnDurationWarningThresholdExceededOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (o JobWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToJobWebhookNotificationsOnDurationWarningThresholdExceededOutput() JobWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return o
+}
+
+func (o JobWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToJobWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(ctx context.Context) JobWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return o
+}
+
+// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+//
+// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+func (o JobWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v JobWebhookNotificationsOnDurationWarningThresholdExceeded) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput struct{ *pulumi.OutputState }
+
+func (JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (o JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) ToJobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput() JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o
+}
+
+func (o JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) ToJobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(ctx context.Context) JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o
+}
+
+func (o JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) Index(i pulumi.IntInput) JobWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobWebhookNotificationsOnDurationWarningThresholdExceeded {
+		return vs[0].([]JobWebhookNotificationsOnDurationWarningThresholdExceeded)[vs[1].(int)]
+	}).(JobWebhookNotificationsOnDurationWarningThresholdExceededOutput)
 }
 
 type JobWebhookNotificationsOnFailure struct {
@@ -46296,6 +47519,7 @@ type GetJobJobSettingsSettings struct {
 	ExistingClusterId      *string                                      `pulumi:"existingClusterId"`
 	Format                 string                                       `pulumi:"format"`
 	GitSource              *GetJobJobSettingsSettingsGitSource          `pulumi:"gitSource"`
+	Health                 *GetJobJobSettingsSettingsHealth             `pulumi:"health"`
 	JobClusters            []GetJobJobSettingsSettingsJobCluster        `pulumi:"jobClusters"`
 	Libraries              []GetJobJobSettingsSettingsLibrary           `pulumi:"libraries"`
 	MaxConcurrentRuns      *int                                         `pulumi:"maxConcurrentRuns"`
@@ -46341,6 +47565,7 @@ type GetJobJobSettingsSettingsArgs struct {
 	ExistingClusterId      pulumi.StringPtrInput                               `pulumi:"existingClusterId"`
 	Format                 pulumi.StringInput                                  `pulumi:"format"`
 	GitSource              GetJobJobSettingsSettingsGitSourcePtrInput          `pulumi:"gitSource"`
+	Health                 GetJobJobSettingsSettingsHealthPtrInput             `pulumi:"health"`
 	JobClusters            GetJobJobSettingsSettingsJobClusterArrayInput       `pulumi:"jobClusters"`
 	Libraries              GetJobJobSettingsSettingsLibraryArrayInput          `pulumi:"libraries"`
 	MaxConcurrentRuns      pulumi.IntPtrInput                                  `pulumi:"maxConcurrentRuns"`
@@ -46472,6 +47697,10 @@ func (o GetJobJobSettingsSettingsOutput) Format() pulumi.StringOutput {
 
 func (o GetJobJobSettingsSettingsOutput) GitSource() GetJobJobSettingsSettingsGitSourcePtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsGitSource { return v.GitSource }).(GetJobJobSettingsSettingsGitSourcePtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsOutput) Health() GetJobJobSettingsSettingsHealthPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsHealth { return v.Health }).(GetJobJobSettingsSettingsHealthPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsOutput) JobClusters() GetJobJobSettingsSettingsJobClusterArrayOutput {
@@ -46656,6 +47885,15 @@ func (o GetJobJobSettingsSettingsPtrOutput) GitSource() GetJobJobSettingsSetting
 		}
 		return v.GitSource
 	}).(GetJobJobSettingsSettingsGitSourcePtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsPtrOutput) Health() GetJobJobSettingsSettingsHealthPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettings) *GetJobJobSettingsSettingsHealth {
+		if v == nil {
+			return nil
+		}
+		return v.Health
+	}).(GetJobJobSettingsSettingsHealthPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsPtrOutput) JobClusters() GetJobJobSettingsSettingsJobClusterArrayOutput {
@@ -47441,11 +48679,12 @@ func (o GetJobJobSettingsSettingsDbtTaskPtrOutput) WarehouseId() pulumi.StringPt
 }
 
 type GetJobJobSettingsSettingsEmailNotifications struct {
-	AlertOnLastAttempt    *bool    `pulumi:"alertOnLastAttempt"`
-	NoAlertForSkippedRuns *bool    `pulumi:"noAlertForSkippedRuns"`
-	OnFailures            []string `pulumi:"onFailures"`
-	OnStarts              []string `pulumi:"onStarts"`
-	OnSuccesses           []string `pulumi:"onSuccesses"`
+	AlertOnLastAttempt                  *bool    `pulumi:"alertOnLastAttempt"`
+	NoAlertForSkippedRuns               *bool    `pulumi:"noAlertForSkippedRuns"`
+	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
+	OnFailures                          []string `pulumi:"onFailures"`
+	OnStarts                            []string `pulumi:"onStarts"`
+	OnSuccesses                         []string `pulumi:"onSuccesses"`
 }
 
 // GetJobJobSettingsSettingsEmailNotificationsInput is an input type that accepts GetJobJobSettingsSettingsEmailNotificationsArgs and GetJobJobSettingsSettingsEmailNotificationsOutput values.
@@ -47460,11 +48699,12 @@ type GetJobJobSettingsSettingsEmailNotificationsInput interface {
 }
 
 type GetJobJobSettingsSettingsEmailNotificationsArgs struct {
-	AlertOnLastAttempt    pulumi.BoolPtrInput     `pulumi:"alertOnLastAttempt"`
-	NoAlertForSkippedRuns pulumi.BoolPtrInput     `pulumi:"noAlertForSkippedRuns"`
-	OnFailures            pulumi.StringArrayInput `pulumi:"onFailures"`
-	OnStarts              pulumi.StringArrayInput `pulumi:"onStarts"`
-	OnSuccesses           pulumi.StringArrayInput `pulumi:"onSuccesses"`
+	AlertOnLastAttempt                  pulumi.BoolPtrInput     `pulumi:"alertOnLastAttempt"`
+	NoAlertForSkippedRuns               pulumi.BoolPtrInput     `pulumi:"noAlertForSkippedRuns"`
+	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
+	OnFailures                          pulumi.StringArrayInput `pulumi:"onFailures"`
+	OnStarts                            pulumi.StringArrayInput `pulumi:"onStarts"`
+	OnSuccesses                         pulumi.StringArrayInput `pulumi:"onSuccesses"`
 }
 
 func (GetJobJobSettingsSettingsEmailNotificationsArgs) ElementType() reflect.Type {
@@ -47552,6 +48792,12 @@ func (o GetJobJobSettingsSettingsEmailNotificationsOutput) NoAlertForSkippedRuns
 	return o.ApplyT(func(v GetJobJobSettingsSettingsEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsEmailNotifications) []string {
+		return v.OnDurationWarningThresholdExceededs
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o GetJobJobSettingsSettingsEmailNotificationsOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsEmailNotifications) []string { return v.OnFailures }).(pulumi.StringArrayOutput)
 }
@@ -47606,6 +48852,15 @@ func (o GetJobJobSettingsSettingsEmailNotificationsPtrOutput) NoAlertForSkippedR
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsEmailNotifications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OnDurationWarningThresholdExceededs
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o GetJobJobSettingsSettingsEmailNotificationsPtrOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetJobJobSettingsSettingsEmailNotifications) []string {
 		if v == nil {
@@ -47634,11 +48889,12 @@ func (o GetJobJobSettingsSettingsEmailNotificationsPtrOutput) OnSuccesses() pulu
 }
 
 type GetJobJobSettingsSettingsGitSource struct {
-	Branch   *string `pulumi:"branch"`
-	Commit   *string `pulumi:"commit"`
-	Provider *string `pulumi:"provider"`
-	Tag      *string `pulumi:"tag"`
-	Url      string  `pulumi:"url"`
+	Branch    *string                                      `pulumi:"branch"`
+	Commit    *string                                      `pulumi:"commit"`
+	JobSource *GetJobJobSettingsSettingsGitSourceJobSource `pulumi:"jobSource"`
+	Provider  *string                                      `pulumi:"provider"`
+	Tag       *string                                      `pulumi:"tag"`
+	Url       string                                       `pulumi:"url"`
 }
 
 // GetJobJobSettingsSettingsGitSourceInput is an input type that accepts GetJobJobSettingsSettingsGitSourceArgs and GetJobJobSettingsSettingsGitSourceOutput values.
@@ -47653,11 +48909,12 @@ type GetJobJobSettingsSettingsGitSourceInput interface {
 }
 
 type GetJobJobSettingsSettingsGitSourceArgs struct {
-	Branch   pulumi.StringPtrInput `pulumi:"branch"`
-	Commit   pulumi.StringPtrInput `pulumi:"commit"`
-	Provider pulumi.StringPtrInput `pulumi:"provider"`
-	Tag      pulumi.StringPtrInput `pulumi:"tag"`
-	Url      pulumi.StringInput    `pulumi:"url"`
+	Branch    pulumi.StringPtrInput                               `pulumi:"branch"`
+	Commit    pulumi.StringPtrInput                               `pulumi:"commit"`
+	JobSource GetJobJobSettingsSettingsGitSourceJobSourcePtrInput `pulumi:"jobSource"`
+	Provider  pulumi.StringPtrInput                               `pulumi:"provider"`
+	Tag       pulumi.StringPtrInput                               `pulumi:"tag"`
+	Url       pulumi.StringInput                                  `pulumi:"url"`
 }
 
 func (GetJobJobSettingsSettingsGitSourceArgs) ElementType() reflect.Type {
@@ -47745,6 +49002,12 @@ func (o GetJobJobSettingsSettingsGitSourceOutput) Commit() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetJobJobSettingsSettingsGitSource) *string { return v.Commit }).(pulumi.StringPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsGitSourceOutput) JobSource() GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsGitSource) *GetJobJobSettingsSettingsGitSourceJobSource {
+		return v.JobSource
+	}).(GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsGitSourceOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsGitSource) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -47799,6 +49062,15 @@ func (o GetJobJobSettingsSettingsGitSourcePtrOutput) Commit() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsGitSourcePtrOutput) JobSource() GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsGitSource) *GetJobJobSettingsSettingsGitSourceJobSource {
+		if v == nil {
+			return nil
+		}
+		return v.JobSource
+	}).(GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsGitSourcePtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetJobJobSettingsSettingsGitSource) *string {
 		if v == nil {
@@ -47824,6 +49096,408 @@ func (o GetJobJobSettingsSettingsGitSourcePtrOutput) Url() pulumi.StringPtrOutpu
 		}
 		return &v.Url
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsGitSourceJobSource struct {
+	DirtyState          *string `pulumi:"dirtyState"`
+	ImportFromGitBranch string  `pulumi:"importFromGitBranch"`
+	JobConfigPath       string  `pulumi:"jobConfigPath"`
+}
+
+// GetJobJobSettingsSettingsGitSourceJobSourceInput is an input type that accepts GetJobJobSettingsSettingsGitSourceJobSourceArgs and GetJobJobSettingsSettingsGitSourceJobSourceOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsGitSourceJobSourceInput` via:
+//
+//	GetJobJobSettingsSettingsGitSourceJobSourceArgs{...}
+type GetJobJobSettingsSettingsGitSourceJobSourceInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsGitSourceJobSourceOutput() GetJobJobSettingsSettingsGitSourceJobSourceOutput
+	ToGetJobJobSettingsSettingsGitSourceJobSourceOutputWithContext(context.Context) GetJobJobSettingsSettingsGitSourceJobSourceOutput
+}
+
+type GetJobJobSettingsSettingsGitSourceJobSourceArgs struct {
+	DirtyState          pulumi.StringPtrInput `pulumi:"dirtyState"`
+	ImportFromGitBranch pulumi.StringInput    `pulumi:"importFromGitBranch"`
+	JobConfigPath       pulumi.StringInput    `pulumi:"jobConfigPath"`
+}
+
+func (GetJobJobSettingsSettingsGitSourceJobSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsGitSourceJobSource)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsGitSourceJobSourceArgs) ToGetJobJobSettingsSettingsGitSourceJobSourceOutput() GetJobJobSettingsSettingsGitSourceJobSourceOutput {
+	return i.ToGetJobJobSettingsSettingsGitSourceJobSourceOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsGitSourceJobSourceArgs) ToGetJobJobSettingsSettingsGitSourceJobSourceOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsGitSourceJobSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsGitSourceJobSourceOutput)
+}
+
+func (i GetJobJobSettingsSettingsGitSourceJobSourceArgs) ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutput() GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput {
+	return i.ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsGitSourceJobSourceArgs) ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsGitSourceJobSourceOutput).ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsGitSourceJobSourcePtrInput is an input type that accepts GetJobJobSettingsSettingsGitSourceJobSourceArgs, GetJobJobSettingsSettingsGitSourceJobSourcePtr and GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsGitSourceJobSourcePtrInput` via:
+//
+//	        GetJobJobSettingsSettingsGitSourceJobSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsGitSourceJobSourcePtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutput() GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput
+	ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutputWithContext(context.Context) GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput
+}
+
+type getJobJobSettingsSettingsGitSourceJobSourcePtrType GetJobJobSettingsSettingsGitSourceJobSourceArgs
+
+func GetJobJobSettingsSettingsGitSourceJobSourcePtr(v *GetJobJobSettingsSettingsGitSourceJobSourceArgs) GetJobJobSettingsSettingsGitSourceJobSourcePtrInput {
+	return (*getJobJobSettingsSettingsGitSourceJobSourcePtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsGitSourceJobSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsGitSourceJobSource)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsGitSourceJobSourcePtrType) ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutput() GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput {
+	return i.ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsGitSourceJobSourcePtrType) ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput)
+}
+
+type GetJobJobSettingsSettingsGitSourceJobSourceOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsGitSourceJobSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsGitSourceJobSource)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsGitSourceJobSourceOutput) ToGetJobJobSettingsSettingsGitSourceJobSourceOutput() GetJobJobSettingsSettingsGitSourceJobSourceOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsGitSourceJobSourceOutput) ToGetJobJobSettingsSettingsGitSourceJobSourceOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsGitSourceJobSourceOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsGitSourceJobSourceOutput) ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutput() GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput {
+	return o.ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsGitSourceJobSourceOutput) ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsGitSourceJobSource) *GetJobJobSettingsSettingsGitSourceJobSource {
+		return &v
+	}).(GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsGitSourceJobSourceOutput) DirtyState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsGitSourceJobSource) *string { return v.DirtyState }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsGitSourceJobSourceOutput) ImportFromGitBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsGitSourceJobSource) string { return v.ImportFromGitBranch }).(pulumi.StringOutput)
+}
+
+func (o GetJobJobSettingsSettingsGitSourceJobSourceOutput) JobConfigPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsGitSourceJobSource) string { return v.JobConfigPath }).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsGitSourceJobSource)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput) ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutput() GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput) ToGetJobJobSettingsSettingsGitSourceJobSourcePtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput) Elem() GetJobJobSettingsSettingsGitSourceJobSourceOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsGitSourceJobSource) GetJobJobSettingsSettingsGitSourceJobSource {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsGitSourceJobSource
+		return ret
+	}).(GetJobJobSettingsSettingsGitSourceJobSourceOutput)
+}
+
+func (o GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput) DirtyState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsGitSourceJobSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DirtyState
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput) ImportFromGitBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsGitSourceJobSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImportFromGitBranch
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput) JobConfigPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsGitSourceJobSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobConfigPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsHealth struct {
+	Rules []GetJobJobSettingsSettingsHealthRule `pulumi:"rules"`
+}
+
+// GetJobJobSettingsSettingsHealthInput is an input type that accepts GetJobJobSettingsSettingsHealthArgs and GetJobJobSettingsSettingsHealthOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsHealthInput` via:
+//
+//	GetJobJobSettingsSettingsHealthArgs{...}
+type GetJobJobSettingsSettingsHealthInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsHealthOutput() GetJobJobSettingsSettingsHealthOutput
+	ToGetJobJobSettingsSettingsHealthOutputWithContext(context.Context) GetJobJobSettingsSettingsHealthOutput
+}
+
+type GetJobJobSettingsSettingsHealthArgs struct {
+	Rules GetJobJobSettingsSettingsHealthRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetJobJobSettingsSettingsHealthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsHealth)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsHealthArgs) ToGetJobJobSettingsSettingsHealthOutput() GetJobJobSettingsSettingsHealthOutput {
+	return i.ToGetJobJobSettingsSettingsHealthOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsHealthArgs) ToGetJobJobSettingsSettingsHealthOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsHealthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsHealthOutput)
+}
+
+func (i GetJobJobSettingsSettingsHealthArgs) ToGetJobJobSettingsSettingsHealthPtrOutput() GetJobJobSettingsSettingsHealthPtrOutput {
+	return i.ToGetJobJobSettingsSettingsHealthPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsHealthArgs) ToGetJobJobSettingsSettingsHealthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsHealthOutput).ToGetJobJobSettingsSettingsHealthPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsHealthPtrInput is an input type that accepts GetJobJobSettingsSettingsHealthArgs, GetJobJobSettingsSettingsHealthPtr and GetJobJobSettingsSettingsHealthPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsHealthPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsHealthArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsHealthPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsHealthPtrOutput() GetJobJobSettingsSettingsHealthPtrOutput
+	ToGetJobJobSettingsSettingsHealthPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsHealthPtrOutput
+}
+
+type getJobJobSettingsSettingsHealthPtrType GetJobJobSettingsSettingsHealthArgs
+
+func GetJobJobSettingsSettingsHealthPtr(v *GetJobJobSettingsSettingsHealthArgs) GetJobJobSettingsSettingsHealthPtrInput {
+	return (*getJobJobSettingsSettingsHealthPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsHealthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsHealth)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsHealthPtrType) ToGetJobJobSettingsSettingsHealthPtrOutput() GetJobJobSettingsSettingsHealthPtrOutput {
+	return i.ToGetJobJobSettingsSettingsHealthPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsHealthPtrType) ToGetJobJobSettingsSettingsHealthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsHealthPtrOutput)
+}
+
+type GetJobJobSettingsSettingsHealthOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsHealthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsHealth)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsHealthOutput) ToGetJobJobSettingsSettingsHealthOutput() GetJobJobSettingsSettingsHealthOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsHealthOutput) ToGetJobJobSettingsSettingsHealthOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsHealthOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsHealthOutput) ToGetJobJobSettingsSettingsHealthPtrOutput() GetJobJobSettingsSettingsHealthPtrOutput {
+	return o.ToGetJobJobSettingsSettingsHealthPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsHealthOutput) ToGetJobJobSettingsSettingsHealthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsHealthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsHealth) *GetJobJobSettingsSettingsHealth {
+		return &v
+	}).(GetJobJobSettingsSettingsHealthPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsHealthOutput) Rules() GetJobJobSettingsSettingsHealthRuleArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsHealth) []GetJobJobSettingsSettingsHealthRule { return v.Rules }).(GetJobJobSettingsSettingsHealthRuleArrayOutput)
+}
+
+type GetJobJobSettingsSettingsHealthPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsHealthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsHealth)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsHealthPtrOutput) ToGetJobJobSettingsSettingsHealthPtrOutput() GetJobJobSettingsSettingsHealthPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsHealthPtrOutput) ToGetJobJobSettingsSettingsHealthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsHealthPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsHealthPtrOutput) Elem() GetJobJobSettingsSettingsHealthOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsHealth) GetJobJobSettingsSettingsHealth {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsHealth
+		return ret
+	}).(GetJobJobSettingsSettingsHealthOutput)
+}
+
+func (o GetJobJobSettingsSettingsHealthPtrOutput) Rules() GetJobJobSettingsSettingsHealthRuleArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsHealth) []GetJobJobSettingsSettingsHealthRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(GetJobJobSettingsSettingsHealthRuleArrayOutput)
+}
+
+type GetJobJobSettingsSettingsHealthRule struct {
+	Metric *string `pulumi:"metric"`
+	Op     *string `pulumi:"op"`
+	Value  *int    `pulumi:"value"`
+}
+
+// GetJobJobSettingsSettingsHealthRuleInput is an input type that accepts GetJobJobSettingsSettingsHealthRuleArgs and GetJobJobSettingsSettingsHealthRuleOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsHealthRuleInput` via:
+//
+//	GetJobJobSettingsSettingsHealthRuleArgs{...}
+type GetJobJobSettingsSettingsHealthRuleInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsHealthRuleOutput() GetJobJobSettingsSettingsHealthRuleOutput
+	ToGetJobJobSettingsSettingsHealthRuleOutputWithContext(context.Context) GetJobJobSettingsSettingsHealthRuleOutput
+}
+
+type GetJobJobSettingsSettingsHealthRuleArgs struct {
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	Op     pulumi.StringPtrInput `pulumi:"op"`
+	Value  pulumi.IntPtrInput    `pulumi:"value"`
+}
+
+func (GetJobJobSettingsSettingsHealthRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsHealthRule)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsHealthRuleArgs) ToGetJobJobSettingsSettingsHealthRuleOutput() GetJobJobSettingsSettingsHealthRuleOutput {
+	return i.ToGetJobJobSettingsSettingsHealthRuleOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsHealthRuleArgs) ToGetJobJobSettingsSettingsHealthRuleOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsHealthRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsHealthRuleOutput)
+}
+
+// GetJobJobSettingsSettingsHealthRuleArrayInput is an input type that accepts GetJobJobSettingsSettingsHealthRuleArray and GetJobJobSettingsSettingsHealthRuleArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsHealthRuleArrayInput` via:
+//
+//	GetJobJobSettingsSettingsHealthRuleArray{ GetJobJobSettingsSettingsHealthRuleArgs{...} }
+type GetJobJobSettingsSettingsHealthRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsHealthRuleArrayOutput() GetJobJobSettingsSettingsHealthRuleArrayOutput
+	ToGetJobJobSettingsSettingsHealthRuleArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsHealthRuleArrayOutput
+}
+
+type GetJobJobSettingsSettingsHealthRuleArray []GetJobJobSettingsSettingsHealthRuleInput
+
+func (GetJobJobSettingsSettingsHealthRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsHealthRule)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsHealthRuleArray) ToGetJobJobSettingsSettingsHealthRuleArrayOutput() GetJobJobSettingsSettingsHealthRuleArrayOutput {
+	return i.ToGetJobJobSettingsSettingsHealthRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsHealthRuleArray) ToGetJobJobSettingsSettingsHealthRuleArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsHealthRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsHealthRuleArrayOutput)
+}
+
+type GetJobJobSettingsSettingsHealthRuleOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsHealthRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsHealthRule)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsHealthRuleOutput) ToGetJobJobSettingsSettingsHealthRuleOutput() GetJobJobSettingsSettingsHealthRuleOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsHealthRuleOutput) ToGetJobJobSettingsSettingsHealthRuleOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsHealthRuleOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsHealthRuleOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsHealthRuleOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsHealthRuleOutput) Value() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsHealthRule) *int { return v.Value }).(pulumi.IntPtrOutput)
+}
+
+type GetJobJobSettingsSettingsHealthRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsHealthRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsHealthRule)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsHealthRuleArrayOutput) ToGetJobJobSettingsSettingsHealthRuleArrayOutput() GetJobJobSettingsSettingsHealthRuleArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsHealthRuleArrayOutput) ToGetJobJobSettingsSettingsHealthRuleArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsHealthRuleArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsHealthRuleArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsHealthRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsHealthRule {
+		return vs[0].([]GetJobJobSettingsSettingsHealthRule)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsHealthRuleOutput)
 }
 
 type GetJobJobSettingsSettingsJobCluster struct {
@@ -56051,7 +57725,8 @@ func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) NoAlertForSkippe
 }
 
 type GetJobJobSettingsSettingsPipelineTask struct {
-	PipelineId string `pulumi:"pipelineId"`
+	FullRefresh *bool  `pulumi:"fullRefresh"`
+	PipelineId  string `pulumi:"pipelineId"`
 }
 
 // GetJobJobSettingsSettingsPipelineTaskInput is an input type that accepts GetJobJobSettingsSettingsPipelineTaskArgs and GetJobJobSettingsSettingsPipelineTaskOutput values.
@@ -56066,7 +57741,8 @@ type GetJobJobSettingsSettingsPipelineTaskInput interface {
 }
 
 type GetJobJobSettingsSettingsPipelineTaskArgs struct {
-	PipelineId pulumi.StringInput `pulumi:"pipelineId"`
+	FullRefresh pulumi.BoolPtrInput `pulumi:"fullRefresh"`
+	PipelineId  pulumi.StringInput  `pulumi:"pipelineId"`
 }
 
 func (GetJobJobSettingsSettingsPipelineTaskArgs) ElementType() reflect.Type {
@@ -56146,6 +57822,10 @@ func (o GetJobJobSettingsSettingsPipelineTaskOutput) ToGetJobJobSettingsSettings
 	}).(GetJobJobSettingsSettingsPipelineTaskPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsPipelineTaskOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsPipelineTask) *bool { return v.FullRefresh }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsPipelineTaskOutput) PipelineId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsPipelineTask) string { return v.PipelineId }).(pulumi.StringOutput)
 }
@@ -56172,6 +57852,15 @@ func (o GetJobJobSettingsSettingsPipelineTaskPtrOutput) Elem() GetJobJobSettings
 		var ret GetJobJobSettingsSettingsPipelineTask
 		return ret
 	}).(GetJobJobSettingsSettingsPipelineTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsPipelineTaskPtrOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsPipelineTask) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FullRefresh
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsPipelineTaskPtrOutput) PipelineId() pulumi.StringPtrOutput {
@@ -57250,29 +58939,31 @@ func (o GetJobJobSettingsSettingsSparkSubmitTaskPtrOutput) Parameters() pulumi.S
 }
 
 type GetJobJobSettingsSettingsTask struct {
-	ComputeKey             *string                                          `pulumi:"computeKey"`
-	ConditionTask          *GetJobJobSettingsSettingsTaskConditionTask      `pulumi:"conditionTask"`
-	DbtTask                *GetJobJobSettingsSettingsTaskDbtTask            `pulumi:"dbtTask"`
-	DependsOns             []GetJobJobSettingsSettingsTaskDependsOn         `pulumi:"dependsOns"`
-	Description            *string                                          `pulumi:"description"`
-	EmailNotifications     *GetJobJobSettingsSettingsTaskEmailNotifications `pulumi:"emailNotifications"`
-	ExistingClusterId      *string                                          `pulumi:"existingClusterId"`
-	JobClusterKey          *string                                          `pulumi:"jobClusterKey"`
-	Libraries              []GetJobJobSettingsSettingsTaskLibrary           `pulumi:"libraries"`
-	MaxRetries             *int                                             `pulumi:"maxRetries"`
-	MinRetryIntervalMillis *int                                             `pulumi:"minRetryIntervalMillis"`
-	NewCluster             *GetJobJobSettingsSettingsTaskNewCluster         `pulumi:"newCluster"`
-	NotebookTask           *GetJobJobSettingsSettingsTaskNotebookTask       `pulumi:"notebookTask"`
-	PipelineTask           *GetJobJobSettingsSettingsTaskPipelineTask       `pulumi:"pipelineTask"`
-	PythonWheelTask        *GetJobJobSettingsSettingsTaskPythonWheelTask    `pulumi:"pythonWheelTask"`
-	RetryOnTimeout         bool                                             `pulumi:"retryOnTimeout"`
-	RunIf                  *string                                          `pulumi:"runIf"`
-	SparkJarTask           *GetJobJobSettingsSettingsTaskSparkJarTask       `pulumi:"sparkJarTask"`
-	SparkPythonTask        *GetJobJobSettingsSettingsTaskSparkPythonTask    `pulumi:"sparkPythonTask"`
-	SparkSubmitTask        *GetJobJobSettingsSettingsTaskSparkSubmitTask    `pulumi:"sparkSubmitTask"`
-	SqlTask                *GetJobJobSettingsSettingsTaskSqlTask            `pulumi:"sqlTask"`
-	TaskKey                *string                                          `pulumi:"taskKey"`
-	TimeoutSeconds         *int                                             `pulumi:"timeoutSeconds"`
+	ComputeKey             *string                                            `pulumi:"computeKey"`
+	ConditionTask          *GetJobJobSettingsSettingsTaskConditionTask        `pulumi:"conditionTask"`
+	DbtTask                *GetJobJobSettingsSettingsTaskDbtTask              `pulumi:"dbtTask"`
+	DependsOns             []GetJobJobSettingsSettingsTaskDependsOn           `pulumi:"dependsOns"`
+	Description            *string                                            `pulumi:"description"`
+	EmailNotifications     *GetJobJobSettingsSettingsTaskEmailNotifications   `pulumi:"emailNotifications"`
+	ExistingClusterId      *string                                            `pulumi:"existingClusterId"`
+	Health                 *GetJobJobSettingsSettingsTaskHealth               `pulumi:"health"`
+	JobClusterKey          *string                                            `pulumi:"jobClusterKey"`
+	Libraries              []GetJobJobSettingsSettingsTaskLibrary             `pulumi:"libraries"`
+	MaxRetries             *int                                               `pulumi:"maxRetries"`
+	MinRetryIntervalMillis *int                                               `pulumi:"minRetryIntervalMillis"`
+	NewCluster             *GetJobJobSettingsSettingsTaskNewCluster           `pulumi:"newCluster"`
+	NotebookTask           *GetJobJobSettingsSettingsTaskNotebookTask         `pulumi:"notebookTask"`
+	NotificationSettings   *GetJobJobSettingsSettingsTaskNotificationSettings `pulumi:"notificationSettings"`
+	PipelineTask           *GetJobJobSettingsSettingsTaskPipelineTask         `pulumi:"pipelineTask"`
+	PythonWheelTask        *GetJobJobSettingsSettingsTaskPythonWheelTask      `pulumi:"pythonWheelTask"`
+	RetryOnTimeout         bool                                               `pulumi:"retryOnTimeout"`
+	RunIf                  *string                                            `pulumi:"runIf"`
+	SparkJarTask           *GetJobJobSettingsSettingsTaskSparkJarTask         `pulumi:"sparkJarTask"`
+	SparkPythonTask        *GetJobJobSettingsSettingsTaskSparkPythonTask      `pulumi:"sparkPythonTask"`
+	SparkSubmitTask        *GetJobJobSettingsSettingsTaskSparkSubmitTask      `pulumi:"sparkSubmitTask"`
+	SqlTask                *GetJobJobSettingsSettingsTaskSqlTask              `pulumi:"sqlTask"`
+	TaskKey                *string                                            `pulumi:"taskKey"`
+	TimeoutSeconds         *int                                               `pulumi:"timeoutSeconds"`
 }
 
 // GetJobJobSettingsSettingsTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskArgs and GetJobJobSettingsSettingsTaskOutput values.
@@ -57287,29 +58978,31 @@ type GetJobJobSettingsSettingsTaskInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskArgs struct {
-	ComputeKey             pulumi.StringPtrInput                                   `pulumi:"computeKey"`
-	ConditionTask          GetJobJobSettingsSettingsTaskConditionTaskPtrInput      `pulumi:"conditionTask"`
-	DbtTask                GetJobJobSettingsSettingsTaskDbtTaskPtrInput            `pulumi:"dbtTask"`
-	DependsOns             GetJobJobSettingsSettingsTaskDependsOnArrayInput        `pulumi:"dependsOns"`
-	Description            pulumi.StringPtrInput                                   `pulumi:"description"`
-	EmailNotifications     GetJobJobSettingsSettingsTaskEmailNotificationsPtrInput `pulumi:"emailNotifications"`
-	ExistingClusterId      pulumi.StringPtrInput                                   `pulumi:"existingClusterId"`
-	JobClusterKey          pulumi.StringPtrInput                                   `pulumi:"jobClusterKey"`
-	Libraries              GetJobJobSettingsSettingsTaskLibraryArrayInput          `pulumi:"libraries"`
-	MaxRetries             pulumi.IntPtrInput                                      `pulumi:"maxRetries"`
-	MinRetryIntervalMillis pulumi.IntPtrInput                                      `pulumi:"minRetryIntervalMillis"`
-	NewCluster             GetJobJobSettingsSettingsTaskNewClusterPtrInput         `pulumi:"newCluster"`
-	NotebookTask           GetJobJobSettingsSettingsTaskNotebookTaskPtrInput       `pulumi:"notebookTask"`
-	PipelineTask           GetJobJobSettingsSettingsTaskPipelineTaskPtrInput       `pulumi:"pipelineTask"`
-	PythonWheelTask        GetJobJobSettingsSettingsTaskPythonWheelTaskPtrInput    `pulumi:"pythonWheelTask"`
-	RetryOnTimeout         pulumi.BoolInput                                        `pulumi:"retryOnTimeout"`
-	RunIf                  pulumi.StringPtrInput                                   `pulumi:"runIf"`
-	SparkJarTask           GetJobJobSettingsSettingsTaskSparkJarTaskPtrInput       `pulumi:"sparkJarTask"`
-	SparkPythonTask        GetJobJobSettingsSettingsTaskSparkPythonTaskPtrInput    `pulumi:"sparkPythonTask"`
-	SparkSubmitTask        GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrInput    `pulumi:"sparkSubmitTask"`
-	SqlTask                GetJobJobSettingsSettingsTaskSqlTaskPtrInput            `pulumi:"sqlTask"`
-	TaskKey                pulumi.StringPtrInput                                   `pulumi:"taskKey"`
-	TimeoutSeconds         pulumi.IntPtrInput                                      `pulumi:"timeoutSeconds"`
+	ComputeKey             pulumi.StringPtrInput                                     `pulumi:"computeKey"`
+	ConditionTask          GetJobJobSettingsSettingsTaskConditionTaskPtrInput        `pulumi:"conditionTask"`
+	DbtTask                GetJobJobSettingsSettingsTaskDbtTaskPtrInput              `pulumi:"dbtTask"`
+	DependsOns             GetJobJobSettingsSettingsTaskDependsOnArrayInput          `pulumi:"dependsOns"`
+	Description            pulumi.StringPtrInput                                     `pulumi:"description"`
+	EmailNotifications     GetJobJobSettingsSettingsTaskEmailNotificationsPtrInput   `pulumi:"emailNotifications"`
+	ExistingClusterId      pulumi.StringPtrInput                                     `pulumi:"existingClusterId"`
+	Health                 GetJobJobSettingsSettingsTaskHealthPtrInput               `pulumi:"health"`
+	JobClusterKey          pulumi.StringPtrInput                                     `pulumi:"jobClusterKey"`
+	Libraries              GetJobJobSettingsSettingsTaskLibraryArrayInput            `pulumi:"libraries"`
+	MaxRetries             pulumi.IntPtrInput                                        `pulumi:"maxRetries"`
+	MinRetryIntervalMillis pulumi.IntPtrInput                                        `pulumi:"minRetryIntervalMillis"`
+	NewCluster             GetJobJobSettingsSettingsTaskNewClusterPtrInput           `pulumi:"newCluster"`
+	NotebookTask           GetJobJobSettingsSettingsTaskNotebookTaskPtrInput         `pulumi:"notebookTask"`
+	NotificationSettings   GetJobJobSettingsSettingsTaskNotificationSettingsPtrInput `pulumi:"notificationSettings"`
+	PipelineTask           GetJobJobSettingsSettingsTaskPipelineTaskPtrInput         `pulumi:"pipelineTask"`
+	PythonWheelTask        GetJobJobSettingsSettingsTaskPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
+	RetryOnTimeout         pulumi.BoolInput                                          `pulumi:"retryOnTimeout"`
+	RunIf                  pulumi.StringPtrInput                                     `pulumi:"runIf"`
+	SparkJarTask           GetJobJobSettingsSettingsTaskSparkJarTaskPtrInput         `pulumi:"sparkJarTask"`
+	SparkPythonTask        GetJobJobSettingsSettingsTaskSparkPythonTaskPtrInput      `pulumi:"sparkPythonTask"`
+	SparkSubmitTask        GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrInput      `pulumi:"sparkSubmitTask"`
+	SqlTask                GetJobJobSettingsSettingsTaskSqlTaskPtrInput              `pulumi:"sqlTask"`
+	TaskKey                pulumi.StringPtrInput                                     `pulumi:"taskKey"`
+	TimeoutSeconds         pulumi.IntPtrInput                                        `pulumi:"timeoutSeconds"`
 }
 
 func (GetJobJobSettingsSettingsTaskArgs) ElementType() reflect.Type {
@@ -57395,6 +59088,10 @@ func (o GetJobJobSettingsSettingsTaskOutput) ExistingClusterId() pulumi.StringPt
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *string { return v.ExistingClusterId }).(pulumi.StringPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskOutput) Health() GetJobJobSettingsSettingsTaskHealthPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskHealth { return v.Health }).(GetJobJobSettingsSettingsTaskHealthPtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsTaskOutput) JobClusterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *string { return v.JobClusterKey }).(pulumi.StringPtrOutput)
 }
@@ -57419,6 +59116,12 @@ func (o GetJobJobSettingsSettingsTaskOutput) NotebookTask() GetJobJobSettingsSet
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskNotebookTask {
 		return v.NotebookTask
 	}).(GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskOutput) NotificationSettings() GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskNotificationSettings {
+		return v.NotificationSettings
+	}).(GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskOutput) PipelineTask() GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput {
@@ -57963,11 +59666,12 @@ func (o GetJobJobSettingsSettingsTaskDependsOnArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetJobJobSettingsSettingsTaskEmailNotifications struct {
-	AlertOnLastAttempt    *bool    `pulumi:"alertOnLastAttempt"`
-	NoAlertForSkippedRuns *bool    `pulumi:"noAlertForSkippedRuns"`
-	OnFailures            []string `pulumi:"onFailures"`
-	OnStarts              []string `pulumi:"onStarts"`
-	OnSuccesses           []string `pulumi:"onSuccesses"`
+	AlertOnLastAttempt                  *bool    `pulumi:"alertOnLastAttempt"`
+	NoAlertForSkippedRuns               *bool    `pulumi:"noAlertForSkippedRuns"`
+	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
+	OnFailures                          []string `pulumi:"onFailures"`
+	OnStarts                            []string `pulumi:"onStarts"`
+	OnSuccesses                         []string `pulumi:"onSuccesses"`
 }
 
 // GetJobJobSettingsSettingsTaskEmailNotificationsInput is an input type that accepts GetJobJobSettingsSettingsTaskEmailNotificationsArgs and GetJobJobSettingsSettingsTaskEmailNotificationsOutput values.
@@ -57982,11 +59686,12 @@ type GetJobJobSettingsSettingsTaskEmailNotificationsInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskEmailNotificationsArgs struct {
-	AlertOnLastAttempt    pulumi.BoolPtrInput     `pulumi:"alertOnLastAttempt"`
-	NoAlertForSkippedRuns pulumi.BoolPtrInput     `pulumi:"noAlertForSkippedRuns"`
-	OnFailures            pulumi.StringArrayInput `pulumi:"onFailures"`
-	OnStarts              pulumi.StringArrayInput `pulumi:"onStarts"`
-	OnSuccesses           pulumi.StringArrayInput `pulumi:"onSuccesses"`
+	AlertOnLastAttempt                  pulumi.BoolPtrInput     `pulumi:"alertOnLastAttempt"`
+	NoAlertForSkippedRuns               pulumi.BoolPtrInput     `pulumi:"noAlertForSkippedRuns"`
+	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
+	OnFailures                          pulumi.StringArrayInput `pulumi:"onFailures"`
+	OnStarts                            pulumi.StringArrayInput `pulumi:"onStarts"`
+	OnSuccesses                         pulumi.StringArrayInput `pulumi:"onSuccesses"`
 }
 
 func (GetJobJobSettingsSettingsTaskEmailNotificationsArgs) ElementType() reflect.Type {
@@ -58074,6 +59779,12 @@ func (o GetJobJobSettingsSettingsTaskEmailNotificationsOutput) NoAlertForSkipped
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskEmailNotifications) []string {
+		return v.OnDurationWarningThresholdExceededs
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o GetJobJobSettingsSettingsTaskEmailNotificationsOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskEmailNotifications) []string { return v.OnFailures }).(pulumi.StringArrayOutput)
 }
@@ -58128,6 +59839,15 @@ func (o GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput) NoAlertForSkip
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskEmailNotifications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OnDurationWarningThresholdExceededs
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput) OnFailures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskEmailNotifications) []string {
 		if v == nil {
@@ -58153,6 +59873,245 @@ func (o GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput) OnSuccesses() 
 		}
 		return v.OnSuccesses
 	}).(pulumi.StringArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskHealth struct {
+	Rules []GetJobJobSettingsSettingsTaskHealthRule `pulumi:"rules"`
+}
+
+// GetJobJobSettingsSettingsTaskHealthInput is an input type that accepts GetJobJobSettingsSettingsTaskHealthArgs and GetJobJobSettingsSettingsTaskHealthOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskHealthInput` via:
+//
+//	GetJobJobSettingsSettingsTaskHealthArgs{...}
+type GetJobJobSettingsSettingsTaskHealthInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskHealthOutput() GetJobJobSettingsSettingsTaskHealthOutput
+	ToGetJobJobSettingsSettingsTaskHealthOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskHealthOutput
+}
+
+type GetJobJobSettingsSettingsTaskHealthArgs struct {
+	Rules GetJobJobSettingsSettingsTaskHealthRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetJobJobSettingsSettingsTaskHealthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskHealth)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskHealthArgs) ToGetJobJobSettingsSettingsTaskHealthOutput() GetJobJobSettingsSettingsTaskHealthOutput {
+	return i.ToGetJobJobSettingsSettingsTaskHealthOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskHealthArgs) ToGetJobJobSettingsSettingsTaskHealthOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskHealthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskHealthOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskHealthArgs) ToGetJobJobSettingsSettingsTaskHealthPtrOutput() GetJobJobSettingsSettingsTaskHealthPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskHealthPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskHealthArgs) ToGetJobJobSettingsSettingsTaskHealthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskHealthOutput).ToGetJobJobSettingsSettingsTaskHealthPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskHealthPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskHealthArgs, GetJobJobSettingsSettingsTaskHealthPtr and GetJobJobSettingsSettingsTaskHealthPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskHealthPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskHealthArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskHealthPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskHealthPtrOutput() GetJobJobSettingsSettingsTaskHealthPtrOutput
+	ToGetJobJobSettingsSettingsTaskHealthPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskHealthPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskHealthPtrType GetJobJobSettingsSettingsTaskHealthArgs
+
+func GetJobJobSettingsSettingsTaskHealthPtr(v *GetJobJobSettingsSettingsTaskHealthArgs) GetJobJobSettingsSettingsTaskHealthPtrInput {
+	return (*getJobJobSettingsSettingsTaskHealthPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskHealthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskHealth)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskHealthPtrType) ToGetJobJobSettingsSettingsTaskHealthPtrOutput() GetJobJobSettingsSettingsTaskHealthPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskHealthPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskHealthPtrType) ToGetJobJobSettingsSettingsTaskHealthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskHealthPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskHealthOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskHealthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskHealth)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthOutput) ToGetJobJobSettingsSettingsTaskHealthOutput() GetJobJobSettingsSettingsTaskHealthOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthOutput) ToGetJobJobSettingsSettingsTaskHealthOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskHealthOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthOutput) ToGetJobJobSettingsSettingsTaskHealthPtrOutput() GetJobJobSettingsSettingsTaskHealthPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskHealthPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthOutput) ToGetJobJobSettingsSettingsTaskHealthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskHealthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskHealth) *GetJobJobSettingsSettingsTaskHealth {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskHealthPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthOutput) Rules() GetJobJobSettingsSettingsTaskHealthRuleArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskHealth) []GetJobJobSettingsSettingsTaskHealthRule { return v.Rules }).(GetJobJobSettingsSettingsTaskHealthRuleArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskHealthPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskHealthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskHealth)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthPtrOutput) ToGetJobJobSettingsSettingsTaskHealthPtrOutput() GetJobJobSettingsSettingsTaskHealthPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthPtrOutput) ToGetJobJobSettingsSettingsTaskHealthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskHealthPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthPtrOutput) Elem() GetJobJobSettingsSettingsTaskHealthOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskHealth) GetJobJobSettingsSettingsTaskHealth {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskHealth
+		return ret
+	}).(GetJobJobSettingsSettingsTaskHealthOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthPtrOutput) Rules() GetJobJobSettingsSettingsTaskHealthRuleArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskHealth) []GetJobJobSettingsSettingsTaskHealthRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(GetJobJobSettingsSettingsTaskHealthRuleArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskHealthRule struct {
+	Metric *string `pulumi:"metric"`
+	Op     *string `pulumi:"op"`
+	Value  *int    `pulumi:"value"`
+}
+
+// GetJobJobSettingsSettingsTaskHealthRuleInput is an input type that accepts GetJobJobSettingsSettingsTaskHealthRuleArgs and GetJobJobSettingsSettingsTaskHealthRuleOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskHealthRuleInput` via:
+//
+//	GetJobJobSettingsSettingsTaskHealthRuleArgs{...}
+type GetJobJobSettingsSettingsTaskHealthRuleInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskHealthRuleOutput() GetJobJobSettingsSettingsTaskHealthRuleOutput
+	ToGetJobJobSettingsSettingsTaskHealthRuleOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskHealthRuleOutput
+}
+
+type GetJobJobSettingsSettingsTaskHealthRuleArgs struct {
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	Op     pulumi.StringPtrInput `pulumi:"op"`
+	Value  pulumi.IntPtrInput    `pulumi:"value"`
+}
+
+func (GetJobJobSettingsSettingsTaskHealthRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskHealthRule)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskHealthRuleArgs) ToGetJobJobSettingsSettingsTaskHealthRuleOutput() GetJobJobSettingsSettingsTaskHealthRuleOutput {
+	return i.ToGetJobJobSettingsSettingsTaskHealthRuleOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskHealthRuleArgs) ToGetJobJobSettingsSettingsTaskHealthRuleOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskHealthRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskHealthRuleOutput)
+}
+
+// GetJobJobSettingsSettingsTaskHealthRuleArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskHealthRuleArray and GetJobJobSettingsSettingsTaskHealthRuleArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskHealthRuleArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskHealthRuleArray{ GetJobJobSettingsSettingsTaskHealthRuleArgs{...} }
+type GetJobJobSettingsSettingsTaskHealthRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskHealthRuleArrayOutput() GetJobJobSettingsSettingsTaskHealthRuleArrayOutput
+	ToGetJobJobSettingsSettingsTaskHealthRuleArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskHealthRuleArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskHealthRuleArray []GetJobJobSettingsSettingsTaskHealthRuleInput
+
+func (GetJobJobSettingsSettingsTaskHealthRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskHealthRule)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskHealthRuleArray) ToGetJobJobSettingsSettingsTaskHealthRuleArrayOutput() GetJobJobSettingsSettingsTaskHealthRuleArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskHealthRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskHealthRuleArray) ToGetJobJobSettingsSettingsTaskHealthRuleArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskHealthRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskHealthRuleArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskHealthRuleOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskHealthRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskHealthRule)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthRuleOutput) ToGetJobJobSettingsSettingsTaskHealthRuleOutput() GetJobJobSettingsSettingsTaskHealthRuleOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthRuleOutput) ToGetJobJobSettingsSettingsTaskHealthRuleOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskHealthRuleOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthRuleOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthRuleOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthRuleOutput) Value() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskHealthRule) *int { return v.Value }).(pulumi.IntPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskHealthRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskHealthRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskHealthRule)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthRuleArrayOutput) ToGetJobJobSettingsSettingsTaskHealthRuleArrayOutput() GetJobJobSettingsSettingsTaskHealthRuleArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthRuleArrayOutput) ToGetJobJobSettingsSettingsTaskHealthRuleArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskHealthRuleArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskHealthRuleArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskHealthRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskHealthRule {
+		return vs[0].([]GetJobJobSettingsSettingsTaskHealthRule)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskHealthRuleOutput)
 }
 
 type GetJobJobSettingsSettingsTaskLibrary struct {
@@ -62511,8 +64470,172 @@ func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) Source() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetJobJobSettingsSettingsTaskNotificationSettings struct {
+	AlertOnLastAttempt     *bool `pulumi:"alertOnLastAttempt"`
+	NoAlertForCanceledRuns *bool `pulumi:"noAlertForCanceledRuns"`
+	NoAlertForSkippedRuns  *bool `pulumi:"noAlertForSkippedRuns"`
+}
+
+// GetJobJobSettingsSettingsTaskNotificationSettingsInput is an input type that accepts GetJobJobSettingsSettingsTaskNotificationSettingsArgs and GetJobJobSettingsSettingsTaskNotificationSettingsOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskNotificationSettingsInput` via:
+//
+//	GetJobJobSettingsSettingsTaskNotificationSettingsArgs{...}
+type GetJobJobSettingsSettingsTaskNotificationSettingsInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskNotificationSettingsOutput() GetJobJobSettingsSettingsTaskNotificationSettingsOutput
+	ToGetJobJobSettingsSettingsTaskNotificationSettingsOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsOutput
+}
+
+type GetJobJobSettingsSettingsTaskNotificationSettingsArgs struct {
+	AlertOnLastAttempt     pulumi.BoolPtrInput `pulumi:"alertOnLastAttempt"`
+	NoAlertForCanceledRuns pulumi.BoolPtrInput `pulumi:"noAlertForCanceledRuns"`
+	NoAlertForSkippedRuns  pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
+}
+
+func (GetJobJobSettingsSettingsTaskNotificationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotificationSettings)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskNotificationSettingsArgs) ToGetJobJobSettingsSettingsTaskNotificationSettingsOutput() GetJobJobSettingsSettingsTaskNotificationSettingsOutput {
+	return i.ToGetJobJobSettingsSettingsTaskNotificationSettingsOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskNotificationSettingsArgs) ToGetJobJobSettingsSettingsTaskNotificationSettingsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskNotificationSettingsOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskNotificationSettingsArgs) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput() GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskNotificationSettingsArgs) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskNotificationSettingsOutput).ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskNotificationSettingsPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskNotificationSettingsArgs, GetJobJobSettingsSettingsTaskNotificationSettingsPtr and GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskNotificationSettingsPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskNotificationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskNotificationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput() GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput
+	ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskNotificationSettingsPtrType GetJobJobSettingsSettingsTaskNotificationSettingsArgs
+
+func GetJobJobSettingsSettingsTaskNotificationSettingsPtr(v *GetJobJobSettingsSettingsTaskNotificationSettingsArgs) GetJobJobSettingsSettingsTaskNotificationSettingsPtrInput {
+	return (*getJobJobSettingsSettingsTaskNotificationSettingsPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskNotificationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskNotificationSettings)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskNotificationSettingsPtrType) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput() GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskNotificationSettingsPtrType) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskNotificationSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskNotificationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotificationSettings)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) ToGetJobJobSettingsSettingsTaskNotificationSettingsOutput() GetJobJobSettingsSettingsTaskNotificationSettingsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) ToGetJobJobSettingsSettingsTaskNotificationSettingsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput() GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskNotificationSettings) *GetJobJobSettingsSettingsTaskNotificationSettings {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotificationSettings) *bool { return v.AlertOnLastAttempt }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotificationSettings) *bool { return v.NoAlertForCanceledRuns }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotificationSettings) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskNotificationSettings)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput() GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) ToGetJobJobSettingsSettingsTaskNotificationSettingsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) Elem() GetJobJobSettingsSettingsTaskNotificationSettingsOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotificationSettings) GetJobJobSettingsSettingsTaskNotificationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskNotificationSettings
+		return ret
+	}).(GetJobJobSettingsSettingsTaskNotificationSettingsOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AlertOnLastAttempt
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoAlertForCanceledRuns
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoAlertForSkippedRuns
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetJobJobSettingsSettingsTaskPipelineTask struct {
-	PipelineId string `pulumi:"pipelineId"`
+	FullRefresh *bool  `pulumi:"fullRefresh"`
+	PipelineId  string `pulumi:"pipelineId"`
 }
 
 // GetJobJobSettingsSettingsTaskPipelineTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskPipelineTaskArgs and GetJobJobSettingsSettingsTaskPipelineTaskOutput values.
@@ -62527,7 +64650,8 @@ type GetJobJobSettingsSettingsTaskPipelineTaskInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskPipelineTaskArgs struct {
-	PipelineId pulumi.StringInput `pulumi:"pipelineId"`
+	FullRefresh pulumi.BoolPtrInput `pulumi:"fullRefresh"`
+	PipelineId  pulumi.StringInput  `pulumi:"pipelineId"`
 }
 
 func (GetJobJobSettingsSettingsTaskPipelineTaskArgs) ElementType() reflect.Type {
@@ -62607,6 +64731,10 @@ func (o GetJobJobSettingsSettingsTaskPipelineTaskOutput) ToGetJobJobSettingsSett
 	}).(GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskPipelineTaskOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPipelineTask) *bool { return v.FullRefresh }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsTaskPipelineTaskOutput) PipelineId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskPipelineTask) string { return v.PipelineId }).(pulumi.StringOutput)
 }
@@ -62633,6 +64761,15 @@ func (o GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput) Elem() GetJobJobSett
 		var ret GetJobJobSettingsSettingsTaskPipelineTask
 		return ret
 	}).(GetJobJobSettingsSettingsTaskPipelineTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput) FullRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskPipelineTask) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FullRefresh
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput) PipelineId() pulumi.StringPtrOutput {
@@ -64620,9 +66757,10 @@ func (o GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput) WaitAfterLastChang
 }
 
 type GetJobJobSettingsSettingsWebhookNotifications struct {
-	OnFailures  []GetJobJobSettingsSettingsWebhookNotificationsOnFailure `pulumi:"onFailures"`
-	OnStarts    []GetJobJobSettingsSettingsWebhookNotificationsOnStart   `pulumi:"onStarts"`
-	OnSuccesses []GetJobJobSettingsSettingsWebhookNotificationsOnSuccess `pulumi:"onSuccesses"`
+	OnDurationWarningThresholdExceededs []GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded `pulumi:"onDurationWarningThresholdExceededs"`
+	OnFailures                          []GetJobJobSettingsSettingsWebhookNotificationsOnFailure                          `pulumi:"onFailures"`
+	OnStarts                            []GetJobJobSettingsSettingsWebhookNotificationsOnStart                            `pulumi:"onStarts"`
+	OnSuccesses                         []GetJobJobSettingsSettingsWebhookNotificationsOnSuccess                          `pulumi:"onSuccesses"`
 }
 
 // GetJobJobSettingsSettingsWebhookNotificationsInput is an input type that accepts GetJobJobSettingsSettingsWebhookNotificationsArgs and GetJobJobSettingsSettingsWebhookNotificationsOutput values.
@@ -64637,9 +66775,10 @@ type GetJobJobSettingsSettingsWebhookNotificationsInput interface {
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsArgs struct {
-	OnFailures  GetJobJobSettingsSettingsWebhookNotificationsOnFailureArrayInput `pulumi:"onFailures"`
-	OnStarts    GetJobJobSettingsSettingsWebhookNotificationsOnStartArrayInput   `pulumi:"onStarts"`
-	OnSuccesses GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayInput `pulumi:"onSuccesses"`
+	OnDurationWarningThresholdExceededs GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
+	OnFailures                          GetJobJobSettingsSettingsWebhookNotificationsOnFailureArrayInput                          `pulumi:"onFailures"`
+	OnStarts                            GetJobJobSettingsSettingsWebhookNotificationsOnStartArrayInput                            `pulumi:"onStarts"`
+	OnSuccesses                         GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayInput                          `pulumi:"onSuccesses"`
 }
 
 func (GetJobJobSettingsSettingsWebhookNotificationsArgs) ElementType() reflect.Type {
@@ -64719,6 +66858,12 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOutput) ToGetJobJobSettings
 	}).(GetJobJobSettingsSettingsWebhookNotificationsPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsWebhookNotificationsOutput) OnDurationWarningThresholdExceededs() GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotifications) []GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded {
+		return v.OnDurationWarningThresholdExceededs
+	}).(GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput)
+}
+
 func (o GetJobJobSettingsSettingsWebhookNotificationsOutput) OnFailures() GetJobJobSettingsSettingsWebhookNotificationsOnFailureArrayOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotifications) []GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
 		return v.OnFailures
@@ -64761,6 +66906,15 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsPtrOutput) Elem() GetJobJob
 	}).(GetJobJobSettingsSettingsWebhookNotificationsOutput)
 }
 
+func (o GetJobJobSettingsSettingsWebhookNotificationsPtrOutput) OnDurationWarningThresholdExceededs() GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsWebhookNotifications) []GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded {
+		if v == nil {
+			return nil
+		}
+		return v.OnDurationWarningThresholdExceededs
+	}).(GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput)
+}
+
 func (o GetJobJobSettingsSettingsWebhookNotificationsPtrOutput) OnFailures() GetJobJobSettingsSettingsWebhookNotificationsOnFailureArrayOutput {
 	return o.ApplyT(func(v *GetJobJobSettingsSettingsWebhookNotifications) []GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
 		if v == nil {
@@ -64786,6 +66940,105 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsPtrOutput) OnSuccesses() Ge
 		}
 		return v.OnSuccesses
 	}).(GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayOutput)
+}
+
+type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded struct {
+	// the id of Job if the resource was matched by name.
+	Id string `pulumi:"id"`
+}
+
+// GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededInput is an input type that accepts GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs and GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededInput` via:
+//
+//	GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs{...}
+type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput() GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput
+	ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(context.Context) GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput
+}
+
+type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
+	// the id of Job if the resource was matched by name.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs) ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput() GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return i.ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs) ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput)
+}
+
+// GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayInput is an input type that accepts GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArray and GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayInput` via:
+//
+//	GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArray{ GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs{...} }
+type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput() GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput
+	ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput
+}
+
+type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArray []GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededInput
+
+func (GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArray) ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput() GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return i.ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArray) ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput)
+}
+
+type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput() GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return o
+}
+
+// the id of Job if the resource was matched by name.
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput() GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) ToGetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded {
+		return vs[0].([]GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput)
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnFailure struct {
@@ -65077,6 +67330,422 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayOutput) Index
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
 		return vs[0].([]GetJobJobSettingsSettingsWebhookNotificationsOnSuccess)[vs[1].(int)]
 	}).(GetJobJobSettingsSettingsWebhookNotificationsOnSuccessOutput)
+}
+
+type GetMetastoreMetastoreInfo struct {
+	Cloud                     *string `pulumi:"cloud"`
+	CreatedAt                 *int    `pulumi:"createdAt"`
+	CreatedBy                 *string `pulumi:"createdBy"`
+	DefaultDataAccessConfigId *string `pulumi:"defaultDataAccessConfigId"`
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+	DeltaSharingOrganizationName *string `pulumi:"deltaSharingOrganizationName"`
+	// Used to set expiration duration in seconds on recipient data access tokens.
+	DeltaSharingRecipientTokenLifetimeInSeconds *int `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
+	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+	DeltaSharingScope *string `pulumi:"deltaSharingScope"`
+	GlobalMetastoreId *string `pulumi:"globalMetastoreId"`
+	// Id of the metastore to be fetched
+	MetastoreId *string `pulumi:"metastoreId"`
+	// Name of metastore.
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the metastore owner.
+	Owner                 *string `pulumi:"owner"`
+	PrivilegeModelVersion *string `pulumi:"privilegeModelVersion"`
+	Region                *string `pulumi:"region"`
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
+	StorageRoot               *string `pulumi:"storageRoot"`
+	StorageRootCredentialId   *string `pulumi:"storageRootCredentialId"`
+	StorageRootCredentialName *string `pulumi:"storageRootCredentialName"`
+	UpdatedAt                 *int    `pulumi:"updatedAt"`
+	UpdatedBy                 *string `pulumi:"updatedBy"`
+}
+
+// GetMetastoreMetastoreInfoInput is an input type that accepts GetMetastoreMetastoreInfoArgs and GetMetastoreMetastoreInfoOutput values.
+// You can construct a concrete instance of `GetMetastoreMetastoreInfoInput` via:
+//
+//	GetMetastoreMetastoreInfoArgs{...}
+type GetMetastoreMetastoreInfoInput interface {
+	pulumi.Input
+
+	ToGetMetastoreMetastoreInfoOutput() GetMetastoreMetastoreInfoOutput
+	ToGetMetastoreMetastoreInfoOutputWithContext(context.Context) GetMetastoreMetastoreInfoOutput
+}
+
+type GetMetastoreMetastoreInfoArgs struct {
+	Cloud                     pulumi.StringPtrInput `pulumi:"cloud"`
+	CreatedAt                 pulumi.IntPtrInput    `pulumi:"createdAt"`
+	CreatedBy                 pulumi.StringPtrInput `pulumi:"createdBy"`
+	DefaultDataAccessConfigId pulumi.StringPtrInput `pulumi:"defaultDataAccessConfigId"`
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+	DeltaSharingOrganizationName pulumi.StringPtrInput `pulumi:"deltaSharingOrganizationName"`
+	// Used to set expiration duration in seconds on recipient data access tokens.
+	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
+	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+	DeltaSharingScope pulumi.StringPtrInput `pulumi:"deltaSharingScope"`
+	GlobalMetastoreId pulumi.StringPtrInput `pulumi:"globalMetastoreId"`
+	// Id of the metastore to be fetched
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// Name of metastore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Username/groupname/sp applicationId of the metastore owner.
+	Owner                 pulumi.StringPtrInput `pulumi:"owner"`
+	PrivilegeModelVersion pulumi.StringPtrInput `pulumi:"privilegeModelVersion"`
+	Region                pulumi.StringPtrInput `pulumi:"region"`
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
+	StorageRoot               pulumi.StringPtrInput `pulumi:"storageRoot"`
+	StorageRootCredentialId   pulumi.StringPtrInput `pulumi:"storageRootCredentialId"`
+	StorageRootCredentialName pulumi.StringPtrInput `pulumi:"storageRootCredentialName"`
+	UpdatedAt                 pulumi.IntPtrInput    `pulumi:"updatedAt"`
+	UpdatedBy                 pulumi.StringPtrInput `pulumi:"updatedBy"`
+}
+
+func (GetMetastoreMetastoreInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreMetastoreInfo)(nil)).Elem()
+}
+
+func (i GetMetastoreMetastoreInfoArgs) ToGetMetastoreMetastoreInfoOutput() GetMetastoreMetastoreInfoOutput {
+	return i.ToGetMetastoreMetastoreInfoOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreMetastoreInfoArgs) ToGetMetastoreMetastoreInfoOutputWithContext(ctx context.Context) GetMetastoreMetastoreInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreMetastoreInfoOutput)
+}
+
+func (i GetMetastoreMetastoreInfoArgs) ToGetMetastoreMetastoreInfoPtrOutput() GetMetastoreMetastoreInfoPtrOutput {
+	return i.ToGetMetastoreMetastoreInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreMetastoreInfoArgs) ToGetMetastoreMetastoreInfoPtrOutputWithContext(ctx context.Context) GetMetastoreMetastoreInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreMetastoreInfoOutput).ToGetMetastoreMetastoreInfoPtrOutputWithContext(ctx)
+}
+
+// GetMetastoreMetastoreInfoPtrInput is an input type that accepts GetMetastoreMetastoreInfoArgs, GetMetastoreMetastoreInfoPtr and GetMetastoreMetastoreInfoPtrOutput values.
+// You can construct a concrete instance of `GetMetastoreMetastoreInfoPtrInput` via:
+//
+//	        GetMetastoreMetastoreInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetMetastoreMetastoreInfoPtrInput interface {
+	pulumi.Input
+
+	ToGetMetastoreMetastoreInfoPtrOutput() GetMetastoreMetastoreInfoPtrOutput
+	ToGetMetastoreMetastoreInfoPtrOutputWithContext(context.Context) GetMetastoreMetastoreInfoPtrOutput
+}
+
+type getMetastoreMetastoreInfoPtrType GetMetastoreMetastoreInfoArgs
+
+func GetMetastoreMetastoreInfoPtr(v *GetMetastoreMetastoreInfoArgs) GetMetastoreMetastoreInfoPtrInput {
+	return (*getMetastoreMetastoreInfoPtrType)(v)
+}
+
+func (*getMetastoreMetastoreInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMetastoreMetastoreInfo)(nil)).Elem()
+}
+
+func (i *getMetastoreMetastoreInfoPtrType) ToGetMetastoreMetastoreInfoPtrOutput() GetMetastoreMetastoreInfoPtrOutput {
+	return i.ToGetMetastoreMetastoreInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *getMetastoreMetastoreInfoPtrType) ToGetMetastoreMetastoreInfoPtrOutputWithContext(ctx context.Context) GetMetastoreMetastoreInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreMetastoreInfoPtrOutput)
+}
+
+type GetMetastoreMetastoreInfoOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreMetastoreInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreMetastoreInfo)(nil)).Elem()
+}
+
+func (o GetMetastoreMetastoreInfoOutput) ToGetMetastoreMetastoreInfoOutput() GetMetastoreMetastoreInfoOutput {
+	return o
+}
+
+func (o GetMetastoreMetastoreInfoOutput) ToGetMetastoreMetastoreInfoOutputWithContext(ctx context.Context) GetMetastoreMetastoreInfoOutput {
+	return o
+}
+
+func (o GetMetastoreMetastoreInfoOutput) ToGetMetastoreMetastoreInfoPtrOutput() GetMetastoreMetastoreInfoPtrOutput {
+	return o.ToGetMetastoreMetastoreInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GetMetastoreMetastoreInfoOutput) ToGetMetastoreMetastoreInfoPtrOutputWithContext(ctx context.Context) GetMetastoreMetastoreInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMetastoreMetastoreInfo) *GetMetastoreMetastoreInfo {
+		return &v
+	}).(GetMetastoreMetastoreInfoPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.Cloud }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoOutput) DefaultDataAccessConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.DefaultDataAccessConfigId }).(pulumi.StringPtrOutput)
+}
+
+// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+func (o GetMetastoreMetastoreInfoOutput) DeltaSharingOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.DeltaSharingOrganizationName }).(pulumi.StringPtrOutput)
+}
+
+// Used to set expiration duration in seconds on recipient data access tokens.
+func (o GetMetastoreMetastoreInfoOutput) DeltaSharingRecipientTokenLifetimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *int { return v.DeltaSharingRecipientTokenLifetimeInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+func (o GetMetastoreMetastoreInfoOutput) DeltaSharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.DeltaSharingScope }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoOutput) GlobalMetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.GlobalMetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// Id of the metastore to be fetched
+func (o GetMetastoreMetastoreInfoOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// Name of metastore.
+func (o GetMetastoreMetastoreInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Username/groupname/sp applicationId of the metastore owner.
+func (o GetMetastoreMetastoreInfoOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoOutput) PrivilegeModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.PrivilegeModelVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
+func (o GetMetastoreMetastoreInfoOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.StorageRoot }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoOutput) StorageRootCredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.StorageRootCredentialId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoOutput) StorageRootCredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.StorageRootCredentialName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+type GetMetastoreMetastoreInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreMetastoreInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMetastoreMetastoreInfo)(nil)).Elem()
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) ToGetMetastoreMetastoreInfoPtrOutput() GetMetastoreMetastoreInfoPtrOutput {
+	return o
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) ToGetMetastoreMetastoreInfoPtrOutputWithContext(ctx context.Context) GetMetastoreMetastoreInfoPtrOutput {
+	return o
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) Elem() GetMetastoreMetastoreInfoOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) GetMetastoreMetastoreInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GetMetastoreMetastoreInfo
+		return ret
+	}).(GetMetastoreMetastoreInfoOutput)
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cloud
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) DefaultDataAccessConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDataAccessConfigId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+func (o GetMetastoreMetastoreInfoPtrOutput) DeltaSharingOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeltaSharingOrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Used to set expiration duration in seconds on recipient data access tokens.
+func (o GetMetastoreMetastoreInfoPtrOutput) DeltaSharingRecipientTokenLifetimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DeltaSharingRecipientTokenLifetimeInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+func (o GetMetastoreMetastoreInfoPtrOutput) DeltaSharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeltaSharingScope
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) GlobalMetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalMetastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Id of the metastore to be fetched
+func (o GetMetastoreMetastoreInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of metastore.
+func (o GetMetastoreMetastoreInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username/groupname/sp applicationId of the metastore owner.
+func (o GetMetastoreMetastoreInfoPtrOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Owner
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) PrivilegeModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivilegeModelVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
+func (o GetMetastoreMetastoreInfoPtrOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageRoot
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) StorageRootCredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageRootCredentialId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) StorageRootCredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageRootCredentialName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetMetastoreMetastoreInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetNotebookPathsNotebookPathList struct {
@@ -65555,7 +68224,7 @@ func (o GetShareObjectPartitionValueArrayOutput) Index(i pulumi.IntInput) GetSha
 }
 
 type GetSqlWarehouseChannel struct {
-	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+	// Name of the SQL warehouse to search (case-sensitive).
 	Name *string `pulumi:"name"`
 }
 
@@ -65571,7 +68240,7 @@ type GetSqlWarehouseChannelInput interface {
 }
 
 type GetSqlWarehouseChannelArgs struct {
-	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+	// Name of the SQL warehouse to search (case-sensitive).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -65652,7 +68321,7 @@ func (o GetSqlWarehouseChannelOutput) ToGetSqlWarehouseChannelPtrOutputWithConte
 	}).(GetSqlWarehouseChannelPtrOutput)
 }
 
-// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+// Name of the SQL warehouse to search (case-sensitive).
 func (o GetSqlWarehouseChannelOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSqlWarehouseChannel) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -65681,7 +68350,7 @@ func (o GetSqlWarehouseChannelPtrOutput) Elem() GetSqlWarehouseChannelOutput {
 	}).(GetSqlWarehouseChannelOutput)
 }
 
-// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+// Name of the SQL warehouse to search (case-sensitive).
 func (o GetSqlWarehouseChannelPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSqlWarehouseChannel) *string {
 		if v == nil {
@@ -66118,6 +68787,8 @@ func (o GetSqlWarehouseTagsCustomTagArrayOutput) Index(i pulumi.IntInput) GetSql
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscaleInput)(nil)).Elem(), ClusterAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalePtrInput)(nil)).Elem(), ClusterAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAwsAttributesInput)(nil)).Elem(), ClusterAwsAttributesArgs{})
@@ -66201,6 +68872,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobEmailNotificationsPtrInput)(nil)).Elem(), JobEmailNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobGitSourceInput)(nil)).Elem(), JobGitSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobGitSourcePtrInput)(nil)).Elem(), JobGitSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobGitSourceJobSourceInput)(nil)).Elem(), JobGitSourceJobSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobGitSourceJobSourcePtrInput)(nil)).Elem(), JobGitSourceJobSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobHealthInput)(nil)).Elem(), JobHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobHealthPtrInput)(nil)).Elem(), JobHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobHealthRuleInput)(nil)).Elem(), JobHealthRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobHealthRuleArrayInput)(nil)).Elem(), JobHealthRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterInput)(nil)).Elem(), JobJobClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterArrayInput)(nil)).Elem(), JobJobClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobClusterNewClusterInput)(nil)).Elem(), JobJobClusterNewClusterArgs{})
@@ -66323,6 +69000,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDependsOnArrayInput)(nil)).Elem(), JobTaskDependsOnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskEmailNotificationsInput)(nil)).Elem(), JobTaskEmailNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskEmailNotificationsPtrInput)(nil)).Elem(), JobTaskEmailNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskHealthInput)(nil)).Elem(), JobTaskHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskHealthPtrInput)(nil)).Elem(), JobTaskHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskHealthRuleInput)(nil)).Elem(), JobTaskHealthRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskHealthRuleArrayInput)(nil)).Elem(), JobTaskHealthRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskLibraryInput)(nil)).Elem(), JobTaskLibraryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskLibraryArrayInput)(nil)).Elem(), JobTaskLibraryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskLibraryCranInput)(nil)).Elem(), JobTaskLibraryCranArgs{})
@@ -66374,6 +69055,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNewClusterWorkloadTypeClientsPtrInput)(nil)).Elem(), JobTaskNewClusterWorkloadTypeClientsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNotebookTaskInput)(nil)).Elem(), JobTaskNotebookTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNotebookTaskPtrInput)(nil)).Elem(), JobTaskNotebookTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNotificationSettingsInput)(nil)).Elem(), JobTaskNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNotificationSettingsPtrInput)(nil)).Elem(), JobTaskNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPipelineTaskInput)(nil)).Elem(), JobTaskPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPipelineTaskPtrInput)(nil)).Elem(), JobTaskPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPythonWheelTaskInput)(nil)).Elem(), JobTaskPythonWheelTaskArgs{})
@@ -66404,6 +69087,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerFileArrivalPtrInput)(nil)).Elem(), JobTriggerFileArrivalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobWebhookNotificationsInput)(nil)).Elem(), JobWebhookNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobWebhookNotificationsPtrInput)(nil)).Elem(), JobWebhookNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobWebhookNotificationsOnDurationWarningThresholdExceededInput)(nil)).Elem(), JobWebhookNotificationsOnDurationWarningThresholdExceededArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobWebhookNotificationsOnDurationWarningThresholdExceededArrayInput)(nil)).Elem(), JobWebhookNotificationsOnDurationWarningThresholdExceededArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobWebhookNotificationsOnFailureInput)(nil)).Elem(), JobWebhookNotificationsOnFailureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobWebhookNotificationsOnFailureArrayInput)(nil)).Elem(), JobWebhookNotificationsOnFailureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobWebhookNotificationsOnStartInput)(nil)).Elem(), JobWebhookNotificationsOnStartArgs{})
@@ -66692,6 +69377,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsEmailNotificationsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsEmailNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsGitSourceInput)(nil)).Elem(), GetJobJobSettingsSettingsGitSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsGitSourcePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsGitSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsGitSourceJobSourceInput)(nil)).Elem(), GetJobJobSettingsSettingsGitSourceJobSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsGitSourceJobSourcePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsGitSourceJobSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsHealthInput)(nil)).Elem(), GetJobJobSettingsSettingsHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsHealthPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsHealthRuleInput)(nil)).Elem(), GetJobJobSettingsSettingsHealthRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsHealthRuleArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsHealthRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsJobClusterNewClusterInput)(nil)).Elem(), GetJobJobSettingsSettingsJobClusterNewClusterArgs{})
@@ -66814,6 +69505,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskDependsOnArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskDependsOnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskEmailNotificationsInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskEmailNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskEmailNotificationsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskEmailNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskHealthInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskHealthPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskHealthRuleInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskHealthRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskHealthRuleArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskHealthRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskLibraryInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskLibraryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskLibraryArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskLibraryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskLibraryCranInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskLibraryCranArgs{})
@@ -66865,6 +69560,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotebookTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNotebookTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotebookTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNotebookTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotificationSettingsInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskNotificationSettingsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPipelineTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPipelineTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPythonWheelTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPythonWheelTaskArgs{})
@@ -66895,12 +69592,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerFileArrivalPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerFileArrivalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnFailureInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnFailureArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnFailureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnStartInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnStartArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnStartArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnSuccessInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreMetastoreInfoInput)(nil)).Elem(), GetMetastoreMetastoreInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreMetastoreInfoPtrInput)(nil)).Elem(), GetMetastoreMetastoreInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotebookPathsNotebookPathListInput)(nil)).Elem(), GetNotebookPathsNotebookPathListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotebookPathsNotebookPathListArrayInput)(nil)).Elem(), GetNotebookPathsNotebookPathListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectInput)(nil)).Elem(), GetShareObjectArgs{})
@@ -66917,6 +69618,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseTagsPtrInput)(nil)).Elem(), GetSqlWarehouseTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseTagsCustomTagInput)(nil)).Elem(), GetSqlWarehouseTagsCustomTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseTagsCustomTagArrayInput)(nil)).Elem(), GetSqlWarehouseTagsCustomTagArray{})
+	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
+	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscaleOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalePtrOutput{})
 	pulumi.RegisterOutputType(ClusterAwsAttributesOutput{})
@@ -67000,6 +69703,12 @@ func init() {
 	pulumi.RegisterOutputType(JobEmailNotificationsPtrOutput{})
 	pulumi.RegisterOutputType(JobGitSourceOutput{})
 	pulumi.RegisterOutputType(JobGitSourcePtrOutput{})
+	pulumi.RegisterOutputType(JobGitSourceJobSourceOutput{})
+	pulumi.RegisterOutputType(JobGitSourceJobSourcePtrOutput{})
+	pulumi.RegisterOutputType(JobHealthOutput{})
+	pulumi.RegisterOutputType(JobHealthPtrOutput{})
+	pulumi.RegisterOutputType(JobHealthRuleOutput{})
+	pulumi.RegisterOutputType(JobHealthRuleArrayOutput{})
 	pulumi.RegisterOutputType(JobJobClusterOutput{})
 	pulumi.RegisterOutputType(JobJobClusterArrayOutput{})
 	pulumi.RegisterOutputType(JobJobClusterNewClusterOutput{})
@@ -67122,6 +69831,10 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskDependsOnArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskEmailNotificationsOutput{})
 	pulumi.RegisterOutputType(JobTaskEmailNotificationsPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskHealthOutput{})
+	pulumi.RegisterOutputType(JobTaskHealthPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskHealthRuleOutput{})
+	pulumi.RegisterOutputType(JobTaskHealthRuleArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskLibraryOutput{})
 	pulumi.RegisterOutputType(JobTaskLibraryArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskLibraryCranOutput{})
@@ -67173,6 +69886,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskNewClusterWorkloadTypeClientsPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskNotebookTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskNotebookTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskNotificationSettingsOutput{})
+	pulumi.RegisterOutputType(JobTaskNotificationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskPipelineTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskPipelineTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskPythonWheelTaskOutput{})
@@ -67203,6 +69918,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTriggerFileArrivalPtrOutput{})
 	pulumi.RegisterOutputType(JobWebhookNotificationsOutput{})
 	pulumi.RegisterOutputType(JobWebhookNotificationsPtrOutput{})
+	pulumi.RegisterOutputType(JobWebhookNotificationsOnDurationWarningThresholdExceededOutput{})
+	pulumi.RegisterOutputType(JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput{})
 	pulumi.RegisterOutputType(JobWebhookNotificationsOnFailureOutput{})
 	pulumi.RegisterOutputType(JobWebhookNotificationsOnFailureArrayOutput{})
 	pulumi.RegisterOutputType(JobWebhookNotificationsOnStartOutput{})
@@ -67491,6 +70208,12 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsEmailNotificationsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsGitSourceOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsGitSourcePtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsGitSourceJobSourceOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsGitSourceJobSourcePtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsHealthOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsHealthPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsHealthRuleOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsHealthRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsJobClusterNewClusterOutput{})
@@ -67613,6 +70336,10 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskDependsOnArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskEmailNotificationsOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskHealthOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskHealthPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskHealthRuleOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskHealthRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskLibraryOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskLibraryArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskLibraryCranOutput{})
@@ -67664,6 +70391,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNotebookTaskOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNotificationSettingsOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskNotificationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPipelineTaskOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPythonWheelTaskOutput{})
@@ -67694,12 +70423,16 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerFileArrivalPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnFailureOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnFailureArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnStartOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnStartArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnSuccessOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreMetastoreInfoOutput{})
+	pulumi.RegisterOutputType(GetMetastoreMetastoreInfoPtrOutput{})
 	pulumi.RegisterOutputType(GetNotebookPathsNotebookPathListOutput{})
 	pulumi.RegisterOutputType(GetNotebookPathsNotebookPathListArrayOutput{})
 	pulumi.RegisterOutputType(GetShareObjectOutput{})

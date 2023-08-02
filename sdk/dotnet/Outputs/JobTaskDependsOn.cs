@@ -14,6 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTaskDependsOn
     {
         public readonly string? Outcome;
+        /// <summary>
+        /// The name of the task this task depends on.
+        /// </summary>
         public readonly string TaskKey;
 
         [OutputConstructor]

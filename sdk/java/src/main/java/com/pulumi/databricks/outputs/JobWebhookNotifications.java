@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobWebhookNotificationsOnDurationWarningThresholdExceeded;
 import com.pulumi.databricks.outputs.JobWebhookNotificationsOnFailure;
 import com.pulumi.databricks.outputs.JobWebhookNotificationsOnStart;
 import com.pulumi.databricks.outputs.JobWebhookNotificationsOnSuccess;
@@ -14,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobWebhookNotifications {
     /**
-     * @return (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+     * @return (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      * 
      * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
      * 
@@ -41,6 +42,11 @@ public final class JobWebhookNotifications {
      *     }
      * }
      * ```
+     * 
+     */
+    private @Nullable List<JobWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs;
+    /**
+     * @return (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      * 
      */
     private @Nullable List<JobWebhookNotificationsOnFailure> onFailures;
@@ -57,7 +63,7 @@ public final class JobWebhookNotifications {
 
     private JobWebhookNotifications() {}
     /**
-     * @return (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+     * @return (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      * 
      * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
      * 
@@ -84,6 +90,13 @@ public final class JobWebhookNotifications {
      *     }
      * }
      * ```
+     * 
+     */
+    public List<JobWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs() {
+        return this.onDurationWarningThresholdExceededs == null ? List.of() : this.onDurationWarningThresholdExceededs;
+    }
+    /**
+     * @return (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      * 
      */
     public List<JobWebhookNotificationsOnFailure> onFailures() {
@@ -113,17 +126,27 @@ public final class JobWebhookNotifications {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<JobWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs;
         private @Nullable List<JobWebhookNotificationsOnFailure> onFailures;
         private @Nullable List<JobWebhookNotificationsOnStart> onStarts;
         private @Nullable List<JobWebhookNotificationsOnSuccess> onSuccesses;
         public Builder() {}
         public Builder(JobWebhookNotifications defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
     	      this.onStarts = defaults.onStarts;
     	      this.onSuccesses = defaults.onSuccesses;
         }
 
+        @CustomType.Setter
+        public Builder onDurationWarningThresholdExceededs(@Nullable List<JobWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs) {
+            this.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
+            return this;
+        }
+        public Builder onDurationWarningThresholdExceededs(JobWebhookNotificationsOnDurationWarningThresholdExceeded... onDurationWarningThresholdExceededs) {
+            return onDurationWarningThresholdExceededs(List.of(onDurationWarningThresholdExceededs));
+        }
         @CustomType.Setter
         public Builder onFailures(@Nullable List<JobWebhookNotificationsOnFailure> onFailures) {
             this.onFailures = onFailures;
@@ -150,6 +173,7 @@ public final class JobWebhookNotifications {
         }
         public JobWebhookNotifications build() {
             final var o = new JobWebhookNotifications();
+            o.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             o.onFailures = onFailures;
             o.onStarts = onStarts;
             o.onSuccesses = onSuccesses;

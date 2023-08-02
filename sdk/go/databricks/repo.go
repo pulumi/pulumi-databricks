@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ func NewRepo(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Repo
 	err := ctx.RegisterResource("databricks:index/repo:Repo", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -124,6 +125,7 @@ func NewSqlGlobalConfig(ctx *pulumi.Context,
 		args = &SqlGlobalConfigArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SqlGlobalConfig
 	err := ctx.RegisterResource("databricks:index/sqlGlobalConfig:SqlGlobalConfig", name, args, &resource, opts...)
 	if err != nil {

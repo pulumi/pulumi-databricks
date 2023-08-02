@@ -14,15 +14,23 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTaskPipelineTask
     {
         /// <summary>
-        /// The pipeline's unique ID.
+        /// (Bool) Specifies if there should be full refresh of the pipeline.
         /// 
         /// &gt; **Note** The following configuration blocks are only supported inside a `task` block
+        /// </summary>
+        public readonly bool? FullRefresh;
+        /// <summary>
+        /// The pipeline's unique ID.
         /// </summary>
         public readonly string PipelineId;
 
         [OutputConstructor]
-        private JobTaskPipelineTask(string pipelineId)
+        private JobTaskPipelineTask(
+            bool? fullRefresh,
+
+            string pipelineId)
         {
+            FullRefresh = fullRefresh;
             PipelineId = pipelineId;
         }
     }

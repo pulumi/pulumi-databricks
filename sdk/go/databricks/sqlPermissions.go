@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -102,6 +103,7 @@ func NewSqlPermissions(ctx *pulumi.Context,
 		args = &SqlPermissionsArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SqlPermissions
 	err := ctx.RegisterResource("databricks:index/sqlPermissions:SqlPermissions", name, args, &resource, opts...)
 	if err != nil {

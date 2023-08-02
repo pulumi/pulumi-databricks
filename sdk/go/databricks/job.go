@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,30 +24,52 @@ type Job struct {
 	pulumi.CustomResourceState
 
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
+	//
+	// Deprecated: always_running will be replaced by control_run_state in the next major release.
 	AlwaysRunning pulumi.BoolPtrOutput   `pulumi:"alwaysRunning"`
 	Computes      JobComputeArrayOutput  `pulumi:"computes"`
 	Continuous    JobContinuousPtrOutput `pulumi:"continuous"`
-	DbtTask       JobDbtTaskPtrOutput    `pulumi:"dbtTask"`
+	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+	//
+	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	ControlRunState pulumi.BoolPtrOutput `pulumi:"controlRunState"`
+	DbtTask         JobDbtTaskPtrOutput  `pulumi:"dbtTask"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrOutput `pulumi:"emailNotifications"`
 	ExistingClusterId  pulumi.StringPtrOutput         `pulumi:"existingClusterId"`
 	Format             pulumi.StringOutput            `pulumi:"format"`
 	GitSource          JobGitSourcePtrOutput          `pulumi:"gitSource"`
+	// An optional block that specifies the health conditions for the job (described below).
+	Health JobHealthPtrOutput `pulumi:"health"`
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters JobJobClusterArrayOutput `pulumi:"jobClusters"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries JobLibraryArrayOutput `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrOutput `pulumi:"maxConcurrentRuns"`
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
 	MaxRetries pulumi.IntPtrOutput `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis pulumi.IntPtrOutput `pulumi:"minRetryIntervalMillis"`
 	// An optional name for the job. The default value is Untitled.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Same set of parameters as for Cluster resource.
-	NewCluster           JobNewClusterPtrOutput           `pulumi:"newCluster"`
-	NotebookTask         JobNotebookTaskPtrOutput         `pulumi:"notebookTask"`
+	NewCluster   JobNewClusterPtrOutput   `pulumi:"newCluster"`
+	NotebookTask JobNotebookTaskPtrOutput `pulumi:"notebookTask"`
+	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings JobNotificationSettingsPtrOutput `pulumi:"notificationSettings"`
 	PipelineTask         JobPipelineTaskPtrOutput         `pulumi:"pipelineTask"`
 	PythonWheelTask      JobPythonWheelTaskPtrOutput      `pulumi:"pythonWheelTask"`
@@ -77,6 +100,7 @@ func NewJob(ctx *pulumi.Context,
 		args = &JobArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Job
 	err := ctx.RegisterResource("databricks:index/job:Job", name, args, &resource, opts...)
 	if err != nil {
@@ -100,30 +124,52 @@ func GetJob(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Job resources.
 type jobState struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
+	//
+	// Deprecated: always_running will be replaced by control_run_state in the next major release.
 	AlwaysRunning *bool          `pulumi:"alwaysRunning"`
 	Computes      []JobCompute   `pulumi:"computes"`
 	Continuous    *JobContinuous `pulumi:"continuous"`
-	DbtTask       *JobDbtTask    `pulumi:"dbtTask"`
+	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+	//
+	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	ControlRunState *bool       `pulumi:"controlRunState"`
+	DbtTask         *JobDbtTask `pulumi:"dbtTask"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
 	ExistingClusterId  *string                `pulumi:"existingClusterId"`
 	Format             *string                `pulumi:"format"`
 	GitSource          *JobGitSource          `pulumi:"gitSource"`
+	// An optional block that specifies the health conditions for the job (described below).
+	Health *JobHealth `pulumi:"health"`
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters []JobJobCluster `pulumi:"jobClusters"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries []JobLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns *int `pulumi:"maxConcurrentRuns"`
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
 	MaxRetries *int `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis *int `pulumi:"minRetryIntervalMillis"`
 	// An optional name for the job. The default value is Untitled.
 	Name *string `pulumi:"name"`
 	// Same set of parameters as for Cluster resource.
-	NewCluster           *JobNewCluster           `pulumi:"newCluster"`
-	NotebookTask         *JobNotebookTask         `pulumi:"notebookTask"`
+	NewCluster   *JobNewCluster   `pulumi:"newCluster"`
+	NotebookTask *JobNotebookTask `pulumi:"notebookTask"`
+	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
 	PipelineTask         *JobPipelineTask         `pulumi:"pipelineTask"`
 	PythonWheelTask      *JobPythonWheelTask      `pulumi:"pythonWheelTask"`
@@ -149,30 +195,52 @@ type jobState struct {
 
 type JobState struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
+	//
+	// Deprecated: always_running will be replaced by control_run_state in the next major release.
 	AlwaysRunning pulumi.BoolPtrInput
 	Computes      JobComputeArrayInput
 	Continuous    JobContinuousPtrInput
-	DbtTask       JobDbtTaskPtrInput
+	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+	//
+	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	ControlRunState pulumi.BoolPtrInput
+	DbtTask         JobDbtTaskPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrInput
 	ExistingClusterId  pulumi.StringPtrInput
 	Format             pulumi.StringPtrInput
 	GitSource          JobGitSourcePtrInput
+	// An optional block that specifies the health conditions for the job (described below).
+	Health JobHealthPtrInput
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters JobJobClusterArrayInput
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries JobLibraryArrayInput
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrInput
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
 	MaxRetries pulumi.IntPtrInput
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis pulumi.IntPtrInput
 	// An optional name for the job. The default value is Untitled.
 	Name pulumi.StringPtrInput
 	// Same set of parameters as for Cluster resource.
-	NewCluster           JobNewClusterPtrInput
-	NotebookTask         JobNotebookTaskPtrInput
+	NewCluster   JobNewClusterPtrInput
+	NotebookTask JobNotebookTaskPtrInput
+	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings JobNotificationSettingsPtrInput
 	PipelineTask         JobPipelineTaskPtrInput
 	PythonWheelTask      JobPythonWheelTaskPtrInput
@@ -202,30 +270,52 @@ func (JobState) ElementType() reflect.Type {
 
 type jobArgs struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
+	//
+	// Deprecated: always_running will be replaced by control_run_state in the next major release.
 	AlwaysRunning *bool          `pulumi:"alwaysRunning"`
 	Computes      []JobCompute   `pulumi:"computes"`
 	Continuous    *JobContinuous `pulumi:"continuous"`
-	DbtTask       *JobDbtTask    `pulumi:"dbtTask"`
+	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+	//
+	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	ControlRunState *bool       `pulumi:"controlRunState"`
+	DbtTask         *JobDbtTask `pulumi:"dbtTask"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
 	ExistingClusterId  *string                `pulumi:"existingClusterId"`
 	Format             *string                `pulumi:"format"`
 	GitSource          *JobGitSource          `pulumi:"gitSource"`
+	// An optional block that specifies the health conditions for the job (described below).
+	Health *JobHealth `pulumi:"health"`
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters []JobJobCluster `pulumi:"jobClusters"`
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries []JobLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns *int `pulumi:"maxConcurrentRuns"`
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
 	MaxRetries *int `pulumi:"maxRetries"`
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis *int `pulumi:"minRetryIntervalMillis"`
 	// An optional name for the job. The default value is Untitled.
 	Name *string `pulumi:"name"`
 	// Same set of parameters as for Cluster resource.
-	NewCluster           *JobNewCluster           `pulumi:"newCluster"`
-	NotebookTask         *JobNotebookTask         `pulumi:"notebookTask"`
+	NewCluster   *JobNewCluster   `pulumi:"newCluster"`
+	NotebookTask *JobNotebookTask `pulumi:"notebookTask"`
+	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
 	PipelineTask         *JobPipelineTask         `pulumi:"pipelineTask"`
 	PythonWheelTask      *JobPythonWheelTask      `pulumi:"pythonWheelTask"`
@@ -250,30 +340,52 @@ type jobArgs struct {
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
+	//
+	// Deprecated: always_running will be replaced by control_run_state in the next major release.
 	AlwaysRunning pulumi.BoolPtrInput
 	Computes      JobComputeArrayInput
 	Continuous    JobContinuousPtrInput
-	DbtTask       JobDbtTaskPtrInput
+	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+	//
+	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	ControlRunState pulumi.BoolPtrInput
+	DbtTask         JobDbtTaskPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrInput
 	ExistingClusterId  pulumi.StringPtrInput
 	Format             pulumi.StringPtrInput
 	GitSource          JobGitSourcePtrInput
+	// An optional block that specifies the health conditions for the job (described below).
+	Health JobHealthPtrInput
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters JobJobClusterArrayInput
 	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
 	Libraries JobLibraryArrayInput
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrInput
-	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+	// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
 	MaxRetries pulumi.IntPtrInput
 	// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
 	MinRetryIntervalMillis pulumi.IntPtrInput
 	// An optional name for the job. The default value is Untitled.
 	Name pulumi.StringPtrInput
 	// Same set of parameters as for Cluster resource.
-	NewCluster           JobNewClusterPtrInput
-	NotebookTask         JobNotebookTaskPtrInput
+	NewCluster   JobNewClusterPtrInput
+	NotebookTask JobNotebookTaskPtrInput
+	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings JobNotificationSettingsPtrInput
 	PipelineTask         JobPipelineTaskPtrInput
 	PythonWheelTask      JobPythonWheelTaskPtrInput
@@ -383,6 +495,8 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 }
 
 // (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
+//
+// Deprecated: always_running will be replaced by control_run_state in the next major release.
 func (o JobOutput) AlwaysRunning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.AlwaysRunning }).(pulumi.BoolPtrOutput)
 }
@@ -393,6 +507,29 @@ func (o JobOutput) Computes() JobComputeArrayOutput {
 
 func (o JobOutput) Continuous() JobContinuousPtrOutput {
 	return o.ApplyT(func(v *Job) JobContinuousPtrOutput { return v.Continuous }).(JobContinuousPtrOutput)
+}
+
+// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+//
+// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+func (o JobOutput) ControlRunState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.ControlRunState }).(pulumi.BoolPtrOutput)
 }
 
 func (o JobOutput) DbtTask() JobDbtTaskPtrOutput {
@@ -416,6 +553,11 @@ func (o JobOutput) GitSource() JobGitSourcePtrOutput {
 	return o.ApplyT(func(v *Job) JobGitSourcePtrOutput { return v.GitSource }).(JobGitSourcePtrOutput)
 }
 
+// An optional block that specifies the health conditions for the job (described below).
+func (o JobOutput) Health() JobHealthPtrOutput {
+	return o.ApplyT(func(v *Job) JobHealthPtrOutput { return v.Health }).(JobHealthPtrOutput)
+}
+
 // A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 func (o JobOutput) JobClusters() JobJobClusterArrayOutput {
 	return o.ApplyT(func(v *Job) JobJobClusterArrayOutput { return v.JobClusters }).(JobJobClusterArrayOutput)
@@ -431,7 +573,7 @@ func (o JobOutput) MaxConcurrentRuns() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntPtrOutput { return v.MaxConcurrentRuns }).(pulumi.IntPtrOutput)
 }
 
-// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a FAILED or INTERNAL_ERROR lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: PENDING, RUNNING, TERMINATING, TERMINATED, SKIPPED or INTERNAL_ERROR
+// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
 func (o JobOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntPtrOutput { return v.MaxRetries }).(pulumi.IntPtrOutput)
 }
@@ -455,6 +597,7 @@ func (o JobOutput) NotebookTask() JobNotebookTaskPtrOutput {
 	return o.ApplyT(func(v *Job) JobNotebookTaskPtrOutput { return v.NotebookTask }).(JobNotebookTaskPtrOutput)
 }
 
+// An optional block controlling the notification settings on the job level (described below).
 func (o JobOutput) NotificationSettings() JobNotificationSettingsPtrOutput {
 	return o.ApplyT(func(v *Job) JobNotificationSettingsPtrOutput { return v.NotificationSettings }).(JobNotificationSettingsPtrOutput)
 }

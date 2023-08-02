@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAwsBucketPolicy
     {
         /// <summary>
-        /// This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it. 
+        /// This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
         /// 
         /// ## Related Resources
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsBucketPolicyResult>("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", args ?? new GetAwsBucketPolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it. 
+        /// This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
         /// 
         /// ## Related Resources
         /// 

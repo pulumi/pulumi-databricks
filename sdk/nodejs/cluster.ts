@@ -148,7 +148,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly runtimeEngine!: pulumi.Output<string | undefined>;
     /**
-     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     * The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */
     public readonly singleUserName!: pulumi.Output<string | undefined>;
     /**
@@ -377,7 +377,7 @@ export interface ClusterState {
      */
     runtimeEngine?: pulumi.Input<string>;
     /**
-     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     * The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */
     singleUserName?: pulumi.Input<string>;
     /**
@@ -509,7 +509,7 @@ export interface ClusterArgs {
      */
     runtimeEngine?: pulumi.Input<string>;
     /**
-     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     * The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */
     singleUserName?: pulumi.Input<string>;
     /**

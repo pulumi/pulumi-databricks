@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsEmailNotifications {
     private @Nullable Boolean alertOnLastAttempt;
     private @Nullable Boolean noAlertForSkippedRuns;
+    private @Nullable List<String> onDurationWarningThresholdExceededs;
     private @Nullable List<String> onFailures;
     private @Nullable List<String> onStarts;
     private @Nullable List<String> onSuccesses;
@@ -25,6 +26,9 @@ public final class GetJobJobSettingsSettingsEmailNotifications {
     }
     public Optional<Boolean> noAlertForSkippedRuns() {
         return Optional.ofNullable(this.noAlertForSkippedRuns);
+    }
+    public List<String> onDurationWarningThresholdExceededs() {
+        return this.onDurationWarningThresholdExceededs == null ? List.of() : this.onDurationWarningThresholdExceededs;
     }
     public List<String> onFailures() {
         return this.onFailures == null ? List.of() : this.onFailures;
@@ -47,6 +51,7 @@ public final class GetJobJobSettingsSettingsEmailNotifications {
     public static final class Builder {
         private @Nullable Boolean alertOnLastAttempt;
         private @Nullable Boolean noAlertForSkippedRuns;
+        private @Nullable List<String> onDurationWarningThresholdExceededs;
         private @Nullable List<String> onFailures;
         private @Nullable List<String> onStarts;
         private @Nullable List<String> onSuccesses;
@@ -55,6 +60,7 @@ public final class GetJobJobSettingsSettingsEmailNotifications {
     	      Objects.requireNonNull(defaults);
     	      this.alertOnLastAttempt = defaults.alertOnLastAttempt;
     	      this.noAlertForSkippedRuns = defaults.noAlertForSkippedRuns;
+    	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
     	      this.onStarts = defaults.onStarts;
     	      this.onSuccesses = defaults.onSuccesses;
@@ -69,6 +75,14 @@ public final class GetJobJobSettingsSettingsEmailNotifications {
         public Builder noAlertForSkippedRuns(@Nullable Boolean noAlertForSkippedRuns) {
             this.noAlertForSkippedRuns = noAlertForSkippedRuns;
             return this;
+        }
+        @CustomType.Setter
+        public Builder onDurationWarningThresholdExceededs(@Nullable List<String> onDurationWarningThresholdExceededs) {
+            this.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
+            return this;
+        }
+        public Builder onDurationWarningThresholdExceededs(String... onDurationWarningThresholdExceededs) {
+            return onDurationWarningThresholdExceededs(List.of(onDurationWarningThresholdExceededs));
         }
         @CustomType.Setter
         public Builder onFailures(@Nullable List<String> onFailures) {
@@ -98,6 +112,7 @@ public final class GetJobJobSettingsSettingsEmailNotifications {
             final var o = new GetJobJobSettingsSettingsEmailNotifications();
             o.alertOnLastAttempt = alertOnLastAttempt;
             o.noAlertForSkippedRuns = noAlertForSkippedRuns;
+            o.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             o.onFailures = onFailures;
             o.onStarts = onStarts;
             o.onSuccesses = onSuccesses;

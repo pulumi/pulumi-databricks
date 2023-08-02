@@ -22,9 +22,17 @@ public final class JobTaskConditionTaskArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.left);
     }
 
+    /**
+     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * 
+     */
     @Import(name="op")
     private @Nullable Output<String> op;
 
+    /**
+     * @return string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * 
+     */
     public Optional<Output<String>> op() {
         return Optional.ofNullable(this.op);
     }
@@ -71,11 +79,23 @@ public final class JobTaskConditionTaskArgs extends com.pulumi.resources.Resourc
             return left(Output.of(left));
         }
 
+        /**
+         * @param op string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder op(@Nullable Output<String> op) {
             $.op = op;
             return this;
         }
 
+        /**
+         * @param op string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder op(String op) {
             return op(Output.of(op));
         }
