@@ -344,8 +344,12 @@
                 "googleServiceAccount": {
                     "type": "string"
                 },
+                "localSsdCount": {
+                    "type": "integer"
+                },
                 "usePreemptibleExecutors": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "deprecationMessage": "Please use 'availability' instead."
                 },
                 "zoneId": {
                     "type": "string"
@@ -590,7 +594,7 @@
             "properties": {
                 "availability": {
                     "type": "string",
-                    "description": "Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.\n",
+                    "description": "Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.\n",
                     "willReplaceOnChanges": true
                 },
                 "spotBidMaxPrice": {
@@ -634,7 +638,12 @@
             "properties": {
                 "gcpAvailability": {
                     "type": "string",
+                    "description": "Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.\n",
                     "willReplaceOnChanges": true
+                },
+                "localSsdCount": {
+                    "type": "integer",
+                    "description": "Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.\n"
                 }
             },
             "type": "object"
@@ -1256,6 +1265,9 @@
                 "googleServiceAccount": {
                     "type": "string"
                 },
+                "localSsdCount": {
+                    "type": "integer"
+                },
                 "usePreemptibleExecutors": {
                     "type": "boolean"
                 },
@@ -1762,6 +1774,9 @@
                 "googleServiceAccount": {
                     "type": "string"
                 },
+                "localSsdCount": {
+                    "type": "integer"
+                },
                 "usePreemptibleExecutors": {
                     "type": "boolean"
                 },
@@ -1920,7 +1935,20 @@
                 },
                 "noAlertForSkippedRuns": {
                     "type": "boolean",
-                    "description": "(Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).\n"
+                    "description": "(Bool) don't send alert for skipped runs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/JobParameter:JobParameter": {
+            "properties": {
+                "default": {
+                    "type": "string",
+                    "description": "Default value of the parameter.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "An optional name for the job. The default value is Untitled.\n"
                 }
             },
             "type": "object"
@@ -1983,6 +2011,25 @@
                 }
             },
             "type": "object"
+        },
+        "databricks:index/JobRunJobTask:JobRunJobTask": {
+            "properties": {
+                "jobId": {
+                    "type": "string",
+                    "description": "(String) ID of the job\n"
+                },
+                "jobParameters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "(Map) Job parameters for the task\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jobId"
+            ]
         },
         "databricks:index/JobSchedule:JobSchedule": {
             "properties": {
@@ -2141,7 +2188,11 @@
                     "description": "(Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.\n"
                 },
                 "runIf": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.\n"
+                },
+                "runJobTask": {
+                    "$ref": "#/types/databricks:index/JobTaskRunJobTask:JobTaskRunJobTask"
                 },
                 "sparkJarTask": {
                     "$ref": "#/types/databricks:index/JobTaskSparkJarTask:JobTaskSparkJarTask"
@@ -2690,6 +2741,9 @@
                 "googleServiceAccount": {
                     "type": "string"
                 },
+                "localSsdCount": {
+                    "type": "integer"
+                },
                 "usePreemptibleExecutors": {
                     "type": "boolean"
                 },
@@ -2852,7 +2906,7 @@
                 },
                 "noAlertForSkippedRuns": {
                     "type": "boolean",
-                    "description": "(Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).\n"
+                    "description": "(Bool) don't send alert for skipped runs.\n"
                 }
             },
             "type": "object"
@@ -2899,6 +2953,25 @@
                 }
             },
             "type": "object"
+        },
+        "databricks:index/JobTaskRunJobTask:JobTaskRunJobTask": {
+            "properties": {
+                "jobId": {
+                    "type": "string",
+                    "description": "(String) ID of the job\n"
+                },
+                "jobParameters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "(Map) Job parameters for the task\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jobId"
+            ]
         },
         "databricks:index/JobTaskSparkJarTask:JobTaskSparkJarTask": {
             "properties": {
@@ -3451,6 +3524,9 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     }
+                },
+                "instanceProfileArn": {
+                    "type": "string"
                 },
                 "modelName": {
                     "type": "string",
@@ -4199,6 +4275,9 @@
                 },
                 "googleServiceAccount": {
                     "type": "string"
+                },
+                "localSsdCount": {
+                    "type": "integer"
                 },
                 "zoneId": {
                     "type": "string"
@@ -5660,6 +5739,9 @@
                 "googleServiceAccount": {
                     "type": "string"
                 },
+                "localSsdCount": {
+                    "type": "integer"
+                },
                 "usePreemptibleExecutors": {
                     "type": "boolean"
                 },
@@ -5943,6 +6025,9 @@
             "properties": {
                 "gcpAvailability": {
                     "type": "string"
+                },
+                "localSsdCount": {
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -6148,6 +6233,12 @@
                 "notificationSettings": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsNotificationSettings:getJobJobSettingsSettingsNotificationSettings"
                 },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getJobJobSettingsSettingsParameter:getJobJobSettingsSettingsParameter"
+                    }
+                },
                 "pipelineTask": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsPipelineTask:getJobJobSettingsSettingsPipelineTask"
                 },
@@ -6162,6 +6253,9 @@
                 },
                 "runAs": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsRunAs:getJobJobSettingsSettingsRunAs"
+                },
+                "runJobTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsRunJobTask:getJobJobSettingsSettingsRunJobTask"
                 },
                 "schedule": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsSchedule:getJobJobSettingsSettingsSchedule"
@@ -6697,6 +6791,9 @@
                 "googleServiceAccount": {
                     "type": "string"
                 },
+                "localSsdCount": {
+                    "type": "integer"
+                },
                 "usePreemptibleExecutors": {
                     "type": "boolean"
                 },
@@ -7202,6 +7299,9 @@
                 "googleServiceAccount": {
                     "type": "string"
                 },
+                "localSsdCount": {
+                    "type": "integer"
+                },
                 "usePreemptibleExecutors": {
                     "type": "boolean"
                 },
@@ -7359,6 +7459,18 @@
             },
             "type": "object"
         },
+        "databricks:index/getJobJobSettingsSettingsParameter:getJobJobSettingsSettingsParameter": {
+            "properties": {
+                "default": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "the job name of databricks.Job if the resource was matched by id.\n"
+                }
+            },
+            "type": "object"
+        },
         "databricks:index/getJobJobSettingsSettingsPipelineTask:getJobJobSettingsSettingsPipelineTask": {
             "properties": {
                 "fullRefresh": {
@@ -7409,6 +7521,23 @@
                 }
             },
             "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsRunJobTask:getJobJobSettingsSettingsRunJobTask": {
+            "properties": {
+                "jobId": {
+                    "type": "string"
+                },
+                "jobParameters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "jobId"
+            ]
         },
         "databricks:index/getJobJobSettingsSettingsSchedule:getJobJobSettingsSettingsSchedule": {
             "properties": {
@@ -7549,6 +7678,9 @@
                 },
                 "runIf": {
                     "type": "string"
+                },
+                "runJobTask": {
+                    "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskRunJobTask:getJobJobSettingsSettingsTaskRunJobTask"
                 },
                 "sparkJarTask": {
                     "$ref": "#/types/databricks:index/getJobJobSettingsSettingsTaskSparkJarTask:getJobJobSettingsSettingsTaskSparkJarTask"
@@ -8078,6 +8210,9 @@
                 "googleServiceAccount": {
                     "type": "string"
                 },
+                "localSsdCount": {
+                    "type": "integer"
+                },
                 "usePreemptibleExecutors": {
                     "type": "boolean"
                 },
@@ -8274,6 +8409,23 @@
                 }
             },
             "type": "object"
+        },
+        "databricks:index/getJobJobSettingsSettingsTaskRunJobTask:getJobJobSettingsSettingsTaskRunJobTask": {
+            "properties": {
+                "jobId": {
+                    "type": "string"
+                },
+                "jobParameters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "jobId"
+            ]
         },
         "databricks:index/getJobJobSettingsSettingsTaskSparkJarTask:getJobJobSettingsSettingsTaskSparkJarTask": {
             "properties": {
@@ -11231,6 +11383,12 @@
                     "$ref": "#/types/databricks:index/JobNotificationSettings:JobNotificationSettings",
                     "description": "An optional block controlling the notification settings on the job level (described below).\n"
                 },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/JobParameter:JobParameter"
+                    }
+                },
                 "pipelineTask": {
                     "$ref": "#/types/databricks:index/JobPipelineTask:JobPipelineTask"
                 },
@@ -11246,6 +11404,9 @@
                 },
                 "runAs": {
                     "$ref": "#/types/databricks:index/JobRunAs:JobRunAs"
+                },
+                "runJobTask": {
+                    "$ref": "#/types/databricks:index/JobRunJobTask:JobRunJobTask"
                 },
                 "schedule": {
                     "$ref": "#/types/databricks:index/JobSchedule:JobSchedule",
@@ -11373,6 +11534,12 @@
                     "$ref": "#/types/databricks:index/JobNotificationSettings:JobNotificationSettings",
                     "description": "An optional block controlling the notification settings on the job level (described below).\n"
                 },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/JobParameter:JobParameter"
+                    }
+                },
                 "pipelineTask": {
                     "$ref": "#/types/databricks:index/JobPipelineTask:JobPipelineTask"
                 },
@@ -11388,6 +11555,9 @@
                 },
                 "runAs": {
                     "$ref": "#/types/databricks:index/JobRunAs:JobRunAs"
+                },
+                "runJobTask": {
+                    "$ref": "#/types/databricks:index/JobRunJobTask:JobRunJobTask"
                 },
                 "schedule": {
                     "$ref": "#/types/databricks:index/JobSchedule:JobSchedule",
@@ -11508,6 +11678,12 @@
                         "$ref": "#/types/databricks:index/JobNotificationSettings:JobNotificationSettings",
                         "description": "An optional block controlling the notification settings on the job level (described below).\n"
                     },
+                    "parameters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/databricks:index/JobParameter:JobParameter"
+                        }
+                    },
                     "pipelineTask": {
                         "$ref": "#/types/databricks:index/JobPipelineTask:JobPipelineTask"
                     },
@@ -11523,6 +11699,9 @@
                     },
                     "runAs": {
                         "$ref": "#/types/databricks:index/JobRunAs:JobRunAs"
+                    },
+                    "runJobTask": {
+                        "$ref": "#/types/databricks:index/JobRunJobTask:JobRunJobTask"
                     },
                     "schedule": {
                         "$ref": "#/types/databricks:index/JobSchedule:JobSchedule",

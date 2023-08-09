@@ -546,6 +546,9 @@
                     "notification_settings": {
                         "maxItemsOne": true
                     },
+                    "parameter": {
+                        "maxItemsOne": false
+                    },
                     "pipeline_task": {
                         "maxItemsOne": true
                     },
@@ -563,6 +566,9 @@
                         "maxItemsOne": true
                     },
                     "run_as": {
+                        "maxItemsOne": true
+                    },
+                    "run_job_task": {
                         "maxItemsOne": true
                     },
                     "schedule": {
@@ -778,6 +784,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "run_job_task": {
+                                    "maxItemsOne": true
                                 },
                                 "spark_jar_task": {
                                     "maxItemsOne": true,
@@ -2154,6 +2163,9 @@
                                             "notification_settings": {
                                                 "maxItemsOne": true
                                             },
+                                            "parameter": {
+                                                "maxItemsOne": false
+                                            },
                                             "pipeline_task": {
                                                 "maxItemsOne": true
                                             },
@@ -2171,6 +2183,9 @@
                                                 "maxItemsOne": true
                                             },
                                             "run_as": {
+                                                "maxItemsOne": true
+                                            },
+                                            "run_job_task": {
                                                 "maxItemsOne": true
                                             },
                                             "schedule": {
@@ -2386,6 +2401,9 @@
                                                                     }
                                                                 }
                                                             }
+                                                        },
+                                                        "run_job_task": {
+                                                            "maxItemsOne": true
                                                         },
                                                         "spark_jar_task": {
                                                             "maxItemsOne": true,
@@ -2814,6 +2832,7 @@
             "databricks:index/ClusterGcpAttributes:ClusterGcpAttributes": {
                 "bootDiskSize": "boot_disk_size",
                 "googleServiceAccount": "google_service_account",
+                "localSsdCount": "local_ssd_count",
                 "usePreemptibleExecutors": "use_preemptible_executors",
                 "zoneId": "zone_id"
             },
@@ -2840,7 +2859,8 @@
                 "ebsVolumeType": "ebs_volume_type"
             },
             "databricks:index/InstancePoolGcpAttributes:InstancePoolGcpAttributes": {
-                "gcpAvailability": "gcp_availability"
+                "gcpAvailability": "gcp_availability",
+                "localSsdCount": "local_ssd_count"
             },
             "databricks:index/InstancePoolInstancePoolFleetAttributes:InstancePoolInstancePoolFleetAttributes": {
                 "fleetOnDemandOption": "fleet_on_demand_option",
@@ -2962,6 +2982,7 @@
             "databricks:index/JobJobClusterNewClusterGcpAttributes:JobJobClusterNewClusterGcpAttributes": {
                 "bootDiskSize": "boot_disk_size",
                 "googleServiceAccount": "google_service_account",
+                "localSsdCount": "local_ssd_count",
                 "usePreemptibleExecutors": "use_preemptible_executors",
                 "zoneId": "zone_id"
             },
@@ -3040,6 +3061,7 @@
             "databricks:index/JobNewClusterGcpAttributes:JobNewClusterGcpAttributes": {
                 "bootDiskSize": "boot_disk_size",
                 "googleServiceAccount": "google_service_account",
+                "localSsdCount": "local_ssd_count",
                 "usePreemptibleExecutors": "use_preemptible_executors",
                 "zoneId": "zone_id"
             },
@@ -3069,6 +3091,10 @@
             "databricks:index/JobRunAs:JobRunAs": {
                 "servicePrincipalName": "service_principal_name",
                 "userName": "user_name"
+            },
+            "databricks:index/JobRunJobTask:JobRunJobTask": {
+                "jobId": "job_id",
+                "jobParameters": "job_parameters"
             },
             "databricks:index/JobSchedule:JobSchedule": {
                 "pauseStatus": "pause_status",
@@ -3100,6 +3126,7 @@
                 "pythonWheelTask": "python_wheel_task",
                 "retryOnTimeout": "retry_on_timeout",
                 "runIf": "run_if",
+                "runJobTask": "run_job_task",
                 "sparkJarTask": "spark_jar_task",
                 "sparkPythonTask": "spark_python_task",
                 "sparkSubmitTask": "spark_submit_task",
@@ -3192,6 +3219,7 @@
             "databricks:index/JobTaskNewClusterGcpAttributes:JobTaskNewClusterGcpAttributes": {
                 "bootDiskSize": "boot_disk_size",
                 "googleServiceAccount": "google_service_account",
+                "localSsdCount": "local_ssd_count",
                 "usePreemptibleExecutors": "use_preemptible_executors",
                 "zoneId": "zone_id"
             },
@@ -3218,6 +3246,10 @@
                 "entryPoint": "entry_point",
                 "namedParameters": "named_parameters",
                 "packageName": "package_name"
+            },
+            "databricks:index/JobTaskRunJobTask:JobTaskRunJobTask": {
+                "jobId": "job_id",
+                "jobParameters": "job_parameters"
             },
             "databricks:index/JobTaskSparkJarTask:JobTaskSparkJarTask": {
                 "jarUri": "jar_uri",
@@ -3292,6 +3324,7 @@
             },
             "databricks:index/ModelServingConfigServedModel:ModelServingConfigServedModel": {
                 "environmentVars": "environment_vars",
+                "instanceProfileArn": "instance_profile_arn",
                 "modelName": "model_name",
                 "modelVersion": "model_version",
                 "scaleToZeroEnabled": "scale_to_zero_enabled",
@@ -3436,6 +3469,7 @@
             },
             "databricks:index/PipelineClusterGcpAttributes:PipelineClusterGcpAttributes": {
                 "googleServiceAccount": "google_service_account",
+                "localSsdCount": "local_ssd_count",
                 "zoneId": "zone_id"
             },
             "databricks:index/PipelineClusterInitScriptS3:PipelineClusterInitScriptS3": {
@@ -3742,6 +3776,7 @@
             "databricks:index/getClusterClusterInfoGcpAttributes:getClusterClusterInfoGcpAttributes": {
                 "bootDiskSize": "boot_disk_size",
                 "googleServiceAccount": "google_service_account",
+                "localSsdCount": "local_ssd_count",
                 "usePreemptibleExecutors": "use_preemptible_executors",
                 "zoneId": "zone_id"
             },
@@ -3827,7 +3862,8 @@
                 "ebsVolumeType": "ebs_volume_type"
             },
             "databricks:index/getInstancePoolPoolInfoGcpAttributes:getInstancePoolPoolInfoGcpAttributes": {
-                "gcpAvailability": "gcp_availability"
+                "gcpAvailability": "gcp_availability",
+                "localSsdCount": "local_ssd_count"
             },
             "databricks:index/getInstancePoolPoolInfoInstancePoolFleetAttribute:getInstancePoolPoolInfoInstancePoolFleetAttribute": {
                 "fleetOnDemandOption": "fleet_on_demand_option",
@@ -3880,10 +3916,12 @@
                 "newCluster": "new_cluster",
                 "notebookTask": "notebook_task",
                 "notificationSettings": "notification_settings",
+                "parameters": "parameter",
                 "pipelineTask": "pipeline_task",
                 "pythonWheelTask": "python_wheel_task",
                 "retryOnTimeout": "retry_on_timeout",
                 "runAs": "run_as",
+                "runJobTask": "run_job_task",
                 "sparkJarTask": "spark_jar_task",
                 "sparkPythonTask": "spark_python_task",
                 "sparkSubmitTask": "spark_submit_task",
@@ -3991,6 +4029,7 @@
             "databricks:index/getJobJobSettingsSettingsJobClusterNewClusterGcpAttributes:getJobJobSettingsSettingsJobClusterNewClusterGcpAttributes": {
                 "bootDiskSize": "boot_disk_size",
                 "googleServiceAccount": "google_service_account",
+                "localSsdCount": "local_ssd_count",
                 "usePreemptibleExecutors": "use_preemptible_executors",
                 "zoneId": "zone_id"
             },
@@ -4069,6 +4108,7 @@
             "databricks:index/getJobJobSettingsSettingsNewClusterGcpAttributes:getJobJobSettingsSettingsNewClusterGcpAttributes": {
                 "bootDiskSize": "boot_disk_size",
                 "googleServiceAccount": "google_service_account",
+                "localSsdCount": "local_ssd_count",
                 "usePreemptibleExecutors": "use_preemptible_executors",
                 "zoneId": "zone_id"
             },
@@ -4098,6 +4138,10 @@
             "databricks:index/getJobJobSettingsSettingsRunAs:getJobJobSettingsSettingsRunAs": {
                 "servicePrincipalName": "service_principal_name",
                 "userName": "user_name"
+            },
+            "databricks:index/getJobJobSettingsSettingsRunJobTask:getJobJobSettingsSettingsRunJobTask": {
+                "jobId": "job_id",
+                "jobParameters": "job_parameters"
             },
             "databricks:index/getJobJobSettingsSettingsSchedule:getJobJobSettingsSettingsSchedule": {
                 "pauseStatus": "pause_status",
@@ -4129,6 +4173,7 @@
                 "pythonWheelTask": "python_wheel_task",
                 "retryOnTimeout": "retry_on_timeout",
                 "runIf": "run_if",
+                "runJobTask": "run_job_task",
                 "sparkJarTask": "spark_jar_task",
                 "sparkPythonTask": "spark_python_task",
                 "sparkSubmitTask": "spark_submit_task",
@@ -4221,6 +4266,7 @@
             "databricks:index/getJobJobSettingsSettingsTaskNewClusterGcpAttributes:getJobJobSettingsSettingsTaskNewClusterGcpAttributes": {
                 "bootDiskSize": "boot_disk_size",
                 "googleServiceAccount": "google_service_account",
+                "localSsdCount": "local_ssd_count",
                 "usePreemptibleExecutors": "use_preemptible_executors",
                 "zoneId": "zone_id"
             },
@@ -4247,6 +4293,10 @@
                 "entryPoint": "entry_point",
                 "namedParameters": "named_parameters",
                 "packageName": "package_name"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskRunJobTask:getJobJobSettingsSettingsTaskRunJobTask": {
+                "jobId": "job_id",
+                "jobParameters": "job_parameters"
             },
             "databricks:index/getJobJobSettingsSettingsTaskSparkJarTask:getJobJobSettingsSettingsTaskSparkJarTask": {
                 "jarUri": "jar_uri",
@@ -4487,10 +4537,12 @@
                 "newCluster": "new_cluster",
                 "notebookTask": "notebook_task",
                 "notificationSettings": "notification_settings",
+                "parameters": "parameter",
                 "pipelineTask": "pipeline_task",
                 "pythonWheelTask": "python_wheel_task",
                 "retryOnTimeout": "retry_on_timeout",
                 "runAs": "run_as",
+                "runJobTask": "run_job_task",
                 "sparkJarTask": "spark_jar_task",
                 "sparkPythonTask": "spark_python_task",
                 "sparkSubmitTask": "spark_submit_task",
