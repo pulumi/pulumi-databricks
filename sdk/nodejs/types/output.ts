@@ -87,6 +87,10 @@ export interface ClusterGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
     googleServiceAccount?: string;
+    localSsdCount?: number;
+    /**
+     * @deprecated Please use 'availability' instead.
+     */
     usePreemptibleExecutors?: boolean;
     zoneId?: string;
 }
@@ -352,6 +356,7 @@ export interface GetClusterClusterInfoGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
     googleServiceAccount?: string;
+    localSsdCount?: number;
     usePreemptibleExecutors?: boolean;
     zoneId?: string;
 }
@@ -454,6 +459,7 @@ export interface GetInstancePoolPoolInfoDiskSpecDiskType {
 
 export interface GetInstancePoolPoolInfoGcpAttributes {
     gcpAvailability?: string;
+    localSsdCount?: number;
 }
 
 export interface GetInstancePoolPoolInfoInstancePoolFleetAttribute {
@@ -523,11 +529,13 @@ export interface GetJobJobSettingsSettings {
     newCluster?: outputs.GetJobJobSettingsSettingsNewCluster;
     notebookTask?: outputs.GetJobJobSettingsSettingsNotebookTask;
     notificationSettings?: outputs.GetJobJobSettingsSettingsNotificationSettings;
+    parameters?: outputs.GetJobJobSettingsSettingsParameter[];
     pipelineTask?: outputs.GetJobJobSettingsSettingsPipelineTask;
     pythonWheelTask?: outputs.GetJobJobSettingsSettingsPythonWheelTask;
     queue?: outputs.GetJobJobSettingsSettingsQueue;
     retryOnTimeout?: boolean;
     runAs?: outputs.GetJobJobSettingsSettingsRunAs;
+    runJobTask?: outputs.GetJobJobSettingsSettingsRunJobTask;
     schedule?: outputs.GetJobJobSettingsSettingsSchedule;
     sparkJarTask?: outputs.GetJobJobSettingsSettingsSparkJarTask;
     sparkPythonTask?: outputs.GetJobJobSettingsSettingsSparkPythonTask;
@@ -699,6 +707,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
     googleServiceAccount?: string;
+    localSsdCount?: number;
     usePreemptibleExecutors?: boolean;
     zoneId?: string;
 }
@@ -875,6 +884,7 @@ export interface GetJobJobSettingsSettingsNewClusterGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
     googleServiceAccount?: string;
+    localSsdCount?: number;
     usePreemptibleExecutors?: boolean;
     zoneId?: string;
 }
@@ -938,6 +948,14 @@ export interface GetJobJobSettingsSettingsNotificationSettings {
     noAlertForSkippedRuns?: boolean;
 }
 
+export interface GetJobJobSettingsSettingsParameter {
+    default?: string;
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     */
+    name?: string;
+}
+
 export interface GetJobJobSettingsSettingsPipelineTask {
     fullRefresh?: boolean;
     pipelineId: string;
@@ -956,6 +974,11 @@ export interface GetJobJobSettingsSettingsQueue {
 export interface GetJobJobSettingsSettingsRunAs {
     servicePrincipalName?: string;
     userName?: string;
+}
+
+export interface GetJobJobSettingsSettingsRunJobTask {
+    jobId: string;
+    jobParameters?: {[key: string]: any};
 }
 
 export interface GetJobJobSettingsSettingsSchedule {
@@ -1000,6 +1023,7 @@ export interface GetJobJobSettingsSettingsTask {
     pythonWheelTask?: outputs.GetJobJobSettingsSettingsTaskPythonWheelTask;
     retryOnTimeout: boolean;
     runIf?: string;
+    runJobTask?: outputs.GetJobJobSettingsSettingsTaskRunJobTask;
     sparkJarTask?: outputs.GetJobJobSettingsSettingsTaskSparkJarTask;
     sparkPythonTask?: outputs.GetJobJobSettingsSettingsTaskSparkPythonTask;
     sparkSubmitTask?: outputs.GetJobJobSettingsSettingsTaskSparkSubmitTask;
@@ -1171,6 +1195,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
     googleServiceAccount?: string;
+    localSsdCount?: number;
     usePreemptibleExecutors?: boolean;
     zoneId?: string;
 }
@@ -1245,6 +1270,11 @@ export interface GetJobJobSettingsSettingsTaskPythonWheelTask {
     namedParameters?: {[key: string]: any};
     packageName?: string;
     parameters?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskRunJobTask {
+    jobId: string;
+    jobParameters?: {[key: string]: any};
 }
 
 export interface GetJobJobSettingsSettingsTaskSparkJarTask {
@@ -1482,7 +1512,7 @@ export interface InstancePoolAwsAttributes {
 
 export interface InstancePoolAzureAttributes {
     /**
-     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
      */
     availability?: string;
     /**
@@ -1509,7 +1539,14 @@ export interface InstancePoolDiskSpecDiskType {
 }
 
 export interface InstancePoolGcpAttributes {
+    /**
+     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     */
     gcpAvailability?: string;
+    /**
+     * Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+     */
+    localSsdCount?: number;
 }
 
 export interface InstancePoolInstancePoolFleetAttributes {
@@ -1780,6 +1817,7 @@ export interface JobJobClusterNewClusterGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
     googleServiceAccount?: string;
+    localSsdCount?: number;
     usePreemptibleExecutors?: boolean;
     zoneId?: string;
 }
@@ -2005,6 +2043,7 @@ export interface JobNewClusterGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
     googleServiceAccount?: string;
+    localSsdCount?: number;
     usePreemptibleExecutors?: boolean;
     zoneId?: string;
 }
@@ -2124,9 +2163,20 @@ export interface JobNotificationSettings {
      */
     noAlertForCanceledRuns?: boolean;
     /**
-     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     * (Bool) don't send alert for skipped runs.
      */
     noAlertForSkippedRuns?: boolean;
+}
+
+export interface JobParameter {
+    /**
+     * Default value of the parameter.
+     */
+    default?: string;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name?: string;
 }
 
 export interface JobPipelineTask {
@@ -2184,6 +2234,17 @@ export interface JobRunAs {
      * The email of an active workspace user. Non-admin users can only set this field to their own email.
      */
     userName?: string;
+}
+
+export interface JobRunJobTask {
+    /**
+     * (String) ID of the job
+     */
+    jobId: string;
+    /**
+     * (Map) Job parameters for the task
+     */
+    jobParameters?: {[key: string]: any};
 }
 
 export interface JobSchedule {
@@ -2284,7 +2345,11 @@ export interface JobTask {
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      */
     retryOnTimeout: boolean;
+    /**
+     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     */
     runIf?: string;
+    runJobTask?: outputs.JobTaskRunJobTask;
     sparkJarTask?: outputs.JobTaskSparkJarTask;
     sparkPythonTask?: outputs.JobTaskSparkPythonTask;
     sparkSubmitTask?: outputs.JobTaskSparkSubmitTask;
@@ -2522,6 +2587,7 @@ export interface JobTaskNewClusterGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
     googleServiceAccount?: string;
+    localSsdCount?: number;
     usePreemptibleExecutors?: boolean;
     zoneId?: string;
 }
@@ -2645,7 +2711,7 @@ export interface JobTaskNotificationSettings {
      */
     noAlertForCanceledRuns?: boolean;
     /**
-     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     * (Bool) don't send alert for skipped runs.
      */
     noAlertForSkippedRuns?: boolean;
 }
@@ -2680,6 +2746,17 @@ export interface JobTaskPythonWheelTask {
      * Parameters for the task
      */
     parameters?: string[];
+}
+
+export interface JobTaskRunJobTask {
+    /**
+     * (String) ID of the job
+     */
+    jobId: string;
+    /**
+     * (Map) Job parameters for the task
+     */
+    jobParameters?: {[key: string]: any};
 }
 
 export interface JobTaskSparkJarTask {
@@ -3052,6 +3129,7 @@ export interface ModelServingConfig {
 
 export interface ModelServingConfigServedModel {
     environmentVars?: {[key: string]: any};
+    instanceProfileArn?: string;
     /**
      * The name of the model in Databricks Model Registry to be served.
      */
@@ -3343,6 +3421,7 @@ export interface PipelineClusterClusterLogConfS3 {
 export interface PipelineClusterGcpAttributes {
     availability?: string;
     googleServiceAccount?: string;
+    localSsdCount?: number;
     zoneId?: string;
 }
 

@@ -16,10 +16,12 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNotebookTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNotificationSettingsArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsParameterArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPipelineTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPythonWheelTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsQueueArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsRunAsArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsRunJobTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsScheduleArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkJarTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkPythonTaskArgs;
@@ -169,6 +171,13 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.notificationSettings);
     }
 
+    @Import(name="parameters")
+    private @Nullable Output<List<GetJobJobSettingsSettingsParameterArgs>> parameters;
+
+    public Optional<Output<List<GetJobJobSettingsSettingsParameterArgs>>> parameters() {
+        return Optional.ofNullable(this.parameters);
+    }
+
     @Import(name="pipelineTask")
     private @Nullable Output<GetJobJobSettingsSettingsPipelineTaskArgs> pipelineTask;
 
@@ -202,6 +211,13 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
     public Optional<Output<GetJobJobSettingsSettingsRunAsArgs>> runAs() {
         return Optional.ofNullable(this.runAs);
+    }
+
+    @Import(name="runJobTask")
+    private @Nullable Output<GetJobJobSettingsSettingsRunJobTaskArgs> runJobTask;
+
+    public Optional<Output<GetJobJobSettingsSettingsRunJobTaskArgs>> runJobTask() {
+        return Optional.ofNullable(this.runJobTask);
     }
 
     @Import(name="schedule")
@@ -287,11 +303,13 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         this.newCluster = $.newCluster;
         this.notebookTask = $.notebookTask;
         this.notificationSettings = $.notificationSettings;
+        this.parameters = $.parameters;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.queue = $.queue;
         this.retryOnTimeout = $.retryOnTimeout;
         this.runAs = $.runAs;
+        this.runJobTask = $.runJobTask;
         this.schedule = $.schedule;
         this.sparkJarTask = $.sparkJarTask;
         this.sparkPythonTask = $.sparkPythonTask;
@@ -498,6 +516,19 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
             return notificationSettings(Output.of(notificationSettings));
         }
 
+        public Builder parameters(@Nullable Output<List<GetJobJobSettingsSettingsParameterArgs>> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        public Builder parameters(List<GetJobJobSettingsSettingsParameterArgs> parameters) {
+            return parameters(Output.of(parameters));
+        }
+
+        public Builder parameters(GetJobJobSettingsSettingsParameterArgs... parameters) {
+            return parameters(List.of(parameters));
+        }
+
         public Builder pipelineTask(@Nullable Output<GetJobJobSettingsSettingsPipelineTaskArgs> pipelineTask) {
             $.pipelineTask = pipelineTask;
             return this;
@@ -541,6 +572,15 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
         public Builder runAs(GetJobJobSettingsSettingsRunAsArgs runAs) {
             return runAs(Output.of(runAs));
+        }
+
+        public Builder runJobTask(@Nullable Output<GetJobJobSettingsSettingsRunJobTaskArgs> runJobTask) {
+            $.runJobTask = runJobTask;
+            return this;
+        }
+
+        public Builder runJobTask(GetJobJobSettingsSettingsRunJobTaskArgs runJobTask) {
+            return runJobTask(Output.of(runJobTask));
         }
 
         public Builder schedule(@Nullable Output<GetJobJobSettingsSettingsScheduleArgs> schedule) {

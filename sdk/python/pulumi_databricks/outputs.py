@@ -106,10 +106,12 @@ __all__ = [
     'JobNewClusterWorkloadTypeClients',
     'JobNotebookTask',
     'JobNotificationSettings',
+    'JobParameter',
     'JobPipelineTask',
     'JobPythonWheelTask',
     'JobQueue',
     'JobRunAs',
+    'JobRunJobTask',
     'JobSchedule',
     'JobSparkJarTask',
     'JobSparkPythonTask',
@@ -150,6 +152,7 @@ __all__ = [
     'JobTaskNotificationSettings',
     'JobTaskPipelineTask',
     'JobTaskPythonWheelTask',
+    'JobTaskRunJobTask',
     'JobTaskSparkJarTask',
     'JobTaskSparkPythonTask',
     'JobTaskSparkSubmitTask',
@@ -360,10 +363,12 @@ __all__ = [
     'GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsResult',
     'GetJobJobSettingsSettingsNotebookTaskResult',
     'GetJobJobSettingsSettingsNotificationSettingsResult',
+    'GetJobJobSettingsSettingsParameterResult',
     'GetJobJobSettingsSettingsPipelineTaskResult',
     'GetJobJobSettingsSettingsPythonWheelTaskResult',
     'GetJobJobSettingsSettingsQueueResult',
     'GetJobJobSettingsSettingsRunAsResult',
+    'GetJobJobSettingsSettingsRunJobTaskResult',
     'GetJobJobSettingsSettingsScheduleResult',
     'GetJobJobSettingsSettingsSparkJarTaskResult',
     'GetJobJobSettingsSettingsSparkPythonTaskResult',
@@ -404,6 +409,7 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskNotificationSettingsResult',
     'GetJobJobSettingsSettingsTaskPipelineTaskResult',
     'GetJobJobSettingsSettingsTaskPythonWheelTaskResult',
+    'GetJobJobSettingsSettingsTaskRunJobTaskResult',
     'GetJobJobSettingsSettingsTaskSparkJarTaskResult',
     'GetJobJobSettingsSettingsTaskSparkPythonTaskResult',
     'GetJobJobSettingsSettingsTaskSparkSubmitTaskResult',
@@ -926,6 +932,8 @@ class ClusterGcpAttributes(dict):
             suggest = "boot_disk_size"
         elif key == "googleServiceAccount":
             suggest = "google_service_account"
+        elif key == "localSsdCount":
+            suggest = "local_ssd_count"
         elif key == "usePreemptibleExecutors":
             suggest = "use_preemptible_executors"
         elif key == "zoneId":
@@ -946,6 +954,7 @@ class ClusterGcpAttributes(dict):
                  availability: Optional[str] = None,
                  boot_disk_size: Optional[int] = None,
                  google_service_account: Optional[str] = None,
+                 local_ssd_count: Optional[int] = None,
                  use_preemptible_executors: Optional[bool] = None,
                  zone_id: Optional[str] = None):
         if availability is not None:
@@ -954,6 +963,8 @@ class ClusterGcpAttributes(dict):
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if use_preemptible_executors is not None:
             pulumi.set(__self__, "use_preemptible_executors", use_preemptible_executors)
         if zone_id is not None:
@@ -975,8 +986,16 @@ class ClusterGcpAttributes(dict):
         return pulumi.get(self, "google_service_account")
 
     @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        return pulumi.get(self, "local_ssd_count")
+
+    @property
     @pulumi.getter(name="usePreemptibleExecutors")
     def use_preemptible_executors(self) -> Optional[bool]:
+        warnings.warn("""Please use 'availability' instead.""", DeprecationWarning)
+        pulumi.log.warn("""use_preemptible_executors is deprecated: Please use 'availability' instead.""")
+
         return pulumi.get(self, "use_preemptible_executors")
 
     @property
@@ -1443,7 +1462,7 @@ class InstancePoolAzureAttributes(dict):
                  availability: Optional[str] = None,
                  spot_bid_max_price: Optional[float] = None):
         """
-        :param str availability: Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+        :param str availability: Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
         :param float spot_bid_max_price: The max price for Azure spot instances.  Use `-1` to specify the lowest price.
         """
         if availability is not None:
@@ -1455,7 +1474,7 @@ class InstancePoolAzureAttributes(dict):
     @pulumi.getter
     def availability(self) -> Optional[str]:
         """
-        Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+        Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
         """
         return pulumi.get(self, "availability")
 
@@ -1575,6 +1594,8 @@ class InstancePoolGcpAttributes(dict):
         suggest = None
         if key == "gcpAvailability":
             suggest = "gcp_availability"
+        elif key == "localSsdCount":
+            suggest = "local_ssd_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstancePoolGcpAttributes. Access the value via the '{suggest}' property getter instead.")
@@ -1588,14 +1609,32 @@ class InstancePoolGcpAttributes(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 gcp_availability: Optional[str] = None):
+                 gcp_availability: Optional[str] = None,
+                 local_ssd_count: Optional[int] = None):
+        """
+        :param str gcp_availability: Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+        :param int local_ssd_count: Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+        """
         if gcp_availability is not None:
             pulumi.set(__self__, "gcp_availability", gcp_availability)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
 
     @property
     @pulumi.getter(name="gcpAvailability")
     def gcp_availability(self) -> Optional[str]:
+        """
+        Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+        """
         return pulumi.get(self, "gcp_availability")
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        """
+        Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+        """
+        return pulumi.get(self, "local_ssd_count")
 
 
 @pulumi.output_type
@@ -3142,6 +3181,8 @@ class JobJobClusterNewClusterGcpAttributes(dict):
             suggest = "boot_disk_size"
         elif key == "googleServiceAccount":
             suggest = "google_service_account"
+        elif key == "localSsdCount":
+            suggest = "local_ssd_count"
         elif key == "usePreemptibleExecutors":
             suggest = "use_preemptible_executors"
         elif key == "zoneId":
@@ -3162,6 +3203,7 @@ class JobJobClusterNewClusterGcpAttributes(dict):
                  availability: Optional[str] = None,
                  boot_disk_size: Optional[int] = None,
                  google_service_account: Optional[str] = None,
+                 local_ssd_count: Optional[int] = None,
                  use_preemptible_executors: Optional[bool] = None,
                  zone_id: Optional[str] = None):
         if availability is not None:
@@ -3170,6 +3212,8 @@ class JobJobClusterNewClusterGcpAttributes(dict):
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if use_preemptible_executors is not None:
             pulumi.set(__self__, "use_preemptible_executors", use_preemptible_executors)
         if zone_id is not None:
@@ -3189,6 +3233,11 @@ class JobJobClusterNewClusterGcpAttributes(dict):
     @pulumi.getter(name="googleServiceAccount")
     def google_service_account(self) -> Optional[str]:
         return pulumi.get(self, "google_service_account")
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        return pulumi.get(self, "local_ssd_count")
 
     @property
     @pulumi.getter(name="usePreemptibleExecutors")
@@ -4424,6 +4473,8 @@ class JobNewClusterGcpAttributes(dict):
             suggest = "boot_disk_size"
         elif key == "googleServiceAccount":
             suggest = "google_service_account"
+        elif key == "localSsdCount":
+            suggest = "local_ssd_count"
         elif key == "usePreemptibleExecutors":
             suggest = "use_preemptible_executors"
         elif key == "zoneId":
@@ -4444,6 +4495,7 @@ class JobNewClusterGcpAttributes(dict):
                  availability: Optional[str] = None,
                  boot_disk_size: Optional[int] = None,
                  google_service_account: Optional[str] = None,
+                 local_ssd_count: Optional[int] = None,
                  use_preemptible_executors: Optional[bool] = None,
                  zone_id: Optional[str] = None):
         if availability is not None:
@@ -4452,6 +4504,8 @@ class JobNewClusterGcpAttributes(dict):
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if use_preemptible_executors is not None:
             pulumi.set(__self__, "use_preemptible_executors", use_preemptible_executors)
         if zone_id is not None:
@@ -4471,6 +4525,11 @@ class JobNewClusterGcpAttributes(dict):
     @pulumi.getter(name="googleServiceAccount")
     def google_service_account(self) -> Optional[str]:
         return pulumi.get(self, "google_service_account")
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        return pulumi.get(self, "local_ssd_count")
 
     @property
     @pulumi.getter(name="usePreemptibleExecutors")
@@ -4895,7 +4954,7 @@ class JobNotificationSettings(dict):
                  no_alert_for_skipped_runs: Optional[bool] = None):
         """
         :param bool no_alert_for_canceled_runs: (Bool) don't send alert for cancelled runs.
-        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs.
         """
         if no_alert_for_canceled_runs is not None:
             pulumi.set(__self__, "no_alert_for_canceled_runs", no_alert_for_canceled_runs)
@@ -4914,9 +4973,40 @@ class JobNotificationSettings(dict):
     @pulumi.getter(name="noAlertForSkippedRuns")
     def no_alert_for_skipped_runs(self) -> Optional[bool]:
         """
-        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        (Bool) don't send alert for skipped runs.
         """
         return pulumi.get(self, "no_alert_for_skipped_runs")
+
+
+@pulumi.output_type
+class JobParameter(dict):
+    def __init__(__self__, *,
+                 default: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str default: Default value of the parameter.
+        :param str name: An optional name for the job. The default value is Untitled.
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[str]:
+        """
+        Default value of the parameter.
+        """
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        An optional name for the job. The default value is Untitled.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -5124,6 +5214,55 @@ class JobRunAs(dict):
         The email of an active workspace user. Non-admin users can only set this field to their own email.
         """
         return pulumi.get(self, "user_name")
+
+
+@pulumi.output_type
+class JobRunJobTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobId":
+            suggest = "job_id"
+        elif key == "jobParameters":
+            suggest = "job_parameters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobRunJobTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobRunJobTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobRunJobTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 job_id: str,
+                 job_parameters: Optional[Mapping[str, Any]] = None):
+        """
+        :param str job_id: (String) ID of the job
+        :param Mapping[str, Any] job_parameters: (Map) Job parameters for the task
+        """
+        pulumi.set(__self__, "job_id", job_id)
+        if job_parameters is not None:
+            pulumi.set(__self__, "job_parameters", job_parameters)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> str:
+        """
+        (String) ID of the job
+        """
+        return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="jobParameters")
+    def job_parameters(self) -> Optional[Mapping[str, Any]]:
+        """
+        (Map) Job parameters for the task
+        """
+        return pulumi.get(self, "job_parameters")
 
 
 @pulumi.output_type
@@ -5361,6 +5500,8 @@ class JobTask(dict):
             suggest = "retry_on_timeout"
         elif key == "runIf":
             suggest = "run_if"
+        elif key == "runJobTask":
+            suggest = "run_job_task"
         elif key == "sparkJarTask":
             suggest = "spark_jar_task"
         elif key == "sparkPythonTask":
@@ -5405,6 +5546,7 @@ class JobTask(dict):
                  python_wheel_task: Optional['outputs.JobTaskPythonWheelTask'] = None,
                  retry_on_timeout: Optional[bool] = None,
                  run_if: Optional[str] = None,
+                 run_job_task: Optional['outputs.JobTaskRunJobTask'] = None,
                  spark_jar_task: Optional['outputs.JobTaskSparkJarTask'] = None,
                  spark_python_task: Optional['outputs.JobTaskSparkPythonTask'] = None,
                  spark_submit_task: Optional['outputs.JobTaskSparkSubmitTask'] = None,
@@ -5422,6 +5564,7 @@ class JobTask(dict):
         :param 'JobTaskNewClusterArgs' new_cluster: Same set of parameters as for Cluster resource.
         :param 'JobTaskNotificationSettingsArgs' notification_settings: An optional block controlling the notification settings on the job level (described below).
         :param bool retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
+        :param str run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
         :param str task_key: string specifying an unique key for a given task.
                * `*_task` - (Required) one of the specific task blocks described below:
         :param int timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -5464,6 +5607,8 @@ class JobTask(dict):
             pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
         if run_if is not None:
             pulumi.set(__self__, "run_if", run_if)
+        if run_job_task is not None:
+            pulumi.set(__self__, "run_job_task", run_job_task)
         if spark_jar_task is not None:
             pulumi.set(__self__, "spark_jar_task", spark_jar_task)
         if spark_python_task is not None:
@@ -5600,7 +5745,15 @@ class JobTask(dict):
     @property
     @pulumi.getter(name="runIf")
     def run_if(self) -> Optional[str]:
+        """
+        An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+        """
         return pulumi.get(self, "run_if")
+
+    @property
+    @pulumi.getter(name="runJobTask")
+    def run_job_task(self) -> Optional['outputs.JobTaskRunJobTask']:
+        return pulumi.get(self, "run_job_task")
 
     @property
     @pulumi.getter(name="sparkJarTask")
@@ -6886,6 +7039,8 @@ class JobTaskNewClusterGcpAttributes(dict):
             suggest = "boot_disk_size"
         elif key == "googleServiceAccount":
             suggest = "google_service_account"
+        elif key == "localSsdCount":
+            suggest = "local_ssd_count"
         elif key == "usePreemptibleExecutors":
             suggest = "use_preemptible_executors"
         elif key == "zoneId":
@@ -6906,6 +7061,7 @@ class JobTaskNewClusterGcpAttributes(dict):
                  availability: Optional[str] = None,
                  boot_disk_size: Optional[int] = None,
                  google_service_account: Optional[str] = None,
+                 local_ssd_count: Optional[int] = None,
                  use_preemptible_executors: Optional[bool] = None,
                  zone_id: Optional[str] = None):
         if availability is not None:
@@ -6914,6 +7070,8 @@ class JobTaskNewClusterGcpAttributes(dict):
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if use_preemptible_executors is not None:
             pulumi.set(__self__, "use_preemptible_executors", use_preemptible_executors)
         if zone_id is not None:
@@ -6933,6 +7091,11 @@ class JobTaskNewClusterGcpAttributes(dict):
     @pulumi.getter(name="googleServiceAccount")
     def google_service_account(self) -> Optional[str]:
         return pulumi.get(self, "google_service_account")
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        return pulumi.get(self, "local_ssd_count")
 
     @property
     @pulumi.getter(name="usePreemptibleExecutors")
@@ -7361,7 +7524,7 @@ class JobTaskNotificationSettings(dict):
         """
         :param bool alert_on_last_attempt: (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
         :param bool no_alert_for_canceled_runs: (Bool) don't send alert for cancelled runs.
-        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs.
         """
         if alert_on_last_attempt is not None:
             pulumi.set(__self__, "alert_on_last_attempt", alert_on_last_attempt)
@@ -7390,7 +7553,7 @@ class JobTaskNotificationSettings(dict):
     @pulumi.getter(name="noAlertForSkippedRuns")
     def no_alert_for_skipped_runs(self) -> Optional[bool]:
         """
-        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        (Bool) don't send alert for skipped runs.
         """
         return pulumi.get(self, "no_alert_for_skipped_runs")
 
@@ -7522,6 +7685,55 @@ class JobTaskPythonWheelTask(dict):
         Parameters for the task
         """
         return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class JobTaskRunJobTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobId":
+            suggest = "job_id"
+        elif key == "jobParameters":
+            suggest = "job_parameters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskRunJobTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskRunJobTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskRunJobTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 job_id: str,
+                 job_parameters: Optional[Mapping[str, Any]] = None):
+        """
+        :param str job_id: (String) ID of the job
+        :param Mapping[str, Any] job_parameters: (Map) Job parameters for the task
+        """
+        pulumi.set(__self__, "job_id", job_id)
+        if job_parameters is not None:
+            pulumi.set(__self__, "job_parameters", job_parameters)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> str:
+        """
+        (String) ID of the job
+        """
+        return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="jobParameters")
+    def job_parameters(self) -> Optional[Mapping[str, Any]]:
+        """
+        (Map) Job parameters for the task
+        """
+        return pulumi.get(self, "job_parameters")
 
 
 @pulumi.output_type
@@ -8897,6 +9109,8 @@ class ModelServingConfigServedModel(dict):
             suggest = "workload_size"
         elif key == "environmentVars":
             suggest = "environment_vars"
+        elif key == "instanceProfileArn":
+            suggest = "instance_profile_arn"
         elif key == "scaleToZeroEnabled":
             suggest = "scale_to_zero_enabled"
 
@@ -8916,6 +9130,7 @@ class ModelServingConfigServedModel(dict):
                  model_version: str,
                  workload_size: str,
                  environment_vars: Optional[Mapping[str, Any]] = None,
+                 instance_profile_arn: Optional[str] = None,
                  name: Optional[str] = None,
                  scale_to_zero_enabled: Optional[bool] = None):
         """
@@ -8930,6 +9145,8 @@ class ModelServingConfigServedModel(dict):
         pulumi.set(__self__, "workload_size", workload_size)
         if environment_vars is not None:
             pulumi.set(__self__, "environment_vars", environment_vars)
+        if instance_profile_arn is not None:
+            pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if scale_to_zero_enabled is not None:
@@ -8963,6 +9180,11 @@ class ModelServingConfigServedModel(dict):
     @pulumi.getter(name="environmentVars")
     def environment_vars(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "environment_vars")
+
+    @property
+    @pulumi.getter(name="instanceProfileArn")
+    def instance_profile_arn(self) -> Optional[str]:
+        return pulumi.get(self, "instance_profile_arn")
 
     @property
     @pulumi.getter
@@ -10595,6 +10817,8 @@ class PipelineClusterGcpAttributes(dict):
         suggest = None
         if key == "googleServiceAccount":
             suggest = "google_service_account"
+        elif key == "localSsdCount":
+            suggest = "local_ssd_count"
         elif key == "zoneId":
             suggest = "zone_id"
 
@@ -10612,11 +10836,14 @@ class PipelineClusterGcpAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  google_service_account: Optional[str] = None,
+                 local_ssd_count: Optional[int] = None,
                  zone_id: Optional[str] = None):
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -10629,6 +10856,11 @@ class PipelineClusterGcpAttributes(dict):
     @pulumi.getter(name="googleServiceAccount")
     def google_service_account(self) -> Optional[str]:
         return pulumi.get(self, "google_service_account")
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        return pulumi.get(self, "local_ssd_count")
 
     @property
     @pulumi.getter(name="zoneId")
@@ -13638,6 +13870,7 @@ class GetClusterClusterInfoGcpAttributesResult(dict):
                  availability: Optional[str] = None,
                  boot_disk_size: Optional[int] = None,
                  google_service_account: Optional[str] = None,
+                 local_ssd_count: Optional[int] = None,
                  use_preemptible_executors: Optional[bool] = None,
                  zone_id: Optional[str] = None):
         if availability is not None:
@@ -13646,6 +13879,8 @@ class GetClusterClusterInfoGcpAttributesResult(dict):
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if use_preemptible_executors is not None:
             pulumi.set(__self__, "use_preemptible_executors", use_preemptible_executors)
         if zone_id is not None:
@@ -13665,6 +13900,11 @@ class GetClusterClusterInfoGcpAttributesResult(dict):
     @pulumi.getter(name="googleServiceAccount")
     def google_service_account(self) -> Optional[str]:
         return pulumi.get(self, "google_service_account")
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        return pulumi.get(self, "local_ssd_count")
 
     @property
     @pulumi.getter(name="usePreemptibleExecutors")
@@ -14157,14 +14397,22 @@ class GetInstancePoolPoolInfoDiskSpecDiskTypeResult(dict):
 @pulumi.output_type
 class GetInstancePoolPoolInfoGcpAttributesResult(dict):
     def __init__(__self__, *,
-                 gcp_availability: Optional[str] = None):
+                 gcp_availability: Optional[str] = None,
+                 local_ssd_count: Optional[int] = None):
         if gcp_availability is not None:
             pulumi.set(__self__, "gcp_availability", gcp_availability)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
 
     @property
     @pulumi.getter(name="gcpAvailability")
     def gcp_availability(self) -> Optional[str]:
         return pulumi.get(self, "gcp_availability")
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        return pulumi.get(self, "local_ssd_count")
 
 
 @pulumi.output_type
@@ -14394,11 +14642,13 @@ class GetJobJobSettingsSettingsResult(dict):
                  new_cluster: Optional['outputs.GetJobJobSettingsSettingsNewClusterResult'] = None,
                  notebook_task: Optional['outputs.GetJobJobSettingsSettingsNotebookTaskResult'] = None,
                  notification_settings: Optional['outputs.GetJobJobSettingsSettingsNotificationSettingsResult'] = None,
+                 parameters: Optional[Sequence['outputs.GetJobJobSettingsSettingsParameterResult']] = None,
                  pipeline_task: Optional['outputs.GetJobJobSettingsSettingsPipelineTaskResult'] = None,
                  python_wheel_task: Optional['outputs.GetJobJobSettingsSettingsPythonWheelTaskResult'] = None,
                  queue: Optional['outputs.GetJobJobSettingsSettingsQueueResult'] = None,
                  retry_on_timeout: Optional[bool] = None,
                  run_as: Optional['outputs.GetJobJobSettingsSettingsRunAsResult'] = None,
+                 run_job_task: Optional['outputs.GetJobJobSettingsSettingsRunJobTaskResult'] = None,
                  schedule: Optional['outputs.GetJobJobSettingsSettingsScheduleResult'] = None,
                  spark_jar_task: Optional['outputs.GetJobJobSettingsSettingsSparkJarTaskResult'] = None,
                  spark_python_task: Optional['outputs.GetJobJobSettingsSettingsSparkPythonTaskResult'] = None,
@@ -14444,6 +14694,8 @@ class GetJobJobSettingsSettingsResult(dict):
             pulumi.set(__self__, "notebook_task", notebook_task)
         if notification_settings is not None:
             pulumi.set(__self__, "notification_settings", notification_settings)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
         if python_wheel_task is not None:
@@ -14454,6 +14706,8 @@ class GetJobJobSettingsSettingsResult(dict):
             pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
         if run_as is not None:
             pulumi.set(__self__, "run_as", run_as)
+        if run_job_task is not None:
+            pulumi.set(__self__, "run_job_task", run_job_task)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if spark_jar_task is not None:
@@ -14562,6 +14816,11 @@ class GetJobJobSettingsSettingsResult(dict):
         return pulumi.get(self, "notification_settings")
 
     @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsParameterResult']]:
+        return pulumi.get(self, "parameters")
+
+    @property
     @pulumi.getter(name="pipelineTask")
     def pipeline_task(self) -> Optional['outputs.GetJobJobSettingsSettingsPipelineTaskResult']:
         return pulumi.get(self, "pipeline_task")
@@ -14585,6 +14844,11 @@ class GetJobJobSettingsSettingsResult(dict):
     @pulumi.getter(name="runAs")
     def run_as(self) -> Optional['outputs.GetJobJobSettingsSettingsRunAsResult']:
         return pulumi.get(self, "run_as")
+
+    @property
+    @pulumi.getter(name="runJobTask")
+    def run_job_task(self) -> Optional['outputs.GetJobJobSettingsSettingsRunJobTaskResult']:
+        return pulumi.get(self, "run_job_task")
 
     @property
     @pulumi.getter
@@ -15466,6 +15730,7 @@ class GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesResult(dict):
                  availability: Optional[str] = None,
                  boot_disk_size: Optional[int] = None,
                  google_service_account: Optional[str] = None,
+                 local_ssd_count: Optional[int] = None,
                  use_preemptible_executors: Optional[bool] = None,
                  zone_id: Optional[str] = None):
         if availability is not None:
@@ -15474,6 +15739,8 @@ class GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesResult(dict):
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if use_preemptible_executors is not None:
             pulumi.set(__self__, "use_preemptible_executors", use_preemptible_executors)
         if zone_id is not None:
@@ -15493,6 +15760,11 @@ class GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesResult(dict):
     @pulumi.getter(name="googleServiceAccount")
     def google_service_account(self) -> Optional[str]:
         return pulumi.get(self, "google_service_account")
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        return pulumi.get(self, "local_ssd_count")
 
     @property
     @pulumi.getter(name="usePreemptibleExecutors")
@@ -16378,6 +16650,7 @@ class GetJobJobSettingsSettingsNewClusterGcpAttributesResult(dict):
                  availability: Optional[str] = None,
                  boot_disk_size: Optional[int] = None,
                  google_service_account: Optional[str] = None,
+                 local_ssd_count: Optional[int] = None,
                  use_preemptible_executors: Optional[bool] = None,
                  zone_id: Optional[str] = None):
         if availability is not None:
@@ -16386,6 +16659,8 @@ class GetJobJobSettingsSettingsNewClusterGcpAttributesResult(dict):
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if use_preemptible_executors is not None:
             pulumi.set(__self__, "use_preemptible_executors", use_preemptible_executors)
         if zone_id is not None:
@@ -16405,6 +16680,11 @@ class GetJobJobSettingsSettingsNewClusterGcpAttributesResult(dict):
     @pulumi.getter(name="googleServiceAccount")
     def google_service_account(self) -> Optional[str]:
         return pulumi.get(self, "google_service_account")
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        return pulumi.get(self, "local_ssd_count")
 
     @property
     @pulumi.getter(name="usePreemptibleExecutors")
@@ -16677,6 +16957,33 @@ class GetJobJobSettingsSettingsNotificationSettingsResult(dict):
 
 
 @pulumi.output_type
+class GetJobJobSettingsSettingsParameterResult(dict):
+    def __init__(__self__, *,
+                 default: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str name: the job name of Job if the resource was matched by id.
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[str]:
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        the job name of Job if the resource was matched by id.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetJobJobSettingsSettingsPipelineTaskResult(dict):
     def __init__(__self__, *,
                  pipeline_id: str,
@@ -16758,6 +17065,26 @@ class GetJobJobSettingsSettingsRunAsResult(dict):
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
         return pulumi.get(self, "user_name")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsRunJobTaskResult(dict):
+    def __init__(__self__, *,
+                 job_id: str,
+                 job_parameters: Optional[Mapping[str, Any]] = None):
+        pulumi.set(__self__, "job_id", job_id)
+        if job_parameters is not None:
+            pulumi.set(__self__, "job_parameters", job_parameters)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> str:
+        return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="jobParameters")
+    def job_parameters(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "job_parameters")
 
 
 @pulumi.output_type
@@ -16878,6 +17205,7 @@ class GetJobJobSettingsSettingsTaskResult(dict):
                  pipeline_task: Optional['outputs.GetJobJobSettingsSettingsTaskPipelineTaskResult'] = None,
                  python_wheel_task: Optional['outputs.GetJobJobSettingsSettingsTaskPythonWheelTaskResult'] = None,
                  run_if: Optional[str] = None,
+                 run_job_task: Optional['outputs.GetJobJobSettingsSettingsTaskRunJobTaskResult'] = None,
                  spark_jar_task: Optional['outputs.GetJobJobSettingsSettingsTaskSparkJarTaskResult'] = None,
                  spark_python_task: Optional['outputs.GetJobJobSettingsSettingsTaskSparkPythonTaskResult'] = None,
                  spark_submit_task: Optional['outputs.GetJobJobSettingsSettingsTaskSparkSubmitTaskResult'] = None,
@@ -16921,6 +17249,8 @@ class GetJobJobSettingsSettingsTaskResult(dict):
             pulumi.set(__self__, "python_wheel_task", python_wheel_task)
         if run_if is not None:
             pulumi.set(__self__, "run_if", run_if)
+        if run_job_task is not None:
+            pulumi.set(__self__, "run_job_task", run_job_task)
         if spark_jar_task is not None:
             pulumi.set(__self__, "spark_jar_task", spark_jar_task)
         if spark_python_task is not None:
@@ -17028,6 +17358,11 @@ class GetJobJobSettingsSettingsTaskResult(dict):
     @pulumi.getter(name="runIf")
     def run_if(self) -> Optional[str]:
         return pulumi.get(self, "run_if")
+
+    @property
+    @pulumi.getter(name="runJobTask")
+    def run_job_task(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskRunJobTaskResult']:
+        return pulumi.get(self, "run_job_task")
 
     @property
     @pulumi.getter(name="sparkJarTask")
@@ -17918,6 +18253,7 @@ class GetJobJobSettingsSettingsTaskNewClusterGcpAttributesResult(dict):
                  availability: Optional[str] = None,
                  boot_disk_size: Optional[int] = None,
                  google_service_account: Optional[str] = None,
+                 local_ssd_count: Optional[int] = None,
                  use_preemptible_executors: Optional[bool] = None,
                  zone_id: Optional[str] = None):
         if availability is not None:
@@ -17926,6 +18262,8 @@ class GetJobJobSettingsSettingsTaskNewClusterGcpAttributesResult(dict):
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if use_preemptible_executors is not None:
             pulumi.set(__self__, "use_preemptible_executors", use_preemptible_executors)
         if zone_id is not None:
@@ -17945,6 +18283,11 @@ class GetJobJobSettingsSettingsTaskNewClusterGcpAttributesResult(dict):
     @pulumi.getter(name="googleServiceAccount")
     def google_service_account(self) -> Optional[str]:
         return pulumi.get(self, "google_service_account")
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[int]:
+        return pulumi.get(self, "local_ssd_count")
 
     @property
     @pulumi.getter(name="usePreemptibleExecutors")
@@ -18279,6 +18622,26 @@ class GetJobJobSettingsSettingsTaskPythonWheelTaskResult(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskRunJobTaskResult(dict):
+    def __init__(__self__, *,
+                 job_id: str,
+                 job_parameters: Optional[Mapping[str, Any]] = None):
+        pulumi.set(__self__, "job_id", job_id)
+        if job_parameters is not None:
+            pulumi.set(__self__, "job_parameters", job_parameters)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> str:
+        return pulumi.get(self, "job_id")
+
+    @property
+    @pulumi.getter(name="jobParameters")
+    def job_parameters(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "job_parameters")
 
 
 @pulumi.output_type

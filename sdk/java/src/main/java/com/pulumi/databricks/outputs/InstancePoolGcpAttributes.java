@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,11 +12,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstancePoolGcpAttributes {
+    /**
+     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * 
+     */
     private @Nullable String gcpAvailability;
+    /**
+     * @return Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+     * 
+     */
+    private @Nullable Integer localSsdCount;
 
     private InstancePoolGcpAttributes() {}
+    /**
+     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * 
+     */
     public Optional<String> gcpAvailability() {
         return Optional.ofNullable(this.gcpAvailability);
+    }
+    /**
+     * @return Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+     * 
+     */
+    public Optional<Integer> localSsdCount() {
+        return Optional.ofNullable(this.localSsdCount);
     }
 
     public static Builder builder() {
@@ -28,10 +49,12 @@ public final class InstancePoolGcpAttributes {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String gcpAvailability;
+        private @Nullable Integer localSsdCount;
         public Builder() {}
         public Builder(InstancePoolGcpAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gcpAvailability = defaults.gcpAvailability;
+    	      this.localSsdCount = defaults.localSsdCount;
         }
 
         @CustomType.Setter
@@ -39,9 +62,15 @@ public final class InstancePoolGcpAttributes {
             this.gcpAvailability = gcpAvailability;
             return this;
         }
+        @CustomType.Setter
+        public Builder localSsdCount(@Nullable Integer localSsdCount) {
+            this.localSsdCount = localSsdCount;
+            return this;
+        }
         public InstancePoolGcpAttributes build() {
             final var o = new InstancePoolGcpAttributes();
             o.gcpAvailability = gcpAvailability;
+            o.localSsdCount = localSsdCount;
             return o;
         }
     }

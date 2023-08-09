@@ -16,6 +16,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNotebookTaskArg
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNotificationSettingsArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskPipelineTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskPythonWheelTaskArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskRunJobTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSparkJarTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSparkPythonTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs;
@@ -166,6 +167,13 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
         return Optional.ofNullable(this.runIf);
     }
 
+    @Import(name="runJobTask")
+    private @Nullable Output<GetJobJobSettingsSettingsTaskRunJobTaskArgs> runJobTask;
+
+    public Optional<Output<GetJobJobSettingsSettingsTaskRunJobTaskArgs>> runJobTask() {
+        return Optional.ofNullable(this.runJobTask);
+    }
+
     @Import(name="sparkJarTask")
     private @Nullable Output<GetJobJobSettingsSettingsTaskSparkJarTaskArgs> sparkJarTask;
 
@@ -230,6 +238,7 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
         this.pythonWheelTask = $.pythonWheelTask;
         this.retryOnTimeout = $.retryOnTimeout;
         this.runIf = $.runIf;
+        this.runJobTask = $.runJobTask;
         this.sparkJarTask = $.sparkJarTask;
         this.sparkPythonTask = $.sparkPythonTask;
         this.sparkSubmitTask = $.sparkSubmitTask;
@@ -433,6 +442,15 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
 
         public Builder runIf(String runIf) {
             return runIf(Output.of(runIf));
+        }
+
+        public Builder runJobTask(@Nullable Output<GetJobJobSettingsSettingsTaskRunJobTaskArgs> runJobTask) {
+            $.runJobTask = runJobTask;
+            return this;
+        }
+
+        public Builder runJobTask(GetJobJobSettingsSettingsTaskRunJobTaskArgs runJobTask) {
+            return runJobTask(Output.of(runJobTask));
         }
 
         public Builder sparkJarTask(@Nullable Output<GetJobJobSettingsSettingsTaskSparkJarTaskArgs> sparkJarTask) {

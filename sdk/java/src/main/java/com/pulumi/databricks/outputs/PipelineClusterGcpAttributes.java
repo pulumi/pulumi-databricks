@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +14,7 @@ import javax.annotation.Nullable;
 public final class PipelineClusterGcpAttributes {
     private @Nullable String availability;
     private @Nullable String googleServiceAccount;
+    private @Nullable Integer localSsdCount;
     private @Nullable String zoneId;
 
     private PipelineClusterGcpAttributes() {}
@@ -21,6 +23,9 @@ public final class PipelineClusterGcpAttributes {
     }
     public Optional<String> googleServiceAccount() {
         return Optional.ofNullable(this.googleServiceAccount);
+    }
+    public Optional<Integer> localSsdCount() {
+        return Optional.ofNullable(this.localSsdCount);
     }
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
@@ -37,12 +42,14 @@ public final class PipelineClusterGcpAttributes {
     public static final class Builder {
         private @Nullable String availability;
         private @Nullable String googleServiceAccount;
+        private @Nullable Integer localSsdCount;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(PipelineClusterGcpAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
     	      this.googleServiceAccount = defaults.googleServiceAccount;
+    	      this.localSsdCount = defaults.localSsdCount;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -57,6 +64,11 @@ public final class PipelineClusterGcpAttributes {
             return this;
         }
         @CustomType.Setter
+        public Builder localSsdCount(@Nullable Integer localSsdCount) {
+            this.localSsdCount = localSsdCount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
@@ -65,6 +77,7 @@ public final class PipelineClusterGcpAttributes {
             final var o = new PipelineClusterGcpAttributes();
             o.availability = availability;
             o.googleServiceAccount = googleServiceAccount;
+            o.localSsdCount = localSsdCount;
             o.zoneId = zoneId;
             return o;
         }

@@ -15,6 +15,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNotebookTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNotificationSettings;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskPipelineTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskPythonWheelTask;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskRunJobTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSparkJarTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSparkPythonTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSparkSubmitTask;
@@ -165,6 +166,13 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
         return Optional.ofNullable(this.runIf);
     }
 
+    @Import(name="runJobTask")
+    private @Nullable GetJobJobSettingsSettingsTaskRunJobTask runJobTask;
+
+    public Optional<GetJobJobSettingsSettingsTaskRunJobTask> runJobTask() {
+        return Optional.ofNullable(this.runJobTask);
+    }
+
     @Import(name="sparkJarTask")
     private @Nullable GetJobJobSettingsSettingsTaskSparkJarTask sparkJarTask;
 
@@ -229,6 +237,7 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
         this.pythonWheelTask = $.pythonWheelTask;
         this.retryOnTimeout = $.retryOnTimeout;
         this.runIf = $.runIf;
+        this.runJobTask = $.runJobTask;
         this.sparkJarTask = $.sparkJarTask;
         this.sparkPythonTask = $.sparkPythonTask;
         this.sparkSubmitTask = $.sparkSubmitTask;
@@ -355,6 +364,11 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
 
         public Builder runIf(@Nullable String runIf) {
             $.runIf = runIf;
+            return this;
+        }
+
+        public Builder runJobTask(@Nullable GetJobJobSettingsSettingsTaskRunJobTask runJobTask) {
+            $.runJobTask = runJobTask;
             return this;
         }
 

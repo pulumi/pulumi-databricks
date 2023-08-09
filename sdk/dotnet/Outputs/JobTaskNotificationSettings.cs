@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? NoAlertForCanceledRuns;
         /// <summary>
-        /// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        /// (Bool) don't send alert for skipped runs.
         /// </summary>
         public readonly bool? NoAlertForSkippedRuns;
 

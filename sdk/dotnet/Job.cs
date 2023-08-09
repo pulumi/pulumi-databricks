@@ -125,6 +125,9 @@ namespace Pulumi.Databricks
         [Output("notificationSettings")]
         public Output<Outputs.JobNotificationSettings?> NotificationSettings { get; private set; } = null!;
 
+        [Output("parameters")]
+        public Output<ImmutableArray<Outputs.JobParameter>> Parameters { get; private set; } = null!;
+
         [Output("pipelineTask")]
         public Output<Outputs.JobPipelineTask?> PipelineTask { get; private set; } = null!;
 
@@ -142,6 +145,9 @@ namespace Pulumi.Databricks
 
         [Output("runAs")]
         public Output<Outputs.JobRunAs?> RunAs { get; private set; } = null!;
+
+        [Output("runJobTask")]
+        public Output<Outputs.JobRunJobTask?> RunJobTask { get; private set; } = null!;
 
         /// <summary>
         /// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -352,6 +358,14 @@ namespace Pulumi.Databricks
         [Input("notificationSettings")]
         public Input<Inputs.JobNotificationSettingsArgs>? NotificationSettings { get; set; }
 
+        [Input("parameters")]
+        private InputList<Inputs.JobParameterArgs>? _parameters;
+        public InputList<Inputs.JobParameterArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputList<Inputs.JobParameterArgs>());
+            set => _parameters = value;
+        }
+
         [Input("pipelineTask")]
         public Input<Inputs.JobPipelineTaskArgs>? PipelineTask { get; set; }
 
@@ -369,6 +383,9 @@ namespace Pulumi.Databricks
 
         [Input("runAs")]
         public Input<Inputs.JobRunAsArgs>? RunAs { get; set; }
+
+        [Input("runJobTask")]
+        public Input<Inputs.JobRunJobTaskArgs>? RunJobTask { get; set; }
 
         /// <summary>
         /// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -545,6 +562,14 @@ namespace Pulumi.Databricks
         [Input("notificationSettings")]
         public Input<Inputs.JobNotificationSettingsGetArgs>? NotificationSettings { get; set; }
 
+        [Input("parameters")]
+        private InputList<Inputs.JobParameterGetArgs>? _parameters;
+        public InputList<Inputs.JobParameterGetArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputList<Inputs.JobParameterGetArgs>());
+            set => _parameters = value;
+        }
+
         [Input("pipelineTask")]
         public Input<Inputs.JobPipelineTaskGetArgs>? PipelineTask { get; set; }
 
@@ -562,6 +587,9 @@ namespace Pulumi.Databricks
 
         [Input("runAs")]
         public Input<Inputs.JobRunAsGetArgs>? RunAs { get; set; }
+
+        [Input("runJobTask")]
+        public Input<Inputs.JobRunJobTaskGetArgs>? RunJobTask { get; set; }
 
         /// <summary>
         /// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.

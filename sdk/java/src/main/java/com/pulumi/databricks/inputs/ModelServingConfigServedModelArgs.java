@@ -25,6 +25,13 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         return Optional.ofNullable(this.environmentVars);
     }
 
+    @Import(name="instanceProfileArn")
+    private @Nullable Output<String> instanceProfileArn;
+
+    public Optional<Output<String>> instanceProfileArn() {
+        return Optional.ofNullable(this.instanceProfileArn);
+    }
+
     /**
      * The name of the model in Databricks Model Registry to be served.
      * 
@@ -104,6 +111,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
 
     private ModelServingConfigServedModelArgs(ModelServingConfigServedModelArgs $) {
         this.environmentVars = $.environmentVars;
+        this.instanceProfileArn = $.instanceProfileArn;
         this.modelName = $.modelName;
         this.modelVersion = $.modelVersion;
         this.name = $.name;
@@ -136,6 +144,15 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
 
         public Builder environmentVars(Map<String,Object> environmentVars) {
             return environmentVars(Output.of(environmentVars));
+        }
+
+        public Builder instanceProfileArn(@Nullable Output<String> instanceProfileArn) {
+            $.instanceProfileArn = instanceProfileArn;
+            return this;
+        }
+
+        public Builder instanceProfileArn(String instanceProfileArn) {
+            return instanceProfileArn(Output.of(instanceProfileArn));
         }
 
         /**

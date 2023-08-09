@@ -16,6 +16,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Availability;
         public readonly int? BootDiskSize;
         public readonly string? GoogleServiceAccount;
+        public readonly int? LocalSsdCount;
         public readonly bool? UsePreemptibleExecutors;
         public readonly string? ZoneId;
 
@@ -27,6 +28,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? googleServiceAccount,
 
+            int? localSsdCount,
+
             bool? usePreemptibleExecutors,
 
             string? zoneId)
@@ -34,6 +37,7 @@ namespace Pulumi.Databricks.Outputs
             Availability = availability;
             BootDiskSize = bootDiskSize;
             GoogleServiceAccount = googleServiceAccount;
+            LocalSsdCount = localSsdCount;
             UsePreemptibleExecutors = usePreemptibleExecutors;
             ZoneId = zoneId;
         }

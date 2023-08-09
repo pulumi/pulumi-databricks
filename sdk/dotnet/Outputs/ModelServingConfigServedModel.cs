@@ -14,6 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class ModelServingConfigServedModel
     {
         public readonly ImmutableDictionary<string, object>? EnvironmentVars;
+        public readonly string? InstanceProfileArn;
         /// <summary>
         /// The name of the model in Databricks Model Registry to be served.
         /// </summary>
@@ -39,6 +40,8 @@ namespace Pulumi.Databricks.Outputs
         private ModelServingConfigServedModel(
             ImmutableDictionary<string, object>? environmentVars,
 
+            string? instanceProfileArn,
+
             string modelName,
 
             string modelVersion,
@@ -50,6 +53,7 @@ namespace Pulumi.Databricks.Outputs
             string workloadSize)
         {
             EnvironmentVars = environmentVars;
+            InstanceProfileArn = instanceProfileArn;
             ModelName = modelName;
             ModelVersion = modelVersion;
             Name = name;

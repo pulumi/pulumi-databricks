@@ -20,6 +20,9 @@ namespace Pulumi.Databricks.Inputs
             set => _environmentVars = value;
         }
 
+        [Input("instanceProfileArn")]
+        public Input<string>? InstanceProfileArn { get; set; }
+
         /// <summary>
         /// The name of the model in Databricks Model Registry to be served.
         /// </summary>

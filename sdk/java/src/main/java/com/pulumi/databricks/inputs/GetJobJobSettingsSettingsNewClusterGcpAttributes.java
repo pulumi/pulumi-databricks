@@ -37,6 +37,13 @@ public final class GetJobJobSettingsSettingsNewClusterGcpAttributes extends com.
         return Optional.ofNullable(this.googleServiceAccount);
     }
 
+    @Import(name="localSsdCount")
+    private @Nullable Integer localSsdCount;
+
+    public Optional<Integer> localSsdCount() {
+        return Optional.ofNullable(this.localSsdCount);
+    }
+
     @Import(name="usePreemptibleExecutors")
     private @Nullable Boolean usePreemptibleExecutors;
 
@@ -57,6 +64,7 @@ public final class GetJobJobSettingsSettingsNewClusterGcpAttributes extends com.
         this.availability = $.availability;
         this.bootDiskSize = $.bootDiskSize;
         this.googleServiceAccount = $.googleServiceAccount;
+        this.localSsdCount = $.localSsdCount;
         this.usePreemptibleExecutors = $.usePreemptibleExecutors;
         this.zoneId = $.zoneId;
     }
@@ -91,6 +99,11 @@ public final class GetJobJobSettingsSettingsNewClusterGcpAttributes extends com.
 
         public Builder googleServiceAccount(@Nullable String googleServiceAccount) {
             $.googleServiceAccount = googleServiceAccount;
+            return this;
+        }
+
+        public Builder localSsdCount(@Nullable Integer localSsdCount) {
+            $.localSsdCount = localSsdCount;
             return this;
         }
 

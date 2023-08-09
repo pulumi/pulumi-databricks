@@ -16,6 +16,7 @@ import com.pulumi.databricks.inputs.JobTaskNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskNotificationSettingsArgs;
 import com.pulumi.databricks.inputs.JobTaskPipelineTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskPythonWheelTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskRunJobTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskSparkJarTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskSparkPythonTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskSparkSubmitTaskArgs;
@@ -239,11 +240,26 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.retryOnTimeout);
     }
 
+    /**
+     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     * 
+     */
     @Import(name="runIf")
     private @Nullable Output<String> runIf;
 
+    /**
+     * @return An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     * 
+     */
     public Optional<Output<String>> runIf() {
         return Optional.ofNullable(this.runIf);
+    }
+
+    @Import(name="runJobTask")
+    private @Nullable Output<JobTaskRunJobTaskArgs> runJobTask;
+
+    public Optional<Output<JobTaskRunJobTaskArgs>> runJobTask() {
+        return Optional.ofNullable(this.runJobTask);
     }
 
     @Import(name="sparkJarTask")
@@ -328,6 +344,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         this.pythonWheelTask = $.pythonWheelTask;
         this.retryOnTimeout = $.retryOnTimeout;
         this.runIf = $.runIf;
+        this.runJobTask = $.runJobTask;
         this.sparkJarTask = $.sparkJarTask;
         this.sparkPythonTask = $.sparkPythonTask;
         this.sparkSubmitTask = $.sparkSubmitTask;
@@ -656,13 +673,34 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
             return retryOnTimeout(Output.of(retryOnTimeout));
         }
 
+        /**
+         * @param runIf An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runIf(@Nullable Output<String> runIf) {
             $.runIf = runIf;
             return this;
         }
 
+        /**
+         * @param runIf An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runIf(String runIf) {
             return runIf(Output.of(runIf));
+        }
+
+        public Builder runJobTask(@Nullable Output<JobTaskRunJobTaskArgs> runJobTask) {
+            $.runJobTask = runJobTask;
+            return this;
+        }
+
+        public Builder runJobTask(JobTaskRunJobTaskArgs runJobTask) {
+            return runJobTask(Output.of(runJobTask));
         }
 
         public Builder sparkJarTask(@Nullable Output<JobTaskSparkJarTaskArgs> sparkJarTask) {

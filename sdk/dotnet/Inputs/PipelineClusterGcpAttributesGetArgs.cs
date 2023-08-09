@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("googleServiceAccount")]
         public Input<string>? GoogleServiceAccount { get; set; }
 
+        [Input("localSsdCount")]
+        public Input<int>? LocalSsdCount { get; set; }
+
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 

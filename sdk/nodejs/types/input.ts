@@ -87,6 +87,10 @@ export interface ClusterGcpAttributes {
     availability?: pulumi.Input<string>;
     bootDiskSize?: pulumi.Input<number>;
     googleServiceAccount?: pulumi.Input<string>;
+    localSsdCount?: pulumi.Input<number>;
+    /**
+     * @deprecated Please use 'availability' instead.
+     */
     usePreemptibleExecutors?: pulumi.Input<boolean>;
     zoneId?: pulumi.Input<string>;
 }
@@ -536,6 +540,7 @@ export interface GetClusterClusterInfoGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
     googleServiceAccount?: string;
+    localSsdCount?: number;
     usePreemptibleExecutors?: boolean;
     zoneId?: string;
 }
@@ -544,6 +549,7 @@ export interface GetClusterClusterInfoGcpAttributesArgs {
     availability?: pulumi.Input<string>;
     bootDiskSize?: pulumi.Input<number>;
     googleServiceAccount?: pulumi.Input<string>;
+    localSsdCount?: pulumi.Input<number>;
     usePreemptibleExecutors?: pulumi.Input<boolean>;
     zoneId?: pulumi.Input<string>;
 }
@@ -726,10 +732,12 @@ export interface GetInstancePoolPoolInfoDiskSpecDiskTypeArgs {
 
 export interface GetInstancePoolPoolInfoGcpAttributes {
     gcpAvailability?: string;
+    localSsdCount?: number;
 }
 
 export interface GetInstancePoolPoolInfoGcpAttributesArgs {
     gcpAvailability?: pulumi.Input<string>;
+    localSsdCount?: pulumi.Input<number>;
 }
 
 export interface GetInstancePoolPoolInfoInstancePoolFleetAttribute {
@@ -845,11 +853,13 @@ export interface GetJobJobSettingsSettings {
     newCluster?: inputs.GetJobJobSettingsSettingsNewCluster;
     notebookTask?: inputs.GetJobJobSettingsSettingsNotebookTask;
     notificationSettings?: inputs.GetJobJobSettingsSettingsNotificationSettings;
+    parameters?: inputs.GetJobJobSettingsSettingsParameter[];
     pipelineTask?: inputs.GetJobJobSettingsSettingsPipelineTask;
     pythonWheelTask?: inputs.GetJobJobSettingsSettingsPythonWheelTask;
     queue?: inputs.GetJobJobSettingsSettingsQueue;
     retryOnTimeout?: boolean;
     runAs?: inputs.GetJobJobSettingsSettingsRunAs;
+    runJobTask?: inputs.GetJobJobSettingsSettingsRunJobTask;
     schedule?: inputs.GetJobJobSettingsSettingsSchedule;
     sparkJarTask?: inputs.GetJobJobSettingsSettingsSparkJarTask;
     sparkPythonTask?: inputs.GetJobJobSettingsSettingsSparkPythonTask;
@@ -882,11 +892,13 @@ export interface GetJobJobSettingsSettingsArgs {
     newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterArgs>;
     notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsNotebookTaskArgs>;
     notificationSettings?: pulumi.Input<inputs.GetJobJobSettingsSettingsNotificationSettingsArgs>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsParameterArgs>[]>;
     pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsPipelineTaskArgs>;
     pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsPythonWheelTaskArgs>;
     queue?: pulumi.Input<inputs.GetJobJobSettingsSettingsQueueArgs>;
     retryOnTimeout?: pulumi.Input<boolean>;
     runAs?: pulumi.Input<inputs.GetJobJobSettingsSettingsRunAsArgs>;
+    runJobTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsRunJobTaskArgs>;
     schedule?: pulumi.Input<inputs.GetJobJobSettingsSettingsScheduleArgs>;
     sparkJarTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsSparkJarTaskArgs>;
     sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsSparkPythonTaskArgs>;
@@ -1214,6 +1226,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
     googleServiceAccount?: string;
+    localSsdCount?: number;
     usePreemptibleExecutors?: boolean;
     zoneId?: string;
 }
@@ -1222,6 +1235,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgs 
     availability?: pulumi.Input<string>;
     bootDiskSize?: pulumi.Input<number>;
     googleServiceAccount?: pulumi.Input<string>;
+    localSsdCount?: pulumi.Input<number>;
     usePreemptibleExecutors?: pulumi.Input<boolean>;
     zoneId?: pulumi.Input<string>;
 }
@@ -1566,6 +1580,7 @@ export interface GetJobJobSettingsSettingsNewClusterGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
     googleServiceAccount?: string;
+    localSsdCount?: number;
     usePreemptibleExecutors?: boolean;
     zoneId?: string;
 }
@@ -1574,6 +1589,7 @@ export interface GetJobJobSettingsSettingsNewClusterGcpAttributesArgs {
     availability?: pulumi.Input<string>;
     bootDiskSize?: pulumi.Input<number>;
     googleServiceAccount?: pulumi.Input<string>;
+    localSsdCount?: pulumi.Input<number>;
     usePreemptibleExecutors?: pulumi.Input<boolean>;
     zoneId?: pulumi.Input<string>;
 }
@@ -1696,6 +1712,22 @@ export interface GetJobJobSettingsSettingsNotificationSettingsArgs {
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
 }
 
+export interface GetJobJobSettingsSettingsParameter {
+    default?: string;
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     */
+    name?: string;
+}
+
+export interface GetJobJobSettingsSettingsParameterArgs {
+    default?: pulumi.Input<string>;
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     */
+    name?: pulumi.Input<string>;
+}
+
 export interface GetJobJobSettingsSettingsPipelineTask {
     fullRefresh?: boolean;
     pipelineId: string;
@@ -1734,6 +1766,16 @@ export interface GetJobJobSettingsSettingsRunAs {
 export interface GetJobJobSettingsSettingsRunAsArgs {
     servicePrincipalName?: pulumi.Input<string>;
     userName?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsRunJobTask {
+    jobId: string;
+    jobParameters?: {[key: string]: any};
+}
+
+export interface GetJobJobSettingsSettingsRunJobTaskArgs {
+    jobId: pulumi.Input<string>;
+    jobParameters?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface GetJobJobSettingsSettingsSchedule {
@@ -1800,6 +1842,7 @@ export interface GetJobJobSettingsSettingsTask {
     pythonWheelTask?: inputs.GetJobJobSettingsSettingsTaskPythonWheelTask;
     retryOnTimeout?: boolean;
     runIf?: string;
+    runJobTask?: inputs.GetJobJobSettingsSettingsTaskRunJobTask;
     sparkJarTask?: inputs.GetJobJobSettingsSettingsTaskSparkJarTask;
     sparkPythonTask?: inputs.GetJobJobSettingsSettingsTaskSparkPythonTask;
     sparkSubmitTask?: inputs.GetJobJobSettingsSettingsTaskSparkSubmitTask;
@@ -1828,6 +1871,7 @@ export interface GetJobJobSettingsSettingsTaskArgs {
     pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPythonWheelTaskArgs>;
     retryOnTimeout?: pulumi.Input<boolean>;
     runIf?: pulumi.Input<string>;
+    runJobTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskRunJobTaskArgs>;
     sparkJarTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkJarTaskArgs>;
     sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkPythonTaskArgs>;
     sparkSubmitTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs>;
@@ -2158,6 +2202,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
     googleServiceAccount?: string;
+    localSsdCount?: number;
     usePreemptibleExecutors?: boolean;
     zoneId?: string;
 }
@@ -2166,6 +2211,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgs {
     availability?: pulumi.Input<string>;
     bootDiskSize?: pulumi.Input<number>;
     googleServiceAccount?: pulumi.Input<string>;
+    localSsdCount?: pulumi.Input<number>;
     usePreemptibleExecutors?: pulumi.Input<boolean>;
     zoneId?: pulumi.Input<string>;
 }
@@ -2312,6 +2358,16 @@ export interface GetJobJobSettingsSettingsTaskPythonWheelTaskArgs {
     namedParameters?: pulumi.Input<{[key: string]: any}>;
     packageName?: pulumi.Input<string>;
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskRunJobTask {
+    jobId: string;
+    jobParameters?: {[key: string]: any};
+}
+
+export interface GetJobJobSettingsSettingsTaskRunJobTaskArgs {
+    jobId: pulumi.Input<string>;
+    jobParameters?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSparkJarTask {
@@ -2746,7 +2802,7 @@ export interface InstancePoolAwsAttributes {
 
 export interface InstancePoolAzureAttributes {
     /**
-     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
      */
     availability?: pulumi.Input<string>;
     /**
@@ -2773,7 +2829,14 @@ export interface InstancePoolDiskSpecDiskType {
 }
 
 export interface InstancePoolGcpAttributes {
+    /**
+     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     */
     gcpAvailability?: pulumi.Input<string>;
+    /**
+     * Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+     */
+    localSsdCount?: pulumi.Input<number>;
 }
 
 export interface InstancePoolInstancePoolFleetAttributes {
@@ -3044,6 +3107,7 @@ export interface JobJobClusterNewClusterGcpAttributes {
     availability?: pulumi.Input<string>;
     bootDiskSize?: pulumi.Input<number>;
     googleServiceAccount?: pulumi.Input<string>;
+    localSsdCount?: pulumi.Input<number>;
     usePreemptibleExecutors?: pulumi.Input<boolean>;
     zoneId?: pulumi.Input<string>;
 }
@@ -3269,6 +3333,7 @@ export interface JobNewClusterGcpAttributes {
     availability?: pulumi.Input<string>;
     bootDiskSize?: pulumi.Input<number>;
     googleServiceAccount?: pulumi.Input<string>;
+    localSsdCount?: pulumi.Input<number>;
     usePreemptibleExecutors?: pulumi.Input<boolean>;
     zoneId?: pulumi.Input<string>;
 }
@@ -3388,9 +3453,20 @@ export interface JobNotificationSettings {
      */
     noAlertForCanceledRuns?: pulumi.Input<boolean>;
     /**
-     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     * (Bool) don't send alert for skipped runs.
      */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
+}
+
+export interface JobParameter {
+    /**
+     * Default value of the parameter.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name?: pulumi.Input<string>;
 }
 
 export interface JobPipelineTask {
@@ -3448,6 +3524,17 @@ export interface JobRunAs {
      * The email of an active workspace user. Non-admin users can only set this field to their own email.
      */
     userName?: pulumi.Input<string>;
+}
+
+export interface JobRunJobTask {
+    /**
+     * (String) ID of the job
+     */
+    jobId: pulumi.Input<string>;
+    /**
+     * (Map) Job parameters for the task
+     */
+    jobParameters?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface JobSchedule {
@@ -3548,7 +3635,11 @@ export interface JobTask {
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      */
     retryOnTimeout?: pulumi.Input<boolean>;
+    /**
+     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     */
     runIf?: pulumi.Input<string>;
+    runJobTask?: pulumi.Input<inputs.JobTaskRunJobTask>;
     sparkJarTask?: pulumi.Input<inputs.JobTaskSparkJarTask>;
     sparkPythonTask?: pulumi.Input<inputs.JobTaskSparkPythonTask>;
     sparkSubmitTask?: pulumi.Input<inputs.JobTaskSparkSubmitTask>;
@@ -3786,6 +3877,7 @@ export interface JobTaskNewClusterGcpAttributes {
     availability?: pulumi.Input<string>;
     bootDiskSize?: pulumi.Input<number>;
     googleServiceAccount?: pulumi.Input<string>;
+    localSsdCount?: pulumi.Input<number>;
     usePreemptibleExecutors?: pulumi.Input<boolean>;
     zoneId?: pulumi.Input<string>;
 }
@@ -3909,7 +4001,7 @@ export interface JobTaskNotificationSettings {
      */
     noAlertForCanceledRuns?: pulumi.Input<boolean>;
     /**
-     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     * (Bool) don't send alert for skipped runs.
      */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
 }
@@ -3944,6 +4036,17 @@ export interface JobTaskPythonWheelTask {
      * Parameters for the task
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface JobTaskRunJobTask {
+    /**
+     * (String) ID of the job
+     */
+    jobId: pulumi.Input<string>;
+    /**
+     * (Map) Job parameters for the task
+     */
+    jobParameters?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface JobTaskSparkJarTask {
@@ -4316,6 +4419,7 @@ export interface ModelServingConfig {
 
 export interface ModelServingConfigServedModel {
     environmentVars?: pulumi.Input<{[key: string]: any}>;
+    instanceProfileArn?: pulumi.Input<string>;
     /**
      * The name of the model in Databricks Model Registry to be served.
      */
@@ -4607,6 +4711,7 @@ export interface PipelineClusterClusterLogConfS3 {
 export interface PipelineClusterGcpAttributes {
     availability?: pulumi.Input<string>;
     googleServiceAccount?: pulumi.Input<string>;
+    localSsdCount?: pulumi.Input<number>;
     zoneId?: pulumi.Input<string>;
 }
 

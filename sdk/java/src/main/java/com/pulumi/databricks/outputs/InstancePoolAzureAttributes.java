@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstancePoolAzureAttributes {
     /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * @return Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
      * 
      */
     private @Nullable String availability;
@@ -25,7 +25,7 @@ public final class InstancePoolAzureAttributes {
 
     private InstancePoolAzureAttributes() {}
     /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * @return Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
      * 
      */
     public Optional<String> availability() {

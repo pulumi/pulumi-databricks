@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class InstancePoolAzureAttributes
     {
         /// <summary>
-        /// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+        /// Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
         /// </summary>
         public readonly string? Availability;
         /// <summary>

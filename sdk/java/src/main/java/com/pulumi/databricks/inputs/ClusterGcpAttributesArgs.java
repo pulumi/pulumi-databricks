@@ -38,9 +38,28 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.googleServiceAccount);
     }
 
+    @Import(name="localSsdCount")
+    private @Nullable Output<Integer> localSsdCount;
+
+    public Optional<Output<Integer>> localSsdCount() {
+        return Optional.ofNullable(this.localSsdCount);
+    }
+
+    /**
+     * @deprecated
+     * Please use &#39;availability&#39; instead.
+     * 
+     */
+    @Deprecated /* Please use 'availability' instead. */
     @Import(name="usePreemptibleExecutors")
     private @Nullable Output<Boolean> usePreemptibleExecutors;
 
+    /**
+     * @deprecated
+     * Please use &#39;availability&#39; instead.
+     * 
+     */
+    @Deprecated /* Please use 'availability' instead. */
     public Optional<Output<Boolean>> usePreemptibleExecutors() {
         return Optional.ofNullable(this.usePreemptibleExecutors);
     }
@@ -58,6 +77,7 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
         this.availability = $.availability;
         this.bootDiskSize = $.bootDiskSize;
         this.googleServiceAccount = $.googleServiceAccount;
+        this.localSsdCount = $.localSsdCount;
         this.usePreemptibleExecutors = $.usePreemptibleExecutors;
         this.zoneId = $.zoneId;
     }
@@ -107,11 +127,36 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
             return googleServiceAccount(Output.of(googleServiceAccount));
         }
 
+        public Builder localSsdCount(@Nullable Output<Integer> localSsdCount) {
+            $.localSsdCount = localSsdCount;
+            return this;
+        }
+
+        public Builder localSsdCount(Integer localSsdCount) {
+            return localSsdCount(Output.of(localSsdCount));
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Please use &#39;availability&#39; instead.
+         * 
+         */
+        @Deprecated /* Please use 'availability' instead. */
         public Builder usePreemptibleExecutors(@Nullable Output<Boolean> usePreemptibleExecutors) {
             $.usePreemptibleExecutors = usePreemptibleExecutors;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Please use &#39;availability&#39; instead.
+         * 
+         */
+        @Deprecated /* Please use 'availability' instead. */
         public Builder usePreemptibleExecutors(Boolean usePreemptibleExecutors) {
             return usePreemptibleExecutors(Output.of(usePreemptibleExecutors));
         }

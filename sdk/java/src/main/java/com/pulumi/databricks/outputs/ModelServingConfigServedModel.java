@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ModelServingConfigServedModel {
     private @Nullable Map<String,Object> environmentVars;
+    private @Nullable String instanceProfileArn;
     /**
      * @return The name of the model in Databricks Model Registry to be served.
      * 
@@ -44,6 +45,9 @@ public final class ModelServingConfigServedModel {
     private ModelServingConfigServedModel() {}
     public Map<String,Object> environmentVars() {
         return this.environmentVars == null ? Map.of() : this.environmentVars;
+    }
+    public Optional<String> instanceProfileArn() {
+        return Optional.ofNullable(this.instanceProfileArn);
     }
     /**
      * @return The name of the model in Databricks Model Registry to be served.
@@ -91,6 +95,7 @@ public final class ModelServingConfigServedModel {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,Object> environmentVars;
+        private @Nullable String instanceProfileArn;
         private String modelName;
         private String modelVersion;
         private @Nullable String name;
@@ -100,6 +105,7 @@ public final class ModelServingConfigServedModel {
         public Builder(ModelServingConfigServedModel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.environmentVars = defaults.environmentVars;
+    	      this.instanceProfileArn = defaults.instanceProfileArn;
     	      this.modelName = defaults.modelName;
     	      this.modelVersion = defaults.modelVersion;
     	      this.name = defaults.name;
@@ -110,6 +116,11 @@ public final class ModelServingConfigServedModel {
         @CustomType.Setter
         public Builder environmentVars(@Nullable Map<String,Object> environmentVars) {
             this.environmentVars = environmentVars;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceProfileArn(@Nullable String instanceProfileArn) {
+            this.instanceProfileArn = instanceProfileArn;
             return this;
         }
         @CustomType.Setter
@@ -140,6 +151,7 @@ public final class ModelServingConfigServedModel {
         public ModelServingConfigServedModel build() {
             final var o = new ModelServingConfigServedModel();
             o.environmentVars = environmentVars;
+            o.instanceProfileArn = instanceProfileArn;
             o.modelName = modelName;
             o.modelVersion = modelVersion;
             o.name = name;

@@ -14,11 +14,16 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetInstancePoolPoolInfoGcpAttributesResult
     {
         public readonly string? GcpAvailability;
+        public readonly int? LocalSsdCount;
 
         [OutputConstructor]
-        private GetInstancePoolPoolInfoGcpAttributesResult(string? gcpAvailability)
+        private GetInstancePoolPoolInfoGcpAttributesResult(
+            string? gcpAvailability,
+
+            int? localSsdCount)
         {
             GcpAvailability = gcpAvailability;
+            LocalSsdCount = localSsdCount;
         }
     }
 }

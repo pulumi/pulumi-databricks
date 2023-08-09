@@ -71,12 +71,14 @@ type Job struct {
 	NotebookTask JobNotebookTaskPtrOutput `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings JobNotificationSettingsPtrOutput `pulumi:"notificationSettings"`
+	Parameters           JobParameterArrayOutput          `pulumi:"parameters"`
 	PipelineTask         JobPipelineTaskPtrOutput         `pulumi:"pipelineTask"`
 	PythonWheelTask      JobPythonWheelTaskPtrOutput      `pulumi:"pythonWheelTask"`
 	Queue                JobQueuePtrOutput                `pulumi:"queue"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-	RetryOnTimeout pulumi.BoolPtrOutput `pulumi:"retryOnTimeout"`
-	RunAs          JobRunAsPtrOutput    `pulumi:"runAs"`
+	RetryOnTimeout pulumi.BoolPtrOutput   `pulumi:"retryOnTimeout"`
+	RunAs          JobRunAsPtrOutput      `pulumi:"runAs"`
+	RunJobTask     JobRunJobTaskPtrOutput `pulumi:"runJobTask"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
 	Schedule        JobSchedulePtrOutput        `pulumi:"schedule"`
 	SparkJarTask    JobSparkJarTaskPtrOutput    `pulumi:"sparkJarTask"`
@@ -171,12 +173,14 @@ type jobState struct {
 	NotebookTask *JobNotebookTask `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
+	Parameters           []JobParameter           `pulumi:"parameters"`
 	PipelineTask         *JobPipelineTask         `pulumi:"pipelineTask"`
 	PythonWheelTask      *JobPythonWheelTask      `pulumi:"pythonWheelTask"`
 	Queue                *JobQueue                `pulumi:"queue"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-	RetryOnTimeout *bool     `pulumi:"retryOnTimeout"`
-	RunAs          *JobRunAs `pulumi:"runAs"`
+	RetryOnTimeout *bool          `pulumi:"retryOnTimeout"`
+	RunAs          *JobRunAs      `pulumi:"runAs"`
+	RunJobTask     *JobRunJobTask `pulumi:"runJobTask"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
 	Schedule        *JobSchedule           `pulumi:"schedule"`
 	SparkJarTask    *JobSparkJarTask       `pulumi:"sparkJarTask"`
@@ -242,12 +246,14 @@ type JobState struct {
 	NotebookTask JobNotebookTaskPtrInput
 	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings JobNotificationSettingsPtrInput
+	Parameters           JobParameterArrayInput
 	PipelineTask         JobPipelineTaskPtrInput
 	PythonWheelTask      JobPythonWheelTaskPtrInput
 	Queue                JobQueuePtrInput
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrInput
 	RunAs          JobRunAsPtrInput
+	RunJobTask     JobRunJobTaskPtrInput
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
 	Schedule        JobSchedulePtrInput
 	SparkJarTask    JobSparkJarTaskPtrInput
@@ -317,12 +323,14 @@ type jobArgs struct {
 	NotebookTask *JobNotebookTask `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
+	Parameters           []JobParameter           `pulumi:"parameters"`
 	PipelineTask         *JobPipelineTask         `pulumi:"pipelineTask"`
 	PythonWheelTask      *JobPythonWheelTask      `pulumi:"pythonWheelTask"`
 	Queue                *JobQueue                `pulumi:"queue"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-	RetryOnTimeout *bool     `pulumi:"retryOnTimeout"`
-	RunAs          *JobRunAs `pulumi:"runAs"`
+	RetryOnTimeout *bool          `pulumi:"retryOnTimeout"`
+	RunAs          *JobRunAs      `pulumi:"runAs"`
+	RunJobTask     *JobRunJobTask `pulumi:"runJobTask"`
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
 	Schedule        *JobSchedule           `pulumi:"schedule"`
 	SparkJarTask    *JobSparkJarTask       `pulumi:"sparkJarTask"`
@@ -387,12 +395,14 @@ type JobArgs struct {
 	NotebookTask JobNotebookTaskPtrInput
 	// An optional block controlling the notification settings on the job level (described below).
 	NotificationSettings JobNotificationSettingsPtrInput
+	Parameters           JobParameterArrayInput
 	PipelineTask         JobPipelineTaskPtrInput
 	PythonWheelTask      JobPythonWheelTaskPtrInput
 	Queue                JobQueuePtrInput
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrInput
 	RunAs          JobRunAsPtrInput
+	RunJobTask     JobRunJobTaskPtrInput
 	// (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
 	Schedule        JobSchedulePtrInput
 	SparkJarTask    JobSparkJarTaskPtrInput
@@ -602,6 +612,10 @@ func (o JobOutput) NotificationSettings() JobNotificationSettingsPtrOutput {
 	return o.ApplyT(func(v *Job) JobNotificationSettingsPtrOutput { return v.NotificationSettings }).(JobNotificationSettingsPtrOutput)
 }
 
+func (o JobOutput) Parameters() JobParameterArrayOutput {
+	return o.ApplyT(func(v *Job) JobParameterArrayOutput { return v.Parameters }).(JobParameterArrayOutput)
+}
+
 func (o JobOutput) PipelineTask() JobPipelineTaskPtrOutput {
 	return o.ApplyT(func(v *Job) JobPipelineTaskPtrOutput { return v.PipelineTask }).(JobPipelineTaskPtrOutput)
 }
@@ -621,6 +635,10 @@ func (o JobOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 
 func (o JobOutput) RunAs() JobRunAsPtrOutput {
 	return o.ApplyT(func(v *Job) JobRunAsPtrOutput { return v.RunAs }).(JobRunAsPtrOutput)
+}
+
+func (o JobOutput) RunJobTask() JobRunJobTaskPtrOutput {
+	return o.ApplyT(func(v *Job) JobRunJobTaskPtrOutput { return v.RunJobTask }).(JobRunJobTaskPtrOutput)
 }
 
 // (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.

@@ -15,10 +15,12 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibrary;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewCluster;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNotebookTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNotificationSettings;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsParameter;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPipelineTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsPythonWheelTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsQueue;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsRunAs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsRunJobTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSchedule;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkJarTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkPythonTask;
@@ -168,6 +170,13 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.notificationSettings);
     }
 
+    @Import(name="parameters")
+    private @Nullable List<GetJobJobSettingsSettingsParameter> parameters;
+
+    public Optional<List<GetJobJobSettingsSettingsParameter>> parameters() {
+        return Optional.ofNullable(this.parameters);
+    }
+
     @Import(name="pipelineTask")
     private @Nullable GetJobJobSettingsSettingsPipelineTask pipelineTask;
 
@@ -201,6 +210,13 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
 
     public Optional<GetJobJobSettingsSettingsRunAs> runAs() {
         return Optional.ofNullable(this.runAs);
+    }
+
+    @Import(name="runJobTask")
+    private @Nullable GetJobJobSettingsSettingsRunJobTask runJobTask;
+
+    public Optional<GetJobJobSettingsSettingsRunJobTask> runJobTask() {
+        return Optional.ofNullable(this.runJobTask);
     }
 
     @Import(name="schedule")
@@ -286,11 +302,13 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         this.newCluster = $.newCluster;
         this.notebookTask = $.notebookTask;
         this.notificationSettings = $.notificationSettings;
+        this.parameters = $.parameters;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.queue = $.queue;
         this.retryOnTimeout = $.retryOnTimeout;
         this.runAs = $.runAs;
+        this.runJobTask = $.runJobTask;
         this.schedule = $.schedule;
         this.sparkJarTask = $.sparkJarTask;
         this.sparkPythonTask = $.sparkPythonTask;
@@ -423,6 +441,15 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
             return this;
         }
 
+        public Builder parameters(@Nullable List<GetJobJobSettingsSettingsParameter> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        public Builder parameters(GetJobJobSettingsSettingsParameter... parameters) {
+            return parameters(List.of(parameters));
+        }
+
         public Builder pipelineTask(@Nullable GetJobJobSettingsSettingsPipelineTask pipelineTask) {
             $.pipelineTask = pipelineTask;
             return this;
@@ -445,6 +472,11 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
 
         public Builder runAs(@Nullable GetJobJobSettingsSettingsRunAs runAs) {
             $.runAs = runAs;
+            return this;
+        }
+
+        public Builder runJobTask(@Nullable GetJobJobSettingsSettingsRunJobTask runJobTask) {
+            $.runJobTask = runJobTask;
             return this;
         }
 

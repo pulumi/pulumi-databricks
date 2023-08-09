@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,10 +22,18 @@ public final class GetInstancePoolPoolInfoGcpAttributes extends com.pulumi.resou
         return Optional.ofNullable(this.gcpAvailability);
     }
 
+    @Import(name="localSsdCount")
+    private @Nullable Integer localSsdCount;
+
+    public Optional<Integer> localSsdCount() {
+        return Optional.ofNullable(this.localSsdCount);
+    }
+
     private GetInstancePoolPoolInfoGcpAttributes() {}
 
     private GetInstancePoolPoolInfoGcpAttributes(GetInstancePoolPoolInfoGcpAttributes $) {
         this.gcpAvailability = $.gcpAvailability;
+        this.localSsdCount = $.localSsdCount;
     }
 
     public static Builder builder() {
@@ -47,6 +56,11 @@ public final class GetInstancePoolPoolInfoGcpAttributes extends com.pulumi.resou
 
         public Builder gcpAvailability(@Nullable String gcpAvailability) {
             $.gcpAvailability = gcpAvailability;
+            return this;
+        }
+
+        public Builder localSsdCount(@Nullable Integer localSsdCount) {
+            $.localSsdCount = localSsdCount;
             return this;
         }
 

@@ -81,6 +81,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("notificationSettings")]
         public Inputs.GetJobJobSettingsSettingsNotificationSettingsArgs? NotificationSettings { get; set; }
 
+        [Input("parameters")]
+        private List<Inputs.GetJobJobSettingsSettingsParameterArgs>? _parameters;
+        public List<Inputs.GetJobJobSettingsSettingsParameterArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new List<Inputs.GetJobJobSettingsSettingsParameterArgs>());
+            set => _parameters = value;
+        }
+
         [Input("pipelineTask")]
         public Inputs.GetJobJobSettingsSettingsPipelineTaskArgs? PipelineTask { get; set; }
 
@@ -95,6 +103,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("runAs")]
         public Inputs.GetJobJobSettingsSettingsRunAsArgs? RunAs { get; set; }
+
+        [Input("runJobTask")]
+        public Inputs.GetJobJobSettingsSettingsRunJobTaskArgs? RunJobTask { get; set; }
 
         [Input("schedule")]
         public Inputs.GetJobJobSettingsSettingsScheduleArgs? Schedule { get; set; }

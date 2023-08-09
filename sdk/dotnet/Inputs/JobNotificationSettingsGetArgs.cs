@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? NoAlertForCanceledRuns { get; set; }
 
         /// <summary>
-        /// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        /// (Bool) don't send alert for skipped runs.
         /// </summary>
         [Input("noAlertForSkippedRuns")]
         public Input<bool>? NoAlertForSkippedRuns { get; set; }

@@ -22,7 +22,7 @@ public final class JobTaskNotificationSettings {
      */
     private @Nullable Boolean noAlertForCanceledRuns;
     /**
-     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * @return (Bool) don&#39;t send alert for skipped runs.
      * 
      */
     private @Nullable Boolean noAlertForSkippedRuns;
@@ -43,7 +43,7 @@ public final class JobTaskNotificationSettings {
         return Optional.ofNullable(this.noAlertForCanceledRuns);
     }
     /**
-     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * @return (Bool) don&#39;t send alert for skipped runs.
      * 
      */
     public Optional<Boolean> noAlertForSkippedRuns() {

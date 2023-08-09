@@ -21,6 +21,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("googleServiceAccount")]
         public string? GoogleServiceAccount { get; set; }
 
+        [Input("localSsdCount")]
+        public int? LocalSsdCount { get; set; }
+
         [Input("usePreemptibleExecutors")]
         public bool? UsePreemptibleExecutors { get; set; }
 

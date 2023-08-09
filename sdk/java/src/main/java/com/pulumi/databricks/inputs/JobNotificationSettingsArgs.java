@@ -31,14 +31,14 @@ public final class JobNotificationSettingsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * (Bool) don&#39;t send alert for skipped runs.
      * 
      */
     @Import(name="noAlertForSkippedRuns")
     private @Nullable Output<Boolean> noAlertForSkippedRuns;
 
     /**
-     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * @return (Bool) don&#39;t send alert for skipped runs.
      * 
      */
     public Optional<Output<Boolean>> noAlertForSkippedRuns() {
@@ -92,7 +92,7 @@ public final class JobNotificationSettingsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class JobNotificationSettingsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs.
          * 
          * @return builder
          * 

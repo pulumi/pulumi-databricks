@@ -15,6 +15,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNotebookTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNotificationSettings;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskPipelineTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskPythonWheelTask;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskRunJobTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSparkJarTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSparkPythonTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSparkSubmitTask;
@@ -48,6 +49,7 @@ public final class GetJobJobSettingsSettingsTask {
     private @Nullable GetJobJobSettingsSettingsTaskPythonWheelTask pythonWheelTask;
     private Boolean retryOnTimeout;
     private @Nullable String runIf;
+    private @Nullable GetJobJobSettingsSettingsTaskRunJobTask runJobTask;
     private @Nullable GetJobJobSettingsSettingsTaskSparkJarTask sparkJarTask;
     private @Nullable GetJobJobSettingsSettingsTaskSparkPythonTask sparkPythonTask;
     private @Nullable GetJobJobSettingsSettingsTaskSparkSubmitTask sparkSubmitTask;
@@ -113,6 +115,9 @@ public final class GetJobJobSettingsSettingsTask {
     public Optional<String> runIf() {
         return Optional.ofNullable(this.runIf);
     }
+    public Optional<GetJobJobSettingsSettingsTaskRunJobTask> runJobTask() {
+        return Optional.ofNullable(this.runJobTask);
+    }
     public Optional<GetJobJobSettingsSettingsTaskSparkJarTask> sparkJarTask() {
         return Optional.ofNullable(this.sparkJarTask);
     }
@@ -160,6 +165,7 @@ public final class GetJobJobSettingsSettingsTask {
         private @Nullable GetJobJobSettingsSettingsTaskPythonWheelTask pythonWheelTask;
         private Boolean retryOnTimeout;
         private @Nullable String runIf;
+        private @Nullable GetJobJobSettingsSettingsTaskRunJobTask runJobTask;
         private @Nullable GetJobJobSettingsSettingsTaskSparkJarTask sparkJarTask;
         private @Nullable GetJobJobSettingsSettingsTaskSparkPythonTask sparkPythonTask;
         private @Nullable GetJobJobSettingsSettingsTaskSparkSubmitTask sparkSubmitTask;
@@ -188,6 +194,7 @@ public final class GetJobJobSettingsSettingsTask {
     	      this.pythonWheelTask = defaults.pythonWheelTask;
     	      this.retryOnTimeout = defaults.retryOnTimeout;
     	      this.runIf = defaults.runIf;
+    	      this.runJobTask = defaults.runJobTask;
     	      this.sparkJarTask = defaults.sparkJarTask;
     	      this.sparkPythonTask = defaults.sparkPythonTask;
     	      this.sparkSubmitTask = defaults.sparkSubmitTask;
@@ -298,6 +305,11 @@ public final class GetJobJobSettingsSettingsTask {
             return this;
         }
         @CustomType.Setter
+        public Builder runJobTask(@Nullable GetJobJobSettingsSettingsTaskRunJobTask runJobTask) {
+            this.runJobTask = runJobTask;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sparkJarTask(@Nullable GetJobJobSettingsSettingsTaskSparkJarTask sparkJarTask) {
             this.sparkJarTask = sparkJarTask;
             return this;
@@ -348,6 +360,7 @@ public final class GetJobJobSettingsSettingsTask {
             o.pythonWheelTask = pythonWheelTask;
             o.retryOnTimeout = retryOnTimeout;
             o.runIf = runIf;
+            o.runJobTask = runJobTask;
             o.sparkJarTask = sparkJarTask;
             o.sparkPythonTask = sparkPythonTask;
             o.sparkSubmitTask = sparkSubmitTask;
