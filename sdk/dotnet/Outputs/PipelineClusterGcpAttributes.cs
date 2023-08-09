@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? Availability;
         public readonly string? GoogleServiceAccount;
+        public readonly int? LocalSsdCount;
         public readonly string? ZoneId;
 
         [OutputConstructor]
@@ -23,10 +24,13 @@ namespace Pulumi.Databricks.Outputs
 
             string? googleServiceAccount,
 
+            int? localSsdCount,
+
             string? zoneId)
         {
             Availability = availability;
             GoogleServiceAccount = googleServiceAccount;
+            LocalSsdCount = localSsdCount;
             ZoneId = zoneId;
         }
     }

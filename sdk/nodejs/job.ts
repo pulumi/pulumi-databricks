@@ -105,6 +105,7 @@ export class Job extends pulumi.CustomResource {
      * An optional block controlling the notification settings on the job level (described below).
      */
     public readonly notificationSettings!: pulumi.Output<outputs.JobNotificationSettings | undefined>;
+    public readonly parameters!: pulumi.Output<outputs.JobParameter[] | undefined>;
     public readonly pipelineTask!: pulumi.Output<outputs.JobPipelineTask | undefined>;
     public readonly pythonWheelTask!: pulumi.Output<outputs.JobPythonWheelTask | undefined>;
     public readonly queue!: pulumi.Output<outputs.JobQueue | undefined>;
@@ -113,6 +114,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly retryOnTimeout!: pulumi.Output<boolean | undefined>;
     public readonly runAs!: pulumi.Output<outputs.JobRunAs | undefined>;
+    public readonly runJobTask!: pulumi.Output<outputs.JobRunJobTask | undefined>;
     /**
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
      */
@@ -168,11 +170,13 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["newCluster"] = state ? state.newCluster : undefined;
             resourceInputs["notebookTask"] = state ? state.notebookTask : undefined;
             resourceInputs["notificationSettings"] = state ? state.notificationSettings : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["pipelineTask"] = state ? state.pipelineTask : undefined;
             resourceInputs["pythonWheelTask"] = state ? state.pythonWheelTask : undefined;
             resourceInputs["queue"] = state ? state.queue : undefined;
             resourceInputs["retryOnTimeout"] = state ? state.retryOnTimeout : undefined;
             resourceInputs["runAs"] = state ? state.runAs : undefined;
+            resourceInputs["runJobTask"] = state ? state.runJobTask : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
             resourceInputs["sparkJarTask"] = state ? state.sparkJarTask : undefined;
             resourceInputs["sparkPythonTask"] = state ? state.sparkPythonTask : undefined;
@@ -204,11 +208,13 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["newCluster"] = args ? args.newCluster : undefined;
             resourceInputs["notebookTask"] = args ? args.notebookTask : undefined;
             resourceInputs["notificationSettings"] = args ? args.notificationSettings : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["pipelineTask"] = args ? args.pipelineTask : undefined;
             resourceInputs["pythonWheelTask"] = args ? args.pythonWheelTask : undefined;
             resourceInputs["queue"] = args ? args.queue : undefined;
             resourceInputs["retryOnTimeout"] = args ? args.retryOnTimeout : undefined;
             resourceInputs["runAs"] = args ? args.runAs : undefined;
+            resourceInputs["runJobTask"] = args ? args.runJobTask : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["sparkJarTask"] = args ? args.sparkJarTask : undefined;
             resourceInputs["sparkPythonTask"] = args ? args.sparkPythonTask : undefined;
@@ -291,6 +297,7 @@ export interface JobState {
      * An optional block controlling the notification settings on the job level (described below).
      */
     notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
     pipelineTask?: pulumi.Input<inputs.JobPipelineTask>;
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
     queue?: pulumi.Input<inputs.JobQueue>;
@@ -299,6 +306,7 @@ export interface JobState {
      */
     retryOnTimeout?: pulumi.Input<boolean>;
     runAs?: pulumi.Input<inputs.JobRunAs>;
+    runJobTask?: pulumi.Input<inputs.JobRunJobTask>;
     /**
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
      */
@@ -389,6 +397,7 @@ export interface JobArgs {
      * An optional block controlling the notification settings on the job level (described below).
      */
     notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
     pipelineTask?: pulumi.Input<inputs.JobPipelineTask>;
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
     queue?: pulumi.Input<inputs.JobQueue>;
@@ -397,6 +406,7 @@ export interface JobArgs {
      */
     retryOnTimeout?: pulumi.Input<boolean>;
     runAs?: pulumi.Input<inputs.JobRunAs>;
+    runJobTask?: pulumi.Input<inputs.JobRunJobTask>;
     /**
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
      */

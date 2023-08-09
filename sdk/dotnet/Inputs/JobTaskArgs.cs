@@ -108,8 +108,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("retryOnTimeout")]
         public Input<bool>? RetryOnTimeout { get; set; }
 
+        /// <summary>
+        /// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+        /// </summary>
         [Input("runIf")]
         public Input<string>? RunIf { get; set; }
+
+        [Input("runJobTask")]
+        public Input<Inputs.JobTaskRunJobTaskArgs>? RunJobTask { get; set; }
 
         [Input("sparkJarTask")]
         public Input<Inputs.JobTaskSparkJarTaskArgs>? SparkJarTask { get; set; }

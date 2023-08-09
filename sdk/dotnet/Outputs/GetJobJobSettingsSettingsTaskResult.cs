@@ -32,6 +32,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetJobJobSettingsSettingsTaskPythonWheelTaskResult? PythonWheelTask;
         public readonly bool RetryOnTimeout;
         public readonly string? RunIf;
+        public readonly Outputs.GetJobJobSettingsSettingsTaskRunJobTaskResult? RunJobTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskSparkJarTaskResult? SparkJarTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskSparkPythonTaskResult? SparkPythonTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskSparkSubmitTaskResult? SparkSubmitTask;
@@ -79,6 +80,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? runIf,
 
+            Outputs.GetJobJobSettingsSettingsTaskRunJobTaskResult? runJobTask,
+
             Outputs.GetJobJobSettingsSettingsTaskSparkJarTaskResult? sparkJarTask,
 
             Outputs.GetJobJobSettingsSettingsTaskSparkPythonTaskResult? sparkPythonTask,
@@ -110,6 +113,7 @@ namespace Pulumi.Databricks.Outputs
             PythonWheelTask = pythonWheelTask;
             RetryOnTimeout = retryOnTimeout;
             RunIf = runIf;
+            RunJobTask = runJobTask;
             SparkJarTask = sparkJarTask;
             SparkPythonTask = sparkPythonTask;
             SparkSubmitTask = sparkSubmitTask;

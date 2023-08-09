@@ -33,11 +33,13 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetJobJobSettingsSettingsNewClusterResult? NewCluster;
         public readonly Outputs.GetJobJobSettingsSettingsNotebookTaskResult? NotebookTask;
         public readonly Outputs.GetJobJobSettingsSettingsNotificationSettingsResult? NotificationSettings;
+        public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsParameterResult> Parameters;
         public readonly Outputs.GetJobJobSettingsSettingsPipelineTaskResult? PipelineTask;
         public readonly Outputs.GetJobJobSettingsSettingsPythonWheelTaskResult? PythonWheelTask;
         public readonly Outputs.GetJobJobSettingsSettingsQueueResult? Queue;
         public readonly bool? RetryOnTimeout;
         public readonly Outputs.GetJobJobSettingsSettingsRunAsResult? RunAs;
+        public readonly Outputs.GetJobJobSettingsSettingsRunJobTaskResult? RunJobTask;
         public readonly Outputs.GetJobJobSettingsSettingsScheduleResult? Schedule;
         public readonly Outputs.GetJobJobSettingsSettingsSparkJarTaskResult? SparkJarTask;
         public readonly Outputs.GetJobJobSettingsSettingsSparkPythonTaskResult? SparkPythonTask;
@@ -84,6 +86,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsNotificationSettingsResult? notificationSettings,
 
+            ImmutableArray<Outputs.GetJobJobSettingsSettingsParameterResult> parameters,
+
             Outputs.GetJobJobSettingsSettingsPipelineTaskResult? pipelineTask,
 
             Outputs.GetJobJobSettingsSettingsPythonWheelTaskResult? pythonWheelTask,
@@ -93,6 +97,8 @@ namespace Pulumi.Databricks.Outputs
             bool? retryOnTimeout,
 
             Outputs.GetJobJobSettingsSettingsRunAsResult? runAs,
+
+            Outputs.GetJobJobSettingsSettingsRunJobTaskResult? runJobTask,
 
             Outputs.GetJobJobSettingsSettingsScheduleResult? schedule,
 
@@ -129,11 +135,13 @@ namespace Pulumi.Databricks.Outputs
             NewCluster = newCluster;
             NotebookTask = notebookTask;
             NotificationSettings = notificationSettings;
+            Parameters = parameters;
             PipelineTask = pipelineTask;
             PythonWheelTask = pythonWheelTask;
             Queue = queue;
             RetryOnTimeout = retryOnTimeout;
             RunAs = runAs;
+            RunJobTask = runJobTask;
             Schedule = schedule;
             SparkJarTask = sparkJarTask;
             SparkPythonTask = sparkPythonTask;

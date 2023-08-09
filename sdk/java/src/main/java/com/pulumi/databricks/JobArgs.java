@@ -16,10 +16,12 @@ import com.pulumi.databricks.inputs.JobLibraryArgs;
 import com.pulumi.databricks.inputs.JobNewClusterArgs;
 import com.pulumi.databricks.inputs.JobNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobNotificationSettingsArgs;
+import com.pulumi.databricks.inputs.JobParameterArgs;
 import com.pulumi.databricks.inputs.JobPipelineTaskArgs;
 import com.pulumi.databricks.inputs.JobPythonWheelTaskArgs;
 import com.pulumi.databricks.inputs.JobQueueArgs;
 import com.pulumi.databricks.inputs.JobRunAsArgs;
+import com.pulumi.databricks.inputs.JobRunJobTaskArgs;
 import com.pulumi.databricks.inputs.JobScheduleArgs;
 import com.pulumi.databricks.inputs.JobSparkJarTaskArgs;
 import com.pulumi.databricks.inputs.JobSparkPythonTaskArgs;
@@ -327,6 +329,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.notificationSettings);
     }
 
+    @Import(name="parameters")
+    private @Nullable Output<List<JobParameterArgs>> parameters;
+
+    public Optional<Output<List<JobParameterArgs>>> parameters() {
+        return Optional.ofNullable(this.parameters);
+    }
+
     @Import(name="pipelineTask")
     private @Nullable Output<JobPipelineTaskArgs> pipelineTask;
 
@@ -368,6 +377,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<JobRunAsArgs>> runAs() {
         return Optional.ofNullable(this.runAs);
+    }
+
+    @Import(name="runJobTask")
+    private @Nullable Output<JobRunJobTaskArgs> runJobTask;
+
+    public Optional<Output<JobRunJobTaskArgs>> runJobTask() {
+        return Optional.ofNullable(this.runJobTask);
     }
 
     /**
@@ -479,11 +495,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.newCluster = $.newCluster;
         this.notebookTask = $.notebookTask;
         this.notificationSettings = $.notificationSettings;
+        this.parameters = $.parameters;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.queue = $.queue;
         this.retryOnTimeout = $.retryOnTimeout;
         this.runAs = $.runAs;
+        this.runJobTask = $.runJobTask;
         this.schedule = $.schedule;
         this.sparkJarTask = $.sparkJarTask;
         this.sparkPythonTask = $.sparkPythonTask;
@@ -908,6 +926,19 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
             return notificationSettings(Output.of(notificationSettings));
         }
 
+        public Builder parameters(@Nullable Output<List<JobParameterArgs>> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        public Builder parameters(List<JobParameterArgs> parameters) {
+            return parameters(Output.of(parameters));
+        }
+
+        public Builder parameters(JobParameterArgs... parameters) {
+            return parameters(List.of(parameters));
+        }
+
         public Builder pipelineTask(@Nullable Output<JobPipelineTaskArgs> pipelineTask) {
             $.pipelineTask = pipelineTask;
             return this;
@@ -963,6 +994,15 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder runAs(JobRunAsArgs runAs) {
             return runAs(Output.of(runAs));
+        }
+
+        public Builder runJobTask(@Nullable Output<JobRunJobTaskArgs> runJobTask) {
+            $.runJobTask = runJobTask;
+            return this;
+        }
+
+        public Builder runJobTask(JobRunJobTaskArgs runJobTask) {
+            return runJobTask(Output.of(runJobTask));
         }
 
         /**

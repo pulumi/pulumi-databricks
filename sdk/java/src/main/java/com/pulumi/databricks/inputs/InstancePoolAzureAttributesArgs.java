@@ -17,14 +17,14 @@ public final class InstancePoolAzureAttributesArgs extends com.pulumi.resources.
     public static final InstancePoolAzureAttributesArgs Empty = new InstancePoolAzureAttributesArgs();
 
     /**
-     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
      * 
      */
     @Import(name="availability")
     private @Nullable Output<String> availability;
 
     /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * @return Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
      * 
      */
     public Optional<Output<String>> availability() {
@@ -72,7 +72,7 @@ public final class InstancePoolAzureAttributesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param availability Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+         * @param availability Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class InstancePoolAzureAttributesArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param availability Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+         * @param availability Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
          * 
          * @return builder
          * 

@@ -15,10 +15,12 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsLibrary;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNewCluster;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNotebookTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNotificationSettings;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsParameter;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsPipelineTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsPythonWheelTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsQueue;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsRunAs;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsRunJobTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsSchedule;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsSparkJarTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsSparkPythonTask;
@@ -59,11 +61,13 @@ public final class GetJobJobSettingsSettings {
     private @Nullable GetJobJobSettingsSettingsNewCluster newCluster;
     private @Nullable GetJobJobSettingsSettingsNotebookTask notebookTask;
     private @Nullable GetJobJobSettingsSettingsNotificationSettings notificationSettings;
+    private @Nullable List<GetJobJobSettingsSettingsParameter> parameters;
     private @Nullable GetJobJobSettingsSettingsPipelineTask pipelineTask;
     private @Nullable GetJobJobSettingsSettingsPythonWheelTask pythonWheelTask;
     private @Nullable GetJobJobSettingsSettingsQueue queue;
     private @Nullable Boolean retryOnTimeout;
     private @Nullable GetJobJobSettingsSettingsRunAs runAs;
+    private @Nullable GetJobJobSettingsSettingsRunJobTask runJobTask;
     private @Nullable GetJobJobSettingsSettingsSchedule schedule;
     private @Nullable GetJobJobSettingsSettingsSparkJarTask sparkJarTask;
     private @Nullable GetJobJobSettingsSettingsSparkPythonTask sparkPythonTask;
@@ -130,6 +134,9 @@ public final class GetJobJobSettingsSettings {
     public Optional<GetJobJobSettingsSettingsNotificationSettings> notificationSettings() {
         return Optional.ofNullable(this.notificationSettings);
     }
+    public List<GetJobJobSettingsSettingsParameter> parameters() {
+        return this.parameters == null ? List.of() : this.parameters;
+    }
     public Optional<GetJobJobSettingsSettingsPipelineTask> pipelineTask() {
         return Optional.ofNullable(this.pipelineTask);
     }
@@ -144,6 +151,9 @@ public final class GetJobJobSettingsSettings {
     }
     public Optional<GetJobJobSettingsSettingsRunAs> runAs() {
         return Optional.ofNullable(this.runAs);
+    }
+    public Optional<GetJobJobSettingsSettingsRunJobTask> runJobTask() {
+        return Optional.ofNullable(this.runJobTask);
     }
     public Optional<GetJobJobSettingsSettingsSchedule> schedule() {
         return Optional.ofNullable(this.schedule);
@@ -199,11 +209,13 @@ public final class GetJobJobSettingsSettings {
         private @Nullable GetJobJobSettingsSettingsNewCluster newCluster;
         private @Nullable GetJobJobSettingsSettingsNotebookTask notebookTask;
         private @Nullable GetJobJobSettingsSettingsNotificationSettings notificationSettings;
+        private @Nullable List<GetJobJobSettingsSettingsParameter> parameters;
         private @Nullable GetJobJobSettingsSettingsPipelineTask pipelineTask;
         private @Nullable GetJobJobSettingsSettingsPythonWheelTask pythonWheelTask;
         private @Nullable GetJobJobSettingsSettingsQueue queue;
         private @Nullable Boolean retryOnTimeout;
         private @Nullable GetJobJobSettingsSettingsRunAs runAs;
+        private @Nullable GetJobJobSettingsSettingsRunJobTask runJobTask;
         private @Nullable GetJobJobSettingsSettingsSchedule schedule;
         private @Nullable GetJobJobSettingsSettingsSparkJarTask sparkJarTask;
         private @Nullable GetJobJobSettingsSettingsSparkPythonTask sparkPythonTask;
@@ -233,11 +245,13 @@ public final class GetJobJobSettingsSettings {
     	      this.newCluster = defaults.newCluster;
     	      this.notebookTask = defaults.notebookTask;
     	      this.notificationSettings = defaults.notificationSettings;
+    	      this.parameters = defaults.parameters;
     	      this.pipelineTask = defaults.pipelineTask;
     	      this.pythonWheelTask = defaults.pythonWheelTask;
     	      this.queue = defaults.queue;
     	      this.retryOnTimeout = defaults.retryOnTimeout;
     	      this.runAs = defaults.runAs;
+    	      this.runJobTask = defaults.runJobTask;
     	      this.schedule = defaults.schedule;
     	      this.sparkJarTask = defaults.sparkJarTask;
     	      this.sparkPythonTask = defaults.sparkPythonTask;
@@ -344,6 +358,14 @@ public final class GetJobJobSettingsSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder parameters(@Nullable List<GetJobJobSettingsSettingsParameter> parameters) {
+            this.parameters = parameters;
+            return this;
+        }
+        public Builder parameters(GetJobJobSettingsSettingsParameter... parameters) {
+            return parameters(List.of(parameters));
+        }
+        @CustomType.Setter
         public Builder pipelineTask(@Nullable GetJobJobSettingsSettingsPipelineTask pipelineTask) {
             this.pipelineTask = pipelineTask;
             return this;
@@ -366,6 +388,11 @@ public final class GetJobJobSettingsSettings {
         @CustomType.Setter
         public Builder runAs(@Nullable GetJobJobSettingsSettingsRunAs runAs) {
             this.runAs = runAs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder runJobTask(@Nullable GetJobJobSettingsSettingsRunJobTask runJobTask) {
+            this.runJobTask = runJobTask;
             return this;
         }
         @CustomType.Setter
@@ -435,11 +462,13 @@ public final class GetJobJobSettingsSettings {
             o.newCluster = newCluster;
             o.notebookTask = notebookTask;
             o.notificationSettings = notificationSettings;
+            o.parameters = parameters;
             o.pipelineTask = pipelineTask;
             o.pythonWheelTask = pythonWheelTask;
             o.queue = queue;
             o.retryOnTimeout = retryOnTimeout;
             o.runAs = runAs;
+            o.runJobTask = runJobTask;
             o.schedule = schedule;
             o.sparkJarTask = sparkJarTask;
             o.sparkPythonTask = sparkPythonTask;

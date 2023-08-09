@@ -79,6 +79,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("runIf")]
         public Input<string>? RunIf { get; set; }
 
+        [Input("runJobTask")]
+        public Input<Inputs.GetJobJobSettingsSettingsTaskRunJobTaskInputArgs>? RunJobTask { get; set; }
+
         [Input("sparkJarTask")]
         public Input<Inputs.GetJobJobSettingsSettingsTaskSparkJarTaskInputArgs>? SparkJarTask { get; set; }
 

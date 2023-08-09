@@ -15,6 +15,7 @@ import com.pulumi.databricks.outputs.JobTaskNotebookTask;
 import com.pulumi.databricks.outputs.JobTaskNotificationSettings;
 import com.pulumi.databricks.outputs.JobTaskPipelineTask;
 import com.pulumi.databricks.outputs.JobTaskPythonWheelTask;
+import com.pulumi.databricks.outputs.JobTaskRunJobTask;
 import com.pulumi.databricks.outputs.JobTaskSparkJarTask;
 import com.pulumi.databricks.outputs.JobTaskSparkPythonTask;
 import com.pulumi.databricks.outputs.JobTaskSparkSubmitTask;
@@ -87,7 +88,12 @@ public final class JobTask {
      * 
      */
     private @Nullable Boolean retryOnTimeout;
+    /**
+     * @return An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     * 
+     */
     private @Nullable String runIf;
+    private @Nullable JobTaskRunJobTask runJobTask;
     private @Nullable JobTaskSparkJarTask sparkJarTask;
     private @Nullable JobTaskSparkPythonTask sparkPythonTask;
     private @Nullable JobTaskSparkSubmitTask sparkSubmitTask;
@@ -199,8 +205,15 @@ public final class JobTask {
     public Optional<Boolean> retryOnTimeout() {
         return Optional.ofNullable(this.retryOnTimeout);
     }
+    /**
+     * @return An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     * 
+     */
     public Optional<String> runIf() {
         return Optional.ofNullable(this.runIf);
+    }
+    public Optional<JobTaskRunJobTask> runJobTask() {
+        return Optional.ofNullable(this.runJobTask);
     }
     public Optional<JobTaskSparkJarTask> sparkJarTask() {
         return Optional.ofNullable(this.sparkJarTask);
@@ -258,6 +271,7 @@ public final class JobTask {
         private @Nullable JobTaskPythonWheelTask pythonWheelTask;
         private @Nullable Boolean retryOnTimeout;
         private @Nullable String runIf;
+        private @Nullable JobTaskRunJobTask runJobTask;
         private @Nullable JobTaskSparkJarTask sparkJarTask;
         private @Nullable JobTaskSparkPythonTask sparkPythonTask;
         private @Nullable JobTaskSparkSubmitTask sparkSubmitTask;
@@ -286,6 +300,7 @@ public final class JobTask {
     	      this.pythonWheelTask = defaults.pythonWheelTask;
     	      this.retryOnTimeout = defaults.retryOnTimeout;
     	      this.runIf = defaults.runIf;
+    	      this.runJobTask = defaults.runJobTask;
     	      this.sparkJarTask = defaults.sparkJarTask;
     	      this.sparkPythonTask = defaults.sparkPythonTask;
     	      this.sparkSubmitTask = defaults.sparkSubmitTask;
@@ -396,6 +411,11 @@ public final class JobTask {
             return this;
         }
         @CustomType.Setter
+        public Builder runJobTask(@Nullable JobTaskRunJobTask runJobTask) {
+            this.runJobTask = runJobTask;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sparkJarTask(@Nullable JobTaskSparkJarTask sparkJarTask) {
             this.sparkJarTask = sparkJarTask;
             return this;
@@ -446,6 +466,7 @@ public final class JobTask {
             o.pythonWheelTask = pythonWheelTask;
             o.retryOnTimeout = retryOnTimeout;
             o.runIf = runIf;
+            o.runJobTask = runJobTask;
             o.sparkJarTask = sparkJarTask;
             o.sparkPythonTask = sparkPythonTask;
             o.sparkSubmitTask = sparkSubmitTask;

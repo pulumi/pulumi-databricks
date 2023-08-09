@@ -1647,9 +1647,11 @@ func (o ClusterDockerImageBasicAuthPtrOutput) Username() pulumi.StringPtrOutput 
 }
 
 type ClusterGcpAttributes struct {
-	Availability            *string `pulumi:"availability"`
-	BootDiskSize            *int    `pulumi:"bootDiskSize"`
-	GoogleServiceAccount    *string `pulumi:"googleServiceAccount"`
+	Availability         *string `pulumi:"availability"`
+	BootDiskSize         *int    `pulumi:"bootDiskSize"`
+	GoogleServiceAccount *string `pulumi:"googleServiceAccount"`
+	LocalSsdCount        *int    `pulumi:"localSsdCount"`
+	// Deprecated: Please use 'availability' instead.
 	UsePreemptibleExecutors *bool   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  *string `pulumi:"zoneId"`
 }
@@ -1666,9 +1668,11 @@ type ClusterGcpAttributesInput interface {
 }
 
 type ClusterGcpAttributesArgs struct {
-	Availability            pulumi.StringPtrInput `pulumi:"availability"`
-	BootDiskSize            pulumi.IntPtrInput    `pulumi:"bootDiskSize"`
-	GoogleServiceAccount    pulumi.StringPtrInput `pulumi:"googleServiceAccount"`
+	Availability         pulumi.StringPtrInput `pulumi:"availability"`
+	BootDiskSize         pulumi.IntPtrInput    `pulumi:"bootDiskSize"`
+	GoogleServiceAccount pulumi.StringPtrInput `pulumi:"googleServiceAccount"`
+	LocalSsdCount        pulumi.IntPtrInput    `pulumi:"localSsdCount"`
+	// Deprecated: Please use 'availability' instead.
 	UsePreemptibleExecutors pulumi.BoolPtrInput   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -1762,6 +1766,11 @@ func (o ClusterGcpAttributesOutput) GoogleServiceAccount() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ClusterGcpAttributes) *string { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+func (o ClusterGcpAttributesOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterGcpAttributes) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
+// Deprecated: Please use 'availability' instead.
 func (o ClusterGcpAttributesOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterGcpAttributes) *bool { return v.UsePreemptibleExecutors }).(pulumi.BoolPtrOutput)
 }
@@ -1821,6 +1830,16 @@ func (o ClusterGcpAttributesPtrOutput) GoogleServiceAccount() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ClusterGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterGcpAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Deprecated: Please use 'availability' instead.
 func (o ClusterGcpAttributesPtrOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterGcpAttributes) *bool {
 		if v == nil {
@@ -3991,7 +4010,7 @@ func (o InstancePoolAwsAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 }
 
 type InstancePoolAzureAttributes struct {
-	// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+	// Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
 	Availability *string `pulumi:"availability"`
 	// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 	SpotBidMaxPrice *float64 `pulumi:"spotBidMaxPrice"`
@@ -4009,7 +4028,7 @@ type InstancePoolAzureAttributesInput interface {
 }
 
 type InstancePoolAzureAttributesArgs struct {
-	// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+	// Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
 	Availability pulumi.StringPtrInput `pulumi:"availability"`
 	// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 	SpotBidMaxPrice pulumi.Float64PtrInput `pulumi:"spotBidMaxPrice"`
@@ -4092,7 +4111,7 @@ func (o InstancePoolAzureAttributesOutput) ToInstancePoolAzureAttributesPtrOutpu
 	}).(InstancePoolAzureAttributesPtrOutput)
 }
 
-// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+// Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
 func (o InstancePoolAzureAttributesOutput) Availability() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePoolAzureAttributes) *string { return v.Availability }).(pulumi.StringPtrOutput)
 }
@@ -4126,7 +4145,7 @@ func (o InstancePoolAzureAttributesPtrOutput) Elem() InstancePoolAzureAttributes
 	}).(InstancePoolAzureAttributesOutput)
 }
 
-// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+// Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
 func (o InstancePoolAzureAttributesPtrOutput) Availability() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePoolAzureAttributes) *string {
 		if v == nil {
@@ -4466,7 +4485,10 @@ func (o InstancePoolDiskSpecDiskTypePtrOutput) EbsVolumeType() pulumi.StringPtrO
 }
 
 type InstancePoolGcpAttributes struct {
+	// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
 	GcpAvailability *string `pulumi:"gcpAvailability"`
+	// Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+	LocalSsdCount *int `pulumi:"localSsdCount"`
 }
 
 // InstancePoolGcpAttributesInput is an input type that accepts InstancePoolGcpAttributesArgs and InstancePoolGcpAttributesOutput values.
@@ -4481,7 +4503,10 @@ type InstancePoolGcpAttributesInput interface {
 }
 
 type InstancePoolGcpAttributesArgs struct {
+	// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
 	GcpAvailability pulumi.StringPtrInput `pulumi:"gcpAvailability"`
+	// Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
 }
 
 func (InstancePoolGcpAttributesArgs) ElementType() reflect.Type {
@@ -4561,8 +4586,14 @@ func (o InstancePoolGcpAttributesOutput) ToInstancePoolGcpAttributesPtrOutputWit
 	}).(InstancePoolGcpAttributesPtrOutput)
 }
 
+// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
 func (o InstancePoolGcpAttributesOutput) GcpAvailability() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePoolGcpAttributes) *string { return v.GcpAvailability }).(pulumi.StringPtrOutput)
+}
+
+// Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+func (o InstancePoolGcpAttributesOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePoolGcpAttributes) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
 
 type InstancePoolGcpAttributesPtrOutput struct{ *pulumi.OutputState }
@@ -4589,6 +4620,7 @@ func (o InstancePoolGcpAttributesPtrOutput) Elem() InstancePoolGcpAttributesOutp
 	}).(InstancePoolGcpAttributesOutput)
 }
 
+// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
 func (o InstancePoolGcpAttributesPtrOutput) GcpAvailability() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePoolGcpAttributes) *string {
 		if v == nil {
@@ -4596,6 +4628,16 @@ func (o InstancePoolGcpAttributesPtrOutput) GcpAvailability() pulumi.StringPtrOu
 		}
 		return v.GcpAvailability
 	}).(pulumi.StringPtrOutput)
+}
+
+// Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+func (o InstancePoolGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePoolGcpAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type InstancePoolInstancePoolFleetAttributes struct {
@@ -9100,6 +9142,7 @@ type JobJobClusterNewClusterGcpAttributes struct {
 	Availability            *string `pulumi:"availability"`
 	BootDiskSize            *int    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    *string `pulumi:"googleServiceAccount"`
+	LocalSsdCount           *int    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors *bool   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  *string `pulumi:"zoneId"`
 }
@@ -9119,6 +9162,7 @@ type JobJobClusterNewClusterGcpAttributesArgs struct {
 	Availability            pulumi.StringPtrInput `pulumi:"availability"`
 	BootDiskSize            pulumi.IntPtrInput    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    pulumi.StringPtrInput `pulumi:"googleServiceAccount"`
+	LocalSsdCount           pulumi.IntPtrInput    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors pulumi.BoolPtrInput   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -9212,6 +9256,10 @@ func (o JobJobClusterNewClusterGcpAttributesOutput) GoogleServiceAccount() pulum
 	return o.ApplyT(func(v JobJobClusterNewClusterGcpAttributes) *string { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+func (o JobJobClusterNewClusterGcpAttributesOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterGcpAttributes) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
 func (o JobJobClusterNewClusterGcpAttributesOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobJobClusterNewClusterGcpAttributes) *bool { return v.UsePreemptibleExecutors }).(pulumi.BoolPtrOutput)
 }
@@ -9269,6 +9317,15 @@ func (o JobJobClusterNewClusterGcpAttributesPtrOutput) GoogleServiceAccount() pu
 		}
 		return v.GoogleServiceAccount
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobJobClusterNewClusterGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobJobClusterNewClusterGcpAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o JobJobClusterNewClusterGcpAttributesPtrOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
@@ -13446,6 +13503,7 @@ type JobNewClusterGcpAttributes struct {
 	Availability            *string `pulumi:"availability"`
 	BootDiskSize            *int    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    *string `pulumi:"googleServiceAccount"`
+	LocalSsdCount           *int    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors *bool   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  *string `pulumi:"zoneId"`
 }
@@ -13465,6 +13523,7 @@ type JobNewClusterGcpAttributesArgs struct {
 	Availability            pulumi.StringPtrInput `pulumi:"availability"`
 	BootDiskSize            pulumi.IntPtrInput    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    pulumi.StringPtrInput `pulumi:"googleServiceAccount"`
+	LocalSsdCount           pulumi.IntPtrInput    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors pulumi.BoolPtrInput   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -13558,6 +13617,10 @@ func (o JobNewClusterGcpAttributesOutput) GoogleServiceAccount() pulumi.StringPt
 	return o.ApplyT(func(v JobNewClusterGcpAttributes) *string { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+func (o JobNewClusterGcpAttributesOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobNewClusterGcpAttributes) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
 func (o JobNewClusterGcpAttributesOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobNewClusterGcpAttributes) *bool { return v.UsePreemptibleExecutors }).(pulumi.BoolPtrOutput)
 }
@@ -13615,6 +13678,15 @@ func (o JobNewClusterGcpAttributesPtrOutput) GoogleServiceAccount() pulumi.Strin
 		}
 		return v.GoogleServiceAccount
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobNewClusterGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobNewClusterGcpAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o JobNewClusterGcpAttributesPtrOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
@@ -15295,7 +15367,7 @@ func (o JobNotebookTaskPtrOutput) Source() pulumi.StringPtrOutput {
 type JobNotificationSettings struct {
 	// (Bool) don't send alert for cancelled runs.
 	NoAlertForCanceledRuns *bool `pulumi:"noAlertForCanceledRuns"`
-	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	// (Bool) don't send alert for skipped runs.
 	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
 }
 
@@ -15313,7 +15385,7 @@ type JobNotificationSettingsInput interface {
 type JobNotificationSettingsArgs struct {
 	// (Bool) don't send alert for cancelled runs.
 	NoAlertForCanceledRuns pulumi.BoolPtrInput `pulumi:"noAlertForCanceledRuns"`
-	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	// (Bool) don't send alert for skipped runs.
 	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
 }
 
@@ -15399,7 +15471,7 @@ func (o JobNotificationSettingsOutput) NoAlertForCanceledRuns() pulumi.BoolPtrOu
 	return o.ApplyT(func(v JobNotificationSettings) *bool { return v.NoAlertForCanceledRuns }).(pulumi.BoolPtrOutput)
 }
 
-// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+// (Bool) don't send alert for skipped runs.
 func (o JobNotificationSettingsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobNotificationSettings) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
 }
@@ -15438,7 +15510,7 @@ func (o JobNotificationSettingsPtrOutput) NoAlertForCanceledRuns() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+// (Bool) don't send alert for skipped runs.
 func (o JobNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobNotificationSettings) *bool {
 		if v == nil {
@@ -15446,6 +15518,112 @@ func (o JobNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtr
 		}
 		return v.NoAlertForSkippedRuns
 	}).(pulumi.BoolPtrOutput)
+}
+
+type JobParameter struct {
+	// Default value of the parameter.
+	Default *string `pulumi:"default"`
+	// An optional name for the job. The default value is Untitled.
+	Name *string `pulumi:"name"`
+}
+
+// JobParameterInput is an input type that accepts JobParameterArgs and JobParameterOutput values.
+// You can construct a concrete instance of `JobParameterInput` via:
+//
+//	JobParameterArgs{...}
+type JobParameterInput interface {
+	pulumi.Input
+
+	ToJobParameterOutput() JobParameterOutput
+	ToJobParameterOutputWithContext(context.Context) JobParameterOutput
+}
+
+type JobParameterArgs struct {
+	// Default value of the parameter.
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// An optional name for the job. The default value is Untitled.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (JobParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobParameter)(nil)).Elem()
+}
+
+func (i JobParameterArgs) ToJobParameterOutput() JobParameterOutput {
+	return i.ToJobParameterOutputWithContext(context.Background())
+}
+
+func (i JobParameterArgs) ToJobParameterOutputWithContext(ctx context.Context) JobParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobParameterOutput)
+}
+
+// JobParameterArrayInput is an input type that accepts JobParameterArray and JobParameterArrayOutput values.
+// You can construct a concrete instance of `JobParameterArrayInput` via:
+//
+//	JobParameterArray{ JobParameterArgs{...} }
+type JobParameterArrayInput interface {
+	pulumi.Input
+
+	ToJobParameterArrayOutput() JobParameterArrayOutput
+	ToJobParameterArrayOutputWithContext(context.Context) JobParameterArrayOutput
+}
+
+type JobParameterArray []JobParameterInput
+
+func (JobParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobParameter)(nil)).Elem()
+}
+
+func (i JobParameterArray) ToJobParameterArrayOutput() JobParameterArrayOutput {
+	return i.ToJobParameterArrayOutputWithContext(context.Background())
+}
+
+func (i JobParameterArray) ToJobParameterArrayOutputWithContext(ctx context.Context) JobParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobParameterArrayOutput)
+}
+
+type JobParameterOutput struct{ *pulumi.OutputState }
+
+func (JobParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobParameter)(nil)).Elem()
+}
+
+func (o JobParameterOutput) ToJobParameterOutput() JobParameterOutput {
+	return o
+}
+
+func (o JobParameterOutput) ToJobParameterOutputWithContext(ctx context.Context) JobParameterOutput {
+	return o
+}
+
+// Default value of the parameter.
+func (o JobParameterOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobParameter) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// An optional name for the job. The default value is Untitled.
+func (o JobParameterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type JobParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (JobParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobParameter)(nil)).Elem()
+}
+
+func (o JobParameterArrayOutput) ToJobParameterArrayOutput() JobParameterArrayOutput {
+	return o
+}
+
+func (o JobParameterArrayOutput) ToJobParameterArrayOutputWithContext(ctx context.Context) JobParameterArrayOutput {
+	return o
+}
+
+func (o JobParameterArrayOutput) Index(i pulumi.IntInput) JobParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobParameter {
+		return vs[0].([]JobParameter)[vs[1].(int)]
+	}).(JobParameterOutput)
 }
 
 type JobPipelineTask struct {
@@ -16186,6 +16364,162 @@ func (o JobRunAsPtrOutput) UserName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobRunJobTask struct {
+	// (String) ID of the job
+	JobId string `pulumi:"jobId"`
+	// (Map) Job parameters for the task
+	JobParameters map[string]interface{} `pulumi:"jobParameters"`
+}
+
+// JobRunJobTaskInput is an input type that accepts JobRunJobTaskArgs and JobRunJobTaskOutput values.
+// You can construct a concrete instance of `JobRunJobTaskInput` via:
+//
+//	JobRunJobTaskArgs{...}
+type JobRunJobTaskInput interface {
+	pulumi.Input
+
+	ToJobRunJobTaskOutput() JobRunJobTaskOutput
+	ToJobRunJobTaskOutputWithContext(context.Context) JobRunJobTaskOutput
+}
+
+type JobRunJobTaskArgs struct {
+	// (String) ID of the job
+	JobId pulumi.StringInput `pulumi:"jobId"`
+	// (Map) Job parameters for the task
+	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
+}
+
+func (JobRunJobTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobRunJobTask)(nil)).Elem()
+}
+
+func (i JobRunJobTaskArgs) ToJobRunJobTaskOutput() JobRunJobTaskOutput {
+	return i.ToJobRunJobTaskOutputWithContext(context.Background())
+}
+
+func (i JobRunJobTaskArgs) ToJobRunJobTaskOutputWithContext(ctx context.Context) JobRunJobTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobRunJobTaskOutput)
+}
+
+func (i JobRunJobTaskArgs) ToJobRunJobTaskPtrOutput() JobRunJobTaskPtrOutput {
+	return i.ToJobRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobRunJobTaskArgs) ToJobRunJobTaskPtrOutputWithContext(ctx context.Context) JobRunJobTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobRunJobTaskOutput).ToJobRunJobTaskPtrOutputWithContext(ctx)
+}
+
+// JobRunJobTaskPtrInput is an input type that accepts JobRunJobTaskArgs, JobRunJobTaskPtr and JobRunJobTaskPtrOutput values.
+// You can construct a concrete instance of `JobRunJobTaskPtrInput` via:
+//
+//	        JobRunJobTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobRunJobTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobRunJobTaskPtrOutput() JobRunJobTaskPtrOutput
+	ToJobRunJobTaskPtrOutputWithContext(context.Context) JobRunJobTaskPtrOutput
+}
+
+type jobRunJobTaskPtrType JobRunJobTaskArgs
+
+func JobRunJobTaskPtr(v *JobRunJobTaskArgs) JobRunJobTaskPtrInput {
+	return (*jobRunJobTaskPtrType)(v)
+}
+
+func (*jobRunJobTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobRunJobTask)(nil)).Elem()
+}
+
+func (i *jobRunJobTaskPtrType) ToJobRunJobTaskPtrOutput() JobRunJobTaskPtrOutput {
+	return i.ToJobRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobRunJobTaskPtrType) ToJobRunJobTaskPtrOutputWithContext(ctx context.Context) JobRunJobTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobRunJobTaskPtrOutput)
+}
+
+type JobRunJobTaskOutput struct{ *pulumi.OutputState }
+
+func (JobRunJobTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobRunJobTask)(nil)).Elem()
+}
+
+func (o JobRunJobTaskOutput) ToJobRunJobTaskOutput() JobRunJobTaskOutput {
+	return o
+}
+
+func (o JobRunJobTaskOutput) ToJobRunJobTaskOutputWithContext(ctx context.Context) JobRunJobTaskOutput {
+	return o
+}
+
+func (o JobRunJobTaskOutput) ToJobRunJobTaskPtrOutput() JobRunJobTaskPtrOutput {
+	return o.ToJobRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobRunJobTaskOutput) ToJobRunJobTaskPtrOutputWithContext(ctx context.Context) JobRunJobTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobRunJobTask) *JobRunJobTask {
+		return &v
+	}).(JobRunJobTaskPtrOutput)
+}
+
+// (String) ID of the job
+func (o JobRunJobTaskOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobRunJobTask) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+// (Map) Job parameters for the task
+func (o JobRunJobTaskOutput) JobParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v JobRunJobTask) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
+}
+
+type JobRunJobTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobRunJobTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobRunJobTask)(nil)).Elem()
+}
+
+func (o JobRunJobTaskPtrOutput) ToJobRunJobTaskPtrOutput() JobRunJobTaskPtrOutput {
+	return o
+}
+
+func (o JobRunJobTaskPtrOutput) ToJobRunJobTaskPtrOutputWithContext(ctx context.Context) JobRunJobTaskPtrOutput {
+	return o
+}
+
+func (o JobRunJobTaskPtrOutput) Elem() JobRunJobTaskOutput {
+	return o.ApplyT(func(v *JobRunJobTask) JobRunJobTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobRunJobTask
+		return ret
+	}).(JobRunJobTaskOutput)
+}
+
+// (String) ID of the job
+func (o JobRunJobTaskPtrOutput) JobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobRunJobTask) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Map) Job parameters for the task
+func (o JobRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *JobRunJobTask) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.JobParameters
+	}).(pulumi.MapOutput)
+}
+
 type JobSchedule struct {
 	// Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
 	PauseStatus *string `pulumi:"pauseStatus"`
@@ -16872,8 +17206,10 @@ type JobTask struct {
 	PipelineTask         *JobTaskPipelineTask         `pulumi:"pipelineTask"`
 	PythonWheelTask      *JobTaskPythonWheelTask      `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-	RetryOnTimeout  *bool                   `pulumi:"retryOnTimeout"`
+	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
+	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
 	RunIf           *string                 `pulumi:"runIf"`
+	RunJobTask      *JobTaskRunJobTask      `pulumi:"runJobTask"`
 	SparkJarTask    *JobTaskSparkJarTask    `pulumi:"sparkJarTask"`
 	SparkPythonTask *JobTaskSparkPythonTask `pulumi:"sparkPythonTask"`
 	SparkSubmitTask *JobTaskSparkSubmitTask `pulumi:"sparkSubmitTask"`
@@ -16924,8 +17260,10 @@ type JobTaskArgs struct {
 	PipelineTask         JobTaskPipelineTaskPtrInput         `pulumi:"pipelineTask"`
 	PythonWheelTask      JobTaskPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-	RetryOnTimeout  pulumi.BoolPtrInput            `pulumi:"retryOnTimeout"`
+	RetryOnTimeout pulumi.BoolPtrInput `pulumi:"retryOnTimeout"`
+	// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
 	RunIf           pulumi.StringPtrInput          `pulumi:"runIf"`
+	RunJobTask      JobTaskRunJobTaskPtrInput      `pulumi:"runJobTask"`
 	SparkJarTask    JobTaskSparkJarTaskPtrInput    `pulumi:"sparkJarTask"`
 	SparkPythonTask JobTaskSparkPythonTaskPtrInput `pulumi:"sparkPythonTask"`
 	SparkSubmitTask JobTaskSparkSubmitTaskPtrInput `pulumi:"sparkSubmitTask"`
@@ -17070,8 +17408,13 @@ func (o JobTaskOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTask) *bool { return v.RetryOnTimeout }).(pulumi.BoolPtrOutput)
 }
 
+// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
 func (o JobTaskOutput) RunIf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTask) *string { return v.RunIf }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskOutput) RunJobTask() JobTaskRunJobTaskPtrOutput {
+	return o.ApplyT(func(v JobTask) *JobTaskRunJobTask { return v.RunJobTask }).(JobTaskRunJobTaskPtrOutput)
 }
 
 func (o JobTaskOutput) SparkJarTask() JobTaskSparkJarTaskPtrOutput {
@@ -20786,6 +21129,7 @@ type JobTaskNewClusterGcpAttributes struct {
 	Availability            *string `pulumi:"availability"`
 	BootDiskSize            *int    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    *string `pulumi:"googleServiceAccount"`
+	LocalSsdCount           *int    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors *bool   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  *string `pulumi:"zoneId"`
 }
@@ -20805,6 +21149,7 @@ type JobTaskNewClusterGcpAttributesArgs struct {
 	Availability            pulumi.StringPtrInput `pulumi:"availability"`
 	BootDiskSize            pulumi.IntPtrInput    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    pulumi.StringPtrInput `pulumi:"googleServiceAccount"`
+	LocalSsdCount           pulumi.IntPtrInput    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors pulumi.BoolPtrInput   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -20898,6 +21243,10 @@ func (o JobTaskNewClusterGcpAttributesOutput) GoogleServiceAccount() pulumi.Stri
 	return o.ApplyT(func(v JobTaskNewClusterGcpAttributes) *string { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+func (o JobTaskNewClusterGcpAttributesOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTaskNewClusterGcpAttributes) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
 func (o JobTaskNewClusterGcpAttributesOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskNewClusterGcpAttributes) *bool { return v.UsePreemptibleExecutors }).(pulumi.BoolPtrOutput)
 }
@@ -20955,6 +21304,15 @@ func (o JobTaskNewClusterGcpAttributesPtrOutput) GoogleServiceAccount() pulumi.S
 		}
 		return v.GoogleServiceAccount
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskNewClusterGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTaskNewClusterGcpAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o JobTaskNewClusterGcpAttributesPtrOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
@@ -22637,7 +22995,7 @@ type JobTaskNotificationSettings struct {
 	AlertOnLastAttempt *bool `pulumi:"alertOnLastAttempt"`
 	// (Bool) don't send alert for cancelled runs.
 	NoAlertForCanceledRuns *bool `pulumi:"noAlertForCanceledRuns"`
-	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	// (Bool) don't send alert for skipped runs.
 	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
 }
 
@@ -22657,7 +23015,7 @@ type JobTaskNotificationSettingsArgs struct {
 	AlertOnLastAttempt pulumi.BoolPtrInput `pulumi:"alertOnLastAttempt"`
 	// (Bool) don't send alert for cancelled runs.
 	NoAlertForCanceledRuns pulumi.BoolPtrInput `pulumi:"noAlertForCanceledRuns"`
-	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+	// (Bool) don't send alert for skipped runs.
 	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
 }
 
@@ -22748,7 +23106,7 @@ func (o JobTaskNotificationSettingsOutput) NoAlertForCanceledRuns() pulumi.BoolP
 	return o.ApplyT(func(v JobTaskNotificationSettings) *bool { return v.NoAlertForCanceledRuns }).(pulumi.BoolPtrOutput)
 }
 
-// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+// (Bool) don't send alert for skipped runs.
 func (o JobTaskNotificationSettingsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskNotificationSettings) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
 }
@@ -22797,7 +23155,7 @@ func (o JobTaskNotificationSettingsPtrOutput) NoAlertForCanceledRuns() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+// (Bool) don't send alert for skipped runs.
 func (o JobTaskNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskNotificationSettings) *bool {
 		if v == nil {
@@ -23163,6 +23521,162 @@ func (o JobTaskPythonWheelTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 		}
 		return v.Parameters
 	}).(pulumi.StringArrayOutput)
+}
+
+type JobTaskRunJobTask struct {
+	// (String) ID of the job
+	JobId string `pulumi:"jobId"`
+	// (Map) Job parameters for the task
+	JobParameters map[string]interface{} `pulumi:"jobParameters"`
+}
+
+// JobTaskRunJobTaskInput is an input type that accepts JobTaskRunJobTaskArgs and JobTaskRunJobTaskOutput values.
+// You can construct a concrete instance of `JobTaskRunJobTaskInput` via:
+//
+//	JobTaskRunJobTaskArgs{...}
+type JobTaskRunJobTaskInput interface {
+	pulumi.Input
+
+	ToJobTaskRunJobTaskOutput() JobTaskRunJobTaskOutput
+	ToJobTaskRunJobTaskOutputWithContext(context.Context) JobTaskRunJobTaskOutput
+}
+
+type JobTaskRunJobTaskArgs struct {
+	// (String) ID of the job
+	JobId pulumi.StringInput `pulumi:"jobId"`
+	// (Map) Job parameters for the task
+	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
+}
+
+func (JobTaskRunJobTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskRunJobTask)(nil)).Elem()
+}
+
+func (i JobTaskRunJobTaskArgs) ToJobTaskRunJobTaskOutput() JobTaskRunJobTaskOutput {
+	return i.ToJobTaskRunJobTaskOutputWithContext(context.Background())
+}
+
+func (i JobTaskRunJobTaskArgs) ToJobTaskRunJobTaskOutputWithContext(ctx context.Context) JobTaskRunJobTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskRunJobTaskOutput)
+}
+
+func (i JobTaskRunJobTaskArgs) ToJobTaskRunJobTaskPtrOutput() JobTaskRunJobTaskPtrOutput {
+	return i.ToJobTaskRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskRunJobTaskArgs) ToJobTaskRunJobTaskPtrOutputWithContext(ctx context.Context) JobTaskRunJobTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskRunJobTaskOutput).ToJobTaskRunJobTaskPtrOutputWithContext(ctx)
+}
+
+// JobTaskRunJobTaskPtrInput is an input type that accepts JobTaskRunJobTaskArgs, JobTaskRunJobTaskPtr and JobTaskRunJobTaskPtrOutput values.
+// You can construct a concrete instance of `JobTaskRunJobTaskPtrInput` via:
+//
+//	        JobTaskRunJobTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskRunJobTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskRunJobTaskPtrOutput() JobTaskRunJobTaskPtrOutput
+	ToJobTaskRunJobTaskPtrOutputWithContext(context.Context) JobTaskRunJobTaskPtrOutput
+}
+
+type jobTaskRunJobTaskPtrType JobTaskRunJobTaskArgs
+
+func JobTaskRunJobTaskPtr(v *JobTaskRunJobTaskArgs) JobTaskRunJobTaskPtrInput {
+	return (*jobTaskRunJobTaskPtrType)(v)
+}
+
+func (*jobTaskRunJobTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskRunJobTask)(nil)).Elem()
+}
+
+func (i *jobTaskRunJobTaskPtrType) ToJobTaskRunJobTaskPtrOutput() JobTaskRunJobTaskPtrOutput {
+	return i.ToJobTaskRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskRunJobTaskPtrType) ToJobTaskRunJobTaskPtrOutputWithContext(ctx context.Context) JobTaskRunJobTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskRunJobTaskPtrOutput)
+}
+
+type JobTaskRunJobTaskOutput struct{ *pulumi.OutputState }
+
+func (JobTaskRunJobTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskRunJobTask)(nil)).Elem()
+}
+
+func (o JobTaskRunJobTaskOutput) ToJobTaskRunJobTaskOutput() JobTaskRunJobTaskOutput {
+	return o
+}
+
+func (o JobTaskRunJobTaskOutput) ToJobTaskRunJobTaskOutputWithContext(ctx context.Context) JobTaskRunJobTaskOutput {
+	return o
+}
+
+func (o JobTaskRunJobTaskOutput) ToJobTaskRunJobTaskPtrOutput() JobTaskRunJobTaskPtrOutput {
+	return o.ToJobTaskRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskRunJobTaskOutput) ToJobTaskRunJobTaskPtrOutputWithContext(ctx context.Context) JobTaskRunJobTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskRunJobTask) *JobTaskRunJobTask {
+		return &v
+	}).(JobTaskRunJobTaskPtrOutput)
+}
+
+// (String) ID of the job
+func (o JobTaskRunJobTaskOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+// (Map) Job parameters for the task
+func (o JobTaskRunJobTaskOutput) JobParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
+}
+
+type JobTaskRunJobTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskRunJobTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskRunJobTask)(nil)).Elem()
+}
+
+func (o JobTaskRunJobTaskPtrOutput) ToJobTaskRunJobTaskPtrOutput() JobTaskRunJobTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskRunJobTaskPtrOutput) ToJobTaskRunJobTaskPtrOutputWithContext(ctx context.Context) JobTaskRunJobTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskRunJobTaskPtrOutput) Elem() JobTaskRunJobTaskOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) JobTaskRunJobTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskRunJobTask
+		return ret
+	}).(JobTaskRunJobTaskOutput)
+}
+
+// (String) ID of the job
+func (o JobTaskRunJobTaskPtrOutput) JobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Map) Job parameters for the task
+func (o JobTaskRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.JobParameters
+	}).(pulumi.MapOutput)
 }
 
 type JobTaskSparkJarTask struct {
@@ -27850,7 +28364,8 @@ func (o ModelServingConfigPtrOutput) TrafficConfig() ModelServingConfigTrafficCo
 }
 
 type ModelServingConfigServedModel struct {
-	EnvironmentVars map[string]interface{} `pulumi:"environmentVars"`
+	EnvironmentVars    map[string]interface{} `pulumi:"environmentVars"`
+	InstanceProfileArn *string                `pulumi:"instanceProfileArn"`
 	// The name of the model in Databricks Model Registry to be served.
 	ModelName string `pulumi:"modelName"`
 	// The version of the model in Databricks Model Registry to be served.
@@ -27875,7 +28390,8 @@ type ModelServingConfigServedModelInput interface {
 }
 
 type ModelServingConfigServedModelArgs struct {
-	EnvironmentVars pulumi.MapInput `pulumi:"environmentVars"`
+	EnvironmentVars    pulumi.MapInput       `pulumi:"environmentVars"`
+	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
 	// The name of the model in Databricks Model Registry to be served.
 	ModelName pulumi.StringInput `pulumi:"modelName"`
 	// The version of the model in Databricks Model Registry to be served.
@@ -27941,6 +28457,10 @@ func (o ModelServingConfigServedModelOutput) ToModelServingConfigServedModelOutp
 
 func (o ModelServingConfigServedModelOutput) EnvironmentVars() pulumi.MapOutput {
 	return o.ApplyT(func(v ModelServingConfigServedModel) map[string]interface{} { return v.EnvironmentVars }).(pulumi.MapOutput)
+}
+
+func (o ModelServingConfigServedModelOutput) InstanceProfileArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedModel) *string { return v.InstanceProfileArn }).(pulumi.StringPtrOutput)
 }
 
 // The name of the model in Databricks Model Registry to be served.
@@ -32534,6 +33054,7 @@ func (o PipelineClusterClusterLogConfS3PtrOutput) Region() pulumi.StringPtrOutpu
 type PipelineClusterGcpAttributes struct {
 	Availability         *string `pulumi:"availability"`
 	GoogleServiceAccount *string `pulumi:"googleServiceAccount"`
+	LocalSsdCount        *int    `pulumi:"localSsdCount"`
 	ZoneId               *string `pulumi:"zoneId"`
 }
 
@@ -32551,6 +33072,7 @@ type PipelineClusterGcpAttributesInput interface {
 type PipelineClusterGcpAttributesArgs struct {
 	Availability         pulumi.StringPtrInput `pulumi:"availability"`
 	GoogleServiceAccount pulumi.StringPtrInput `pulumi:"googleServiceAccount"`
+	LocalSsdCount        pulumi.IntPtrInput    `pulumi:"localSsdCount"`
 	ZoneId               pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -32639,6 +33161,10 @@ func (o PipelineClusterGcpAttributesOutput) GoogleServiceAccount() pulumi.String
 	return o.ApplyT(func(v PipelineClusterGcpAttributes) *string { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+func (o PipelineClusterGcpAttributesOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineClusterGcpAttributes) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
 func (o PipelineClusterGcpAttributesOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineClusterGcpAttributes) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
@@ -32683,6 +33209,15 @@ func (o PipelineClusterGcpAttributesPtrOutput) GoogleServiceAccount() pulumi.Str
 		}
 		return v.GoogleServiceAccount
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineClusterGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PipelineClusterGcpAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o PipelineClusterGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
@@ -43756,6 +44291,7 @@ type GetClusterClusterInfoGcpAttributes struct {
 	Availability            *string `pulumi:"availability"`
 	BootDiskSize            *int    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    *string `pulumi:"googleServiceAccount"`
+	LocalSsdCount           *int    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors *bool   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  *string `pulumi:"zoneId"`
 }
@@ -43775,6 +44311,7 @@ type GetClusterClusterInfoGcpAttributesArgs struct {
 	Availability            pulumi.StringPtrInput `pulumi:"availability"`
 	BootDiskSize            pulumi.IntPtrInput    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    pulumi.StringPtrInput `pulumi:"googleServiceAccount"`
+	LocalSsdCount           pulumi.IntPtrInput    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors pulumi.BoolPtrInput   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -43868,6 +44405,10 @@ func (o GetClusterClusterInfoGcpAttributesOutput) GoogleServiceAccount() pulumi.
 	return o.ApplyT(func(v GetClusterClusterInfoGcpAttributes) *string { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+func (o GetClusterClusterInfoGcpAttributesOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoGcpAttributes) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
 func (o GetClusterClusterInfoGcpAttributesOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoGcpAttributes) *bool { return v.UsePreemptibleExecutors }).(pulumi.BoolPtrOutput)
 }
@@ -43925,6 +44466,15 @@ func (o GetClusterClusterInfoGcpAttributesPtrOutput) GoogleServiceAccount() pulu
 		}
 		return v.GoogleServiceAccount
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoGcpAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetClusterClusterInfoGcpAttributesPtrOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
@@ -46239,6 +46789,7 @@ func (o GetInstancePoolPoolInfoDiskSpecDiskTypePtrOutput) EbsVolumeType() pulumi
 
 type GetInstancePoolPoolInfoGcpAttributes struct {
 	GcpAvailability *string `pulumi:"gcpAvailability"`
+	LocalSsdCount   *int    `pulumi:"localSsdCount"`
 }
 
 // GetInstancePoolPoolInfoGcpAttributesInput is an input type that accepts GetInstancePoolPoolInfoGcpAttributesArgs and GetInstancePoolPoolInfoGcpAttributesOutput values.
@@ -46254,6 +46805,7 @@ type GetInstancePoolPoolInfoGcpAttributesInput interface {
 
 type GetInstancePoolPoolInfoGcpAttributesArgs struct {
 	GcpAvailability pulumi.StringPtrInput `pulumi:"gcpAvailability"`
+	LocalSsdCount   pulumi.IntPtrInput    `pulumi:"localSsdCount"`
 }
 
 func (GetInstancePoolPoolInfoGcpAttributesArgs) ElementType() reflect.Type {
@@ -46337,6 +46889,10 @@ func (o GetInstancePoolPoolInfoGcpAttributesOutput) GcpAvailability() pulumi.Str
 	return o.ApplyT(func(v GetInstancePoolPoolInfoGcpAttributes) *string { return v.GcpAvailability }).(pulumi.StringPtrOutput)
 }
 
+func (o GetInstancePoolPoolInfoGcpAttributesOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstancePoolPoolInfoGcpAttributes) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
 type GetInstancePoolPoolInfoGcpAttributesPtrOutput struct{ *pulumi.OutputState }
 
 func (GetInstancePoolPoolInfoGcpAttributesPtrOutput) ElementType() reflect.Type {
@@ -46368,6 +46924,15 @@ func (o GetInstancePoolPoolInfoGcpAttributesPtrOutput) GcpAvailability() pulumi.
 		}
 		return v.GcpAvailability
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancePoolPoolInfoGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetInstancePoolPoolInfoGcpAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetInstancePoolPoolInfoInstancePoolFleetAttribute struct {
@@ -47530,11 +48095,13 @@ type GetJobJobSettingsSettings struct {
 	NewCluster           *GetJobJobSettingsSettingsNewCluster           `pulumi:"newCluster"`
 	NotebookTask         *GetJobJobSettingsSettingsNotebookTask         `pulumi:"notebookTask"`
 	NotificationSettings *GetJobJobSettingsSettingsNotificationSettings `pulumi:"notificationSettings"`
+	Parameters           []GetJobJobSettingsSettingsParameter           `pulumi:"parameters"`
 	PipelineTask         *GetJobJobSettingsSettingsPipelineTask         `pulumi:"pipelineTask"`
 	PythonWheelTask      *GetJobJobSettingsSettingsPythonWheelTask      `pulumi:"pythonWheelTask"`
 	Queue                *GetJobJobSettingsSettingsQueue                `pulumi:"queue"`
 	RetryOnTimeout       *bool                                          `pulumi:"retryOnTimeout"`
 	RunAs                *GetJobJobSettingsSettingsRunAs                `pulumi:"runAs"`
+	RunJobTask           *GetJobJobSettingsSettingsRunJobTask           `pulumi:"runJobTask"`
 	Schedule             *GetJobJobSettingsSettingsSchedule             `pulumi:"schedule"`
 	SparkJarTask         *GetJobJobSettingsSettingsSparkJarTask         `pulumi:"sparkJarTask"`
 	SparkPythonTask      *GetJobJobSettingsSettingsSparkPythonTask      `pulumi:"sparkPythonTask"`
@@ -47576,11 +48143,13 @@ type GetJobJobSettingsSettingsArgs struct {
 	NewCluster           GetJobJobSettingsSettingsNewClusterPtrInput           `pulumi:"newCluster"`
 	NotebookTask         GetJobJobSettingsSettingsNotebookTaskPtrInput         `pulumi:"notebookTask"`
 	NotificationSettings GetJobJobSettingsSettingsNotificationSettingsPtrInput `pulumi:"notificationSettings"`
+	Parameters           GetJobJobSettingsSettingsParameterArrayInput          `pulumi:"parameters"`
 	PipelineTask         GetJobJobSettingsSettingsPipelineTaskPtrInput         `pulumi:"pipelineTask"`
 	PythonWheelTask      GetJobJobSettingsSettingsPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
 	Queue                GetJobJobSettingsSettingsQueuePtrInput                `pulumi:"queue"`
 	RetryOnTimeout       pulumi.BoolPtrInput                                   `pulumi:"retryOnTimeout"`
 	RunAs                GetJobJobSettingsSettingsRunAsPtrInput                `pulumi:"runAs"`
+	RunJobTask           GetJobJobSettingsSettingsRunJobTaskPtrInput           `pulumi:"runJobTask"`
 	Schedule             GetJobJobSettingsSettingsSchedulePtrInput             `pulumi:"schedule"`
 	SparkJarTask         GetJobJobSettingsSettingsSparkJarTaskPtrInput         `pulumi:"sparkJarTask"`
 	SparkPythonTask      GetJobJobSettingsSettingsSparkPythonTaskPtrInput      `pulumi:"sparkPythonTask"`
@@ -47742,6 +48311,10 @@ func (o GetJobJobSettingsSettingsOutput) NotificationSettings() GetJobJobSetting
 	}).(GetJobJobSettingsSettingsNotificationSettingsPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsOutput) Parameters() GetJobJobSettingsSettingsParameterArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) []GetJobJobSettingsSettingsParameter { return v.Parameters }).(GetJobJobSettingsSettingsParameterArrayOutput)
+}
+
 func (o GetJobJobSettingsSettingsOutput) PipelineTask() GetJobJobSettingsSettingsPipelineTaskPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsPipelineTask { return v.PipelineTask }).(GetJobJobSettingsSettingsPipelineTaskPtrOutput)
 }
@@ -47760,6 +48333,10 @@ func (o GetJobJobSettingsSettingsOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 
 func (o GetJobJobSettingsSettingsOutput) RunAs() GetJobJobSettingsSettingsRunAsPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsRunAs { return v.RunAs }).(GetJobJobSettingsSettingsRunAsPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsOutput) RunJobTask() GetJobJobSettingsSettingsRunJobTaskPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsRunJobTask { return v.RunJobTask }).(GetJobJobSettingsSettingsRunJobTaskPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsOutput) Schedule() GetJobJobSettingsSettingsSchedulePtrOutput {
@@ -47978,6 +48555,15 @@ func (o GetJobJobSettingsSettingsPtrOutput) NotificationSettings() GetJobJobSett
 	}).(GetJobJobSettingsSettingsNotificationSettingsPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsPtrOutput) Parameters() GetJobJobSettingsSettingsParameterArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettings) []GetJobJobSettingsSettingsParameter {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(GetJobJobSettingsSettingsParameterArrayOutput)
+}
+
 func (o GetJobJobSettingsSettingsPtrOutput) PipelineTask() GetJobJobSettingsSettingsPipelineTaskPtrOutput {
 	return o.ApplyT(func(v *GetJobJobSettingsSettings) *GetJobJobSettingsSettingsPipelineTask {
 		if v == nil {
@@ -48021,6 +48607,15 @@ func (o GetJobJobSettingsSettingsPtrOutput) RunAs() GetJobJobSettingsSettingsRun
 		}
 		return v.RunAs
 	}).(GetJobJobSettingsSettingsRunAsPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsPtrOutput) RunJobTask() GetJobJobSettingsSettingsRunJobTaskPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettings) *GetJobJobSettingsSettingsRunJobTask {
+		if v == nil {
+			return nil
+		}
+		return v.RunJobTask
+	}).(GetJobJobSettingsSettingsRunJobTaskPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsPtrOutput) Schedule() GetJobJobSettingsSettingsSchedulePtrOutput {
@@ -51722,6 +52317,7 @@ type GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributes struct {
 	Availability            *string `pulumi:"availability"`
 	BootDiskSize            *int    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    *string `pulumi:"googleServiceAccount"`
+	LocalSsdCount           *int    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors *bool   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  *string `pulumi:"zoneId"`
 }
@@ -51741,6 +52337,7 @@ type GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgs struct {
 	Availability            pulumi.StringPtrInput `pulumi:"availability"`
 	BootDiskSize            pulumi.IntPtrInput    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    pulumi.StringPtrInput `pulumi:"googleServiceAccount"`
+	LocalSsdCount           pulumi.IntPtrInput    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors pulumi.BoolPtrInput   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -51836,6 +52433,10 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesOutput) Google
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributes) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributes) *bool {
 		return v.UsePreemptibleExecutors
@@ -51895,6 +52496,15 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesPtrOutput) Goo
 		}
 		return v.GoogleServiceAccount
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesPtrOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
@@ -55917,6 +56527,7 @@ type GetJobJobSettingsSettingsNewClusterGcpAttributes struct {
 	Availability            *string `pulumi:"availability"`
 	BootDiskSize            *int    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    *string `pulumi:"googleServiceAccount"`
+	LocalSsdCount           *int    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors *bool   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  *string `pulumi:"zoneId"`
 }
@@ -55936,6 +56547,7 @@ type GetJobJobSettingsSettingsNewClusterGcpAttributesArgs struct {
 	Availability            pulumi.StringPtrInput `pulumi:"availability"`
 	BootDiskSize            pulumi.IntPtrInput    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    pulumi.StringPtrInput `pulumi:"googleServiceAccount"`
+	LocalSsdCount           pulumi.IntPtrInput    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors pulumi.BoolPtrInput   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -56029,6 +56641,10 @@ func (o GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) GoogleServiceAcc
 	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterGcpAttributes) *string { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterGcpAttributes) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsNewClusterGcpAttributesOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterGcpAttributes) *bool { return v.UsePreemptibleExecutors }).(pulumi.BoolPtrOutput)
 }
@@ -56086,6 +56702,15 @@ func (o GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) GoogleService
 		}
 		return v.GoogleServiceAccount
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsNewClusterGcpAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsNewClusterGcpAttributesPtrOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
@@ -57724,6 +58349,109 @@ func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) NoAlertForSkippe
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetJobJobSettingsSettingsParameter struct {
+	Default *string `pulumi:"default"`
+	// the job name of Job if the resource was matched by id.
+	Name *string `pulumi:"name"`
+}
+
+// GetJobJobSettingsSettingsParameterInput is an input type that accepts GetJobJobSettingsSettingsParameterArgs and GetJobJobSettingsSettingsParameterOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsParameterInput` via:
+//
+//	GetJobJobSettingsSettingsParameterArgs{...}
+type GetJobJobSettingsSettingsParameterInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsParameterOutput() GetJobJobSettingsSettingsParameterOutput
+	ToGetJobJobSettingsSettingsParameterOutputWithContext(context.Context) GetJobJobSettingsSettingsParameterOutput
+}
+
+type GetJobJobSettingsSettingsParameterArgs struct {
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// the job name of Job if the resource was matched by id.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GetJobJobSettingsSettingsParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsParameter)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsParameterArgs) ToGetJobJobSettingsSettingsParameterOutput() GetJobJobSettingsSettingsParameterOutput {
+	return i.ToGetJobJobSettingsSettingsParameterOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsParameterArgs) ToGetJobJobSettingsSettingsParameterOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsParameterOutput)
+}
+
+// GetJobJobSettingsSettingsParameterArrayInput is an input type that accepts GetJobJobSettingsSettingsParameterArray and GetJobJobSettingsSettingsParameterArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsParameterArrayInput` via:
+//
+//	GetJobJobSettingsSettingsParameterArray{ GetJobJobSettingsSettingsParameterArgs{...} }
+type GetJobJobSettingsSettingsParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsParameterArrayOutput() GetJobJobSettingsSettingsParameterArrayOutput
+	ToGetJobJobSettingsSettingsParameterArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsParameterArrayOutput
+}
+
+type GetJobJobSettingsSettingsParameterArray []GetJobJobSettingsSettingsParameterInput
+
+func (GetJobJobSettingsSettingsParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsParameter)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsParameterArray) ToGetJobJobSettingsSettingsParameterArrayOutput() GetJobJobSettingsSettingsParameterArrayOutput {
+	return i.ToGetJobJobSettingsSettingsParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsParameterArray) ToGetJobJobSettingsSettingsParameterArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsParameterArrayOutput)
+}
+
+type GetJobJobSettingsSettingsParameterOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsParameter)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsParameterOutput) ToGetJobJobSettingsSettingsParameterOutput() GetJobJobSettingsSettingsParameterOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsParameterOutput) ToGetJobJobSettingsSettingsParameterOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsParameterOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsParameterOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsParameter) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// the job name of Job if the resource was matched by id.
+func (o GetJobJobSettingsSettingsParameterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsParameter)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsParameterArrayOutput) ToGetJobJobSettingsSettingsParameterArrayOutput() GetJobJobSettingsSettingsParameterArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsParameterArrayOutput) ToGetJobJobSettingsSettingsParameterArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsParameterArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsParameterArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsParameter {
+		return vs[0].([]GetJobJobSettingsSettingsParameter)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsParameterOutput)
+}
+
 type GetJobJobSettingsSettingsPipelineTask struct {
 	FullRefresh *bool  `pulumi:"fullRefresh"`
 	PipelineId  string `pulumi:"pipelineId"`
@@ -58314,6 +59042,154 @@ func (o GetJobJobSettingsSettingsRunAsPtrOutput) UserName() pulumi.StringPtrOutp
 		}
 		return v.UserName
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsRunJobTask struct {
+	JobId         string                 `pulumi:"jobId"`
+	JobParameters map[string]interface{} `pulumi:"jobParameters"`
+}
+
+// GetJobJobSettingsSettingsRunJobTaskInput is an input type that accepts GetJobJobSettingsSettingsRunJobTaskArgs and GetJobJobSettingsSettingsRunJobTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsRunJobTaskInput` via:
+//
+//	GetJobJobSettingsSettingsRunJobTaskArgs{...}
+type GetJobJobSettingsSettingsRunJobTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsRunJobTaskOutput() GetJobJobSettingsSettingsRunJobTaskOutput
+	ToGetJobJobSettingsSettingsRunJobTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsRunJobTaskOutput
+}
+
+type GetJobJobSettingsSettingsRunJobTaskArgs struct {
+	JobId         pulumi.StringInput `pulumi:"jobId"`
+	JobParameters pulumi.MapInput    `pulumi:"jobParameters"`
+}
+
+func (GetJobJobSettingsSettingsRunJobTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsRunJobTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsRunJobTaskArgs) ToGetJobJobSettingsSettingsRunJobTaskOutput() GetJobJobSettingsSettingsRunJobTaskOutput {
+	return i.ToGetJobJobSettingsSettingsRunJobTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsRunJobTaskArgs) ToGetJobJobSettingsSettingsRunJobTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunJobTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsRunJobTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsRunJobTaskArgs) ToGetJobJobSettingsSettingsRunJobTaskPtrOutput() GetJobJobSettingsSettingsRunJobTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsRunJobTaskArgs) ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunJobTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsRunJobTaskOutput).ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsRunJobTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsRunJobTaskArgs, GetJobJobSettingsSettingsRunJobTaskPtr and GetJobJobSettingsSettingsRunJobTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsRunJobTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsRunJobTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsRunJobTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsRunJobTaskPtrOutput() GetJobJobSettingsSettingsRunJobTaskPtrOutput
+	ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsRunJobTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsRunJobTaskPtrType GetJobJobSettingsSettingsRunJobTaskArgs
+
+func GetJobJobSettingsSettingsRunJobTaskPtr(v *GetJobJobSettingsSettingsRunJobTaskArgs) GetJobJobSettingsSettingsRunJobTaskPtrInput {
+	return (*getJobJobSettingsSettingsRunJobTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsRunJobTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsRunJobTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsRunJobTaskPtrType) ToGetJobJobSettingsSettingsRunJobTaskPtrOutput() GetJobJobSettingsSettingsRunJobTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsRunJobTaskPtrType) ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunJobTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsRunJobTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsRunJobTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsRunJobTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsRunJobTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsRunJobTaskOutput) ToGetJobJobSettingsSettingsRunJobTaskOutput() GetJobJobSettingsSettingsRunJobTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsRunJobTaskOutput) ToGetJobJobSettingsSettingsRunJobTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunJobTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsRunJobTaskOutput) ToGetJobJobSettingsSettingsRunJobTaskPtrOutput() GetJobJobSettingsSettingsRunJobTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsRunJobTaskOutput) ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunJobTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsRunJobTask) *GetJobJobSettingsSettingsRunJobTask {
+		return &v
+	}).(GetJobJobSettingsSettingsRunJobTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsRunJobTaskOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsRunJobTask) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+func (o GetJobJobSettingsSettingsRunJobTaskOutput) JobParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsRunJobTask) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
+}
+
+type GetJobJobSettingsSettingsRunJobTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsRunJobTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsRunJobTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) ToGetJobJobSettingsSettingsRunJobTaskPtrOutput() GetJobJobSettingsSettingsRunJobTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) ToGetJobJobSettingsSettingsRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsRunJobTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) Elem() GetJobJobSettingsSettingsRunJobTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunJobTask) GetJobJobSettingsSettingsRunJobTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsRunJobTask
+		return ret
+	}).(GetJobJobSettingsSettingsRunJobTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) JobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunJobTask) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunJobTask) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.JobParameters
+	}).(pulumi.MapOutput)
 }
 
 type GetJobJobSettingsSettingsSchedule struct {
@@ -58958,6 +59834,7 @@ type GetJobJobSettingsSettingsTask struct {
 	PythonWheelTask        *GetJobJobSettingsSettingsTaskPythonWheelTask      `pulumi:"pythonWheelTask"`
 	RetryOnTimeout         bool                                               `pulumi:"retryOnTimeout"`
 	RunIf                  *string                                            `pulumi:"runIf"`
+	RunJobTask             *GetJobJobSettingsSettingsTaskRunJobTask           `pulumi:"runJobTask"`
 	SparkJarTask           *GetJobJobSettingsSettingsTaskSparkJarTask         `pulumi:"sparkJarTask"`
 	SparkPythonTask        *GetJobJobSettingsSettingsTaskSparkPythonTask      `pulumi:"sparkPythonTask"`
 	SparkSubmitTask        *GetJobJobSettingsSettingsTaskSparkSubmitTask      `pulumi:"sparkSubmitTask"`
@@ -58997,6 +59874,7 @@ type GetJobJobSettingsSettingsTaskArgs struct {
 	PythonWheelTask        GetJobJobSettingsSettingsTaskPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
 	RetryOnTimeout         pulumi.BoolInput                                          `pulumi:"retryOnTimeout"`
 	RunIf                  pulumi.StringPtrInput                                     `pulumi:"runIf"`
+	RunJobTask             GetJobJobSettingsSettingsTaskRunJobTaskPtrInput           `pulumi:"runJobTask"`
 	SparkJarTask           GetJobJobSettingsSettingsTaskSparkJarTaskPtrInput         `pulumi:"sparkJarTask"`
 	SparkPythonTask        GetJobJobSettingsSettingsTaskSparkPythonTaskPtrInput      `pulumi:"sparkPythonTask"`
 	SparkSubmitTask        GetJobJobSettingsSettingsTaskSparkSubmitTaskPtrInput      `pulumi:"sparkSubmitTask"`
@@ -59142,6 +60020,10 @@ func (o GetJobJobSettingsSettingsTaskOutput) RetryOnTimeout() pulumi.BoolOutput 
 
 func (o GetJobJobSettingsSettingsTaskOutput) RunIf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *string { return v.RunIf }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskOutput) RunJobTask() GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskRunJobTask { return v.RunJobTask }).(GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskOutput) SparkJarTask() GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput {
@@ -62811,6 +63693,7 @@ type GetJobJobSettingsSettingsTaskNewClusterGcpAttributes struct {
 	Availability            *string `pulumi:"availability"`
 	BootDiskSize            *int    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    *string `pulumi:"googleServiceAccount"`
+	LocalSsdCount           *int    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors *bool   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  *string `pulumi:"zoneId"`
 }
@@ -62830,6 +63713,7 @@ type GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgs struct {
 	Availability            pulumi.StringPtrInput `pulumi:"availability"`
 	BootDiskSize            pulumi.IntPtrInput    `pulumi:"bootDiskSize"`
 	GoogleServiceAccount    pulumi.StringPtrInput `pulumi:"googleServiceAccount"`
+	LocalSsdCount           pulumi.IntPtrInput    `pulumi:"localSsdCount"`
 	UsePreemptibleExecutors pulumi.BoolPtrInput   `pulumi:"usePreemptibleExecutors"`
 	ZoneId                  pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -62923,6 +63807,10 @@ func (o GetJobJobSettingsSettingsTaskNewClusterGcpAttributesOutput) GoogleServic
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterGcpAttributes) *string { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskNewClusterGcpAttributesOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterGcpAttributes) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsTaskNewClusterGcpAttributesOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterGcpAttributes) *bool { return v.UsePreemptibleExecutors }).(pulumi.BoolPtrOutput)
 }
@@ -62980,6 +63868,15 @@ func (o GetJobJobSettingsSettingsTaskNewClusterGcpAttributesPtrOutput) GoogleSer
 		}
 		return v.GoogleServiceAccount
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNewClusterGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNewClusterGcpAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskNewClusterGcpAttributesPtrOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
@@ -64957,6 +65854,154 @@ func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) Parameters() pulu
 		}
 		return v.Parameters
 	}).(pulumi.StringArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskRunJobTask struct {
+	JobId         string                 `pulumi:"jobId"`
+	JobParameters map[string]interface{} `pulumi:"jobParameters"`
+}
+
+// GetJobJobSettingsSettingsTaskRunJobTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskRunJobTaskArgs and GetJobJobSettingsSettingsTaskRunJobTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskRunJobTaskInput` via:
+//
+//	GetJobJobSettingsSettingsTaskRunJobTaskArgs{...}
+type GetJobJobSettingsSettingsTaskRunJobTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskRunJobTaskOutput() GetJobJobSettingsSettingsTaskRunJobTaskOutput
+	ToGetJobJobSettingsSettingsTaskRunJobTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskRunJobTaskOutput
+}
+
+type GetJobJobSettingsSettingsTaskRunJobTaskArgs struct {
+	JobId         pulumi.StringInput `pulumi:"jobId"`
+	JobParameters pulumi.MapInput    `pulumi:"jobParameters"`
+}
+
+func (GetJobJobSettingsSettingsTaskRunJobTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskRunJobTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskRunJobTaskArgs) ToGetJobJobSettingsSettingsTaskRunJobTaskOutput() GetJobJobSettingsSettingsTaskRunJobTaskOutput {
+	return i.ToGetJobJobSettingsSettingsTaskRunJobTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskRunJobTaskArgs) ToGetJobJobSettingsSettingsTaskRunJobTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskRunJobTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskRunJobTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskRunJobTaskArgs) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutput() GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskRunJobTaskArgs) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskRunJobTaskOutput).ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskRunJobTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskRunJobTaskArgs, GetJobJobSettingsSettingsTaskRunJobTaskPtr and GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskRunJobTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskRunJobTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskRunJobTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutput() GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput
+	ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskRunJobTaskPtrType GetJobJobSettingsSettingsTaskRunJobTaskArgs
+
+func GetJobJobSettingsSettingsTaskRunJobTaskPtr(v *GetJobJobSettingsSettingsTaskRunJobTaskArgs) GetJobJobSettingsSettingsTaskRunJobTaskPtrInput {
+	return (*getJobJobSettingsSettingsTaskRunJobTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskRunJobTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskRunJobTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskRunJobTaskPtrType) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutput() GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskRunJobTaskPtrType) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskRunJobTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskRunJobTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskRunJobTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) ToGetJobJobSettingsSettingsTaskRunJobTaskOutput() GetJobJobSettingsSettingsTaskRunJobTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) ToGetJobJobSettingsSettingsTaskRunJobTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskRunJobTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutput() GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskRunJobTask) *GetJobJobSettingsSettingsTaskRunJobTask {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskRunJobTask) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) JobParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskRunJobTask) map[string]interface{} { return v.JobParameters }).(pulumi.MapOutput)
+}
+
+type GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskRunJobTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutput() GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) ToGetJobJobSettingsSettingsTaskRunJobTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskRunJobTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskRunJobTask) GetJobJobSettingsSettingsTaskRunJobTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskRunJobTask
+		return ret
+	}).(GetJobJobSettingsSettingsTaskRunJobTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) JobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskRunJobTask) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskRunJobTask) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.JobParameters
+	}).(pulumi.MapOutput)
 }
 
 type GetJobJobSettingsSettingsTaskSparkJarTask struct {
@@ -68974,6 +70019,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNotebookTaskPtrInput)(nil)).Elem(), JobNotebookTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNotificationSettingsInput)(nil)).Elem(), JobNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNotificationSettingsPtrInput)(nil)).Elem(), JobNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobParameterInput)(nil)).Elem(), JobParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobParameterArrayInput)(nil)).Elem(), JobParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPipelineTaskInput)(nil)).Elem(), JobPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPipelineTaskPtrInput)(nil)).Elem(), JobPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPythonWheelTaskInput)(nil)).Elem(), JobPythonWheelTaskArgs{})
@@ -68982,6 +70029,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobQueuePtrInput)(nil)).Elem(), JobQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobRunAsInput)(nil)).Elem(), JobRunAsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobRunAsPtrInput)(nil)).Elem(), JobRunAsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobRunJobTaskInput)(nil)).Elem(), JobRunJobTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobRunJobTaskPtrInput)(nil)).Elem(), JobRunJobTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobScheduleInput)(nil)).Elem(), JobScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSchedulePtrInput)(nil)).Elem(), JobScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSparkJarTaskInput)(nil)).Elem(), JobSparkJarTaskArgs{})
@@ -69061,6 +70110,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPipelineTaskPtrInput)(nil)).Elem(), JobTaskPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPythonWheelTaskInput)(nil)).Elem(), JobTaskPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPythonWheelTaskPtrInput)(nil)).Elem(), JobTaskPythonWheelTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskRunJobTaskInput)(nil)).Elem(), JobTaskRunJobTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskRunJobTaskPtrInput)(nil)).Elem(), JobTaskRunJobTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSparkJarTaskInput)(nil)).Elem(), JobTaskSparkJarTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSparkJarTaskPtrInput)(nil)).Elem(), JobTaskSparkJarTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSparkPythonTaskInput)(nil)).Elem(), JobTaskSparkPythonTaskArgs{})
@@ -69479,6 +70530,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNotebookTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNotebookTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNotificationSettingsInput)(nil)).Elem(), GetJobJobSettingsSettingsNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsNotificationSettingsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsParameterInput)(nil)).Elem(), GetJobJobSettingsSettingsParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsParameterArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPipelineTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPipelineTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsPythonWheelTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsPythonWheelTaskArgs{})
@@ -69487,6 +70540,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsQueuePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsRunAsInput)(nil)).Elem(), GetJobJobSettingsSettingsRunAsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsRunAsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsRunAsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsRunJobTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsRunJobTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsRunJobTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsRunJobTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsScheduleInput)(nil)).Elem(), GetJobJobSettingsSettingsScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSchedulePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsSparkJarTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsSparkJarTaskArgs{})
@@ -69566,6 +70621,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPipelineTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPythonWheelTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskPythonWheelTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskPythonWheelTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskRunJobTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskRunJobTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskRunJobTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskRunJobTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkJarTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSparkJarTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkJarTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSparkJarTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSparkPythonTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSparkPythonTaskArgs{})
@@ -69805,6 +70862,8 @@ func init() {
 	pulumi.RegisterOutputType(JobNotebookTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobNotificationSettingsOutput{})
 	pulumi.RegisterOutputType(JobNotificationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(JobParameterOutput{})
+	pulumi.RegisterOutputType(JobParameterArrayOutput{})
 	pulumi.RegisterOutputType(JobPipelineTaskOutput{})
 	pulumi.RegisterOutputType(JobPipelineTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobPythonWheelTaskOutput{})
@@ -69813,6 +70872,8 @@ func init() {
 	pulumi.RegisterOutputType(JobQueuePtrOutput{})
 	pulumi.RegisterOutputType(JobRunAsOutput{})
 	pulumi.RegisterOutputType(JobRunAsPtrOutput{})
+	pulumi.RegisterOutputType(JobRunJobTaskOutput{})
+	pulumi.RegisterOutputType(JobRunJobTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobScheduleOutput{})
 	pulumi.RegisterOutputType(JobSchedulePtrOutput{})
 	pulumi.RegisterOutputType(JobSparkJarTaskOutput{})
@@ -69892,6 +70953,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskPipelineTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskPythonWheelTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskPythonWheelTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskRunJobTaskOutput{})
+	pulumi.RegisterOutputType(JobTaskRunJobTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskSparkJarTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskSparkJarTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskSparkPythonTaskOutput{})
@@ -70310,6 +71373,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNotebookTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNotificationSettingsOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsNotificationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsParameterOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPipelineTaskOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPipelineTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsPythonWheelTaskOutput{})
@@ -70318,6 +71383,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsQueuePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsRunAsOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsRunAsPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsRunJobTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsRunJobTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsScheduleOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSchedulePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsSparkJarTaskOutput{})
@@ -70397,6 +71464,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPipelineTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPythonWheelTaskOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskRunJobTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSparkJarTaskOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSparkJarTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSparkPythonTaskOutput{})

@@ -21,10 +21,12 @@ import com.pulumi.databricks.outputs.JobLibrary;
 import com.pulumi.databricks.outputs.JobNewCluster;
 import com.pulumi.databricks.outputs.JobNotebookTask;
 import com.pulumi.databricks.outputs.JobNotificationSettings;
+import com.pulumi.databricks.outputs.JobParameter;
 import com.pulumi.databricks.outputs.JobPipelineTask;
 import com.pulumi.databricks.outputs.JobPythonWheelTask;
 import com.pulumi.databricks.outputs.JobQueue;
 import com.pulumi.databricks.outputs.JobRunAs;
+import com.pulumi.databricks.outputs.JobRunJobTask;
 import com.pulumi.databricks.outputs.JobSchedule;
 import com.pulumi.databricks.outputs.JobSparkJarTask;
 import com.pulumi.databricks.outputs.JobSparkPythonTask;
@@ -315,6 +317,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobNotificationSettings>> notificationSettings() {
         return Codegen.optional(this.notificationSettings);
     }
+    @Export(name="parameters", type=List.class, parameters={JobParameter.class})
+    private Output</* @Nullable */ List<JobParameter>> parameters;
+
+    public Output<Optional<List<JobParameter>>> parameters() {
+        return Codegen.optional(this.parameters);
+    }
     @Export(name="pipelineTask", type=JobPipelineTask.class, parameters={})
     private Output</* @Nullable */ JobPipelineTask> pipelineTask;
 
@@ -352,6 +360,12 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<JobRunAs>> runAs() {
         return Codegen.optional(this.runAs);
+    }
+    @Export(name="runJobTask", type=JobRunJobTask.class, parameters={})
+    private Output</* @Nullable */ JobRunJobTask> runJobTask;
+
+    public Output<Optional<JobRunJobTask>> runJobTask() {
+        return Codegen.optional(this.runJobTask);
     }
     /**
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.

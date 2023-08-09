@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,17 +16,41 @@ public final class InstancePoolGcpAttributesArgs extends com.pulumi.resources.Re
 
     public static final InstancePoolGcpAttributesArgs Empty = new InstancePoolGcpAttributesArgs();
 
+    /**
+     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * 
+     */
     @Import(name="gcpAvailability")
     private @Nullable Output<String> gcpAvailability;
 
+    /**
+     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     * 
+     */
     public Optional<Output<String>> gcpAvailability() {
         return Optional.ofNullable(this.gcpAvailability);
+    }
+
+    /**
+     * Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+     * 
+     */
+    @Import(name="localSsdCount")
+    private @Nullable Output<Integer> localSsdCount;
+
+    /**
+     * @return Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+     * 
+     */
+    public Optional<Output<Integer>> localSsdCount() {
+        return Optional.ofNullable(this.localSsdCount);
     }
 
     private InstancePoolGcpAttributesArgs() {}
 
     private InstancePoolGcpAttributesArgs(InstancePoolGcpAttributesArgs $) {
         this.gcpAvailability = $.gcpAvailability;
+        this.localSsdCount = $.localSsdCount;
     }
 
     public static Builder builder() {
@@ -46,13 +71,46 @@ public final class InstancePoolGcpAttributesArgs extends com.pulumi.resources.Re
             $ = new InstancePoolGcpAttributesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gcpAvailability Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gcpAvailability(@Nullable Output<String> gcpAvailability) {
             $.gcpAvailability = gcpAvailability;
             return this;
         }
 
+        /**
+         * @param gcpAvailability Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gcpAvailability(String gcpAvailability) {
             return gcpAvailability(Output.of(gcpAvailability));
+        }
+
+        /**
+         * @param localSsdCount Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSsdCount(@Nullable Output<Integer> localSsdCount) {
+            $.localSsdCount = localSsdCount;
+            return this;
+        }
+
+        /**
+         * @param localSsdCount Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSsdCount(Integer localSsdCount) {
+            return localSsdCount(Output.of(localSsdCount));
         }
 
         public InstancePoolGcpAttributesArgs build() {

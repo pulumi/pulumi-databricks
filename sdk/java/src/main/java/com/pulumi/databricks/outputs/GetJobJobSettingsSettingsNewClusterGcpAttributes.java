@@ -16,6 +16,7 @@ public final class GetJobJobSettingsSettingsNewClusterGcpAttributes {
     private @Nullable String availability;
     private @Nullable Integer bootDiskSize;
     private @Nullable String googleServiceAccount;
+    private @Nullable Integer localSsdCount;
     private @Nullable Boolean usePreemptibleExecutors;
     private @Nullable String zoneId;
 
@@ -28,6 +29,9 @@ public final class GetJobJobSettingsSettingsNewClusterGcpAttributes {
     }
     public Optional<String> googleServiceAccount() {
         return Optional.ofNullable(this.googleServiceAccount);
+    }
+    public Optional<Integer> localSsdCount() {
+        return Optional.ofNullable(this.localSsdCount);
     }
     public Optional<Boolean> usePreemptibleExecutors() {
         return Optional.ofNullable(this.usePreemptibleExecutors);
@@ -48,6 +52,7 @@ public final class GetJobJobSettingsSettingsNewClusterGcpAttributes {
         private @Nullable String availability;
         private @Nullable Integer bootDiskSize;
         private @Nullable String googleServiceAccount;
+        private @Nullable Integer localSsdCount;
         private @Nullable Boolean usePreemptibleExecutors;
         private @Nullable String zoneId;
         public Builder() {}
@@ -56,6 +61,7 @@ public final class GetJobJobSettingsSettingsNewClusterGcpAttributes {
     	      this.availability = defaults.availability;
     	      this.bootDiskSize = defaults.bootDiskSize;
     	      this.googleServiceAccount = defaults.googleServiceAccount;
+    	      this.localSsdCount = defaults.localSsdCount;
     	      this.usePreemptibleExecutors = defaults.usePreemptibleExecutors;
     	      this.zoneId = defaults.zoneId;
         }
@@ -76,6 +82,11 @@ public final class GetJobJobSettingsSettingsNewClusterGcpAttributes {
             return this;
         }
         @CustomType.Setter
+        public Builder localSsdCount(@Nullable Integer localSsdCount) {
+            this.localSsdCount = localSsdCount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder usePreemptibleExecutors(@Nullable Boolean usePreemptibleExecutors) {
             this.usePreemptibleExecutors = usePreemptibleExecutors;
             return this;
@@ -90,6 +101,7 @@ public final class GetJobJobSettingsSettingsNewClusterGcpAttributes {
             o.availability = availability;
             o.bootDiskSize = bootDiskSize;
             o.googleServiceAccount = googleServiceAccount;
+            o.localSsdCount = localSsdCount;
             o.usePreemptibleExecutors = usePreemptibleExecutors;
             o.zoneId = zoneId;
             return o;

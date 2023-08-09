@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,13 @@ public final class PipelineClusterGcpAttributesArgs extends com.pulumi.resources
         return Optional.ofNullable(this.googleServiceAccount);
     }
 
+    @Import(name="localSsdCount")
+    private @Nullable Output<Integer> localSsdCount;
+
+    public Optional<Output<Integer>> localSsdCount() {
+        return Optional.ofNullable(this.localSsdCount);
+    }
+
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
@@ -41,6 +49,7 @@ public final class PipelineClusterGcpAttributesArgs extends com.pulumi.resources
     private PipelineClusterGcpAttributesArgs(PipelineClusterGcpAttributesArgs $) {
         this.availability = $.availability;
         this.googleServiceAccount = $.googleServiceAccount;
+        this.localSsdCount = $.localSsdCount;
         this.zoneId = $.zoneId;
     }
 
@@ -78,6 +87,15 @@ public final class PipelineClusterGcpAttributesArgs extends com.pulumi.resources
 
         public Builder googleServiceAccount(String googleServiceAccount) {
             return googleServiceAccount(Output.of(googleServiceAccount));
+        }
+
+        public Builder localSsdCount(@Nullable Output<Integer> localSsdCount) {
+            $.localSsdCount = localSsdCount;
+            return this;
+        }
+
+        public Builder localSsdCount(Integer localSsdCount) {
+            return localSsdCount(Output.of(localSsdCount));
         }
 
         public Builder zoneId(@Nullable Output<String> zoneId) {

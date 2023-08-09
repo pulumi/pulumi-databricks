@@ -16,6 +16,13 @@ public final class ClusterGcpAttributes {
     private @Nullable String availability;
     private @Nullable Integer bootDiskSize;
     private @Nullable String googleServiceAccount;
+    private @Nullable Integer localSsdCount;
+    /**
+     * @deprecated
+     * Please use &#39;availability&#39; instead.
+     * 
+     */
+    @Deprecated /* Please use 'availability' instead. */
     private @Nullable Boolean usePreemptibleExecutors;
     private @Nullable String zoneId;
 
@@ -29,6 +36,15 @@ public final class ClusterGcpAttributes {
     public Optional<String> googleServiceAccount() {
         return Optional.ofNullable(this.googleServiceAccount);
     }
+    public Optional<Integer> localSsdCount() {
+        return Optional.ofNullable(this.localSsdCount);
+    }
+    /**
+     * @deprecated
+     * Please use &#39;availability&#39; instead.
+     * 
+     */
+    @Deprecated /* Please use 'availability' instead. */
     public Optional<Boolean> usePreemptibleExecutors() {
         return Optional.ofNullable(this.usePreemptibleExecutors);
     }
@@ -48,6 +64,7 @@ public final class ClusterGcpAttributes {
         private @Nullable String availability;
         private @Nullable Integer bootDiskSize;
         private @Nullable String googleServiceAccount;
+        private @Nullable Integer localSsdCount;
         private @Nullable Boolean usePreemptibleExecutors;
         private @Nullable String zoneId;
         public Builder() {}
@@ -56,6 +73,7 @@ public final class ClusterGcpAttributes {
     	      this.availability = defaults.availability;
     	      this.bootDiskSize = defaults.bootDiskSize;
     	      this.googleServiceAccount = defaults.googleServiceAccount;
+    	      this.localSsdCount = defaults.localSsdCount;
     	      this.usePreemptibleExecutors = defaults.usePreemptibleExecutors;
     	      this.zoneId = defaults.zoneId;
         }
@@ -76,6 +94,11 @@ public final class ClusterGcpAttributes {
             return this;
         }
         @CustomType.Setter
+        public Builder localSsdCount(@Nullable Integer localSsdCount) {
+            this.localSsdCount = localSsdCount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder usePreemptibleExecutors(@Nullable Boolean usePreemptibleExecutors) {
             this.usePreemptibleExecutors = usePreemptibleExecutors;
             return this;
@@ -90,6 +113,7 @@ public final class ClusterGcpAttributes {
             o.availability = availability;
             o.bootDiskSize = bootDiskSize;
             o.googleServiceAccount = googleServiceAccount;
+            o.localSsdCount = localSsdCount;
             o.usePreemptibleExecutors = usePreemptibleExecutors;
             o.zoneId = zoneId;
             return o;

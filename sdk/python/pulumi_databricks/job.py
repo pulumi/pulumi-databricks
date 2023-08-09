@@ -35,11 +35,13 @@ class JobArgs:
                  new_cluster: Optional[pulumi.Input['JobNewClusterArgs']] = None,
                  notebook_task: Optional[pulumi.Input['JobNotebookTaskArgs']] = None,
                  notification_settings: Optional[pulumi.Input['JobNotificationSettingsArgs']] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]] = None,
                  pipeline_task: Optional[pulumi.Input['JobPipelineTaskArgs']] = None,
                  python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
                  queue: Optional[pulumi.Input['JobQueueArgs']] = None,
                  retry_on_timeout: Optional[pulumi.Input[bool]] = None,
                  run_as: Optional[pulumi.Input['JobRunAsArgs']] = None,
+                 run_job_task: Optional[pulumi.Input['JobRunJobTaskArgs']] = None,
                  schedule: Optional[pulumi.Input['JobScheduleArgs']] = None,
                  spark_jar_task: Optional[pulumi.Input['JobSparkJarTaskArgs']] = None,
                  spark_python_task: Optional[pulumi.Input['JobSparkPythonTaskArgs']] = None,
@@ -114,6 +116,8 @@ class JobArgs:
             pulumi.set(__self__, "notebook_task", notebook_task)
         if notification_settings is not None:
             pulumi.set(__self__, "notification_settings", notification_settings)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
         if python_wheel_task is not None:
@@ -124,6 +128,8 @@ class JobArgs:
             pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
         if run_as is not None:
             pulumi.set(__self__, "run_as", run_as)
+        if run_job_task is not None:
+            pulumi.set(__self__, "run_job_task", run_job_task)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if spark_jar_task is not None:
@@ -359,6 +365,15 @@ class JobArgs:
         pulumi.set(self, "notification_settings", value)
 
     @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
     @pulumi.getter(name="pipelineTask")
     def pipeline_task(self) -> Optional[pulumi.Input['JobPipelineTaskArgs']]:
         return pulumi.get(self, "pipeline_task")
@@ -405,6 +420,15 @@ class JobArgs:
     @run_as.setter
     def run_as(self, value: Optional[pulumi.Input['JobRunAsArgs']]):
         pulumi.set(self, "run_as", value)
+
+    @property
+    @pulumi.getter(name="runJobTask")
+    def run_job_task(self) -> Optional[pulumi.Input['JobRunJobTaskArgs']]:
+        return pulumi.get(self, "run_job_task")
+
+    @run_job_task.setter
+    def run_job_task(self, value: Optional[pulumi.Input['JobRunJobTaskArgs']]):
+        pulumi.set(self, "run_job_task", value)
 
     @property
     @pulumi.getter
@@ -519,11 +543,13 @@ class _JobState:
                  new_cluster: Optional[pulumi.Input['JobNewClusterArgs']] = None,
                  notebook_task: Optional[pulumi.Input['JobNotebookTaskArgs']] = None,
                  notification_settings: Optional[pulumi.Input['JobNotificationSettingsArgs']] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]] = None,
                  pipeline_task: Optional[pulumi.Input['JobPipelineTaskArgs']] = None,
                  python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
                  queue: Optional[pulumi.Input['JobQueueArgs']] = None,
                  retry_on_timeout: Optional[pulumi.Input[bool]] = None,
                  run_as: Optional[pulumi.Input['JobRunAsArgs']] = None,
+                 run_job_task: Optional[pulumi.Input['JobRunJobTaskArgs']] = None,
                  schedule: Optional[pulumi.Input['JobScheduleArgs']] = None,
                  spark_jar_task: Optional[pulumi.Input['JobSparkJarTaskArgs']] = None,
                  spark_python_task: Optional[pulumi.Input['JobSparkPythonTaskArgs']] = None,
@@ -600,6 +626,8 @@ class _JobState:
             pulumi.set(__self__, "notebook_task", notebook_task)
         if notification_settings is not None:
             pulumi.set(__self__, "notification_settings", notification_settings)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
         if python_wheel_task is not None:
@@ -610,6 +638,8 @@ class _JobState:
             pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
         if run_as is not None:
             pulumi.set(__self__, "run_as", run_as)
+        if run_job_task is not None:
+            pulumi.set(__self__, "run_job_task", run_job_task)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if spark_jar_task is not None:
@@ -847,6 +877,15 @@ class _JobState:
         pulumi.set(self, "notification_settings", value)
 
     @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
     @pulumi.getter(name="pipelineTask")
     def pipeline_task(self) -> Optional[pulumi.Input['JobPipelineTaskArgs']]:
         return pulumi.get(self, "pipeline_task")
@@ -893,6 +932,15 @@ class _JobState:
     @run_as.setter
     def run_as(self, value: Optional[pulumi.Input['JobRunAsArgs']]):
         pulumi.set(self, "run_as", value)
+
+    @property
+    @pulumi.getter(name="runJobTask")
+    def run_job_task(self) -> Optional[pulumi.Input['JobRunJobTaskArgs']]:
+        return pulumi.get(self, "run_job_task")
+
+    @run_job_task.setter
+    def run_job_task(self, value: Optional[pulumi.Input['JobRunJobTaskArgs']]):
+        pulumi.set(self, "run_job_task", value)
 
     @property
     @pulumi.getter
@@ -1021,11 +1069,13 @@ class Job(pulumi.CustomResource):
                  new_cluster: Optional[pulumi.Input[pulumi.InputType['JobNewClusterArgs']]] = None,
                  notebook_task: Optional[pulumi.Input[pulumi.InputType['JobNotebookTaskArgs']]] = None,
                  notification_settings: Optional[pulumi.Input[pulumi.InputType['JobNotificationSettingsArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobParameterArgs']]]]] = None,
                  pipeline_task: Optional[pulumi.Input[pulumi.InputType['JobPipelineTaskArgs']]] = None,
                  python_wheel_task: Optional[pulumi.Input[pulumi.InputType['JobPythonWheelTaskArgs']]] = None,
                  queue: Optional[pulumi.Input[pulumi.InputType['JobQueueArgs']]] = None,
                  retry_on_timeout: Optional[pulumi.Input[bool]] = None,
                  run_as: Optional[pulumi.Input[pulumi.InputType['JobRunAsArgs']]] = None,
+                 run_job_task: Optional[pulumi.Input[pulumi.InputType['JobRunJobTaskArgs']]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['JobScheduleArgs']]] = None,
                  spark_jar_task: Optional[pulumi.Input[pulumi.InputType['JobSparkJarTaskArgs']]] = None,
                  spark_python_task: Optional[pulumi.Input[pulumi.InputType['JobSparkPythonTaskArgs']]] = None,
@@ -1118,11 +1168,13 @@ class Job(pulumi.CustomResource):
                  new_cluster: Optional[pulumi.Input[pulumi.InputType['JobNewClusterArgs']]] = None,
                  notebook_task: Optional[pulumi.Input[pulumi.InputType['JobNotebookTaskArgs']]] = None,
                  notification_settings: Optional[pulumi.Input[pulumi.InputType['JobNotificationSettingsArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobParameterArgs']]]]] = None,
                  pipeline_task: Optional[pulumi.Input[pulumi.InputType['JobPipelineTaskArgs']]] = None,
                  python_wheel_task: Optional[pulumi.Input[pulumi.InputType['JobPythonWheelTaskArgs']]] = None,
                  queue: Optional[pulumi.Input[pulumi.InputType['JobQueueArgs']]] = None,
                  retry_on_timeout: Optional[pulumi.Input[bool]] = None,
                  run_as: Optional[pulumi.Input[pulumi.InputType['JobRunAsArgs']]] = None,
+                 run_job_task: Optional[pulumi.Input[pulumi.InputType['JobRunJobTaskArgs']]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['JobScheduleArgs']]] = None,
                  spark_jar_task: Optional[pulumi.Input[pulumi.InputType['JobSparkJarTaskArgs']]] = None,
                  spark_python_task: Optional[pulumi.Input[pulumi.InputType['JobSparkPythonTaskArgs']]] = None,
@@ -1163,11 +1215,13 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["new_cluster"] = new_cluster
             __props__.__dict__["notebook_task"] = notebook_task
             __props__.__dict__["notification_settings"] = notification_settings
+            __props__.__dict__["parameters"] = parameters
             __props__.__dict__["pipeline_task"] = pipeline_task
             __props__.__dict__["python_wheel_task"] = python_wheel_task
             __props__.__dict__["queue"] = queue
             __props__.__dict__["retry_on_timeout"] = retry_on_timeout
             __props__.__dict__["run_as"] = run_as
+            __props__.__dict__["run_job_task"] = run_job_task
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["spark_jar_task"] = spark_jar_task
             __props__.__dict__["spark_python_task"] = spark_python_task
@@ -1207,11 +1261,13 @@ class Job(pulumi.CustomResource):
             new_cluster: Optional[pulumi.Input[pulumi.InputType['JobNewClusterArgs']]] = None,
             notebook_task: Optional[pulumi.Input[pulumi.InputType['JobNotebookTaskArgs']]] = None,
             notification_settings: Optional[pulumi.Input[pulumi.InputType['JobNotificationSettingsArgs']]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobParameterArgs']]]]] = None,
             pipeline_task: Optional[pulumi.Input[pulumi.InputType['JobPipelineTaskArgs']]] = None,
             python_wheel_task: Optional[pulumi.Input[pulumi.InputType['JobPythonWheelTaskArgs']]] = None,
             queue: Optional[pulumi.Input[pulumi.InputType['JobQueueArgs']]] = None,
             retry_on_timeout: Optional[pulumi.Input[bool]] = None,
             run_as: Optional[pulumi.Input[pulumi.InputType['JobRunAsArgs']]] = None,
+            run_job_task: Optional[pulumi.Input[pulumi.InputType['JobRunJobTaskArgs']]] = None,
             schedule: Optional[pulumi.Input[pulumi.InputType['JobScheduleArgs']]] = None,
             spark_jar_task: Optional[pulumi.Input[pulumi.InputType['JobSparkJarTaskArgs']]] = None,
             spark_python_task: Optional[pulumi.Input[pulumi.InputType['JobSparkPythonTaskArgs']]] = None,
@@ -1275,11 +1331,13 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["new_cluster"] = new_cluster
         __props__.__dict__["notebook_task"] = notebook_task
         __props__.__dict__["notification_settings"] = notification_settings
+        __props__.__dict__["parameters"] = parameters
         __props__.__dict__["pipeline_task"] = pipeline_task
         __props__.__dict__["python_wheel_task"] = python_wheel_task
         __props__.__dict__["queue"] = queue
         __props__.__dict__["retry_on_timeout"] = retry_on_timeout
         __props__.__dict__["run_as"] = run_as
+        __props__.__dict__["run_job_task"] = run_job_task
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["spark_jar_task"] = spark_jar_task
         __props__.__dict__["spark_python_task"] = spark_python_task
@@ -1432,6 +1490,11 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "notification_settings")
 
     @property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Output[Optional[Sequence['outputs.JobParameter']]]:
+        return pulumi.get(self, "parameters")
+
+    @property
     @pulumi.getter(name="pipelineTask")
     def pipeline_task(self) -> pulumi.Output[Optional['outputs.JobPipelineTask']]:
         return pulumi.get(self, "pipeline_task")
@@ -1458,6 +1521,11 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="runAs")
     def run_as(self) -> pulumi.Output[Optional['outputs.JobRunAs']]:
         return pulumi.get(self, "run_as")
+
+    @property
+    @pulumi.getter(name="runJobTask")
+    def run_job_task(self) -> pulumi.Output[Optional['outputs.JobRunJobTask']]:
+        return pulumi.get(self, "run_job_task")
 
     @property
     @pulumi.getter
