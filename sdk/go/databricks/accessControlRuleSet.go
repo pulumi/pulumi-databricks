@@ -13,9 +13,292 @@ import (
 
 // This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
 //
-// > **Note** Currently, we only support managing access rules on service principal resources through `AccessControlRuleSet`.
+// > **Note** Currently, we only support managing access rules on service principal, group and account resources through `AccessControlRuleSet`.
 //
 // > **Warning** `AccessControlRuleSet` cannot be used to manage access rules for resources supported by databricks_permissions. Refer to its documentation for more information.
+//
+// ## Service principal rule set usage
+//
+// Through a Databricks workspace:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_ := "00000000-0000-0000-0000-000000000000"
+//			ds, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//				DisplayName: "Data Science",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewServicePrincipal(ctx, "automationSp", &databricks.ServicePrincipalArgs{
+//				DisplayName: pulumi.String("SP_FOR_AUTOMATION"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "automationSpRuleSet", &databricks.AccessControlRuleSetArgs{
+//				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
+//					&databricks.AccessControlRuleSetGrantRuleArgs{
+//						Principals: pulumi.StringArray{
+//							*pulumi.String(ds.AclPrincipalId),
+//						},
+//						Role: pulumi.String("roles/servicePrincipal.user"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Through AWS Databricks account:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_ := "00000000-0000-0000-0000-000000000000"
+//			ds, err := databricks.NewGroup(ctx, "ds", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewServicePrincipal(ctx, "automationSp", &databricks.ServicePrincipalArgs{
+//				DisplayName: pulumi.String("SP_FOR_AUTOMATION"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "automationSpRuleSet", &databricks.AccessControlRuleSetArgs{
+//				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
+//					&databricks.AccessControlRuleSetGrantRuleArgs{
+//						Principals: pulumi.StringArray{
+//							ds.AclPrincipalId,
+//						},
+//						Role: pulumi.String("roles/servicePrincipal.user"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Through Azure Databricks account:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_ := "00000000-0000-0000-0000-000000000000"
+//			ds, err := databricks.NewGroup(ctx, "ds", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewServicePrincipal(ctx, "automationSp", &databricks.ServicePrincipalArgs{
+//				ApplicationId: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				DisplayName:   pulumi.String("SP_FOR_AUTOMATION"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "automationSpRuleSet", &databricks.AccessControlRuleSetArgs{
+//				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
+//					&databricks.AccessControlRuleSetGrantRuleArgs{
+//						Principals: pulumi.StringArray{
+//							ds.AclPrincipalId,
+//						},
+//						Role: pulumi.String("roles/servicePrincipal.user"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Through GCP Databricks account:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_ := "00000000-0000-0000-0000-000000000000"
+//			ds, err := databricks.NewGroup(ctx, "ds", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewServicePrincipal(ctx, "automationSp", &databricks.ServicePrincipalArgs{
+//				DisplayName: pulumi.String("SP_FOR_AUTOMATION"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "automationSpRuleSet", &databricks.AccessControlRuleSetArgs{
+//				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
+//					&databricks.AccessControlRuleSetGrantRuleArgs{
+//						Principals: pulumi.StringArray{
+//							ds.AclPrincipalId,
+//						},
+//						Role: pulumi.String("roles/servicePrincipal.user"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Group rule set usage
+//
+// Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_ := "00000000-0000-0000-0000-000000000000"
+//			_, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//				DisplayName: "Data Science",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			john, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
+//				UserName: pulumi.StringRef("john.doe@example.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "dsGroupRuleSet", &databricks.AccessControlRuleSetArgs{
+//				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
+//					&databricks.AccessControlRuleSetGrantRuleArgs{
+//						Principals: pulumi.StringArray{
+//							*pulumi.String(john.AclPrincipalId),
+//						},
+//						Role: pulumi.String("roles/group.manager"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Account rule set usage
+//
+// Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_ := "00000000-0000-0000-0000-000000000000"
+//			_, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//				DisplayName: "Data Science",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			john, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
+//				UserName: pulumi.StringRef("john.doe@example.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "accountRuleSet", &databricks.AccessControlRuleSetArgs{
+//				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
+//					&databricks.AccessControlRuleSetGrantRuleArgs{
+//						Principals: pulumi.StringArray{
+//							*pulumi.String(john.AclPrincipalId),
+//						},
+//						Role: pulumi.String("roles/group.manager"),
+//					},
+//					&databricks.AccessControlRuleSetGrantRuleArgs{
+//						Principals: pulumi.StringArray{
+//							data.Databricks_user.Ds.Acl_principal_id,
+//						},
+//						Role: pulumi.String("roles/servicePrincipal.manager"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Related Resources
 //
@@ -34,6 +317,8 @@ type AccessControlRuleSet struct {
 	GrantRules AccessControlRuleSetGrantRuleArrayOutput `pulumi:"grantRules"`
 	// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+	// * `accounts/{account_id}/ruleSets/default`
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -74,6 +359,8 @@ type accessControlRuleSetState struct {
 	GrantRules []AccessControlRuleSetGrantRule `pulumi:"grantRules"`
 	// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+	// * `accounts/{account_id}/ruleSets/default`
 	Name *string `pulumi:"name"`
 }
 
@@ -85,6 +372,8 @@ type AccessControlRuleSetState struct {
 	GrantRules AccessControlRuleSetGrantRuleArrayInput
 	// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+	// * `accounts/{account_id}/ruleSets/default`
 	Name pulumi.StringPtrInput
 }
 
@@ -99,6 +388,8 @@ type accessControlRuleSetArgs struct {
 	GrantRules []AccessControlRuleSetGrantRule `pulumi:"grantRules"`
 	// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+	// * `accounts/{account_id}/ruleSets/default`
 	Name *string `pulumi:"name"`
 }
 
@@ -110,6 +401,8 @@ type AccessControlRuleSetArgs struct {
 	GrantRules AccessControlRuleSetGrantRuleArrayInput
 	// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+	// * `accounts/{account_id}/ruleSets/default`
 	Name pulumi.StringPtrInput
 }
 
@@ -213,6 +506,8 @@ func (o AccessControlRuleSetOutput) GrantRules() AccessControlRuleSetGrantRuleAr
 
 // Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
 // * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+// * `accounts/{account_id}/ruleSets/default`
 func (o AccessControlRuleSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessControlRuleSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

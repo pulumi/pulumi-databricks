@@ -21,7 +21,10 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, alphanumeric=None, application_id=None, display_name=None, external_id=None, home=None, id=None, repos=None, user_id=None, user_name=None):
+    def __init__(__self__, acl_principal_id=None, alphanumeric=None, application_id=None, display_name=None, external_id=None, home=None, id=None, repos=None, user_id=None, user_name=None):
+        if acl_principal_id and not isinstance(acl_principal_id, str):
+            raise TypeError("Expected argument 'acl_principal_id' to be a str")
+        pulumi.set(__self__, "acl_principal_id", acl_principal_id)
         if alphanumeric and not isinstance(alphanumeric, str):
             raise TypeError("Expected argument 'alphanumeric' to be a str")
         pulumi.set(__self__, "alphanumeric", alphanumeric)
@@ -49,6 +52,14 @@ class GetUserResult:
         if user_name and not isinstance(user_name, str):
             raise TypeError("Expected argument 'user_name' to be a str")
         pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> str:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+        """
+        return pulumi.get(self, "acl_principal_id")
 
     @property
     @pulumi.getter
@@ -123,6 +134,7 @@ class AwaitableGetUserResult(GetUserResult):
         if False:
             yield self
         return GetUserResult(
+            acl_principal_id=self.acl_principal_id,
             alphanumeric=self.alphanumeric,
             application_id=self.application_id,
             display_name=self.display_name,
@@ -181,6 +193,7 @@ def get_user(user_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
+        acl_principal_id=pulumi.get(__ret__, 'acl_principal_id'),
         alphanumeric=pulumi.get(__ret__, 'alphanumeric'),
         application_id=pulumi.get(__ret__, 'application_id'),
         display_name=pulumi.get(__ret__, 'display_name'),

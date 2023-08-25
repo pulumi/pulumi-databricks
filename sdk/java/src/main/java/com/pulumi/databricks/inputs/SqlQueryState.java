@@ -18,6 +18,13 @@ public final class SqlQueryState extends com.pulumi.resources.ResourceArgs {
 
     public static final SqlQueryState Empty = new SqlQueryState();
 
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
     @Import(name="dataSourceId")
     private @Nullable Output<String> dataSourceId;
 
@@ -93,9 +100,17 @@ public final class SqlQueryState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
+
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
     private SqlQueryState() {}
 
     private SqlQueryState(SqlQueryState $) {
+        this.createdAt = $.createdAt;
         this.dataSourceId = $.dataSourceId;
         this.description = $.description;
         this.name = $.name;
@@ -105,6 +120,7 @@ public final class SqlQueryState extends com.pulumi.resources.ResourceArgs {
         this.runAsRole = $.runAsRole;
         this.schedule = $.schedule;
         this.tags = $.tags;
+        this.updatedAt = $.updatedAt;
     }
 
     public static Builder builder() {
@@ -123,6 +139,15 @@ public final class SqlQueryState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SqlQueryState defaults) {
             $ = new SqlQueryState(Objects.requireNonNull(defaults));
+        }
+
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
         }
 
         public Builder dataSourceId(@Nullable Output<String> dataSourceId) {
@@ -228,6 +253,15 @@ public final class SqlQueryState extends com.pulumi.resources.ResourceArgs {
 
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
         }
 
         public SqlQueryState build() {

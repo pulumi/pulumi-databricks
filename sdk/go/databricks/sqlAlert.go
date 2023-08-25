@@ -27,6 +27,7 @@ import (
 type SqlAlert struct {
 	pulumi.CustomResourceState
 
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Name of the alert.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Alert configuration options.
@@ -36,7 +37,8 @@ type SqlAlert struct {
 	// ID of the query evaluated by the alert.
 	QueryId pulumi.StringOutput `pulumi:"queryId"`
 	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-	Rearm pulumi.IntPtrOutput `pulumi:"rearm"`
+	Rearm     pulumi.IntPtrOutput `pulumi:"rearm"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
 // NewSqlAlert registers a new resource with the given unique name, arguments, and options.
@@ -75,6 +77,7 @@ func GetSqlAlert(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlAlert resources.
 type sqlAlertState struct {
+	CreatedAt *string `pulumi:"createdAt"`
 	// Name of the alert.
 	Name *string `pulumi:"name"`
 	// Alert configuration options.
@@ -84,10 +87,12 @@ type sqlAlertState struct {
 	// ID of the query evaluated by the alert.
 	QueryId *string `pulumi:"queryId"`
 	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-	Rearm *int `pulumi:"rearm"`
+	Rearm     *int    `pulumi:"rearm"`
+	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type SqlAlertState struct {
+	CreatedAt pulumi.StringPtrInput
 	// Name of the alert.
 	Name pulumi.StringPtrInput
 	// Alert configuration options.
@@ -97,7 +102,8 @@ type SqlAlertState struct {
 	// ID of the query evaluated by the alert.
 	QueryId pulumi.StringPtrInput
 	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-	Rearm pulumi.IntPtrInput
+	Rearm     pulumi.IntPtrInput
+	UpdatedAt pulumi.StringPtrInput
 }
 
 func (SqlAlertState) ElementType() reflect.Type {
@@ -105,6 +111,7 @@ func (SqlAlertState) ElementType() reflect.Type {
 }
 
 type sqlAlertArgs struct {
+	CreatedAt *string `pulumi:"createdAt"`
 	// Name of the alert.
 	Name *string `pulumi:"name"`
 	// Alert configuration options.
@@ -114,11 +121,13 @@ type sqlAlertArgs struct {
 	// ID of the query evaluated by the alert.
 	QueryId string `pulumi:"queryId"`
 	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-	Rearm *int `pulumi:"rearm"`
+	Rearm     *int    `pulumi:"rearm"`
+	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 // The set of arguments for constructing a SqlAlert resource.
 type SqlAlertArgs struct {
+	CreatedAt pulumi.StringPtrInput
 	// Name of the alert.
 	Name pulumi.StringPtrInput
 	// Alert configuration options.
@@ -128,7 +137,8 @@ type SqlAlertArgs struct {
 	// ID of the query evaluated by the alert.
 	QueryId pulumi.StringInput
 	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-	Rearm pulumi.IntPtrInput
+	Rearm     pulumi.IntPtrInput
+	UpdatedAt pulumi.StringPtrInput
 }
 
 func (SqlAlertArgs) ElementType() reflect.Type {
@@ -218,6 +228,10 @@ func (o SqlAlertOutput) ToSqlAlertOutputWithContext(ctx context.Context) SqlAler
 	return o
 }
 
+func (o SqlAlertOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlAlert) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
 // Name of the alert.
 func (o SqlAlertOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlAlert) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -241,6 +255,10 @@ func (o SqlAlertOutput) QueryId() pulumi.StringOutput {
 // Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
 func (o SqlAlertOutput) Rearm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SqlAlert) pulumi.IntPtrOutput { return v.Rearm }).(pulumi.IntPtrOutput)
+}
+
+func (o SqlAlertOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlAlert) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type SqlAlertArrayOutput struct{ *pulumi.OutputState }

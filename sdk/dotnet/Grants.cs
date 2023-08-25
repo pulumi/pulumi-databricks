@@ -18,6 +18,9 @@ namespace Pulumi.Databricks
         [Output("externalLocation")]
         public Output<string?> ExternalLocation { get; private set; } = null!;
 
+        [Output("foreignConnection")]
+        public Output<string?> ForeignConnection { get; private set; } = null!;
+
         [Output("function")]
         public Output<string?> Function { get; private set; } = null!;
 
@@ -100,6 +103,9 @@ namespace Pulumi.Databricks
         [Input("externalLocation")]
         public Input<string>? ExternalLocation { get; set; }
 
+        [Input("foreignConnection")]
+        public Input<string>? ForeignConnection { get; set; }
+
         [Input("function")]
         public Input<string>? Function { get; set; }
 
@@ -148,6 +154,9 @@ namespace Pulumi.Databricks
 
         [Input("externalLocation")]
         public Input<string>? ExternalLocation { get; set; }
+
+        [Input("foreignConnection")]
+        public Input<string>? ForeignConnection { get; set; }
 
         [Input("function")]
         public Input<string>? Function { get; set; }

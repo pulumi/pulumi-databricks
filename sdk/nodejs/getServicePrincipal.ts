@@ -46,6 +46,7 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getServicePrincipal:getServicePrincipal", {
+        "aclPrincipalId": args.aclPrincipalId,
         "active": args.active,
         "applicationId": args.applicationId,
         "displayName": args.displayName,
@@ -61,6 +62,10 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
  * A collection of arguments for invoking getServicePrincipal.
  */
 export interface GetServicePrincipalArgs {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     */
+    aclPrincipalId?: string;
     /**
      * Whether service principal is active or not.
      */
@@ -96,6 +101,10 @@ export interface GetServicePrincipalArgs {
  * A collection of values returned by getServicePrincipal.
  */
 export interface GetServicePrincipalResult {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     */
+    readonly aclPrincipalId: string;
     /**
      * Whether service principal is active or not.
      */
@@ -168,6 +177,10 @@ export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, 
  * A collection of arguments for invoking getServicePrincipal.
  */
 export interface GetServicePrincipalOutputArgs {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     */
+    aclPrincipalId?: pulumi.Input<string>;
     /**
      * Whether service principal is active or not.
      */

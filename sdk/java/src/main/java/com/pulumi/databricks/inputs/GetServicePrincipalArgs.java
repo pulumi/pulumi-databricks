@@ -17,6 +17,21 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
     public static final GetServicePrincipalArgs Empty = new GetServicePrincipalArgs();
 
     /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    @Import(name="aclPrincipalId")
+    private @Nullable Output<String> aclPrincipalId;
+
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    public Optional<Output<String>> aclPrincipalId() {
+        return Optional.ofNullable(this.aclPrincipalId);
+    }
+
+    /**
      * Whether service principal is active or not.
      * 
      */
@@ -131,6 +146,7 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
     private GetServicePrincipalArgs() {}
 
     private GetServicePrincipalArgs(GetServicePrincipalArgs $) {
+        this.aclPrincipalId = $.aclPrincipalId;
         this.active = $.active;
         this.applicationId = $.applicationId;
         this.displayName = $.displayName;
@@ -157,6 +173,27 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
 
         public Builder(GetServicePrincipalArgs defaults) {
             $ = new GetServicePrincipalArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPrincipalId(@Nullable Output<String> aclPrincipalId) {
+            $.aclPrincipalId = aclPrincipalId;
+            return this;
+        }
+
+        /**
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPrincipalId(String aclPrincipalId) {
+            return aclPrincipalId(Output.of(aclPrincipalId));
         }
 
         /**

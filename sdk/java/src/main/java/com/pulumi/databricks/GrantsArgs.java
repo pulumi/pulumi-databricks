@@ -31,6 +31,13 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.externalLocation);
     }
 
+    @Import(name="foreignConnection")
+    private @Nullable Output<String> foreignConnection;
+
+    public Optional<Output<String>> foreignConnection() {
+        return Optional.ofNullable(this.foreignConnection);
+    }
+
     @Import(name="function")
     private @Nullable Output<String> function;
 
@@ -106,6 +113,7 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
     private GrantsArgs(GrantsArgs $) {
         this.catalog = $.catalog;
         this.externalLocation = $.externalLocation;
+        this.foreignConnection = $.foreignConnection;
         this.function = $.function;
         this.grants = $.grants;
         this.materializedView = $.materializedView;
@@ -152,6 +160,15 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder externalLocation(String externalLocation) {
             return externalLocation(Output.of(externalLocation));
+        }
+
+        public Builder foreignConnection(@Nullable Output<String> foreignConnection) {
+            $.foreignConnection = foreignConnection;
+            return this;
+        }
+
+        public Builder foreignConnection(String foreignConnection) {
+            return foreignConnection(Output.of(foreignConnection));
         }
 
         public Builder function(@Nullable Output<String> function) {

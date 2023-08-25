@@ -13,14 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MlflowModelTag
     {
-        public readonly string Key;
-        public readonly string Value;
+        public readonly string? Key;
+        public readonly string? Value;
 
         [OutputConstructor]
         private MlflowModelTag(
-            string key,
+            string? key,
 
-            string value)
+            string? value)
         {
             Key = key;
             Value = value;

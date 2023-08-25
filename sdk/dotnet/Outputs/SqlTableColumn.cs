@@ -26,9 +26,9 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? Nullable;
         /// <summary>
-        /// Column type spec (with metadata) as SQL text
+        /// Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
         /// </summary>
-        public readonly string Type;
+        public readonly string? Type;
 
         [OutputConstructor]
         private SqlTableColumn(
@@ -38,7 +38,7 @@ namespace Pulumi.Databricks.Outputs
 
             bool? nullable,
 
-            string type)
+            string? type)
         {
             Comment = comment;
             Name = name;

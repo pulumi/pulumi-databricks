@@ -33,6 +33,7 @@ import (
 //			thisMetastore, err := databricks.NewMetastore(ctx, "thisMetastore", &databricks.MetastoreArgs{
 //				StorageRoot:  pulumi.String(fmt.Sprintf("s3://%v/metastore", aws_s3_bucket.Metastore.Id)),
 //				Owner:        pulumi.String("uc admins"),
+//				Region:       pulumi.String("us-east-1"),
 //				ForceDestroy: pulumi.Bool(true),
 //			})
 //			if err != nil {

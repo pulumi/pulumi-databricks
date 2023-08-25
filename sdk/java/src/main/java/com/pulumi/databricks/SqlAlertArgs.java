@@ -17,6 +17,13 @@ public final class SqlAlertArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SqlAlertArgs Empty = new SqlAlertArgs();
 
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
     /**
      * Name of the alert.
      * 
@@ -92,14 +99,23 @@ public final class SqlAlertArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rearm);
     }
 
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
+
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
     private SqlAlertArgs() {}
 
     private SqlAlertArgs(SqlAlertArgs $) {
+        this.createdAt = $.createdAt;
         this.name = $.name;
         this.options = $.options;
         this.parent = $.parent;
         this.queryId = $.queryId;
         this.rearm = $.rearm;
+        this.updatedAt = $.updatedAt;
     }
 
     public static Builder builder() {
@@ -118,6 +134,15 @@ public final class SqlAlertArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SqlAlertArgs defaults) {
             $ = new SqlAlertArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
         }
 
         /**
@@ -223,6 +248,15 @@ public final class SqlAlertArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rearm(Integer rearm) {
             return rearm(Output.of(rearm));
+        }
+
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
         }
 
         public SqlAlertArgs build() {

@@ -89,6 +89,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/sqlDashboard:SqlDashboard")]
     public partial class SqlDashboard : global::Pulumi.CustomResource
     {
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -97,6 +100,9 @@ namespace Pulumi.Databricks
 
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -144,6 +150,9 @@ namespace Pulumi.Databricks
 
     public sealed class SqlDashboardArgs : global::Pulumi.ResourceArgs
     {
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -157,6 +166,9 @@ namespace Pulumi.Databricks
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         public SqlDashboardArgs()
         {
@@ -166,6 +178,9 @@ namespace Pulumi.Databricks
 
     public sealed class SqlDashboardState : global::Pulumi.ResourceArgs
     {
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -179,6 +194,9 @@ namespace Pulumi.Databricks
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         public SqlDashboardState()
         {

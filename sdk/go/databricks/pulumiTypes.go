@@ -19,9 +19,10 @@ type AccessControlRuleSetGrantRule struct {
 	// * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `Group` resource).
 	// * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `ServicePrincipal` resource).
 	Principals []string `pulumi:"principals"`
-	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles).
+	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles) or [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page).
 	// * `roles/servicePrincipal.manager` - Manager of a service principal.
 	// * `roles/servicePrincipal.user` - User of a service principal.
+	// * `roles/group.manager` - Manager of a group.
 	Role string `pulumi:"role"`
 }
 
@@ -42,9 +43,10 @@ type AccessControlRuleSetGrantRuleArgs struct {
 	// * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `Group` resource).
 	// * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `ServicePrincipal` resource).
 	Principals pulumi.StringArrayInput `pulumi:"principals"`
-	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles).
+	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles) or [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page).
 	// * `roles/servicePrincipal.manager` - Manager of a service principal.
 	// * `roles/servicePrincipal.user` - User of a service principal.
+	// * `roles/group.manager` - Manager of a group.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -107,9 +109,10 @@ func (o AccessControlRuleSetGrantRuleOutput) Principals() pulumi.StringArrayOutp
 	return o.ApplyT(func(v AccessControlRuleSetGrantRule) []string { return v.Principals }).(pulumi.StringArrayOutput)
 }
 
-// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles).
+// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles) or [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page).
 // * `roles/servicePrincipal.manager` - Manager of a service principal.
 // * `roles/servicePrincipal.user` - User of a service principal.
+// * `roles/group.manager` - Manager of a group.
 func (o AccessControlRuleSetGrantRuleOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessControlRuleSetGrantRule) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -3732,6 +3735,289 @@ func (o ClusterWorkloadTypeClientsPtrOutput) Notebooks() pulumi.BoolPtrOutput {
 		}
 		return v.Notebooks
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ExternalLocationEncryptionDetails struct {
+	SseEncryptionDetails *ExternalLocationEncryptionDetailsSseEncryptionDetails `pulumi:"sseEncryptionDetails"`
+}
+
+// ExternalLocationEncryptionDetailsInput is an input type that accepts ExternalLocationEncryptionDetailsArgs and ExternalLocationEncryptionDetailsOutput values.
+// You can construct a concrete instance of `ExternalLocationEncryptionDetailsInput` via:
+//
+//	ExternalLocationEncryptionDetailsArgs{...}
+type ExternalLocationEncryptionDetailsInput interface {
+	pulumi.Input
+
+	ToExternalLocationEncryptionDetailsOutput() ExternalLocationEncryptionDetailsOutput
+	ToExternalLocationEncryptionDetailsOutputWithContext(context.Context) ExternalLocationEncryptionDetailsOutput
+}
+
+type ExternalLocationEncryptionDetailsArgs struct {
+	SseEncryptionDetails ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput `pulumi:"sseEncryptionDetails"`
+}
+
+func (ExternalLocationEncryptionDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationEncryptionDetails)(nil)).Elem()
+}
+
+func (i ExternalLocationEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsOutput() ExternalLocationEncryptionDetailsOutput {
+	return i.ToExternalLocationEncryptionDetailsOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsOutput)
+}
+
+func (i ExternalLocationEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput {
+	return i.ToExternalLocationEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsOutput).ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx)
+}
+
+// ExternalLocationEncryptionDetailsPtrInput is an input type that accepts ExternalLocationEncryptionDetailsArgs, ExternalLocationEncryptionDetailsPtr and ExternalLocationEncryptionDetailsPtrOutput values.
+// You can construct a concrete instance of `ExternalLocationEncryptionDetailsPtrInput` via:
+//
+//	        ExternalLocationEncryptionDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExternalLocationEncryptionDetailsPtrInput interface {
+	pulumi.Input
+
+	ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput
+	ToExternalLocationEncryptionDetailsPtrOutputWithContext(context.Context) ExternalLocationEncryptionDetailsPtrOutput
+}
+
+type externalLocationEncryptionDetailsPtrType ExternalLocationEncryptionDetailsArgs
+
+func ExternalLocationEncryptionDetailsPtr(v *ExternalLocationEncryptionDetailsArgs) ExternalLocationEncryptionDetailsPtrInput {
+	return (*externalLocationEncryptionDetailsPtrType)(v)
+}
+
+func (*externalLocationEncryptionDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationEncryptionDetails)(nil)).Elem()
+}
+
+func (i *externalLocationEncryptionDetailsPtrType) ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput {
+	return i.ToExternalLocationEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *externalLocationEncryptionDetailsPtrType) ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsPtrOutput)
+}
+
+type ExternalLocationEncryptionDetailsOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationEncryptionDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationEncryptionDetails)(nil)).Elem()
+}
+
+func (o ExternalLocationEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsOutput() ExternalLocationEncryptionDetailsOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput {
+	return o.ToExternalLocationEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalLocationEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLocationEncryptionDetails) *ExternalLocationEncryptionDetails {
+		return &v
+	}).(ExternalLocationEncryptionDetailsPtrOutput)
+}
+
+func (o ExternalLocationEncryptionDetailsOutput) SseEncryptionDetails() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ApplyT(func(v ExternalLocationEncryptionDetails) *ExternalLocationEncryptionDetailsSseEncryptionDetails {
+		return v.SseEncryptionDetails
+	}).(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+type ExternalLocationEncryptionDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationEncryptionDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationEncryptionDetails)(nil)).Elem()
+}
+
+func (o ExternalLocationEncryptionDetailsPtrOutput) ToExternalLocationEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsPtrOutput) ToExternalLocationEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsPtrOutput) Elem() ExternalLocationEncryptionDetailsOutput {
+	return o.ApplyT(func(v *ExternalLocationEncryptionDetails) ExternalLocationEncryptionDetails {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalLocationEncryptionDetails
+		return ret
+	}).(ExternalLocationEncryptionDetailsOutput)
+}
+
+func (o ExternalLocationEncryptionDetailsPtrOutput) SseEncryptionDetails() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationEncryptionDetails) *ExternalLocationEncryptionDetailsSseEncryptionDetails {
+		if v == nil {
+			return nil
+		}
+		return v.SseEncryptionDetails
+	}).(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+type ExternalLocationEncryptionDetailsSseEncryptionDetails struct {
+	Algorithm    *string `pulumi:"algorithm"`
+	AwsKmsKeyArn *string `pulumi:"awsKmsKeyArn"`
+}
+
+// ExternalLocationEncryptionDetailsSseEncryptionDetailsInput is an input type that accepts ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs and ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput values.
+// You can construct a concrete instance of `ExternalLocationEncryptionDetailsSseEncryptionDetailsInput` via:
+//
+//	ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{...}
+type ExternalLocationEncryptionDetailsSseEncryptionDetailsInput interface {
+	pulumi.Input
+
+	ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput
+	ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutputWithContext(context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput
+}
+
+type ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs struct {
+	Algorithm    pulumi.StringPtrInput `pulumi:"algorithm"`
+	AwsKmsKeyArn pulumi.StringPtrInput `pulumi:"awsKmsKeyArn"`
+}
+
+func (ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (i ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
+	return i.ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput)
+}
+
+func (i ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return i.ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput).ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx)
+}
+
+// ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput is an input type that accepts ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs, ExternalLocationEncryptionDetailsSseEncryptionDetailsPtr and ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput values.
+// You can construct a concrete instance of `ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput` via:
+//
+//	        ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput interface {
+	pulumi.Input
+
+	ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput
+	ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput
+}
+
+type externalLocationEncryptionDetailsSseEncryptionDetailsPtrType ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs
+
+func ExternalLocationEncryptionDetailsSseEncryptionDetailsPtr(v *ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput {
+	return (*externalLocationEncryptionDetailsSseEncryptionDetailsPtrType)(v)
+}
+
+func (*externalLocationEncryptionDetailsSseEncryptionDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (i *externalLocationEncryptionDetailsSseEncryptionDetailsPtrType) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return i.ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *externalLocationEncryptionDetailsSseEncryptionDetailsPtrType) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+type ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalLocationEncryptionDetailsSseEncryptionDetails) *ExternalLocationEncryptionDetailsSseEncryptionDetails {
+		return &v
+	}).(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput)
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLocationEncryptionDetailsSseEncryptionDetails) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput) AwsKmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLocationEncryptionDetailsSseEncryptionDetails) *string { return v.AwsKmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
+type ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalLocationEncryptionDetailsSseEncryptionDetails)(nil)).Elem()
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput() ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) ToExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutputWithContext(ctx context.Context) ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput {
+	return o
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) Elem() ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput {
+	return o.ApplyT(func(v *ExternalLocationEncryptionDetailsSseEncryptionDetails) ExternalLocationEncryptionDetailsSseEncryptionDetails {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalLocationEncryptionDetailsSseEncryptionDetails
+		return ret
+	}).(ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput)
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationEncryptionDetailsSseEncryptionDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLocationEncryptionDetailsSseEncryptionDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsKmsKeyArn
+	}).(pulumi.StringPtrOutput)
 }
 
 type GrantsGrant struct {
@@ -16366,7 +16652,7 @@ func (o JobRunAsPtrOutput) UserName() pulumi.StringPtrOutput {
 
 type JobRunJobTask struct {
 	// (String) ID of the job
-	JobId string `pulumi:"jobId"`
+	JobId int `pulumi:"jobId"`
 	// (Map) Job parameters for the task
 	JobParameters map[string]interface{} `pulumi:"jobParameters"`
 }
@@ -16384,7 +16670,7 @@ type JobRunJobTaskInput interface {
 
 type JobRunJobTaskArgs struct {
 	// (String) ID of the job
-	JobId pulumi.StringInput `pulumi:"jobId"`
+	JobId pulumi.IntInput `pulumi:"jobId"`
 	// (Map) Job parameters for the task
 	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
 }
@@ -16467,8 +16753,8 @@ func (o JobRunJobTaskOutput) ToJobRunJobTaskPtrOutputWithContext(ctx context.Con
 }
 
 // (String) ID of the job
-func (o JobRunJobTaskOutput) JobId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobRunJobTask) string { return v.JobId }).(pulumi.StringOutput)
+func (o JobRunJobTaskOutput) JobId() pulumi.IntOutput {
+	return o.ApplyT(func(v JobRunJobTask) int { return v.JobId }).(pulumi.IntOutput)
 }
 
 // (Map) Job parameters for the task
@@ -16501,13 +16787,13 @@ func (o JobRunJobTaskPtrOutput) Elem() JobRunJobTaskOutput {
 }
 
 // (String) ID of the job
-func (o JobRunJobTaskPtrOutput) JobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobRunJobTask) *string {
+func (o JobRunJobTaskPtrOutput) JobId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobRunJobTask) *int {
 		if v == nil {
 			return nil
 		}
 		return &v.JobId
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // (Map) Job parameters for the task
@@ -23525,7 +23811,7 @@ func (o JobTaskPythonWheelTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 
 type JobTaskRunJobTask struct {
 	// (String) ID of the job
-	JobId string `pulumi:"jobId"`
+	JobId int `pulumi:"jobId"`
 	// (Map) Job parameters for the task
 	JobParameters map[string]interface{} `pulumi:"jobParameters"`
 }
@@ -23543,7 +23829,7 @@ type JobTaskRunJobTaskInput interface {
 
 type JobTaskRunJobTaskArgs struct {
 	// (String) ID of the job
-	JobId pulumi.StringInput `pulumi:"jobId"`
+	JobId pulumi.IntInput `pulumi:"jobId"`
 	// (Map) Job parameters for the task
 	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
 }
@@ -23626,8 +23912,8 @@ func (o JobTaskRunJobTaskOutput) ToJobTaskRunJobTaskPtrOutputWithContext(ctx con
 }
 
 // (String) ID of the job
-func (o JobTaskRunJobTaskOutput) JobId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobTaskRunJobTask) string { return v.JobId }).(pulumi.StringOutput)
+func (o JobTaskRunJobTaskOutput) JobId() pulumi.IntOutput {
+	return o.ApplyT(func(v JobTaskRunJobTask) int { return v.JobId }).(pulumi.IntOutput)
 }
 
 // (Map) Job parameters for the task
@@ -23660,13 +23946,13 @@ func (o JobTaskRunJobTaskPtrOutput) Elem() JobTaskRunJobTaskOutput {
 }
 
 // (String) ID of the job
-func (o JobTaskRunJobTaskPtrOutput) JobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobTaskRunJobTask) *string {
+func (o JobTaskRunJobTaskPtrOutput) JobId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTaskRunJobTask) *int {
 		if v == nil {
 			return nil
 		}
 		return &v.JobId
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // (Map) Job parameters for the task
@@ -26964,7 +27250,7 @@ func (o LibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
 type MetastoreDataAccessAwsIamRole struct {
 	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
 	//
-	// `azureServicePrincipal` optional configuration block for credential details for Azure:
+	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (Recommended):
 	RoleArn string `pulumi:"roleArn"`
 }
 
@@ -26982,7 +27268,7 @@ type MetastoreDataAccessAwsIamRoleInput interface {
 type MetastoreDataAccessAwsIamRoleArgs struct {
 	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
 	//
-	// `azureServicePrincipal` optional configuration block for credential details for Azure:
+	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (Recommended):
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
@@ -27065,7 +27351,7 @@ func (o MetastoreDataAccessAwsIamRoleOutput) ToMetastoreDataAccessAwsIamRolePtrO
 
 // The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
 //
-// `azureServicePrincipal` optional configuration block for credential details for Azure:
+// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (Recommended):
 func (o MetastoreDataAccessAwsIamRoleOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreDataAccessAwsIamRole) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -27096,7 +27382,7 @@ func (o MetastoreDataAccessAwsIamRolePtrOutput) Elem() MetastoreDataAccessAwsIam
 
 // The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
 //
-// `azureServicePrincipal` optional configuration block for credential details for Azure:
+// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (Recommended):
 func (o MetastoreDataAccessAwsIamRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessAwsIamRole) *string {
 		if v == nil {
@@ -27255,8 +27541,6 @@ type MetastoreDataAccessAzureServicePrincipal struct {
 	// The application ID of the application registration within the referenced AAD tenant
 	ApplicationId string `pulumi:"applicationId"`
 	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
-	//
-	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure:
 	ClientSecret string `pulumi:"clientSecret"`
 	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 	DirectoryId string `pulumi:"directoryId"`
@@ -27277,8 +27561,6 @@ type MetastoreDataAccessAzureServicePrincipalArgs struct {
 	// The application ID of the application registration within the referenced AAD tenant
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
 	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
-	//
-	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure:
 	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
 	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
@@ -27367,8 +27649,6 @@ func (o MetastoreDataAccessAzureServicePrincipalOutput) ApplicationId() pulumi.S
 }
 
 // The client secret generated for the above app ID in AAD. **This field is redacted on output**
-//
-// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure:
 func (o MetastoreDataAccessAzureServicePrincipalOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreDataAccessAzureServicePrincipal) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
@@ -27413,8 +27693,6 @@ func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) ApplicationId() pulum
 }
 
 // The client secret generated for the above app ID in AAD. **This field is redacted on output**
-//
-// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure:
 func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessAzureServicePrincipal) *string {
 		if v == nil {
@@ -27436,6 +27714,8 @@ func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) DirectoryId() pulumi.
 
 type MetastoreDataAccessDatabricksGcpServiceAccount struct {
 	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 	Email *string `pulumi:"email"`
 }
 
@@ -27452,6 +27732,8 @@ type MetastoreDataAccessDatabricksGcpServiceAccountInput interface {
 
 type MetastoreDataAccessDatabricksGcpServiceAccountArgs struct {
 	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 	Email pulumi.StringPtrInput `pulumi:"email"`
 }
 
@@ -27533,6 +27815,8 @@ func (o MetastoreDataAccessDatabricksGcpServiceAccountOutput) ToMetastoreDataAcc
 }
 
 // The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 func (o MetastoreDataAccessDatabricksGcpServiceAccountOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetastoreDataAccessDatabricksGcpServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
@@ -27562,6 +27846,8 @@ func (o MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput) Elem() Metastor
 }
 
 // The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 func (o MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessDatabricksGcpServiceAccount) *string {
 		if v == nil {
@@ -27573,6 +27859,8 @@ func (o MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput) Email() pulumi.
 
 type MetastoreDataAccessGcpServiceAccountKey struct {
 	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 	Email        string `pulumi:"email"`
 	PrivateKey   string `pulumi:"privateKey"`
 	PrivateKeyId string `pulumi:"privateKeyId"`
@@ -27591,6 +27879,8 @@ type MetastoreDataAccessGcpServiceAccountKeyInput interface {
 
 type MetastoreDataAccessGcpServiceAccountKeyArgs struct {
 	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 	Email        pulumi.StringInput `pulumi:"email"`
 	PrivateKey   pulumi.StringInput `pulumi:"privateKey"`
 	PrivateKeyId pulumi.StringInput `pulumi:"privateKeyId"`
@@ -27674,6 +27964,8 @@ func (o MetastoreDataAccessGcpServiceAccountKeyOutput) ToMetastoreDataAccessGcpS
 }
 
 // The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 func (o MetastoreDataAccessGcpServiceAccountKeyOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreDataAccessGcpServiceAccountKey) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -27711,6 +28003,8 @@ func (o MetastoreDataAccessGcpServiceAccountKeyPtrOutput) Elem() MetastoreDataAc
 }
 
 // The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 func (o MetastoreDataAccessGcpServiceAccountKeyPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessGcpServiceAccountKey) *string {
 		if v == nil {
@@ -27739,8 +28033,8 @@ func (o MetastoreDataAccessGcpServiceAccountKeyPtrOutput) PrivateKeyId() pulumi.
 }
 
 type MlflowModelTag struct {
-	Key   string `pulumi:"key"`
-	Value string `pulumi:"value"`
+	Key   *string `pulumi:"key"`
+	Value *string `pulumi:"value"`
 }
 
 // MlflowModelTagInput is an input type that accepts MlflowModelTagArgs and MlflowModelTagOutput values.
@@ -27755,8 +28049,8 @@ type MlflowModelTagInput interface {
 }
 
 type MlflowModelTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
-	Value pulumi.StringInput `pulumi:"value"`
+	Key   pulumi.StringPtrInput `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (MlflowModelTagArgs) ElementType() reflect.Type {
@@ -27810,12 +28104,12 @@ func (o MlflowModelTagOutput) ToMlflowModelTagOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o MlflowModelTagOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v MlflowModelTag) string { return v.Key }).(pulumi.StringOutput)
+func (o MlflowModelTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MlflowModelTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-func (o MlflowModelTagOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v MlflowModelTag) string { return v.Value }).(pulumi.StringOutput)
+func (o MlflowModelTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MlflowModelTag) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type MlflowModelTagArrayOutput struct{ *pulumi.OutputState }
@@ -28364,8 +28658,10 @@ func (o ModelServingConfigPtrOutput) TrafficConfig() ModelServingConfigTrafficCo
 }
 
 type ModelServingConfigServedModel struct {
-	EnvironmentVars    map[string]interface{} `pulumi:"environmentVars"`
-	InstanceProfileArn *string                `pulumi:"instanceProfileArn"`
+	// a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+	EnvironmentVars map[string]interface{} `pulumi:"environmentVars"`
+	// ARN of the instance profile that the served model will use to access AWS resources.
+	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
 	// The name of the model in Databricks Model Registry to be served.
 	ModelName string `pulumi:"modelName"`
 	// The version of the model in Databricks Model Registry to be served.
@@ -28390,7 +28686,9 @@ type ModelServingConfigServedModelInput interface {
 }
 
 type ModelServingConfigServedModelArgs struct {
-	EnvironmentVars    pulumi.MapInput       `pulumi:"environmentVars"`
+	// a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+	EnvironmentVars pulumi.MapInput `pulumi:"environmentVars"`
+	// ARN of the instance profile that the served model will use to access AWS resources.
 	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
 	// The name of the model in Databricks Model Registry to be served.
 	ModelName pulumi.StringInput `pulumi:"modelName"`
@@ -28455,10 +28753,12 @@ func (o ModelServingConfigServedModelOutput) ToModelServingConfigServedModelOutp
 	return o
 }
 
+// a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
 func (o ModelServingConfigServedModelOutput) EnvironmentVars() pulumi.MapOutput {
 	return o.ApplyT(func(v ModelServingConfigServedModel) map[string]interface{} { return v.EnvironmentVars }).(pulumi.MapOutput)
 }
 
+// ARN of the instance profile that the served model will use to access AWS resources.
 func (o ModelServingConfigServedModelOutput) InstanceProfileArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedModel) *string { return v.InstanceProfileArn }).(pulumi.StringPtrOutput)
 }
@@ -29892,6 +30192,7 @@ func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) KeyRegion() pulumi.StringPtrO
 }
 
 type MwsCustomerManagedKeysGcpKeyInfo struct {
+	// The GCP KMS key's resource name.
 	KmsKeyId string `pulumi:"kmsKeyId"`
 }
 
@@ -29907,6 +30208,7 @@ type MwsCustomerManagedKeysGcpKeyInfoInput interface {
 }
 
 type MwsCustomerManagedKeysGcpKeyInfoArgs struct {
+	// The GCP KMS key's resource name.
 	KmsKeyId pulumi.StringInput `pulumi:"kmsKeyId"`
 }
 
@@ -29987,6 +30289,7 @@ func (o MwsCustomerManagedKeysGcpKeyInfoOutput) ToMwsCustomerManagedKeysGcpKeyIn
 	}).(MwsCustomerManagedKeysGcpKeyInfoPtrOutput)
 }
 
+// The GCP KMS key's resource name.
 func (o MwsCustomerManagedKeysGcpKeyInfoOutput) KmsKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v MwsCustomerManagedKeysGcpKeyInfo) string { return v.KmsKeyId }).(pulumi.StringOutput)
 }
@@ -30015,6 +30318,7 @@ func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) Elem() MwsCustomerManagedKeys
 	}).(MwsCustomerManagedKeysGcpKeyInfoOutput)
 }
 
+// The GCP KMS key's resource name.
 func (o MwsCustomerManagedKeysGcpKeyInfoPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsCustomerManagedKeysGcpKeyInfo) *string {
 		if v == nil {
@@ -31474,7 +31778,8 @@ func (o MwsWorkspacesGkeConfigPtrOutput) MasterIpRange() pulumi.StringPtrOutput 
 }
 
 type MwsWorkspacesToken struct {
-	Comment         *string `pulumi:"comment"`
+	Comment *string `pulumi:"comment"`
+	// Token expiry lifetime. By default its 2592000 (30 days).
 	LifetimeSeconds *int    `pulumi:"lifetimeSeconds"`
 	TokenId         *string `pulumi:"tokenId"`
 	TokenValue      *string `pulumi:"tokenValue"`
@@ -31492,7 +31797,8 @@ type MwsWorkspacesTokenInput interface {
 }
 
 type MwsWorkspacesTokenArgs struct {
-	Comment         pulumi.StringPtrInput `pulumi:"comment"`
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Token expiry lifetime. By default its 2592000 (30 days).
 	LifetimeSeconds pulumi.IntPtrInput    `pulumi:"lifetimeSeconds"`
 	TokenId         pulumi.StringPtrInput `pulumi:"tokenId"`
 	TokenValue      pulumi.StringPtrInput `pulumi:"tokenValue"`
@@ -31579,6 +31885,7 @@ func (o MwsWorkspacesTokenOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesToken) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Token expiry lifetime. By default its 2592000 (30 days).
 func (o MwsWorkspacesTokenOutput) LifetimeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesToken) *int { return v.LifetimeSeconds }).(pulumi.IntPtrOutput)
 }
@@ -31624,6 +31931,7 @@ func (o MwsWorkspacesTokenPtrOutput) Comment() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Token expiry lifetime. By default its 2592000 (30 days).
 func (o MwsWorkspacesTokenPtrOutput) LifetimeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesToken) *int {
 		if v == nil {
@@ -39965,8 +40273,8 @@ type SqlTableColumn struct {
 	Name string `pulumi:"name"`
 	// Whether field is nullable (Default: `true`)
 	Nullable *bool `pulumi:"nullable"`
-	// Column type spec (with metadata) as SQL text
-	Type string `pulumi:"type"`
+	// Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+	Type *string `pulumi:"type"`
 }
 
 // SqlTableColumnInput is an input type that accepts SqlTableColumnArgs and SqlTableColumnOutput values.
@@ -39987,8 +40295,8 @@ type SqlTableColumnArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Whether field is nullable (Default: `true`)
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
-	// Column type spec (with metadata) as SQL text
-	Type pulumi.StringInput `pulumi:"type"`
+	// Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (SqlTableColumnArgs) ElementType() reflect.Type {
@@ -40057,9 +40365,9 @@ func (o SqlTableColumnOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SqlTableColumn) *bool { return v.Nullable }).(pulumi.BoolPtrOutput)
 }
 
-// Column type spec (with metadata) as SQL text
-func (o SqlTableColumnOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlTableColumn) string { return v.Type }).(pulumi.StringOutput)
+// Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+func (o SqlTableColumnOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlTableColumn) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type SqlTableColumnArrayOutput struct{ *pulumi.OutputState }
@@ -59045,7 +59353,7 @@ func (o GetJobJobSettingsSettingsRunAsPtrOutput) UserName() pulumi.StringPtrOutp
 }
 
 type GetJobJobSettingsSettingsRunJobTask struct {
-	JobId         string                 `pulumi:"jobId"`
+	JobId         int                    `pulumi:"jobId"`
 	JobParameters map[string]interface{} `pulumi:"jobParameters"`
 }
 
@@ -59061,8 +59369,8 @@ type GetJobJobSettingsSettingsRunJobTaskInput interface {
 }
 
 type GetJobJobSettingsSettingsRunJobTaskArgs struct {
-	JobId         pulumi.StringInput `pulumi:"jobId"`
-	JobParameters pulumi.MapInput    `pulumi:"jobParameters"`
+	JobId         pulumi.IntInput `pulumi:"jobId"`
+	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
 }
 
 func (GetJobJobSettingsSettingsRunJobTaskArgs) ElementType() reflect.Type {
@@ -59142,8 +59450,8 @@ func (o GetJobJobSettingsSettingsRunJobTaskOutput) ToGetJobJobSettingsSettingsRu
 	}).(GetJobJobSettingsSettingsRunJobTaskPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsRunJobTaskOutput) JobId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsRunJobTask) string { return v.JobId }).(pulumi.StringOutput)
+func (o GetJobJobSettingsSettingsRunJobTaskOutput) JobId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsRunJobTask) int { return v.JobId }).(pulumi.IntOutput)
 }
 
 func (o GetJobJobSettingsSettingsRunJobTaskOutput) JobParameters() pulumi.MapOutput {
@@ -59174,13 +59482,13 @@ func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) Elem() GetJobJobSettingsSe
 	}).(GetJobJobSettingsSettingsRunJobTaskOutput)
 }
 
-func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) JobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunJobTask) *string {
+func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) JobId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsRunJobTask) *int {
 		if v == nil {
 			return nil
 		}
 		return &v.JobId
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
@@ -65857,7 +66165,7 @@ func (o GetJobJobSettingsSettingsTaskPythonWheelTaskPtrOutput) Parameters() pulu
 }
 
 type GetJobJobSettingsSettingsTaskRunJobTask struct {
-	JobId         string                 `pulumi:"jobId"`
+	JobId         int                    `pulumi:"jobId"`
 	JobParameters map[string]interface{} `pulumi:"jobParameters"`
 }
 
@@ -65873,8 +66181,8 @@ type GetJobJobSettingsSettingsTaskRunJobTaskInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskRunJobTaskArgs struct {
-	JobId         pulumi.StringInput `pulumi:"jobId"`
-	JobParameters pulumi.MapInput    `pulumi:"jobParameters"`
+	JobId         pulumi.IntInput `pulumi:"jobId"`
+	JobParameters pulumi.MapInput `pulumi:"jobParameters"`
 }
 
 func (GetJobJobSettingsSettingsTaskRunJobTaskArgs) ElementType() reflect.Type {
@@ -65954,8 +66262,8 @@ func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) ToGetJobJobSettingsSettin
 	}).(GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) JobId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskRunJobTask) string { return v.JobId }).(pulumi.StringOutput)
+func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) JobId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskRunJobTask) int { return v.JobId }).(pulumi.IntOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskRunJobTaskOutput) JobParameters() pulumi.MapOutput {
@@ -65986,13 +66294,13 @@ func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) Elem() GetJobJobSettin
 	}).(GetJobJobSettingsSettingsTaskRunJobTaskOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) JobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskRunJobTask) *string {
+func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) JobId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskRunJobTask) *int {
 		if v == nil {
 			return nil
 		}
 		return &v.JobId
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskRunJobTaskPtrOutput) JobParameters() pulumi.MapOutput {
@@ -69881,6 +70189,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadTypePtrInput)(nil)).Elem(), ClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadTypeClientsInput)(nil)).Elem(), ClusterWorkloadTypeClientsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadTypeClientsPtrInput)(nil)).Elem(), ClusterWorkloadTypeClientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsInput)(nil)).Elem(), ExternalLocationEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsPtrInput)(nil)).Elem(), ExternalLocationEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrantsGrantInput)(nil)).Elem(), GrantsGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrantsGrantArrayInput)(nil)).Elem(), GrantsGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePoolAwsAttributesInput)(nil)).Elem(), InstancePoolAwsAttributesArgs{})
@@ -70724,6 +71036,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(ClusterWorkloadTypeClientsOutput{})
 	pulumi.RegisterOutputType(ClusterWorkloadTypeClientsPtrOutput{})
+	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsOutput{})
+	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsPtrOutput{})
+	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput{})
+	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsSseEncryptionDetailsPtrOutput{})
 	pulumi.RegisterOutputType(GrantsGrantOutput{})
 	pulumi.RegisterOutputType(GrantsGrantArrayOutput{})
 	pulumi.RegisterOutputType(InstancePoolAwsAttributesOutput{})

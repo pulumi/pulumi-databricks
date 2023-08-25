@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "databricks:index/clusterPolicy:ClusterPolicy":
 		r = &ClusterPolicy{}
+	case "databricks:index/connection:Connection":
+		r = &Connection{}
 	case "databricks:index/dbfsFile:DbfsFile":
 		r = &DbfsFile{}
 	case "databricks:index/directory:Directory":
@@ -219,6 +221,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/clusterPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/connection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

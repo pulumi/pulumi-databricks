@@ -142,6 +142,7 @@ export class SqlQuery extends pulumi.CustomResource {
         return obj['__pulumiType'] === SqlQuery.__pulumiType;
     }
 
+    public readonly createdAt!: pulumi.Output<string>;
     public readonly dataSourceId!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
@@ -154,6 +155,7 @@ export class SqlQuery extends pulumi.CustomResource {
      */
     public readonly schedule!: pulumi.Output<outputs.SqlQuerySchedule | undefined>;
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    public readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a SqlQuery resource with the given unique name, arguments, and options.
@@ -168,6 +170,7 @@ export class SqlQuery extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlQueryState | undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -177,6 +180,7 @@ export class SqlQuery extends pulumi.CustomResource {
             resourceInputs["runAsRole"] = state ? state.runAsRole : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as SqlQueryArgs | undefined;
             if ((!args || args.dataSourceId === undefined) && !opts.urn) {
@@ -185,6 +189,7 @@ export class SqlQuery extends pulumi.CustomResource {
             if ((!args || args.query === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'query'");
             }
+            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
             resourceInputs["dataSourceId"] = args ? args.dataSourceId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -194,6 +199,7 @@ export class SqlQuery extends pulumi.CustomResource {
             resourceInputs["runAsRole"] = args ? args.runAsRole : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlQuery.__pulumiType, name, resourceInputs, opts);
@@ -204,6 +210,7 @@ export class SqlQuery extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SqlQuery resources.
  */
 export interface SqlQueryState {
+    createdAt?: pulumi.Input<string>;
     dataSourceId?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -216,12 +223,14 @@ export interface SqlQueryState {
      */
     schedule?: pulumi.Input<inputs.SqlQuerySchedule>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a SqlQuery resource.
  */
 export interface SqlQueryArgs {
+    createdAt?: pulumi.Input<string>;
     dataSourceId: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -234,4 +243,5 @@ export interface SqlQueryArgs {
      */
     schedule?: pulumi.Input<inputs.SqlQuerySchedule>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    updatedAt?: pulumi.Input<string>;
 }

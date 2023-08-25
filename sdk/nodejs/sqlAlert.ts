@@ -48,6 +48,7 @@ export class SqlAlert extends pulumi.CustomResource {
         return obj['__pulumiType'] === SqlAlert.__pulumiType;
     }
 
+    public readonly createdAt!: pulumi.Output<string>;
     /**
      * Name of the alert.
      */
@@ -68,6 +69,7 @@ export class SqlAlert extends pulumi.CustomResource {
      * Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
      */
     public readonly rearm!: pulumi.Output<number | undefined>;
+    public readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a SqlAlert resource with the given unique name, arguments, and options.
@@ -82,11 +84,13 @@ export class SqlAlert extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlAlertState | undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["options"] = state ? state.options : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["queryId"] = state ? state.queryId : undefined;
             resourceInputs["rearm"] = state ? state.rearm : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as SqlAlertArgs | undefined;
             if ((!args || args.options === undefined) && !opts.urn) {
@@ -95,11 +99,13 @@ export class SqlAlert extends pulumi.CustomResource {
             if ((!args || args.queryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'queryId'");
             }
+            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["options"] = args ? args.options : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["queryId"] = args ? args.queryId : undefined;
             resourceInputs["rearm"] = args ? args.rearm : undefined;
+            resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlAlert.__pulumiType, name, resourceInputs, opts);
@@ -110,6 +116,7 @@ export class SqlAlert extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SqlAlert resources.
  */
 export interface SqlAlertState {
+    createdAt?: pulumi.Input<string>;
     /**
      * Name of the alert.
      */
@@ -130,12 +137,14 @@ export interface SqlAlertState {
      * Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
      */
     rearm?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a SqlAlert resource.
  */
 export interface SqlAlertArgs {
+    createdAt?: pulumi.Input<string>;
     /**
      * Name of the alert.
      */
@@ -156,4 +165,5 @@ export interface SqlAlertArgs {
      * Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
      */
     rearm?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<string>;
 }

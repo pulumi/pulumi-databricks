@@ -33,6 +33,12 @@ namespace Pulumi.Databricks
         [Output("objects")]
         public Output<ImmutableArray<Outputs.ShareObject>> Objects { get; private set; } = null!;
 
+        /// <summary>
+        /// User name/group name/sp application_id of the share owner.
+        /// </summary>
+        [Output("owner")]
+        public Output<string?> Owner { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Share resource with the given unique name, arguments, and options.
@@ -105,6 +111,12 @@ namespace Pulumi.Databricks
             set => _objects = value;
         }
 
+        /// <summary>
+        /// User name/group name/sp application_id of the share owner.
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
+
         public ShareArgs()
         {
         }
@@ -138,6 +150,12 @@ namespace Pulumi.Databricks
             get => _objects ?? (_objects = new InputList<Inputs.ShareObjectGetArgs>());
             set => _objects = value;
         }
+
+        /// <summary>
+        /// User name/group name/sp application_id of the share owner.
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
 
         public ShareState()
         {

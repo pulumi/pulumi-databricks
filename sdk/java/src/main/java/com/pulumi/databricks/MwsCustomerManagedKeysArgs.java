@@ -35,14 +35,14 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * This field is a block and is documented below.
+     * This field is a block and is documented below. This conflicts with `gcp_key_info`
      * 
      */
     @Import(name="awsKeyInfo")
     private @Nullable Output<MwsCustomerManagedKeysAwsKeyInfoArgs> awsKeyInfo;
 
     /**
-     * @return This field is a block and is documented below.
+     * @return This field is a block and is documented below. This conflicts with `gcp_key_info`
      * 
      */
     public Optional<Output<MwsCustomerManagedKeysAwsKeyInfoArgs>> awsKeyInfo() {
@@ -79,9 +79,17 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.customerManagedKeyId);
     }
 
+    /**
+     * This field is a block and is documented below. This conflicts with `aws_key_info`
+     * 
+     */
     @Import(name="gcpKeyInfo")
     private @Nullable Output<MwsCustomerManagedKeysGcpKeyInfoArgs> gcpKeyInfo;
 
+    /**
+     * @return This field is a block and is documented below. This conflicts with `aws_key_info`
+     * 
+     */
     public Optional<Output<MwsCustomerManagedKeysGcpKeyInfoArgs>> gcpKeyInfo() {
         return Optional.ofNullable(this.gcpKeyInfo);
     }
@@ -152,7 +160,7 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param awsKeyInfo This field is a block and is documented below.
+         * @param awsKeyInfo This field is a block and is documented below. This conflicts with `gcp_key_info`
          * 
          * @return builder
          * 
@@ -163,7 +171,7 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param awsKeyInfo This field is a block and is documented below.
+         * @param awsKeyInfo This field is a block and is documented below. This conflicts with `gcp_key_info`
          * 
          * @return builder
          * 
@@ -214,11 +222,23 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
             return customerManagedKeyId(Output.of(customerManagedKeyId));
         }
 
+        /**
+         * @param gcpKeyInfo This field is a block and is documented below. This conflicts with `aws_key_info`
+         * 
+         * @return builder
+         * 
+         */
         public Builder gcpKeyInfo(@Nullable Output<MwsCustomerManagedKeysGcpKeyInfoArgs> gcpKeyInfo) {
             $.gcpKeyInfo = gcpKeyInfo;
             return this;
         }
 
+        /**
+         * @param gcpKeyInfo This field is a block and is documented below. This conflicts with `aws_key_info`
+         * 
+         * @return builder
+         * 
+         */
         public Builder gcpKeyInfo(MwsCustomerManagedKeysGcpKeyInfoArgs gcpKeyInfo) {
             return gcpKeyInfo(Output.of(gcpKeyInfo));
         }

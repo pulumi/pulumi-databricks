@@ -24,9 +24,11 @@ class MetastoreArgs:
                  delta_sharing_scope: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  global_metastore_id: Optional[pulumi.Input[str]] = None,
+                 metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 storage_root_credential_id: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[int]] = None,
                  updated_by: Optional[pulumi.Input[str]] = None):
         """
@@ -38,6 +40,7 @@ class MetastoreArgs:
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
+        :param pulumi.Input[str] region: The region of the metastore
         """
         pulumi.set(__self__, "storage_root", storage_root)
         if cloud is not None:
@@ -58,12 +61,16 @@ class MetastoreArgs:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if global_metastore_id is not None:
             pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if storage_root_credential_id is not None:
+            pulumi.set(__self__, "storage_root_credential_id", storage_root_credential_id)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
         if updated_by is not None:
@@ -175,6 +182,15 @@ class MetastoreArgs:
         pulumi.set(self, "global_metastore_id", value)
 
     @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "metastore_id")
+
+    @metastore_id.setter
+    def metastore_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metastore_id", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -201,11 +217,23 @@ class MetastoreArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the metastore
+        """
         return pulumi.get(self, "region")
 
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="storageRootCredentialId")
+    def storage_root_credential_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_root_credential_id")
+
+    @storage_root_credential_id.setter
+    def storage_root_credential_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_root_credential_id", value)
 
     @property
     @pulumi.getter(name="updatedAt")
@@ -238,10 +266,12 @@ class _MetastoreState:
                  delta_sharing_scope: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  global_metastore_id: Optional[pulumi.Input[str]] = None,
+                 metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  storage_root: Optional[pulumi.Input[str]] = None,
+                 storage_root_credential_id: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[int]] = None,
                  updated_by: Optional[pulumi.Input[str]] = None):
         """
@@ -252,6 +282,7 @@ class _MetastoreState:
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
+        :param pulumi.Input[str] region: The region of the metastore
         :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
         if cloud is not None:
@@ -272,6 +303,8 @@ class _MetastoreState:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if global_metastore_id is not None:
             pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if owner is not None:
@@ -280,6 +313,8 @@ class _MetastoreState:
             pulumi.set(__self__, "region", region)
         if storage_root is not None:
             pulumi.set(__self__, "storage_root", storage_root)
+        if storage_root_credential_id is not None:
+            pulumi.set(__self__, "storage_root_credential_id", storage_root_credential_id)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
         if updated_by is not None:
@@ -379,6 +414,15 @@ class _MetastoreState:
         pulumi.set(self, "global_metastore_id", value)
 
     @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "metastore_id")
+
+    @metastore_id.setter
+    def metastore_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metastore_id", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -405,6 +449,9 @@ class _MetastoreState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the metastore
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -422,6 +469,15 @@ class _MetastoreState:
     @storage_root.setter
     def storage_root(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_root", value)
+
+    @property
+    @pulumi.getter(name="storageRootCredentialId")
+    def storage_root_credential_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_root_credential_id")
+
+    @storage_root_credential_id.setter
+    def storage_root_credential_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_root_credential_id", value)
 
     @property
     @pulumi.getter(name="updatedAt")
@@ -456,17 +512,16 @@ class Metastore(pulumi.CustomResource):
                  delta_sharing_scope: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  global_metastore_id: Optional[pulumi.Input[str]] = None,
+                 metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  storage_root: Optional[pulumi.Input[str]] = None,
+                 storage_root_credential_id: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[int]] = None,
                  updated_by: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **Notes**
-          Unity Catalog APIs are accessible via **workspace-level APIs**. This design may change in the future.
-
         A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
 
         Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
@@ -487,6 +542,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
+        :param pulumi.Input[str] region: The region of the metastore
         :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
         ...
@@ -496,9 +552,6 @@ class Metastore(pulumi.CustomResource):
                  args: MetastoreArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Notes**
-          Unity Catalog APIs are accessible via **workspace-level APIs**. This design may change in the future.
-
         A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
 
         Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
@@ -535,10 +588,12 @@ class Metastore(pulumi.CustomResource):
                  delta_sharing_scope: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  global_metastore_id: Optional[pulumi.Input[str]] = None,
+                 metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  storage_root: Optional[pulumi.Input[str]] = None,
+                 storage_root_credential_id: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[int]] = None,
                  updated_by: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -559,12 +614,14 @@ class Metastore(pulumi.CustomResource):
             __props__.__dict__["delta_sharing_scope"] = delta_sharing_scope
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["global_metastore_id"] = global_metastore_id
+            __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
             __props__.__dict__["region"] = region
             if storage_root is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_root'")
             __props__.__dict__["storage_root"] = storage_root
+            __props__.__dict__["storage_root_credential_id"] = storage_root_credential_id
             __props__.__dict__["updated_at"] = updated_at
             __props__.__dict__["updated_by"] = updated_by
         super(Metastore, __self__).__init__(
@@ -586,10 +643,12 @@ class Metastore(pulumi.CustomResource):
             delta_sharing_scope: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             global_metastore_id: Optional[pulumi.Input[str]] = None,
+            metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             storage_root: Optional[pulumi.Input[str]] = None,
+            storage_root_credential_id: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[int]] = None,
             updated_by: Optional[pulumi.Input[str]] = None) -> 'Metastore':
         """
@@ -605,6 +664,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
+        :param pulumi.Input[str] region: The region of the metastore
         :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -620,10 +680,12 @@ class Metastore(pulumi.CustomResource):
         __props__.__dict__["delta_sharing_scope"] = delta_sharing_scope
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["global_metastore_id"] = global_metastore_id
+        __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
         __props__.__dict__["region"] = region
         __props__.__dict__["storage_root"] = storage_root
+        __props__.__dict__["storage_root_credential_id"] = storage_root_credential_id
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["updated_by"] = updated_by
         return Metastore(resource_name, opts=opts, __props__=__props__)
@@ -686,6 +748,11 @@ class Metastore(pulumi.CustomResource):
         return pulumi.get(self, "global_metastore_id")
 
     @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "metastore_id")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -704,6 +771,9 @@ class Metastore(pulumi.CustomResource):
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region of the metastore
+        """
         return pulumi.get(self, "region")
 
     @property
@@ -713,6 +783,11 @@ class Metastore(pulumi.CustomResource):
         Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
+
+    @property
+    @pulumi.getter(name="storageRootCredentialId")
+    def storage_root_credential_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "storage_root_credential_id")
 
     @property
     @pulumi.getter(name="updatedAt")

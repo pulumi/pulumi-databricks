@@ -86,9 +86,11 @@ export class SqlDashboard extends pulumi.CustomResource {
         return obj['__pulumiType'] === SqlDashboard.__pulumiType;
     }
 
+    public readonly createdAt!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
     public readonly parent!: pulumi.Output<string | undefined>;
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    public readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a SqlDashboard resource with the given unique name, arguments, and options.
@@ -103,14 +105,18 @@ export class SqlDashboard extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlDashboardState | undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as SqlDashboardArgs | undefined;
+            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlDashboard.__pulumiType, name, resourceInputs, opts);
@@ -121,16 +127,20 @@ export class SqlDashboard extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SqlDashboard resources.
  */
 export interface SqlDashboardState {
+    createdAt?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     parent?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a SqlDashboard resource.
  */
 export interface SqlDashboardArgs {
+    createdAt?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     parent?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    updatedAt?: pulumi.Input<string>;
 }

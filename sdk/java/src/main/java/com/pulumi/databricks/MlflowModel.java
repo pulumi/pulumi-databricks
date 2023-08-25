@@ -87,10 +87,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/mlflowModel:MlflowModel")
 public class MlflowModel extends com.pulumi.resources.CustomResource {
     @Export(name="creationTimestamp", type=Integer.class, parameters={})
-    private Output<Integer> creationTimestamp;
+    private Output</* @Nullable */ Integer> creationTimestamp;
 
-    public Output<Integer> creationTimestamp() {
-        return this.creationTimestamp;
+    public Output<Optional<Integer>> creationTimestamp() {
+        return Codegen.optional(this.creationTimestamp);
     }
     /**
      * The description of the MLflow model.
@@ -107,10 +107,10 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     @Export(name="lastUpdatedTimestamp", type=Integer.class, parameters={})
-    private Output<Integer> lastUpdatedTimestamp;
+    private Output</* @Nullable */ Integer> lastUpdatedTimestamp;
 
-    public Output<Integer> lastUpdatedTimestamp() {
-        return this.lastUpdatedTimestamp;
+    public Output<Optional<Integer>> lastUpdatedTimestamp() {
+        return Codegen.optional(this.lastUpdatedTimestamp);
     }
     /**
      * Name of MLflow model. Change of name triggers new resource.
@@ -125,12 +125,6 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
-    }
-    @Export(name="registeredModelId", type=String.class, parameters={})
-    private Output<String> registeredModelId;
-
-    public Output<String> registeredModelId() {
-        return this.registeredModelId;
     }
     /**
      * Tags for the MLflow model.
@@ -147,10 +141,10 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     @Export(name="userId", type=String.class, parameters={})
-    private Output<String> userId;
+    private Output</* @Nullable */ String> userId;
 
-    public Output<String> userId() {
-        return this.userId;
+    public Output<Optional<String>> userId() {
+        return Codegen.optional(this.userId);
     }
 
     /**

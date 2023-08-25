@@ -39,6 +39,8 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
     /**
      * Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+     * * `accounts/{account_id}/ruleSets/default`
      * 
      */
     @Import(name="name")
@@ -47,6 +49,8 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
     /**
      * @return Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+     * * `accounts/{account_id}/ruleSets/default`
      * 
      */
     public Optional<Output<String>> name() {
@@ -118,6 +122,8 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
         /**
          * @param name Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
          * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+         * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+         * * `accounts/{account_id}/ruleSets/default`
          * 
          * @return builder
          * 
@@ -130,6 +136,8 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
         /**
          * @param name Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
          * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+         * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+         * * `accounts/{account_id}/ruleSets/default`
          * 
          * @return builder
          * 

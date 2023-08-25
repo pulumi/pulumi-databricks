@@ -14,12 +14,16 @@ public final class MetastoreDataAccessDatabricksGcpServiceAccount {
     /**
      * @return The email of the GCP service account created, to be granted access to relevant buckets.
      * 
+     * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
+     * 
      */
     private @Nullable String email;
 
     private MetastoreDataAccessDatabricksGcpServiceAccount() {}
     /**
      * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * 
+     * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
      * 
      */
     public Optional<String> email() {

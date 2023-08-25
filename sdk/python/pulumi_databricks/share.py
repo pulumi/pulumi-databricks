@@ -19,12 +19,14 @@ class ShareArgs:
                  created_at: Optional[pulumi.Input[int]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 objects: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]] = None):
+                 objects: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]] = None,
+                 owner: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Share resource.
         :param pulumi.Input[int] created_at: Time when the share was created.
         :param pulumi.Input[str] created_by: The principal that created the share.
         :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: User name/group name/sp application_id of the share owner.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -34,6 +36,8 @@ class ShareArgs:
             pulumi.set(__self__, "name", name)
         if objects is not None:
             pulumi.set(__self__, "objects", objects)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -79,6 +83,18 @@ class ShareArgs:
     @objects.setter
     def objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]]):
         pulumi.set(self, "objects", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name/group name/sp application_id of the share owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "owner", value)
 
 
 @pulumi.input_type
@@ -87,12 +103,14 @@ class _ShareState:
                  created_at: Optional[pulumi.Input[int]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 objects: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]] = None):
+                 objects: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]] = None,
+                 owner: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Share resources.
         :param pulumi.Input[int] created_at: Time when the share was created.
         :param pulumi.Input[str] created_by: The principal that created the share.
         :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: User name/group name/sp application_id of the share owner.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -102,6 +120,8 @@ class _ShareState:
             pulumi.set(__self__, "name", name)
         if objects is not None:
             pulumi.set(__self__, "objects", objects)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -147,6 +167,18 @@ class _ShareState:
     @objects.setter
     def objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]]):
         pulumi.set(self, "objects", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name/group name/sp application_id of the share owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "owner", value)
 
 
 class Share(pulumi.CustomResource):
@@ -158,6 +190,7 @@ class Share(pulumi.CustomResource):
                  created_by: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  objects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShareObjectArgs']]]]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a Share resource with the given unique name, props, and options.
@@ -166,6 +199,7 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[int] created_at: Time when the share was created.
         :param pulumi.Input[str] created_by: The principal that created the share.
         :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: User name/group name/sp application_id of the share owner.
         """
         ...
     @overload
@@ -194,6 +228,7 @@ class Share(pulumi.CustomResource):
                  created_by: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  objects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShareObjectArgs']]]]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -207,6 +242,7 @@ class Share(pulumi.CustomResource):
             __props__.__dict__["created_by"] = created_by
             __props__.__dict__["name"] = name
             __props__.__dict__["objects"] = objects
+            __props__.__dict__["owner"] = owner
         super(Share, __self__).__init__(
             'databricks:index/share:Share',
             resource_name,
@@ -220,7 +256,8 @@ class Share(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[int]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            objects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShareObjectArgs']]]]] = None) -> 'Share':
+            objects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShareObjectArgs']]]]] = None,
+            owner: Optional[pulumi.Input[str]] = None) -> 'Share':
         """
         Get an existing Share resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -231,6 +268,7 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[int] created_at: Time when the share was created.
         :param pulumi.Input[str] created_by: The principal that created the share.
         :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: User name/group name/sp application_id of the share owner.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -240,6 +278,7 @@ class Share(pulumi.CustomResource):
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["name"] = name
         __props__.__dict__["objects"] = objects
+        __props__.__dict__["owner"] = owner
         return Share(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -270,4 +309,12 @@ class Share(pulumi.CustomResource):
     @pulumi.getter
     def objects(self) -> pulumi.Output[Optional[Sequence['outputs.ShareObject']]]:
         return pulumi.get(self, "objects")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> pulumi.Output[Optional[str]]:
+        """
+        User name/group name/sp application_id of the share owner.
+        """
+        return pulumi.get(self, "owner")
 

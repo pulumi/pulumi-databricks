@@ -14,6 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class MwsWorkspacesToken
     {
         public readonly string? Comment;
+        /// <summary>
+        /// Token expiry lifetime. By default its 2592000 (30 days).
+        /// </summary>
         public readonly int? LifetimeSeconds;
         public readonly string? TokenId;
         public readonly string? TokenValue;

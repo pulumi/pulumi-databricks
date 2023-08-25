@@ -62,6 +62,8 @@ type Catalog struct {
 
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+	ConnectionName pulumi.StringPtrOutput `pulumi:"connectionName"`
 	// Delete catalog regardless of its contents.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -113,6 +115,8 @@ func GetCatalog(ctx *pulumi.Context,
 type catalogState struct {
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
+	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+	ConnectionName *string `pulumi:"connectionName"`
 	// Delete catalog regardless of its contents.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -135,6 +139,8 @@ type catalogState struct {
 type CatalogState struct {
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
+	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+	ConnectionName pulumi.StringPtrInput
 	// Delete catalog regardless of its contents.
 	ForceDestroy pulumi.BoolPtrInput
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -161,6 +167,8 @@ func (CatalogState) ElementType() reflect.Type {
 type catalogArgs struct {
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
+	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+	ConnectionName *string `pulumi:"connectionName"`
 	// Delete catalog regardless of its contents.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -184,6 +192,8 @@ type catalogArgs struct {
 type CatalogArgs struct {
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
+	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+	ConnectionName pulumi.StringPtrInput
 	// Delete catalog regardless of its contents.
 	ForceDestroy pulumi.BoolPtrInput
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -293,6 +303,11 @@ func (o CatalogOutput) ToCatalogOutputWithContext(ctx context.Context) CatalogOu
 // User-supplied free-form text.
 func (o CatalogOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+func (o CatalogOutput) ConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.ConnectionName }).(pulumi.StringPtrOutput)
 }
 
 // Delete catalog regardless of its contents.

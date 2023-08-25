@@ -77,6 +77,8 @@ func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getGroup.
 type LookupGroupArgs struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+	AclPrincipalId *string `pulumi:"aclPrincipalId"`
 	// True if group members can create clusters
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// True if group members can create instance pools
@@ -105,6 +107,8 @@ type LookupGroupArgs struct {
 
 // A collection of values returned by getGroup.
 type LookupGroupResult struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+	AclPrincipalId string `pulumi:"aclPrincipalId"`
 	// True if group members can create clusters
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// True if group members can create instance pools
@@ -146,6 +150,8 @@ func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...
 
 // A collection of arguments for invoking getGroup.
 type LookupGroupOutputArgs struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+	AclPrincipalId pulumi.StringPtrInput `pulumi:"aclPrincipalId"`
 	// True if group members can create clusters
 	AllowClusterCreate pulumi.BoolPtrInput `pulumi:"allowClusterCreate"`
 	// True if group members can create instance pools
@@ -189,6 +195,11 @@ func (o LookupGroupResultOutput) ToLookupGroupResultOutput() LookupGroupResultOu
 
 func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx context.Context) LookupGroupResultOutput {
 	return o
+}
+
+// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+func (o LookupGroupResultOutput) AclPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.AclPrincipalId }).(pulumi.StringOutput)
 }
 
 // True if group members can create clusters

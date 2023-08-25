@@ -13,9 +13,11 @@ namespace Pulumi.Databricks
     /// ## Example Usage
     /// 
     /// &gt; **Note** If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+    /// 
     /// ### Customer-managed key for managed services
     /// 
     /// You must configure this during workspace creation
+    /// ### For AWS
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -113,7 +115,36 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// ### For GCP
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     var cmekResourceId = config.RequireObject&lt;dynamic&gt;("cmekResourceId");
+    ///     var managedServices = new Databricks.MwsCustomerManagedKeys("managedServices", new()
+    ///     {
+    ///         AccountId = databricksAccountId,
+    ///         GcpKeyInfo = new Databricks.Inputs.MwsCustomerManagedKeysGcpKeyInfoArgs
+    ///         {
+    ///             KmsKeyId = cmekResourceId,
+    ///         },
+    ///         UseCases = new[]
+    ///         {
+    ///             "MANAGED_SERVICES",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Customer-managed key for workspace storage
+    /// ### For AWS
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -290,6 +321,34 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// ### For GCP
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     var cmekResourceId = config.RequireObject&lt;dynamic&gt;("cmekResourceId");
+    ///     var storage = new Databricks.MwsCustomerManagedKeys("storage", new()
+    ///     {
+    ///         AccountId = databricksAccountId,
+    ///         GcpKeyInfo = new Databricks.Inputs.MwsCustomerManagedKeysGcpKeyInfoArgs
+    ///         {
+    ///             KmsKeyId = cmekResourceId,
+    ///         },
+    ///         UseCases = new[]
+    ///         {
+    ///             "STORAGE",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Related Resources
     /// 
     /// The following resources are used in the same context:
@@ -315,7 +374,7 @@ namespace Pulumi.Databricks
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// This field is a block and is documented below.
+        /// This field is a block and is documented below. This conflicts with `gcp_key_info`
         /// </summary>
         [Output("awsKeyInfo")]
         public Output<Outputs.MwsCustomerManagedKeysAwsKeyInfo?> AwsKeyInfo { get; private set; } = null!;
@@ -332,6 +391,9 @@ namespace Pulumi.Databricks
         [Output("customerManagedKeyId")]
         public Output<string> CustomerManagedKeyId { get; private set; } = null!;
 
+        /// <summary>
+        /// This field is a block and is documented below. This conflicts with `aws_key_info`
+        /// </summary>
         [Output("gcpKeyInfo")]
         public Output<Outputs.MwsCustomerManagedKeysGcpKeyInfo?> GcpKeyInfo { get; private set; } = null!;
 
@@ -394,7 +456,7 @@ namespace Pulumi.Databricks
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// This field is a block and is documented below.
+        /// This field is a block and is documented below. This conflicts with `gcp_key_info`
         /// </summary>
         [Input("awsKeyInfo")]
         public Input<Inputs.MwsCustomerManagedKeysAwsKeyInfoArgs>? AwsKeyInfo { get; set; }
@@ -411,6 +473,9 @@ namespace Pulumi.Databricks
         [Input("customerManagedKeyId")]
         public Input<string>? CustomerManagedKeyId { get; set; }
 
+        /// <summary>
+        /// This field is a block and is documented below. This conflicts with `aws_key_info`
+        /// </summary>
         [Input("gcpKeyInfo")]
         public Input<Inputs.MwsCustomerManagedKeysGcpKeyInfoArgs>? GcpKeyInfo { get; set; }
 
@@ -441,7 +506,7 @@ namespace Pulumi.Databricks
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// This field is a block and is documented below.
+        /// This field is a block and is documented below. This conflicts with `gcp_key_info`
         /// </summary>
         [Input("awsKeyInfo")]
         public Input<Inputs.MwsCustomerManagedKeysAwsKeyInfoGetArgs>? AwsKeyInfo { get; set; }
@@ -458,6 +523,9 @@ namespace Pulumi.Databricks
         [Input("customerManagedKeyId")]
         public Input<string>? CustomerManagedKeyId { get; set; }
 
+        /// <summary>
+        /// This field is a block and is documented below. This conflicts with `aws_key_info`
+        /// </summary>
         [Input("gcpKeyInfo")]
         public Input<Inputs.MwsCustomerManagedKeysGcpKeyInfoGetArgs>? GcpKeyInfo { get; set; }
 

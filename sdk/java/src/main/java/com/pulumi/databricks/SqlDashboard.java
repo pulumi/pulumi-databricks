@@ -115,6 +115,12 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/sqlDashboard:SqlDashboard")
 public class SqlDashboard extends com.pulumi.resources.CustomResource {
+    @Export(name="createdAt", type=String.class, parameters={})
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
@@ -132,6 +138,12 @@ public class SqlDashboard extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    @Export(name="updatedAt", type=String.class, parameters={})
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
 
     /**

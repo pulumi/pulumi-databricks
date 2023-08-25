@@ -112,6 +112,13 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.globalMetastoreId);
     }
 
+    @Import(name="metastoreId")
+    private @Nullable Output<String> metastoreId;
+
+    public Optional<Output<String>> metastoreId() {
+        return Optional.ofNullable(this.metastoreId);
+    }
+
     /**
      * Name of metastore.
      * 
@@ -142,9 +149,17 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * The region of the metastore
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return The region of the metastore
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -162,6 +177,13 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> storageRoot() {
         return Optional.ofNullable(this.storageRoot);
+    }
+
+    @Import(name="storageRootCredentialId")
+    private @Nullable Output<String> storageRootCredentialId;
+
+    public Optional<Output<String>> storageRootCredentialId() {
+        return Optional.ofNullable(this.storageRootCredentialId);
     }
 
     @Import(name="updatedAt")
@@ -190,10 +212,12 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         this.deltaSharingScope = $.deltaSharingScope;
         this.forceDestroy = $.forceDestroy;
         this.globalMetastoreId = $.globalMetastoreId;
+        this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
         this.region = $.region;
         this.storageRoot = $.storageRoot;
+        this.storageRootCredentialId = $.storageRootCredentialId;
         this.updatedAt = $.updatedAt;
         this.updatedBy = $.updatedBy;
     }
@@ -345,6 +369,15 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
             return globalMetastoreId(Output.of(globalMetastoreId));
         }
 
+        public Builder metastoreId(@Nullable Output<String> metastoreId) {
+            $.metastoreId = metastoreId;
+            return this;
+        }
+
+        public Builder metastoreId(String metastoreId) {
+            return metastoreId(Output.of(metastoreId));
+        }
+
         /**
          * @param name Name of metastore.
          * 
@@ -387,11 +420,23 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
             return owner(Output.of(owner));
         }
 
+        /**
+         * @param region The region of the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region The region of the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
@@ -415,6 +460,15 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder storageRoot(String storageRoot) {
             return storageRoot(Output.of(storageRoot));
+        }
+
+        public Builder storageRootCredentialId(@Nullable Output<String> storageRootCredentialId) {
+            $.storageRootCredentialId = storageRootCredentialId;
+            return this;
+        }
+
+        public Builder storageRootCredentialId(String storageRootCredentialId) {
+            return storageRootCredentialId(Output.of(storageRootCredentialId));
         }
 
         public Builder updatedAt(@Nullable Output<Integer> updatedAt) {

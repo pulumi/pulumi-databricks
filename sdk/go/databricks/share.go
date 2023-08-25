@@ -21,6 +21,8 @@ type Share struct {
 	// Name of share. Change forces creation of a new resource.
 	Name    pulumi.StringOutput    `pulumi:"name"`
 	Objects ShareObjectArrayOutput `pulumi:"objects"`
+	// User name/group name/sp applicationId of the share owner.
+	Owner pulumi.StringPtrOutput `pulumi:"owner"`
 }
 
 // NewShare registers a new resource with the given unique name, arguments, and options.
@@ -60,6 +62,8 @@ type shareState struct {
 	// Name of share. Change forces creation of a new resource.
 	Name    *string       `pulumi:"name"`
 	Objects []ShareObject `pulumi:"objects"`
+	// User name/group name/sp applicationId of the share owner.
+	Owner *string `pulumi:"owner"`
 }
 
 type ShareState struct {
@@ -70,6 +74,8 @@ type ShareState struct {
 	// Name of share. Change forces creation of a new resource.
 	Name    pulumi.StringPtrInput
 	Objects ShareObjectArrayInput
+	// User name/group name/sp applicationId of the share owner.
+	Owner pulumi.StringPtrInput
 }
 
 func (ShareState) ElementType() reflect.Type {
@@ -84,6 +90,8 @@ type shareArgs struct {
 	// Name of share. Change forces creation of a new resource.
 	Name    *string       `pulumi:"name"`
 	Objects []ShareObject `pulumi:"objects"`
+	// User name/group name/sp applicationId of the share owner.
+	Owner *string `pulumi:"owner"`
 }
 
 // The set of arguments for constructing a Share resource.
@@ -95,6 +103,8 @@ type ShareArgs struct {
 	// Name of share. Change forces creation of a new resource.
 	Name    pulumi.StringPtrInput
 	Objects ShareObjectArrayInput
+	// User name/group name/sp applicationId of the share owner.
+	Owner pulumi.StringPtrInput
 }
 
 func (ShareArgs) ElementType() reflect.Type {
@@ -201,6 +211,11 @@ func (o ShareOutput) Name() pulumi.StringOutput {
 
 func (o ShareOutput) Objects() ShareObjectArrayOutput {
 	return o.ApplyT(func(v *Share) ShareObjectArrayOutput { return v.Objects }).(ShareObjectArrayOutput)
+}
+
+// User name/group name/sp applicationId of the share owner.
+func (o ShareOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringPtrOutput { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
 type ShareArrayOutput struct{ *pulumi.OutputState }

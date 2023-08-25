@@ -170,6 +170,10 @@ namespace Pulumi.Databricks
     public sealed class GetUserResult
     {
         /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+        /// </summary>
+        public readonly string AclPrincipalId;
+        /// <summary>
         /// Alphanumeric representation of user local name. e.g. `mr_foo`.
         /// </summary>
         public readonly string Alphanumeric;
@@ -202,6 +206,8 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetUserResult(
+            string aclPrincipalId,
+
             string alphanumeric,
 
             string applicationId,
@@ -220,6 +226,7 @@ namespace Pulumi.Databricks
 
             string? userName)
         {
+            AclPrincipalId = aclPrincipalId;
             Alphanumeric = alphanumeric;
             ApplicationId = applicationId;
             DisplayName = displayName;

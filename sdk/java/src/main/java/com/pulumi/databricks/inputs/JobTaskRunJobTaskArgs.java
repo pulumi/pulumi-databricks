@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -22,13 +23,13 @@ public final class JobTaskRunJobTaskArgs extends com.pulumi.resources.ResourceAr
      * 
      */
     @Import(name="jobId", required=true)
-    private Output<String> jobId;
+    private Output<Integer> jobId;
 
     /**
      * @return (String) ID of the job
      * 
      */
-    public Output<String> jobId() {
+    public Output<Integer> jobId() {
         return this.jobId;
     }
 
@@ -78,7 +79,7 @@ public final class JobTaskRunJobTaskArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder jobId(Output<String> jobId) {
+        public Builder jobId(Output<Integer> jobId) {
             $.jobId = jobId;
             return this;
         }
@@ -89,7 +90,7 @@ public final class JobTaskRunJobTaskArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder jobId(String jobId) {
+        public Builder jobId(Integer jobId) {
             return jobId(Output.of(jobId));
         }
 

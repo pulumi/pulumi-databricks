@@ -232,9 +232,17 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> storageConfigurationId() {
         return Codegen.optional(this.storageConfigurationId);
     }
+    /**
+     * `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+     * 
+     */
     @Export(name="storageCustomerManagedKeyId", type=String.class, parameters={})
     private Output</* @Nullable */ String> storageCustomerManagedKeyId;
 
+    /**
+     * @return `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+     * 
+     */
     public Output<Optional<String>> storageCustomerManagedKeyId() {
         return Codegen.optional(this.storageCustomerManagedKeyId);
     }

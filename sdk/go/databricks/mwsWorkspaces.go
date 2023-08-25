@@ -47,7 +47,8 @@ type MwsWorkspaces struct {
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId pulumi.StringPtrOutput `pulumi:"privateAccessSettingsId"`
 	// `storageConfigurationId` from storage configuration.
-	StorageConfigurationId      pulumi.StringPtrOutput      `pulumi:"storageConfigurationId"`
+	StorageConfigurationId pulumi.StringPtrOutput `pulumi:"storageConfigurationId"`
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
 	StorageCustomerManagedKeyId pulumi.StringPtrOutput      `pulumi:"storageCustomerManagedKeyId"`
 	Token                       MwsWorkspacesTokenPtrOutput `pulumi:"token"`
 	// (String) workspace id
@@ -134,7 +135,8 @@ type mwsWorkspacesState struct {
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
 	// `storageConfigurationId` from storage configuration.
-	StorageConfigurationId      *string             `pulumi:"storageConfigurationId"`
+	StorageConfigurationId *string `pulumi:"storageConfigurationId"`
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
 	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
 	Token                       *MwsWorkspacesToken `pulumi:"token"`
 	// (String) workspace id
@@ -179,7 +181,8 @@ type MwsWorkspacesState struct {
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId pulumi.StringPtrInput
 	// `storageConfigurationId` from storage configuration.
-	StorageConfigurationId      pulumi.StringPtrInput
+	StorageConfigurationId pulumi.StringPtrInput
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
 	StorageCustomerManagedKeyId pulumi.StringPtrInput
 	Token                       MwsWorkspacesTokenPtrInput
 	// (String) workspace id
@@ -228,7 +231,8 @@ type mwsWorkspacesArgs struct {
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
 	// `storageConfigurationId` from storage configuration.
-	StorageConfigurationId      *string             `pulumi:"storageConfigurationId"`
+	StorageConfigurationId *string `pulumi:"storageConfigurationId"`
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
 	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
 	Token                       *MwsWorkspacesToken `pulumi:"token"`
 	// (String) workspace id
@@ -274,7 +278,8 @@ type MwsWorkspacesArgs struct {
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId pulumi.StringPtrInput
 	// `storageConfigurationId` from storage configuration.
-	StorageConfigurationId      pulumi.StringPtrInput
+	StorageConfigurationId pulumi.StringPtrInput
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
 	StorageCustomerManagedKeyId pulumi.StringPtrInput
 	Token                       MwsWorkspacesTokenPtrInput
 	// (String) workspace id
@@ -460,6 +465,7 @@ func (o MwsWorkspacesOutput) StorageConfigurationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.StorageConfigurationId }).(pulumi.StringPtrOutput)
 }
 
+// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
 func (o MwsWorkspacesOutput) StorageCustomerManagedKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.StorageCustomerManagedKeyId }).(pulumi.StringPtrOutput)
 }

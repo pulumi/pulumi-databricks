@@ -29,16 +29,22 @@ import (
 type ExternalLocation struct {
 	pulumi.CustomResourceState
 
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint pulumi.StringPtrOutput `pulumi:"accessPoint"`
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// Name of the StorageCredential to use with this External Location.
+	// Name of the StorageCredential to use with this external location.
 	CredentialName pulumi.StringOutput `pulumi:"credentialName"`
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+	EncryptionDetails ExternalLocationEncryptionDetailsPtrOutput `pulumi:"encryptionDetails"`
 	// Destroy external location regardless of its dependents.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
-	MetastoreId  pulumi.StringOutput  `pulumi:"metastoreId"`
+	// Update external location regardless of its dependents.
+	ForceUpdate pulumi.BoolPtrOutput `pulumi:"forceUpdate"`
+	MetastoreId pulumi.StringOutput  `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Username/groupname/sp applicationId of the external Location owner.
+	// Username/groupname/sp applicationId of the external location owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Indicates whether the external location is read-only.
 	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
@@ -84,16 +90,22 @@ func GetExternalLocation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ExternalLocation resources.
 type externalLocationState struct {
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint *string `pulumi:"accessPoint"`
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
-	// Name of the StorageCredential to use with this External Location.
+	// Name of the StorageCredential to use with this external location.
 	CredentialName *string `pulumi:"credentialName"`
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+	EncryptionDetails *ExternalLocationEncryptionDetails `pulumi:"encryptionDetails"`
 	// Destroy external location regardless of its dependents.
-	ForceDestroy *bool   `pulumi:"forceDestroy"`
-	MetastoreId  *string `pulumi:"metastoreId"`
+	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// Update external location regardless of its dependents.
+	ForceUpdate *bool   `pulumi:"forceUpdate"`
+	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
-	// Username/groupname/sp applicationId of the external Location owner.
+	// Username/groupname/sp applicationId of the external location owner.
 	Owner *string `pulumi:"owner"`
 	// Indicates whether the external location is read-only.
 	ReadOnly *bool `pulumi:"readOnly"`
@@ -104,16 +116,22 @@ type externalLocationState struct {
 }
 
 type ExternalLocationState struct {
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint pulumi.StringPtrInput
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
-	// Name of the StorageCredential to use with this External Location.
+	// Name of the StorageCredential to use with this external location.
 	CredentialName pulumi.StringPtrInput
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+	EncryptionDetails ExternalLocationEncryptionDetailsPtrInput
 	// Destroy external location regardless of its dependents.
 	ForceDestroy pulumi.BoolPtrInput
-	MetastoreId  pulumi.StringPtrInput
+	// Update external location regardless of its dependents.
+	ForceUpdate pulumi.BoolPtrInput
+	MetastoreId pulumi.StringPtrInput
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
-	// Username/groupname/sp applicationId of the external Location owner.
+	// Username/groupname/sp applicationId of the external location owner.
 	Owner pulumi.StringPtrInput
 	// Indicates whether the external location is read-only.
 	ReadOnly pulumi.BoolPtrInput
@@ -128,16 +146,22 @@ func (ExternalLocationState) ElementType() reflect.Type {
 }
 
 type externalLocationArgs struct {
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint *string `pulumi:"accessPoint"`
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
-	// Name of the StorageCredential to use with this External Location.
+	// Name of the StorageCredential to use with this external location.
 	CredentialName string `pulumi:"credentialName"`
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+	EncryptionDetails *ExternalLocationEncryptionDetails `pulumi:"encryptionDetails"`
 	// Destroy external location regardless of its dependents.
-	ForceDestroy *bool   `pulumi:"forceDestroy"`
-	MetastoreId  *string `pulumi:"metastoreId"`
+	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// Update external location regardless of its dependents.
+	ForceUpdate *bool   `pulumi:"forceUpdate"`
+	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
-	// Username/groupname/sp applicationId of the external Location owner.
+	// Username/groupname/sp applicationId of the external location owner.
 	Owner *string `pulumi:"owner"`
 	// Indicates whether the external location is read-only.
 	ReadOnly *bool `pulumi:"readOnly"`
@@ -149,16 +173,22 @@ type externalLocationArgs struct {
 
 // The set of arguments for constructing a ExternalLocation resource.
 type ExternalLocationArgs struct {
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint pulumi.StringPtrInput
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
-	// Name of the StorageCredential to use with this External Location.
+	// Name of the StorageCredential to use with this external location.
 	CredentialName pulumi.StringInput
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+	EncryptionDetails ExternalLocationEncryptionDetailsPtrInput
 	// Destroy external location regardless of its dependents.
 	ForceDestroy pulumi.BoolPtrInput
-	MetastoreId  pulumi.StringPtrInput
+	// Update external location regardless of its dependents.
+	ForceUpdate pulumi.BoolPtrInput
+	MetastoreId pulumi.StringPtrInput
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
-	// Username/groupname/sp applicationId of the external Location owner.
+	// Username/groupname/sp applicationId of the external location owner.
 	Owner pulumi.StringPtrInput
 	// Indicates whether the external location is read-only.
 	ReadOnly pulumi.BoolPtrInput
@@ -255,19 +285,34 @@ func (o ExternalLocationOutput) ToExternalLocationOutputWithContext(ctx context.
 	return o
 }
 
+// The ARN of the s3 access point to use with the external location (AWS).
+func (o ExternalLocationOutput) AccessPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLocation) pulumi.StringPtrOutput { return v.AccessPoint }).(pulumi.StringPtrOutput)
+}
+
 // User-supplied free-form text.
 func (o ExternalLocationOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Name of the StorageCredential to use with this External Location.
+// Name of the StorageCredential to use with this external location.
 func (o ExternalLocationOutput) CredentialName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.CredentialName }).(pulumi.StringOutput)
+}
+
+// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+func (o ExternalLocationOutput) EncryptionDetails() ExternalLocationEncryptionDetailsPtrOutput {
+	return o.ApplyT(func(v *ExternalLocation) ExternalLocationEncryptionDetailsPtrOutput { return v.EncryptionDetails }).(ExternalLocationEncryptionDetailsPtrOutput)
 }
 
 // Destroy external location regardless of its dependents.
 func (o ExternalLocationOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// Update external location regardless of its dependents.
+func (o ExternalLocationOutput) ForceUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
 }
 
 func (o ExternalLocationOutput) MetastoreId() pulumi.StringOutput {
@@ -279,7 +324,7 @@ func (o ExternalLocationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Username/groupname/sp applicationId of the external Location owner.
+// Username/groupname/sp applicationId of the external location owner.
 func (o ExternalLocationOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }

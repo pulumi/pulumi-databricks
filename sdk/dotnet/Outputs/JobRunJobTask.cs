@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (String) ID of the job
         /// </summary>
-        public readonly string JobId;
+        public readonly int JobId;
         /// <summary>
         /// (Map) Job parameters for the task
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobRunJobTask(
-            string jobId,
+            int jobId,
 
             ImmutableDictionary<string, object>? jobParameters)
         {

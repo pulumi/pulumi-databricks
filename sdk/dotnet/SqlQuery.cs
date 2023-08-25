@@ -151,6 +151,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/sqlQuery:SqlQuery")]
     public partial class SqlQuery : global::Pulumi.CustomResource
     {
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
         [Output("dataSourceId")]
         public Output<string> DataSourceId { get; private set; } = null!;
 
@@ -177,6 +180,9 @@ namespace Pulumi.Databricks
 
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -224,6 +230,9 @@ namespace Pulumi.Databricks
 
     public sealed class SqlQueryArgs : global::Pulumi.ResourceArgs
     {
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         [Input("dataSourceId", required: true)]
         public Input<string> DataSourceId { get; set; } = null!;
 
@@ -261,6 +270,9 @@ namespace Pulumi.Databricks
             set => _tags = value;
         }
 
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
+
         public SqlQueryArgs()
         {
         }
@@ -269,6 +281,9 @@ namespace Pulumi.Databricks
 
     public sealed class SqlQueryState : global::Pulumi.ResourceArgs
     {
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }
 
@@ -305,6 +320,9 @@ namespace Pulumi.Databricks
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         public SqlQueryState()
         {

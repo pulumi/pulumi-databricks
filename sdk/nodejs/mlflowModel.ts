@@ -81,22 +81,21 @@ export class MlflowModel extends pulumi.CustomResource {
         return obj['__pulumiType'] === MlflowModel.__pulumiType;
     }
 
-    public readonly creationTimestamp!: pulumi.Output<number>;
+    public readonly creationTimestamp!: pulumi.Output<number | undefined>;
     /**
      * The description of the MLflow model.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    public readonly lastUpdatedTimestamp!: pulumi.Output<number>;
+    public readonly lastUpdatedTimestamp!: pulumi.Output<number | undefined>;
     /**
      * Name of MLflow model. Change of name triggers new resource.
      */
     public readonly name!: pulumi.Output<string>;
-    public readonly registeredModelId!: pulumi.Output<string>;
     /**
      * Tags for the MLflow model.
      */
     public readonly tags!: pulumi.Output<outputs.MlflowModelTag[] | undefined>;
-    public readonly userId!: pulumi.Output<string>;
+    public readonly userId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a MlflowModel resource with the given unique name, arguments, and options.
@@ -115,7 +114,6 @@ export class MlflowModel extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["lastUpdatedTimestamp"] = state ? state.lastUpdatedTimestamp : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["registeredModelId"] = state ? state.registeredModelId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
@@ -124,7 +122,6 @@ export class MlflowModel extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["lastUpdatedTimestamp"] = args ? args.lastUpdatedTimestamp : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["registeredModelId"] = args ? args.registeredModelId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userId"] = args ? args.userId : undefined;
         }
@@ -147,7 +144,6 @@ export interface MlflowModelState {
      * Name of MLflow model. Change of name triggers new resource.
      */
     name?: pulumi.Input<string>;
-    registeredModelId?: pulumi.Input<string>;
     /**
      * Tags for the MLflow model.
      */
@@ -169,7 +165,6 @@ export interface MlflowModelArgs {
      * Name of MLflow model. Change of name triggers new resource.
      */
     name?: pulumi.Input<string>;
-    registeredModelId?: pulumi.Input<string>;
     /**
      * Tags for the MLflow model.
      */

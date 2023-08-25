@@ -19,6 +19,7 @@ class GrantsArgs:
                  grants: pulumi.Input[Sequence[pulumi.Input['GrantsGrantArgs']]],
                  catalog: Optional[pulumi.Input[str]] = None,
                  external_location: Optional[pulumi.Input[str]] = None,
+                 foreign_connection: Optional[pulumi.Input[str]] = None,
                  function: Optional[pulumi.Input[str]] = None,
                  materialized_view: Optional[pulumi.Input[str]] = None,
                  metastore: Optional[pulumi.Input[str]] = None,
@@ -36,6 +37,8 @@ class GrantsArgs:
             pulumi.set(__self__, "catalog", catalog)
         if external_location is not None:
             pulumi.set(__self__, "external_location", external_location)
+        if foreign_connection is not None:
+            pulumi.set(__self__, "foreign_connection", foreign_connection)
         if function is not None:
             pulumi.set(__self__, "function", function)
         if materialized_view is not None:
@@ -81,6 +84,15 @@ class GrantsArgs:
     @external_location.setter
     def external_location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_location", value)
+
+    @property
+    @pulumi.getter(name="foreignConnection")
+    def foreign_connection(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "foreign_connection")
+
+    @foreign_connection.setter
+    def foreign_connection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "foreign_connection", value)
 
     @property
     @pulumi.getter
@@ -169,6 +181,7 @@ class _GrantsState:
     def __init__(__self__, *,
                  catalog: Optional[pulumi.Input[str]] = None,
                  external_location: Optional[pulumi.Input[str]] = None,
+                 foreign_connection: Optional[pulumi.Input[str]] = None,
                  function: Optional[pulumi.Input[str]] = None,
                  grants: Optional[pulumi.Input[Sequence[pulumi.Input['GrantsGrantArgs']]]] = None,
                  materialized_view: Optional[pulumi.Input[str]] = None,
@@ -186,6 +199,8 @@ class _GrantsState:
             pulumi.set(__self__, "catalog", catalog)
         if external_location is not None:
             pulumi.set(__self__, "external_location", external_location)
+        if foreign_connection is not None:
+            pulumi.set(__self__, "foreign_connection", foreign_connection)
         if function is not None:
             pulumi.set(__self__, "function", function)
         if grants is not None:
@@ -224,6 +239,15 @@ class _GrantsState:
     @external_location.setter
     def external_location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_location", value)
+
+    @property
+    @pulumi.getter(name="foreignConnection")
+    def foreign_connection(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "foreign_connection")
+
+    @foreign_connection.setter
+    def foreign_connection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "foreign_connection", value)
 
     @property
     @pulumi.getter
@@ -323,6 +347,7 @@ class Grants(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog: Optional[pulumi.Input[str]] = None,
                  external_location: Optional[pulumi.Input[str]] = None,
+                 foreign_connection: Optional[pulumi.Input[str]] = None,
                  function: Optional[pulumi.Input[str]] = None,
                  grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrantsGrantArgs']]]]] = None,
                  materialized_view: Optional[pulumi.Input[str]] = None,
@@ -364,6 +389,7 @@ class Grants(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog: Optional[pulumi.Input[str]] = None,
                  external_location: Optional[pulumi.Input[str]] = None,
+                 foreign_connection: Optional[pulumi.Input[str]] = None,
                  function: Optional[pulumi.Input[str]] = None,
                  grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrantsGrantArgs']]]]] = None,
                  materialized_view: Optional[pulumi.Input[str]] = None,
@@ -385,6 +411,7 @@ class Grants(pulumi.CustomResource):
 
             __props__.__dict__["catalog"] = catalog
             __props__.__dict__["external_location"] = external_location
+            __props__.__dict__["foreign_connection"] = foreign_connection
             __props__.__dict__["function"] = function
             if grants is None and not opts.urn:
                 raise TypeError("Missing required property 'grants'")
@@ -409,6 +436,7 @@ class Grants(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             catalog: Optional[pulumi.Input[str]] = None,
             external_location: Optional[pulumi.Input[str]] = None,
+            foreign_connection: Optional[pulumi.Input[str]] = None,
             function: Optional[pulumi.Input[str]] = None,
             grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrantsGrantArgs']]]]] = None,
             materialized_view: Optional[pulumi.Input[str]] = None,
@@ -433,6 +461,7 @@ class Grants(pulumi.CustomResource):
 
         __props__.__dict__["catalog"] = catalog
         __props__.__dict__["external_location"] = external_location
+        __props__.__dict__["foreign_connection"] = foreign_connection
         __props__.__dict__["function"] = function
         __props__.__dict__["grants"] = grants
         __props__.__dict__["materialized_view"] = materialized_view
@@ -454,6 +483,11 @@ class Grants(pulumi.CustomResource):
     @pulumi.getter(name="externalLocation")
     def external_location(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "external_location")
+
+    @property
+    @pulumi.getter(name="foreignConnection")
+    def foreign_connection(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "foreign_connection")
 
     @property
     @pulumi.getter

@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * const thisMetastore = new databricks.Metastore("thisMetastore", {
  *     storageRoot: `s3://${aws_s3_bucket.metastore.id}/metastore`,
  *     owner: "uc admins",
+ *     region: "us-east-1",
  *     forceDestroy: true,
  * });
  * const thisMetastoreAssignment = new databricks.MetastoreAssignment("thisMetastoreAssignment", {

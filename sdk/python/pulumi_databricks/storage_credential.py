@@ -21,6 +21,7 @@ class StorageCredentialArgs:
                  azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -44,6 +45,8 @@ class StorageCredentialArgs:
             pulumi.set(__self__, "comment", comment)
         if databricks_gcp_service_account is not None:
             pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if gcp_service_account_key is not None:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if metastore_id is not None:
@@ -99,6 +102,15 @@ class StorageCredentialArgs:
     @databricks_gcp_service_account.setter
     def databricks_gcp_service_account(self, value: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']]):
         pulumi.set(self, "databricks_gcp_service_account", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")
@@ -165,6 +177,7 @@ class _StorageCredentialState:
                  azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -188,6 +201,8 @@ class _StorageCredentialState:
             pulumi.set(__self__, "comment", comment)
         if databricks_gcp_service_account is not None:
             pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if gcp_service_account_key is not None:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if metastore_id is not None:
@@ -243,6 +258,15 @@ class _StorageCredentialState:
     @databricks_gcp_service_account.setter
     def databricks_gcp_service_account(self, value: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']]):
         pulumi.set(self, "databricks_gcp_service_account", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")
@@ -311,6 +335,7 @@ class StorageCredential(pulumi.CustomResource):
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureServicePrincipalArgs']]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['StorageCredentialDatabricksGcpServiceAccountArgs']]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -489,6 +514,7 @@ class StorageCredential(pulumi.CustomResource):
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureServicePrincipalArgs']]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['StorageCredentialDatabricksGcpServiceAccountArgs']]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -508,6 +534,7 @@ class StorageCredential(pulumi.CustomResource):
             __props__.__dict__["azure_service_principal"] = azure_service_principal
             __props__.__dict__["comment"] = comment
             __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
+            __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
@@ -528,6 +555,7 @@ class StorageCredential(pulumi.CustomResource):
             azure_service_principal: Optional[pulumi.Input[pulumi.InputType['StorageCredentialAzureServicePrincipalArgs']]] = None,
             comment: Optional[pulumi.Input[str]] = None,
             databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['StorageCredentialDatabricksGcpServiceAccountArgs']]] = None,
+            force_destroy: Optional[pulumi.Input[bool]] = None,
             gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['StorageCredentialGcpServiceAccountKeyArgs']]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -555,6 +583,7 @@ class StorageCredential(pulumi.CustomResource):
         __props__.__dict__["azure_service_principal"] = azure_service_principal
         __props__.__dict__["comment"] = comment
         __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
+        __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
@@ -586,6 +615,11 @@ class StorageCredential(pulumi.CustomResource):
     @pulumi.getter(name="databricksGcpServiceAccount")
     def databricks_gcp_service_account(self) -> pulumi.Output['outputs.StorageCredentialDatabricksGcpServiceAccount']:
         return pulumi.get(self, "databricks_gcp_service_account")
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")

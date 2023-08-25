@@ -70,6 +70,21 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.objects);
     }
 
+    /**
+     * User name/group name/sp application_id of the share owner.
+     * 
+     */
+    @Import(name="owner")
+    private @Nullable Output<String> owner;
+
+    /**
+     * @return User name/group name/sp application_id of the share owner.
+     * 
+     */
+    public Optional<Output<String>> owner() {
+        return Optional.ofNullable(this.owner);
+    }
+
     private ShareState() {}
 
     private ShareState(ShareState $) {
@@ -77,6 +92,7 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         this.createdBy = $.createdBy;
         this.name = $.name;
         this.objects = $.objects;
+        this.owner = $.owner;
     }
 
     public static Builder builder() {
@@ -171,6 +187,27 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
 
         public Builder objects(ShareObjectArgs... objects) {
             return objects(List.of(objects));
+        }
+
+        /**
+         * @param owner User name/group name/sp application_id of the share owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(@Nullable Output<String> owner) {
+            $.owner = owner;
+            return this;
+        }
+
+        /**
+         * @param owner User name/group name/sp application_id of the share owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(String owner) {
+            return owner(Output.of(owner));
         }
 
         public ShareState build() {

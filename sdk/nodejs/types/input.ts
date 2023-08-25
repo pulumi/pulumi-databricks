@@ -14,9 +14,10 @@ export interface AccessControlRuleSetGrantRule {
      */
     principals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles).
+     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles) or [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page).
      * * `roles/servicePrincipal.manager` - Manager of a service principal.
      * * `roles/servicePrincipal.user` - User of a service principal.
+     * * `roles/group.manager` - Manager of a group.
      */
     role: pulumi.Input<string>;
 }
@@ -166,6 +167,15 @@ export interface ClusterWorkloadType {
 export interface ClusterWorkloadTypeClients {
     jobs?: pulumi.Input<boolean>;
     notebooks?: pulumi.Input<boolean>;
+}
+
+export interface ExternalLocationEncryptionDetails {
+    sseEncryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetailsSseEncryptionDetails>;
+}
+
+export interface ExternalLocationEncryptionDetailsSseEncryptionDetails {
+    algorithm?: pulumi.Input<string>;
+    awsKmsKeyArn?: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfo {
@@ -1769,12 +1779,12 @@ export interface GetJobJobSettingsSettingsRunAsArgs {
 }
 
 export interface GetJobJobSettingsSettingsRunJobTask {
-    jobId: string;
+    jobId: number;
     jobParameters?: {[key: string]: any};
 }
 
 export interface GetJobJobSettingsSettingsRunJobTaskArgs {
-    jobId: pulumi.Input<string>;
+    jobId: pulumi.Input<number>;
     jobParameters?: pulumi.Input<{[key: string]: any}>;
 }
 
@@ -2361,12 +2371,12 @@ export interface GetJobJobSettingsSettingsTaskPythonWheelTaskArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskRunJobTask {
-    jobId: string;
+    jobId: number;
     jobParameters?: {[key: string]: any};
 }
 
 export interface GetJobJobSettingsSettingsTaskRunJobTaskArgs {
-    jobId: pulumi.Input<string>;
+    jobId: pulumi.Input<number>;
     jobParameters?: pulumi.Input<{[key: string]: any}>;
 }
 
@@ -3530,7 +3540,7 @@ export interface JobRunJobTask {
     /**
      * (String) ID of the job
      */
-    jobId: pulumi.Input<string>;
+    jobId: pulumi.Input<number>;
     /**
      * (Map) Job parameters for the task
      */
@@ -4042,7 +4052,7 @@ export interface JobTaskRunJobTask {
     /**
      * (String) ID of the job
      */
-    jobId: pulumi.Input<string>;
+    jobId: pulumi.Input<number>;
     /**
      * (Map) Job parameters for the task
      */
@@ -4320,7 +4330,7 @@ export interface MetastoreDataAccessAwsIamRole {
     /**
      * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      *
-     * `azureServicePrincipal` optional configuration block for credential details for Azure:
+     * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (Recommended):
      */
     roleArn: pulumi.Input<string>;
 }
@@ -4341,8 +4351,6 @@ export interface MetastoreDataAccessAzureServicePrincipal {
     applicationId: pulumi.Input<string>;
     /**
      * The client secret generated for the above app ID in AAD. **This field is redacted on output**
-     *
-     * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure:
      */
     clientSecret: pulumi.Input<string>;
     /**
@@ -4354,6 +4362,8 @@ export interface MetastoreDataAccessAzureServicePrincipal {
 export interface MetastoreDataAccessDatabricksGcpServiceAccount {
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
+     *
+     * `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
      */
     email?: pulumi.Input<string>;
 }
@@ -4361,6 +4371,8 @@ export interface MetastoreDataAccessDatabricksGcpServiceAccount {
 export interface MetastoreDataAccessGcpServiceAccountKey {
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
+     *
+     * `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
      */
     email: pulumi.Input<string>;
     privateKey: pulumi.Input<string>;
@@ -4368,8 +4380,8 @@ export interface MetastoreDataAccessGcpServiceAccountKey {
 }
 
 export interface MlflowModelTag {
-    key: pulumi.Input<string>;
-    value: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface MlflowWebhookHttpUrlSpec {
@@ -4418,7 +4430,13 @@ export interface ModelServingConfig {
 }
 
 export interface ModelServingConfigServedModel {
+    /**
+     * a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+     */
     environmentVars?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * ARN of the instance profile that the served model will use to access AWS resources.
+     */
     instanceProfileArn?: pulumi.Input<string>;
     /**
      * The name of the model in Databricks Model Registry to be served.
@@ -4516,6 +4534,9 @@ export interface MwsCustomerManagedKeysAwsKeyInfo {
 }
 
 export interface MwsCustomerManagedKeysGcpKeyInfo {
+    /**
+     * The GCP KMS key's resource name.
+     */
     kmsKeyId: pulumi.Input<string>;
 }
 
@@ -4618,6 +4639,9 @@ export interface MwsWorkspacesGkeConfig {
 
 export interface MwsWorkspacesToken {
     comment?: pulumi.Input<string>;
+    /**
+     * Token expiry lifetime. By default its 2592000 (30 days).
+     */
     lifetimeSeconds?: pulumi.Input<number>;
     tokenId?: pulumi.Input<string>;
     tokenValue?: pulumi.Input<string>;
@@ -5078,9 +5102,9 @@ export interface SqlTableColumn {
      */
     nullable?: pulumi.Input<boolean>;
     /**
-     * Column type spec (with metadata) as SQL text
+     * Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
      */
-    type: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 export interface SqlWidgetParameter {

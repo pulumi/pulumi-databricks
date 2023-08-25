@@ -9,6 +9,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCurrentUserResult {
+    private String aclPrincipalId;
     private String alphanumeric;
     private String externalId;
     private String home;
@@ -22,6 +23,9 @@ public final class GetCurrentUserResult {
     private String workspaceUrl;
 
     private GetCurrentUserResult() {}
+    public String aclPrincipalId() {
+        return this.aclPrincipalId;
+    }
     public String alphanumeric() {
         return this.alphanumeric;
     }
@@ -57,6 +61,7 @@ public final class GetCurrentUserResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String aclPrincipalId;
         private String alphanumeric;
         private String externalId;
         private String home;
@@ -67,6 +72,7 @@ public final class GetCurrentUserResult {
         public Builder() {}
         public Builder(GetCurrentUserResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aclPrincipalId = defaults.aclPrincipalId;
     	      this.alphanumeric = defaults.alphanumeric;
     	      this.externalId = defaults.externalId;
     	      this.home = defaults.home;
@@ -76,6 +82,11 @@ public final class GetCurrentUserResult {
     	      this.workspaceUrl = defaults.workspaceUrl;
         }
 
+        @CustomType.Setter
+        public Builder aclPrincipalId(String aclPrincipalId) {
+            this.aclPrincipalId = Objects.requireNonNull(aclPrincipalId);
+            return this;
+        }
         @CustomType.Setter
         public Builder alphanumeric(String alphanumeric) {
             this.alphanumeric = Objects.requireNonNull(alphanumeric);
@@ -113,6 +124,7 @@ public final class GetCurrentUserResult {
         }
         public GetCurrentUserResult build() {
             final var o = new GetCurrentUserResult();
+            o.aclPrincipalId = aclPrincipalId;
             o.alphanumeric = alphanumeric;
             o.externalId = externalId;
             o.home = home;

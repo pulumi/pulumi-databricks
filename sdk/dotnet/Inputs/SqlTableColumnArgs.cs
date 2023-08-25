@@ -31,10 +31,10 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? Nullable { get; set; }
 
         /// <summary>
-        /// Column type spec (with metadata) as SQL text
+        /// Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public SqlTableColumnArgs()
         {

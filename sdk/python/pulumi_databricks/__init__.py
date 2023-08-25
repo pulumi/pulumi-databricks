@@ -10,6 +10,7 @@ from .catalog import *
 from .catalog_workspace_binding import *
 from .cluster import *
 from .cluster_policy import *
+from .connection import *
 from .dbfs_file import *
 from .directory import *
 from .entitlements import *
@@ -164,6 +165,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/clusterPolicy:ClusterPolicy": "ClusterPolicy"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/connection",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/connection:Connection": "Connection"
   }
  },
  {

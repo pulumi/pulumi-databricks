@@ -70,7 +70,7 @@ namespace Pulumi.Databricks
     public partial class MlflowModel : global::Pulumi.CustomResource
     {
         [Output("creationTimestamp")]
-        public Output<int> CreationTimestamp { get; private set; } = null!;
+        public Output<int?> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
         /// The description of the MLflow model.
@@ -79,16 +79,13 @@ namespace Pulumi.Databricks
         public Output<string?> Description { get; private set; } = null!;
 
         [Output("lastUpdatedTimestamp")]
-        public Output<int> LastUpdatedTimestamp { get; private set; } = null!;
+        public Output<int?> LastUpdatedTimestamp { get; private set; } = null!;
 
         /// <summary>
         /// Name of MLflow model. Change of name triggers new resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        [Output("registeredModelId")]
-        public Output<string> RegisteredModelId { get; private set; } = null!;
 
         /// <summary>
         /// Tags for the MLflow model.
@@ -97,7 +94,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.MlflowModelTag>> Tags { get; private set; } = null!;
 
         [Output("userId")]
-        public Output<string> UserId { get; private set; } = null!;
+        public Output<string?> UserId { get; private set; } = null!;
 
 
         /// <summary>
@@ -163,9 +160,6 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("registeredModelId")]
-        public Input<string>? RegisteredModelId { get; set; }
-
         [Input("tags")]
         private InputList<Inputs.MlflowModelTagArgs>? _tags;
 
@@ -206,9 +200,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("registeredModelId")]
-        public Input<string>? RegisteredModelId { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.MlflowModelTagGetArgs>? _tags;

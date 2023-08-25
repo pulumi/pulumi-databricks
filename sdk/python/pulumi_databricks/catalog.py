@@ -15,6 +15,7 @@ __all__ = ['CatalogArgs', 'Catalog']
 class CatalogArgs:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
+                 connection_name: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,7 @@ class CatalogArgs:
         """
         The set of arguments for constructing a Catalog resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
@@ -38,6 +40,8 @@ class CatalogArgs:
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if isolation_mode is not None:
@@ -68,6 +72,18 @@ class CatalogArgs:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+        """
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_name", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -179,6 +195,7 @@ class CatalogArgs:
 class _CatalogState:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
+                 connection_name: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -191,6 +208,7 @@ class _CatalogState:
         """
         Input properties used for looking up and filtering Catalog resources.
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
@@ -202,6 +220,8 @@ class _CatalogState:
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if isolation_mode is not None:
@@ -232,6 +252,18 @@ class _CatalogState:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+        """
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_name", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -345,6 +377,7 @@ class Catalog(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 connection_name: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -388,6 +421,7 @@ class Catalog(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
@@ -449,6 +483,7 @@ class Catalog(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 connection_name: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -468,6 +503,7 @@ class Catalog(pulumi.CustomResource):
             __props__ = CatalogArgs.__new__(CatalogArgs)
 
             __props__.__dict__["comment"] = comment
+            __props__.__dict__["connection_name"] = connection_name
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["isolation_mode"] = isolation_mode
             __props__.__dict__["metastore_id"] = metastore_id
@@ -488,6 +524,7 @@ class Catalog(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: Optional[pulumi.Input[str]] = None,
+            connection_name: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             isolation_mode: Optional[pulumi.Input[str]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
@@ -505,6 +542,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
@@ -519,6 +557,7 @@ class Catalog(pulumi.CustomResource):
         __props__ = _CatalogState.__new__(_CatalogState)
 
         __props__.__dict__["comment"] = comment
+        __props__.__dict__["connection_name"] = connection_name
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["isolation_mode"] = isolation_mode
         __props__.__dict__["metastore_id"] = metastore_id
@@ -537,6 +576,14 @@ class Catalog(pulumi.CustomResource):
         User-supplied free-form text.
         """
         return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+        """
+        return pulumi.get(self, "connection_name")
 
     @property
     @pulumi.getter(name="forceDestroy")

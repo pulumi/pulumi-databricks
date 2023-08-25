@@ -41,6 +41,7 @@ export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promi
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getGroup:getGroup", {
+        "aclPrincipalId": args.aclPrincipalId,
         "allowClusterCreate": args.allowClusterCreate,
         "allowInstancePoolCreate": args.allowInstancePoolCreate,
         "childGroups": args.childGroups,
@@ -61,6 +62,10 @@ export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getGroup.
  */
 export interface GetGroupArgs {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     */
+    aclPrincipalId?: string;
     /**
      * True if group members can create clusters
      */
@@ -113,6 +118,10 @@ export interface GetGroupArgs {
  * A collection of values returned by getGroup.
  */
 export interface GetGroupResult {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     */
+    readonly aclPrincipalId: string;
     /**
      * True if group members can create clusters
      */
@@ -199,6 +208,10 @@ export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getGroup.
  */
 export interface GetGroupOutputArgs {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     */
+    aclPrincipalId?: pulumi.Input<string>;
     /**
      * True if group members can create clusters
      */

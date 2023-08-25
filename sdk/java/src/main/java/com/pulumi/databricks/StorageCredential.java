@@ -201,6 +201,12 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
     public Output<StorageCredentialDatabricksGcpServiceAccount> databricksGcpServiceAccount() {
         return this.databricksGcpServiceAccount;
     }
+    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> forceDestroy;
+
+    public Output<Optional<Boolean>> forceDestroy() {
+        return Codegen.optional(this.forceDestroy);
+    }
     @Export(name="gcpServiceAccountKey", type=StorageCredentialGcpServiceAccountKey.class, parameters={})
     private Output</* @Nullable */ StorageCredentialGcpServiceAccountKey> gcpServiceAccountKey;
 

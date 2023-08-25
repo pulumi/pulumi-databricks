@@ -28,9 +28,10 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles).
+        /// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles) or [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page).
         /// * `roles/servicePrincipal.manager` - Manager of a service principal.
         /// * `roles/servicePrincipal.user` - User of a service principal.
+        /// * `roles/group.manager` - Manager of a group.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;

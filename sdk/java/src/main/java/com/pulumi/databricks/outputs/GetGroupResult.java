@@ -14,6 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGroupResult {
     /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
+    private String aclPrincipalId;
+    /**
      * @return True if group members can create clusters
      * 
      */
@@ -71,6 +76,13 @@ public final class GetGroupResult {
     private @Nullable Boolean workspaceAccess;
 
     private GetGroupResult() {}
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
+    public String aclPrincipalId() {
+        return this.aclPrincipalId;
+    }
     /**
      * @return True if group members can create clusters
      * 
@@ -165,6 +177,7 @@ public final class GetGroupResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String aclPrincipalId;
         private @Nullable Boolean allowClusterCreate;
         private @Nullable Boolean allowInstancePoolCreate;
         private List<String> childGroups;
@@ -182,6 +195,7 @@ public final class GetGroupResult {
         public Builder() {}
         public Builder(GetGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aclPrincipalId = defaults.aclPrincipalId;
     	      this.allowClusterCreate = defaults.allowClusterCreate;
     	      this.allowInstancePoolCreate = defaults.allowInstancePoolCreate;
     	      this.childGroups = defaults.childGroups;
@@ -198,6 +212,11 @@ public final class GetGroupResult {
     	      this.workspaceAccess = defaults.workspaceAccess;
         }
 
+        @CustomType.Setter
+        public Builder aclPrincipalId(String aclPrincipalId) {
+            this.aclPrincipalId = Objects.requireNonNull(aclPrincipalId);
+            return this;
+        }
         @CustomType.Setter
         public Builder allowClusterCreate(@Nullable Boolean allowClusterCreate) {
             this.allowClusterCreate = allowClusterCreate;
@@ -288,6 +307,7 @@ public final class GetGroupResult {
         }
         public GetGroupResult build() {
             final var o = new GetGroupResult();
+            o.aclPrincipalId = aclPrincipalId;
             o.allowClusterCreate = allowClusterCreate;
             o.allowInstancePoolCreate = allowInstancePoolCreate;
             o.childGroups = childGroups;

@@ -153,6 +153,9 @@ namespace Pulumi.Databricks
         [Output("databricksGcpServiceAccount")]
         public Output<Outputs.StorageCredentialDatabricksGcpServiceAccount> DatabricksGcpServiceAccount { get; private set; } = null!;
 
+        [Output("forceDestroy")]
+        public Output<bool?> ForceDestroy { get; private set; } = null!;
+
         [Output("gcpServiceAccountKey")]
         public Output<Outputs.StorageCredentialGcpServiceAccountKey?> GcpServiceAccountKey { get; private set; } = null!;
 
@@ -240,6 +243,9 @@ namespace Pulumi.Databricks
         [Input("databricksGcpServiceAccount")]
         public Input<Inputs.StorageCredentialDatabricksGcpServiceAccountArgs>? DatabricksGcpServiceAccount { get; set; }
 
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
+
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.StorageCredentialGcpServiceAccountKeyArgs>? GcpServiceAccountKey { get; set; }
 
@@ -288,6 +294,9 @@ namespace Pulumi.Databricks
 
         [Input("databricksGcpServiceAccount")]
         public Input<Inputs.StorageCredentialDatabricksGcpServiceAccountGetArgs>? DatabricksGcpServiceAccount { get; set; }
+
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
 
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.StorageCredentialGcpServiceAccountKeyGetArgs>? GcpServiceAccountKey { get; set; }

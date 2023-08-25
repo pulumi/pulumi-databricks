@@ -30,6 +30,11 @@ export type ClusterPolicy = import("./clusterPolicy").ClusterPolicy;
 export const ClusterPolicy: typeof import("./clusterPolicy").ClusterPolicy = null as any;
 utilities.lazyLoad(exports, ["ClusterPolicy"], () => require("./clusterPolicy"));
 
+export { ConnectionArgs, ConnectionState } from "./connection";
+export type Connection = import("./connection").Connection;
+export const Connection: typeof import("./connection").Connection = null as any;
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+
 export { DbfsFileArgs, DbfsFileState } from "./dbfsFile";
 export type DbfsFile = import("./dbfsFile").DbfsFile;
 export const DbfsFile: typeof import("./dbfsFile").DbfsFile = null as any;
@@ -567,6 +572,8 @@ const _module = {
                 return new Cluster(name, <any>undefined, { urn })
             case "databricks:index/clusterPolicy:ClusterPolicy":
                 return new ClusterPolicy(name, <any>undefined, { urn })
+            case "databricks:index/connection:Connection":
+                return new Connection(name, <any>undefined, { urn })
             case "databricks:index/dbfsFile:DbfsFile":
                 return new DbfsFile(name, <any>undefined, { urn })
             case "databricks:index/directory:Directory":
@@ -711,6 +718,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/catalog", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalogWorkspaceBinding", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/clusterPolicy", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/connection", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dbfsFile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/directory", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/entitlements", _module)

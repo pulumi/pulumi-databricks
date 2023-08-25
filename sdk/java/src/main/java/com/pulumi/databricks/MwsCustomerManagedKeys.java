@@ -22,9 +22,11 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &gt; **Note** If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.
+ * 
  * ### Customer-managed key for managed services
  * 
  * You must configure this during workspace creation
+ * ### For AWS
  * ```java
  * package generated_program;
  * 
@@ -105,7 +107,45 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### For GCP
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsCustomerManagedKeys;
+ * import com.pulumi.databricks.MwsCustomerManagedKeysArgs;
+ * import com.pulumi.databricks.inputs.MwsCustomerManagedKeysGcpKeyInfoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
+ *         final var cmekResourceId = config.get(&#34;cmekResourceId&#34;);
+ *         var managedServices = new MwsCustomerManagedKeys(&#34;managedServices&#34;, MwsCustomerManagedKeysArgs.builder()        
+ *             .accountId(databricksAccountId)
+ *             .gcpKeyInfo(MwsCustomerManagedKeysGcpKeyInfoArgs.builder()
+ *                 .kmsKeyId(cmekResourceId)
+ *                 .build())
+ *             .useCases(&#34;MANAGED_SERVICES&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Customer-managed key for workspace storage
+ * ### For AWS
  * ```java
  * package generated_program;
  * 
@@ -224,6 +264,43 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### For GCP
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsCustomerManagedKeys;
+ * import com.pulumi.databricks.MwsCustomerManagedKeysArgs;
+ * import com.pulumi.databricks.inputs.MwsCustomerManagedKeysGcpKeyInfoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
+ *         final var cmekResourceId = config.get(&#34;cmekResourceId&#34;);
+ *         var storage = new MwsCustomerManagedKeys(&#34;storage&#34;, MwsCustomerManagedKeysArgs.builder()        
+ *             .accountId(databricksAccountId)
+ *             .gcpKeyInfo(MwsCustomerManagedKeysGcpKeyInfoArgs.builder()
+ *                 .kmsKeyId(cmekResourceId)
+ *                 .build())
+ *             .useCases(&#34;STORAGE&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Related Resources
  * 
  * The following resources are used in the same context:
@@ -257,14 +334,14 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
         return this.accountId;
     }
     /**
-     * This field is a block and is documented below.
+     * This field is a block and is documented below. This conflicts with `gcp_key_info`
      * 
      */
     @Export(name="awsKeyInfo", type=MwsCustomerManagedKeysAwsKeyInfo.class, parameters={})
     private Output</* @Nullable */ MwsCustomerManagedKeysAwsKeyInfo> awsKeyInfo;
 
     /**
-     * @return This field is a block and is documented below.
+     * @return This field is a block and is documented below. This conflicts with `gcp_key_info`
      * 
      */
     public Output<Optional<MwsCustomerManagedKeysAwsKeyInfo>> awsKeyInfo() {
@@ -298,9 +375,17 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
     public Output<String> customerManagedKeyId() {
         return this.customerManagedKeyId;
     }
+    /**
+     * This field is a block and is documented below. This conflicts with `aws_key_info`
+     * 
+     */
     @Export(name="gcpKeyInfo", type=MwsCustomerManagedKeysGcpKeyInfo.class, parameters={})
     private Output</* @Nullable */ MwsCustomerManagedKeysGcpKeyInfo> gcpKeyInfo;
 
+    /**
+     * @return This field is a block and is documented below. This conflicts with `aws_key_info`
+     * 
+     */
     public Output<Optional<MwsCustomerManagedKeysGcpKeyInfo>> gcpKeyInfo() {
         return Codegen.optional(this.gcpKeyInfo);
     }

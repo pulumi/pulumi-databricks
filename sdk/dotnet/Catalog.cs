@@ -58,6 +58,12 @@ namespace Pulumi.Databricks
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
+        /// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+        /// </summary>
+        [Output("connectionName")]
+        public Output<string?> ConnectionName { get; private set; } = null!;
+
+        /// <summary>
         /// Delete catalog regardless of its contents.
         /// </summary>
         [Output("forceDestroy")]
@@ -161,6 +167,12 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
+        /// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+        /// </summary>
+        [Input("connectionName")]
+        public Input<string>? ConnectionName { get; set; }
+
+        /// <summary>
         /// Delete catalog regardless of its contents.
         /// </summary>
         [Input("forceDestroy")]
@@ -230,6 +242,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
+
+        /// <summary>
+        /// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+        /// </summary>
+        [Input("connectionName")]
+        public Input<string>? ConnectionName { get; set; }
 
         /// <summary>
         /// Delete catalog regardless of its contents.

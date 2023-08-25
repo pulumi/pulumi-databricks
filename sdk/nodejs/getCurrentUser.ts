@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
  * * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mrFoo`.
  * * `workspaceUrl` - URL of the current Databricks workspace.
+ * * `aclPrincipalId` - identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com` if current user is user, or `servicePrincipals/00000000-0000-0000-0000-000000000000` if current user is service principal.
  *
  * ## Related Resources
  *
@@ -37,6 +38,7 @@ export function getCurrentUser(opts?: pulumi.InvokeOptions): Promise<GetCurrentU
  * A collection of values returned by getCurrentUser.
  */
 export interface GetCurrentUserResult {
+    readonly aclPrincipalId: string;
     readonly alphanumeric: string;
     readonly externalId: string;
     readonly home: string;

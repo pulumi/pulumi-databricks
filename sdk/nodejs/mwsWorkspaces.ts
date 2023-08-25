@@ -93,6 +93,9 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      * `storageConfigurationId` from storage configuration.
      */
     public readonly storageConfigurationId!: pulumi.Output<string | undefined>;
+    /**
+     * `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
+     */
     public readonly storageCustomerManagedKeyId!: pulumi.Output<string | undefined>;
     public readonly token!: pulumi.Output<outputs.MwsWorkspacesToken | undefined>;
     /**
@@ -253,6 +256,9 @@ export interface MwsWorkspacesState {
      * `storageConfigurationId` from storage configuration.
      */
     storageConfigurationId?: pulumi.Input<string>;
+    /**
+     * `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
+     */
     storageCustomerManagedKeyId?: pulumi.Input<string>;
     token?: pulumi.Input<inputs.MwsWorkspacesToken>;
     /**
@@ -335,6 +341,9 @@ export interface MwsWorkspacesArgs {
      * `storageConfigurationId` from storage configuration.
      */
     storageConfigurationId?: pulumi.Input<string>;
+    /**
+     * `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
+     */
     storageCustomerManagedKeyId?: pulumi.Input<string>;
     token?: pulumi.Input<inputs.MwsWorkspacesToken>;
     /**

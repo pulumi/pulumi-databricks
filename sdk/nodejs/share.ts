@@ -47,6 +47,10 @@ export class Share extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     public readonly objects!: pulumi.Output<outputs.ShareObject[] | undefined>;
+    /**
+     * User name/group name/sp applicationId of the share owner.
+     */
+    public readonly owner!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Share resource with the given unique name, arguments, and options.
@@ -65,12 +69,14 @@ export class Share extends pulumi.CustomResource {
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["objects"] = state ? state.objects : undefined;
+            resourceInputs["owner"] = state ? state.owner : undefined;
         } else {
             const args = argsOrState as ShareArgs | undefined;
             resourceInputs["createdAt"] = args ? args.createdAt : undefined;
             resourceInputs["createdBy"] = args ? args.createdBy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["objects"] = args ? args.objects : undefined;
+            resourceInputs["owner"] = args ? args.owner : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Share.__pulumiType, name, resourceInputs, opts);
@@ -94,6 +100,10 @@ export interface ShareState {
      */
     name?: pulumi.Input<string>;
     objects?: pulumi.Input<pulumi.Input<inputs.ShareObject>[]>;
+    /**
+     * User name/group name/sp applicationId of the share owner.
+     */
+    owner?: pulumi.Input<string>;
 }
 
 /**
@@ -113,4 +123,8 @@ export interface ShareArgs {
      */
     name?: pulumi.Input<string>;
     objects?: pulumi.Input<pulumi.Input<inputs.ShareObject>[]>;
+    /**
+     * User name/group name/sp applicationId of the share owner.
+     */
+    owner?: pulumi.Input<string>;
 }

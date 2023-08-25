@@ -23,6 +23,7 @@ namespace Pulumi.Databricks
         /// * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         /// * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
         /// * `workspace_url` - URL of the current Databricks workspace.
+        /// * `acl_principal_id` - identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com` if current user is user, or `servicePrincipals/00000000-0000-0000-0000-000000000000` if current user is service principal.
         /// 
         /// ## Related Resources
         /// 
@@ -41,6 +42,7 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetCurrentUserResult
     {
+        public readonly string AclPrincipalId;
         public readonly string Alphanumeric;
         public readonly string ExternalId;
         public readonly string Home;
@@ -54,6 +56,8 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetCurrentUserResult(
+            string aclPrincipalId,
+
             string alphanumeric,
 
             string externalId,
@@ -68,6 +72,7 @@ namespace Pulumi.Databricks
 
             string workspaceUrl)
         {
+            AclPrincipalId = aclPrincipalId;
             Alphanumeric = alphanumeric;
             ExternalId = externalId;
             Home = home;

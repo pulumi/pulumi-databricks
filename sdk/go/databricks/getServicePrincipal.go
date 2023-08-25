@@ -79,6 +79,8 @@ func LookupServicePrincipal(ctx *pulumi.Context, args *LookupServicePrincipalArg
 
 // A collection of arguments for invoking getServicePrincipal.
 type LookupServicePrincipalArgs struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+	AclPrincipalId *string `pulumi:"aclPrincipalId"`
 	// Whether service principal is active or not.
 	Active *bool `pulumi:"active"`
 	// ID of the service principal. The service principal must exist before this resource can be retrieved.
@@ -98,6 +100,8 @@ type LookupServicePrincipalArgs struct {
 
 // A collection of values returned by getServicePrincipal.
 type LookupServicePrincipalResult struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+	AclPrincipalId string `pulumi:"aclPrincipalId"`
 	// Whether service principal is active or not.
 	Active        bool   `pulumi:"active"`
 	ApplicationId string `pulumi:"applicationId"`
@@ -129,6 +133,8 @@ func LookupServicePrincipalOutput(ctx *pulumi.Context, args LookupServicePrincip
 
 // A collection of arguments for invoking getServicePrincipal.
 type LookupServicePrincipalOutputArgs struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+	AclPrincipalId pulumi.StringPtrInput `pulumi:"aclPrincipalId"`
 	// Whether service principal is active or not.
 	Active pulumi.BoolPtrInput `pulumi:"active"`
 	// ID of the service principal. The service principal must exist before this resource can be retrieved.
@@ -163,6 +169,11 @@ func (o LookupServicePrincipalResultOutput) ToLookupServicePrincipalResultOutput
 
 func (o LookupServicePrincipalResultOutput) ToLookupServicePrincipalResultOutputWithContext(ctx context.Context) LookupServicePrincipalResultOutput {
 	return o
+}
+
+// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+func (o LookupServicePrincipalResultOutput) AclPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.AclPrincipalId }).(pulumi.StringOutput)
 }
 
 // Whether service principal is active or not.
