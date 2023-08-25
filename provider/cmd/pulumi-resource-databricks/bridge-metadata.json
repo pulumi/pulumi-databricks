@@ -141,6 +141,10 @@
                 "current": "databricks:index/clusterPolicy:ClusterPolicy",
                 "majorVersion": 1
             },
+            "databricks_connection": {
+                "current": "databricks:index/connection:Connection",
+                "majorVersion": 1
+            },
             "databricks_dbfs_file": {
                 "current": "databricks:index/dbfsFile:DbfsFile",
                 "majorVersion": 1
@@ -155,7 +159,19 @@
             },
             "databricks_external_location": {
                 "current": "databricks:index/externalLocation:ExternalLocation",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "encryption_details": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "sse_encryption_details": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "databricks_git_credential": {
                 "current": "databricks:index/gitCredential:GitCredential",
@@ -2688,6 +2704,7 @@
             "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding": "databricks_catalog_workspace_binding",
             "databricks:index/cluster:Cluster": "databricks_cluster",
             "databricks:index/clusterPolicy:ClusterPolicy": "databricks_cluster_policy",
+            "databricks:index/connection:Connection": "databricks_connection",
             "databricks:index/dbfsFile:DbfsFile": "databricks_dbfs_file",
             "databricks:index/directory:Directory": "databricks_directory",
             "databricks:index/entitlements:Entitlements": "databricks_entitlements",
@@ -2841,6 +2858,12 @@
                 "enableEncryption": "enable_encryption",
                 "encryptionType": "encryption_type",
                 "kmsKey": "kms_key"
+            },
+            "databricks:index/ExternalLocationEncryptionDetails:ExternalLocationEncryptionDetails": {
+                "sseEncryptionDetails": "sse_encryption_details"
+            },
+            "databricks:index/ExternalLocationEncryptionDetailsSseEncryptionDetails:ExternalLocationEncryptionDetailsSseEncryptionDetails": {
+                "awsKmsKeyArn": "aws_kms_key_arn"
             },
             "databricks:index/InstancePoolAwsAttributes:InstancePoolAwsAttributes": {
                 "spotBidPricePercent": "spot_bid_price_percent",
@@ -3584,6 +3607,7 @@
                 "grantRules": "grant_rules"
             },
             "databricks:index/catalog:Catalog": {
+                "connectionName": "connection_name",
                 "forceDestroy": "force_destroy",
                 "isolationMode": "isolation_mode",
                 "metastoreId": "metastore_id",
@@ -3635,6 +3659,11 @@
                 "policyFamilyId": "policy_family_id",
                 "policyId": "policy_id"
             },
+            "databricks:index/connection:Connection": {
+                "connectionType": "connection_type",
+                "metastoreId": "metastore_id",
+                "readOnly": "read_only"
+            },
             "databricks:index/dbfsFile:DbfsFile": {
                 "contentBase64": "content_base64",
                 "dbfsPath": "dbfs_path",
@@ -3654,8 +3683,11 @@
                 "workspaceAccess": "workspace_access"
             },
             "databricks:index/externalLocation:ExternalLocation": {
+                "accessPoint": "access_point",
                 "credentialName": "credential_name",
+                "encryptionDetails": "encryption_details",
                 "forceDestroy": "force_destroy",
+                "forceUpdate": "force_update",
                 "metastoreId": "metastore_id",
                 "readOnly": "read_only",
                 "skipValidation": "skip_validation"
@@ -3796,6 +3828,7 @@
                 "clusterNameContains": "cluster_name_contains"
             },
             "databricks:index/getCurrentUser:getCurrentUser": {
+                "aclPrincipalId": "acl_principal_id",
                 "externalId": "external_id",
                 "userName": "user_name",
                 "workspaceUrl": "workspace_url"
@@ -3814,6 +3847,7 @@
                 "objectId": "object_id"
             },
             "databricks:index/getGroup:getGroup": {
+                "aclPrincipalId": "acl_principal_id",
                 "allowClusterCreate": "allow_cluster_create",
                 "allowInstancePoolCreate": "allow_instance_pool_create",
                 "childGroups": "child_groups",
@@ -4388,6 +4422,7 @@
                 "catalogName": "catalog_name"
             },
             "databricks:index/getServicePrincipal:getServicePrincipal": {
+                "aclPrincipalId": "acl_principal_id",
                 "applicationId": "application_id",
                 "displayName": "display_name",
                 "externalId": "external_id",
@@ -4447,6 +4482,7 @@
                 "schemaName": "schema_name"
             },
             "databricks:index/getUser:getUser": {
+                "aclPrincipalId": "acl_principal_id",
                 "applicationId": "application_id",
                 "displayName": "display_name",
                 "externalId": "external_id",
@@ -4470,6 +4506,7 @@
             },
             "databricks:index/grants:Grants": {
                 "externalLocation": "external_location",
+                "foreignConnection": "foreign_connection",
                 "grants": "grant",
                 "materializedView": "materialized_view",
                 "storageCredential": "storage_credential"
@@ -4562,7 +4599,9 @@
                 "deltaSharingScope": "delta_sharing_scope",
                 "forceDestroy": "force_destroy",
                 "globalMetastoreId": "global_metastore_id",
+                "metastoreId": "metastore_id",
                 "storageRoot": "storage_root",
+                "storageRootCredentialId": "storage_root_credential_id",
                 "updatedAt": "updated_at",
                 "updatedBy": "updated_by"
             },
@@ -4595,7 +4634,6 @@
             "databricks:index/mlflowModel:MlflowModel": {
                 "creationTimestamp": "creation_timestamp",
                 "lastUpdatedTimestamp": "last_updated_timestamp",
-                "registeredModelId": "registered_model_id",
                 "userId": "user_id"
             },
             "databricks:index/mlflowWebhook:MlflowWebhook": {
@@ -4802,7 +4840,13 @@
                 "objects": "object"
             },
             "databricks:index/sqlAlert:SqlAlert": {
-                "queryId": "query_id"
+                "createdAt": "created_at",
+                "queryId": "query_id",
+                "updatedAt": "updated_at"
+            },
+            "databricks:index/sqlDashboard:SqlDashboard": {
+                "createdAt": "created_at",
+                "updatedAt": "updated_at"
             },
             "databricks:index/sqlEndpoint:SqlEndpoint": {
                 "autoStopMins": "auto_stop_mins",
@@ -4834,9 +4878,11 @@
                 "privilegeAssignments": "privilege_assignments"
             },
             "databricks:index/sqlQuery:SqlQuery": {
+                "createdAt": "created_at",
                 "dataSourceId": "data_source_id",
                 "parameters": "parameter",
-                "runAsRole": "run_as_role"
+                "runAsRole": "run_as_role",
+                "updatedAt": "updated_at"
             },
             "databricks:index/sqlTable:SqlTable": {
                 "catalogName": "catalog_name",
@@ -4865,6 +4911,7 @@
                 "azureManagedIdentity": "azure_managed_identity",
                 "azureServicePrincipal": "azure_service_principal",
                 "databricksGcpServiceAccount": "databricks_gcp_service_account",
+                "forceDestroy": "force_destroy",
                 "gcpServiceAccountKey": "gcp_service_account_key",
                 "metastoreId": "metastore_id",
                 "readOnly": "read_only"
