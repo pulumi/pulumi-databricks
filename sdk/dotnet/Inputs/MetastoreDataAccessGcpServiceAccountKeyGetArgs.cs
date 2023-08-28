@@ -14,6 +14,8 @@ namespace Pulumi.Databricks.Inputs
     {
         /// <summary>
         /// The email of the GCP service account created, to be granted access to relevant buckets.
+        /// 
+        /// `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;

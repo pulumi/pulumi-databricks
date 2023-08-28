@@ -30,6 +30,12 @@ public class Grants extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> externalLocation() {
         return Codegen.optional(this.externalLocation);
     }
+    @Export(name="foreignConnection", type=String.class, parameters={})
+    private Output</* @Nullable */ String> foreignConnection;
+
+    public Output<Optional<String>> foreignConnection() {
+        return Codegen.optional(this.foreignConnection);
+    }
     @Export(name="function", type=String.class, parameters={})
     private Output</* @Nullable */ String> function;
 

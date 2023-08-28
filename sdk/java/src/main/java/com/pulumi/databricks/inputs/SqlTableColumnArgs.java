@@ -62,18 +62,18 @@ public final class SqlTableColumnArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Column type spec (with metadata) as SQL text
+     * Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
-     * @return Column type spec (with metadata) as SQL text
+     * @return Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private SqlTableColumnArgs() {}
@@ -167,18 +167,18 @@ public final class SqlTableColumnArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Column type spec (with metadata) as SQL text
+         * @param type Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
          * 
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
         /**
-         * @param type Column type spec (with metadata) as SQL text
+         * @param type Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
          * 
          * @return builder
          * 
@@ -189,7 +189,6 @@ public final class SqlTableColumnArgs extends com.pulumi.resources.ResourceArgs 
 
         public SqlTableColumnArgs build() {
             $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;
         }
     }

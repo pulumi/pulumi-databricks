@@ -18,16 +18,32 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
 
     public static final ModelServingConfigServedModelArgs Empty = new ModelServingConfigServedModelArgs();
 
+    /**
+     * a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+     * 
+     */
     @Import(name="environmentVars")
     private @Nullable Output<Map<String,Object>> environmentVars;
 
+    /**
+     * @return a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> environmentVars() {
         return Optional.ofNullable(this.environmentVars);
     }
 
+    /**
+     * ARN of the instance profile that the served model will use to access AWS resources.
+     * 
+     */
     @Import(name="instanceProfileArn")
     private @Nullable Output<String> instanceProfileArn;
 
+    /**
+     * @return ARN of the instance profile that the served model will use to access AWS resources.
+     * 
+     */
     public Optional<Output<String>> instanceProfileArn() {
         return Optional.ofNullable(this.instanceProfileArn);
     }
@@ -137,20 +153,44 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
             $ = new ModelServingConfigServedModelArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param environmentVars a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder environmentVars(@Nullable Output<Map<String,Object>> environmentVars) {
             $.environmentVars = environmentVars;
             return this;
         }
 
+        /**
+         * @param environmentVars a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder environmentVars(Map<String,Object> environmentVars) {
             return environmentVars(Output.of(environmentVars));
         }
 
+        /**
+         * @param instanceProfileArn ARN of the instance profile that the served model will use to access AWS resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceProfileArn(@Nullable Output<String> instanceProfileArn) {
             $.instanceProfileArn = instanceProfileArn;
             return this;
         }
 
+        /**
+         * @param instanceProfileArn ARN of the instance profile that the served model will use to access AWS resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceProfileArn(String instanceProfileArn) {
             return instanceProfileArn(Output.of(instanceProfileArn));
         }

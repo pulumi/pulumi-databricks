@@ -17,6 +17,7 @@ type Grants struct {
 
 	Catalog           pulumi.StringPtrOutput `pulumi:"catalog"`
 	ExternalLocation  pulumi.StringPtrOutput `pulumi:"externalLocation"`
+	ForeignConnection pulumi.StringPtrOutput `pulumi:"foreignConnection"`
 	Function          pulumi.StringPtrOutput `pulumi:"function"`
 	Grants            GrantsGrantArrayOutput `pulumi:"grants"`
 	MaterializedView  pulumi.StringPtrOutput `pulumi:"materializedView"`
@@ -64,6 +65,7 @@ func GetGrants(ctx *pulumi.Context,
 type grantsState struct {
 	Catalog           *string       `pulumi:"catalog"`
 	ExternalLocation  *string       `pulumi:"externalLocation"`
+	ForeignConnection *string       `pulumi:"foreignConnection"`
 	Function          *string       `pulumi:"function"`
 	Grants            []GrantsGrant `pulumi:"grants"`
 	MaterializedView  *string       `pulumi:"materializedView"`
@@ -79,6 +81,7 @@ type grantsState struct {
 type GrantsState struct {
 	Catalog           pulumi.StringPtrInput
 	ExternalLocation  pulumi.StringPtrInput
+	ForeignConnection pulumi.StringPtrInput
 	Function          pulumi.StringPtrInput
 	Grants            GrantsGrantArrayInput
 	MaterializedView  pulumi.StringPtrInput
@@ -98,6 +101,7 @@ func (GrantsState) ElementType() reflect.Type {
 type grantsArgs struct {
 	Catalog           *string       `pulumi:"catalog"`
 	ExternalLocation  *string       `pulumi:"externalLocation"`
+	ForeignConnection *string       `pulumi:"foreignConnection"`
 	Function          *string       `pulumi:"function"`
 	Grants            []GrantsGrant `pulumi:"grants"`
 	MaterializedView  *string       `pulumi:"materializedView"`
@@ -114,6 +118,7 @@ type grantsArgs struct {
 type GrantsArgs struct {
 	Catalog           pulumi.StringPtrInput
 	ExternalLocation  pulumi.StringPtrInput
+	ForeignConnection pulumi.StringPtrInput
 	Function          pulumi.StringPtrInput
 	Grants            GrantsGrantArrayInput
 	MaterializedView  pulumi.StringPtrInput
@@ -219,6 +224,10 @@ func (o GrantsOutput) Catalog() pulumi.StringPtrOutput {
 
 func (o GrantsOutput) ExternalLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.ExternalLocation }).(pulumi.StringPtrOutput)
+}
+
+func (o GrantsOutput) ForeignConnection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.ForeignConnection }).(pulumi.StringPtrOutput)
 }
 
 func (o GrantsOutput) Function() pulumi.StringPtrOutput {

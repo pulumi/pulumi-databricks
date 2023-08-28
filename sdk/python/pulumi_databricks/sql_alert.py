@@ -18,9 +18,11 @@ class SqlAlertArgs:
     def __init__(__self__, *,
                  options: pulumi.Input['SqlAlertOptionsArgs'],
                  query_id: pulumi.Input[str],
+                 created_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 rearm: Optional[pulumi.Input[int]] = None):
+                 rearm: Optional[pulumi.Input[int]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SqlAlert resource.
         :param pulumi.Input['SqlAlertOptionsArgs'] options: Alert configuration options.
@@ -31,12 +33,16 @@ class SqlAlertArgs:
         """
         pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "query_id", query_id)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
         if rearm is not None:
             pulumi.set(__self__, "rearm", rearm)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter
@@ -61,6 +67,15 @@ class SqlAlertArgs:
     @query_id.setter
     def query_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "query_id", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
 
     @property
     @pulumi.getter
@@ -98,15 +113,26 @@ class SqlAlertArgs:
     def rearm(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "rearm", value)
 
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
 
 @pulumi.input_type
 class _SqlAlertState:
     def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input['SqlAlertOptionsArgs']] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  query_id: Optional[pulumi.Input[str]] = None,
-                 rearm: Optional[pulumi.Input[int]] = None):
+                 rearm: Optional[pulumi.Input[int]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SqlAlert resources.
         :param pulumi.Input[str] name: Name of the alert.
@@ -115,6 +141,8 @@ class _SqlAlertState:
         :param pulumi.Input[str] query_id: ID of the query evaluated by the alert.
         :param pulumi.Input[int] rearm: Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
         """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if options is not None:
@@ -125,6 +153,17 @@ class _SqlAlertState:
             pulumi.set(__self__, "query_id", query_id)
         if rearm is not None:
             pulumi.set(__self__, "rearm", rearm)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
 
     @property
     @pulumi.getter
@@ -186,17 +225,28 @@ class _SqlAlertState:
     def rearm(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "rearm", value)
 
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
 
 class SqlAlert(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[pulumi.InputType['SqlAlertOptionsArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  query_id: Optional[pulumi.Input[str]] = None,
                  rearm: Optional[pulumi.Input[int]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
@@ -255,11 +305,13 @@ class SqlAlert(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[pulumi.InputType['SqlAlertOptionsArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  query_id: Optional[pulumi.Input[str]] = None,
                  rearm: Optional[pulumi.Input[int]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -269,6 +321,7 @@ class SqlAlert(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SqlAlertArgs.__new__(SqlAlertArgs)
 
+            __props__.__dict__["created_at"] = created_at
             __props__.__dict__["name"] = name
             if options is None and not opts.urn:
                 raise TypeError("Missing required property 'options'")
@@ -278,6 +331,7 @@ class SqlAlert(pulumi.CustomResource):
                 raise TypeError("Missing required property 'query_id'")
             __props__.__dict__["query_id"] = query_id
             __props__.__dict__["rearm"] = rearm
+            __props__.__dict__["updated_at"] = updated_at
         super(SqlAlert, __self__).__init__(
             'databricks:index/sqlAlert:SqlAlert',
             resource_name,
@@ -288,11 +342,13 @@ class SqlAlert(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             options: Optional[pulumi.Input[pulumi.InputType['SqlAlertOptionsArgs']]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             query_id: Optional[pulumi.Input[str]] = None,
-            rearm: Optional[pulumi.Input[int]] = None) -> 'SqlAlert':
+            rearm: Optional[pulumi.Input[int]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None) -> 'SqlAlert':
         """
         Get an existing SqlAlert resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -310,12 +366,19 @@ class SqlAlert(pulumi.CustomResource):
 
         __props__ = _SqlAlertState.__new__(_SqlAlertState)
 
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["name"] = name
         __props__.__dict__["options"] = options
         __props__.__dict__["parent"] = parent
         __props__.__dict__["query_id"] = query_id
         __props__.__dict__["rearm"] = rearm
+        __props__.__dict__["updated_at"] = updated_at
         return SqlAlert(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
@@ -356,4 +419,9 @@ class SqlAlert(pulumi.CustomResource):
         Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
         """
         return pulumi.get(self, "rearm")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "updated_at")
 

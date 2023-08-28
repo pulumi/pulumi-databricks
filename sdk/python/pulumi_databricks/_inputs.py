@@ -35,6 +35,8 @@ __all__ = [
     'ClusterLibraryPypiArgs',
     'ClusterWorkloadTypeArgs',
     'ClusterWorkloadTypeClientsArgs',
+    'ExternalLocationEncryptionDetailsArgs',
+    'ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs',
     'GrantsGrantArgs',
     'InstancePoolAwsAttributesArgs',
     'InstancePoolAzureAttributesArgs',
@@ -441,9 +443,10 @@ class AccessControlRuleSetGrantRuleArgs:
                  role: pulumi.Input[str],
                  principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] role: Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles).
+        :param pulumi.Input[str] role: Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles) or [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page).
                * `roles/servicePrincipal.manager` - Manager of a service principal.
                * `roles/servicePrincipal.user` - User of a service principal.
+               * `roles/group.manager` - Manager of a group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: a list of principals who are granted a role. The following format is supported:
                * `users/{username}` (also exposed as `acl_principal_id` attribute of `User` resource).
                * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `Group` resource).
@@ -457,9 +460,10 @@ class AccessControlRuleSetGrantRuleArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
         """
-        Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles).
+        Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles) or [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page).
         * `roles/servicePrincipal.manager` - Manager of a service principal.
         * `roles/servicePrincipal.user` - User of a service principal.
+        * `roles/group.manager` - Manager of a group.
         """
         return pulumi.get(self, "role")
 
@@ -1457,6 +1461,52 @@ class ClusterWorkloadTypeClientsArgs:
     @notebooks.setter
     def notebooks(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "notebooks", value)
+
+
+@pulumi.input_type
+class ExternalLocationEncryptionDetailsArgs:
+    def __init__(__self__, *,
+                 sse_encryption_details: Optional[pulumi.Input['ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs']] = None):
+        if sse_encryption_details is not None:
+            pulumi.set(__self__, "sse_encryption_details", sse_encryption_details)
+
+    @property
+    @pulumi.getter(name="sseEncryptionDetails")
+    def sse_encryption_details(self) -> Optional[pulumi.Input['ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs']]:
+        return pulumi.get(self, "sse_encryption_details")
+
+    @sse_encryption_details.setter
+    def sse_encryption_details(self, value: Optional[pulumi.Input['ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs']]):
+        pulumi.set(self, "sse_encryption_details", value)
+
+
+@pulumi.input_type
+class ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs:
+    def __init__(__self__, *,
+                 algorithm: Optional[pulumi.Input[str]] = None,
+                 aws_kms_key_arn: Optional[pulumi.Input[str]] = None):
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if aws_kms_key_arn is not None:
+            pulumi.set(__self__, "aws_kms_key_arn", aws_kms_key_arn)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter(name="awsKmsKeyArn")
+    def aws_kms_key_arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "aws_kms_key_arn")
+
+    @aws_kms_key_arn.setter
+    def aws_kms_key_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_kms_key_arn", value)
 
 
 @pulumi.input_type
@@ -5414,10 +5464,10 @@ class JobRunAsArgs:
 @pulumi.input_type
 class JobRunJobTaskArgs:
     def __init__(__self__, *,
-                 job_id: pulumi.Input[str],
+                 job_id: pulumi.Input[int],
                  job_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
-        :param pulumi.Input[str] job_id: (String) ID of the job
+        :param pulumi.Input[int] job_id: (String) ID of the job
         :param pulumi.Input[Mapping[str, Any]] job_parameters: (Map) Job parameters for the task
         """
         pulumi.set(__self__, "job_id", job_id)
@@ -5426,14 +5476,14 @@ class JobRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> pulumi.Input[str]:
+    def job_id(self) -> pulumi.Input[int]:
         """
         (String) ID of the job
         """
         return pulumi.get(self, "job_id")
 
     @job_id.setter
-    def job_id(self, value: pulumi.Input[str]):
+    def job_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "job_id", value)
 
     @property
@@ -8027,10 +8077,10 @@ class JobTaskPythonWheelTaskArgs:
 @pulumi.input_type
 class JobTaskRunJobTaskArgs:
     def __init__(__self__, *,
-                 job_id: pulumi.Input[str],
+                 job_id: pulumi.Input[int],
                  job_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
-        :param pulumi.Input[str] job_id: (String) ID of the job
+        :param pulumi.Input[int] job_id: (String) ID of the job
         :param pulumi.Input[Mapping[str, Any]] job_parameters: (Map) Job parameters for the task
         """
         pulumi.set(__self__, "job_id", job_id)
@@ -8039,14 +8089,14 @@ class JobTaskRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> pulumi.Input[str]:
+    def job_id(self) -> pulumi.Input[int]:
         """
         (String) ID of the job
         """
         return pulumi.get(self, "job_id")
 
     @job_id.setter
-    def job_id(self, value: pulumi.Input[str]):
+    def job_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "job_id", value)
 
     @property
@@ -8990,7 +9040,7 @@ class MetastoreDataAccessAwsIamRoleArgs:
         """
         :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
                
-               `azure_service_principal` optional configuration block for credential details for Azure:
+               `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (Recommended):
         """
         pulumi.set(__self__, "role_arn", role_arn)
 
@@ -9000,7 +9050,7 @@ class MetastoreDataAccessAwsIamRoleArgs:
         """
         The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
 
-        `azure_service_principal` optional configuration block for credential details for Azure:
+        `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (Recommended):
         """
         return pulumi.get(self, "role_arn")
 
@@ -9044,8 +9094,6 @@ class MetastoreDataAccessAzureServicePrincipalArgs:
         """
         :param pulumi.Input[str] application_id: The application ID of the application registration within the referenced AAD tenant
         :param pulumi.Input[str] client_secret: The client secret generated for the above app ID in AAD. **This field is redacted on output**
-               
-               `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure:
         :param pulumi.Input[str] directory_id: The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
         """
         pulumi.set(__self__, "application_id", application_id)
@@ -9069,8 +9117,6 @@ class MetastoreDataAccessAzureServicePrincipalArgs:
     def client_secret(self) -> pulumi.Input[str]:
         """
         The client secret generated for the above app ID in AAD. **This field is redacted on output**
-
-        `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure:
         """
         return pulumi.get(self, "client_secret")
 
@@ -9097,6 +9143,8 @@ class MetastoreDataAccessDatabricksGcpServiceAccountArgs:
                  email: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] email: The email of the GCP service account created, to be granted access to relevant buckets.
+               
+               `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -9106,6 +9154,8 @@ class MetastoreDataAccessDatabricksGcpServiceAccountArgs:
     def email(self) -> Optional[pulumi.Input[str]]:
         """
         The email of the GCP service account created, to be granted access to relevant buckets.
+
+        `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
         """
         return pulumi.get(self, "email")
 
@@ -9122,6 +9172,8 @@ class MetastoreDataAccessGcpServiceAccountKeyArgs:
                  private_key_id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] email: The email of the GCP service account created, to be granted access to relevant buckets.
+               
+               `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "private_key", private_key)
@@ -9132,6 +9184,8 @@ class MetastoreDataAccessGcpServiceAccountKeyArgs:
     def email(self) -> pulumi.Input[str]:
         """
         The email of the GCP service account created, to be granted access to relevant buckets.
+
+        `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
         """
         return pulumi.get(self, "email")
 
@@ -9161,27 +9215,29 @@ class MetastoreDataAccessGcpServiceAccountKeyArgs:
 @pulumi.input_type
 class MlflowModelTagArgs:
     def __init__(__self__, *,
-                 key: pulumi.Input[str],
-                 value: pulumi.Input[str]):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def key(self) -> pulumi.Input[str]:
+    def key(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: pulumi.Input[str]):
+    def key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key", value)
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
+    def value(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: pulumi.Input[str]):
+    def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
 
@@ -9360,6 +9416,8 @@ class ModelServingConfigServedModelArgs:
         :param pulumi.Input[str] model_name: The name of the model in Databricks Model Registry to be served.
         :param pulumi.Input[str] model_version: The version of the model in Databricks Model Registry to be served.
         :param pulumi.Input[str] workload_size: The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
+        :param pulumi.Input[Mapping[str, Any]] environment_vars: a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+        :param pulumi.Input[str] instance_profile_arn: ARN of the instance profile that the served model will use to access AWS resources.
         :param pulumi.Input[str] name: The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
         :param pulumi.Input[bool] scale_to_zero_enabled: Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
         """
@@ -9414,6 +9472,9 @@ class ModelServingConfigServedModelArgs:
     @property
     @pulumi.getter(name="environmentVars")
     def environment_vars(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+        """
         return pulumi.get(self, "environment_vars")
 
     @environment_vars.setter
@@ -9423,6 +9484,9 @@ class ModelServingConfigServedModelArgs:
     @property
     @pulumi.getter(name="instanceProfileArn")
     def instance_profile_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        ARN of the instance profile that the served model will use to access AWS resources.
+        """
         return pulumi.get(self, "instance_profile_arn")
 
     @instance_profile_arn.setter
@@ -9884,11 +9948,17 @@ class MwsCustomerManagedKeysAwsKeyInfoArgs:
 class MwsCustomerManagedKeysGcpKeyInfoArgs:
     def __init__(__self__, *,
                  kms_key_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key_id: The GCP KMS key's resource name.
+        """
         pulumi.set(__self__, "kms_key_id", kms_key_id)
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Input[str]:
+        """
+        The GCP KMS key's resource name.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -10297,6 +10367,9 @@ class MwsWorkspacesTokenArgs:
                  lifetime_seconds: Optional[pulumi.Input[int]] = None,
                  token_id: Optional[pulumi.Input[str]] = None,
                  token_value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] lifetime_seconds: Token expiry lifetime. By default its 2592000 (30 days).
+        """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if lifetime_seconds is not None:
@@ -10318,6 +10391,9 @@ class MwsWorkspacesTokenArgs:
     @property
     @pulumi.getter(name="lifetimeSeconds")
     def lifetime_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Token expiry lifetime. By default its 2592000 (30 days).
+        """
         return pulumi.get(self, "lifetime_seconds")
 
     @lifetime_seconds.setter
@@ -12898,21 +12974,22 @@ class SqlQueryScheduleWeeklyArgs:
 class SqlTableColumnArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 type: pulumi.Input[str],
                  comment: Optional[pulumi.Input[str]] = None,
-                 nullable: Optional[pulumi.Input[bool]] = None):
+                 nullable: Optional[pulumi.Input[bool]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: User-visible name of column
-        :param pulumi.Input[str] type: Column type spec (with metadata) as SQL text
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[bool] nullable: Whether field is nullable (Default: `true`)
+        :param pulumi.Input[str] type: Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
         """
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if nullable is not None:
             pulumi.set(__self__, "nullable", nullable)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -12925,18 +13002,6 @@ class SqlTableColumnArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> pulumi.Input[str]:
-        """
-        Column type spec (with metadata) as SQL text
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
@@ -12961,6 +13026,18 @@ class SqlTableColumnArgs:
     @nullable.setter
     def nullable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -19175,7 +19252,7 @@ class GetJobJobSettingsSettingsRunAsArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsRunJobTaskArgs:
     def __init__(__self__, *,
-                 job_id: str,
+                 job_id: int,
                  job_parameters: Optional[Mapping[str, Any]] = None):
         pulumi.set(__self__, "job_id", job_id)
         if job_parameters is not None:
@@ -19183,11 +19260,11 @@ class GetJobJobSettingsSettingsRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> str:
+    def job_id(self) -> int:
         return pulumi.get(self, "job_id")
 
     @job_id.setter
-    def job_id(self, value: str):
+    def job_id(self, value: int):
         pulumi.set(self, "job_id", value)
 
     @property
@@ -21424,7 +21501,7 @@ class GetJobJobSettingsSettingsTaskPythonWheelTaskArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskRunJobTaskArgs:
     def __init__(__self__, *,
-                 job_id: str,
+                 job_id: int,
                  job_parameters: Optional[Mapping[str, Any]] = None):
         pulumi.set(__self__, "job_id", job_id)
         if job_parameters is not None:
@@ -21432,11 +21509,11 @@ class GetJobJobSettingsSettingsTaskRunJobTaskArgs:
 
     @property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> str:
+    def job_id(self) -> int:
         return pulumi.get(self, "job_id")
 
     @job_id.setter
-    def job_id(self, value: str):
+    def job_id(self, value: int):
         pulumi.set(self, "job_id", value)
 
     @property

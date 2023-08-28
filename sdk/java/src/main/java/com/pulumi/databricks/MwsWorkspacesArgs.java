@@ -248,9 +248,17 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.storageConfigurationId);
     }
 
+    /**
+     * `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+     * 
+     */
     @Import(name="storageCustomerManagedKeyId")
     private @Nullable Output<String> storageCustomerManagedKeyId;
 
+    /**
+     * @return `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+     * 
+     */
     public Optional<Output<String>> storageCustomerManagedKeyId() {
         return Optional.ofNullable(this.storageCustomerManagedKeyId);
     }
@@ -695,11 +703,23 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
             return storageConfigurationId(Output.of(storageConfigurationId));
         }
 
+        /**
+         * @param storageCustomerManagedKeyId `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageCustomerManagedKeyId(@Nullable Output<String> storageCustomerManagedKeyId) {
             $.storageCustomerManagedKeyId = storageCustomerManagedKeyId;
             return this;
         }
 
+        /**
+         * @param storageCustomerManagedKeyId `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageCustomerManagedKeyId(String storageCustomerManagedKeyId) {
             return storageCustomerManagedKeyId(Output.of(storageCustomerManagedKeyId));
         }

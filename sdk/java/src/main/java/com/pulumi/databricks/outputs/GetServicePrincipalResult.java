@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class GetServicePrincipalResult {
     /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    private String aclPrincipalId;
+    /**
      * @return Whether service principal is active or not.
      * 
      */
@@ -44,6 +49,13 @@ public final class GetServicePrincipalResult {
     private String spId;
 
     private GetServicePrincipalResult() {}
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    public String aclPrincipalId() {
+        return this.aclPrincipalId;
+    }
     /**
      * @return Whether service principal is active or not.
      * 
@@ -102,6 +114,7 @@ public final class GetServicePrincipalResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String aclPrincipalId;
         private Boolean active;
         private String applicationId;
         private String displayName;
@@ -113,6 +126,7 @@ public final class GetServicePrincipalResult {
         public Builder() {}
         public Builder(GetServicePrincipalResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aclPrincipalId = defaults.aclPrincipalId;
     	      this.active = defaults.active;
     	      this.applicationId = defaults.applicationId;
     	      this.displayName = defaults.displayName;
@@ -123,6 +137,11 @@ public final class GetServicePrincipalResult {
     	      this.spId = defaults.spId;
         }
 
+        @CustomType.Setter
+        public Builder aclPrincipalId(String aclPrincipalId) {
+            this.aclPrincipalId = Objects.requireNonNull(aclPrincipalId);
+            return this;
+        }
         @CustomType.Setter
         public Builder active(Boolean active) {
             this.active = Objects.requireNonNull(active);
@@ -165,6 +184,7 @@ public final class GetServicePrincipalResult {
         }
         public GetServicePrincipalResult build() {
             final var o = new GetServicePrincipalResult();
+            o.aclPrincipalId = aclPrincipalId;
             o.active = active;
             o.applicationId = applicationId;
             o.displayName = displayName;

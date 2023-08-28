@@ -28,10 +28,10 @@ public final class SqlTableColumn {
      */
     private @Nullable Boolean nullable;
     /**
-     * @return Column type spec (with metadata) as SQL text
+     * @return Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
      * 
      */
-    private String type;
+    private @Nullable String type;
 
     private SqlTableColumn() {}
     /**
@@ -56,11 +56,11 @@ public final class SqlTableColumn {
         return Optional.ofNullable(this.nullable);
     }
     /**
-     * @return Column type spec (with metadata) as SQL text
+     * @return Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
      * 
      */
-    public String type() {
-        return this.type;
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -75,7 +75,7 @@ public final class SqlTableColumn {
         private @Nullable String comment;
         private String name;
         private @Nullable Boolean nullable;
-        private String type;
+        private @Nullable String type;
         public Builder() {}
         public Builder(SqlTableColumn defaults) {
     	      Objects.requireNonNull(defaults);
@@ -101,8 +101,8 @@ public final class SqlTableColumn {
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+        public Builder type(@Nullable String type) {
+            this.type = type;
             return this;
         }
         public SqlTableColumn build() {

@@ -104,6 +104,9 @@ namespace Pulumi.Databricks
         [Output("storageConfigurationId")]
         public Output<string?> StorageConfigurationId { get; private set; } = null!;
 
+        /// <summary>
+        /// `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+        /// </summary>
         [Output("storageCustomerManagedKeyId")]
         public Output<string?> StorageCustomerManagedKeyId { get; private set; } = null!;
 
@@ -287,6 +290,9 @@ namespace Pulumi.Databricks
         [Input("storageConfigurationId")]
         public Input<string>? StorageConfigurationId { get; set; }
 
+        /// <summary>
+        /// `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+        /// </summary>
         [Input("storageCustomerManagedKeyId")]
         public Input<string>? StorageCustomerManagedKeyId { get; set; }
 
@@ -428,6 +434,9 @@ namespace Pulumi.Databricks
         [Input("storageConfigurationId")]
         public Input<string>? StorageConfigurationId { get; set; }
 
+        /// <summary>
+        /// `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+        /// </summary>
         [Input("storageCustomerManagedKeyId")]
         public Input<string>? StorageCustomerManagedKeyId { get; set; }
 

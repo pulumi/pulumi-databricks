@@ -14,18 +14,33 @@ __all__ = ['SqlDashboardArgs', 'SqlDashboard']
 @pulumi.input_type
 class SqlDashboardArgs:
     def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SqlDashboard resource.
         """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
 
     @property
     @pulumi.getter
@@ -53,23 +68,47 @@ class SqlDashboardArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
 
 
 @pulumi.input_type
 class _SqlDashboardState:
     def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SqlDashboard resources.
         """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
 
     @property
     @pulumi.getter
@@ -97,6 +136,15 @@ class _SqlDashboardState:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
 
 
 class SqlDashboard(pulumi.CustomResource):
@@ -104,9 +152,11 @@ class SqlDashboard(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         This resource is used to manage [Databricks SQL Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html). To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
@@ -236,9 +286,11 @@ class SqlDashboard(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -248,9 +300,11 @@ class SqlDashboard(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SqlDashboardArgs.__new__(SqlDashboardArgs)
 
+            __props__.__dict__["created_at"] = created_at
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["updated_at"] = updated_at
         super(SqlDashboard, __self__).__init__(
             'databricks:index/sqlDashboard:SqlDashboard',
             resource_name,
@@ -261,9 +315,11 @@ class SqlDashboard(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'SqlDashboard':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None) -> 'SqlDashboard':
         """
         Get an existing SqlDashboard resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -276,10 +332,17 @@ class SqlDashboard(pulumi.CustomResource):
 
         __props__ = _SqlDashboardState.__new__(_SqlDashboardState)
 
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["updated_at"] = updated_at
         return SqlDashboard(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
@@ -295,4 +358,9 @@ class SqlDashboard(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "updated_at")
 

@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedModel {
+    /**
+     * @return a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+     * 
+     */
     private @Nullable Map<String,Object> environmentVars;
+    /**
+     * @return ARN of the instance profile that the served model will use to access AWS resources.
+     * 
+     */
     private @Nullable String instanceProfileArn;
     /**
      * @return The name of the model in Databricks Model Registry to be served.
@@ -43,9 +51,17 @@ public final class ModelServingConfigServedModel {
     private String workloadSize;
 
     private ModelServingConfigServedModel() {}
+    /**
+     * @return a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+     * 
+     */
     public Map<String,Object> environmentVars() {
         return this.environmentVars == null ? Map.of() : this.environmentVars;
     }
+    /**
+     * @return ARN of the instance profile that the served model will use to access AWS resources.
+     * 
+     */
     public Optional<String> instanceProfileArn() {
         return Optional.ofNullable(this.instanceProfileArn);
     }

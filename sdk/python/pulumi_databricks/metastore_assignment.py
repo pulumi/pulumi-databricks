@@ -142,6 +142,7 @@ class MetastoreAssignment(pulumi.CustomResource):
         this_metastore = databricks.Metastore("thisMetastore",
             storage_root=f"s3://{aws_s3_bucket['metastore']['id']}/metastore",
             owner="uc admins",
+            region="us-east-1",
             force_destroy=True)
         this_metastore_assignment = databricks.MetastoreAssignment("thisMetastoreAssignment",
             metastore_id=this_metastore.id,
@@ -172,6 +173,7 @@ class MetastoreAssignment(pulumi.CustomResource):
         this_metastore = databricks.Metastore("thisMetastore",
             storage_root=f"s3://{aws_s3_bucket['metastore']['id']}/metastore",
             owner="uc admins",
+            region="us-east-1",
             force_destroy=True)
         this_metastore_assignment = databricks.MetastoreAssignment("thisMetastoreAssignment",
             metastore_id=this_metastore.id,

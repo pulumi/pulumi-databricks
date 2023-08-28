@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsCustomerManagedKeysGcpKeyInfo
     {
+        /// <summary>
+        /// The GCP KMS key's resource name.
+        /// </summary>
         public readonly string KmsKeyId;
 
         [OutputConstructor]

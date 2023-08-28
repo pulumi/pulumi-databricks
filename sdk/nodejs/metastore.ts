@@ -5,9 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Notes**
- *   Unity Catalog APIs are accessible via **workspace-level APIs**. This design may change in the future.
- *
  * A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
  *
  * Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
@@ -69,6 +66,7 @@ export class Metastore extends pulumi.CustomResource {
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     public readonly globalMetastoreId!: pulumi.Output<string>;
+    public readonly metastoreId!: pulumi.Output<string>;
     /**
      * Name of metastore.
      */
@@ -77,11 +75,15 @@ export class Metastore extends pulumi.CustomResource {
      * Username/groupname/sp applicationId of the metastore owner.
      */
     public readonly owner!: pulumi.Output<string>;
+    /**
+     * The region of the metastore
+     */
     public readonly region!: pulumi.Output<string>;
     /**
      * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
      */
     public readonly storageRoot!: pulumi.Output<string>;
+    public readonly storageRootCredentialId!: pulumi.Output<string | undefined>;
     public readonly updatedAt!: pulumi.Output<number>;
     public readonly updatedBy!: pulumi.Output<string>;
 
@@ -107,10 +109,12 @@ export class Metastore extends pulumi.CustomResource {
             resourceInputs["deltaSharingScope"] = state ? state.deltaSharingScope : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["globalMetastoreId"] = state ? state.globalMetastoreId : undefined;
+            resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["storageRoot"] = state ? state.storageRoot : undefined;
+            resourceInputs["storageRootCredentialId"] = state ? state.storageRootCredentialId : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
         } else {
@@ -127,10 +131,12 @@ export class Metastore extends pulumi.CustomResource {
             resourceInputs["deltaSharingScope"] = args ? args.deltaSharingScope : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["globalMetastoreId"] = args ? args.globalMetastoreId : undefined;
+            resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["storageRoot"] = args ? args.storageRoot : undefined;
+            resourceInputs["storageRootCredentialId"] = args ? args.storageRootCredentialId : undefined;
             resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
             resourceInputs["updatedBy"] = args ? args.updatedBy : undefined;
         }
@@ -164,6 +170,7 @@ export interface MetastoreState {
      */
     forceDestroy?: pulumi.Input<boolean>;
     globalMetastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string>;
     /**
      * Name of metastore.
      */
@@ -172,11 +179,15 @@ export interface MetastoreState {
      * Username/groupname/sp applicationId of the metastore owner.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * The region of the metastore
+     */
     region?: pulumi.Input<string>;
     /**
      * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
      */
     storageRoot?: pulumi.Input<string>;
+    storageRootCredentialId?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<number>;
     updatedBy?: pulumi.Input<string>;
 }
@@ -206,6 +217,7 @@ export interface MetastoreArgs {
      */
     forceDestroy?: pulumi.Input<boolean>;
     globalMetastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string>;
     /**
      * Name of metastore.
      */
@@ -214,11 +226,15 @@ export interface MetastoreArgs {
      * Username/groupname/sp applicationId of the metastore owner.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * The region of the metastore
+     */
     region?: pulumi.Input<string>;
     /**
      * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
      */
     storageRoot: pulumi.Input<string>;
+    storageRootCredentialId?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<number>;
     updatedBy?: pulumi.Input<string>;
 }

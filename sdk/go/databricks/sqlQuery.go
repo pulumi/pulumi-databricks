@@ -158,6 +158,7 @@ import (
 type SqlQuery struct {
 	pulumi.CustomResourceState
 
+	CreatedAt    pulumi.StringOutput          `pulumi:"createdAt"`
 	DataSourceId pulumi.StringOutput          `pulumi:"dataSourceId"`
 	Description  pulumi.StringPtrOutput       `pulumi:"description"`
 	Name         pulumi.StringOutput          `pulumi:"name"`
@@ -166,8 +167,9 @@ type SqlQuery struct {
 	Query        pulumi.StringOutput          `pulumi:"query"`
 	RunAsRole    pulumi.StringPtrOutput       `pulumi:"runAsRole"`
 	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
-	Schedule SqlQuerySchedulePtrOutput `pulumi:"schedule"`
-	Tags     pulumi.StringArrayOutput  `pulumi:"tags"`
+	Schedule  SqlQuerySchedulePtrOutput `pulumi:"schedule"`
+	Tags      pulumi.StringArrayOutput  `pulumi:"tags"`
+	UpdatedAt pulumi.StringOutput       `pulumi:"updatedAt"`
 }
 
 // NewSqlQuery registers a new resource with the given unique name, arguments, and options.
@@ -206,6 +208,7 @@ func GetSqlQuery(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlQuery resources.
 type sqlQueryState struct {
+	CreatedAt    *string             `pulumi:"createdAt"`
 	DataSourceId *string             `pulumi:"dataSourceId"`
 	Description  *string             `pulumi:"description"`
 	Name         *string             `pulumi:"name"`
@@ -214,11 +217,13 @@ type sqlQueryState struct {
 	Query        *string             `pulumi:"query"`
 	RunAsRole    *string             `pulumi:"runAsRole"`
 	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
-	Schedule *SqlQuerySchedule `pulumi:"schedule"`
-	Tags     []string          `pulumi:"tags"`
+	Schedule  *SqlQuerySchedule `pulumi:"schedule"`
+	Tags      []string          `pulumi:"tags"`
+	UpdatedAt *string           `pulumi:"updatedAt"`
 }
 
 type SqlQueryState struct {
+	CreatedAt    pulumi.StringPtrInput
 	DataSourceId pulumi.StringPtrInput
 	Description  pulumi.StringPtrInput
 	Name         pulumi.StringPtrInput
@@ -227,8 +232,9 @@ type SqlQueryState struct {
 	Query        pulumi.StringPtrInput
 	RunAsRole    pulumi.StringPtrInput
 	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
-	Schedule SqlQuerySchedulePtrInput
-	Tags     pulumi.StringArrayInput
+	Schedule  SqlQuerySchedulePtrInput
+	Tags      pulumi.StringArrayInput
+	UpdatedAt pulumi.StringPtrInput
 }
 
 func (SqlQueryState) ElementType() reflect.Type {
@@ -236,6 +242,7 @@ func (SqlQueryState) ElementType() reflect.Type {
 }
 
 type sqlQueryArgs struct {
+	CreatedAt    *string             `pulumi:"createdAt"`
 	DataSourceId string              `pulumi:"dataSourceId"`
 	Description  *string             `pulumi:"description"`
 	Name         *string             `pulumi:"name"`
@@ -244,12 +251,14 @@ type sqlQueryArgs struct {
 	Query        string              `pulumi:"query"`
 	RunAsRole    *string             `pulumi:"runAsRole"`
 	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
-	Schedule *SqlQuerySchedule `pulumi:"schedule"`
-	Tags     []string          `pulumi:"tags"`
+	Schedule  *SqlQuerySchedule `pulumi:"schedule"`
+	Tags      []string          `pulumi:"tags"`
+	UpdatedAt *string           `pulumi:"updatedAt"`
 }
 
 // The set of arguments for constructing a SqlQuery resource.
 type SqlQueryArgs struct {
+	CreatedAt    pulumi.StringPtrInput
 	DataSourceId pulumi.StringInput
 	Description  pulumi.StringPtrInput
 	Name         pulumi.StringPtrInput
@@ -258,8 +267,9 @@ type SqlQueryArgs struct {
 	Query        pulumi.StringInput
 	RunAsRole    pulumi.StringPtrInput
 	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
-	Schedule SqlQuerySchedulePtrInput
-	Tags     pulumi.StringArrayInput
+	Schedule  SqlQuerySchedulePtrInput
+	Tags      pulumi.StringArrayInput
+	UpdatedAt pulumi.StringPtrInput
 }
 
 func (SqlQueryArgs) ElementType() reflect.Type {
@@ -349,6 +359,10 @@ func (o SqlQueryOutput) ToSqlQueryOutputWithContext(ctx context.Context) SqlQuer
 	return o
 }
 
+func (o SqlQueryOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlQuery) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
 func (o SqlQueryOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlQuery) pulumi.StringOutput { return v.DataSourceId }).(pulumi.StringOutput)
 }
@@ -384,6 +398,10 @@ func (o SqlQueryOutput) Schedule() SqlQuerySchedulePtrOutput {
 
 func (o SqlQueryOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SqlQuery) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o SqlQueryOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlQuery) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type SqlQueryArrayOutput struct{ *pulumi.OutputState }

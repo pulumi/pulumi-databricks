@@ -17,6 +17,21 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetGroupPlainArgs Empty = new GetGroupPlainArgs();
 
     /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
+    @Import(name="aclPrincipalId")
+    private @Nullable String aclPrincipalId;
+
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
+    public Optional<String> aclPrincipalId() {
+        return Optional.ofNullable(this.aclPrincipalId);
+    }
+
+    /**
      * True if group members can create clusters
      * 
      */
@@ -202,6 +217,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetGroupPlainArgs() {}
 
     private GetGroupPlainArgs(GetGroupPlainArgs $) {
+        this.aclPrincipalId = $.aclPrincipalId;
         this.allowClusterCreate = $.allowClusterCreate;
         this.allowInstancePoolCreate = $.allowInstancePoolCreate;
         this.childGroups = $.childGroups;
@@ -233,6 +249,17 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetGroupPlainArgs defaults) {
             $ = new GetGroupPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPrincipalId(@Nullable String aclPrincipalId) {
+            $.aclPrincipalId = aclPrincipalId;
+            return this;
         }
 
         /**

@@ -26,6 +26,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/sqlAlert:SqlAlert")]
     public partial class SqlAlert : global::Pulumi.CustomResource
     {
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
         /// <summary>
         /// Name of the alert.
         /// </summary>
@@ -55,6 +58,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("rearm")]
         public Output<int?> Rearm { get; private set; } = null!;
+
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -102,6 +108,9 @@ namespace Pulumi.Databricks
 
     public sealed class SqlAlertArgs : global::Pulumi.ResourceArgs
     {
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         /// <summary>
         /// Name of the alert.
         /// </summary>
@@ -132,6 +141,9 @@ namespace Pulumi.Databricks
         [Input("rearm")]
         public Input<int>? Rearm { get; set; }
 
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
+
         public SqlAlertArgs()
         {
         }
@@ -140,6 +152,9 @@ namespace Pulumi.Databricks
 
     public sealed class SqlAlertState : global::Pulumi.ResourceArgs
     {
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         /// <summary>
         /// Name of the alert.
         /// </summary>
@@ -169,6 +184,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("rearm")]
         public Input<int>? Rearm { get; set; }
+
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         public SqlAlertState()
         {

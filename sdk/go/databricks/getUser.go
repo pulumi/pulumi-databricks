@@ -88,6 +88,8 @@ type LookupUserArgs struct {
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+	AclPrincipalId string `pulumi:"aclPrincipalId"`
 	// Alphanumeric representation of user local name. e.g. `mrFoo`.
 	Alphanumeric  string `pulumi:"alphanumeric"`
 	ApplicationId string `pulumi:"applicationId"`
@@ -144,6 +146,11 @@ func (o LookupUserResultOutput) ToLookupUserResultOutput() LookupUserResultOutpu
 
 func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.Context) LookupUserResultOutput {
 	return o
+}
+
+// identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+func (o LookupUserResultOutput) AclPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.AclPrincipalId }).(pulumi.StringOutput)
 }
 
 // Alphanumeric representation of user local name. e.g. `mrFoo`.

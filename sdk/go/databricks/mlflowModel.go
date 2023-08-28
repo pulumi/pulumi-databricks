@@ -76,16 +76,15 @@ import (
 type MlflowModel struct {
 	pulumi.CustomResourceState
 
-	CreationTimestamp pulumi.IntOutput `pulumi:"creationTimestamp"`
+	CreationTimestamp pulumi.IntPtrOutput `pulumi:"creationTimestamp"`
 	// The description of the MLflow model.
 	Description          pulumi.StringPtrOutput `pulumi:"description"`
-	LastUpdatedTimestamp pulumi.IntOutput       `pulumi:"lastUpdatedTimestamp"`
+	LastUpdatedTimestamp pulumi.IntPtrOutput    `pulumi:"lastUpdatedTimestamp"`
 	// Name of MLflow model. Change of name triggers new resource.
-	Name              pulumi.StringOutput `pulumi:"name"`
-	RegisteredModelId pulumi.StringOutput `pulumi:"registeredModelId"`
+	Name pulumi.StringOutput `pulumi:"name"`
 	// Tags for the MLflow model.
 	Tags   MlflowModelTagArrayOutput `pulumi:"tags"`
-	UserId pulumi.StringOutput       `pulumi:"userId"`
+	UserId pulumi.StringPtrOutput    `pulumi:"userId"`
 }
 
 // NewMlflowModel registers a new resource with the given unique name, arguments, and options.
@@ -123,8 +122,7 @@ type mlflowModelState struct {
 	Description          *string `pulumi:"description"`
 	LastUpdatedTimestamp *int    `pulumi:"lastUpdatedTimestamp"`
 	// Name of MLflow model. Change of name triggers new resource.
-	Name              *string `pulumi:"name"`
-	RegisteredModelId *string `pulumi:"registeredModelId"`
+	Name *string `pulumi:"name"`
 	// Tags for the MLflow model.
 	Tags   []MlflowModelTag `pulumi:"tags"`
 	UserId *string          `pulumi:"userId"`
@@ -136,8 +134,7 @@ type MlflowModelState struct {
 	Description          pulumi.StringPtrInput
 	LastUpdatedTimestamp pulumi.IntPtrInput
 	// Name of MLflow model. Change of name triggers new resource.
-	Name              pulumi.StringPtrInput
-	RegisteredModelId pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
 	// Tags for the MLflow model.
 	Tags   MlflowModelTagArrayInput
 	UserId pulumi.StringPtrInput
@@ -153,8 +150,7 @@ type mlflowModelArgs struct {
 	Description          *string `pulumi:"description"`
 	LastUpdatedTimestamp *int    `pulumi:"lastUpdatedTimestamp"`
 	// Name of MLflow model. Change of name triggers new resource.
-	Name              *string `pulumi:"name"`
-	RegisteredModelId *string `pulumi:"registeredModelId"`
+	Name *string `pulumi:"name"`
 	// Tags for the MLflow model.
 	Tags   []MlflowModelTag `pulumi:"tags"`
 	UserId *string          `pulumi:"userId"`
@@ -167,8 +163,7 @@ type MlflowModelArgs struct {
 	Description          pulumi.StringPtrInput
 	LastUpdatedTimestamp pulumi.IntPtrInput
 	// Name of MLflow model. Change of name triggers new resource.
-	Name              pulumi.StringPtrInput
-	RegisteredModelId pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
 	// Tags for the MLflow model.
 	Tags   MlflowModelTagArrayInput
 	UserId pulumi.StringPtrInput
@@ -261,8 +256,8 @@ func (o MlflowModelOutput) ToMlflowModelOutputWithContext(ctx context.Context) M
 	return o
 }
 
-func (o MlflowModelOutput) CreationTimestamp() pulumi.IntOutput {
-	return o.ApplyT(func(v *MlflowModel) pulumi.IntOutput { return v.CreationTimestamp }).(pulumi.IntOutput)
+func (o MlflowModelOutput) CreationTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MlflowModel) pulumi.IntPtrOutput { return v.CreationTimestamp }).(pulumi.IntPtrOutput)
 }
 
 // The description of the MLflow model.
@@ -270,8 +265,8 @@ func (o MlflowModelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MlflowModel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o MlflowModelOutput) LastUpdatedTimestamp() pulumi.IntOutput {
-	return o.ApplyT(func(v *MlflowModel) pulumi.IntOutput { return v.LastUpdatedTimestamp }).(pulumi.IntOutput)
+func (o MlflowModelOutput) LastUpdatedTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MlflowModel) pulumi.IntPtrOutput { return v.LastUpdatedTimestamp }).(pulumi.IntPtrOutput)
 }
 
 // Name of MLflow model. Change of name triggers new resource.
@@ -279,17 +274,13 @@ func (o MlflowModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MlflowModel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o MlflowModelOutput) RegisteredModelId() pulumi.StringOutput {
-	return o.ApplyT(func(v *MlflowModel) pulumi.StringOutput { return v.RegisteredModelId }).(pulumi.StringOutput)
-}
-
 // Tags for the MLflow model.
 func (o MlflowModelOutput) Tags() MlflowModelTagArrayOutput {
 	return o.ApplyT(func(v *MlflowModel) MlflowModelTagArrayOutput { return v.Tags }).(MlflowModelTagArrayOutput)
 }
 
-func (o MlflowModelOutput) UserId() pulumi.StringOutput {
-	return o.ApplyT(func(v *MlflowModel) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+func (o MlflowModelOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MlflowModel) pulumi.StringPtrOutput { return v.UserId }).(pulumi.StringPtrOutput)
 }
 
 type MlflowModelArrayOutput struct{ *pulumi.OutputState }

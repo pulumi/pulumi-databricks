@@ -36,6 +36,7 @@ export class Grants extends pulumi.CustomResource {
 
     public readonly catalog!: pulumi.Output<string | undefined>;
     public readonly externalLocation!: pulumi.Output<string | undefined>;
+    public readonly foreignConnection!: pulumi.Output<string | undefined>;
     public readonly function!: pulumi.Output<string | undefined>;
     public readonly grants!: pulumi.Output<outputs.GrantsGrant[]>;
     public readonly materializedView!: pulumi.Output<string | undefined>;
@@ -62,6 +63,7 @@ export class Grants extends pulumi.CustomResource {
             const state = argsOrState as GrantsState | undefined;
             resourceInputs["catalog"] = state ? state.catalog : undefined;
             resourceInputs["externalLocation"] = state ? state.externalLocation : undefined;
+            resourceInputs["foreignConnection"] = state ? state.foreignConnection : undefined;
             resourceInputs["function"] = state ? state.function : undefined;
             resourceInputs["grants"] = state ? state.grants : undefined;
             resourceInputs["materializedView"] = state ? state.materializedView : undefined;
@@ -79,6 +81,7 @@ export class Grants extends pulumi.CustomResource {
             }
             resourceInputs["catalog"] = args ? args.catalog : undefined;
             resourceInputs["externalLocation"] = args ? args.externalLocation : undefined;
+            resourceInputs["foreignConnection"] = args ? args.foreignConnection : undefined;
             resourceInputs["function"] = args ? args.function : undefined;
             resourceInputs["grants"] = args ? args.grants : undefined;
             resourceInputs["materializedView"] = args ? args.materializedView : undefined;
@@ -101,6 +104,7 @@ export class Grants extends pulumi.CustomResource {
 export interface GrantsState {
     catalog?: pulumi.Input<string>;
     externalLocation?: pulumi.Input<string>;
+    foreignConnection?: pulumi.Input<string>;
     function?: pulumi.Input<string>;
     grants?: pulumi.Input<pulumi.Input<inputs.GrantsGrant>[]>;
     materializedView?: pulumi.Input<string>;
@@ -119,6 +123,7 @@ export interface GrantsState {
 export interface GrantsArgs {
     catalog?: pulumi.Input<string>;
     externalLocation?: pulumi.Input<string>;
+    foreignConnection?: pulumi.Input<string>;
     function?: pulumi.Input<string>;
     grants: pulumi.Input<pulumi.Input<inputs.GrantsGrant>[]>;
     materializedView?: pulumi.Input<string>;

@@ -12,9 +12,258 @@ namespace Pulumi.Databricks
     /// <summary>
     /// This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
     /// 
-    /// &gt; **Note** Currently, we only support managing access rules on service principal resources through `databricks.AccessControlRuleSet`.
+    /// &gt; **Note** Currently, we only support managing access rules on service principal, group and account resources through `databricks.AccessControlRuleSet`.
     /// 
     /// &gt; **Warning** `databricks.AccessControlRuleSet` cannot be used to manage access rules for resources supported by databricks_permissions. Refer to its documentation for more information.
+    /// 
+    /// ## Service principal rule set usage
+    /// 
+    /// Through a Databricks workspace:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var accountId = "00000000-0000-0000-0000-000000000000";
+    /// 
+    ///     var ds = Databricks.GetGroup.Invoke(new()
+    ///     {
+    ///         DisplayName = "Data Science",
+    ///     });
+    /// 
+    ///     var automationSp = new Databricks.ServicePrincipal("automationSp", new()
+    ///     {
+    ///         DisplayName = "SP_FOR_AUTOMATION",
+    ///     });
+    /// 
+    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automationSpRuleSet", new()
+    ///     {
+    ///         GrantRules = new[]
+    ///         {
+    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
+    ///             {
+    ///                 Principals = new[]
+    ///                 {
+    ///                     ds.Apply(getGroupResult =&gt; getGroupResult.AclPrincipalId),
+    ///                 },
+    ///                 Role = "roles/servicePrincipal.user",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Through AWS Databricks account:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var accountId = "00000000-0000-0000-0000-000000000000";
+    /// 
+    ///     // account level group creation
+    ///     var ds = new Databricks.Group("ds");
+    /// 
+    ///     var automationSp = new Databricks.ServicePrincipal("automationSp", new()
+    ///     {
+    ///         DisplayName = "SP_FOR_AUTOMATION",
+    ///     });
+    /// 
+    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automationSpRuleSet", new()
+    ///     {
+    ///         GrantRules = new[]
+    ///         {
+    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
+    ///             {
+    ///                 Principals = new[]
+    ///                 {
+    ///                     ds.AclPrincipalId,
+    ///                 },
+    ///                 Role = "roles/servicePrincipal.user",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Through Azure Databricks account:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var accountId = "00000000-0000-0000-0000-000000000000";
+    /// 
+    ///     // account level group creation
+    ///     var ds = new Databricks.Group("ds");
+    /// 
+    ///     var automationSp = new Databricks.ServicePrincipal("automationSp", new()
+    ///     {
+    ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
+    ///         DisplayName = "SP_FOR_AUTOMATION",
+    ///     });
+    /// 
+    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automationSpRuleSet", new()
+    ///     {
+    ///         GrantRules = new[]
+    ///         {
+    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
+    ///             {
+    ///                 Principals = new[]
+    ///                 {
+    ///                     ds.AclPrincipalId,
+    ///                 },
+    ///                 Role = "roles/servicePrincipal.user",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Through GCP Databricks account:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var accountId = "00000000-0000-0000-0000-000000000000";
+    /// 
+    ///     // account level group creation
+    ///     var ds = new Databricks.Group("ds");
+    /// 
+    ///     var automationSp = new Databricks.ServicePrincipal("automationSp", new()
+    ///     {
+    ///         DisplayName = "SP_FOR_AUTOMATION",
+    ///     });
+    /// 
+    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automationSpRuleSet", new()
+    ///     {
+    ///         GrantRules = new[]
+    ///         {
+    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
+    ///             {
+    ///                 Principals = new[]
+    ///                 {
+    ///                     ds.AclPrincipalId,
+    ///                 },
+    ///                 Role = "roles/servicePrincipal.user",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Group rule set usage
+    /// 
+    /// Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var accountId = "00000000-0000-0000-0000-000000000000";
+    /// 
+    ///     var ds = Databricks.GetGroup.Invoke(new()
+    ///     {
+    ///         DisplayName = "Data Science",
+    ///     });
+    /// 
+    ///     var john = Databricks.GetUser.Invoke(new()
+    ///     {
+    ///         UserName = "john.doe@example.com",
+    ///     });
+    /// 
+    ///     var dsGroupRuleSet = new Databricks.AccessControlRuleSet("dsGroupRuleSet", new()
+    ///     {
+    ///         GrantRules = new[]
+    ///         {
+    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
+    ///             {
+    ///                 Principals = new[]
+    ///                 {
+    ///                     john.Apply(getUserResult =&gt; getUserResult.AclPrincipalId),
+    ///                 },
+    ///                 Role = "roles/group.manager",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Account rule set usage
+    /// 
+    /// Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var accountId = "00000000-0000-0000-0000-000000000000";
+    /// 
+    ///     var ds = Databricks.GetGroup.Invoke(new()
+    ///     {
+    ///         DisplayName = "Data Science",
+    ///     });
+    /// 
+    ///     var john = Databricks.GetUser.Invoke(new()
+    ///     {
+    ///         UserName = "john.doe@example.com",
+    ///     });
+    /// 
+    ///     var accountRuleSet = new Databricks.AccessControlRuleSet("accountRuleSet", new()
+    ///     {
+    ///         GrantRules = new[]
+    ///         {
+    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
+    ///             {
+    ///                 Principals = new[]
+    ///                 {
+    ///                     john.Apply(getUserResult =&gt; getUserResult.AclPrincipalId),
+    ///                 },
+    ///                 Role = "roles/group.manager",
+    ///             },
+    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
+    ///             {
+    ///                 Principals = new[]
+    ///                 {
+    ///                     data.Databricks_user.Ds.Acl_principal_id,
+    ///                 },
+    ///                 Role = "roles/servicePrincipal.manager",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Related Resources
     /// 
@@ -41,6 +290,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
         /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+        /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+        /// * `accounts/{account_id}/ruleSets/default`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -108,6 +359,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
         /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+        /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+        /// * `accounts/{account_id}/ruleSets/default`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -140,6 +393,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
         /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+        /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+        /// * `accounts/{account_id}/ruleSets/default`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

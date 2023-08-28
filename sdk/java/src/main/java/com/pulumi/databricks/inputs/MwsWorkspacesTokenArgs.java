@@ -23,9 +23,17 @@ public final class MwsWorkspacesTokenArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * Token expiry lifetime. By default its 2592000 (30 days).
+     * 
+     */
     @Import(name="lifetimeSeconds")
     private @Nullable Output<Integer> lifetimeSeconds;
 
+    /**
+     * @return Token expiry lifetime. By default its 2592000 (30 days).
+     * 
+     */
     public Optional<Output<Integer>> lifetimeSeconds() {
         return Optional.ofNullable(this.lifetimeSeconds);
     }
@@ -80,11 +88,23 @@ public final class MwsWorkspacesTokenArgs extends com.pulumi.resources.ResourceA
             return comment(Output.of(comment));
         }
 
+        /**
+         * @param lifetimeSeconds Token expiry lifetime. By default its 2592000 (30 days).
+         * 
+         * @return builder
+         * 
+         */
         public Builder lifetimeSeconds(@Nullable Output<Integer> lifetimeSeconds) {
             $.lifetimeSeconds = lifetimeSeconds;
             return this;
         }
 
+        /**
+         * @param lifetimeSeconds Token expiry lifetime. By default its 2592000 (30 days).
+         * 
+         * @return builder
+         * 
+         */
         public Builder lifetimeSeconds(Integer lifetimeSeconds) {
             return lifetimeSeconds(Output.of(lifetimeSeconds));
         }

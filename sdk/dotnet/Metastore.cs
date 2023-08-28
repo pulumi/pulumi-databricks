@@ -10,9 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; **Notes**
-    ///   Unity Catalog APIs are accessible via **workspace-level APIs**. This design may change in the future.
-    /// 
     /// A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
     /// 
     /// Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
@@ -67,6 +64,9 @@ namespace Pulumi.Databricks
         [Output("globalMetastoreId")]
         public Output<string> GlobalMetastoreId { get; private set; } = null!;
 
+        [Output("metastoreId")]
+        public Output<string> MetastoreId { get; private set; } = null!;
+
         /// <summary>
         /// Name of metastore.
         /// </summary>
@@ -79,6 +79,9 @@ namespace Pulumi.Databricks
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
+        /// <summary>
+        /// The region of the metastore
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -87,6 +90,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("storageRoot")]
         public Output<string> StorageRoot { get; private set; } = null!;
+
+        [Output("storageRootCredentialId")]
+        public Output<string?> StorageRootCredentialId { get; private set; } = null!;
 
         [Output("updatedAt")]
         public Output<int> UpdatedAt { get; private set; } = null!;
@@ -179,6 +185,9 @@ namespace Pulumi.Databricks
         [Input("globalMetastoreId")]
         public Input<string>? GlobalMetastoreId { get; set; }
 
+        [Input("metastoreId")]
+        public Input<string>? MetastoreId { get; set; }
+
         /// <summary>
         /// Name of metastore.
         /// </summary>
@@ -191,6 +200,9 @@ namespace Pulumi.Databricks
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// The region of the metastore
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -199,6 +211,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("storageRoot", required: true)]
         public Input<string> StorageRoot { get; set; } = null!;
+
+        [Input("storageRootCredentialId")]
+        public Input<string>? StorageRootCredentialId { get; set; }
 
         [Input("updatedAt")]
         public Input<int>? UpdatedAt { get; set; }
@@ -253,6 +268,9 @@ namespace Pulumi.Databricks
         [Input("globalMetastoreId")]
         public Input<string>? GlobalMetastoreId { get; set; }
 
+        [Input("metastoreId")]
+        public Input<string>? MetastoreId { get; set; }
+
         /// <summary>
         /// Name of metastore.
         /// </summary>
@@ -265,6 +283,9 @@ namespace Pulumi.Databricks
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// The region of the metastore
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -273,6 +294,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
+
+        [Input("storageRootCredentialId")]
+        public Input<string>? StorageRootCredentialId { get; set; }
 
         [Input("updatedAt")]
         public Input<int>? UpdatedAt { get; set; }

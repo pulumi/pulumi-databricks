@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -47,24 +49,36 @@ export class ExternalLocation extends pulumi.CustomResource {
     }
 
     /**
+     * The ARN of the s3 access point to use with the external location (AWS).
+     */
+    public readonly accessPoint!: pulumi.Output<string | undefined>;
+    /**
      * User-supplied free-form text.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * Name of the databricks.StorageCredential to use with this External Location.
+     * Name of the databricks.StorageCredential to use with this external location.
      */
     public readonly credentialName!: pulumi.Output<string>;
+    /**
+     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     */
+    public readonly encryptionDetails!: pulumi.Output<outputs.ExternalLocationEncryptionDetails | undefined>;
     /**
      * Destroy external location regardless of its dependents.
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    /**
+     * Update external location regardless of its dependents.
+     */
+    public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
     public readonly metastoreId!: pulumi.Output<string>;
     /**
      * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Username/groupname/sp applicationId of the external Location owner.
+     * Username/groupname/sp applicationId of the external location owner.
      */
     public readonly owner!: pulumi.Output<string>;
     /**
@@ -93,9 +107,12 @@ export class ExternalLocation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExternalLocationState | undefined;
+            resourceInputs["accessPoint"] = state ? state.accessPoint : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
             resourceInputs["credentialName"] = state ? state.credentialName : undefined;
+            resourceInputs["encryptionDetails"] = state ? state.encryptionDetails : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
@@ -110,9 +127,12 @@ export class ExternalLocation extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
+            resourceInputs["accessPoint"] = args ? args.accessPoint : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["credentialName"] = args ? args.credentialName : undefined;
+            resourceInputs["encryptionDetails"] = args ? args.encryptionDetails : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
@@ -130,24 +150,36 @@ export class ExternalLocation extends pulumi.CustomResource {
  */
 export interface ExternalLocationState {
     /**
+     * The ARN of the s3 access point to use with the external location (AWS).
+     */
+    accessPoint?: pulumi.Input<string>;
+    /**
      * User-supplied free-form text.
      */
     comment?: pulumi.Input<string>;
     /**
-     * Name of the databricks.StorageCredential to use with this External Location.
+     * Name of the databricks.StorageCredential to use with this external location.
      */
     credentialName?: pulumi.Input<string>;
+    /**
+     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     */
+    encryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetails>;
     /**
      * Destroy external location regardless of its dependents.
      */
     forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * Update external location regardless of its dependents.
+     */
+    forceUpdate?: pulumi.Input<boolean>;
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname/sp applicationId of the external Location owner.
+     * Username/groupname/sp applicationId of the external location owner.
      */
     owner?: pulumi.Input<string>;
     /**
@@ -169,24 +201,36 @@ export interface ExternalLocationState {
  */
 export interface ExternalLocationArgs {
     /**
+     * The ARN of the s3 access point to use with the external location (AWS).
+     */
+    accessPoint?: pulumi.Input<string>;
+    /**
      * User-supplied free-form text.
      */
     comment?: pulumi.Input<string>;
     /**
-     * Name of the databricks.StorageCredential to use with this External Location.
+     * Name of the databricks.StorageCredential to use with this external location.
      */
     credentialName: pulumi.Input<string>;
+    /**
+     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     */
+    encryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetails>;
     /**
      * Destroy external location regardless of its dependents.
      */
     forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * Update external location regardless of its dependents.
+     */
+    forceUpdate?: pulumi.Input<boolean>;
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Username/groupname/sp applicationId of the external Location owner.
+     * Username/groupname/sp applicationId of the external location owner.
      */
     owner?: pulumi.Input<string>;
     /**

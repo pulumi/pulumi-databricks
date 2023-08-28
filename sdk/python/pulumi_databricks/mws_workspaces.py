@@ -55,6 +55,7 @@ class MwsWorkspacesArgs:
         :param pulumi.Input[str] network_id: `network_id` from networks.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration.
+        :param pulumi.Input[str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         :param pulumi.Input[int] workspace_id: (String) workspace id
         :param pulumi.Input[str] workspace_status: (String) workspace status
         :param pulumi.Input[str] workspace_status_message: (String) updates on workspace status
@@ -325,6 +326,9 @@ class MwsWorkspacesArgs:
     @property
     @pulumi.getter(name="storageCustomerManagedKeyId")
     def storage_customer_managed_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
+        """
         return pulumi.get(self, "storage_customer_managed_key_id")
 
     @storage_customer_managed_key_id.setter
@@ -430,6 +434,7 @@ class _MwsWorkspacesState:
         :param pulumi.Input[str] network_id: `network_id` from networks.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration.
+        :param pulumi.Input[str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         :param pulumi.Input[int] workspace_id: (String) workspace id
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI.
         :param pulumi.Input[str] workspace_status: (String) workspace status
@@ -691,6 +696,9 @@ class _MwsWorkspacesState:
     @property
     @pulumi.getter(name="storageCustomerManagedKeyId")
     def storage_customer_managed_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
+        """
         return pulumi.get(self, "storage_customer_managed_key_id")
 
     @storage_customer_managed_key_id.setter
@@ -816,6 +824,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[str] network_id: `network_id` from networks.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration.
+        :param pulumi.Input[str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         :param pulumi.Input[int] workspace_id: (String) workspace id
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI.
         :param pulumi.Input[str] workspace_status: (String) workspace status
@@ -969,6 +978,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[str] network_id: `network_id` from networks.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration.
+        :param pulumi.Input[str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         :param pulumi.Input[int] workspace_id: (String) workspace id
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI.
         :param pulumi.Input[str] workspace_status: (String) workspace status
@@ -1135,6 +1145,9 @@ class MwsWorkspaces(pulumi.CustomResource):
     @property
     @pulumi.getter(name="storageCustomerManagedKeyId")
     def storage_customer_managed_key_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
+        """
         return pulumi.get(self, "storage_customer_managed_key_id")
 
     @property

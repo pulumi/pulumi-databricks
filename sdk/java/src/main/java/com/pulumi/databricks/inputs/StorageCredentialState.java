@@ -56,6 +56,13 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.databricksGcpServiceAccount);
     }
 
+    @Import(name="forceDestroy")
+    private @Nullable Output<Boolean> forceDestroy;
+
+    public Optional<Output<Boolean>> forceDestroy() {
+        return Optional.ofNullable(this.forceDestroy);
+    }
+
     @Import(name="gcpServiceAccountKey")
     private @Nullable Output<StorageCredentialGcpServiceAccountKeyArgs> gcpServiceAccountKey;
 
@@ -127,6 +134,7 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         this.azureServicePrincipal = $.azureServicePrincipal;
         this.comment = $.comment;
         this.databricksGcpServiceAccount = $.databricksGcpServiceAccount;
+        this.forceDestroy = $.forceDestroy;
         this.gcpServiceAccountKey = $.gcpServiceAccountKey;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
@@ -195,6 +203,15 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
         public Builder databricksGcpServiceAccount(StorageCredentialDatabricksGcpServiceAccountArgs databricksGcpServiceAccount) {
             return databricksGcpServiceAccount(Output.of(databricksGcpServiceAccount));
+        }
+
+        public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
+            $.forceDestroy = forceDestroy;
+            return this;
+        }
+
+        public Builder forceDestroy(Boolean forceDestroy) {
+            return forceDestroy(Output.of(forceDestroy));
         }
 
         public Builder gcpServiceAccountKey(@Nullable Output<StorageCredentialGcpServiceAccountKeyArgs> gcpServiceAccountKey) {

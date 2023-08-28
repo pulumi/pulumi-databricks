@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.ExternalLocationArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ExternalLocationState;
+import com.pulumi.databricks.outputs.ExternalLocationEncryptionDetails;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -33,6 +34,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/externalLocation:ExternalLocation")
 public class ExternalLocation extends com.pulumi.resources.CustomResource {
     /**
+     * The ARN of the s3 access point to use with the external location (AWS).
+     * 
+     */
+    @Export(name="accessPoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> accessPoint;
+
+    /**
+     * @return The ARN of the s3 access point to use with the external location (AWS).
+     * 
+     */
+    public Output<Optional<String>> accessPoint() {
+        return Codegen.optional(this.accessPoint);
+    }
+    /**
      * User-supplied free-form text.
      * 
      */
@@ -47,18 +62,32 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.comment);
     }
     /**
-     * Name of the databricks.StorageCredential to use with this External Location.
+     * Name of the databricks.StorageCredential to use with this external location.
      * 
      */
     @Export(name="credentialName", type=String.class, parameters={})
     private Output<String> credentialName;
 
     /**
-     * @return Name of the databricks.StorageCredential to use with this External Location.
+     * @return Name of the databricks.StorageCredential to use with this external location.
      * 
      */
     public Output<String> credentialName() {
         return this.credentialName;
+    }
+    /**
+     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     * 
+     */
+    @Export(name="encryptionDetails", type=ExternalLocationEncryptionDetails.class, parameters={})
+    private Output</* @Nullable */ ExternalLocationEncryptionDetails> encryptionDetails;
+
+    /**
+     * @return The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     * 
+     */
+    public Output<Optional<ExternalLocationEncryptionDetails>> encryptionDetails() {
+        return Codegen.optional(this.encryptionDetails);
     }
     /**
      * Destroy external location regardless of its dependents.
@@ -73,6 +102,20 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
+    }
+    /**
+     * Update external location regardless of its dependents.
+     * 
+     */
+    @Export(name="forceUpdate", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> forceUpdate;
+
+    /**
+     * @return Update external location regardless of its dependents.
+     * 
+     */
+    public Output<Optional<Boolean>> forceUpdate() {
+        return Codegen.optional(this.forceUpdate);
     }
     @Export(name="metastoreId", type=String.class, parameters={})
     private Output<String> metastoreId;
@@ -95,14 +138,14 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Username/groupname/sp application_id of the external Location owner.
+     * Username/groupname/sp application_id of the external location owner.
      * 
      */
     @Export(name="owner", type=String.class, parameters={})
     private Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the external Location owner.
+     * @return Username/groupname/sp application_id of the external location owner.
      * 
      */
     public Output<String> owner() {

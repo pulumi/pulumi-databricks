@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -12,11 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsRunJobTask {
-    private String jobId;
+    private Integer jobId;
     private @Nullable Map<String,Object> jobParameters;
 
     private GetJobJobSettingsSettingsRunJobTask() {}
-    public String jobId() {
+    public Integer jobId() {
         return this.jobId;
     }
     public Map<String,Object> jobParameters() {
@@ -32,7 +33,7 @@ public final class GetJobJobSettingsSettingsRunJobTask {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String jobId;
+        private Integer jobId;
         private @Nullable Map<String,Object> jobParameters;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsRunJobTask defaults) {
@@ -42,7 +43,7 @@ public final class GetJobJobSettingsSettingsRunJobTask {
         }
 
         @CustomType.Setter
-        public Builder jobId(String jobId) {
+        public Builder jobId(Integer jobId) {
             this.jobId = Objects.requireNonNull(jobId);
             return this;
         }

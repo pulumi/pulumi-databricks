@@ -33,6 +33,12 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/sqlAlert:SqlAlert")
 public class SqlAlert extends com.pulumi.resources.CustomResource {
+    @Export(name="createdAt", type=String.class, parameters={})
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
     /**
      * Name of the alert.
      * 
@@ -102,6 +108,12 @@ public class SqlAlert extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> rearm() {
         return Codegen.optional(this.rearm);
+    }
+    @Export(name="updatedAt", type=String.class, parameters={})
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
 
     /**

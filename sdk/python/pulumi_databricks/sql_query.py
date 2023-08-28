@@ -18,18 +18,22 @@ class SqlQueryArgs:
     def __init__(__self__, *,
                  data_source_id: pulumi.Input[str],
                  query: pulumi.Input[str],
+                 created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlQueryParameterArgs']]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  run_as_role: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SqlQuery resource.
         """
         pulumi.set(__self__, "data_source_id", data_source_id)
         pulumi.set(__self__, "query", query)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -47,6 +51,8 @@ class SqlQueryArgs:
             pulumi.set(__self__, "schedule", schedule)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter(name="dataSourceId")
@@ -65,6 +71,15 @@ class SqlQueryArgs:
     @query.setter
     def query(self, value: pulumi.Input[str]):
         pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
 
     @property
     @pulumi.getter
@@ -132,10 +147,20 @@ class SqlQueryArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
 
 @pulumi.input_type
 class _SqlQueryState:
     def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -144,10 +169,13 @@ class _SqlQueryState:
                  query: Optional[pulumi.Input[str]] = None,
                  run_as_role: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SqlQuery resources.
         """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if data_source_id is not None:
             pulumi.set(__self__, "data_source_id", data_source_id)
         if description is not None:
@@ -169,6 +197,17 @@ class _SqlQueryState:
             pulumi.set(__self__, "schedule", schedule)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
 
     @property
     @pulumi.getter(name="dataSourceId")
@@ -254,12 +293,22 @@ class _SqlQueryState:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_at", value)
+
 
 class SqlQuery(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -269,6 +318,7 @@ class SqlQuery(pulumi.CustomResource):
                  run_as_role: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['SqlQueryScheduleArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
@@ -506,6 +556,7 @@ class SqlQuery(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 created_at: Optional[pulumi.Input[str]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -515,6 +566,7 @@ class SqlQuery(pulumi.CustomResource):
                  run_as_role: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['SqlQueryScheduleArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -524,6 +576,7 @@ class SqlQuery(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SqlQueryArgs.__new__(SqlQueryArgs)
 
+            __props__.__dict__["created_at"] = created_at
             if data_source_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_source_id'")
             __props__.__dict__["data_source_id"] = data_source_id
@@ -540,6 +593,7 @@ class SqlQuery(pulumi.CustomResource):
                 pulumi.log.warn("""schedule is deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.""")
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["updated_at"] = updated_at
         super(SqlQuery, __self__).__init__(
             'databricks:index/sqlQuery:SqlQuery',
             resource_name,
@@ -550,6 +604,7 @@ class SqlQuery(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: Optional[pulumi.Input[str]] = None,
             data_source_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -558,7 +613,8 @@ class SqlQuery(pulumi.CustomResource):
             query: Optional[pulumi.Input[str]] = None,
             run_as_role: Optional[pulumi.Input[str]] = None,
             schedule: Optional[pulumi.Input[pulumi.InputType['SqlQueryScheduleArgs']]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'SqlQuery':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            updated_at: Optional[pulumi.Input[str]] = None) -> 'SqlQuery':
         """
         Get an existing SqlQuery resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -571,6 +627,7 @@ class SqlQuery(pulumi.CustomResource):
 
         __props__ = _SqlQueryState.__new__(_SqlQueryState)
 
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["data_source_id"] = data_source_id
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
@@ -580,7 +637,13 @@ class SqlQuery(pulumi.CustomResource):
         __props__.__dict__["run_as_role"] = run_as_role
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["updated_at"] = updated_at
         return SqlQuery(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="dataSourceId")
@@ -629,4 +692,9 @@ class SqlQuery(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "updated_at")
 

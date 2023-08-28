@@ -21,7 +21,10 @@ class GetServicePrincipalResult:
     """
     A collection of values returned by getServicePrincipal.
     """
-    def __init__(__self__, active=None, application_id=None, display_name=None, external_id=None, home=None, id=None, repos=None, sp_id=None):
+    def __init__(__self__, acl_principal_id=None, active=None, application_id=None, display_name=None, external_id=None, home=None, id=None, repos=None, sp_id=None):
+        if acl_principal_id and not isinstance(acl_principal_id, str):
+            raise TypeError("Expected argument 'acl_principal_id' to be a str")
+        pulumi.set(__self__, "acl_principal_id", acl_principal_id)
         if active and not isinstance(active, bool):
             raise TypeError("Expected argument 'active' to be a bool")
         pulumi.set(__self__, "active", active)
@@ -46,6 +49,14 @@ class GetServicePrincipalResult:
         if sp_id and not isinstance(sp_id, str):
             raise TypeError("Expected argument 'sp_id' to be a str")
         pulumi.set(__self__, "sp_id", sp_id)
+
+    @property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> str:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        """
+        return pulumi.get(self, "acl_principal_id")
 
     @property
     @pulumi.getter
@@ -112,6 +123,7 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
         if False:
             yield self
         return GetServicePrincipalResult(
+            acl_principal_id=self.acl_principal_id,
             active=self.active,
             application_id=self.application_id,
             display_name=self.display_name,
@@ -122,7 +134,8 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
             sp_id=self.sp_id)
 
 
-def get_service_principal(active: Optional[bool] = None,
+def get_service_principal(acl_principal_id: Optional[str] = None,
+                          active: Optional[bool] = None,
                           application_id: Optional[str] = None,
                           display_name: Optional[str] = None,
                           external_id: Optional[str] = None,
@@ -164,6 +177,7 @@ def get_service_principal(active: Optional[bool] = None,
     - databricks_service principal to manage service principals
 
 
+    :param str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
     :param bool active: Whether service principal is active or not.
     :param str application_id: ID of the service principal. The service principal must exist before this resource can be retrieved.
     :param str display_name: Display name of the service principal, e.g. `Foo SPN`.
@@ -173,6 +187,7 @@ def get_service_principal(active: Optional[bool] = None,
     :param str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
     """
     __args__ = dict()
+    __args__['aclPrincipalId'] = acl_principal_id
     __args__['active'] = active
     __args__['applicationId'] = application_id
     __args__['displayName'] = display_name
@@ -185,6 +200,7 @@ def get_service_principal(active: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts, typ=GetServicePrincipalResult).value
 
     return AwaitableGetServicePrincipalResult(
+        acl_principal_id=pulumi.get(__ret__, 'acl_principal_id'),
         active=pulumi.get(__ret__, 'active'),
         application_id=pulumi.get(__ret__, 'application_id'),
         display_name=pulumi.get(__ret__, 'display_name'),
@@ -196,7 +212,8 @@ def get_service_principal(active: Optional[bool] = None,
 
 
 @_utilities.lift_output_func(get_service_principal)
-def get_service_principal_output(active: Optional[pulumi.Input[Optional[bool]]] = None,
+def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 active: Optional[pulumi.Input[Optional[bool]]] = None,
                                  application_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                  external_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -238,6 +255,7 @@ def get_service_principal_output(active: Optional[pulumi.Input[Optional[bool]]] 
     - databricks_service principal to manage service principals
 
 
+    :param str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
     :param bool active: Whether service principal is active or not.
     :param str application_id: ID of the service principal. The service principal must exist before this resource can be retrieved.
     :param str display_name: Display name of the service principal, e.g. `Foo SPN`.

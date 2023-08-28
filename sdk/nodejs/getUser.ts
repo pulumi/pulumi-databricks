@@ -71,6 +71,10 @@ export interface GetUserArgs {
  */
 export interface GetUserResult {
     /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     */
+    readonly aclPrincipalId: string;
+    /**
      * Alphanumeric representation of user local name. e.g. `mrFoo`.
      */
     readonly alphanumeric: string;

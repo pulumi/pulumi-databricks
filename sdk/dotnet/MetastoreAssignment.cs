@@ -26,6 +26,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         StorageRoot = $"s3://{aws_s3_bucket.Metastore.Id}/metastore",
     ///         Owner = "uc admins",
+    ///         Region = "us-east-1",
     ///         ForceDestroy = true,
     ///     });
     /// 

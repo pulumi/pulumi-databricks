@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Inputs
         /// (String) ID of the job
         /// </summary>
         [Input("jobId", required: true)]
-        public Input<string> JobId { get; set; } = null!;
+        public Input<int> JobId { get; set; } = null!;
 
         [Input("jobParameters")]
         private InputMap<object>? _jobParameters;

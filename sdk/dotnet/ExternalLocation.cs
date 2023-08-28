@@ -27,22 +27,40 @@ namespace Pulumi.Databricks
     public partial class ExternalLocation : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The ARN of the s3 access point to use with the external location (AWS).
+        /// </summary>
+        [Output("accessPoint")]
+        public Output<string?> AccessPoint { get; private set; } = null!;
+
+        /// <summary>
         /// User-supplied free-form text.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the databricks.StorageCredential to use with this External Location.
+        /// Name of the databricks.StorageCredential to use with this external location.
         /// </summary>
         [Output("credentialName")]
         public Output<string> CredentialName { get; private set; } = null!;
+
+        /// <summary>
+        /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        /// </summary>
+        [Output("encryptionDetails")]
+        public Output<Outputs.ExternalLocationEncryptionDetails?> EncryptionDetails { get; private set; } = null!;
 
         /// <summary>
         /// Destroy external location regardless of its dependents.
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
+
+        /// <summary>
+        /// Update external location regardless of its dependents.
+        /// </summary>
+        [Output("forceUpdate")]
+        public Output<bool?> ForceUpdate { get; private set; } = null!;
 
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
@@ -54,7 +72,7 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Username/groupname/sp application_id of the external Location owner.
+        /// Username/groupname/sp application_id of the external location owner.
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
@@ -124,22 +142,40 @@ namespace Pulumi.Databricks
     public sealed class ExternalLocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The ARN of the s3 access point to use with the external location (AWS).
+        /// </summary>
+        [Input("accessPoint")]
+        public Input<string>? AccessPoint { get; set; }
+
+        /// <summary>
         /// User-supplied free-form text.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Name of the databricks.StorageCredential to use with this External Location.
+        /// Name of the databricks.StorageCredential to use with this external location.
         /// </summary>
         [Input("credentialName", required: true)]
         public Input<string> CredentialName { get; set; } = null!;
+
+        /// <summary>
+        /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        /// </summary>
+        [Input("encryptionDetails")]
+        public Input<Inputs.ExternalLocationEncryptionDetailsArgs>? EncryptionDetails { get; set; }
 
         /// <summary>
         /// Destroy external location regardless of its dependents.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
+
+        /// <summary>
+        /// Update external location regardless of its dependents.
+        /// </summary>
+        [Input("forceUpdate")]
+        public Input<bool>? ForceUpdate { get; set; }
 
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
@@ -151,7 +187,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the external Location owner.
+        /// Username/groupname/sp application_id of the external location owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -183,22 +219,40 @@ namespace Pulumi.Databricks
     public sealed class ExternalLocationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The ARN of the s3 access point to use with the external location (AWS).
+        /// </summary>
+        [Input("accessPoint")]
+        public Input<string>? AccessPoint { get; set; }
+
+        /// <summary>
         /// User-supplied free-form text.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Name of the databricks.StorageCredential to use with this External Location.
+        /// Name of the databricks.StorageCredential to use with this external location.
         /// </summary>
         [Input("credentialName")]
         public Input<string>? CredentialName { get; set; }
+
+        /// <summary>
+        /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        /// </summary>
+        [Input("encryptionDetails")]
+        public Input<Inputs.ExternalLocationEncryptionDetailsGetArgs>? EncryptionDetails { get; set; }
 
         /// <summary>
         /// Destroy external location regardless of its dependents.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
+
+        /// <summary>
+        /// Update external location regardless of its dependents.
+        /// </summary>
+        [Input("forceUpdate")]
+        public Input<bool>? ForceUpdate { get; set; }
 
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
@@ -210,7 +264,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the external Location owner.
+        /// Username/groupname/sp application_id of the external location owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }

@@ -34,6 +34,21 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+     * 
+     */
+    @Import(name="connectionName")
+    private @Nullable Output<String> connectionName;
+
+    /**
+     * @return For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+     * 
+     */
+    public Optional<Output<String>> connectionName() {
+        return Optional.ofNullable(this.connectionName);
+    }
+
+    /**
      * Delete catalog regardless of its contents.
      * 
      */
@@ -164,6 +179,7 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
 
     private CatalogArgs(CatalogArgs $) {
         this.comment = $.comment;
+        this.connectionName = $.connectionName;
         this.forceDestroy = $.forceDestroy;
         this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
@@ -212,6 +228,27 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
+        }
+
+        /**
+         * @param connectionName For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionName(@Nullable Output<String> connectionName) {
+            $.connectionName = connectionName;
+            return this;
+        }
+
+        /**
+         * @param connectionName For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionName(String connectionName) {
+            return connectionName(Output.of(connectionName));
         }
 
         /**

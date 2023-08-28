@@ -67,6 +67,20 @@ public class Share extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ShareObject>>> objects() {
         return Codegen.optional(this.objects);
     }
+    /**
+     * User name/group name/sp application_id of the share owner.
+     * 
+     */
+    @Export(name="owner", type=String.class, parameters={})
+    private Output</* @Nullable */ String> owner;
+
+    /**
+     * @return User name/group name/sp application_id of the share owner.
+     * 
+     */
+    public Output<Optional<String>> owner() {
+        return Codegen.optional(this.owner);
+    }
 
     /**
      *

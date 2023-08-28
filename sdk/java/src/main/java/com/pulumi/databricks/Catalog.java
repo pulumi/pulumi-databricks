@@ -83,6 +83,20 @@ public class Catalog extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.comment);
     }
     /**
+     * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+     * 
+     */
+    @Export(name="connectionName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> connectionName;
+
+    /**
+     * @return For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+     * 
+     */
+    public Output<Optional<String>> connectionName() {
+        return Codegen.optional(this.connectionName);
+    }
+    /**
      * Delete catalog regardless of its contents.
      * 
      */

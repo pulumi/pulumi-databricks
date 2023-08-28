@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetUserResult {
     /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     * 
+     */
+    private String aclPrincipalId;
+    /**
      * @return Alphanumeric representation of user local name. e.g. `mr_foo`.
      * 
      */
@@ -50,6 +55,13 @@ public final class GetUserResult {
     private @Nullable String userName;
 
     private GetUserResult() {}
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+     * 
+     */
+    public String aclPrincipalId() {
+        return this.aclPrincipalId;
+    }
     /**
      * @return Alphanumeric representation of user local name. e.g. `mr_foo`.
      * 
@@ -115,6 +127,7 @@ public final class GetUserResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String aclPrincipalId;
         private String alphanumeric;
         private String applicationId;
         private String displayName;
@@ -127,6 +140,7 @@ public final class GetUserResult {
         public Builder() {}
         public Builder(GetUserResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aclPrincipalId = defaults.aclPrincipalId;
     	      this.alphanumeric = defaults.alphanumeric;
     	      this.applicationId = defaults.applicationId;
     	      this.displayName = defaults.displayName;
@@ -138,6 +152,11 @@ public final class GetUserResult {
     	      this.userName = defaults.userName;
         }
 
+        @CustomType.Setter
+        public Builder aclPrincipalId(String aclPrincipalId) {
+            this.aclPrincipalId = Objects.requireNonNull(aclPrincipalId);
+            return this;
+        }
         @CustomType.Setter
         public Builder alphanumeric(String alphanumeric) {
             this.alphanumeric = Objects.requireNonNull(alphanumeric);
@@ -185,6 +204,7 @@ public final class GetUserResult {
         }
         public GetUserResult build() {
             final var o = new GetUserResult();
+            o.aclPrincipalId = aclPrincipalId;
             o.alphanumeric = alphanumeric;
             o.applicationId = applicationId;
             o.displayName = displayName;

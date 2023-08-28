@@ -16,6 +16,21 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
     public static final GetServicePrincipalPlainArgs Empty = new GetServicePrincipalPlainArgs();
 
     /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    @Import(name="aclPrincipalId")
+    private @Nullable String aclPrincipalId;
+
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    public Optional<String> aclPrincipalId() {
+        return Optional.ofNullable(this.aclPrincipalId);
+    }
+
+    /**
      * Whether service principal is active or not.
      * 
      */
@@ -130,6 +145,7 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
     private GetServicePrincipalPlainArgs() {}
 
     private GetServicePrincipalPlainArgs(GetServicePrincipalPlainArgs $) {
+        this.aclPrincipalId = $.aclPrincipalId;
         this.active = $.active;
         this.applicationId = $.applicationId;
         this.displayName = $.displayName;
@@ -156,6 +172,17 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
 
         public Builder(GetServicePrincipalPlainArgs defaults) {
             $ = new GetServicePrincipalPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclPrincipalId(@Nullable String aclPrincipalId) {
+            $.aclPrincipalId = aclPrincipalId;
+            return this;
         }
 
         /**

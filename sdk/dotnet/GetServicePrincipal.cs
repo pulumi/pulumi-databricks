@@ -126,6 +126,12 @@ namespace Pulumi.Databricks
     public sealed class GetServicePrincipalArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        /// </summary>
+        [Input("aclPrincipalId")]
+        public string? AclPrincipalId { get; set; }
+
+        /// <summary>
         /// Whether service principal is active or not.
         /// </summary>
         [Input("active")]
@@ -178,6 +184,12 @@ namespace Pulumi.Databricks
 
     public sealed class GetServicePrincipalInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        /// </summary>
+        [Input("aclPrincipalId")]
+        public Input<string>? AclPrincipalId { get; set; }
+
         /// <summary>
         /// Whether service principal is active or not.
         /// </summary>
@@ -234,6 +246,10 @@ namespace Pulumi.Databricks
     public sealed class GetServicePrincipalResult
     {
         /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        /// </summary>
+        public readonly string AclPrincipalId;
+        /// <summary>
         /// Whether service principal is active or not.
         /// </summary>
         public readonly bool Active;
@@ -262,6 +278,8 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetServicePrincipalResult(
+            string aclPrincipalId,
+
             bool active,
 
             string applicationId,
@@ -278,6 +296,7 @@ namespace Pulumi.Databricks
 
             string spId)
         {
+            AclPrincipalId = aclPrincipalId;
             Active = active;
             ApplicationId = applicationId;
             DisplayName = displayName;

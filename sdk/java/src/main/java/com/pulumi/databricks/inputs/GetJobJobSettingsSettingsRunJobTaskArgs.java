@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -18,9 +19,9 @@ public final class GetJobJobSettingsSettingsRunJobTaskArgs extends com.pulumi.re
     public static final GetJobJobSettingsSettingsRunJobTaskArgs Empty = new GetJobJobSettingsSettingsRunJobTaskArgs();
 
     @Import(name="jobId", required=true)
-    private Output<String> jobId;
+    private Output<Integer> jobId;
 
-    public Output<String> jobId() {
+    public Output<Integer> jobId() {
         return this.jobId;
     }
 
@@ -56,12 +57,12 @@ public final class GetJobJobSettingsSettingsRunJobTaskArgs extends com.pulumi.re
             $ = new GetJobJobSettingsSettingsRunJobTaskArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder jobId(Output<String> jobId) {
+        public Builder jobId(Output<Integer> jobId) {
             $.jobId = jobId;
             return this;
         }
 
-        public Builder jobId(String jobId) {
+        public Builder jobId(Integer jobId) {
             return jobId(Output.of(jobId));
         }
 

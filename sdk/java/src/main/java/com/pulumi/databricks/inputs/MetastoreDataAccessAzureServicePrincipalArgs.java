@@ -31,16 +31,12 @@ public final class MetastoreDataAccessAzureServicePrincipalArgs extends com.pulu
     /**
      * The client secret generated for the above app ID in AAD. **This field is redacted on output**
      * 
-     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure:
-     * 
      */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
     /**
      * @return The client secret generated for the above app ID in AAD. **This field is redacted on output**
-     * 
-     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure:
      * 
      */
     public Output<String> clientSecret() {
@@ -112,8 +108,6 @@ public final class MetastoreDataAccessAzureServicePrincipalArgs extends com.pulu
         /**
          * @param clientSecret The client secret generated for the above app ID in AAD. **This field is redacted on output**
          * 
-         * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure:
-         * 
          * @return builder
          * 
          */
@@ -124,8 +118,6 @@ public final class MetastoreDataAccessAzureServicePrincipalArgs extends com.pulu
 
         /**
          * @param clientSecret The client secret generated for the above app ID in AAD. **This field is redacted on output**
-         * 
-         * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure:
          * 
          * @return builder
          * 

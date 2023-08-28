@@ -17,9 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Notes**
- *   Unity Catalog APIs are accessible via **workspace-level APIs**. This design may change in the future.
- * 
  * A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
  * 
  * Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
@@ -121,6 +118,12 @@ public class Metastore extends com.pulumi.resources.CustomResource {
     public Output<String> globalMetastoreId() {
         return this.globalMetastoreId;
     }
+    @Export(name="metastoreId", type=String.class, parameters={})
+    private Output<String> metastoreId;
+
+    public Output<String> metastoreId() {
+        return this.metastoreId;
+    }
     /**
      * Name of metastore.
      * 
@@ -149,9 +152,17 @@ public class Metastore extends com.pulumi.resources.CustomResource {
     public Output<String> owner() {
         return this.owner;
     }
+    /**
+     * The region of the metastore
+     * 
+     */
     @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
+    /**
+     * @return The region of the metastore
+     * 
+     */
     public Output<String> region() {
         return this.region;
     }
@@ -168,6 +179,12 @@ public class Metastore extends com.pulumi.resources.CustomResource {
      */
     public Output<String> storageRoot() {
         return this.storageRoot;
+    }
+    @Export(name="storageRootCredentialId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> storageRootCredentialId;
+
+    public Output<Optional<String>> storageRootCredentialId() {
+        return Codegen.optional(this.storageRootCredentialId);
     }
     @Export(name="updatedAt", type=Integer.class, parameters={})
     private Output<Integer> updatedAt;

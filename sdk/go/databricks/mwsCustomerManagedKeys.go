@@ -15,9 +15,11 @@ import (
 // ## Example Usage
 //
 // > **Note** If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+//
 // ### Customer-managed key for managed services
 //
-// # You must configure this during workspace creation
+// You must configure this during workspace creation
+// ### For AWS
 //
 // ```go
 // package main
@@ -114,7 +116,43 @@ import (
 // })
 // }
 // ```
+// ### For GCP
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			cmekResourceId := cfg.RequireObject("cmekResourceId")
+//			_, err := databricks.NewMwsCustomerManagedKeys(ctx, "managedServices", &databricks.MwsCustomerManagedKeysArgs{
+//				AccountId: pulumi.Any(databricksAccountId),
+//				GcpKeyInfo: &databricks.MwsCustomerManagedKeysGcpKeyInfoArgs{
+//					KmsKeyId: pulumi.Any(cmekResourceId),
+//				},
+//				UseCases: pulumi.StringArray{
+//					pulumi.String("MANAGED_SERVICES"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Customer-managed key for workspace storage
+// ### For AWS
 //
 // ```go
 // package main
@@ -269,6 +307,41 @@ import (
 // })
 // }
 // ```
+// ### For GCP
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			cmekResourceId := cfg.RequireObject("cmekResourceId")
+//			_, err := databricks.NewMwsCustomerManagedKeys(ctx, "storage", &databricks.MwsCustomerManagedKeysArgs{
+//				AccountId: pulumi.Any(databricksAccountId),
+//				GcpKeyInfo: &databricks.MwsCustomerManagedKeysGcpKeyInfoArgs{
+//					KmsKeyId: pulumi.Any(cmekResourceId),
+//				},
+//				UseCases: pulumi.StringArray{
+//					pulumi.String("STORAGE"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Related Resources
 //
 // The following resources are used in the same context:
@@ -288,13 +361,14 @@ type MwsCustomerManagedKeys struct {
 
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// This field is a block and is documented below.
+	// This field is a block and is documented below. This conflicts with `gcpKeyInfo`
 	AwsKeyInfo MwsCustomerManagedKeysAwsKeyInfoPtrOutput `pulumi:"awsKeyInfo"`
 	// (Integer) Time in epoch milliseconds when the customer key was created.
 	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
 	// (String) ID of the encryption key configuration object.
-	CustomerManagedKeyId pulumi.StringOutput                       `pulumi:"customerManagedKeyId"`
-	GcpKeyInfo           MwsCustomerManagedKeysGcpKeyInfoPtrOutput `pulumi:"gcpKeyInfo"`
+	CustomerManagedKeyId pulumi.StringOutput `pulumi:"customerManagedKeyId"`
+	// This field is a block and is documented below. This conflicts with `awsKeyInfo`
+	GcpKeyInfo MwsCustomerManagedKeysGcpKeyInfoPtrOutput `pulumi:"gcpKeyInfo"`
 	// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
 	UseCases pulumi.StringArrayOutput `pulumi:"useCases"`
 }
@@ -337,13 +411,14 @@ func GetMwsCustomerManagedKeys(ctx *pulumi.Context,
 type mwsCustomerManagedKeysState struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId *string `pulumi:"accountId"`
-	// This field is a block and is documented below.
+	// This field is a block and is documented below. This conflicts with `gcpKeyInfo`
 	AwsKeyInfo *MwsCustomerManagedKeysAwsKeyInfo `pulumi:"awsKeyInfo"`
 	// (Integer) Time in epoch milliseconds when the customer key was created.
 	CreationTime *int `pulumi:"creationTime"`
 	// (String) ID of the encryption key configuration object.
-	CustomerManagedKeyId *string                           `pulumi:"customerManagedKeyId"`
-	GcpKeyInfo           *MwsCustomerManagedKeysGcpKeyInfo `pulumi:"gcpKeyInfo"`
+	CustomerManagedKeyId *string `pulumi:"customerManagedKeyId"`
+	// This field is a block and is documented below. This conflicts with `awsKeyInfo`
+	GcpKeyInfo *MwsCustomerManagedKeysGcpKeyInfo `pulumi:"gcpKeyInfo"`
 	// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
 	UseCases []string `pulumi:"useCases"`
 }
@@ -351,13 +426,14 @@ type mwsCustomerManagedKeysState struct {
 type MwsCustomerManagedKeysState struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId pulumi.StringPtrInput
-	// This field is a block and is documented below.
+	// This field is a block and is documented below. This conflicts with `gcpKeyInfo`
 	AwsKeyInfo MwsCustomerManagedKeysAwsKeyInfoPtrInput
 	// (Integer) Time in epoch milliseconds when the customer key was created.
 	CreationTime pulumi.IntPtrInput
 	// (String) ID of the encryption key configuration object.
 	CustomerManagedKeyId pulumi.StringPtrInput
-	GcpKeyInfo           MwsCustomerManagedKeysGcpKeyInfoPtrInput
+	// This field is a block and is documented below. This conflicts with `awsKeyInfo`
+	GcpKeyInfo MwsCustomerManagedKeysGcpKeyInfoPtrInput
 	// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
 	UseCases pulumi.StringArrayInput
 }
@@ -369,13 +445,14 @@ func (MwsCustomerManagedKeysState) ElementType() reflect.Type {
 type mwsCustomerManagedKeysArgs struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId string `pulumi:"accountId"`
-	// This field is a block and is documented below.
+	// This field is a block and is documented below. This conflicts with `gcpKeyInfo`
 	AwsKeyInfo *MwsCustomerManagedKeysAwsKeyInfo `pulumi:"awsKeyInfo"`
 	// (Integer) Time in epoch milliseconds when the customer key was created.
 	CreationTime *int `pulumi:"creationTime"`
 	// (String) ID of the encryption key configuration object.
-	CustomerManagedKeyId *string                           `pulumi:"customerManagedKeyId"`
-	GcpKeyInfo           *MwsCustomerManagedKeysGcpKeyInfo `pulumi:"gcpKeyInfo"`
+	CustomerManagedKeyId *string `pulumi:"customerManagedKeyId"`
+	// This field is a block and is documented below. This conflicts with `awsKeyInfo`
+	GcpKeyInfo *MwsCustomerManagedKeysGcpKeyInfo `pulumi:"gcpKeyInfo"`
 	// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
 	UseCases []string `pulumi:"useCases"`
 }
@@ -384,13 +461,14 @@ type mwsCustomerManagedKeysArgs struct {
 type MwsCustomerManagedKeysArgs struct {
 	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId pulumi.StringInput
-	// This field is a block and is documented below.
+	// This field is a block and is documented below. This conflicts with `gcpKeyInfo`
 	AwsKeyInfo MwsCustomerManagedKeysAwsKeyInfoPtrInput
 	// (Integer) Time in epoch milliseconds when the customer key was created.
 	CreationTime pulumi.IntPtrInput
 	// (String) ID of the encryption key configuration object.
 	CustomerManagedKeyId pulumi.StringPtrInput
-	GcpKeyInfo           MwsCustomerManagedKeysGcpKeyInfoPtrInput
+	// This field is a block and is documented below. This conflicts with `awsKeyInfo`
+	GcpKeyInfo MwsCustomerManagedKeysGcpKeyInfoPtrInput
 	// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
 	UseCases pulumi.StringArrayInput
 }
@@ -487,7 +565,7 @@ func (o MwsCustomerManagedKeysOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsCustomerManagedKeys) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// This field is a block and is documented below.
+// This field is a block and is documented below. This conflicts with `gcpKeyInfo`
 func (o MwsCustomerManagedKeysOutput) AwsKeyInfo() MwsCustomerManagedKeysAwsKeyInfoPtrOutput {
 	return o.ApplyT(func(v *MwsCustomerManagedKeys) MwsCustomerManagedKeysAwsKeyInfoPtrOutput { return v.AwsKeyInfo }).(MwsCustomerManagedKeysAwsKeyInfoPtrOutput)
 }
@@ -502,6 +580,7 @@ func (o MwsCustomerManagedKeysOutput) CustomerManagedKeyId() pulumi.StringOutput
 	return o.ApplyT(func(v *MwsCustomerManagedKeys) pulumi.StringOutput { return v.CustomerManagedKeyId }).(pulumi.StringOutput)
 }
 
+// This field is a block and is documented below. This conflicts with `awsKeyInfo`
 func (o MwsCustomerManagedKeysOutput) GcpKeyInfo() MwsCustomerManagedKeysGcpKeyInfoPtrOutput {
 	return o.ApplyT(func(v *MwsCustomerManagedKeys) MwsCustomerManagedKeysGcpKeyInfoPtrOutput { return v.GcpKeyInfo }).(MwsCustomerManagedKeysGcpKeyInfoPtrOutput)
 }

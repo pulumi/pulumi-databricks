@@ -161,6 +161,7 @@ type StorageCredential struct {
 	AzureServicePrincipal       StorageCredentialAzureServicePrincipalPtrOutput    `pulumi:"azureServicePrincipal"`
 	Comment                     pulumi.StringPtrOutput                             `pulumi:"comment"`
 	DatabricksGcpServiceAccount StorageCredentialDatabricksGcpServiceAccountOutput `pulumi:"databricksGcpServiceAccount"`
+	ForceDestroy                pulumi.BoolPtrOutput                               `pulumi:"forceDestroy"`
 	GcpServiceAccountKey        StorageCredentialGcpServiceAccountKeyPtrOutput     `pulumi:"gcpServiceAccountKey"`
 	MetastoreId                 pulumi.StringOutput                                `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -208,6 +209,7 @@ type storageCredentialState struct {
 	AzureServicePrincipal       *StorageCredentialAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
 	Comment                     *string                                       `pulumi:"comment"`
 	DatabricksGcpServiceAccount *StorageCredentialDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
+	ForceDestroy                *bool                                         `pulumi:"forceDestroy"`
 	GcpServiceAccountKey        *StorageCredentialGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
 	MetastoreId                 *string                                       `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -226,6 +228,7 @@ type StorageCredentialState struct {
 	AzureServicePrincipal       StorageCredentialAzureServicePrincipalPtrInput
 	Comment                     pulumi.StringPtrInput
 	DatabricksGcpServiceAccount StorageCredentialDatabricksGcpServiceAccountPtrInput
+	ForceDestroy                pulumi.BoolPtrInput
 	GcpServiceAccountKey        StorageCredentialGcpServiceAccountKeyPtrInput
 	MetastoreId                 pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -248,6 +251,7 @@ type storageCredentialArgs struct {
 	AzureServicePrincipal       *StorageCredentialAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
 	Comment                     *string                                       `pulumi:"comment"`
 	DatabricksGcpServiceAccount *StorageCredentialDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
+	ForceDestroy                *bool                                         `pulumi:"forceDestroy"`
 	GcpServiceAccountKey        *StorageCredentialGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
 	MetastoreId                 *string                                       `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -267,6 +271,7 @@ type StorageCredentialArgs struct {
 	AzureServicePrincipal       StorageCredentialAzureServicePrincipalPtrInput
 	Comment                     pulumi.StringPtrInput
 	DatabricksGcpServiceAccount StorageCredentialDatabricksGcpServiceAccountPtrInput
+	ForceDestroy                pulumi.BoolPtrInput
 	GcpServiceAccountKey        StorageCredentialGcpServiceAccountKeyPtrInput
 	MetastoreId                 pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -390,6 +395,10 @@ func (o StorageCredentialOutput) DatabricksGcpServiceAccount() StorageCredential
 	return o.ApplyT(func(v *StorageCredential) StorageCredentialDatabricksGcpServiceAccountOutput {
 		return v.DatabricksGcpServiceAccount
 	}).(StorageCredentialDatabricksGcpServiceAccountOutput)
+}
+
+func (o StorageCredentialOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StorageCredential) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
 func (o StorageCredentialOutput) GcpServiceAccountKey() StorageCredentialGcpServiceAccountKeyPtrOutput {

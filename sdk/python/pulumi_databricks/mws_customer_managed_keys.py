@@ -26,9 +26,10 @@ class MwsCustomerManagedKeysArgs:
         The set of arguments for constructing a MwsCustomerManagedKeys resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] use_cases: *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
-        :param pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs'] aws_key_info: This field is a block and is documented below.
+        :param pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs'] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
         :param pulumi.Input[int] creation_time: (Integer) Time in epoch milliseconds when the customer key was created.
         :param pulumi.Input[str] customer_managed_key_id: (String) ID of the encryption key configuration object.
+        :param pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs'] gcp_key_info: This field is a block and is documented below. This conflicts with `aws_key_info`
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "use_cases", use_cases)
@@ -69,7 +70,7 @@ class MwsCustomerManagedKeysArgs:
     @pulumi.getter(name="awsKeyInfo")
     def aws_key_info(self) -> Optional[pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs']]:
         """
-        This field is a block and is documented below.
+        This field is a block and is documented below. This conflicts with `gcp_key_info`
         """
         return pulumi.get(self, "aws_key_info")
 
@@ -104,6 +105,9 @@ class MwsCustomerManagedKeysArgs:
     @property
     @pulumi.getter(name="gcpKeyInfo")
     def gcp_key_info(self) -> Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']]:
+        """
+        This field is a block and is documented below. This conflicts with `aws_key_info`
+        """
         return pulumi.get(self, "gcp_key_info")
 
     @gcp_key_info.setter
@@ -123,9 +127,10 @@ class _MwsCustomerManagedKeysState:
         """
         Input properties used for looking up and filtering MwsCustomerManagedKeys resources.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs'] aws_key_info: This field is a block and is documented below.
+        :param pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs'] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
         :param pulumi.Input[int] creation_time: (Integer) Time in epoch milliseconds when the customer key was created.
         :param pulumi.Input[str] customer_managed_key_id: (String) ID of the encryption key configuration object.
+        :param pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs'] gcp_key_info: This field is a block and is documented below. This conflicts with `aws_key_info`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] use_cases: *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
         """
         if account_id is not None:
@@ -157,7 +162,7 @@ class _MwsCustomerManagedKeysState:
     @pulumi.getter(name="awsKeyInfo")
     def aws_key_info(self) -> Optional[pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs']]:
         """
-        This field is a block and is documented below.
+        This field is a block and is documented below. This conflicts with `gcp_key_info`
         """
         return pulumi.get(self, "aws_key_info")
 
@@ -192,6 +197,9 @@ class _MwsCustomerManagedKeysState:
     @property
     @pulumi.getter(name="gcpKeyInfo")
     def gcp_key_info(self) -> Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']]:
+        """
+        This field is a block and is documented below. This conflicts with `aws_key_info`
+        """
         return pulumi.get(self, "gcp_key_info")
 
     @gcp_key_info.setter
@@ -227,9 +235,11 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         ## Example Usage
 
         > **Note** If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+
         ### Customer-managed key for managed services
 
         You must configure this during workspace creation
+        ### For AWS
 
         ```python
         import pulumi
@@ -275,7 +285,24 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             ),
             use_cases=["MANAGED_SERVICES"])
         ```
+        ### For GCP
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        databricks_account_id = config.require_object("databricksAccountId")
+        cmek_resource_id = config.require_object("cmekResourceId")
+        managed_services = databricks.MwsCustomerManagedKeys("managedServices",
+            account_id=databricks_account_id,
+            gcp_key_info=databricks.MwsCustomerManagedKeysGcpKeyInfoArgs(
+                kms_key_id=cmek_resource_id,
+            ),
+            use_cases=["MANAGED_SERVICES"])
+        ```
         ### Customer-managed key for workspace storage
+        ### For AWS
 
         ```python
         import pulumi
@@ -363,6 +390,22 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             ),
             use_cases=["STORAGE"])
         ```
+        ### For GCP
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        databricks_account_id = config.require_object("databricksAccountId")
+        cmek_resource_id = config.require_object("cmekResourceId")
+        storage = databricks.MwsCustomerManagedKeys("storage",
+            account_id=databricks_account_id,
+            gcp_key_info=databricks.MwsCustomerManagedKeysGcpKeyInfoArgs(
+                kms_key_id=cmek_resource_id,
+            ),
+            use_cases=["STORAGE"])
+        ```
         ## Related Resources
 
         The following resources are used in the same context:
@@ -381,9 +424,10 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[pulumi.InputType['MwsCustomerManagedKeysAwsKeyInfoArgs']] aws_key_info: This field is a block and is documented below.
+        :param pulumi.Input[pulumi.InputType['MwsCustomerManagedKeysAwsKeyInfoArgs']] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
         :param pulumi.Input[int] creation_time: (Integer) Time in epoch milliseconds when the customer key was created.
         :param pulumi.Input[str] customer_managed_key_id: (String) ID of the encryption key configuration object.
+        :param pulumi.Input[pulumi.InputType['MwsCustomerManagedKeysGcpKeyInfoArgs']] gcp_key_info: This field is a block and is documented below. This conflicts with `aws_key_info`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] use_cases: *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
         """
         ...
@@ -396,9 +440,11 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         ## Example Usage
 
         > **Note** If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+
         ### Customer-managed key for managed services
 
         You must configure this during workspace creation
+        ### For AWS
 
         ```python
         import pulumi
@@ -444,7 +490,24 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             ),
             use_cases=["MANAGED_SERVICES"])
         ```
+        ### For GCP
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        databricks_account_id = config.require_object("databricksAccountId")
+        cmek_resource_id = config.require_object("cmekResourceId")
+        managed_services = databricks.MwsCustomerManagedKeys("managedServices",
+            account_id=databricks_account_id,
+            gcp_key_info=databricks.MwsCustomerManagedKeysGcpKeyInfoArgs(
+                kms_key_id=cmek_resource_id,
+            ),
+            use_cases=["MANAGED_SERVICES"])
+        ```
         ### Customer-managed key for workspace storage
+        ### For AWS
 
         ```python
         import pulumi
@@ -529,6 +592,22 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             aws_key_info=databricks.MwsCustomerManagedKeysAwsKeyInfoArgs(
                 key_arn=storage_customer_managed_key.arn,
                 key_alias=storage_customer_managed_key_alias.name,
+            ),
+            use_cases=["STORAGE"])
+        ```
+        ### For GCP
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        databricks_account_id = config.require_object("databricksAccountId")
+        cmek_resource_id = config.require_object("cmekResourceId")
+        storage = databricks.MwsCustomerManagedKeys("storage",
+            account_id=databricks_account_id,
+            gcp_key_info=databricks.MwsCustomerManagedKeysGcpKeyInfoArgs(
+                kms_key_id=cmek_resource_id,
             ),
             use_cases=["STORAGE"])
         ```
@@ -611,9 +690,10 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[pulumi.InputType['MwsCustomerManagedKeysAwsKeyInfoArgs']] aws_key_info: This field is a block and is documented below.
+        :param pulumi.Input[pulumi.InputType['MwsCustomerManagedKeysAwsKeyInfoArgs']] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
         :param pulumi.Input[int] creation_time: (Integer) Time in epoch milliseconds when the customer key was created.
         :param pulumi.Input[str] customer_managed_key_id: (String) ID of the encryption key configuration object.
+        :param pulumi.Input[pulumi.InputType['MwsCustomerManagedKeysGcpKeyInfoArgs']] gcp_key_info: This field is a block and is documented below. This conflicts with `aws_key_info`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] use_cases: *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -640,7 +720,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
     @pulumi.getter(name="awsKeyInfo")
     def aws_key_info(self) -> pulumi.Output[Optional['outputs.MwsCustomerManagedKeysAwsKeyInfo']]:
         """
-        This field is a block and is documented below.
+        This field is a block and is documented below. This conflicts with `gcp_key_info`
         """
         return pulumi.get(self, "aws_key_info")
 
@@ -663,6 +743,9 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
     @property
     @pulumi.getter(name="gcpKeyInfo")
     def gcp_key_info(self) -> pulumi.Output[Optional['outputs.MwsCustomerManagedKeysGcpKeyInfo']]:
+        """
+        This field is a block and is documented below. This conflicts with `aws_key_info`
+        """
         return pulumi.get(self, "gcp_key_info")
 
     @property

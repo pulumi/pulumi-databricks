@@ -10,9 +10,11 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * > **Note** If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+ *
  * ### Customer-managed key for managed services
  *
  * You must configure this during workspace creation
+ * ### For AWS
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,7 +63,25 @@ import * as utilities from "./utilities";
  *     useCases: ["MANAGED_SERVICES"],
  * });
  * ```
+ * ### For GCP
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const cmekResourceId = config.requireObject("cmekResourceId");
+ * const managedServices = new databricks.MwsCustomerManagedKeys("managedServices", {
+ *     accountId: databricksAccountId,
+ *     gcpKeyInfo: {
+ *         kmsKeyId: cmekResourceId,
+ *     },
+ *     useCases: ["MANAGED_SERVICES"],
+ * });
+ * ```
  * ### Customer-managed key for workspace storage
+ * ### For AWS
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -152,6 +172,23 @@ import * as utilities from "./utilities";
  *     useCases: ["STORAGE"],
  * });
  * ```
+ * ### For GCP
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const cmekResourceId = config.requireObject("cmekResourceId");
+ * const storage = new databricks.MwsCustomerManagedKeys("storage", {
+ *     accountId: databricksAccountId,
+ *     gcpKeyInfo: {
+ *         kmsKeyId: cmekResourceId,
+ *     },
+ *     useCases: ["STORAGE"],
+ * });
+ * ```
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -200,7 +237,7 @@ export class MwsCustomerManagedKeys extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * This field is a block and is documented below.
+     * This field is a block and is documented below. This conflicts with `gcpKeyInfo`
      */
     public readonly awsKeyInfo!: pulumi.Output<outputs.MwsCustomerManagedKeysAwsKeyInfo | undefined>;
     /**
@@ -211,6 +248,9 @@ export class MwsCustomerManagedKeys extends pulumi.CustomResource {
      * (String) ID of the encryption key configuration object.
      */
     public readonly customerManagedKeyId!: pulumi.Output<string>;
+    /**
+     * This field is a block and is documented below. This conflicts with `awsKeyInfo`
+     */
     public readonly gcpKeyInfo!: pulumi.Output<outputs.MwsCustomerManagedKeysGcpKeyInfo | undefined>;
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
@@ -265,7 +305,7 @@ export interface MwsCustomerManagedKeysState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * This field is a block and is documented below.
+     * This field is a block and is documented below. This conflicts with `gcpKeyInfo`
      */
     awsKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysAwsKeyInfo>;
     /**
@@ -276,6 +316,9 @@ export interface MwsCustomerManagedKeysState {
      * (String) ID of the encryption key configuration object.
      */
     customerManagedKeyId?: pulumi.Input<string>;
+    /**
+     * This field is a block and is documented below. This conflicts with `awsKeyInfo`
+     */
     gcpKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysGcpKeyInfo>;
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
@@ -292,7 +335,7 @@ export interface MwsCustomerManagedKeysArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * This field is a block and is documented below.
+     * This field is a block and is documented below. This conflicts with `gcpKeyInfo`
      */
     awsKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysAwsKeyInfo>;
     /**
@@ -303,6 +346,9 @@ export interface MwsCustomerManagedKeysArgs {
      * (String) ID of the encryption key configuration object.
      */
     customerManagedKeyId?: pulumi.Input<string>;
+    /**
+     * This field is a block and is documented below. This conflicts with `awsKeyInfo`
+     */
     gcpKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysGcpKeyInfo>;
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:

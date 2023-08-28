@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MwsWorkspacesToken {
     private @Nullable String comment;
+    /**
+     * @return Token expiry lifetime. By default its 2592000 (30 days).
+     * 
+     */
     private @Nullable Integer lifetimeSeconds;
     private @Nullable String tokenId;
     private @Nullable String tokenValue;
@@ -21,6 +25,10 @@ public final class MwsWorkspacesToken {
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return Token expiry lifetime. By default its 2592000 (30 days).
+     * 
+     */
     public Optional<Integer> lifetimeSeconds() {
         return Optional.ofNullable(this.lifetimeSeconds);
     }

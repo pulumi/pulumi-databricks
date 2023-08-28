@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
  *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, aws_s3_bucket.metastore().id()))
  *             .owner(&#34;uc admins&#34;)
+ *             .region(&#34;us-east-1&#34;)
  *             .forceDestroy(true)
  *             .build());
  * 

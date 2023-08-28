@@ -21,7 +21,10 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, allow_cluster_create=None, allow_instance_pool_create=None, child_groups=None, databricks_sql_access=None, display_name=None, external_id=None, groups=None, id=None, instance_profiles=None, members=None, recursive=None, service_principals=None, users=None, workspace_access=None):
+    def __init__(__self__, acl_principal_id=None, allow_cluster_create=None, allow_instance_pool_create=None, child_groups=None, databricks_sql_access=None, display_name=None, external_id=None, groups=None, id=None, instance_profiles=None, members=None, recursive=None, service_principals=None, users=None, workspace_access=None):
+        if acl_principal_id and not isinstance(acl_principal_id, str):
+            raise TypeError("Expected argument 'acl_principal_id' to be a str")
+        pulumi.set(__self__, "acl_principal_id", acl_principal_id)
         if allow_cluster_create and not isinstance(allow_cluster_create, bool):
             raise TypeError("Expected argument 'allow_cluster_create' to be a bool")
         pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
@@ -64,6 +67,14 @@ class GetGroupResult:
         if workspace_access and not isinstance(workspace_access, bool):
             raise TypeError("Expected argument 'workspace_access' to be a bool")
         pulumi.set(__self__, "workspace_access", workspace_access)
+
+    @property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> str:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        """
+        return pulumi.get(self, "acl_principal_id")
 
     @property
     @pulumi.getter(name="allowClusterCreate")
@@ -172,6 +183,7 @@ class AwaitableGetGroupResult(GetGroupResult):
         if False:
             yield self
         return GetGroupResult(
+            acl_principal_id=self.acl_principal_id,
             allow_cluster_create=self.allow_cluster_create,
             allow_instance_pool_create=self.allow_instance_pool_create,
             child_groups=self.child_groups,
@@ -188,7 +200,8 @@ class AwaitableGetGroupResult(GetGroupResult):
             workspace_access=self.workspace_access)
 
 
-def get_group(allow_cluster_create: Optional[bool] = None,
+def get_group(acl_principal_id: Optional[str] = None,
+              allow_cluster_create: Optional[bool] = None,
               allow_instance_pool_create: Optional[bool] = None,
               child_groups: Optional[Sequence[str]] = None,
               databricks_sql_access: Optional[bool] = None,
@@ -233,6 +246,7 @@ def get_group(allow_cluster_create: Optional[bool] = None,
     * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
 
 
+    :param str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
     :param bool allow_cluster_create: True if group members can create clusters
     :param bool allow_instance_pool_create: True if group members can create instance pools
     :param Sequence[str] child_groups: Set of Group identifiers, that can be modified with GroupMember resource.
@@ -245,6 +259,7 @@ def get_group(allow_cluster_create: Optional[bool] = None,
     :param Sequence[str] users: Set of User identifiers, that can be modified with GroupMember resource.
     """
     __args__ = dict()
+    __args__['aclPrincipalId'] = acl_principal_id
     __args__['allowClusterCreate'] = allow_cluster_create
     __args__['allowInstancePoolCreate'] = allow_instance_pool_create
     __args__['childGroups'] = child_groups
@@ -262,6 +277,7 @@ def get_group(allow_cluster_create: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
+        acl_principal_id=pulumi.get(__ret__, 'acl_principal_id'),
         allow_cluster_create=pulumi.get(__ret__, 'allow_cluster_create'),
         allow_instance_pool_create=pulumi.get(__ret__, 'allow_instance_pool_create'),
         child_groups=pulumi.get(__ret__, 'child_groups'),
@@ -279,7 +295,8 @@ def get_group(allow_cluster_create: Optional[bool] = None,
 
 
 @_utilities.lift_output_func(get_group)
-def get_group_output(allow_cluster_create: Optional[pulumi.Input[Optional[bool]]] = None,
+def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     allow_cluster_create: Optional[pulumi.Input[Optional[bool]]] = None,
                      allow_instance_pool_create: Optional[pulumi.Input[Optional[bool]]] = None,
                      child_groups: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      databricks_sql_access: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -324,6 +341,7 @@ def get_group_output(allow_cluster_create: Optional[pulumi.Input[Optional[bool]]
     * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
 
 
+    :param str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
     :param bool allow_cluster_create: True if group members can create clusters
     :param bool allow_instance_pool_create: True if group members can create instance pools
     :param Sequence[str] child_groups: Set of Group identifiers, that can be modified with GroupMember resource.

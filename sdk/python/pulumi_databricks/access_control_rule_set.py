@@ -25,6 +25,8 @@ class AccessControlRuleSetArgs:
                !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
         :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
                * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+               * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+               * `accounts/{account_id}/ruleSets/default`
         """
         if grant_rules is not None:
             pulumi.set(__self__, "grant_rules", grant_rules)
@@ -51,6 +53,8 @@ class AccessControlRuleSetArgs:
         """
         Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
         * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+        * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+        * `accounts/{account_id}/ruleSets/default`
         """
         return pulumi.get(self, "name")
 
@@ -72,6 +76,8 @@ class _AccessControlRuleSetState:
                !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
         :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
                * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+               * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+               * `accounts/{account_id}/ruleSets/default`
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -109,6 +115,8 @@ class _AccessControlRuleSetState:
         """
         Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
         * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+        * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+        * `accounts/{account_id}/ruleSets/default`
         """
         return pulumi.get(self, "name")
 
@@ -128,9 +136,116 @@ class AccessControlRuleSet(pulumi.CustomResource):
         """
         This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
 
-        > **Note** Currently, we only support managing access rules on service principal resources through `AccessControlRuleSet`.
+        > **Note** Currently, we only support managing access rules on service principal, group and account resources through `AccessControlRuleSet`.
 
         > **Warning** `AccessControlRuleSet` cannot be used to manage access rules for resources supported by databricks_permissions. Refer to its documentation for more information.
+
+        ## Service principal rule set usage
+
+        Through a Databricks workspace:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        ds = databricks.get_group(display_name="Data Science")
+        automation_sp = databricks.ServicePrincipal("automationSp", display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+            principals=[ds.acl_principal_id],
+            role="roles/servicePrincipal.user",
+        )])
+        ```
+
+        Through AWS Databricks account:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group creation
+        ds = databricks.Group("ds")
+        automation_sp = databricks.ServicePrincipal("automationSp", display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+            principals=[ds.acl_principal_id],
+            role="roles/servicePrincipal.user",
+        )])
+        ```
+
+        Through Azure Databricks account:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group creation
+        ds = databricks.Group("ds")
+        automation_sp = databricks.ServicePrincipal("automationSp",
+            application_id="00000000-0000-0000-0000-000000000000",
+            display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+            principals=[ds.acl_principal_id],
+            role="roles/servicePrincipal.user",
+        )])
+        ```
+
+        Through GCP Databricks account:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group creation
+        ds = databricks.Group("ds")
+        automation_sp = databricks.ServicePrincipal("automationSp", display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+            principals=[ds.acl_principal_id],
+            role="roles/servicePrincipal.user",
+        )])
+        ```
+
+        ## Group rule set usage
+
+        Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        ds = databricks.get_group(display_name="Data Science")
+        john = databricks.get_user(user_name="john.doe@example.com")
+        ds_group_rule_set = databricks.AccessControlRuleSet("dsGroupRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+            principals=[john.acl_principal_id],
+            role="roles/group.manager",
+        )])
+        ```
+
+        ## Account rule set usage
+
+        Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        ds = databricks.get_group(display_name="Data Science")
+        john = databricks.get_user(user_name="john.doe@example.com")
+        account_rule_set = databricks.AccessControlRuleSet("accountRuleSet", grant_rules=[
+            databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[john.acl_principal_id],
+                role="roles/group.manager",
+            ),
+            databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[data["databricks_user"]["ds"]["acl_principal_id"]],
+                role="roles/servicePrincipal.manager",
+            ),
+        ])
+        ```
 
         ## Related Resources
 
@@ -147,6 +262,8 @@ class AccessControlRuleSet(pulumi.CustomResource):
                !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
         :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
                * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+               * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+               * `accounts/{account_id}/ruleSets/default`
         """
         ...
     @overload
@@ -157,9 +274,116 @@ class AccessControlRuleSet(pulumi.CustomResource):
         """
         This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
 
-        > **Note** Currently, we only support managing access rules on service principal resources through `AccessControlRuleSet`.
+        > **Note** Currently, we only support managing access rules on service principal, group and account resources through `AccessControlRuleSet`.
 
         > **Warning** `AccessControlRuleSet` cannot be used to manage access rules for resources supported by databricks_permissions. Refer to its documentation for more information.
+
+        ## Service principal rule set usage
+
+        Through a Databricks workspace:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        ds = databricks.get_group(display_name="Data Science")
+        automation_sp = databricks.ServicePrincipal("automationSp", display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+            principals=[ds.acl_principal_id],
+            role="roles/servicePrincipal.user",
+        )])
+        ```
+
+        Through AWS Databricks account:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group creation
+        ds = databricks.Group("ds")
+        automation_sp = databricks.ServicePrincipal("automationSp", display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+            principals=[ds.acl_principal_id],
+            role="roles/servicePrincipal.user",
+        )])
+        ```
+
+        Through Azure Databricks account:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group creation
+        ds = databricks.Group("ds")
+        automation_sp = databricks.ServicePrincipal("automationSp",
+            application_id="00000000-0000-0000-0000-000000000000",
+            display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+            principals=[ds.acl_principal_id],
+            role="roles/servicePrincipal.user",
+        )])
+        ```
+
+        Through GCP Databricks account:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group creation
+        ds = databricks.Group("ds")
+        automation_sp = databricks.ServicePrincipal("automationSp", display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+            principals=[ds.acl_principal_id],
+            role="roles/servicePrincipal.user",
+        )])
+        ```
+
+        ## Group rule set usage
+
+        Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        ds = databricks.get_group(display_name="Data Science")
+        john = databricks.get_user(user_name="john.doe@example.com")
+        ds_group_rule_set = databricks.AccessControlRuleSet("dsGroupRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+            principals=[john.acl_principal_id],
+            role="roles/group.manager",
+        )])
+        ```
+
+        ## Account rule set usage
+
+        Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        ds = databricks.get_group(display_name="Data Science")
+        john = databricks.get_user(user_name="john.doe@example.com")
+        account_rule_set = databricks.AccessControlRuleSet("accountRuleSet", grant_rules=[
+            databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[john.acl_principal_id],
+                role="roles/group.manager",
+            ),
+            databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[data["databricks_user"]["ds"]["acl_principal_id"]],
+                role="roles/servicePrincipal.manager",
+            ),
+        ])
+        ```
 
         ## Related Resources
 
@@ -223,6 +447,8 @@ class AccessControlRuleSet(pulumi.CustomResource):
                !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
         :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
                * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+               * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+               * `accounts/{account_id}/ruleSets/default`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -254,6 +480,8 @@ class AccessControlRuleSet(pulumi.CustomResource):
         """
         Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
         * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+        * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+        * `accounts/{account_id}/ruleSets/default`
         """
         return pulumi.get(self, "name")
 

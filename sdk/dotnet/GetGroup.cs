@@ -122,6 +122,12 @@ namespace Pulumi.Databricks
     public sealed class GetGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        /// </summary>
+        [Input("aclPrincipalId")]
+        public string? AclPrincipalId { get; set; }
+
+        /// <summary>
         /// True if group members can create clusters
         /// </summary>
         [Input("allowClusterCreate")]
@@ -234,6 +240,12 @@ namespace Pulumi.Databricks
 
     public sealed class GetGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        /// </summary>
+        [Input("aclPrincipalId")]
+        public Input<string>? AclPrincipalId { get; set; }
+
         /// <summary>
         /// True if group members can create clusters
         /// </summary>
@@ -350,6 +362,10 @@ namespace Pulumi.Databricks
     public sealed class GetGroupResult
     {
         /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        /// </summary>
+        public readonly string AclPrincipalId;
+        /// <summary>
         /// True if group members can create clusters
         /// </summary>
         public readonly bool? AllowClusterCreate;
@@ -393,6 +409,8 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetGroupResult(
+            string aclPrincipalId,
+
             bool? allowClusterCreate,
 
             bool? allowInstancePoolCreate,
@@ -421,6 +439,7 @@ namespace Pulumi.Databricks
 
             bool? workspaceAccess)
         {
+            AclPrincipalId = aclPrincipalId;
             AllowClusterCreate = allowClusterCreate;
             AllowInstancePoolCreate = allowInstancePoolCreate;
             ChildGroups = childGroups;

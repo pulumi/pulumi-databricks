@@ -20,7 +20,10 @@ class GetCurrentUserResult:
     """
     A collection of values returned by getCurrentUser.
     """
-    def __init__(__self__, alphanumeric=None, external_id=None, home=None, id=None, repos=None, user_name=None, workspace_url=None):
+    def __init__(__self__, acl_principal_id=None, alphanumeric=None, external_id=None, home=None, id=None, repos=None, user_name=None, workspace_url=None):
+        if acl_principal_id and not isinstance(acl_principal_id, str):
+            raise TypeError("Expected argument 'acl_principal_id' to be a str")
+        pulumi.set(__self__, "acl_principal_id", acl_principal_id)
         if alphanumeric and not isinstance(alphanumeric, str):
             raise TypeError("Expected argument 'alphanumeric' to be a str")
         pulumi.set(__self__, "alphanumeric", alphanumeric)
@@ -42,6 +45,11 @@ class GetCurrentUserResult:
         if workspace_url and not isinstance(workspace_url, str):
             raise TypeError("Expected argument 'workspace_url' to be a str")
         pulumi.set(__self__, "workspace_url", workspace_url)
+
+    @property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> str:
+        return pulumi.get(self, "acl_principal_id")
 
     @property
     @pulumi.getter
@@ -88,6 +96,7 @@ class AwaitableGetCurrentUserResult(GetCurrentUserResult):
         if False:
             yield self
         return GetCurrentUserResult(
+            acl_principal_id=self.acl_principal_id,
             alphanumeric=self.alphanumeric,
             external_id=self.external_id,
             home=self.home,
@@ -110,6 +119,7 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
     * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
     * `workspace_url` - URL of the current Databricks workspace.
+    * `acl_principal_id` - identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com` if current user is user, or `servicePrincipals/00000000-0000-0000-0000-000000000000` if current user is service principal.
 
     ## Related Resources
 
@@ -125,6 +135,7 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     __ret__ = pulumi.runtime.invoke('databricks:index/getCurrentUser:getCurrentUser', __args__, opts=opts, typ=GetCurrentUserResult).value
 
     return AwaitableGetCurrentUserResult(
+        acl_principal_id=pulumi.get(__ret__, 'acl_principal_id'),
         alphanumeric=pulumi.get(__ret__, 'alphanumeric'),
         external_id=pulumi.get(__ret__, 'external_id'),
         home=pulumi.get(__ret__, 'home'),
