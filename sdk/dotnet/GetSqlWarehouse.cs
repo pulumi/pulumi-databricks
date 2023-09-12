@@ -34,11 +34,11 @@ namespace Pulumi.Databricks
         /// 
         ///     var allSqlWarehouse = .Select(__value =&gt; 
         ///     {
-        ///         return  Databricks.GetSqlWarehouse.Invoke(new()
+        ///         return Databricks.GetSqlWarehouse.Invoke(new()
         ///         {
         ///             Id = __value,
         ///         });
-        ///     });
+        ///     }).ToList();
         /// 
         /// });
         /// ```
@@ -98,11 +98,11 @@ namespace Pulumi.Databricks
         /// 
         ///     var allSqlWarehouse = .Select(__value =&gt; 
         ///     {
-        ///         return  Databricks.GetSqlWarehouse.Invoke(new()
+        ///         return Databricks.GetSqlWarehouse.Invoke(new()
         ///         {
         ///             Id = __value,
         ///         });
-        ///     });
+        ///     }).ToList();
         /// 
         /// });
         /// ```

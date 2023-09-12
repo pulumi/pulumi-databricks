@@ -92,7 +92,8 @@ utilities.lazyLoad(exports, ["getClusters","getClustersOutput"], () => require("
 
 export { GetCurrentUserResult } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
-utilities.lazyLoad(exports, ["getCurrentUser"], () => require("./getCurrentUser"));
+export const getCurrentUserOutput: typeof import("./getCurrentUser").getCurrentUserOutput = null as any;
+utilities.lazyLoad(exports, ["getCurrentUser","getCurrentUserOutput"], () => require("./getCurrentUser"));
 
 export { GetDbfsFileArgs, GetDbfsFileResult, GetDbfsFileOutputArgs } from "./getDbfsFile";
 export const getDbfsFile: typeof import("./getDbfsFile").getDbfsFile = null as any;
@@ -226,7 +227,8 @@ utilities.lazyLoad(exports, ["getViews","getViewsOutput"], () => require("./getV
 
 export { GetZonesResult } from "./getZones";
 export const getZones: typeof import("./getZones").getZones = null as any;
-utilities.lazyLoad(exports, ["getZones"], () => require("./getZones"));
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
 
 export { GitCredentialArgs, GitCredentialState } from "./gitCredential";
 export type GitCredential = import("./gitCredential").GitCredential;

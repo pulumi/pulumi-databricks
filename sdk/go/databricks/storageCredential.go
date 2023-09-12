@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
@@ -307,6 +308,12 @@ func (i *StorageCredential) ToStorageCredentialOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialOutput)
 }
 
+func (i *StorageCredential) ToOutput(ctx context.Context) pulumix.Output[*StorageCredential] {
+	return pulumix.Output[*StorageCredential]{
+		OutputState: i.ToStorageCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StorageCredentialArrayInput is an input type that accepts StorageCredentialArray and StorageCredentialArrayOutput values.
 // You can construct a concrete instance of `StorageCredentialArrayInput` via:
 //
@@ -330,6 +337,12 @@ func (i StorageCredentialArray) ToStorageCredentialArrayOutput() StorageCredenti
 
 func (i StorageCredentialArray) ToStorageCredentialArrayOutputWithContext(ctx context.Context) StorageCredentialArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialArrayOutput)
+}
+
+func (i StorageCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]*StorageCredential] {
+	return pulumix.Output[[]*StorageCredential]{
+		OutputState: i.ToStorageCredentialArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // StorageCredentialMapInput is an input type that accepts StorageCredentialMap and StorageCredentialMapOutput values.
@@ -357,6 +370,12 @@ func (i StorageCredentialMap) ToStorageCredentialMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialMapOutput)
 }
 
+func (i StorageCredentialMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StorageCredential] {
+	return pulumix.Output[map[string]*StorageCredential]{
+		OutputState: i.ToStorageCredentialMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StorageCredentialOutput struct{ *pulumi.OutputState }
 
 func (StorageCredentialOutput) ElementType() reflect.Type {
@@ -369,6 +388,12 @@ func (o StorageCredentialOutput) ToStorageCredentialOutput() StorageCredentialOu
 
 func (o StorageCredentialOutput) ToStorageCredentialOutputWithContext(ctx context.Context) StorageCredentialOutput {
 	return o
+}
+
+func (o StorageCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageCredential] {
+	return pulumix.Output[*StorageCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageCredentialOutput) AwsIamRole() StorageCredentialAwsIamRolePtrOutput {
@@ -442,6 +467,12 @@ func (o StorageCredentialArrayOutput) ToStorageCredentialArrayOutputWithContext(
 	return o
 }
 
+func (o StorageCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StorageCredential] {
+	return pulumix.Output[[]*StorageCredential]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StorageCredentialArrayOutput) Index(i pulumi.IntInput) StorageCredentialOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StorageCredential {
 		return vs[0].([]*StorageCredential)[vs[1].(int)]
@@ -460,6 +491,12 @@ func (o StorageCredentialMapOutput) ToStorageCredentialMapOutput() StorageCreden
 
 func (o StorageCredentialMapOutput) ToStorageCredentialMapOutputWithContext(ctx context.Context) StorageCredentialMapOutput {
 	return o
+}
+
+func (o StorageCredentialMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StorageCredential] {
+	return pulumix.Output[map[string]*StorageCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageCredentialMapOutput) MapIndex(k pulumi.StringInput) StorageCredentialOutput {

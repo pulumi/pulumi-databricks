@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -221,6 +222,12 @@ func (o GetSqlWarehouseResultOutput) ToGetSqlWarehouseResultOutput() GetSqlWareh
 
 func (o GetSqlWarehouseResultOutput) ToGetSqlWarehouseResultOutputWithContext(ctx context.Context) GetSqlWarehouseResultOutput {
 	return o
+}
+
+func (o GetSqlWarehouseResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSqlWarehouseResult] {
+	return pulumix.Output[GetSqlWarehouseResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time in minutes until an idle SQL warehouse terminates all clusters and stops.

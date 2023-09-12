@@ -42,3 +42,20 @@ export interface GetZonesResult {
      */
     readonly zones: string[];
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const zones = databricks.getZones({});
+ * ```
+ */
+export function getZonesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+    return pulumi.output(getZones(opts))
+}

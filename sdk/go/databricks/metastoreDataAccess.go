@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Each Metastore requires an IAM role that will be assumed by Unity Catalog to access data. `MetastoreDataAccess` defines this
@@ -159,6 +160,12 @@ func (i *MetastoreDataAccess) ToMetastoreDataAccessOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDataAccessOutput)
 }
 
+func (i *MetastoreDataAccess) ToOutput(ctx context.Context) pulumix.Output[*MetastoreDataAccess] {
+	return pulumix.Output[*MetastoreDataAccess]{
+		OutputState: i.ToMetastoreDataAccessOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MetastoreDataAccessArrayInput is an input type that accepts MetastoreDataAccessArray and MetastoreDataAccessArrayOutput values.
 // You can construct a concrete instance of `MetastoreDataAccessArrayInput` via:
 //
@@ -182,6 +189,12 @@ func (i MetastoreDataAccessArray) ToMetastoreDataAccessArrayOutput() MetastoreDa
 
 func (i MetastoreDataAccessArray) ToMetastoreDataAccessArrayOutputWithContext(ctx context.Context) MetastoreDataAccessArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDataAccessArrayOutput)
+}
+
+func (i MetastoreDataAccessArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreDataAccess] {
+	return pulumix.Output[[]*MetastoreDataAccess]{
+		OutputState: i.ToMetastoreDataAccessArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MetastoreDataAccessMapInput is an input type that accepts MetastoreDataAccessMap and MetastoreDataAccessMapOutput values.
@@ -209,6 +222,12 @@ func (i MetastoreDataAccessMap) ToMetastoreDataAccessMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDataAccessMapOutput)
 }
 
+func (i MetastoreDataAccessMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreDataAccess] {
+	return pulumix.Output[map[string]*MetastoreDataAccess]{
+		OutputState: i.ToMetastoreDataAccessMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetastoreDataAccessOutput struct{ *pulumi.OutputState }
 
 func (MetastoreDataAccessOutput) ElementType() reflect.Type {
@@ -221,6 +240,12 @@ func (o MetastoreDataAccessOutput) ToMetastoreDataAccessOutput() MetastoreDataAc
 
 func (o MetastoreDataAccessOutput) ToMetastoreDataAccessOutputWithContext(ctx context.Context) MetastoreDataAccessOutput {
 	return o
+}
+
+func (o MetastoreDataAccessOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreDataAccess] {
+	return pulumix.Output[*MetastoreDataAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetastoreDataAccessOutput) AwsIamRole() MetastoreDataAccessAwsIamRolePtrOutput {
@@ -285,6 +310,12 @@ func (o MetastoreDataAccessArrayOutput) ToMetastoreDataAccessArrayOutputWithCont
 	return o
 }
 
+func (o MetastoreDataAccessArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreDataAccess] {
+	return pulumix.Output[[]*MetastoreDataAccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetastoreDataAccessArrayOutput) Index(i pulumi.IntInput) MetastoreDataAccessOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetastoreDataAccess {
 		return vs[0].([]*MetastoreDataAccess)[vs[1].(int)]
@@ -303,6 +334,12 @@ func (o MetastoreDataAccessMapOutput) ToMetastoreDataAccessMapOutput() Metastore
 
 func (o MetastoreDataAccessMapOutput) ToMetastoreDataAccessMapOutputWithContext(ctx context.Context) MetastoreDataAccessMapOutput {
 	return o
+}
+
+func (o MetastoreDataAccessMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreDataAccess] {
+	return pulumix.Output[map[string]*MetastoreDataAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetastoreDataAccessMapOutput) MapIndex(k pulumi.StringInput) MetastoreDataAccessOutput {

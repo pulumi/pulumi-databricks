@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
@@ -221,6 +222,12 @@ func (i *ExternalLocation) ToExternalLocationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationOutput)
 }
 
+func (i *ExternalLocation) ToOutput(ctx context.Context) pulumix.Output[*ExternalLocation] {
+	return pulumix.Output[*ExternalLocation]{
+		OutputState: i.ToExternalLocationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ExternalLocationArrayInput is an input type that accepts ExternalLocationArray and ExternalLocationArrayOutput values.
 // You can construct a concrete instance of `ExternalLocationArrayInput` via:
 //
@@ -244,6 +251,12 @@ func (i ExternalLocationArray) ToExternalLocationArrayOutput() ExternalLocationA
 
 func (i ExternalLocationArray) ToExternalLocationArrayOutputWithContext(ctx context.Context) ExternalLocationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationArrayOutput)
+}
+
+func (i ExternalLocationArray) ToOutput(ctx context.Context) pulumix.Output[[]*ExternalLocation] {
+	return pulumix.Output[[]*ExternalLocation]{
+		OutputState: i.ToExternalLocationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ExternalLocationMapInput is an input type that accepts ExternalLocationMap and ExternalLocationMapOutput values.
@@ -271,6 +284,12 @@ func (i ExternalLocationMap) ToExternalLocationMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalLocationMapOutput)
 }
 
+func (i ExternalLocationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExternalLocation] {
+	return pulumix.Output[map[string]*ExternalLocation]{
+		OutputState: i.ToExternalLocationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ExternalLocationOutput struct{ *pulumi.OutputState }
 
 func (ExternalLocationOutput) ElementType() reflect.Type {
@@ -283,6 +302,12 @@ func (o ExternalLocationOutput) ToExternalLocationOutput() ExternalLocationOutpu
 
 func (o ExternalLocationOutput) ToExternalLocationOutputWithContext(ctx context.Context) ExternalLocationOutput {
 	return o
+}
+
+func (o ExternalLocationOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalLocation] {
+	return pulumix.Output[*ExternalLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ARN of the s3 access point to use with the external location (AWS).
@@ -358,6 +383,12 @@ func (o ExternalLocationArrayOutput) ToExternalLocationArrayOutputWithContext(ct
 	return o
 }
 
+func (o ExternalLocationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ExternalLocation] {
+	return pulumix.Output[[]*ExternalLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ExternalLocationArrayOutput) Index(i pulumi.IntInput) ExternalLocationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ExternalLocation {
 		return vs[0].([]*ExternalLocation)[vs[1].(int)]
@@ -376,6 +407,12 @@ func (o ExternalLocationMapOutput) ToExternalLocationMapOutput() ExternalLocatio
 
 func (o ExternalLocationMapOutput) ToExternalLocationMapOutputWithContext(ctx context.Context) ExternalLocationMapOutput {
 	return o
+}
+
+func (o ExternalLocationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExternalLocation] {
+	return pulumix.Output[map[string]*ExternalLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExternalLocationMapOutput) MapIndex(k pulumi.StringInput) ExternalLocationOutput {

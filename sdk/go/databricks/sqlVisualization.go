@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -139,6 +140,12 @@ func (i *SqlVisualization) ToSqlVisualizationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SqlVisualizationOutput)
 }
 
+func (i *SqlVisualization) ToOutput(ctx context.Context) pulumix.Output[*SqlVisualization] {
+	return pulumix.Output[*SqlVisualization]{
+		OutputState: i.ToSqlVisualizationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SqlVisualizationArrayInput is an input type that accepts SqlVisualizationArray and SqlVisualizationArrayOutput values.
 // You can construct a concrete instance of `SqlVisualizationArrayInput` via:
 //
@@ -162,6 +169,12 @@ func (i SqlVisualizationArray) ToSqlVisualizationArrayOutput() SqlVisualizationA
 
 func (i SqlVisualizationArray) ToSqlVisualizationArrayOutputWithContext(ctx context.Context) SqlVisualizationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlVisualizationArrayOutput)
+}
+
+func (i SqlVisualizationArray) ToOutput(ctx context.Context) pulumix.Output[[]*SqlVisualization] {
+	return pulumix.Output[[]*SqlVisualization]{
+		OutputState: i.ToSqlVisualizationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SqlVisualizationMapInput is an input type that accepts SqlVisualizationMap and SqlVisualizationMapOutput values.
@@ -189,6 +202,12 @@ func (i SqlVisualizationMap) ToSqlVisualizationMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SqlVisualizationMapOutput)
 }
 
+func (i SqlVisualizationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlVisualization] {
+	return pulumix.Output[map[string]*SqlVisualization]{
+		OutputState: i.ToSqlVisualizationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlVisualizationOutput struct{ *pulumi.OutputState }
 
 func (SqlVisualizationOutput) ElementType() reflect.Type {
@@ -201,6 +220,12 @@ func (o SqlVisualizationOutput) ToSqlVisualizationOutput() SqlVisualizationOutpu
 
 func (o SqlVisualizationOutput) ToSqlVisualizationOutputWithContext(ctx context.Context) SqlVisualizationOutput {
 	return o
+}
+
+func (o SqlVisualizationOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlVisualization] {
+	return pulumix.Output[*SqlVisualization]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SqlVisualizationOutput) Description() pulumi.StringPtrOutput {
@@ -245,6 +270,12 @@ func (o SqlVisualizationArrayOutput) ToSqlVisualizationArrayOutputWithContext(ct
 	return o
 }
 
+func (o SqlVisualizationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SqlVisualization] {
+	return pulumix.Output[[]*SqlVisualization]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SqlVisualizationArrayOutput) Index(i pulumi.IntInput) SqlVisualizationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SqlVisualization {
 		return vs[0].([]*SqlVisualization)[vs[1].(int)]
@@ -263,6 +294,12 @@ func (o SqlVisualizationMapOutput) ToSqlVisualizationMapOutput() SqlVisualizatio
 
 func (o SqlVisualizationMapOutput) ToSqlVisualizationMapOutputWithContext(ctx context.Context) SqlVisualizationMapOutput {
 	return o
+}
+
+func (o SqlVisualizationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlVisualization] {
+	return pulumix.Output[map[string]*SqlVisualization]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SqlVisualizationMapOutput) MapIndex(k pulumi.StringInput) SqlVisualizationOutput {

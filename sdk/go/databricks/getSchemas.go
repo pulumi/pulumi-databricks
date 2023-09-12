@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -110,6 +111,12 @@ func (o GetSchemasResultOutput) ToGetSchemasResultOutput() GetSchemasResultOutpu
 
 func (o GetSchemasResultOutput) ToGetSchemasResultOutputWithContext(ctx context.Context) GetSchemasResultOutput {
 	return o
+}
+
+func (o GetSchemasResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSchemasResult] {
+	return pulumix.Output[GetSchemasResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSchemasResultOutput) CatalogName() pulumi.StringOutput {

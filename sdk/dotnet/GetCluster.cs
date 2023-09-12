@@ -34,11 +34,11 @@ namespace Pulumi.Databricks
         /// 
         ///     var allCluster = .Select(__value =&gt; 
         ///     {
-        ///         return  Databricks.GetCluster.Invoke(new()
+        ///         return Databricks.GetCluster.Invoke(new()
         ///         {
         ///             ClusterId = __value,
         ///         });
-        ///     });
+        ///     }).ToList();
         /// 
         /// });
         /// ```
@@ -82,11 +82,11 @@ namespace Pulumi.Databricks
         /// 
         ///     var allCluster = .Select(__value =&gt; 
         ///     {
-        ///         return  Databricks.GetCluster.Invoke(new()
+        ///         return Databricks.GetCluster.Invoke(new()
         ///         {
         ///             ClusterId = __value,
         ///         });
-        ///     });
+        ///     }).ToList();
         /// 
         /// });
         /// ```

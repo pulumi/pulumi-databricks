@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -134,6 +135,12 @@ func (o GetClustersResultOutput) ToGetClustersResultOutput() GetClustersResultOu
 
 func (o GetClustersResultOutput) ToGetClustersResultOutputWithContext(ctx context.Context) GetClustersResultOutput {
 	return o
+}
+
+func (o GetClustersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetClustersResult] {
+	return pulumix.Output[GetClustersResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetClustersResultOutput) ClusterNameContains() pulumi.StringPtrOutput {

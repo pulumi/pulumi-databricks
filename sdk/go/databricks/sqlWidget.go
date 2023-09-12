@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your Group or databricks_user.
@@ -199,6 +200,12 @@ func (i *SqlWidget) ToSqlWidgetOutputWithContext(ctx context.Context) SqlWidgetO
 	return pulumi.ToOutputWithContext(ctx, i).(SqlWidgetOutput)
 }
 
+func (i *SqlWidget) ToOutput(ctx context.Context) pulumix.Output[*SqlWidget] {
+	return pulumix.Output[*SqlWidget]{
+		OutputState: i.ToSqlWidgetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SqlWidgetArrayInput is an input type that accepts SqlWidgetArray and SqlWidgetArrayOutput values.
 // You can construct a concrete instance of `SqlWidgetArrayInput` via:
 //
@@ -222,6 +229,12 @@ func (i SqlWidgetArray) ToSqlWidgetArrayOutput() SqlWidgetArrayOutput {
 
 func (i SqlWidgetArray) ToSqlWidgetArrayOutputWithContext(ctx context.Context) SqlWidgetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlWidgetArrayOutput)
+}
+
+func (i SqlWidgetArray) ToOutput(ctx context.Context) pulumix.Output[[]*SqlWidget] {
+	return pulumix.Output[[]*SqlWidget]{
+		OutputState: i.ToSqlWidgetArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SqlWidgetMapInput is an input type that accepts SqlWidgetMap and SqlWidgetMapOutput values.
@@ -249,6 +262,12 @@ func (i SqlWidgetMap) ToSqlWidgetMapOutputWithContext(ctx context.Context) SqlWi
 	return pulumi.ToOutputWithContext(ctx, i).(SqlWidgetMapOutput)
 }
 
+func (i SqlWidgetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlWidget] {
+	return pulumix.Output[map[string]*SqlWidget]{
+		OutputState: i.ToSqlWidgetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlWidgetOutput struct{ *pulumi.OutputState }
 
 func (SqlWidgetOutput) ElementType() reflect.Type {
@@ -261,6 +280,12 @@ func (o SqlWidgetOutput) ToSqlWidgetOutput() SqlWidgetOutput {
 
 func (o SqlWidgetOutput) ToSqlWidgetOutputWithContext(ctx context.Context) SqlWidgetOutput {
 	return o
+}
+
+func (o SqlWidgetOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlWidget] {
+	return pulumix.Output[*SqlWidget]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SqlWidgetOutput) DashboardId() pulumi.StringOutput {
@@ -309,6 +334,12 @@ func (o SqlWidgetArrayOutput) ToSqlWidgetArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o SqlWidgetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SqlWidget] {
+	return pulumix.Output[[]*SqlWidget]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SqlWidgetArrayOutput) Index(i pulumi.IntInput) SqlWidgetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SqlWidget {
 		return vs[0].([]*SqlWidget)[vs[1].(int)]
@@ -327,6 +358,12 @@ func (o SqlWidgetMapOutput) ToSqlWidgetMapOutput() SqlWidgetMapOutput {
 
 func (o SqlWidgetMapOutput) ToSqlWidgetMapOutputWithContext(ctx context.Context) SqlWidgetMapOutput {
 	return o
+}
+
+func (o SqlWidgetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlWidget] {
+	return pulumix.Output[map[string]*SqlWidget]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SqlWidgetMapOutput) MapIndex(k pulumi.StringInput) SqlWidgetOutput {

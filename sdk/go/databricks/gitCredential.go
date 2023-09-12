@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -138,6 +139,12 @@ func (i *GitCredential) ToGitCredentialOutputWithContext(ctx context.Context) Gi
 	return pulumi.ToOutputWithContext(ctx, i).(GitCredentialOutput)
 }
 
+func (i *GitCredential) ToOutput(ctx context.Context) pulumix.Output[*GitCredential] {
+	return pulumix.Output[*GitCredential]{
+		OutputState: i.ToGitCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GitCredentialArrayInput is an input type that accepts GitCredentialArray and GitCredentialArrayOutput values.
 // You can construct a concrete instance of `GitCredentialArrayInput` via:
 //
@@ -161,6 +168,12 @@ func (i GitCredentialArray) ToGitCredentialArrayOutput() GitCredentialArrayOutpu
 
 func (i GitCredentialArray) ToGitCredentialArrayOutputWithContext(ctx context.Context) GitCredentialArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GitCredentialArrayOutput)
+}
+
+func (i GitCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]*GitCredential] {
+	return pulumix.Output[[]*GitCredential]{
+		OutputState: i.ToGitCredentialArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GitCredentialMapInput is an input type that accepts GitCredentialMap and GitCredentialMapOutput values.
@@ -188,6 +201,12 @@ func (i GitCredentialMap) ToGitCredentialMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GitCredentialMapOutput)
 }
 
+func (i GitCredentialMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GitCredential] {
+	return pulumix.Output[map[string]*GitCredential]{
+		OutputState: i.ToGitCredentialMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GitCredentialOutput struct{ *pulumi.OutputState }
 
 func (GitCredentialOutput) ElementType() reflect.Type {
@@ -200,6 +219,12 @@ func (o GitCredentialOutput) ToGitCredentialOutput() GitCredentialOutput {
 
 func (o GitCredentialOutput) ToGitCredentialOutputWithContext(ctx context.Context) GitCredentialOutput {
 	return o
+}
+
+func (o GitCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[*GitCredential] {
+	return pulumix.Output[*GitCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 // specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
@@ -236,6 +261,12 @@ func (o GitCredentialArrayOutput) ToGitCredentialArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o GitCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GitCredential] {
+	return pulumix.Output[[]*GitCredential]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GitCredentialArrayOutput) Index(i pulumi.IntInput) GitCredentialOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GitCredential {
 		return vs[0].([]*GitCredential)[vs[1].(int)]
@@ -254,6 +285,12 @@ func (o GitCredentialMapOutput) ToGitCredentialMapOutput() GitCredentialMapOutpu
 
 func (o GitCredentialMapOutput) ToGitCredentialMapOutputWithContext(ctx context.Context) GitCredentialMapOutput {
 	return o
+}
+
+func (o GitCredentialMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GitCredential] {
+	return pulumix.Output[map[string]*GitCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GitCredentialMapOutput) MapIndex(k pulumi.StringInput) GitCredentialOutput {

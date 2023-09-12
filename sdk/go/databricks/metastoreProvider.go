@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Within a metastore, Unity Catalog provides the ability to create a provider which contains a list of shares that have been shared with you.
@@ -191,6 +192,12 @@ func (i *MetastoreProvider) ToMetastoreProviderOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreProviderOutput)
 }
 
+func (i *MetastoreProvider) ToOutput(ctx context.Context) pulumix.Output[*MetastoreProvider] {
+	return pulumix.Output[*MetastoreProvider]{
+		OutputState: i.ToMetastoreProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MetastoreProviderArrayInput is an input type that accepts MetastoreProviderArray and MetastoreProviderArrayOutput values.
 // You can construct a concrete instance of `MetastoreProviderArrayInput` via:
 //
@@ -214,6 +221,12 @@ func (i MetastoreProviderArray) ToMetastoreProviderArrayOutput() MetastoreProvid
 
 func (i MetastoreProviderArray) ToMetastoreProviderArrayOutputWithContext(ctx context.Context) MetastoreProviderArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreProviderArrayOutput)
+}
+
+func (i MetastoreProviderArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreProvider] {
+	return pulumix.Output[[]*MetastoreProvider]{
+		OutputState: i.ToMetastoreProviderArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MetastoreProviderMapInput is an input type that accepts MetastoreProviderMap and MetastoreProviderMapOutput values.
@@ -241,6 +254,12 @@ func (i MetastoreProviderMap) ToMetastoreProviderMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreProviderMapOutput)
 }
 
+func (i MetastoreProviderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreProvider] {
+	return pulumix.Output[map[string]*MetastoreProvider]{
+		OutputState: i.ToMetastoreProviderMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetastoreProviderOutput struct{ *pulumi.OutputState }
 
 func (MetastoreProviderOutput) ElementType() reflect.Type {
@@ -253,6 +272,12 @@ func (o MetastoreProviderOutput) ToMetastoreProviderOutput() MetastoreProviderOu
 
 func (o MetastoreProviderOutput) ToMetastoreProviderOutputWithContext(ctx context.Context) MetastoreProviderOutput {
 	return o
+}
+
+func (o MetastoreProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreProvider] {
+	return pulumix.Output[*MetastoreProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The delta sharing authentication type. Valid values are `TOKEN`.
@@ -289,6 +314,12 @@ func (o MetastoreProviderArrayOutput) ToMetastoreProviderArrayOutputWithContext(
 	return o
 }
 
+func (o MetastoreProviderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreProvider] {
+	return pulumix.Output[[]*MetastoreProvider]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetastoreProviderArrayOutput) Index(i pulumi.IntInput) MetastoreProviderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetastoreProvider {
 		return vs[0].([]*MetastoreProvider)[vs[1].(int)]
@@ -307,6 +338,12 @@ func (o MetastoreProviderMapOutput) ToMetastoreProviderMapOutput() MetastoreProv
 
 func (o MetastoreProviderMapOutput) ToMetastoreProviderMapOutputWithContext(ctx context.Context) MetastoreProviderMapOutput {
 	return o
+}
+
+func (o MetastoreProviderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreProvider] {
+	return pulumix.Output[map[string]*MetastoreProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetastoreProviderMapOutput) MapIndex(k pulumi.StringInput) MetastoreProviderOutput {

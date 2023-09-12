@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Deprecated** Please rewrite with databricks_user_role. This resource will be removed in v0.5.x
@@ -168,6 +169,12 @@ func (i *UserInstanceProfile) ToUserInstanceProfileOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(UserInstanceProfileOutput)
 }
 
+func (i *UserInstanceProfile) ToOutput(ctx context.Context) pulumix.Output[*UserInstanceProfile] {
+	return pulumix.Output[*UserInstanceProfile]{
+		OutputState: i.ToUserInstanceProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UserInstanceProfileArrayInput is an input type that accepts UserInstanceProfileArray and UserInstanceProfileArrayOutput values.
 // You can construct a concrete instance of `UserInstanceProfileArrayInput` via:
 //
@@ -191,6 +198,12 @@ func (i UserInstanceProfileArray) ToUserInstanceProfileArrayOutput() UserInstanc
 
 func (i UserInstanceProfileArray) ToUserInstanceProfileArrayOutputWithContext(ctx context.Context) UserInstanceProfileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserInstanceProfileArrayOutput)
+}
+
+func (i UserInstanceProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]*UserInstanceProfile] {
+	return pulumix.Output[[]*UserInstanceProfile]{
+		OutputState: i.ToUserInstanceProfileArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // UserInstanceProfileMapInput is an input type that accepts UserInstanceProfileMap and UserInstanceProfileMapOutput values.
@@ -218,6 +231,12 @@ func (i UserInstanceProfileMap) ToUserInstanceProfileMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(UserInstanceProfileMapOutput)
 }
 
+func (i UserInstanceProfileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserInstanceProfile] {
+	return pulumix.Output[map[string]*UserInstanceProfile]{
+		OutputState: i.ToUserInstanceProfileMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UserInstanceProfileOutput struct{ *pulumi.OutputState }
 
 func (UserInstanceProfileOutput) ElementType() reflect.Type {
@@ -230,6 +249,12 @@ func (o UserInstanceProfileOutput) ToUserInstanceProfileOutput() UserInstancePro
 
 func (o UserInstanceProfileOutput) ToUserInstanceProfileOutputWithContext(ctx context.Context) UserInstanceProfileOutput {
 	return o
+}
+
+func (o UserInstanceProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*UserInstanceProfile] {
+	return pulumix.Output[*UserInstanceProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This is the id of the instance profile resource.
@@ -256,6 +281,12 @@ func (o UserInstanceProfileArrayOutput) ToUserInstanceProfileArrayOutputWithCont
 	return o
 }
 
+func (o UserInstanceProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UserInstanceProfile] {
+	return pulumix.Output[[]*UserInstanceProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UserInstanceProfileArrayOutput) Index(i pulumi.IntInput) UserInstanceProfileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UserInstanceProfile {
 		return vs[0].([]*UserInstanceProfile)[vs[1].(int)]
@@ -274,6 +305,12 @@ func (o UserInstanceProfileMapOutput) ToUserInstanceProfileMapOutput() UserInsta
 
 func (o UserInstanceProfileMapOutput) ToUserInstanceProfileMapOutputWithContext(ctx context.Context) UserInstanceProfileMapOutput {
 	return o
+}
+
+func (o UserInstanceProfileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserInstanceProfile] {
+	return pulumix.Output[map[string]*UserInstanceProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserInstanceProfileMapOutput) MapIndex(k pulumi.StringInput) UserInstanceProfileOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -451,6 +452,12 @@ func (i *MwsNetworks) ToMwsNetworksOutputWithContext(ctx context.Context) MwsNet
 	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksOutput)
 }
 
+func (i *MwsNetworks) ToOutput(ctx context.Context) pulumix.Output[*MwsNetworks] {
+	return pulumix.Output[*MwsNetworks]{
+		OutputState: i.ToMwsNetworksOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MwsNetworksArrayInput is an input type that accepts MwsNetworksArray and MwsNetworksArrayOutput values.
 // You can construct a concrete instance of `MwsNetworksArrayInput` via:
 //
@@ -474,6 +481,12 @@ func (i MwsNetworksArray) ToMwsNetworksArrayOutput() MwsNetworksArrayOutput {
 
 func (i MwsNetworksArray) ToMwsNetworksArrayOutputWithContext(ctx context.Context) MwsNetworksArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksArrayOutput)
+}
+
+func (i MwsNetworksArray) ToOutput(ctx context.Context) pulumix.Output[[]*MwsNetworks] {
+	return pulumix.Output[[]*MwsNetworks]{
+		OutputState: i.ToMwsNetworksArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MwsNetworksMapInput is an input type that accepts MwsNetworksMap and MwsNetworksMapOutput values.
@@ -501,6 +514,12 @@ func (i MwsNetworksMap) ToMwsNetworksMapOutputWithContext(ctx context.Context) M
 	return pulumi.ToOutputWithContext(ctx, i).(MwsNetworksMapOutput)
 }
 
+func (i MwsNetworksMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsNetworks] {
+	return pulumix.Output[map[string]*MwsNetworks]{
+		OutputState: i.ToMwsNetworksMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MwsNetworksOutput struct{ *pulumi.OutputState }
 
 func (MwsNetworksOutput) ElementType() reflect.Type {
@@ -513,6 +532,12 @@ func (o MwsNetworksOutput) ToMwsNetworksOutput() MwsNetworksOutput {
 
 func (o MwsNetworksOutput) ToMwsNetworksOutputWithContext(ctx context.Context) MwsNetworksOutput {
 	return o
+}
+
+func (o MwsNetworksOutput) ToOutput(ctx context.Context) pulumix.Output[*MwsNetworks] {
+	return pulumix.Output[*MwsNetworks]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -587,6 +612,12 @@ func (o MwsNetworksArrayOutput) ToMwsNetworksArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o MwsNetworksArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MwsNetworks] {
+	return pulumix.Output[[]*MwsNetworks]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MwsNetworksArrayOutput) Index(i pulumi.IntInput) MwsNetworksOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MwsNetworks {
 		return vs[0].([]*MwsNetworks)[vs[1].(int)]
@@ -605,6 +636,12 @@ func (o MwsNetworksMapOutput) ToMwsNetworksMapOutput() MwsNetworksMapOutput {
 
 func (o MwsNetworksMapOutput) ToMwsNetworksMapOutputWithContext(ctx context.Context) MwsNetworksMapOutput {
 	return o
+}
+
+func (o MwsNetworksMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsNetworks] {
+	return pulumix.Output[map[string]*MwsNetworks]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MwsNetworksMapOutput) MapIndex(k pulumi.StringInput) MwsNetworksOutput {

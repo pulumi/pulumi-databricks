@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount. The following example demonstrates how to create an instance profile and create a cluster with it. When creating a new `InstanceProfile`, Databricks validates that it has sufficient permissions to launch instances with the instance profile. This validation uses AWS dry-run mode for the [AWS EC2 RunInstances API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html).
@@ -416,6 +417,12 @@ func (i *InstanceProfile) ToInstanceProfileOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceProfileOutput)
 }
 
+func (i *InstanceProfile) ToOutput(ctx context.Context) pulumix.Output[*InstanceProfile] {
+	return pulumix.Output[*InstanceProfile]{
+		OutputState: i.ToInstanceProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceProfileArrayInput is an input type that accepts InstanceProfileArray and InstanceProfileArrayOutput values.
 // You can construct a concrete instance of `InstanceProfileArrayInput` via:
 //
@@ -439,6 +446,12 @@ func (i InstanceProfileArray) ToInstanceProfileArrayOutput() InstanceProfileArra
 
 func (i InstanceProfileArray) ToInstanceProfileArrayOutputWithContext(ctx context.Context) InstanceProfileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceProfileArrayOutput)
+}
+
+func (i InstanceProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceProfile] {
+	return pulumix.Output[[]*InstanceProfile]{
+		OutputState: i.ToInstanceProfileArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InstanceProfileMapInput is an input type that accepts InstanceProfileMap and InstanceProfileMapOutput values.
@@ -466,6 +479,12 @@ func (i InstanceProfileMap) ToInstanceProfileMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceProfileMapOutput)
 }
 
+func (i InstanceProfileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceProfile] {
+	return pulumix.Output[map[string]*InstanceProfile]{
+		OutputState: i.ToInstanceProfileMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceProfileOutput struct{ *pulumi.OutputState }
 
 func (InstanceProfileOutput) ElementType() reflect.Type {
@@ -478,6 +497,12 @@ func (o InstanceProfileOutput) ToInstanceProfileOutput() InstanceProfileOutput {
 
 func (o InstanceProfileOutput) ToInstanceProfileOutputWithContext(ctx context.Context) InstanceProfileOutput {
 	return o
+}
+
+func (o InstanceProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceProfile] {
+	return pulumix.Output[*InstanceProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
@@ -514,6 +539,12 @@ func (o InstanceProfileArrayOutput) ToInstanceProfileArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o InstanceProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceProfile] {
+	return pulumix.Output[[]*InstanceProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceProfileArrayOutput) Index(i pulumi.IntInput) InstanceProfileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceProfile {
 		return vs[0].([]*InstanceProfile)[vs[1].(int)]
@@ -532,6 +563,12 @@ func (o InstanceProfileMapOutput) ToInstanceProfileMapOutput() InstanceProfileMa
 
 func (o InstanceProfileMapOutput) ToInstanceProfileMapOutputWithContext(ctx context.Context) InstanceProfileMapOutput {
 	return o
+}
+
+func (o InstanceProfileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceProfile] {
+	return pulumix.Output[map[string]*InstanceProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceProfileMapOutput) MapIndex(k pulumi.StringInput) InstanceProfileOutput {

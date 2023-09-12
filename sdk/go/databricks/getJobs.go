@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -147,6 +148,12 @@ func (o GetJobsResultOutput) ToGetJobsResultOutput() GetJobsResultOutput {
 
 func (o GetJobsResultOutput) ToGetJobsResultOutputWithContext(ctx context.Context) GetJobsResultOutput {
 	return o
+}
+
+func (o GetJobsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetJobsResult] {
+	return pulumix.Output[GetJobsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.
